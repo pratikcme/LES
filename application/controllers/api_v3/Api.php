@@ -2,26 +2,20 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("HTTP/1.1 200 OK");
+
 class Api extends Apiuser_Controller {
     function __construct() {
         parent::__construct();
-
-        $this->load->model('api_v2/api_model', 'this_model');
-        $this->load->model('api_v2/common_model');
+        $this->load->model('api_v3/api_model', 'this_model');
+        $this->load->model('api_v3/common_model');
         if(!isset($_POST['vendor_id']) && isset($_POST['branch_id'])){
             $getVendor =  $this->common_model->getVendorIdFromBranch();
             $_POST['vendor_id'] = $getVendor[0]->vendor_id;
         }
-        //    $p = $this->this_model->getVendorId();
-        // if (!isset($_POST['branch_id']) || $_POST['branch_id'] == "" || $_POST['branch_id'] == '""') {
-        //     // $_POST['branch_id'] = '1';
-        //     $_POST['branch_id'] = $p[0]->id;
-        // }
-        // if (!isset($_GET['branch_id']) || $_GET['branch_id'] == "" || $_GET['branch_id'] == '""') {
-        //     // $_GET['branch_id'] = '1';
-        //     $_GET['branch_id'] = $p[0]->id;
-        
-        // }
+    /*
+    ALTER TABLE `vendor` ADD `display_price_with_gst` ENUM('0','1') NOT NULL COMMENT '0=?>with_gst; \'1\'=>without_gst' AFTER `type`;
+    ALTER TABLE `product_weight` ADD `without_gst_price` FLOAT NULL AFTER `discount_price`;    
+    */
     }
     public function appDetails(){   
         $post = $this->input->post();
@@ -52,19 +46,16 @@ class Api extends Apiuser_Controller {
 
     public function check_branch() {
         
-        // $post = $this->input->post();
-        // $req = array('vendor_id');
-        // $response = $this->checkRequiredField($post, $req);
+       
 
         $result = $this->this_model->check_branch();
         $vendor_id = $result[0]->id;
-        // print_r($result);die;
         $_POST['vendor_id'] = $vendor_id ;
 
         $categoryCount = $this->this_model->categoryCount();
         $subcategoryCount = $this->this_model->subcategoryCount();
         $vendorCount = $this->this_model->vendorCount($vendor_id);
-        // print_r($vendorCount);die;
+    
         $branch_id = 0;
         if(count($vendorCount) == '1'){
             $branch_id = $vendorCount[0]->id;
@@ -92,7 +83,7 @@ class Api extends Apiuser_Controller {
     }
 
     public function testNotification(){
-        $this->load->model('api_v2/delivery_api_model');
+        $this->load->model('api_v3/delivery_api_model');
         $this->delivery_api_model->send_notification(140);
     }
 
@@ -102,11 +93,16 @@ class Api extends Apiuser_Controller {
         $response = $this->checkRequiredField($post, $req);
         if ($response['status'] == 1) {
             $result = $this->this_model->user_info($post);
+            if($result[0]->profileimage != '' || $result[0]->profileimage != NULL){
+                $result[0]->profileimage = base_url().'public/images/'.$this->folder.'user_profile/'.$result[0]->profileimage;
+            }else{
+                $result[0]->profileimage = "";
+            }
             $result[0]->mobile_verify = $result[0]->is_verify;
 
             $user_id = $post['user_id'];
             $device_id = $post['device_id'];
-            $result_count = $this->db->query("SELECT COUNT(*) as total  FROM my_cart_old as mc WHERE  mc.user_id= '$user_id' AND mc.status != '9' ORDER BY mc.id DESC");
+            $result_count = $this->db->query("SELECT COUNT(*) as total  FROM my_cart as mc WHERE  mc.user_id= '$user_id' AND mc.status != '9' ORDER BY mc.id DESC");
 
             $row_count = $result_count->result();
             // echo $this->db->last_query();die;
@@ -163,14 +159,13 @@ class Api extends Apiuser_Controller {
     }
     public function vendor_list() {
         $return = $this->this_model->vendor_list();
+        // dd($return);
         // $this->this_model->CategoryCount();
         echo json_encode($return);
         exit;
     }
     public function vendor_category_list() {
-        // $user_id = $this->input->post('user_id');
-        // print_r($_POST);die;
-
+       
         if($this->input->post('branch_id')=='') {
             $response = array('success' => '0', 'message' => 'Invalid Parameter');
             echo json_encode($response);
@@ -186,7 +181,7 @@ class Api extends Apiuser_Controller {
         $return = $this->this_model->category_list($this->input->post());
         $return['categoryCount'] = $categoryCount;
         $return['subcategoryCount'] = $subcategoryCount;
-        // print_r($return);die;
+     
         echo json_encode($return);
         exit;
     }
@@ -255,350 +250,12 @@ class Api extends Apiuser_Controller {
     }
 
     function emailTemplate_testing(){
-        $this->this_model->emailTemplate_testing(38,1,107);
+        $this->this_model->emailTemplate(235,2,5);
     }
-
-
-
-
     ## User Register ##
-    public function user_register_old() {
-        // print_r($_POST);die;
-        if ($_POST['login_type'] != '3' && (!isset($_POST['email']) || $_POST['email']=='' ) ){
-            $response["success"] = 0;
-            $response["message"] = "Please enter email address";
-            $output = json_encode(array('responsedata' => $response));
-            echo $output;
-            exit();
-        }
-
-        if (isset($_POST['fname']) && isset($_POST['login_type']) && isset($_POST['vendor_id']) && $_POST['vendor_id'] !='') {
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $vendor_id = $_POST['vendor_id'];
-
-
-            if (isset($_POST['device_id'])) {
-                $device_id = $_POST['device_id'];
-            }
-            $login_type = $_POST['login_type'];
-            $password = $_POST['password'];
-            if (isset($_POST['facebook_token_id'])) {
-                $facebook_token_id = $_POST['facebook_token_id'];
-            }
-            if (isset($_POST['gmail_token_id'])) {
-                $gmail_token_id = $_POST['gmail_token_id'];
-            }
-            if (isset($_POST['apple_token_id'])) {
-                $apple_token_id = $_POST['apple_token_id'];
-            }
-            /* Normal */
-            if ($login_type == '0') {
-                if (isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['lname'])) {
-                    $email_query = $this->db->query("SELECT * FROM user WHERE email = '$email' AND vendor_id = '$vendor_id'");
-                    $email_result = $email_query->row_array();
-                    if ($email_query->num_rows() > 0) {
-                        $response["success"] = 0;
-                        $response["message"] = "Email is already registered";
-                        $output = json_encode(array('responsedata' => $response));
-                        echo $output;
-                        exit();
-                    } else {
-                        $token = md5($this->utility->encode($_POST['email']));
-                        $data = array(
-                            'vendor_id'=>$vendor_id,'fname' => $fname, 'lname' => $lname,'email' => $email, 
-                            'password' => md5($password), 'login_type' => $login_type, 
-                            'phone' => $phone, 'status' => '1', 'email_token' => $token,'email_verify'=>'1',
-                            'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME),);
-                        $respo =$this->db->insert('user', $data);
-                        $userId = $this->db->insert_id();
-                        if($respo){
-                            $response["success"] = 1;
-                            $response["message"] = "Account created successfully";
-                        }else{
-                            $response["success"] = 0;
-                            $response["message"] = "Somthing went wrong";
-                        }
-                        // $userDetail = ['id' => $userId, 'token' => $token];
-                        // $finalUserdetail = $this->utility->encode(json_encode($userDetail));
-                        // $datas['name'] = $postData['name'];
-                        // $datas['link'] = base_url() . "api/verifyAccount/" . $finalUserdetail;
-                        // $datas['message'] = $this->load->view('emailTemplate/registration_mail', $datas, true);
-                        // $datas['subject'] = 'Verify user email address';
-                        // $datas["to"] = $email;
-                        // // print_r($datas);die;
-                        // $res = $this->sendMailSMTP($datas);
-                        // if ($res) {
-                        //     $response["success"] = 1;
-                        //     $response["message"] = "Please verify your email";
-                        // } else {
-                        //     $response["success"] = 0;
-                        //     $response["message"] = "Please enter valid email address";
-                        // }
-                        $output = json_encode(array('responsedata' => $response));
-                        echo $output;
-                        exit();
-                    }
-                } else {
-                    $response = array();
-                    $response["success"] = 0;
-                    $response["message"] = "Invalid data";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                }
-            }
-            /* Facebook */
-            elseif ($login_type == '1') {
-                // print_r($_POST);die;
-                $facebook_query = $this->db->query("SELECT * FROM user WHERE facebook_token_id = '$facebook_token_id' AND vendor_id = '$vendor_id'");
-                // print_r($facebook_query->result());die;
-                if ($facebook_query->num_rows() > 0) {
-                    $gmail_result = $facebook_query->row_array();
-                    $this->sendLoginResponse($gmail_result);
-                } else {
-                    $data = array('vendor_id'=>$vendor_id,'fname' => $fname, 'lname' => $lname, 'email' => $email, 'phone' => $phone, 'login_type' => $login_type, 'facebook_token_id' => $facebook_token_id, 'status' => '1', 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME),'email_verify'=>'1');
-                    $checkuser = $this->this_model->check_register($email,$vendor_id);
-                    // print_r($data);die;
-                    if ($checkuser == 1) {
-                        $this->db->where('email', $email);
-                        $this->db->update('user', $data);
-                    } else {
-                        $this->db->insert('user', $data);
-                    }
-                    $email_query = $this->db->query("SELECT * FROM user WHERE email = '$email' AND vendor_id = '$vendor_id'");
-                    $gmail_result = $email_query->row_array();
-                    $this->sendLoginResponse($gmail_result);
-                }
-                //                }
-                
-            }
-            /* Gmail */
-            elseif ($login_type == '2') {
-                $gmail_query = $this->db->query("SELECT * FROM user WHERE gmail_token_id = '$gmail_token_id' AND vendor_id = '$vendor_id'");
-                if ($gmail_query->num_rows() > 0) {
-                    $gmail_result = $gmail_query->row_array();
-                    $this->sendLoginResponse($gmail_result);
-                } else {
-                    $data = array(
-                        'vendor_id' => $vendor_id,'fname' => $fname, 'lname' => $lname, 'email' => $email, 'phone' => $phone, 'login_type' => $login_type, 'gmail_token_id' => $gmail_token_id, 'status' => '1', 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME),'email_verify'=>'1'
-                    );
-                    $checkuser = $this->this_model->check_register($email,$vendor_id);
-                    if ($checkuser == 1) {
-                        $this->db->where('email', $email);
-                        $this->db->update('user', $data);
-                    } else {
-                        $this->db->insert('user', $data);
-                    }
-                    $email_query = $this->db->query("SELECT * FROM user WHERE email = '$email' AND vendor_id = '$vendor_id'");
-                    $gmail_result = $email_query->row_array();
-                    $this->sendLoginResponse($gmail_result);
-                }
-                //                }
-                
-            }
-            /* apple */
-            elseif ($login_type == '3') {
-                $apple_query = $this->db->query("SELECT * FROM user WHERE apple_token_id = '$apple_token_id' AND vendor_id = '$vendor_id'");
-                if ($apple_query->num_rows() > 0) {
-                    $login_check_result = $apple_query->row_array();
-                   $this->sendLoginResponse($login_check_result);
-                } else {
-                    $data = array('vendor_id'=>$vendor_id,'fname' => $fname, 'lname' => $lname, 'email' => $email, 'phone' => $phone, 'login_type' => $login_type, 'apple_token_id' => $apple_token_id, 'status' => '1', 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME),'email_verify'=>'1');
-                    $checkuser = $this->this_model->check_register($email,$vendor_id);
-                    if ($checkuser == 1) {
-                        $this->db->where('email', $email);
-                        $this->db->update('user', $data);
-                    } else {
-                        $this->db->insert('user', $data);
-                    }
-                    $email_query = $this->db->query("SELECT * FROM user WHERE apple_token_id = '$apple_token_id' AND vendor_id = '$vendor_id'");
-                    $login_check_result = $email_query->row_array();
-                   $this->sendLoginResponse($login_check_result);
-                }
-            }
-        } else {
-            $response = array();
-            $response["success"] = 0;
-            $response["message"] = "Invalid data";
-            $output = json_encode(array('responsedata' => $response));
-            echo $output;
-        }
-    }
-    ## User Login ##
-    public function user_login_old() {
-        if (isset($_POST['login_type'])) {
-            $email = $_POST['email'];
-            $device_id = $_POST['device_id'];
-            $vendor_id = $_POST['vendor_id'];
-            $password = md5($_POST['password']);
-            $login_type = $_POST['login_type'];
-            if (isset($_POST['facebook_token_id'])) {
-                $facebook_token_id = $_POST['facebook_token_id'];
-            }
-            if (isset($_POST['gmail_token_id'])) {
-                $gmail_token_id = $_POST['gmail_token_id'];
-            }
-            if (isset($_POST['apple_token_id'])) {
-                $apple_token_id = $_POST['apple_token_id'];
-            }
-            /* Normal User */
-            if ($login_type == '0') {
-
-                $login_check_query = $this->db->query("SELECT * FROM user WHERE email = '$email' AND password = '$password' AND vendor_id = '$vendor_id'");
-                $login_check_result = $login_check_query->row_array();
-
-                if ($login_check_query->num_rows() > 0) {
-                    if ($login_check_result['email_verify'] == '1') {
-                       $this->sendLoginResponse($login_check_result);
-                    } else {
-
-                         $response = array();
-                    $response["success"] = 0;
-                    $response["message"] = "Please Varify Email";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-
-                        // $token = md5($this->utility->encode($login_check_result['email']));
-                        // $this->db->set('email_token', $token);
-                        // $this->db->where('id', $login_check_result['id']);
-                        // $this->db->update('user');
-                        // $userDetail = ['id' => $login_check_result['id'], 'token' => $token];
-                        // $finalUserdetail = $this->utility->encode(json_encode($userDetail));
-                        // $datas['name'] = $login_check_result['name'];
-                        // $datas['link'] = base_url() . "api/verifyAccount/" . $finalUserdetail;
-                        // $datas['message'] = $this->load->view('emailTemplate/registration_mail', $datas, true);
-                        // $datas['subject'] = 'Verify user email address';
-                        // $datas["to"] = $email;
-                        // // print_r($datas);die;
-                        // $res = $this->sendMailSMTP($datas);
-                        // $response = array();
-                        // $response["success"] = 0;
-                        // $response["message"] = "Please check your email for your account verification";
-                        // $output = json_encode(array('responsedata' => $response));
-                        // echo $output;
-                    }
-                } else {
-                    $response = array();
-                    $response["success"] = 0;
-                    $response["message"] = "Invalid email or password";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                }
-            }
-            /* Facebook */
-            elseif ($login_type == '1') {
-                $stream_options = array('http' => array('method' => 'GET'));
-                $context = stream_context_create($stream_options);
-                $token_id = $_POST['facebook_token_id'];
-                $access_token = '917047018437389|d26f7aa135cadffaf26dd30282a7236d';
-                $url = 'https://graph.facebook.com/debug_token?input_token=' . $token_id . '&access_token=' . $access_token;
-                $response = file_get_contents($url, null, $context);
-                $facebook_json = json_decode($response);
-                $app_id = $facebook_json->data->user_id;
-                if(strlen($app_id) <= 0){
-                    $response = array();
-                    $response["success"] = 101;
-                    $response["message"] = "Facebook token not found";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                    die;
-                } 
-                $facebook_query = $this->db->query("SELECT * FROM user WHERE facebook_token_id = '$app_id' AND login_type = '1' AND vendor_id = '$vendor_id'");
-                $facebook_result = $facebook_query->row_array();
-                if ($facebook_result['login_type'] == $login_type) {
-                    if ($facebook_result['facebook_token_id'] == $app_id) {
-                        $this->sendLoginResponse($facebook_result);
-                        
-                    } else {
-                        $response = array();
-                        $response["success"] = 101;
-                        $response["message"] = "Facebook login failed";
-                        $output = json_encode(array('responsedata' => $response));
-                        echo $output;
-                    }
-                } else {
-                    $response = array();
-                    $response["success"] = 101;
-                    $response["message"] = "Facebook login failed";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                }
-            }
-            /* Gmail */
-            elseif ($login_type == '2') {
-
-                $stream_options = array('http' => array('method' => 'GET',),);
-                $context = stream_context_create($stream_options);
-                $token_id = $_POST['gmail_token_id'];
-                $url = 'https://www.googleapis.com/plus/v1/people/me?access_token=' . $token_id;
-                $response = file_get_contents($url, null, $context);
-                $json = json_decode($response);
-                $app_id = $json->id;
-                if(strlen($app_id) <= 0){
-                    $response = array();
-                    $response["success"] = 101;
-                    $response["message"] = "Gmail token not found";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                    die;
-                } 
-                $gmail_query = $this->db->query("SELECT * FROM user WHERE gmail_token_id = '$app_id' AND login_type = '2' AND vendor_id = '$vendor_id'");
-                $gmail_result = $gmail_query->row_array();
-                // print_r($gmail_result);die;
-                if ($gmail_result['login_type'] == '2') {
-                    if ($gmail_result['gmail_token_id'] == $app_id) {
-                       $this->sendLoginResponse($gmail_result);
-                       
-                    } else {
-                        $response = array();
-                        $response["success"] = 100;
-                        $response["message"] = "Google+ login failed";
-                        $output = json_encode(array('responsedata' => $response));
-                        echo $output;
-                    }
-                } else {
-                    $response = array();
-                    $response["success"] = 100;
-                    $response["message"] = "Google+ login failed";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                }
-            } elseif ($login_type == '3') {
-                $apple_query = $this->db->query("SELECT * FROM user WHERE apple_token_id = '$apple_token_id' AND login_type = '3' AND vendor_id = '$vendor_id'");
-                $apple_result = $apple_query->row_array();
-                if ($apple_result['login_type'] == '3') {
-                    if ($apple_result['apple_token_id'] == $app_id) {
-                       $this->sendLoginResponse($apple_result);
-                       
-                    } else {
-                        $response = array();
-                        $response["success"] = 100;
-                        $response["message"] = "Apple login failed";
-                        $output = json_encode(array('responsedata' => $response));
-                        echo $output;
-                    }
-                } else {
-                    $response = array();
-                    $response["success"] = 100;
-                    $response["message"] = "Apple login failed";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                }
-            }
-        } else {
-            $response = array();
-            $response["success"] = 0;
-            $response["message"] = "Please enter valid data";
-            $output = json_encode(array('responsedata' => $response));
-            echo $output;
-        }
-    }
-    
-    ## User Register ##
+   
     public function user_register() {
-        // print_r($_POST);die;
+       
         if ($_POST['login_type'] != '3' && (!isset($_POST['email']) || $_POST['email']=='' ) ){
             $response["success"] = 0;
             $response["message"] = "Please enter email address";
@@ -614,6 +271,7 @@ class Api extends Apiuser_Controller {
         die;
        
     }
+    
     ## User Login ##
     public function user_login() {
         $post = $this->input->post();
@@ -622,8 +280,7 @@ class Api extends Apiuser_Controller {
         echo $output;
         die;
     }
-
-
+   
     function sendLoginResponse($login_check_result){
         $device_id = $_POST['device_id'];
         $login_type = $_POST['login_type'];
@@ -631,7 +288,7 @@ class Api extends Apiuser_Controller {
 
         $user_id = $login_check_result['id'];
 
-        $result_count = $this->db->query("SELECT COUNT(*) as total  FROM my_cart_old as mc WHERE ( mc.user_id= '$user_id' OR mc.device_id= '$device_id') AND mc.status != '9' AND vendor_id = '$vendor_id' ORDER BY mc.id DESC");
+        $result_count = $this->db->query("SELECT COUNT(*) as total  FROM my_cart as mc WHERE ( mc.user_id= '$user_id' OR mc.device_id= '$device_id') AND mc.status != '9' AND vendor_id = '$vendor_id' ORDER BY mc.id DESC");
         $row_count = $result_count->result();
 
         $total_count = $row_count[0]->total;
@@ -641,7 +298,7 @@ class Api extends Apiuser_Controller {
         $notification_status = $this->this_model->notification_status($login_check_result['id']);
         $data = array('id' => $login_check_result['id'], 'fname' => $login_check_result['fname'], 'lname' => $login_check_result['lname'], 'email' => $login_check_result['email'], 'phone' => $login_check_result['phone'], 'user_gst_number' => ($login_check_result['user_gst_number'] == null) ? "" : $login_check_result['user_gst_number'], 'login_type' => $login_type, 'cart_item' => $total_count[0]->cart_items, 'notification_status' => $notification_status, 'mobile_verify' => $login_check_result['is_verify']);
         $this->this_model->update_device($login_check_result, $_POST);
-        // print_r($data);die;
+     
         $response = array();
         $response["success"] = 1;
         $response["message"] = "Login Successfully";
@@ -649,6 +306,7 @@ class Api extends Apiuser_Controller {
         $output = json_encode(array('responsedata' => $response));
         echo $output;
     }
+
     ## Verify Email ##
     public function verifyAccount($postData = null) {
         /* check if we are getting token or not */
@@ -665,23 +323,17 @@ class Api extends Apiuser_Controller {
         }
         redirect(base_url() . 'admin/verifyEmailstatus');
     }
+
     public function sendMailToSuperAdmin() {
         $this->this_model->sendMailToSuperAdmin($this->input->post());
     }
+
     ## Forgot Password ##
     public function user_forgot_password() {
         if (isset($_POST['email']) && isset($_POST['vendor_id'])) {
             $email = $_POST['email'];
             $vendor_id = $_POST['vendor_id'];
 
-            //  $check = $this->this_model->checkIsUserExist($_POST);
-            // if(empty($check)){
-            //     $response["success"] = 0;
-            //     $response["message"] = "You are registered with social account";
-            //     $output = json_encode(array('responsedata' => $response));
-            //     echo $output;
-            //     exit();  
-            // }
 
             $query = $this->db->query("SELECT COUNT(*) as total FROM user WHERE email = '$email' AND vendor_id = '$vendor_id'");
             $result = $query->row_array();
@@ -695,28 +347,15 @@ class Api extends Apiuser_Controller {
                 $this->db->update('user', $data);
                 $this->load->library('email');
 
-                // $config = Array('protocol' => 'smtp', 'smtp_host' => '162.241.86.206', 'smtp_port' => '587', 'smtp_user' => 'test@launchestore.com', 'smtp_pass' => 'HhZ~sU(@drk_', 'mailtype' => 'text', 'charset' => 'utf-8');
-                // //Mail Send
-                // $from_email = 'test@launchestore.com';
-                // $subject = 'Forgot Password';
-                // $message = 'Your New Password is : ' . $ran_digit;
-                // $this->email->initialize($config);
-                // $this->email->set_newline("\r\n");
-                // $this->email->from($from_email);
-                // $this->email->to($email);
-                // $this->email->subject($subject);
-                // $this->email->message($message);
-                // $this->email->send();
-
                 $message = "Congrats!!! Your new login credentials :<br/>
                 Your New password is : ".$ran_digit."<br/>
                 To change your password : You can change your password once you login.";
+                // dd($asd);
 
                 $dataa['to'] = $email;           
                 $dataa['subject'] = 'Forgot Password';
                 $dataa['message'] = $message;
-                $asd = sendMail($dataa);
-
+                $asd = sendMailSMTP($dataa);
                 $response = array();
                 $response["success"] = 1;
                 $response["message"] = "New password has been sent on your email id";
@@ -737,6 +376,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Change Password ##
     public function user_change_password() {
         if (isset($_POST['email']) && isset($_POST['old_password']) && isset($_POST['new_password'])) {
@@ -777,6 +417,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Update Profile ##
     public function profile_update() {
         if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['user_id']) ) {
@@ -802,6 +443,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## User Profile ##
     public function user_details() {
 
@@ -815,51 +457,73 @@ class Api extends Apiuser_Controller {
             $result = $query->row_array();
             // print_r($result);exit;
             $user_id = $result['id'];
+            $_POST['user_id'] = $user_id;
+
             $user_address_query = $this->db->query("SELECT * FROM user_address WHERE user_id = '$user_id' AND status != '9' ORDER BY id DESC");
             $user_address_result = $user_address_query->result();
             $address_array = '';
-            $result_count = $this->db->query("SELECT COUNT(*) as total  FROM my_cart_old as mc WHERE mc.status != '9' AND mc.user_id = '$user_id' ORDER BY mc.id DESC");
-            $row_count = $result_count->result();
-            $total_count = $row_count[0]->total;
-            $my_cart_old_query = $this->db->query("SELECT mc.*  FROM my_cart_old as mc WHERE mc.status != '9' AND (mc.user_id = '$user_id' ) ORDER BY mc.id DESC");
-            $my_cart_old_result = $my_cart_old_query->result();
-            $my_cart_old_price_query = $this->db->query("SELECT SUM(calculation_price) as total_price from my_cart_old WHERE status != '9' AND user_id = '$user_id'");
-            $my_cart_old_price_result = $my_cart_old_price_query->row_array();
-            $vendorId = $my_cart_old_result[0]->branch_id;
 
-            $vendor_query = $this->db->query("SELECT * FROM branch WHERE id ='$vendorId'");
-            $vendor_result = $vendor_query->result();
 
-            $payment_method = $this->db->query("SELECT * FROM payment_method WHERE branch_id ='$vendorId' AND status='1'");
-            $p_method = $payment_method->result();
+            
+            $total_cart = $this->this_model->get_total($_POST);
 
-            if ($p_method[0]->IsTestOrLive == '0') {
-                $p_method[0]->publish_key = $p_method[0]->test_publish_key;
-            }
-            $vendorData = [];
-            $vendorData['id'] = ($vendor_result[0]->id == null) ? "" : $vendor_result[0]->id ;
-            $vendorData['name'] = ($vendor_result[0]->name == null) ? "" : $vendor_result[0]->name ;
-            $vendorData['address'] = ($vendor_result[0]->address == null) ? "" : $vendor_result[0]->address;
-            $vendorData['currency_code'] = ($vendor_result[0]->currency_code == null) ? "" : $vendor_result[0]->currency_code; 
-            $vendorData['selfPickUp'] =  ($vendor_result[0]->selfPickUp == null) ? "" : $vendor_result[0]->selfPickUp;
-            $vendorData['isOnlinePayment'] = (string)$vendor_result[0]->isOnlinePayment;
-            $vendorData['isCOD'] = (string)$vendor_result[0]->isCOD;
-            $vendorData['store_time'] =  ($vendor_result[0]->selfPickupOpenClosingTiming == null) ? "" : $vendor_result[0]->selfPickupOpenClosingTiming;
-            require_once 'vendor/autoload.php';
-            $cryptor = new \RNCryptor\RNCryptor\Encryptor;
-            $password = "BGV9UAw9wp5tT7I9wRcw%Xv!a@8aApqW";
-            $vendorData['publish_key'] = ($p_method[0]->publish_key == null) ? '' : $cryptor->encrypt($p_method[0]->publish_key, $password);
-            $vendorData['paymentMethod'] = ($p_method[0]->publish_key == null) ? '' : $p_method[0]->payment_opt;
+
+            $my_cart_result = $this->this_model->getCart($user_id);
+            $total_count = count($my_cart_result);
+
+           
+           
+            $my_cart_price_result = $total_cart[0]->total;
             $cart_response["data"] = array();
-            if ($my_cart_old_query->num_rows() > 0) {
+            if(!empty($my_cart_result)){
+
+                $BranchId = $my_cart_result[0]->branch_id;
+                $vendor_query = $this->db->query("SELECT * FROM branch WHERE id ='$BranchId'");
+                $vendor_result = $vendor_query->result();
+
+                $payment_method = $this->db->query("SELECT * FROM payment_method WHERE branch_id ='$BranchId' AND status='1'");
+
+                $p_method = $payment_method->result();
+                
+                
+                
+                $vendorData = [];
+                $vendorData['id'] = ($vendor_result[0]->id == null) ? "" : $vendor_result[0]->id ;
+                $vendorData['name'] = ($vendor_result[0]->name == null) ? "" : $vendor_result[0]->name ;
+                $vendorData['address'] = ($vendor_result[0]->address == null) ? "" : $vendor_result[0]->address;
+                $vendorData['currency_code'] = ($vendor_result[0]->currency_code == null) ? "" : $vendor_result[0]->currency_code; 
+                $vendorData['selfPickUp'] =  ($vendor_result[0]->selfPickUp == null) ? "" : $vendor_result[0]->selfPickUp;
+                $vendorData['isOnlinePayment'] = (string)$vendor_result[0]->isOnlinePayment;
+                $vendorData['isCOD'] = (string)$vendor_result[0]->isCOD;
+                $vendorData['store_time'] =  ($vendor_result[0]->selfPickupOpenClosingTiming == null) ? "" : $vendor_result[0]->selfPickupOpenClosingTiming;
+                $publish_key ='';
+                $paymentMethod ='';
+                if(!empty($p_method)){
+                     require_once 'vendor/autoload.php';
+                    $cryptor = new \RNCryptor\RNCryptor\Encryptor;
+                    $password = "BGV9UAw9wp5tT7I9wRcw%Xv!a@8aApqW";
+                    if ($p_method[0]->IsTestOrLive == '0') {
+                        $p_method[0]->publish_key = $p_method[0]->test_publish_key;
+                    }
+                   $publish_key =  ($p_method[0]->publish_key == null) ? '' : $cryptor->encrypt($p_method[0]->publish_key, $password);
+                   $paymentMethod = ($p_method[0]->publish_key == null) ? '' : $p_method[0]->payment_opt;
+
+                }
+
+               
+                $vendorData['publish_key'] = $publish_key;
+                $vendorData['paymentMethod'] = $paymentMethod;
+
+            if (!empty($my_cart_result)) {
+
                 $cart_response['success'] = "1";
                 $cart_response['message'] = "My cart item list";
                 $cart_response["count"] = $total_count;
-                $cart_response["total_price"] = number_format((float)$my_cart_old_price_result['total_price'], 2, '.', '');;
+                $cart_response["total_price"] = number_format((float)$my_cart_price_result, 2, '.', '');;
                 $counter = 0;
-                $branch_id = $my_cart_old_result[0]->branch_id;
+                $branch_id = $my_cart_result[0]->branch_id;
                 $total_gst = 0;
-                foreach ($my_cart_old_result as $row) {
+                foreach ($my_cart_result as $row) {
                     $product_weight_id = $row->product_weight_id;
                     $product_id = $row->product_id;
                     $weight_id = $row->weight_id;
@@ -872,6 +536,7 @@ class Api extends Apiuser_Controller {
                     LEFT JOIN product as p ON p.id = pw.product_id
                     LEFT JOIN weight as w ON w.id = pw.weight_id
                     WHERE pw.id = '$product_weight_id' AND pw.status != '9'");
+
                     $product_weight_result = $product_weight_query->row_array();
                     $package_id = $product_weight_result['package'];
                     $package_name = $this->this_model->get_package($package_id);
@@ -891,9 +556,16 @@ class Api extends Apiuser_Controller {
                     $data['discount_per'] = $product_weight_result['discount_per'];
                     $data['product_actual_price'] = $product_actual_price;
                     $data['product_discount_price'] = $product_discount_price;
-                    $product_image_result[0]->image = str_replace(' ', '%20', $product_image_result[0]->image);
-                    $data['product_image'] = base_url() . 'public/images/'.$this->folder.'product_image/' . $product_image_result[0]->image;
-                    $data['product_image_thumb'] = base_url() . 'public/images/'.$this->folder.'product_image_thumb/' . $product_image_result[0]->image;
+                    if (count($product_image_result) <= 0) {
+                        $image = '';
+                    } else {
+                        $image = base_url() . 'public/images/'.$this->folder.'product_image/' . $product_image_result[0]->image;
+                    }
+                    $image = str_replace(' ', '%20', $image);
+
+                   
+                    $data['product_image'] = $image;
+                    $data['product_image_thumb'] = $image;
                     $data['product_id'] = $row->product_id;
                     $data['weight_id'] = $row->weight_id;
                     $data['quantity'] = $row->quantity;
@@ -906,13 +578,14 @@ class Api extends Apiuser_Controller {
                     $counter++;
                 }
             }
+        }
+
             if ($query->num_rows() > 0) {
                 $address_arr = [];
                 if ($user_address_result) {
                     foreach ($user_address_result as $address) {
                         $get_charge = 'N';
-                        // echo $branch_id ; die;
-                    // print_r($package_name);die;
+                        
                         if (isset($branch_id)) {
                             $get_charge = $this->this_model->get_delivery_charge($address->latitude, $address->longitude, $branch_id);
                             // print_r($get_charge);die;
@@ -924,7 +597,7 @@ class Api extends Apiuser_Controller {
                 } else {
                     $address_array = array();
                 }
-                // print_r($my_cart_old_price_result);die;
+
                 $data_user = array(
                     'id' => $result['id'], 
                     'fname' => $result['fname'], 
@@ -960,6 +633,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     public function get_filter_list() {
         $result = $this->this_model->get_filter($this->input->post());
         if (count($result) > 0) {
@@ -973,6 +647,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Category List ##
     public function category_list() {
         $post = $this->input->post();
@@ -1007,34 +682,39 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Product List ##
     public function product_list() {
             if (isset($_POST['branch_id'])) {
                 $this->this_model->get_product_list($this->input->post());
             }
     }
+
     public function product_detail() {
-        // print_r($_POST);die;
+        $this->load->model('api_v3/common_model','co_model');
+            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($_POST['vendor_id']);
+     
         if (isset($_POST['product_id']) && isset($_POST['branch_id'])) {
             $product_id = $_POST['product_id'];
             $category_id = $_POST['category_id'];
             $user_id = $_POST['user_id'];
             $device_id = $_POST['device_id'];
             $branch_id = $_POST['branch_id'];
+            $checkBranchIsActive = $this->this_model->isBranchActive($branch_id);
 
             // get branch details
             $branchRecord = $this->db->query("SELECT phone_no,whatsappFlag FROM branch where id = '$branch_id'");
             $branchDetails = $branchRecord->result();
-
             $whatsappFlag = $branchDetails[0]->whatsappFlag;
             $countryCode = '91';
-            $mobile = '';
+            $mobile = '';   
             if(!empty($branchDetails) && $branchDetails[0]->phone_no != ''){
                 if($_SERVER['SERVER_NAME'] == 'ugiftonline.com'){
                     $countryCode = '1';
                 }
                 $mobile = $countryCode.$branchDetails[0]->phone_no;
             }
+
 
             $result_count = $this->db->query("SELECT p.* FROM `product` as p 
         LEFT JOIN product_weight as w ON w.product_id = p.id
@@ -1043,8 +723,8 @@ class Api extends Apiuser_Controller {
             $total_count = count(array_keys($row_count_));
           
             $query = $this->db->query("SELECT p.* FROM `product` as p 
-        LEFT JOIN product_weight as w ON w.product_id = p.id
-        WHERE  p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND p.id = '$product_id' GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
+                                        LEFT JOIN product_weight as w ON w.product_id = p.id
+                                        WHERE  p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND p.id = '$product_id' GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
             $result = $query->result();
             // echo $this->db->last_query();die;
             if ($query->num_rows() > 0) {
@@ -1058,50 +738,65 @@ class Api extends Apiuser_Controller {
                     $product_weight_query = $this->db->query("SELECT * FROM product_weight WHERE status != '9' AND product_id = '$product_id'  AND branch_id = '$branch_id' GROUP BY id ORDER BY min(discount_price) * 1 ASC");
                     $product_weight_result = $product_weight_query->result();
                     $new_array_product_weight = array();
-                    foreach ($product_weight_result as $pro_weight) {
 
+                    foreach ($product_weight_result as $pro_weight) {
+                        
                         $whatsappShareUrl = base_url().'products/productDetails/'.$this->utility->safe_b64encode($pro_weight->product_id).'/'.$this->utility->safe_b64encode($pro_weight->id);
 
                         $package_id = $pro_weight->package;
                         $package_name = $this->this_model->get_package($package_id);
                         $product_weight_id = $pro_weight->id;
+
                         $product_image_query = $this->db->query("SELECT * FROM product_image WHERE status != '9' AND product_id = '$product_id'  AND product_variant_id = '$product_weight_id' AND branch_id = '$branch_id' ORDER BY id DESC");
                         $product_image_result = $product_image_query->result();
+                        
                         $weight_id = $pro_weight->weight_id;
                         $weight_query = $this->db->query("SELECT name FROM weight WHERE id = '$weight_id'");
                         $weight_result = $weight_query->row_array();
                         $weight_name = $weight_result['name'];
+
                         if (isset($_POST['user_id']) && $_POST['user_id'] != '') {
-                            $my_cart_old_query = $this->db->query("SELECT quantity FROM my_cart_old WHERE product_id = '$product_id'AND product_weight_id = '$product_weight_id' AND branch_id = '$branch_id' AND user_id = '$user_id'");
-                            $my_cart_old_result = $my_cart_old_query->row_array();
+                            $my_cart_query = $this->db->query("SELECT mc.quantity  FROM my_cart as mc LEFT join product_weight as pw ON pw.id=mc.product_weight_id WHERE pw.product_id = '$product_id'AND mc.product_weight_id = '$product_weight_id' AND mc.branch_id = '$branch_id' AND mc.user_id = '$user_id'");
+                            $my_cart_result = $my_cart_query->row_array();
                         } else {
                             if (isset($_POST['device_id'])) {
-                                $my_cart_old_query = $this->db->query("SELECT quantity FROM my_cart_old WHERE product_id = '$product_id' AND product_weight_id = '$product_weight_id' AND branch_id = '$branch_id' AND (user_id = '0' AND device_id = '$device_id')");
-                                $my_cart_old_result = $my_cart_old_query->row_array();
+                                $my_cart_query = $this->db->query("SELECT mc.quantity FROM my_cart as mc LEFT join product_weight as pw ON pw.id=mc.product_weight_id WHERE pw.product_id = '$product_id' AND mc.product_weight_id = '$product_weight_id' AND mc.branch_id = '$branch_id' AND (mc.user_id = '0' AND mc.device_id = '$device_id')");
+                                $my_cart_result = $my_cart_query->row_array();
                             } else {
-                                $my_cart_old_result = array();
+                                $my_cart_result = array();
                             }
                         }
-                        if (empty($my_cart_old_result)) {
+                        if (empty($my_cart_result)) {
                             $my_cart_quantity = '0';
                         } else {
-                            $my_cart_quantity = $my_cart_old_result['quantity'];
+                            $my_cart_quantity = $my_cart_result['quantity'];
                         }
                         $img = [];
                         foreach ($product_image_result as $pro_image) {
+                            if(!file_exists('public/images/'.$this->folder.'product_image/'.$pro_image->image) || $pro_image->image == ''){
+                                $this->load->model('common_model');
+                                $default_product_image =$this->common_model->default_product_image();
+                                $pro_image->image =  $default_product_image;
+                            }
                             $pro_image->image = str_replace(' ', '%20', $pro_image->image);
                             $img[] = array('id' => $pro_image->id, 'product_id' => $pro_image->product_id, 'weight_id' => $pro_weight->weight_id, 'image' => base_url() . 'public/images/'.$this->folder.'product_image/' . $pro_image->image, 'thumb_image' => base_url() . 'public/images/'.$this->folder.'product_image_thumb/' . $pro_image->image,);
                         }
+
+                        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                               $pro_weight->discount_price = $pro_weight->without_gst_price; 
+                        }  
                         $data = array('id' => $pro_weight->id, 'product_id' => $pro_weight->product_id, 'weight_id' => $pro_weight->weight_id, 'unit' => ($pro_weight->weight_no) . ' ' . $weight_name, 'actual_price' => $pro_weight->price, 'avail_quantity' => $pro_weight->quantity, 'package_name' => $package_name, 'discount_per' => $pro_weight->discount_per, 'discount_price' => $pro_weight->discount_price, 'my_cart_quantity' => $my_cart_quantity, 'variant_images' => $img,'whatsappShareUrl'=>$whatsappShareUrl);
                         array_push($new_array_product_weight, $data);
                     }
                     $product_weight_array = $new_array_product_weight;
-                    // print_r($product_weight_array);die;
-                    // $new_array_product_image = array();
+                    
                     $proimg = $product_image_result[0]->image;
                     $prothimg = $product_image_result[0]->image;
                     $product_image_array = $img;
                     $data = array();
+                    if($checkBranchIsActive == 0){
+                        $row->status = '9'; // branch is disable
+                    }
                     $data['id'] = $row->id;
                     $data['category_id'] = $row->category_id;
                     $data['brand_id'] = $row->brand_id;
@@ -1136,6 +831,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Check Device Token ##
     public function check_device_token() {
         if (isset($_POST['device_id']) && isset($_POST['device_type']) && isset($_POST['device_token']) && isset($_POST['device_os']) && isset($_POST['device_key'])) {
@@ -1199,6 +895,7 @@ class Api extends Apiuser_Controller {
             echo $output2;
         }
     }
+
     ## Price List ##
     public function price_list() {
         $result_count = $this->db->query("SELECT COUNT(*) as total FROM price WHERE status != '9'");
@@ -1232,6 +929,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Discount List ##
     public function discount_list() {
         $result_count = $this->db->query("SELECT COUNT(*) as total FROM discount WHERE status != '9'");
@@ -1265,6 +963,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Weight List ##
     public function weight_list() {
 
@@ -1301,6 +1000,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Time Slot List ##
     public function time_slot_list() {
         $post = $this->input->post();
@@ -1337,12 +1037,16 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Banner Promotion List ##
     public function banner_promotion_list() {
         $post = $this->input->post();
         $req = array('vendor_id');
         $response = $this->checkRequiredField($post, $req);
-
+        if($response['status'] = '1'){
+            unset($response);
+        }
+        
         if ($_POST['vendor_id'] == '0') {
             $response = array();
             $response["success"] = 0;
@@ -1350,42 +1054,61 @@ class Api extends Apiuser_Controller {
              $output = json_encode(array('responsedata' => $response));
             echo $output;die;
         }
-            $vendor_id = $_POST['vendor_id'];
+        $vendor_id = $_POST['vendor_id'];
         if (!empty($this->input->post('vendor_id')) && $_POST['vendor_id'] != '0') {
-            $query1 = $this->db->query("SELECT * FROM branch WHERE vendor_id = '$vendor_id' AND status != '9' ");
+            $query1 = $this->db->query("SELECT * FROM branch WHERE vendor_id = '$vendor_id' AND status != '1'");
             $branch = $query1->result();
-            $branch_id = $branch[0]->id;
-            $query = $this->db->query("SELECT * FROM banner_promotion WHERE vendor_id = '$vendor_id' AND status != '9' ORDER BY image_order ");
-           
-        } else {
-            $query = $this->db->query("SELECT * FROM banner_promotion WHERE  status != '9' ORDER BY image_order ");
+            $branch_id = (!empty($branch)) ? $branch[0]->id : 0;
+            $query = $this->db->query(
+                "SELECT b.* ,c.name as category_name FROM banners as b 
+                LEFT JOIN category as c ON c.id = b.category_id
+                LEFT JOIN branch as br ON br.id = b.branch_id 
+                WHERE b.vendor_id = '$vendor_id' AND br.status = '1'");  
+            $result = $query->result();
+            
+            $offer_list = $this->this_model->get_offer($vendor_id);
         }
 
-
-
-        $result = $query->result();
-        if ($query->num_rows() > 0) {
+        if ($query->num_rows() > 0 || !empty($offer_list) ) {
             $response['success'] = "1";
             $response['message'] = "Banner promotion list";
             $response["data"] = array();
             $counter = 0;
             foreach ($result as $row) {
-                $row->image = preg_replace('/\s+/', '%20', $row->image);
-                $query = $this->db->query("SELECT branch_id FROM product WHERE  id = '".$row->product_id."'");
-                $getBranch = $query->result();
-                $row->branch_id = $getBranch[0]->branch_id;
                 $data = array();
                 $data['id'] = $row->id;
-                $data['branch_id'] = $branch_id;
+                $data['branch_id'] = $row->branch_id;
+                $data['type'] = $row->type;
+                $data['category_id'] = $row->category_id;
+                $data['category_name'] = ($row->category_name!='')?$row->category_name:'';
                 $data['product_id'] = $row->product_id;
-                $data['image'] = base_url() . 'public/images/'.$this->folder.'banner_promotion/' . $row->image;
-                $data['image_thumb'] = base_url() . 'public/images/'.$this->folder.'banner_promotion_thumb/' . $row->image;
-                $data['status'] = $row->status;
-                $data['dt_added'] = $row->dt_added;
+                $data['product_varient_id'] = $row->product_varient_id;
+                $data['image'] = base_url() . 'public/images/'.$this->folder.'banner_promotion/' . $row->app_banner_image;
+                $data['image_thumb'] = base_url() . 'public/images/'.$this->folder.'banner_promotion_thumb/' . $row->app_banner_image;
+                $data['dt_added'] = $row->dt_created;
                 $data['dt_updated'] = $row->dt_updated;
                 array_push($response["data"], $data);
                 $counter++;
             }
+            // $branch_id = $result[0]->branch_id;
+            unset($data);
+            $response['offer_list'] = $offer_list;
+            $type = '1';
+            foreach ($response['offer_list'] as $key => $value) {
+                $c = $this->this_model->check_branch_is_active($value->branch_id);
+                
+                if($c->status == 0){
+                    unset($response['offer_list'][$key]);
+                    continue;
+                }
+
+                $s = $this->this_model->check($value->id);
+                if(count($s) > 1){
+                 $type = '2';   
+                }
+               $value->type = $type;        
+            }
+           $response['offer_list'] = array_values($response['offer_list']);
             echo $output = json_encode(array('responsedata' => $response));
         } else {
             $response = array();
@@ -1395,16 +1118,16 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     ## Brand List ##
     public function brand_list() {
         if (isset($_POST['category_id'])) {
-            // $limit = '5';
-            // $offset= $_POST['offset'];
+          
             $category_id = $_POST['category_id'];
             $result_count = $this->db->query("SELECT COUNT(*) as total FROM brand WHERE status != '9' AND category_id = '$category_id'");
             $row_count = $result_count->result();
             $total_count = $row_count[0]->total;
-            // $cal = $limit  * $offset;
+          
             $query = $this->db->query("SELECT * FROM brand WHERE status != '9' AND category_id = '$category_id' ORDER BY id DESC");
             $result = $query->result();
             if ($query->num_rows() > 0) {
@@ -1440,27 +1163,36 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
-    ## Add To Cart  - Single Product ##
-    public function add_to_cart_old() {}
+
     ## Add To Cart  - Single Product ##
     function check_cart($postdata) {
-        // print_r($postdata);
         $qnt = $postdata['quantity'];
         $variant_id = $postdata['product_weight_id'];
         $vendor_id = $postdata['vendor_id'];
         $result = $this->this_model->check_quantity($qnt, $variant_id);
+        if($result['success']==6){
+            $cartData = $this->this_model->get_cart_variant($postdata);
+            $quntity = 0;
+            if(!empty($cartData)){
+                $quntity = $cartData[0]['quantity'];            
+            }
+            $result["updated_quantity"] = $quntity;
+            $output = json_encode(array('responsedata' => $result));
+            echo $output;
+            exit;
+        }
         if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
             $user_id = $postdata['user_id'];
             $device_id = $postdata['device_id'];
-            $check = $this->db->query("SELECT * FROM my_cart_old WHERE user_id = '$user_id' AND vendor_id = '$vendor_id'");
+            $check = $this->db->query("SELECT * FROM my_cart WHERE user_id = '$user_id' AND vendor_id = '$vendor_id'");
         } else {
             if (isset($postdata['device_id'])) {
                 $device_id = $postdata['device_id'];
                 $u = 0;
-                $check = $this->db->query("SELECT * FROM my_cart_old WHERE device_id = '$device_id' AND user_id = '0' AND vendor_id = '$vendor_id'");
+                $check = $this->db->query("SELECT * FROM my_cart WHERE device_id = '$device_id' AND user_id = '0' AND vendor_id = '$vendor_id'");
             }
         }
-        // echo $this->db->last_query();exit;
+      
         if ($check->num_rows() > 0) {
             $check = $check->result();
             $cart_vendor = $check[0]->branch_id;
@@ -1475,9 +1207,13 @@ class Api extends Apiuser_Controller {
             }
         }
     }
+
     public function add_to_cart() {
 
-        if (isset($_POST['product_id']) && isset($_POST['weight_id']) && isset($_POST['product_weight_id']) && isset($_POST['quantity']) && isset($_POST['branch_id'])) {
+        if (isset($_POST['product_weight_id']) && isset($_POST['quantity']) && isset($_POST['branch_id'])) {
+            if($_POST['quantity']=='0'){
+                return $this->delete_my_cart_item();
+            }
             $this->check_cart($_POST);
             $result = $this->this_model->add_to_cart($this->input->post());
             if ($result) {
@@ -1498,35 +1234,49 @@ class Api extends Apiuser_Controller {
             $output = json_encode(array('responsedata' => $response));
             echo $output;
         }
+        
     }
+
     public function send_cart_response($postdata) {
         $total_gst = $this->this_model->gstCalculation($postdata);
         $response["success"] = 1;
         $response["message"] = "Product has been updated in your cart";
         $gettotal = $this->this_model->get_total($postdata);
+
         $getactual = $this->this_model->get_actual_total($postdata);
+        $cartData = $this->this_model->get_cart_variant($postdata);
+
+        $gettotalPrice = $getactual;
+        
         $my_cal = (float)$gettotal[0]->total;
         
         if ($my_cal === null || $my_cal == "<null>") {
             $my_cal = 0.0;
         }
-        if ($getactual === null || $getactual == "<null>") {
-            $getactual = 0.0;
+        if ($gettotalPrice === null || $gettotalPrice == "<null>") {
+            $gettotalPrice = 0.0;
         }
         $response["count"] = (int)$gettotal[0]->cart_items;
-        $response["actual_price"] = $getactual;
-        $response["discount_price"] = number_format((float)$getactual - $my_cal, 2, '.', '');
+        $response["actual_price"] = $gettotalPrice;
+        $response["discount_price"] = number_format((float)$gettotalPrice - $my_cal, 2, '.', '');
         $response["total_price"] = number_format((float)$my_cal, 2, '.', '');
         $response["TotalGstAmount"] = number_format((float)$total_gst, 2, '.', '');
-        $response["amountWithoutGst"] = number_format((float)$my_cal - $total_gst, 2, '.', '');;
+        $response["amountWithoutGst"] = number_format((float)$my_cal - $total_gst, 2, '.', '');
+        $quntity = 0;
+        if(!empty($cartData)){
+        $quntity = $cartData[0]['quantity'];
+        
+        }
+        $response["updated_quantity"] = $quntity;
         $output = json_encode(array('responsedata' => $response));
         echo $output;
         exit;
     }
+
     public function delete_cart_item() {
         if (isset($_POST['cart_id']) && $_POST['cart_id'] != '') {
             $cart_id = $_POST['cart_id'];
-            $this->db->query("DELETE FROM my_cart_old WHERE id = '$cart_id'");
+            $this->db->query("DELETE FROM my_cart WHERE id = '$cart_id'");
             $response = array();
             $response["success"] = 1;
             $response["message"] = "Cart deleted";
@@ -1540,12 +1290,13 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     public function delete_cart() {
         $error = 1;
         if (isset($_POST['user_id']) && $_POST['user_id'] != '') {
             $user_id = $_POST['user_id'];
-            $this->db->query("DELETE FROM my_cart_old WHERE user_id = '$user_id'");
-            // echo $this->db->last_query();exit;
+            $this->db->query("DELETE FROM my_cart WHERE user_id = '$user_id'");
+         
             $response = array();
             $response["success"] = 1;
             $response["message"] = "Cart deleted";
@@ -1556,8 +1307,8 @@ class Api extends Apiuser_Controller {
             if (isset($_POST['device_id']) && $_POST['device_id'] != '') {
                 $device_id = $_POST['device_id'];
                 $vendor_id = $_POST['vendor_id'];
-                $this->db->query("DELETE FROM my_cart_old WHERE device_id = '$device_id' AND vendor_id = '$vendor_id' AND user_id = '0'");
-                // echo $this->db->last_query();exit;
+                $this->db->query("DELETE FROM my_cart WHERE device_id = '$device_id' AND vendor_id = '$vendor_id' AND user_id = '0'");
+               
                 $response = array();
                 $response["success"] = 1;
                 $response["message"] = "Cart deleted";
@@ -1575,6 +1326,7 @@ class Api extends Apiuser_Controller {
         }
         echo $responce;
     }
+
     ## My Cart List ##
     public function my_cart() {
         $post = $this->input->post();
@@ -1582,9 +1334,10 @@ class Api extends Apiuser_Controller {
         $response = $this->checkRequiredField($post, $req);
         $this->this_model->my_cart($this->input->post());
     }
+
     ## Delete My Cart Item ##
-    public function delete_my_cart_item() { 
-        if (isset($_POST['product_id']) && isset($_POST['product_weight_id']) && isset($_POST['branch_id'])) {
+    public function delete_my_cart_item() {
+        if (isset($_POST['product_weight_id']) && isset($_POST['branch_id'])) {
             $this->this_model->delete_cart($this->input->post());
             $this->send_cart_response($this->input->post());
         } else {
@@ -1599,159 +1352,7 @@ class Api extends Apiuser_Controller {
    
     ## Checkout ##
     public function checkout() {
-        // error_reporting(E_ALL);
-        // ini_set("display_errors",1);
-        // date_default_timezone_set('Asia/Kolkata');
-        // print_r($_POST);die;
-       	// for ($i=0; $i < 5; $i++) { 
-       	// 	# code...
-       	// $query =  $this->db->query('SHOW PROCESSLIST;');
-        // $res = $query->row_array();
-        // print_r($res);
-       	// }
-       	// die;
-
-
-        $user_id = $_POST['user_id'];
-        $postdata['user_id'] = $user_id;
-        if (isset($_POST['user_address_id'])) {
-            $user_address_id = $_POST['user_address_id'];
-        }
-        $payment_type = $_POST['payment_type'];
-        $user_gst_number = $_POST['user_gst_number'];
-        $time_slot_id = $_POST['time_slot_id'];
-        $branch_id = $_POST['branch_id'];
-        $delivery_charge = $_POST['delivery_charge'];
-        $paymentMethod = $_POST['paymentMethod'];
-        $transaction_id = $_POST['payment_transaction_id'];
-        $refundTxnId = $_POST['refundTxnId']; // this paymentIntent(stipe),paytm(order_id), use for refund if pament done via mobile app
-        $isSelfPickup = $_POST['isSelfPickup'];
-        $delivery_date = $_POST['delivery_date'];
-        // print_r($_POST);die;
-        $profit_per = 0;
-        if ($time_slot_id == - 1) {
-            $time_slot_id = $this->this_model->getRandomTimeSlot();
-        }
-        $get_persentage = $this->this_model->get_profit_per();
-        if ($get_persentage > 0) {
-            $profit_per = $get_persentage;
-        }
-        if (isset($_POST['payment_type']) && isset($_POST['branch_id']) && isset($_POST['time_slot_id'])) {
-            if (isset($_POST['user_id'])) {
-            	$this->db->query('LOCK TABLES `my_cart_old` WRITE,`order` WRITE,`order_details` WRITE,`product_weight` WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE;');
-		    	
-    			sleep(0.751);
-
-
-                $delivery_charge_query = $this->db->query("SELECT price FROM setting WHERE title = 'delivery_charge'");
-                $delivery_charge_result = $delivery_charge_query->row_array();
-
-                $my_cart_old_query = $this->db->query("SELECT SUM(calculation_price) as sub_total, SUM((actual_price - discount_price) * quantity) as total_savings, COUNT(*) as total_item FROM my_cart_old WHERE status != '9' AND user_id = '$user_id' ");
-                $my_cart_old_result = $my_cart_old_query->row_array();
-
-                $sub_total = number_format((float)$my_cart_old_result['sub_total'], 2, '.', '');
-                $total_savings = number_format((float)$my_cart_old_result['total_savings'], 2, '.', '');
-                $total_item = $my_cart_old_result['total_item'];
-                $total_price = number_format((float)$sub_total, 2, '.', '');
-                if (isset($_POST['user_address_id']) && $_POST['user_address_id'] != '') {
-                    $userDetails = $this->this_model->getUserAddressDetails($_POST['user_address_id']);
-                    $address = $userDetails[0]->address . ' ' . $userDetails[0]->city . ' ' . $userDetails[0]->state . ' ' . $userDetails[0]->country;
-                }
-                if (isset($_POST['isSelfPickup']) && $_POST['isSelfPickup'] == '1') {
-                    $address = 'self pick';
-                    $user = $this->this_model->getUserDetails($_POST['user_id']);
-                }
-                // print_r($userDetails);die;
-                /*Generate Order Number*/
-                function random_orderNo($length = 10) {
-                    $chars = "1234567890";
-                    $order = substr(str_shuffle($chars), 0, $length);
-                    return $order;
-                }
-                $od = 'Order #';
-                $on = random_orderNo(15);
-                $iOrderNo = $od . $on;
-                /*Order Details*/
-                $my_order_query = $this->db->query("SELECT * FROM my_cart_old WHERE status != '9' AND user_id = '$user_id'");
-                $my_order_result = $my_order_query->result();
-                if (!empty($my_order_result)) {
-                    foreach ($my_order_result as $my_order) {
-                        $var_id = $my_order->product_weight_id;
-                        $qnt = $my_order->quantity;
-                        $updatedQTY = $this->this_model->check_udpate_quantity($var_id,$qnt,$user_id);
-                        if(!$updatedQTY){
-                            continue;
-                        }
-                    }
-                   
-                    /*Order*/
-                    $data = array('order_from' => '1', 'user_id' => $user_id, 'branch_id' => $branch_id, 'user_address_id' => $user_address_id, 'time_slot_id' => $time_slot_id, 'payment_type' => $payment_type, 'total_saving' => $total_savings, 'total_item' => $total_item, 'sub_total' => $sub_total, 'delivery_charge' => $delivery_charge, 'total' => $total_price, 'payable_amount' => $total_price + $delivery_charge, 'order_no' => $iOrderNo,'orderId_payment_gateway'=>$refundTxnId,'user_gst_number' => $user_gst_number, 'status' => '1', 'isSelfPickup' => $isSelfPickup, 'delivery_date' => $delivery_date, 'payment_transaction_id' => $transaction_id, 'paymentMethod' => $paymentMethod, 'name' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->name : $user[0]->fname, 'mobile' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->phone : $user[0]->phone, 'delivered_address' => $address, 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME),);
-                    // print_r($data);die;
-                    $this->db->insert('order', $data);
-                    $last_insert_id = $this->db->insert_id();
-                    $otpForSelfPickup = '';
-                    if (isset($_POST['isSelfPickup']) && $_POST['isSelfPickup'] == '1') {
-                        $otpForSelfPickup = rand(1000, 9999);
-                        $this->this_model->selfPickUp_otp($last_insert_id, $user_id, $otpForSelfPickup);
-                    }
-
-                    $this->load->model('api_v2/api_admin_model');
-                    $order_log_data = array('order_id' => $last_insert_id, 'status'=>'1' );
-                    $this->api_admin_model->order_logs($order_log_data);
-
-
-                    foreach ($my_order_result as $my_order) {
-                        $var_id = $my_order->product_weight_id;
-                        $qnt = $my_order->quantity;
-                   
-                        $data = array('order_id' => $last_insert_id, 'branch_id' => $my_order->branch_id, 'user_id' => $my_order->user_id, 'product_id' => $my_order->product_id, 'weight_id' => $my_order->weight_id, 'product_weight_id' => $my_order->product_weight_id, 'quantity' => $my_order->quantity, 'actual_price' => $my_order->actual_price,
-                        //                        'actual_quantity' => $my_order->actual_quantity,
-                        'discount' => $my_order->discount_per, 'discount_price' => $my_order->discount_price, 'calculation_price' => $my_order->calculation_price, 'status' => '1', 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME),);
-                        $this->db->insert('order_details', $data);
-                        $last_order_d_id = $this->db->insert_id();
-                        $total_profit = ($my_order->calculation_price * $profit_per) / 100;
-                        $this->this_model->insert_profit($last_insert_id, $last_order_d_id, $my_order->branch_id, $total_profit);
-                        //                    $this->this_model->update_quantity($my_order->product_weight_id,$my_order->quantity);
-                        
-                    }
-                    /*Remove From My Cart*/
-                    $this->this_model->deleteUserCart($user_id);
-                  
-                 	$this->db->query('UNLOCK TABLES;');
-                    $response = array();
-                    $gettotal = $this->this_model->get_total($postdata);
-                    $response["cart_count"] = (int)$gettotal[0]->cart_items;
-                    $response["success"] = 1;
-                    $response["message"] = "Thank you for your order";
-                    $response["order_number"] = $iOrderNo;
-                    $output = json_encode(array('responsedata' => $response));
-                    $this->sendCustomerEmailTemplate($user_id, $branch_id, $last_insert_id);
-                    $this->this_model->send_staff_notification($branch_id, "New Order In Your store");
-                    echo $output;
-                } else {
-                    $response = array();
-                    $gettotal = $this->this_model->get_total($postdata);
-                    $response["cart_count"] = (int)$gettotal[0]->cart_items;
-                    $response["success"] = 0;
-                    $response["message"] = "Product is out of stock Or your cart is empty";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                }
-            } else {
-                $response = array();
-                $response["success"] = 0;
-                $response["message"] = "User is not found";
-                $output = json_encode(array('responsedata' => $response));
-                echo $output;
-            }
-        } else {
-            $response = array();
-            $response["success"] = 0;
-            $response["message"] = "Invalid data";
-            $output = json_encode(array('responsedata' => $response));
-            echo $output;
-        }
-
+        $this->this_model->checkout($_POST);
     }
    	
     public function set_reserve_quantity()
@@ -1770,12 +1371,12 @@ class Api extends Apiuser_Controller {
         echo $output;
         die;
     }
+
     public function unreserve_quantity()
     {
-        
-        $this->this_model->unreserve_quantity();
-       
+        $this->this_model->unreserve_quantity();   
     }
+
     function unreserve_product_userwise(){
         if (isset($_POST['user_id'])) {
  			$updatedQTY = $this->this_model->unreserve_product_userwise($_POST['user_id']);
@@ -1788,10 +1389,11 @@ class Api extends Apiuser_Controller {
         echo $output;
         die;
    	}
+
     function sendCustomerEmailTemplate($user_id, $branch_id, $order_id) {
-        // $order_id = 57;
         $this->this_model->emailTemplate($user_id, $branch_id, $order_id);
     }
+
     ## My Orders ##
     public function my_orders() {
 
@@ -1815,8 +1417,7 @@ class Api extends Apiuser_Controller {
                 $query = $this->db->query("SELECT * FROM `order` WHERE status != '9' AND user_id = '$user_id' ORDER BY dt_updated DESC LIMIT $limit OFFSET $cal");
             }
             $result = $query->result();
-            // print_r($result);die;
-            // echo $this->db->last_query();die;
+           
             if ($query->num_rows() > 0) {
                 $response['success'] = "1";
                 $response['message'] = "My order list";
@@ -1855,11 +1456,14 @@ class Api extends Apiuser_Controller {
 
         }
     }
+
     ## My Orders Details ##
     public function my_order_details() {
+
         if (isset($_POST['user_id']) && isset($_POST['order_id'])) {
+            $this->load->model('api_v3/common_model','co_model');
+            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
             $limit = '10';
-            // $offset= $_POST['offset'];
             $user_id = $_POST['user_id'];
             $order_id = $_POST['order_id'];
             $actual_price_total = 0;
@@ -1868,19 +1472,27 @@ class Api extends Apiuser_Controller {
             $row_count = $result_count->result();
             $query = $this->db->query("SELECT * FROM `order_details` WHERE status != '9' AND user_id = '$user_id' AND order_id = '$order_id' ORDER BY id DESC ");
             $result = $query->result();
-            // echo $this->db->last_query();
-            // print_r($result);die;
+            
             $order_query = $this->db->query("SELECT * FROM `order` WHERE status != '9' AND user_id = '$user_id' AND id = '$order_id'");
             $order_result = $order_query->row_array();
+            $check_promocode_used = $order_result['promocode_used'];
+            if($check_promocode_used == 1){
+                $order_promocode_amount = $this->this_model->get_order_promocode_discount($_POST['order_id']);
+                $instance_discount = number_format((float)$order_promocode_amount[0]->amount,'2','.','');
+            }else{
+                $amount = 0;
+                $instance_discount = number_format((float)$amount,'2','.','');
+            }
+
             $isSelfPickup = $order_result['isSelfPickup'];
             $total_with_charge = $order_result['payable_amount'];
             $delivery_charge = $order_result['delivery_charge'];
-            if ($isSelfPickup == 1) {
+            // if ($isSelfPickup == 1) {
                 $self_pick = $this->db->query("SELECT * FROM `selfPickup_otp` WHERE order_id = '$order_id' AND user_id = '$user_id'");
                 $self_otp = $self_pick->row_array();
-                // print_r($self_otp);die;
+               
                 $self_pick_otp = $self_otp['otp'];
-            }
+            // }
             $my_order_price_query = $this->db->query("SELECT SUM(calculation_price) as total_price from order_details WHERE status != '9' AND order_id = '$order_id' AND user_id = '$user_id'");
             $my_order_price_result = $my_order_price_query->row_array();
             $branch_id = $result[0]->branch_id;
@@ -1890,12 +1502,13 @@ class Api extends Apiuser_Controller {
                 $total_gst = 0;
                 foreach ($result as $row) {
                     $gst_percent = $this->this_model->getProductGst($row->product_id);
+
                     $product_weight_id = $row->product_weight_id;
                     $product_weight_query = $this->db->query("SELECT pw.*, p.name as product_name, p.image as product_image, w.name as product_weight_name,p.gst FROM product_weight as pw 
                     LEFT JOIN product as p ON p.id = pw.product_id
                     LEFT JOIN weight as w ON w.id = pw.weight_id
                     WHERE pw.id = '$product_weight_id' AND pw.status != '9'");
-                    // echo $this->db->last_query();exit;
+                    
                     $product_weight_result = $product_weight_query->row_array();
                     $product_unit = $product_weight_result['weight_no'];
 
@@ -1903,24 +1516,28 @@ class Api extends Apiuser_Controller {
                     $data['product_unit'] = $product_unit . ' ' . $product_weight_name;
                     $package_id = $product_weight_result['package'];
                     $package_name = $this->this_model->get_package($package_id);
-                    // 'package_name' => $package_name,
+                
                     $discount_price_total = ($row->actual_price * $row->quantity) - $row->calculation_price + $discount_price_total;
                     $data['product_discount_price'] = $row->discount_price;
                     $data['discount_per'] = $row->discount;
                     $actual_price_total = $row->actual_price * $row->quantity + $actual_price_total;
+
                     // Gst calculation
                     $gst_amount = ($row->discount_price * $gst_percent) / 100;
                     $gst_total_product = $gst_amount * $row->quantity;
                     $total_gst+= $gst_total_product;
                     $total_price = $actual_price_total - $discount_price_total;
+
                     $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
                     $response["amountWithoutGst"] = number_format((float)$total_price - $total_gst, '2', '.', '');
                     $product_id = $row->product_id;
+
                     $product_query = $this->db->query("SELECT name, image FROM product WHERE  id = '$product_id'");
+
                     $product_image_query = $this->db->query("SELECT * FROM product_image WHERE status != '9' AND product_id = '$product_id' AND product_variant_id = '$product_weight_id'");
+
                     $product_image_result = $product_image_query->result();
-                    // $proimg = $product_image_result[0]->image;
-                    // $prothimg = $product_image_result[0]->image;
+                    
                     $proimg = str_replace(' ', '%20',$product_image_result[0]->image);
                     $prothimg = str_replace(' ', '%20',$product_image_result[0]->image);
                     $product_result = $product_query->row_array();
@@ -1940,16 +1557,18 @@ class Api extends Apiuser_Controller {
                     $get_data[] = $data;
                     $counter++;
                 }
+
                 $response['success'] = "1";
                 $response['message'] = "My order details";
                 $response["count"] = $counter;
-                // $response["total_price"] = number_format((float)$my_order_price_result['actual_price_total'], 2, '.', '');
+               
                 $response["store_name"] = $vendorDetails[0]->name;
                 $response["vendor_address"] = $vendorDetails[0]->location;
                 $response["actual_price_total"] = $total_with_charge;
                 $response["total_price"] = (string)$actual_price_total;
                 $response["delivery_charge"] = $delivery_charge;
                 $response["discount_price_total"] = $discount_price_total;
+                $response["instance_discount"] = $instance_discount;
                 $response['isSelfPickup'] = $isSelfPickup;
                 $response['verify_otp'] = (isset($self_pick_otp)) ? $self_pick_otp : '1234';
                 $response["data"] = $get_data;
@@ -1975,37 +1594,7 @@ class Api extends Apiuser_Controller {
 
         }
     }
-    // ## User Address Add ##
-    // public function user_address_add() {
-    //     if (isset($_POST['user_id']) && isset($_POST['address']) && isset($_POST['name']) && isset($_POST['pincode']) && isset($_POST['landmark']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['country']) && isset($_POST['phone'])) {
-    //         $user_id = $this->input->post('user_id');
-    //         $address_post = $this->input->post('address');
-    //         $name = $this->input->post('name');
-    //         $pincode = $this->input->post('pincode');
-    //         $landmark = $this->input->post('landmark');
-    //         $city = $this->input->post('city');
-    //         $state = $this->input->post('state');
-    //         $country = $this->input->post('country');
-    //         $phone = $this->input->post('phone');
-    //         $latitude = $this->input->post('latitude');
-    //         $longitude = $this->input->post('longitude');
-          
-    //         $data = array('user_id' => $user_id, 'address' => $address_post, 'name' => $name, 'pincode' => $pincode, 'landmark' => $landmark, 'city' => $city, 'state' => $state, 'country' => $country, 'phone' => $phone, 'latitude' => $latitude, 'longitude' => $longitude, 'status' => '1', 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME));
-    //         $this->db->insert('user_address', $data);
-    //         $response = array();
-    //         $response["success"] = 1;
-    //         $response["message"] = "Address has been added.";
-    //         $output = json_encode(array('responsedata' => $response));
-    //         echo $output;
-    //     } else {
-    //         $response = array();
-    //         $response["success"] = 0;
-    //         $response["message"] = "Please enter valid data";
-    //         $output = json_encode(array('responsedata' => $response));
-    //         echo $output;
-    //     }
-    // }
-
+    
      ## User Address Add ##
     public function user_address_add() {
         if (isset($_POST['user_id']) && isset($_POST['address']) && isset($_POST['name']) && isset($_POST['pincode']) && isset($_POST['landmark']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['country']) && isset($_POST['phone'])) {
@@ -2023,8 +1612,7 @@ class Api extends Apiuser_Controller {
             $longitude = $this->input->post('longitude');
             
            $re = $this->this_model->AddUserAddress($_POST);
-            // $data = array('user_id' => $user_id, 'address' => $address_post, 'name' => $name, 'pincode' => $pincode, 'landmark' => $landmark, 'city' => $city, 'state' => $state, 'country' => $country, 'phone' => $phone, 'latitude' => $latitude, 'longitude' => $longitude, 'status' => '1', 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME));
-            // $this->db->insert('user_address', $data);
+            
            if ($re) {
             $response = array();
             $response["success"] = 1;
@@ -2095,12 +1683,13 @@ class Api extends Apiuser_Controller {
 
         }
     }
+
     ## Filter ##
     public function cancle_order() {
         $postdata = $this->input->post();
         if (isset($postdata['order_id'])) {
             $cancle = $this->this_model->cancle_order($postdata);
-            $this->load->model('api_v2/api_admin_model');
+            $this->load->model('api_v3/api_admin_model');
             $order_log_data = array('order_id' =>$postdata['order_id'],'status'=>'9');
             $this->api_admin_model->order_logs($order_log_data);
             if(!$cancle){
@@ -2110,8 +1699,8 @@ class Api extends Apiuser_Controller {
                 echo $output;die;
             }
 
-            // print_r($postdata);die;
-            $this->load->model('api_v2/staff_api_model');
+           
+            $this->load->model('api_v3/staff_api_model');
             $order_id = $postdata['order_id'];
             $this->staff_api_model->send_notificaion($order_id);
             $response["success"] = 1;
@@ -2124,9 +1713,12 @@ class Api extends Apiuser_Controller {
         $output = json_encode(array('responsedata' => $response));
         echo $output;die;
     }
+
     ## Product Search ##
-      public function product_search() {
-        
+    public function product_search() {
+        $this->load->model('api_v3/common_model','co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($_POST['vendor_id']);
+
         $product_name = $_POST['product_name'];
         if (isset($_POST['user_id']) && $_POST['user_id'] != '') {
             $user_id = $_POST['user_id'];
@@ -2134,53 +1726,50 @@ class Api extends Apiuser_Controller {
         $device_id = $_POST['device_id'];   
         $branch_id = $_POST['branch_id'];
         if (isset($product_name) && $product_name != '' && (isset($branch_id))) {
-            
-            if (isset($_POST['vendor_id']) && $_POST['vendor_id'] != '') {
-                $vendor_id = $_POST['vendor_id'];
-                $result_count = $this->db->query("SELECT p.* FROM `product` as p 
-                    LEFT JOIN product_search as ps ON ps.product_id = p.id
-                    LEFT JOIN product_weight as w ON w.product_id = p.id
-                    LEFT JOIN branch as br ON br.id = p.branch_id
-                    WHERE p.status != '9'  AND br.vendor_id = '$vendor_id' AND w.discount_price != '' AND w.status != '9' AND (p.name LIKE '%$product_name%' OR ps.name LIKE '%$product_name%') GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
-                $row_count_ = $result_count->result();
-                $total_count = count(array_keys($row_count_));
-                
-
-                $query = $this->db->query("SELECT p.*,c.name as category_name,sb.name as subcat_name,b.name as brand_name FROM `product` as p 
-                    LEFT JOIN product_search as ps ON ps.product_id = p.id
-                    LEFT JOIN product_weight as w ON w.product_id = p.id
-                    LEFT JOIN category as c ON c.id = p.category_id
-                    LEFT JOIN subcategory as sb ON sb.id = p.subcategory_id
-                    LEFT JOIN brand as b ON b.id = p.brand_id
-                    LEFT JOIN branch as br ON br.id = p.branch_id
-
-                    WHERE p.status != '9' AND br.vendor_id = '$vendor_id' AND w.discount_price != '' AND w.status != '9' AND ( p.name LIKE '%$product_name%' OR c.name LIKE '%$product_name%' OR sb.name LIKE '%$product_name%' OR b.name LIKE '%$product_name%' OR ps.name LIKE '%$product_name%')
-                    GROUP BY p.id,c.id,sb.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2)) ASC ");
-                $result = $query->result();
-                
-            }
 
             if(isset($branch_id) && $branch_id != ''){
                 $result_count = $this->db->query("SELECT p.* FROM `product` as p 
-                    LEFT JOIN product_search as ps ON ps.product_id = p.id
                     LEFT JOIN product_weight as w ON w.product_id = p.id
                     LEFT JOIN branch as br ON br.id = p.branch_id
-                    WHERE p.status != '9'  AND p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND (p.name LIKE '%$product_name%' OR ps.name LIKE '%$product_name%') GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
+                    WHERE p.status != '9'  AND p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND (p.name LIKE '%$product_name%' OR p.name LIKE '%$product_name%') GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
                 $row_count_ = $result_count->result();
                 $total_count = count(array_keys($row_count_));
 
                 $query = $this->db->query("SELECT p.*,c.name as category_name,sb.name as subcat_name,b.name as brand_name FROM `product` as p 
-                    LEFT JOIN product_search as ps ON ps.product_id = p.id
                     LEFT JOIN product_weight as w ON w.product_id = p.id
                     LEFT JOIN category as c ON c.id = p.category_id
                     LEFT JOIN subcategory as sb ON sb.id = p.subcategory_id
                     LEFT JOIN brand as b ON b.id = p.brand_id
                     LEFT JOIN branch as br ON br.id = p.branch_id
 
-                    WHERE p.status != '9' AND p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND ( p.name LIKE '%$product_name%' OR c.name LIKE '%$product_name%' OR sb.name LIKE '%$product_name%' OR b.name LIKE '%$product_name%' OR ps.name LIKE '%$product_name%')
+                    WHERE p.status != '9' AND p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND ( p.name LIKE '%$product_name%' OR c.name LIKE '%$product_name%' OR sb.name LIKE '%$product_name%' OR b.name LIKE '%$product_name%' OR p.name LIKE '%$product_name%')
                     GROUP BY p.id,c.id,sb.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2)) ASC ");
                 $result = $query->result();
+            }else            
+            if (isset($_POST['vendor_id']) && $_POST['vendor_id'] != '') {
+                $vendor_id = $_POST['vendor_id'];
+                $result_count = $this->db->query("SELECT p.* FROM `product` as p 
+                    LEFT JOIN product_weight as w ON w.product_id = p.id
+                    LEFT JOIN branch as br ON br.id = p.branch_id
+                    WHERE p.status != '9'  AND br.vendor_id = '$vendor_id' AND w.discount_price != '' AND w.status != '9' AND (p.name LIKE '%$product_name%' OR p.name LIKE '%$product_name%') GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
+                $row_count_ = $result_count->result();
+                $total_count = count(array_keys($row_count_));
+                
+
+                $query = $this->db->query("SELECT p.*,c.name as category_name,sb.name as subcat_name,b.name as brand_name FROM `product` as p 
+                    LEFT JOIN product_weight as w ON w.product_id = p.id
+                    LEFT JOIN category as c ON c.id = p.category_id
+                    LEFT JOIN subcategory as sb ON sb.id = p.subcategory_id
+                    LEFT JOIN brand as b ON b.id = p.brand_id
+                    LEFT JOIN branch as br ON br.id = p.branch_id
+
+                    WHERE p.status != '9' AND br.vendor_id = '$vendor_id' AND w.discount_price != '' AND w.status != '9' AND ( p.name LIKE '%$product_name%' OR c.name LIKE '%$product_name%' OR sb.name LIKE '%$product_name%' OR b.name LIKE '%$product_name%' OR p.name LIKE '%$product_name%')
+                    GROUP BY p.id,c.id,sb.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2)) ASC ");
+                $result = $query->result();
+                
             }
+
+            
                
             if ($query->num_rows() > 0) {
                 $response['success'] = "1";
@@ -2196,6 +1785,10 @@ class Api extends Apiuser_Controller {
                     $product_image_result = $product_image_query->result();
                     $new_array_product_weight = array();
                     foreach ($product_weight_result as $pro_weight) {
+                        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                                $pro_weight->discount_price = $pro_weight->without_gst_price;
+                        }
+
                         $package_id = $pro_weight->package;
                         $variant_id = $pro_weight->id;
                         $package_name = $this->this_model->get_package($package_id);
@@ -2205,18 +1798,18 @@ class Api extends Apiuser_Controller {
                         $weight_result = $weight_query->row_array();
                         $weight_name = $weight_result['name'];
                         if (isset($_POST['user_id'])) {
-                            $my_cart_old_query = $this->db->query("SELECT quantity FROM my_cart_old WHERE product_weight_id = '$variant_id' AND user_id = '$user_id'");
-                            $my_cart_old_result = $my_cart_old_query->row_array();
+                            $my_cart_query = $this->db->query("SELECT quantity FROM my_cart WHERE product_weight_id = '$variant_id' AND user_id = '$user_id'");
+                            $my_cart_result = $my_cart_query->row_array();
                         } elseif (isset($_POST['device_id']) && (!isset($_POST['user_id']) || $_POST['user_id'] == '')) {
-                            $my_cart_old_query = $this->db->query("SELECT quantity FROM my_cart_old WHERE product_weight_id = '$variant_id' AND  device_id = '$device_id'");
-                            $my_cart_old_result = $my_cart_old_query->row_array();
+                            $my_cart_query = $this->db->query("SELECT quantity FROM my_cart WHERE product_weight_id = '$variant_id' AND  device_id = '$device_id'");
+                            $my_cart_result = $my_cart_query->row_array();
                         } else {
-                            $my_cart_old_result = array();
+                            $my_cart_result = array();
                         }
-                        if (empty($my_cart_old_result)) {
+                        if (empty($my_cart_result)) {
                             $my_cart_quantity = '0';
                         } else {
-                            $my_cart_quantity = $my_cart_old_result['quantity'];
+                            $my_cart_quantity = $my_cart_result['quantity'];
                         }
                         $data = array('id' => $pro_weight->id, 'product_id' => $pro_weight->product_id, 'weight_id' => $pro_weight->weight_id, 'unit' => floor($pro_weight->weight_no) . ' ' . $weight_name, 'actual_price' => $pro_weight->price, 'quantity' => $pro_weight->quantity, 'package_name' => $package_name, 'discount_per' => $pro_weight->discount_per, 'discount_price' => $pro_weight->discount_price, 'my_cart_quantity' => $my_cart_quantity);
                         array_push($new_array_product_weight, $data);
@@ -2264,6 +1857,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     public function user_address_delete() {
         if (isset($_POST['id'])) {
             $id = $this->input->post('id');
@@ -2283,7 +1877,7 @@ class Api extends Apiuser_Controller {
                         $address_id = $result[0]->id;
 
                         $data = array(
-                            'status' => '1'
+                            'status' => '1','dt_updated'=>strtotime(DATE_TIME)
                         );
                         $this->db->where('id', $address_id);
                         $this->db->update('user_address', $data);
@@ -2306,6 +1900,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     public function notification_list() {
         if (isset($_POST['user_id']) && $_POST['user_id'] != '') {
             $getData = $this->this_model->notification_list($_POST);
@@ -2330,6 +1925,7 @@ class Api extends Apiuser_Controller {
             echo $output;
         }
     }
+
     public function feedback_add() {
         $post = $this->input->post();
         $req = array('vendor_id','user_id','islike');
@@ -2345,7 +1941,6 @@ class Api extends Apiuser_Controller {
     }
     
     public function make_payment_new() {
-        // print_r($this->input->post());die;
         $this->this_model->make_payment_new($this->input->post());
     }
     
@@ -2395,11 +1990,13 @@ class Api extends Apiuser_Controller {
         $response = $CI->email->send();
         return true;
     }
+
     public function setVerifyEmailmessage($message) {
         $CI = & get_instance();
         $template = '<h1>Thank you<br> <span>You have successfully verified your email</span></h1>';
         $CI->session->set_flashdata("myMessage", $template);
     }
+
     public function contactus() {
         $post = $this->input->post();
         $req = array('name', 'email', 'mobile', 'message','vendor_id');
@@ -2408,6 +2005,7 @@ class Api extends Apiuser_Controller {
             $this->this_model->contactus($post);
         }
     }
+    
     public function about_us() {
         $result = $this->this_model->get_about_app();
         if ($result) {
@@ -2426,6 +2024,104 @@ class Api extends Apiuser_Controller {
         }
         
     }
+
+    /*Developer : Shahid abdul rahman*/
+
+    public function get_offer(){
+
+       $result = $this->this_model->get_offer();
+        if ($result) {
+            $response = array();
+            $response["success"] = 1;
+            $response["message"] = "Offer Data";
+            $response["data"] = $result;
+            $output = json_encode(array('responsedata' => $response));
+            echo $output;
+        } else {
+            $response = array();
+            $response["success"] = 0;
+            $response["message"] = "No Data Found";
+            $output = json_encode(array('responsedata' => $response));
+            echo $output;
+        }
+    }
+
+ // Pratik S Shah
+    public function sendOtpLogin(){
+        $post = $this->input->post();
+        $req = array('country_code','phone','vendor_id');
+        $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->sendOtpLogin($post);
+            // $response = array('responsedata' => $response);
+        }
+       $this->response($response);
+    }
+    
+    public function VarifyOtpLogin(){
+        $post = $this->input->post();
+        $req = array('country_code','phone','otp','vendor_id','device_id','login_type','device_token','device_type');
+        $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->VarifyOtpLogin($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);
+    }
+
+    public function completeProfile(){
+        $post = $this->input->post();
+        $req = array('fname','lname','user_id','vendor_id');
+        $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->completeProfile($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);
+    }
+
+    public function validate_promocode(){
+        $post = $this->input->post();
+        $req = array('user_id','promocode','branch_id');
+        $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->validate_promocode($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);
+    }
+
+
+    public function delete_user(){
+        $post = $this->input->post();
+        $req = array('user_id','vendor_id');
+        $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->delete_user($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);
+    }
+
+    public function get_offer_varient_listing(){
+            $post = $this->input->post();
+            $req = array('offer_id');
+            $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->get_offer_varient_listing($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);
+    }
+
+
+
 }
 
 ?>

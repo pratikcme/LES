@@ -1,4 +1,4 @@
-        <?php
+<?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 header("Access-Control-Allow-Origin: *");
@@ -9,18 +9,16 @@ class Delivery_api extends CI_Controller
 {
     function __construct()
     {
-        // ini_set("display_errors", "1");
-        // error_reporting(E_ALL);
 
         parent::__construct();
 
 
-        $this->load->model('api_v2/delivery_api_model', 'this_model');
+        $this->load->model('api_v3/delivery_api_model', 'this_model');
     }
 
     public function login()
     {
-       // echo 1;exit;
+       
 
         $postdata = $this->input->post();
 
@@ -57,7 +55,7 @@ class Delivery_api extends CI_Controller
 
     public function update_status()
     {
-        // $this->demo("",80);exit;
+      
         $postdata = $this->input->post();
 
         if (isset($postdata['status']) && isset($postdata['id'])) {
@@ -79,7 +77,7 @@ class Delivery_api extends CI_Controller
 
     public function notification_detail()
     {
-        // print_r($_GET['order_id']);exit;
+     
         $postdata = $this->input->post();
         if (isset($postdata['order_id'])) {
             $result = $this->this_model->notification_detail($postdata);
@@ -169,14 +167,16 @@ class Delivery_api extends CI_Controller
     public function order_delivered()
     {
         $postdata = $this->input->post();
+
         if (isset($postdata['order_id'])) {
-
             $result = $this->this_model->order_delivered($postdata);
-
+            
             if($result){
-
                 $response['success'] = 1;
                 $response['message'] = "Order delivered";
+            }else{
+                $response['success'] = 0;
+                $response['message'] = "invalid otp";
             }
         }
         else {
@@ -276,16 +276,13 @@ class Delivery_api extends CI_Controller
 
     public function logout(){
         $postdata = $this->input->post(); 
-        if (isset($postdata['user_id']) && $postdata['user_id'] != '' ) { 
+        if (isset($postdata['user_id']) && $postdata['user_id'] != '' ) {
+
             $user_id = $postdata['user_id'];
-            $result = $this->this_model->logout($user_id);
-           
+            $result = $this->this_model->logout($user_id);   
             $response['success'] = 1;
             $response['message'] = "Logout successfully";
-           
-            
-        }
-        else {
+        }else {
             $response['success'] = 0;
             $response['message'] = "invalid input";
         }

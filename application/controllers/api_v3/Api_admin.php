@@ -5,9 +5,9 @@ header("HTTP/1.1 200 OK");
 class Api_admin extends Api_Controller {
     function __construct() {
         parent::__construct();
-        error_reporting(E_ALL);
-        ini_set("display_errors",1);
-        $this->load->model('api_v2/api_admin_model', 'adminApi_model');
+        // error_reporting(E_ALL);
+        // ini_set("display_errors",1);
+        $this->load->model('api_v3/api_admin_model', 'adminApi_model');
         date_default_timezone_set('Asia/Kolkata');
     }
     protected function checkRequiredField($request_params = array(), $require = array()) {
@@ -47,9 +47,9 @@ class Api_admin extends Api_Controller {
     }
     public function check_login() {
         $post = $this->input->post();
-        $req = array('email', 'password');
+        $req = array('email', 'password','device_id','type','token');
+        // $req = array('email', 'password');
         $required = $this->checkRequiredField($post, $req);
-     
         if ($required['status'] == 1) {
             $responce = $this->adminApi_model->check_login($this->input->post());
         }
@@ -468,7 +468,7 @@ class Api_admin extends Api_Controller {
         $required = $this->checkRequiredField($post, $req);
         if ($required['status'] == 1) {
             if ($post['isSelfPickup'] == '1') {
-                $this->load->model('api_v2/staff_api_model', 'staff_model');
+                $this->load->model('api_v3/staff_api_model', 'staff_model');
                 $response = $this->staff_model->verify_otp_selfPickup($this->input->post());
             } else {
                 $response = $this->adminApi_model->verify_otp($this->input->post());

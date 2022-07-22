@@ -413,6 +413,8 @@ var CHECKOUT = function(){
 
 
     $("#checkPromocode").click(function(){
+        
+        var siteCurrency = $('#siteCurrency').val();
         var promocode = $("#promocode").val();
         $("#applied_promo").val('');
         $('#promoAmount').html('0');                        
@@ -440,6 +442,11 @@ var CHECKOUT = function(){
                     // finalAmount = (orderAmount + parseFloat(shipping_charge) - parseFloat(response.data)).toFixed(2)
                     finalAmount = (orderAmount + ( shipping_charge === "" ?  0  : parseFloat(shipping_charge) )- parseFloat(response.data)).toFixed(2)
                     // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
+                    if( $('#totalSaving').length ){
+                        var amount = response.data;
+                        var promocodeDiscount = parseFloat(response.withoutPromo) + parseFloat(amount);   
+                        $('#totalSaving').html(siteCurrency +' '+ promocodeDiscount.toFixed(2));
+                    }
                     $('#promoAmount').html((response.data).toFixed(2));
 
                     $('#checkout_final').html(finalAmount)                        
@@ -451,6 +458,8 @@ var CHECKOUT = function(){
                 }else{
                     $("#applied_promo").val('');
                     $('#checkout_final').html((parseFloat(response.orderAmount)+parseFloat(shipping_charge)).toFixed(2))
+                    var promocodeDiscount = parseFloat(response.withoutPromo);
+                    $('#totalSaving').html(siteCurrency +' '+ promocodeDiscount.toFixed(2));
                 }
             }            
         });
@@ -488,7 +497,7 @@ var CHECKOUT = function(){
                             $('#Otp').modal({ backdrop: 'static', keyboard: false });
                         }else{
                             $('.mobile_verfication').html('This mobile number is linked with another account');
-                            $('.mobile_verfication').attr('display','');
+                            $('.mobile_verfication').css('display','block');
                         }
                     }            
                 });

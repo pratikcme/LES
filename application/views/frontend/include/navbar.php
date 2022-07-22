@@ -146,7 +146,7 @@
              </div>
              <?php if($this->session->userdata('user_id') != ''){ ?> 
              <div class="notif">
-              <div class="btn__badge pulse-button"  id="notify-dot"></div>
+              <div class="<?=(count($notification) > 0) ? "btn__badge" : "" ?> pulse-button"  id="notify-dot"></div>
               <i class="fas fa-bell dropdown-toggle notify-dropdown"></i>   
               <ul class="dropdown notify-drop <?=(count($notification) == '0' ) ? "ishave" : "" ?>"  id="notification">
                 <?php foreach ($notification as $key => $value): ?>
@@ -222,11 +222,16 @@
                        FAQ
                       </a>   
                      </li>
-                     
-                       <li>
+                    <li>
                       <a  id="logout">
                         <span><i class="fas fa-power-off"></i></span>
                        logout
+                      </a>   
+                     </li>
+                      <li>
+                      <a  id="delete_account">
+                        <span><i class="fas fa-minus"></i></span>
+                       Delete Account
                       </a>   
                      </li>
                      
@@ -303,6 +308,12 @@
                       <a  id="logout">
                         <span><i class="fas fa-power-off"></i></span>
                        logout
+                      </a>   
+                     </li>
+                      <li>
+                      <a  id="delete_account">
+                        <span><i class="fas fa-minus"></i></span>
+                       Delete Account
                       </a>   
                      </li>
                      

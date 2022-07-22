@@ -2,9 +2,10 @@
 // if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
 //     window.location.reload();
 // }
-// $(document).ready(function(){
-//     $('.alert').fadeOut(5000);
-// });
+$(document).ready(function(){
+    $('.alert').show();
+    $('.alert').fadeOut(10000);
+});
 
 //Logout 
 var siteCurrency = $('#siteCurrency').val();
@@ -27,8 +28,9 @@ function get_note(){
 		method: 'post',
 		dataType: 'json',
 		success:function(output){
-			if(output.status > 0){
-				$('#notify_status').addClass('btn__badge');
+			if(output.count > 0){
+				$('#notify-dot').addClass('btn__badge');
+				$('#notification').removeClass('ishave');
 			}
 			if(output.count == 0){
 				$('#notification').addClass('ishave');
@@ -45,15 +47,11 @@ $(document).on('click','#clear_all',function(){
 		method: 'post',
 		dataType: 'JSON',
 		success:function(output){
-			$('#notify_status').removeClass('btn__badge');
-			if(output.status > '0'){
-				$('#notify-dot').addClass('btn__badge');
-			}
 			if(output.count == '0'){
-				$('#notify-dot').removeClass('btn__badge');
 				$('#notification').addClass('ishave');
 			}
 			$('#notification').html(output.notify);
+			$('#notify-dot').removeClass('btn__badge');
 		}
 	});
 })
@@ -99,11 +97,10 @@ $(document).on('click','#delete_account',function() {
 				dataType : "json",
 				data : {hello : '1' },
 				success:function(output){
-					if(output.status == 1){
+					if(output[0].success == '1'){
 						var title = 'Removed'; 
 					}else{
 						var title = 'Not Removed';
-
 					}
 					var message = output[0].message;
 					swal({
@@ -275,7 +272,7 @@ $(document).on('click','.remove_item',function(){
 	var sess_my_count = $('#itemCount').text();
 	if(session_vendor_id != ''){
 	if(vendor_id != session_vendor_id){
-			if(sess_my_count == 1 ){
+			if(sess_my_count > 0 ){
 					 // var X = confirm('You can only order from one shop.. Are you sure you want to clear cart');
 
 			 swal({

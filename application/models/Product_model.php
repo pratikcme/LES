@@ -487,7 +487,7 @@ public function Product_add_update(){
 
 
     public function update_without_gst(){
-        $this->load->model('api_v2/api_model','s');
+        $this->load->model('api_v3/api_model','s');
         $data['table'] = TABLE_PRODUCT_WEIGHT;
         $data['select'] = ['*'];
         $re = $this->selectRecords($data);
@@ -503,11 +503,11 @@ public function Product_add_update(){
            $data['update'] = ['without_gst_price'=>number_format((float)$product_price_without_gst, 2, '.', '') ];
            $data['where'] = ['id'=>$value->id];
            $this->updateRecords($data);
-           if($value->id == '3948'){
-            echo $gst_amount;
-            echo $product_price_without_gst;
-             lq();
-           }
+           // if($value->id == '3948'){
+           //  echo $gst_amount;
+           //  echo $product_price_without_gst;
+           //   lq();
+           // }
         }
     }   
     
@@ -524,7 +524,7 @@ public function Product_add_update(){
 
         $product_id = $_POST['product_id'];
 
-        $this->load->model('api_v2/api_model');
+        $this->load->model('api_v3/api_model');
         $gst_percent = $this->api_model->getProductGst($product_id);
 
         $weight_id = $_POST['weight_id'];

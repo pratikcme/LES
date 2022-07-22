@@ -4,7 +4,7 @@ Class Product_model extends My_model{
 
 	function __construct(){
 		$this->branch_id = $this->session->userdata('branch_id');
-		$this->load->model('api_v2/common_model','v2_common_model');
+		$this->load->model('api_v3/common_model','v2_common_model');
 	}
 
 	public function selectVendor(){
@@ -246,7 +246,7 @@ Class Product_model extends My_model{
 	// public function productOfSubcategory($limit,$start,$postdata){
 	public function productOfSubcategory($postdata){
 
-		$this->load->model('api_v2/common_model','co_model');
+		$this->load->model('api_v3/common_model','co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
 		// print_r($postdata);die;
@@ -811,7 +811,7 @@ Class Product_model extends My_model{
     	// $proId = $this->utility->safe_b64decode($postdata['pro_id']);
     	
 		$data['table'] = TABLE_PRODUCT_WEIGHT ;
-		$data['select'] = ['id','price','quantity','weight_no','discount_per','discount_price','product_id'];
+		$data['select'] = ['id','price','quantity','weight_no','discount_per','discount_price','product_id','without_gst_price'];
 		$data['where'] = [
 						  'status!='=>'9',
 						  'id'=> $this->utility->safe_b64decode($postdata['product_varient_id']),

@@ -8,15 +8,40 @@ class Api_admin_model extends My_model {
         $result_login = $this->db->query("SELECT * FROM branch WHERE email='$email' AND password='$password'");
         $row_login = $result_login->row_array();
         $branch_id = $row_login['vendor_id'];
-        // print_r($branch_id);die();
         $getDefault = $this->db->query("SELECT value FROM set_default WHERE request_id = '3' AND vendor_id = '$branch_id'");
         $row_default = $getDefault->row_array();
         if($row_login['status'] != '0'){
             if ($result_login->num_rows() > 0) {
                 $token = $this->update_token($row_login['id']);
+                $this->addAdminDevice($postData,$row_login['id']);
                 $status = $row_login['status'];
                 if ($status == '1') {
-                    $login_data = array('id' => $row_login['id'],'multiple_lang_type'=>$row_login['multiLanguageType'],'vendor_id'=>$row_login['vendor_id'],'name' => $row_login['owner_name'], 'email' => $row_login['email'], 'phone' => $row_login['phone_no'], 'selfPickUp' => $row_login['selfPickUp'], 'shopName' => $row_login['name'], 'token' => $token, 'gst_number' => $row_login['gst_number'], 'image' => base_url() . 'public/images/'.$this->folder.'vendor_shop/' . $row_login['image'],'currancy'=>$row_default['value'],'address'=>$row_login['address'] ,'logged_in' => TRUE);
+                    $login_data = array(
+                        'id' => $row_login['id'],
+                        'multiple_lang_type'=>$row_login['multiLanguageType'],
+                        'vendor_id'=>$row_login['vendor_id'],
+                        'name' => $row_login['owner_name'], 
+                        'email' => $row_login['email'], 
+                        'phone' => $row_login['phone_no'], 
+                        'selfPickUp' => $row_login['selfPickUp'], 
+                        'shopName' => $row_login['name'], 
+                        'token' => $token, 
+                        'gst_number' => $row_login['gst_number'], 
+                        'image' => base_url() . 'public/images/'.$this->folder.'vendor_shop/' . $row_login['image'],
+                        'currancy'=>$row_default['value'],
+                        'address'=>$row_login['address'] ,
+                        'logged_in' => TRUE
+                    );
+
+                    $login_logs = [
+                        'user_id' => $row_login['id'],
+                        'vendor_id' =>  $row_login['vendor_id'],
+                        'status' => 'login',
+                        'type' => 'branch app',
+                        'dt_created' => DATE_TIME
+                    ];
+                    $this->load->model('api_v3/common_model','v2_common_model');
+                    $this->v2_common_model->user_login_logout_logs($login_logs);
                     $res = ['status' => 1, 'message' => 'Data get success', 'data' => $login_data];
                 } else {
                     $res = ['status' => 0, 'message' => 'User inactivated by admin'];
@@ -29,6 +54,46 @@ class Api_admin_model extends My_model {
         }
 
         return $res;
+    }
+
+    public function addAdminDevice($postData,$branch_id){
+        // dd($postData);
+        $data['table'] = 'branch_device';
+        $data['select'] = ['*'];
+        $data['where'] = ['branch_id' =>$branch_id];
+        $res = $this->selectRecords($data);
+        unset($data);
+        if(count($res) > 0){
+            if($res[0]->device_id != $postData['device_id']){
+                $data['table'] = 'branch_device';
+                $data['where'] = ['id' =>$res[0]->id];
+                $this->deleteRecords($data);
+                unset($data);
+                $data['table'] = 'branch_device';
+                $data['insert'] = [
+                    'branch_id'=>$branch_id,
+                    'device_id'=>$postData['device_id'],
+                    'token'=>$postData['token'],
+                    'type'=>$postData['type'],
+                    'dt_created'=>DATE_TIME,
+                    'dt_updated'=>DATE_TIME
+                ];
+                $this->insertRecord($data);
+            }
+        }else{
+            unset($data);
+            $data['table'] = 'branch_device';
+            $data['insert'] = [
+                'branch_id'=>$branch_id,
+                'device_id'=>$postData['device_id'],
+                'token'=>$postData['token'],
+                'type'=>$postData['type'],
+                'dt_created'=>DATE_TIME,
+                'dt_updated'=>DATE_TIME
+            ];
+            $this->insertRecord($data);
+        }
+        return true;
     }
 
 
@@ -347,7 +412,7 @@ class Api_admin_model extends My_model {
         $response = $this->selectRecords($data);
         /* if got token in database then update token as empty and user status is active */
         if (count($response) > 0) {
-            $updatedata = array('email_token' => '', 'email_verify' => '1',);
+            $updatedata = array('email_token' => '', 'email_verify' => '1','dt_updated'=>DATE_TIME);
             unset($data);
             $data['update'] = $updatedata;
             $data['where'] = ['id' => $response[0]->id];
@@ -965,7 +1030,7 @@ class Api_admin_model extends My_model {
 
         unset($data);
         $data['where'] = ['product_id'=>$id];
-        $data['table'] = 'my_cart_old';
+        $data['table'] = 'my_cart';
         $this->deleteRecords($data);
         return $return;
     }
@@ -1013,10 +1078,22 @@ class Api_admin_model extends My_model {
         $discount_price_cal = (($price * $discount_per) / 100);
         $discount_price = number_format((float)$discount_price_cal, 2, '.', '');
         $final_discount_price = number_format((float)$price - $discount_price, 2, '.', '');
+
+        unset($data);
+        $data['table'] = 'product';
+        $data['select'] = ['*'];
+        $data['where'] = ['id'=>$product_id];
+        $re = $this->selectRecords($data);
+        $product_gst = $re[0]->gst;
+        unset($data);
+         $gst_amount = ($final_discount_price * $product_gst) /100;
+         $without_gst_price = $final_discount_price - $gst_amount;
+         $without_gst_price = number_format((float)$without_gst_price, 2, '.', '');
+
         /* Product Weight Update */
         if (isset($postData['variant_id']) && $postData['variant_id'] != '') {
             $id = $postData['variant_id'];
-            $data = array('product_id' => $product_id, 'weight_id' => $weight_id, 'weight_no' => $unit, 'package' => $package, 'purchase_price' => $purchase_price, 'price' => $price, 'quantity' => $quantity, 'discount_per' => $discount_per, 'discount_price' => $final_discount_price, 'dt_updated' => strtotime(DATE_TIME),);
+            $data = array('product_id' => $product_id, 'weight_id' => $weight_id, 'weight_no' => $unit, 'package' => $package, 'purchase_price' => $purchase_price, 'price' => $price, 'quantity' => $quantity, 'discount_per' => $discount_per, 'discount_price' => $final_discount_price,'without_gst_price'=>$without_gst_price, 'dt_updated' => strtotime(DATE_TIME),);
             $this->db->where('branch_id', $branch_id);
             $this->db->where('id', $id);
             $this->db->update('product_weight', $data);
@@ -1027,7 +1104,7 @@ class Api_admin_model extends My_model {
         }
         /* Product Weight Add */
         else {
-            $data = array('branch_id' => $branch_id, 'product_id' => $product_id, 'weight_id' => $weight_id, 'weight_no' => $unit, 'package' => $package, 'purchase_price' => $purchase_price, 'price' => $price, 'quantity' => $quantity, 'discount_per' => $discount_per, 'discount_price' => $final_discount_price, 'status' => '1', 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME),);
+            $data = array('branch_id' => $branch_id, 'product_id' => $product_id, 'weight_id' => $weight_id, 'weight_no' => $unit, 'package' => $package, 'purchase_price' => $purchase_price, 'price' => $price, 'quantity' => $quantity, 'discount_per' => $discount_per, 'discount_price' => $final_discount_price, 'without_gst_price'=>$without_gst_price, 'status' => '1', 'dt_added' => strtotime(DATE_TIME), 'dt_updated' => strtotime(DATE_TIME),);
             $this->db->insert('product_weight', $data);
             $variant_id = $this->db->insert_id();
             $this->product_image_add_update($_FILES, $postData, $variant_id);
@@ -1126,7 +1203,7 @@ class Api_admin_model extends My_model {
 
         unset($data);
         $data['where'] = ['product_weight_id'=>$id];
-        $data['table'] = 'my_cart_old';
+        $data['table'] = 'my_cart';
         $this->deleteRecords($data);
         
         return $return;
@@ -1158,6 +1235,7 @@ class Api_admin_model extends My_model {
         }
         return $return;
     }
+
     public function getOrders($postData) {
         $limit = '10';
         $offset = $postData['offset'];
@@ -1255,7 +1333,7 @@ class Api_admin_model extends My_model {
         $result = $this->selectRecords($data);
         $total_gst = 0;
         foreach ($result as $key => $value) {
-            $this->load->model('api_v2/api_model');
+            $this->load->model('api_v3/api_model');
             $gst = $this->api_model->getProductGst($value->product_id);
             $gst_amount = ($value->discount_price * $gst) / 100;
             $total_gst+= $gst_amount * $value->quantity;
@@ -1265,10 +1343,12 @@ class Api_admin_model extends My_model {
     public function change_order_status($postData) {
         $order_id = $postData['order_id'];
 
-        $data['select'] = ['order_status'];
+        $data['select'] = ['order_status','branch_id','order_no'];
         $data['where'] = ['id' => $order_id];
         $data['table'] = 'order';
         $results = $this->selectRecords($data);
+        $branch_id = $results[0]->branch_id; 
+        $order_no = $results[0]->order_no; 
 
         $this->order_logs($_POST); // insert Order logs;
 
@@ -1279,12 +1359,37 @@ class Api_admin_model extends My_model {
             }
         }
         $status = $postData['status'];
+        
+        if($status=='9' || $status=='8'){
+            if ($status == '8') {
+                $send_status = 'Delivered';
+                $type = 'order_delivered';
+            }
+            if ($status == '9') {
+                $send_status = 'Cancelled';
+                $type = 'order_cancelled';
+            }
+           $message = $order_no .' is '.$send_status;
+           $branchNotification = array(
+            'order_id'         =>  $order_id,
+            'branch_id'          =>  $branch_id,
+            'notification_type'=> $type,
+            'message'          => $message,
+            'status'           =>'0',
+            'dt_created'       => DATE_TIME,
+            'dt_updated'       => DATE_TIME
+        );
+           $this->load->model('api_v3/api_model','api_v3_model');
+           $this->api_v3_model->pushAdminNotification($branchNotification);    
+       }
+
         $date = strtotime(DATE_TIME);
 
         $this->db->query("UPDATE `order` SET order_status = '$status',dt_updated = '$date' WHERE id = '$order_id'");
         if ($status == '4') {
             $this->db->query("UPDATE `order_details` SET delevery_status = '1',dt_updated = '$date' WHERE order_id = '$order_id'");
         }
+
         $this->send_notificaion($order_id);
         $return = ['status' => 1, 'message' => 'Status Updated'];
         return $return;
@@ -1327,7 +1432,7 @@ class Api_admin_model extends My_model {
         }
         if ($order_status == '3') {
             $send_status = 'Ready For Deliver';
-            $this->load->model('api_v2/delivery_api_model');
+            $this->load->model('api_v3/delivery_api_model');
             $this->delivery_api_model->send_notification($order_id);
         }
         if ($order_status == '4') {
@@ -1351,9 +1456,8 @@ class Api_admin_model extends My_model {
         if ($send) {
             if ($send[0]->notification_status == '1') {
                 $dataArray = array('device_id' => $send[0]->token, 'type' => $send[0]->type, 'message' => $message,);
-                $this->load->model('api_v2/api_model');
+                $this->load->model('api_v3/api_model');
                 $result = $this->api_model->getNotificationKey($branch_id);
-                // print_r($result);die;
                 $this->utility_apiv2->sendNotification($dataArray, $notification_type,$result);
             }
         }
@@ -1369,6 +1473,7 @@ class Api_admin_model extends My_model {
         $id = $postData['order_id'];
         $otp = $postData['otp'];
         $data['update']['otp_verify'] = '1';
+        $data['update']['dt_updated'] = DATE_TIME;
         $data['where'] = ['order_id' => $id, 'otp' => $otp];
         $data['table'] = 'delivery_order';
         $res = $this->updateRecords($data);
@@ -1530,6 +1635,7 @@ class Api_admin_model extends My_model {
         $token = md5('user_' . time());
         $token = "1234";
         $data['update']['token'] = $token;
+        $data['update']['dt_updated'] = DATE_TIME;
         $data['where'] = ['id' => $branch_id];
         $data['table'] = 'branch';
         $updateRecord = $this->updateRecords($data);

@@ -286,7 +286,6 @@ Class Checkout_model extends My_model{
     }
 
     public function updatePhoneNumber($postdata){
-        // print_r($postdata);die;
         $user_id = $this->session->userdata('user_id');
         $mobile = $postdata['phoneNumber'];
         $country_code = $postdata['country_code'];
@@ -296,13 +295,23 @@ Class Checkout_model extends My_model{
 
         $userData['select'] = ['*'];
         $userData['table'] = 'user';
+        $userData['where'] = ['country_code' => $country_code,'phone'=>$mobile,'id !=' => $user_id,'status !=' =>'9','vendor_id'=>$this->vendor_id];
+        $checkUniq = $this->selectRecords($userData);
+        if(!empty($checkUniq)){
+            return false;
+         
+        }
+        unset($userData);
+        $userData['select'] = ['*'];
+        $userData['table'] = 'user';
         $userData['where'] = ['country_code' => $country_code,'phone'=>$mobile,'id' => $user_id,'status !=' =>'9','vendor_id'=>$this->vendor_id];
         $userDetail = $this->selectRecords($userData);
+
         // dd($userDetail);
         if($userDetail[0]->is_verify != '1'){
 
-            if($_SERVER['SERVER_NAME']=='ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com'){
-                $this->load->model('api_model');
+            if($_SERVER['SERVER_NAME'] == 'ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com'){
+                $this->load->model('api_v3/api_model');
                 $this->api_model->send_otp_int($mobile_number,$otp);
             }else{
                 // echo '1';die;
@@ -407,7 +416,8 @@ Class Checkout_model extends My_model{
         if(empty($promocode)){
             $response["success"] = 0;
             $response["message"] = "No Promocode Found"; 
-            $response["orderAmount"] = $total_price;   
+            $response["orderAmount"] = $total_price;
+            $response["withoutPromo"] = totalSaving();
             return $response;
         }
 
@@ -415,13 +425,15 @@ Class Checkout_model extends My_model{
             $response["success"] = 0;
             $response["message"] = "Promocode is not started yet";  
             $response["orderAmount"] = $total_price;  
+            $response["withoutPromo"] = totalSaving();
             return $response;
         }
 
         if($date > $promocode[0]->end_date){
             $response["success"] = 0;
             $response["message"] = "Promocode is expiered"; 
-            $response["orderAmount"] = $total_price;   
+            $response["orderAmount"] = $total_price;  
+            $response["withoutPromo"] = totalSaving(); 
             return $response;
         }
 
@@ -433,7 +445,8 @@ Class Checkout_model extends My_model{
         if($total_price < $promocode[0]->min_cart){
             $response["success"] = 0;
             $response["message"] = "Minimum ".$promocode[0]->min_cart.' amount is required';
-            $response["orderAmount"] = $total_price;      
+            $response["orderAmount"] = $total_price; 
+            $response["withoutPromo"] = totalSaving();     
             return $response;
         }
 
@@ -441,6 +454,7 @@ Class Checkout_model extends My_model{
             $response["success"] = 0;
             $response["message"] = "Maximum ".$promocode[0]->max_cart.' Cart amount is required'; 
             $response["orderAmount"] = $total_price;   
+            $response["withoutPromo"] = totalSaving();
             return $response;
         }
 
@@ -453,7 +467,8 @@ Class Checkout_model extends My_model{
         if($order_promocode[0]->count >= $promocode[0]->max_use){
             $response["success"] = 0;
             $response["message"] = "Promocode is reached limit";   
-            $response["orderAmount"] = $total_price;   
+            $response["orderAmount"] = $total_price;  
+            $response["withoutPromo"] = totalSaving(); 
             return $response;
         }
 
@@ -463,6 +478,7 @@ Class Checkout_model extends My_model{
         $response["message"] = "Promocode applied";   
         $response["data"] = $calculate;   
         $response["orderAmount"] = floatval($total_price);   
+        $response["withoutPromo"] = totalSaving();
         return $response;
 
     }

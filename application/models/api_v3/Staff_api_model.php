@@ -30,7 +30,7 @@ class staff_api_model extends my_model {
                     $datas['message'] = $this->load->view('emailTemplate/registration_mail', $datas, true);
                     $datas['subject'] = 'Verify user email address';
                     $datas["to"] = $result[0]->email;
-                    $this->load->model('api_v2/api_admin_model');
+                    $this->load->model('api_v3/api_admin_model');
                     $this->api_admin_model->sendMailSMTP($datas);
                     $response = array('status' => '0', 'message' => 'Please verify your registered email',);
                 }
@@ -70,6 +70,8 @@ class staff_api_model extends my_model {
         unset($data);
         $token = md5('user_' . time());
         $data['update']['token'] = $token;
+        $data['update']['dt_updated'] = DATE_TIME;
+
         $data['where'] = ['id' => $user_id];
         $data['table'] = 'staff';
         $updateRecord = $this->updateRecords($data);
@@ -98,18 +100,16 @@ class staff_api_model extends my_model {
         $data['select'] = ['o.id as orderid', 'o.order_no', 'o.dt_added', 'pi.image', 'o.order_status', 'o.total_item', 'o.payable_amount', 'p.package', 'o.user_id', 'o.isSelfPickup', 'o.delivery_charge'];
         $data['where'] = ['o.branch_id' => $branch_id, 'o.status !=' => '9'];
         $data['table'] = 'order AS o';
+        
         $data['join'] = ['order_details  AS d' => ['o.id = d.order_id', 'LEFT', ], 'product_image  AS pi' => ['pi.product_variant_id = d.product_weight_id', 'LEFT', ], 'product_weight  AS p' => ['p.id =  d.product_weight_id', 'LEFT', ], ];
+        
         $data['groupBy'] = ['o.id'];
         $data['order'] = 'o.dt_updated DESC';
         $result = $this->selectFromJoin($data);
+
         // echo $this->db->last_query();die;
-        $this->load->model('api_v2/common_model');
-        $default_product_image = $this->common_model->default_product_image();
         if (count($result) > 0) {
             foreach ($result as $key => $value) {
-            if($value->image == ''){
-                $value->image = $default_product_image;
-            }
                 $package_id = $value->package;
                 $user_id = $value->user_id;
                 $userName = $this->get_username($user_id);
@@ -191,25 +191,25 @@ class staff_api_model extends my_model {
         }
         // print_r($results);die;
         // echo 1;exit;
-        $data['update'] = ['delevery_status' => '0'];
+        $data['update'] = ['delevery_status' => '0','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
         $data['table'] = 'order_details';
         $this->updateRecords($data);
         unset($data);
-        $data['update'] = ['delevery_status' => '1'];
+        $data['update'] = ['delevery_status' => '1','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
         $data['where_in'] = ['product_weight_id' => $product_weight_id];
         $data['table'] = 'order_details';
         $result = $this->updateRecords($data);
         // print_r($result);die;
         unset($data);
-        $data['select'] = ['count(order_id) as value'];
+        $data['select'] = ['count(order_id) as value','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
         $data['table'] = 'order_details';
         $res = $this->selectRecords($data);
         $res = $res[0]->value;
         unset($data);
-        $data['select'] = ['count(delevery_status) as value'];
+        $data['select'] = ['count(delevery_status) as value','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['delevery_status' => '1', 'order_id' => $order_id];
         $data['table'] = 'order_details';
         $res2 = $this->selectRecords($data);
@@ -223,7 +223,7 @@ class staff_api_model extends my_model {
             $this->updateRecords($data);
             unset($data);
             
-            $this->load->model('api_v2/api_admin_model');
+            $this->load->model('api_v3/api_admin_model');
             $order_log_data = array('order_id' => $order_id ,'status'=>'3');
             $this->api_admin_model->order_logs($order_log_data);
 
@@ -236,7 +236,7 @@ class staff_api_model extends my_model {
             $del = $del[0]['delivery_by'];
             $this->send_notificaion($order_id);
             if ($del == '1') {
-                $this->load->model('api_v2/delivery_api_model');
+                $this->load->model('api_v3/delivery_api_model');
                 unset($data);
                 $data['select'] = ['*'];
                 $data['where'] = ['order_id' => $order_id];
@@ -257,7 +257,7 @@ class staff_api_model extends my_model {
             $data['table'] = 'order';
             $this->updateRecords($data);
             
-            $this->load->model('api_v2/api_admin_model');
+            $this->load->model('api_v3/api_admin_model');
             $order_log_data = array('order_id' => $order_id ,'status'=>'2');
             $this->api_admin_model->order_logs($order_log_data);
 
@@ -271,16 +271,39 @@ class staff_api_model extends my_model {
         return $response;
     }
     function delivery_status($postdata) {
-        // error_reporting(E_ALL);
-        // ini_set("display_errors", '1');
         $order_id = $postdata['order_id'];
         $date = strtotime(DATE_TIME);
         $data['update'] = ['order_status' => '8', 'dt_updated' => $date];
         $data['where'] = ['id' => $order_id];
         $data['table'] = 'order';
         $result = $this->updateRecords($data);
+        
+        unset($data);
+        
+        $data['select'] = ['order_no','branch_id'];
+        $data['where'] = ['id' => $order_id];
+        $data['table'] = 'order';
+        $res = $this->selectRecords($data);
+        
+        $branch_id = $res[0]->branch_id;
+        $order_no = $res[0]->order_no;
+        
+        $send_status = 'Delivered';
+        $type = 'order_delivered';
+        $message = $order_no .' is '.$send_status;
+        $branchNotification = array(
+            'order_id'         =>  $order_id,
+            'branch_id'          =>  $branch_id,
+            'notification_type'=> $type,
+            'message'          => $message,
+            'status'           =>'0',
+            'dt_created'       => DATE_TIME,
+            'dt_updated'       => DATE_TIME
+        );
+        $this->load->model('api_v3/api_model','api_v3_model');
+        $this->api_v3_model->pushAdminNotification($branchNotification);    
 
-        $this->load->model('api_v2/api_admin_model');
+        $this->load->model('api_v3/api_admin_model');
         $order_log_data = array('order_id' => $order_id , 'status'=> '8');
         $this->api_admin_model->order_logs($order_log_data);
 
@@ -332,7 +355,7 @@ class staff_api_model extends my_model {
         unset($data);
         if ($send) {
             if ($send[0]->notification_status == '1') {
-                $this->load->model('api_v2/api_model');
+                $this->load->model('api_v3/api_model');
                 $result = $this->api_model->getNotificationKey($branch_id);
                 // print_r($result);die;
                 $dataArray = array('device_id' => $send[0]->token, 'type' => $send[0]->type, 'message' => $message,);
@@ -388,6 +411,7 @@ class staff_api_model extends my_model {
             $data['table'] = 'order';
             $this->updateRecords($data);
             unset($data);
+            $data['update']['dt_updated'] = DATE_TIME;
             $data['update']['otp_verify'] = '1';
             $data['where'] = ['order_id' => $order_id];
             $data['table'] = 'delivery_order';
@@ -428,6 +452,7 @@ class staff_api_model extends my_model {
             $data['table'] = 'order';
             $this->updateRecords($data);
             unset($data);
+            $data['update']['dt_updated'] = $date;            
             $data['update']['status'] = '1';
             $data['where'] = ['order_id' => $order_id];
             $data['table'] = 'selfPickup_otp';
@@ -475,6 +500,23 @@ class staff_api_model extends my_model {
         $result = $this->deleteRecords($data);
         $response['status'] = 1;
         $response['message'] = 'staff is logged out';
+        unset($data);
+
+        $data['table'] = TABLE_BRANCH;
+        $data['where'] = ['id' => $postData['branch_id']];
+        $data['select'] = ['vendor_id']; 
+        $branch = $this->deleteRecords($data);
+
+        $login_logs = [
+            'user_id' => $postData['staff_id'],
+            'vendor_id' =>  $branch[0]->vendor_id,
+            'status' => 'logout',
+            'type' => 'staff',
+            'dt_created' => DATE_TIME
+        ];
+        $this->load->model('api_v3/common_model','v2_common_model');
+        $this->v2_common_model->user_login_logout_logs($login_logs);
+
         return $response;
     }
 }

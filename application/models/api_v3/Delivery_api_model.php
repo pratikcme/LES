@@ -4,8 +4,7 @@ require 'vendor/autoload.php';
 class Delivery_api_model extends My_model
 {
     public function __construct() {
-        // $this->url = 'https://launchestore-1ad02-default-rtdb.firebaseio.com/';
-        // $this->token = 'XylZHjphOd9Ezqor5zVGITOjvI5EOCkO6Hi6kwsT';
+        
     }
 
     public function login($postdata)
@@ -13,7 +12,7 @@ class Delivery_api_model extends My_model
         $email = $postdata['email'];
         $pass = $postdata['password'];
         $pass = md5($pass);
-        $data['select'] = ['s.id','s.name','s.email','s.phone_no','s.image','s.vehicle_name','s.vehicle_type','s.vehicle_number','s.id_proof_number','s.id_proof_image','s.current_status','s.status','v.multiLanguageType'];
+        $data['select'] = ['s.id','s.name','s.email','s.phone_no','s.image','s.vehicle_name','s.vehicle_type','s.vehicle_number','s.id_proof_number','s.id_proof_image','s.current_status','s.status','v.multiLanguageType','s.branch_id'];
         $data['where'] = ['s.email' => $email, 's.password' => $pass];
         $data['table'] = 'delivery_user as s';
         $data['join'] = ['branch  AS v' => ['v.id = s.branch_id', 'LEFT', ]];
@@ -102,8 +101,7 @@ class Delivery_api_model extends My_model
 
 
         $path = '/'.$this->firebaseNode.'/';
-        // print_r($path);die;
-        // echo $this->token;exit;
+       
         $firebase = new \Firebase\FirebaseLib($this->url, $this->token);
         $result = $firebase->get($path);
         // print_r($result);
@@ -111,14 +109,14 @@ class Delivery_api_model extends My_model
         $decodeRe = json_decode($result);
         
         // echo "<pre/>"; print_r($decodeRe); exit();
-         // echo count($decodeRe);die;
-        
+        // echo count($decodeRe);die;
 
         // print_r($res);die;
 
-        if($res[0]->isSelfPickup == '1'){
+        if($res[0]['isSelfPickup'] == '1'){
             return true;
         }
+
         $res = $res[0];
 
         $b_add = explode(',',$res['b_address']);
@@ -133,14 +131,26 @@ class Delivery_api_model extends My_model
             $s_lat = $res['s_lat'];
             $s_long = $res['s_long'];
             $i = 0;
-        $this->load->model('api_v2/api_model');
+            unset($data);
+
+            $message = "New Order In Your Area";
+            $notification_type = 'new_notification';
+            $data['select'] = ['dd.*'];
+            $data['where'] = ['d.branch_id'=>$branch_id];
+            $data['table'] = 'delivery_user_device as dd';
+            $data['join'] = ['delivery_user as d'=>['d.id = dd.delivery_user_id','left']];
+            $result = $this->selectFromJoin($data);
+            foreach($result as $key =>$val){
+                $this->insert_notification($order_id,$val->delivery_user_id,$message,$branch_id);
+            }
+
+
 
         foreach ($decodeRe as $value) {
+          
             if(empty($value)){
                 continue;
             }
-            // print_r($value);exit;
-
             $distance = $this->distanceCalculation($s_lat,$s_long,$value->userLat,$value->userLng);
             // if($value->currentStatus=='1' && $distance <=5000){
             if($value->currentStatus=='1' && $distance <=50000000000000000000000000000){
@@ -150,28 +160,27 @@ class Delivery_api_model extends My_model
                 $data['table'] = 'delivery_user_device as dd';
                 $data['join'] = ['delivery_user as d'=>['d.id = dd.delivery_user_id','left']];
                 $result = $this->selectFromJoin($data);
-
-                // print_r($result);
-                $message = "New Order In Your Area";
-                $notification_type = 'new_notification';
+                // print_r($result);die;
+                
                 if(count($result)>0){                    
                     $dataArray = array(
                         'device_id' => $result[0]->token,
                         'type' => $result[0]->type,
                         'message' => $message,
-                         'delivery_notification'=>true
+                        'delivery_notification'=>true
                     );
-                    // print_r($dataArray);die;
-                // $key = "AAAAiEVdA8M:APA91bHLObncewgHcuCHN1vlK8KON4pyixZ3MpBXG0PRfr6Fh3qMUe7ZF66t7TGv5Bzfz-zr4MGP93SBwELaDFtFDfSnMxmtKcU2lrGth6TVGfrVodrp-WOLgAeRGMf0ESD1pJc0e_En";
 
-                $key = "AAAAIhCnTt0:APA91bEAjiw53KeCGPM4Ns6lfvvBlihTd5FTrWo3_yW9ozu0iM8vs1MBErm1g0hOel4UXdk9zCtsX2l0YCa99XCystgrOsjyQ2lvZWcimH0FcNgNqBsKWWPEiniN9M2z5dBIhwaIizPH";
+               
+
+                    $key = "AAAAIhCnTt0:APA91bEAjiw53KeCGPM4Ns6lfvvBlihTd5FTrWo3_yW9ozu0iM8vs1MBErm1g0hOel4UXdk9zCtsX2l0YCa99XCystgrOsjyQ2lvZWcimH0FcNgNqBsKWWPEiniN9M2z5dBIhwaIizPH";
                 
                 
-                    // $this->utility_apiv2->sendNotification($dataArray, $notification_type,NULL,$key);
+                    $this->load->model('api_v3/api_model');
                     $result = $this->api_model->getNotificationKey($branch_id);
+                    // dd($result);
                     $this->utility_apiv2->sendNotification($dataArray, $notification_type,$result,NULL,$this->key);
-                    // echo 1; exit;
-                    $this->insert_notification($order_id,$value->userId,$message,$branch_id);
+                
+                    
                 }
                 
             }
@@ -213,7 +222,6 @@ class Delivery_api_model extends My_model
 
         $res = array();
 
-        // print_r($get);exit;
         foreach ($get as $value) { 
           
             $order['order_id'] = $value['order_id'];
@@ -292,7 +300,7 @@ class Delivery_api_model extends My_model
         $data['table'] = 'order as o';
         $data['groupBy'] = 'o.id';
         $res = $this->selectFromjoin($data,true);
-        // echo $this->db->last_query();die;
+       
         if(count($res)>0 || !empty($res)){
         
             $res = $res[0];
@@ -302,7 +310,7 @@ class Delivery_api_model extends My_model
         return$res;
     }
     public function accept_reject($postdata){
-        $this->load->model('api_v2/api_model');
+        $this->load->model('api_v3/api_model');
         $user_id = $postdata['user_id'];
         $order_id = $postdata['order_id'];
         $status = $postdata['status'];
@@ -311,12 +319,13 @@ class Delivery_api_model extends My_model
         $data['table'] = 'order';
         $order_data = $this->selectRecords($data);
         $branch_id = $order_data[0]->branch_id;
+        
         unset($data);
-
         $data['update'] = ['pickup_status'=>$status,'dt_updated'=>date('Y-m-d h:i:s')];
         $data['where'] = ['order_id' => $order_id,'delivery_user_id'=>$user_id];
         $data['table'] = 'delivery_notification';
         $updated = $this->updateRecords($data);
+
         if($status==1 && $updated){
             $data['where'] = ['order_id' =>$order_id,'pickup_status' =>'0'];
             $data['table'] = 'delivery_notification';
@@ -328,12 +337,8 @@ class Delivery_api_model extends My_model
             $data['insert'] = ['order_id'=>$order_id,'branch_id'=>$branch_id,'delivery_user_id'=>$user_id,'otp'=>$otp,'dt_created'=>date('Y-m-d h:i:s'),'dt_updated'=>date('Y-m-d h:i:s')];
             $data['table'] = 'delivery_order';
             $this->insertRecord($data);
-            unset($data);
-            // $data['select'] = ['branch_id'];
-            // $data['where'] = ['id'=>$postdata['order_id']];
-            // $data['table'] = 'order';
-            // $order_data = $this->selectRecords($data);
             $this->api_model->send_staff_notification($branch_id,"Delivery boy accepted");
+            
             unset($data);
             $data['update'] = ['order_status'=>'4','dt_updated'=>strtotime(DATE_TIME)];
             $data['where'] = ['id' => $order_id];
@@ -366,20 +371,43 @@ class Delivery_api_model extends My_model
     }
 
     public function order_delivered($postdata){
-
         $order_id = $postdata['order_id'];
         $user_id = $postdata['user_id'];
-
+        if(isset($postdata['verify_otp'])){
+            $otp = $postdata['verify_otp'];    
+        }else{
+             $otp = $postdata['otp'];
+        }
+        $data['select'] = ['branch_id','order_no','user_id'];
+        $data['where'] = ['id'=>$postdata['order_id']];
+        $data['table'] = 'order';
+        $orderdetails = $this->selectRecords($data);
+        unset($data);
+        $data['select'] = ['*'];
+        $data['where'] = ['order_id'=>$order_id,'user_id'=>$orderdetails[0]->user_id,'otp'=>$otp];
+        $data['table'] = 'selfPickup_otp';
+        $verification = $this->selectRecords($data);
+        unset($data);
+        if(!empty($verification)){
+            $id = $verification[0]->id;
+            $data['update']=['status'=>'1','dt_updated'=> date('Y-m-d h:i:s')];
+            $data['where'] = ['id'=>$id];
+            $data['table'] = 'selfPickup_otp';
+            $this->updateRecords($data);
+        }else{
+            return false;
+        }
+        unset($data);
         $data['update']= ['order_status'=> '8','dt_updated'=> strtotime(date('Y-m-d h:i:s'))];
         $data['where'] = ['id'=>$order_id];
         $data['table'] = 'order';
         $res = $this->updateRecords($data);
         unset($data);
-        $this->load->model('api_v2/staff_api_model');
-        $this->load->model('api_v2/api_model');
+        $this->load->model('api_v3/staff_api_model');
+        $this->load->model('api_v3/api_model');
         $this->staff_api_model->send_notificaion($order_id);
         unset($data);
-            $data['select'] = ['branch_id'];
+            $data['select'] = ['branch_id','order_no'];
             $data['where'] = ['id'=>$postdata['order_id']];
             $data['table'] = 'order';
             $order_data = $this->selectRecords($data);
@@ -391,10 +419,47 @@ class Delivery_api_model extends My_model
         $this->updateRecords($data);
         unset($data);
         $data['where'] = ['order_id' =>$order_id];
-            $data['table'] = 'delivery_notification';
-            $this->deleteRecords($data);
+        $data['table'] = 'delivery_notification';
+        $this->deleteRecords($data);
+
+        $iOrderNo = $order_data[0]->order_no;
+        $message = $iOrderNo .' is Delivered' ;
+        $branchNotification = array(
+            'order_id'         =>  $order_id,
+            'branch_id'          =>  $order_data[0]->branch_id,
+            'notification_type'=> 'order_delivered',
+            'message'          => $message,
+            'status'           =>'0',
+            'dt_created'       => DATE_TIME,
+            'dt_updated'       => DATE_TIME
+        );
+        /*order_delieverd logs*/
+        $logs = ['branch_id'=>$order_data[0]->branch_id,'order_id'=>$order_id,'status'=>'Order is delivered','dt_created'=>DATE_TIME];
+        $this->order_logs($logs);
+        /*end order_delieverd logs*/
+        $this->load->model('api_v3/api_model','api_v3_model');
+        $this->api_v3_model->pushAdminNotification($branchNotification);
+
         return true;
 
+    }
+
+      public function order_logs($postData){
+
+            $branch_id = '';
+            if (isset($postData['branch_id'])) {
+                $branch_id = $postData['branch_id'];
+            }
+            $data['table'] = 'order_log';
+            $insertData = array(
+                'order_id' => $postData['order_id'],
+                'branch_id'=> $branch_id,
+                'order_status'=> $postData['status'],
+                'dt_created'=>DATE_TIME
+            );
+            $data['insert'] = $insertData;
+            $this->insertRecord($data);
+            return true; 
     }
 
     public function delivered_order_list($postdata){
@@ -413,10 +478,11 @@ class Delivery_api_model extends My_model
             $arr['date'][$value['delivery_datetime']][] = $this->notification_detail($value);
         }
 
-        // print_r($arr);die;
+      
         return $arr;
 
     }
+
     public function update_profile($postdata){
           if($_FILES['image']['name'] != ''){
                 $data['select'] = ['*'];
@@ -430,10 +496,10 @@ class Delivery_api_model extends My_model
                 @unlink($url);
                
                 $profile_upload_path = $path;
-                // print_r($_FILES);
+               
                 $uploadResponse = upload_single_image_ByName($_FILES,'image',$profile_upload_path);
                 
-                // print_r($uploadResponse);exit;
+               
                 $profile_image = $uploadResponse['data']['file_name'];  
                 $data['update'] = ['image'=>$profile_image];
                 $data['update'] = ['dt_updated'=>date('Y-m-d h:i:s')];
@@ -448,8 +514,25 @@ class Delivery_api_model extends My_model
     public function logout($user_id){
         $data['table'] = 'delivery_user_device';
         $data['where'] = ['delivery_user_id'=>$user_id];
-        return  $this->deleteRecords($data);
-      
+        $this->deleteRecords($data);
+
+        unset($data);
+        $data['table'] = TABLE_BRANCH;
+        $data['where'] = ['id' => $_POST['branch_id']];
+        $data['select'] = ['vendor_id']; 
+        $branch = $this->deleteRecords($data);
+
+        $login_logs = [
+            'user_id' => $user_id,
+            'vendor_id' =>  $branch[0]->vendor_id,
+            'status' => 'logout',
+            'type' => 'delivery',
+            'dt_created' => DATE_TIME
+        ];
+        $this->load->model('api_v3/common_model','v2_common_model');
+        $this->v2_common_model->user_login_logout_logs($login_logs);
+        
+        return true;
     }
 
 }

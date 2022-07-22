@@ -439,9 +439,10 @@ class Users_model extends My_model {
 
     public function delete_user()
     {
+
         $user_id = $this->session->userdata('user_id');
         $data['select'] = ['*'];
-        $data['where'] = ['order_status <'=>'8','user_id'=>$user_id];
+        $data['where'] = ['order_status <'=>'8','user_id'=>$user_id,'branch_id' =>$this->session->userdata('branch_id')];
         $data['table'] = TABLE_ORDER;
         $checkOrder = $this->selectRecords($data);
         if(!empty($checkOrder)){
@@ -476,7 +477,7 @@ class Users_model extends My_model {
         $response["success"] = 1;
         $response["message"] = "User Account is permanant deleted";  
         return $response;
-        return true;
+        // return true;
         // redirect(base_url().'home');
     }
 }
