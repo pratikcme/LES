@@ -1,48 +1,10 @@
-<?php
- include('header.php');
-
-$branch_id = $this->session->userdata['id'];
-$vendor_id = $this->session->userdata['branch_vendor_id'];
-// $b = $this->db->query("SELECT * FROM branch WHERE id = '$branch_id'");
-// $branch = $b->row_array();
-// $vendor_id = $branch['vendor_id'];
-if(isset($_GET['id'])){
-$id = $this->utility->decode($_GET['id']);
-
-    if($id != ''){
-        $query = $this->db->query("SELECT * FROM product_weight WHERE id = '$id'");
-        $result = $query->row_array();
-        $weight_id = $result['weight_id'];
-        // print_r($result);exit;
-        $wei_query = $this->db->query("SELECT * FROM weight WHERE id = '$weight_id'");
-        $wei_result = $wei_query->row_array();
-   
-        $imgquery = $this->db->query("SELECT * FROM product_image WHERE status != '9'  AND branch_id = '$branch_id' AND product_variant_id = '$id' ORDER BY image_order");
-        $product_image = $imgquery->result();
+<?php include('header.php'); ?>
+<style type="text/css">
+.required{
+    color: red;
     }
-}
-$product_id = $this->utility->decode($_GET['product_id']);
+</style>
 
-$weight_query = $this->db->query("SELECT * FROM weight WHERE status != '9' AND vendor_id = '$vendor_id' ");
-$weight_result = $weight_query->result();
-
-$package_query = $this->db->query("SELECT * FROM `package` WHERE  vendor_id = '$vendor_id' ORDER BY id DESC ");
-$package_results = $package_query->result();
-
-
-?>
-<?php 
-    if(isset($_GET['id']) && $_GET['id']!=''){
-        $reqName = "Update";
-        }else{
-           $reqName ="Add";
-    } 
-?>
-   <style type="text/css">
-    .required{
-         color: red;
-         }
-   </style>
 <style>
 .img_preview {
     width: 300px;
@@ -77,7 +39,8 @@ $package_results = $package_query->result();
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--breadcrumbs start -->
                 <ul class="breadcrumb">
-                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/dashboard'; ?>">Home</a> / <a href="<?php echo base_url().'product/product_list' ?>">Product </a> / <a href="<?php echo base_url().'product/product_weight_list?product_id='.$this->utility->encode($product_id)?>"> Product Variant </a>/ <?php echo $reqName; ?> </a></li>
+
+                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/dashboard'; ?>">Home</a> / <a href="<?php echo base_url().'product/product_list' ?>">Product </a> / <a href="<?php echo base_url().'product/product_weight_list?product_id='.$this->utility->encode($product_id)?>"> Product Variant </a>/ <?=(isset($_GET['id']) && $_GET['id']!='') ? 'Update' : 'Add' ?> </a></li>
                 </ul>
                 <!--breadcrumbs end -->
             </div>
@@ -87,24 +50,27 @@ $package_results = $package_query->result();
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        <?php echo $reqName; ?> Product Variant
+                      <?=(isset($_GET['id']) && $_GET['id']!='') ? 'Update Product Variant' : 'Add Product Variant'; ?>
                     </header>
                     <form role="form" method="post" action="<?php echo base_url().'product/product_weight_add_update'; ?>" name="product_weight_form"  enctype="multipart/form-data" id="product_weight_form">
-                        <input type="hidden" id="id" name="id" value="<?php if(isset($_GET['id'])){echo $result['id']; } ?>">
-                        <input type="hidden" id="product_id" name="product_id" value="<?php echo $product_id; ?>">
+                        
+                        <input type="hidden" id="id" name="id" value="<?=( isset($_GET['id']) ) ? $result['id'] : '' ?>">
+                        <input type="hidden" id="product_id" name="product_id" value="<?=(isset($product_id)) ? $product_id : ''; ?>">
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Variant :<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" class="form-control margin_top_input" id="unit" name="unit" placeholder="Variant" value="<?php echo $result['weight_no']; ?>">
+                                        <input type="text" class="form-control margin_top_input" id="unit" name="unit" placeholder="Variant" value="<?=(isset($result)) ? $result['weight_no'] : ''; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="weight_id" class="margin_top_label">Unit :<span class="required" aria-required="true"> * </span></label>
                                         <select class="form-control margin_top_input" id="weight_id" name="weight_id">
                                             <option value="" selected disabled>Select Unit</option>
                                             <?php foreach ($weight_result as $weight){ ?>
-                                                <option value="<?php echo $weight->id; ?>" <?php if($wei_result['id'] == $weight->id){ ?> selected <?php } ?>><?php echo $weight->name; ?></option>
+                                                <option value="<?=$weight->id?>" <?php  if(isset($wei_result)){ echo ($wei_result['id'] == $weight->id) ? 'SELECTED' : ''; } ?> >
+                                                    <?php echo $weight->name; ?>   
+                                                    </option>
                                             <?php } ?>
                                         </select>
                                     </div> 
@@ -114,34 +80,34 @@ $package_results = $package_query->result();
                                         name="package">
                                             <option value="" selected disabled>Select Package</option>
                                             <?php foreach ($package_results as $package){ ?>
-                                                <option value="<?php echo $package->id; ?>" <?php if($result['package'] == $package->id){ ?> selected <?php } ?>><?php echo $package->package; ?></option>
+                                                <option value="<?php echo $package->id; ?>" <?php  if(isset($result)){ echo ($result['package'] == $package->id) ? 'SELECTED' : ''; } ?>><?php echo $package->package; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Quantity :<span class="required" aria-required="true"> * </span></label>
-                                        <input type="number" class="form-control margin_top_input" id="quantity" name="quantity" placeholder="Quantity" value="<?php echo $result['quantity']; ?>" min="1">
+                                        <input type="number" class="form-control margin_top_input" id="quantity" name="quantity" placeholder="Quantity" value="<?=( isset ($result) ) ? $result['quantity'] : ''; ?>" min="1">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                                     <div class="form-group">
                                         <label for="purchase_price" class="margin_top_label">Purchase Price :<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" class="form-control margin_top_input" id="purchase_price" name="purchase_price" placeholder="Purchase Price" value="<?php echo $result['purchase_price']; ?>" onchange="validate(event)">
+                                        <input type="text" class="form-control margin_top_input" id="purchase_price" name="purchase_price" placeholder="Purchase Price" value="<?=( isset($result) ) ? $result['purchase_price'] : ''; ?>" onchange="validate(event)">
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Maximum Retail Price (MRP) :<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" class="form-control margin_top_input" id="price" name="price" placeholder="Price" value="<?php echo $result['price']; ?>" onchange="validate(event)">
+                                        <input type="text" class="form-control margin_top_input" id="price" name="price" placeholder="Price" value="<?=(isset($result)) ? $result['price'] : ''; ?>" onchange="validate(event)">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Discount(%) :</label>
-                                        <input type="number" class="form-control margin_top_input" id="discount_per" name="discount_per" placeholder="Discount" value="<?php echo $result['discount_per']; ?>" min="0" max="100">
+                                        <input type="number" class="form-control margin_top_input" id="discount_per" name="discount_per" placeholder="Discount" value="<?=(isset($result)) ? $result['discount_per'] : ''; ?>" min="0" max="100">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Max Order Quantity :</label>
-                                        <input type="number" class="form-control margin_top_input" id="max_order_qty" name="max_order_qty" placeholder="max order quamtity" value="<?php echo (isset($result['max_order_qty']))?$result['max_order_qty']:''; ?>" min="0" max="100">
+                                        <input type="number" class="form-control margin_top_input" id="max_order_qty" name="max_order_qty" placeholder="max order quamtity" value="<?=(isset($result['max_order_qty'])) ? $result['max_order_qty'] : ''; ?>" min="0" max="100">
                                     </div>
                                     
                                     <div class="form-group variantimg">
@@ -154,17 +120,24 @@ $package_results = $package_query->result();
                                 </div>
                             </div> 
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                             <?php foreach ($product_image as $key => $value) {  ?>
+                             <?php 
+                             if(isset($product_image) && !empty($product_image)){
+
+                             foreach ($product_image as $key => $value) {  ?>
                                 <div class="img" id="image_<?php echo $value->id; ?>"  style="float: left; margin-right: 10px; margin-bottom: 20px;">
                                     <a href="javascript:;" onclick="single_delete(<?php echo $value->id; ?>)" style="float: right;" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                     <img src="<?php echo base_url().'public/images/'.$this->folder.'product_image/'.$value->image; ?>" style="height: 180px; width: 200px;">
                                 </div>  
-                                <?php  } ?>
+
+                                <?php  
+                                        } 
+                                    }
+                                 ?>
                             </div>
 
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <a href="<?php echo 'product_weight_list?product_id='.$_GET['product_id']; ?>" style="float: right; margin-right: 10px;" class="btn btn-danger">Cancel</a>   
-                                <input type="submit" class="btn btn-info pull-right margin_top_label" value="<?php echo $reqName.' Product Variant'; ?>" name="submit_frm">
+                                <a href="<?php echo 'product_weight_list?product_id='.$this->utility->encode($product_id); ?>" style="float: right; margin-right: 10px;" class="btn btn-danger">Cancel</a>   
+                                <input type="submit" class="btn btn-info pull-right margin_top_label" value="<?=(isset($_GET['id']) && $_GET['id'] !='') ? 'Update Product Variant' : 'Add Product Variant' ?>" name="submit_frm">
                             </div>
                         </div>
                     </form>

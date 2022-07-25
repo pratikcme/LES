@@ -127,7 +127,19 @@ class Product extends Vendor_Controller
 
     public function product_weight_profile()
     {
-        $this->load->view('product_weight_profile');
+        $data['weight_result'] = $this->this_model->getWeightResult();
+        $data['package_results'] = $this->this_model->getPackageResults();
+        $data['product_id'] = $this->utility->decode($_GET['product_id']);
+        if(isset($_GET['id'])){
+            $id = $this->utility->decode($_GET['id']);
+            $data['product_id'] = $this->utility->decode($_GET['product_id']);
+            $data['result'] = $this->this_model->getProductWeightById($id);
+            $weight_id = $data['result']['weight_id'];
+            $data['wei_result'] = $this->this_model->getWeightResult($weight_id);
+            $data['product_image'] = $this->this_model->GetProductImage($id);
+        }
+        // dd($data['weight_result']);
+        $this->load->view('product_weight_profile',$data);
     }
     public function imagedrag(){
         $imageIdsArray = $_POST['imageIds'];

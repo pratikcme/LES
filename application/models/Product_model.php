@@ -1091,5 +1091,53 @@ public  $order_column_weight_list = array("p.product_name","pw.quantity","pw.dis
         $data['where']['product_id'] = $product_id; 
         return $this->selectRecords($data);   
     }
+
+
+    /* PRODUCT VARIENT Query START */
+
+    public function getWeightResult($weight_id = ''){
+
+        $vendor_id = $this->session->userdata['branch_vendor_id'];
+        $data['table'] = TABLE_WEIGHT;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9'; 
+        $data['where']['vendor_id'] = $vendor_id;
+        if($weight_id != ''){
+            $data['where']['id'] = $weight_id;
+            $return = $this->selectRecords($data,true); 
+            return $return[0];
+        }
+        return $this->selectRecords($data); 
+    }
+
+    public function getPackageResults(){
+        $vendor_id = $this->session->userdata['branch_vendor_id'];
+        $data['table'] = TABLE_PACKAGE;
+        $data['select'] = ['*'];
+        $data['where']['vendor_id'] = $vendor_id;
+        $data['order'] = 'id desc';
+        return $this->selectRecords($data); 
+    }
+
+    public function getProductWeightById($id){
+        $vendor_id = $this->session->userdata['branch_vendor_id'];
+        $data['table'] = TABLE_PRODUCT_WEIGHT;
+        $data['select'] = ['*'];
+        $data['where']['id'] = $id;
+        $return =  $this->selectRecords($data,true);
+        return $return[0];
+    }
+
+    public function GetProductImage($id){
+        $branch_id = $this->session->userdata['id'];
+
+        $data['table'] = TABLE_PRODUCT_IMAGE;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9';
+        $data['where']['branch_id'] = $branch_id;
+        $data['where']['product_variant_id'] = $id;
+        $data['order'] = 'image_order';
+        return $this->selectRecords($data);
+    }
 }
 ?>
