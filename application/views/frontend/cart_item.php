@@ -159,8 +159,13 @@
               <tr id="<?=$value->product_id.'_'.$value->product_weight_id?>">
                 <td>
                   <div class="cart-item">
+                     <div class="wishlist-icon" data-product_id="<?=$this->utility->safe_b64encode($value->product_id)?>" data-product_weight_id="<?=$this->utility->safe_b64encode($value->product_weight_id)?>"> <i class="far fa-heart  <?=(in_array($value->product_weight_id,$wish_pid)) ? 'fas .fa-heart' : '' ?>"></i>
+                        </div>
                     <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
-                      <div class="cart-img-wrap"> <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>"> </div>
+                      <div class="cart-img-wrap"> 
+                       
+                        <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>"> 
+                      </div>
                     </a>
                     <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
                       <div class="cart-detail-wrap">

@@ -570,7 +570,7 @@ Class Product_model extends My_model{
 	// 	$data['select'] = ['pro']
 	// 	$data['where'] = ['user_id'=>$user_id];
 	// }
-	public function findProductAddQuantity($p_id,$p_v_id){
+	public function findProductAddQuantity($p_id='',$p_v_id){
 		$qnt = 1;
 		if($this->session->userdata('user_id') == ''){
 			
@@ -1032,13 +1032,16 @@ Class Product_model extends My_model{
 
 	public function checkProductExist($postdata){
 		$product_id = $this->utility->safe_b64decode($postdata['product_id']);
+		$product_weight_id = $this->utility->safe_b64decode($postdata['product_weight_id']);
 		$data['table'] = 'wishlist';
 		$data['select'] = ['*'];
-		$data['where'] = ['product_id'=>$product_id,
+		$data['where'] = [
+			'product_weight_id'=>$product_weight_id,
 			'user_id'=>$this->session->userdata('user_id'),
 			'branch_id'=>$this->branch_id,
 		];
 		return $this->selectRecords($data);
+	
 	}
 
 	public function insertProductToWishlist($insertArray){
@@ -1061,7 +1064,7 @@ Class Product_model extends My_model{
 		$r = $this->selectRecords($data);
 		$wish_pid = [];
 		foreach ($r as $key => $v) {
-			array_push($wish_pid, $v->product_id);
+			array_push($wish_pid, $v->product_weight_id);
 		}
 		return $wish_pid;
 	}
@@ -1102,7 +1105,6 @@ Class Product_model extends My_model{
 				'pw.status !='=>'9',
 				'p.category_id'=>$cat_id,
 				'p.branch_id'=>$this->branch_id,
-				'pw.id !=' => $this->utility->safe_b64decode($varient_id),
 			];		
 			$data['where_not_in']=	['pw.id' => $varient_ids];
 			$data['order'] = 'pw.quantity DESC';

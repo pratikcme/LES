@@ -339,14 +339,14 @@ $(document).on('click','.remove_item',function(){
 		let heart = $(this).children();
     	// heart.toggleClass("fas .fa-heart");
 		var product_id = $(this).data('product_id');
-		// var product_weight_id = $(this).data('product_weight_id');
+		var product_weight_id = $(this).data('product_weight_id');
 		var currntPath = window.location.href;
 		var base_url = $('#url').val();
 		$.ajax({
 		    url : base_url + 'products/setWishlist',
 			data:{
 				product_id:product_id,
-				// product_weight_id:product_weight_id
+				product_weight_id:product_weight_id
 			},
 			method: 'post',
 			dataType:"json",
@@ -363,7 +363,7 @@ $(document).on('click','.remove_item',function(){
 	})
 
 	$(document).on('click','.removeWishlistItem',function(){
-		var product_id = $(this).data('product_id');
+		var wishlist_product_id = $(this).data('id');
 		var base_url = $('#url').val();
 		var that = $(this);
 		swal("Do you want to remove this item form wishlist?", {
@@ -375,11 +375,12 @@ $(document).on('click','.remove_item',function(){
 				$.ajax({
 				    url : base_url + '/users_account/users/removeWishlistItem',
 					data:{
-						product_id:product_id,
+						wishlist_product_id:wishlist_product_id,
 					},
 					method: 'post',
 					success:function(output){
-						that.parent().remove();
+						window.location.reload();
+						// that.parent().remove();
 					}
 				})		
 			}
@@ -439,7 +440,7 @@ $(document).on('click','.dec',function(){
 							data : {product_id:product_id,weight_id:weight_id,product_weight_id:product_weight_id},
 							success:function(output){
 								if(output.result == 'true'){
-									swal('Cart item successfully deleted');
+									swal('Cart Item Deleted');
 									that.parent().removeClass('transparent-wrap');
 									var currntPath  = window.location.href;
 									var segments = currntPath.split( '/' );
@@ -459,8 +460,9 @@ $(document).on('click','.dec',function(){
 									}
 
 									$('#itemCount').html(output.count);
-
-
+									if(output.count == 0){
+                      $('#nav_cart_dropdown').addClass('d-none');
+                    }
 									$('#updated_list').html(output.updated_list);
 									$('#nav_subtotal').html(output.final_total);
 								}

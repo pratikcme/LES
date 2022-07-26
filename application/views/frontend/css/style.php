@@ -4482,6 +4482,7 @@ table.rt-responsive-table td, table.rt-responsive-table th{
     display: block;
     display: flex;
     align-items: center;
+    position: relative;
 }
 /*.cart-table tbody tr td .cart-item:last-child{
  border-bottom: 0px;   
@@ -6546,7 +6547,7 @@ width: 374px;
     bottom:0;
     color:#63CDF5;
     font-weight:bold;
-}   
+}
 
 
 @media only screen and (max-width:768px)  {
@@ -6554,6 +6555,16 @@ width: 374px;
         min-width: 320px;
         right: -100px;
     }
+      .wishlist-btn{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.wihslist-wrapper .delete-item {
+    top: 50%;
+    right: 10px;
+    transform: translate(0px, 20%) !important;
+}
 }
 /*.btn__badge {
     background: #FF5D5D;
@@ -6578,6 +6589,12 @@ width: 374px;
     height: 8px;
     border-radius: 50%;
 }
+  
+.wihslist-wrapper .delete-item {
+    top: 50%;
+    right: 10px;
+    transform: translate(0px, 20%) !important;
+}
 
 /*==============================*/
      /*----- OFFERS -----*/
@@ -6600,12 +6617,144 @@ width: 374px;
 .offers .offer-img{
     height: 200px;
 }
-.offers .offer-img img  {
+.offers .offer-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 
+
+/**/
+
+.cart-table  .wishlist-icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.cart-table  .wishlist-icon .fa-heart{
+    color: #f55d2c;
+}
+
+.wihslist-wrapper .wishlist-btn {
+    display: flex;
+    align-items: center;
+
+}
+
+.wihslist-wrapper .wishlist-btn .delete-item{
+    transform: translate(0) !important;
+    top: 0%;
+    width: 40px !important;
+    height: 40px !important;
+    margin-left: 10px;
+
+}
+.wishlist-btn .feature-bottom-wrap {
+    margin-top: 0px !important;
+    height: 40px !important;
+} 
+
+.wishlist-btn .feature-bottom-wrap .btn {
+    margin-top: 0px !important;
+    height: 40px !important;
+} 
+
+@media only screen and (max-width: 1200px){
+       
+    .wihslist-wrapper .delete-item {
+    top: 50%;
+    right: 10px;
+    transform: translate(0px, 0%) !important;
+    }
+}
+
+
+
+@media only screen and (max-width: 992px){
+
+  
+ 
+.wihslist-wrapper ul li .your-order-detail-wrap h6 {
+    color: var(--secondary-color);
+    font-size: 18px !important;
+    font-family: 'OpenSans-SemiBold';
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    }
+
+    .wihslist-wrapper ul li{
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    .wihslist-wrapper .wishlist-btn{
+        margin-top: 10px;
+        width: 100%;
+        flex-direction: row !important;
+    }
+}
+
+
+@media only screen and (max-width:576px){
+
+   .wihslist-wrapper .btn{
+    width: 100px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: 'OpenSans-Bold';
+    transition: 0.5s;
+    font-size: 18px;
+    /* margin-top: -36px; */
+    /* margin-left: 20px !important; */
+    margin-left: 20px !;
+    /* transform: translateY(-50%); */
+    transform: translateY(0 ,-50%) !important;
+    margin-top: -3px;
+    
+    width: 100% !important;
+
+}
+
+.wihslist-wrapper .delete-item {
+    /*top: 50%;*/
+    /*right: 10px;*/
+    /*transform: translate(0px, -20%) !important;*/
+    /*margin-top: 10px;*/
+}
+.wihslist-wrapper ul li .your-order-img-wrap img {
+    /* width: 100%; */
+    max-width: 40px !important;
+    width: 100%;
+}
+.wihslist-wrapper ul li .your-order-detail-wrap h6 {
+    color: var(--secondary-color);
+    font-size: 15px !important;
+
+    font-family: 'OpenSans-SemiBold';
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    margin-left: -10px !important;
+}
+.wihslist-wrapper ul li .your-order-detail-wrap p {
+    color: #999;
+    font-size: 16px !important;
+    font-family: 'OpenSans-SemiBold';
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    text-align: left;
+    margin-left: -10px !important;
+
+}
+
+
+}
 
 </style>

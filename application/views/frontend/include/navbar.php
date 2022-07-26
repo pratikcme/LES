@@ -195,13 +195,14 @@
                       </a>   
                      </li>
 
-                      <li  style="display: none">
+                     <?php if($this->session->userdata('user_id') != ''){ ?>
+                      <li>
                       <a href="<?=base_url().'users_account/users/account?name=wishlist'?>">
                         <span><i class="fas fa-heart"></i></span>
                         My Wishlist
                       </a>   
                      </li>
-
+                     <?php } ?>
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=my_address'?>">
                         <span><i class="fas fa-address-book"></i></span>
@@ -275,14 +276,14 @@
                         My Orders
                       </a>   
                      </li>
-
-                      <li style="display: none">
+                     <?php if($this->session->userdata('user_id') != ''){ ?>
+                      <li>
                       <a href="<?=base_url().'users_account/users/account?name=wishlist'?>">
                         <span><i class="fas fa-heart"></i></span>
                         My Wishlist
                       </a>   
                      </li>
-
+                   <?php } ?>
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=my_address'?>">
                         <span><i class="fas fa-address-book"></i></span>

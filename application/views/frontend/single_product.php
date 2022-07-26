@@ -49,7 +49,7 @@
                   <p></p>
                 </div>
                 <?php } ?>
-                  <div class="wishlist-icon" style="display: none" data-product_id ="<?=$product_id?>"> <i class="far fa-heart <?=(in_array($this->utility->safe_b64decode($product_id), $wish_pid)) ? "fas .fa-heart" : "" ?>"></i> </div>
+                  <div class="wishlist-icon" style="display: ''" data-product_id ="<?=$product_id?>" data-product_weight_id ="<?=$product_weight_id?>" > <i class="far fa-heart <?=(in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fas .fa-heart" : "" ?>"></i> </div>
           </div>
           <div class="slider slider-for">
             <?php

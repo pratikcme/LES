@@ -22,7 +22,7 @@ class Users extends User_Controller {
 			$uri_segment = $_GET['name'];
 		}
 		$data['page'] = 'frontend/account/account';
-		$data['js'] = array('change.js','address.js');
+		$data['js'] = array('change.js','address.js','add_to_cart.js');
 		$data['init'] = array('CHANGE.init()','ADDRESS.init()');
 		$data['userDetails'] = $this->this_model->selectUserDetail();
 		$data['get_address'] = $this->this_model->getUserAddress();
@@ -79,6 +79,21 @@ class Users extends User_Controller {
 			}
 		}
 		$data['checkUserLoginType']	= $this->this_model->checkCurrentUserLoginType();
+		$item_weight_id = [];
+		if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != '' ){
+				$this->load->model('frontend/product_model');
+				$res = $this->product_model->UsersCartData();
+				foreach ($res as $key => $value) {
+					array_push($item_weight_id, $value->product_weight_id);
+				}
+			}else{
+				if(isset($_SESSION["My_cart"])){
+				 $item_weight_id = array_column($_SESSION["My_cart"], "product_weight_id");
+				}
+			}
+
+		$data['item_weight_id'] = $item_weight_id;
+		$data['wishlist']	= $this->this_model->getWishlist();
 		$this->loadView(USER_LAYOUT,$data);
 	}
 

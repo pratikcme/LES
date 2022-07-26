@@ -301,15 +301,78 @@ class Users_model extends My_model {
          return $r;
 	}
 
-    public function getWishlist(){
-        $data['table'] = TABLE_WISHLIST;
-        $data['select'] = ['*'];
-        $data['where'] = [
-            'user_id'=>$this->session->userdata('user_id'),
-            'branch_id'=>$this->session->userdata('branch_id'),
+    // public function getWishlist(){
+    //     $data['table'] = TABLE_WISHLIST;
+    //     $data['select'] = ['*'];
+    //     $data['where'] = [
+    //         'user_id'=>$this->session->userdata('user_id'),
+    //         'branch_id'=>$this->session->userdata('branch_id'),
+    //     ];
+    //     return $this->selectRecords($data);
+    // }
+
+     public function getWishlist(){
+        $data['table'] = 'wishlist as wl';
+        $data['join'] = [
+            TABLE_PRODUCT_WEIGHT.' as pw'=>['pw.id=wl.product_weight_id','LEFT'],
+            TABLE_PRODUCT.' as p'=>['p.id=pw.product_id','LEFT'],
+            TABLE_WEIGHT.' as w'=>['w.id = pw.weight_id','LEFT'],
+            'package as pkg'=>['pkg.id = pw.package','LEFT'],
         ];
+        $data['select'] = ['wl.*','pw.id as product_varient_id','pw.price','pw.price','pw.discount_price','pw.weight_no','w.name as weight_name','pw.discount_per','pkg.package as package_name','pw.max_order_qty','p.name','pw.product_id','p.branch_id','pw.quantity as available_quantity','pw.price as actual_price','w.id as weight_id'];
+        $data['where']['wl.user_id'] = $this->session->userdata('user_id');
+        if(isset($_SESSION['branch_id']) && $_SESSION['branch_id'] != ''){
+            $data['where']['wl.branch_id'] = $this->session->userdata('branch_id');
+        }else{
+            $data['where']['wl.branch_id'] = '0';
+        }
+        $return =  $this->selectFromJoin($data);
+        unset($data);
+        foreach ($return as $k => $v) {
+            $branch_id = $return[0]->branch_id;
+            $product_variant_id = $v->product_varient_id;
+            $data['select'] = ['quantity'];
+            $data['where']['product_weight_id'] = $product_variant_id;
+            $data['where']['status !='] = 9;
+            $data['where']['branch_id'] = $branch_id;
+            if (isset($postData['user_id']) && $postData['user_id'] != '') {
+                $data['where']['user_id'] = $postData['user_id'];
+            } else {
+                if (isset($postData['device_id'])) {
+                    $data['where']['device_id'] = $postData['device_id'];
+                    $data['where']['user_id'] = 0;
+                }
+            }
+            $data['table'] = 'my_cart';
+            $result_cart = $this->selectRecords($data);
+            if (count($result_cart) > 0) {
+                $my_cart_quantity = $result_cart[0]->quantity;
+            } else {
+                $my_cart_quantity = '0';
+            }
+
+            $v->my_cart_quantity = $my_cart_quantity;
+            $image = $this->getVarient_image($v->product_varient_id);
+            $v->image = base_url() . 'public/images/'.$this->folder.'product_image/'.$image[0]->image;
+            $v->image = str_replace(' ', '%20', $v->image);
+        }  
+
+        foreach ($return as $key => $value) {
+            $this->load->model('frontend/product_model');
+            $addQuantity = $this->product_model->findProductAddQuantity('',$value->product_weight_id);
+            $value->addQuantity = $addQuantity;
+        }
+        // dd($return);
+        return $return;
+       }
+
+    public function getVarient_image($varient_id){
+        $data['table'] = TABLE_PRODUCT_IMAGE;
+        $data['where'] = ['product_variant_id'=>$varient_id];
+        $data['select'] = ['*'];
         return $this->selectRecords($data);
-    }
+
+     }
 
     public function defaultProduct($id){
 
@@ -325,10 +388,10 @@ class Users_model extends My_model {
     }
 
     public function removeItemFromWishlist($postData){
-        $id = $this->utility->safe_b64decode($postData['product_id']);
+        $id = $this->utility->safe_b64decode($postData['wishlist_product_id']);
         $data['table'] = TABLE_WISHLIST;
         $data['where'] = [
-            'product_id'=>$id,
+            'id'=>$id,
             'branch_id'=>$this->session->userdata('branch_id'),
             'user_id'=>$this->session->userdata('user_id'),
         ];

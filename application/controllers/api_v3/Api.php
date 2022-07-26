@@ -741,6 +741,13 @@ class Api extends Apiuser_Controller {
 
                     foreach ($product_weight_result as $pro_weight) {
                         
+                        $is_favourite = "0";
+                        if(isset($_POST['user_id']) && $_POST['user_id'] != '' ){
+                            $wishlistCheck = ['user_id'=>$_POST['user_id'],'product_weight_id'=>$pro_weight->id,'branch_id'=>$_POST['branch_id'],'product_id'=>$product_id];
+                            // dd($wishlistCheck);
+                            $is_favourite = $this->this_model->checkProductExistInWishlist($wishlistCheck);
+                        }
+
                         $whatsappShareUrl = base_url().'products/productDetails/'.$this->utility->safe_b64encode($pro_weight->product_id).'/'.$this->utility->safe_b64encode($pro_weight->id);
 
                         $package_id = $pro_weight->package;
@@ -785,7 +792,8 @@ class Api extends Apiuser_Controller {
                         if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
                                $pro_weight->discount_price = $pro_weight->without_gst_price; 
                         }  
-                        $data = array('id' => $pro_weight->id, 'product_id' => $pro_weight->product_id, 'weight_id' => $pro_weight->weight_id, 'unit' => ($pro_weight->weight_no) . ' ' . $weight_name, 'actual_price' => $pro_weight->price, 'avail_quantity' => $pro_weight->quantity, 'package_name' => $package_name, 'discount_per' => $pro_weight->discount_per, 'discount_price' => $pro_weight->discount_price, 'my_cart_quantity' => $my_cart_quantity, 'variant_images' => $img,'whatsappShareUrl'=>$whatsappShareUrl);
+                        $data = array('id' => $pro_weight->id, 'product_id' => $pro_weight->product_id, 'weight_id' => $pro_weight->weight_id, 'unit' => ($pro_weight->weight_no) . ' ' . $weight_name, 'actual_price' => $pro_weight->price, 'avail_quantity' => $pro_weight->quantity, 'package_name' => $package_name, 'discount_per' => $pro_weight->discount_per, 'discount_price' => $pro_weight->discount_price, 'my_cart_quantity' => $my_cart_quantity, 'variant_images' => $img,'whatsappShareUrl'=>$whatsappShareUrl,'is_favourite'=>$is_favourite);
+
                         array_push($new_array_product_weight, $data);
                     }
                     $product_weight_array = $new_array_product_weight;
@@ -2122,6 +2130,44 @@ class Api extends Apiuser_Controller {
         }
        $this->response($response);
     }
+
+    public function active_branch_list(){
+            $post = $this->input->post();
+            $req = array('vendor_id');
+            $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->getActiveBranchList($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);   
+    }
+
+    public function wishlist(){
+            $post = $this->input->post();
+            $req = array('user_id');
+            $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->getWishlist($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);   
+    }
+
+    public function wishlist_item_add_remove(){
+         $post = $this->input->post();
+            $req = array('user_id','product_varient_id','is_favourite');
+            $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->AddRemoveFromWishlist($post);
+            // $response = array('responsedata' => $response);
+        }
+       $this->response($response);  
+    }
+
+
 
 
 
