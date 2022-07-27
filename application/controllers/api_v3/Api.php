@@ -743,7 +743,7 @@ class Api extends Apiuser_Controller {
                         
                         $is_favourite = "0";
                         if(isset($_POST['user_id']) && $_POST['user_id'] != '' ){
-                            $wishlistCheck = ['user_id'=>$_POST['user_id'],'product_weight_id'=>$pro_weight->id,'branch_id'=>$_POST['branch_id'],'product_id'=>$product_id];
+                            $wishlistCheck = ['user_id'=>$_POST['user_id'],'product_weight_id'=>$pro_weight->id,'branch_id'=>$_POST['branch_id']];
                             // dd($wishlistCheck);
                             $is_favourite = $this->this_model->checkProductExistInWishlist($wishlistCheck);
                         }

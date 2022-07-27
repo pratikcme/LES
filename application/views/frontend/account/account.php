@@ -300,7 +300,7 @@
 
                <div class="tab-pane fade <?=($action_name == 'wishlist') ? 'active show' : '' ?>" id="v-pills-whislist" role="tabpanel" aria-labelledby="v-pills-whislist-tab" style="position: relative";>
                   <?php if(empty($wishlist)){?>
-                     <?php if($this->session->userdata('branch_id') === ''){ ?>
+                     <?php if($this->session->userdata('branch_id') == ''){ ?>
                         <div class='no-orderss' style="position: absolute;top: 70%;left: 23%;"><h6 style="font-size: 25px;">Please Select Branch To See Your Wishlist!</h6></div>
                      <?php }else{ ?>
                         <div class='no-orderss' style="position: absolute;top: 70%;left: 32%;"><h6 style="font-size: 25px;">No Item Available !</h6></div>
@@ -342,7 +342,9 @@
                               <div class="cart addcartbutton d-none" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"> <i class="fas fa-shopping-basket"></i>
                               </div>
                               <div class="new_add_to_cart <?=$d_none?>" >
+                                 <?php if(isset($_SESSION['branch_id']) && $_SESSION['branch_id'] == $value->branch_id ){?>
                                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->product_id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->product_weight_id)?>">Add To Cart</button>
+                                  <?php } ?>
                               </div>
                               <div class="quantity-wrap <?=$d_show?>">
                                <button class="dec cart-qty-minus" data-product_weight_id="<?=$value->product_weight_id?>"><span class="minus"><i class="fa fa-minus"></i></span></button>

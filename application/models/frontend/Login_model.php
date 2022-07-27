@@ -211,13 +211,8 @@ class Login_model extends My_model{
 	{
 		if(isset($_SESSION['My_cart']) && !empty($_SESSION['My_cart'])){
 			
-			// echo "<pre>";
-			// print_r($_SESSION['My_cart']);die;
-
-
-			$res =  $this->MycartData($data); // user_id cart data;
-			// echo '<pre>';
-			// print_r($res);die;
+			// $res =  $this->MycartData(); // user_id cart data;
+		
 			foreach ($_SESSION['My_cart'] as $key => $value) {
 					// print_r($_SESSION['My_cart']);die;
 					

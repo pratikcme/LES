@@ -76,20 +76,25 @@ class Login extends User_Controller {
 
 					 		$this->session->set_userdata($login_data);
 					 		if($this->session->userdata('user_id') != ''){
-					 			// $MycartData = $this->this_model->MycartData();
 					 			$this->this_model->manageCartItem();	
+					 			
+					 			// $MycartData = $this->this_model->MycartData();
+					 			// if(!empty($MycartData)){
+					 				
+					 			// }else{
 
-					 			if(isset($_SESSION['My_cart'][0]['branch_id'])){
-					 				$branch_id = $_SESSION['My_cart'][0]['branch_id'];
-					 				$this->load->model('frontend/vendor_model','vendor');
-					 				$branch = $this->vendor->getVendorName($branch_id);
-					 				$branch_name = $branch[0]->name;
-					 				$vendor = array(
-					 					'branch_id'=>$branch_id,
-					 					'vendor_name'=>$branch_name,
-					 				);
-					 				$this->session->set_userdata($vendor);
-					 			}
+						 			if(isset($_SESSION['My_cart'][0]['branch_id'])){
+						 				$branch_id = $_SESSION['My_cart'][0]['branch_id'];
+						 				$this->load->model('frontend/vendor_model','vendor');
+						 				$branch = $this->vendor->getVendorName($branch_id);
+						 				$branch_name = $branch[0]->name;
+						 				$vendor = array(
+						 					'branch_id'=>$branch_id,
+						 					'vendor_name'=>$branch_name,
+						 				);
+						 				$this->session->set_userdata($vendor);
+						 			}
+					 			// }
 					 			unset($_SESSION['My_cart']);
 					 		}
 					 		if($this->session->userdata('redirect_page') != ''){

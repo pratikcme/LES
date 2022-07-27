@@ -3922,7 +3922,6 @@ class Api_model extends My_model {
         $data['select'] = ['*'];
         $data['where'] = [
             'product_weight_id'=>$postdata['product_weight_id'],
-            'product_id'=>$postdata['product_id'],
             'user_id'=>$postdata['user_id'],
             'branch_id'=>$postdata['branch_id'],
         ];
@@ -4010,11 +4009,13 @@ class Api_model extends My_model {
             if($postData['is_favourite'] == '1'){
                 $array_wish =  array(
                     'product_weight_id' => $product_variant[0]->pw_id, 
-                    'user_id' => $postData['user_id'], 
-                    'vendor_id' => $postData['vendor_id'], 
-                    'branch_id' => $product_variant[0]->branch_id, 
-                    'dt_created'=>DATE_TIME,
-                    'dt_updated'=>DATE_TIME 
+                    'user_id'    => $postData['user_id'], 
+                    'vendor_id'  => $postData['vendor_id'], 
+                    'branch_id'  => $product_variant[0]->branch_id, 
+                    'created_by' => $postData['user_id'],
+                    'updated_by' => $postData['user_id'],
+                    'dt_created' => DATE_TIME,
+                    'dt_updated' => DATE_TIME 
                 );
                 $this->insertProductToWishlist($array_wish);
                 $response['success'] = '1';

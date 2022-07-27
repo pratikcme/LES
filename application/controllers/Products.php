@@ -555,6 +555,8 @@ class Products extends User_Controller {
 			'user_id' => $this->session->userdata('user_id'), 
 			'vendor_id' => $this->session->userdata('vendor_id'), 
 			'branch_id' => $this->session->userdata('branch_id'), 
+			'created_by' => $this->session->userdata('user_id'),
+			'updated_by' => $this->session->userdata('user_id'),
 			'dt_created'=>DATE_TIME,
 			'dt_updated'=>DATE_TIME 
 		);

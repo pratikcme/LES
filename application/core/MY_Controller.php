@@ -213,6 +213,7 @@ class Vendor_Controller extends MY_Controller
              
                 
                 $my_cart = $this->product_model->getMyCart();
+                // lq();
                 $default_product_image = $this->common_model->default_product_image();
 
                 $this->load->model('api_v3/common_model','co_model');
