@@ -378,7 +378,7 @@ label.error.mobile_verfication{
                         <?php if($isCOD == '1'){ ?>
                         <div class="option-1">
                            <label class="radio-container mb-0">Cash On Delivery
-                           <input class="pay-chk" type="radio"  name="radio" value="0">
+                           <input class="pay-chk" type="radio" <?=($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : ''?>  name="radio" value="0">
                            <span class="checkmark"></span>
                            </label>
                         </div>
