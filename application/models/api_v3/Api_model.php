@@ -1540,7 +1540,12 @@ class Api_model extends My_model {
             $total_gst = 0;
             if (count($my_cart_result) > 0) {
                 foreach ($my_cart_result as $row) {
-
+                    $is_favourite = "0";
+                        if(isset($_POST['user_id']) && $_POST['user_id'] != '' ){
+                            $wishlistCheck = ['user_id'=>$_POST['user_id'],'product_weight_id'=>$row['product_weight_id'],'branch_id'=>$row['branch_id']];
+                            $is_favourite = $this->checkProductExistInWishlist($wishlistCheck);
+                        }
+                    $row['is_favourite'] = $is_favourite;
                     // if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
                     //     $row['discount_price'] = $row['without_gst_price'];
                     // }
