@@ -308,13 +308,16 @@ label.error.mobile_verfication{
                      <?php } ?>
                   </div>
                </div>
-               
-               <button class="billing-btns"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "Pickup " : "Delivery " ?> Time & Date</button>
+               <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>  
+               <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "Pickup " : "Delivery " ?> Time & Date</button>
+               <?php } ?>
                <div class="panel" >
                   <div class="date-time-common">
+                  <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                      <div class="date-wrap">
                         <div id="datepicker" class="datepicker"></div>
                      </div>
+                  <?php } ?>
                      <div class="time-wrap">
                       <?php
                       if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
@@ -328,6 +331,7 @@ label.error.mobile_verfication{
 
                          	</div>
                       <?php }else{ ?>
+                        <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                           <div class="time-box">
                              <div class="time-title">
                                 <?php date_default_timezone_set('Asia/Kolkata'); ?>
@@ -338,7 +342,7 @@ label.error.mobile_verfication{
                                    <?php foreach ($time_slot as $key => $value): ?>
                                    <div class="col-lg-6 col-sm-6">
                                       <label class="radio-container"><?=$value->start_time?> - <?=$value->end_time?>
-                                      <input type="radio" <?=($value->id == '12') ? 'checked' : '' ?> class="time_slot_checked" name="time_slot" value="<?=$value->id?>" >
+                                      <input type="radio" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?> class="time_slot_checked" name="time_slot" value="<?=$value->id?>" >
                                       <span class="checkmark"></span>
                                       </label>
                                    </div>
@@ -346,15 +350,15 @@ label.error.mobile_verfication{
                                 </div>
                              </div>
                           </div>
-                      <?php } ?>
+                      <?php } } ?>
                      </div>
                   </div>
            <!--        <div class="pay-btn">
                      <button class="btn" id="btnCheckSlot">Process To payment</button>
                   </div> -->
                </div>
-               <button class="billing-btns ">Payment Option</button>
-               <div class="panel" >
+               <button class="billing-btns active">Payment Option</button>
+               <div class="panel" style="max-height: 191px;">
                   <div class="payment-wrapper">
                      <div class="payment-options">
                         <!--<div class="option-">
@@ -366,7 +370,7 @@ label.error.mobile_verfication{
                         <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?>
                         <div class="option-1">
                            <label class="radio-container mb-0">Credit/Debit Card
-                           <input id="credit" class="pay-chk" type="radio" name="radio" value="<?=$payment_option?>" >
+                           <input id="credit" class="pay-chk" type="radio" name="radio" <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?> value="<?=$payment_option?>" >
                            <span class="checkmark"></span>
                            </label>
                         </div>

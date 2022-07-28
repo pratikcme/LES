@@ -83,9 +83,12 @@ Class Order_model extends My_model{
         if(isset($_REQUEST['time_slot_id'])){
             $time_slot_id = $_POST['time_slot_id'];
         }else{
-            $time_slot_id = '12';
+            $this->load->model('frontend/checkout_model');
+            $time_slot = $this->checkout_model->getTimeSlot();
+            $time_slot_id = $time_slot[0]->id;
         }
-        if(isset($_REQUEST['delivery_date'])){
+        $delivery_date = '';
+        if(isset($_REQUEST['delivery_date']) && $_REQUEST['delivery_date'] != ''){
             $delivery_date = $_POST['delivery_date'];
         }
         if(isset($_REQUEST['user_gst_number'])){
@@ -108,9 +111,15 @@ Class Order_model extends My_model{
         if(!empty($fromStripe['paymentMethod']) ){
             $paymentMethod = $fromStripe['paymentMethod'];
         }
+
         if(!empty($fromStripe['time_slot_id']) ){
             $time_slot_id = $fromStripe['time_slot_id'];
+        }else{
+            $this->load->model('frontend/checkout_model');
+            $time_slot = $this->checkout_model->getTimeSlot();
+            $time_slot_id = $time_slot[0]->id;
         }
+
         if(!empty($fromStripe['user_gst_number']) ){
             $user_gst_number = $fromStripe['user_gst_number'];
         }

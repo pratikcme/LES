@@ -556,13 +556,14 @@ function getAjaxPriceList($TableData){
         
         foreach($fetch_data as $row){
         $otp_status = $CI->this_model->checkSelfPickUpOtpIsVerified($row->id);
-        $otp_status = $otp_status[0]->status;
-        // dd($otp_status);
-        $otp_status_not_selfpickup = $CI->this_model->checkOtpVerified($row->id);
-        // print_r($otp_status);die; 
+        $otp_status='0';
+        if(!empty($otp_status)){
+          $otp_status = $otp_status[0]->status;
+        }
+        $otp_status_not_selfpickup = $CI->this_model->checkOtpVerified($row->id); 
          $attr1 = '';$attr2 = '';$attr3 = '';$attr4 = '';$attr5 = '';
          $attr8 = '';$attr9 = ''; $otpAttr =""; $otpValue ="VerifyOtp";
-         if($otp_status == '1' || $otp_status_not_selfpickup[0]->otp_verify == '1'){
+         if($otp_status == '1' || (!empty($otp_status_not_selfpickup) && $otp_status_not_selfpickup[0]->otp_verify == '1')){
             $otpAttr = 'disabled'; 
             $otpValue = 'Verified';
          }

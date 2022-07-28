@@ -495,6 +495,7 @@ class Api extends Apiuser_Controller {
                 $vendorData['selfPickUp'] =  ($vendor_result[0]->selfPickUp == null) ? "" : $vendor_result[0]->selfPickUp;
                 $vendorData['isOnlinePayment'] = (string)$vendor_result[0]->isOnlinePayment;
                 $vendorData['isCOD'] = (string)$vendor_result[0]->isCOD;
+                $vendorData['isShowDeliveryDateTime'] = (string)$vendor_result[0]->delivery_time_date; // 1 => visible; 0=> invisible 
                 $vendorData['store_time'] =  ($vendor_result[0]->selfPickupOpenClosingTiming == null) ? "" : $vendor_result[0]->selfPickupOpenClosingTiming;
                 $publish_key ='';
                 $paymentMethod ='';
