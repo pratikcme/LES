@@ -138,6 +138,8 @@ class Products extends User_Controller {
 									'vendor_id'=>$productDetails[0]->vendor_id
 									);
 				$this->session->set_userdata($branch);
+			dd($_SESSION);
+
 			}else{
 				echo "<div style='display: flex;width: 100%;height: 100vh;align-items: center;justify-content: center;flex-flow: column;background: linear-gradient(144deg,#ffe8e8 , #ffadad);'>
 					<h2 style='font-size: 40px;text-transform: capitalize;'>Sorry this product is Discontinue</h2>
