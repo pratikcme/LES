@@ -324,9 +324,9 @@ class Users_model extends My_model {
         if(isset($_SESSION['branch_id']) && $_SESSION['branch_id'] != ''){
             $data['where']['wl.branch_id'] = $this->session->userdata('branch_id');
         }
-        else{
-            $data['where']['wl.branch_id'] = '0';
-        }
+        // else{
+        //     $data['where']['wl.branch_id'] = '0';
+        // }
         $return =  $this->selectFromJoin($data);
         unset($data);
         foreach ($return as $k => $v) {
