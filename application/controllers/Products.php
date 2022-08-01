@@ -138,7 +138,9 @@ class Products extends User_Controller {
 									'vendor_id'=>$productDetails[0]->vendor_id
 									);
 				$this->session->set_userdata($branch);
-			dd($_SERVER);
+			if(strpos($_SERVER['HTTP_REFERER'], 'account') !== false){
+				redirect(base_url().$_SERVER['REQUEST_URI']);
+			}
 
 			}else{
 				echo "<div style='display: flex;width: 100%;height: 100vh;align-items: center;justify-content: center;flex-flow: column;background: linear-gradient(144deg,#ffe8e8 , #ffadad);'>
