@@ -139,6 +139,7 @@ class Products extends User_Controller {
 									);
 				$this->session->set_userdata($branch);
 			if(strpos($_SERVER['HTTP_REFERER'], 'account') !== false){
+				// echo base_url().$_SERVER['REQUEST_URI'];die;
 				redirect(base_url().$_SERVER['REQUEST_URI']);
 			}
 

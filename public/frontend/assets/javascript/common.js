@@ -265,6 +265,10 @@ $(document).on('click','.remove_item',function(){
 
 	$(document).on('change','.vendor_nav',function(){
 	// event.preventDefault();
+	var full_url = window.location.href;
+	if (full_url.indexOf('productDetails') != -1) {
+	   full_url = ($('#url').val())+'home'; 
+	}
 	var url = $('#url').val();
 	var vendor_id = $(this).val();
 	var session_vendor_id = $('#session_vendor_id').val(); 
@@ -273,7 +277,6 @@ $(document).on('click','.remove_item',function(){
 	if(session_vendor_id != ''){
 	if(vendor_id != session_vendor_id){
 			if(sess_my_count > 0 ){
-					 // var X = confirm('You can only order from one shop.. Are you sure you want to clear cart');
 
 			 swal({
 					  title: "Are you sure?",
@@ -289,7 +292,7 @@ $(document).on('click','.remove_item',function(){
 						            data:{vendor_id:vendor_id},
 						            method: 'post',
 						            success:function(output){
-						                window.location.href = output;
+						              window.location.href = full_url;
 						            }
 			        })			
 					  } else {
@@ -302,7 +305,8 @@ $(document).on('click','.remove_item',function(){
 						data:{vendor_id:vendor_id},
 						method: 'post',
 						success:function(output){
-						 window.location.href = output;
+							// window.location.reload();
+						 window.location.href = full_url;
 						}
 			        })			
 			}
@@ -313,7 +317,7 @@ $(document).on('click','.remove_item',function(){
 		            data:{vendor_id:vendor_id},
 		            method: 'post',
 		            success:function(output){
-		                window.location.href = output;
+		                window.location.href = full_url;
 		            }
 		        })	
 		}
@@ -323,7 +327,7 @@ $(document).on('click','.remove_item',function(){
 		            data:{vendor_id:vendor_id},
 		            method: 'post',
 		            success:function(output){
-		                window.location.href = output;
+		                window.location.href = full_url;
 		            }
 		        })		
 	}

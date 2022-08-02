@@ -83,7 +83,8 @@ class Login extends User_Controller {
 					 				
 					 			// }else{
 
-						 			if(isset($_SESSION['My_cart'][0]['branch_id'])){
+						 			if(isset($_SESSION['My_cart'][0]['branch_id']) && $_SESSION['branch_id'] == ''){
+						 				echo '1';die;
 						 				$branch_id = $_SESSION['My_cart'][0]['branch_id'];
 						 				$this->load->model('frontend/vendor_model','vendor');
 						 				$branch = $this->vendor->getVendorName($branch_id);
@@ -95,6 +96,7 @@ class Login extends User_Controller {
 						 				$this->session->set_userdata($vendor);
 						 			}
 					 			// }
+						 		// dd($_SESSION);
 					 			unset($_SESSION['My_cart']);
 					 		}
 					 		if($this->session->userdata('redirect_page') != ''){

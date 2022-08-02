@@ -293,7 +293,7 @@ class Login_model extends My_model{
 			$result =  $this->selectRecords($data);
 			// echo "<pre>";
 			// print_r($result);die;
-
+			$branch_id = $result[0]->branch_id;
 			if($result){
 				foreach ($result as $key => $value) {
 					$check = $this->checkMyCart($value->product_weight_id);
@@ -316,6 +316,14 @@ class Login_model extends My_model{
 						);
 						// $_SESSION["My_cart"][$key] = $set_session_cart;
 					}
+					$this->load->model('frontend/vendor_model','vendor');
+					$branch = $this->vendor->getVendorName($branch_id);
+					$branch_name = $branch[0]->name;
+					$vendor = array(
+						'branch_id'=>$branch_id,
+						'vendor_name'=>$branch_name,
+					);
+					$this->session->set_userdata($vendor);
 
 			}
 
@@ -389,7 +397,8 @@ class Login_model extends My_model{
 		}
 
 		unset($data);
-		// if user register with social login
+		// End user register with social login
+		
 		$data['table'] = TABLE_USER;
 		$data['select'] = ['*'];
 		$data['where'] = [
