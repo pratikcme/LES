@@ -406,7 +406,13 @@ class Apiuser_Controller extends MY_Controller{
     function __construct()
     {
         parent::__construct();
-      
+          if( strpos($_SERVER['REQUEST_URI'], 'api_v2')  === TRUE )  
+        {
+            $this->load->model('api_v2/api_admin_model','this_model');   
+        }else{
+            $this->load->model('api_v3/api_admin_model','this_model');   
+
+        }
         // $this->load->model('api_admin_model','this_model');   
         // ini_set('max_execution_time', '0'); // for infinite time of execution 
         // ini_set("memory_limit", "-1");
