@@ -63,7 +63,7 @@ Class Common_model extends My_model{
 		$data['select'] = ['*'];
 		$data['where'] = ['id'=>$vendor_id];
 		$get = $this->selectRecords($data);
-
+		lq();
 		if(!empty($get)){
 			$return = [
 				'logo'=>base_url().'public/client_logo/'.$get[0]->webLogo,
