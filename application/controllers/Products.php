@@ -124,6 +124,7 @@ class Products extends User_Controller {
 	}
 
 	public function productDetails($id=''){
+		dd($_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);die;
 		$this->load->model('api_v3/common_model','co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		if(!isset($_SESSION['branch_id'])){
@@ -139,7 +140,8 @@ class Products extends User_Controller {
 									);
 				$this->session->set_userdata($branch);
 			if(strpos($_SERVER['HTTP_REFERER'], 'account') !== false){
-				redirect($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+				// echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];die;
+				redirect($_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 			}
 
 			}else{
