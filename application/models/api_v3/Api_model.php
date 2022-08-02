@@ -3972,6 +3972,7 @@ class Api_model extends My_model {
             $data['where']['wl.branch_id'] = $postData['branch_id'];
         }
         $return =  $this->selectFromJoin($data);
+        lq();
         unset($data);
         $branch_id = $return[0]->branch_id;
         foreach ($return as $k => $v) {
