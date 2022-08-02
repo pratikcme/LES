@@ -2145,6 +2145,7 @@ class Api extends Apiuser_Controller {
     }
 
     public function wishlist(){
+        echo $this->folder;die;
             $post = $this->input->post();
             $req = array('user_id');
             $response = $this->checkRequiredField($post, $req);
