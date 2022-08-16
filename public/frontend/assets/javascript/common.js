@@ -454,7 +454,7 @@ $(document).on('click','.dec',function(){
 									}
 
 									// segments[4] when live
-									if(segments[5] == 'productDetails' && !that.hasClass('related_cat')){
+									if(segments[4] == 'productDetails' && !that.hasClass('related_cat')){
 										that.parent().addClass('d-none');
 										that.parent().next('div.order-btn').find('a:first').removeClass('d-none');
 									}else{					
