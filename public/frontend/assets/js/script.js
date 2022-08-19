@@ -17,9 +17,9 @@ $(document).ready(function() {
       readURL(this);
   });
   
-  $(".upload-button").on('click', function() {
-     $(".file-upload").click();
-  });
+  // $(".upload-button").on('click', function() {
+  //    $(".file-upload").click();
+  // });
 
 })
 // ========== NOTIFICATION ========
