@@ -323,10 +323,7 @@ elseif($_SERVER['SERVER_NAME']=='www.iwingzy.in' || $_SERVER['SERVER_NAME']=='iw
 
 
 
-}
-
-
-elseif($_SERVER['SERVER_NAME']=='yash.launchestore.com'){
+}elseif($_SERVER['SERVER_NAME']=='yash.launchestore.com'){
      $primaryColor= "#113A8E";
     $secondaryColor= "#113A8E";
     $lightPrimary= "#ff774b";
