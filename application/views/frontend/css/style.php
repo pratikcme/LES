@@ -325,6 +325,29 @@ elseif($_SERVER['SERVER_NAME']=='www.iwingzy.in' || $_SERVER['SERVER_NAME']=='iw
 
 }
 
+
+elseif($_SERVER['SERVER_NAME']=='yash.launchestore.com'){
+     $primaryColor= "#113A8E";
+    $secondaryColor= "#113A8E";
+    $lightPrimary= "#ff774b";
+    $lightColor= "#fff";
+    $borderColor= "#113A8E";
+    $borderColor2= "#113A8E";
+    $darkHeaderBackground = "#fff";
+    $navbarColor = "#113A8E";
+    $cartBtnBackground = "#113A8E";
+    $cartBtnColor = "#fff";
+    $loginBtnBackground = "#113A8E";
+    $loginBtnColor = "#fff";
+    $loginBtnborder = "#113A8E";
+    $logoWidth = "75px";
+    $abtImgWidth = "350px";
+    $hvrClr = "#fff";
+    $cartNum = "#000";
+
+
+}
+
 elseif($_SERVER['SERVER_NAME']=='www.dpdecor.launchestore.com'){
     $primaryColor= "#16aa9c";
     $secondaryColor= "#000";
