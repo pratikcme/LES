@@ -145,7 +145,7 @@ $vendor_id = $this->session->userdata['id'];
                     
                 <section class="panel">
                     <div class="symbol terques2"><!-- <i class="fa fa-first-order"></i> -->
-                        <img src="<?=base_url()?>public/dollar.png" alt="images">
+                        <img src="<?=base_url()?>public/images/dollar.png" alt="images">
                     </div>
                     <a href="#">
                         <div class="value"><h1 class="dashboard_color"><?php echo  number_format($total_pending_payment['pending_payment'],2, '. ', '') ?></h1><p>pending payment</p></div>
@@ -160,7 +160,7 @@ $vendor_id = $this->session->userdata['id'];
                     
                 <section class="panel">
                     <div class="symbol terques3"><!-- <i class="fa fa-first-order"></i> -->
-                        <img src="<?=base_url()?>public/box.png" alt="images">
+                        <img src="<?=base_url()?>public/images/box.png" alt="images">
                     </div>
                     <a href="#">
                         <div class="value"><h1 class="dashboard_color"><?php echo $total_return_order['total'];?></h1><p>Cancel orders</p></div>
@@ -173,7 +173,7 @@ $vendor_id = $this->session->userdata['id'];
                     
                 <section class="panel">
                     <div class="symbol terques4"><!-- <i class="fa fa-first-order"></i> -->
-                        <img src="<?=base_url()?>public/dollar.png" alt="images">
+                        <img src="<?=base_url()?>public/images/dollar.png" alt="images">
                     </div>
                     <a href="#">
                         <div class="value"><h1 class="dashboard_color"><?php if(isset($total_return_payment['return_payment']) && $total_return_payment['return_payment'] > 0){ echo number_format((float)$total_return_payment['return_payment'],2,'.','') ;}else{ echo 0;}?></h1><p>return payment</p></div>
