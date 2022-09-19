@@ -731,7 +731,7 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
         
     }
 
-        public  $order_column_order_summary = array("o.order_no","o.dt_added","u.fname","u.lname","o.payable_amount",'o.dt_added','ua.address');  
+    public  $order_column_order_summary = array("o.order_no","o.dt_added","u.fname","u.lname","o.payable_amount",'o.dt_added','ua.address');  
     function make_query_order_summary($postData){
         $branch_id = $this->session->userdata('id');
         if(isset($postData['from_date']) && $postData['from_date'] != ''){
@@ -775,7 +775,7 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
             $this->db->or_like("u.lname", $postData["search"]["value"]);
             $this->db->or_like("o.order_no", $postData["search"]["value"]);
             $this->db->or_like("o.dt_added", $postData["search"]["value"]);
-            $this->db->or_like("ua.user_address", $postData["search"]["value"]);
+            $this->db->or_like("ua.address", $postData["search"]["value"]);
             $this->db->or_like("o.payable_amount", $postData["search"]["value"]);
         $this->db->group_end(); 
         }  
