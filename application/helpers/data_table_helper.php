@@ -520,14 +520,18 @@ function getAjaxPriceList($TableData){
                 $sub_array[] = $row->subcategory_name; 
                 $sub_array[] = $row->brand_name;  
                 if($row->status != '9'){
-                  $sub_array[] = '<a style="margin: 10px;"  href='.base_url().'product/product_weight_list?product_id='.$CI->utility->encode($row->id).' class="btn btn-success btn-xs">Variants
-                  </a>
-                    <a href='.base_url().'product/product_image_list?product_id='.$CI->utility->encode($row->id).' class="btn btn-info btn-xs">Images
+                  $sub_array[] = '<a href='.base_url().'product/product_weight_profile?product_id='.$CI->utility->encode($row->id).' class="btn btn-info btn-xs">Add
+                    </a><a style="margin: 10px;"  href='.base_url().'product/product_weight_list?product_id='.$CI->utility->encode($row->id).' class="btn btn-success btn-xs">Variants
+                    </a>
+                    
+                    <a href="javascript:;" onclick="single_delete_check('.$row->id.')" class="btn btn-danger btn-xs">Disable</a>
+                    
+                    <a href='.base_url().'product/product_image_list?product_id='.$CI->utility->encode($row->id).' class="btn btn-info btn-xs"><i class="fa fa-image"></i>
                     </a>
                     <a href='.base_url().'product/product_profile?id='.$CI->utility->encode($row->id).' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>
                     </a>
-                    <a href="javascript:;" onclick="single_delete_check('.$row->id.')" class="btn btn-danger btn-xs">Disable</a>
-                    <a href="javascript:;" onclick="single_hard_delete('.$row->id.')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>';
+                    <a href="javascript:;" onclick="single_hard_delete('.$row->id.')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                    ';
 
                 }else{
                   $sub_array[] = '<a href='.base_url().'product/make_product_active?product_id='.$CI->utility->encode($row->id).' class="btn btn-primary btn-xs">Active

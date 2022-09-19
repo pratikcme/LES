@@ -5637,6 +5637,9 @@ right: 15px;
  font-size: 25px;
     color: var(--secondary-color);
     font-family: "OpenSans-SemiBold";
+    text-align: center;
+    margin-bottom: 30px;
+    text-decoration: underline;
 }
 
 

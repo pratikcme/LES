@@ -88,7 +88,7 @@
         </li>
     </ul>
 </li>
-<li>
+<!-- <li>
     <a class="<?php if ($this->uri->segment(1) == 'delivery') { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
         <span>Delivery</span>
@@ -101,6 +101,12 @@
             </a>
         </li>
     </ul>
+</li> -->
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'delivery' && $this->uri->segment(2) == 'delivery_list') { ?> active <?php } ?>" href="<?php echo base_url() . 'delivery/delivery_list/'; ?>">
+        <i class="fa fa-users"></i>
+        <span>Delivery List</span>
+    </a>
 </li>
 <?php if($this->countCategory == 1){ ?>
 <li >

@@ -434,6 +434,9 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
          $this->db->join('user as u','u.id = o.user_id','LEFT');
          $this->db->join('customer as c','c.id=o.customer_id','LEFT');
          $this->db->where($where);
+         if(isset($postData['order_status']) && $postData['order_status'] != ''){
+            $this->db->where('o.order_status',$postData['order_status']);
+         }
         $this->db->order_by('dt_updated DESC');
          if(isset($postData["search"]["value"]) && $postData["search"]["value"] != ''){ 
         $this->db->group_start();

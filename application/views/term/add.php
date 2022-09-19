@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--breadcrumbs start -->
                 <ul class="breadcrumb">
-                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/index'; ?>">Home</a> / <a href="<?php echo base_url().'admins/term'; ?>">List</a> / Add</a></li>
+                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/index'; ?>">Home</a> / <?=(!empty($getTerm) ? "term & condition" : "term & condition")?></a></li>
                 </ul>
                 <!--breadcrumbs end -->
             </div>
@@ -19,6 +19,9 @@
                     <strong>Success!</strong> <?php echo $this->session->flashdata('msg');; ?>
                 </div>
             <?php } ?>
+            <?php if ($this->session->flashdata('myMessage') && $this->session->flashdata('myMessage') != '') { 
+                echo $this->session->flashdata('myMessage');
+            } ?>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -31,20 +34,20 @@
                           <div class="form-group">
                             <input type="hidden" name="id" value="">
                           <label for="title">Title</label>
-                            <input type="text" id="title" name="title" class="form-control" value="">
+                            <input type="text" id="title" name="title" class="form-control" value="<?=(!empty($getTerm) ? $getTerm[0]->title : ""  )?>">
                           <label for="title" class="error"><?php echo @form_error('title'); ?></label>
                        </div>
                        <div class="form-group">
                         <label for ="sub_title">Sub Title</label>
-                        <textarea class="form-control ckeditor" name="sub_title" id="sub_title"></textarea>
+                        <textarea class="form-control ckeditor" name="sub_title" id="sub_title"><?=(!empty($getTerm) ? $getTerm[0]->sub_title : ""  )?></textarea>
                         <label for="sub_title" class="error"></label>
                        </div>
                          
                        </div>
                          <div class="col-md-12 col-sm-12 col-xs-12">
                                 <!-- <span class="panel-body padding-zero" > -->
-                                <a href="<?=base_url().'admins/term'?>" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>
-                                 <input type="submit" class="btn btn-info pull-right margin_top_label" id="btnSubmit" name="submit" value="Add">
+                                <a href="<?=base_url().'admin/dashboard'?>" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>
+                                 <input type="submit" class="btn btn-info pull-right margin_top_label" id="btnSubmit" name="submit" value="<?=(!empty($getTerm) ? "Update" : "Add"  )?>">
                                 <!-- </span> -->
                             </div>
                      </div>

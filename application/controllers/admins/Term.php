@@ -11,9 +11,21 @@ class Term extends Admin_Controller{
 	public function index()
 	{
 		$data['js'] = array('term.js');
-		$data['init'] = array('TERM.table()');
-		$data['getPrivacy'] = $this->this_model->getRecord();
-		$this->load->view('term/list',$data);
+		$data['init'] = array('TERM.table()','TERM.add()');
+		$data['getTerm'] = $this->this_model->getRecord();
+		if($this->input->post()){
+				$validation = $this->serRules();
+				if($validation){
+					$result = $this->this_model->addUpdateRecord($this->input->post());
+					 if($result){
+					 	$this->utility->setFlashMessage($result[0],$result[1]);
+						redirect(base_url().'admins/term');
+					 }
+				}
+
+			}
+		// $this->load->view('term/list',$data);
+		$this->load->view('term/add',$data);
 	}
 
 

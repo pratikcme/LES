@@ -11,9 +11,20 @@ class Return_refund extends Admin_Controller{
 	public function index()
 	{	
 		$data['js'] = array('return.js');
-		$data['init'] = array('RETURN.table()');
-		$data['getPrivacy'] = $this->this_model->getRecord();
-		$this->load->view('return/list',$data);
+		$data['init'] = array('RETURN.table()','RETURN.add()');
+		$data['getReturn'] = $this->this_model->getRecord();
+		if($this->input->post()){
+				$validation = $this->serRules();
+				if($validation){
+					$result = $this->this_model->addUpdateRecord($this->input->post());
+					 if($result){
+					 	$this->utility->setFlashMessage($result[0],$result[1]);
+						redirect(base_url().'admins/return_refund');
+					 }
+				}
+			}
+		// $this->load->view('return/list',$data);
+		$this->load->view('return/add',$data);
 	}
 
 
@@ -30,7 +41,6 @@ class Return_refund extends Admin_Controller{
 						redirect(base_url().'admins/return_refund');
 					 }
 				}
-
 			}
 		$this->load->view('return/add',$data);
 	}

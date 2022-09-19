@@ -1,7 +1,4 @@
-<?php
-// error_reporting(E_ALL);
-include('header.php');
- ?>
+<?php include('header.php'); ?>
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
@@ -10,7 +7,7 @@ include('header.php');
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--breadcrumbs start -->
                 <ul class="breadcrumb">
-                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/index'; ?>">Home</a>Payment method</a></li>
+                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/index'; ?>">Home</a> / Payment method</a></li>
                 </ul>
                 <!--breadcrumbs end -->
             </div>

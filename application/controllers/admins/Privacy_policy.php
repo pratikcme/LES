@@ -13,9 +13,22 @@ class Privacy_policy extends Admin_Controller{
 		// echo "<pre>";
 		// print_r($_SESSION);die;
 		$data['js'] = array('privacy.js');
-		$data['init'] = array('PRIVACY.table()');
+		$data['init'] = array('PRIVACY.table()','PRIVACY.add()');
+
+		if($this->input->post()){
+				$validation = $this->serRules();
+				if($validation){
+					$result = $this->this_model->addUpdateRecord($this->input->post());
+					 if($result){
+					 	$this->utility->setFlashMessage($result[0],$result[1]);
+						redirect(base_url().'admins/privacy_policy');
+					 }
+				}
+			}
 		$data['getPrivacy'] = $this->this_model->getPrivacyRecord();
-		$this->load->view('privacy/list',$data);
+		// dd($data['getPrivacy']);
+		// $this->load->view('privacy/list',$data);
+		$this->load->view('privacy/add',$data);
 	}
 
 
@@ -32,7 +45,6 @@ class Privacy_policy extends Admin_Controller{
 						redirect(base_url().'admins/privacy_policy');
 					 }
 				}
-
 			}
 		$this->load->view('privacy/add',$data);
 	}
