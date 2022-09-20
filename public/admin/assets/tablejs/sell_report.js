@@ -12,7 +12,6 @@ $('#most_sell_report').DataTable( {
         // var from_date = $('#from_date').val() ;
         // var to_date = $('#to_date').val();
         // var order_status = $('#order_status').val();   
-        alert(); 
         $.ajax({
             type : 'POST',
             url  : url+"order/generate_most_sell_report",
