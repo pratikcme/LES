@@ -254,12 +254,56 @@ class Order extends Vendor_Controller
    }
 
    public function sell_report(){
+         $data['table_js'] = ['sell_report.js'];
+         $data['most_sell'] = $this->this_model->getMostSell();
+         $this->load->view('most_sell_report',$data);
+       
+       }
 
-     $data['most_sell'] = $this->this_model->getMostSell();
-     $this->load->view('most_sell_report',$data);
-   
-   }
+       public function generate_most_sell_report(){
+        $most_sell = $this->this_model->getMostSell();
+            // dd($most_sell);
 
+        // if($this->input->post()){
+            $re = $this->this_model->getMostSell();
+            $this->load->library('excel');
+            $objPHPExcel = new PHPExcel();
+            $objPHPExcel->setActiveSheetIndex(0);
+                // set Header
+            $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Product Name');
+            $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variant');
+            $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Sell Quantity');       
+                // set Row
+            $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->getFont()->setBold(true);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->getFont()->setSize(12);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->getFill()->getStartColor()->setARGB('#333');
+
+            $rowCount = 2;
+            foreach ($re as $list) {
+              $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->product_name);
+              $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->weight_no.''.$list->weight_name);
+              $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->TotalQuantity);
+              $rowCount++;
+          }
+
+          $filename = "sell_report". date("Y-m-d-H-i-s").".xls";
+          header('Content-Type: application/vnd.ms-excel'); 
+          header('Content-Disposition: attachment;filename="'.$filename.'"');
+          header('Cache-Control: max-age=0'); 
+          ob_start();
+          $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');  
+          $objWriter->save('php://output'); 
+          $xlsData = ob_get_contents();
+          ob_end_clean();
+          $response =  array(
+            'status' => TRUE,
+            'file' => "data:application/vnd.ms-excel;base64,".base64_encode($xlsData),
+            'filename'=>$filename
+        );
+          die(json_encode($response));
+      // }
+  }
 }
 
 ?>

@@ -103,11 +103,8 @@
                   </div> -->
                     <div class="panel-body">
                         <div class="adv-table">
-                             <!-- <button type="button" class="btn btn-warning" id="download">Download Report</button> -->
+                             <button type="button" class="btn btn-danger" id="download">Download Report</button>
                             <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                               <!--  <div class="panel-body padding-zero" style="float: right">
-                                    <a href="#" id="delete_user" class="btn btn-danger">Delete Order</a>
-                                </div> -->
                                 <table class="display table table-bordered table-striped dataTable" id="most_sell_report" aria-describedby="example_info">
                                     <thead>
                                     <tr role="row">

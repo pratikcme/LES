@@ -185,14 +185,7 @@ if (!empty($start)) {
 <script type="text/javascript">
     $(document).ready(function () {
       // stock_control/view_stock_control_list
-       $('#most_sell_report').DataTable( {
-        order: false,
-        "oLanguage": {
-            "sEmptyTable": "Sell report Available",
-            "sZeroRecords": "Sell report Available",
-        }
-      });
-
+  
       $('#example_stock').DataTable( {
         order: ['5', 'asc'],
         "oLanguage": {
