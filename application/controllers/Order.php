@@ -253,6 +253,13 @@ class Order extends Vendor_Controller
         }
    }
 
+   public function sell_report(){
+     // $data['table_js'] = array('order_summary.js');
+     // $data['start'] = array('ORDER_SUMMARY.table()');
+     $data['most_sell'] = $this->this_model->getMostSell();
+     // dd($data['most_sell']);
+     $this->load->view('most_sell_report',$data);
+   }
 
 }
 

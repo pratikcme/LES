@@ -37,7 +37,7 @@ $user_result = $user_query->result();*/
                                 <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                     <div class="panel-body padding-zero" style="float: right">
                                         <a href="<?php echo base_url() . 'delivery/delivery_user'; ?>"
-                                           class="btn btn-primary">Add Delivery Boy</a>
+                                           class="btn btn-primary">Add Delivery Person</a>
 
                                     </div>
                                     <table class="display table table-bordered table-striped dataTable" id="example_delivery"

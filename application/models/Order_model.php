@@ -821,6 +821,35 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
          return $this->db->count_all_results(); 
          echo $this->db->last_query();
     }
+
+    public function getMostSell(){
+        $branch_id = $this->session->userdata['id'];
+        $result_count1 = $this->db->query('SELECT  product_id,product_weight_id, SUM(quantity) AS TotalQuantity
+            FROM order_details WHERE branch_id ="'.$branch_id.'" GROUP BY product_weight_id ORDER BY TotalQuantity DESC LIMIT 10');     
+        $return = $result_count1->result();
+        
+        foreach ($return as $key => $value) {
+
+            $data['table'] = TABLE_PRODUCT . " as p";
+            $data['select'] = ['p.*','pw.price','pw.weight_no','pw.discount_per','pw.discount_price','pw.weight_id','without_gst_price','w.name as weight_name'];
+            $data['join'] = [
+                    TABLE_PRODUCT_WEIGHT .' as pw'=>['p.id = pw.product_id','LEFT'],
+                    TABLE_WEIGHT .' as w'=>['w.id = pw.weight_id','LEFT']
+                ];
+            $data['where'] = [
+                            'p.status !='=>'9',
+                            'pw.status!='=>'9',
+                            'pw.id'=>$value->product_weight_id,
+                            'p.branch_id'=>$branch_id
+                        ];      
+            $data['groupBy'] =['p.id'];
+            $record = $this->selectFromJoin($data);
+            $value->product_name = $record[0]->name;
+            $value->weight_name = $record[0]->weight_name;
+            $value->weight_no = $record[0]->weight_no;
+        }
+        return  $return;
+    }
 }
 
 ?>
