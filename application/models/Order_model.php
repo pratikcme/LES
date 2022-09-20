@@ -825,7 +825,7 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
     public function getMostSell(){
         $branch_id = $this->session->userdata['id'];
         $result_count1 = $this->db->query('SELECT  product_id,product_weight_id, SUM(quantity) AS TotalQuantity
-            FROM order_details WHERE branch_id ="'.$branch_id.'" GROUP BY product_weight_id ORDER BY TotalQuantity DESC LIMIT 10');     
+            FROM order_details WHERE branch_id ="'.$branch_id.'" GROUP BY product_weight_id ORDER BY TotalQuantity DESC');     
         $return = $result_count1->result();
         
         foreach ($return as $key => $value) {
