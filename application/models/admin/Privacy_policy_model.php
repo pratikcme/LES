@@ -29,7 +29,7 @@ Class Privacy_policy_model extends My_model{
         if (empty($result)) {
         
             $data['insert']['vendor_id'] = $this->vendor_id;
-            $data['insert']['title'] = $postData['main_title'];
+            $data['insert']['title'] = $postData['title'];
             $data['insert']['sub_title'] = $postData['sub_title'];
             $data['insert']['created_at'] = DATE_TIME;
             $data['insert']['updated_at'] = DATE_TIME;
