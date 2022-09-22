@@ -24,7 +24,6 @@
     #order-status table, th, td {
         border:1px solid #ccc;
         padding: 10px;
-        text-transform: capitalize;
     }
     #order-status h4 {
         text-transform: capitalize;
@@ -116,6 +115,11 @@
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Rendering engine: activate to sort column ascending"
+                                            style="width: 100px;">email
+                                        </th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Rendering engine: activate to sort column ascending"
                                             style="width: 100px;">order no.
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
@@ -134,6 +138,7 @@
                                         <?php foreach ($user_sell_report as $key => $value) { ?> 
                                     <tr>
                                         <td><?=$value->fname.' '.$value->lname ?></td>
+                                        <td><?=$value->email?></td>
                                         <td><?=$value->order_no?></td>
                                         <td><?=$value->payable_amount ?></td>
                                         <td><?=$value->dt_added ?></td>
