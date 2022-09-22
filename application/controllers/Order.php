@@ -225,16 +225,16 @@ class Order extends Vendor_Controller
                   $order_status = "Cancelled";
                 } 
             if($list->payment_type == '0'){$payment_type = 'COD';}elseif($list->payment_type == '1'){$payment_type = 'Credit-card';}else{$payment_type = 'Wallet Balance';};
-                $orderBY = ($list->group_id != '' || $list->group_id == '0' ) ? "Group" : "Self";
+                // $orderBY = ($list->group_id != '' || $list->group_id == '0' ) ? "Group" : "Self";
                 $orderDate = date('Y m d H:i A',$list->dt_added);
-                $currency = ($list->currency_type == 1) ? "$":"RTGS";
+                // $currency = ($list->currency_type == 1) ? "$":"RTGS";
                 $username = $list->fname.' '.$list->lname;
                 $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->address);
                 $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $orderBY);
                 $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->order_no);
                 $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $orderDate);
                 $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $username);
-                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $currency.' '.$list->payable_amount);
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '₹ '.$list->payable_amount);
                 $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $payment_type);
                 $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $order_status);
                 $rowCount++;
