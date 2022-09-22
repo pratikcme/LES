@@ -134,6 +134,32 @@ $('.time_offer').datetimepicker({
         sideBySide: true
 });
 
+  if($('#orderReportDate').length){
+    if($('#orderReportDate').val() != ''){
+        $('#orderReportDate').click();
+      }
+    $('#orderReportDate').datepicker({
+        dateFormat : 'dd-mm-yy',
+        onClose: function(selectedDate) {
+        $("#orderReportTo_date").datepicker("option", "minDate", selectedDate);
+      }
+    });
+  }
+  
+  if($('#orderReportTo_date').length){
+      if($('#orderReportTo_date').val()!= ''){
+        $('#orderReportTo_date').click();
+      }
+    $('#orderReportTo_date').datepicker({
+        dateFormat : 'dd-mm-yy',
+        onClose: function(selectedDate) {
+        $("#orderReportDate").datepicker("option", "maxDate", selectedDate);
+      }
+    });
+  }
+var selectedDate = $('#orderReportDate').val()
+$("#orderReportTo_date").datepicker("option", "minDate", selectedDate);
+ 
 </script>
 
 <?php

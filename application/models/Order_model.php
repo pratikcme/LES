@@ -498,26 +498,39 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
         return $res;
     }
 
-     public function getOrderReportForDate($original_date = ''){
-            
+     public function getOrderReportForDate($postData =[]){
+            $original_date = '';                
+            if(isset($postData['orderReportDate']) && $postData['orderReportDate'] != ''){
+                $original_date  = $postData['orderReportDate'];
+            }
+            // dd($original_date);
+            $to_date = date('d-m-Y');
+            if(isset($postData['to_date']) && $postData['to_date'] != ''){
+                $to_date  = $postData['to_date'];
 
+            }
             if($original_date == ''){
-                $original_date = date('m-d-Y');
+                $original_date = date('d-m-Y');
             }
 
-            $parts_from = explode('/', $original_date);
-            $date_ = $parts_from[1] . '-' . $parts_from[0] . '-' . $parts_from[2];
-            $date = strtotime(date("Y-m-d 00:00:00",strtotime($date_)));
+            // $parts_from = explode('-', $original_date);
+            // $date_ = $parts_from[1] . '-' . $parts_from[0] . '-' . $parts_from[2];
+            $date = strtotime(date("Y-m-d 00:00:00",strtotime($original_date)));
+
+            // $date_to = explode('/', $to_date);
+            // $date_to_ = $date_to[1] . '-' . $date_to[0] . '-' . $date_to[2];
+            $date_to = strtotime(date("Y-m-d 00:00:00",strtotime($to_date)));
             $data['select'] = ['id','name'];
             $data['where']['branch_id'] = $this->session->userdata('id');
             $data['table'] = 'product';
             $res = $this->selectRecords($data);
             unset($data);
-            if($date != strtotime(date("Y-m-d 00:00:00"))){
-                $endDate = strtotime(date('Y-m-d', strtotime($date_ .' +1 day')));
-                $data['where']['o.dt_added <='] = $endDate;
-            }
 
+            // if($date != strtotime(date("Y-m-d 00:00:00"))){
+            //     $endDate = strtotime(date('Y-m-d', strtotime($date .' +1 day')));
+            //     $data['where']['o.dt_added <='] = $endDate;
+            // }
+            // dd($data);
 
             foreach ($res as $key => $value) {
                 $data['table'] = 'order as o';
@@ -528,11 +541,13 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
                     'product as p'=>['p.id=od.product_id','INNER'],
                 ];
 
-                $data['where']['o.branch_id'] = $this->session->userdata('id');
                 $data['where']['o.dt_added >='] = $date;
+                $data['where']['o.dt_added <='] = $date_to;
+                $data['where']['o.branch_id'] = $this->session->userdata('id');
                 $data['where']['od.product_id'] = $value->id;
                 // $data['where']['o.order_status !='] = '9';
                 $return =  $this->selectFromJoin($data);
+                // lq();
                 if(!empty($return)){
                     foreach ($return as $k => $value) {
                         $weight_no = $this->getvarient($value->product_weight_id);
@@ -739,17 +754,13 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
         $branch_id = $this->session->userdata('id');
         if(isset($postData['from_date']) && $postData['from_date'] != ''){
             $fr_date = $postData['from_date'];
-            $parts_from = explode('-', $fr_date);
-            $fr_date_ = $parts_from[1] . '-' . $parts_from[0] . '-' . $parts_from[2];
-            $fr_date = strtotime(date("Y-m-d 00:00:00",strtotime($fr_date_)));
+            $fr_date = strtotime(date("Y-m-d 00:00:00",strtotime($fr_date)));
 
             $this->db->where('o.dt_added >=',$fr_date);
         }
         if(isset($postData['to_date']) && $postData['to_date'] != ''){
             $to_date = $postData['to_date'];
-            $parts_from = explode('-', $to_date);
-            $to_date_ = $parts_from[1] . '-' . $parts_from[0] . '-' . $parts_from[2];
-            $to_date = strtotime(date("Y-m-d 00:00:00",strtotime($to_date_."+1 day")));
+            $to_date = strtotime(date("Y-m-d 00:00:00",strtotime($to_date."+1 day")));
 
             $this->db->where('o.dt_added <=',$to_date);
         }
@@ -827,7 +838,6 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
         $result_count1 = $this->db->query('SELECT  product_id,product_weight_id, SUM(quantity) AS TotalQuantity
             FROM order_details WHERE branch_id ="'.$branch_id.'" GROUP BY product_weight_id ORDER BY TotalQuantity DESC');     
         $return = $result_count1->result();
-        
         foreach ($return as $key => $value) {
 
             $data['table'] = TABLE_PRODUCT . " as p";

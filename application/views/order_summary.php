@@ -35,6 +35,14 @@
     #order-status table {
         width: 100%;
     }
+    .picker {
+      display: inline;
+      border: 1px solid lightgray;
+      padding : 4px;
+    }
+    .ui-state-active, .ui-widget-content .ui-state-active{
+        color: #090909 !important;
+    }
 </style>
 <!--main content start-->
 <section id="main-content">
@@ -111,6 +119,11 @@
                                 <table class="display table table-bordered table-striped dataTable" id="example_order" aria-describedby="example_info">
                                     <thead>
                                     <tr role="row">
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Rendering engine: activate to sort column ascending"
+                                            style="width: 100px;">S.no.
+                                        </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Rendering engine: activate to sort column ascending"

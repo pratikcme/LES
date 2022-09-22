@@ -626,7 +626,7 @@ function getAjaxPriceList($TableData){
                 // $sub_array[] = $type;  
                 $sub_array[] = ($row->isSelfPickup == "1") ? "Yes" : "No" ; 
                 $sub_array[] = '<a target="_blank" href='.base_url().'order/order_detail?id='.$CI->utility->encode($row->id).'>'.$row->order_no.'</a>'; 
-                $sub_array[] = date('Y m d H:i A',$row->dt_added); 
+                $sub_array[] = date('d/m/Y  h:i A',$row->dt_added); 
                 $sub_array[] = $row->fname.' '.$row->lname; 
                 $sub_array[] = $row->payable_amount; 
                 $sub_array[] = $payment_type;  
@@ -913,6 +913,7 @@ function getAjaxPriceList($TableData){
       $library= $CI->load->library('utility');  
       $fetch_data = $CI->this_model->make_datatables_order_summary($TableData);
       $data = array();
+      $start = $TableData['start']+1;
       foreach($fetch_data as $row){
         if($row->order_status=='1'){
               $order_status = "New order";
@@ -931,9 +932,10 @@ function getAjaxPriceList($TableData){
           } 
         ($row->payment_type == '0') ? $payment_type = 'COD' : $payment_type = 'Credit-card';
         $sub_array = array();  
+        $sub_array[] =  $start++; 
         $sub_array[] =  $row->address; 
         $sub_array[] = '<a target="_blank" href='.base_url().'order/order_detail?id='.$CI->utility->encode($row->id).'>'.$row->order_no.'</a>'; 
-        $sub_array[] = date('Y m d H:i A',$row->dt_added); 
+        $sub_array[] = date('d/m/Y h:i A',$row->dt_added); 
         $sub_array[] = $row->fname.' '.$row->lname; 
         $sub_array[] = $row->payable_amount; 
         $sub_array[] = $payment_type;  
