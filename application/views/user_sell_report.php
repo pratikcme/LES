@@ -138,7 +138,11 @@
                                         <?php foreach ($user_sell_report as $key => $value) { ?> 
                                     <tr>
                                         <td><?=$value->fname.' '.$value->lname ?></td>
+<<<<<<< HEAD
                                         <td><?=($value->email!='') ? $value->email : "" ?></td>
+=======
+                                        <td><?=$value->email?></td>
+>>>>>>> parent of 2203e6ad (change)
                                         <td><?=$value->order_no?></td>
                                         <td><?=$value->payable_amount ?></td>
                                         <td><?=$value->dt_added ?></td>
