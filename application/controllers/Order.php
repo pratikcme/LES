@@ -259,6 +259,7 @@ class Order extends Vendor_Controller
    public function sell_report(){
          $data['table_js'] = ['sell_report.js'];
          $data['most_sell'] = $this->this_model->getMostSell();
+         // echo $this->db->last_query();
          $this->load->view('most_sell_report',$data);
        
        }
@@ -306,6 +307,61 @@ class Order extends Vendor_Controller
         );
           die(json_encode($response));
       // }
+  }
+
+  public function user_sell_report(){
+    $data['table_js'] = ['user_sell_report.js'];
+    $data['user_sell_report'] = $this->this_model->user_sell_report();
+    $this->load->view('user_sell_report',$data);
+  }
+
+  public function generate_user_sell_report(){
+            $re = $this->this_model->user_sell_report();
+            $this->load->library('excel');
+            $objPHPExcel = new PHPExcel();
+            $objPHPExcel->setActiveSheetIndex(0);
+                // set Header
+            $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'UserName');
+            $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Order No.');
+            $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Purchased Value');       
+            $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Purchased Date');       
+            // set Row
+            $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(22);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:D1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:D1')->getFont()->setBold(true);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:D1')->getFont()->setSize(12);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:D1')->getFill()->getStartColor()->setARGB('#333');
+
+            // set cell value alignment
+            $objPHPExcel->getActiveSheet()->getStyle('C')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+            $rowCount = 2;
+            foreach ($re as $list) {
+              $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->fname .' '.$list->lname);
+              $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->order_no);
+              $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->payable_amount);
+              $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->dt_added);
+              $rowCount++;
+          }
+
+          $filename = "user_sell_report". date("Y-m-d-H-i-s").".xls";
+          header('Content-Type: application/vnd.ms-excel'); 
+          header('Content-Disposition: attachment;filename="'.$filename.'"');
+          header('Cache-Control: max-age=0'); 
+          ob_start();
+          $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');  
+          $objWriter->save('php://output'); 
+          $xlsData = ob_get_contents();
+          ob_end_clean();
+          $response =  array(
+            'status' => TRUE,
+            'file' => "data:application/vnd.ms-excel;base64,".base64_encode($xlsData),
+            'filename'=>$filename
+        );
+          die(json_encode($response));
   }
 }
 

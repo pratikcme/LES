@@ -181,7 +181,7 @@
     </ul>
 </li>
 <li>
-    <a class="<?php if ($this->uri->segment(1) == 'order' && $this->uri->segment(2) != 'order_report' && $this->uri->segment(2) != 'order_summary') { ?> active <?php } ?>" href="<?php echo base_url() . 'order'; ?>">
+    <a class="<?php if ($this->uri->segment(1) == 'order' && $this->uri->segment(2) == '' && $this->uri->segment(2) != 'order_summary') { ?> active <?php } ?>" href="<?php echo base_url() . 'order'; ?>">
         <i class="fa fa-first-order"></i>
         <span>Order</span>
     </a>
@@ -232,9 +232,24 @@
         <span>Manage Promocode</span>
     </a>
 </li>
-<li>
-    <a class="<?php if ($this->uri->segment(2) == 'sell_report' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'order/sell_report'; ?>">
-        <i class="fa fa-credit-card" aria-hidden="true"></i>
+<li class="sub-menu">
+    <a href="javascript:;" class="dcjq-parent <?php if($this->uri->segment(1) == 'order' && ( $this->uri->segment(2) == 'sell_report' || $this->uri->segment(2) == 'user_sell_report' ) ) { ?> active <?php } ?>">
+        <i class="fa fa-bar-chart-o"></i>
         <span>Sell Report</span>
+        <i class="fas fa-chevron-right"></i>
     </a>
+    <ul class="sub">
+        <li class="<?=($this->uri->segment(2) == 'sell_report' )? 'active' : ''?>">
+            <a class="<?php if ($this->uri->segment(2) == 'sell_report' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'order/sell_report'; ?>">
+                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                <span>Sell Report</span>
+            </a>
+        </li>
+        <li class="<?=($this->uri->segment(2) == 'user_sell_report' )?'active': ''?>">
+            <a class="<?php if ($this->uri->segment(2) == 'user_sell_report' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'order/user_sell_report' ?>">
+                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                <span>User Sell Report</span>
+        </a>
+        </li>
+    </ul>
 </li>

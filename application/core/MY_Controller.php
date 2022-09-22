@@ -114,7 +114,7 @@ class Vendor_Controller extends MY_Controller
     function __construct()
     { 
         parent::__construct();
-        if($this->session->userdata('branch_admin') != '1' ){
+        if($this->session->userdata('branch_admin') != '1'){
                 redirect(base_url().'admin/dashboard');
         
         }   

@@ -835,9 +835,18 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
 
     public function getMostSell(){
         $branch_id = $this->session->userdata['id'];
-        $result_count1 = $this->db->query('SELECT  product_id,product_weight_id, SUM(quantity) AS TotalQuantity
-            FROM order_details WHERE branch_id ="'.$branch_id.'" GROUP BY product_weight_id ORDER BY TotalQuantity DESC');     
-        $return = $result_count1->result();
+
+        if( isset( $_SESSION['id'] ) && $_SESSION['id'] > '0' ){
+            $branch_id = $_SESSION['id'];
+            $result_count1 = $this->db->query('SELECT  product_id,product_weight_id, SUM(quantity) AS TotalQuantity
+                FROM order_details WHERE branch_id ="'.$branch_id.'" GROUP BY product_weight_id ORDER BY TotalQuantity DESC');     
+            $return = $result_count1->result();
+        }else{
+            $result_count1 = $this->db->query('SELECT  product_id,product_weight_id, SUM(quantity) AS TotalQuantity
+                FROM order_details GROUP BY product_weight_id ORDER BY TotalQuantity DESC');     
+            $return = $result_count1->result();
+        }
+        
         foreach ($return as $key => $value) {
 
             $data['table'] = TABLE_PRODUCT . " as p";
@@ -859,6 +868,24 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
             $value->weight_no = $record[0]->weight_no;
         }
         return  $return;
+    }
+
+    public function user_sell_report(){
+        if( isset( $_SESSION['id'] ) && $_SESSION['id'] != '0' ){
+            $branch_id = $_SESSION['id'];
+            $data['where']['o.branch_id'] = $branch_id ;
+        }
+        $data['table'] = TABLE_USER.' u';
+        $data['join'] = [
+            TABLE_ORDER.' o'=>['u.id=o.user_id','LEFT']
+        ];
+        $data['where']['o.order_status!='] = '9';
+        $data['select'] = ['o.branch_id','u.fname','u.lname','o.payable_amount','o.order_no',
+        'DATE_FORMAT(FROM_UNIXTIME(o.dt_added), "%e/%m/%Y") AS "dt_added"'
+    ];
+        $data['order'] = 'o.payable_amount desc';
+        $result =  $this->selectFromJoin($data);
+        return $result;
     }
 }
 
