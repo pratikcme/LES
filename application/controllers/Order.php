@@ -225,9 +225,7 @@ class Order extends Vendor_Controller
                   $order_status = "Cancelled";
                 } 
             if($list->payment_type == '0'){$payment_type = 'COD';}elseif($list->payment_type == '1'){$payment_type = 'Credit-card';}else{$payment_type = 'Wallet Balance';};
-                // $orderBY = ($list->group_id != '' || $list->group_id == '0' ) ? "Group" : "Self";
                 $orderDate = date('Y m d H:i A',$list->dt_added);
-                // $currency = ($list->currency_type == 1) ? "$":"RTGS";
                 $username = $list->fname.' '.$list->lname;
                 $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->address);
                 $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $orderBY);
