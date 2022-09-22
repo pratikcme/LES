@@ -138,7 +138,7 @@
                                         <?php foreach ($user_sell_report as $key => $value) { ?> 
                                     <tr>
                                         <td><?=$value->fname.' '.$value->lname ?></td>
-                                        <td><?=($value->email != '') ? $value->email : ( ($value->login_type == '3') ? "<p style='color:red'>Apple Device not share email</p>" : "") ?></td>
+                                        <td><?=($value->email!='') ? $value->email : "" ?></td>
                                         <td><?=$value->order_no?></td>
                                         <td><?=$value->payable_amount ?></td>
                                         <td><?=$value->dt_added ?></td>
