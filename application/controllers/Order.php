@@ -315,7 +315,7 @@ class Order extends Vendor_Controller
     function cmp($a, $b) {
         return strcmp($a->name, $b->name);
     }
-    usort($your_data, "cmp");
+    usort($data['user_sell_report'], "cmp");
 
     dd($data['user_sell_report']);
     $this->load->view('user_sell_report',$data);
