@@ -312,8 +312,6 @@ class Order extends Vendor_Controller
   public function user_sell_report(){
     $data['table_js'] = ['user_sell_report.js'];
     $data['user_sell_report'] = $this->this_model->user_sell_report();
-    lq();
-
     // dd($data['user_sell_report']);
     $this->load->view('user_sell_report',$data);
   }
