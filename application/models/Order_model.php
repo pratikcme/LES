@@ -883,7 +883,7 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
         $data['select'] = ['o.branch_id','u.fname','u.lname','u.email','o.payable_amount','o.order_no',
         'DATE_FORMAT(FROM_UNIXTIME(o.dt_added), "%e/%m/%Y") AS "dt_added"'
     ];
-        $data['order'] = 'o.payable_amount DESC';
+        // $data['order'] = 'o.payable_amount DESC';
         $result =  $this->selectFromJoin($data);
         return $result;
     }
