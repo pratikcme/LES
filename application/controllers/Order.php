@@ -312,12 +312,7 @@ class Order extends Vendor_Controller
   public function user_sell_report(){
     $data['table_js'] = ['user_sell_report.js'];
     $data['user_sell_report'] = $this->this_model->user_sell_report();
-    function cmp($a, $b) {
-        return strcmp($a->payable_amount, $a->payable_amount);
-    }
-    usort($data['user_sell_report'], "cmp");
-
-    dd($data['user_sell_report']);
+    // dd($data['user_sell_report']);
     $this->load->view('user_sell_report',$data);
   }
 
