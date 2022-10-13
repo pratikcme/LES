@@ -29,7 +29,6 @@ Class Common_model extends My_model{
 	}
 
 	public function getLogo(){
-
 		$vendor_id = 0;
 		if(isset($_SESSION['branch_id'])){
 			$data['select'] = ['*'];
@@ -82,9 +81,11 @@ Class Common_model extends My_model{
 				'favicon_image'=>'',
 			];
 			$this->session->set_userdata($return);
+		
 			return $return;
 			return base_url().'public/client_logo/commonlogo.png';
 		}
+
 	}
 
 	public function getDefaultCurrency($branch_id = ''){

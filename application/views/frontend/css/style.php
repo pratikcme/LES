@@ -28,6 +28,9 @@ if($_SERVER['SERVER_NAME']=='development.launchestore.com'){
     $logoWidth = "150px";
     $abtImgWidth = "350px";
     $hvrClr = "#04527A";
+     $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#004A99";
 }
 
 elseif($_SERVER['SERVER_NAME']=='development.launchestore.com'){
@@ -45,7 +48,11 @@ elseif($_SERVER['SERVER_NAME']=='development.launchestore.com'){
     $loginBtnborder = "#fff";
     $logoWidth = "150px";
     $hvrClr = "#04527A";
+     $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#004A99";
 }
+
 elseif($_SERVER['SERVER_NAME']=='anandgarden.com' || $_SERVER['SERVER_NAME']=='www.anandgarden.com' ){
   
     $primaryColor= "#507b14";
@@ -61,6 +68,9 @@ elseif($_SERVER['SERVER_NAME']=='anandgarden.com' || $_SERVER['SERVER_NAME']=='w
     $loginBtnborder = "#35520c";
     $logoWidth = "250px";
     $hvrClr = "#04527A";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#507b14";
 }
 
 
@@ -80,6 +90,9 @@ elseif($_SERVER['SERVER_NAME']=='mehtaenterpriseonline.com' || $_SERVER['SERVER_
     $loginBtnborder = "#00314a";
     $logoWidth = "150px";
     $hvrClr = "#04527A";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#0685c5";
 }
 
 elseif($_SERVER['SERVER_NAME']=='mehta.launchestore.com' ){
@@ -98,6 +111,9 @@ elseif($_SERVER['SERVER_NAME']=='mehta.launchestore.com' ){
     $loginBtnborder = "#00314a";
      $logoWidth = "150px";
      $hvrClr = "#04527A";
+      $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#0685c5";
 
 }
 
@@ -118,6 +134,9 @@ elseif($_SERVER['SERVER_NAME']=='bmart.launchestore.com'){
     // $lightHeaderColor = "fff"; 
  	$logoWidth = "150px";
  	$hvrClr = "#373854";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#e30016";
 }
 
 elseif($_SERVER['SERVER_NAME']=='bmartsupermarket.in' || $_SERVER['SERVER_NAME']=='www.bmartsupermarket.in'){
@@ -137,6 +156,9 @@ elseif($_SERVER['SERVER_NAME']=='bmartsupermarket.in' || $_SERVER['SERVER_NAME']
     // $lightHeaderColor = "fff"; 
     $logoWidth = "150px";
     $hvrClr = "#373854";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#e30016";
 }
 
 elseif($_SERVER['SERVER_NAME']=='bigbucket.launchestore.com'|| $_SERVER['SERVER_NAME']=='thebigbucket.in' || $_SERVER['SERVER_NAME']=='www.thebigbucket.in'){
@@ -157,6 +179,29 @@ elseif($_SERVER['SERVER_NAME']=='bigbucket.launchestore.com'|| $_SERVER['SERVER_
     $logoWidth = "150px";
     $hvrClr = "#000";
     $cartNum = "#000";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#000";
+
+
+
+ // $primaryColor= "#113A8E";
+ //  $secondaryColor= "#113A8E";
+ //  $lightColor=  "#fff";
+ //  $borderColor= "#113A8E";
+ //  $borderColor2= "#113A8E";
+ //  $lightPrimary= "#ff774b";
+ //  $headerBackground = "#fff";
+ //  $navbarColor = "#113A8E";
+ //  $cartBtnBackground= "#113A8E";
+ //  $cartBtnColor="#fff";
+ //  $loginBtnBackground="#113A8E"; 
+ //  $loginBtnColor="#fff";
+ //  $loginBtnborder="#113A8E";
+ //  $logoWidth = "75px";
+ //  $abtImgWidth= "350px";
+ //  $hvrClr= "#fff";
+ //  $cartNum=  "#000";
 }
 
 
@@ -177,6 +222,10 @@ elseif($_SERVER['SERVER_NAME']=='shukantea.com' || $_SERVER['SERVER_NAME']=='www
     $logoWidth = "150px";
     $abtImgWidth = "450px";
     $hvrClr = "#9F0C10";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#000";
+
 }
 
 elseif($_SERVER['SERVER_NAME']=='magnus.launchestore.com'){
@@ -195,6 +244,9 @@ elseif($_SERVER['SERVER_NAME']=='magnus.launchestore.com'){
     $loginBtnborder = "#004846";
     $logoWidth = "150px";
     $hvrClr = "#006c68";
+     $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#000";
 
 
 // $primaryColor= "#000";
@@ -221,6 +273,9 @@ elseif($_SERVER['SERVER_NAME']=='magnus.launchestore.com'){
     $loginBtnborder = "#043d79";
     $logoWidth = "150px";
     $hvrClr = "#0c65c5";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#004A99";
 
 
 // $primaryColor= "#000";
@@ -254,6 +309,10 @@ elseif($_SERVER['SERVER_NAME']=='ogworld.launchestore.com'){
     $loginBtnborder = "#0f8b1f";
     $logoWidth = "150px";
     $hvrClr = "#0c65c5";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#004A99";
+
 }elseif($_SERVER['SERVER_NAME']=='unibest.in' || $_SERVER['SERVER_NAME'] == 'www.unibest.in'){
 
     $primaryColor= "#C41E49";
@@ -273,6 +332,10 @@ elseif($_SERVER['SERVER_NAME']=='ogworld.launchestore.com'){
     $logoWidth = "100px";
     $hvrClr = "#294695";
     $cartpopColor = "#000";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#C41E49";
+
 }
 
 elseif($_SERVER['SERVER_NAME']=='iwingzy.launchestore.com'){
@@ -291,6 +354,9 @@ elseif($_SERVER['SERVER_NAME']=='iwingzy.launchestore.com'){
     $loginBtnborder = "#ed1c24";
     $logoWidth = "150px";
     $hvrClr = "#ed1c24";
+     $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#004A99";
 
 
 // $primaryColor= "#000";
@@ -320,11 +386,14 @@ elseif($_SERVER['SERVER_NAME']=='www.iwingzy.in' || $_SERVER['SERVER_NAME']=='iw
     $loginBtnborder = "#ed1c24";
     $logoWidth = "150px";
     $hvrClr = "#ed1c24";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#004A99";
 
 
 
-}elseif($_SERVER['SERVER_NAME']=='yash.launchestore.com'){
-     $primaryColor= "#113A8E";
+}elseif($_SERVER['SERVER_NAME']=='yashdev.launchestore.com'){
+    $primaryColor= "#113A8E";
     $secondaryColor= "#113A8E";
     $lightPrimary= "#ff774b";
     $lightColor= "#fff";
@@ -341,9 +410,11 @@ elseif($_SERVER['SERVER_NAME']=='www.iwingzy.in' || $_SERVER['SERVER_NAME']=='iw
     $abtImgWidth = "350px";
     $hvrClr = "#fff";
     $cartNum = "#000";
-
-
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#004A99";
 }
+
 
 elseif($_SERVER['SERVER_NAME']=='www.dpdecor.launchestore.com'){
     $primaryColor= "#16aa9c";
@@ -361,6 +432,9 @@ elseif($_SERVER['SERVER_NAME']=='www.dpdecor.launchestore.com'){
     $loginBtnborder = "#ed1c24";
     $logoWidth = "150px";
     $hvrClr = "#ed1c24";
+    $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#C41E49";
 
 }
 
@@ -385,26 +459,51 @@ elseif($_SERVER['SERVER_NAME']=='ori.launchestore.com' || $_SERVER['SERVER_NAME'
     $logoWidth = "90px";
     $abtImgWidth = "350px";
     $hvrClr = "#fff";
+     $categoryColor = "#fff";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#004A99";
 }
 
 else{
-    $primaryColor= "#E50914";
-    $secondaryColor= "#000";
-    $lightPrimary= "#ff774b";
-    $lightColor= "#fff";
-    $borderColor= "#710006";
-    $borderColor2= "#004846";
-    $darkHeaderBackground = "#222";
-    $navbarColor = "#818181";
-    $cartBtnBackground = "#E50914";
-    $cartBtnColor = "#fff";
-    $loginBtnBackground = "#E50914";
-    $loginBtnColor = "#fff";
-    $loginBtnborder = "#b50009";
-    $logoWidth = "75px";
-	$abtImgWidth = "350px";
-	$hvrClr = "#fff";
-    $cartNum = "#000";
+ //    $primaryColor= "#E50914";
+ //    $secondaryColor= "#000";
+ //    $lightPrimary= "#ff774b";
+ //    $lightColor= "#fff";
+ //    $borderColor= "#710006";
+ //    $borderColor2= "#004846";
+ //    $darkHeaderBackground = "#222";
+ //    $navbarColor = "#818181";
+ //    $cartBtnBackground = "#E50914";
+ //    $cartBtnColor = "#fff";
+ //    $loginBtnBackground = "#E50914";
+ //    $loginBtnColor = "#fff";
+ //    $loginBtnborder = "#b50009";
+ //    $logoWidth = "75px";
+//     $abtImgWidth = "350px";
+//     $hvrClr = "#fff";
+ //    $cartNum = "#000";
+
+
+     $primaryColor= "#113A8E";
+  $secondaryColor= "#113A8E";
+  $lightColor=  "#fff";
+  $borderColor= "#113A8E";
+  $borderColor2= "#113A8E";
+  $lightPrimary= "#ff774b";
+  $headerBackground = "#fff";
+  $navbarColor = "#113A8E";
+  $cartBtnBackground= "#113A8E";
+  $cartBtnColor="#fff";
+  $loginBtnBackground="#113A8E"; 
+  $loginBtnColor="#fff";
+  $loginBtnborder="#113A8E";
+  $logoWidth = "120px";
+  $abtImgWidth= "350px";
+  $hvrClr= "#113a8e";
+  $cartNum=  "#000";
+  $categoryColor = "#000";
+  $categoryActiveBg = "#000";
+  $categoryActiveColor = "#fff";
 }
 
 // else{
@@ -469,6 +568,9 @@ else{
   --abtImgWidth: <?=$abtImgWidth?>;
   --hvrClr: <?=$hvrClr?>;
   --cartNum:  <?=$cartNum?>;
+  --categoryColor :<?=$categoryColor ?>;
+  --categoryActiveBg :<?=$categoryActiveBg ?>;
+  --categoryActiveColor :<?=$categoryActiveColor?>;
 }
 
 /*
@@ -2696,13 +2798,17 @@ height: 60px;
 }
 
 .category-menu-wrapper ul li a{
-    color: #ffffff;
+    color:  var(--categoryColor);
     font-family: 'OpenSans-SemiBold';
 }
 
 .category-menu-wrapper ul.cat_selected li a.active{
-    color: var(--primary-color);
-} 
+    color: var(--categoryActiveColor);
+    background: var(--categoryActiveBg);
+    padding: 5px;
+    border-radius: 5px;
+}
+
 
 .category-menu-wrapper.sub-cat-menu ul.sub-cat-main li:first-child{
     margin-left: 0px;

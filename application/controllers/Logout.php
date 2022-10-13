@@ -15,7 +15,6 @@ class Logout extends User_Controller {
 	}
 
 	public function user_logout(){
-		// print_r($_SESSION);die;
 		$login_logs = [
 			'user_id' => $this->session->userdata('user_id'),
 			'vendor_id' => $this->session->userdata('vendor_id'),

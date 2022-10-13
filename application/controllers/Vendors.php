@@ -15,7 +15,7 @@ class Vendors extends User_Controller {
 
 
 	public function index(){
-		// dd($_SESSION);
+		
 		$data['page'] = 'frontend/vendor/vendor';
 		$data['js'] = array('vendor.js');
 		$data['branch'] = $this->this_model->branchList();
@@ -27,7 +27,6 @@ class Vendors extends User_Controller {
 
 		
 		$Approved = $this->this_model->ApprovedVendor();
-		// lq();
 		if(!empty($Approved)  && ($Approved[0]->approved_branch == '1' || $branch_id == '1')){
 			$branch_id = $data['branch'][0]->id;
 	 		$branch_name = $data['branch'][0]->name;

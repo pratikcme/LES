@@ -8,7 +8,6 @@ class MY_Controller extends CI_Controller
     function __construct(){
 
         parent::__construct();
-       
         $this->json_response = array('status' => 'error', 'message' => 'something went wrong!');
         // print_r($_SESSION);
          if(isset($_SESSION['My_cart']) && count($_SESSION['My_cart']) == 0 ){
@@ -41,14 +40,13 @@ class MY_Controller extends CI_Controller
                 }
                 $this->adminNotification = $this->common_model->getAdminNotification();
 
-
-
             }else{
-
                 require_once APPPATH . 'config/tablenames_constants.php';  
                     $this->load->model('api_v3/common_model','common_model');
 
                 $siteDetail = $this->common_model->getLogo();
+                // dd($siteDetail);
+                 // echo 'sw00' ; die;
                 
                 if(isset($siteDetail['id'])){
                     $this->session->set_userdata('vendor_id',$siteDetail['id']);
@@ -69,11 +67,12 @@ class MY_Controller extends CI_Controller
             }
            
           
-            
 
     }
 
     function loadView($layout,$data){
+
+            
        $this->load->model('frontend/vendor_model','vendor_model');
        $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
        $this->load->model($this->myvalues->contactFrontEnd['model'],'contact');
@@ -126,8 +125,8 @@ class Vendor_Controller extends MY_Controller
 
         function __construct()
         { 
+
             parent::__construct();
-           
              if(isset($_SESSION['My_cart']) && count($_SESSION['My_cart']) == 0 ){
                 $this->session->unset_userdata('My_cart');
             }
@@ -140,7 +139,10 @@ class Vendor_Controller extends MY_Controller
             }else{
                 $this->load->model('frontend/product_model','product_model');
                 $my_cart = $this->product_model->getMyCart();
-                $this->cartCount = count($my_cart);
+                $this->cartCount = $my_cart;
+                // dd($my_cart);
+             // echo 'sdw00' ; die;
+
             }
 
             if($this->session->userdata('vendor_id')=='' ||$this->session->userdata('vendor_id')==NULL){
@@ -173,6 +175,7 @@ class Vendor_Controller extends MY_Controller
             
                    
                 }else{
+
                      $branch = array('vendor_id'=>$data['branch'][0]->vendor_id);
                      $this->session->set_userdata($branch);
                 }
