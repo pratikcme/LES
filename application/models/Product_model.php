@@ -127,6 +127,7 @@ public function Product_add_update(){
                     'about' => $about,
                     'content' => $content,
                     'status' => '1',
+                    'gst'    => $gst,
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                 );
@@ -1006,6 +1007,137 @@ public  $order_column_weight_list = array("p.product_name","pw.quantity","pw.dis
         header('Content-Type: application/json');
         echo json_encode(['status'=>1]);
         exit;
+    }
+
+    public function getCategory($category_id = ''){
+        $data['table'] = TABLE_CATEGORY;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9'; 
+        $data['where']['branch_id'] = $this->session->userdata('id');
+        if($category_id != ''){
+            $data['where']['id'] = $category_id; 
+            $return =  $this->selectRecords($data,true);
+            return $return[0];
+        }
+        return $this->selectRecords($data); 
+
+    }
+    public function getBrand($brand_id = ''){
+        // SELECT * FROM category WHERE status != '9' AND branch_id = '$branch_id'
+        $data['table'] = TABLE_BRAND;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9'; 
+        $data['where']['branch_id'] = $this->session->userdata('id');
+        if($brand_id != ''){
+            $data['where']['id'] = $brand_id; 
+            $return =  $this->selectRecords($data,true);
+            return $return[0];
+        }
+        return $this->selectRecords($data); 
+
+    }
+    public function getSubcategory($subcategory_id = ''){
+        // SELECT * FROM category WHERE status != '9' AND branch_id = '$branch_id'
+        $data['table'] = TABLE_SUBCATEGORY;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9'; 
+        $data['where']['branch_id'] = $this->session->userdata('id');
+        if($subcategory_id != ''){
+            $data['where']['id'] = $subcategory_id; 
+            $return =  $this->selectRecords($data,true);
+            return $return[0];
+        }
+        return $this->selectRecords($data); 
+    }
+
+    public function getBrandByCategoryId($category_id){
+        $branch_id = $this->session->userdata('id');
+        $brand_query = $this->db->query("SELECT * FROM brand WHERE  category_id LIKE '%$category_id%' AND branch_id = '$branch_id' AND status != '9' ");
+        $brand_results = $brand_query->result();
+        return $brand_results;
+        // $data['table'] = TABLE_BRAND;
+        // $data['select'] = ['*'];
+        // $data['where']['status !='] = '9'; 
+        // $data['where']['category_id'] = $category_id; 
+        // $data['where']['branch_id'] = $this->session->userdata('id');
+        // return $this->selectRecords($data); 
+    }
+
+    public function getSubcategoryOfCategoryId($category_id){
+        // SELECT * FROM category WHERE status != '9' AND branch_id = '$branch_id'
+        $data['table'] = TABLE_SUBCATEGORY;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9'; 
+        $data['where']['category_id'] = $category_id; 
+        $data['where']['branch_id'] = $this->session->userdata('id');
+        return $this->selectRecords($data); 
+    }
+
+    public function getGetProductById($product_id = ''){
+        if($product_id != ''){
+            $data['where']['id'] = $product_id; 
+        }
+        $data['table'] = TABLE_PRODUCT;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9'; 
+        $data['where']['branch_id'] = $this->session->userdata('id');
+        $return =  $this->selectRecords($data,true); 
+        return $return[0];
+    }
+
+    public function searchProductByTag($product_id){
+        $data['table'] = 'product_search';
+        $data['select'] = ['*'];
+        $data['where']['product_id'] = $product_id; 
+        return $this->selectRecords($data);   
+    }
+
+
+    /* PRODUCT VARIENT Query START */
+
+    public function getWeightResult($weight_id = ''){
+
+        $vendor_id = $this->session->userdata['branch_vendor_id'];
+        $data['table'] = TABLE_WEIGHT;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9'; 
+        $data['where']['vendor_id'] = $vendor_id;
+        if($weight_id != ''){
+            $data['where']['id'] = $weight_id;
+            $return = $this->selectRecords($data,true); 
+            return $return[0];
+        }
+        return $this->selectRecords($data); 
+    }
+
+    public function getPackageResults(){
+        $vendor_id = $this->session->userdata['branch_vendor_id'];
+        $data['table'] = TABLE_PACKAGE;
+        $data['select'] = ['*'];
+        $data['where']['vendor_id'] = $vendor_id;
+        $data['order'] = 'id desc';
+        return $this->selectRecords($data); 
+    }
+
+    public function getProductWeightById($id){
+        $vendor_id = $this->session->userdata['branch_vendor_id'];
+        $data['table'] = TABLE_PRODUCT_WEIGHT;
+        $data['select'] = ['*'];
+        $data['where']['id'] = $id;
+        $return =  $this->selectRecords($data,true);
+        return $return[0];
+    }
+
+    public function GetProductImage($id){
+        $branch_id = $this->session->userdata['id'];
+
+        $data['table'] = TABLE_PRODUCT_IMAGE;
+        $data['select'] = ['*'];
+        $data['where']['status !='] = '9';
+        $data['where']['branch_id'] = $branch_id;
+        $data['where']['product_variant_id'] = $id;
+        $data['order'] = 'image_order';
+        return $this->selectRecords($data);
     }
 }
 ?>

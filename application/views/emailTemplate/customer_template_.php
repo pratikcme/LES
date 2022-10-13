@@ -27,7 +27,7 @@
 
 <div style="margin-top: 25px;">
      <h6 style="color: #000;font-weight: bold;font-size: 16px;margin: 0px;text-transform: capitalize;"> Arrving on</h6>
-     <p style="margin: 0px;font-size: 16px;margin-top: 5px;text-transform: capitalize;color: black"><?=date('F d Y',strtotime($order_details[0]->delivery_date))?></p>
+     <p style="margin: 0px;font-size: 16px;margin-top: 5px;text-transform: capitalize;color: black"><?=($order_details[0]->delivery_date != '') ? date('F d Y',strtotime($order_details[0]->delivery_date)) : '5 To 7 Working Days';?></p>
 </div>
 
 <div style="margin-top: 25px;">

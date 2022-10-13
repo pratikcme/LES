@@ -40,7 +40,7 @@ Class Common_model extends My_model{
 			$vendor_id = $get[0]->vendor_id;
 			unset($data);
 		}else
-		if(isset($_POST['branch_id'])){
+		if(isset($_POST['branch_id']) && $_POST['branch_id'] != ''){
 			$data['select'] = ['*'];
 			$data['table'] = 'branch';
 			$data['select'] = ['*'];
@@ -62,8 +62,7 @@ Class Common_model extends My_model{
 		$data['table'] = 'vendor';
 		$data['select'] = ['*'];
 		$data['where'] = ['id'=>$vendor_id];
-		$get = $this->selectRecords($data);
-
+		$get = $this->selectRecords($data);	
 		if(!empty($get)){
 			$return = [
 				'logo'=>base_url().'public/client_logo/'.$get[0]->webLogo,

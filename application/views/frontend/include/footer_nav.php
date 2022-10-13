@@ -18,7 +18,7 @@
           <li><a href="<?=base_url().'vendors'?>">Vendors</a></li> -->
           <li><a href="<?=base_url().'privacy_policy'?>">Privacy Policy</a></li>
           <li><a href="<?=base_url().'terms_condition'?>">Term & Conditions</a></li>
-          <li><a href="<?=base_url().'return_refund'?>">Refund & Return</a></li>
+          <li><a href="<?=base_url().'return_refund'?>">Refund & Return / Shipping policy</a></li>
           <li><a href="<?=base_url().'contact'?>">Contact Us</a></li>
           
         </ul>

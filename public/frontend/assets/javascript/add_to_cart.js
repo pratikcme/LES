@@ -24,7 +24,7 @@ $(document).on('click','.addcartbutton', function(){
                       swal(output.itemExist);
                     }
                       
-                    if(output.count >= 1 ){
+                    if(output.count >= 1){
                       that.parent().next('div').removeClass('d-none');
                       that.parent().addClass('d-none');
                       $('#itemCount').css('display','block');

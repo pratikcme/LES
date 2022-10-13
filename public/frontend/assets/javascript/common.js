@@ -265,6 +265,10 @@ $(document).on('click','.remove_item',function(){
 
 	$(document).on('change','.vendor_nav',function(){
 	// event.preventDefault();
+	var full_url = window.location.href;
+	if (full_url.indexOf('productDetails') != -1) {
+	   full_url = ($('#url').val())+'home'; 
+	}
 	var url = $('#url').val();
 	var vendor_id = $(this).val();
 	var session_vendor_id = $('#session_vendor_id').val(); 
@@ -273,7 +277,6 @@ $(document).on('click','.remove_item',function(){
 	if(session_vendor_id != ''){
 	if(vendor_id != session_vendor_id){
 			if(sess_my_count > 0 ){
-					 // var X = confirm('You can only order from one shop.. Are you sure you want to clear cart');
 
 			 swal({
 					  title: "Are you sure?",
@@ -289,7 +292,7 @@ $(document).on('click','.remove_item',function(){
 						            data:{vendor_id:vendor_id},
 						            method: 'post',
 						            success:function(output){
-						                window.location.href = output;
+						              window.location.href = full_url;
 						            }
 			        })			
 					  } else {
@@ -302,7 +305,8 @@ $(document).on('click','.remove_item',function(){
 						data:{vendor_id:vendor_id},
 						method: 'post',
 						success:function(output){
-						 window.location.href = output;
+							// window.location.reload();
+						 window.location.href = full_url;
 						}
 			        })			
 			}
@@ -313,7 +317,7 @@ $(document).on('click','.remove_item',function(){
 		            data:{vendor_id:vendor_id},
 		            method: 'post',
 		            success:function(output){
-		                window.location.href = output;
+		                window.location.href = full_url;
 		            }
 		        })	
 		}
@@ -323,7 +327,7 @@ $(document).on('click','.remove_item',function(){
 		            data:{vendor_id:vendor_id},
 		            method: 'post',
 		            success:function(output){
-		                window.location.href = output;
+		                window.location.href = full_url;
 		            }
 		        })		
 	}
@@ -339,14 +343,14 @@ $(document).on('click','.remove_item',function(){
 		let heart = $(this).children();
     	// heart.toggleClass("fas .fa-heart");
 		var product_id = $(this).data('product_id');
-		// var product_weight_id = $(this).data('product_weight_id');
+		var product_weight_id = $(this).data('product_weight_id');
 		var currntPath = window.location.href;
 		var base_url = $('#url').val();
 		$.ajax({
 		    url : base_url + 'products/setWishlist',
 			data:{
 				product_id:product_id,
-				// product_weight_id:product_weight_id
+				product_weight_id:product_weight_id
 			},
 			method: 'post',
 			dataType:"json",
@@ -363,7 +367,7 @@ $(document).on('click','.remove_item',function(){
 	})
 
 	$(document).on('click','.removeWishlistItem',function(){
-		var product_id = $(this).data('product_id');
+		var wishlist_product_id = $(this).data('id');
 		var base_url = $('#url').val();
 		var that = $(this);
 		swal("Do you want to remove this item form wishlist?", {
@@ -375,11 +379,12 @@ $(document).on('click','.remove_item',function(){
 				$.ajax({
 				    url : base_url + '/users_account/users/removeWishlistItem',
 					data:{
-						product_id:product_id,
+						wishlist_product_id:wishlist_product_id,
 					},
 					method: 'post',
 					success:function(output){
-						that.parent().remove();
+						window.location.reload();
+						// that.parent().remove();
 					}
 				})		
 			}
@@ -439,7 +444,7 @@ $(document).on('click','.dec',function(){
 							data : {product_id:product_id,weight_id:weight_id,product_weight_id:product_weight_id},
 							success:function(output){
 								if(output.result == 'true'){
-									swal('Cart item successfully deleted');
+									swal('Cart Item Deleted');
 									that.parent().removeClass('transparent-wrap');
 									var currntPath  = window.location.href;
 									var segments = currntPath.split( '/' );
@@ -449,7 +454,7 @@ $(document).on('click','.dec',function(){
 									}
 
 									// segments[4] when live
-									if(segments[5] == 'productDetails' && !that.hasClass('related_cat')){
+									if(segments[4] == 'productDetails' && !that.hasClass('related_cat')){
 										that.parent().addClass('d-none');
 										that.parent().next('div.order-btn').find('a:first').removeClass('d-none');
 									}else{					
@@ -459,8 +464,9 @@ $(document).on('click','.dec',function(){
 									}
 
 									$('#itemCount').html(output.count);
-
-
+									if(output.count == 0){
+                      $('#nav_cart_dropdown').addClass('d-none');
+                    }
 									$('#updated_list').html(output.updated_list);
 									$('#nav_subtotal').html(output.final_total);
 								}

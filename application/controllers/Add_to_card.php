@@ -24,6 +24,9 @@ class Add_to_card extends User_Controller {
 			$product_id = $this->input->post('product_id');
 			$varient_id = $this->input->post('varient_id');
 			$quantity = $this->input->post('qnt');
+			if($this->input->post('qnt') !==''){
+				$quantity = 1;
+			}
 			$result = $this->this_model->DefaultProductAddInCart($varient_id);
 			$getWeight = $this->this_model->getWeightName($result[0]->weight_id);
 	 	}
@@ -68,12 +71,12 @@ class Add_to_card extends User_Controller {
 
 
 					$cartTable = $this->this_model->CheckMycard($product_array);
-
+					// dd($cartTable);
 					if(count($cartTable) > 0){
 						$update_id = $cartTable[0]->id;
-						$update_quantity = $cartTable[0]->quantity + $quantity ;
-						$price = 	$cartTable[0]->discount_price * $quantity;
-						$this->this_model->update_my_card($update_id,$quantity,$price);
+						// $update_quantity = $cartTable[0]->quantity + $quantity ;
+						// $price = 	$cartTable[0]->discount_price * $quantity;
+						$this->this_model->update_my_card($update_id,$quantity);
 						$itemExist = 'Update successfully';
 					}else{
 

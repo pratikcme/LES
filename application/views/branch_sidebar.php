@@ -88,7 +88,7 @@
         </li>
     </ul>
 </li>
-<li>
+<!-- <li>
     <a class="<?php if ($this->uri->segment(1) == 'delivery') { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
         <span>Delivery</span>
@@ -101,6 +101,12 @@
             </a>
         </li>
     </ul>
+</li> -->
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'delivery' && $this->uri->segment(2) == 'delivery_list') { ?> active <?php } ?>" href="<?php echo base_url() . 'delivery/delivery_list/'; ?>">
+        <i class="fa fa-users"></i>
+        <span>Delivery List</span>
+    </a>
 </li>
 <?php if($this->countCategory == 1){ ?>
 <li >
@@ -175,7 +181,7 @@
     </ul>
 </li>
 <li>
-    <a class="<?php if ($this->uri->segment(1) == 'order') { ?> active <?php } ?>" href="<?php echo base_url() . 'order'; ?>">
+    <a class="<?php if ($this->uri->segment(1) == 'order' && $this->uri->segment(2) == '' && $this->uri->segment(2) != 'order_summary') { ?> active <?php } ?>" href="<?php echo base_url() . 'order'; ?>">
         <i class="fa fa-first-order"></i>
         <span>Order</span>
     </a>
@@ -222,7 +228,28 @@
 </li>
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'promocode_manage' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'promocode_manage'; ?>">
-        <i class="fa fa-credit-card" aria-hidden="true"></i>
+        <i class="fa fa-code" aria-hidden="true"></i>
         <span>Manage Promocode</span>
     </a>
+</li>
+<li class="sub-menu">
+    <a href="javascript:;" class="dcjq-parent <?php if($this->uri->segment(1) == 'order' && ( $this->uri->segment(2) == 'sell_report' || $this->uri->segment(2) == 'user_sell_report' ) ) { ?> active <?php } ?>">
+        <i class="fa fa-bar-chart-o"></i>
+        <span>Sell Report</span>
+        <i class="fas fa-chevron-right"></i>
+    </a>
+    <ul class="sub">
+        <li class="<?=($this->uri->segment(2) == 'sell_report' )? 'active' : ''?>">
+            <a class="<?php if ($this->uri->segment(2) == 'sell_report' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'order/sell_report'; ?>">
+                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                <span>Sell Report</span>
+            </a>
+        </li>
+        <li class="<?=($this->uri->segment(2) == 'user_sell_report' )?'active': ''?>">
+            <a class="<?php if ($this->uri->segment(2) == 'user_sell_report' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'order/user_sell_report' ?>">
+                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                <span>User Sell Report</span>
+        </a>
+        </li>
+    </ul>
 </li>

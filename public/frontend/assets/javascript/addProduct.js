@@ -220,10 +220,10 @@ var ADDPRODUCT = function(){
                 zommFun();
 
               if(output.discount_per == '0'){
-                $('#is_discounted').html('<div class=""><p></p></div> <div class="wishlist-icon" style="display:none"> <i class="far fa-heart '+output.isInWishList+'"></i> </div>');   
+                $('#is_discounted').html('<div class=""><p></p></div> <div class="wishlist-icon" data-product_id ='+output.product_id+' data-product_weight_id ='+output.product_variant_id+' > <i class="far fa-heart '+output.isInWishList+'"></i> </div>');   
                 $('.orginal-price').css('display','none');
               }else{
-                $('#is_discounted').html('<div class="offer-wrap"><p>'+output.discount_per+' % off</p></div> <div class="wishlist-icon" style="display:none"> <i class="far fa-heart '+output.isInWishList+'"></i> </div>');
+                $('#is_discounted').html('<div class="offer-wrap"><p>'+output.discount_per+' % off</p></div> <div class="wishlist-icon" data-product_id ='+output.product_id+' data-product_weight_id ='+output.product_variant_id+' > <i class="far fa-heart '+output.isInWishList+'"></i> </div>');
                 $('.orginal-price').css('display','');
               }
               if(output.varient_quantity > 25){

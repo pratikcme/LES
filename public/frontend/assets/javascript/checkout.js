@@ -41,7 +41,7 @@ var CHECKOUT = function(){
                 is_checked = true;
             }
         })
-   
+
 
      $(document).on('click','.time_slot_checked',function(){
          $('.time_slot_checked').each(function(){
@@ -124,7 +124,11 @@ var CHECKOUT = function(){
         //     alert('please select address');
         //     return false;   
         // }
-         var delivery_date = $('#datepicker').val();
+         var delivery_date = '';
+         if($('#datepicker').length){
+            var delivery_date = $('#datepicker').val();
+         }
+
          var AddressNotInRange = $('#AddressNotInRange').val();
          var checkAddress = $('#checkAddress').val();
          var isSelfPickup = $('#CheckisSelfPickup').val();
@@ -141,11 +145,14 @@ var CHECKOUT = function(){
             return false;
          }
 
-         if(!is_checked && isSelfPickup =='0'){
-          $('#payBtn_error').html("Please select time slot");
-            return false;  
-         }
+         // if(!is_checked && isSelfPickup =='0'){
+         //  $('#payBtn_error').html("Please select time slot");
+         //    return false;  
+         // }
 
+         // alert(is_checked);
+         // return false;
+         
          var user_gst_number = '';
          if($('#user_gst_number').length){
             if($('#user_gst_number').is(":checked")){

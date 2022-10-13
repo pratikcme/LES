@@ -176,6 +176,14 @@
                                 </div>
                               </div>
                             <div class="form-group">
+                          <label for="">Delivery time & date at checkout <span class="required" aria-required="true"> * </span></label>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <input type="radio" name="delivery_time_date" class="delivery_time_date" value="0" <?=($app_result[ 'delivery_time_date']=='0' ) ? 'checked' : '' ?> > Not visible
+                              <input type="radio" name="delivery_time_date" class="delivery_time_date" value="1" <?=($app_result[ 'delivery_time_date']=='1' ) ? 'checked' : '' ?> > Visible </div>
+                            </div>
+                          </div>
+                            <div class="form-group">
                               <label for="selfPickupOpenClosingTiming">Self pickup open & closing Day & time</label>
                               <textarea type="text" id="selfPickupOpenClosingTiming" name="selfPickupOpenClosingTiming" class="form-control"><?php echo @$app_result['selfPickupOpenClosingTiming'] != '' ? $app_result['selfPickupOpenClosingTiming'] : @set_value('selfPickupOpenClosingTiming'); ?></textarea>
                               <label for="selfPickupOpenClosingTiming" class="error">

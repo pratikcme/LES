@@ -24,6 +24,43 @@ Class Term_model extends My_model{
             }
     }
 
+    public function addUpdateRecord($postData){
+        $data['select'] = ['*'];
+        $data['where'] = ['vendor_id'=>$this->vendor_id ];
+        $data['table'] = TERM;
+        $result = $this->selectRecords($data);
+        if (empty($result)) {
+
+            $data['insert']['vendor_id'] = $this->vendor_id;
+            $data['insert']['title'] = $postData['main_title'];
+            $data['insert']['sub_title'] = $postData['sub_title'];
+            $data['insert']['created_at'] = DATE_TIME;
+            $data['insert']['updated_at'] = DATE_TIME;
+            $data['table'] = TERM;
+            $result = $this->insertRecord($data);
+
+            if ($result) {
+                return ['success', 'Record Added Successfully'];
+            } else {
+                return ['danger', DEFAULT_MESSAGE];
+            }
+
+        } else {
+    
+            $data['update']['title'] = $postData['title'];
+            $data['update']['sub_title'] = $postData['sub_title'];
+            $data['update']['updated_at'] = DATE_TIME;
+            $data['where'] = ['id' => $result[0]->id];
+            $data['table'] = TERM;
+            $result = $this->updateRecords($data);
+
+            if ($result) {
+                return ['success', 'Record Edit Successfully'];
+            } else {
+                return ['danger', DEFAULT_MESSAGE];
+            }
+        }
+    }
     public function getRecord(){
       $data['table'] = TERM;
       $data['select'] = ['*'];

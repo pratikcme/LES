@@ -44,7 +44,7 @@
                </a>
                <a class="nav-link <?=($action_name == 'order') ? 'active' : ''?>" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="<?=($action_name == 'order') ? 'true' : 'false'?>">
                <span><i class="fas fa-shopping-bag"></i></span>My order</a>
-               <a class="nav-link <?=($action_name == 'wishlist') ? 'active' : ''?> " id="v-pills-whislist-tab" data-toggle="pill" href="#v-pills-whislist" role="tab" aria-controls="v-pills-whislist" aria-selected="<?=($action_name == 'wishlist') ? 'true' : 'false'?>" style="display: none;"> <span><i class="fas fa-heart"></i></span>My Wishlist</a>
+               <a class="nav-link <?=($action_name == 'wishlist') ? 'active' : ''?> " id="v-pills-whislist-tab" data-toggle="pill" href="#v-pills-whislist" role="tab" aria-controls="v-pills-whislist" aria-selected="<?=($action_name == 'wishlist') ? 'true' : 'false'?>"> <span><i class="fas fa-heart"></i></span>My Wishlist</a>
                <a class="nav-link <?=($action_name == 'my_address') ? 'active' : ''?> " id="v-pills-address-tab" data-toggle="pill" href="#v-pills-address" role="tab" aria-controls="v-pills-address" aria-selected="<?=($action_name == 'my_address') ? 'true' : 'Your Wishlist'?>"><span><i class="fas fa-address-book"></i></span>My address</a>
                <?php if(!empty($getVedorDetails) && $getVedorDetails[0]->login_type == '0') { ?>
                <a class="nav-link <?=($action_name == 'change') ? 'active' : ''?> " id="v-pills-change-tab" data-toggle="pill" href="#v-pills-change" role="tab" aria-controls="v-pills-change" aria-selected="<?=($action_name == 'change') ? 'true' : 'false'?>"><span><i class="fas fa-lock"></i></span>Change Password</a>
@@ -298,8 +298,15 @@
                </div>
               
 
-               <div class="tab-pane fade <?=($action_name == 'wishlist') ? 'active show' : '' ?>" id="v-pills-whislist" role="tabpanel" aria-labelledby="v-pills-whislist-tab" style="display: none">
-                  <div class="wihslist-wrapper bg-white">
+               <div class="tab-pane fade <?=($action_name == 'wishlist') ? 'active show' : '' ?>" id="v-pills-whislist" role="tabpanel" aria-labelledby="v-pills-whislist-tab" style="position: relative";>
+                  <?php if(empty($wishlist)){?>
+                     <?php if($this->session->userdata('branch_id') == ''){ ?>
+                        <div class='no-orderss' style="position: absolute;top: 70%;left: 23%;"><h6 style="font-size: 25px;">Please Select Branch To See Your Wishlist!</h6></div>
+                     <?php }else{ ?>
+                        <div class='no-orderss' style="position: absolute;top: 70%;left: 32%;"><h6 style="font-size: 25px;">No Item Available !</h6></div>
+                     <?php } ?>
+                  <?php } ?>
+                  <div class="wihslist-wrapper bg-white ">
                      <div class="your-order-header">
                         <h4><span><i class="fas fa-heart"></i></span>your wishlist </h4>
                      </div>
@@ -307,24 +314,50 @@
                      <?php foreach ($wishlist as $key => $value): ?>      
                         <li>
                            <div class="img-con-cart">
-                           <a href="<?=base_url().'producta/productDetails/'.$this->utility->safe_b64encode($value->product_id)?>">
+                           <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
                               <div class="your-order-img-wrap">
-                                 <img src="<?=base_url().'public/images/product_image/'.$value->product_image?>">
+                                 <img src="<?=$value->image?>">
                               </div>
                            </a>
-                           <a href="<?=base_url().'producta/productDetails/'.$this->utility->safe_b64encode($value->product_id)?>">
+                           <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
                               <div class="your-order-detail-wrap">
-                                 <h6><?=$value->product_name?></h6>
-                                 <p>1 X <span><i class="fas fa-rupee-sign"></i></span> <?=$value->product_discount_price?></p>
+                                 <h6><?=$value->name?></h6>
+                                 <p>1 X <span><i class="fas fa-rupee-sign"></i></span> <?=$value->discount_price?></p>
                               </div>
                            </a>
                            </div>
-                           <span class="delete-item removeWishlistItem" data-product_id="<?=$this->utility->safe_b64encode($value->product_id)?>">
-                           <i class="fas fa-trash-alt"></i>
+                          
+                           <?php 
+                            $d_none = '';
+                            $d_show = 'd-none';
+                            if(!empty($item_weight_id)){
+                              if(in_array($value->product_weight_id,$item_weight_id)){
+                               $d_show = '';
+                               $d_none = 'd-none';
+                             }
+                           }
+                         ?>
+                         <div class="wishlist-btn">
+                           <div class="feature-bottom-wrap ">
+                              <div class="cart addcartbutton d-none" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"> <i class="fas fa-shopping-basket"></i>
+                              </div>
+                              <div class="new_add_to_cart <?=$d_none?>" >
+                                 <?php if(isset($_SESSION['branch_id']) && $_SESSION['branch_id'] == $value->branch_id ){?>
+                                 <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->product_id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->product_weight_id)?>">Add To Cart</button>
+                                  <?php } ?>
+                              </div>
+                              <div class="quantity-wrap <?=$d_show?>">
+                               <button class="dec cart-qty-minus" data-product_weight_id="<?=$value->product_weight_id?>"><span class="minus"><i class="fa fa-minus"></i></span></button>
+                               <input class="qty" type="text" name="" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->product_id?>" data-weight_id="<?=$value->weight_id?>" readonly>
+                               <button class="inc cart-qty-plus" data-product_weight_id="<?=$value->product_weight_id?>"><span><i class="fa fa-plus"></i></span></button>
+                            </div>
+                         </div>
+                           <span class="delete-item removeWishlistItem"  data-id="<?=$this->utility->safe_b64encode($value->id)?>">
+                           <i class="fas fa-trash-alt" ></i>
                            </span>
+                        </div>
                         </li>
                         <?php endforeach ?>
-                       
                      </ul>
                   </div>
                </div>

@@ -520,14 +520,18 @@ function getAjaxPriceList($TableData){
                 $sub_array[] = $row->subcategory_name; 
                 $sub_array[] = $row->brand_name;  
                 if($row->status != '9'){
-                  $sub_array[] = '<a style="margin: 10px;"  href='.base_url().'product/product_weight_list?product_id='.$CI->utility->encode($row->id).' class="btn btn-success btn-xs">Variants
-                  </a>
-                    <a href='.base_url().'product/product_image_list?product_id='.$CI->utility->encode($row->id).' class="btn btn-info btn-xs">Images
+                  $sub_array[] = '<a href='.base_url().'product/product_weight_profile?product_id='.$CI->utility->encode($row->id).' class="btn btn-info btn-xs">Add
+                    </a><a style="margin: 10px;"  href='.base_url().'product/product_weight_list?product_id='.$CI->utility->encode($row->id).' class="btn btn-success btn-xs">Variants
+                    </a>
+                    
+                    <a href="javascript:;" onclick="single_delete_check('.$row->id.')" class="btn btn-danger btn-xs">Disable</a>
+                    
+                    <a href='.base_url().'product/product_image_list?product_id='.$CI->utility->encode($row->id).' class="btn btn-info btn-xs"><i class="fa fa-image"></i>
                     </a>
                     <a href='.base_url().'product/product_profile?id='.$CI->utility->encode($row->id).' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>
                     </a>
-                    <a href="javascript:;" onclick="single_delete_check('.$row->id.')" class="btn btn-danger btn-xs">Disable</a>
-                    <a href="javascript:;" onclick="single_hard_delete('.$row->id.')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>';
+                    <a href="javascript:;" onclick="single_hard_delete('.$row->id.')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                    ';
 
                 }else{
                   $sub_array[] = '<a href='.base_url().'product/make_product_active?product_id='.$CI->utility->encode($row->id).' class="btn btn-primary btn-xs">Active
@@ -556,13 +560,14 @@ function getAjaxPriceList($TableData){
         
         foreach($fetch_data as $row){
         $otp_status = $CI->this_model->checkSelfPickUpOtpIsVerified($row->id);
-        $otp_status = $otp_status[0]->status;
-        // dd($otp_status);
-        $otp_status_not_selfpickup = $CI->this_model->checkOtpVerified($row->id);
-        // print_r($otp_status);die; 
+        $otp_status='0';
+        if(!empty($otp_status)){
+          $otp_status = $otp_status[0]->status;
+        }
+        $otp_status_not_selfpickup = $CI->this_model->checkOtpVerified($row->id); 
          $attr1 = '';$attr2 = '';$attr3 = '';$attr4 = '';$attr5 = '';
          $attr8 = '';$attr9 = ''; $otpAttr =""; $otpValue ="VerifyOtp";
-         if($otp_status == '1' || $otp_status_not_selfpickup[0]->otp_verify == '1'){
+         if($otp_status == '1' || (!empty($otp_status_not_selfpickup) && $otp_status_not_selfpickup[0]->otp_verify == '1')){
             $otpAttr = 'disabled'; 
             $otpValue = 'Verified';
          }
@@ -621,7 +626,7 @@ function getAjaxPriceList($TableData){
                 // $sub_array[] = $type;  
                 $sub_array[] = ($row->isSelfPickup == "1") ? "Yes" : "No" ; 
                 $sub_array[] = '<a target="_blank" href='.base_url().'order/order_detail?id='.$CI->utility->encode($row->id).'>'.$row->order_no.'</a>'; 
-                $sub_array[] = date('Y m d H:i A',$row->dt_added); 
+                $sub_array[] = date('d/m/Y  h:i A',$row->dt_added); 
                 $sub_array[] = $row->fname.' '.$row->lname; 
                 $sub_array[] = $row->payable_amount; 
                 $sub_array[] = $payment_type;  
@@ -908,6 +913,7 @@ function getAjaxPriceList($TableData){
       $library= $CI->load->library('utility');  
       $fetch_data = $CI->this_model->make_datatables_order_summary($TableData);
       $data = array();
+      $start = $TableData['start']+1;
       foreach($fetch_data as $row){
         if($row->order_status=='1'){
               $order_status = "New order";
@@ -926,9 +932,10 @@ function getAjaxPriceList($TableData){
           } 
         ($row->payment_type == '0') ? $payment_type = 'COD' : $payment_type = 'Credit-card';
         $sub_array = array();  
+        $sub_array[] =  $start++; 
         $sub_array[] =  $row->address; 
         $sub_array[] = '<a target="_blank" href='.base_url().'order/order_detail?id='.$CI->utility->encode($row->id).'>'.$row->order_no.'</a>'; 
-        $sub_array[] = date('Y m d H:i A',$row->dt_added); 
+        $sub_array[] = date('d/m/Y h:i A',$row->dt_added); 
         $sub_array[] = $row->fname.' '.$row->lname; 
         $sub_array[] = $row->payable_amount; 
         $sub_array[] = $payment_type;  

@@ -59,7 +59,7 @@
         <li>
             <a class="<?php if ($this->uri->segment(2) == 'about' && $this->uri->segment(3) == 'about_section_one') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_section_one'; ?>">
                 <i class="fa fa-users"></i>
-                <span>About section one</span>
+                <span>About content</span>
             </a>
         </li>
         <li>
@@ -68,7 +68,7 @@
                 href="<?php echo base_url() . 'admins/about/about_section_two'; ?>"
             >
                 <i class="fa fa-university"></i>
-                <span>About section two</span>
+                <span>Testimonials</span>
             </a>
         </li>
         <li>
@@ -85,7 +85,7 @@
         </li>
     </ul>
 </li>
-<li>
+<!-- <li>
     <a class="<?php if ($this->uri->segment(2) == 'messagelist' || $this->uri->segment(2) == 'contactinfo') { ?> active <?php } ?>" href="#">
         <i class="fa fa-phone"></i>
         <span>Contact</span>
@@ -105,6 +105,12 @@
             </a>
         </li>
     </ul>
+</li> -->
+<li>
+    <a class="<?php if ($this->uri->segment(2) == 'messagelist' || $this->uri->segment(2) == 'add') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/messagelist'; ?>">
+        <i class="fas fa-comment-dots"></i>
+        <span>User Message List</span>
+    </a>
 </li>
 <li style="display:none">
     <a class="<?php if ($this->uri->segment(1) == 'city' && $this->uri->segment(2) == 'city_list' || $this->uri->segment(2) == 'city_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'city/city_list/'; ?>">
@@ -222,7 +228,7 @@
         </li>
     </ul>
 </li>
-<li>
+<!-- <li>
     <a class="<?php if ($this->uri->segment(1) == 'banners') { ?> active <?php } ?>" href="#">
         <i class="fa fa-picture-o"></i>
         <span>Banner</span>
@@ -236,8 +242,14 @@
             </a>
         </li>
     </ul>
-</li>
+</li> -->
 <li>
+    <a class="<?php if ($this->uri->segment(1) == 'banners') { ?> active <?php } ?>" href="<?php echo base_url() . 'banners'; ?>">
+        <i class="fa fa-picture-o"></i>
+        <span>Web & App Banner</span>
+    </a>
+</li>
+<!-- <li>
     <a class="<?php if ($this->uri->segment(1) == 'offer') { ?> active <?php } ?>" href="#">
         <i class="fa fa-picture-o"></i>
         <span>Offer</span>
@@ -251,6 +263,12 @@
             </a>
         </li>
     </ul>
+</li> -->
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'offer') { ?> active <?php } ?>" href="<?php echo base_url() . 'offer'; ?>">
+        <i class="fa fa-crosshairs"></i>
+        <span>Offer</span>
+    </a>
 </li>
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'feedback' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'feedback'; ?>">
@@ -258,3 +276,5 @@
         <span>Feedback</span>
     </a>
 </li>
+
+

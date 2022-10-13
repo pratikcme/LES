@@ -1,5 +1,24 @@
 var ORDER_SUMMARY = function () {
+    $('#from_date').datepicker({
+        dateFormat : 'dd-mm-yy',
+        onClose: function(selectedDate) {
+        $("#to_date").datepicker("option", "minDate", selectedDate);
+      }
+    });
+    $('#to_date').datepicker({
+        dateFormat : 'dd-mm-yy',
+        onClose: function(selectedDate) {
+        $("#from_date").datepicker("option", "maxDate", selectedDate);
+      }
+    });
+	var selectedDate = $('#from_date').val();
+	if(selectedDate != ''){
+	$("#to_date").datepicker("option", "minDate", selectedDate);
 	
+}
+ 
+
+
 	$(document).on('click','#download',function(){
 		var url = $('#url').val();
 		var from_date = $('#from_date').val() ;

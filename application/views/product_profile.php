@@ -1,72 +1,4 @@
-<?php
-
-include('header.php');
-$id = $this->utility->decode($_GET['id']);
-$branch_id = $this->session->userdata['id'];
-$category_query = $this->db->query("SELECT * FROM category WHERE status != '9' AND branch_id = '$branch_id'");
-$category_result = $category_query->result();
-
-$brand_query = $this->db->query("SELECT * FROM brand WHERE status != '9' AND branch_id = '$branch_id'");
-$brand_results = $brand_query->result();
-
-$subcategory_query = $this->db->query("SELECT * FROM subcategory WHERE status != '9' AND branch_id = '$branch_id'");
-$subcategory_result = $subcategory_query->result();
-
-$supply_query = $this->db->query("SELECT * FROM `supplier` WHERE branch_id = '$branch_id' AND status != '9'");
-$supply_result = $supply_query->result();
-
-
- if($id != ''){
-    $query = $this->db->query("SELECT * FROM product WHERE id = '$id' AND branch_id = '$branch_id'");
-    $result = $query->row_array();
-    $category_id = $result['category_id'];
-    // print_r($category_id);die;
-    $brand_id = $result['brand_id'];
-    $subid = $result['subcategory_id'];
-    $supid = $result['supplier_id'];
-
-    $cat_query = $this->db->query("SELECT * FROM category WHERE id = '$category_id' AND branch_id = '$branch_id'");
-    $cat_result = $cat_query->row_array();
-
-    $bra_query = $this->db->query("SELECT * FROM brand WHERE id = '$brand_id' AND branch_id = '$branch_id'");
-    $bra_result = $bra_query->row_array();
-
-    $brand_query = $this->db->query("SELECT * FROM brand WHERE category_id = '$category_id' AND branch_id = '$branch_id'");
-    $brand_result = $brand_query->result();
-    $supplier_query = $this->db->query("SELECT * FROM `supplier` WHERE branch_id = '$branch_id' AND status != '9'");
-    $supplier_result = $supplier_query->result();
-
-    $subcategory_query = $this->db->query("SELECT * FROM   subcategory WHERE id = '$subid' AND branch_id = '$branch_id' AND status != '9'");
-    $subcate_result = $subcategory_query->row_array();
-
-    $category_query = $this->db->query("SELECT * FROM category WHERE  status != '9' AND branch_id = '$branch_id'");
-    $categ_result = $category_query->row_array();
-
-    $brand_query = $this->db->query("SELECT * FROM brand WHERE   category_id LIKE '%$category_id%' AND branch_id = '$branch_id'");
-    $brand_results = $brand_query->result();
-
-    $search_query = $this->db->query("SELECT * FROM product_search WHERE product_id = '$id'");
-    $search_results = $search_query->result();
-    $tags = '';
-    if($search_results){
-        foreach($search_results as $val){
-            $tags .= $val->name.','; 
-        }
-    }
-
-    $subcategory_query = $this->db->query("SELECT * FROM subcategory WHERE status != '9' AND category_id = '$category_id' AND branch_id = '$branch_id'");
-    $subcategory_result = $subcategory_query->result();
-// print_r($subcategory_result);
-}
-?>
-<?php 
-    if($result['id']!=''){
-        $reqName = "Update";
-        }else{
-           $reqName ="Add";
-    } 
-    // echo $subcate_result['id'];exit;    
-?>
+<?php include('header.php'); ?>
 <style type="text/css">
  .required{
          color: red;
@@ -81,7 +13,7 @@ $supply_result = $supply_query->result();
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--breadcrumbs start -->
                 <ul class="breadcrumb">
-                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/dashboard'; ?>">Home</a> / <a href="<?php echo base_url().'product/product_list'; ?>">Product</a> / <?php echo $reqName; ?></a></li>
+                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/dashboard'; ?>">Home</a> / <a href="<?php echo base_url().'product/product_list'; ?>">Product</a> / <?=(isset($result) && $result['id'] != '') ? 'Update' : 'Add'?></a></li>
                 </ul>
                 <!--breadcrumbs end -->
             </div>
@@ -91,16 +23,16 @@ $supply_result = $supply_query->result();
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        <?php echo $reqName; ?> Product
+                        <?=(isset($result) && $result['id'] != '') ? 'Update' : 'Add'?> Product
                     </header>
                     <form role="form" method="post" action="<?php echo base_url().'product/product_add_update'; ?>" name="product_form" id="product_form" enctype="multipart/form-data">
-                        <input type="hidden" id="id" name="id" value="<?php echo $result['id']; ?>">
+                        <input type="hidden" id="id" name="id" value="<?=(isset($result) && $result['id'] != '') ? $result['id'] : '' ?>">
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Product Name<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" class="form-control margin_top_input" id="name" name="name" placeholder="Product name" value="<?php echo $result['name']; ?>">
+                                        <input type="text" class="form-control margin_top_input" id="name" name="name" placeholder="Product name" value="<?=(isset($result) && $result['name'] != '') ? $result['name'] : '' ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="category_id" class="margin_top_label">Category<span class="required" aria-required="true"> * </span></label>
@@ -135,49 +67,21 @@ $supply_result = $supply_query->result();
                                                     ><?php echo $subcate->name; ?></option>
                                                 <?php } ?>
                                             </select>
-                                        </div>
-                                        <?php //print_r($supplier_result); ?>
-                                      <div class="form-group" id="get_subCategory" style="display: none;">
-                                            <label for="brand_id" class="margin_top_label">Supplier<span class="required" aria-required="true"> * </span></label>
-                                            <select class="form-control margin_top_input" id="supplier_id" name="supplier_id">
-                                                <option value="" selected disabled>Select Supplier</option>
-                                                <?php 
-                                                foreach ($supply_result as $supplier){ ?>
-                                                    <option value="<?php echo $supplier->id; ?>" 
-                                                    <?php if($id != '' && $supid == $supplier->id){ echo  "selected";  } ?>
-                                                    ><?php echo $supplier->name; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    
-                                       
-                                  
-                                   <!--  <div class="form-group">
-                                        <label for="name" class="margin_top_label">Image</label>
-                                         <?php //if($result['image'] != ''){ ?>
-                                        <input type="file" class="form-control margin_top_input" id="image" name="image_edit" placeholder="Select Image" value="">
-
-                                       
-                                            <img src="<?php //echo base_url().'public/images/product/'.$result['image']; ?>" height="100" width="100" style="margin-top: 10px;">
-                                        <?php// }else{ ?>
-                                             <input type="file" class="form-control margin_top_input" id="image" name="image" placeholder="Select Image" value="">
-                                        <?php// } ?>
-
-                                    </div> -->
+                                        </div> 
                                 </div>
                                
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">About<span class="required" aria-required="true"> * </span></label>
-                                        <textarea class="form-control margin_top_input ckeditor" id="about" placeholder="About" name="about" rows="5"><?php echo $result['about']; ?></textarea>
+                                        <textarea class="form-control margin_top_input ckeditor" id="about" placeholder="About" name="about" rows="5"><?=(isset($result) && $result['about'] != '') ? $result['about'] : ''?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Content<span class="required" aria-required="true"> * </span></label>
-                                        <textarea class="form-control margin_top_input ckeditor" id="content" placeholder="Content" name="content" rows="5"><?php echo $result['content']; ?></textarea>
+                                        <textarea class="form-control margin_top_input ckeditor" id="content" placeholder="Content" name="content" rows="5"><?=(isset($result) && $result['content'] != '') ? $result['content'] : ''?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="gst" class="margin_top_label">GST<span class="required" aria-required="true"> * </span></label>
-                                       <input type="text" class="form-control margin_top_input" id="gst" name="gst" placeholder="Product gst" value="<?=($result['gst'] != '0') ? $result['gst'] : '' ?>">
+                                       <input type="text" class="form-control margin_top_input" id="gst" name="gst" placeholder="Product gst" value="<?=(isset($result) && $result['gst'] != '') ? $result['gst'] : ''?>">
                                     </div>
                                      <div class="form-group">
                                         <label for="gst" class="margin_top_label">TAG<span class="required" aria-required="true"> * </span></label><input type="text" value="<?=(isset($tags))?$tags:''; ?>" name="tags" data-role="tagsinput" id="tags" class="form-control">
@@ -187,7 +91,7 @@ $supply_result = $supply_query->result();
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                   <a href="product_list" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>   
-                                  <input type="submit" class="btn btn-info pull-right margin_top_label" value="<?php echo $reqName.' Product'; ?>" name="submit">
+                                  <input type="submit" class="btn btn-info pull-right margin_top_label" value="<?=(isset($result) && $result['id'] != '') ? 'Update Product' : 'Add Product'?>" name="submit">
                             </div>
                         </div>
                     </form>

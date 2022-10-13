@@ -495,6 +495,7 @@ class Api extends Apiuser_Controller {
                 $vendorData['selfPickUp'] =  ($vendor_result[0]->selfPickUp == null) ? "" : $vendor_result[0]->selfPickUp;
                 $vendorData['isOnlinePayment'] = (string)$vendor_result[0]->isOnlinePayment;
                 $vendorData['isCOD'] = (string)$vendor_result[0]->isCOD;
+                $vendorData['isShowDeliveryDateTime'] = (string)$vendor_result[0]->delivery_time_date; // 1 => visible; 0=> invisible 
                 $vendorData['store_time'] =  ($vendor_result[0]->selfPickupOpenClosingTiming == null) ? "" : $vendor_result[0]->selfPickupOpenClosingTiming;
                 $publish_key ='';
                 $paymentMethod ='';
@@ -741,6 +742,13 @@ class Api extends Apiuser_Controller {
 
                     foreach ($product_weight_result as $pro_weight) {
                         
+                        $is_favourite = "0";
+                        if(isset($_POST['user_id']) && $_POST['user_id'] != '' ){
+                            $wishlistCheck = ['user_id'=>$_POST['user_id'],'product_weight_id'=>$pro_weight->id,'branch_id'=>$_POST['branch_id']];
+                            // dd($wishlistCheck);
+                            $is_favourite = $this->this_model->checkProductExistInWishlist($wishlistCheck);
+                        }
+
                         $whatsappShareUrl = base_url().'products/productDetails/'.$this->utility->safe_b64encode($pro_weight->product_id).'/'.$this->utility->safe_b64encode($pro_weight->id);
 
                         $package_id = $pro_weight->package;
@@ -785,7 +793,8 @@ class Api extends Apiuser_Controller {
                         if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
                                $pro_weight->discount_price = $pro_weight->without_gst_price; 
                         }  
-                        $data = array('id' => $pro_weight->id, 'product_id' => $pro_weight->product_id, 'weight_id' => $pro_weight->weight_id, 'unit' => ($pro_weight->weight_no) . ' ' . $weight_name, 'actual_price' => $pro_weight->price, 'avail_quantity' => $pro_weight->quantity, 'package_name' => $package_name, 'discount_per' => $pro_weight->discount_per, 'discount_price' => $pro_weight->discount_price, 'my_cart_quantity' => $my_cart_quantity, 'variant_images' => $img,'whatsappShareUrl'=>$whatsappShareUrl);
+                        $data = array('id' => $pro_weight->id, 'product_id' => $pro_weight->product_id, 'weight_id' => $pro_weight->weight_id, 'unit' => ($pro_weight->weight_no) . ' ' . $weight_name, 'actual_price' => $pro_weight->price, 'avail_quantity' => $pro_weight->quantity, 'package_name' => $package_name, 'discount_per' => $pro_weight->discount_per, 'discount_price' => $pro_weight->discount_price, 'my_cart_quantity' => $my_cart_quantity, 'variant_images' => $img,'whatsappShareUrl'=>$whatsappShareUrl,'is_favourite'=>$is_favourite);
+
                         array_push($new_array_product_weight, $data);
                     }
                     $product_weight_array = $new_array_product_weight;
@@ -1729,41 +1738,44 @@ class Api extends Apiuser_Controller {
 
             if(isset($branch_id) && $branch_id != ''){
                 $result_count = $this->db->query("SELECT p.* FROM `product` as p 
+                    LEFT JOIN product_search as ps ON ps.product_id = p.id
                     LEFT JOIN product_weight as w ON w.product_id = p.id
                     LEFT JOIN branch as br ON br.id = p.branch_id
-                    WHERE p.status != '9'  AND p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND (p.name LIKE '%$product_name%' OR p.name LIKE '%$product_name%') GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
+                    WHERE p.status != '9'  AND p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND (p.name LIKE '%$product_name%' OR ps.name LIKE '%$product_name%') GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
                 $row_count_ = $result_count->result();
                 $total_count = count(array_keys($row_count_));
 
                 $query = $this->db->query("SELECT p.*,c.name as category_name,sb.name as subcat_name,b.name as brand_name FROM `product` as p 
+                    LEFT JOIN product_search as ps ON ps.product_id = p.id
                     LEFT JOIN product_weight as w ON w.product_id = p.id
                     LEFT JOIN category as c ON c.id = p.category_id
                     LEFT JOIN subcategory as sb ON sb.id = p.subcategory_id
                     LEFT JOIN brand as b ON b.id = p.brand_id
                     LEFT JOIN branch as br ON br.id = p.branch_id
-
-                    WHERE p.status != '9' AND p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND ( p.name LIKE '%$product_name%' OR c.name LIKE '%$product_name%' OR sb.name LIKE '%$product_name%' OR b.name LIKE '%$product_name%' OR p.name LIKE '%$product_name%')
+                    WHERE p.status != '9' AND p.branch_id = '$branch_id' AND w.discount_price != '' AND w.status != '9' AND ( p.name LIKE '%$product_name%' OR c.name LIKE '%$product_name%' OR sb.name LIKE '%$product_name%' OR b.name LIKE '%$product_name%' OR ps.name LIKE '%$product_name%')
                     GROUP BY p.id,c.id,sb.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2)) ASC ");
                 $result = $query->result();
             }else            
             if (isset($_POST['vendor_id']) && $_POST['vendor_id'] != '') {
                 $vendor_id = $_POST['vendor_id'];
-                $result_count = $this->db->query("SELECT p.* FROM `product` as p 
+                $result_count = $this->db->query("SELECT p.* FROM `product` as p
+                    LEFT JOIN product_search as ps ON ps.product_id = p.id 
                     LEFT JOIN product_weight as w ON w.product_id = p.id
                     LEFT JOIN branch as br ON br.id = p.branch_id
-                    WHERE p.status != '9'  AND br.vendor_id = '$vendor_id' AND w.discount_price != '' AND w.status != '9' AND (p.name LIKE '%$product_name%' OR p.name LIKE '%$product_name%') GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
+                    WHERE p.status != '9'  AND br.vendor_id = '$vendor_id' AND w.discount_price != '' AND w.status != '9' AND (p.name LIKE '%$product_name%' OR ps.name LIKE '%$product_name%') GROUP BY p.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2))");
                 $row_count_ = $result_count->result();
                 $total_count = count(array_keys($row_count_));
                 
 
                 $query = $this->db->query("SELECT p.*,c.name as category_name,sb.name as subcat_name,b.name as brand_name FROM `product` as p 
+                    LEFT JOIN product_search as ps ON ps.product_id = p.id
                     LEFT JOIN product_weight as w ON w.product_id = p.id
                     LEFT JOIN category as c ON c.id = p.category_id
                     LEFT JOIN subcategory as sb ON sb.id = p.subcategory_id
                     LEFT JOIN brand as b ON b.id = p.brand_id
                     LEFT JOIN branch as br ON br.id = p.branch_id
 
-                    WHERE p.status != '9' AND br.vendor_id = '$vendor_id' AND w.discount_price != '' AND w.status != '9' AND ( p.name LIKE '%$product_name%' OR c.name LIKE '%$product_name%' OR sb.name LIKE '%$product_name%' OR b.name LIKE '%$product_name%' OR p.name LIKE '%$product_name%')
+                    WHERE p.status != '9' AND br.vendor_id = '$vendor_id' AND w.discount_price != '' AND w.status != '9' AND ( p.name LIKE '%$product_name%' OR c.name LIKE '%$product_name%' OR sb.name LIKE '%$product_name%' OR b.name LIKE '%$product_name%' OR ps.name LIKE '%$product_name%')
                     GROUP BY p.id,c.id,sb.id ORDER BY CAST(w.discount_price AS DECIMAL(10,2)) ASC ");
                 $result = $query->result();
                 
@@ -2119,6 +2131,44 @@ class Api extends Apiuser_Controller {
         }
        $this->response($response);
     }
+
+    public function active_branch_list(){
+            $post = $this->input->post();
+            $req = array('vendor_id');
+            $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->getActiveBranchList($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);   
+    }
+
+    public function wishlist(){
+            $post = $this->input->post();
+            $req = array('user_id');
+            $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->getWishlist($post);
+            $response = array('responsedata' => $response);
+        }
+       $this->response($response);   
+    }
+
+    public function wishlist_item_add_remove(){
+         $post = $this->input->post();
+            $req = array('user_id','product_varient_id','is_favourite');
+            $response = $this->checkRequiredField($post, $req);
+        if ($response['status'] == 1) {
+            $post = $this->input->post();
+            $response = $this->this_model->AddRemoveFromWishlist($post);
+            // $response = array('responsedata' => $response);
+        }
+       $this->response($response);  
+    }
+
+
 
 
 

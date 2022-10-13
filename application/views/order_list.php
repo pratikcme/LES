@@ -66,6 +66,23 @@
                 <section class="panel">
                     <header class="panel-heading"> Order</header>
                     <div class="panel-body">
+                    <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
+                        <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <label for="to_date" class="margin_top_label">Order Staus :<span class="required" aria-required="true"></span></label>
+                                <select class="form-control margin_top_input" id="order_status">
+                                    <option value="" >Select Order Status</option>
+                                    <option value="1">NEW</option>
+                                    <option value="2">Pending</option>
+                                    <option value="3">Ready</option>
+                                    <option value="4">Pickup</option>
+                                    <option value="5">On the way</option>
+                                    <option value="8">Delevered</option>
+                                    <option value="9">cancelled</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                         <div class="adv-table">
                             <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                <!--  <div class="panel-body padding-zero" style="float: right">

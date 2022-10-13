@@ -15,6 +15,9 @@ var ORDER = function () {
 		})
 	})
 
+	
+
+
 	$(document).on('click','.otp',function(){
 		$('#otp').val('');
 		$('#error	').html('');
@@ -50,6 +53,40 @@ var ORDER = function () {
 		  	// 		"processing": "Loading. Please wait..."
 		  	// 	},
 		  	// });
+		  	
+		  	$(document).on('change','#order_status',function () {
+			var url = $('#url').val();
+			var order_status = $('#order_status').val();
+			   $('#example_order').DataTable({ 
+                   "destroy": true, 
+                   "processing":true,  
+                   "serverSide":true,  
+                   "order":[],  
+                   "ajax":{  
+                        url: url+"order/getOrderListAjax",  
+                        type:"POST",
+                        data : {order_status : order_status}
+                   },  
+                   createdRow: function ( tr ) {
+       					$(tr).addClass('gradeX');
+    					},
+	                   "columnDefs":[  
+				  		{
+				  			'targets':[0],
+				  			"orderable" : false,  
+				  		},
+				  		{  className:"hidden-phone", "targets":[0], },  
+				  		{  className:"hidden-phone ", "targets":[1], },  
+				  		{  className:"hidden-phone ", "targets":[2], },
+				  		],
+				  		"oLanguage": {
+				  			"sEmptyTable" : "order list Not Available",
+				  			"sZeroRecords": "order Not Available",
+				  		}  
+                   // bFilter: false,  
+              });
+			
+		});
 
             var url = $('#url').val();
               var dataTable = $('#example_order').DataTable({  

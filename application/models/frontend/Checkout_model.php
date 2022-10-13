@@ -34,6 +34,7 @@ Class Checkout_model extends My_model{
         $data['table'] = TABLE_TIME_SLOT;
         $data['select'] = ['*'];
         $data['where'] = ['status'=>'1','vendor_id'=>$this->vendor_id];
+        $data['order'] = 'id Desc';
         return $this->selectRecords($data);
     }
 

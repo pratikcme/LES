@@ -126,10 +126,11 @@ class Products extends User_Controller {
 	public function productDetails($id=''){
 		$this->load->model('api_v3/common_model','co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-
 		if(!isset($_SESSION['branch_id'])){
 			$productID = $this->uri->segment(3);
 			$varientID = $this->uri->segment(4);
+			$data['product_weight_id'] = $varientID; 
+
 			$productDetails = $this->this_model->getBranchVendorID($productID,$varientID);
 			if(!empty($productDetails) && $productDetails[0]->status == '1'){	
 				$branch = array('branch_id'=>$productDetails[0]->id,
@@ -137,6 +138,10 @@ class Products extends User_Controller {
 									'vendor_id'=>$productDetails[0]->vendor_id
 									);
 				$this->session->set_userdata($branch);
+			if(strpos($_SERVER['HTTP_REFERER'], 'account') !== false){
+				redirect($_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+			}
+
 			}else{
 				echo "<div style='display: flex;width: 100%;height: 100vh;align-items: center;justify-content: center;flex-flow: column;background: linear-gradient(144deg,#ffe8e8 , #ffadad);'>
 					<h2 style='font-size: 40px;text-transform: capitalize;'>Sorry this product is Discontinue</h2>
@@ -192,16 +197,12 @@ class Products extends User_Controller {
 			}
 			// print_r($p_image);die;
 			array_push($image,$p_image);
-			// print_r($image);die;
-		// print_r($data['varient']);die;	
-		$data['varient'] =  $varient_ids;
-		// print_r($data['varient']);die;
-		$data['weight_no'] =  $weight_no;
-		$data['weight_name'] =  $weight_name;
-		$data['discount_per'] =  $discount_per;
-		$data['image'] = $image;
-		$data['product_id'] = $id;
-		// print_r($data['image']);die;
+			$data['varient'] =  $varient_ids;
+			$data['weight_no'] =  $weight_no;
+			$data['weight_name'] =  $weight_name;
+			$data['discount_per'] =  $discount_per;
+			$data['image'] = $image;
+			$data['product_id'] = $id;
 
 		// $data['ForUsersComment'] = $this->this_model->checkOrderItemExist($product_id);
 		// $product_review = $this->this_model->getProductReview($product_id);
@@ -214,7 +215,7 @@ class Products extends User_Controller {
 		$brand_name = $this->this_model->getNameCateBrand(TABLE_BRAND,$data['productDetail'][0]->brand_id);
 		$data['productDetail'][0]->category_name = $category_name;
 		$related_product = $this->this_model->getRelatedProduct($data['productDetail'][0]->category_id,$data['varient']);
-		
+		// lq();
 		foreach ($related_product as $key => $value) {
 			if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
         		$value->discount_price = $value->without_gst_price; 
@@ -263,7 +264,9 @@ class Products extends User_Controller {
 		$data['cartQuantityForVarient'] = $quantity;
 
 		$item_weight_id = [];
+		$data['wish_pid'] = [];
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != '' ){
+				$data['wish_pid'] = $this->this_model->getUsersWishlist();
 				$res = $this->this_model->UsersCartData();
 				foreach ($res as $key => $value) {
 					array_push($item_weight_id, $value->product_weight_id);
@@ -275,7 +278,7 @@ class Products extends User_Controller {
 			}
 		$data['item_weight_id'] = $item_weight_id;
 		$data['BranchDetails'] = $this->this_model->getBranchDtails();
-		// print_r(expression)
+		$data['product_weight_id'] = $this->uri->segment(4);
 		$this->loadView(USER_LAYOUT,$data);
 	}
 
@@ -379,7 +382,6 @@ class Products extends User_Controller {
 			$result = $this->this_model->getDataProductWeight($this->input->post());
 			$image = $this->this_model->getVarientImage($result[0]->id);
 	 	}
-	 	// print_r($result);die;
 
 	 	// for check save cart quantity of user
 	 	$product_id = $result[0]->product_id;
@@ -397,9 +399,10 @@ class Products extends User_Controller {
 	 			}
 	 		}
 	 	}
-	 	$wish_pid = $this->this_model->getUsersWishlist();
+	 	$wish_pid = $this->this_model->getUsersWishlist(); // wishlist product varient id
+	 	// dd($wish_pid);
 	 	$class = '';
-	 	if(in_array($result[0]->product_id, $wish_pid)){
+	 	if(in_array($result[0]->id, $wish_pid)){
 	 		$class = 'fas .fa-heart';
 	 	}	
 	 	$div_nav = '';
@@ -444,6 +447,8 @@ class Products extends User_Controller {
 	 				'image_div_for'=>$div_for,
 	 				'isInWishList'=>$class,
 	 				'cartProductQuantity' => $quantity,
+	 				'product_variant_id'=>$this->utility->safe_b64encode($result[0]->id),
+	 				'product_id'=>$this->utility->safe_b64encode($result[0]->product_id)
 	 			];
 	 	echo json_encode($response);
 
@@ -454,14 +459,12 @@ class Products extends User_Controller {
 		$this->load->model('api_v3/common_model','co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		$my_cart = $this->this_model->getMyCart();
-		// dd($my_cart);
 		if(empty($_SESSION['My_cart']) && empty($my_cart) ){
 				redirect(base_url().'home');
 		}
 
 		$data['page'] = 'frontend/cart_item';
 		$data['js'] = array('cart.js?v='.js_version);
-
 		$data['calc_shiping'] = 'NotInRange'; //default shipping in NotInRange when user nou login its equal to 0
 		if($this->session->userdata('user_id') != ''){
             $this->load->model('common_model');
@@ -493,8 +496,12 @@ class Products extends User_Controller {
 				$data['calc_shiping'] = number_format((float)$data['calc_shiping'],2,'.','');
 			}
 		}
-
-
+		
+		$data['wish_pid'] = [];
+		if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != '' ){
+			$this->load->model('frontend/product_model');
+			$data['wish_pid'] = $this->product_model->getUsersWishlist();
+		}
  		$this->loadView(USER_LAYOUT,$data);
 	}
 
@@ -535,6 +542,7 @@ class Products extends User_Controller {
 
 
 	public function setWishlist(){
+
 		if($this->session->userdata('user_id') == ''){
 			$this->utility->setFlashMessage('danger','
 					Please login for wishlisting a product');
@@ -543,20 +551,20 @@ class Products extends User_Controller {
 			exit;
 		}
 		if($this->input->post()){
-		$product_id = $this->input->post('product_id');
-		// $product_weight_id = $this->input->post('product_weight_id');
+		$product_weight_id = $this->input->post('product_weight_id');
 		$result = $this->this_model->checkProductExist($this->input->post());
-		$pr = $this->this_model->DefaultProductAddInCart($product_id);
+		$pr = $this->this_model->DefaultProductAddInCart($product_weight_id);
 		$array_wish =  array(
-			'product_name' => $pr[0]->name, 
-			'product_id' => $pr[0]->id, 
 			'product_weight_id' => $pr[0]->pw_id, 
 			'user_id' => $this->session->userdata('user_id'), 
-			'vendor_id' => $pr[0]->vendor_id, 
-			'product_image' => $pr[0]->image,
-			'dt_created'=>strtotime(DATE_TIME),
-			'dt_updated'=>strtotime(DATE_TIME) 
+			'vendor_id' => $this->session->userdata('vendor_id'), 
+			'branch_id' => $this->session->userdata('branch_id'), 
+			'created_by' => $this->session->userdata('user_id'),
+			'updated_by' => $this->session->userdata('user_id'),
+			'dt_created'=>DATE_TIME,
+			'dt_updated'=>DATE_TIME 
 		);
+		// dd($array_wish);
 			if(empty($result)){
 				$is_inserted = $this->this_model->insertProductToWishlist($array_wish);
 				if($is_inserted){
@@ -613,16 +621,21 @@ class Products extends User_Controller {
 
 	public function clear_cart(){
 		$status = '0';
+		$messages = 'Your Cart Is Cleared';
 		if($this->session->userdata('user_id') == ''){
 			$this->session->unset_userdata('My_cart');
-				$status = '1';
+			$status = '1';
+			$success = 'success';
 		}else{
 			$res = $this->this_model->clear_cart();
 			if($res){
 				$status = '1';
+				$success = 'success';
+			}else{
+				$success = 'danger';
 			}
 		}
-		$this->utility->setFlashMessage($success,$message);
+		$this->utility->setFlashMessage($success,$messages);
 		echo json_encode(['status'=>$status]);
 	}
 }

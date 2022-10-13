@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <section class="panel">
-                    <header class="panel-heading">Variants Of <?=ucfirst($getNameOfProduct[0]->name)?></header>
+                    <header class="panel-heading">Variants<?=(isset($getNameOfProduct[0]->name)) ? ' Of '.ucfirst($getNameOfProduct[0]->name) : '';?></header>
                     <div class="panel-body">
                         <div class="adv-table">
                             <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">

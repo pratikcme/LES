@@ -115,6 +115,7 @@ class Checkout extends User_Controller {
     $this->load->model($this->myvalues->usersAccount['model'],'that_model');
     $data['get_address'] = $this->that_model->getUserAddress();
     $data['time_slot'] = $this->this_model->getTimeSlot();
+    // dd($data['time_slot']);
     $getActivePaymentMethod = $this->this_model->ActivePaymentMethod();
     $data['payment_option'] = $getActivePaymentMethod[0]->type; 
 
@@ -122,8 +123,8 @@ class Checkout extends User_Controller {
     $data['is_verify'] = '0';
     $vendor = $this->this_model->getVendorAddress();
     $data['isOnlinePayment'] = $vendor[0]->isOnlinePayment;
-
     $data['isCOD'] = $vendor[0]->isCOD;
+    $data['isDeliveryTimeDate'] = $vendor[0]->delivery_time_date;
     if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){
     
       $data['get_address'] = $this->this_model->getVendorAddress();

@@ -57,7 +57,10 @@ class Api_model extends My_model {
         $data['where']['status !='] = '9';
         $data['table'] = 'user';
         $getUser = $this->selectRecords($data);  
-    
+        
+        if(!isset($postData['country_code']) || $postData['country_code']=='') {
+            $postData['country_code'] = '+91';
+        }
 
         if(empty($getUser)){
             $checkAlreadyRegisterWithEmail = $this->check_register($postData['email'],$postData['vendor_id']);
@@ -69,7 +72,7 @@ class Api_model extends My_model {
             $dataIns['insert']['lname']= $postData['lname'];
             $dataIns['insert']['email']= $postData['email'];
             $dataIns['insert']['password']= (isset($postData['password']) && $postData['password']!='')?md5($postData['password']):NULL;
-            $dataIns['insert']['country_code']= (isset($postData['country_code']) && $postData['country_code'] !='')? $postData['country_code']:NULL;
+            $dataIns['insert']['country_code']= (isset($postData['country_code']) && $postData['country_code'] !='') ? $postData['country_code']:NULL;
             $dataIns['insert']['login_type']= $postData['login_type'];
             $dataIns['insert']['phone']= $postData['phone'];
             $dataIns['insert']['status']= '1';
@@ -90,9 +93,13 @@ class Api_model extends My_model {
             }else{
                 $in = $this->insertRecord($dataIns);
             }
-            if($postData['login_type']=='0'){
+            if($in){
                 $response["success"] = 1;
                 $response["message"] = "Account created successfully";
+                return $response;
+            }else{
+                $response["success"] = 0;
+                $response["message"] = "Account is not created";
                 return $response;
             }
 
@@ -1533,7 +1540,12 @@ class Api_model extends My_model {
             $total_gst = 0;
             if (count($my_cart_result) > 0) {
                 foreach ($my_cart_result as $row) {
-
+                    $is_favourite = "0";
+                        if(isset($_POST['user_id']) && $_POST['user_id'] != '' ){
+                            $wishlistCheck = ['user_id'=>$_POST['user_id'],'product_weight_id'=>$row['product_weight_id'],'branch_id'=>$row['branch_id']];
+                            $is_favourite = $this->checkProductExistInWishlist($wishlistCheck);
+                        }
+                    $row['is_favourite'] = $is_favourite;
                     // if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
                     //     $row['discount_price'] = $row['without_gst_price'];
                     // }
@@ -3910,6 +3922,173 @@ class Api_model extends My_model {
         }
     }
     
+    public function checkProductExistInWishlist($postdata){
+        $data['table'] = 'wishlist';
+        $data['select'] = ['*'];
+        $data['where'] = [
+            'product_weight_id'=>$postdata['product_weight_id'],
+            'user_id'=>$postdata['user_id'],
+            'branch_id'=>$postdata['branch_id'],
+        ];
+        $return = $this->selectRecords($data);
+        if(!empty($return)){
+            return "1";
+        }
+        return "0";
+    
+    }
+
+    public function getActiveBranchList($postData){
+        $data['table'] = TABLE_BRANCH;
+        $data['select'] = ['id','name'];
+        $data['where'] = ['vendor_id'=>$postData['vendor_id'],'status'=>'1'];
+        $return = $this->selectRecords($data);
+        if(!empty($return)){
+            $response["success"] = 1;
+            $response["message"] = "Branch List";  
+            $response["data"] = $return;  
+        }else{
+            $response["success"] = 0;
+            $response["message"] = "There Is No Active Branch";  
+            $response["data"] = $return;
+        }
+        return $response;
+    }
+
+    public function getWishlist($postData){
+        $data['table'] = 'wishlist as wl';
+        $data['join'] = [
+            TABLE_PRODUCT_WEIGHT.' as pw'=>['pw.id=wl.product_weight_id','LEFT'],
+            TABLE_PRODUCT.' as p'=>['p.id=pw.product_id','LEFT'],
+            TABLE_WEIGHT.' as w'=>['w.id = pw.weight_id','LEFT'],
+            'package as pkg'=>['pkg.id = pw.package','LEFT'],
+        ];
+        $data['select'] = ['wl.*','pw.id as product_varient_id','pw.price','pw.price','pw.discount_price','pw.weight_no','w.name as weight_name','pw.discount_per','pkg.package as package_name','pw.max_order_qty','p.name','pw.product_id','p.branch_id','pw.quantity as available_quantity','pw.price as actual_price','w.id as weight_id'];
+        $data['where']['wl.user_id'] = $postData['user_id'];
+        if(isset($postData['vendor_id']) && $postData['vendor_id'] != ''){
+            $data['where']['wl.vendor_id'] = $postData['vendor_id'];
+        }
+        if(isset($postData['branch_id']) && $postData['branch_id'] != ''){
+            $data['where']['wl.branch_id'] = $postData['branch_id'];
+        }
+        $return =  $this->selectFromJoin($data);
+        unset($data);
+        $branch_id = $return[0]->branch_id;
+        foreach ($return as $k => $v) {
+            $product_variant_id = $v->product_varient_id;
+            $data['select'] = ['quantity'];
+            $data['where']['product_weight_id'] = $product_variant_id;
+            $data['where']['status !='] = 9;
+            $data['where']['branch_id'] = $branch_id;
+            if (isset($postData['user_id']) && $postData['user_id'] != '') {
+                $data['where']['user_id'] = $postData['user_id'];
+            } else {
+                if (isset($postData['device_id'])) {
+                    $data['where']['device_id'] = $postData['device_id'];
+                    $data['where']['user_id'] = 0;
+                }
+            }
+            $data['table'] = 'my_cart';
+            $result_cart = $this->selectRecords($data);
+            if (count($result_cart) > 0) {
+                $my_cart_quantity = $result_cart[0]->quantity;
+            } else {
+                $my_cart_quantity = '0';
+            }
+
+            $v->my_cart_quantity = $my_cart_quantity;
+            $image = $this->getVarient_image($v->product_varient_id);
+            $v->image = base_url() . 'public/images/'.$this->folder.'product_image/'.$image[0]->image;
+            $v->image = str_replace(' ', '%20', $v->image);
+        }
+        $response["success"] = 1;
+        $response["message"] = "Wishlist";  
+        $response["data"] = $return;  
+        return $response;
+    }
+
+    public function AddRemoveFromWishlist($postData){
+        $result = $this->checkProductExist($postData);
+        $product_variant = $this->ProductVarient($postData['product_varient_id']);
+        if(empty($result)){
+            if($postData['is_favourite'] == '1'){
+                $array_wish =  array(
+                    'product_weight_id' => $product_variant[0]->pw_id, 
+                    'user_id'    => $postData['user_id'], 
+                    'vendor_id'  => $postData['vendor_id'], 
+                    'branch_id'  => $product_variant[0]->branch_id, 
+                    'created_by' => $postData['user_id'],
+                    'updated_by' => $postData['user_id'],
+                    'dt_created' => DATE_TIME,
+                    'dt_updated' => DATE_TIME 
+                );
+                $this->insertProductToWishlist($array_wish);
+                $response['success'] = '1';
+                $response['messages'] = 'Product Added To Wishlist';
+                $response['is_favourite'] = '1';
+            }else{
+                $response['success'] = '0';
+                $response['messages'] = 'Product Already Remove From Wishlist';
+                $response['is_favourite'] = '0'; 
+            }
+
+        }else{
+            if(!empty($result)){
+            if($postData['is_favourite'] == '0'){
+                    $this->removeProductToWishlist($result[0]->id);
+                    $response['success'] = '1';
+                    $response['messages'] = 'Product Remove From Wishlist';
+                    $response['is_favourite'] = '0';
+                }else{
+                    $response['success'] = '0';
+                    $response['messages'] = 'Product Already Added To Wishlist';
+                    $response['is_favourite'] = '1';
+            }
+            }
+        }        
+        return $response;
+    }
+
+    public function checkProductExist($postdata){
+        $product_weight_id = $postdata['product_varient_id'];
+        $data['table'] = 'wishlist';
+        $data['select'] = ['*'];
+        $data['where'] = [
+            'product_weight_id'=>$product_weight_id,
+            'user_id'=>$postdata['user_id'],
+            'vendor_id'=>$postdata['vendor_id'],
+        ];
+        return $this->selectRecords($data);
+    
+    }
+
+    public function ProductVarient($varient_id){
+
+        $data['table'] = TABLE_PRODUCT . " as p";
+        $data['select'] = [
+            'p.*','pw.price','pw.id as pw_id', 'pw.quantity','pw.weight_id','pw.discount_per','pw.discount_price','pi.image','pw.weight_no','pw.max_order_qty','pw.without_gst_price'];
+            $data['join'] = [
+                TABLE_PRODUCT_WEIGHT .' as pw'=>['p.id = pw.product_id','LEFT'],
+                TABLE_PRODUCT_IMAGE .' as pi'=>['pw.id = pi.product_variant_id','LEFT']
+            ];
+            $data['where']['p.status'] = '1';
+            $data['where']['pw.status!='] = '9';
+            $data['where']['pw.id'] = $varient_id;
+            // $data['groupBy'] = 'p.id';   
+            return $this->selectFromJoin($data);         
+        }
+
+    public function insertProductToWishlist($insertArray){
+        $data['table'] = 'wishlist';
+        $data['insert'] = $insertArray;
+        return $this->insertRecord($data);
+    }
+
+    public function removeProductToWishlist($id){
+        $data['table'] = 'wishlist';
+        $data['where']['id'] = $id;
+        return $this->deleteRecords($data);
+    }
 
 }
 

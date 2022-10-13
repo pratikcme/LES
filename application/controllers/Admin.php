@@ -2,6 +2,10 @@
 
 class Admin extends CI_Controller
 {
+   /* ALTER TABLE `branch` ADD `delivery_time_date` ENUM('0','1') NOT NULL COMMENT '0=\"disable\",\"1\"=>anable' AFTER `isCOD`;*/
+   /* 
+ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','1') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '1' COMMENT '0=\"disable\",\"1\"=>enable';*/
+
     public function __construct(){
         parent::__construct();
         require_once APPPATH . 'config/tablenames_constants.php';
@@ -163,6 +167,7 @@ class Admin extends CI_Controller
         $vendor_id = $this->session->userdata['vendor_admin_id'];
         $data['currency'] = $this->vendor_model->getCurrency();
         $data['app_result'] = $this->vendor_model->vendorByIdEmail($email); 
+        // dd($data['app_result']);
         $this->load->view('profile',$data);
     }
 
@@ -547,7 +552,7 @@ class Admin extends CI_Controller
             $currency_code = trim($this->input->post('currency_code'));
             $branch_id = $this->session->userdata['id']; 
 
-            if($branch_id != 0){ 
+            if($branch_id != 0){
                 $ownername = $this->input->post('ownername');
                 if(isset($_FILES) && ($_FILES['vendorimage']['name'] != '')){
                 $path = 'public/images/'.$this->folder.'vendor_shop';
@@ -591,6 +596,7 @@ class Admin extends CI_Controller
                     'image' => $vendorimage,
                     'selfPickUp'=>$selfPickUp,
                     'isCOD'=>$isCOD,
+                    'delivery_time_date' =>$this->input->post('delivery_time_date'),
                     'whatsappFlag' =>$whatsappFlag,
                     'product_default_image'=>$default_image,
                     'isOnlinePayment'=>$isOnlinePayment,
@@ -655,6 +661,7 @@ class Admin extends CI_Controller
             
           
             $branch_id = $this->session->userdata['id'];
+
             if($branch_id == 0){
 
             $this->db->where('id', $id);
