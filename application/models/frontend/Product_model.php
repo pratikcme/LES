@@ -1167,11 +1167,7 @@ Class Product_model extends My_model{
     	$data['where']['mc.user_id'] = $user_id;
     	$data['where']['mc.branch_id'] = $this->branch_id;
     	$return = $this->selectFromJoin($data);
-    	if(!empty($return)){
-    		return count($return);
-    	}
-    	return 0;
-    	dd($return);
+    	return $return;
     }
 
     public function getMyCartOrder(){

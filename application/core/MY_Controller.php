@@ -139,7 +139,7 @@ class Vendor_Controller extends MY_Controller
             }else{
                 $this->load->model('frontend/product_model','product_model');
                 $my_cart = $this->product_model->getMyCart();
-                $this->cartCount = $my_cart;
+                $this->cartCount = count($my_cart);
                 // dd($my_cart);
              // echo 'sdw00' ; die;
 
