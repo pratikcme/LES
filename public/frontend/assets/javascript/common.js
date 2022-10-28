@@ -57,7 +57,7 @@ $(document).on('click','#clear_all',function(){
 })
 
 $(document).on('click','#logout',function() {
-	alert();
+	
 	var url = $('#url').val();
 	swal({
 		title: "Are you sure?",
