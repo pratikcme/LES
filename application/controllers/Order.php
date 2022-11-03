@@ -13,7 +13,6 @@ class Order extends Vendor_Controller
         $data['table_js'] = array('order.js');
         $data['start'] = array('ORDER.table()');
         $data['order_result'] = $this->this_model->getOrderList();
-        lq();
         // echo '<pre>';
         // print_r($data['order_result']);die;
         $this->load->view('order_list',$data);
