@@ -102,7 +102,7 @@ class Checkout extends User_Controller {
              $calc_shiping = $this->this_model->getDeliveryCharge($userLat,$userLong,$this->session->userdata('branch_id'));
             $data['calc_shiping'] = $calc_shiping;
 
-            dd($data['calc_shiping']);
+            // dd($data['calc_shiping']);
           }
 
       if($data['calc_shiping'] == 'notInRange'){
