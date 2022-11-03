@@ -196,8 +196,8 @@ Class Order_model extends My_model{
        
 
         $my_order_result = $this->product_model->getMyCartOrder();
-        echo "<pre>";
-        print_r($my_order_result);die;
+        // echo "<pre>";
+        // print_r($my_order_result);die;
 
         $promocode_amount = 0;
 
@@ -252,6 +252,7 @@ Class Order_model extends My_model{
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                 );
+                dd( $data);
 
                 $this->db->insert('order', $data);
                 $last_insert_id = $this->db->insert_id();
