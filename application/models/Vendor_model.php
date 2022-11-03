@@ -124,6 +124,45 @@ class vendor_model extends My_model{
                     // print_r($data);die;
                     $this->db->insert('branch', $data);
                     $lastId = $this->db->insert_id();
+                    if($lastId){
+                        $data['table'] = 'time_slot';
+                        $data['where'] = ['vendor_id'=>$this->vendor_id];
+                        $time_slot_available = $this->selectRecords($data);
+                        unset($data);
+                        if(empty($time_slot_available)){
+
+                            $insert = array(
+                                'vendor_id' => $this->vendor_id,
+                                'start_time' => '10:00 AM',
+                                'end_time' => '08:30 PM',
+                                'status' => '1',
+                                'order_limit'=>'0',
+                                'dt_added' => strtotime(DATE_TIME),
+                                'dt_updated' => strtotime(DATE_TIME),
+                            );
+                            $data['table'] = 'time_slot';
+                            $data['insert'] = $insert;
+                            $this->insertRecord($data);
+                        }
+                        unset($data);
+                        $data['table'] = 'delivery_charge';
+                        $data['where'] = ['vendor_id'=>$this->vendor_id];
+                        $delivery_charge_available = $this->selectRecords($data);
+                        if(empty($delivery_charge_available)){
+                            $insertion = array(
+                                'vendor_id'=>$this->vendor_id,
+                                'start_range' => '0',
+                                'end_range' => '50',
+                                'price' => '40',
+                                'dt_updated' => DATE_TIME,
+                                'dt_added' => DATE_TIME
+                            );
+                            $data['insert'] = $insertion;
+                            $data['table'] = 'delivery_charge';
+                            $response = $this->insertRecord($data);
+                        }
+                    }
+
                     if($lastId != '' && $count == 0){
                         $fire_base_keys = array(
                             'vendor_id'=>$this->session->userdata('vendor_admin_id'),
