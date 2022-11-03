@@ -69,7 +69,7 @@ Class Checkout_model extends My_model{
         $data['table'] = 'delivery_charge';
         $data['where'] = ['start_range <=' => $getkm, 'end_range >=' => $getkm,'vendor_id'=>$this->vendor_id];
         $get_range = $this->selectRecords($data);
-        // print_r($get_range);die;
+        print_r($get_range);die;
 		// echo $this->db->last_query();die;
       
         if (count($get_range)) {
