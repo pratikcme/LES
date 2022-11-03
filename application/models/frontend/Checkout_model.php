@@ -59,8 +59,10 @@ Class Checkout_model extends My_model{
 		        $data['table'] = TABLE_BRANCH;
 		        $data['where'] = ['id' => $branch_id];
 		        $get_vandor_address = $this->selectRecords($data);
+                dd($get_vandor_address);
                 $getkm = $this->circle_distance($lat, $long, $get_vandor_address[0]->latitude, $get_vandor_address[0]->longitude);
 		        $getkm = round($getkm);
+
                 // print_r($getkm);die;
 		 unset($data);
         $data['select'] = ['price'];
@@ -351,12 +353,12 @@ Class Checkout_model extends My_model{
 
 
     private function sendOtp($mobile_number,$otp){
-        // $mobile_number = '+91'.$mobile;
+        // $mobile_number = '919950612429';
         $ch = curl_init();
         $sms = urlencode("Thank you for registration. Your OTP is ".$otp." CMEXPE");
 
         $url = "http://nimbusit.info/api/pushsms.php?user=104803&key=010UQmX0MjVAhakszP25&sender=CMEXPE&mobile=".$mobile_number."&text=".$sms."&entityid=1701163101500457392&templateid=1707163213124829525";
-
+        // echo $url;die;
         // print_r($url);die;
         curl_setopt($ch, CURLOPT_URL, $url); 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
