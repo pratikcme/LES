@@ -63,13 +63,13 @@ Class Checkout_model extends My_model{
                 $getkm = $this->circle_distance($lat, $long, $get_vandor_address[0]->latitude, $get_vandor_address[0]->longitude);
 		        $getkm = round($getkm);
 
-                print_r($getkm);die;
+                // print_r($getkm);die;
 		 unset($data);
         $data['select'] = ['price'];
         $data['table'] = 'delivery_charge';
         $data['where'] = ['start_range <=' => $getkm, 'end_range >=' => $getkm,'vendor_id'=>$this->vendor_id];
         $get_range = $this->selectRecords($data);
-        // print_r($get_range);die;
+        print_r($get_range);die;
 		// echo $this->db->last_query();die;
       
         if (count($get_range)) {
