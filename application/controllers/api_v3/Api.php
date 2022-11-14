@@ -2018,6 +2018,7 @@ class Api extends Apiuser_Controller {
     public function about_us() {
         $result = $this->this_model->get_about_app();
         lq();
+        
         if ($result) {
             $response = array();
             $response["success"] = 1;
