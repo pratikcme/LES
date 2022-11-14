@@ -12,10 +12,7 @@ class Api extends Apiuser_Controller {
             $getVendor =  $this->common_model->getVendorIdFromBranch();
             $_POST['vendor_id'] = $getVendor[0]->vendor_id;
         }
-    /*
-    ALTER TABLE `vendor` ADD `display_price_with_gst` ENUM('0','1') NOT NULL COMMENT '0=?>with_gst; \'1\'=>without_gst' AFTER `type`;
-    ALTER TABLE `product_weight` ADD `without_gst_price` FLOAT NULL AFTER `discount_price`;    
-    */
+        
     }
     public function appDetails(){   
         $post = $this->input->post();

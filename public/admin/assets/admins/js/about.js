@@ -62,7 +62,7 @@
                 $('body').attr('disabled','disabled');
                 $('#btnSubmit').attr('disabled','disabled');
                 $('#btnSubmit').value('please wait');
-                    $(form).submit();
+                $(form).submit();
             }
         
         });
