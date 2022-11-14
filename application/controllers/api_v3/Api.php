@@ -2016,7 +2016,6 @@ class Api extends Apiuser_Controller {
     }
     
     public function about_us() {
-        dd($_POST);
         $result = $this->this_model->get_about_app();
         if ($result) {
             $response = array();
