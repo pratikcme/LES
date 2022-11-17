@@ -3280,6 +3280,8 @@ class Api_model extends My_model {
         }
         public function emailTemplate($user_id, $branch_id, $o_id) {
             // echo '1';die;
+            error_reporting(E_ALL);
+            ini_set('display_errors', 1);
             $data['table'] = TABLE_ORDER;
             $data['select'] = ['id', 'branch_id', 'user_id', 'user_address_id', 'order_no', 'isSelfPickup', 'delivery_date', 'payment_transaction_id', 'name', 'mobile', 'delivered_address', 'delivery_charge', 'total', 'dt_added', 'delivery_charge', 'order_no', 'delivery_date','total_item','total_saving','payable_amount','user_gst_number','promocode_used'];
             // $data['join'] = [TABLE_ORDER_DETAILS .' as od'=>['o.id=od.order_id','LEFT']];
@@ -3356,7 +3358,8 @@ class Api_model extends My_model {
                         $file = $mpdf->Output(FCPATH.'public/'.$file_name.'.pdf', \Mpdf\Output\Destination::FILE);
                         $datas['attachment'] = FCPATH.'public/'.$file_name.".pdf";
                     }catch(Exception $e){
-                        $datas['attachment'] = '';
+                        // $datas['attachment'] = '';
+                        return true;
                     }
                 }
 
