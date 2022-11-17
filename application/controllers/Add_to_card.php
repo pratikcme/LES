@@ -76,7 +76,7 @@ class Add_to_card extends User_Controller {
 						$update_id = $cartTable[0]->id;
 						// $update_quantity = $cartTable[0]->quantity + $quantity ;
 						// $price = 	$cartTable[0]->discount_price * $quantity;
-						$this->this_model->update_my_card($update_id,$quantity);
+						// $this->this_model->update_my_card($update_id,$quantity);
 						$itemExist = 'Update successfully';
 					}else{
 

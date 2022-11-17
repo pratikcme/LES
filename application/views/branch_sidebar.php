@@ -232,7 +232,7 @@
         <span>Manage Promocode</span>
     </a>
 </li>
-<li class="sub-menu">
+<li class="sub-menu" style="display:none">
     <a href="javascript:;" class="dcjq-parent <?php if($this->uri->segment(1) == 'order' && ( $this->uri->segment(2) == 'sell_report' || $this->uri->segment(2) == 'user_sell_report' ) ) { ?> active <?php } ?>">
         <i class="fa fa-bar-chart-o"></i>
         <span>Sell Report</span>

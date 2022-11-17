@@ -115,22 +115,22 @@
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Rendering engine: activate to sort column ascending"
-                                            style="width: 100px;">email
+                                            style="width: 100px;">Email
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Rendering engine: activate to sort column ascending"
-                                            style="width: 100px;">order no.
+                                            style="width: 100px;">Order no.
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 100px;">prchased value
+                                            style="width: 100px;">Purchased Value
                                         </th>
                                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 100px;">prchased date
+                                            style="width: 100px;">Purchased Date
                                         </th>
                                     </tr>
                                     </thead>

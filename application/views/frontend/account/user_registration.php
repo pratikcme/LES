@@ -57,9 +57,9 @@
 
           <div class="input-wrapper">
             <span><i class="fas fa-envelope"></i></span>
-            <input type="text" id="email" placeholder="Email">
+            <input type="text" name="email" id="email" placeholder="Email">
           </div>
-         
+         <label for="email" class="error"></label>
         </div>
 
 

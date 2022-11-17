@@ -7,6 +7,10 @@ $('#Register_Form').validate({
         fname: { required: true,},
         otp: { required: true,},
         lname: { required: true,},
+        email : {
+            required : true,
+            email : true 
+        },
         phone: { required: true,
                  number: true,
                  minlength: 6,
@@ -20,6 +24,10 @@ $('#Register_Form').validate({
        
         fname : {required : "Please enter first name"},
         lname : {required : "Please enter last name"},
+        email : {
+                required : "Please enter email",
+                email : "Please enter valid email"
+        },
         phone : {
             required : "Please enter valid mobile number",
             number: "Please enter valid mobile number",
