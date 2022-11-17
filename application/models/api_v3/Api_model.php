@@ -3280,8 +3280,6 @@ class Api_model extends My_model {
         }
         public function emailTemplate($user_id, $branch_id, $o_id) {
             // echo '1';die;
-            error_reporting(E_ALL);
-            ini_set('display_errors', 1);
             $data['table'] = TABLE_ORDER;
             $data['select'] = ['id', 'branch_id', 'user_id', 'user_address_id', 'order_no', 'isSelfPickup', 'delivery_date', 'payment_transaction_id', 'name', 'mobile', 'delivered_address', 'delivery_charge', 'total', 'dt_added', 'delivery_charge', 'order_no', 'delivery_date','total_item','total_saving','payable_amount','user_gst_number','promocode_used'];
             // $data['join'] = [TABLE_ORDER_DETAILS .' as od'=>['o.id=od.order_id','LEFT']];
@@ -3347,20 +3345,16 @@ class Api_model extends My_model {
                 }
                 $emailTemplate = $this->load->view('emailTemplate/customer_template_', $data, true);
                 if($i == 1){
-                    $pdf = $this->load->view('emailTemplate/pdf_customer_template', $data, true);
-                    try{
-                        require_once 'vendor/autoload.php';
-                        $mpdf = new \Mpdf\Mpdf();
-                        // dd($mpdf);
-                        $mpdf->WriteHTML($pdf);
-                        $file_name = 'order'.time();
-                        // Saves file on the server as 'filename.pdf'
-                        $file = $mpdf->Output(FCPATH.'public/'.$file_name.'.pdf', \Mpdf\Output\Destination::FILE);
-                        $datas['attachment'] = FCPATH.'public/'.$file_name.".pdf";
-                    }catch(Exception $e){
-                        // $datas['attachment'] = '';
-                        return true;
-                    }
+                    // $pdf = $this->load->view('emailTemplate/pdf_customer_template', $data, true);
+
+                    // require_once 'vendor/autoload.php';
+                    // $mpdf = new \Mpdf\Mpdf();
+                    // // dd($mpdf);
+                    // $mpdf->WriteHTML($pdf);
+                    // $file_name = 'order'.time();
+                    // // Saves file on the server as 'filename.pdf'
+                    // $file = $mpdf->Output(FCPATH.'public/'.$file_name.'.pdf', \Mpdf\Output\Destination::FILE);
+                    // $datas['attachment'] = FCPATH.'public/'.$file_name.".pdf";
                 }
 
                 $datas['message'] = $emailTemplate;
@@ -3369,12 +3363,9 @@ class Api_model extends My_model {
                 // $datas["to"] = 'sahid.cmexpertise@gmail.com';
                 $res = $this->sendMailSMTP($datas);
                 if($i >= 1){
-                    try{
-                        @unlink(FCPATH.'public/'.$file_name.".pdf");
-                        return true;
-                    }catch(Exception $e){
-                        return true;
-                    }
+                    return true;
+                    @unlink(FCPATH.'public/'.$file_name.".pdf");
+                    return true;
                 }
             }
         }
