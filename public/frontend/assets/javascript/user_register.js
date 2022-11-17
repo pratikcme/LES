@@ -9,7 +9,7 @@ $('#Register_Form').validate({
         lname: { required: true,},
         email : {
             required : true,
-            email : true 
+            email : true
         },
         phone: { required: true,
                  number: true,
