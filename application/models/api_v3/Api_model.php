@@ -3346,15 +3346,18 @@ class Api_model extends My_model {
                 $emailTemplate = $this->load->view('emailTemplate/customer_template_', $data, true);
                 if($i == 1){
                     $pdf = $this->load->view('emailTemplate/pdf_customer_template', $data, true);
-
-                    require_once 'vendor/autoload.php';
-                    $mpdf = new \Mpdf\Mpdf();
-                    // dd($mpdf);
-                    $mpdf->WriteHTML($pdf);
-                    $file_name = 'order'.time();
-                    // Saves file on the server as 'filename.pdf'
-                    $file = $mpdf->Output(FCPATH.'public/'.$file_name.'.pdf', \Mpdf\Output\Destination::FILE);
-                    $datas['attachment'] = FCPATH.'public/'.$file_name.".pdf";
+                    try{
+                        require_once 'vendor/autoload.php';
+                        $mpdf = new \Mpdf\Mpdf();
+                        // dd($mpdf);
+                        $mpdf->WriteHTML($pdf);
+                        $file_name = 'order'.time();
+                        // Saves file on the server as 'filename.pdf'
+                        $file = $mpdf->Output(FCPATH.'public/'.$file_name.'.pdf', \Mpdf\Output\Destination::FILE);
+                        $datas['attachment'] = FCPATH.'public/'.$file_name.".pdf";
+                    }catch(Exception $e){
+                        $datas['attachment'] = '';
+                    }
                 }
 
                 $datas['message'] = $emailTemplate;
@@ -3363,8 +3366,12 @@ class Api_model extends My_model {
                 // $datas["to"] = 'sahid.cmexpertise@gmail.com';
                 $res = $this->sendMailSMTP($datas);
                 if($i >= 1){
-                    @unlink(FCPATH.'public/'.$file_name.".pdf");
-                    return true;
+                    try{
+                        @unlink(FCPATH.'public/'.$file_name.".pdf");
+                        return true;
+                    }catch(){
+                        return true;
+                    }
                 }
             }
         }
