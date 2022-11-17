@@ -3369,7 +3369,7 @@ class Api_model extends My_model {
                     try{
                         @unlink(FCPATH.'public/'.$file_name.".pdf");
                         return true;
-                    }catch(){
+                    }catch(Exception $e){
                         return true;
                     }
                 }
