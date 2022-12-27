@@ -97,7 +97,7 @@
                                             <option value="3">Ready</option>
                                             <option value="4">Pickup</option>
                                             <option value="5">On the way</option>
-                                            <option value="8">Delevered</option>
+                                            <option value="8">Delivered</option>
                                             <option value="9">cancelled</option>
                                         </select>
                                     </div>
