@@ -540,11 +540,12 @@ public function Product_add_update(){
         $discount_price_cal = (($price * $discount_per) / 100);
         $discount_price = number_format((float)$discount_price_cal, 2, '.', '');
         $final_discount_price = number_format((float)$price - $discount_price, 2, '.', '');
-            // $whole = floor($unit);      
-            // $fraction = $unit - $whole;
-            // if($fraction == 0){
-            //     $unit = (int)$unit;   
-            // }
+            $whole = floor($unit);      
+            $fraction = $unit - $whole;
+            if($fraction == 0){
+                $unit = (int)$unit;   
+            }
+            dd($unit);
            $gst_amount = ($final_discount_price * $gst_percent) / 100;
            $product_price_without_gst = $final_discount_price - $gst_amount;
         

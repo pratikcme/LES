@@ -582,15 +582,16 @@ class Login_model extends My_model{
           }
 
       public function mobileVerification_register($postData){
-      		$mobile = $postData['phone'];
+			$mobile = $postData['phone'];
       		if(isset($postData['country_code'])){
       			$country_code = $postData['country_code'];
       		}
           	$data['table'] = TABLE_USER;
           	$data['select'] = ['*'];
           	$data['where']['phone'] = $mobile;
-          	$data['vendor_id'] = $this->vendor_id;  	
+          	$data['where']['vendor_id'] = $this->vendor_id;  	
           	$count = $this->countRecords($data);
+			lq();
           	if($count > 0){
           		return "false";
           	}else{
