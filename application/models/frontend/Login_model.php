@@ -591,7 +591,6 @@ class Login_model extends My_model{
           	$data['where']['phone'] = $mobile;
           	$data['where']['vendor_id'] = $this->vendor_id;  	
           	$count = $this->countRecords($data);
-			lq();
           	if($count > 0){
           		return "false";
           	}else{
