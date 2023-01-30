@@ -545,7 +545,7 @@ public function Product_add_update(){
             if($fraction == 0){
                 $unit = (int)$unit;   
             }
-            dd($unit);
+            // dd($unit);
            $gst_amount = ($final_discount_price * $gst_percent) / 100;
            $product_price_without_gst = $final_discount_price - $gst_amount;
         
