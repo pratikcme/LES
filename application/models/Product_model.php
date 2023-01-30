@@ -710,7 +710,6 @@ public function Product_add_update(){
         $data['where'] = ['product_weight_id'=>$id];
         $data['table'] = 'my_cart';
         $this->deleteRecords($data);
-        lq();
         ob_get_clean();
         header('Access-Control-Allow-Origin: *');
         header('Content-Type: application/json');
