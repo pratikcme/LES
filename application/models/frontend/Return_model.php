@@ -14,6 +14,7 @@ Class Return_model extends My_model{
 		$data['table'] = TERM;
 		$data['select'] = ['*'];
 		$data['where'] = ['vendor_id'=>$this->session->userdata('vendor_id')];
+		$data['groupBy'] = 'vendor_id';
 		return $this->selectRecords($data); 
 	}
 	

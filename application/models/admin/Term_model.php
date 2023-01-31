@@ -2,6 +2,9 @@
 
 Class Term_model extends My_model{
 
+    function __construct(){
+        $this->vendor_id = $this->session->userdata('vendor_admin_id');
+    }
 
     public function addRecord($postData){
       // print_r($postData);
@@ -11,7 +14,7 @@ Class Term_model extends My_model{
       $branch_id = $re[0]->id;
       
       $data['table'] = TERM;
-      $data['insert']['vendor_id'] = $this->session->userdata('vendor_admin_id');
+      $data['insert']['vendor_id'] = $this->vendor_id;
       $data['insert']['title'] = $postData['title'];
       $data['insert']['sub_title'] = $postData['sub_title'];
       $data['insert']['created_at'] = DATE_TIME;
@@ -53,7 +56,6 @@ Class Term_model extends My_model{
             $data['where'] = ['id' => $result[0]->id];
             $data['table'] = TERM;
             $result = $this->updateRecords($data);
-
             if ($result) {
                 return ['success', 'Record Edit Successfully'];
             } else {
@@ -64,7 +66,7 @@ Class Term_model extends My_model{
     public function getRecord(){
       $data['table'] = TERM;
       $data['select'] = ['*'];
-      $data['where'] = ['vendor_id'=>$this->session->userdata('vendor_admin_id')];
+      $data['where'] = ['vendor_id'=>$this->vendor_id];
       $data['order'] = "id DESC";
       return $this->selectRecords($data);     
     }

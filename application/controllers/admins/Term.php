@@ -14,6 +14,7 @@ class Term extends Admin_Controller{
 		$data['init'] = array('TERM.table()','TERM.add()');
 		$data['getTerm'] = $this->this_model->getRecord();
 		if($this->input->post()){
+			// dd($this->input->post());
 				$validation = $this->serRules();
 				if($validation){
 					$result = $this->this_model->addUpdateRecord($this->input->post());

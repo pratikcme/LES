@@ -27,7 +27,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <section class="panel">
                     <header class="panel-heading"> Add</header>
-                       <form id="frmAddEdit" method="post" enctype="multipart/form-data" action="<?=base_url()?>admins/term/add">
+                       <form id="frmAddEdit" method="post" enctype="multipart/form-data" action="<?=base_url()?>admins/term">
                           <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
