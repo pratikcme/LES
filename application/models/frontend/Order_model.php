@@ -149,6 +149,17 @@ Class Order_model extends My_model{
         if($get_persentage > 0){
            $profit_per = $get_persentage;
        }
+       $discountValue = 0;
+       $discountPercentage = 0;
+       $this->load->model('frontend/Checkout_model','Checkout_model');
+       $shoppingDiscount = $this->Checkout_model->checkShoppingBasedDiscount();
+       if(!empty($shoppingDiscount)){
+         if(getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount){
+           $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+           $discountValue = getMycartSubtotal() * $discountPercentage/100;
+           $discountValue = number_format((float)$discountValue,2,'.','');
+         }
+       }      
 
        if(isset($branch_id)){
          $this->db->query('LOCK TABLES my_cart WRITE,`order` WRITE,`order_details` WRITE,product_weight WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
@@ -210,8 +221,8 @@ Class Order_model extends My_model{
                     if(!empty($promocodeData)){
                         $promocode_amount =  ($total_price / 100 ) * $promocodeData[0]->percentage;
                     }
-                }
                 
+                }
 
         if(!empty($my_order_result)){
             foreach ($my_order_result as $my_order) {
@@ -236,7 +247,7 @@ Class Order_model extends My_model{
                     'user_gst_number'=>$user_gst_number,
                     'delivery_charge' => $delivery_charge,
                     'total' => $total_price,
-                    'payable_amount' => $total_price+$delivery_charge- $promocode_amount,
+                    'payable_amount' => $total_price+$delivery_charge-$promocode_amount-$discountValue,
                     'order_no' => $iOrderNo,
                     'isSelfPickup'=>(!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] =='0') ? '0' :'1',
                     'delivery_date'=>$delivery_date,
@@ -249,6 +260,7 @@ Class Order_model extends My_model{
                     'status' => '1',
                     'order_status' => '1',
                     'promocode_used'=> (isset($promocode_amount) && $promocode_amount > 0)?1:0,
+                    'shopping_amount_based_discount'=>$discountValue,
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                 );

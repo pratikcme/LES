@@ -489,6 +489,7 @@ label.error.mobile_verfication{
                              </div>
                           </a>
                           <!-- <div class="cart-delete">
+                           
                              <i class="fas fa-times-circle"></i>
                           </div> -->
                        </li>
@@ -542,7 +543,17 @@ label.error.mobile_verfication{
                            </div>
                         </div>
                      </li>
-
+                     <?php if( $shopping_based_discount > 0 ){?>
+                        <li class="total-wrap promocode-applied">
+                        <div class="total-count">
+                           <h6>Discount</h6>
+                           <div class="price-seperator">
+                              <span class="seperator">:</span>
+                              <p><span><?=$this->siteCurrency?></span> <span id="shoppingBasedDiscount"><?=$shopping_based_discount?></span></p>
+                           </div>
+                        </div>
+                     </li>
+                     <?php } ?>
                       <li class="total-wrap promocode-applied" style="display:none;">
                         <div class="total-count">
                            <h6>Promocode Discount</h6>
@@ -566,14 +577,16 @@ label.error.mobile_verfication{
                                     }else{
                                        $to = $getMycartSubtotal+$calc_shiping;
                                     }
-                                    echo number_format((float)$to,2,'.',''); 
+                                    $f_amount = $to-$shopping_based_discount;
+                                    echo number_format((float)$f_amount,2,'.',''); 
                                  }else{ 
                                     if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
                                        $tot = $getMycartSubtotal + $TotalGstAmount; 
                                     }else{
                                        $tot = $getMycartSubtotal;
                                     }
-                                     echo number_format($tot,2);
+                                    $f_amount = $tot-$shopping_based_discount;
+                                     echo number_format((float)$f_amount,2);
                                  } ?> 
                                </span>
                            </p>

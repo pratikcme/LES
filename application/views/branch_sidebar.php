@@ -232,6 +232,12 @@
         <span>Manage Promocode</span>
     </a>
 </li>
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'promocode_manage' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'cart_amount_based_discount'; ?>">
+        <i class="fa fa-percentage" aria-hidden="true"></i>
+        <span>Cart Based Discount </span>
+    </a>
+</li>
 <li class="sub-menu" style="display:none">
     <a href="javascript:;" class="dcjq-parent <?php if($this->uri->segment(1) == 'order' && ( $this->uri->segment(2) == 'sell_report' || $this->uri->segment(2) == 'user_sell_report' ) ) { ?> active <?php } ?>">
         <i class="fa fa-bar-chart-o"></i>

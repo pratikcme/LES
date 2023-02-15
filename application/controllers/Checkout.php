@@ -33,6 +33,7 @@ class Checkout extends User_Controller {
   public function index(){
     $this->load->model('api_v3/common_model','co_model');
     $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
+    // dd($isShow);
     $data['isShow'] = $isShow;
 
 
@@ -145,8 +146,26 @@ class Checkout extends User_Controller {
       $publish_key = $getActivePaymentMethod[0]->test_publish_key; 
       $scret_key = $getActivePaymentMethod[0]->test_secret_key;
     }
-
+    $discountValue = 0;
+    $discountPercentage = 0;
+    $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount();
+    if(!empty($shoppingDiscount)){
+      if(getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount){
+        $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+        $discountValue = getMycartSubtotal() * $discountPercentage/100;
+        $discountValue = number_format((float)$discountValue,2,'.','');
+      }
+    }
+    
+    $data['shopping_based_discountPercentage'] = $discountPercentage;
+    $data['shopping_based_discount'] = $discountValue;
     $getMycartSubtotal = getMycartSubtotal();
+    // echo getMycartSubtotal();
+    // echo "<br>";
+    // echo $discountValue;
+    // echo "<br>";
+    // echo $getMycartSubtotal;
+    // die;
     $data['getMycartSubtotal'] = $getMycartSubtotal;
     $data['array'] = [];
     $data['data'] = json_encode([]);
@@ -202,7 +221,7 @@ class Checkout extends User_Controller {
           $MID = trim($publish_key); 
           $MKY = trim($scret_key); 
         
-          $amt =  $getMycartSubtotal + $calc_shiping;
+          $amt =  $getMycartSubtotal + $calc_shiping + $total_gst - $discountValue;
           $amt = number_format($amt,2,'.','');  
           $custId = "CUST_".time(); 
           $callbackUrl = base_url()."checkout/paytm_checkout";
