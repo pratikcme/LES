@@ -2,37 +2,38 @@
 
 class Delivery_charge_model extends My_model
 {
-     function __construct(){
+    function __construct()
+    {
         $this->load->model('common_model');
         $re = $this->common_model->getExistingBranchId();
         $this->branch_id = $re[0]->id;
         $this->vendor_id = $this->session->userdata('vendor_admin_id');
     }
 
-    public function getDeliveryCharegeData(){
+    public function getDeliveryCharegeData()
+    {
         $data['table'] = 'delivery_charge';
         $data['select'] = ['*'];
-        $data['where'] = ['vendor_id'=>$this->vendor_id];
+        $data['where'] = ['vendor_id' => $this->vendor_id];
         $data['order'] = 'id DESC';
         return $this->selectRecords($data);
     }
 
 
-    public function delivery_charge_Add(){
-
+    public function delivery_charge_Add()
+    {
         $date = DATE_TIME;
-            // print_r($_POST);exit;
+        // print_r($_POST);exit;
         $id = $_POST['id'];
         if (isset($_POST['submit'])) {
             /* Delivery charge Update */
             if ($id != '') {
-            // echo 1;exit;
-
+                // echo 1;exit;
                 $start = $_POST['start_range'];
                 $end = $_POST['end_range'];
                 $price = $_POST['price'];
                 $data = array(
-                    'vendor_id'=>$this->vendor_id,
+                    'vendor_id' => $this->vendor_id,
                     'start_range' => $start,
                     'end_range' => $end,
                     'price' => $price,
@@ -52,29 +53,71 @@ class Delivery_charge_model extends My_model
                 $i = 0;
                 // exit;   
                 // foreach ($a as $val) {
-                    // echo $val;
-                    $end = $c;
-                    $start = $b;
-                    if ($end != '') {
-                        $insertion = array(
-                            'vendor_id'=>$this->vendor_id,
-                            'start_range' => $start,
-                            'end_range' => $end,
-                            'price' => $a,
-                            'dt_updated' => $date,
-                            'dt_added' => $date
-                        );
-                        $data['insert'] = $insertion;
-                        $data['table'] = 'delivery_charge';
-                        $response = $this->insertRecord($data);
-                        $this->session->set_flashdata('msg', 'Delivery charge has been added successfully');
-                    }
-                    $i++;
+                // echo $val;
+                $end = $c;
+                $start = $b;
+                if ($end != '') {
+                    $insertion = array(
+                        'vendor_id' => $this->vendor_id,
+                        'start_range' => $start,
+                        'end_range' => $end,
+                        'price' => $a,
+                        'dt_updated' => $date,
+                        'dt_added' => $date
+                    );
+                    $data['insert'] = $insertion;
+                    $data['table'] = 'delivery_charge';
+                    $response = $this->insertRecord($data);
+                    $this->session->set_flashdata('msg', 'Delivery charge has been added successfully');
+                }
+                $i++;
                 // }
                 // exit;
                 return $response;
             }
         }
+    }
+
+    public function addVariantPriceRange($postData)
+    {
+        // $id = $postData->id;
+
+        $data['insert'] = [
+            'start_price' => $postData['start_price'],
+            'end_price' => $postData['end_price'],
+            'delivery_charge' => $postData['delivery_charge'],
+            'delivery_range_id' => $postData['range_id'],
+            'dt_created' => DATE_TIME
+        ];
+        $data['table'] = 'delivery_charge_price_range';
+
+        $res = $this->insertRecord($data, true);
+        if ($res) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function get_single_range_list($id)
+    {
+        $data['select'] = ['*'];
+        $data['table'] = ['delivery_charge_price_range'];
+        $data['where'] = ['delivery_range_id' => $id];
+        //check
+        $res = $this->selectRecords($data, true);
+        return $res;
+    }
+
+    public function getPriceRange($id)
+    {
+        $data['select'] = ['*'];
+        $data['table'] = ['delivery_charge'];
+        $data['where'] = ['id' => $id];
+
+        $res = $this->selectRecords($data, true);
+        return $res;
     }
 
 
@@ -92,10 +135,10 @@ class Delivery_charge_model extends My_model
 
     public function get_valid_start_range()
     {
-//        echo "harsh";exit;
+        // echo "harsh";exit;
         $start_range = $this->input->post('start_range');
         $id = $this->input->post('id');
-        if($id != ''){
+        if ($id != '') {
             $data['where']['id != '] = $id;
         }
         $data['select'] = ['*'];
@@ -109,21 +152,17 @@ class Delivery_charge_model extends My_model
             $e_range = $row->end_range;
 
             if ($s_range <= $start_range && $start_range <= $e_range) {
-
                 return "false";
-
             }
-
         }
         return "true";
-
     }
 
     public function get_valid_end_range()
     {
         $end_range = $this->input->post('end_range');
         $id = $this->input->post('id');
-        if($id != ''){
+        if ($id != '') {
             $data['where']['id != '] = $id;
         }
         $data['select'] = ['*'];
@@ -139,11 +178,8 @@ class Delivery_charge_model extends My_model
             if ($s_range <= $end_range && $end_range <= $e_range) {
 
                 return "false";
-
             }
-
         }
         return "true";
     }
-
 }

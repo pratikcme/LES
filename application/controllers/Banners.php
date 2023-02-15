@@ -32,7 +32,6 @@ class Banners extends Admin_Controller{
 						redirect(base_url().'banners');
 					 }
 				}
-
 			}
 		// $data['category'] = $this->this_model->CategoryList();
 		// $this->load->model('frontend/vendor_model','v_model');
@@ -160,4 +159,3 @@ class Banners extends Admin_Controller{
 
 
 }
-?>

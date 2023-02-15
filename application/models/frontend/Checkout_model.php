@@ -54,7 +54,7 @@ Class Checkout_model extends My_model{
     	return $this->selectRecords($data);
     }
 
-     public function getDeliveryCharge($lat,$long,$branch_id){
+    public function getDeliveryCharge($lat,$long,$branch_id){
     		  	$data['select'] = ['latitude', 'longitude'];
 		        $data['table'] = TABLE_BRANCH;
 		        $data['where'] = ['id' => $branch_id];
@@ -488,5 +488,3 @@ Class Checkout_model extends My_model{
 
 
 }
-
-?>
