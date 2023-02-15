@@ -596,7 +596,8 @@ label.error.mobile_verfication{
 
                      <?php if(totalSaving() > '0.00'){ ?>
                      <li class="saving">
-                        <p>You will save <span id='totalSaving'><?=$this->siteCurrency.' '.totalSaving() + $shopping_based_discount?></span>  on this order</p>
+                        <?php $totalSaving = totalSaving() + $shopping_based_discount ; ?>
+                        <p>You will save <span id='totalSaving'><?=$this->siteCurrency.' '.$totalSaving?></span>  on this order</p>
                      </li>
                      <?php } ?>
 
