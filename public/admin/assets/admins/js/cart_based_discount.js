@@ -8,16 +8,20 @@ $(document).ready(function () {
 $('#frmAddEdit').validate({
     rules: {
         cart_amount: { required: true },
-        discount_percentage: { required: true, number: true },
+        discount_percentage: { 
+            required: true, 
+            number: true,
+            range: [1, 99] 
+        },
     },
     messages: {
         cart_amount: {
             required: "Please enter cart amount",
-            number: "Please enter valid number"
+            number: "Please enter valid number",
         },
         discount_percentage: {
             required: "Please enter percentage",
-            number: "Please enter valid number"
+            number: "Please enter valid number",
         },
 
     },
