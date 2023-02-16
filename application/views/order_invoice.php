@@ -213,10 +213,16 @@
                 <td colspan="3"></td>
                 <td colspan="1"><strong>Delivery Charge</strong></td>
                 <td><strong><?php
-           echo $getcurrency['value'].' '.$order_detail->delivery_charge;
+                 echo $getcurrency['value'].' '.$order_detail->delivery_charge;
             ?> </strong></td>
               </tr>
-           
+              <?php if($order_detail->shopping_amount_based_discount != '0' && $order_detail->shopping_amount_based_discount != NULL){ ?>
+                <tr>
+                <td colspan="3"></td>
+                <td colspan="1"><strong>Cart Discount</strong></td>
+                <td><strong> - <?= $getcurrency['value'].' '.$order_detail->shopping_amount_based_discount; ?> </strong></td>
+              </tr>
+                <?php } ?>
               <tr>
                 <td colspan="3"></td>
                 <td colspan="1"><strong>Grand Total</strong></td>

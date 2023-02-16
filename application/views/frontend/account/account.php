@@ -198,6 +198,15 @@
                               </a>
                            </li>
                            <?php } ?>
+                           <li class="total-wrap">
+                              <div class="total-count">
+                                 <h6>Final Total</h6>
+                                 <div class="price-seperator">
+                                    <span class="seperator">:</span>
+                                    <p><span><!-- <i class="fas fa-rupee-sign"> --> <?=$this->siteCurrency?></i></span>  <?=number_format((float)$value->payable_amount,2,'.','')?></p>
+                                 </div>
+                              </div>
+                           </li>
                           <li class="total-wrap">
                               <div class="total-count">
                                  <h6>Total Amount</h6>
@@ -207,6 +216,17 @@
                                  </div>
                               </div>
                            </li>
+                           <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?> 
+                              <li class="total-wrap">
+                                 <div class="total-count">
+                                    <h6>Cart Discount</h6>
+                                    <div class="price-seperator">
+                                       <span class="seperator">:</span>
+                                       <p><span><!-- <i class="fas fa-rupee-sign"></i> --> - <?=$this->siteCurrency?></span><?=number_format((float)$value->shopping_amount_based_discount,2,'.','')?></p>
+                                    </div>
+                                 </div>
+                              </li>
+                           <?php } ?>
                             <li class="total-wrap">
                               <div class="total-count">
                                  <h6>Product Discount</h6>
@@ -263,15 +283,6 @@
                                  <div class="price-seperator">
                                     <span class="seperator">:</span>
                                     <p><span><!-- <i class="fas fa-rupee-sign"></i> --> - <?=$this->siteCurrency?></span><?=$value->promocode_discount?></p>
-                                 </div>
-                              </div>
-                           </li>
-                           <li class="total-wrap">
-                              <div class="total-count">
-                                 <h6>Final Total</h6>
-                                 <div class="price-seperator">
-                                    <span class="seperator">:</span>
-                                    <p><span><!-- <i class="fas fa-rupee-sign"></i> --><?=$this->siteCurrency?></span><?=number_format((float)$value->payable_amount,2,'.','')?></p>
                                  </div>
                               </div>
                            </li>

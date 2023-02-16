@@ -3281,7 +3281,7 @@ class Api_model extends My_model {
         public function emailTemplate($user_id, $branch_id, $o_id) {
             // echo '1';die;
             $data['table'] = TABLE_ORDER;
-            $data['select'] = ['id', 'branch_id', 'user_id', 'user_address_id', 'order_no', 'isSelfPickup', 'delivery_date', 'payment_transaction_id', 'name', 'mobile', 'delivered_address', 'delivery_charge', 'total', 'dt_added', 'delivery_charge', 'order_no', 'delivery_date','total_item','total_saving','payable_amount','user_gst_number','promocode_used'];
+            $data['select'] = ['id', 'branch_id', 'user_id', 'user_address_id', 'order_no', 'isSelfPickup', 'delivery_date', 'payment_transaction_id', 'name', 'mobile', 'delivered_address', 'delivery_charge', 'total', 'dt_added', 'delivery_charge', 'order_no', 'delivery_date','total_item','total_saving','payable_amount','user_gst_number','promocode_used','shopping_amount_based_discount'];
             // $data['join'] = [TABLE_ORDER_DETAILS .' as od'=>['o.id=od.order_id','LEFT']];
             $data['where'] = ['status !=' => '9', 'id' => $o_id];
             $re = $this->selectRecords($data);
@@ -3325,6 +3325,7 @@ class Api_model extends My_model {
             // print_r($vendor);die;
             $data['order_details'] = $re;
             $user_address_id = $re[0]->user_address_id;
+            $data['shopping_based_discount'] = $re[0]->shopping_amount_based_discount;
             if ($user_address_id != 0) {
                 $data['user_address'] = $this->getUserAddress($user_address_id);
             }else{

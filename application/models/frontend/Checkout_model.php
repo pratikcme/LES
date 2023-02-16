@@ -521,4 +521,19 @@ class Checkout_model extends My_model
         $response["withoutPromo"] = totalSaving();
         return $response;
     }
+<<<<<<< HEAD
 }
+=======
+
+    public function checkShoppingBasedDiscount(){
+        $cartAmount = getMycartSubtotal();
+        $query = $this->db->query('SELECT *,('.$cartAmount.' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = '.$this->branch_id.' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        $re = $query->result();
+        // lq();
+        return $re;
+        // return
+    }
+
+
+}
+>>>>>>> e0df2587df19d17ad9556823b3f9da3d996ba606

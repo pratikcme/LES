@@ -148,9 +148,26 @@ class Order_model extends My_model
 
         $profit_per = 0;
         $get_persentage = $this->get_profit_per();
+<<<<<<< HEAD
         if ($get_persentage > 0) {
             $profit_per = $get_persentage;
         }
+=======
+        if($get_persentage > 0){
+           $profit_per = $get_persentage;
+       }
+       $discountValue = 0;
+       $discountPercentage = 0;
+       $this->load->model('frontend/Checkout_model','Checkout_model');
+       $shoppingDiscount = $this->Checkout_model->checkShoppingBasedDiscount();
+       if(!empty($shoppingDiscount)){
+         if(getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount){
+           $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+           $discountValue = getMycartSubtotal() * $discountPercentage/100;
+           $discountValue = number_format((float)$discountValue,2,'.','');
+         }
+       }      
+>>>>>>> e0df2587df19d17ad9556823b3f9da3d996ba606
 
         if (isset($branch_id)) {
             $this->db->query('LOCK TABLES my_cart WRITE,`order` WRITE,`order_details` WRITE,product_weight WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
@@ -202,6 +219,7 @@ class Order_model extends My_model
             // echo "<pre>";
             // print_r($my_order_result);die;
 
+<<<<<<< HEAD
             $promocode_amount = 0;
 
             if (isset($promocode) && $promocode != '') {
@@ -212,6 +230,21 @@ class Order_model extends My_model
 
                 if (!empty($promocodeData)) {
                     $promocode_amount =  ($total_price / 100) * $promocodeData[0]->percentage;
+=======
+                    if(!empty($promocodeData)){
+                        $promocode_amount =  ($total_price / 100 ) * $promocodeData[0]->percentage;
+                    }
+                
+                }
+
+        if(!empty($my_order_result)){
+            foreach ($my_order_result as $my_order) {
+                $var_id = $my_order->product_weight_id;
+                $qnt = $my_order->quantity;
+                $updatedQTY = $this->check_udpate_quantity($var_id,$qnt,$user_id);
+                if(!$updatedQTY){
+                    continue;
+>>>>>>> e0df2587df19d17ad9556823b3f9da3d996ba606
                 }
             }
 
@@ -239,7 +272,11 @@ class Order_model extends My_model
                     'user_gst_number' => $user_gst_number,
                     'delivery_charge' => $delivery_charge,
                     'total' => $total_price,
+<<<<<<< HEAD
                     'payable_amount' => $total_price + $delivery_charge - $promocode_amount,
+=======
+                    'payable_amount' => $total_price+$delivery_charge-$promocode_amount-$discountValue,
+>>>>>>> e0df2587df19d17ad9556823b3f9da3d996ba606
                     'order_no' => $iOrderNo,
                     'isSelfPickup' => (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') ? '0' : '1',
                     'delivery_date' => $delivery_date,
@@ -251,7 +288,12 @@ class Order_model extends My_model
                     'delivered_address' => $address,
                     'status' => '1',
                     'order_status' => '1',
+<<<<<<< HEAD
                     'promocode_used' => (isset($promocode_amount) && $promocode_amount > 0) ? 1 : 0,
+=======
+                    'promocode_used'=> (isset($promocode_amount) && $promocode_amount > 0)?1:0,
+                    'shopping_amount_based_discount'=>$discountValue,
+>>>>>>> e0df2587df19d17ad9556823b3f9da3d996ba606
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                 );
