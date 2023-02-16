@@ -137,9 +137,7 @@ $vendor_id = $this->session->userdata['id'];
         </div>
         <div class="row">
             <!-- 	<div class="col-md-6" style="display: none">
-            
         	 <h2 class="chart_title"><span class="time-unit"></span> Orders</h2>
-          
   			  <section id="chart"></section>
   			  <div class="button-field">
   			    <button value="24">Daily</button>
@@ -289,7 +287,6 @@ $vendor_id = $this->session->userdata['id'];
                                                     echo "Credit";
                                                 } ?></td>
                                         <td>
-
                                             <?php
                                                 if ($result->order_status == '1') {
                                                     echo "<label class='badge badge-gradient-info'>New</label>";

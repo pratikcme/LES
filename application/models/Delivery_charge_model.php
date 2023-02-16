@@ -36,7 +36,6 @@ class Delivery_charge_model extends My_model
                     'vendor_id' => $this->vendor_id,
                     'start_range' => $start,
                     'end_range' => $end,
-                    'price' => $price,
 
                     'dt_updated' => $date,
                 );
@@ -47,7 +46,6 @@ class Delivery_charge_model extends My_model
                 exit();
             } else {
                 // echo 2;
-                $a = $this->input->post('price');
                 $b = $this->input->post('start_range');
                 $c = $this->input->post('end_range');
                 $i = 0;
@@ -61,7 +59,6 @@ class Delivery_charge_model extends My_model
                         'vendor_id' => $this->vendor_id,
                         'start_range' => $start,
                         'end_range' => $end,
-                        'price' => $a,
                         'dt_updated' => $date,
                         'dt_added' => $date
                     );
@@ -99,6 +96,28 @@ class Delivery_charge_model extends My_model
         }
     }
 
+    // update
+    public function updateVariantPriceRange($postData)
+    {
+        $data['update'] = [
+            'start_price' => $postData['start_price'],
+            'end_price' => $postData['end_price'],
+            'delivery_charge' => $postData['delivery_charge'],
+        ];
+        $data['table'] = 'delivery_charge_price_range';
+        $data['where'] = ['id' => $postData['price_range_id']];
+
+
+        $res = $this->updateRecords($data, true);
+        return true;
+
+        // if ($res) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+    }
+
 
     public function get_single_range_list($id)
     {
@@ -118,6 +137,16 @@ class Delivery_charge_model extends My_model
 
         $res = $this->selectRecords($data, true);
         return $res;
+    }
+
+    public function get_single_price_data($id)
+    {
+        $data['select'] = ['*'];
+        $data['table'] = ['delivery_charge_price_range'];
+        $data['where'] = ['id' => $id];
+
+        $res = $this->selectRecords($data, true);
+        return $res[0];
     }
 
 
@@ -181,5 +210,79 @@ class Delivery_charge_model extends My_model
             }
         }
         return "true";
+    }
+    // me
+    public function get_valid_start_price()
+    {
+        $start_price = $this->input->post('start_price');
+        $price_range_id = $this->input->post('price_range_id');
+
+
+        $whereArray = [];
+
+        if ($price_range_id != '') {
+            $whereArray['id != '] =  $price_range_id;
+        }
+
+        $range_id = $this->input->post('range_id');
+
+        $data['select'] = ['*'];
+        $whereArray['delivery_range_id'] =  $range_id;
+        $data['table'] = 'delivery_charge_price_range';
+        $data['where'] = $whereArray;
+
+        $res = $this->selectRecords($data, true);
+
+        foreach ($res as $row) :
+            $s_price = $row['start_price'];
+            $e_price = $row['end_price'];
+
+            if ($s_price <= $start_price && $start_price <= $e_price) {
+                return "false";
+            }
+        endforeach;
+        return "true";
+    }
+
+    public function get_valid_end_price()
+    {
+        $end_price = $this->input->post('end_price');
+        $price_range_id = $this->input->post('price_range_id');
+        // if ($price_range_id != '') {
+        //     $data['where']['id != '] = $price_range_id;
+        // }
+        $whereArray = [];
+
+        if ($price_range_id != '') {
+            $whereArray['id != '] =  $price_range_id;
+        }
+
+        $range_id = $this->input->post('range_id');
+
+        $data['select'] = ['*'];
+        $whereArray['delivery_range_id'] =  $range_id;
+        $data['where'] = $whereArray;
+
+        $data['table'] = 'delivery_charge_price_range';
+
+        $res = $this->selectRecords($data, true);
+
+        foreach ($res as $row) :
+            $s_price = $row['start_price'];
+            $e_price = $row['end_price'];
+
+            if ($s_price <= $end_price && $end_price <= $e_price) {
+                return "false";
+            }
+        endforeach;
+        return "true";
+    }
+
+    public function delivery_charge_variant_delete($id)
+    {
+        $data['where'] = ['id' => $id];
+        $data['table'] = ['delivery_charge_price_range'];
+        $this->deleteRecords($data);
+        return true;
     }
 }

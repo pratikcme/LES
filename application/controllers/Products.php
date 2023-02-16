@@ -499,11 +499,19 @@ class Products extends User_Controller
 				$userLong = 0;
 			}
 
-			$data['calc_shiping'] = $this->this_model->getDeliveryCharge($userLat, $userLong, $_SESSION['vendor_id']);
+			$cart_price = 0.00;
+			foreach ($data['my_cart'] as $row) :
+				$cart_price += $row->price * $row->quantity;
+			endforeach;
+			// dd($cart_price);
+			// die;
+			$data['calc_shiping'] = $this->this_model->getDeliveryCharge($userLat, $userLong, $_SESSION['vendor_id'], $cart_price);
 			if (!empty($data['calc_shiping']) && $data['calc_shiping'] != 'NotInRange') {
 				$data['calc_shiping'] = number_format((float)$data['calc_shiping'], 2, '.', '');
 			}
 		}
+
+
 
 		$data['wish_pid'] = [];
 		if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
@@ -532,6 +540,28 @@ class Products extends User_Controller
 				}
 			}
 
+			// new test
+
+			$result = $this->this_model->getUserAddressLatLong();
+
+			if (count($result) > 0) {
+				$userLat = $result[0]->latitude;
+				$userLong = $result[0]->longitude;
+			} else {
+				$userLat = 0;
+				$userLong = 0;
+			}
+
+			$new_deliveryCharge = $this->this_model->getDeliveryCharge($userLat, $userLong, $_SESSION['vendor_id'], getMycartSubtotal());
+			// lq();
+			if (!empty($new_deliveryCharge) && $new_deliveryCharge != 'NotInRange') {
+				$new_deliveryCharge = number_format((float)$new_deliveryCharge, 2, '.', '');
+			}
+
+			// dd($new_deliveryCharge);
+			// die;
+
+			// end here
 			$count = cartItemCount();
 			if ($count == 0) {
 				$this->session->unset_userdata('My_cart');
@@ -542,8 +572,8 @@ class Products extends User_Controller
 				'final_total' => getMycartSubtotal(),
 				'updated_list' => NavbarDropdown(),
 				'cartTotal' => getMycartSubtotal(),
-				'totalSaving' => totalSaving()
-
+				'totalSaving' => totalSaving(),
+				'delivery_charge' => $new_deliveryCharge
 			];
 			echo json_encode($response);
 		}

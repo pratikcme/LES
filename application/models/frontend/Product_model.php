@@ -915,9 +915,11 @@ class Product_model extends My_model
 		return $this->selectRecords($data);
 	}
 
-	public function getDeliveryCharge($lat, $long, $vendor_id)
+	public function getDeliveryCharge($lat, $long, $vendor_id, $cart_price)
 	{
 		// echo $this->branch_id;die;
+
+
 		if (isset($this->branch_id)) {
 
 			$data['select'] = ['latitude', 'longitude'];
@@ -926,19 +928,44 @@ class Product_model extends My_model
 			$get_vandor_address = $this->selectRecords($data);
 			$getkm = $this->circle_distance($lat, $long, $get_vandor_address[0]->latitude, $get_vandor_address[0]->longitude);
 			$getkm = round($getkm);
-			// print_r($getkm);die;
+			// print_r($getkm);
+			// die;
 			unset($data);
-			$data['select'] = ['price'];
+			$data['select'] = ['id']; //change
 			$data['table'] = 'delivery_charge';
 			$data['where'] = ['start_range <=' => $getkm, 'end_range >=' => $getkm, 'vendor_id' => $this->session->userdata('vendor_id')];
-			$get_range = $this->selectRecords($data);
+			$range_id = $this->selectRecords($data, true);
 
-			if (count($get_range)) {
-				return $get_range[0]->price;
+			unset($data);
+			$data['select'] = ['delivery_charge'];
+			$data['where'] = ['start_price <=' => (int)$cart_price, 'end_price >=' => (int)$cart_price, 'delivery_range_id' => $range_id[0]['id']];
+			$data['table'] = 'delivery_charge_price_range';
+
+
+
+			$res = $this->selectRecords($data);
+			// lq();
+			// print_r($res);
+			// die;
+
+			if (count($res) > 0) {
+				return $res[0]->delivery_charge;
 			} else {
-				$get_range = 'NotInRange';
-				return $get_range;
+				$res = '0.00';
+				return $res;
 			}
+
+
+
+			//backup
+			// $get_range = $this->selectRecords($data);
+
+			// if (count($get_range)) {
+			// 	return $get_range[0]->price;
+			// } else {
+			// 	$get_range = 'NotInRange';
+			// 	return $get_range;
+			// }
 		}
 	}
 

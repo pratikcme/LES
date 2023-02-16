@@ -8,7 +8,7 @@
                 <!--breadcrumbs start -->
                 <ul class="breadcrumb">
                     <li class="active"><a href=""><i class="fa fa-home"></i> <a
-                                href="<?php echo base_url() . 'admin/index'; ?>">Home</a> / Delivery Charge</a></li>
+                                href="<?php echo base_url() . 'admin/index'; ?>">Home</a> / Delivery Charge </a></li>
                 </ul>
                 <!--breadcrumbs end -->
             </div>
@@ -23,7 +23,8 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <section class="panel">
-                    <header class="panel-heading"> Delivery Charge</header>
+                    <header class="panel-heading"> Delivery Charge (Distance in
+                        Km) </header>
                     <div class="panel-body">
                         <div class="adv-table">
                             <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -91,8 +92,8 @@
                                                     class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                                 <a href="<?php echo base_url() . 'delivery_charge/delivery_charge_add?id=' . $this->utility->encode($result->id); ?>"
                                                     class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                                <a href="<?php echo base_url() . 'delivery_charge/delivery_charge_variants?id=' . $this->utility->encode($result->id); ?>"
-                                                    class="btn btn-primary btn-xs">Variants</a>
+                                                <a href="<?php echo base_url() . 'delivery_charge/delivery_charge_variants/' . $this->utility->encode($result->id); ?>"
+                                                    class="btn btn-primary btn-xs">Price Variants</a>
                                             </td>
                                         </tr>
                                         <?php $i++;
