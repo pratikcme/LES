@@ -1262,7 +1262,7 @@ class Api extends Apiuser_Controller {
         if ($gettotalPrice === null || $gettotalPrice == "<null>") {
             $gettotalPrice = 0.0;
         }
-        $discountValue = '';
+        $discountValue = 0;
         $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($my_cal,$postdata['branch_id']);
         // dd($shoppingDiscount);
         if(!empty($shoppingDiscount)){
@@ -1273,7 +1273,7 @@ class Api extends Apiuser_Controller {
           }
         }
         $response["count"] = (int)$gettotal[0]->cart_items;
-        $response["actual_price"] = $gettotalPrice;
+        $response["actual_price"] = number_format((float)($gettotalPrice-$discountValue),2,'.','');
         $response["shopping_based_discount"] = $discountValue;
         $response["discount_price"] = number_format((float)$gettotalPrice - $my_cal, 2, '.', '');
         $response["total_price"] = number_format((float)$my_cal, 2, '.', '');

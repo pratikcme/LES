@@ -1632,7 +1632,7 @@ class Api_model extends My_model {
             if ($getactual === null || $getactual == "<null>") {
                 $getactual = 0.0;
             }
-            $discountValue = '';
+            $discountValue = 0;
             $shoppingDiscount = $this->checkShoppingBasedDiscount($my_cal,$branch_id);
             // dd($shoppingDiscount);
             if(!empty($shoppingDiscount)){
@@ -1646,7 +1646,7 @@ class Api_model extends My_model {
             $response['success'] = "1";
             $response['message'] = "My cart item list";
             $response["count"] = $gettotal[0]->cart_items;
-            $response["actual_price_total"] = $getactual;
+            $response["actual_price_total"] = number_format((float)($getactual-$discountValue),2,'.','');
             $response["shopping_based_discount"] = $discountValue;
             $response["discount_price_total"] = number_format((float)$getactual - $my_cal, '2', '.', '');
             $response["total_price"] = $my_cal;
