@@ -100,7 +100,7 @@ class Checkout extends User_Controller {
           $calc_shiping = 0;
 
           if(!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0'){
-             $calc_shiping = $this->this_model->getDeliveryCharge($userLat,$userLong,$this->session->userdata('branch_id'));
+             $calc_shiping = $this->this_model->getDeliveryCharge($userLat,$userLong,$this->session->userdata('branch_id'),getMycartSubtotal());
             $data['calc_shiping'] = $calc_shiping;
 
             // dd($data['calc_shiping']);
@@ -388,7 +388,7 @@ class Checkout extends User_Controller {
 
         $calc_shiping = 0;
           if(!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0'){
-             $calc_shiping = $this->this_model->getDeliveryCharge($userLat,$userLong,$this->session->userdata('branch_id'));
+             $calc_shiping = $this->this_model->getDeliveryCharge($userLat,$userLong,$this->session->userdata('branch_id'),getMycartSubtotal());
           }
           // this call for currency code
           $currency = $this->this_model->checkCurrencyCode();
@@ -619,7 +619,7 @@ public function prepareData($amount,$razorpayOrderId,$publish_key){
         $otpForSelfPickup = '';
         $calc_shiping =  '0';
         if(!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0'){
-           $calc_shiping = $this->this_model->getDeliveryCharge($userLat,$userLong,$this->session->userdata('branch_id'));
+           $calc_shiping = $this->this_model->getDeliveryCharge($userLat,$userLong,$this->session->userdata('branch_id'),getMycartSubtotal());
    
         }
 
