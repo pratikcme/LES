@@ -1646,10 +1646,10 @@ class Api_model extends My_model {
             $response['success'] = "1";
             $response['message'] = "My cart item list";
             $response["count"] = $gettotal[0]->cart_items;
-            $response["actual_price_total"] = number_format((float)($getactual-$discountValue),2,'.','');
+            $response["actual_price_total"] = $getactual;
             $response["shopping_based_discount"] = $discountValue;
             $response["discount_price_total"] = number_format((float)$getactual - $my_cal, '2', '.', '');
-            $response["total_price"] = $my_cal;
+            $response["total_price"] = number_format((float)($my_cal-$discountValue), '2', '.', '');
 
             $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
             $response["amountWithoutGst"] = number_format((float)$my_cal - $total_gst, '2', '.', '');

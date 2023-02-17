@@ -1273,10 +1273,10 @@ class Api extends Apiuser_Controller {
           }
         }
         $response["count"] = (int)$gettotal[0]->cart_items;
-        $response["actual_price"] = number_format((float)($gettotalPrice-$discountValue),2,'.','');
+        $response["actual_price"] = $gettotalPrice;
         $response["shopping_based_discount"] = $discountValue;
         $response["discount_price"] = number_format((float)$gettotalPrice - $my_cal, 2, '.', '');
-        $response["total_price"] = number_format((float)$my_cal, 2, '.', '');
+        $response["total_price"] = number_format((float)($my_cal-$discountValue), 2, '.', '');
         $response["TotalGstAmount"] = number_format((float)$total_gst, 2, '.', '');
         $response["amountWithoutGst"] = number_format((float)$my_cal - $total_gst, 2, '.', '');
         $quntity = 0;
