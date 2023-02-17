@@ -231,11 +231,11 @@ class Add_to_card extends User_Controller
 		$quantity = 1;
 		$sub_total =  $this->input->post("subtotal");
 
-
+		$new_deliveryCharge = 0;
 		if ($this->session->userdata('user_id') == '') {
-
+			$new_deliveryCharge = number_format((float)$new_deliveryCharge, 2, '.', '');
 			foreach ($_SESSION['My_cart'] as $key => $value) {
-
+				
 				if ($value['product_id'] == $prod_id && $value['product_weight_id'] == $product_weight_id) {
 					// echo (1);
 					// exit;
