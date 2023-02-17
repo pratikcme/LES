@@ -336,7 +336,7 @@ class Add_to_card extends User_Controller
 			'final_total' => getMycartSubtotal(),
 			'max_qun' => $old_qun,
 			'updated_list' => NavbarDropdown(),
-			'delivery_charge' => $new_deliveryCharge
+			'delivery_charge' => $new_deliveryCharge 
 		];
 		echo json_encode($response);
 	}

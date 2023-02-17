@@ -69,10 +69,10 @@ $(document).ready(function () {
             var subtot = subtotal();
             $("#final_subtotal").html(subtot);
             $("#nav_subtotal").html(siteCurrency + " " + subtot);
-
             $("#shipingCharge").val(output.delivery_charge);
             $("#delivery_charge").html(
               siteCurrency + " " + output.delivery_charge
+
             );
             var final = parseFloat(subtot) + parseFloat(output.delivery_charge);
             $("#total").html(siteCurrency + " " + final.toFixed(2));
@@ -193,10 +193,10 @@ $(document).ready(function () {
               .next("td")
               .html(
                 "<p><span>" +
-                  siteCurrency +
-                  '</span><span class="total">' +
-                  output.new_total +
-                  "</span></p>"
+                siteCurrency +
+                '</span><span class="total">' +
+                output.new_total +
+                "</span></p>"
               );
             var subtot = subtotal();
             if (output.new_quan == "") {
@@ -281,10 +281,10 @@ $(document).ready(function () {
               .next("td")
               .html(
                 "<p><span>" +
-                  siteCurrency +
-                  '</span><span class="total">' +
-                  output.new_total +
-                  "</span></p>"
+                siteCurrency +
+                '</span><span class="total">' +
+                output.new_total +
+                "</span></p>"
               );
             var subtot = subtotal();
             that
