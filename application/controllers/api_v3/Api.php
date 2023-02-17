@@ -1504,6 +1504,7 @@ class Api extends Apiuser_Controller {
             $isSelfPickup = $order_result['isSelfPickup'];
             $total_with_charge = $order_result['payable_amount'];
             $delivery_charge = $order_result['delivery_charge'];
+            $shopping_based_discount = $order_result['shopping_amount_based_discount'];
             // if ($isSelfPickup == 1) {
                 $self_pick = $this->db->query("SELECT * FROM `selfPickup_otp` WHERE order_id = '$order_id' AND user_id = '$user_id'");
                 $self_otp = $self_pick->row_array();
@@ -1586,6 +1587,7 @@ class Api extends Apiuser_Controller {
                 $response["delivery_charge"] = $delivery_charge;
                 $response["discount_price_total"] = $discount_price_total;
                 $response["instance_discount"] = $instance_discount;
+                $response["shopping_based_discount"] = number_format((float)$shopping_based_discount, '2', '.', '');
                 $response['isSelfPickup'] = $isSelfPickup;
                 $response['verify_otp'] = (isset($self_pick_otp)) ? $self_pick_otp : '1234';
                 $response["data"] = $get_data;

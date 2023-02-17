@@ -544,7 +544,7 @@ label.error.mobile_verfication{
                         </div>
                      </li>
                      <?php if( $shopping_based_discount > 0 ){?>
-                        <li class="total-wrap promocode-applied">
+                        <li class="total-wrap">
                         <div class="total-count">
                            <h6>Discount</h6>
                            <div class="price-seperator">
@@ -600,17 +600,13 @@ label.error.mobile_verfication{
                         <p>You will save <span id='totalSaving'><?=$this->siteCurrency.' '.$totalSaving?></span>  on this order</p>
                      </li>
                      <?php } ?>
-
-                    
-
-
-                       <li class="saving">
-                        <input type="text" name="promocode" id="promocode" placeholder="Enter Promocode">
-                        <span class="error" id="promo_err"></span>
-                        <button id="checkPromocode" class="btn btn-primary" type="button">Apply</button>
-                        
-                     </li>
-
+                     <?php if($shopping_based_discount == 0){?>
+                        <li class="saving">
+                           <input type="text" name="promocode" id="promocode" placeholder="Enter Promocode">
+                           <span class="error" id="promo_err"></span>
+                           <button id="checkPromocode" class="btn btn-primary" type="button">Apply</button>
+                        </li>   
+                     <?php } ?>
                      <li class="saving">
                         <h6> <img src="<?=base_url().'public/frontend/'?>assets/images/shield.png"> 100% Genuine Products</h6>
                      </li>

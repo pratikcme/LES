@@ -449,7 +449,16 @@ class Checkout_model extends My_model
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
         $getMycartSubtotal = getMycartSubtotal();
-        $sub_total = number_format((float)$getMycartSubtotal, 2, '.', '');
+        $discountValue = 0;
+        $shoppingDiscount = $this->checkShoppingBasedDiscount();
+        if(!empty($shoppingDiscount)){
+          if(getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount){
+            $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+            $discountValue = getMycartSubtotal() * $discountPercentage/100;
+            $discountValue = number_format((float)$discountValue,2,'.','');
+          }
+        }
+        $sub_total = number_format((float)($getMycartSubtotal-$discountValue), 2, '.', '');
         $total_price = number_format((float)$sub_total, 2, '.', '');
 
 
@@ -457,7 +466,7 @@ class Checkout_model extends My_model
             $response["success"] = 0;
             $response["message"] = "No Promocode Found";
             $response["orderAmount"] = $total_price;
-            $response["withoutPromo"] = totalSaving();
+            $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
@@ -465,7 +474,7 @@ class Checkout_model extends My_model
             $response["success"] = 0;
             $response["message"] = "Promocode is not started yet";
             $response["orderAmount"] = $total_price;
-            $response["withoutPromo"] = totalSaving();
+            $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
@@ -473,7 +482,7 @@ class Checkout_model extends My_model
             $response["success"] = 0;
             $response["message"] = "Promocode is expiered";
             $response["orderAmount"] = $total_price;
-            $response["withoutPromo"] = totalSaving();
+            $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
@@ -486,7 +495,7 @@ class Checkout_model extends My_model
             $response["success"] = 0;
             $response["message"] = "Minimum " . $promocode[0]->min_cart . ' amount is required';
             $response["orderAmount"] = $total_price;
-            $response["withoutPromo"] = totalSaving();
+            $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
@@ -494,7 +503,7 @@ class Checkout_model extends My_model
             $response["success"] = 0;
             $response["message"] = "Maximum " . $promocode[0]->max_cart . ' Cart amount is required';
             $response["orderAmount"] = $total_price;
-            $response["withoutPromo"] = totalSaving();
+            $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
@@ -508,7 +517,7 @@ class Checkout_model extends My_model
             $response["success"] = 0;
             $response["message"] = "Promocode is reached limit";
             $response["orderAmount"] = $total_price;
-            $response["withoutPromo"] = totalSaving();
+            $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
@@ -518,7 +527,7 @@ class Checkout_model extends My_model
         $response["message"] = "Promocode applied";
         $response["data"] = $calculate;
         $response["orderAmount"] = floatval($total_price);
-        $response["withoutPromo"] = totalSaving();
+        $response["withoutPromo"] = totalSaving() + $discountValue;
         return $response;
     }
 

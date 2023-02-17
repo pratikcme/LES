@@ -2015,6 +2015,21 @@ class Api_model extends My_model {
         if ($get_persentage > 0) {
             $profit_per = $get_persentage;
         }
+        $my_cart_result = $this->getCartTotal($user_id);
+        $my_cart_result = $my_cart_result[0];
+        $cartTotal = $my_cart_result['sub_total'];
+
+        $discountValue = 0;
+        $shoppingDiscount = $this->checkShoppingBasedDiscount($cartTotal,$branch_id);
+        // dd($shoppingDiscount);
+        if(!empty($shoppingDiscount)){
+          if($cartTotal >= $shoppingDiscount[0]->cart_amount){
+            $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+            $discountValue = $cartTotal * $discountPercentage/100;
+            $discountValue = number_format((float)$discountValue,2,'.','');
+          }
+        }
+
         if (isset($_POST['payment_type']) && isset($_POST['branch_id']) && isset($_POST['time_slot_id'])) {
             if (isset($_POST['user_id'])) {
 
@@ -2090,7 +2105,7 @@ class Api_model extends My_model {
                             'sub_total' => $sub_total,
                             'delivery_charge' => $delivery_charge,
                             'total' => $total_price,
-                            'payable_amount' => $total_price + $delivery_charge - $promocode_amount,
+                            'payable_amount' => $total_price + $delivery_charge - $promocode_amount - $discountValue,
                             'order_no' => $iOrderNo,
                             'orderId_payment_gateway'=>$refundTxnId,
                             'user_gst_number' => $user_gst_number,
@@ -2103,6 +2118,7 @@ class Api_model extends My_model {
                             'mobile' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->phone : $user[0]->phone, 
                             'delivered_address' => $address, 
                             'promocode_used'=> (isset($promocode_amount) && $promocode_amount > 0)?1:0,
+                            'shopping_amount_based_discount'=>$discountValue,
                             'dt_added' => strtotime(DATE_TIME), 
                             'dt_updated' => strtotime(DATE_TIME)
                         ];
