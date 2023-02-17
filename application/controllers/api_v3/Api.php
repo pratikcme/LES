@@ -585,7 +585,7 @@ class Api extends Apiuser_Controller {
                         $get_charge = 'N';
                         
                         if (isset($branch_id)) {
-                            $get_charge = $this->this_model->get_delivery_charge($address->latitude, $address->longitude, $branch_id);
+                            $get_charge = $this->this_model->get_delivery_charge($address->latitude, $address->longitude, $branch_id,$my_cart_price_result);
                             // print_r($get_charge);die;
                         }
                         $data = array('id' => $address->id, 'address' => $address->address, 'user_id' => $address->user_id, 'latitude' => $address->latitude, 'longitude' => $address->longitude, 'name' => $address->name, 'pincode' => $address->pincode, 'landmark' => $address->landmark, 'city' => $address->city, 'state' => $address->state, 'country' => $address->country, 'phone' => $address->phone, 'delivery_charge' => $get_charge,'status'=>$address->status);
@@ -1262,8 +1262,19 @@ class Api extends Apiuser_Controller {
         if ($gettotalPrice === null || $gettotalPrice == "<null>") {
             $gettotalPrice = 0.0;
         }
+        $discountValue = '';
+        $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($my_cal,$postdata['branch_id']);
+        // dd($shoppingDiscount);
+        if(!empty($shoppingDiscount)){
+          if($my_cal >= $shoppingDiscount[0]->cart_amount){
+            $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+            $discountValue = $my_cal * $discountPercentage/100;
+            $discountValue = number_format((float)$discountValue,2,'.','');
+          }
+        }
         $response["count"] = (int)$gettotal[0]->cart_items;
         $response["actual_price"] = $gettotalPrice;
+        $response["shopping_based_discount"] = $discountValue;
         $response["discount_price"] = number_format((float)$gettotalPrice - $my_cal, 2, '.', '');
         $response["total_price"] = number_format((float)$my_cal, 2, '.', '');
         $response["TotalGstAmount"] = number_format((float)$total_gst, 2, '.', '');

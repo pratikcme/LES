@@ -1579,7 +1579,7 @@ class Api_model extends My_model {
                     $product_weight_result = $this->selectFromJoin($data, true);
 
                     
-
+                    $branch_id = $product_weight_result[0]['branch_id'];
                     $package_id = $product_weight_result[0]['package'];
                     $package_name = $this->get_package($package_id);
 
@@ -1632,11 +1632,22 @@ class Api_model extends My_model {
             if ($getactual === null || $getactual == "<null>") {
                 $getactual = 0.0;
             }
+            $discountValue = '';
+            $shoppingDiscount = $this->checkShoppingBasedDiscount($my_cal,$branch_id);
+            // dd($shoppingDiscount);
+            if(!empty($shoppingDiscount)){
+              if($my_cal >= $shoppingDiscount[0]->cart_amount){
+                $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+                $discountValue = $my_cal * $discountPercentage/100;
+                $discountValue = number_format((float)$discountValue,2,'.','');
+              }
+            }
             // $this->update_my_cart($my_cart_result,true);
             $response['success'] = "1";
             $response['message'] = "My cart item list";
             $response["count"] = $gettotal[0]->cart_items;
             $response["actual_price_total"] = $getactual;
+            $response["shopping_based_discount"] = $discountValue;
             $response["discount_price_total"] = number_format((float)$getactual - $my_cal, '2', '.', '');
             $response["total_price"] = $my_cal;
 
@@ -1656,7 +1667,13 @@ class Api_model extends My_model {
         }
     }
 
-
+    public function checkShoppingBasedDiscount($cartTotal,$branch_id){
+        $query = $this->db->query('SELECT *,('.$cartTotal.' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = '.$branch_id.' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        $re = $query->result();
+        // lq();
+        return $re;
+        // return
+    }
 
     public function get_cart_variant($postdata) {
         if (isset($postdata['user_id']) && $postdata['user_id'] != ''&& $postdata['user_id'] != 0) {
@@ -2267,7 +2284,7 @@ class Api_model extends My_model {
         $this->insertRecord($data);
     }
 
-    function get_delivery_charge($lat, $long, $branch_id) {
+    function get_delivery_charge($lat, $long, $branch_id,$cartTotal) {
         $data['select'] = ['vendor_id','latitude', 'longitude'];
         $data['table'] = 'branch';
         $data['where'] = ['id' => $branch_id];
@@ -2276,16 +2293,31 @@ class Api_model extends My_model {
         $getkm = $this->circle_distance($lat, $long, $get_vandor_address[0]->latitude, $get_vandor_address[0]->longitude);
         $getkm = round($getkm);
         unset($data);
-        $data['select'] = ['price'];
+        // $data['select'] = ['price'];
+        $data['select'] = ['id'];
         $data['table'] = 'delivery_charge';
         $data['where'] = ['start_range <=' => $getkm, 'end_range >=' => $getkm,'vendor_id'=>$vendor_id];
-        $get_range = $this->selectRecords($data);
-        // print_r($get_range);die;
-        if (count($get_range)) {
-            return $get_range[0]->price;
+        // $get_range = $this->selectRecords($data);
+        $range_id = $this->selectRecords($data,true);
+
+        unset($data);
+        $data['select'] = ['delivery_charge'];
+        $data['where'] = ['start_price <=' => $cartTotal, 'end_price >=' => $cartTotal, 'delivery_range_id' => $range_id[0]['id']];
+        $data['table'] = 'delivery_charge_price_range';
+        $res = $this->selectRecords($data);
+        if (count($res)) {
+            return $res[0]->delivery_charge;
         } else {
-            return 'N';
+            $res = '0.00';
+            return $res;
         }
+        
+        // print_r($get_range);die;
+        // if (count($get_range)) {
+        //     return $get_range[0]->price;
+        // } else {
+        //     return 'N';
+        // }
     }
     function circle_distance($lat1, $lon1, $lat2, $lon2) {
         $rad = 3.14 / 180;
