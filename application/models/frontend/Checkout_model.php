@@ -521,9 +521,6 @@ class Checkout_model extends My_model
         $response["withoutPromo"] = totalSaving();
         return $response;
     }
-<<<<<<< HEAD
-}
-=======
 
     public function checkShoppingBasedDiscount(){
         $cartAmount = getMycartSubtotal();
@@ -536,4 +533,3 @@ class Checkout_model extends My_model
 
 
 }
->>>>>>> e0df2587df19d17ad9556823b3f9da3d996ba606
