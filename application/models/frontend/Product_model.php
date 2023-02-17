@@ -940,11 +940,8 @@ class Product_model extends My_model
 			$data['select'] = ['delivery_charge'];
 			$data['where'] = ['start_price <=' => (int)$cart_price, 'end_price >=' => (int)$cart_price, 'delivery_range_id' => $range_id[0]['id']];
 			$data['table'] = 'delivery_charge_price_range';
-
-
-
 			$res = $this->selectRecords($data);
-			// lq();
+			lq();
 			// print_r($res);
 			// die;
 
