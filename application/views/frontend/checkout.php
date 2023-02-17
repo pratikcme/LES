@@ -546,7 +546,7 @@ label.error.mobile_verfication{
                      <?php if( $shopping_based_discount > 0 ){?>
                         <li class="total-wrap">
                         <div class="total-count">
-                           <h6>Discount</h6>
+                           <h6>Cart Discount</h6>
                            <div class="price-seperator">
                               <span class="seperator">:</span>
                               <p><span><?=$this->siteCurrency?></span> <span id="shoppingBasedDiscount"><?=$shopping_based_discount?></span></p>

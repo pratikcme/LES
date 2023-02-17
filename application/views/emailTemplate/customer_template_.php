@@ -126,7 +126,7 @@
 <?php if($shopping_based_discount != '0' ){ ?> 
   <div style=" padding: 10px 10px;border: 1px solid #d8d8d8; border-top: 0px;">
   <div style="display: flex;align-items: center;justify-content: space-between;width: 100%">
-           <h6 style="width:50%;color: #000;font-weight: bold;font-size: 16px;margin: 0px;text-transform: capitalize;"> Discount :</h6>
+           <h6 style="width:50%;color: #000;font-weight: bold;font-size: 16px;margin: 0px;text-transform: capitalize;">Cart Discount :</h6>
             <span style="width:50%;font-weight: normal;text-align: right;display:block;width: 50%;color: black"><?=$this->siteCurrency?> <?=$shopping_based_discount?></span>
     </div>  
 </div>
