@@ -369,7 +369,7 @@ label.error.mobile_verfication{
                         </div>-->
                         <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?>
                         <div class="option-1">
-                           <label class="radio-container mb-0">Credit/Debit Card
+                           <label class="radio-container mb-0">Online Pay
                            <input id="credit" class="pay-chk" type="radio" name="radio" <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?> value="<?=$payment_option?>" >
                            <span class="checkmark"></span>
                            </label>
