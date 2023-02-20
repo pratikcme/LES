@@ -7,11 +7,14 @@ $(document).ready(function () {
 
 $('#frmAddEdit').validate({
     rules: {
-        cart_amount: { required: true },
-        discount_percentage: { 
-            required: true, 
+        cart_amount: {
+            required: true,
             number: true,
-            range: [1, 99] 
+        },
+        discount_percentage: {
+            required: true,
+            number: true,
+            range: [1, 99]
         },
     },
     messages: {
