@@ -174,7 +174,7 @@ $('#variant_form').validate({
                 },
                 async: false,
             },
-
+            validaterange: true
         }
     },
     messages: {
