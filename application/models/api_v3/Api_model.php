@@ -1652,7 +1652,7 @@ class Api_model extends My_model {
             $response["total_price"] = number_format((float)($my_cal-$discountValue), '2', '.', '');
 
             $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
-            $response["amountWithoutGst"] = number_format((float)$my_cal - $total_gst, '2', '.', '');
+            $response["amountWithoutGst"] = number_format((float)($my_cal - $total_gst-$discountValue), '2', '.', '');
            
             
             $response["data"] = $getdata;
