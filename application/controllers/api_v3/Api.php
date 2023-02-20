@@ -471,6 +471,10 @@ class Api extends Apiuser_Controller {
            
            
             $my_cart_price_result = $total_cart[0]->total;
+            
+           
+
+
             $cart_response["data"] = array();
             if(!empty($my_cart_result)){
 
@@ -481,7 +485,17 @@ class Api extends Apiuser_Controller {
                 $payment_method = $this->db->query("SELECT * FROM payment_method WHERE branch_id ='$BranchId' AND status='1'");
 
                 $p_method = $payment_method->result();
-                
+
+                $discountValue = 0;
+                $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($my_cart_price_result,$BranchId);
+                // dd($shoppingDiscount);
+                if(!empty($shoppingDiscount)){
+                if($cartTotal >= $shoppingDiscount[0]->cart_amount){
+                    $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+                    $discountValue = $cartTotal * $discountPercentage/100;
+                    $discountValue = number_format((float)$discountValue,2,'.','');
+                    }
+                }
                 
                 
                 $vendorData = [];
@@ -517,7 +531,9 @@ class Api extends Apiuser_Controller {
                 $cart_response['success'] = "1";
                 $cart_response['message'] = "My cart item list";
                 $cart_response["count"] = $total_count;
-                $cart_response["total_price"] = number_format((float)$my_cart_price_result, 2, '.', '');;
+                $cart_response["total_price"] = number_format((float)($my_cart_price_result-$discountValue), 2, '.', '');
+                $cart_response["shopping_based_discount"] = number_format((float)$discountValue, 2, '.', '');
+
                 $counter = 0;
                 $branch_id = $my_cart_result[0]->branch_id;
                 $total_gst = 0;
