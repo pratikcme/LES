@@ -490,9 +490,9 @@ class Api extends Apiuser_Controller {
                 $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($my_cart_price_result,$BranchId);
                 // dd($shoppingDiscount);
                 if(!empty($shoppingDiscount)){
-                if($cartTotal >= $shoppingDiscount[0]->cart_amount){
+                if($my_cart_price_result >= $shoppingDiscount[0]->cart_amount){
                     $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                    $discountValue = $cartTotal * $discountPercentage/100;
+                    $discountValue = $my_cart_price_result * $discountPercentage/100;
                     $discountValue = number_format((float)$discountValue,2,'.','');
                     }
                 }
