@@ -1563,7 +1563,7 @@ class Api extends Apiuser_Controller {
                     $total_price = $actual_price_total - $discount_price_total;
 
                     $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
-                    $response["amountWithoutGst"] = number_format((float)$total_price - $total_gst, '2', '.', '');
+                    $response["amountWithoutGst"] = number_format((float)($total_price - $total_gst-$shopping_based_discount), '2', '.', '');
                     $product_id = $row->product_id;
 
                     $product_query = $this->db->query("SELECT name, image FROM product WHERE  id = '$product_id'");
