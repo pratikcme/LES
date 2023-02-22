@@ -31,7 +31,6 @@ class Add_to_card extends User_Controller
 				$quantity = 1;
 			}
 			$result = $this->this_model->DefaultProductAddInCart($varient_id);
-			dd($result);
 			$getWeight = $this->this_model->getWeightName($result[0]->weight_id);
 		}
 
@@ -112,7 +111,7 @@ class Add_to_card extends User_Controller
 					'product_weight_id' => $result[0]->pw_id
 				);
 
-				// print_r($cart_item);
+				print_r($cart_item);
 				// print_r($_SESSION['My_cart']);
 				// exit;
 				if (isset($_SESSION['My_cart']) && $this->session->userdata('user_id') == '') {
