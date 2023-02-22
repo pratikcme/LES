@@ -111,7 +111,7 @@ class Add_to_card extends User_Controller
 					'product_weight_id' => $result[0]->pw_id
 				);
 
-				print_r($cart_item);
+				// print_r($cart_item);
 				// print_r($_SESSION['My_cart']);
 				// exit;
 				if (isset($_SESSION['My_cart']) && $this->session->userdata('user_id') == '') {
@@ -233,7 +233,6 @@ class Add_to_card extends User_Controller
 
 		$new_deliveryCharge = 0;
 		if ($this->session->userdata('user_id') == '') {
-			// dd($_SESSION['My_cart']);
 			$new_deliveryCharge = number_format((float)$new_deliveryCharge, 2, '.', '');
 			foreach ($_SESSION['My_cart'] as $key => $value) {
 				
