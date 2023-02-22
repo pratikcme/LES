@@ -38,7 +38,7 @@
           
           <div class="input-wrapper">
             <span><i class="fas fa-mobile"></i></span>
-            <input type="text" name="phone"  class="mob_no" placeholder="Mobile Number*" required>
+            <input type="text" name="phone"  class="mob_no" placeholder="Mobile Number*" required readonly>
           </div>
           <label for="phone" class="error"></label>
 

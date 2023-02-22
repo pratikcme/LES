@@ -572,7 +572,7 @@ class Login_model extends My_model{
        public function emailVerification($email){
           	$data['table'] = TABLE_USER;
           	$data['select'] = ['*'];
-          	$data['where'] = ['email'=>$email,'vendor_id'=>$this->vendor_id];  	
+          	$data['where'] = ['email'=>$email,'vendor_id'=>$this->vendor_id,'status'=>'1'];  	
           	$count = $this->countRecords($data);
           	if($count > 0){
           		return "false";
@@ -585,11 +585,13 @@ class Login_model extends My_model{
 			$mobile = $postData['phone'];
       		if(isset($postData['country_code'])){
       			$country_code = $postData['country_code'];
+				  $data['where']['country_code'] = $country_code;
       		}
           	$data['table'] = TABLE_USER;
           	$data['select'] = ['*'];
           	$data['where']['phone'] = $mobile;
           	$data['where']['vendor_id'] = $this->vendor_id;  	
+          	$data['where']['status'] = '1';  	
           	$count = $this->countRecords($data);
           	if($count > 0){
           		return "false";
