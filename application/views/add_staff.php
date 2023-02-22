@@ -65,7 +65,7 @@
                            </div>
                          
                           <div class="form-group">                            
-                              <label class="margin_top_label">Enter Vehicle Number :<span class="required" aria-required="true"> * </span>
+                              <label class="margin_top_label">Enter Vehicle Number :<span class="required" aria-required="true">  </span>
                               </label> 
                               <input type="text"  id="vehicle_number" name="vehicle_number" placeholder="Enter vehicle number"  class="form-control margin_top_input" value="<?php if(isset($result['vehicle_number'])){ echo $result['vehicle_number']; }else{ echo set_value('vehicle_number'); } ?>">
                                <span style="color: red;"><?php echo form_error('vehicle_number'); ?></span>
@@ -92,7 +92,7 @@
                            </div>
 
                            <div class="form-group">                            
-                              <label class="margin_top_label">Enter Vehicle Name :<span class="required" aria-required="true"> * </span>
+                              <label class="margin_top_label">Enter Vehicle Name :<span class="required" aria-required="true">  </span>
                               </label> 
                               <input type="text"  id="vehicle_name" name="vehicle_name" placeholder="Enter vehicle name"  class="form-control margin_top_input" value="<?php if(isset($result['vehicle_name'])){ echo $result['vehicle_name']; }else{ echo set_value('vehicle_name'); } ?>">
                                <span style="color: red;"><?php echo form_error('vehicle_name'); ?></span>
@@ -125,6 +125,7 @@
        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
    </body>
 <script type="text/javascript">
+   
 
     $('#vendor_form').validate({
               rules: {
@@ -160,14 +161,18 @@
                       required: true,
                      
                   },
-                  // vehicle_number: {
-                  //     required: true,
+                  vehicle_number: {
+                     //  required: true,
+                      minlength : 10,
+                      maxlength : 13
                      
-                  // },
-                  // vehicle_name: {
-                  //     required: true,
+                  },
+                  vehicle_name: {
+                     //  required: true,
+                      minlength : 4,
+                      maxlength : 25
                      
-                  // },
+                  },
               },
               messages: {
                   name: {
@@ -191,14 +196,14 @@
                       required: "Please Select location",
                      
                   },
-                  // vehicle_number: {
-                  //     required: "Please Select vehicle number",
+                  vehicle_number: {
+                     //  required: "Please Select vehicle number",
                      
-                  // },
-                  // vehicle_name: {
-                  //     required: "Please Select vehicle name",
+                  },
+                  vehicle_name: {
+                     //  required: "Please Select vehicle name",
                      
-                  // },
+                  },
               },
              
           });

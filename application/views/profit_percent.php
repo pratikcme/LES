@@ -113,6 +113,7 @@ setTimeout(function () { $('#msg').hide(); }, 4000);
             profit: {
                 required: true,
                 number: true,
+                min : 1,
                 max:99,
               
             }
@@ -121,6 +122,7 @@ setTimeout(function () { $('#msg').hide(); }, 4000);
             profit: {
                 required: "Please enter profit percentage",
                 number: "Please enter valid profit percentage ",
+                min: "Value must be greater than 0",
                 max: "Please enter valid percentage"
                 
             }

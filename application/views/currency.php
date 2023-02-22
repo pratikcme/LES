@@ -112,6 +112,7 @@ setTimeout(function () { $('#msg').hide(); }, 4000);
         rules: {
             currency: {
                 required: true,
+                maxlength : 3
               
             }
         },

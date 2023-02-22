@@ -66,12 +66,12 @@
 
                               <div class="form-group">
                                   <label for="start_date">Start Date</label>
-                                  <input type="date" id="start_date" value="<?php echo @$editData[0]->start_date; ?>" name="start_date" class="form-control">
+                                  <input type="date" id="start_date" value="<?php echo @$editData[0]->start_date; ?>" name="start_date" class="form-control start_date">
                                   <label for="start_date" style="color: red" class="error"> </label>
                               </div>
                               <div class="form-group">
                                   <label for="end_date">End Date</label>
-                                  <input type="date" id="end_date" value="<?php echo @$editData[0]->end_date; ?>" name="end_date" class="form-control">
+                                  <input type="date" id="end_date" value="<?php echo @$editData[0]->end_date; ?>" name="end_date" class="form-control end_date">
                                   <label for="end_date" style="color: red" class="error"> </label>
                               </div>
 

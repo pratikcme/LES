@@ -42,7 +42,8 @@ if($result['id']!=''){
                                             <input type='text' class="form-control" id="start_time" name="start_time" placeholder="Select start time" value="<?php echo $result['start_time']; ?>"/>
                                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                         </div>
-                                        <span id="ERRstart_time" style="color:red;">   </span>
+                                        <label id="start_time-error" class="error" for="start_time"></label>
+                                        <!-- <span id="ERRstart_time" style="color:red;">   </span> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -51,8 +52,8 @@ if($result['id']!=''){
                                         <input type='text' class="form-control" id="end_time" name="end_time" placeholder="Select ending time" value="<?php echo $result['end_time']; ?>"/>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                     </div>
-                                  
-                                    <span id="ERRend_time" style="color:red;"></span>
+                                    <label id="end_time-error" class="error" for="end_time"></label>
+                                    <!-- <span id="ERRend_time" style="color:red;"></span> -->
                                   
                                 </div>
                             </div>
@@ -95,16 +96,24 @@ $(".btn").on('change',function(){
     });
 
 
-    jQuery.validator.addMethod("greaterThan",
-            function(value, element, params) {
+    // jQuery.validator.addMethod("greaterThan",
+    //         function(value, element, params) {
 
-                if (!/Invalid|NaN/.test(new Date(value))) {
-                    return new Date(value) >= new Date($(params).val());
-                }
+    //             if (!/Invalid|NaN/.test(new Date(value))) {
+    //                 return new Date(value) >= new Date($(params).val());
+    //             }
 
-                return isNaN(value) && isNaN($(params).val())
-                    || (Number(value) >= Number($(params).val()));
-            });
+    //             return isNaN(value) && isNaN($(params).val())
+    //                 || (Number(value) >= Number($(params).val()));
+    //         });
+
+    $.validator.addMethod('greaterThan', function(value, element, param) {
+    var start_time = $(param).val();
+    if (!value || !start_time) {
+      return true; // Don't validate if either field is empty
+    }
+    return Date.parse('01/01/2022 ' + value) > Date.parse('01/01/2022 ' + start_time);
+  }, 'End Time should be greater than Start Time!');
 
     $('#time_slot_form').validate({
         rules: {
@@ -122,25 +131,25 @@ $(".btn").on('change',function(){
             },
             end_time: {
                 required: "Select end time",
-                greaterThan : 'end time must be greater than start time'
+                greaterThan : 'End Time should be greater than Start Time!'
             }
         },
-         errorPlacement: function(error, element) {
-            var eid = element.attr('id');
-            console.log(element);
-            // if(eid!='start_time'){
-            //      $('#ERRstart_time').html('');
-            // }
-            // if(eid!='end_time'){                
-            //     $('#ERRstart_time').html('');
-            // }
-            if(eid=='start_time'){
-                $('#ERR'+eid).html('Select start time');
-            } if(eid=='end_time'){
-                $('#ERR'+eid).html('Select end time');
-            }
-            console.log(eid);
-        },
+        //  errorPlacement: function(error, element) {
+        //     var eid = element.attr('id');
+        //     console.log(element);
+        //     // if(eid!='start_time'){
+        //     //      $('#ERRstart_time').html('');
+        //     // }
+        //     // if(eid!='end_time'){                
+        //     //     $('#ERRstart_time').html('');
+        //     // }
+        //     if(eid=='start_time'){
+        //         $('#ERR'+eid).html('Select start time');
+        //     } if(eid=='end_time'){
+        //         $('#ERR'+eid).html('Select end time');
+        //     }
+        //     console.log(eid);
+        // },
         submitHandler: function (form) {
                 $('.btn').attr('disabled','disabled');
                 $(form).submit();

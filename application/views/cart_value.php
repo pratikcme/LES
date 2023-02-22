@@ -121,12 +121,14 @@ setTimeout(function () { $('#msg').hide(); }, 4000);
         rules: {
             cart_min_value: {
                 required: true,
-               number: true,
+                min : 1,
+                number: true,
             }
         },
         messages: {
             cart_min_value: {
                 required: "Please enter cart minimum value",
+                min: "Value must be greater than 0",
                 number: "Please enter valid cart value"
             }
         },

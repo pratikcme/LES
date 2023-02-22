@@ -189,7 +189,7 @@
                             <div class="form-group">
                               <label for="" class="margin_top_label">Enter Vehicle number :<span class="required" aria-required="true"> * </span>
                               </label>                            
-                              <input type="text" id="vahicle_number" name="vehicle_number" placeholder="EX:GJ01AE8080" autocomplete="off" class="dis form-control margin_top_input" value="<?php if(isset($result['vehicle_number'])){ echo $result['vehicle_type']; }else{ echo set_value('vehicle_number'); } ?>">
+                              <input type="text" id="vahicle_number" name="vehicle_number" placeholder="EX:GJ01AE8080" autocomplete="off" class="dis form-control margin_top_input" value="<?php if(isset($result['vehicle_number'])){ echo $result['vehicle_number']; }else{ echo set_value('vehicle_number'); } ?>">
                                <span style="color: red;"><?php echo form_error('vehicle_number'); ?></span>
                            </div>
 
@@ -244,7 +244,9 @@
 //   $('.dis').removeAttr('disabled');
 // },700);
   
-
+jQuery.validator.addMethod("lettersonlys", function(value, element) {
+    return this.optional(element) || /^[a-zA-Z ]*$/.test(value);
+}, "Letters only please");
 
     $('#vendor_form').validate({
 
@@ -257,9 +259,12 @@
                     },
                   vehicle_type:{
                       required: true,
+                      lettersonlys : true,
+                      maxlength : 10
                     },
                   vehicle_number:{
                       required: true,
+                      maxlength : 13
                     },
                   email: {
                       required: true,
@@ -272,6 +277,7 @@
                   password: {
                       required: true,
                       minlength:6,
+                      maxlength : 30
                     },
                   mobile: {
                         required: true,
@@ -290,6 +296,7 @@
                     },
                   id_proof_number:{
                     required : true,
+                    maxlength : 25
                   },
                    
                   image:{

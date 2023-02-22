@@ -78,6 +78,7 @@ error_reporting(0);
         rules: {
             package: {
                 required: true,
+                maxlength : 10,
                 lettersonly: true,
                   remote: {
                     url: url+'package/isPakageAvailable',

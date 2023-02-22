@@ -106,6 +106,7 @@
                                  <span><i class="far fa-file"></i></span>
                                  <input type="text" name="user_gst_number" placeholder="Gst number" value="<?=$userDetails[0]->user_gst_number?>" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','')">
                               </div>
+                              <label for="user_gst_number" class="error"></label>
                            </div>
                            <div class="col-lg-6">
                               <div class="input-wrapper country-code">

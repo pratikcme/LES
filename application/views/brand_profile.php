@@ -132,10 +132,16 @@ $('#select-all').click(function(){
     });
 
     var checkit = false;
+    jQuery.validator.addMethod("lettersonly", function(value, element) {
+        return this.optional(element) || /^[a-z ]+$/i.test(value);
+    }, "Please enter lettersonly"); 
+
     $('#brand_form').validate({
         rules: {
             name: {
                 required: true,
+                lettersonly : true,
+                maxlength : 20,
                 remote: {
                     url: url+'brand/isBrandAvailable',
                     type: 'post',
