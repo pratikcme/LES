@@ -31,6 +31,7 @@ class Add_to_card extends User_Controller
 				$quantity = 1;
 			}
 			$result = $this->this_model->DefaultProductAddInCart($varient_id);
+			dd($result);
 			$getWeight = $this->this_model->getWeightName($result[0]->weight_id);
 		}
 
