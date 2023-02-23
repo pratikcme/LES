@@ -55,7 +55,6 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
             $vendor = $this->input->post('vendor_id');
             if ($vendor != 'vendor_admin') {
                 $res = $this->vendor_model->getAllVendor($this->input->post());
-                dd($res);
                 $this->session->unset_userdata('vendor_admin');
                 $this->session->unset_userdata('super_id');
                 $this->session->unset_userdata('branch_admin');
