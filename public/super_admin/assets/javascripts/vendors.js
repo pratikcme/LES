@@ -51,7 +51,7 @@ var VENDORS = function () {
         },
         name: {
           required: true,
-          maxlength: 30,
+          maxlength: 25,
         },
         store_type: {
           required: true,
