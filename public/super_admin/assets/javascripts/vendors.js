@@ -91,7 +91,7 @@ var VENDORS = function () {
         mobile_number: {
           required: true,
           number: true,
-          minlength: 10,
+          minlength: 7,
           maxlength: 15,
 
         },
