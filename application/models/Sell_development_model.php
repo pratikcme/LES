@@ -1620,9 +1620,15 @@ class Sell_development_model extends My_model
     }
 
      public function getRegister(){
-        $this->branch_id = $this->session->userdata('id');
-        $register_query = $this->db->query("SELECT * FROM `register` WHERE vendor_id = '$this->branch_id' GROUP BY id DESC LIMIT 1");
-        return  $register_result = $register_query->result();
+        $data['table'] = 'register';
+        $data['select'] = ['*'];
+        $data['where'] = ['branch_id'=>$this->branch_id];
+        $data['groupBy'] = 'id';
+        $data['order'] = 'id desc';
+        $data['limit'] = '1';
+        return $this->selectRecords($data);
+        // $register_query = $this->db->query("SELECT * FROM `register` WHERE branch_id = '$this->branch_id'  GROUP BY id DESC LIMIT 1");
+        // return  $register_result = $register_query->result();
      }
 
      public function customer(){

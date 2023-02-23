@@ -1,5 +1,7 @@
 <?php
+define('TABLE_SUPER_ADMIN', 'super_admin');
 
+define('TABLE_BRANCH', 'branch');
 define('TABLE_USER', 'user');
 define('TABLE_USER_ADDRESS', 'user_address');
 define('TABLE_VENDOR', 'vendor');
@@ -47,4 +49,6 @@ define('TABLE_ABOUT_US', 'about_us');
 define('TABLE_FIREBASE', 'firebase');
 
 define('DEFAULT_MESSAGE', 'Somthing Went Wrong');
+
+define('SMSGATEWAY','sms_gateway');
 ?>

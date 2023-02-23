@@ -9,8 +9,9 @@ class Sell_development extends Vendor_Controller
     }
 
     public function index(){
-
-    	// $data['register_result'] = $this->this_model->getRegister();
+        // echo '1';die;
+    	$data['register_result'] = $this->this_model->getRegister();
+        // dd($data['register_result']);
        	// $data['cust_row'] =  $this->this_model->customer();
        	// $data['category'] =  $this->this_model->getCategory();
         // error_reporting(E_ALL);

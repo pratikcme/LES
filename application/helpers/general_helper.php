@@ -908,3 +908,6 @@ if(!function_exists('GetDialcodelist'))
                 return $arr;
             }   
         }
+        function numberFormat($number){
+            return number_format((float)$number,2,'.','');
+        }

@@ -521,68 +521,51 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
                 redirect('admin/dashboard');
                 exit;
             } else {
-                $result_login = $this->db->query("SELECT * from staff where email='$email' and password='$password'");
-                $row_login = $result_login->row_array();
-                $ven_id = $row_login['vendor_id'];
-                $staff = $this->db->query("SELECT * from vendor where id='$ven_id'");
-                $staff_vendor = $staff->row_array();
-                // print_r($staff_vendor['status']);die;
-                if ($staff_vendor['status'] == '0') {
-                    $this->session->set_flashdata('msg', 'Vendor are Not Activated. Please contact to Head Branch.');
-                    redirect(base_url() . 'admin/login');
-                    exit;
-                }
+                    $result_login = $this->db->query("SELECT * from super_admin where email='$email' and password='$password'");
+                    $row_login = $result_login->row_array();
 
-
-                if ($result_login->num_rows() > 0) {
-                    $status = $row_login['status'];
-                    if ($status == '1') {
-                        $login_data = array(
-
-                            'staff_id' => $row_login['id'],
-                            'id' => $row_login['branch_id'],
-                            'name' => $row_login['name'],
+                    if ($result_login->num_rows() > 0) {
+                        $status = $row_login['status'];
+                        $login_data = array(        
+                            'super_admin' => $row_login['id'],
+                            'id' => $row_login['id'],
+                            'name' => $row_login['company_name'],
                             'email' => $row_login['email'],
-                            'phone' => $row_login['phone'],
-                            'logged_in' => TRUE
+                            'super_admin' => TRUE
                         );
-                        $this->load->library('session');
-                        $this->session->set_userdata($login_data);
+                    $this->load->library('session');
+                    $this->session->set_userdata(['validSuperAdmin'=>$login_data]);
+                    $remember = $_POST['remember'];
+                    if ($remember!='') {
 
-                        $remember = $_POST['remember'];
-                        if ($remember != '') {
+                        delete_cookie("loginemail");
+                        delete_cookie("loginpassword");
+            
+                        $set_email = array(
+                            'name' => 'loginemail',
+                            'value' => $_POST['loginemail'],
+                            'expire' => '86500',
+                            'prefix' => '',
+                            'secure' => FALSE
+                        );
+                        $this->input->set_cookie($set_email);
 
-                            delete_cookie("loginemail");
-                            delete_cookie("loginpassword");
-
-                            $set_email = array(
-                                'name' => 'loginemail',
-                                'value' => $_POST['loginemail'],
-                                'expire' => '86500',
-                                'prefix' => '',
-                                'secure' => FALSE
-                            );
-                            $this->input->set_cookie($set_email);
-
-                            $set_password = array(
-                                'name' => 'loginpassword',
-                                'value' => $_POST['loginpassword'],
-                                'expire' => '86500',
-                                'prefix' => '',
-                                'secure' => FALSE
-                            );
-                            $this->input->set_cookie($set_password);
-                        }
-
-                        redirect('admin/dashboard');
-                    } else {
-                        $this->session->set_flashdata('msg', 'You are Not Activated. Please contact to vendor.');
-                        redirect(base_url() . 'admin/login');
+                        $set_password = array(
+                            'name' => 'loginpassword',
+                            'value' => $_POST['loginpassword'],
+                            'expire' => '86500',
+                            'prefix' => '',
+                            'secure' => FALSE
+                        );
+                        $this->input->set_cookie($set_password);
                     }
-                } else {
-                    $this->session->set_flashdata('msg', 'Invalid email or password');
-                    redirect(base_url() . 'admin/login');
-                }
+                            
+                    redirect('super_admin/dashboard');
+
+                    }else{
+                        $this->session->set_flashdata('msg', 'Invalid email or password');
+                        redirect(base_url().'admin/login');
+                    } 
             }
         }
     }

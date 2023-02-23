@@ -99,6 +99,7 @@ define('DATE_TIME', date('Y-m-d h:i:sa'));
 // CMS ADMIN LOGIN
 define('ADMIN_LAYOUT','admin/layout');
 define('LOGIN_LAYOUT','account/login_layout');
+define('SUPER_ADMIN_LAYOUT','super_admin/includes/super_admin_layout');
 
 define('TEXT_MESSAGE_API_KEY','NDY2MjYxMzk0ZTQ2NmE2YjY3N2E2NTUxNTI2MjRiMzA=');
 
