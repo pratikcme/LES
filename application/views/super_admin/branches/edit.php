@@ -122,7 +122,7 @@
                 <div class="col-sm-9">
                   <select class="form-control" name="whatsappFlag">
                     <option value="0" <?=($editData[0]->whatsappFlag=='0') ? 'SELECTED' : '' ?>>Disable</option>
-                    <option value="1" <?=($editData[0]->whatsappFlag=='1') ? 'SELECTED' : '' ?>>Enalble</option>
+                    <option value="1" <?=($editData[0]->whatsappFlag=='1') ? 'SELECTED' : '' ?>>Enabled</option>
                   </select>
                 </div>
               </div>
