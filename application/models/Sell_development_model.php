@@ -3,8 +3,8 @@
 class Sell_development_model extends My_model
 {
     function __construct(){
-        $this->branch_id = $this->session->userdata('branch_id');
-        $this->vendor_id = $this->session->userdata('vendor_id');
+        $this->branch_id = $this->session->userdata('id');
+        $this->vendor_id = $this->session->userdata('branch_vendor_id');
     }
 
     function findProductBykey($postdata){
@@ -1627,8 +1627,6 @@ class Sell_development_model extends My_model
         $data['order'] = 'id desc';
         $data['limit'] = '1';
         return $this->selectRecords($data);
-        // $register_query = $this->db->query("SELECT * FROM `register` WHERE branch_id = '$this->branch_id'  GROUP BY id DESC LIMIT 1");
-        // return  $register_result = $register_query->result();
      }
 
      public function customer(){
@@ -1651,7 +1649,7 @@ class Sell_development_model extends My_model
 
     public function getCurrencyCode(){
         $this->branch_id = $this->session->userdata('id');
-        $data['table'] = 'vendor';
+        $data['table'] = 'branch';
         $data['select'] = ['*'];
         $data['where'] = ['id'=>$this->branch_id];
         $re = $this->selectRecords($data);

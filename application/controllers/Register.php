@@ -90,12 +90,12 @@ class Register extends Vendor_Controller {
 
     public function opening_cash()
     {
-        $vendor_id = $this->session->userdata('id');
+        $branch_id = $this->session->userdata('id');
         $opening_amount = $_REQUEST['amount'];
         $opening_note = $_REQUEST['note'];
 
         $array = array(
-            'vendor_id' => $vendor_id,
+            'branch_id' => $branch_id,
             'cash_amount_expected' => $opening_amount,
             'transaction' => $opening_amount,
             'open_note' => $opening_note,
@@ -103,7 +103,7 @@ class Register extends Vendor_Controller {
             'type' => '1'
         );
         $this->db->insert('register', $array);
-        redirect(base_url() . 'sell/index');
+        redirect(base_url() . 'sell_development');
     }
 
     public function update_cash_summary()

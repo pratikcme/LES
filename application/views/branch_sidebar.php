@@ -1,11 +1,11 @@
 
-<li class="sub-menu" style="display: none" >
+<li class="sub-menu" style="display: ''" >
     <a href="javascript:;" class="dcjq-parent <?php if($this->uri->segment(1) == 'sell' || $this->uri->segment(1) == 'register') { ?> active <?php } ?>">
         <i class="fa fa-tags"></i>
         <span>Sell</span>
     </a>
     <ul class="sub">
-        <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?> > <a href="<?php echo base_url() . 'sell/index/'; ?>">Sell</a></li>
+        <!-- <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?> > <a href="<?php echo base_url() . 'sell/index/'; ?>">Sell</a></li> -->
         <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?> > <a href="<?php echo base_url() . 'sell_development/index/'; ?>">Sell development</a></li>
         <li <?php echo ($this->uri->segment(2) == 'history') ? 'class="active"' : ''; ?> > <a href="<?php echo base_url() . 'sell_development/history/'; ?>">Sell History</a></li>
         <li <?php echo ($this->uri->segment(2) == 'parked_sell_list') ? 'class="active"' : ''; ?> > <a href="<?php echo base_url() . 'sell/parked_sell_list/'; ?>">Parked Sell</a></li>

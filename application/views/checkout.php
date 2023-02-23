@@ -1158,12 +1158,12 @@ label.error{
                            <input type="hidden" name="currency_code" value="<?=$currency_code?>">
                            <input type="hidden" name="bn"
                               value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest"/>
-                           <input type="hidden" name="user_name"
+                           <!-- <input type="hidden" name="user_name"
                               value="<?php echo $user_row[0]->name; ?>"/>
                            <input type="hidden" name="first_name"
                               value="<?php echo $user_row[0]->name; ?>"/>
                            <input type="hidden" name="payer_email"
-                              value="<?php echo $user_row[0]->email; ?>"/>
+                              value="<?php echo $user_row[0]->email; ?>"/> -->
                            <input type="hidden" name="register_id"
                               value="<?php if (!empty($register_result)) {
                                  echo $register_result[0]->id;

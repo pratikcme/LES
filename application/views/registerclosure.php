@@ -1,6 +1,5 @@
 <?php
 include('header.php');
-session_start();
 date_default_timezone_set('Asia/Calcutta');
 $user_id = $this->session->userdata['id'];
 $user_query = $this->db->query("SELECT name FROM vendor WHERE id = $user_id");
@@ -13,7 +12,6 @@ if(!empty($register_result)){
 	$order_result = $order_row->row_array();
 }
 ?>
-
 
 <script type="text/javascript">
 
