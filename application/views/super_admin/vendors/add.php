@@ -22,8 +22,8 @@
                     <div class="col-sm-12">
                       <select name="domain_type" id="domain_type" class="form-control">
                         <option value="">Select domain type</option>
-                        <option value="0">Domain</option>
-                        <option value="1">Sub Domain</option>
+                        <!-- <option value="0">Domain</option> -->
+                        <option value="1" selected>Sub Domain</option>
                       </select>
                     </div>
                   </div>
@@ -34,7 +34,7 @@
                   <label for="store_in">Domain in which server</label>
                   <div class="row">
                     <div class="col-sm-12">
-                     <select name="database" id="database" class="form-control" readonly>
+                     <select name="database" id="database" class="form-control">
                       <option value="">Choose Server</option>
                       <option value="0">Stagging </option>
                       <option value="1">Production </option>

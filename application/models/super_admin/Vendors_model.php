@@ -19,12 +19,12 @@ Class Vendors_model extends My_model{
 		$folder_name = preg_replace('/\s+/', '', $folder_name);
 
 		if(isset($postData['database']) && $postData['database']=='1'){
-			$con = $this->load->database('db1', TRUE);
+			// $con = $this->load->database('db1', TRUE);
 			// $path = FCPATH."/public/images/".$folder_name;
 			$uploadpath = FCPATH.'public/client_logo/';
 			$rootDirectory = 'repositories/Production/';
 		}elseif(isset($postData['database']) && $postData['database']=='0'){
-			$con = $this->load->database('db2', TRUE);
+			// $con = $this->load->database('db2', TRUE);
 			// $path = FCPATH."public/images/".$folder_name;
 			$uploadpath = FCPATH.'public/client_logo/';
 			$rootDirectory = 'repositories/stagging/';
