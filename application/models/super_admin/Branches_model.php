@@ -39,16 +39,16 @@ Class Branches_model extends My_model{
 	}
 
 	public function updateBranch($id,$postData){
-		dd($postData);
+		// dd($postData);
 		$updateArray = [
 			'email'=>	$postData['email'],
-			'approved_branch'=>	$postData['approved'],
-			'display_price_with_gst'=>	$postData['display_price_with_gst'],
-			'webTitle'=>	$postData['webTitle'],
-			'android_version'=>	$postData['android_version'],
-			'ios_version'=>	$postData['ios_version'],
-			'android_isforce'=>	$postData['android_isforce'],
-			'ios_isforce'=>	$postData['ios_isforce'],
+			'store_type'=>	$postData['store_type'],
+			'delivery_by'=>	$postData['delivery_by'],
+			'isOnlinePayment'=>	$postData['isOnlinePayment'],
+			'selfPickUp'=>	$postData['selfPickUp'],
+			'isCOD'=>	$postData['isCOD'],
+			'whatsappFlag'=>	$postData['whatsappFlag'],
+			'delivery_time_date'=>	$postData['delivery_time_date'],
 			'dt_updated'=> strtotime(DATE_TIME)
 		]; 
 
