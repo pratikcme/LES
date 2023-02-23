@@ -45,12 +45,6 @@
         <div class="row ">
           <div class="col-lg-4">
             <div class="form-group">
-              <label for="approved" >Approved Branch</label>
-              <input type="text" name="approved" class="form-control" placeholder="Approved" value="<?=$editData[0]->approved_branch?>">
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="form-group">
               <label for="approved" >Display Price With Gst</label>
                   <select name="display_price_with_gst" class="form-control">
                     <option value="">Select gst display mode</option>
