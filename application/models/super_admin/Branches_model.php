@@ -38,7 +38,8 @@ Class Branches_model extends My_model{
 		return $this->updateRecords($data);
 	}
 
-	public function updateVendors($vendor_id,$postData){
+	public function updateBranch($id,$postData){
+		dd($postData);
 		$updateArray = [
 			'email'=>	$postData['email'],
 			'approved_branch'=>	$postData['approved'],
@@ -51,9 +52,9 @@ Class Branches_model extends My_model{
 			'dt_updated'=> strtotime(DATE_TIME)
 		]; 
 
-		$data['table'] = ADMIN;
+		$data['table'] = TABLE_BRANCH;
 		$data['update'] = $updateArray;
-		$data['where'] = ['id'=>$vendor_id];
+		$data['where'] = ['id'=>$id];
 		return $this->updateRecords($data);
 	}
 }
