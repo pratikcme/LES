@@ -502,6 +502,7 @@ Class Vendors_model extends My_model{
             $return = $query->result();
 		}elseif(isset($postData['database']) && $postData['database']=='0'){
 			// $con = $this->load->database('db2', TRUE);
+			$con = $this->load->database('default', TRUE);
 			$con->select('*');
 			$con->where(['server_name'=>$domain_name]);
 			$query = $con->get('vendor');
@@ -525,6 +526,7 @@ Class Vendors_model extends My_model{
 		if(!$con){
 			echo 'not connected';die();
 		}
+		
        	return  count($return);
 	}
 
@@ -537,6 +539,7 @@ Class Vendors_model extends My_model{
             $return = $query->result();
 		}elseif(isset($postData['database']) && $postData['database']=='0'){
 			// $con = $this->load->database('db2', TRUE);
+			$con = $this->load->database('default', TRUE);
 			$con->select('*');
 			$con->where(['email'=>$postData['email']]);
 			$query = $con->get('vendor');
