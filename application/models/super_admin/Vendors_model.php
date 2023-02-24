@@ -14,10 +14,10 @@ Class Vendors_model extends My_model{
 	}
 
 	public function add($postData){
-		dd($postData);
+		// dd($postData);
 		$folder_name = $postData['name']; //shopname
 		$folder_name = preg_replace('/\s+/', '', $folder_name);
-
+		$con = true;
 		if(isset($postData['database']) && $postData['database']=='1'){
 			// $con = $this->load->database('db1', TRUE);
 			// $path = FCPATH."/public/images/".$folder_name;
