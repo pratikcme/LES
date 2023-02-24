@@ -212,7 +212,6 @@ class Order_model extends My_model
             $my_order_result = $this->product_model->getMyCartOrder();
             // echo "<pre>";
             // print_r($my_order_result);die;
-
             $promocode_amount = 0;
 
             if(isset($promocode) && $promocode !=''){
@@ -224,7 +223,7 @@ class Order_model extends My_model
                   if(!empty($promocodeData)){
                       $promocode_amount =  ($total_price / 100 ) * $promocodeData[0]->percentage;
                   }
-              }
+            }
 
             if (!empty($my_order_result)) {
                 foreach ($my_order_result as $my_order) {
