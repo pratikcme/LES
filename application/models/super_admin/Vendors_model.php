@@ -495,13 +495,13 @@ Class Vendors_model extends My_model{
 			$domain_name = $DomainName;
   		  }
 		if(isset($postData['database']) && $postData['database']=='1'){
-			$con = $this->load->database('db1', TRUE);
+			// $con = $this->load->database('db1', TRUE);
 			$con->select('*');
 			$con->where(['server_name'=>$domain_name]);
 			$query = $con->get('vendor');
             $return = $query->result();
 		}elseif(isset($postData['database']) && $postData['database']=='0'){
-			$con = $this->load->database('db2', TRUE);
+			// $con = $this->load->database('db2', TRUE);
 			$con->select('*');
 			$con->where(['server_name'=>$domain_name]);
 			$query = $con->get('vendor');
@@ -530,13 +530,13 @@ Class Vendors_model extends My_model{
 
 	public function checkEmailExist($postData){
 		if(isset($postData['database']) && $postData['database']=='1'){
-			$con = $this->load->database('db1', TRUE);
+			// $con = $this->load->database('db1', TRUE);
 			$con->select('*');
 			$con->where(['email'=>$postData['email']]);
 			$query = $con->get('vendor');
             $return = $query->result();
 		}elseif(isset($postData['database']) && $postData['database']=='0'){
-			$con = $this->load->database('db2', TRUE);
+			// $con = $this->load->database('db2', TRUE);
 			$con->select('*');
 			$con->where(['email'=>$postData['email']]);
 			$query = $con->get('vendor');
