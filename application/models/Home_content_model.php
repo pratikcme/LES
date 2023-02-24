@@ -32,6 +32,8 @@ Class Home_content_model extends My_model{
             move_uploaded_file($temp_location, $uploadpath);
         }
         $data['table'] = TABLE_HOME_CONTENT;
+
+        $data['insert']['branch_id'] = $this->branch_id;
         $data['insert']['image'] = $image;
         $data['insert']['main_title'] = $postData['main_title'];
         $data['insert']['sub_title'] = $postData['sub_title'];
