@@ -523,6 +523,7 @@ Class Vendors_model extends My_model{
 			$query = $con->get('vendor');
             $return = $query->result();
 		}
+		lq();
 		if(!$con){
 			echo 'not connected';die();
 		}
