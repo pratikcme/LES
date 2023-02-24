@@ -384,7 +384,7 @@ Class Vendors_model extends My_model{
 		$message .= "<p>Branch username/email : ".$branchEmail."</p>";
 		$message .= "<p>Your default password for Branch login : 123456789 </p>";;
 		$data['message'] = $message;
-		return sendMailSMTP($data,true);
+		return sendMailSMTP($data,'launchEstore');
 	}
 	public function insertData($table,$inserData){
 		$data['table'] = $table;

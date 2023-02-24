@@ -209,7 +209,7 @@ function NavbarDropdown(){
         return  $CI->vendor_model->getAllVendor(); 
     }
 
-     function sendMailSMTP($data) {
+     function sendMailSMTP($data,$form_super_admin ='') {
         $CI = &get_instance();
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "162.241.86.206";
@@ -228,7 +228,7 @@ function NavbarDropdown(){
         $CI->load->library('email', $config);
         $CI->email->initialize($config);
         $CI->email->clear();
-        $CI->email->from($config['smtp_user'], $CI->siteTitle);
+        $CI->email->from($config['smtp_user'], ($form_super_admin == '') ? $CI->siteTitle : $form_super_admin);
         $CI->email->to($data["to"]);
         if (isset($data["bcc"])) {
             $CI->email->bcc($data["bcc"]);
