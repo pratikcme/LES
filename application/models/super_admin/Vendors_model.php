@@ -73,8 +73,8 @@ Class Vendors_model extends My_model{
 				$branchEmail = 'branch1@'.$postData['domain_name'];
 			}
 			$domain_name = "https://".$server_name.'/';
-			$domaiName = $this->create_domain($subDomain,$rootDomain,$rootDirectory);
-			dd($domaiName);
+			// $domaiName = $this->create_domain($subDomain,$rootDomain,$rootDirectory);
+			// dd($domaiName);
 			// $server_name = str_replace("http://","",$server_name);
 			// $server_name = str_replace("https://","",$server_name);
 			$array = array(
