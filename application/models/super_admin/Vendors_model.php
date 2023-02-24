@@ -489,6 +489,7 @@ Class Vendors_model extends My_model{
 	public function checkDomainExist($postData){
 		$DomainName = trim($postData['domain_name']);
 		$domain_type = $postData['domain_type'];
+		$con = true;
 		 if(isset($postData['domain_type']) && $postData['domain_type'] == 1){
         	$domain_name = $DomainName.'.launchestore.com';
   		  }else{
@@ -532,6 +533,7 @@ Class Vendors_model extends My_model{
 	}
 
 	public function checkEmailExist($postData){
+		$con = true;
 		if(isset($postData['database']) && $postData['database']=='1'){
 			// $con = $this->load->database('db1', TRUE);
 			$con->select('*');
