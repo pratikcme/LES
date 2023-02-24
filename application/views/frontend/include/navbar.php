@@ -343,6 +343,7 @@
          
          <div class="col-md-12">
           <div class="mobile-location">
+            <?php dd($ApprovedBranch);?>
              <?php if($this->uri->segment(1)!='login' && $ApprovedBranch[0]->approved_branch > '1') { ?>
             <?php if($ApprovedBranch[0]->approved_branch > '1'){ ?>
               <div class="location-wrap-2">
