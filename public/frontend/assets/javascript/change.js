@@ -38,18 +38,18 @@ var CHANGE = function () {
         },
         messages: {
             old_pass: {
-                required: language.Please_enter_your_old_password
+                required: "Please enter your old password"
             },
             new_pass: {
-                required: language.Please_enter_your_new_password,
-                minlength: language.Please_enter_at_least_6_charecter,
-                maxlength: language.Please_select_less_then_20_charecter,
+                required: "Please enter  your new password",
+                minlength: "Please enter at least 6 charecter",
+                maxlength: "Please select lessthen 20 charecter"
             },
             confirm_pass: {
-                required: language.Please_enter_confirm_password,
-                minlength: language.Please_enter_at_least_6_charecter,
-                maxlength: language.Please_select_less_then_20_charecter,
-                equalTo: language.Your_password_does_not_match
+                required: "Please enter confirm password",
+                minlength: "Please enter at least 6 charecter",
+                maxlength: "Please select less then 20 charecter",
+                equalTo: "Your password does not match"
             },
 
         },
@@ -100,29 +100,28 @@ var CHANGE = function () {
             },
             messages: {
                 profileimage: {
-                    accept: language.image_validation,
+                    accept: "Only image type jpg/png/jpeg/gif is allowed",
                 },
-                fname: { required: language.Please_enter_last_name },
-                lname: { required: language.Please_enter_first_name },
+                fname: { required: "Please enter first name" },
+                lname: { required: "Please enter last name" },
                 old_pass: {
-                    required: language.Please_enter_your_old_password
+                    required: "Please enter your old password"
                 },
                 new_pass: {
-                    required: language.Please_enter_your_new_password,
-                    minlength: language.Please_enter_at_least_6_charecter,
-                    maxlength: language.Please_select_less_then_20_charecter,
+                    required: "Please enter  your new password",
+                    minlength: "Please enter at least 6 charecter",
+                    maxlength: "Please select lessthen 20 charecter"
                 },
                 confirm_pass: {
-                    required: language.Please_enter_confirm_password,
-                    minlength: language.Please_enter_at_least_6_charecter,
-                    maxlength: language.Please_select_less_then_20_charecter,
-                    equalTo: language.Your_password_does_not_match
+                    required: "Please enter confirm password",
+                    minlength: "Please enter at least 6 charecter",
+                    maxlength: "Please select less then 20 charecter",
+                    equalTo: "Your password does not match"
                 },
                 phone: {
-                    required: language.Please_enter_mobile_number,
-                    digits: language.Please_enter_number_only,
-                    minlength: language.Please_enter_6_digit_mobile_number,
-                    maxlength: language.Please_enter_15_digit_mobile_number,
+                    required: "Please enter mobile number",
+                    minlength: "Please enter at least 6 charecter",
+                    maxlength: "Please select less then 15 charecter",
                 }
 
             },

@@ -194,7 +194,6 @@ Class Vendors_model extends My_model{
         		// $domaiName = 'https//:development.launchestore.com';
 				$this->sendMail(strtolower($postData['email']),$domaiName,$postData['password'],$branchEmail);
         	}
-			
 
 	}
 
@@ -368,7 +367,7 @@ Class Vendors_model extends My_model{
 		];
 		$data['insert'] = $product_weight_image;
 		$data['table'] = TABLE_PRODUCT_IMAGE;
-		$this->insertRecord($data);
+		$lastProduct_id = $this->insertRecord($data);
 		unset($data);
 		return true;
 	}

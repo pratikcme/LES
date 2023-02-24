@@ -262,22 +262,22 @@ var ADDRESS = function () {
                 location: { required: true },
             },
             messages: {
-                fname: { required: language.Please_enter_full_name },
+                fname: { required: "Please enter full name" },
                 phone: {
-                    required: language.Please_enter_mobile_number,
-                    digits: language.Please_enter_number_only,
-                    minlength: language.Please_enter_6_digit_mobile_number,
-                    maxlength: language.Please_enter_15_digit_mobile_number,
+                    required: 'Please enter mobile number',
+                    digits: 'Please enter number only',
+                    minlength: 'Please enter 6 digit mobile number',
+                    maxlength: 'Please enter 15 digit mobile number'
                 },
-                country: { required: language.Please_enter_country },
-                state: { required: language.Please_enter_state },
-                city: { required: language.Please_enter_city },
+                country: { required: "Please enter country" },
+                state: { required: " Please enter state" },
+                city: { required: " Please enter city" },
                 pincode: {
-                    required: language.Please_enter_pincode,
-                    // digits : "Please enter digits only",
+                    required: 'Please enter pincode',
+                    digits: "Please enter digits only",
                 },
-                address: { required: language.Please_enter_your_address },
-                location: { required: language.Please_select_your_location },
+                address: { required: "Please enter your address" },
+                location: { required: "Please select your location" },
             },
             submitHandler: function (form) {
                 var latitude = $('#departure_latitude').val();

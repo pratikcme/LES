@@ -36,7 +36,6 @@
 
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>public/frontend/assets/css/slick.css">
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>public/frontend/assets/css/popup.css">
-  <link rel="stylesheet" type="text/css" href="<?=base_url()?>public/frontend/assets/css/rtl.css">
 
 
   <link rel='stylesheet' href='https://unpkg.com/xzoom/dist/xzoom.css'>
@@ -149,28 +148,5 @@ height: 20px;
     width: 50px;
   
 }
-
-/* google traslater*/
-body {
-top: 0px !important; 
-}
-
-.goog-logo-link {
-    display:none !important;
-} 
-    
-.goog-te-gadget {
-    color: transparent !important;
-}
-
-.goog-te-banner-frame.skiptranslate {
-display: none !important;
-} 
 </style>
-<?php $lang = json_encode($this->lang->language);
-  // dd($lang);
-?>
-<script type="text/javascript">
-    var language = <?=$lang; ?>;
-</script>
 <input type="hidden" id="siteCurrency" value="<?=$this->siteCurrency?>">

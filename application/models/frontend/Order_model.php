@@ -213,18 +213,22 @@ class Order_model extends My_model
             // echo "<pre>";
             // print_r($my_order_result);die;
 
-            $promocode_amount = 0;
+                    if(!empty($promocodeData)){
+                        $promocode_amount =  ($total_price / 100 ) * $promocodeData[0]->percentage;
+                    }
+                
+                }
 
-            if(isset($promocode) && $promocode !=''){
-                      unset($data);
-                      $data['where'] = ['branch_id'=>$branch_id,'name'=>$promocode];
-                      $data['table'] = TABLE_PROMOCODE;
-                      $promocodeData = $this->selectRecords($data);
-  
-                  if(!empty($promocodeData)){
-                      $promocode_amount =  ($total_price / 100 ) * $promocodeData[0]->percentage;
-                  }
-              }
+        if(!empty($my_order_result)){
+            foreach ($my_order_result as $my_order) {
+                $var_id = $my_order->product_weight_id;
+                $qnt = $my_order->quantity;
+                $updatedQTY = $this->check_udpate_quantity($var_id,$qnt,$user_id);
+                if(!$updatedQTY){
+                    continue;
+                }
+            }
+
 
             if (!empty($my_order_result)) {
                 foreach ($my_order_result as $my_order) {

@@ -448,7 +448,7 @@ class Product_model extends My_model
 				// $checkMycart = $this->checkMycartProduct($this->session->userdata('user_id'));
 				$p_outofstock = '';
 				if ($varientQuantity == '0') {
-					$p_outofstock .= '<div class="out-stock"><span class="out-heading">'.$this->lang->line('out of stock').'</span></div>';
+					$p_outofstock .= '<div class="out-stock"><span class="out-heading">out of stock</span></div>';
 				}
 				$class = '';
 				if (!empty($wish_pid)) {
@@ -497,9 +497,9 @@ class Product_model extends My_model
 					            <h6><span>' . $this->siteCurrency . '</span> ' . number_format((float)$value->discount_price, 2, '.', '') . '</h6>
 					            <p>';
 				if ($value->quantity > 25) {
-					$product_html .= $this->lang->line('Available(Instock)');
+					$product_html .= 'Available (in stock)';
 				} else {
-					$product_html .= $this->lang->line('Limited Stock');
+					$product_html .= 'limited stock';
 				}
 				$product_html .= '</p></div>
 					          <div class="feature-bottom-wrap">
@@ -507,7 +507,7 @@ class Product_model extends My_model
 					               <i class="fas fa-shopping-basket"></i>
 					            </div>
 					            <div class="new_add_to_cart ' . $d_none . '" >
-					            <button class="btn addcartbutton" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-varient_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>'.$this->lang->line('add to cart').'</button>
+					            <button class="btn addcartbutton" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-varient_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>Add To Cart</button>
 					            </div>
 					            <div class="quantity-wrap ' . $d_show . '">
               						<button class="dec cart-qty-minus" data-product_weight_id=' . $value->product_weight_id . '><span class="minus"><i class="fa fa-minus"></i></span></button>
@@ -529,7 +529,7 @@ class Product_model extends My_model
 				//  ';
 			}
 			$product_html .= '<div class="col-md-12" style="display:' . $display . '">
-        						<button type="button" class="btn show-more" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>'.$this->lang->line('Show More').'</button>
+        						<button type="button" class="btn show-more" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>Show More</button>
       						</div>';
 		} else {
 			$product_html = '<h3>No Product Found  </h3>';

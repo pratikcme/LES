@@ -113,11 +113,11 @@ var CHECKOUT = function () {
         })
 
         if (paymentOption == '-1') {
-            $('#payBtn_error').html(language.please_select_Payment_method);
+            $('#payBtn_error').html('please select Payment method');
             return false;
         }
         if (paymentOption == '') {
-            $('#payBtn_error').html(language.please_select_Payment_method);
+            $('#payBtn_error').html('please select Payment method');
             return false;
         }
         // if(address_checked == false){
@@ -136,12 +136,12 @@ var CHECKOUT = function () {
 
         if (checkAddress == '0' && isSelfPickup == '0') {
             // alert("Please enter your Address");
-            $('#payBtn_error').html(language.Please_enter_your_Address);
+            $('#payBtn_error').html("Please enter your Address");
             return false;
         }
         if (AddressNotInRange == '0') {
             // alert("We are not deliver to your selected Address");
-            $('#payBtn_error').html(language.We_do_not_deliver_to_your_selected_Address);
+            $('#payBtn_error').html("We do not deliver to your selected Address");
             return false;
         }
 

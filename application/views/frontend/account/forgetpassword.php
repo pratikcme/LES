@@ -10,7 +10,7 @@
     <div class="row align-items-center">
       <div class="col-md-12">
         <div class="page-title">
-          <h1><?=$this->lang->line('forgotten')?><br><?=$this->lang->line('Your password')?></h1>
+          <h1>forgotten<br>Your password</h1>
         </div>
       </div>
       <div class="col-md-12">
@@ -18,7 +18,7 @@
           
           <div class="input-wrapper">
             <span><i class="fas fa-envelope"></i></span>
-            <input type="text" name="email" placeholder="<?=$this->lang->line('Enter Email*')?>">
+            <input type="text" name="email" placeholder="Enter Email*">
           </div>
           <label for="email" class="error"><?=@form_error('email')?></label>
           
@@ -37,9 +37,9 @@
           </div> -->
 
 
-          <button type="submit" id="btnSubmit" class="btn create-btn"><?=$this->lang->line('Reset Password')?></button>
+          <button type="submit" id="btnSubmit" class="btn create-btn">Reset Password</button>
 
-          <p><?=$this->lang->line('Go Back:')?> <a href="<?=base_url().'login'?>"> <?=$this->lang->line('login')?> </a></p>
+          <p>Go Back: <a href="<?=base_url().'login'?>"> Login </a></p>
         </form>
       </div>
 

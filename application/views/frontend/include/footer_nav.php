@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-6 ">
         <ul>
-          <h6><?=$this->lang->line('Categories')?></h6>
+          <h6>Categories</h6>
           <?php foreach ($CategoryHighrstProduct as $key => $value) { ?>
           <li><a href="<?=base_url().'products?cat_id='.$this->utility->safe_b64encode($value->id)?>"><?=$value->name?></a></li>
           <?php } ?>
@@ -11,15 +11,15 @@
 
       <div class="col-lg-4 col-md-6 col-sm-6 ">
         <ul>
-          <h6><?=$this->lang->line('Useful Links')?></h6>
-          <li><a href="<?=base_url().'about'?>"><?=$this->lang->line('About Us')?></a></li>
+          <h6>useful links</h6>
+          <li><a href="<?=base_url().'about'?>">About Us</a></li>
           <!-- <li><a href="product-list.html">Featured Products</a></li>
           <li><a href="#">Offers</a></li>
           <li><a href="<?=base_url().'vendors'?>">Vendors</a></li> -->
-          <li><a href="<?=base_url().'privacy_policy'?>"><?=$this->lang->line('Privacy Policy')?> </a></li>
-          <li><a href="<?=base_url().'terms_condition'?>"><?=$this->lang->line('Term & Conditions')?> </a></li>
-          <li><a href="<?=base_url().'return_refund'?>"><?=$this->lang->line('Refund & Return / Shipping policy')?></a></li>
-          <li><a href="<?=base_url().'contact'?>"><?=$this->lang->line('Contact Us')?></a></li>
+          <li><a href="<?=base_url().'privacy_policy'?>">Privacy Policy</a></li>
+          <li><a href="<?=base_url().'terms_condition'?>">Term & Conditions</a></li>
+          <li><a href="<?=base_url().'return_refund'?>">Refund & Return / Shipping policy</a></li>
+          <li><a href="<?=base_url().'contact'?>">Contact Us</a></li>
           
         </ul>
       </div>
@@ -39,7 +39,7 @@
       </div> -->
       <div class="col-lg-4 col-md-6 col-sm-6 ">
         <div class="download-app">
-          <h6><?=$this->lang->line('Download App')?></h6>
+          <h6>Download app</h6>
           <div class="play-store-img">
             <!-- Ios app link -->
             <a href="<?=(!empty($appLinks)  && $appLinks[0]->ios_app_link != '') ? $appLinks[0]->ios_app_link : "#" ?>">
@@ -54,7 +54,7 @@
         </div>
 
         <ul class="payment-method">
-          <h6><?=$this->lang->line('Payment Method')?></h6>
+          <h6>Payment Method</h6>
 
           <li><img src="<?=base_url()?>public/frontend/assets/images/payment-1.png"></li>
           <li><img src="<?=base_url()?>public/frontend/assets/images/payment-2.png"style="max-width: 35px"></li>

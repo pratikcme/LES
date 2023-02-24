@@ -144,15 +144,7 @@ class Vendor_Controller extends MY_Controller
              // echo 'sdw00' ; die;
 
             }
-            $this->load->model($this->myvalues->vendorFrontEnd['model'],'vendor_model');
-             $response = $this->vendor_model->ApprovedVendor();
-             if(!empty($response)){
-                if($response[0]->status == '0'){
-                    echo '<h3 style = "text-align: center;font-size: xxx-large;">Your Account is Inactive.</h3>
-                          <p style = "text-align: center;font-size: 30px;"> Please contact to admin</p>';
-                    die;
-                }
-             }
+
             if($this->session->userdata('vendor_id')=='' ||$this->session->userdata('vendor_id')==NULL){
 
                 $this->load->model($this->myvalues->vendorFrontEnd['model'],'vendor_model');
@@ -207,17 +199,7 @@ class Vendor_Controller extends MY_Controller
                 $this->load->model('frontend/vendor_model','vendor_model');
                 $data['branch_nav'] = $this->vendor_model->branchList();
                 $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
-                $language_support = 'en';
-                if($data['ApprovedBranch'][0]->language_support == 1){
-                    $language_support = 'ar';
-                }
-                // $_SESSION['site_lang'] = '';
-                if($this->session->userdata('site_lang') == '' ){
-                    $this->session->set_userdata('site_lang',$language_support);
-                    $this->lang->load('message',$language_support);
-                }
-                // dd($this->session->userdata('site_lang'));die;
-                
+                // dd($data['ApprovedBranch']);die;
                 $this->load->model('frontend/product_model','product_model');
                 $data['wish_pid'] = $this->product_model->getUsersWishlist();
                 $data['getContact'] = $this->contact->getContact();
