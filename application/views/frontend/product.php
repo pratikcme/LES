@@ -116,7 +116,7 @@
       <div class="row align-items-center">
       <div class="col-md-6 col-sm-6 col-12">
         <div class="section-title">
-          <h1>Product listing</h1>
+          <h1><?=$this->lang->line('product listing')?></h1>
         </div>
       </div>
       <div class="col-md-6 col-sm-6 col-12">
@@ -124,15 +124,15 @@
 
           <div class="dropdown filter_drop">
             <button type="button" class="dropdown-toggle" id="selected" data-toggle="dropdown" data-sorting="">
-            All
+            <?=$this->lang->line('All')?>
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item sorting" data-value="all" href="javascript:">All</a>
-              <a class="dropdown-item sorting" data-value="alphabetically" href="javascript:">alphabetical</a>
-              <a class="dropdown-item sorting" data-value="high_low" href="javascript:">Price - High to Low</a>
-              <a class="dropdown-item sorting" data-value="low_high" href="javascript:">Price - Low to High </a>
-              <a class="dropdown-item sorting" data-value="discount_high_low" href="javascript:">% off - High to Low</a>
-              <a class="dropdown-item sorting" data-value="discount_low_high" href="javascript:">% off - low to high</a>
+              <a class="dropdown-item sorting" data-value="all" href="javascript:"><?=$this->lang->line('All')?></a>
+              <a class="dropdown-item sorting" data-value="alphabetically" href="javascript:"><?=$this->lang->line('alphabetical')?></a>
+              <a class="dropdown-item sorting" data-value="high_low" href="javascript:"><?=$this->lang->line('Price-High to Low')?></a>
+              <a class="dropdown-item sorting" data-value="low_high" href="javascript:"><?=$this->lang->line('Price-Low to High')?></a>
+              <a class="dropdown-item sorting" data-value="discount_high_low" href="javascript:"><?=$this->lang->line('`%` off - High to Low')?> </a>
+              <a class="dropdown-item sorting" data-value="discount_low_high" href="javascript:"><?=$this->lang->line('`%` off - low to high')?></a>
             </div>
           </div> 
           <div class="filter-icon">
@@ -140,7 +140,7 @@
 
             <div class="filter-dropdown w3-animate-top">
               <div class="filter-dropdown-header">
-                 <h6><span class="title-cart"><i class="fas fa-filter"></i></span>Filter</h6>
+                 <h6><span class="title-cart"><i class="fas fa-filter"></i></span><?=$this->lang->line('Filter')?></h6>
                    <span class="closing"><i class="fas fa-times-circle"></i></span>
               </div>
                 <div class="faq-accordion">
@@ -148,7 +148,7 @@
                 <li class="accordion-item " data-wow-delay="0.5s">
                   <a class="accordion-title" href="javascript:void(0)">
                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Brands
+                   <?=$this->lang->line('Brands')?>
                   </a>
   
                   <div class="accordion-content">
@@ -173,7 +173,7 @@
                 <li class="accordion-item " data-wow-delay="0.7s">
                   <a class="accordion-title" href="javascript:void(0)">
                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                   price Range
+                   <?=$this->lang->line('price Range')?>
                   </a>
   
                   <div class="accordion-content">
@@ -193,7 +193,7 @@
                 <li class="accordion-item " data-wow-delay="1s">
                   <a class="accordion-title" href="javascript:void(0)">
                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                   Discount
+                   <?=$this->lang->line('Discount')?>
                   </a>
   
                   <div class="accordion-content">

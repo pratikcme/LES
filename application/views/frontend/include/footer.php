@@ -418,10 +418,56 @@ if (!empty($init)) {
     containerBreakPoint: 360
     });
 
-
-
-
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>  
+<script type="text/javascript">
+  deLang = '';
+  var deLang = document.getElementById("site_lang").value
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: deLang ,includedLanguages : 'ar,en'}, 'google_translate_element');
+}
+// setTimeout(()=>{
+// var value = deLang;
+//  if(value=='ar'){
+//       $('body').attr('class','rtl');
+//     }else{
+//       $('body').attr('class','ltr');
+//     }
+//   new google.translate.TranslateElement({pageLanguage: 'en' , includedLanguages : 'ar,en'}, 'google_translate_element');
  
+
+// },5000)
+$(document).on('change','.goog-te-combo',function (){
+    var value = $(this).val(); 
+    
+    if(value != ''){
+      // $.ajax({
+      //     url : base_url+'LanguageSwitcher/switchLang/'+value,
+      //     // type:'post',
+      //     async : false,
+      //     data: {lang:value},
+      //     success:function(out){
+      //       if(value=='ar'){
+      //         $('body').attr('class','rtl');
+      //       }else{
+      //         $('body').attr('class','ltr');
+      //       }
+            new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'ar,en'}, 'google_translate_element');
+            // window.location.reload();        
+      //     }
+      // })
+
+    }
+    // else{
+    //   new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'en,ar'}, 'google_translate_element');
+    //   // if(value=='ar'){
+    //   //         $('body').attr('dir','rtl');
+    //   //       }else{
+    //   //         $('body').attr('dir','');
+    //   //       }
+    //   window.location.reload();
+    // }
+})
 </script>
 
 

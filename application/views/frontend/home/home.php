@@ -44,11 +44,11 @@
               <h2 class="animated fadeInLeft"> <?=$value->main_title?> </h2>
               <p class="animated fadeInRight"><?=$value->sub_title?></p> 
               <?php if($value->type == '1'){ ?>
-               <a class="btn animated fadeInUp" href="<?=base_url().'products'?>">Shop Now</a> </div>
+               <a class="btn animated fadeInUp" href="<?=base_url().'products'?>"><?=$this->lang->line('Shop Now')?></a> </div>
               <?php }else if($value->type == '2'){ ?>
-                  <a class="btn animated fadeInUp" href="<?=base_url().'products?cat_id='.$this->utility->safe_b64encode($value->category_id)?>">Shop Now</a> </div>
+                  <a class="btn animated fadeInUp" href="<?=base_url().'products?cat_id='.$this->utility->safe_b64encode($value->category_id)?>"><?=$this->lang->line('Shop Now')?></a> </div>
               <?php }else{ ?>
-                  <a class="btn animated fadeInUp" href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_varient_id)?>">Shop Now</a> </div>
+                  <a class="btn animated fadeInUp" href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_varient_id)?>"><?=$this->lang->line('Shop Now')?></a> </div>
               <?php } ?>
           </div>
         </div>
@@ -70,7 +70,7 @@
         </div>
        
         <div class="col-md-4 col-sm-4 col-12">
-          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>">see all</a> </div>
+          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
         </div>
 
      
@@ -93,7 +93,7 @@
         </div>
       <?php   endforeach ?>
       </div>
-    <div class="mobile-see-all"> <a href="<?=base_url().'products'?>">see all</a> </div>
+    <div class="mobile-see-all"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
   </div>
 </section> 
 
@@ -106,10 +106,10 @@
       <div class="row align-items-center">
         <div class="col-md-8 col-sm-8 col-12">
           <div class="section-title">
-            <h1>shop by categories</h1> </div>
+            <h1><?=$this->lang->line('SHOP BY CATEGORIES')?></h1> </div>
         </div>
         <div class="col-md-4 col-sm-4 col-12">
-          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>">see all</a> </div>
+          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
         </div>
       </div>
     </div>
@@ -127,7 +127,7 @@
         </div>
         <?php endforeach ?>
          </div>
-    <div class="mobile-see-all"> <a href="<?=base_url().'products'?>">see all</a> </div>
+    <div class="mobile-see-all"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
   </div>
 </section>
 <?php }else{ ?>
@@ -137,7 +137,7 @@
       <div class="row">
            <div class="col-md-8 col-sm-8 col-12">
           <div class="section-title mb-5">
-            <h1>shop by categories</h1> </div>
+            <h1><?=$this->lang->line('SHOP BY CATEGORIES')?></h1> </div>
         </div>
         <div class="col-lg-12">
           <div class="slider_box categoty_shukan">
@@ -170,10 +170,10 @@
       <div class="row align-items-center">
         <div class="col-md-8 col-sm-8 col-12">
           <div class="section-title">
-            <h1>Top featured products</h1> </div>
+            <h1><?=$this->lang->line('TOP FEATURED PRODUCTS')?></h1> </div>
         </div>
         <div class="col-md-4 col-sm-4 col-12">
-          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>">see all</a> </div>
+          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
         </div>
       </div>
     </div>
@@ -194,7 +194,7 @@
        <div class="item">
         <div class="product-wrapper">
           <?php if($value->varientQuantity == '0'){ ?>
-            <div class="out-stock"><span class="out-heading">out of stock</span></div>
+            <div class="out-stock"><span class="out-heading"><?=$this->lang->line('out of stock')?></span></div>
            <?php } ?>
           <div class="wishlist-wrapper">
             <?php if($value->discount_per > '0'){ ?>
@@ -214,7 +214,7 @@
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
             <h6><span><?=$this->siteCurrency?></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
-            <p><?=($value->quantity >= 25 ) ? 'Available (in stock)' : 'limited stock' ?></p>
+            <p><?=($value->quantity >= 25 ) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?> ?></p>
           </div>
           <?php 
             $d_none = '';
@@ -231,7 +231,7 @@
             <div class="cart addcartbutton d-none" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"> <i class="fas fa-shopping-basket"></i>
             </div>
             <div class="new_add_to_cart <?=$d_none?>" >
-                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">Add To Cart</button>
+                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>"><?=$this->lang->line('add to cart')?></button>
             </div>
             <div class="quantity-wrap <?=$d_show?>">
               <button class="dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>"><span class="minus"><i class="fa fa-minus"></i></span></button>
@@ -243,7 +243,7 @@
       </div>
       <?php endforeach ?>
     </div>
-    <div class="mobile-see-all"> <a href="<?=base_url().'products'?>">see all</a> </div>
+    <div class="mobile-see-all"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
   </div>
 </section>
 <?php }else{ ?>
@@ -254,10 +254,10 @@
       <div class="row align-items-center">
         <div class="col-md-12 col-sm-12 col-12">
           <div class="section-title">
-            <h1>Top featured products</h1> </div>
+            <h1><?=$this->lang->line('TOP FEATURED PRODUCTS')?></h1> </div>
         </div>
         <!-- <div class="col-md-4 col-sm-4 col-12">
-          <div class="see-all-wrap"> <a href="https://mehtaenterpriseonline.com/products">see all</a> </div>
+          <div class="see-all-wrap"> <a href="https://mehtaenterpriseonline.com/products"><?=$this->lang->line('See All')?></a> </div>
         </div> -->
       </div>
     </div>
@@ -273,7 +273,7 @@
         <?php $value->name = character_limiter($value->name,30); ?>
              <div class="product-wrapper">
           <?php if($value->varientQuantity == '0'){ ?>
-            <div class="out-stock"><span class="out-heading">out of stock</span></div>
+            <div class="out-stock"><span class="out-heading"><?=$this->lang->line('out of stock')?></span></div>
            <?php } ?>
           <div class="wishlist-wrapper">
             <?php if($value->discount_per > '0'){ ?>
@@ -293,7 +293,7 @@
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
             <h6><span><?=$this->siteCurrency?></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
-            <p><?=($value->quantity >= 25 ) ? 'Available (in stock)' : 'limited stock' ?></p>
+            <p><?=($value->quantity >= 25 ) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></p>
           </div>
           <?php 
             $d_none = '';
@@ -310,7 +310,7 @@
             <div class="cart addcartbutton d-none" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"> <i class="fas fa-shopping-basket"></i>
             </div>
             <div class="new_add_to_cart <?=$d_none?>" >
-                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">Add To Cart</button>
+                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>"><?=$this->lang->line('add to cart')?></button>
             </div>
             <div class="quantity-wrap <?=$d_show?>">
               <button class="dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>"><span class="minus"><i class="fa fa-minus"></i></span></button>
@@ -336,10 +336,10 @@
       <div class="row align-items-center">
         <div class="col-md-8 col-sm-8 col-12">
           <div class="section-title">
-            <h1>new products</h1> </div>
+            <h1><?=$this->lang->line('NEW PRODUCTS')?></h1> </div>
         </div>
         <div class="col-md-4 col-sm-4 col-12">
-          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>">see all</a> </div>
+          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
         </div>
       </div>
     </div>
@@ -358,7 +358,7 @@
       <div class="item">
         <div class="product-wrapper">
           <?php if($value->varientQuantity == '0'){ ?>
-            <div class="out-stock"><span class="out-heading">out of stock</span></div>
+            <div class="out-stock"><span class="out-heading"><?=$this->lang->line('out of stock')?></span></div>
            <?php } ?>
           <div class="wishlist-wrapper">
             <?php if($value->discount_per > '0'){ ?>
@@ -378,7 +378,7 @@
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
             <h6><span><?=$this->siteCurrency?></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
-            <p><?=($value->quantity > 25 ) ? 'Available (in stock)' : 'limited stock' ?></p>
+            <p><?=($value->quantity > 25 ) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></p>
           </div>
           <?php 
             $d_none = '';
@@ -394,7 +394,7 @@
             <div class="cart addcartbutton d-none" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"> <i class="fas fa-shopping-basket"></i>
             </div>
             <div class="new_add_to_cart <?=$d_none?>" >
-                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">Add To Cart</button>
+                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>"><?=$this->lang->line('add to cart')?></button>
             </div>
             <div class="quantity-wrap <?=$d_show?>">
               <button class="dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>"><span class="minus"><i class="fa fa-minus"></i></span></button>
@@ -426,7 +426,7 @@
       <div class="item">
         <div class="product-wrapper">
           <?php if($value->varientQuantity == '0'){ ?>
-            <div class="out-stock"><span class="out-heading">out of stock</span></div>
+            <div class="out-stock"><span class="out-heading"><?=$this->lang->line('out of stock')?></span></div>
            <?php } ?>
           <div class="wishlist-wrapper">
             <?php if($value->discount_per > '0'){ ?>
@@ -446,7 +446,7 @@
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
             <h6><span><?=$this->siteCurrency?></span><?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
-            <p><?=($value->quantity > 25 ) ? 'Available (in stock)' : 'limited stock' ?></p>
+            <p><?=($value->quantity > 25 ) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></p>
           </div>
           <?php 
             $d_none = '';
@@ -462,7 +462,7 @@
             <div class="cart addcartbutton d-none" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"> <i class="fas fa-shopping-basket"></i>
             </div>
             <div class="new_add_to_cart <?=$d_none?>" >
-                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">Add To Cart</button>
+                  <button class="btn addcartbutton" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>"><?=$this->lang->line('add to cart')?></button>
             </div>
             <div class="quantity-wrap <?=$d_show?>">
               <button class="dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>"><span class="minus"><i class="fa fa-minus"></i></span></button>
@@ -483,6 +483,6 @@
   <?php } ?>
  <?php endforeach ?>
     </div>
-    <div class="mobile-see-all"> <a href="<?=base_url().'products'?>">see all</a> </div>
+    <div class="mobile-see-all"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
   </div>
 </section>
