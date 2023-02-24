@@ -26,8 +26,8 @@
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">products</li>
+        <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('products')?></li>
       </ol>
     </nav>
   </div>
@@ -76,11 +76,11 @@
           <div class="detail"></div>
           <?php if($varientDetails[0]->quantity > '25'){ ?>
             <div class="in-stock">
-              <h6>Available(Instock)</h6>
+              <h6><?=$this->lang->line('Available(Instock)')?></h6>
             </div>
           <?php }else{ ?>
             <div class="in-stock">
-              <h6>Limited Stock</h6>
+              <h6><?=$this->lang->line('Limited Stock')?></h6>
             </div>
           <?php } ?>
           <h1><?=$productDetail[0]->name?></h1>
@@ -120,11 +120,11 @@
             <?php if($isAvailable != '0'){ ?>
             <div class="order-btn ">
               <a href="javascript:" class="<?=$d_none?>">
-                <button class="btn " id="addtocart"><span><i class="fas fa-shopping-basket"></i></span> add to cart
+                <button class="btn " id="addtocart"><span><i class="fas fa-shopping-basket"></i></span> <?=$this->lang->line('add to cart')?>
                 </button>
               </a>
               <a href="javascript:">
-                <button class="btn hover" id="order_now">order now</button>
+                <button class="btn hover" id="order_now"><?=$this->lang->line('order now')?></button>
               </a>
             <?php } ?>
                <?php 
@@ -136,7 +136,7 @@
               if(!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != ''){
                   $mobile = '91'.$BranchDetails[0]->phone_no; ?>
                 <a target="_black" id='whatsapp_link' href="https://wa.me/<?=$mobile?>/?text=<?=$url?>">
-                  <button class="btn hover whatsapp-help-btn" id=""><i class="fab fa-whatsapp"></i> Help!</button>
+                  <button class="btn hover whatsapp-help-btn" id=""><i class="fab fa-whatsapp"></i><?=$this->lang->line('Help!')?></button>
                 </a>
               <?php } ?>
             </div>
@@ -156,16 +156,16 @@
             </a>
           </div> -->
           <div class="product-description">
-            <h6>Description :</h6>
+            <h6><?=$this->lang->line('Description')?> :</h6>
             <p>
               <?=$productDetail[0]->about?>
             </p>
-            <h6>Content :</h6>
+            <h6><?=$this->lang->line('Content')?> :</h6>
             <p>
               <?=$productDetail[0]->content?>
             </p>
-            <h6>Category: <span><?=$productDetail[0]->category_name?></span>
-              Brand: <span><?=$productDetail[0]->brand_name?></span>
+            <h6><?=$this->lang->line('Category')?> : <span><?=$productDetail[0]->category_name?></span>
+            <?=$this->lang->line('Brand')?>: <span><?=$productDetail[0]->brand_name?></span>
             </h6>
           </div>
         </div>
@@ -182,10 +182,10 @@
       <div class="row align-items-center">
         <div class="col-md-8 col-sm-8 col-12">
           <div class="section-title">
-            <h1>related products</h1> </div>
+            <h1><?=$this->lang->line('related products')?></h1> </div>
         </div>
         <div class="col-md-4 col-sm-4 col-12">
-          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>">see all</a> </div>
+          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
         </div>
       </div>
     </div>
@@ -207,7 +207,7 @@
       <div class="item">
         <div class="product-wrapper">
           <?php if($value->varientQuantity == '0'){ ?>
-            <div class="out-stock"><span class="out-heading">out of stock</span></div>
+            <div class="out-stock"><span class="out-heading"><?=$this->lang->line('out of stock')?></span></div>
            <?php } ?>
           <div class="wishlist-wrapper">
             <?php if($value->discount_per > '0'){ ?>
@@ -228,9 +228,9 @@
               <h5><?=$value->name?></h5> </a>
             <h6><span><?=$this->siteCurrency?></i></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
             <?php if($value->quantity >= 25){ ?> 
-            <p>Available (in stock)</p>
+            <p><?=$this->lang->line('Available(Instock)')?></p>
             <?php }elseif($value->quantity <= 0){ ?>
-              <p>limited stock</p>
+              <p><?=$this->lang->line('Limited Stock')?></p>
             <?php } ?> 
           </div>
           <?php 

@@ -54,13 +54,13 @@ class Add_to_card extends User_Controller
 
 
 			if ($result[0]->max_order_qty != '' && $result[0]->max_order_qty != '0' && $quantity > $result[0]->max_order_qty) {
-				$errormsg = 'Maximum order quantity reached';
+				$errormsg = $this->lang->line('Maximum order quantity reached');
 			} elseif ($quantity > $result[0]->quantity) {
 
 				if ($result[0]->quantity == '0') {
-					$errormsg = 'Product not available';
+					$errormsg = $this->lang->line('Product not available');
 				} else {
-					$errormsg = 'Item Out of Stock';
+					$errormsg = $this->lang->line('Item Out of Stock');
 				}
 				// exit();
 			} else {
@@ -248,10 +248,10 @@ class Add_to_card extends User_Controller
 					}
 
 					if ($result[0]->max_order_qty != '' && $result[0]->max_order_qty != '0' && $qun > $result[0]->max_order_qty) {
-						$errormsg = 'Maximum order quantity reached';
+						$errormsg = $this->lang->line('Maximum order quantity reached');
 						$qun = $result[0]->max_order_qty;
 					} else if ($qun > $result[0]->quantity) {
-						$errormsg = "Item Out Of Stock";
+						$errormsg = $this->lang->line('Item Out of Stock'); 
 					} else {
 
 						$price = $value['discount_price'] * $qun;
@@ -274,12 +274,12 @@ class Add_to_card extends User_Controller
 
 			if ($result[0]->max_order_qty != '' && $result[0]->max_order_qty != '0' && $qun > $result[0]->max_order_qty) {
 
-				$errormsg = 'Maximum order quantity reached';
+				$errormsg = $this->lang->line('Maximum order quantity reached');
 				$old_qun = $result[0]->max_order_qty; // max sale quantity per order
 
 			} elseif ($qun > $result[0]->quantity) {
 
-				$errormsg = "Item Out Of Stock";
+				$errormsg = $this->lang->line('Item Out of Stock');
 				$old_qun = $result[0]->quantity; // available quantity 
 				$update_id = $cartTable[0]->id;
 				$this->this_model->update_my_card($update_id, $old_qun);

@@ -12,10 +12,15 @@
 
             <div class="sec_navbar">
               <ul class="">
-                <li> <a href="<?=base_url().'about'?>">about us</a> </li>
-                <li> <a href="<?=base_url().'contact'?>">contact us</a> </li>
+                <li> <a href="<?=base_url().'about'?>"><?=$this->lang->line('About Us')?></a> </li>
+                <li> <a href="<?=base_url().'contact'?>"><?=$this->lang->line('Contact Us')?></a> </li>
               </ul>
             </div>
+            <div id="google_translate_element"></div>
+            <!-- <select class="lang-change" onchange="javascript:window.location.href='<?php echo base_url(); ?>LanguageSwitcher/switchLang/'+this.value;">
+              <option value="en" <?php if($this->session->userdata('site_lang') == 'en') echo 'selected="selected"'; ?>>English</option>
+              <option value="ar" <?php if($this->session->userdata('site_lang') == 'ar') echo 'selected="selected"'; ?>>Arabic</option>
+          </select> -->
             <?php if($this->uri->segment(1) == ''){ ?>
             <div class="search-wrap">
              <input type="text" name="search" id='search' data-search_val= "" class="form-control" placeholder="Search vendor..">
@@ -26,7 +31,7 @@
             <?php if($ApprovedBranch[0]->approved_branch > '1'){ ?>
             <div class="location-wrap">
               <select class="form-control vendor_nav location-wrap">
-                <option value=""> All store</option>
+                <option value=""> <?=$this->lang->line('All store')?></option>
                 <?php foreach ($branch_nav as $key => $v): ?>
                 <option value="<?=$v->id?>" <?=(isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>><?=$v->name?></option>
                 <?php endforeach ?>
@@ -36,7 +41,7 @@
         <?php } ?>
               <?php 
               if($this->uri->segment(1) != ''){ 
-                  $placeholder = 'Search product..';
+                $placeholder = $this->lang->line('Search product..');
               }
               '/'.$segment3 = $this->uri->segment(3);
               $segment2 = $this->uri->segment(2);
@@ -60,7 +65,7 @@
             </div>
                <div class="cart-view-wrap <?=(!isset($this->cartCount) || $this->cartCount == 0) ? 'd-none' : '' ?>" id="nav_cart_dropdown">
                  <div class="cart-view-header">
-                   <h6><span class="title-cart"><i class="fas fa-shopping-basket"></i></span>Cart</h6>
+                   <h6><span class="title-cart"><i class="fas fa-shopping-basket"></i></span><?=$this->lang->line('cart')?></h6>
                    <span class="closing"><i class="fas fa-times-circle"></i></span>
                  </div>
                  <div class="cart-view-content ">
@@ -131,14 +136,14 @@
                  <?php } ?>
                   
                    <div class="subtotal-wrap">
-                        <h6>Subtotal:</h6> 
+                        <h6><?=$this->lang->line('Subtotal:')?></h6> 
                         <p id="nav_subtotal">
                           <?=$this->siteCurrency .' '. getMycartSubtotal()?>
                           </p>
                         </div>
                    <div class="view-cart-btn-wrapper">
-                     <a href="<?=base_url().'products/cart_item'?>" class="btn">view cart</a>
-                     <a href="<?=base_url().'checkout'?>" class="btn">checkout</a>
+                     <a href="<?=base_url().'products/cart_item'?>" class="btn"><?=$this->lang->line('view cart')?></a>
+                     <a href="<?=base_url().'checkout'?>" class="btn"><?=$this->lang->line('checkout')?></a>
                    </div>
                    <!-- <p>Free shipping on all orders over 2000!</p> -->
                  </div>
@@ -154,9 +159,9 @@
                <?php endforeach ?>
                <?php 
                if(count($notification) == "0"){ ?> 
-                <li>No Notification</li>
+                <li><?=$this->lang->line('No Notification')?></li>
               <?php }else{?> 
-               <li id="clear_all">Clear All</li>
+               <li id="clear_all"><?=$this->lang->line('Clear All')?></li>
              <?php } ?>
            </ul>
 
@@ -185,13 +190,13 @@
                      <li>
                       <a href="<?=base_url().'users_account/users/account?name=my_account'?>">
                         <span><i class="fas fa-user"></i></span>
-                        My account
+                        <?=$this->lang->line('My account')?>
                       </a>   
                      </li>
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=order'?>">
                         <span><i class="fas fa-shopping-bag"></i></span>
-                        My Orders
+                        <?=$this->lang->line('My orders')?>
                       </a>   
                      </li>
 
@@ -199,21 +204,21 @@
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=wishlist'?>">
                         <span><i class="fas fa-heart"></i></span>
-                        My Wishlist
+                        <?=$this->lang->line('My Wishlist')?>
                       </a>   
                      </li>
                      <?php } ?>
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=my_address'?>">
                         <span><i class="fas fa-address-book"></i></span>
-                        My Address
+                        <?=$this->lang->line('My address')?>
                       </a>   
                      </li>
                       <?php if($userInformation[0]->login_type == '0'){ ?>
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=change'?>">
                         <span><i class="fas fa-lock"></i></span>
-                        Change Password
+                        <?=$this->lang->line('Change Password')?>
                       </a>   
                      </li>
                     <?php } ?>
@@ -226,13 +231,13 @@
                     <li>
                       <a  id="logout">
                         <span><i class="fas fa-power-off"></i></span>
-                       logout
+                        <?=$this->lang->line('logout')?>
                       </a>   
                      </li>
                       <li>
                       <a  id="delete_account">
                         <span><i class="fas fa-minus"></i></span>
-                       Delete Account
+                        <?=$this->lang->line('Delete Account')?>
                       </a>   
                      </li>
                      
@@ -247,7 +252,7 @@
             </div> -->
           <?php if($this->session->userdata('user_id') == null){ ?>
             <div class="login-btn-wrap">
-              <a href="<?=base_url().'login'?>">Login</a>
+              <a href="<?=base_url().'login'?>"><?php echo $this->lang->line('login') ;?></a>
             </div>
           <?php }else{ ?>
             <div class="user-logged dropdown">
@@ -267,34 +272,34 @@
                      <li>
                       <a href="<?=base_url().'users_account/users/account?name=my_account'?>">
                         <span><i class="fas fa-user"></i></span>
-                        My account
+                        <?=$this->lang->line('My account')?>
                       </a>   
                      </li>
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=order'?>">
                         <span><i class="fas fa-shopping-bag"></i></span>
-                        My Orders
+                        <?=$this->lang->line('My orders')?>
                       </a>   
                      </li>
                      <?php if($this->session->userdata('user_id') != ''){ ?>
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=wishlist'?>">
                         <span><i class="fas fa-heart"></i></span>
-                        My Wishlist
+                        <?=$this->lang->line('My Wishlist')?>
                       </a>   
                      </li>
                    <?php } ?>
                       <li>
                       <a href="<?=base_url().'users_account/users/account?name=my_address'?>">
                         <span><i class="fas fa-address-book"></i></span>
-                        My Address
+                        <?=$this->lang->line('My address')?>
                       </a>   
                      </li>
                      <?php if($userInformation[0]->login_type == '0'){ ?>
                      <li>
                       <a href="<?=base_url().'users_account/users/account?name=change'?>">
                         <span><i class="fas fa-lock"></i></span>
-                        Change Password
+                        <?=$this->lang->line('Change Password')?>
                       </a>   
                      </li>
                    <?php } ?>
@@ -308,13 +313,13 @@
                        <li>
                       <a  id="logout">
                         <span><i class="fas fa-power-off"></i></span>
-                       logout
+                        <?=$this->lang->line('logout')?>
                       </a>   
                      </li>
                       <li>
                       <a  id="delete_account">
                         <span><i class="fas fa-minus"></i></span>
-                       Delete Account
+                        <?=$this->lang->line('Delete Account')?>
                       </a>   
                      </li>
                      
@@ -342,7 +347,7 @@
             <?php if($ApprovedBranch[0]->approved_branch > '1'){ ?>
               <div class="location-wrap-2">
                 <select class="form-control vendor_nav">
-                <option value=""> All store</option>
+                <option value=""><?=$this->lang->line('All store')?></option>
                 <?php foreach ($branch_nav as $key => $v): ?>
                 <option value="<?=$v->id?>" <?=(isset($_SESSION['vendor_id']) && $v->id == $_SESSION['vendor_id']) ? 'selected' : '' ?>><?=$v->name?></option>
                 <?php endforeach ?>
