@@ -93,7 +93,6 @@
 </section> 
 <?php } ?>
 <!-- =================ABOUT SECTION================= -->
-<?php dd($home_content);die; ?>
 <?php foreach ($home_content as $key => $value): ?>
   <?php if($key%2 == 0){ ?>  
 <section class="p-100 pb-0 abt_section">
