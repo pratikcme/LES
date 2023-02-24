@@ -3,7 +3,7 @@
 Class Home_content_model extends My_model{
 
     function __construct(){
-        $this->branch_id = $this->session->userdata('branch_id');
+        $this->branch_id = $this->session->userdata('id');
     }
 
 	public function getAboutSectionTwo(){
@@ -124,6 +124,7 @@ Class Home_content_model extends My_model{
     public function getSectionOne(){
         $data['table'] = TABLE_HOME_SECTION_ONE;
         $data['select'] = ['*'];
+        $data['where'] = ['branch_id'=>$this->branch_id];
         return $this->selectRecords($data);
 
     }
