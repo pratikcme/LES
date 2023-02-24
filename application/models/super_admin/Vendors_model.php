@@ -14,7 +14,7 @@ Class Vendors_model extends My_model{
 	}
 
 	public function add($postData){
-		// dd($postData);
+		dd($postData);
 		$folder_name = $postData['name']; //shopname
 		$folder_name = preg_replace('/\s+/', '', $folder_name);
 
