@@ -117,7 +117,7 @@ class Home_content extends Vendor_Controller{
 	}	
 
 	public function home_section_one(){
-		dd($_SESSION);
+		// dd($_SESSION);
 		$data['js'] = array('home_content.js');
 		$data['init'] = array('HOME_CONTENT.content_one()');
 		$data['getData'] = $this->this_model->getSectionOne();
