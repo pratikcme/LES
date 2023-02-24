@@ -189,13 +189,16 @@ var VENDORS = function () {
         },
         approved: {
           required: true,
-          digits: true
+          digits: true,
+          min: 1,
+          max: 9
         },
         login_type: {
           required: true
         },
         webTitle: {
-          required: true
+          required: true,
+          maxlength: 25
         },
         android_version: {
           required: true,
@@ -205,9 +208,13 @@ var VENDORS = function () {
         },
         android_isforce: {
           required: true,
+          digits: true,
+          max: 1
         },
         ios_isforce: {
           required: true,
+          digits: true,
+          max: 1
         },
         display_price_with_gst: {
           required: true
