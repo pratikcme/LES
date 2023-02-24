@@ -86,7 +86,7 @@
               <a href="javascript:">
                 <div class="mydiv-wrapper">
                     <div class="icon">
-                      <h3>TotalSales</h3>
+                      <h3>Total Sales</h3>
                     </div>
                     <div class="text">
                         <p><?=$totalSales?></p> 
