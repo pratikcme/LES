@@ -10,8 +10,10 @@ Class Home_content_model extends My_model{
 		$data['table'] = TABLE_HOME_CONTENT;
 		$data['select'] = ['*'];
         $data['where'] = ['branch_id' =>$this->branch_id];
-		return $this->selectRecords($data);
-	}
+		/* return */ $this->selectRecords($data);
+        lq();
+
+    }
     
  function getWebBannerImage(){
  
