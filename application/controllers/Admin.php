@@ -127,8 +127,7 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
 
     public function login()
     {   
-        echo base_url(); die; 
-        if(base_url() == 'admin.cmexpertise.com'){
+        if(base_url() == 'https://admin.launchestore.com/'){
             redirect(base_url().'super_admin/login');
         }
         if (isset($_SESSION['super_admin']) || isset($_SESSION['vendor_admin'])) {
