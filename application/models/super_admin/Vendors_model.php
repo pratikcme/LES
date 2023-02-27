@@ -97,6 +97,7 @@ Class Vendors_model extends My_model{
 				'email' => strtolower($postData['email']),
 				'dt_added' => strtotime(date('Y-m-d H:i:s')),
 				'dt_updated' => strtotime(date('Y-m-d H:i:s')),
+				'locality' => $postData['locality'],
 				'language_support' => $postData['language_support']
 			);
 
@@ -465,7 +466,6 @@ Class Vendors_model extends My_model{
 	}
 
 	public function updateVendors($vendor_id,$postData){
-		// dd($postData);
 		$updateArray = [
 			'email'=>	$postData['email'],
 			'approved_branch'=>	$postData['approved'],
@@ -479,7 +479,7 @@ Class Vendors_model extends My_model{
 			'dt_updated'=> strtotime(DATE_TIME),
 			'locality'=> $postData['locality'],
 			'language_support' => $postData['language_support']
-		]; 
+		]; 	
 		$data['table'] = ADMIN;
 		$data['update'] = $updateArray;
 		$data['where'] = ['id'=>$vendor_id];

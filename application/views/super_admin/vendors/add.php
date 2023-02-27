@@ -202,6 +202,16 @@
                 </select>
               </div>
             </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="language" >Locality</label>
+                <select name="locality" class="form-control">
+                  <option value="">Select locality</option>
+                  <option value="0">local</option>
+                  <option value="1">international</option>
+                </select>
+              </div>
+            </div>
           </div>
             <div class="button-group">
                 <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-new">Save </button>

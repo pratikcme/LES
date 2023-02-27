@@ -69,6 +69,16 @@
                   </select>
             </div>
           </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="language" >Locality</label>
+                <select name="locality" class="form-control">
+                    <option value="">Select locality</option>
+                    <option value="0" <?=($editData[0]->locality == 0) ? 'SELECTED' : ''?>>local</option>
+                    <option value="1" <?=($editData[0]->locality == 1) ? 'SELECTED' : ''?>>international</option>
+                  </select>
+            </div>
+          </div>
         </div>
       
         <div class="row">
