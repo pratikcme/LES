@@ -10,14 +10,7 @@ class Login extends MY_Controller{
 
 	public function index()
 	{
-        echo '1';die;
-		$data['page'] = 'super_admin/dashboard';
-		$data['totalVendor'] = $this->this_model->getVendorCount();
-		$data['totalBranch'] = $this->this_model->getBranchCount();
-		$data['totalActiveUser'] = $this->this_model->getActiveUserCount();
-		$data['totalCancled'] = $this->this_model->getTotalCancled();
-		$data['totalSales'] = $this->this_model->getTotalSales();
-		$this->load->view(SUPER_ADMIN_LAYOUT,$data);
+		$this->load->view('super_admin/login');
 	}
 
 	public function logout(){
