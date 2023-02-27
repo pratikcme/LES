@@ -88,7 +88,7 @@
         <!-- <div class="fishmart_logo">
         <img src="<?php echo base_url() . "public/images/fishmart_logo.png"; ?>">
         </div> -->
-        <h2 class="form-signin-heading">Login</h2>
+        <h2 class="form-signin-heading">Admin Login</h2>
         <div id="msg">
             <?php if ($this->session->flashdata('msg') && $this->session->flashdata('msg') != '') { ?>
                 <div class="alert alert-danger" style="text-align: center">
