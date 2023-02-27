@@ -103,6 +103,22 @@ class Cart_amount_based_discount_model extends My_model{
     }
         
     }
+
+    public function checkAmountExist($postData){
+        // dd($postData);
+        $data['table'] = TABLE_SHOPPING_BASED_DISCOUNT;
+        $data['where']['cart_amount'] = $postData['cart_amount'];
+        $data['where']['branch_id'] = $this->branch_id;
+        if(isset($postData['update_id']) && $postData['update_id'] != ''){
+            $data['where']['id!='] = $this->utility->decode($postData['update_id']);
+        }
+        $re = $this->countRecords($data);
+        if($re > 0){
+            return "false";
+        }else{
+            return "true";
+        }
+    }
  
 }
 
