@@ -9,7 +9,8 @@ class Super_admin_login_model extends My_model
 		$data['select'] = ['*'];
 		$data['where']['email'] = $postData['email'];
         $data['where']['password'] = md5($postData['email']);
-		$res =  $this->selectRecords($data,true); 	
+		$res =  $this->selectRecords($data,true); 
+        lq();	
         if(!empty($res)){
             $login_data = array(        
                 'super_admin' => $res['id'],
