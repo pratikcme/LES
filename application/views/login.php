@@ -100,21 +100,20 @@
             <input type="text" name="loginemail" class="form-control" placeholder="Email Address"  value="<?php echo get_cookie('loginemail'); ?>" required autofocus  autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
             <input type="password" name="loginpassword" class="form-control" placeholder="Password" value="<?php echo get_cookie('loginpassword'); ?>" autocomplete="new-password" required >
 
-           <!-- <label class="rememberme check">
+           <label class="rememberme check">
                 <input type="checkbox" name="remember" id="remember" value="1" <?php
                 if (get_cookie('loginemail') != '') {
                    echo 'checked="checked"';
                }
-                ?> /> Remember
-            </label> -->
+                ?> /> Remember</label>
 
 
 
             <!-- <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me -->
-                <!-- <span class="pull-right">
+                <span class="pull-right">
                     <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
-                </span> -->
+                </span>
             <!-- </label> -->
 
             <button class="btn btn-lg btn-login btn-block" type="submit">Login</button>
