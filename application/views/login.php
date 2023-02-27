@@ -84,7 +84,7 @@
         <?php } ?>
     </div>
     
-    <form class="form-signin" enctype="multipart/form-data" action="<?=$formAction?>" method="post" id="sign_in_form">
+    <form class="form-signin" enctype="multipart/form-data" action="<?php echo base_url() . 'admin/check_login/'; ?>" method="post" id="sign_in_form">
         <!-- <div class="fishmart_logo">
         <img src="<?php echo base_url() . "public/images/fishmart_logo.png"; ?>">
         </div> -->
