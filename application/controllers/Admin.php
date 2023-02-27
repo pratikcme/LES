@@ -397,6 +397,9 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     ## Check Login  ##
     public function check_login()
     {
+        if(base_url() == 'admin.cmexpertise.com'){
+            redirect(base_url().'super_admin/login');
+        }
         $base_url = base_url();
         $email = $_POST['loginemail'];
         $password = md5($_POST['loginpassword']);
