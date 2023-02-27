@@ -5,12 +5,17 @@ class Login extends MY_Controller{
 
 	function __construct(){
 		parent::__construct();
-		// $this->load->model('super_admin/login_model','this_model');
+		$this->load->model('super_admin/super_admin_login_model','this_model');
 	}
 
 	public function index()
 	{
-		$this->load->view('super_admin/login');
+        $data['formAction'] = base_url().'super_admin/login';
+        if($this->input->post()){
+            $this->this_model->superAdminLogin($this->input->post());
+            dd($this->input->post());
+        }
+		$this->load->view('super_admin/login',$data);
 	}
 
 	public function logout(){

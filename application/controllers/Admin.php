@@ -524,7 +524,6 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
                     $row_login = $result_login->row_array();
 
                     if ($result_login->num_rows() > 0) {
-                        $status = $row_login['status'];
                         $login_data = array(        
                             'super_admin' => $row_login['id'],
                             'id' => $row_login['id'],
