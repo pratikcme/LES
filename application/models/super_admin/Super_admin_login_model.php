@@ -19,8 +19,10 @@ class Super_admin_login_model extends My_model
                 'super_admin' => TRUE
             );
             $this->session->set_userdata(['validSuperAdmin'=>$login_data]);
-            redirect('super_admin/dashboard');
+            redirect(base_url().'super_admin/dashboard');
         }else{
+            echo base_url();
+            echo '1';die;
             $this->session->set_flashdata('msg', 'Invalid email or password');
             redirect(base_url().'super_admin/login');
         }

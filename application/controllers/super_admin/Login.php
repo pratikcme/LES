@@ -13,7 +13,6 @@ class Login extends MY_Controller{
         $data['formAction'] = base_url().'super_admin/login';
         if($this->input->post()){
             $this->this_model->superAdminLogin($this->input->post());
-            dd($this->input->post());
         }
 		$this->load->view('super_admin/login',$data);
 	}
