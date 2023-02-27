@@ -9,8 +9,7 @@ class Super_admin_login_model extends My_model
 		$data['select'] = ['*'];
 		$data['where']['email'] = $postData['email'];
         $data['where']['password'] = md5($postData['email']);
-		$res =  $this->selectRecords($data,true); 
-        dd($res);	
+		$res =  $this->selectRecords($data,true); 	
         if(!empty($res)){
             $login_data = array(        
                 'super_admin' => $res['id'],
@@ -22,8 +21,6 @@ class Super_admin_login_model extends My_model
             $this->session->set_userdata(['validSuperAdmin'=>$login_data]);
             redirect(base_url().'super_admin/dashboard');
         }else{
-            echo base_url();
-            echo '1';die;
             $this->session->set_flashdata('msg', 'Invalid email or password');
             redirect(base_url().'super_admin/login');
         }
