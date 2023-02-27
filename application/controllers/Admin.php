@@ -521,10 +521,11 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
 
                 redirect('admin/dashboard');
                 exit;
+            }else{
+                $this->session->set_flashdata('msg', 'Invalid email or password');
+                redirect(base_url().'admin/login');
             }
         }
-        $this->session->set_flashdata('msg', 'Invalid email or password');
-        redirect(base_url().'admin/login');
     }
 
     ## Super Admin - Logout  ##
