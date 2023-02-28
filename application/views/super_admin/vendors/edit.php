@@ -30,8 +30,8 @@
               <label for="approved">Login With</label>
                   <select name="login_type" class="form-control">
                     <option value="">Select User Login Type</option>
-                    <option value="0" <?=($editData[0]->login_type == 0) ? 'SELECTED' : ''?>>Login with Email</option>
-                    <option value="1" <?=($editData[0]->login_type == 1) ? 'SELECTED' : ''?>>Login with Mobile</option>
+                    <option value="0" <?=($editData[0]->login_type == 0) ? 'SELECTED' : ''?>>Login With Email</option>
+                    <option value="1" <?=($editData[0]->login_type == 1) ? 'SELECTED' : ''?>>Login With Mobile</option>
                   </select>
             </div>
           </div>
@@ -49,7 +49,7 @@
                   <select name="display_price_with_gst" class="form-control">
                     <option value="">Select gst display mode</option>
                     <option value="0" <?=($editData[0]->display_price_with_gst == 0) ? 'SELECTED' : ''?>>With Gst</option>
-                    <option value="1" <?=($editData[0]->display_price_with_gst == 1) ? 'SELECTED' : ''?>>without Gst</option>
+                    <option value="1" <?=($editData[0]->display_price_with_gst == 1) ? 'SELECTED' : ''?>>Without Gst</option>
                   </select>
             </div>
           </div>
@@ -73,9 +73,9 @@
             <div class="form-group">
               <label for="language" >Locality</label>
                 <select name="locality" class="form-control">
-                    <option value="">Select locality</option>
-                    <option value="0" <?=($editData[0]->locality == 0) ? 'SELECTED' : ''?>>local</option>
-                    <option value="1" <?=($editData[0]->locality == 1) ? 'SELECTED' : ''?>>international</option>
+                    <option value="">Select Locality</option>
+                    <option value="0" <?=($editData[0]->locality == 0) ? 'SELECTED' : ''?>>Local</option>
+                    <option value="1" <?=($editData[0]->locality == 1) ? 'SELECTED' : ''?>>International</option>
                   </select>
             </div>
           </div>
