@@ -7,8 +7,9 @@ class Profile_model extends My_model
 	{
 		$data['table'] = TABLE_SUPER_ADMIN;
 		$data['select'] = ['*'];
-		$data['where']['id'] = $this->session->userdata['validSuperAdmin']['id'];
-		return $this->selectRecords($data); 	
+		$data['where']['id'] = $this->session->userdata('validSuperAdmin')['id'];
+		/* return */ $this->selectRecords($data); 	
+		echo lq();
 	}
 
 	public function UpdateProfile($postData){
