@@ -19,7 +19,7 @@ class Profile_model extends My_model
 		$data['update']['dt_updated'] = DATE_TIME;
 		$result = $this->updateRecords($data);
 		if($result){
-			return ['success','Your password has been changed'];
+			return ['success','Profile updated successfully'];
 		}else{
 			return ['danger','Somthing went wrong'];
 		}
