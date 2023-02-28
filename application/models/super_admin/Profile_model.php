@@ -5,12 +5,10 @@ class Profile_model extends My_model
 	
 	function getProfile()
 	{
-		dd($this->session->userdata('validSuperAdmin')['id']);
 		$data['table'] = TABLE_SUPER_ADMIN;
 		$data['select'] = ['*'];
 		$data['where']['id'] = $this->session->userdata('validSuperAdmin')['id'];
-		/* return */ $this->selectRecords($data); 	
-		echo lq();
+		return $this->selectRecords($data);
 	}
 
 	public function UpdateProfile($postData){
