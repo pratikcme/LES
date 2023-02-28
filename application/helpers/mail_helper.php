@@ -133,7 +133,7 @@ function NavbarDropdown(){
             $value["image"] = $default_product_image;
           }
         }
-      
+      dd($_SESSION['My_cart']);
 
         $html .= '<li>
         <a href='.base_url().'products/productDetails/'.$encode_id.'/'.$varient_id.'>
