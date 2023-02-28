@@ -221,7 +221,6 @@ class Add_to_card extends User_Controller
 		// dd($_SESSION['My_cart']);
 		if ($this->input->post()) {
 			$result = $this->this_model->CartIncDec($this->input->post());
-			dd($result);die;
 		}
 		$prod_id = $this->input->post('product_id');
 		$product_weight_id = $this->input->post('product_weight_id');
