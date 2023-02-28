@@ -228,7 +228,7 @@ class Add_to_card extends User_Controller
 		$quantity = 1;
 		$sub_total =  $this->input->post("subtotal");
 		$this->load->model('api_v3/common_model','co_model');
-  		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+  		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		$new_deliveryCharge = 0;
 		if ($this->session->userdata('user_id') == '') {
 			$new_deliveryCharge = number_format((float)$new_deliveryCharge, 2, '.', '');
