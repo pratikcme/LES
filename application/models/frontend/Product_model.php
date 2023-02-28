@@ -876,7 +876,7 @@ class Product_model extends My_model
 
 
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.weight_id', 'pw.discount_per', 'pw.discount_price', 'pw.max_order_qty'];
+		$data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.weight_id', 'pw.discount_per', 'pw.discount_price','pw.without_gst_price','pw.max_order_qty'];
 		$data['join'] = [TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT']];
 		$data['where'] = [
 			'p.status !=' => '9',
