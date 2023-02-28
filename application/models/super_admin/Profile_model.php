@@ -16,7 +16,7 @@ class Profile_model extends My_model
 		$data['where']['id'] = $this->session->userdata['validSuperAdmin']['id'];
 		$data['update']['company_name'] = $postData['company_name'];
 		$data['update']['email'] = $postData['email'];
-		$data['updated_at'] = DATE_TIME;
+		$data['update']['updated_at'] = DATE_TIME;
 		$result = $this->updateRecords($data);
 		if($result){
 			return ['success','Your password has been changed'];
