@@ -17,10 +17,12 @@ var USERPROFILE = function () {
         },
         password: {
           required: true,
+          minlength: 6,
           maxlength: 25
         },
         new_password: {
           required: true,
+          minlength: 6,
           maxlength: 25
         },
         confirm_password: {
@@ -37,17 +39,17 @@ var USERPROFILE = function () {
         password: {
           required: "Please enter old password",
           minlength: "Please enter minmum 6 digit password",
-          maxlength: "Your Password must be less than 10 digit"
+          maxlength: "Your Password must be less than 25 digit"
         },
         new_password: {
           required: "Please enter new password",
           minlength: "Please enter minmum 6 digit password",
-          maxlength: "Your Password must be less than 10 digit"
+          maxlength: "Your Password must be less than 25 digit"
         },
         confirm_password: {
           required: "Please enter confirm password",
           minlength: "Please enter minmum 6 digit password",
-          maxlength: "Your Password must be less than 10 digit",
+          maxlength: "Your Password must be less than 25 digit",
           equalTo: "Your password does not match"
         }
       }
