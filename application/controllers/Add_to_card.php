@@ -230,7 +230,6 @@ class Add_to_card extends User_Controller
 		$this->load->model('api_v3/common_model','co_model');
   		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		$new_deliveryCharge = 0;
-		dd($_SESSION);
 		if ($this->session->userdata('user_id') == '') {
 			
 			$new_deliveryCharge = number_format((float)$new_deliveryCharge, 2, '.', '');
