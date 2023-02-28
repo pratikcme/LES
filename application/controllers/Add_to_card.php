@@ -242,8 +242,6 @@ class Add_to_card extends User_Controller
 					}else{
 						$value['discount_price'] = $result[0]->discount_price;
 					}
-					echo $result[0]->without_gst_price;
-					dd($value['discount_price']);
 					$old_qun = $value['quantity'];
 					if ($this->input->post('action') == 'decrease') {
 
