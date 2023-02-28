@@ -50,10 +50,10 @@ function getMycartSubtotal(){
 
     if(isset($_SESSION['My_cart'])){
       foreach ($_SESSION['My_cart'] as $key => $value) {
-        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-          $value->discount_price = $value->without_gst_price; 
-        }
         $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+          $product[0]->discount_price = $product[0]->without_gst_price; 
+        }
         $total += $product[0]->discount_price * $value['quantity'];
       }
     }
