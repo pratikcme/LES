@@ -5,6 +5,7 @@ class Profile_model extends My_model
 	
 	function getProfile()
 	{
+		dd($this->session->userdata('validSuperAdmin'));
 		$data['table'] = TABLE_SUPER_ADMIN;
 		$data['select'] = ['*'];
 		$data['where']['id'] = $this->session->userdata('validSuperAdmin')['id'];
