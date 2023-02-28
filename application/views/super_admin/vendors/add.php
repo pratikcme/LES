@@ -182,7 +182,7 @@
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                  <label for="location">Enter Location :<span class="required" aria-required="true"> * </span> </label>
+                  <label for="location">Enter Location<span class="required" aria-required="true"> * :</span> </label>
                 <div class="row">
                   <div class="col-sm-12">
                      <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="dis form-control pac-target-input valid" name="location" maxlength="255" value="" placeholder="Location" autocomplete="off"> <span style="color: red;"></span> 
