@@ -293,7 +293,15 @@ $vendor_id = $this->session->userdata('id');
 
     <link href="<?php echo base_url(); ?>public/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>public/css/style-responsive.css" rel="stylesheet" />
-
+    <?php if(isset($css)){ ?>
+        <?php foreach ($css as $key => $value) { ?>
+            <link href="<?=base_url().'public/admin_product_page_assets/css/'.$value?>" rel="stylesheet" />
+        <?php } ?>
+        <link href="<?=base_url().'public/admin_product_page_assets/images'?>" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <?php } ?>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB-nS3x_SS2JjPSrbq772nwf4QEHRSK1y4"
         type="text/javascript"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
