@@ -39,6 +39,13 @@
                   foreach ($_SESSION['My_cart'] as $key => $value) {
                     $CI->load->model('frontend/product_model');
                     $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+                    
+                    $CI->load->model('api_v3/common_model','co_model');
+                    $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                      $product[0]->discount_price = $product[0]->without_gst_price;
+                    }
+                    
                     $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
                     if (!file_exists('public/images/' . $CI->folder . 'product_image/' . $product[0]->image) || $product[0]->image == '') {
                       if (strpos($product[0]->image, '%20') === true || $product[0]->image == '') {
