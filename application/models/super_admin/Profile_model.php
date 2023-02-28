@@ -17,7 +17,7 @@ class Profile_model extends My_model
 		$data['update']['company_name'] = $postData['company_name'];
 		$data['update']['email'] = $postData['email'];
 		$data['update']['updated_at'] = DATE_TIME;
-		$result = $this->updateRecords($data);
+		$result = $this->updateRecord($data);
 		if($result){
 			return ['success','Your password has been changed'];
 		}else{
