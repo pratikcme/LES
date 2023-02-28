@@ -38,6 +38,18 @@ var PROJECTCONFIG = function () {
           required: true,
           email: true
         },
+        twitter_link: {
+          url: true
+        },
+        google_plus_link: {
+          url: true
+        },
+        instagram_link: {
+          url: true
+        },
+        facebook_link: {
+          url: true
+        }
       },
       messages: {
         user_firebase_key: {
