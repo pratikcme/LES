@@ -77,10 +77,16 @@
                        $default_product_image =$CI->common_model->default_product_image(); ?>
 
                      <?php foreach ($this->session->userdata('My_cart') as $key => $value) {
+
                         $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
                         // dd($product);
                         $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
-
+                        
+                        $CI->load->model('api_v3/common_model','co_model');
+                        $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+                        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                          $product[0]->discount_price = $product[0]->without_gst_price;
+                        }
                         if(!file_exists('public/images/'.$CI->folder.'product_image/'.$product[0]->image) || $product[0]->image == '' ){
                           if(strpos($product[0]->image, '%20') === true || $product[0]->image == ''){
                             $product[0]->image = $default_product_image;
