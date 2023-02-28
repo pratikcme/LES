@@ -131,6 +131,11 @@ function NavbarDropdown(){
       foreach ($_SESSION['My_cart'] as $key => $value) {
         $encode_id=  $CI->utility->safe_b64encode($value['product_id']);
         $varient_id =  $CI->utility->safe_b64encode($value['product_weight_id']);
+        $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+          $value['discount_price'] = $product[0]->without_gst_price;
+        } 
+       
         if(!file_exists('public/images/'.$CI->folder.'product_image/'.$value["image"]) || $value["image"] == '' ){
           if(strpos($value["image"], '%20') === true || $value["image"] == ''){
             $value["image"] = $default_product_image;

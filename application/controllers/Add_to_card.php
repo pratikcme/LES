@@ -268,7 +268,6 @@ class Add_to_card extends User_Controller
 		} else {
 			$cartTable = $this->this_model->CheckMycard($this->input->post());
 			// print_r($this->input->post());die;
-			dd($result);
 			if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
 				$result[0]->discount_price = $result[0]->without_gst_price; 
 			}
