@@ -87,6 +87,8 @@ var VENDORS = function () {
         },
         cpassword: {
           required: true,
+          minlength: 6,
+          maxlength: 25,
           equalTo: '#password'
         },
         mobile_number: {
@@ -147,7 +149,9 @@ var VENDORS = function () {
         },
         cpassword: {
           required: "Please enter confrim password",
-          equalTo: "Password and confirm password does not match"
+          equalTo: "Password and confirm password does not match",
+          minlength: "Please enter minmum 6 digit password",
+          maxlength: "Your password must be less than or equal to 25 digit",
         },
         mobile: {
           required: "Please enter phone number",
