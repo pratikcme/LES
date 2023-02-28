@@ -221,7 +221,7 @@ class Add_to_card extends User_Controller
 
 	public function cartIncDec()
 	{
-
+		dd($_SESSION['My_cart']);
 		if ($this->input->post()) {
 			$result = $this->this_model->CartIncDec($this->input->post());
 			// dd($result);die;
