@@ -47,11 +47,9 @@ class Add_to_card extends User_Controller
 
 		if (!empty($result)) {
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-				echo '1';
-				dd($result);
 				$result[0]->discount_price = $result[0]->without_gst_price;
 			}
-			echo'2';
+			dd($result[0]->discount_price);
 			dd($result);
 
 
