@@ -47,10 +47,12 @@ class Add_to_card extends User_Controller
 		}
 
 		if (!empty($result)) {
-			dd($result);
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+				echo '1';
+				dd($result);
 				$result[0]->discount_price = $result[0]->without_gst_price;
 			}
+			dd($result);
 
 
 			if ($result[0]->max_order_qty != '' && $result[0]->max_order_qty != '0' && $quantity > $result[0]->max_order_qty) {
