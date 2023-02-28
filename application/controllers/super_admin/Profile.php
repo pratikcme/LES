@@ -15,7 +15,6 @@ class Profile extends Super_Admin_Controller {
     $data['init'] = array('USERPROFILE.init()');
     $data['FormAction'] = base_url().'super_admin/profile/update';
     $data['profile'] = $this->this_model->getProfile();
-    dd($data['profile']);
     $this->load->view(SUPER_ADMIN_LAYOUT,$data);
   }
 
