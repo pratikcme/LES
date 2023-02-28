@@ -151,13 +151,13 @@ var VENDORS = function () {
           required: "Please enter confrim password",
           equalTo: "Password and confirm password does not match",
           minlength: "Please enter minmum 6 digit password",
-          maxlength: "Your password must be less than or equal to 25 digit",
+          maxlength: "Confirm  password must be less than or equal to 25 digit",
         },
         mobile: {
           required: "Please enter phone number",
           digits: "Please enter valid phone number",
-          minlength: "Please enter valid phone number",
-          maxlength: "Please enter 15 digit valid number",
+          minlength: "Please enter minmum 7 digit mobile number",
+          maxlength: "Mobile number must be less than or equal to 15 digit",
 
         },
         login_type: {
