@@ -135,7 +135,9 @@ function NavbarDropdown(){
         dd($isShow);
         if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
           $value['discount_price'] = $product[0]->without_gst_price;
-        } 
+        }else{
+          $value['discount_price'] = $product[0]->discount_price;
+        }
        
         if(!file_exists('public/images/'.$CI->folder.'product_image/'.$value["image"]) || $value["image"] == '' ){
           if(strpos($value["image"], '%20') === true || $value["image"] == ''){
