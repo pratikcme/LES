@@ -464,7 +464,7 @@ class Products extends User_Controller
 			redirect(base_url() . 'home');
 		}
 
-		$data['page'] = 'frontend/cart_item';
+		$data['page'] = 'frontend/cart_item_new';
 		$data['js'] = array('cart.js?v=' . js_version);
 		$data['calc_shiping'] = 'NotInRange'; //default shipping in NotInRange when user nou login its equal to 0
 		if ($this->session->userdata('user_id') != '') {
