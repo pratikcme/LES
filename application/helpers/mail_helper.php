@@ -132,7 +132,7 @@ function NavbarDropdown(){
         $encode_id=  $CI->utility->safe_b64encode($value['product_id']);
         $varient_id =  $CI->utility->safe_b64encode($value['product_weight_id']);
         $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
-        dd($isShow);
+
         if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
           $value['discount_price'] = $product[0]->without_gst_price;
         }else{
