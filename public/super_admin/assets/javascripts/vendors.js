@@ -28,7 +28,7 @@ var VENDORS = function () {
       rules: {
         domain_name: {
           required: true,
-          // url : true,                   
+          maxlength: 50,
           remote: {
             url: base_url + 'super_admin/vendors/checkDomainExist',
             type: 'POST',
@@ -118,7 +118,7 @@ var VENDORS = function () {
       messages: {
         domain_name: {
           required: "please enter your domain name",
-          url: "Please enter valid url",
+          maxlength: "Domain name must be less than or equal to 50 digit",
           remote: "Domain name already exist"
         },
         domain_type: {
