@@ -231,6 +231,7 @@ class Add_to_card extends User_Controller
   		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		$new_deliveryCharge = 0;
 		if ($this->session->userdata('user_id') == '') {
+			echo '1';die;
 			$new_deliveryCharge = number_format((float)$new_deliveryCharge, 2, '.', '');
 			foreach ($_SESSION['My_cart'] as $key => $value) {
 				
