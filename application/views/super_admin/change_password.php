@@ -68,7 +68,7 @@
           </div>
       </div> -->
       <!-- <button type="button" class="btn btn-danger">Save and Send</button> -->
-      <a href="<?=base_url()?>super_admin/dashboard" class="btn btn-new">Cancle</a>
+      <a href="<?=base_url()?>super_admin/dashboard" class="btn btn-new">Cancel</a>
   </div>
 
 
