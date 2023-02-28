@@ -83,6 +83,7 @@ var VENDORS = function () {
         password: {
           required: true,
           minlength: 6,
+          maxlength: 25
         },
         cpassword: {
           required: true,
@@ -141,7 +142,8 @@ var VENDORS = function () {
         },
         password: {
           required: "Please enter password",
-          minlength: "Please enter minimum 6 digit valid password"
+          minlength: "Please enter minmum 6 digit password",
+          maxlength: "Your password must be less than or equal to 25 digit",
         },
         cpassword: {
           required: "Please enter confrim password",
