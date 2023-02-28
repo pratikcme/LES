@@ -30,6 +30,7 @@ var PROJECTCONFIG = function () {
         // google_secret_id: {required: true},
         contact_number: {
           required: true,
+          digits: true,
           minlength: 7,
           maxlength: 15
         },
@@ -74,6 +75,7 @@ var PROJECTCONFIG = function () {
         },
         contact_number: {
           required: "Please enter contact number",
+          digits: "Please enter valid phone number",
           minlength: "Please enter minmum 7 digit mobile number",
           maxlength: "Mobile number must be less than or equal to 15 digit",
         },
