@@ -22,7 +22,7 @@ class Add_to_card extends User_Controller
 
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-
+		dd($isShow);
 		if ($this->input->post()) {
 			$product_id = $this->input->post('product_id');
 			$varient_id = $this->input->post('varient_id');
