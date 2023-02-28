@@ -17,9 +17,11 @@ var USERPROFILE = function () {
         },
         password: {
           required: true,
+          maxlength: 25
         },
         new_password: {
           required: true,
+          maxlength: 25
         },
         confirm_password: {
           required: true,
