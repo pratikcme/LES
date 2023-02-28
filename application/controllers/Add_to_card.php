@@ -237,6 +237,7 @@ class Add_to_card extends User_Controller
 				if ($value['product_id'] == $prod_id && $value['product_weight_id'] == $product_weight_id) {
 				
 					if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+						echo '1';
 						$value['discount_price'] = $result[0]->without_gst_price; 
 					}
 					echo $result[0]->without_gst_price;
