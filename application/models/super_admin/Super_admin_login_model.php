@@ -9,13 +9,13 @@ class Super_admin_login_model extends My_model
 		$data['select'] = ['*'];
 		$data['where']['email'] = $postData['loginemail'];
         $data['where']['password'] = md5($postData['loginpassword']);
-		$res =  $this->selectRecords($data,true); 
+		$res =  $this->selectRecords($data); 
         if(!empty($res)){
             $login_data = array(        
-                'super_admin' => $res['id'],
-                'id' => $res['id'],
-                'name' => $res['company_name'],
-                'email' => $res['email'],
+                'super_admin' => $res[0]->id,
+                'id' => $res[0]->id,
+                'name' => $res[0]->company_name,
+                'email' => $res[0]->email,
                 'super_admin' => TRUE
             );
             $this->session->set_userdata(['validSuperAdmin'=>$login_data]);
