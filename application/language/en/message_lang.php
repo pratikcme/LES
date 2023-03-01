@@ -279,6 +279,22 @@ $lang['please_select_Payment_method'] = 'please select Payment method';
 $lang['Please_enter_your_Address'] = 'Please enter your Address';
 $lang['We_do_not_deliver_to_your_selected_Address'] = 'لا نقوم بالتوصيل إلى العنوان الذي اخترته';
 
+//login page js validation message
+$lang['please_enter_email'] = 'Please enter email';
+$lang['please_enter_valid_email'] = 'Please enter valid email';
+$lang['please_enter_password'] = 'Please enter password';
 
-
+//register page js validation message
+$lang['please_enter_first_name'] = 'Please enter first name';
+$lang['please_enter_last_name'] = 'Please enter last name';
+$lang['please_select_country_code'] = 'Please select country code';
+$lang['please_enter_valid_mobile_number'] = 'Please enter valid mobile number';
+$lang['please_enter_minimum_7_digits'] = 'Please enter minimum 7 digits';
+$lang['please_enter_confirm_password'] = 'Please enter confirm password';
+$lang['Please_accept_Terms_of_conditions_and_Privacy_Policy'] = 'Please accept Terms of conditions and Privacy Policy';
+$lang['please_enter_valid_mobile_number'] = 'Please enter valid mobile number';
+$lang['this_mobile_number_is_already_exist'] = 'This mobile number is already exist';
+$lang['please_enter_at_least_6_character'] = 'Please enter at least 6 character';
+$lang['please_select_less_than_or_equal_to_10_character'] = 'Please select less than or equal to 10 character';
+$lang['password_does_not_match'] = 'Password does not match';
 ?>

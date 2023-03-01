@@ -61,7 +61,7 @@ var LOGIN = function () {
         phone: {
           required: true,
           number: true,
-          minlength: 6,
+          minlength: 7,
           maxlength: 15,
           remote: {
             url: url + "login/verify_mobile",
@@ -97,38 +97,38 @@ var LOGIN = function () {
       },
       messages: {
         email: {
-          required: "Please enter email",
-          email: "Please Enter valid email",
-          remote: "This email is already exist"
+          required: language.please_enter_email,
+          email: language.please_enter_valid_email,
+          remote: language.this_email_is_already_exist
         },
-        fname: { required: "Please enter first name" },
-        lname: { required: "Please enter last name" },
+        fname: { required: language.please_enter_first_name },
+        lname: { required: language.please_enter_last_name },
         phone: {
-          required: "Please enter valid mobile number",
+          required: language.please_enter_valid_mobile_number,
           number: "Please enter valid mobile number",
-          minlength: 'Please enter minimum 6 digits',
+          minlength: language.please_enter_minimum_7_digits,
           maxlength: "Please enter maximum 15 digits",
-          remote: "This mobile number is already exist"
+          remote: language.this_mobile_number_is_already_exist
         },
-        country_code: { required: 'Please select country code' },
+        country_code: { required: language.please_select_country_code },
         password: {
-          required: "Please enter password",
-          minlength: "Please enter at least 6 character",
-          maxlength: "Please select less-than 10 character"
+          required: language.please_enter_password,
+          minlength: language.please_enter_at_least_6_character,
+          maxlength: language.please_select_less_than_or_equal_to_10_character
         },
         confirm_password: {
-          required: "Please enter confirm password",
-          minlength: "Please enter at least 6 character",
-          maxlength: "Please select less-than 10 character",
-          equalTo: "Your password does not match"
+          required: language.please_enter_confirm_password,
+          minlength: language.please_enter_at_least_6_character,
+          maxlength: language.please_select_less_than_or_equal_to_10_character,
+          equalTo: language.password_does_not_match
         },
-        term_policy: { required: "Please accept Terms of conditions and Privacy Policy" }
+        term_policy: { required: language.Please_accept_Terms_of_conditions_and_Privacy_Policy }
       }
     });
   }
 
   var handleLoginForm = function () {
-
+    // alert(language.please_enter_login);
     $('#LoginForm').validate({
       rules: {
         email: {
@@ -141,11 +141,11 @@ var LOGIN = function () {
       },
       messages: {
         email: {
-          required: "Please enter email",
-          email: "Please  enter valid email"
+          required: language.please_enter_email,
+          email: language.please_enter_valid_email
         },
         password: {
-          required: 'Please enter password',
+          required: language.please_enter_password,
         },
       }
     });
@@ -161,8 +161,8 @@ var LOGIN = function () {
       },
       messages: {
         email: {
-          required: "Please enter email",
-          email: "Please  enter valid email"
+          required: language.please_enter_email,
+          email: language.please_enter_valid_email
         },
       }
     });

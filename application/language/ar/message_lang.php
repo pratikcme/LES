@@ -281,4 +281,21 @@ $lang['please_select_Payment_method'] = 'الرجاء تحديد طريقة ال
 $lang['Please_enter_your_Address'] = 'الرجاء إدخال عنوانك';
 $lang['We_do_not_deliver_to_your_selected_Address'] = 'لا نقوم بالتوصيل إلى العنوان الذي اخترته';
 
+//login page js validation message
+$lang['please_enter_email'] = 'الرجاء إدخال البريد الإلكتروني';
+$lang['please_enter_valid_email'] = 'الرجاء إدخال بريد إلكتروني صحيح';
+$lang['please_enter_password'] = 'الرجاء إدخال كلمة المرور';
+
+//register page js validation message
+$lang['please_enter_first_name'] = 'الرجاء إدخال الاسم الأول';
+$lang['please_enter_last_name'] = 'الرجاء إدخال الاسم الأخير';
+$lang['please_select_country_code'] = 'الرجاء تحديد رمز الدولة';
+$lang['please_enter_valid_mobile_number'] = 'الرجاء إدخال رقم هاتف محمول صحيح';
+$lang['please_enter_minimum_7_digits'] = 'الرجاء إدخال 7 أرقام كحد أدنى';
+$lang['please_enter_confirm_password'] = 'الرجاء إدخال تأكيد كلمة المرور';
+$lang['this_email_is_already_exist'] = 'هذا البريد الإلكتروني موجود بالفعل';
+$lang['Please_accept_Terms_of_conditions_and_Privacy_Policy'] = 'الرجاء قبول الشروط وسياسة الخصوصية';
+$lang['please_enter_at_least_6_character'] = 'الرجاء إدخال 6 أحرف على الأقل';
+$lang['please_select_less_than_or_equal_to_10_character'] = 'الرجاء تحديد أقل من أو يساوي 10 أحرف';
+$lang['password_does_not_match'] = 'كلمة السر لا تتطابق';
 ?>
