@@ -298,4 +298,13 @@ $lang['please_enter_at_least_6_character'] = 'Please enter at least 6 character'
 $lang['please_select_less_than_or_equal_to_10_character'] = 'Please select less than or equal to 10 character';
 $lang['password_does_not_match'] = 'Password does not match';
 $lang['select country code'] = 'Select country code';
+$lang['what our clients say']='What Our Clients Say';
+
+// contact us page js validation 
+$lang['please_enter_15_digits_mobile_number'] = 'Please enter 15 digits mobile number';
+$lang['please_enter_only_digits'] = 'Please_enter_only_digits';
+$lang['please_enter_your_message'] = 'Please enter your message';
+$lang['please_enter_your_phone_number'] = 'Please enter your phone number';
+$lang['please_enter_no_more_than_15_characters'] = 'Please enter no more than 15 characters';
+$lang['please_enter_only_digits'] = 'Please enter only digits';
 ?>

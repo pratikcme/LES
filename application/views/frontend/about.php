@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="client-title">
-                    <h6>What Our Clients Say</h6>
+                    <h6><?=$this->lang->line('what our clients say')?></h6>
                 </div>
             </div>
         </div>

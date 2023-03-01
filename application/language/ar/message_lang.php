@@ -299,5 +299,14 @@ $lang['please_enter_at_least_6_character'] = 'الرجاء إدخال 6 أحرف
 $lang['please_select_less_than_or_equal_to_10_character'] = 'الرجاء تحديد أقل من أو يساوي 10 أحرف';
 $lang['password_does_not_match'] = 'كلمة السر لا تتطابق';
 $lang['select country code'] = 'حدد رمز الدولة';
+$lang['what our clients say'] = 'ماذا يقول عملاؤنا';
+
+// contact us page js validation 
+$lang['please_enter_15_digits_mobile_number'] = 'الرجاء إدخال رقم الهاتف المتحرك المكون من 15 رقمًا';
+$lang['please_enter_only_digits'] = 'الرجاء إدخال أرقام فقط';
+$lang['please_enter_your_message'] = 'أدرج رسالتك من فضلك';
+$lang['please_enter_your_phone_number'] = 'يرجى إدخال رقم الهاتف الخاص بك';
+$lang['please_enter_no_more_than_15_characters'] = 'الرجاء إدخال ما لا يزيد عن 15 حرفًا';
+$lang['please_enter_only_digits'] = 'الرجاء إدخال أرقام فقط.';
 
 ?>
