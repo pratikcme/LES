@@ -132,6 +132,8 @@ $lang['Enter Promocode']= 'Enter Promocode';
 $lang['You will save']= 'You will save';
 $lang['on this order']= 'on this order';
 
+$lang['Verify Mobile'] = 'Verify Mobile';
+
 
 // my account
 $lang['All store'] = 'All store';
@@ -149,6 +151,7 @@ $lang['Add New Address']='Add New Address';
 $lang['My address']='My address';
 $lang['Default']='Default';
 $lang['Address']='Address';
+$lang['No Orders Available']='No Orders Available';
 
 //order 
 $lang['Details']='Details';

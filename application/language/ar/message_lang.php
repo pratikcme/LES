@@ -133,7 +133,7 @@ $lang['Enter Promocode']= 'أدخل الرمز الترويجي';
 
 $lang['You will save']= 'سوف تحفظ';
 $lang['on this order']= 'على هذا الطلب';
-
+$lang['Verify Mobile'] = 'تحقق من الهاتف المحمول';
 // my account
 $lang['All store'] = 'كل متجر';
 $lang['My account']='حسابي';
@@ -150,6 +150,8 @@ $lang['Add New Address']='أضف عنوان جديد';
 $lang['My address']='عنواني';
 $lang['Default']='تقصير';
 $lang['Address']='تبوك';
+$lang['No Orders Available']='لا توجد أوامر متاحة';
+
 
 //order 
 

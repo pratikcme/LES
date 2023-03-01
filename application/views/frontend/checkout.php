@@ -387,7 +387,7 @@ label.error.mobile_verfication{
                         <div id="payBtn_error" style="color: red"></div>
                       <?php if($phone == '0' || $is_verify == '0'){ ?> 
                           <div class="pay-btn">
-                        <button class="btn show-modal" id="verify">Verify Mobile</button>
+                        <button class="btn show-modal" id="verify"><?=$this->lang->line('Verify Mobile')?></button>
                      </div>                      
 
                       <?php }else{ ?>

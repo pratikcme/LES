@@ -144,7 +144,13 @@
                
                
                <div class="tab-pane fade <?=($action_name == 'order') ? 'active show' : '' ?>" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
-                 
+                 <?php if(empty($order)){?>
+                  <?php if($this->session->userdata('branch_id') == ''){ ?>
+                        <div class='no-orderss' style="position: absolute;top: 70%;left: 23%;"><h6 style="font-size: 25px;">Please Select Branch To See Your Wishlist!</h6></div>
+                     <?php }else{ ?>
+                        <div class='no-orderss' style="position: absolute;top: 70%;left: 32%;"><h6 style="font-size: 25px;"><?=$this->lang->line('No Orders Available')?></h6></div>
+                     <?php } ?>
+                 <?php } ?>
                   <?php foreach ($order as $key => $value):
                      date_default_timezone_set('Asia/Kolkata');
                      $date =  date('d M Y, h:i A', $value->dt_updated); 
