@@ -298,4 +298,6 @@ $lang['Please_accept_Terms_of_conditions_and_Privacy_Policy'] = 'الرجاء ق
 $lang['please_enter_at_least_6_character'] = 'الرجاء إدخال 6 أحرف على الأقل';
 $lang['please_select_less_than_or_equal_to_10_character'] = 'الرجاء تحديد أقل من أو يساوي 10 أحرف';
 $lang['password_does_not_match'] = 'كلمة السر لا تتطابق';
+$lang['select country code'] = 'حدد رمز الدولة';
+
 ?>

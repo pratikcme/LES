@@ -29,7 +29,7 @@
           
           <div class="">
             <select name="country_code" id="country_code" class="input-wrapper">
-                <option value="">Select country code</option>
+                <option value=""><?=$this->lang->line('select country code')?></option>
               <?php foreach(GetDialcodelist() as $key => $value){ ?>
                  <option value="<?=$key;?>"><?=$value;?></option>
                <?php } ?>             

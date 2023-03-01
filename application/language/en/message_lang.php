@@ -297,4 +297,5 @@ $lang['this_mobile_number_is_already_exist'] = 'This mobile number is already ex
 $lang['please_enter_at_least_6_character'] = 'Please enter at least 6 character';
 $lang['please_select_less_than_or_equal_to_10_character'] = 'Please select less than or equal to 10 character';
 $lang['password_does_not_match'] = 'Password does not match';
+$lang['select country code'] = 'Select country code';
 ?>

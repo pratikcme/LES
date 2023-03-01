@@ -1,9 +1,9 @@
 <!DOCTYPE html >
-<html lang="en" dir=<?=($_SESSION['site_lang'] == 'ar') ? 'rtl' : 'ltr' ?>>
+<html lang="en" dir=<?=($language_support == 'ar') ? 'rtl' : 'ltr' ?>>
 <head>
  <?php $this->load->view('frontend/include/header'); ?>
 </head>
-<body class="<?=($_SESSION['site_lang'] == 'ar') ? 'rtl' : 'ltr' ?>" >
+<body class="<?=($language_support == 'ar') ? 'rtl' : 'ltr' ?>" >
 <!-- =================HEADER SECTION================= -->
 <header>
   <div class="header-top-nav" style="display: none">
