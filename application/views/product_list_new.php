@@ -23,7 +23,7 @@ include('header.php');
                         <div class="add-delete-btns">
                             <div class="search-box"></div>
                             <div class="btns-wrapper">
-                                <a href="http://localhost/stagging/product/product_profile" class="add-btn">Add Product</a>
+                                <a href="<?=base_url().'product/product_profile'?>" class="add-btn">Add Product</a>
                                 <a href="javascript:" id="delete_user" class="delete-btn" >Delete Product</a>
                                 <div class="tooltip-wrapper">
                                 <a href="javascript:" class="disable-btn status_deleted" data-status="9">Disable</a>
