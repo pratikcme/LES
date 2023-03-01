@@ -1080,7 +1080,7 @@ public  $order_column_weight_list = array("p.product_name","pw.quantity","pw.dis
         }
         $data['table'] = TABLE_PRODUCT;
         $data['select'] = ['*'];
-        $data['where']['status !='] = '9'; 
+        // $data['where']['status !='] = '9'; 
         $data['where']['branch_id'] = $this->session->userdata('id');
         $return =  $this->selectRecords($data,true); 
         return $return[0];
