@@ -309,7 +309,7 @@ label.error.mobile_verfication{
                   </div>
                </div>
                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>  
-               <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "Pickup " : "Delivery " ?> Time & Date</button>
+               <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line('Pickup') : $this->lang->line('Delivery')  ?> <?=$this->lang->line('Time & Date')?></button>
                <?php } ?>
                <div class="panel" >
                   <div class="date-time-common">

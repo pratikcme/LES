@@ -109,6 +109,10 @@ $lang['self pickup'] = 'self pickup';
 $lang['Order Summary'] = 'Order Summary';
 $lang['Delivery Address'] = 'Delivery Address';
 $lang['Pickup Address'] = 'Pickup Address';
+
+$lang['Pickup'] = 'Pickup';
+$lang['Delivery'] = 'Delivery';
+$lang['Time & Date'] = 'Time & Date';
 $lang['Payment Option'] = 'Payment Option';
 
 $lang['Place order'] = 'Place order';

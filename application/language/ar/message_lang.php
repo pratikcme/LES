@@ -112,6 +112,9 @@ $lang['Delivery Address'] = 'عنوان التسليم';
 $lang['Pickup Address'] = 'عنوان الاستلام';
 $lang['Payment Option'] = 'خيار الدفع';
 
+$lang['Pickup'] = 'يلتقط';
+$lang['Delivery'] = 'توصيل';
+$lang['Time & Date'] = 'الوقت والتاريخ';
 $lang['Place order'] = 'ضع الطلب';
 $lang['Cash On Delivery'] = 'الدفع عند الاستلام';
 
