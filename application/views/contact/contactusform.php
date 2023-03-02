@@ -1,4 +1,20 @@
 <?php $this->load->view('header'); ?>
+
+<style>
+.see-massgesee-massge{
+    padding:10px 10px;
+}
+.modal-header{
+    height:50px;
+}
+.modal-content .close{
+    position: relative;
+    top:-20px;
+} 
+</style>
+
+
+
 <section id="main-content">
     <section class="wrapper">
         <!-- page start-->
@@ -47,7 +63,7 @@
                                             </th>
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 100px;">Message
                                             </th>
-                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 100px;">created at
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 100px;">Created Date
                                             </th>
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 100px;">Action
                                             </th>
@@ -64,8 +80,8 @@
                                                 <td><?= $value->lname ?></td>
                                                 <td><?= $value->mobile_no ?></td>
                                                 <td><?= $value->email ?></td>
-                                                <td><?= $value->message ?></td>
-                                                <td><?= $value->created_at ?></td>
+                                                <td><button type="button" class="btn btn-info see-massge" value="<?=$value->id?>" data-toggle="modal" data-target="#exampleModal">See Message</button></td>
+                                                <td><?= date('d F Y H:i:s',strtotime($value->created_at)) ?></td>
                                                 <!-- change -->
                                                 <td class="text-center">
                                                     <a href="javascript:;" data-id="<?php echo $value->id; ?>" class="btn btn-danger btn-xs deleteMsg"><i class="fa fa-trash-o "></i></a>
@@ -85,4 +101,28 @@
         </div>
     </section>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="user_message">
+
+      Հայերեն Shqip ‫العربية Български Català 中文简体 Hrvatski Česky Dansk Nederlands English Eesti Filipino Suomi Français ქართული Deutsch Ελληνικά ‫עברית हिन्दी Magyar Indonesia Italiano Latviski Lietuviškai македонски Melayu Norsk Polski Português Româna Pyccкий Српски Slovenčina Slovenščina Español Svenska ไทย Türkçe Українська Tiếng Việt
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+
 <?php $this->load->view('footer'); ?>

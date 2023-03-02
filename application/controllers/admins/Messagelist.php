@@ -30,4 +30,15 @@ class Messagelist extends Admin_Controller
 		$res = $this->this_model->deleteRecord($id);
 		echo $res;
 	}
+
+	public function getMessage()
+	{ 
+		if($this->input->post()){
+			$id = $this->input->post('id');
+			$res = $this->this_model->getMessage($id);
+			echo  $res[0]->message;
+		}
+	}
+
+
 }

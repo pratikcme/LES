@@ -17,6 +17,13 @@ class Messeagelist_model extends My_model
     $query = $this->db->get();
     return $query->result();
   }
+  
+  public function getMessage($id){
+    $data['table'] = TABLE_CONTACT_US;
+    $data['select'] = ['message'];
+    $data['where'] = ['id'=>$id];
+    return $this->selectRecords($data);
+  }
 
   public function deleteRecord($id)
   {

@@ -3,7 +3,25 @@ var CONTACT = (function () {
     $(".alert").fadeOut(5000);
   });
 
+  $(document).on('click', '.see-massge', function () {
+    let url = $('#base_url').val();
+    let id = $(this).val();
+    $.ajax({
+      url: url + "admins/messagelist/getMessage",
+      type: "POST",
+      async: false,
+      data: {
+        id: id
+      },
+      success: function (message) {
+        $('#user_message').html("");
+        $('#user_message').html(message);
+      }
+    });
+  })
+
   var HandleContactInfo = function () {
+
     $("#frmAddEdit").validate({
       ignore: [],
       debug: false,
