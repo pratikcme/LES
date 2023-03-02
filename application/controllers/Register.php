@@ -1,23 +1,51 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 date_default_timezone_set('Asia/Calcutta');
 
-$date=date('Y-m-d H:i:s');
+$date = date('Y-m-d H:i:s');
 //echo $date;exit;
-class Register extends Vendor_Controller {
+class Register extends Vendor_Controller
+{
 
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Sell_development_model', 'this_model');
+    }
     public function open_register()
     {
-        $this->load->view('registeropen');
+        //added by Dipesh
+        $data['register_result'] = $this->this_model->getRegister();
+        $this->load->view('registeropen', $data);
     }
 
     public function close_register()
     {
-        $this->load->view('registerclosure');
+        //added by Dipesh
+        $data['register_result'] = $this->this_model->getRegister();
+        $this->load->view('registerclosure', $data);
     }
 
-    public function closure_summary()
+    public function closure_summary($id)
     {
-        $this->load->view('closure_summary');
+        //added by Dipesh
+        $data['register_result'] = $this->this_model->getRegisterSingle($this->utility->decode($id));
+        $this->load->view('closure_summary', $data);
+    }
+
+    public function closure_summary_list()
+    {
+
+
+        $data['closures_list'] = $this->this_model->getClosedList();
+
+
+        $this->load->view('closure_summary_list', $data);
+        // $data['title'] = "Register";
+        // $data['page'] = 'user/register';
+        // $data['js'] = 'register_validate';
+        // $data['formAction'] = 'register/register_user';
+        // $data['registerData'] = $this->this_model->registerData();
+        // $this->load->view(USER_LAYOUT, $data);
     }
 
     public function exportExcelData($records)
@@ -37,13 +65,10 @@ class Register extends Vendor_Controller {
                     echo implode("\t", array_keys($row)) . "\n";
 
                     $heading = true;
-
                 }
 
                 echo implode("\t", ($row)) . "\n";
-
             }
-
     }
 
     public function register_closures_export()
@@ -57,9 +82,9 @@ class Register extends Vendor_Controller {
         $count = 1;
         foreach ($allData as $data) {
 
-            if($data['type'] == 1){
+            if ($data['type'] == 1) {
                 $type = 'Open';
-            }elseif($data['type'] == 0){
+            } elseif ($data['type'] == 0) {
                 $type = 'Close';
             }
 
@@ -85,7 +110,6 @@ class Register extends Vendor_Controller {
         header("Content-Type: application/vnd.ms-excel");
         header("Content-Disposition: attachment; filename=\"$filename\"");
         $this->exportExcelData($dataToExports);
-
     }
 
     public function opening_cash()
@@ -186,9 +210,11 @@ class Register extends Vendor_Controller {
         exit();
     }
 
-    public  function close_register_button(){
+    public  function close_register_button()
+    {
         $id = $_REQUEST['id'];
         $closure_note = $_REQUEST['closure_note'];
+
 
         $array = array(
             'type' => '0',
@@ -197,6 +223,7 @@ class Register extends Vendor_Controller {
         );
         $this->db->where('id', $id);
         $this->db->update('register', $array);
+
         redirect(base_url() . 'register/open_register');
         exit();
     }

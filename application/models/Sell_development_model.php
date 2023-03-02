@@ -2,344 +2,363 @@
 
 class Sell_development_model extends My_model
 {
-    function __construct(){
+    function __construct()
+    {
         $this->branch_id = $this->session->userdata('id');
         $this->vendor_id = $this->session->userdata('branch_vendor_id');
     }
 
-    function findProductBykey($postdata){
+    function findProductBykey($postdata)
+    {
 
         $data['table'] = TABLE_PRODUCT . ' as p';
         $data['join'] = [
-            TABLE_PRODUCT_WEIGHT. ' as pw'=>['pw.product_id=p.id','LEFT'],
-            TABLE_WEIGHT. ' as w'=>['pw.weight_id = w.id','LEFT']
-         ];
-        $data['select'] = ['w.name as weight_name','p.name','p.id as product_id','p.name','pw.id as pw_id','pw.*'];
+            TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.product_id=p.id', 'LEFT'],
+            TABLE_WEIGHT . ' as w' => ['pw.weight_id = w.id', 'LEFT']
+        ];
+        $data['select'] = ['w.name as weight_name', 'p.name', 'p.id as product_id', 'p.name', 'pw.id as pw_id', 'pw.*'];
         $data['where'] = [
-                            'p.branch_id'=>$this->branch_id,
-                            'p.status !='=>'9',
-                            'pw.status !='=>'9',
-                            'w.status !='=>'9'
-                        ];
-        $data['group']['like'] = ['p.name',$postdata['keyValue'],'match'];
-        $data['group']['or_like'] = ['pw.qr_code',$postdata['keyValue'],'match'];
+            'p.branch_id' => $this->branch_id,
+            'p.status !=' => '9',
+            'pw.status !=' => '9',
+            'w.status !=' => '9'
+        ];
+        $data['group']['like'] = ['p.name', $postdata['keyValue'], 'match'];
+        $data['group']['or_like'] = ['pw.qr_code', $postdata['keyValue'], 'match'];
         return $this->selectFromJoin($data);
         echo $this->db->last_query();
     }
 
-    public function addProducttoTempOrder($postdata){
-       
+    public function addProducttoTempOrder($postdata)
+    {
+
         $product_id = $postdata['product_id'];
         $varient_id = $postdata['pw_id'];
         $quantity = 1;
         $varient = $this->checkProductVarient($varient_id);
-        $isAvailable = $this->checkProductAvailableInTemporder($varient_id,$this->branch_id);
-        if(!empty($isAvailable)){
 
-           if($varient[0]->quantity >= $isAvailable[0]->quantity){
+        $isAvailable = $this->checkProductAvailableInTemporder($varient_id, $this->branch_id);
+        if (!empty($isAvailable)) {
 
-            $updateQuantity = $isAvailable[0]->quantity + $quantity;
-            
-            $actaul_price = number_format((float)$varient[0]->price,2,'.','');
-            $discount_per = $varient[0]->discount_per;
-            $discount_price = ($actaul_price * $discount_per)/100;
+            if ($varient[0]->quantity >= $isAvailable[0]->quantity) {
 
-            $price = number_format((float)$varient[0]->discount_price,2,'.','');       
-            $updatePrice = $updateQuantity * $price;
+                $updateQuantity = $isAvailable[0]->quantity + $quantity;
 
-            $update_discount_price = $discount_price * $updateQuantity;
+                $actaul_price = number_format((float)$varient[0]->price, 2, '.', '');
+                $discount_per = $varient[0]->discount_per;
 
-            $updatePrice = number_format((float)$updatePrice,2,'.','');
-            
-            $updateArray = [
-                'quantity'=>$updateQuantity,
-                'price'=>$updatePrice,
-                'dt_updated'=>strtotime(DATE_TIME),
-                'discount_price'=>number_format((float)$update_discount_price,2,'.','')
-            ];
-            $this->UpdateOrderTemp($varient_id,$updateArray);
-           
-            $response = 1;
-        }else{
-            $response = 0;
+                $discount_price = ($actaul_price * $discount_per) / 100;
+
+                $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                $updatePrice = $updateQuantity * $price;
+
+                $update_discount_price = $discount_price * $updateQuantity;
+
+                $updatePrice = number_format((float)$updatePrice, 2, '.', '');
+
+                $newVal = ($updatePrice * (float)$isAvailable[0]->discount) / 100;
+
+                $updatePriceByDipesh =  number_format((float)($updatePrice - $newVal), 2, '.', '');
+
+                $updateArray = [
+                    'quantity' => $updateQuantity,
+                    'price' => $updatePriceByDipesh,
+                    'dt_updated' => strtotime(DATE_TIME),
+                    'discount_price' => number_format((float)$update_discount_price, 2, '.', '')
+                ];
+                $this->UpdateOrderTemp($varient_id, $updateArray);
+
+                $response = 1;
+            } else {
+                $response = 0;
+            }
+        } else {
+
+            if ($varient[0]->quantity > 0) {
+                $varient_id = $varient[0]->id;
+
+                $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
+                $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
+
+                $date = strtotime(DATE_TIME);
+                $insertedData = [
+                    'branch_id' => $this->branch_id,
+                    'customer_id' => 0,
+                    'product_weight_id' => $varient_id,
+                    'quantity' => $quantity,
+                    'price' => $price,
+                    'status' => '1',
+                    'dt_added' => $date,
+                    'dt_updated' => $date,
+                    'park' => '0',
+                    'discount' => $discount_percentage,
+                    'discount_price' => number_format((float)$discounInPrice, 2, '.', '')
+                ];
+                $data['table'] = TABLE_ORDER_TEMP;
+                $data['insert'] = $insertedData;
+                $result = $this->insertRecord($data);
+                $response = 1;
+            } else {
+                $response = 0;
+            }
         }
-    }else{
-
-        if($varient[0]->quantity > 0){
-            $varient_id = $varient[0]->id;
-
-            $price = number_format((float)$varient[0]->discount_price,2,'.','');
-            $discount_percentage = number_format((float)$varient[0]->discount_per,2,'.','');
-            $discounInPrice = ($varient[0]->price * $varient[0]->discount_per)/100;
-            
-            $date = strtotime(DATE_TIME);
-            $insertedData = [
-                'branch_id'=>$this->branch_id,
-                'customer_id'=> 0,
-                'product_weight_id'=>$varient_id,
-                'quantity'=>$quantity,
-                'price'=> $price,
-                'status'=>'1',
-                'dt_added'=> $date,
-                'dt_updated'=> $date,
-                'park'=>'0',
-                'discount'=>$discount_percentage,
-                'discount_price'=> number_format((float)$discounInPrice,2,'.','')
-            ];
-            $data['table'] = TABLE_ORDER_TEMP;
-            $data['insert'] = $insertedData;
-            $result = $this->insertRecord($data);
-            $response = 1; 
-           
-        }else{
-            $response = 0;
-        }
+        return $response;
     }
-    return $response;
-}
 
-    public function addProducttoParkedOrder($postdata){
-       
+    public function addProducttoParkedOrder($postdata)
+    {
+
         $product_id = $postdata['product_id'];
         $varient_id = $postdata['pw_id'];
         $parked_id = $postdata['isParked'];
         $quantity = 1;
         $varient = $this->checkProductVarient($varient_id);
-        $isAvailable = $this->checkOrderIdParked($parked_id,$varient_id,$this->branch_id); 
-       
-        if(!empty($isAvailable)){
+        $isAvailable = $this->checkOrderIdParked($parked_id, $varient_id, $this->branch_id);
+
+        if (!empty($isAvailable)) {
             // update
             $updateQuantity = $isAvailable[0]->quantity + $quantity;
-            
-            $actaul_price = number_format((float)$varient[0]->price,2,'.','');
-            $discount_per = $varient[0]->discount_per;
-            $discount_price = ($actaul_price * $discount_per)/100;
 
-            $price = number_format((float)$varient[0]->discount_price,2,'.','');       
+            $actaul_price = number_format((float)$varient[0]->price, 2, '.', '');
+            $discount_per = $varient[0]->discount_per;
+            $discount_price = ($actaul_price * $discount_per) / 100;
+
+            $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
             $updatePrice = $updateQuantity * $price;
 
             $update_discount_price = $discount_price * $updateQuantity;
 
-            $updatePrice = number_format((float)$updatePrice,2,'.','');
-            
+            $updatePrice = number_format((float)$updatePrice, 2, '.', '');
+
             $updateArray = [
-                'quantity'=>$updateQuantity,
-                'price'=>$updatePrice,
-                'discount_price'=>number_format((float)$update_discount_price,2,'.',''),
-                'dt_updated'=>strtotime(DATE_TIME),
+                'quantity' => $updateQuantity,
+                'price' => $updatePrice,
+                'discount_price' => number_format((float)$update_discount_price, 2, '.', ''),
+                'dt_updated' => strtotime(DATE_TIME),
             ];
             $data['table'] = 'parked_order_details';
             $data['update'] = $updateArray;
-            $data['where'] = ['id'=>$isAvailable[0]->id];
+            $data['where'] = ['id' => $isAvailable[0]->id];
             $r = $this->updateRecords($data);
             $response = 1;
-        }else{
+        } else {
             // insert
             $varient_id = $varient[0]->id;
 
-            $price = number_format((float)$varient[0]->discount_price,2,'.','');
-            $discount_percentage = number_format((float)$varient[0]->discount_per,2,'.','');
-            $discounInPrice = ($varient[0]->price * $varient[0]->discount_per)/100;
-           
+            $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+            $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
+            $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
+
             $date = strtotime(DATE_TIME);
             $insertedData = [
-                'branch_id'=>$this->branch_id,
-                'parked_order_id'=> $parked_id,
+                'branch_id' => $this->branch_id,
+                'parked_order_id' => $parked_id,
                 'product_id' => $product_id,
-                'product_weight_id'=>$varient_id,
-                'weight_id'=>$varient[0]->weight_id,
-                'quantity'=>$quantity,
-                'actual_price'=>$varient[0]->price,
-                'actual_discount'=>$varient[0]->discount_per,
-                'discount'=>$discount_percentage,
-                'discount_price'=> number_format((float)$varient[0]->discounInPrice,2,'.',''),
-                'price'=> $price,
-                'status'=>'1',
-                'dt_added'=> $date,
-                'dt_updated'=> $date,
+                'product_weight_id' => $varient_id,
+                'weight_id' => $varient[0]->weight_id,
+                'quantity' => $quantity,
+                'actual_price' => $varient[0]->price,
+                'actual_discount' => $varient[0]->discount_per,
+                'discount' => $discount_percentage,
+                'discount_price' => number_format((float)$varient[0]->discounInPrice, 2, '.', ''),
+                'price' => $price,
+                'status' => '1',
+                'dt_added' => $date,
+                'dt_updated' => $date,
             ];
             $data['table'] = 'parked_order_details';
             $data['insert'] = $insertedData;
             $result = $this->insertRecord($data);
-            $response = 1; 
+            $response = 1;
         }
-        
+
         $this->getUpdatedParkedOrder($parked_id); // update table parked_order
         return $response;
     }
 
-    public function getUpdatedParkedOrder($parked_id){  
+    public function getUpdatedParkedOrder($parked_id)
+    {
         $data['table'] = 'parked_order as po';
-        $data['select'] = ['po.order_discount','pow.price'];
-        $data['join'] = ['parked_order_details as pow'=>['po.id = pow.parked_order_id','LEFT']];
+        $data['select'] = ['po.order_discount', 'pow.price'];
+        $data['join'] = ['parked_order_details as pow' => ['po.id = pow.parked_order_id', 'LEFT']];
         $data['where'] = [
-            'po.branch_id'=>$this->branch_id,'pow.parked_order_id'=>$parked_id,'po.status'=>'1'
+            'po.branch_id' => $this->branch_id, 'pow.parked_order_id' => $parked_id, 'po.status' => '1'
         ];
         $ParkOrder = $this->selectFromJoin($data);
         $total = 0;
         foreach ($ParkOrder as $key => $value) {
             $total += $value->price;
         }
-        $total_saving =  ($total * $ParkOrder[0]->order_discount)/100;
+        $total_saving =  ($total * $ParkOrder[0]->order_discount) / 100;
 
         $payable_amount =  $total - $total_saving;
         unset($data);
         $data['table'] = 'parked_order';
-        $data['where'] = ['id'=>$parked_id];
+        $data['where'] = ['id' => $parked_id];
         $data['update'] = [
-            'total_saving'=>number_format((float)$total_saving,2,'.',''),
-            'payable_amount'=>number_format((float)$payable_amount,2,'.',''),
-            'total'=>number_format((float)$total,2,'.','')
+            'total_saving' => number_format((float)$total_saving, 2, '.', ''),
+            'payable_amount' => number_format((float)$payable_amount, 2, '.', ''),
+            'total' => number_format((float)$total, 2, '.', '')
         ];
         $this->updateRecords($data);
         return true;
     }
 
-    public function checkOrderIdParked($parked_id,$varient_id,$branch_id){
+    public function checkOrderIdParked($parked_id, $varient_id, $branch_id)
+    {
         $data['table'] = 'parked_order_details';
         $data['select'] = ['*'];
         $data['where'] = [
-            'branch_id'=>$branch_id,'parked_order_id'=>$parked_id,'product_weight_id'=>$varient_id
+            'branch_id' => $branch_id, 'parked_order_id' => $parked_id, 'product_weight_id' => $varient_id
         ];
         return $this->selectRecords($data);
     }
 
-      public function getUpdatedParkedRow($parked_id){
+    public function getUpdatedParkedRow($parked_id)
+    {
         $data['table'] = 'parked_order_details';
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$parked_id,'status'=>'1'];
+        $data['where'] = ['id' => $parked_id, 'status' => '1'];
         return $this->selectRecords($data);
     }
 
-    public function checkProductVarient($varient_id){
-        $data['table'] = TABLE_PRODUCT .' p';
-        $data['join'] = [TABLE_PRODUCT_WEIGHT.' pw'=>['p.id=pw.product_id','inner']];
-        $data['select'] = ['p.gst','pw.*'];
-        $data['where'] = ['pw.id'=>$varient_id,'pw.status!='=>'9','p.status!='=>'9'];
+    public function checkProductVarient($varient_id)
+    {
+        $data['table'] = TABLE_PRODUCT . ' p';
+        $data['join'] = [TABLE_PRODUCT_WEIGHT . ' pw' => ['p.id=pw.product_id', 'inner']];
+        $data['select'] = ['p.gst', 'pw.*'];
+        $data['where'] = ['pw.id' => $varient_id, 'pw.status!=' => '9', 'p.status!=' => '9'];
         return $this->selectFromJoin($data);
     }
 
-    public function checkProductAvailableInTemporder($varient_id,$branch_id =''){
-        if($this->branch_id ==''){
- 
+    public function checkProductAvailableInTemporder($varient_id, $branch_id = '')
+    {
+        if ($this->branch_id == '') {
         }
         $data['table'] = TABLE_ORDER_TEMP;
         $data['select'] = ['*'];
-        $data['where'] = ['product_weight_id'=>$varient_id,'branch_id'=>$branch_id];
+        $data['where'] = ['product_weight_id' => $varient_id, 'branch_id' => $branch_id];
         return $this->selectRecords($data);
     }
 
-    public function UpdateOrderTemp($varient_id,$updateArray){
+    public function UpdateOrderTemp($varient_id, $updateArray)
+    {
         $this->branch_id = $this->session->userdata('id');
         $data['table'] = TABLE_ORDER_TEMP;
         $data['update'] = $updateArray;
-        $data['where'] = ['product_weight_id'=>$varient_id,'branch_id'=>$this->branch_id];
-        return $this->updateRecords($data);   
+        $data['where'] = ['product_weight_id' => $varient_id, 'branch_id' => $this->branch_id];
+        return $this->updateRecords($data);
     }
 
-    public function searchCustomber($postdata){
+    public function searchCustomber($postdata)
+    {
         $this->branch_id = $this->session->userdata('id');
 
-        if(isset($postdata['customber_id'])){
-            $data['where'] = ['id'=>$postdata['customber_id'],'branch_id'=>$this->branch_id,'status!='=>'9'];
-        }else{
-            $data['where'] = ['branch_id'=>$this->branch_id,'status!='=>'9'];
+
+
+        if (isset($postdata['customber_id'])) {
+            $data['where'] = ['id' => $postdata['customber_id'], 'branch_id' => $this->branch_id, 'status!=' => '9'];
+        } else {
+            $data['where'] = ['branch_id' => $this->branch_id, 'status!=' => '9'];
         }
-        $data['group']["like"] = ['customer_name',$postdata['customber'],'match'];
-        $data['group']["or_like"] = [['customercode',$postdata['customber'],'match']];
+        $data['group']["like"] = ['customer_name', $postdata['customber'], 'match'];
+        $data['group']["or_like"] = [['customercode', $postdata['customber'], 'match']];
         $data['table'] = TABLE_CUSTOMER;
         $data['select'] = ['*'];
-        return $this->selectRecords($data);
-            echo $this->db->last_query();
 
+        return $this->selectRecords($data);
+
+        echo $this->db->last_query();
     }
 
-    public function remove($postdata){
+    public function remove($postdata)
+    {
         $order_temp_id = $postdata['order_tempId'];
         $data['table'] = TABLE_ORDER_TEMP;
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$order_temp_id];
+        $data['where'] = ['id' => $order_temp_id];
         $r = $this->selectRecords($data);
         $quantity = $r[0]->quantity;
         $product_wieght_id = $r[0]->product_weight_id;
-       
+
         $data['table'] = TABLE_ORDER_TEMP;
-        $data['where'] = ['id'=>$order_temp_id];
+        $data['where'] = ['id' => $order_temp_id];
         return $this->deleteRecords($data);
     }
 
 
 
-    public function updateTempQuantity($postdata,$price){
+    public function updateTempQuantity($postdata, $price)
+    {
         $this->branch_id = $this->session->userdata('id');
         $temp_id = $postdata['temp_id'];
         $update_quantity = $postdata['qunt'];
         $actual_discount_price = $postdata['actual_discount_price'];
-       
+
 
         $data['table'] = TABLE_ORDER_TEMP;
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$temp_id];
+        $data['where'] = ['id' => $temp_id];
         $re = $this->selectRecords($data);
 
-        $discount = (($price * $re[0]->discount)/100) * $update_quantity;
-        
+        $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
+
         $update_price = ($price * $update_quantity) - $discount;
         unset($data);
-            
+
         $updateData = array(
-            'quantity'=>$update_quantity,
-            'price'=>numberFormat($update_price),
-            'discount_price'=> numberFormat($discount)
+            'quantity' => $update_quantity,
+            'price' => numberFormat($update_price),
+            'discount_price' => numberFormat($discount)
         );
 
         $data['table'] = TABLE_ORDER_TEMP;
         $data['update'] = $updateData;
-        $data['where'] = ['id'=>$temp_id,'branch_id'=>$this->branch_id];
+        $data['where'] = ['id' => $temp_id, 'branch_id' => $this->branch_id];
         return $this->updateRecords($data);
-
     }
 
-    public function updateParkedQuantity($postdata,$price){
+    public function updateParkedQuantity($postdata, $price)
+    {
         $this->branch_id = $this->session->userdata('id');
         $temp_id = $postdata['temp_id'];
         $update_quantity = $postdata['qunt'];
         $actual_discount_price = $postdata['actual_discount_price'];
-      
+
 
         $data['table'] = 'parked_order_details';
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$temp_id];
+        $data['where'] = ['id' => $temp_id];
         $re = $this->selectRecords($data);
 
-        $discount = (($price * $re[0]->discount)/100) * $update_quantity;
-        
+        $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
+
         $update_price = ($price * $update_quantity) - $discount;
 
         unset($data);
-            
+
         $updateData = array(
-            'quantity'=>$update_quantity,
-            'price'=>numberFormat($update_price),
-            'discount_price'=> numberFormat($discount)
+            'quantity' => $update_quantity,
+            'price' => numberFormat($update_price),
+            'discount_price' => numberFormat($discount)
         );
 
         $data['table'] = 'parked_order_details';
         $data['update'] = $updateData;
-        $data['where'] = ['id'=>$temp_id,'branch_id'=>$this->branch_id];
+        $data['where'] = ['id' => $temp_id, 'branch_id' => $this->branch_id];
         $this->updateRecords($data);
 
         $parked_id = $postdata['isParked'];
         $this->getUpdatedParkedOrder($parked_id);
-
-
     }
 
-    public function updateDiscount($postdata){
+    public function updateDiscount($postdata)
+    {
         $isParked = $this->input->post('isParked');
-        if($isParked > 0){
-            $table_name = 'parked_order_details';            
-        }else{
+        if ($isParked > 0) {
+            $table_name = 'parked_order_details';
+        } else {
             $table_name = TABLE_ORDER_TEMP;
         }
 
@@ -354,76 +373,80 @@ class Sell_development_model extends My_model
 
         $disc_price = (($product_price * $discount) / 100) * $quantity;
         $updatprice = $product_price * $quantity;
-        $updatprice = $updatprice - $disc_price;  
-     
+        $updatprice = $updatprice - $disc_price;
+
 
         $updateData = array(
-            'quantity'=>$quantity,
-            'price'=>numberFormat($updatprice),
-            'discount'=>numberFormat($discount),
-            'discount_price'=> numberFormat($disc_price)
+            'quantity' => $quantity,
+            'price' => numberFormat($updatprice),
+            'discount' => numberFormat($discount),
+            'discount_price' => numberFormat($disc_price)
         );
 
         $data['table'] = $table_name;
         $data['update'] = $updateData;
-        $data['where'] = ['id'=>$temp_id,'branch_id'=>$this->branch_id];
+        $data['where'] = ['id' => $temp_id, 'branch_id' => $this->branch_id];
         $this->updateRecords($data);
-        if($isParked > 0){
+        if ($isParked > 0) {
             $this->getUpdatedParkedOrder($isParked);
         }
         return numberFormat($updatprice);
     }
 
-    public function getParkedOrderList(){
+    public function getParkedOrderList()
+    {
         $this->branch_id = $this->session->userdata('id');
         $data['table'] = 'parked_order as po';
         $data['join'] = [
-            'branch as v' =>['v.id=po.branch_id','LEFT'],
-            'customer as c' => ['c.id=po.customer_id','LEFT']
+            'branch as v' => ['v.id=po.branch_id', 'LEFT'],
+            'customer as c' => ['c.id=po.customer_id', 'LEFT']
         ];
         $data['select'] = [' po.*', 'c.customer_name', 'v.name as vendor_name'];
-        $data['where'] = ['po.status'=>'1','po.branch_id'=>$this->branch_id];
+        $data['where'] = ['po.status' => '1', 'po.branch_id' => $this->branch_id];
         $data['orderBy'] = 'po.id DESC';
+
         return $this->selectFromJoin($data);
-     
     }
 
-    public function getProductVarient($postdata){
-        $this->branch_id = $this->session->userdata('id');  
+    public function getProductVarient($postdata)
+    {
+        $this->branch_id = $this->session->userdata('id');
 
-        if(isset($postdata['IsPosMostLike'])){
-            $data['where'] = ['pw.branch_id'=>$this->branch_id,'pw.IsPosMostLike'=>'1','p.status!='=>'9','pw.status!='=>'9'];
-        }else{
+        if (isset($postdata['IsPosMostLike'])) {
+            $data['where'] = ['pw.branch_id' => $this->branch_id, 'pw.IsPosMostLike' => '1', 'p.status!=' => '9', 'pw.status!=' => '9'];
+        } else {
             $product_id = $postdata['product_id'];
             $varient_id = $postdata['pw_id'];
-            $data['where'] = ['pw.branch_id'=>$this->branch_id,'pw.id'=>$varient_id,'p.status!='=>'9','pw.status!='=>'9'];
+            $data['where'] = ['pw.branch_id' => $this->branch_id, 'pw.id' => $varient_id, 'p.status!=' => '9', 'pw.status!=' => '9'];
         }
 
-        $data['table'] = TABLE_PRODUCT.' as p';
-        $data['select'] = ['p.name','w.name as weight_name','pw.*'];
+        $data['table'] = TABLE_PRODUCT . ' as p';
+        $data['select'] = ['p.name', 'w.name as weight_name', 'pw.*'];
         $data['join'] = [
-            TABLE_PRODUCT_WEIGHT.' as pw'=>['p.id=pw.product_id','LEFT'],
+            TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id=pw.product_id', 'LEFT'],
             'weight as w' => ['pw.weight_id = w.id', 'LEFT']
         ];
         $return = $this->selectFromJoin($data);
-        return $return; 
+        return $return;
     }
 
-    public function MakeQuickList($postdata){
+    public function MakeQuickList($postdata)
+    {
         foreach ($postdata as $id) {
             $data['table'] = TABLE_PRODUCT_WEIGHT;
-            $data['where'] = ['id'=>$id];
-            $data['update'] = ['IsPosMostLike'=>'1'];
+            $data['where'] = ['id' => $id];
+            $data['update'] = ['IsPosMostLike' => '1'];
             $this->updateRecords($data);
         }
         return true;
     }
 
-    public function RemoveQuickListItem($postdata){
-       $data['table'] = TABLE_PRODUCT_WEIGHT;
-       $data['where'] = ['id'=>$postdata['pw_id']];
-       $data['update'] = ['IsPosMostLike'=>'0'];
-       return $this->updateRecords($data);
+    public function RemoveQuickListItem($postdata)
+    {
+        $data['table'] = TABLE_PRODUCT_WEIGHT;
+        $data['where'] = ['id' => $postdata['pw_id']];
+        $data['update'] = ['IsPosMostLike' => '0'];
+        return $this->updateRecords($data);
     }
 
 
@@ -445,14 +468,15 @@ class Sell_development_model extends My_model
         exit;
     }
 
-    public function removeParked($postdata){
+    public function removeParked($postdata)
+    {
         // dd($postdata);die;
-      $data['table'] = 'parked_order_details';
-      $data['where'] = ['id'=>$postdata['order_tempId'],'parked_order_id'=>$postdata['isParked']];
-      $this->deleteRecords($data);
+        $data['table'] = 'parked_order_details';
+        $data['where'] = ['id' => $postdata['order_tempId'], 'parked_order_id' => $postdata['isParked']];
+        $this->deleteRecords($data);
 
-      $parked_id = $postdata['isParked'];
-      $this->getUpdatedParkedOrder($parked_id);
+        $parked_id = $postdata['isParked'];
+        $this->getUpdatedParkedOrder($parked_id);
         return true;
     }
 
@@ -549,8 +573,6 @@ class Sell_development_model extends My_model
             $qnt = $result[0]->quantity;
 
             $this->db->query("UPDATE product_weight SET quantity = quantity + $qnt ,park_quantity=  park_quantity - $qnt WHERE id= '$product_variant_id'");
-
-
         } else {
             $this->db->query("UPDATE product_weight SET quantity = quantity + temp_quantity,temp_quantity = 0  WHERE id= '$product_variant_id'");
         }
@@ -567,16 +589,13 @@ class Sell_development_model extends My_model
             if ($park == "park") {
 
                 $this->db->query("UPDATE product_weight SET quantity = quantity - $quantity,park_quantity = park_quantity + $quantity  WHERE id= '$product_variant_id'");
-
             } else {
                 $this->db->query("UPDATE product_weight SET quantity = quantity - $quantity,temp_quantity = temp_quantity + $quantity  WHERE id= '$product_variant_id'");
-
             }
             $response['status'] = 1;
         } else {
             $response['status'] = 0;
             $response['quantity'] = $result[0]['quantity'];
-
         }
         return $response;
     }
@@ -584,7 +603,7 @@ class Sell_development_model extends My_model
 
     function temp_order($postdata)
     {
-        
+
 
         $product_variant_id = $postdata['product_w_id'];
         $this->branch_id = $this->session->userdata('id');
@@ -599,7 +618,7 @@ class Sell_development_model extends My_model
         $quantity = $result[0]['quantity'] - 1;
 
 
-      
+
         if ($result[0]['quantity'] > 0) {
 
             $data['select'] = ['temp_quantity'];
@@ -672,7 +691,7 @@ class Sell_development_model extends My_model
 							<input type="number" min="1" max="1" style="margin-left: -9%;"   data-price="' . $product_price . '" data-val="' . $product_variant_id . '" class="showid_qnt" name="qnt' . $last_id . '" id="qnt' . $last_id . '" value="1" onkeyup="showId(' . $last_id . ', ' . $product_price . ',' . $last_id . ' ,' . $product_variant_id . ', ' . $discount . ')"</p>
 						<input type="hidden" class="var_id' . $product_variant_id . '" name="weight_id" value="' . $product_variant_id . '">
 						<p class="event_quantity">
-     						<input type="number" min="0" class="disc" max="' . $discount . '" name="discount' . $last_id . '" id="discount' . $last_id . '" placeholder = "Discount (%)" value="' . $discount . '" onkeyup="discount_temp_order(' . $last_id . ', ' . $product_price . ', ' . $last_id . ', ' . $product_price . ', ' . $discount . ',' . $actual_price . ')" style="width: 100%;"/>In(%)
+     						<input type="number" min="0" class="disc" max="' . $discount . '" name="discount' . $last_id . '" id="discount' . $last_id . '" placeholder = "Discount (%)" value="' .   $discount . '" onkeyup="discount_temp_order(' . $last_id . ', ' . $product_price . ', ' . $last_id . ', ' . $product_price . ', ' . $discount . ',' . $actual_price . ')" style="width: 100%;"/>In(%)
 						 <label style="color: red;" id="error' . $last_id . '"></label>
 						</p>
                         <a href="javascript:;" onclick="delete_tmp_order(' . $last_id . ',' . $product_variant_id . ')" class="event_del"><i class="fa fa-trash-o "></i></a>
@@ -687,15 +706,19 @@ class Sell_development_model extends My_model
             $response = 0;
             return $response;
         }
-
     }
 
 
-    function order_checkout($postdata){
-      
+    function order_checkout($postdata)
+    {
+
+
 
         $park = $postdata['parked_order'];
-        $this->branch_id = $postdata['branch_id'];
+
+        $this->branch_id = $postdata['vendor_id'];
+        // $user_id = $postdata['vendor_id']; //Dipesh vendor_id from branch_id
+
         $sub_total = $postdata['hidden_subtotal'];
         $disc_percentage = $postdata['disc_percentage'];
         $discount_total = $postdata['hidden_discount_total'];
@@ -705,10 +728,10 @@ class Sell_development_model extends My_model
         if (isset($postdata['customer'])) {
             $customer_id = $postdata['customer'];
         }
+
+
         $order_from = '0';
         if (isset($postdata['parked_sell']) && $postdata['parked_sell'] == 'Park Sale') {
-
-
             $insertion = array(
                 'order_no' => 'OD' . strtotime(DATE_TIME),
                 'branch_id' => $this->branch_id,
@@ -724,16 +747,18 @@ class Sell_development_model extends My_model
             );
             $data['insert'] = $insertion;
             $data['table'] = 'parked_order';
+
             $last_id = $this->insertRecord($data);
+
 
             foreach ($postdata as $key => $value) {
                 unset($data);
                 if (count(explode('qnt', $key)) > 1) {
-            
+
                     $example = explode('qnt', $key);
-                    
+
                     $product_temp_id = $example['1'];
-                 
+
                     if ($product_temp_id != '') {
 
                         $data['select'] = ['product_weight_id', 'quantity', 'price', 'discount', 'discount_price'];
@@ -751,7 +776,7 @@ class Sell_development_model extends My_model
                             $quantity_temp = '0';
                         }
 
-                        
+
                         /*27/10/2022*/
 
                         $product_detail = $this->get_product_from_variant($p_id);
@@ -776,23 +801,21 @@ class Sell_development_model extends My_model
                             'dt_added' => strtotime(DATE_TIME),
                             'dt_updated' => strtotime(DATE_TIME),
                         );
-                        
+
                         $data['insert'] = $insertion;
                         $data['table'] = 'parked_order_details';
                         $result = $this->insertRecord($data);
-
                     }
-                    
+
                     $data['where'] = ['id' => $product_temp_id];
                     $data['table'] = 'order_temp';
                     $this->deleteRecords($data);
                 }
             }
-           
+
             $this->session->set_flashdata("msg", "Order parked successfully.");
             redirect(base_url() . '	sell_development');
             exit;
-
         }
         if (isset($postdata['case']) && $postdata['case'] == 'Cash') {
             $payment_type = '0';
@@ -801,7 +824,7 @@ class Sell_development_model extends My_model
         if (isset($postdata['credit_card']) && $postdata['credit_card'] == 'Credit Card') {
             $payment_type = '1';
         }
-       
+
         $insertion = array(
             'order_from' => $order_from,
             'order_no' => 'OD' . strtotime(DATE_TIME),
@@ -819,10 +842,13 @@ class Sell_development_model extends My_model
             'dt_added' => strtotime(DATE_TIME),
             'dt_updated' => strtotime(DATE_TIME)
         );
-     
+
         $data['insert'] = $insertion;
         $data['table'] = 'order';
+
+
         $last_id = $this->insertRecord($data);
+
         $total_item = 0;
         foreach ($postdata as $key => $value) {
 
@@ -842,7 +868,6 @@ class Sell_development_model extends My_model
                         $pro_temp_result = $this->selectRecords($data);
 
                         $parked_order_id = $pro_temp_result[0]->parked_order_id;
-
                     } else {
 
                         $data['select'] = ['product_weight_id', 'quantity', 'price', 'discount', 'discount_price'];
@@ -852,7 +877,7 @@ class Sell_development_model extends My_model
 
                         $parked_order_id = 0;
                     }
-                
+
                     $p_id = $pro_temp_result[0]->product_weight_id;
                     $quantity_temp = $pro_temp_result[0]->quantity;
                     $total_item = $total_item + $quantity_temp;
@@ -889,7 +914,6 @@ class Sell_development_model extends My_model
                     $data['insert'] = $insertion;
                     $data['table'] = 'order_details';
                     $result = $this->insertRecord($data);
-
                 }
                 $data['where'] = ['id' => $product_temp_id];
                 $data['table'] = 'order_temp';
@@ -917,7 +941,6 @@ class Sell_development_model extends My_model
         $this->session->set_flashdata("msg", "Order created successfully.");
         redirect(base_url() . '	sell_development/index');
         exit;
-
     }
 
 
@@ -943,7 +966,6 @@ class Sell_development_model extends My_model
         if (isset($postdata['parked_sell']) && $postdata['parked_sell'] == 'Park Sale') {
 
             $payment_type = '2';
-
         } else {
 
 
@@ -957,7 +979,6 @@ class Sell_development_model extends My_model
                 $difference = $counted - $cash_amount_expected;
 
                 $this->db->query("UPDATE register SET cash_amount_expected = '$cash_amount_expected', counted = '$counted' WHERE id = $register_id");
-
             }
 
             if (isset($postdata['credit_card']) && $postdata['credit_card'] == 'Credit Card') {
@@ -970,8 +991,6 @@ class Sell_development_model extends My_model
                 $difference = $counted - $cash_amount_expected;
 
                 $this->db->query("UPDATE register SET credit_card_expected = '$cash_amount_expected', credit_card_counted = '$counted' WHERE id = $register_id");
-
-
             }
         }
 
@@ -1016,7 +1035,7 @@ class Sell_development_model extends My_model
                         $quantity_temp = '0';
                     }
                     $product_detail = $this->get_product_from_variant($p_id);
-                   
+
 
                     $order_temp_array = array(
                         'branch_id' => $this->branch_id,
@@ -1042,15 +1061,14 @@ class Sell_development_model extends My_model
         }
         $this->session->set_flashdata("msg", "Order created successfully.");
         redirect(base_url() . '	sell/index');
-
-
     }
 
     function get_product_from_variant($variant_id)
     {
         $data['select'] = ['p.*', 'pw.discount_per', 'pw.price', 'pw.product_id', 'w.id as package_id'];
         $data['where'] = ['pw.id' => $variant_id];
-        $data['join'] = ['product as p ' => ['pw.product_id = p.id', 'LEFT'],
+        $data['join'] = [
+            'product as p ' => ['pw.product_id = p.id', 'LEFT'],
             'weight as w' => ['pw.weight_id = w.id', 'LEFT']
         ];
         $data['table'] = 'product_weight AS pw';
@@ -1095,13 +1113,11 @@ class Sell_development_model extends My_model
             $difference = $counted - $cash_amount_expected;
 
             $this->db->query("UPDATE register SET cash_amount_expected = '$cash_amount_expected', counted = '$counted' WHERE id = $register_id");
-
-
         }
 
         $old_order_id = $_POST['old_order_id'];
 
-        
+
 
         $cash_array = array(
             'user_id' => $user_id,
@@ -1123,7 +1139,7 @@ class Sell_development_model extends My_model
 
         foreach ($_REQUEST as $key => $value) {
 
-//                print_r($_REQUEST);exit;
+            //                print_r($_REQUEST);exit;
 
             if ((count(explode('qnt', $key)) > 1) && (count(explode('discount', $key)) > 0)) {
 
@@ -1165,7 +1181,6 @@ class Sell_development_model extends My_model
                             'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                         );
                         $this->db->insert('pos_order_detail', $order_temp_array);
-
                     } else {
                         $pro_temp_row = $this->db->query("SELECT product_id,product_variant_id, quantity, actual_discount,actual_price, total_discount, calculation_price FROM pos_order_detail WHERE id = '$product_temp_id'");
                         $pro_temp_result = $pro_temp_row->row_array();
@@ -1190,7 +1205,6 @@ class Sell_development_model extends My_model
                             'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                         );
                         $this->db->insert('pos_order_detail', $order_temp_array);
-
                     }
                 }
             }
@@ -1216,18 +1230,17 @@ class Sell_development_model extends My_model
         $data['table'] = 'category';
         @$res = $this->selectRecords($data);
 
-        
-            $html = '';
+
+        $html = '';
         foreach ($res as $type) { ?>
-            <div class="catg_list" id="catg_list"
-                 onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-            </div>
-        <?php }
+<div class="catg_list" id="catg_list"
+    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+</div>
+<?php }
         echo $html;
 
         exit;
-
     }
 
 
@@ -1239,25 +1252,21 @@ class Sell_development_model extends My_model
 
         if ($park == "park") {
             $response = $this->db->query("UPDATE product_weight SET quantity = quantity - 1,park_quantity = park_quantity + 1  WHERE id= '$id'");
-
         } else {
             $response = $this->db->query("UPDATE product_weight SET quantity = quantity - 1,temp_quantity = temp_quantity + 1  WHERE id= '$id'");
-
         }
         if ($response) {
             exit;
         }
-
-
     }
 
     public function delete_parked_order($postdata)
     {
 
         $product_temp_id = $postdata['product_id'];
-//        echo $product_temp_id;exit;
+        //        echo $product_temp_id;exit;
         $product_id = $postdata['true_product_id'];
-//        echo $product_id;exit;
+        //        echo $product_id;exit;
 
         $pro_temp_qnt = $postdata['pro_temp_qnt'];
 
@@ -1265,17 +1274,17 @@ class Sell_development_model extends My_model
         if ($pro_temp_qnt == '' || $pro_temp_qnt == null) {
             $pro_temp_qnt = '0';
         }
-//        echo $pro_temp_qnt;exit;
+        //        echo $pro_temp_qnt;exit;
 
         $this->db->query("UPDATE product_weight SET quantity = quantity + $pro_temp_qnt,park_quantity = park_quantity - $pro_temp_qnt     WHERE id= '$product_id'");
 
 
-//        $query = $this->db->query("SELECT quantity,temp_quantity FROM product_weight WHERE id = '$product_id'");
-//        $result = $query->row_array();
-//
-//        $qnt = $result['quantity'];
-//        $temp_qnt = $result['temp_quantity'];
-//        $this->db->query("UPDATE product_weight SET quantity = $qnt + $pro_temp_qnt,temp_quantity = $temp_qnt-$pro_temp_qnt WHERE id= '$product_id'");
+        //        $query = $this->db->query("SELECT quantity,temp_quantity FROM product_weight WHERE id = '$product_id'");
+        //        $result = $query->row_array();
+        //
+        //        $qnt = $result['quantity'];
+        //        $temp_qnt = $result['temp_quantity'];
+        //        $this->db->query("UPDATE product_weight SET quantity = $qnt + $pro_temp_qnt,temp_quantity = $temp_qnt-$pro_temp_qnt WHERE id= '$product_id'");
 
         $subtotal = $postdata['subtotal'];
         $disc_percentage = $postdata['disc_percentage'];
@@ -1292,7 +1301,7 @@ class Sell_development_model extends My_model
         $data['where'] = ['id' => $product_temp_id];
         $data['table'] = 'parked_order_details';
         $this->deleteRecords($data);
-//        echo $this->db->last_query();
+        //        echo $this->db->last_query();
 
 
         $data['select'] = ['*'];
@@ -1311,13 +1320,13 @@ class Sell_development_model extends My_model
         $this->refresh_parked_order($parked_order_id);
 
 
-//        echo $this->db->last_query();exit;
-//        print_r($arr);exit;
-//        $price_query = $this->db->query("SELECT price from order_temp WHERE id = '$product_temp_id'");
-//        $price_result = $price_query->row_array();
-//        $price_db = $price_result['price'];
+        //        echo $this->db->last_query();exit;
+        //        print_r($arr);exit;
+        //        $price_query = $this->db->query("SELECT price from order_temp WHERE id = '$product_temp_id'");
+        //        $price_result = $price_query->row_array();
+        //        $price_db = $price_result['price'];
 
-//        $this->db->query("DELETE FROM order_temp WHERE id = '$product_temp_id'");
+        //        $this->db->query("DELETE FROM order_temp WHERE id = '$product_temp_id'");
 
         $new_subtotal = $subtotal - $price_db;
         $new_discount_total = ($new_subtotal * $disc_percentage) / 100;
@@ -1332,8 +1341,6 @@ class Sell_development_model extends My_model
 
         echo json_encode($array);
         exit();
-
-
     }
 
     public function discard_parked_order($postdata)
@@ -1399,7 +1406,7 @@ class Sell_development_model extends My_model
         $this->db->query("UPDATE parked_order_details SET quantity = '$quantity', price = '$price', discount = '$discount', discount_price = '$discount_price', dt_updated = '$current_date'  WHERE id = '$product_id'");
 
 
-//        $this->db->query("UPDATE product_weight SET quantity = quantity - 1 WHERE id= '$true_product_id'");
+        //        $this->db->query("UPDATE product_weight SET quantity = quantity - 1 WHERE id= '$true_product_id'");
 
         $temp_pro_query = $this->db->query("SELECT quantity FROM product_weight WHERE id = '$true_product_id'");
         $result_pro_temp = $temp_pro_query->row_array();
@@ -1424,28 +1431,27 @@ class Sell_development_model extends My_model
 
         echo json_encode($temp_qnt);
         exit();
-
     }
 
     public function update_parked_order($postdata)
     {
-//exit;
+        //exit;
         $product_id = $postdata['product_id'];
         $quantity = $postdata['quantity'];
         $price = $postdata['price'];
         $discount = $postdata['discount'];
         $discount_price = $postdata['discount_price'];
-//        echo $product_id;exit;
+        //        echo $product_id;exit;
 
 
-//
-//        $data['select'] = ['quantity'];
-//        $data['where'] = ['id' => $product_id];
-//        $data['table'] = 'parked_order_details';
-//        $qnt_arr = $this->selectRecords($data);
-//        $qnt = $qnt_arr[0]->quantity;
-//
-//        echo $qnt;
+        //
+        //        $data['select'] = ['quantity'];
+        //        $data['where'] = ['id' => $product_id];
+        //        $data['table'] = 'parked_order_details';
+        //        $qnt_arr = $this->selectRecords($data);
+        //        $qnt = $qnt_arr[0]->quantity;
+        //
+        //        echo $qnt;
 
 
         $temp_query = $this->db->query("SELECT product_weight_id FROM parked_order_details WHERE id = '$product_id'");
@@ -1453,18 +1459,18 @@ class Sell_development_model extends My_model
         $true_product_id = $result_temp['product_weight_id'];
 
 
-//        $this->db->query("UPDATE product_weight SET quantity = quantity - $quantity,park_quantity = park_quantity + $quantity  WHERE id= '$product_variant_id'");
+        //        $this->db->query("UPDATE product_weight SET quantity = quantity - $quantity,park_quantity = park_quantity + $quantity  WHERE id= '$product_variant_id'");
 
-//        $this->db->query("UPDATE product_weight SET quantity = quantity + $qnt WHERE id= '$true_product_id'");
+        //        $this->db->query("UPDATE product_weight SET quantity = quantity + $qnt WHERE id= '$true_product_id'");
 
         $current_date = strtotime(date('Y-m-d H:i:s'));
 
         $this->db->query("UPDATE parked_order_details SET quantity = '$quantity', price = '$price', discount = '$discount', discount_price = '$discount_price', dt_updated = '$current_date'  WHERE id = '$product_id'");
 
 
-//        $this->db->query("UPDATE product_weight SET quantity = quantity - $quantity WHERE id= '$true_product_id'");
+        //        $this->db->query("UPDATE product_weight SET quantity = quantity - $quantity WHERE id= '$true_product_id'");
 
-//        $this->db->query("UPDATE product_weight SET quantity = quantity - 1 WHERE id= '$true_product_id'");
+        //        $this->db->query("UPDATE product_weight SET quantity = quantity - 1 WHERE id= '$true_product_id'");
 
         $temp_pro_query = $this->db->query("SELECT quantity FROM product_weight WHERE id = '$true_product_id'");
         $result_pro_temp = $temp_pro_query->row_array();
@@ -1477,7 +1483,7 @@ class Sell_development_model extends My_model
         $res = $this->selectRecords($data);
         $parked_order_id = $res[0]->parked_order_id;
 
-        unset ($data);
+        unset($data);
 
         $data['update']['order_discount'] = 0;
         $data['where'] = ['id' => $parked_order_id];
@@ -1488,24 +1494,23 @@ class Sell_development_model extends My_model
 
 
         $this->refresh_parked_order($parked_order_id);
-//echo 1;exit;
+        //echo 1;exit;
         echo json_encode($temp_qnt);
         exit();
-
     }
 
 
     public function refresh_parked_order($id)
     {
         unset($data);
-//        echo 2;exit;
-//echo $id;exit;
+        //        echo 2;exit;
+        //echo $id;exit;
         $data['select'] = ['sum(price) as total'];
         $data['where'] = ['parked_order_id' => $id];
         $data['table'] = 'parked_order_details';
         $res = $this->selectRecords($data);
-//        echo $this->db->last_query();exit;
-//        print_r($res);
+        //        echo $this->db->last_query();exit;
+        //        print_r($res);
         $total = $res[0]->total;
 
         unset($data);
@@ -1531,19 +1536,19 @@ class Sell_development_model extends My_model
         if ($response) {
             return 1;
         }
-
     }
-    public function single_delete_sales_history($id){
+    public function single_delete_sales_history($id)
+    {
 
         unset($data);
 
-        $data['select'] = ['quantity','product_weight_id'];
-        $data['where'] = ['parked_order_id'=> $id];
+        $data['select'] = ['quantity', 'product_weight_id'];
+        $data['where'] = ['parked_order_id' => $id];
         $data['table'] = 'parked_order_details';
         $res = $this->selectRecords($data);
         unset($data);
 
-        foreach ($res as $row){
+        foreach ($res as $row) {
             $qnt = $row->quantity;
             $ids = $row->product_weight_id;
 
@@ -1566,7 +1571,8 @@ class Sell_development_model extends My_model
     }
 
 
-    public function single_delete_sell_sales_history($id){
+    public function single_delete_sell_sales_history($id)
+    {
 
         $data = array('status' => '9');
 
@@ -1583,7 +1589,8 @@ class Sell_development_model extends My_model
         exit;
     }
 
-    public function update_order_temp($getData){
+    public function update_order_temp($getData)
+    {
         $product_id = $_GET['product_id'];
         $quantity = $_GET['quantity'];
         // $qty = $_GET['qty'];
@@ -1594,91 +1601,106 @@ class Sell_development_model extends My_model
         // $park = $_GET['park'];
         $current_date = strtotime(date('Y-m-d H:i:s'));
         $update = array(
-            'quantity'=>$quantity,
-            'price'=>$price,
-            'discount'=>$discount,
-            'discount_price'=>$discount_price,
-            'dt_updated'=>$current_date
+            'quantity' => $quantity,
+            'price' => $price,
+            'discount' => $discount,
+            'discount_price' => $discount_price,
+            'dt_updated' => $current_date
         );
         $data['table'] = 'order_temp';
-        $data['where'] = ['id'=>$product_id];
+        $data['where'] = ['id' => $product_id];
         $data['update'] = $update;
         $this->updateRecords($data);
         unset($data);
         $data['table'] = 'order_temp';
         $data['select'] = ['product_weight_id'];
-        $data['where'] = ['id'=>$product_id];
-        $result_temp = $this->selectRecords($data,true);
+        $data['where'] = ['id' => $product_id];
+        $result_temp = $this->selectRecords($data, true);
         $true_product_id = $result_temp[0]['product_weight_id'];
         unset($data);
         $data['table'] = 'product_weight';
-        $data['select'] = ['quantity','temp_quantity'];
-        $data['where'] = ['id'=>$true_product_id];
-        $result_pro_temp = $this->selectRecords($data,true);
+        $data['select'] = ['quantity', 'temp_quantity'];
+        $data['where'] = ['id' => $true_product_id];
+        $result_pro_temp = $this->selectRecords($data, true);
         $temp_qnt = $result_pro_temp[0]['quantity'];
         return $temp_qnt;
     }
 
-     public function getRegister(){
+    public function getRegister()
+    {
         $data['table'] = 'register';
         $data['select'] = ['*'];
-        $data['where'] = ['branch_id'=>$this->branch_id];
+        $data['where'] = ['branch_id' => $this->branch_id];
         $data['groupBy'] = 'id';
         $data['order'] = 'id desc';
         $data['limit'] = '1';
         return $this->selectRecords($data);
-     }
+    }
 
-     public function customer(){
-        $this->branch_id = $this->session->userdata('id');
-        $data['table'] = 'customer';
-        $data['select'] = ['*']; 
-        $data['where'] = ['status!='=>'9','branch_id'=>$this->branch_id];
-        return $this->selectRecords($data);
-
-     }
-
-    public function getCategory(){
-        $this->branch_id = $this->session->userdata('id');
-        $data['table'] = 'category';
-        $data['select'] = ['*']; 
-        $data['where'] = ['status!='=>'9','branch_id'=>$this->branch_id];
-        $data['order'] = 'id DESC';
-        return $this->selectRecords($data);
-     }
-
-    public function getCurrencyCode(){
-        $this->branch_id = $this->session->userdata('id');
-        $data['table'] = 'branch';
+    // Dipesh
+    public function getRegisterSingle($id)
+    {
+        $data['table'] = 'register';
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$this->branch_id];
-        $re = $this->selectRecords($data);
-        return $re[0]->currency_code; 
-    } 
-
-    public function getCurrency(){
-        $data['table'] = 'set_default';
-        $data['select'] = ['*'];
-        $data['where'] = ['request_id'=>'3','vendor_id'=>$this->vendor_id];
+        $data['where'] = ['branch_id' => $this->branch_id, 'id' => $id];
         return $this->selectRecords($data);
     }
 
-    public function OrderTemp($parked_order_id){
+
+    public function customer()
+    {
+        $this->branch_id = $this->session->userdata('id');
+        $data['table'] = 'customer';
+        $data['select'] = ['*'];
+        $data['where'] = ['status!=' => '9', 'branch_id' => $this->branch_id];
+        return $this->selectRecords($data);
+    }
+
+    public function getCategory()
+    {
+        $this->branch_id = $this->session->userdata('id');
+        $data['table'] = 'category';
+        $data['select'] = ['*'];
+        $data['where'] = ['status!=' => '9', 'branch_id' => $this->branch_id];
+        $data['order'] = 'id DESC';
+        return $this->selectRecords($data);
+    }
+
+    public function getCurrencyCode()
+    {
+        $this->branch_id = $this->session->userdata('id');
+        $data['table'] = 'branch';
+        $data['select'] = ['*'];
+        $data['where'] = ['id' => $this->branch_id];
+        $re = $this->selectRecords($data);
+        return $re[0]->currency_code;
+    }
+
+    public function getCurrency()
+    {
+        $data['table'] = 'set_default';
+        $data['select'] = ['*'];
+        $data['where'] = ['request_id' => '3', 'vendor_id' => $this->vendor_id];
+        return $this->selectRecords($data);
+    }
+
+    public function OrderTemp($parked_order_id)
+    {
         $this->branch_id = $this->session->userdata('id');
         $data['table'] = 'parked_order_details as ot';
         $data['select'] = [
             'po.order_discount as order_discount',
-            'p.name as product_name','pw.price as actual_price',
-            'pw.discount_price as product_price','pw.discount_per as product_discount','ot.*',
-            'ot.discount_price as discount_per_product','p.gst','po.customer_id'
+            'p.name as product_name', 'pw.price as actual_price',
+            'pw.discount_price as product_price', 'pw.discount_per as product_discount', 'ot.*',
+            'ot.discount_price as discount_per_product', 'p.gst', 'po.customer_id'
         ];
         $data['join'] = [
-            'product_weight as pw'=>['pw.id = ot.product_weight_id','LEFT'],
-            'product as p'=>['p.id = pw.product_id','LEFT'],
-            'parked_order as po'=>['po.id = ot.parked_order_id','LEFT']
+            'product_weight as pw' => ['pw.id = ot.product_weight_id', 'LEFT'],
+            'product as p' => ['p.id = pw.product_id', 'LEFT'],
+            'parked_order as po' => ['po.id = ot.parked_order_id', 'LEFT']
         ];
         $data['where'] = [
-            'ot.branch_id'=>$this->branch_id,
+            'ot.branch_id' => $this->branch_id,
             'ot.parked_order_id' => $parked_order_id
         ];
         $return = $this->selectFromJoin($data);
@@ -1690,69 +1712,74 @@ class Sell_development_model extends My_model
         return $return;
     }
 
-    public function getCustomer($id){
+    public function getCustomer($id)
+    {
         $data['table'] = 'customer';
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$id];
+        $data['where'] = ['id' => $id];
         return $this->selectRecords($data);
     }
 
-    public function OrderTempWithoutPark($order_temp_id=''){
+    public function OrderTempWithoutPark($order_temp_id = '')
+    {
         $this->branch_id = $this->session->userdata('id');
-        if($order_temp_id !=''){
+        if ($order_temp_id != '') {
             $data['where']['ot.id'] =  $order_temp_id;
         }
 
         $data['table'] = 'order_temp as ot';
         $data['select'] = [
-            'p.name as product_name','pw.price as actual_price',
-            'pw.discount_price as product_price','pw.discount_per as product_discount','ot.*','ot.discount_price as discount_per_product','p.gst'
+            'p.name as product_name', 'pw.price as actual_price',
+            'pw.discount_price as product_price', 'pw.discount_per as product_discount', 'ot.*', 'ot.discount_price as discount_per_product', 'p.gst'
         ];
         $data['join'] = [
-            'product_weight as pw'=>['pw.id = ot.product_weight_id','LEFT'],
-            'product as p'=>['p.id = pw.product_id','LEFT'],
+            'product_weight as pw' => ['pw.id = ot.product_weight_id', 'LEFT'],
+            'product as p' => ['p.id = pw.product_id', 'LEFT'],
         ];
         $data['where']['ot.branch_id'] = $this->branch_id;
         $data['where']['ot.park'] = '0';
         return $this->selectFromJoin($data);
     }
 
-    public function orderHistory(){
+    public function orderHistory()
+    {
         $data['table'] = 'order as po';
-        $data['select'] = ['po.*','c.customer_name','v.name as vendor_name'];
+        $data['select'] = ['po.*', 'c.customer_name', 'v.name as vendor_name'];
         $data['join'] = [
-            'branch as v'=>['v.id = po.branch_id','LEFT'],
-            'customer as c'=>['c.id = po.user_id','LEFT']
+            'branch as v' => ['v.id = po.branch_id', 'LEFT'],
+            'customer as c' => ['c.id = po.user_id', 'LEFT']
         ];
         $data['where'] = [
-            'po.status'=>'1','payment_type !='=>'2',
-            'po.branch_id'=> $this->branch_id
+            'po.status' => '1', 'payment_type !=' => '2',
+            'po.branch_id' => $this->branch_id
         ];
         $data['order'] = 'po.id DESC';
         return $this->selectFromJoin($data);
     }
 
-   public function viewOrderDetails($postdata){
+    public function viewOrderDetails($postdata)
+    {
 
         $this->branch_id = $this->session->userdata('id');
         $order_id = $this->utility->safe_b64decode($postdata['order_id']);
-        
-        $data['table'] =  TABLE_ORDER_DETAILS.' as od';
-        $data['select'] = ['od.calculation_price','od.discount','od.quantity', 'od.dt_updated','p.name'];
+
+        $data['table'] =  TABLE_ORDER_DETAILS . ' as od';
+        $data['select'] = ['od.calculation_price', 'od.discount', 'od.quantity', 'od.dt_updated', 'p.name'];
         $data['join'] = [
-            TABLE_PRODUCT.' as p'=>['od.product_id=p.id','LEFT']
+            TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT']
         ];
-        $data['where'] = ['od.order_id'=>$order_id,'od.status!='=>'9'];
+        $data['where'] = ['od.order_id' => $order_id, 'od.status!=' => '9'];
         $result =  $this->selectFromJoin($data);
         unset($data);
-            $data['table'] = TABLE_ORDER;
-            $data['select'] = ['total','payment_type','order_discount', 'payable_amount','dt_added','total_saving'];
-            $data['where'] = ['id'=>$order_id,'branch_id'=>$this->branch_id,'status!='=>'9'];
-            $r = $this->selectRecords($data); 
-        return ['order_details'=>$result,'orderInfo'=>$r]; 
-   } 
+        $data['table'] = TABLE_ORDER;
+        $data['select'] = ['total', 'payment_type', 'order_discount', 'payable_amount', 'dt_added', 'total_saving'];
+        $data['where'] = ['id' => $order_id, 'branch_id' => $this->branch_id, 'status!=' => '9'];
+        $r = $this->selectRecords($data);
+        return ['order_details' => $result, 'orderInfo' => $r];
+    }
 
-  public function addCustomer($postdata) {
+    public function addCustomer($postdata)
+    {
         $this->branch_id = $this->session->userdata('id');
         $insertData = array(
             'group_id' => 0,
@@ -1760,93 +1787,110 @@ class Sell_development_model extends My_model
             'customer_name' => $postdata['customer_name'],
             'mobile' => $postdata['mobile'],
             'email' => $postdata['email'],
-            'customercode' =>$postdata['customercode'],
+            'customercode' => $postdata['customercode'],
             'dt_added' => strtotime(DATE_TIME),
             'dt_updated' => strtotime(DATE_TIME),
         );
         $data['table'] = 'customer';
-        $data['insert'] = $insertData ;
-        return $this->insertRecord($data); 
-  }
+        $data['insert'] = $insertData;
+        return $this->insertRecord($data);
+    }
 
-  public function removeSaleRecord($postdata){
+    public function removeSaleRecord($postdata)
+    {
         $order_id = $this->utility->safe_b64decode($postdata['order_id']);
         $data['table'] = 'order';
-        $data['update'] = ['status'=>'9'];
-        $data['where'] = ['id'=>$order_id];
+        $data['update'] = ['status' => '9'];
+        $data['where'] = ['id' => $order_id];
         $this->updateRecords($data);
         unset($data);
         $data['table'] = 'order_details';
-        $data['update'] = ['status'=>'9'];
-        $data['where'] = ['order_id'=>$order_id];
+        $data['update'] = ['status' => '9'];
+        $data['where'] = ['order_id' => $order_id];
         $this->updateRecords($data);
+        return true;
+    }
 
-  }
 
-
-    public  $order_column_order = array('po.*,c.customer_name,v.name as vendor_name,c.customercode');  
-    function make_query_sell($postData){
+    public  $order_column_order = array('po.*,c.customer_name,v.name as vendor_name,c.customercode');
+    function make_query_sell($postData)
+    {
         $this->branch_id = $this->session->userdata('id');
         $where = [
-            'po.status'=>'1','po.payment_type !='=>'2',
-            'po.branch_id'=> $this->branch_id
+            'po.status' => '1', 'po.payment_type !=' => '2',
+            'po.branch_id' => $this->branch_id
         ];
-         $this->db->select('po.*,c.customer_name,v.name as vendor_name,c.customercode');  
-         $this->db->from('order as po');
-         $this->db->join('vendor as v','v.id = po.branch_id','LEFT');
-         $this->db->join('customer as c','c.id = po.customer_id','LEFT');
-         $this->db->where($where);
-         if(isset($postData["search"]["value"]) && $postData["search"]["value"] != ''){ 
-        $this->db->group_start();
+        $this->db->select('po.*,c.customer_name,v.name as vendor_name,c.customercode');
+        $this->db->from('order as po');
+        $this->db->join('vendor as v', 'v.id = po.branch_id', 'LEFT');
+        $this->db->join('customer as c', 'c.id = po.customer_id', 'LEFT');
+        $this->db->where($where);
+        if (isset($postData["search"]["value"]) && $postData["search"]["value"] != '') {
+            $this->db->group_start();
             $this->db->like("v.name", $postData["search"]["value"]);
             $this->db->or_like("c.customer_name", $postData["search"]["value"]);
             $this->db->or_like("c.customercode", $postData["search"]["value"]);
             // $this->db->or_like("po.dt_added as", $postData["search"]["value"]);
             $this->db->or_like("po.payable_amount", $postData["search"]["value"]);
-        $this->db->group_end(); 
-        }  
-        
-        if(isset($postData["order"]) && $postData["order"] != '' ){  
-            $this->db->order_by($this->order_column_order[$postData['order']['0']['column']], $postData['order']['0']['dir']);  
-           }else{  
-                $this->db->order_by('po.id', 'DESC');  
-           } 
-    }
-
-
-    function make_datatables_sell($postData){ 
-        $this->make_query_sell($postData);
-       if($postData["length"] != -1){  
-            $this->db->limit($postData['length'], $postData['start']);  
-        }  
-           
-            $query = $this->db->get();  
-            return $query->result();
-            // echo $this->db->last_query();
+            $this->db->group_end();
         }
 
-    function get_filtered_data_sell($postData = false){  
-        $this->make_query_sell($postData);  
-        $query = $this->db->get();  
-        return $query->num_rows();
-    }    
-
-    function get_all_data_sell($postData = array()){
-        $this->branch_id = $this->session->userdata('id');
-            $where = [
-                'po.status'=>'1','po.payment_type !='=>'2',
-                'po.branch_id'=> $this->branch_id
-            ];
-         $this->db->select('po.*,c.customer_name,v.name as vendor_name');  
-         $this->db->from('order as po');
-         $this->db->join('branch as v','v.id = po.branch_id','LEFT');
-         $this->db->join('customer as c','c.id = po.customer_id','LEFT');
-         $this->db->where($where);
-        return $this->db->count_all_results(); 
-           // echo $this->db->last_query();
+        if (isset($postData["order"]) && $postData["order"] != '') {
+            $this->db->order_by($this->order_column_order[$postData['order']['0']['column']], $postData['order']['0']['dir']);
+        } else {
+            $this->db->order_by('po.id', 'DESC');
+        }
     }
 
 
+    function make_datatables_sell($postData)
+    {
+        $this->make_query_sell($postData);
+        if ($postData["length"] != -1) {
+            $this->db->limit($postData['length'], $postData['start']);
+        }
+
+        $query = $this->db->get();
+        return $query->result();
+        // echo $this->db->last_query();
+    }
+
+    function get_filtered_data_sell($postData = false)
+    {
+        $this->make_query_sell($postData);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    function get_all_data_sell($postData = array())
+    {
+        $this->branch_id = $this->session->userdata('id');
+        $where = [
+            'po.status' => '1', 'po.payment_type !=' => '2',
+            'po.branch_id' => $this->branch_id
+        ];
+        $this->db->select('po.*,c.customer_name,v.name as vendor_name');
+        $this->db->from('order as po');
+        $this->db->join('branch as v', 'v.id = po.branch_id', 'LEFT');
+        $this->db->join('customer as c', 'c.id = po.customer_id', 'LEFT');
+        $this->db->where($where);
+        return $this->db->count_all_results();
+        // echo $this->db->last_query();
+    }
+
+    // added by Dipesh
+    public function getClosedList()
+    {
+        $this->branch_id = $this->session->userdata('id');
+        $data['select'] = ['*'];
+        $data['table'] = 'register';
+        $data['order'] = 'id DESC';
+        $data['where'] =  [
+            'branch_id' => $this->branch_id,
+            'type' => '0'
+        ];
+        return $this->selectRecords($data, true);
+    }
 }
 
 ?>

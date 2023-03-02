@@ -51,11 +51,12 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     public function AccessVendor()
     {
 
+
         if ($this->input->post()) {
             $vendor = $this->input->post('vendor_id');
             if ($vendor != 'vendor_admin') {
                 $res = $this->vendor_model->getAllVendor($this->input->post());
-                dd($res);
+                // dd($res);
                 $this->session->unset_userdata('vendor_admin');
                 $this->session->unset_userdata('super_id');
                 $this->session->unset_userdata('branch_admin');
@@ -521,26 +522,26 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
                 redirect('admin/dashboard');
                 exit;
             } else {
-                    $result_login = $this->db->query("SELECT * from super_admin where email='$email' and password='$password'");
-                    $row_login = $result_login->row_array();
+                $result_login = $this->db->query("SELECT * from super_admin where email='$email' and password='$password'");
+                $row_login = $result_login->row_array();
 
-                    if ($result_login->num_rows() > 0) {
-                        $status = $row_login['status'];
-                        $login_data = array(        
-                            'super_admin' => $row_login['id'],
-                            'id' => $row_login['id'],
-                            'name' => $row_login['company_name'],
-                            'email' => $row_login['email'],
-                            'super_admin' => TRUE
-                        );
+                if ($result_login->num_rows() > 0) {
+                    $status = $row_login['status'];
+                    $login_data = array(
+                        'super_admin' => $row_login['id'],
+                        'id' => $row_login['id'],
+                        'name' => $row_login['company_name'],
+                        'email' => $row_login['email'],
+                        'super_admin' => TRUE
+                    );
                     $this->load->library('session');
-                    $this->session->set_userdata(['validSuperAdmin'=>$login_data]);
+                    $this->session->set_userdata(['validSuperAdmin' => $login_data]);
                     $remember = $_POST['remember'];
-                    if ($remember!='') {
+                    if ($remember != '') {
 
                         delete_cookie("loginemail");
                         delete_cookie("loginpassword");
-            
+
                         $set_email = array(
                             'name' => 'loginemail',
                             'value' => $_POST['loginemail'],
@@ -559,13 +560,12 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
                         );
                         $this->input->set_cookie($set_password);
                     }
-                            
-                    redirect('super_admin/dashboard');
 
-                    }else{
-                        $this->session->set_flashdata('msg', 'Invalid email or password');
-                        redirect(base_url().'admin/login');
-                    } 
+                    redirect('super_admin/dashboard');
+                } else {
+                    $this->session->set_flashdata('msg', 'Invalid email or password');
+                    redirect(base_url() . 'admin/login');
+                }
             }
         }
     }
