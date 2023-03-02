@@ -87,6 +87,10 @@ $vendor_id = $this->session->userdata('id');
         margin-top: 0px !important;
     }
 
+    button.btn.btn-primary {
+        margin-top: 0px !important;
+    }
+
     .tgl+.tgl-btn:after,
     .tgl+.tgl-btn:before {
         position: relative;
@@ -441,13 +445,16 @@ $vendor_id = $this->session->userdata('id');
                     </li>
                     <?php } else {
                         if ($vendor_id == 0 && !isset($staff_id)) { ?>
+
                     <?php $this->load->view('admin_sidebar');
                             ?>
 
                     <?php } else {
-                            if (!isset($staff_id)) { ?>
-                    <?php $this->load->view('branch_sidebar'); ?>
+                            $register_response = $this->db->query("SELECT * FROM `register` WHERE `branch_id` = '10' GROUP BY `id` ORDER BY `id` desc LIMIT 1");
+                            $data['register_result'] = $register_response->result_object();
 
+                            if (!isset($staff_id)) { ?>
+                    <?php $this->load->view('branch_sidebar', $data); ?>
                     <?php }
                         }
                     } ?>

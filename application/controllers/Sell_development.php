@@ -2,150 +2,156 @@
 
 class Sell_development extends Vendor_Controller
 {
-    function __construct(){
+    function __construct()
+    {
 
         parent::__construct();
-        $this->load->model('Sell_development_model','this_model');
+        $this->load->model('Sell_development_model', 'this_model');
     }
 
-    public function index(){
-    	$data['register_result'] = $this->this_model->getRegister();
+    public function index()
+    {
+        $data['register_result'] = $this->this_model->getRegister();
         // dd($data['register_result']);
-       	// $data['cust_row'] =  $this->this_model->customer();
-       	// $data['category'] =  $this->this_model->getCategory();
+        // $data['cust_row'] =  $this->this_model->customer();
+        // $data['category'] =  $this->this_model->getCategory();
         // error_reporting(E_ALL);
         // ini_set('display_errors', '1');
-        $data['IsPosMostLike'] = $this->this_model->getProductVarient(['IsPosMostLike'=>'1']);
-       	$data['currency_code'] = $this->this_model->getCurrencyCode();
-       	$currency = $this->this_model->getCurrency();
+        $data['IsPosMostLike'] = $this->this_model->getProductVarient(['IsPosMostLike' => '1']);
+        $data['currency_code'] = $this->this_model->getCurrencyCode();
+        $currency = $this->this_model->getCurrency();
         $data['js'] = array('pos.js');
-       	$data['currency'] = $currency[0]->value; 
-         if (isset($_GET['parkedId']) && !empty($_GET['parkedId'])) {
-             $data['var'] = "park";
-             $parked_order_id = base64_decode($_GET['parkedId']);
-             $data['order_temp_result'] = $this->this_model->OrderTemp($parked_order_id);
-             $data['parked_order_id'] = base64_decode($_GET['parkedId']);
+        $data['currency'] = $currency[0]->value;
+        if (isset($_GET['parkedId']) && !empty($_GET['parkedId'])) {
+            $data['var'] = "park";
+            $parked_order_id = base64_decode($_GET['parkedId']);
+            $data['order_temp_result'] = $this->this_model->OrderTemp($parked_order_id);
+            $data['parked_order_id'] = base64_decode($_GET['parkedId']);
             // dd($data['order_temp_result']);die;
-         }else{  
+        } else {
             $data['order_temp_result'] = $this->this_model->OrderTempWithoutPark();
-
-        } 
+        }
         $data['order_row'] = $this->this_model->getParkedOrderList();
-        // dd($data['order_row']);die;
-        $this->load->view('checkout',$data);
+        $this->load->view('checkout', $data);
     }
 
-    public function findProductBykey(){
-        if($this->input->post()){
-        	$class = 'add_product';
-        	if(isset($_POST['from'])){
-        		$class = 'quick';
-        	}
+    public function findProductBykey()
+    {
+        if ($this->input->post()) {
+            $class = 'add_product';
+            if (isset($_POST['from'])) {
+                $class = 'quick';
+            }
             $res = $this->this_model->findProductBykey($this->input->post());
             // dd($res);die;
             $html = '<ul>';
             foreach ($res as $key => $value) {
-                $value->discount_price = number_format((float)$value->discount_price,'2','.',''); 
-            $html .= '<li class="popover-list-item '.$class.'" data-product_id='.$value->product_id.' data-pw_id='.$value->pw_id.' >
+                $value->discount_price = number_format((float)$value->discount_price, '2', '.', '');
+                $html .= '<li class="popover-list-item ' . $class . '" data-product_id=' . $value->product_id . ' data-pw_id=' . $value->pw_id . ' >
                     <div class="product-list-wrapper">
                         <div>
                             <div>
-                                <h5>'.$value->name.'</h5>
-                                <h5>'.$value->weight_no .' '.$value->weight_name.'</h5>
+                                <h5>' . $value->name . '</h5>
+                                <h5>' . $value->weight_no . ' ' . $value->weight_name . '</h5>
                             </div>
                             <div class="total-wrapper">
-                                <h5>'.$value->discount_price.'</h5>
+                                <h5>' . $value->discount_price . '</h5>
                             </div>
                         </div>
                     </div>
                 </li>';
-             }
+            }
 
-             $html .= '</ul>'; 
+            $html .= '</ul>';
 
-            echo json_encode(['res'=>$html]); 
+            echo json_encode(['res' => $html]);
         }
     }
 
 
-    public function addProducttoTempOrder(){
-        if($this->input->post()){
-            if(isset($_POST['isParked']) && !empty($_POST['isParked']) ){
+    public function addProducttoTempOrder()
+    {
+        if ($this->input->post()) {
+            if (isset($_POST['isParked']) && !empty($_POST['isParked'])) {
                 $res =  $this->this_model->addProducttoParkedOrder($this->input->post());
-            	$parked_id = $this->input->post('isParked');
-            	$result = $this->this_model->OrderTemp($parked_id);
-            }else{
+                $parked_id = $this->input->post('isParked');
+                $result = $this->this_model->OrderTemp($parked_id);
+            } else {
                 $res = $this->this_model->addProducttoTempOrder($this->input->post());
                 $result = $this->this_model->OrderTempWithoutPark();
             }
 
-        	if($res == 0){
-        		echo json_encode(['status'=>$res]);
-        	}else{
-        		// $result = $this->this_model->OrderTempWithoutPark();
-        		$html = '';
-        		$sub_total = 0;
-        		$total_discount = 0;
-        		$total_gst = 0;
-        		foreach ($result as $key => $value) {
-        			$gst_amount = ($value->product_price * $value->gst) / 100;
-        			$total_gst += $gst_amount * $value->quantity;
-        			$sub_total += $value->price;
-        			$total_discount += $value->discount_per_product;
+            if ($res == 0) {
+                echo json_encode(['status' => $res]);
+            } else {
+                // $result = $this->this_model->OrderTempWithoutPark();
+                $html = '';
+                $sub_total = 0;
+                $total_discount = 0;
+                $total_gst = 0;
+                foreach ($result as $key => $value) {
+                    $gst_amount = ($value->product_price * $value->gst) / 100;
+                    $total_gst += $gst_amount * $value->quantity;
+                    $sub_total += $value->price;
+                    $total_discount += $value->discount_per_product;
 
-        			$dis = ($value->discount != 0) ? $value->discount : "0 %";
-        			$html .= '<div class="product-list-wrapper old_list">
+                    $dis = ($value->discount != 0) ? $value->discount : "0 %";
+                    $html .= '<div class="product-list-wrapper old_list">
                                         <div class="product_name">
-                                            <h5>'.$value->product_name.'</h5>
-                                            <h5><span class="this_quantity">'.$value->quantity.'</span><i class="fa fa-times" aria-hidden="true"></i> '.$value->product_price.'</h5>
+                                            <h5>' . $value->product_name . '</h5>
+                                            <h5><span class="this_quantity">' . $value->quantity . '</span><i class="fa fa-times" aria-hidden="true"></i> ' . $value->product_price . '</h5>
                                         </div>
                                         <div class="product-quantity-detail-wrapper">
                                             <div class="product-quantity-detail">
                                                 <label for="">Qty</label>
-                                                <input type="number" name="qnt'.$value->id.'" class="qunt" data-actual_discount_price='.number_format((float)$value->product_price,2,'.','').' data-product_weight_id='.$value->product_weight_id.' data-temp_id='.$value->id.' value='.$value->quantity.' inputmode="decimal">
+                                                <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" name="qnt' . $value->id . '" class="qunt" data-actual_discount_price=' . number_format((float)$value->product_price, 2, '.', '') . ' data-product_weight_id=' . $value->product_weight_id . ' data-temp_id=' . $value->id . ' value=' . $value->quantity . ' inputmode="decimal">
                                             </div>
                                             <div class="product-quantity-detail">
                                                 <label for="">dis</label>
-                                                <input type="text" name="discount'.$value->id.'" class="disc" data-product_weight_id='.$value->product_weight_id.' data-temp_id='.$value->id.' value='.$dis.' >
-                                            </div>
+                                                <input type="number"  min="0" max="99" name="discount' . $value->id . '" class="disc" data-product_weight_id=' . $value->product_weight_id . ' data-temp_id=' . $value->id . ' value=' . number_format((float)$dis, 2, '.', '') . ' inputmode="decimal">
+                                                <span style="color: red" id="error' . $value->id . '"></span>
+                                                </div>
                                             <div class="total-wrapper">
-                                                <h5 class="sub_total">'.$value->price.'</h5>
-                                                <i class="fa fa-trash revomeRecord" aria-hidden="true" data-order_tempId='.$value->id.'></i>
+                                                <h5 class="sub_total">' . $value->price . '</h5>
+                                                <i class="fa fa-trash revomeRecord" aria-hidden="true" data-order_tempId=' . $value->id . '></i>
                                             </div>
                                         </div>   
                                     </div>';
-        		}
-        		// dd($html);die;
-        		echo json_encode([
-        			'status'=>1,'result'=>$html,'subtotal'=>$this->numberFormat($sub_total),
-        			'total_gst'=> $this->numberFormat($total_gst),
-                    'count'=>count('result')
-        		]);
-        	}
+                }
+                // dd($html);die;
+                echo json_encode([
+                    'status' => 1, 'result' => $html, 'subtotal' => $this->numberFormat($sub_total),
+                    'total_gst' => $this->numberFormat($total_gst),
+                    'count' => count('result')
+                ]);
+            }
         }
     }
 
-    public function numberFormat($number){
-    	$number = number_format((float)$number,2,'.','');
-    	return $number;
+    public function numberFormat($number)
+    {
+        $number = number_format((float)$number, 2, '.', '');
+        return $number;
     }
 
-    public function searchCustomber(){
-        if($this->input->post()){
+    public function searchCustomber()
+    {
+        if ($this->input->post()) {
             $res = $this->this_model->searchCustomber($this->input->post());
             // print_r($res);die;
             $html =  '';
+
             foreach ($res as $key => $value) {
                 $html .= '<ul>
-                           <li class="popover-list-item select_customer" data-customer_id = '.$value->id.'>
+                           <li class="popover-list-item select_customer" data-customer_id = ' . $value->id . '>
                               <a href="#">
                                  <div class="customer-wrap">
                                     <div class="profile-avatar">
-                                       '.ucfirst($value->customer_name[0]).'
+                                       ' . ucfirst($value->customer_name[0]) . '
                                     </div>
                                     <div class="list-items">
-                                       <h4>'.$value->customer_name.'</h4>
-                                       <p>'.$value->customercode.'</p>
+                                       <h4>' . $value->customer_name . '</h4>
+                                       <p>' . $value->customercode . '</p>
                                     </div>
                                  </div>
                               </a>
@@ -155,26 +161,27 @@ class Sell_development extends Vendor_Controller
             $html .= '<a href="#" type="button" class="btn" id="btn_add_cust" data-toggle="modal" data-target="#add_cust">
                            <p><i class="fa fa-plus-circle" aria-hidden="true"></i> Add "<span></span>" as a customer</p>
                         </a>';
-            echo json_encode(['result'=>$html]);
-        }   
+            echo json_encode(['result' => $html]);
+        }
     }
 
-    public function searchforAdd(){
-         if($this->input->post()){
+    public function searchforAdd()
+    {
+        if ($this->input->post()) {
             $res = $this->this_model->searchCustomber($this->input->post());
             // print_r($res);die;
             $html =  '';
             foreach ($res as $key => $value) {
                 $html .= '<ul>
-                           <li class="popover-list-item select_customer" data-customer_id = '.$value->id.'>
+                           <li class="popover-list-item select_customer" data-customer_id = ' . $value->id . '>
                               <a href="#">
                                  <div class="customer-wrap">
                                     <div class="profile-avatar">
-                                       '.$value->customer_name[0].'
+                                       ' . $value->customer_name[0] . '
                                     </div>
                                     <div class="list-items">
-                                       <h4>'.$value->customer_name.'</h4>
-                                       <p>'.$value->customercode.'</p>
+                                       <h4>' . $value->customer_name . '</h4>
+                                       <p>' . $value->customercode . '</p>
                                     </div>
                                  </div>
                                  <div class="remove-close" style="display:none">
@@ -184,189 +191,200 @@ class Sell_development extends Vendor_Controller
                            </li>
                         </ul>';
             }
-            echo json_encode(['result'=>$html]);
-        }   
+            echo json_encode(['result' => $html]);
+        }
     }
 
 
-    public function removeRecord(){
-    	if($this->input->post()){
-    		if($this->input->post('isParked') > 0){
-                $res = $this->this_model->removeParked($this->input->post());  
-            }else{
-    		   $res = $this->this_model->remove($this->input->post());
+    public function removeRecord()
+    {
+        if ($this->input->post()) {
+            if ($this->input->post('isParked') > 0) {
+                $res = $this->this_model->removeParked($this->input->post());
+            } else {
+                $res = $this->this_model->remove($this->input->post());
             }
-    		if($res){
-    			$status = 1;
-    			$result = $this->this_model->OrderTempWithoutPark();
-    			$sub_total = 0;
-        		$total_discount = 0;
-    			$total_gst = 0;
-    			foreach ($result as $key => $value) {
-    				$gst_amount = ($value->product_price * $value->gst) / 100;
-        			$total_gst += $gst_amount * $value->quantity;
-        			
-    				$sub_total += $value->price;
-    				$total_discount += $value->discount_per_product;
-    			}
-    		}else{
-    			$status = 0;
-    		}
+            if ($res) {
+                $status = 1;
+                $result = $this->this_model->OrderTempWithoutPark();
+                $sub_total = 0;
+                $total_discount = 0;
+                $total_gst = 0;
+                foreach ($result as $key => $value) {
+                    $gst_amount = ($value->product_price * $value->gst) / 100;
+                    $total_gst += $gst_amount * $value->quantity;
 
-    		echo json_encode([
-    				'status'=>$status,'subtotal'=>$this->numberFormat($sub_total),
-        			'total_discount'=>$this->numberFormat($total_discount),
-        			'total_gst'=>$this->numberFormat($total_gst),
-                    'count' =>count($result) 
-        		]);
-    	}
+                    $sub_total += $value->price;
+                    $total_discount += $value->discount_per_product;
+                }
+            } else {
+                $status = 0;
+            }
+
+            echo json_encode([
+                'status' => $status, 'subtotal' => $this->numberFormat($sub_total),
+                'total_discount' => $this->numberFormat($total_discount),
+                'total_gst' => $this->numberFormat($total_gst),
+                'count' => count($result)
+            ]);
+        }
     }
 
 
-    public function add_quantity(){
-    	if($this->input->post()){
-    		$variant_id = $this->input->post('product_weight_id');
-    		$demand_quantity = $this->input->post('qunt');
-    		$avail_quantity = $this->this_model->checkProductVarient($variant_id);
-    		$isParked = $this->input->post('isParked');
-    		$temp_id = $this->input->post('temp_id');
-    		if($isParked > 0){
-    			$price =  $avail_quantity[0]->price;
-    			$this->this_model->updateParkedQuantity($this->input->post(),$price);
-    			$result = $this->this_model->OrderTemp($isParked);
-    			// $status = '1';
-    		}else{
-    		// if($demand_quantity > $avail_quantity[0]->quantity){
-    		// 	$status = '0';
-    		// }else{
-    			$price =  $avail_quantity[0]->price;
-    			$this->this_model->updateTempQuantity($this->input->post(),$price);
-    			$status = '1';
-    			$result = $this->this_model->OrderTempWithoutPark();
-    		// }
-    		}
+    public function add_quantity()
+    {
+        if ($this->input->post()) {
+            $variant_id = $this->input->post('product_weight_id');
+            $demand_quantity = $this->input->post('qunt');
+            $avail_quantity = $this->this_model->checkProductVarient($variant_id);
+            $isParked = $this->input->post('isParked');
+            $temp_id = $this->input->post('temp_id');
+            if ($isParked > 0) {
+                $price =  $avail_quantity[0]->price;
+                $this->this_model->updateParkedQuantity($this->input->post(), $price);
+                $result = $this->this_model->OrderTemp($isParked);
+                // $status = '1';
+            } else {
+                // if($demand_quantity > $avail_quantity[0]->quantity){
+                // 	$status = '0';
+                // }else{
+                $price =  $avail_quantity[0]->price;
+                $this->this_model->updateTempQuantity($this->input->post(), $price);
+                $status = '1';
+                $result = $this->this_model->OrderTempWithoutPark();
+                // }
+            }
 
-    		$sub_total = 0;
-    		$total_gst = 0;
-    		foreach ($result as $key => $value) {
-    			$r = $this->this_model->checkProductVarient($value->product_weight_id);
-    			$gst_amount = ($value->product_price * $r[0]->gst) / 100;
-    			$total_gst += $gst_amount * $value->quantity;
-    			$sub_total += $value->price;
-    				// $total_discount += $value->discount_per_product;
-    		}
-    		if($isParked > 0){
-    			$resultIdWish = $this->this_model->getUpdatedParkedRow($temp_id);
-    		}else{
-    			$resultIdWish = $this->this_model->OrderTempWithoutPark($temp_id);
-    		}
-    		
-    		echo json_encode([
-    				'status'=>$status,'subtotal'=>$this->numberFormat($sub_total),
-        			'total_gst'=>$this->numberFormat($total_gst),
-        			'exist_quantity'=>$resultIdWish[0]->quantity, 
-        			'exist_price'=>$resultIdWish[0]->price, 
-        		]);
-    	}
+            $sub_total = 0;
+            $total_gst = 0;
+            foreach ($result as $key => $value) {
+                $r = $this->this_model->checkProductVarient($value->product_weight_id);
+                $gst_amount = ($value->product_price * $r[0]->gst) / 100;
+                $total_gst += $gst_amount * $value->quantity;
+                $sub_total += $value->price;
+                // $total_discount += $value->discount_per_product;
+            }
+            if ($isParked > 0) {
+                $resultIdWish = $this->this_model->getUpdatedParkedRow($temp_id);
+            } else {
+                $resultIdWish = $this->this_model->OrderTempWithoutPark($temp_id);
+            }
+
+            echo json_encode([
+                'status' => $status, 'subtotal' => $this->numberFormat($sub_total),
+                'total_gst' => $this->numberFormat($total_gst),
+                'exist_quantity' => $resultIdWish[0]->quantity,
+                'exist_price' => $resultIdWish[0]->price,
+            ]);
+        }
     }
 
-    public function update_quantity(){
-    	if($this->input->post()){
-    		$res = $this->this_model->updateDiscount($this->input->post());
-    		echo json_encode(['status'=>'1','updated_price'=>$res]);
-    	}
+    public function update_quantity()
+    {
+        if ($this->input->post()) {
+            $res = $this->this_model->updateDiscount($this->input->post());
+            echo json_encode(['status' => '1', 'updated_price' => $res]);
+        }
     }
 
-    public function quickList(){
-        if($this->input->post()){
-           $res = $this->this_model->getProductVarient($this->input->post());
-              $html .= '<div class="category-list product_quick_list" data-product_weight_id='.$res[0]->id.'>
+    public function quickList()
+    {
+        if ($this->input->post()) {
+            $res = $this->this_model->getProductVarient($this->input->post());
+            $html .= '<div class="category-list product_quick_list" data-product_weight_id=' . $res[0]->id . '>
               <a href="javascript:">
                   <div>
-                    <h4>'.$res[0]->name.'</h4>
-                    <p>'.$res[0]->weight_no.' '.$res[0]->weight_name.'</p>
+                    <h4>' . $res[0]->name . '</h4>
+                    <p>' . $res[0]->weight_no . ' ' . $res[0]->weight_name . '</p>
                   </div>
               </a></div>';
-            echo json_encode(['list'=>$html]);
+            echo json_encode(['list' => $html]);
         }
-
     }
 
-    public function MakeQuickList(){
-        if($this->input->post()){
+    public function MakeQuickList()
+    {
+        if ($this->input->post()) {
             $this->this_model->MakeQuickList($this->input->post('varientList'));
         }
     }
 
-    public function RemoveQuickListItem(){
-        if($this->input->post()){
+    public function RemoveQuickListItem()
+    {
+        if ($this->input->post()) {
             $result = $this->this_model->RemoveQuickListItem($this->input->post());
-            if($result){
-                echo json_encode(['status'=>'1']);
+            if ($result) {
+                echo json_encode(['status' => '1']);
             }
         }
     }
 
 
-    public function history(){
+    public function history()
+    {
+        $data['register_result'] = $this->this_model->getRegister(); //changed Dipesh
         $data['order_row'] = $this->this_model->orderHistory();
         $data['js'] = array('order_history.js');
-        $this->load->view('sales_history',$data);
+        $this->load->view('sales_history', $data);
     }
 
-    public function getSalesHistory(){
-    	if($this->input->post()){
-             echo getSalesHistory($_POST);
+    public function getSalesHistory()
+    {
+        if ($this->input->post()) {
+            echo getSalesHistory($_POST);
         }
     }
 
-    public function viewOrderDetails(){
-        if($this->input->post()){
+    public function viewOrderDetails()
+    {
+        if ($this->input->post()) {
             $re = $this->this_model->viewOrderDetails($this->input->post());
             $o_detail = '';
-           
+
             foreach ($re['order_details'] as $key => $v) {
                 $o_detail .= '<tr>
-                     <td>'.$v->name.'</td>
-                     <td>'.$v->quantity.'</td>
-                     <td>'.$v->discount.'</td>
-                     <td>'.$v->calculation_price.'</td>
+                     <td>' . $v->name . '</td>
+                     <td>' . $v->quantity . '</td>
+                     <td>' . $v->discount . '</td>
+                     <td>' . $v->calculation_price . '</td>
                   </tr>';
             }
             $o_info = '<li>
                      <div>
                         <h6>Subtotal </h6>
-                        <h6>'.$re['orderInfo'][0]->total.'</h6>
+                        <h6>' . $re['orderInfo'][0]->total . '</h6>
                      </div>
                   </li>
                   <li>
                      <div>
                         <h6>Discount(%)</h6>
-                        <h6>'.$re['orderInfo'][0]->order_discount.'</h6>
+                        <h6>' . $re['orderInfo'][0]->order_discount . '</h6>
                      </div>
                   </li>
                   <li>
                      <div>
                         <h6>Discount Price </h6>
-                        <h6>'.$re['orderInfo'][0]->total_saving.'</h6>
+                        <h6>' . $re['orderInfo'][0]->total_saving . '</h6>
                      </div>
                   </li>
                   <li>
                      <div>
                         <h6>Total </h6>
-                        <h6>'.$re['orderInfo'][0]->payable_amount.'</h6>
+                        <h6>' . $re['orderInfo'][0]->payable_amount . '</h6>
                      </div>
                   </li>';
-            $date=' <h4></h4><h5> <span>Date : </span> '.date('d -m- Y',$re['orderInfo'][0]->dt_added).' </h5>';
+            $date = ' <h4></h4><h5> <span>Date : </span> ' . date('d -m- Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
 
-            echo json_encode(['o_detail'=>$o_detail,'o_info'=>$o_info,'date'=>$date]);
+            echo json_encode(['o_detail' => $o_detail, 'o_info' => $o_info, 'date' => $date]);
         }
     }
 
 
-    public function  removeSaleRecord() {
-        if($this->input->post()){
-            $this->this_model->removeSaleRecord($this->input->post());
+    public function  removeSaleRecord()
+    {
+        if ($this->input->post()) {
+            $res = $this->this_model->removeSaleRecord($this->input->post());
+            echo 1;
         }
     }
 
@@ -388,13 +406,14 @@ class Sell_development extends Vendor_Controller
     public function parked_sell_list()
     {
         $data['order_row'] = $this->this_model->getParkedOrderList();
-        $this->load->view('parked_sell_list',$data);
+        $this->load->view('parked_sell_list', $data);
     }
 
     public function update_temp_order()
     {
         $return = $this->this_model->update_temp_order($_POST);
-    	print_r($return);exit;
+        print_r($return);
+        exit;
     }
     public function update_same_product()
     {
@@ -422,16 +441,19 @@ class Sell_development extends Vendor_Controller
         exit();
     }
 
-    public function update_parked_order(){
+    public function update_parked_order()
+    {
         $this->this_model->update_parked_order($this->input->post());
     }
-    public function update_discount_parked_order(){
+    public function update_discount_parked_order()
+    {
         $this->this_model->update_discount_parked_order($this->input->post());
     }
 
     ##  Sell : Update Order Temp ##
-    public function update_order_temp(){
-        if($this->input->get()){
+    public function update_order_temp()
+    {
+        if ($this->input->get()) {
             $temp_qnt = $this->this_model->update_order_temp($this->input->get());
             echo json_encode($temp_qnt);
         }
@@ -591,7 +613,6 @@ class Sell_development extends Vendor_Controller
 
             $this->session->set_flashdata("msg", "Park created successfully.");
             redirect(base_url() . 'index.php/sell/index');
-
         } else {
 
             $user_id = $this->session->userdata('id');
@@ -739,8 +760,8 @@ class Sell_development extends Vendor_Controller
                         $example = explode('qnt', $key);
                         $product_temp_id = $example['1'];
 
-//                        //Temp Disc
-//                        $example = explode('discount', $key);
+                        //                        //Temp Disc
+                        //                        $example = explode('discount', $key);
 
                         if ($product_temp_id != '') {
 
@@ -797,7 +818,6 @@ class Sell_development extends Vendor_Controller
         $ids = $_REQUEST['ids'];
         $this->this_model->single_delete_sales_history($ids);
         exit;
-
     }
     public function single_delete_sell_sales_history()
     {
@@ -805,7 +825,6 @@ class Sell_development extends Vendor_Controller
         $ids = $_REQUEST['ids'];
         $this->this_model->single_delete_sell_sales_history($ids);
         exit;
-
     }
 
     ##Search Product##
@@ -836,7 +855,6 @@ class Sell_development extends Vendor_Controller
                 $i++;
             }
             echo '</div>';
-
         } else {
             echo '<p align="center"><b>There is no product</b></p>';
         }
@@ -886,7 +904,6 @@ class Sell_development extends Vendor_Controller
                                                 WHERE op.retail_price_tax != '0' AND op.outlet_id IN ($implode) AND (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id = '$parent_user_id') AND pt.name != '' GROUP BY p.name, pt.id");
                 $row_search_type = $res_type->result();
             }
-
         } else {
 
             //For All Outlet
@@ -953,7 +970,7 @@ class Sell_development extends Vendor_Controller
 
         // $this->db->query('UPDATE product_weight SET `quantity` = quantity+temp_quantity,temp_quantity = "0"');
         // $this->db->query('UPDATE product SET `temp_quantity` = `quantity`');
-        $this->db->query("DELETE FROM order_temp WHERE vendor_id = '$vendor_id' AND park = '0' ");
+        $this->db->query("DELETE FROM order_temp WHERE branch_id = '$vendor_id' AND park = '0' ");
 
         return;
         exit();
@@ -970,7 +987,6 @@ class Sell_development extends Vendor_Controller
         echo '1';
 
         exit();
-
     }
 
     ##Send Mail In Print##
@@ -990,7 +1006,7 @@ class Sell_development extends Vendor_Controller
 
         $this->load->library('email');
 
-        $config = Array(
+        $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_port' => 465,
@@ -1131,134 +1147,127 @@ class Sell_development extends Vendor_Controller
             foreach ($result as $subcategory) { ?>
 
                 <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd" onclick="return select_product_data('<?php echo $subcategory->id; ?>','<?php echo $subcategory->name; ?>' )">
-                <div class="subcatg_list text-center">
-                <?php
-//                        echo '<input type="hidden" id="cat_'.$subcategory->id.'" name="cat_id" value="'.$subcategory->id.'" >';
+                    <div class="subcatg_list text-center">
+                    <?php
+                    //                        echo '<input type="hidden" id="cat_'.$subcategory->id.'" name="cat_id" value="'.$subcategory->id.'" >';
 
-                echo '<a href="javascript:;"><span> ' . $subcategory->name . ' </span></a>';
+                    echo '<a href="javascript:;"><span> ' . $subcategory->name . ' </span></a>';
+                    echo '</div>';
+                    echo '</div>';
+                    $i++;
+                }
                 echo '</div>';
-                echo '</div>';
-                $i++;
+            } else {
+                echo '<p align="center"><b>There is no subcategory</b></p>';
             }
-            echo '</div>';
-
-        } else {
-            echo '<p align="center"><b>There is no subcategory</b></p>';
+            exit();
         }
-        exit();
-    }
 
-public function select_product_data()
-{
+        public function select_product_data()
+        {
 
-    $type_id = $_GET['type_id'];
+            $type_id = $_GET['type_id'];
 
-    $vendor_id = $this->session->userdata('id');
-
-    $query_product = $this->db->query("SELECT * FROM product WHERE status != '9'  AND vendor_id = '$vendor_id' AND subcategory_id ='$type_id' ORDER BY id DESC ");
-    $result = $query_product->result();
-
-    $i = '1';
-
-if (count($result) > 0)
-{
-
-    echo '<div class="sel_subcatagory_itm" style="display: block;">';
-foreach ($result as $product)
-{ ?>
-    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd"
-         onclick="return select_product_variant('<?php echo $product->id; ?>','<?php echo $product->name; ?>')">
-    <div class="subcatg_list text-center">
-    <?php
-    echo '<a href="javascript:;"><span> ' . $product->name . ' </span></a>';
-    echo '</div>';
-    echo '</div>';
-    $i++;
-}
-    echo '</div>';
-
-}
-else {
-    echo '<p align="center"><b>There is no product</b></p>';
-}
-    exit();
-}
-
-    public function select_product_variant()
-    {
-
-
-        $type_id = $_GET['type_id'];
-
-        $vendor_id = $this->session->userdata('id');
-
-        $query_variant = $this->db->query("SELECT pw.id, pw.weight_id,pw.weight_no,w.name FROM product_weight as pw LEFT JOIN weight as w ON pw.weight_id = w.id  WHERE w.status != '9' AND  pw.status != '9'  AND pw.vendor_id = '$vendor_id' AND product_id ='$type_id' ORDER BY pw.id DESC ");
-        $result = $query_variant->result();
-
-        $i = '1';
-
-        if (count($result) > 0) {
-
-            echo '<div class="sell_four_box" style="display: block;">';
-            foreach ($result as $product) {
-                ?>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd"
-                 onclick="return select_product('<?php echo $product->id; ?>','<?php echo $product->name; ?>')">
-                <?php
-                echo '<div class="four_type text-center">';
-                echo '<a href="javascript:;"><span> ', $product->weight_no . $product->name . ' </span></a>';
-                echo '</div>';
-                echo '</div>';
-                $i++;
-            }
-            echo '</div>';
-
-        } else {
-            echo '<p align="center"><b>There is no variant</b></p>';
-        }
-        exit();
-    }
-
-    public function discard_parked_order()
-    {
-        $this->this_model->discard_parked_order($this->input->post());
-
-    }
-
-    public function isAvailable(){
-        if($this->input->post()){
             $vendor_id = $this->session->userdata('id');
-            $check = $this->input->post();
-            $this->db->select('*');
-            if(isset($check['email'])){
-                $field = $this->input->post('email');
-                $f = 'email';
-            }else{
-                $field = $this->input->post('mobile');
-                $f = 'mobile';
-            }
-            $this->db->where($f,$field);
-            $this->db->where('vendor_id',$vendor_id);
-            $query = $this->db->get('customer')->result();
-            // echo $this->db->last_query();
-            if(count($query) == 0){
-                echo "true";
-            }else{
-                echo "false";
-            }
-        }
-    }
 
-    public function customer_add(){
-        if($this->input->post()){
-           $res =  $this->this_model->addCustomer($this->input->post());
-            if($res){
-                $this->utility->setFlashMessage('success','Customer added successfully');
-            }else{
-                $this->utility->setFlashMessage('danger','Somthing Went Wrong');
-            }
-            redirect(base_url().'sell_development');
-        }
-    }
+            $query_product = $this->db->query("SELECT * FROM product WHERE status != '9'  AND vendor_id = '$vendor_id' AND subcategory_id ='$type_id' ORDER BY id DESC ");
+            $result = $query_product->result();
 
-}
+            $i = '1';
+
+            if (count($result) > 0) {
+
+                echo '<div class="sel_subcatagory_itm" style="display: block;">';
+                foreach ($result as $product) { ?>
+                        <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd" onclick="return select_product_variant('<?php echo $product->id; ?>','<?php echo $product->name; ?>')">
+                            <div class="subcatg_list text-center">
+                            <?php
+                            echo '<a href="javascript:;"><span> ' . $product->name . ' </span></a>';
+                            echo '</div>';
+                            echo '</div>';
+                            $i++;
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<p align="center"><b>There is no product</b></p>';
+                    }
+                    exit();
+                }
+
+                public function select_product_variant()
+                {
+
+
+                    $type_id = $_GET['type_id'];
+
+                    $vendor_id = $this->session->userdata('id');
+
+                    $query_variant = $this->db->query("SELECT pw.id, pw.weight_id,pw.weight_no,w.name FROM product_weight as pw LEFT JOIN weight as w ON pw.weight_id = w.id  WHERE w.status != '9' AND  pw.status != '9'  AND pw.vendor_id = '$vendor_id' AND product_id ='$type_id' ORDER BY pw.id DESC ");
+                    $result = $query_variant->result();
+
+                    $i = '1';
+
+                    if (count($result) > 0) {
+
+                        echo '<div class="sell_four_box" style="display: block;">';
+                        foreach ($result as $product) {
+                            ?>
+                                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd" onclick="return select_product('<?php echo $product->id; ?>','<?php echo $product->name; ?>')">
+                    <?php
+                            echo '<div class="four_type text-center">';
+                            echo '<a href="javascript:;"><span> ', $product->weight_no . $product->name . ' </span></a>';
+                            echo '</div>';
+                            echo '</div>';
+                            $i++;
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<p align="center"><b>There is no variant</b></p>';
+                    }
+                    exit();
+                }
+
+                public function discard_parked_order()
+                {
+                    $this->this_model->discard_parked_order($this->input->post());
+                }
+
+                public function isAvailable()
+                {
+                    if ($this->input->post()) {
+                        $vendor_id = $this->session->userdata('id');
+                        $check = $this->input->post();
+                        $this->db->select('*');
+                        if (isset($check['email'])) {
+                            $field = $this->input->post('email');
+                            $f = 'email';
+                        } else {
+                            $field = $this->input->post('mobile');
+                            $f = 'mobile';
+                        }
+                        $this->db->where($f, $field);
+                        $this->db->where('branch_id', $vendor_id);
+                        $query = $this->db->get('customer')->result();
+                        // echo $this->db->last_query();
+
+                        if (count($query) == 0) {
+                            echo "true";
+                        } else {
+                            echo "false";
+                        }
+                    }
+                }
+
+                public function customer_add()
+                {
+                    if ($this->input->post()) {
+                        $res =  $this->this_model->addCustomer($this->input->post());
+                        if ($res) {
+                            $this->utility->setFlashMessage('success', 'Customer added successfully');
+                        } else {
+                            $this->utility->setFlashMessage('danger', 'Somthing Went Wrong');
+                        }
+                        redirect(base_url() . 'sell_development');
+                    }
+                }
+            }

@@ -51,6 +51,7 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     public function AccessVendor()
     {
 
+
         if ($this->input->post()) {
             $vendor = $this->input->post('vendor_id');
             if ($vendor != 'vendor_admin') {
@@ -126,9 +127,9 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     }
 
     public function login()
-    {   
-        if(base_url() == 'https://admin.launchestore.com/'){
-            redirect(base_url().'super_admin/login');
+    {
+        if (base_url() == 'https://admin.launchestore.com/') {
+            redirect(base_url() . 'super_admin/login');
         }
         if (isset($_SESSION['super_admin']) || isset($_SESSION['vendor_admin'])) {
             redirect(base_url() . 'admin/dashboard');
@@ -521,9 +522,9 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
 
                 redirect('admin/dashboard');
                 exit;
-            }else{
+            } else {
                 $this->session->set_flashdata('msg', 'Invalid email or password');
-                redirect(base_url().'admin/login');
+                redirect(base_url() . 'admin/login');
             }
         }
     }

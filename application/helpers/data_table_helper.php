@@ -867,7 +867,7 @@ function getSalesHistory($TableData)
     $sub_array[] = '<div><div><h5>' . $sno++ . '</h5></div></div>';
     $sub_array[] = '<div>
                      <div>
-                        <h5>' . date('d F Y H:m:ia', $row->dt_added) . '</h5>
+                        <h5>' . date('d F Y h:i:s A', $row->dt_added) . '</h5>
                      </div>
                   </div>';
     $sub_array[] = '<ul>

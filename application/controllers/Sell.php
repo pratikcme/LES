@@ -2,30 +2,33 @@
 
 class Sell extends Vendor_Controller
 {
-    function __construct(){
+    function __construct()
+    {
 
         parent::__construct();
         $this->load->model('sell_model', 'this_model');
+        $this->load->model('Sell_development_model', 'sell_dev_model');
     }
 
-    public function index(){
-    	error_reporting(0);
-    	$data['register_result'] = $this->this_model->getRegister();
-       	$data['cust_row'] =  $this->this_model->customer();
-       	$data['category'] =  $this->this_model->getCategory();
-       	$currency = $this->this_model->getCurrency();
-       	$data['currency'] = $currency[0]->value; 
-   if (isset($_GET['parkedId']) && !empty($_GET['parkedId'])) {
-   
-       $data['var'] = "park";
-       $parked_order_id = base64_decode($_GET['parkedId']);
-   		$data['order_temp_result'] = $this->this_model->OrderTemp($parked_order_id);
-       $data['parked_order_id'] = base64_decode($_GET['parkedId']);
-   	}else{  
-   
-   	$data['order_temp_result'] = $this->this_model->OrderTempWithoutPark($parked_order_id);
-   } 
-        $this->load->view('checkout_old',$data);
+    public function index()
+    {
+        error_reporting(0);
+        $data['register_result'] = $this->this_model->getRegister();
+        $data['cust_row'] =  $this->this_model->customer();
+        $data['category'] =  $this->this_model->getCategory();
+        $currency = $this->this_model->getCurrency();
+        $data['currency'] = $currency[0]->value;
+        if (isset($_GET['parkedId']) && !empty($_GET['parkedId'])) {
+
+            $data['var'] = "park";
+            $parked_order_id = base64_decode($_GET['parkedId']);
+            $data['order_temp_result'] = $this->this_model->OrderTemp($parked_order_id);
+            $data['parked_order_id'] = base64_decode($_GET['parkedId']);
+        } else {
+
+            $data['order_temp_result'] = $this->this_model->OrderTempWithoutPark($parked_order_id);
+        }
+        $this->load->view('checkout_old', $data);
     }
 
     public function history()
@@ -34,7 +37,7 @@ class Sell extends Vendor_Controller
         $data['order_row'] = $this->this_model->orderHistory();
         // echo '<pre>';
         // print_r($data['order_row']);
-        $this->load->view('sales_history',$data);
+        $this->load->view('sales_history', $data);
     }
 
     public function print_sell()
@@ -54,13 +57,15 @@ class Sell extends Vendor_Controller
 
     public function parked_sell_list()
     {
-        $this->load->view('parked_sell_list');
+        $data['register_result'] = $this->sell_dev_model->getRegister();
+        $this->load->view('parked_sell_list', $data); //change Dipesh
     }
 
     public function update_temp_order()
     {
         $return = $this->this_model->update_temp_order($_POST);
-    	print_r($return);exit;
+        print_r($return);
+        exit;
     }
     public function update_same_product()
     {
@@ -88,16 +93,19 @@ class Sell extends Vendor_Controller
         exit();
     }
 
-    public function update_parked_order(){
+    public function update_parked_order()
+    {
         $this->this_model->update_parked_order($this->input->post());
     }
-    public function update_discount_parked_order(){
+    public function update_discount_parked_order()
+    {
         $this->this_model->update_discount_parked_order($this->input->post());
     }
 
     ##  Sell : Update Order Temp ##
-    public function update_order_temp(){
-        if($this->input->get()){
+    public function update_order_temp()
+    {
+        if ($this->input->get()) {
             $temp_qnt = $this->this_model->update_order_temp($this->input->get());
             echo json_encode($temp_qnt);
         }
@@ -257,7 +265,6 @@ class Sell extends Vendor_Controller
 
             $this->session->set_flashdata("msg", "Park created successfully.");
             redirect(base_url() . 'index.php/sell/index');
-
         } else {
 
             $user_id = $this->session->userdata('id');
@@ -405,8 +412,8 @@ class Sell extends Vendor_Controller
                         $example = explode('qnt', $key);
                         $product_temp_id = $example['1'];
 
-//                        //Temp Disc
-//                        $example = explode('discount', $key);
+                        //                        //Temp Disc
+                        //                        $example = explode('discount', $key);
 
                         if ($product_temp_id != '') {
 
@@ -463,7 +470,6 @@ class Sell extends Vendor_Controller
         $ids = $_REQUEST['ids'];
         $this->this_model->single_delete_sales_history($ids);
         exit;
-
     }
     public function single_delete_sell_sales_history()
     {
@@ -471,7 +477,6 @@ class Sell extends Vendor_Controller
         $ids = $_REQUEST['ids'];
         $this->this_model->single_delete_sell_sales_history($ids);
         exit;
-
     }
 
     ##Search Product##
@@ -502,7 +507,6 @@ class Sell extends Vendor_Controller
                 $i++;
             }
             echo '</div>';
-
         } else {
             echo '<p align="center"><b>There is no product</b></p>';
         }
@@ -552,7 +556,6 @@ class Sell extends Vendor_Controller
                                                 WHERE op.retail_price_tax != '0' AND op.outlet_id IN ($implode) AND (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id = '$parent_user_id') AND pt.name != '' GROUP BY p.name, pt.id");
                 $row_search_type = $res_type->result();
             }
-
         } else {
 
             //For All Outlet
@@ -636,7 +639,6 @@ class Sell extends Vendor_Controller
         echo '1';
 
         exit();
-
     }
 
     ##Send Mail In Print##
@@ -656,7 +658,7 @@ class Sell extends Vendor_Controller
 
         $this->load->library('email');
 
-        $config = Array(
+        $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_port' => 465,
@@ -797,98 +799,88 @@ class Sell extends Vendor_Controller
             foreach ($result as $subcategory) { ?>
 
                 <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd" onclick="return select_product_data('<?php echo $subcategory->id; ?>','<?php echo $subcategory->name; ?>' )">
-                <div class="subcatg_list text-center">
-                <?php
-//                        echo '<input type="hidden" id="cat_'.$subcategory->id.'" name="cat_id" value="'.$subcategory->id.'" >';
+                    <div class="subcatg_list text-center">
+                    <?php
+                    //                        echo '<input type="hidden" id="cat_'.$subcategory->id.'" name="cat_id" value="'.$subcategory->id.'" >';
 
-                echo '<a href="javascript:;"><span> ' . $subcategory->name . ' </span></a>';
+                    echo '<a href="javascript:;"><span> ' . $subcategory->name . ' </span></a>';
+                    echo '</div>';
+                    echo '</div>';
+                    $i++;
+                }
                 echo '</div>';
-                echo '</div>';
-                $i++;
+            } else {
+                echo '<p align="center"><b>There is no subcategory</b></p>';
             }
-            echo '</div>';
-
-        } else {
-            echo '<p align="center"><b>There is no subcategory</b></p>';
+            exit();
         }
-        exit();
-    }
 
-public function select_product_data()
-{
+        public function select_product_data()
+        {
 
-    $type_id = $_GET['type_id'];
+            $type_id = $_GET['type_id'];
 
-    $vendor_id = $this->session->userdata('id');
+            $vendor_id = $this->session->userdata('id');
 
-    $query_product = $this->db->query("SELECT * FROM product WHERE status != '9'  AND vendor_id = '$vendor_id' AND subcategory_id ='$type_id' ORDER BY id DESC ");
-    $result = $query_product->result();
+            $query_product = $this->db->query("SELECT * FROM product WHERE status != '9'  AND vendor_id = '$vendor_id' AND subcategory_id ='$type_id' ORDER BY id DESC ");
+            $result = $query_product->result();
 
-    $i = '1';
+            $i = '1';
 
-if (count($result) > 0)
-{
+            if (count($result) > 0) {
 
-    echo '<div class="sel_subcatagory_itm" style="display: block;">';
-foreach ($result as $product)
-{ ?>
-    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd"
-         onclick="return select_product_variant('<?php echo $product->id; ?>','<?php echo $product->name; ?>')">
-    <div class="subcatg_list text-center">
-    <?php
-    echo '<a href="javascript:;"><span> ' . $product->name . ' </span></a>';
-    echo '</div>';
-    echo '</div>';
-    $i++;
-}
-    echo '</div>';
+                echo '<div class="sel_subcatagory_itm" style="display: block;">';
+                foreach ($result as $product) { ?>
+                        <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd" onclick="return select_product_variant('<?php echo $product->id; ?>','<?php echo $product->name; ?>')">
+                            <div class="subcatg_list text-center">
+                            <?php
+                            echo '<a href="javascript:;"><span> ' . $product->name . ' </span></a>';
+                            echo '</div>';
+                            echo '</div>';
+                            $i++;
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<p align="center"><b>There is no product</b></p>';
+                    }
+                    exit();
+                }
 
-}
-else {
-    echo '<p align="center"><b>There is no product</b></p>';
-}
-    exit();
-}
-
-    public function select_product_variant()
-    {
+                public function select_product_variant()
+                {
 
 
-        $type_id = $_GET['type_id'];
+                    $type_id = $_GET['type_id'];
 
-        $vendor_id = $this->session->userdata('id');
+                    $vendor_id = $this->session->userdata('id');
 
-        $query_variant = $this->db->query("SELECT pw.id, pw.weight_id,pw.weight_no,w.name FROM product_weight as pw LEFT JOIN weight as w ON pw.weight_id = w.id  WHERE w.status != '9' AND  pw.status != '9'  AND pw.vendor_id = '$vendor_id' AND product_id ='$type_id' ORDER BY pw.id DESC ");
-        $result = $query_variant->result();
+                    $query_variant = $this->db->query("SELECT pw.id, pw.weight_id,pw.weight_no,w.name FROM product_weight as pw LEFT JOIN weight as w ON pw.weight_id = w.id  WHERE w.status != '9' AND  pw.status != '9'  AND pw.vendor_id = '$vendor_id' AND product_id ='$type_id' ORDER BY pw.id DESC ");
+                    $result = $query_variant->result();
 
-        $i = '1';
+                    $i = '1';
 
-        if (count($result) > 0) {
+                    if (count($result) > 0) {
 
-            echo '<div class="sell_four_box" style="display: block;">';
-            foreach ($result as $product) {
-                ?>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd"
-                 onclick="return select_product('<?php echo $product->id; ?>','<?php echo $product->name; ?>')">
-                <?php
-                echo '<div class="four_type text-center">';
-                echo '<a href="javascript:;"><span> ', $product->weight_no . $product->name . ' </span></a>';
-                echo '</div>';
-                echo '</div>';
-                $i++;
+                        echo '<div class="sell_four_box" style="display: block;">';
+                        foreach ($result as $product) {
+                            ?>
+                                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd" onclick="return select_product('<?php echo $product->id; ?>','<?php echo $product->name; ?>')">
+                    <?php
+                            echo '<div class="four_type text-center">';
+                            echo '<a href="javascript:;"><span> ', $product->weight_no . $product->name . ' </span></a>';
+                            echo '</div>';
+                            echo '</div>';
+                            $i++;
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<p align="center"><b>There is no variant</b></p>';
+                    }
+                    exit();
+                }
+
+                public function discard_parked_order()
+                {
+                    $this->this_model->discard_parked_order($this->input->post());
+                }
             }
-            echo '</div>';
-
-        } else {
-            echo '<p align="center"><b>There is no variant</b></p>';
-        }
-        exit();
-    }
-
-    public function discard_parked_order()
-    {
-        $this->this_model->discard_parked_order($this->input->post());
-
-    }
-
-}
