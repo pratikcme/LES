@@ -116,8 +116,8 @@ label.error.mobile_verfication{
    <div class="container">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?=base_url().'home'?>">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">checkout</li>
+            <li class="breadcrumb-item"><a href="<?=base_url().'home'?>"><?=$this->lang->line('home')?></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('checkout')?></li>
          </ol>
       </nav>
    </div>
@@ -130,11 +130,11 @@ label.error.mobile_verfication{
          <div class="col-lg-8 col-md-12">
             <div class="cart-table-wrapper billing-wrapper">
                <div class="billing-header">
-                  <h4>Billing Details</h4>
+                  <h4><?=$this->lang->line('Billing Details')?></h4>
                   <div class="selfpickup-wrap">
                   <?php if(isset($selfPickEnable) && $selfPickEnable == '1'){ ?>
                   <div class="address-chk-box dn-btn">
-                    <label> Self Pickup
+                    <label> <?=$this->lang->line('self pickup')?>
                       <input type="checkbox" id="isSelfPickup" class="default_check" <?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?> >
                       <span class="blue"></span>
                     </label>
@@ -142,7 +142,7 @@ label.error.mobile_verfication{
                 <?php } ?>
                 <?php if(!empty($userAddress) && $userAddress[0]->user_gst_number != ''){ ?>
                   <div class="address-chk-box dn-btn">
-                    <label> Use GST Number
+                    <label> <?=$this->lang->line('Use GST Number')?>
                     <input type="checkbox" id="user_gst_number" class="default_check" value="<?=($userAddress[0]->user_gst_number != '') ? $userAddress[0]->user_gst_number : "" ?>">
                       <span class="blue"></span>
                     </label>
@@ -155,11 +155,11 @@ label.error.mobile_verfication{
 
                </div>
 
-               <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "Pickup Address" : "Delivery Address" ?></button>
+               <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line("Pickup Address") : $this->lang->line('Delivery Address') ?></button>
                <div class="panel full_height address_panel" style="max-height: 100%;">
                <div class="add-new-address-wrapper" id="billing-new-add">
                   <div class="new-add-header">
-                     <p>Add New Address</p>
+                     <p><?=$this->lang->line('Add new address')?></p>
                      <!-- <button class=""><span style="margin-right: 3px;"> <i class="fas fa-crosshairs"></i> </span> use my current location</button> -->
                   </div>
                   <form  method="post" id="RegisterForm" action="<?=base_url().'users_account/users/add_address'?>" class="address-form">
@@ -167,21 +167,21 @@ label.error.mobile_verfication{
                         <div class="col-lg-12 col-md-12">
                            <div class="input-wrapper">
                               <span><i class="far fa-user-circle"></i></span>
-                              <input type="text" class="fname" name="fname" placeholder="Full Name" autocomplete="off">
+                              <input type="text" class="fname" name="fname" placeholder="<?=$this->lang->line('Full Name')?>" autocomplete="off">
                            </div>
                            <label for="fname" class="error"></label>
                         </div>
                         <div class="col-md-12">
                            <div class="input-wrapper">
                               <span><i class="fas fa-phone"></i></span>
-                              <input type="text" class="mob_no" name="phone" placeholder="Mobile number" autocomplete="off">
+                              <input type="text" class="mob_no" name="phone" placeholder="<?=$this->lang->line('Mobile number')?>" autocomplete="off">
                            </div>
                            <label for="phone" class="error"><?=@form_error('phone')?></label>
                         </div>
                         <div class="col-md-12">
                            <div class="input-wrapper">
                               <span><i class="fas fa-home"></i></span>
-                              <input type="text" id="departure_address" onFocus="initAutocomplete('departure_address')"  placeholder="Enter Location" name="location" maxlength="255" value="<?php echo set_value('location'); ?>" autocomplete="off">
+                              <input type="text" id="departure_address" onFocus="initAutocomplete('departure_address')"  placeholder="<?=$this->lang->line('Enter Location')?>" name="location" maxlength="255" value="<?php echo set_value('location'); ?>" autocomplete="off">
                               <?php echo form_error('location'); ?>
                            </div>
                            <label for="departure_address" class="error"></label>
@@ -192,19 +192,19 @@ label.error.mobile_verfication{
                         <div class="col-lg-6">
                            <div class="input-wrapper">
                               <span><i class="fas fa-landmark"></i></span>
-                              <input type="text" class="landmark" name="landmark" placeholder="Landmark" autocomplete="off">
+                              <input type="text" class="landmark" name="landmark" placeholder="<?=$this->lang->line('Landmark')?>" autocomplete="off">
                            </div>
                         </div>
                         <div class="col-lg-6">
                            <div class="input-wrapper">
-                              <span><i class="fas fa-globe-americas"></i></span> <input type="text" name="city"  id="city" placeholder="city" autocomplete="off">
+                              <span><i class="fas fa-globe-americas"></i></span> <input type="text" name="city"  id="city" placeholder="<?=$this->lang->line('city')?>" autocomplete="off">
                            </div>
                            <label for="city" class="error"><?=@form_error('city')?></label>
                         </div>
                         <div class="col-lg-6">
                            <div class="input-wrapper">
                               <span><i class="fas fa-globe-americas"></i></span>
-                              <input type="text" name="state"  id="state" placeholder="State" autocomplete="off">
+                              <input type="text" name="state"  id="state" placeholder="<?=$this->lang->line('State')?>" autocomplete="off">
                            </div>
                            <label for="state" class="error"><?=@form_error('state')?></label>
                         </div>
@@ -225,14 +225,14 @@ label.error.mobile_verfication{
                         <div class="col-lg-6">
                            <div class="input-wrapper">
                               <span><i class="fas fa-hashtag"></i></span>
-                              <input type="text" name="pincode" class=" pincode" id="pincode" placeholder="Pincode" autocomplete="off">
+                              <input type="text" name="pincode" class=" pincode" id="pincode" placeholder="<?=$this->lang->line('pincode')?>" autocomplete="off">
                            </div>
                            <label for="pincode" class="error"></label>
                         </div>
                         <div class="col-lg-12">
                            <div class="input-wrapper add-text">
                               <span><i class="fas fa-list-alt"></i></span>
-                              <textarea name="address"  placeholder="Enter Address" id="address" class=" add-textarea" autocomplete="off"></textarea>
+                              <textarea name="address"  placeholder="<?=$this->lang->line('Enter Address')?>" id="address" class=" add-textarea" autocomplete="off"></textarea>
                            </div>
                            <label for="address" class="error"></label>
                         </div>
@@ -249,10 +249,10 @@ label.error.mobile_verfication{
                              </div>
                            </div> -->
                         <div class="col-md-6 col-sm-6">
-                           <button type="submit" id="addAddress" class="btn save-btn">save</button>
+                           <button type="submit" id="addAddress" class="btn save-btn"><?=$this->lang->line('Save')?></button>
                         </div>
                         <div class="col-md-6 col-sm-6">
-                           <button class="btn cancel-btn">cancel</button>
+                           <button class="btn cancel-btn"><?=$this->lang->line('Cancel')?></button>
                         </div>
                         <input type="hidden" name="redirect_url" value="<?=base_url().'checkout'?>">
                      </div>
@@ -302,14 +302,14 @@ label.error.mobile_verfication{
                      </ul>
                      <?php if($this->session->userdata('isSelfPickup') == '' || $this->session->userdata('isSelfPickup') == '0'){ ?>
                      <div class="billing-btn">
-                        <button class="btn add-new-address">Add new address</button>
+                        <button class="btn add-new-address"><?=$this->lang->line('Add new address')?></button>
                         <button class="btn btn-orange next-btn" id="nextButton" style="display: none">next</button>
                      </div>
                      <?php } ?>
                   </div>
                </div>
                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>  
-               <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "Pickup " : "Delivery " ?> Time & Date</button>
+               <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line('Pickup') : $this->lang->line('Delivery')  ?> <?=$this->lang->line('Time & Date')?></button>
                <?php } ?>
                <div class="panel" >
                   <div class="date-time-common">
@@ -357,7 +357,7 @@ label.error.mobile_verfication{
                      <button class="btn" id="btnCheckSlot">Process To payment</button>
                   </div> -->
                </div>
-               <button class="billing-btns active">Payment Option</button>
+               <button class="billing-btns active"><?=$this->lang->line('Payment Option')?></button>
                <div class="panel" style="max-height: 191px;">
                   <div class="payment-wrapper">
                      <div class="payment-options">
@@ -369,7 +369,7 @@ label.error.mobile_verfication{
                         </div>-->
                         <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?>
                         <div class="option-1">
-                           <label class="radio-container mb-0">Online Pay
+                           <label class="radio-container mb-0"><?=$this->lang->line('Credit/Debit Card')?>
                            <input id="credit" class="pay-chk" type="radio" name="radio" <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?> value="<?=$payment_option?>" >
                            <span class="checkmark"></span>
                            </label>
@@ -377,7 +377,7 @@ label.error.mobile_verfication{
                       <?php } ?>
                         <?php if($isCOD == '1'){ ?>
                         <div class="option-1">
-                           <label class="radio-container mb-0">Cash On Delivery
+                           <label class="radio-container mb-0"><?=$this->lang->line('Cash On Delivery')?>
                            <input class="pay-chk" type="radio" <?=($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : ''?>  name="radio" value="0">
                            <span class="checkmark"></span>
                            </label>
@@ -387,13 +387,13 @@ label.error.mobile_verfication{
                         <div id="payBtn_error" style="color: red"></div>
                       <?php if($phone == '0' || $is_verify == '0'){ ?> 
                           <div class="pay-btn">
-                        <button class="btn show-modal" id="verify">Verify Mobile</button>
+                        <button class="btn show-modal" id="verify"><?=$this->lang->line('Verify Mobile')?></button>
                      </div>                      
 
                       <?php }else{ ?>
 
                      <div class="pay-btn">
-                        <button class="btn" id="payBtn">Place order</button>
+                        <button class="btn" id="payBtn"><?=$this->lang->line('Place order')?></button>
                      </div>
                       
                       <?php }?>
@@ -459,7 +459,7 @@ label.error.mobile_verfication{
          <div class="col-lg-4 col-md-12">
             <div class="cart-total-wrap">
                <div class="cart-total-heading">
-                  <h6> <span><i class="fas fa-shopping-basket"></i> </span> Order Summary</h6>
+                  <h6> <span><i class="fas fa-shopping-basket"></i> </span> <?=$this->lang->line('Order Summary')?></h6>
                </div>
                <div class="cart-total-innerbox your-order-wrapper order-summary-box ">
                   <ul class="checkout-scroll">
@@ -518,7 +518,7 @@ label.error.mobile_verfication{
                      <ul>
                      <li class="total-wrap">
                         <div class="total-count">
-                           <h6>Sub total<br>(<?=($isShow[0]->display_price_with_gst == '1') ? "Exclude" : "Inc." ?> Tax)</h6>
+                           <h6><?=$this->lang->line('Sub Total')?><br>(<?=($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?> Tax)</h6>
                            <div class="price-seperator">
                               <span class="seperator">:</span>
                               <p><span><?=$this->siteCurrency?></span> <span id="checkout_subtotal"><?=$getMycartSubtotal?></span></p>
@@ -527,7 +527,7 @@ label.error.mobile_verfication{
                      </li>
                      <li class="total-wrap">
                         <div class="total-count">
-                           <h6>Tax(gst)</h6>
+                           <h6><?=$this->lang->line('Tax (Gst)')?></h6>
                            <div class="price-seperator">
                               <span class="seperator">:</span>
                               <p><span><?=$this->siteCurrency?></span> <span id=""><?=$TotalGstAmount?></span></p>
@@ -536,7 +536,7 @@ label.error.mobile_verfication{
                      </li>
                      <li class="total-wrap">
                         <div class="total-count">
-                           <h6>Delivery Charges</h6>
+                           <h6><?=$this->lang->line('Delivery Charges')?></h6>
                            <div class="price-seperator">
                               <span class="seperator">:</span>
                               <p><span><?=$this->siteCurrency?></span> <?=(isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping,2,'.','') : '0.00' ?></p>
@@ -566,7 +566,7 @@ label.error.mobile_verfication{
 
                      <li class="total-wrap">
                         <div class="total-count">
-                           <h6> total</h6>
+                           <h6> <?=$this->lang->line('Total')?></h6>
                            <div class="price-seperator">
                               <span class="seperator">:</span>
                               <p><span><?=$this->siteCurrency?></span> 
@@ -597,21 +597,21 @@ label.error.mobile_verfication{
                      <?php if(totalSaving() > '0.00'){ ?>
                      <li class="saving">
                         <?php $totalSaving = totalSaving() + $shopping_based_discount ; ?>
-                        <p>You will save <span id='totalSaving'><?=$this->siteCurrency.' '.$totalSaving?></span>  on this order</p>
+                        <p><?=$this->lang->line('You will save')?>  <span id='totalSaving'><?=$this->siteCurrency.' '.$totalSaving?></span>   <?=$this->lang->line('on this order')?></p>
                      </li>
                      <?php } ?>
                      <?php if($shopping_based_discount == 0){?>
                         <li class="saving">
-                           <input type="text" name="promocode" id="promocode" placeholder="Enter Promocode">
+                           <input type="text" name="promocode" id="promocode" placeholder="<?=$this->lang->line('Enter Promocode')?>">
                            <span class="error" id="promo_err"></span>
-                           <button id="checkPromocode" class="btn btn-primary" type="button">Apply</button>
+                           <button id="checkPromocode" class="btn btn-primary" type="button"><?=$this->lang->line('Apply')?></button>
                         </li>   
                      <?php } ?>
                      <li class="saving">
-                        <h6> <img src="<?=base_url().'public/frontend/'?>assets/images/shield.png"> 100% Genuine Products</h6>
+                        <h6> <img src="<?=base_url().'public/frontend/'?>assets/images/shield.png"> <?=$this->lang->line('100 Genuine Products')?></h6>
                      </li>
                      <li class="saving">
-                        <h6> <img src="<?=base_url().'public/frontend/'?>assets/images/secure-pay.png">Secure Payments</h6>
+                        <h6> <img src="<?=base_url().'public/frontend/'?>assets/images/secure-pay.png"><?=$this->lang->line('Secure Payments')?></h6>
                      </li>
                      <li class="saving" id="gst_number" style="display: none">
                         <h6> <img src="<?=base_url().'public/frontend/'?>assets/images/tax.png">
@@ -619,7 +619,7 @@ label.error.mobile_verfication{
                         </h6>
                      </li>
                      <li class="saving">
-                        <a href="<?=base_url().'home'?>" class="btn btn-orange"> Cancel </a>
+                        <a href="<?=base_url().'home'?>" class="btn btn-orange"> <?=$this->lang->line('Cancel')?> </a>
                      </li>
                   </ul>
                   <!--  <a href="#" class="btn">

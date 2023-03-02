@@ -22,7 +22,7 @@
                   Edit
                </header>
                <form id="frmAddEdit" method="post" enctype="multipart/form-data" action="<?=$FormAction?>">
-                  <input type="hidden" id="id" name="id" value="">
+                  <input type="hidden" id="id" name="id" value="<?=(isset($updated_id)) ? $updated_id : '' ?>">
                   <div class="panel-body">
                      <div class="row">
                          <div class="col-md-6 col-sm-12 col-xs-12 padding-zero">

@@ -10,7 +10,7 @@
     <div class="row align-items-center">
       <div class="col-md-12">
         <div class="page-title">
-          <h1>Login<br>Your Account</h1>
+          <h1>Login<br><?=$this->lang->line('Your Account')?></h1>
         </div>
       </div>
       <div class="col-md-12">

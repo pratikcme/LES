@@ -25,6 +25,8 @@ class Vendors extends Super_Admin_Controller{
 		$data['FormAction'] = base_url().$this->url.'add';
 		if($this->input->post()){
 			$this->this_model->add($this->input->post());
+			$this->utility->setFlashMessage('success','Vendor Created successfully');
+			redirect(base_url().$this->url);
 		}
 		$this->load->view(SUPER_ADMIN_LAYOUT,$data);
 	}

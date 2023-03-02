@@ -51,6 +51,9 @@ function getMycartSubtotal(){
     if(isset($_SESSION['My_cart'])){
       foreach ($_SESSION['My_cart'] as $key => $value) {
         $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+          $product[0]->discount_price = $product[0]->without_gst_price; 
+        }
         $total += $product[0]->discount_price * $value['quantity'];
       }
     }
@@ -128,6 +131,14 @@ function NavbarDropdown(){
       foreach ($_SESSION['My_cart'] as $key => $value) {
         $encode_id=  $CI->utility->safe_b64encode($value['product_id']);
         $varient_id =  $CI->utility->safe_b64encode($value['product_weight_id']);
+        $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+
+        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+          $value['discount_price'] = $product[0]->without_gst_price;
+        }else{
+          $value['discount_price'] = $product[0]->discount_price;
+        }
+       
         if(!file_exists('public/images/'.$CI->folder.'product_image/'.$value["image"]) || $value["image"] == '' ){
           if(strpos($value["image"], '%20') === true || $value["image"] == ''){
             $value["image"] = $default_product_image;
@@ -209,7 +220,7 @@ function NavbarDropdown(){
         return  $CI->vendor_model->getAllVendor(); 
     }
 
-     function sendMailSMTP($data) {
+     function sendMailSMTP($data,$form_super_admin ='') {
         $CI = &get_instance();
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "162.241.86.206";
@@ -228,7 +239,7 @@ function NavbarDropdown(){
         $CI->load->library('email', $config);
         $CI->email->initialize($config);
         $CI->email->clear();
-        $CI->email->from($config['smtp_user'], $CI->siteTitle);
+        $CI->email->from($config['smtp_user'], ($form_super_admin == '') ? $CI->siteTitle : $form_super_admin);
         $CI->email->to($data["to"]);
         if (isset($data["bcc"])) {
             $CI->email->bcc($data["bcc"]);

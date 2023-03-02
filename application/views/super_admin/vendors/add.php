@@ -31,7 +31,7 @@
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label for="store_in">Domain in which server</label>
+                  <label for="store_in">Domain In Which Server</label>
                   <div class="row">
                     <div class="col-sm-12">
                      <select name="database" id="database" class="form-control">
@@ -54,8 +54,8 @@
                   <div class="col-sm-12">
                     <select name="login_type" class="form-control">
                       <option value="">Select login type</option>
-                      <option value="0">Login with Email</option>
-                      <option value="1">Login with Mobile</option>
+                      <option value="0">Login With Email</option>
+                      <option value="1">Login With Mobile</option>
                     </select>
                   </div>
                 </div>
@@ -182,7 +182,7 @@
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                  <label for="location">Enter Location :<span class="required" aria-required="true"> * </span> </label>
+                  <label for="location">Enter Location<span class="required" aria-required="true"> * :</span> </label>
                 <div class="row">
                   <div class="col-sm-12">
                      <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="dis form-control pac-target-input valid" name="location" maxlength="255" value="" placeholder="Location" autocomplete="off"> <span style="color: red;"></span> 
@@ -202,10 +202,20 @@
                 </select>
               </div>
             </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="language" >Locality</label>
+                <select name="locality" class="form-control">
+                  <option value="">Select Locality</option>
+                  <option value="0">Local</option>
+                  <option value="1">International</option>
+                </select>
+              </div>
+            </div>
           </div>
             <div class="button-group">
                 <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-new">Save </button>
-                  <a href="<?=base_url().$this->url?>" style="display: inline-block;" class="btn btn-new">Cancle</a>
+                  <a href="<?=base_url().$this->url?>" style="display: inline-block;" class="btn btn-new">Cancel</a>
             </div>
           </div>
       </form>

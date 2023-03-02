@@ -212,7 +212,6 @@ class Order_model extends My_model
             $my_order_result = $this->product_model->getMyCartOrder();
             // echo "<pre>";
             // print_r($my_order_result);die;
-
             $promocode_amount = 0;
 
             if (isset($promocode) && $promocode != '') {

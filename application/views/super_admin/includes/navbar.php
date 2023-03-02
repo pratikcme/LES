@@ -19,7 +19,7 @@
             <div class="dropdown-menu dropdown-menu-right pullDown new-dropdown-2">
               <div class="dropdown-title"><?=$this->session->userdata['validSuperAdmin']['name']?></div>
               <a href="<?=base_url()?>super_admin/profile" class="dropdown-item has-icon"> <i class="far fa-user"></i> Profile</a> 
-              <a href="<?=base_url()?>super_admin/profile/change_password" class="dropdown-item has-icon"> <i class="far fa-user"></i> change password</a> 
+              <a href="<?=base_url()?>super_admin/profile/change_password" class="dropdown-item has-icon"> <i class="far fa-user"></i> Change password</a> 
               <!-- <div class="dropdown-divider"></div> -->
               <a href="<?=base_url()?>super_admin/dashboard/logout" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                 Logout

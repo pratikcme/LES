@@ -22,7 +22,6 @@ class Add_to_card extends User_Controller
 
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-
 		if ($this->input->post()) {
 			$product_id = $this->input->post('product_id');
 			$varient_id = $this->input->post('varient_id');
@@ -47,20 +46,18 @@ class Add_to_card extends User_Controller
 		}
 
 		if (!empty($result)) {
-			// dd($result);
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$result[0]->discount_price = $result[0]->without_gst_price;
 			}
 
-
 			if ($result[0]->max_order_qty != '' && $result[0]->max_order_qty != '0' && $quantity > $result[0]->max_order_qty) {
-				$errormsg = 'Maximum order quantity reached';
+				$errormsg = $this->lang->line('Maximum order quantity reached');
 			} elseif ($quantity > $result[0]->quantity) {
 
 				if ($result[0]->quantity == '0') {
-					$errormsg = 'Product not available';
+					$errormsg = $this->lang->line('Product not available');
 				} else {
-					$errormsg = 'Item Out of Stock';
+					$errormsg = $this->lang->line('Item Out of Stock');
 				}
 				// exit();
 			} else {
@@ -221,24 +218,29 @@ class Add_to_card extends User_Controller
 
 	public function cartIncDec()
 	{
-
+		// dd($_SESSION['My_cart']);
 		if ($this->input->post()) {
 			$result = $this->this_model->CartIncDec($this->input->post());
-			// dd($result);die;
 		}
 		$prod_id = $this->input->post('product_id');
 		$product_weight_id = $this->input->post('product_weight_id');
 		$quantity = 1;
 		$sub_total =  $this->input->post("subtotal");
-
+		$this->load->model('api_v3/common_model','co_model');
+  		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		$new_deliveryCharge = 0;
 		if ($this->session->userdata('user_id') == '') {
+			
 			$new_deliveryCharge = number_format((float)$new_deliveryCharge, 2, '.', '');
 			foreach ($_SESSION['My_cart'] as $key => $value) {
 				
 				if ($value['product_id'] == $prod_id && $value['product_weight_id'] == $product_weight_id) {
-					// echo (1);
-					// exit;
+				
+					if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+						$value['discount_price'] = $result[0]->without_gst_price; 
+					}else{
+						$value['discount_price'] = $result[0]->discount_price;
+					}
 					$old_qun = $value['quantity'];
 					if ($this->input->post('action') == 'decrease') {
 
@@ -248,10 +250,10 @@ class Add_to_card extends User_Controller
 					}
 
 					if ($result[0]->max_order_qty != '' && $result[0]->max_order_qty != '0' && $qun > $result[0]->max_order_qty) {
-						$errormsg = 'Maximum order quantity reached';
+						$errormsg = $this->lang->line('Maximum order quantity reached');
 						$qun = $result[0]->max_order_qty;
 					} else if ($qun > $result[0]->quantity) {
-						$errormsg = "Item Out Of Stock";
+						$errormsg = $this->lang->line('Item Out of Stock'); 
 					} else {
 
 						$price = $value['discount_price'] * $qun;
@@ -265,6 +267,10 @@ class Add_to_card extends User_Controller
 		} else {
 			$cartTable = $this->this_model->CheckMycard($this->input->post());
 			// print_r($this->input->post());die;
+			if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+				$result[0]->discount_price = $result[0]->without_gst_price; 
+			}
+			
 			$old_qun = $cartTable[0]->quantity;
 			if ($this->input->post('action') == 'decrease') {
 				$qun = $cartTable[0]->quantity - $quantity;
@@ -274,12 +280,12 @@ class Add_to_card extends User_Controller
 
 			if ($result[0]->max_order_qty != '' && $result[0]->max_order_qty != '0' && $qun > $result[0]->max_order_qty) {
 
-				$errormsg = 'Maximum order quantity reached';
+				$errormsg = $this->lang->line('Maximum order quantity reached');
 				$old_qun = $result[0]->max_order_qty; // max sale quantity per order
 
 			} elseif ($qun > $result[0]->quantity) {
 
-				$errormsg = "Item Out Of Stock";
+				$errormsg = $this->lang->line('Item Out of Stock');
 				$old_qun = $result[0]->quantity; // available quantity 
 				$update_id = $cartTable[0]->id;
 				$this->this_model->update_my_card($update_id, $old_qun);

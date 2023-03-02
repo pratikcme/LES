@@ -84,7 +84,7 @@
                                        <input type="text" class="form-control margin_top_input" id="gst" name="gst" placeholder="Product gst" value="<?=(isset($result) && $result['gst'] != '') ? $result['gst'] : ''?>">
                                     </div>
                                      <div class="form-group">
-                                        <label for="gst" class="margin_top_label">TAG<span class="required" aria-required="true"> * </span></label><input type="text" value="<?=(isset($tags))?$tags:''; ?>" name="tags" data-role="tagsinput" id="tags" class="form-control">
+                                        <label for="gst" class="margin_top_label">TAG<span class="required" aria-required="true"> * </span></label><input type="text" value="<?=(isset($tags))?$tags:''; ?>" name="tags" data-role="tagsinput" id="tags" class="form-control" max="15">
 
                                     </div>
                                 </div>
@@ -173,11 +173,14 @@
             //     required: true,
             //     maxlength: 500
             // },
-            // gst: {
-            //     required: true,
-            //     maxlength: 2,
-            //     number : true,
-            // }
+            gst: {
+                // required: true,
+                maxlength: 15,
+                // number : true,
+            },
+            tags : {
+                maxlength: 15,
+            }
         },
         messages: {
             name: {
@@ -212,11 +215,11 @@
             //     required: "Please enter content",
             //     maxlength: "Please enter maximum 500 character content"
             // },
-            // gst: {
-            //     required: "Please enter gst percent",
-            //     maxlength: "please enter in two digits",
-            //     number : "Please enter number only",
-            // }
+            gst: {
+                // required: "Please enter gst percent",
+                maxlength: "Please enter maximum 15 character",
+                // number : "Please enter number only",
+            }
         },
         error: function(label) {
             $(this).addClass("error");

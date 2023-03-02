@@ -2,8 +2,8 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url() ?>">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">cart</li>
+                <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?=$this->lang->line('home')?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('cart')?></li>
             </ol>
         </nav>
     </div>
@@ -20,11 +20,11 @@
                     <table class="table cart-table table-reponsive">
                         <thead>
                             <tr>
-                                <th class="w-45">Product</th>
-                                <th class="w-20 text-center">Quantity</th>
-                                <th class="w-20 text-center">price</th>
-                                <th class="w-5 text-center">Total</th>
-                                <th class="w-10 text-center">Action</th>
+                                <th class="w-45"><?=$this->lang->line('Product')?></th>
+                                <th class="w-20 text-center"><?=$this->lang->line('Quantity')?></th>
+                                <th class="w-20 text-center"><?=$this->lang->line('Price')?></th>
+                                <th class="w-5 text-center"><?=$this->lang->line('Total')?></th>
+                                <th class="w-10 text-center"><?=$this->lang->line('Action')?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,6 +39,13 @@
                   foreach ($_SESSION['My_cart'] as $key => $value) {
                     $CI->load->model('frontend/product_model');
                     $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+                    
+                    $CI->load->model('api_v3/common_model','co_model');
+                    $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                      $product[0]->discount_price = $product[0]->without_gst_price;
+                    }   
+                    
                     $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
                     if (!file_exists('public/images/' . $CI->folder . 'product_image/' . $product[0]->image) || $product[0]->image == '') {
                       if (strpos($product[0]->image, '%20') === true || $product[0]->image == '') {
@@ -109,17 +116,17 @@
                             <?php } ?>
                         </tbody>
                     </table>
-                    <input type="button" class="btn" id="ClearCart" value="Clear cart">
+                    <input type="button" class="btn" id="ClearCart" value="<?=$this->lang->line('clear cart')?>">
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="cart-total-wrap">
                     <div class="cart-total-heading">
-                        <h6> <span><i class="fas fa-shopping-basket"></i> </span> Cart Total</h6>
+                        <h6> <span><i class="fas fa-shopping-basket"></i> </span> <?=$this->lang->line('Cart Total')?></h6>
                     </div>
                     <div class="cart-total-innerbox">
                         <div class="total-count">
-                            <h6>Sub total</h6>
+                            <h6><?=$this->lang->line('Sub Total')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
                                 <p>
                                     <span><?= $this->siteCurrency ?>
@@ -128,7 +135,7 @@
                             </div>
                         </div>
                         <div class="total-count">
-                            <h6>Delivery Charges</h6>
+                            <h6><?=$this->lang->line('Delivery Charges')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
                                 <p id="delivery_charge"><span><?= $this->siteCurrency ?></span>
 
@@ -137,7 +144,7 @@
                             </div>
                         </div>
                         <div class="total-count">
-                            <h6>Total </h6>
+                            <h6><?=$this->lang->line('Total')?> </h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
                                 <p id="total"><span><?= $this->siteCurrency ?></span>
                                     <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ?  number_format(getMycartSubtotal() + $calc_shiping, 2, '.', '') : getMycartSubtotal(); ?>
@@ -147,9 +154,7 @@
                         <p class="instruc" style="display: none"> In publishing and graphic design, Lorem ipsum is a
                             placeholder text commonly used to demonstrate the visual form of a document or a typeface
                             without relying on meaningful content. </p>
-                        <a href="<?= base_url() . 'checkout' ?>" class="btn">
-                            proceed to checkout
-                        </a>
+                        <a href="<?= base_url() . 'checkout' ?>" class="btn"><?=$this->lang->line('Proceed to checkout')?></a>
                     </div>
                 </div>
             </div>
@@ -167,11 +172,11 @@
                     <table class="table cart-table table-reponsive">
                         <thead>
                             <tr>
-                                <th class="w-45">Product</th>
-                                <th class="w-20 text-center">Quantity</th>
-                                <th class="w-20 text-center">price</th>
-                                <th class="w-5 text-center">Total</th>
-                                <th class="w-10 text-center">Action</th>
+                                <th class="w-45"><?=$this->lang->line('Product')?></th>
+                                <th class="w-20 text-center"><?=$this->lang->line('Quantity')?></th>
+                                <th class="w-20 text-center"><?=$this->lang->line('Price')?></th>
+                                <th class="w-5 text-center"><?=$this->lang->line('Total')?></th>
+                                <th class="w-10 text-center"><?=$this->lang->line('Action')?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -247,17 +252,17 @@
                             <?php } ?>
                         </tbody>
                     </table>
-                    <input type="button" class="btn" id="ClearCart" value="Clear cart">
+                    <input type="button" class="btn" id="ClearCart" value="<?=$this->lang->line('clear cart')?>">
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="cart-total-wrap">
                     <div class="cart-total-heading">
-                        <h6> <span><i class="fas fa-shopping-basket"></i> </span> Cart Total</h6>
+                        <h6> <span><i class="fas fa-shopping-basket"></i> </span> <?=$this->lang->line('Cart Total')?></h6>
                     </div>
                     <div class="cart-total-innerbox">
                         <div class="total-count">
-                            <h6>Sub total</h6>
+                            <h6><?=$this->lang->line('Sub Total')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
                                 <p>
                                     <span><?= $this->siteCurrency ?>
@@ -266,7 +271,7 @@
                             </div>
                         </div>
                         <div class="total-count">
-                            <h6>Delivery Charges</h6>
+                            <h6><?=$this->lang->line('Delivery Charges')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
                                 <p id="delivery_charge"><span><?= $this->siteCurrency ?></span>
                                     <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ? $calc_shiping : '0.00' ?>
@@ -274,7 +279,7 @@
                             </div>
                         </div>
                         <div class="total-count">
-                            <h6>Total</h6>
+                            <h6><?=$this->lang->line('Total')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
                                 <p id="total"><span><?= $this->siteCurrency ?></span>
                                     <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ?  number_format(getMycartSubtotal() + $calc_shiping, 2, '.', '') : getMycartSubtotal(); ?>
@@ -285,9 +290,7 @@
                         <p class="instruc" style="display: none"> In publishing and graphic design, Lorem ipsum is a
                             placeholder text commonly used to demonstrate the visual form of a document or a typeface
                             without relying on meaningful content. </p>
-                        <a href="<?= base_url() . 'checkout' ?>" class="btn">
-                            proceed to checkout
-                        </a>
+                        <a href="<?= base_url() . 'checkout' ?>" class="btn"><?=$this->lang->line('Proceed to checkout')?></a>
                     </div>
                 </div>
             </div>

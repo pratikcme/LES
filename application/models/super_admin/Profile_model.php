@@ -7,8 +7,8 @@ class Profile_model extends My_model
 	{
 		$data['table'] = TABLE_SUPER_ADMIN;
 		$data['select'] = ['*'];
-		$data['where']['id'] = $this->session->userdata['validSuperAdmin']['id'];
-		return $this->selectRecords($data); 	
+		$data['where']['id'] = $this->session->userdata('validSuperAdmin')['id'];
+		return $this->selectRecords($data);
 	}
 
 	public function UpdateProfile($postData){
@@ -16,10 +16,10 @@ class Profile_model extends My_model
 		$data['where']['id'] = $this->session->userdata['validSuperAdmin']['id'];
 		$data['update']['company_name'] = $postData['company_name'];
 		$data['update']['email'] = $postData['email'];
-		$data['updated_at'] = DATE_TIME;
+		$data['update']['dt_updated'] = DATE_TIME;
 		$result = $this->updateRecords($data);
 		if($result){
-			return ['success','Your password has been changed'];
+			return ['success','Profile updated successfully'];
 		}else{
 			return ['danger','Somthing went wrong'];
 		}

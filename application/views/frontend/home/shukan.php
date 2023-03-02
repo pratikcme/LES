@@ -301,6 +301,9 @@
             <h1>new products</h1>  
           </div>
         </div>
+        <div class="col-md-4 col-sm-4 col-12">
+          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>">see all</a> </div>
+        </div>
       <div class="col-lg-12">
         <div class="slider_box">
          <?php foreach ($new_arrival as $key => $value) 

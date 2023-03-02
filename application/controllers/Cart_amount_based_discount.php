@@ -36,9 +36,9 @@ class Cart_amount_based_discount extends Vendor_Controller
         $this->id = $this->utility->decode($d_id);
         $data['js'] = array('cart_based_discount.js');
         $data['FormAction'] = base_url().'Cart_amount_based_discount/edit/'.$d_id;
-       
+        $data['updated_id'] = $d_id;
         if($this->input->post()){
-           
+           dd($this->input->post());
             $result = $this->this_model->updateRecord($this->input->post());
             if($result){
                   $this->utility->setFlashMessage($response['status'], $response['message']);
@@ -69,6 +69,12 @@ class Cart_amount_based_discount extends Vendor_Controller
         $re = $this->this_model->multi_delete();
         
     }   
+
+    public function checkAmountExist(){
+        if($this->input->is_ajax_request()){
+           echo $this->this_model->checkAmountExist($this->input->post());
+        }
+    }
 
 
    

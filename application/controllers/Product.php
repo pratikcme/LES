@@ -22,14 +22,25 @@ class Product extends Vendor_Controller
     public function product_list()
     {
         // echo '1';die;
-        $data['table_js'] = array('product.js');
-        $data['start'] = array('PRODUCT.table()');
-        $this->load->view('product_list',$data);
+        $data['table_js'] = array('product.js','product_new.js');
+        $data['start'] = array('PRODUCT.table()','PRODUCT_NEW.table()');
+        $data['css'] = ['style.css'];
+        // if(isset($_GET['new']) && $_GET['new'] == 'new'){
+        // }else{
+        //     $this->load->view('product_list',$data);
+        // }
+        $this->load->view('product_list_new',$data);
     }
 
     public function getProductListAjax(){
         if($this->input->post()){
             echo getProductListAjax($this->input->post());
+        }
+    }
+
+    public function getProductListNewAjax(){
+        if($this->input->post()){
+            echo getProductListNewAjax($this->input->post());
         }
     }
 

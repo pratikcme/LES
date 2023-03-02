@@ -2,7 +2,7 @@
   <div class="row mb-5">  
     <div class="col-sm-8">
       <select name="vendor_id" class="form-control" id="vendor_id">
-        <option value="">Select Vendors</option>
+        <option value="">Select Vendor</option>
         <?php foreach ($getVendors as $key => $value) { ?>
           <option value="<?=$value->id?>" <?=($vendor_id == $value->id) ? 'selected' : '' ?>><?=$value->server_name?></option>
         <?php } ?>

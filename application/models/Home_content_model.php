@@ -3,7 +3,7 @@
 Class Home_content_model extends My_model{
 
     function __construct(){
-        $this->branch_id = $this->session->userdata('branch_id');
+        $this->branch_id = $this->session->userdata('id');
     }
 
 	public function getAboutSectionTwo(){
@@ -32,6 +32,8 @@ Class Home_content_model extends My_model{
             move_uploaded_file($temp_location, $uploadpath);
         }
         $data['table'] = TABLE_HOME_CONTENT;
+
+        $data['insert']['branch_id'] = $this->branch_id;
         $data['insert']['image'] = $image;
         $data['insert']['main_title'] = $postData['main_title'];
         $data['insert']['sub_title'] = $postData['sub_title'];
@@ -124,6 +126,7 @@ Class Home_content_model extends My_model{
     public function getSectionOne(){
         $data['table'] = TABLE_HOME_SECTION_ONE;
         $data['select'] = ['*'];
+        $data['where'] = ['branch_id'=>$this->branch_id];
         return $this->selectRecords($data);
 
     }

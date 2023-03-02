@@ -9,10 +9,10 @@ $.validator.addMethod("endDate", function (value, element) {
     return Date.parse(startDate) <= Date.parse(value) || value == "";
 }, "* End date must be grater than start date");
 
-$.validator.addMethod("startDate", function (value, element) {
-    var endDate = $('.end_date').val();
-    return Date.parse(endDate) >= Date.parse(value) || value == "";
-}, "* Start date must be less than end date");
+// $.validator.addMethod("startDate", function (value, element) {
+//     var endDate = $('.end_date').val();
+//     return Date.parse(endDate) >= Date.parse(value) || value == "";
+// }, "* Start date must be less than end date");
 
 $('#frmAddEdit').validate({
     rules: {
@@ -22,7 +22,7 @@ $('#frmAddEdit').validate({
         max_use: { required: true, number: true, min: 1, maxlength: 3 },
         max_cart: { required: true, number: true, min: 1, maxlength: 6 },
         min_cart: { required: true, number: true, min: 1, maxlength: 6 },
-        start_date: { required: true, startDate: true },
+        start_date: { required: true },
         end_date: { required: true, endDate: true },
     },
     messages: {

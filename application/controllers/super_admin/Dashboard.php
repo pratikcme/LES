@@ -21,7 +21,7 @@ class Dashboard extends Super_Admin_Controller{
 
 	public function logout(){
 		$this->session->unset_userdata('validSuperAdmin');
-		redirect(base_url().'admin');
+		redirect(base_url().'super_admin/login');
 	}
 
 

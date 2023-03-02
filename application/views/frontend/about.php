@@ -3,8 +3,8 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url() ?>">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">About us</li>
+                <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?=$this->lang->line('home')?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('About us')?></li>
             </ol>
         </nav>
     </div>
@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="client-title">
-                    <h6>What Our Clients Say</h6>
+                    <h6><?=$this->lang->line('what our clients say')?></h6>
                 </div>
             </div>
         </div>

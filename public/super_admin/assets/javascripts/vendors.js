@@ -28,7 +28,7 @@ var VENDORS = function () {
       rules: {
         domain_name: {
           required: true,
-          // url : true,                   
+          maxlength: 50,
           remote: {
             url: base_url + 'super_admin/vendors/checkDomainExist',
             type: 'POST',
@@ -83,9 +83,12 @@ var VENDORS = function () {
         password: {
           required: true,
           minlength: 6,
+          maxlength: 25
         },
         cpassword: {
           required: true,
+          minlength: 6,
+          maxlength: 25,
           equalTo: '#password'
         },
         mobile_number: {
@@ -115,7 +118,7 @@ var VENDORS = function () {
       messages: {
         domain_name: {
           required: "please enter your domain name",
-          url: "Please enter valid url",
+          maxlength: "Domain name must be less than or equal to 50 digit",
           remote: "Domain name already exist"
         },
         domain_type: {
@@ -141,17 +144,20 @@ var VENDORS = function () {
         },
         password: {
           required: "Please enter password",
-          minlength: "Please enter minimum 6 digit valid password"
+          minlength: "Please enter minmum 6 digit password",
+          maxlength: "Your password must be less than or equal to 25 digit",
         },
         cpassword: {
           required: "Please enter confrim password",
-          equalTo: "Password and confirm password does not match"
+          equalTo: "Password and confirm password does not match",
+          minlength: "Please enter minmum 6 digit password",
+          maxlength: "Confirm  password must be less than or equal to 25 digit",
         },
         mobile: {
           required: "Please enter phone number",
           digits: "Please enter valid phone number",
-          minlength: "Please enter valid phone number",
-          maxlength: "Please enter 15 digit valid number",
+          minlength: "Please enter minmum 7 digit mobile number",
+          maxlength: "Mobile number must be less than or equal to 15 digit",
 
         },
         login_type: {
@@ -189,13 +195,16 @@ var VENDORS = function () {
         },
         approved: {
           required: true,
-          digits: true
+          digits: true,
+          min: 1,
+          max: 9
         },
         login_type: {
           required: true
         },
         webTitle: {
-          required: true
+          required: true,
+          maxlength: 25
         },
         android_version: {
           required: true,
@@ -205,9 +214,13 @@ var VENDORS = function () {
         },
         android_isforce: {
           required: true,
+          digits: true,
+          max: 1
         },
         ios_isforce: {
           required: true,
+          digits: true,
+          max: 1
         },
         display_price_with_gst: {
           required: true

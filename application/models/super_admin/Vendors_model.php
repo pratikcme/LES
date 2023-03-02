@@ -17,7 +17,7 @@ Class Vendors_model extends My_model{
 		// dd($postData);
 		$folder_name = $postData['name']; //shopname
 		$folder_name = preg_replace('/\s+/', '', $folder_name);
-
+		$con = true;
 		if(isset($postData['database']) && $postData['database']=='1'){
 			// $con = $this->load->database('db1', TRUE);
 			// $path = FCPATH."/public/images/".$folder_name;
@@ -97,6 +97,7 @@ Class Vendors_model extends My_model{
 				'email' => strtolower($postData['email']),
 				'dt_added' => strtotime(date('Y-m-d H:i:s')),
 				'dt_updated' => strtotime(date('Y-m-d H:i:s')),
+				'locality' => $postData['locality'],
 				'language_support' => $postData['language_support']
 			);
 
@@ -194,6 +195,7 @@ Class Vendors_model extends My_model{
         		// $domaiName = 'https//:development.launchestore.com';
 				$this->sendMail(strtolower($postData['email']),$domaiName,$postData['password'],$branchEmail);
         	}
+			
 
 	}
 
@@ -367,7 +369,7 @@ Class Vendors_model extends My_model{
 		];
 		$data['insert'] = $product_weight_image;
 		$data['table'] = TABLE_PRODUCT_IMAGE;
-		$lastProduct_id = $this->insertRecord($data);
+		$this->insertRecord($data);
 		unset($data);
 		return true;
 	}
@@ -384,7 +386,7 @@ Class Vendors_model extends My_model{
 		$message .= "<p>Branch username/email : ".$branchEmail."</p>";
 		$message .= "<p>Your default password for Branch login : 123456789 </p>";;
 		$data['message'] = $message;
-		return sendMailSMTP($data,true);
+		return sendMailSMTP($data,'launchEstore');
 	}
 	public function insertData($table,$inserData){
 		$data['table'] = $table;
@@ -394,7 +396,7 @@ Class Vendors_model extends My_model{
 
 
 	function create_subdomain($subDomain,$rootDomain,$rootDirectory) {
-		exit('its sub domain');
+		// exit('its sub domain');
 		if($rootDirectory == ''){
 			return true;
 		}
@@ -464,7 +466,6 @@ Class Vendors_model extends My_model{
 	}
 
 	public function updateVendors($vendor_id,$postData){
-		// dd($postData);
 		$updateArray = [
 			'email'=>	$postData['email'],
 			'approved_branch'=>	$postData['approved'],
@@ -478,7 +479,7 @@ Class Vendors_model extends My_model{
 			'dt_updated'=> strtotime(DATE_TIME),
 			'locality'=> $postData['locality'],
 			'language_support' => $postData['language_support']
-		]; 
+		]; 	
 		$data['table'] = ADMIN;
 		$data['update'] = $updateArray;
 		$data['where'] = ['id'=>$vendor_id];
@@ -489,19 +490,21 @@ Class Vendors_model extends My_model{
 	public function checkDomainExist($postData){
 		$DomainName = trim($postData['domain_name']);
 		$domain_type = $postData['domain_type'];
+		$con = true;
 		 if(isset($postData['domain_type']) && $postData['domain_type'] == 1){
         	$domain_name = $DomainName.'.launchestore.com';
   		  }else{
 			$domain_name = $DomainName;
   		  }
 		if(isset($postData['database']) && $postData['database']=='1'){
-			$con = $this->load->database('db1', TRUE);
+			// $con = $this->load->database('db1', TRUE);
 			$con->select('*');
 			$con->where(['server_name'=>$domain_name]);
 			$query = $con->get('vendor');
             $return = $query->result();
 		}elseif(isset($postData['database']) && $postData['database']=='0'){
-			$con = $this->load->database('db2', TRUE);
+			// $con = $this->load->database('db2', TRUE);
+			$con = $this->load->database('default', TRUE);
 			$con->select('*');
 			$con->where(['server_name'=>$domain_name]);
 			$query = $con->get('vendor');
@@ -522,21 +525,25 @@ Class Vendors_model extends My_model{
 			$query = $con->get('vendor');
             $return = $query->result();
 		}
+		// lq();
 		if(!$con){
 			echo 'not connected';die();
 		}
+		
        	return  count($return);
 	}
 
 	public function checkEmailExist($postData){
+		$con = true;
 		if(isset($postData['database']) && $postData['database']=='1'){
-			$con = $this->load->database('db1', TRUE);
+			// $con = $this->load->database('db1', TRUE);
 			$con->select('*');
 			$con->where(['email'=>$postData['email']]);
 			$query = $con->get('vendor');
             $return = $query->result();
 		}elseif(isset($postData['database']) && $postData['database']=='0'){
-			$con = $this->load->database('db2', TRUE);
+			// $con = $this->load->database('db2', TRUE);
+			$con = $this->load->database('default', TRUE);
 			$con->select('*');
 			$con->where(['email'=>$postData['email']]);
 			$query = $con->get('vendor');
