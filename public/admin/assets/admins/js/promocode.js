@@ -24,6 +24,7 @@ $('#frmAddEdit').validate({
         min_cart: { required: true, number: true, min: 1, maxlength: 6 },
         start_date: { required: true },
         end_date: { required: true, endDate: true },
+        notes: { maxlength: 150 },
     },
     messages: {
 

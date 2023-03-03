@@ -37,7 +37,7 @@
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 200px;">Sr.No 
+                                            style="width: 50px;">Sr.No 
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
@@ -60,6 +60,12 @@
                                             aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">
                                             End Date
+                                        </th>  
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 200px;">
+                                            Notes
                                         </th>                                    
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
@@ -77,6 +83,7 @@
                                             <td><?=$value->percentage;?></td>
                                             <td><?=$value->start_date?></td>
                                             <td><?=$value->end_date?></td>
+                                            <td><?=$value->notes?></td>
                                             <td>
                                                 <a href="javascript:;" onclick="single_delete(<?php echo $value->id; ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                              

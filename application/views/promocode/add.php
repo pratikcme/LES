@@ -75,7 +75,10 @@
                                   <input type="date" id="end_date" name="end_date" class="form-control end_date">
                                   <label for="end_date" style="color: red" class="error"><?php echo @form_error('end_date'); ?></label>
                               </div>
-
+                              <div class="form-group">
+                                  <label for="end_date">Notes</label>
+                                  <textarea name="notes" class="form-control"></textarea>
+                              </div>
                             </div>
                          </div>
                      </div>
