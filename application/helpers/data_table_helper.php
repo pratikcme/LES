@@ -504,9 +504,9 @@ function getProductListNewAjax($TableData)
     $sub_array[] = '<div>'.$row->brand_name.'<div>';
     if ($row->status != '9') {
       $sub_array[] = '<div><a href="javascript:;" onclick="single_delete_check(' . $row->id . ')" ><span class="disable">Disable</span></a><div>';
-      $from = '?from=disabled';
     }else{
       $sub_array[] = '<div><a href="'.base_url().'product/make_product_active?product_id='.$CI->utility->encode($row->id).'" ><span class="active_table">Active</span></a><div>';
+      $from = '?from=disabled';
     }
     $sub_array[] = '<div class="dropdown">
     <span><i class="fa-solid fa-ellipsis-vertical action-dropdown-btn"></i></span>
