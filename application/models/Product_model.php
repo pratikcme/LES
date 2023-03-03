@@ -1101,7 +1101,7 @@ class product_model extends My_model
         }
         $data['table'] = TABLE_PRODUCT;
         $data['select'] = ['*'];
-        $data['where']['status !='] = '9';
+        // $data['where']['status !='] = '9';
         $data['where']['branch_id'] = $this->session->userdata('id');
         $return =  $this->selectRecords($data, true);
         return $return[0];
