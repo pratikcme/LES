@@ -27,6 +27,7 @@
                     </header>
                     <form role="form" method="post" action="<?php echo base_url().'product/product_add_update'; ?>" name="product_form" id="product_form" enctype="multipart/form-data">
                         <input type="hidden" id="id" name="id" value="<?=(isset($result) && $result['id'] != '') ? $result['id'] : '' ?>">
+                        <input type="hidden" name="is_disabled" value="<?=(isset($_GET['disabled'])) ? $_GET['disabled'] : ''?>">
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
