@@ -72,11 +72,11 @@
                                
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <label for="name" class="margin_top_label">About<span class="required" aria-required="true"> * </span></label>
+                                        <label for="name" class="margin_top_label">About<span class="required" aria-required="true"></span></label>
                                         <textarea class="form-control margin_top_input ckeditor" id="about" placeholder="About" name="about" rows="5"><?=(isset($result) && $result['about'] != '') ? $result['about'] : ''?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name" class="margin_top_label">Content<span class="required" aria-required="true"> * </span></label>
+                                        <label for="name" class="margin_top_label">Content<span class="required" aria-required="true"></span></label>
                                         <textarea class="form-control margin_top_input ckeditor" id="content" placeholder="Content" name="content" rows="5"><?=(isset($result) && $result['content'] != '') ? $result['content'] : ''?></textarea>
                                     </div>
                                     <div class="form-group">
