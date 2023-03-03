@@ -63,7 +63,7 @@ $product_result = $product_query->result();
                                     </div>
                                 </div>
                                 </div>
-                                <table class="display table table-bordered table-striped dataTable" id="example_product"
+                                <table class="display table table-bordered table-striped dataTable" id="example_product_new"
                                        aria-describedby="example_info">
                                     <thead>
                                     <tr role="row">
@@ -127,6 +127,7 @@ $product_result = $product_query->result();
                         </div>
                     </div>
                 </section>
+                
             </div>
         </div>
     </section>

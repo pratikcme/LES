@@ -27,7 +27,6 @@
                     </header>
                     <form role="form" method="post" action="<?php echo base_url().'product/product_add_update'; ?>" name="product_form" id="product_form" enctype="multipart/form-data">
                         <input type="hidden" id="id" name="id" value="<?=(isset($result) && $result['id'] != '') ? $result['id'] : '' ?>">
-                        <input type="hidden" name="is_disabled" value="<?=(isset($_GET['disabled'])) ? $_GET['disabled'] : ''?>">
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -81,11 +80,11 @@
                                         <textarea class="form-control margin_top_input ckeditor" id="content" placeholder="Content" name="content" rows="5"><?=(isset($result) && $result['content'] != '') ? $result['content'] : ''?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="gst" class="margin_top_label">GST<span class="required" aria-required="true"> * </span></label>
+                                        <label for="gst" class="margin_top_label">GST<span class="required" aria-required="true"></span></label>
                                        <input type="text" class="form-control margin_top_input" id="gst" name="gst" placeholder="Product gst" value="<?=(isset($result) && $result['gst'] != '') ? $result['gst'] : ''?>">
                                     </div>
                                      <div class="form-group">
-                                        <label for="gst" class="margin_top_label">TAG<span class="required" aria-required="true"> * </span></label><input type="text" value="<?=(isset($tags))?$tags:''; ?>" name="tags" data-role="tagsinput" id="tags" class="form-control" max="15">
+                                        <label for="gst" class="margin_top_label">TAG<span class="required" aria-required="true"></span></label><input type="text" value="<?=(isset($tags))?$tags:''; ?>" name="tags" data-role="tagsinput" id="tags" class="form-control" max="15">
 
                                     </div>
                                 </div>
