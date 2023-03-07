@@ -755,10 +755,6 @@ class product_model extends My_model
 
                     //variant delete
                     foreach ($ids as $k => $v) {
-                        $data['where']['id'] = $v;
-                        $data['table'] = 'product_weight';
-                        $this->deleteRecords($data);
-                        unset($data);
                         $data['where'] = ['product_weight_id' => $v];
                         $data['table'] = 'my_cart';
                         $this->deleteRecords($data);
