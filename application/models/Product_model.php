@@ -741,9 +741,9 @@ class product_model extends My_model
                         $data['where'] = ['o.vendor_id' => $vendor_id, 'od.product_weight_id' => $value];
                         $re = $this->selectFromJoin($data);
                         array_push($a, $re[0]->name);
-                        echo dd($re);
-                        die;
                         if (count($re) > 0) {
+                            dd($re);
+                            die;
                             ob_get_clean();
                             header('Access-Control-Allow-Origin: *');
                             header('Content-Type: application/json');
