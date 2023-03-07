@@ -283,7 +283,7 @@ $(document).on('change', '.vendor_nav', function () {
 
 				swal({
 					title: language.Are_you_sure,
-					text: language.Are_you_sure.order_from_one_shop_message,
+					text: language.order_from_one_shop_message,
 					icon: "warning",
 					buttons: true,
 					dangerMode: true,
