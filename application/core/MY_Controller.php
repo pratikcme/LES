@@ -206,8 +206,8 @@ class Vendor_Controller extends MY_Controller
                 }
                 $this->load->model('frontend/vendor_model','vendor_model');
                 $data['branch_nav'] = $this->vendor_model->branchList();
+                dd($data['branch_nav']);
                 $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
-                dd($data['ApprovedBranch']);
                 $data['language_support'] = ($data['ApprovedBranch'][0]->language_support == '1') ? 'ar' : 'en';
                 $language_support = 'en';
                 if($data['ApprovedBranch'][0]->language_support == 1){
