@@ -462,10 +462,10 @@ class vendor_model extends My_model
         $data['where'] = ['email' => $email, 'vendor_id' => $vendor_id, 'id !=' => $user_id];
         $data['table'] = "user";
         $result = $this->selectRecords($data);
-        if ($result) {
-            return "false";
-        } else {
+        if (!empty($result)) {
             return "true";
+        } else {
+            return "false";
         }
     }
 
