@@ -279,6 +279,7 @@ $(document).on('change', '.vendor_nav', function () {
 	var sess_my_count = $('#itemCount').text();
 	if (vendor_id == '') {
 		window.location.href = url;
+		return false;
 	}
 	if (session_vendor_id != '') {
 		if (vendor_id != session_vendor_id) {
