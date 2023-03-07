@@ -41,12 +41,12 @@
                                         </th>
                                         
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
+                                            rowspan="1" colspan="1" min='1'
                                             aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">Start Price
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
+                                            rowspan="1" colspan="1" min='1'
                                             aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">End Price
                                         </th>
