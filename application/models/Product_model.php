@@ -740,9 +740,10 @@ class product_model extends My_model
                         ];
                         $data['where'] = ['o.vendor_id' => $vendor_id, 'od.product_weight_id' => $value];
                         $re = $this->selectFromJoin($data);
+                        $count = $this->countRecords($data);
                         array_push($a, $re[0]->name);
                         if (count($re) > 0) {
-                            dd($re);
+                            dd($count);
                             die;
                             ob_get_clean();
                             header('Access-Control-Allow-Origin: *');
