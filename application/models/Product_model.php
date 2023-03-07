@@ -285,8 +285,8 @@ class product_model extends My_model
     {
         // dd($_SESSION);
         $ids = $_GET['ids'];
-        print_r($ids);die;
         $id = explode(",", $ids);
+        print_r($id);die;
         $a = [];
         $branch_id = $this->session->userdata('id');
         foreach ($id as $key => $value) {
