@@ -740,7 +740,9 @@ class product_model extends My_model
                         ];
                         $data['where'] = ['o.vendor_id' => $vendor_id, 'od.product_weight_id' => $value];
                         $re = $this->selectFromJoin($data);
+                        lq();
                         $count = $this->countRecords($data);
+
                         array_push($a, $re[0]->name);
                         if (count($re) > 0) {
                             dd($count);
