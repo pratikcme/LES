@@ -122,7 +122,7 @@
                   <div class="col-sm-6"><b >Date : </b> </div>
                   <div class="col-sm-6"><span><?php echo date('d-M-Y', $order_detail_result[0]->dt_added); ?></span></div>
                 </div>
-                <?php if($order_detail_result[0]->delivery_date != '0'){?> 
+                <?php if($order_detail_result[0]->delivery_date != 0){?> 
                   <div class="row">
                     <div class="col-sm-6"><b >Delivery Date : </b> </div>
                     <div class="col-sm-6"><span><?php echo  date('l d-M-Y',strtotime($order_detail_result[0]->delivery_date));
