@@ -142,6 +142,7 @@
                   },password: {
                       required: true,
                        minlength:6,
+                       maxlength : 50
                   },mobile: {
                       required: true,
                       digits: true,
@@ -169,8 +170,8 @@
                   },
                   vehicle_name: {
                      //  required: true,
-                      minlength : 4,
-                      maxlength : 25
+                      minlength : 3,
+                      maxlength : 15
                      
                   },
               },
