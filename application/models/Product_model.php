@@ -750,8 +750,7 @@ class product_model extends My_model
                             echo json_encode(['status' => 5, 'names' => $a]);
                             exit;
                         }
-                        echo '2';
-                        dd($re);
+                        
                     }
                     $this->db->query("UPDATE product_weight SET status = '9', dt_updated = '$date' WHERE id IN ($id)");
                     
