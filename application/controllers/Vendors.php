@@ -21,6 +21,7 @@ class Vendors extends User_Controller {
 		$data['branch'] = $this->this_model->branchList();
 		
 		$branch_id = count($data['branch']);
+		dd($branch_id);
 		foreach ($data['branch'] as $key => $value) {
 			$data['branch'][$key]->product_count = $this->this_model->branchProductCount($value->id);
 		};
