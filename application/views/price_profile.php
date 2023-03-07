@@ -38,7 +38,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Start Price<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" class="form-control margin_top_input" id="start_price" name="start_price" placeholder="Start price" value="<?php echo $result['start_price']; ?>">
+                                        <input type="text" class="form-control margin_top_input" min="1" id="start_price" name="start_price" placeholder="Start price" value="<?php echo $result['start_price']; ?>">
                                          <span id="err1" style="color: red;"></span>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">End Price<span class="required" aria-required="true"> * </span></label>
                                         <?php if($result['end_price'] == '9999999999'){ ?>
-                                            <input type="text" class="form-control margin_top_input" id="end_price" name="end_price" placeholder="End price" value="">
+                                            <input type="text" class="form-control margin_top_input" min="1" id="end_price" name="end_price" placeholder="End price" value="">
                                         <?php } else { ?>
                                             <input type="text" class="form-control margin_top_input" id="end_price" name="end_price" placeholder="End price" value="<?php echo $result['end_price']; ?>">
                                         <?php } ?>
