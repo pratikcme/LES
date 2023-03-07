@@ -740,6 +740,7 @@ class product_model extends My_model
                         ];
                         $data['where'] = ['o.vendor_id' => $vendor_id, 'od.product_weight_id' => $value];
                         $re = $this->selectFromJoin($data);
+                        dd($re);
                         array_push($a, $re[0]->name);
                         if (count($re) > 0) {
                             ob_get_clean();
@@ -748,11 +749,18 @@ class product_model extends My_model
                             echo json_encode(['status' => 5, 'names' => $a]);
                             exit;
                         }
+                        echo '2';
+                        dd($re);
                     }
                     $this->db->query("UPDATE product_weight SET status = '9', dt_updated = '$date' WHERE id IN ($id)");
                     
+
                     //variant delete
                     foreach ($ids as $k => $v) {
+                        $data['where']['id'] = $v;
+                        $data['table'] = 'product_weight';
+                        $this->deleteRecords($data);
+                        unset($data);
                         $data['where'] = ['product_weight_id' => $v];
                         $data['table'] = 'my_cart';
                         $this->deleteRecords($data);
