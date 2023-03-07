@@ -350,7 +350,7 @@
          <div class="col-md-12">
           <div class="mobile-location">
              <?php if($this->uri->segment(1)!='login' && $ApprovedBranch[0]->approved_branch > '1') { ?>
-            <?php if($ApprovedBranch[0]->approved_branch > '1'){ ?>
+            <?php if($ApprovedBranch[0]->approved_branch > '1' && count($branch_nav) > '1'){ ?>
               <div class="location-wrap-2">
                 <select class="form-control vendor_nav">
                 <option value=""><?=$this->lang->line('All store')?></option>
