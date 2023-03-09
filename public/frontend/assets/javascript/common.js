@@ -545,6 +545,7 @@ $(document).on('click', '.inc', function () {
 			async: false,
 			data: { product_id: product_id, weight_id: weight_id, product_weight_id: product_weight_id, action: action },
 			success: function (output) {
+				console.log(output);
 				// window.location.reload();
 				$('#updated_list').html(output.updated_list);
 				setTimeout(function () {

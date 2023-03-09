@@ -284,8 +284,7 @@ class Add_to_card extends User_Controller
 				$old_qun = $result[0]->max_order_qty; // max sale quantity per order
 
 			} elseif ($qun > $result[0]->quantity) {
-
-				$errormsg = $this->lang->line('Item Out of Stock');
+				$errormsg = $this->lang->line('item out of stock');
 				$old_qun = $result[0]->quantity; // available quantity 
 				$update_id = $cartTable[0]->id;
 				$this->this_model->update_my_card($update_id, $old_qun);
@@ -334,7 +333,7 @@ class Add_to_card extends User_Controller
 		if (!isset($new_total)) {
 			$new_total = '';
 		}
-
+		// dd($new_total);
 		$response = [
 			'new_quan' => $new_quan,
 			'new_total' => number_format((float)$new_total, 2, '.', ''),
