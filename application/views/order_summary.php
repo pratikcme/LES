@@ -92,13 +92,13 @@
                                         <label for="to_date" class="margin_top_label">Order Staus :<span class="required" aria-required="true"></span></label>
                                         <select class="form-control margin_top_input" id="order_status">
                                             <option value="" >Select Order Status</option>
-                                            <option value="1">NEW</option>
+                                            <option value="1">New</option>
                                             <option value="2">Pending</option>
                                             <option value="3">Ready</option>
                                             <option value="4">Pickup</option>
                                             <option value="5">On the way</option>
                                             <option value="8">Delivered</option>
-                                            <option value="9">cancelled</option>
+                                            <option value="9">Cancelled</option>
                                         </select>
                                     </div>
                                 </div>

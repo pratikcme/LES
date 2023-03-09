@@ -6,7 +6,11 @@ $(document).ready(function () {
 
 $.validator.addMethod("endDate", function (value, element) {
     var startDate = $('.start_date').val();
-    return Date.parse(startDate) <= Date.parse(value) || value == "";
+    if (startDate != '') {
+        return Date.parse(startDate) <= Date.parse(value) || value == "";
+    } else {
+        return true;
+    }
 }, "* End date must be grater than start date");
 
 // $.validator.addMethod("startDate", function (value, element) {
