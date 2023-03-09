@@ -95,7 +95,7 @@ $vendor_id = $this->session->userdata['id'];
                         <div class="value">
                             <h1 class="dashboard_color"><?php echo $total_registered_user['total_registered_user']; ?>
                             </h1>
-                            <p>Register user</p>
+                            <p>Register User</p>
                         </div>
                     </a>
                 </section>
@@ -129,7 +129,7 @@ $vendor_id = $this->session->userdata['id'];
                         <div class="value">
                             <h1 class="dashboard_color"><?php echo number_format($total_sales['sales'], 2, '.', ''); ?>
                             </h1>
-                            <p>Total sales</p>
+                            <p>Total Sales</p>
                         </div>
                     </a>
                 </section>
