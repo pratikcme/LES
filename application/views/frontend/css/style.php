@@ -3153,12 +3153,15 @@ margin-top: 30px;
 }
 .filter-dropdown .filter-dropdown-header h6  span.title-cart {
     position: relative;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
+    color:#fff;
     font-size: 18px;
-    margin-right: 5px;
+    margin-right: 13px;
+
 }
 .filter-dropdown .filter-dropdown-header span.closing {
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
+    color:#fff;
     font-size: 14px;
     margin-right: 5px;
 }
