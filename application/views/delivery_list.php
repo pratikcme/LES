@@ -105,7 +105,7 @@ $user_result = $user_query->result();*/
 
                                                 <input type="button"
                                                     data-val="<?php echo $this->utility->encode($result->id); ?>"
-                                                    class="vendor_status btn btn-primary btn-xs" value="active">
+                                                    class="vendor_status btn btn-primary btn-xs" value="Active">
 
                                                 <?php } else { ?>
                                                 <input type="button"
