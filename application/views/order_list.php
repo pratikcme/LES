@@ -353,7 +353,7 @@
             var otp = $('#otp').val();
             if(otp == ''){
                 $('#error').html("Please Enter OTP");
-                retrun false;
+                return false;
             }
             var isSelfPickup = $(this).data('isselfpickup');
 
