@@ -166,7 +166,7 @@
             </p>
             <h6>
               <?=$this->lang->line('Category')?> : <span><?=$productDetail[0]->category_name?></span>
-              <?=$this->lang->line('brand')?> : <span><?=$productDetail[0]->brand_name?></span>
+              <?=$this->lang->line('brand ')?> : <span><?=$productDetail[0]->brand_name?></span>
             </h6>
           </div>
         </div>
