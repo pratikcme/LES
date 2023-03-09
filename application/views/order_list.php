@@ -351,7 +351,11 @@
 
             var id = $(this).data('id');
             var otp = $('#otp').val();
-              var isSelfPickup = $(this).data('isselfpickup');
+            if(otp == ''){
+                $('#error').html("Please Enter OTP");
+                retrun false;
+            }
+            var isSelfPickup = $(this).data('isselfpickup');
 
             $.ajax({
                 url: '<?php echo base_url() . 'order/verify_otp'; ?>',
