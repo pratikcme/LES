@@ -426,6 +426,7 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
     function make_query_order($postData){
         $branch_id = $this->session->userdata('id');
         $where = [
+            'o.order_from'=>'1',
             'o.branch_id'=>$branch_id,
             'o.status !='=>'9',
         ];
@@ -476,6 +477,7 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
     function get_all_data_order($postData = array()){
         $branch_id = $this->session->userdata('id');
             $where = [
+                'o.order_from'=>'1',
                 'o.branch_id'=>$branch_id,
                 'o.status !='=>'9',
             ];
