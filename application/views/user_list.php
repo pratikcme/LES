@@ -62,7 +62,7 @@
                                             </th>
                                             <th class="hidden-phone sorting_desc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="CSS grade: activate to sort column ascending" style="width: 190px;">Phone Number
                                             </th>
-                                            <th class="hidden-phone sorting_desc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="CSS grade: activate to sort column ascending" style="width: 190px;">Registered date
+                                            <th class="hidden-phone sorting_desc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="CSS grade: activate to sort column ascending" style="width: 190px;">Registered Date
                                             </th>
 
                                             <!-- change -->
