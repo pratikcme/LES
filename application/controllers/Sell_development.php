@@ -7,6 +7,7 @@ class Sell_development extends Vendor_Controller
 
         parent::__construct();
         $this->load->model('Sell_development_model', 'this_model');
+        $this->load->model($this->myvalues->checkoutFrontEnd['model'], 'front_checkout_model');
     }
 
     public function index()
@@ -22,19 +23,111 @@ class Sell_development extends Vendor_Controller
         $currency = $this->this_model->getCurrency();
         $data['js'] = array('pos.js');
         $data['currency'] = $currency[0]->value;
+
+        //dk
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
         if (isset($_GET['parkedId']) && !empty($_GET['parkedId'])) {
             $data['var'] = "park";
             $parked_order_id = base64_decode($_GET['parkedId']);
             $data['order_temp_result'] = $this->this_model->OrderTemp($parked_order_id);
+
+
             $data['parked_order_id'] = base64_decode($_GET['parkedId']);
-            // dd($data['order_temp_result']);die;
         } else {
             $data['order_temp_result'] = $this->this_model->OrderTempWithoutPark();
         }
+
+        $data['isShow'] = false;
+        //dk
+        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+            $data['isShow'] = true;
+        }
+
+
         $data['order_row'] = $this->this_model->getParkedOrderList();
+        foreach ($data['order_row'] as $key => $val) :
+            if ($val->customer_id != '0') {
+                $data['order_row'][$key]->customerData = $this->this_model->getCustomerDetails($val->customer_id);
+            }
+        endforeach;
+        // dd($data['order_row']);
+
+
+        // for shopping based discount Dipesh
+        $discountValue = 0;
+        $discountPercentage = 0;
+        $sub_total  = 0;
+        $gst = 0;
+        $total_savings = 0; //test Dipesh
+        foreach ($data['order_temp_result'] as $key => $value) :
+            $sub_total += $value->price;
+            $gst_amount = ($value->product_price * $value->gst) / 100;
+
+            $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
+
+            $gst  += $gst_amount * $value->quantity;
+        endforeach;
+
+        $data['subtotal'] = $sub_total;
+        $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($sub_total);
+
+        if (!empty($shoppingDiscount)) {
+            if ($sub_total >= $shoppingDiscount[0]->cart_amount) {
+                $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+                $discountValue = $sub_total * $discountPercentage / 100;
+                $discountValue = number_format((float)$discountValue, 2, '.', '');
+            }
+        }
+
+        $data['shopping_based_discountPercentage'] = $discountPercentage;
+        $data['shopping_based_discount'] = $discountValue;
+
+        $data['total_gst'] = $gst;
+        $data['total_savings'] = numberFormat($total_savings);
+        if ($data['shopping_based_discount'] > 0) {
+            $data['subtotal'] = $sub_total - $data['shopping_based_discount'];
+        }
+
         $this->load->view('checkout', $data);
     }
 
+    // Dk
+    public function getShoppingAmountBasedDiscount()
+    {
+        $price = $this->input->get("price");
+        $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($price);
+
+        $discountPercentage = 0;
+        $discountValue = 0;
+
+        if (!empty($shoppingDiscount)) {
+            if ($price >= $shoppingDiscount[0]->cart_amount) {
+                $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+                $discountValue = $price * $discountPercentage / 100;
+
+
+                $discountValue = number_format((float)$discountValue, 2, '.', '');
+            }
+        }
+        $data['shopping_based_discountPercentage'] = $discountPercentage;
+        $data['shopping_based_discount'] = $discountValue;
+
+        echo json_encode($data);
+    }
+
+    // 
+
+
+    // added for promocode
+
+    function validate_promocode()
+    {
+        $response = $this->this_model->validate_promocode($this->input->post());
+        echo json_encode($response);
+        die;
+    }
+    // 
     public function findProductBykey()
     {
         if ($this->input->post()) {
@@ -72,6 +165,7 @@ class Sell_development extends Vendor_Controller
     public function addProducttoTempOrder()
     {
         if ($this->input->post()) {
+            $parked_id = (isset($_POST['isParked']) && !empty($_POST['isParked'])) ?  $this->input->post('isParked') : '0';
             if (isset($_POST['isParked']) && !empty($_POST['isParked'])) {
                 $res =  $this->this_model->addProducttoParkedOrder($this->input->post());
                 $parked_id = $this->input->post('isParked');
@@ -89,40 +183,46 @@ class Sell_development extends Vendor_Controller
                 $sub_total = 0;
                 $total_discount = 0;
                 $total_gst = 0;
+                $total_savings = 0;
+
                 foreach ($result as $key => $value) {
                     $gst_amount = ($value->product_price * $value->gst) / 100;
                     $total_gst += $gst_amount * $value->quantity;
                     $sub_total += $value->price;
+                    $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
                     $total_discount += $value->discount_per_product;
-
+                    // onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
                     $dis = ($value->discount != 0) ? $value->discount : "0 %";
                     $html .= '<div class="product-list-wrapper old_list">
                                         <div class="product_name">
                                             <h5>' . $value->product_name . '</h5>
-                                            <h5><span class="this_quantity">' . $value->quantity . '</span><i class="fa fa-times" aria-hidden="true"></i> ' . $value->product_price . '</h5>
+                                            <h5><span class="this_quantity">' . $value->quantity . '</span><i class="fa fa-times" aria-hidden="true"></i> ' . $value->discount_price . '</h5>
                                         </div>
                                         <div class="product-quantity-detail-wrapper">
                                             <div class="product-quantity-detail">
                                                 <label for="">Qty</label>
-                                                <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" name="qnt' . $value->id . '" class="qunt" data-actual_discount_price=' . number_format((float)$value->product_price, 2, '.', '') . ' data-product_weight_id=' . $value->product_weight_id . ' data-temp_id=' . $value->id . ' value=' . $value->quantity . ' inputmode="decimal">
-                                            </div>
-                                            <div class="product-quantity-detail">
-                                                <label for="">dis</label>
-                                                <input type="number"  min="0" max="99" name="discount' . $value->id . '" class="disc" data-product_weight_id=' . $value->product_weight_id . ' data-temp_id=' . $value->id . ' value=' . number_format((float)$dis, 2, '.', '') . ' inputmode="decimal">
-                                                <span style="color: red" id="error' . $value->id . '"></span>
+                                                    <input type="number" inputmode="decimal min="1"  name="qnt' . $value->id . '" class="qunt" data-actual_discount_price=' . number_format((float)$value->product_price, 2, '.', '') . ' data-product_weight_id=' . $value->product_weight_id . ' data-temp_id=' . $value->id . ' value=' . (int)$value->quantity . '   data-isParked=' . (isset($parked_id) ? $parked_id : '0') . '>
                                                 </div>
-                                            <div class="total-wrapper">
-                                                <h5 class="sub_total">' . $value->price . '</h5>
-                                                <i class="fa fa-trash revomeRecord" aria-hidden="true" data-order_tempId=' . $value->id . '></i>
+                                                <div class="product-quantity-detail">
+                                                    <label for="">dis</label>
+                                                    <input type="number" readonly min="0" max="99" name="discount' . $value->id . '" class="disc"
+                                                        data-product_weight_id=' . $value->product_weight_id . ' data-temp_id=' . $value->id . '
+                                                        value=' . number_format((float)$dis, 2, ' .', '') . ' inputmode="decimal">
+                                                                                                <span style="color: red" id="error' . $value->id . '"></span>
+                                                </div>
+                                                <div class="total-wrapper">
+                                                    <h5 class="sub_total">' . $value->price . '</h5>
+                                                    <i class="fa fa-trash revomeRecord" aria-hidden="true" data-order_tempId=' . $value->id . '  data-isParked=' . $parked_id . '  ></i>
                                             </div>
-                                        </div>   
-                                    </div>';
+                                        </div>
+                                </div>';
                 }
-                // dd($html);die;
+
                 echo json_encode([
                     'status' => 1, 'result' => $html, 'subtotal' => $this->numberFormat($sub_total),
                     'total_gst' => $this->numberFormat($total_gst),
-                    'count' => count('result')
+                    'total_savings' => numberFormat($total_savings),
+                    'count' => count($result)
                 ]);
             }
         }
@@ -139,28 +239,28 @@ class Sell_development extends Vendor_Controller
         if ($this->input->post()) {
             $res = $this->this_model->searchCustomber($this->input->post());
             // print_r($res);die;
-            $html =  '';
+            $html = '';
 
             foreach ($res as $key => $value) {
                 $html .= '<ul>
-                           <li class="popover-list-item select_customer" data-customer_id = ' . $value->id . '>
-                              <a href="#">
-                                 <div class="customer-wrap">
-                                    <div class="profile-avatar">
-                                       ' . ucfirst($value->customer_name[0]) . '
-                                    </div>
-                                    <div class="list-items">
-                                       <h4>' . $value->customer_name . '</h4>
-                                       <p>' . $value->customercode . '</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </li>
-                        </ul>';
+    <li class="popover-list-item select_customer" data-customer_id=' . $value->id . '>
+        <a href="#">
+            <div class="customer-wrap">
+                <div class="profile-avatar">
+                    ' . ucfirst($value->customer_name[0]) . '
+                </div>
+                <div class="list-items">
+                    <h4>' . $value->customer_name . '</h4>
+                    <p>' . $value->customercode . '</p>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>';
             }
             $html .= '<a href="#" type="button" class="btn" id="btn_add_cust" data-toggle="modal" data-target="#add_cust">
-                           <p><i class="fa fa-plus-circle" aria-hidden="true"></i> Add "<span></span>" as a customer</p>
-                        </a>';
+    <p><i class="fa fa-plus-circle" aria-hidden="true"></i> Add "<span></span>" as a customer</p>
+</a>';
             echo json_encode(['result' => $html]);
         }
     }
@@ -170,26 +270,26 @@ class Sell_development extends Vendor_Controller
         if ($this->input->post()) {
             $res = $this->this_model->searchCustomber($this->input->post());
             // print_r($res);die;
-            $html =  '';
+            $html = '';
             foreach ($res as $key => $value) {
                 $html .= '<ul>
-                           <li class="popover-list-item select_customer" data-customer_id = ' . $value->id . '>
-                              <a href="#">
-                                 <div class="customer-wrap">
-                                    <div class="profile-avatar">
-                                       ' . $value->customer_name[0] . '
-                                    </div>
-                                    <div class="list-items">
-                                       <h4>' . $value->customer_name . '</h4>
-                                       <p>' . $value->customercode . '</p>
-                                    </div>
-                                 </div>
-                                 <div class="remove-close" style="display:none">
-                                 <span><i class="fa fa-times" aria-hidden="true"></i></span>
-                                 </div>
-                              </a>
-                           </li>
-                        </ul>';
+    <li class="popover-list-item select_customer" data-customer_id=' . $value->id . '>
+        <a href="#">
+            <div class="customer-wrap">
+                <div class="profile-avatar">
+                    ' . $value->customer_name[0] . '
+                </div>
+                <div class="list-items">
+                    <h4>' . $value->customer_name . '</h4>
+                    <p>' . $value->customercode . '</p>
+                </div>
+            </div>
+            <div class="remove-close" style="display:none">
+                <span><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+        </a>
+    </li>
+</ul>';
             }
             echo json_encode(['result' => $html]);
         }
@@ -210,10 +310,12 @@ class Sell_development extends Vendor_Controller
                 $sub_total = 0;
                 $total_discount = 0;
                 $total_gst = 0;
+                $total_savings = 0;
+
                 foreach ($result as $key => $value) {
                     $gst_amount = ($value->product_price * $value->gst) / 100;
                     $total_gst += $gst_amount * $value->quantity;
-
+                    $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
                     $sub_total += $value->price;
                     $total_discount += $value->discount_per_product;
                 }
@@ -225,6 +327,7 @@ class Sell_development extends Vendor_Controller
                 'status' => $status, 'subtotal' => $this->numberFormat($sub_total),
                 'total_discount' => $this->numberFormat($total_discount),
                 'total_gst' => $this->numberFormat($total_gst),
+                'total_savings' => numberFormat($total_savings),
                 'count' => count($result)
             ]);
         }
@@ -239,16 +342,34 @@ class Sell_development extends Vendor_Controller
             $avail_quantity = $this->this_model->checkProductVarient($variant_id);
             $isParked = $this->input->post('isParked');
             $temp_id = $this->input->post('temp_id');
+
+            $this->load->model('api_v3/common_model', 'co_model');
+            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
             if ($isParked > 0) {
-                $price =  $avail_quantity[0]->price;
+                $price = $avail_quantity[0]->discount_price;
+
+                // dk
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
+                }
+
                 $this->this_model->updateParkedQuantity($this->input->post(), $price);
                 $result = $this->this_model->OrderTemp($isParked);
+
                 // $status = '1';
             } else {
                 // if($demand_quantity > $avail_quantity[0]->quantity){
-                // 	$status = '0';
+                // $status = '0';
                 // }else{
-                $price =  $avail_quantity[0]->price;
+                $price =  $avail_quantity[0]->discount_price;
+
+                // dk
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
+                }
+
+
                 $this->this_model->updateTempQuantity($this->input->post(), $price);
                 $status = '1';
                 $result = $this->this_model->OrderTempWithoutPark();
@@ -257,13 +378,18 @@ class Sell_development extends Vendor_Controller
 
             $sub_total = 0;
             $total_gst = 0;
+            $total_savings = 0;
             foreach ($result as $key => $value) {
+                $price = $value->price;
+
                 $r = $this->this_model->checkProductVarient($value->product_weight_id);
                 $gst_amount = ($value->product_price * $r[0]->gst) / 100;
                 $total_gst += $gst_amount * $value->quantity;
-                $sub_total += $value->price;
+                $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
+                $sub_total += $price;
                 // $total_discount += $value->discount_per_product;
             }
+
             if ($isParked > 0) {
                 $resultIdWish = $this->this_model->getUpdatedParkedRow($temp_id);
             } else {
@@ -275,14 +401,18 @@ class Sell_development extends Vendor_Controller
                 'total_gst' => $this->numberFormat($total_gst),
                 'exist_quantity' => $resultIdWish[0]->quantity,
                 'exist_price' => $resultIdWish[0]->price,
+                'total_savings' => numberFormat($total_savings)
             ]);
         }
     }
 
     public function update_quantity()
     {
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
         if ($this->input->post()) {
-            $res = $this->this_model->updateDiscount($this->input->post());
+            $res = $this->this_model->updateDiscount($this->input->post(), $isShow);
             echo json_encode(['status' => '1', 'updated_price' => $res]);
         }
     }
@@ -292,12 +422,13 @@ class Sell_development extends Vendor_Controller
         if ($this->input->post()) {
             $res = $this->this_model->getProductVarient($this->input->post());
             $html .= '<div class="category-list product_quick_list" data-product_weight_id=' . $res[0]->id . '>
-              <a href="javascript:">
-                  <div>
-                    <h4>' . $res[0]->name . '</h4>
-                    <p>' . $res[0]->weight_no . ' ' . $res[0]->weight_name . '</p>
-                  </div>
-              </a></div>';
+    <a href="javascript:">
+        <div>
+            <h4>' . $res[0]->name . '</h4>
+            <p>' . $res[0]->weight_no . ' ' . $res[0]->weight_name . '</p>
+        </div>
+    </a>
+</div>';
             echo json_encode(['list' => $html]);
         }
     }
@@ -343,44 +474,45 @@ class Sell_development extends Vendor_Controller
 
             foreach ($re['order_details'] as $key => $v) {
                 $o_detail .= '<tr>
-                     <td>' . $v->name . '</td>
-                     <td>' . $v->quantity . '</td>
-                     <td>' . $v->discount . '</td>
-                     <td>' . $v->calculation_price . '</td>
-                  </tr>';
+    <td>' . $v->name . '</td>
+    <td>' . $v->quantity . '</td>
+    <td>' . $v->discount . '</td>
+    <td>' . $v->calculation_price . '</td>
+</tr>';
             }
             $o_info = '<li>
-                     <div>
-                        <h6>Subtotal </h6>
-                        <h6>' . $re['orderInfo'][0]->total . '</h6>
-                     </div>
-                  </li>
-                  <li>
-                     <div>
-                        <h6>Discount(%)</h6>
-                        <h6>' . $re['orderInfo'][0]->order_discount . '</h6>
-                     </div>
-                  </li>
-                  <li>
-                     <div>
-                        <h6>Discount Price </h6>
-                        <h6>' . $re['orderInfo'][0]->total_saving . '</h6>
-                     </div>
-                  </li>
-                  <li>
-                     <div>
-                        <h6>Total </h6>
-                        <h6>' . $re['orderInfo'][0]->payable_amount . '</h6>
-                     </div>
-                  </li>';
-            $date = ' <h4></h4><h5> <span>Date : </span> ' . date('d -m- Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
+    <div>
+        <h6>Subtotal </h6>
+        <h6>' . $re['orderInfo'][0]->total . '</h6>
+    </div>
+</li>
+<li>
+    <div>
+        <h6>Discount(%)</h6>
+        <h6>' . $re['orderInfo'][0]->order_discount . '</h6>
+    </div>
+</li>
+<li>
+    <div>
+        <h6>Discount Price </h6>
+        <h6>' . $re['orderInfo'][0]->total_saving . '</h6>
+    </div>
+</li>
+<li>
+    <div>
+        <h6>Total </h6>
+        <h6>' . numberFormat($re['orderInfo'][0]->payable_amount) . '</h6>
+    </div>
+</li>';
+            $date = ' <h4></h4>
+<h5> <span>Date : </span> ' . date('d -m- Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
 
             echo json_encode(['o_detail' => $o_detail, 'o_info' => $o_info, 'date' => $date]);
         }
     }
 
 
-    public function  removeSaleRecord()
+    public function removeSaleRecord()
     {
         if ($this->input->post()) {
             $res = $this->this_model->removeSaleRecord($this->input->post());
@@ -450,7 +582,7 @@ class Sell_development extends Vendor_Controller
         $this->this_model->update_discount_parked_order($this->input->post());
     }
 
-    ##  Sell : Update Order Temp ##
+    ## Sell : Update Order Temp ##
     public function update_order_temp()
     {
         if ($this->input->get()) {
@@ -459,7 +591,7 @@ class Sell_development extends Vendor_Controller
         }
     }
 
-    ##  Sell : Temp Products Div Append ##
+    ## Sell : Temp Products Div Append ##
     public function temp_order()
     {
 
@@ -494,7 +626,8 @@ class Sell_development extends Vendor_Controller
 
         $qnt = $result['quantity'];
         $temp_qnt = $result['temp_quantity'];
-        $this->db->query("UPDATE product_weight SET quantity = $qnt + $pro_temp_qnt,temp_quantity = $temp_qnt-$pro_temp_qnt WHERE id= '$product_id'");
+        $this->db->query("UPDATE product_weight SET quantity = $qnt + $pro_temp_qnt,temp_quantity = $temp_qnt-$pro_temp_qnt
+        WHERE id= '$product_id'");
 
         $subtotal = $_GET['subtotal'];
         $disc_percentage = $_GET['disc_percentage'];
@@ -538,14 +671,14 @@ class Sell_development extends Vendor_Controller
             $total = $this->input->post('hidden_total');
             $register_id = $this->input->post('register_id');
             /*$parent_id = $this->session->userdata('parent_id');
-            if($parent_id == '0')
-            {
+                if($parent_id == '0')
+                {
                 $parent_insert_id = '1';
-            }
-            else
-            {
+                }
+                else
+                {
                 $parent_insert_id = $this->session->userdata('parent_id');
-            }*/
+                }*/
 
             $park_array = array(
                 'vendor_id' => $vendor_id,
@@ -574,7 +707,8 @@ class Sell_development extends Vendor_Controller
 
                     if ($product_temp_id != '') {
 
-                        $pro_temp_row = $this->db->query("SELECT Product_id, quantity, price, discount, discount_price FROM order_temp WHERE id = '$product_temp_id'");
+                        $pro_temp_row = $this->db->query("SELECT Product_id, quantity, price, discount, discount_price FROM order_temp WHERE id
+= '$product_temp_id'");
                         $pro_temp_result = $pro_temp_row->row_array();
 
                         $this->db->query("UPDATE order_temp SET park = '1' WHERE id = '$product_temp_id'");
@@ -590,7 +724,8 @@ class Sell_development extends Vendor_Controller
                             $quantity_temp = '0';
                         }
 
-                        $this->db->query("UPDATE product SET quantity = $temp_qnt - $quantity_temp, temp_quantity = $temp_qnt - $quantity_temp WHERE id= '$p_id'");
+                        $this->db->query("UPDATE product SET quantity = $temp_qnt - $quantity_temp, temp_quantity = $temp_qnt - $quantity_temp
+WHERE id= '$p_id'");
 
                         $order_temp_array = array(
                             'order_id' => $last_inserted_order_id,
@@ -623,14 +758,14 @@ class Sell_development extends Vendor_Controller
             $total = $this->input->post('hidden_total');
             $register_id = $this->input->post('register_id');
             /*$parent_id = $this->session->userdata('parent_id');
-            if($parent_id == '0')
-            {
-                $parent_insert_id = '1';
-            }
-            else
-            {
-                $parent_insert_id = $this->session->userdata('parent_id');
-            }*/
+if($parent_id == '0')
+{
+$parent_insert_id = '1';
+}
+else
+{
+$parent_insert_id = $this->session->userdata('parent_id');
+}*/
 
             if (isset($_REQUEST['cash']) && $_REQUEST['cash'] == 'Cash') {
 
@@ -641,7 +776,8 @@ class Sell_development extends Vendor_Controller
                 $counted = $reg_result['counted'];
                 $difference = $counted - $cash_amount_expected;
 
-                $this->db->query("UPDATE register SET cash_amount_expected = '$cash_amount_expected', counted = '$counted' WHERE id = $register_id");
+                $this->db->query("UPDATE register SET cash_amount_expected = '$cash_amount_expected', counted = '$counted' WHERE id =
+$register_id");
 
                 $cash_array = array(
                     'user_id' => $user_id,
@@ -676,7 +812,8 @@ class Sell_development extends Vendor_Controller
 
                         if ($product_temp_id != '') {
 
-                            $pro_temp_row = $this->db->query("SELECT Product_id, quantity, price, discount, discount_price FROM order_temp WHERE id = '$product_temp_id'");
+                            $pro_temp_row = $this->db->query("SELECT Product_id, quantity, price, discount, discount_price FROM order_temp WHERE id
+= '$product_temp_id'");
                             $pro_temp_result = $pro_temp_row->row_array();
 
                             //$this->db->query("UPDATE order_temp SET park = '2' WHERE id = '$product_temp_id'");
@@ -723,14 +860,16 @@ class Sell_development extends Vendor_Controller
 
             if (isset($_REQUEST['credit_card']) && $_REQUEST['credit_card'] == 'Credit Card') {
 
-                $reg_query = $this->db->query("SELECT credit_card_expected, credit_card_counted, credit_card_differences FROM register WHERE id = $register_id");
+                $reg_query = $this->db->query("SELECT credit_card_expected, credit_card_counted, credit_card_differences FROM register
+WHERE id = $register_id");
                 $reg_result = $reg_query->row_array();
 
                 $cash_amount_expected = $reg_result['credit_card_expected'] + $total;
                 $counted = $reg_result['credit_card_counted'];
                 $difference = $counted - $cash_amount_expected;
 
-                $this->db->query("UPDATE register SET credit_card_expected = '$cash_amount_expected', credit_card_counted = '$counted' WHERE id = $register_id");
+                $this->db->query("UPDATE register SET credit_card_expected = '$cash_amount_expected', credit_card_counted = '$counted'
+WHERE id = $register_id");
 
                 $cash_array = array(
                     'user_id' => $user_id,
@@ -760,12 +899,13 @@ class Sell_development extends Vendor_Controller
                         $example = explode('qnt', $key);
                         $product_temp_id = $example['1'];
 
-                        //                        //Temp Disc
-                        //                        $example = explode('discount', $key);
+                        // //Temp Disc
+                        // $example = explode('discount', $key);
 
                         if ($product_temp_id != '') {
 
-                            $pro_temp_row = $this->db->query("SELECT Product_id, quantity, price, discount, discount_price FROM order_temp WHERE id = '$product_temp_id'");
+                            $pro_temp_row = $this->db->query("SELECT Product_id, quantity, price, discount, discount_price FROM order_temp WHERE id
+= '$product_temp_id'");
                             $pro_temp_result = $pro_temp_row->row_array();
 
                             //$this->db->query("UPDATE order_temp SET park = '2' WHERE id = '$product_temp_id'");
@@ -832,13 +972,13 @@ class Sell_development extends Vendor_Controller
     {
         $vendor_id = $this->session->userdata('id');
         $search = $_GET['search'];
-        $query_product = $this->db->query("SELECT p.* FROM product as p 
-                                                    INNER JOIN category as c on p.category_id = c.id
-                                                    INNER JOIN subcategory as s on p.subcategory_id = s.id
-                                                    WHERE p.status != '9' AND (p.name LIKE '%$search%'
-                                                    OR c.name LIKE '%$search%'
-                                                    OR s.name LIKE '%$search%')  
-                                                    AND p.vendor_id = '$vendor_id'  ORDER BY id DESC ");
+        $query_product = $this->db->query("SELECT p.* FROM product as p
+INNER JOIN category as c on p.category_id = c.id
+INNER JOIN subcategory as s on p.subcategory_id = s.id
+WHERE p.status != '9' AND (p.name LIKE '%$search%'
+OR c.name LIKE '%$search%'
+OR s.name LIKE '%$search%')
+AND p.vendor_id = '$vendor_id' ORDER BY id DESC ");
         $result = $query_product->result();
 
         $i = '1';
@@ -847,7 +987,8 @@ class Sell_development extends Vendor_Controller
 
             echo '<div class="sel_subcatagory_itm" style="display: block;">';
             foreach ($result as $product) {
-                echo '<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd" onclick="return select_product_variant(' . $product->id . ',0)">';
+                echo '<div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 no_padd"
+        onclick="return select_product_variant(' . $product->id . ',0)">';
                 echo '<div class="subcatg_list text-center" onclick="return select_product_variant(' . $product->id . ',0)">';
                 echo '<a href="javascript:;"><span> ' . $product->name . ' </span></a>';
                 echo '</div>';
@@ -883,34 +1024,50 @@ class Sell_development extends Vendor_Controller
             //For All Outlet
             if ($outlet_sub_result[0]->outlet_id == '0') {
 
-                $res = $this->db->query("SELECT p.*, pt.name as tag_name FROM product as p LEFT JOIN product_tag as pt ON pt.product_id = p.id WHERE (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id = '$parent_user_id') AND p.name != '' GROUP BY p.name");
+                $res = $this->db->query("SELECT p.*, pt.name as tag_name FROM product as p LEFT JOIN product_tag as pt ON pt.product_id
+= p.id WHERE (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND
+(p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id =
+'$parent_user_id') AND p.name != '' GROUP BY p.name");
                 $row_search = $res->result();
 
-                $res_type = $this->db->query("SELECT p.*, pt.name as tag_name FROM product as p LEFT JOIN product_tag as pt ON pt.product_id = p.id WHERE (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id = '$parent_user_id') AND pt.name != '' GROUP BY p.name");
+                $res_type = $this->db->query("SELECT p.*, pt.name as tag_name FROM product as p LEFT JOIN product_tag as pt ON
+pt.product_id = p.id WHERE (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND
+(p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id =
+'$parent_user_id') AND pt.name != '' GROUP BY p.name");
                 $row_search_type = $res_type->result();
             } else {
 
                 //For Selected Outlet
-                $res = $this->db->query("SELECT p.*, pt.name as tag_name, op.outlet_id FROM product as p 
-                                            INNER JOIN outlet_product as op ON op.product_id = p.id
-                                            LEFT JOIN product_tag as pt ON pt.product_id = p.id 
-                                            WHERE op.retail_price_tax != '0' AND op.outlet_id IN ($implode) AND (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id = '$parent_user_id') AND p.name != '' GROUP BY p.name");
+                $res = $this->db->query("SELECT p.*, pt.name as tag_name, op.outlet_id FROM product as p
+INNER JOIN outlet_product as op ON op.product_id = p.id
+LEFT JOIN product_tag as pt ON pt.product_id = p.id
+WHERE op.retail_price_tax != '0' AND op.outlet_id IN ($implode) AND (pt.name LIKE '%$search%' OR p.name LIKE
+'%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id =
+'$user_id' OR p.user_id = '$parent_user_id') AND p.name != '' GROUP BY p.name");
                 $row_search = $res->result();
 
 
                 $res_type = $this->db->query("SELECT p.*, pt.name as tag_name FROM product as p
-                                                INNER JOIN outlet_product as op ON op.product_id = p.id
-                                                LEFT JOIN product_tag as pt ON pt.product_id = p.id AND op.outlet_id IN ($implode) 
-                                                WHERE op.retail_price_tax != '0' AND op.outlet_id IN ($implode) AND (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id = '$parent_user_id') AND pt.name != '' GROUP BY p.name, pt.id");
+INNER JOIN outlet_product as op ON op.product_id = p.id
+LEFT JOIN product_tag as pt ON pt.product_id = p.id AND op.outlet_id IN ($implode)
+WHERE op.retail_price_tax != '0' AND op.outlet_id IN ($implode) AND (pt.name LIKE '%$search%' OR p.name LIKE
+'%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id =
+'$user_id' OR p.user_id = '$parent_user_id') AND pt.name != '' GROUP BY p.name, pt.id");
                 $row_search_type = $res_type->result();
             }
         } else {
 
             //For All Outlet
-            $res = $this->db->query("select p.*, pt.name as tag_name from product as p LEFT JOIN product_tag as pt ON pt.product_id = p.id WHERE (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id = '$parent_user_id') AND p.name != '' GROUP BY p.name");
+            $res = $this->db->query("select p.*, pt.name as tag_name from product as p LEFT JOIN product_tag as pt ON pt.product_id
+= p.id WHERE (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND
+(p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id =
+'$parent_user_id') AND p.name != '' GROUP BY p.name");
             $row_search = $res->result();
 
-            $res_type = $this->db->query("select p.*, pt.name as tag_name from product as p LEFT JOIN product_tag as pt ON pt.product_id = p.id WHERE (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND (p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id = '$parent_user_id') AND pt.name != ''");
+            $res_type = $this->db->query("select p.*, pt.name as tag_name from product as p LEFT JOIN product_tag as pt ON
+pt.product_id = p.id WHERE (pt.name LIKE '%$search%' OR p.name LIKE '%$search%') AND p.status != '9' AND
+(p.parent_user_id='$parent_user_id' OR p.parent_user_id ='$user_id' OR p.user_id = '$user_id' OR p.user_id =
+'$parent_user_id') AND pt.name != ''");
             $row_search_type = $res_type->result();
         }
 
@@ -980,10 +1137,10 @@ class Sell_development extends Vendor_Controller
     public function test()
     {
         /*$user_id = $_REQUEST['user_id'];
-        $this->db->query("DELETE FROM `order_temp` WHERE `user_id` = '$user_id'");
-        $this->db->query('UPDATE product SET `temp_quantity` = `quantity`');
-        return;
-        exit();*/
+$this->db->query("DELETE FROM `order_temp` WHERE `user_id` = '$user_id'");
+$this->db->query('UPDATE product SET `temp_quantity` = `quantity`');
+return;
+exit();*/
         echo '1';
 
         exit();
@@ -995,13 +1152,15 @@ class Sell_development extends Vendor_Controller
         $order_id = $_POST['order_id'];
         $vendor_id = $this->session->userdata('id');
 
-        $order_query = $this->db->query("SELECT od.calculation_price AS price, od.actual_discount AS discount, od.quantity, od.dt_updated, p.name, pw.discount_price AS final_price FROM pos_order_detail as od
-            LEFT JOIN product as p ON p.id = od.product_id
-            LEFT JOIN product_weight as pw ON pw.id = od.product_variant_id
-             WHERE od.pos_order_id = '$order_id' AND p.vendor_id = '$vendor_id' AND od.status != '9'");
+        $order_query = $this->db->query("SELECT od.calculation_price AS price, od.actual_discount AS discount, od.quantity,
+od.dt_updated, p.name, pw.discount_price AS final_price FROM pos_order_detail as od
+LEFT JOIN product as p ON p.id = od.product_id
+LEFT JOIN product_weight as pw ON pw.id = od.product_variant_id
+WHERE od.pos_order_id = '$order_id' AND p.vendor_id = '$vendor_id' AND od.status != '9'");
         $order_row = $order_query->result();
 
-        $order_query_ = $this->db->query("SELECT total_price AS subtotal, total_discount,calculation_price AS total FROM `pos_order` WHERE id = '$order_id' AND vendor_id = '$vendor_id' AND status != '9'");
+        $order_query_ = $this->db->query("SELECT total_price AS subtotal, total_discount,calculation_price AS total FROM
+`pos_order` WHERE id = '$order_id' AND vendor_id = '$vendor_id' AND status != '9'");
         $order_row_ = $order_query_->row_array();
 
         $this->load->library('email');
@@ -1017,66 +1176,80 @@ class Sell_development extends Vendor_Controller
         );
 
         $html = '<html>
-                    <head></head>
-                    <body  style="width: 50%; border: 1px solid black; ">
-                        <div>
-                        
-                            <br>
-                            <div style="text-align: center"><b>Point of Sale</b></div><br>
-                            <div style="text-align: center"><b>CMExpertise</b></div><br>
-                            <div style="text-align: center"><b>Receipt / Tax Invoice</b></div><br>
-                            <div style="text-align: center"><b>Invoice:</b></div>
-                            <div style="text-align: center"><b> ' . date("jS \of F Y h:i:s A") . ' </b></div>
-                            <div style="text-align: center"><b> Served by: CM Expertise on Main Register </b></div><br>';
+
+<head></head>
+
+<body style="width: 50%; border: 1px solid black; ">
+    <div>
+
+        <br>
+        <div style="text-align: center"><b>Point of Sale</b></div><br>
+        <div style="text-align: center"><b>CMExpertise</b></div><br>
+        <div style="text-align: center"><b>Receipt / Tax Invoice</b></div><br>
+        <div style="text-align: center"><b>Invoice:</b></div>
+        <div style="text-align: center"><b> ' . date("jS \of F Y h:i:s A") . ' </b></div>
+        <div style="text-align: center"><b> Served by: CM Expertise on Main Register </b></div><br>';
 
 
         $html .= '
-                    <table border="1" style="width: 100%; border: 1px solid" cellpadding="5" >
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Product Price</th>
-                                <th>Total Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
+        <table border="1" style="width: 100%; border: 1px solid" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Product Price</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>';
 
         foreach ($order_row as $order) {
 
-            $html .= ' 
-                                    <tr>
-                                        <td style="text-align: center"> ' . $order->name . ' </td>
-                                        <td style="text-align: center"> ' . $order->quantity . ' </td>
-                                        <td style="text-align: center"> $' . $order->final_price . '.00 </td>
-                                        <td style="text-align: center"> $' . $order->price . ' </td>
-                                    </tr>
-                                ';
+            $html .= '
+                <tr>
+                    <td style="text-align: center"> ' . $order->name . ' </td>
+                    <td style="text-align: center"> ' . $order->quantity . ' </td>
+                    <td style="text-align: center"> $' . $order->final_price . '.00 </td>
+                    <td style="text-align: center"> $' . $order->price . ' </td>
+                </tr>
+                ';
         }
 
-        $html .= '</tbody>';
-        $html .= '</table>';
+        $html .= '
+            </tbody>';
+        $html .= '
+        </table>';
 
         $html .= '
 
-                  <br><br>
-                  <div>
-                  
-                      <hr>  
-                      <label style="float: left;"> <b>Subtotal</b> </label> <label style="float: right;"> $' . $order_row_["subtotal"] . ' </label><br><br><hr>
-                      <label style="float: left;"> <b>Discount(%)</b> </label> <label style="float: right;"> $' . $order_row_["discount_per"] . ' </label><br><br><hr>
-                      <label style="float: left;"> <b>Discount Price</b> </label> <label style="float: right;"> $' . $order_row_["total_discount"] . ' </label><br><br><hr>
-                      <label style="float: left;"> <b>Total</b> </label> <label style="float: right;"> $' . $order_row_["total"] . ' </label><br><hr>
-                      
-                      <br><br>
-                      <div><span style="text-align: center"><b>Customer Copy</b></span></div>
-                  </div>
+        <br><br>
+        <div>
+
+            <hr>
+            <label style="float: left;"> <b>Subtotal</b> </label> <label style="float: right;"> $' .
+            $order_row_["subtotal"] . ' </label><br><br>
+            <hr>
+            <label style="float: left;"> <b>Discount(%)</b> </label> <label style="float: right;"> $' .
+            $order_row_["discount_per"] . ' </label><br><br>
+            <hr>
+            <label style="float: left;"> <b>Discount Price</b> </label> <label style="float: right;"> $' .
+            $order_row_["total_discount"] . ' </label><br><br>
+            <hr>
+            <label style="float: left;"> <b>Total</b> </label> <label style="float: right;"> $' . $order_row_["total"] .
+            ' </label><br>
+            <hr>
+
+            <br><br>
+            <div><span style="text-align: center"><b>Customer Copy</b></span></div>
+        </div>
         ';
 
 
-        $html .= '        </div>
-                    </body>
-                </html>';
+        $html .= '
+    </div>
+</body>
+
+</html>';
 
 
         $sub_total = $_REQUEST['sub_total'];
@@ -1093,12 +1266,12 @@ class Sell_development extends Vendor_Controller
         $subject = 'Order';
 
         $receipt = "
-					Sub-Total = $sub_total 
-					Discount(%) = $disc_percentage
-					Discount Price = $discount_total
-					Total = $total
-							
-					";
+Sub-Total = $sub_total
+Discount(%) = $disc_percentage
+Discount Price = $discount_total
+Total = $total
+
+";
 
         $this->email->initialize($config);
         $this->email->set_newline("\r\n");
@@ -1134,7 +1307,8 @@ class Sell_development extends Vendor_Controller
         $vendor_id = $this->session->userdata('id');
 
 
-        $query_subcategory = $this->db->query("SELECT * FROM subcategory WHERE status != '9'  AND vendor_id = '$vendor_id' AND category_id ='$type_id' ORDER BY id DESC ");
+        $query_subcategory = $this->db->query("SELECT * FROM subcategory WHERE status != '9' AND vendor_id = '$vendor_id' AND
+category_id ='$type_id' ORDER BY id DESC ");
 
         $result = $query_subcategory->result();
 

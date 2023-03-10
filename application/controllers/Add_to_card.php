@@ -20,6 +20,8 @@ class Add_to_card extends User_Controller
 	public function addProducToCart()
 	{
 
+
+
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		if ($this->input->post()) {
@@ -226,19 +228,19 @@ class Add_to_card extends User_Controller
 		$product_weight_id = $this->input->post('product_weight_id');
 		$quantity = 1;
 		$sub_total =  $this->input->post("subtotal");
-		$this->load->model('api_v3/common_model','co_model');
-  		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
+		$this->load->model('api_v3/common_model', 'co_model');
+		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		$new_deliveryCharge = 0;
 		if ($this->session->userdata('user_id') == '') {
-			
+
 			$new_deliveryCharge = number_format((float)$new_deliveryCharge, 2, '.', '');
 			foreach ($_SESSION['My_cart'] as $key => $value) {
-				
+
 				if ($value['product_id'] == $prod_id && $value['product_weight_id'] == $product_weight_id) {
-				
-					if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-						$value['discount_price'] = $result[0]->without_gst_price; 
-					}else{
+
+					if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+						$value['discount_price'] = $result[0]->without_gst_price;
+					} else {
 						$value['discount_price'] = $result[0]->discount_price;
 					}
 					$old_qun = $value['quantity'];
@@ -253,7 +255,7 @@ class Add_to_card extends User_Controller
 						$errormsg = $this->lang->line('Maximum order quantity reached');
 						$qun = $result[0]->max_order_qty;
 					} else if ($qun > $result[0]->quantity) {
-						$errormsg = $this->lang->line('Item Out of Stock'); 
+						$errormsg = $this->lang->line('Item Out of Stock');
 					} else {
 
 						$price = $value['discount_price'] * $qun;
@@ -267,10 +269,10 @@ class Add_to_card extends User_Controller
 		} else {
 			$cartTable = $this->this_model->CheckMycard($this->input->post());
 			// print_r($this->input->post());die;
-			if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-				$result[0]->discount_price = $result[0]->without_gst_price; 
+			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+				$result[0]->discount_price = $result[0]->without_gst_price;
 			}
-			
+
 			$old_qun = $cartTable[0]->quantity;
 			if ($this->input->post('action') == 'decrease') {
 				$qun = $cartTable[0]->quantity - $quantity;
@@ -342,7 +344,7 @@ class Add_to_card extends User_Controller
 			'final_total' => getMycartSubtotal(),
 			'max_qun' => $old_qun,
 			'updated_list' => NavbarDropdown(),
-			'delivery_charge' => $new_deliveryCharge 
+			'delivery_charge' => $new_deliveryCharge
 		];
 		echo json_encode($response);
 	}

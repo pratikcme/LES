@@ -328,8 +328,8 @@ class Checkout_model extends My_model
         $mobile_number = $country_code . '' . $mobile;
         // $otp = $this->sendOtp($mobile_number);
         $otp = rand(1111, 9999);
-        if($mobile == '9875105843'){
-            $otp = '1234'; 
+        if ($mobile == '9875105843') {
+            $otp = '1234';
         }
         $userData['select'] = ['*'];
         $userData['table'] = 'user';
@@ -453,14 +453,14 @@ class Checkout_model extends My_model
         $getMycartSubtotal = getMycartSubtotal();
         $discountValue = 0;
         $shoppingDiscount = $this->checkShoppingBasedDiscount();
-        if(!empty($shoppingDiscount)){
-          if(getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount){
-            $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-            $discountValue = getMycartSubtotal() * $discountPercentage/100;
-            $discountValue = number_format((float)$discountValue,2,'.','');
-          }
+        if (!empty($shoppingDiscount)) {
+            if (getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount) {
+                $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+                $discountValue = getMycartSubtotal() * $discountPercentage / 100;
+                $discountValue = number_format((float)$discountValue, 2, '.', '');
+            }
         }
-        $sub_total = number_format((float)($getMycartSubtotal-$discountValue), 2, '.', '');
+        $sub_total = number_format((float)($getMycartSubtotal - $discountValue), 2, '.', '');
         $total_price = number_format((float)$sub_total, 2, '.', '');
 
 
@@ -533,14 +533,13 @@ class Checkout_model extends My_model
         return $response;
     }
 
-    public function checkShoppingBasedDiscount(){
+    public function checkShoppingBasedDiscount()
+    {
         $cartAmount = getMycartSubtotal();
-        $query = $this->db->query('SELECT *,('.$cartAmount.' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = '.$this->branch_id.' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        $query = $this->db->query('SELECT *,(' . $cartAmount . ' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = ' . $this->branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
         // lq();
         return $re;
         // return
     }
-
-
 }

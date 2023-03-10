@@ -36,35 +36,48 @@ class Sell_development_model extends My_model
         $varient_id = $postdata['pw_id'];
         $quantity = 1;
         $varient = $this->checkProductVarient($varient_id);
-
         $isAvailable = $this->checkProductAvailableInTemporder($varient_id, $this->branch_id);
+
+
+        $this->load->model('api_v3/common_model', 'co_model');
+        // dd($this->session);
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
+        // $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
         if (!empty($isAvailable)) {
 
             if ($varient[0]->quantity >= $isAvailable[0]->quantity) {
 
                 $updateQuantity = $isAvailable[0]->quantity + $quantity;
 
-                $actaul_price = number_format((float)$varient[0]->price, 2, '.', '');
+
+
+                $actual_price = number_format((float)$varient[0]->price, 2, '.', '');
+
+
                 $discount_per = $varient[0]->discount_per;
 
-                $discount_price = ($actaul_price * $discount_per) / 100;
+                $discount_price = ($actual_price * $discount_per) / 100;
 
                 $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                // dk
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                }
+
+
+
                 $updatePrice = $updateQuantity * $price;
 
                 $update_discount_price = $discount_price * $updateQuantity;
 
                 $updatePrice = number_format((float)$updatePrice, 2, '.', '');
 
-                $newVal = ($updatePrice * (float)$isAvailable[0]->discount) / 100;
-
-                $updatePriceByDipesh =  number_format((float)($updatePrice - $newVal), 2, '.', '');
-
                 $updateArray = [
                     'quantity' => $updateQuantity,
-                    'price' => $updatePriceByDipesh,
+                    'price' => number_format((float)$updatePrice, 2, '.', ''),
                     'dt_updated' => strtotime(DATE_TIME),
-                    'discount_price' => number_format((float)$update_discount_price, 2, '.', '')
+                    // 'discount_price' => number_format((float) $newVal, 2, '.', '')
                 ];
                 $this->UpdateOrderTemp($varient_id, $updateArray);
 
@@ -73,13 +86,22 @@ class Sell_development_model extends My_model
                 $response = 0;
             }
         } else {
-
+            // dd($varient);
             if ($varient[0]->quantity > 0) {
                 $varient_id = $varient[0]->id;
 
+
+
                 $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
                 $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
-                $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
+
+
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                }
+
+                // dd($price);
+                $total = $quantity * $price;
 
                 $date = strtotime(DATE_TIME);
                 $insertedData = [
@@ -87,13 +109,14 @@ class Sell_development_model extends My_model
                     'customer_id' => 0,
                     'product_weight_id' => $varient_id,
                     'quantity' => $quantity,
-                    'price' => $price,
+                    'actual_price' => $varient[0]->price,
+                    'price' => number_format((float)$total, 2, '.', ''),
                     'status' => '1',
                     'dt_added' => $date,
                     'dt_updated' => $date,
                     'park' => '0',
                     'discount' => $discount_percentage,
-                    'discount_price' => number_format((float)$discounInPrice, 2, '.', '')
+                    'discount_price' => number_format((float)$price, 2, '.', '')
                 ];
                 $data['table'] = TABLE_ORDER_TEMP;
                 $data['insert'] = $insertedData;
@@ -116,6 +139,8 @@ class Sell_development_model extends My_model
         $varient = $this->checkProductVarient($varient_id);
         $isAvailable = $this->checkOrderIdParked($parked_id, $varient_id, $this->branch_id);
 
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
         if (!empty($isAvailable)) {
             // update
             $updateQuantity = $isAvailable[0]->quantity + $quantity;
@@ -125,6 +150,12 @@ class Sell_development_model extends My_model
             $discount_price = ($actaul_price * $discount_per) / 100;
 
             $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+
+            // dk
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+            }
+
             $updatePrice = $updateQuantity * $price;
 
             $update_discount_price = $discount_price * $updateQuantity;
@@ -134,7 +165,7 @@ class Sell_development_model extends My_model
             $updateArray = [
                 'quantity' => $updateQuantity,
                 'price' => $updatePrice,
-                'discount_price' => number_format((float)$update_discount_price, 2, '.', ''),
+                // 'discount_price' => number_format((float)$update_discount_price, 2, '.', ''),
                 'dt_updated' => strtotime(DATE_TIME),
             ];
             $data['table'] = 'parked_order_details';
@@ -150,6 +181,12 @@ class Sell_development_model extends My_model
             $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
             $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
 
+            // dk
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+            }
+
+            // dd($price);
             $date = strtotime(DATE_TIME);
             $insertedData = [
                 'branch_id' => $this->branch_id,
@@ -161,7 +198,7 @@ class Sell_development_model extends My_model
                 'actual_price' => $varient[0]->price,
                 'actual_discount' => $varient[0]->discount_per,
                 'discount' => $discount_percentage,
-                'discount_price' => number_format((float)$varient[0]->discounInPrice, 2, '.', ''),
+                'discount_price' => number_format((float)$price, 2, '.', ''),
                 'price' => $price,
                 'status' => '1',
                 'dt_added' => $date,
@@ -193,6 +230,7 @@ class Sell_development_model extends My_model
         $total_saving =  ($total * $ParkOrder[0]->order_discount) / 100;
 
         $payable_amount =  $total - $total_saving;
+
         unset($data);
         $data['table'] = 'parked_order';
         $data['where'] = ['id' => $parked_id];
@@ -297,6 +335,8 @@ class Sell_development_model extends My_model
         $actual_discount_price = $postdata['actual_discount_price'];
 
 
+
+
         $data['table'] = TABLE_ORDER_TEMP;
         $data['select'] = ['*'];
         $data['where'] = ['id' => $temp_id];
@@ -304,13 +344,17 @@ class Sell_development_model extends My_model
 
         $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
 
-        $update_price = ($price * $update_quantity) - $discount;
+
+        $update_price = ($price * $update_quantity);
+        // - $discount;
         unset($data);
+
+
 
         $updateData = array(
             'quantity' => $update_quantity,
             'price' => numberFormat($update_price),
-            'discount_price' => numberFormat($discount)
+            // 'discount_price' => numberFormat($update_price)
         );
 
         $data['table'] = TABLE_ORDER_TEMP;
@@ -332,16 +376,17 @@ class Sell_development_model extends My_model
         $data['where'] = ['id' => $temp_id];
         $re = $this->selectRecords($data);
 
-        $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
+        // $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
 
-        $update_price = ($price * $update_quantity) - $discount;
+        $update_price = ($price * $update_quantity);
+        //  - $discount;
 
         unset($data);
 
         $updateData = array(
             'quantity' => $update_quantity,
             'price' => numberFormat($update_price),
-            'discount_price' => numberFormat($discount)
+            // 'discount_price' => numberFormat($discount)
         );
 
         $data['table'] = 'parked_order_details';
@@ -353,8 +398,10 @@ class Sell_development_model extends My_model
         $this->getUpdatedParkedOrder($parked_id);
     }
 
-    public function updateDiscount($postdata)
+    public function updateDiscount($postdata, $isShow)
     {
+
+
         $isParked = $this->input->post('isParked');
         if ($isParked > 0) {
             $table_name = 'parked_order_details';
@@ -370,6 +417,11 @@ class Sell_development_model extends My_model
         $actual_discount_price =  $postdata['actual_discount_price'];
         $result = $this->checkProductVarient($varient_id);
         $product_price = $result[0]->price;
+
+        // dk
+        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+            $product_price = number_format((float)$result[0]->without_gst_price, 2, '.', '');
+        }
 
         $disc_price = (($product_price * $discount) / 100) * $quantity;
         $updatprice = $product_price * $quantity;
@@ -470,12 +522,14 @@ class Sell_development_model extends My_model
 
     public function removeParked($postdata)
     {
-        // dd($postdata);die;
+        // dd($postdata);
+        // die;
         $data['table'] = 'parked_order_details';
         $data['where'] = ['id' => $postdata['order_tempId'], 'parked_order_id' => $postdata['isParked']];
         $this->deleteRecords($data);
 
         $parked_id = $postdata['isParked'];
+
         $this->getUpdatedParkedOrder($parked_id);
         return true;
     }
@@ -709,18 +763,18 @@ class Sell_development_model extends My_model
     }
 
 
+
     function order_checkout($postdata)
     {
 
 
-
-        $park = $postdata['parked_order'];
+        $park = isset($postdata['parked_order_id']) && $postdata['parked_order_id'] != '' ? 'park' : '';
 
         $this->branch_id = $postdata['vendor_id'];
         // $user_id = $postdata['vendor_id']; //Dipesh vendor_id from branch_id
 
         $sub_total = $postdata['hidden_subtotal'];
-        $disc_percentage = $postdata['disc_percentage'];
+        // $disc_percentage = $postdata['disc_percentage'];
         $discount_total = $postdata['hidden_discount_total'];
         $total = $postdata['hidden_total'];
         $register_id = $postdata['register_id'];
@@ -729,6 +783,22 @@ class Sell_development_model extends My_model
             $customer_id = $postdata['customer'];
         }
 
+        $shopping_based = $postdata['shopping_based_discount'];
+        $applied = $postdata['applied'];
+        $promocode = $postdata['promocode'];
+
+        /*Generate Order Number*/
+        function random_orderNo($length = 10)
+        {
+            $chars = "1234567890";
+            $order = substr(str_shuffle($chars), 0, $length);
+            return $order;
+        }
+        $od = 'Order #';
+        $on = random_orderNo(15);
+        $iOrderNo = $od . $on;
+
+        // $disc_percentage = 0; //added by Dipesh
 
         $order_from = '0';
         if (isset($postdata['parked_sell']) && $postdata['parked_sell'] == 'Park Sale') {
@@ -740,7 +810,7 @@ class Sell_development_model extends My_model
                 'payable_amount' => $hidden_total_pay,
                 'total_saving' => $discount_total,
                 'total' => $sub_total,
-                'order_discount' => $disc_percentage,
+                'order_discount' => 0, //removed by Dipesh 
                 'status' => '1',
                 'dt_added' => strtotime(DATE_TIME),
                 'dt_updated' => strtotime(DATE_TIME)
@@ -749,6 +819,9 @@ class Sell_development_model extends My_model
             $data['table'] = 'parked_order';
 
             $last_id = $this->insertRecord($data);
+
+
+            $this->checkAndUsePromocode($promocode, $applied, $last_id, $sub_total);
 
 
             foreach ($postdata as $key => $value) {
@@ -761,7 +834,7 @@ class Sell_development_model extends My_model
 
                     if ($product_temp_id != '') {
 
-                        $data['select'] = ['product_weight_id', 'quantity', 'price', 'discount', 'discount_price'];
+                        $data['select'] = ['product_weight_id', 'quantity', 'price', 'discount', 'discount_price', 'actual_price'];
                         $data['where'] = ['id' => $product_temp_id];
                         $data['table'] = 'order_temp';
                         $pro_temp_result = $this->selectRecords($data);
@@ -781,9 +854,10 @@ class Sell_development_model extends My_model
 
                         $product_detail = $this->get_product_from_variant($p_id);
 
+                        // $discount_price = ($product_detail->price * $quantity_temp) - $pro_temp_result[0]->price;//shown Discount price
 
 
-                        $discount_price = ($product_detail->price * $quantity_temp) - $pro_temp_result[0]->price;
+
 
                         $insertion = array(
                             'branch_id' => $this->branch_id,
@@ -792,10 +866,10 @@ class Sell_development_model extends My_model
                             'product_weight_id' => $p_id,
                             'weight_id' => $product_detail->package_id,
                             'quantity' => $pro_temp_result[0]->quantity,
-                            'actual_price' => $product_detail->price,
-                            'actual_discount' => $product_detail->discount_per,
+                            'actual_price' => numberFormat($pro_temp_result[0]->actual_price),
+                            'actual_discount' => $product_detail->discount,
                             'discount' => $pro_temp_result[0]->discount,
-                            'discount_price' => $discount_price,
+                            'discount_price' => $pro_temp_result[0]->discount_price,
                             'price' => $pro_temp_result[0]->price,
                             'status' => '1',
                             'dt_added' => strtotime(DATE_TIME),
@@ -804,7 +878,10 @@ class Sell_development_model extends My_model
 
                         $data['insert'] = $insertion;
                         $data['table'] = 'parked_order_details';
+
                         $result = $this->insertRecord($data);
+
+                        print_r($result);
                     }
 
                     $data['where'] = ['id' => $product_temp_id];
@@ -827,7 +904,7 @@ class Sell_development_model extends My_model
 
         $insertion = array(
             'order_from' => $order_from,
-            'order_no' => 'OD' . strtotime(DATE_TIME),
+            'order_no' => $iOrderNo,
             'branch_id' => $this->branch_id,
             'customer_id' => $customer_id,
             'register_id' => $register_id,
@@ -835,10 +912,12 @@ class Sell_development_model extends My_model
             'total_saving' => $discount_total,
             'total' => $sub_total,
             'sub_total' => $sub_total,
-            'order_discount' => $disc_percentage,
+            'order_discount' => 0, //removed by Dipesh 
             'payment_type' => $payment_type,
+            'promocode_used' => $applied == 'true' ? 1 : 0,
             'status' => '1',
             'order_status' => '4',
+            'shopping_amount_based_discount' => $shopping_based != 0 ? $shopping_based : 0,
             'dt_added' => strtotime(DATE_TIME),
             'dt_updated' => strtotime(DATE_TIME)
         );
@@ -848,6 +927,11 @@ class Sell_development_model extends My_model
 
 
         $last_id = $this->insertRecord($data);
+
+        $this->checkAndUsePromocode($promocode, $applied, $last_id, $sub_total);
+
+        //  check 
+
 
         $total_item = 0;
         foreach ($postdata as $key => $value) {
@@ -859,24 +943,25 @@ class Sell_development_model extends My_model
                 $product_temp_id = $example['1'];
                 if ($product_temp_id != '') {
 
-
                     if ($park == "park") {
 
-                        $data['select'] = ['parked_order_id', 'product_weight_id', 'quantity', 'price', 'discount', 'discount_price'];
+                        $data['select'] = ['parked_order_id', 'product_weight_id', 'quantity', 'price', 'discount', 'discount_price', 'actual_price'];
                         $data['where'] = ['id' => $product_temp_id];
                         $data['table'] = 'parked_order_details';
-                        $pro_temp_result = $this->selectRecords($data);
 
+                        $pro_temp_result = $this->selectRecords($data);
+                        // dd($pro_temp_result);
                         $parked_order_id = $pro_temp_result[0]->parked_order_id;
                     } else {
 
-                        $data['select'] = ['product_weight_id', 'quantity', 'price', 'discount', 'discount_price'];
+                        $data['select'] = ['product_weight_id', 'quantity', 'price', 'discount', 'discount_price', 'actual_price'];
                         $data['where'] = ['id' => $product_temp_id];
                         $data['table'] = 'order_temp';
                         $pro_temp_result = $this->selectRecords($data);
 
                         $parked_order_id = 0;
                     }
+
 
                     $p_id = $pro_temp_result[0]->product_weight_id;
                     $quantity_temp = $pro_temp_result[0]->quantity;
@@ -892,7 +977,7 @@ class Sell_development_model extends My_model
 
                     $this->db->query("UPDATE product_weight SET  quantity = quantity - '$quantity_temp',temp_quantity = 0 WHERE id = '$p_id'");
 
-                    $discount_price = ($product_detail->price * $quantity_temp) - $pro_temp_result[0]->price;
+                    // $discount_price = ($product_detail->price * $quantity_temp) - $pro_temp_result[0]->price;
 
                     $insertion = array(
                         'branch_id' => $this->branch_id,
@@ -901,10 +986,10 @@ class Sell_development_model extends My_model
                         'product_weight_id' => $p_id,
                         'weight_id' => $product_detail->package_id,
                         'quantity' => $pro_temp_result[0]->quantity,
-                        'actual_price' => $product_detail->price,
+                        'actual_price' => numberFormat($pro_temp_result[0]->actual_price),
                         'actual_discount' => $product_detail->discount_per,
                         'discount' => $pro_temp_result[0]->discount,
-                        'discount_price' => $discount_price,
+                        'discount_price' => $pro_temp_result[0]->discount_price,
                         'calculation_price' => $pro_temp_result[0]->price,
                         'status' => '1',
                         'delevery_status' => '1',
@@ -941,6 +1026,50 @@ class Sell_development_model extends My_model
         $this->session->set_flashdata("msg", "Order created successfully.");
         redirect(base_url() . '	sell_development/index');
         exit;
+    }
+
+    function checkAndUsePromocode($promocode, $applied, $last_id, $sub_total)
+    {
+        // for applied promocode
+
+        $promocode_amount = 0;
+
+        if (isset($promocode) && $applied == 'true') {
+            unset($data);
+            $data['where'] = ['branch_id' => $this->branch_id, 'name' => $promocode];
+            $data['table'] = TABLE_PROMOCODE;
+            $promocodeData = $this->selectRecords($data);
+
+            if (!empty($promocodeData)) {
+                $promocode_amount =  ($sub_total / 100) * $promocodeData[0]->percentage;
+            }
+        }
+
+        // dd($promocode_amount);
+
+        if (isset($promocode) && $applied == 'true') {
+
+            if (!empty($promocodeData)) {
+                $promocode_id = $promocodeData[0]->id;
+                $promocode_name = $promocodeData[0]->name;
+                $promocode_percentage = $promocodeData[0]->percentage;
+                unset($data);
+                $data['insert'] = [
+                    'order_id' => $last_id,
+                    'promocode_id' => $promocode_id,
+                    'promocode_name' => $promocode_name,
+                    'percentage' => $promocode_percentage,
+                    'amount' => $promocode_amount,
+                    'dt_created' => DATE_TIME,
+                    'dt_updated' => DATE_TIME
+                ];
+                $data['table'] = TABLE_ORDER_PROMOCODE;
+                $this->insertRecord($data);
+            }
+        }
+
+        // end
+
     }
 
 
@@ -1233,10 +1362,9 @@ class Sell_development_model extends My_model
 
         $html = '';
         foreach ($res as $type) { ?>
-<div class="catg_list" id="catg_list"
-    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-</div>
+            <div class="catg_list" id="catg_list" onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+            </div>
 <?php }
         echo $html;
 
@@ -1730,7 +1858,7 @@ class Sell_development_model extends My_model
         $data['table'] = 'order_temp as ot';
         $data['select'] = [
             'p.name as product_name', 'pw.price as actual_price',
-            'pw.discount_price as product_price', 'pw.discount_per as product_discount', 'ot.*', 'ot.discount_price as discount_per_product', 'p.gst'
+            'pw.discount_price as product_price', 'pw.without_gst_price as without_gst_price', 'pw.discount_per as product_discount', 'ot.*', 'ot.discount_price as discount_per_product', 'p.gst'
         ];
         $data['join'] = [
             'product_weight as pw' => ['pw.id = ot.product_weight_id', 'LEFT'],
@@ -1890,6 +2018,113 @@ class Sell_development_model extends My_model
             'type' => '0'
         ];
         return $this->selectRecords($data, true);
+    }
+
+    // 
+    public function getCustomerDetails($id)
+    {
+        $this->branch_id = $this->session->userdata('id');
+        $data['select'] = ['id', 'customer_name', 'customercode'];
+        $data['table'] = 'customer';
+        $data['where'] =  [
+            'branch_id' => $this->branch_id,
+            'id' => $id
+        ];
+        $res = $this->selectRecords($data, true);
+        return $res[0];
+    }
+
+    // shopping amount based Dipesh
+    public function checkShoppingBasedDiscount($sub_total)
+    {
+        // $cartAmount = getMycartSubtotal();
+        $query = $this->db->query('SELECT *,(' . $sub_total . ' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = ' . $this->branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        $re = $query->result();
+        // lq();
+        return $re;
+        // return
+    }
+
+    // promocode by DIpesh
+    function validate_promocode($postData)
+    {
+        $user_id = $this->session->userdata('user_id');
+        $promocode = $postData['promocode'];
+        $total_price  = $postData['total_price'];
+        $branch_id = $this->session->userdata('id');
+        $date = date('Y-m-d');
+        $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode];
+        $data['table'] = TABLE_PROMOCODE;
+        $promocode = $this->selectRecords($data);
+        // $getMycartSubtotal = getMycartSubtotal();
+
+
+        if (empty($promocode)) {
+            $response["success"] = 0;
+            $response["message"] = "No Promocode Found";
+            $response["orderAmount"] = $total_price;
+            // $response["withoutPromo"] = totalSaving() + $discountValue;
+            return $response;
+        }
+
+        if ($date < $promocode[0]->start_date) {
+            $response["success"] = 0;
+            $response["message"] = "Promocode is not started yet";
+            $response["orderAmount"] = $total_price;
+            // $response["withoutPromo"] = totalSaving() + $discountValue;
+            return $response;
+        }
+
+        if ($date > $promocode[0]->end_date) {
+            $response["success"] = 0;
+            $response["message"] = "Promocode is expiered";
+            $response["orderAmount"] = $total_price;
+            // $response["withoutPromo"] = totalSaving() + $discountValue;
+            return $response;
+        }
+
+        unset($data);
+
+
+
+        if ($total_price < $promocode[0]->min_cart) {
+            $response["success"] = 0;
+            $response["message"] = "Minimum " . $promocode[0]->min_cart . ' amount is required';
+            $response["orderAmount"] = $total_price;
+            // $response["withoutPromo"] = totalSaving() + $discountValue;
+            return $response;
+        }
+
+        if ($total_price > $promocode[0]->max_cart) {
+            $response["success"] = 0;
+            $response["message"] = "Maximum " . $promocode[0]->max_cart . ' Cart amount is required';
+            $response["orderAmount"] = $total_price;
+            // $response["withoutPromo"] = totalSaving() + $discountValue;
+            return $response;
+        }
+
+        unset($data);
+        $data['select'] = ['count(*) as count'];
+        $data['where'] = ['promocode_id' => $promocode[0]->id];
+        $data['table'] = TABLE_ORDER_PROMOCODE;
+        $order_promocode = $this->selectRecords($data);
+
+        if ($order_promocode[0]->count >= $promocode[0]->max_use) {
+            $response["success"] = 0;
+            $response["message"] = "Promocode is reached limit";
+            $response["orderAmount"] = $total_price;
+            // $response["withoutPromo"] = totalSaving() + $discountValue;
+            return $response;
+        }
+
+        $calculate = ($total_price / 100) * $promocode[0]->percentage;
+
+        $response["success"] = 1;
+        $response["message"] = "Promocode applied";
+        $response["data"] = $calculate;
+        $response["orderAmount"] = floatval($total_price);
+        // $response["withoutPromo"] = totalSaving() + $discountValue;
+        return $response;
     }
 }
 

@@ -181,8 +181,6 @@ class Order_model extends My_model
                 $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
             }
 
-
-
             $sub_total = number_format((float)$sub_total, 2, '.', '');
             $total_savings = number_format((float)$total_savings, 2, '.', '');
             $total_item = count($myCart);

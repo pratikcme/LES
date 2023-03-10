@@ -100,6 +100,7 @@ var PRIVACY = (function () {
         isParked: isParked,
       },
       success: function (output) {
+        $("#hidden_discount_total").val(res.total_savings);
         // $('#search_prod').val('');
         $(".overlay").css("display", "none");
         if (output.status == 0) {
@@ -149,6 +150,7 @@ var PRIVACY = (function () {
         isParked: isParked,
       },
       success: function (output) {
+        $("#hidden_discount_total").val(output.total_savings);
         // $('#search_prod').val('');
         $(".overlay").css("display", "none");
         if (output.status == 0) {
@@ -244,6 +246,7 @@ var PRIVACY = (function () {
         isParked: isParked,
       },
       success: function (output) {
+        $("#hidden_discount_total").val(output.total_savings);
         if (output.status == "1") {
           that.parent().parent().parent().remove();
           var final_subtotal = calculateSubtotal();
@@ -291,6 +294,8 @@ var PRIVACY = (function () {
     var actual_discount_price = $(this).data("actual_discount_price");
     // alert(actual_discount_price);
     //
+    // console.log("value", qunt);
+
     if (qunt == "0" || check == -1 || qunt == "") {
       qunt = 1;
     }
@@ -324,6 +329,8 @@ var PRIVACY = (function () {
           isParked: isParked,
         },
         success: function (output) {
+          $("#hidden_discount_total").val(output.total_savings);
+          // console.log("output", output);
           if (output.status == 0) {
             bootbox.alert("Product is not available", function () {});
           }
@@ -333,7 +340,7 @@ var PRIVACY = (function () {
             .next()
             .next()
             .find(".sub_total")
-            .html(output.exist_price);
+            .html(output.exist_price); //Dipesh Changed to subtotlal
           that
             .parent()
             .parent()
@@ -343,12 +350,9 @@ var PRIVACY = (function () {
           var final_subtotal = calculateSubtotal();
           $("#subtotal").html(final_subtotal);
           $("#total_gst").html(output.total_gst);
-
           calculate_disc_percentage();
-
           // Dk
           $(".after-pay button").fadeOut();
-
           setTimeout(() => {
             $(".pay-btn").fadeIn();
           }, 400);
@@ -361,81 +365,82 @@ var PRIVACY = (function () {
   //   $(this).val("0.00");
   // });
 
-  $(document).on("keyup", ".disc", function () {
-    var discount = $(this).val();
-    var temp_id = $(this).data("temp_id");
-    var isParked = $(this).data("isparked");
-    var product_weight_id = $(this).data("product_weight_id");
-    var quantity = $(this).parent().prev().find(".qunt").val();
-    var actual_discount_price = $(this).data("actual_discount_price");
-    var that = $(this);
+  // removed by dipesh no discount needed
+  // $(document).on("keyup", ".disc", function () {
+  //   var discount = $(this).val();
+  //   var temp_id = $(this).data("temp_id");
+  //   var isParked = $(this).data("isparked");
+  //   var product_weight_id = $(this).data("product_weight_id");
+  //   var quantity = $(this).parent().prev().find(".qunt").val();
+  //   var actual_discount_price = $(this).data("actual_discount_price");
+  //   var that = $(this);
 
-    if (that.val().trim() === "") {
-      $(this).val("0.00");
-      // $("#paypal_form").on("submit", function (e) {
-      //   e.preventDefault();
-      // });
-      // $(this).next("span").html("Discount Can not be Empty");
-      // return false;
-    }
+  //   if (that.val().trim() === "") {
+  //     // $(this).val("0.00");
+  //     $("#paypal_form").on("submit", function (e) {
+  //       return;
+  //     });
+  //     $(this).next("span").html("Discount Can not be Empty");
+  //     return false;
+  //   }
 
-    if (discount >= 100) {
-      $(this).next("span").html("discount must be less than 100%");
+  //   if (discount >= 100) {
+  //     $(this).next("span").html("discount must be less than 100%");
 
-      $("#paypal_form").on("submit", function (e) {
-        e.preventDefault();
-      });
-      return false;
-    } else if (Math.sign(discount) == -1) {
-      $(this).next("span").html("discount value not be minus");
-      $("#paypal_form").on("submit", function (e) {
-        e.preventDefault();
-      });
-      return false;
-    } else {
-      $("#paypal_form").on("submit", function (e) {
-        e.submit();
-      });
-      if (discount != "") {
-        $(this).next("span").html("");
-        $.ajax({
-          url: url + "sell_development/update_quantity",
-          type: "POST",
-          dataType: "JSON",
-          data: {
-            product_weight_id: product_weight_id,
-            discount: discount,
-            temp_id: temp_id,
-            quantity: quantity,
-            actual_discount_price: actual_discount_price,
-            isParked: isParked,
-          },
-          success: function (output) {
-            if (output.status == 1) {
-              that
-                .parent()
-                .next()
-                .find(".sub_total")
-                .html(output.updated_price);
-              calculate_disc_percentage();
-            }
-            // that.val(output.exist_quantity);
-            // that.parent().parent().prev().find('.this_quantity').html(output.exist_quantity);
-            // var final_subtotal = calculateSubtotal();
-            // $('#subtotal').html(final_subtotal);
-            // $('#total_gst').html(output.total_gst);
+  //     $("#paypal_form").on("submit", function (e) {
+  //       return;
+  //     });
+  //     return false;
+  //   } else if (Math.sign(discount) == -1) {
+  //     $(this).next("span").html("discount value not be minus");
+  //     $("#paypal_form").on("submit", function (e) {
+  //       return;
+  //     });
+  //     return false;
+  //   } else {
+  //     $("#paypal_form").on("submit", function (e) {
+  //       e.submit();
+  //     });
+  //     if (discount != "") {
+  //       $(this).next("span").html("");
+  //       $.ajax({
+  //         url: url + "sell_development/update_quantity",
+  //         type: "POST",
+  //         dataType: "JSON",
+  //         data: {
+  //           product_weight_id: product_weight_id,
+  //           discount: discount,
+  //           temp_id: temp_id,
+  //           quantity: quantity,
+  //           actual_discount_price: actual_discount_price,
+  //           isParked: isParked,
+  //         },
+  //         success: function (output) {
+  //           if (output.status == 1) {
+  //             that
+  //               .parent()
+  //               .next()
+  //               .find(".sub_total")
+  //               .html(output.updated_price);
+  //             calculate_disc_percentage();
+  //           }
+  //           // that.val(output.exist_quantity);
+  //           // that.parent().parent().prev().find('.this_quantity').html(output.exist_quantity);
+  //           // var final_subtotal = calculateSubtotal();
+  //           // $('#subtotal').html(final_subtotal);
+  //           // $('#total_gst').html(output.total_gst);
 
-            // Dk
-            $(".after-pay button").fadeOut();
+  //           // Dk
+  //           $(".after-pay button").fadeOut();
 
-            setTimeout(() => {
-              $(".pay-btn").fadeIn();
-            }, 400);
-          },
-        });
-      }
-    }
-  });
+  //           setTimeout(() => {
+  //             $(".pay-btn").fadeIn();
+  //           }, 400);
+  //         },
+  //       });
+  //     }
+  //   }
+  // });
 
   //  $('#disc_percentage').keyup(function () {
   //     var disc = $(this).val();
@@ -562,6 +567,134 @@ var PRIVACY = (function () {
     });
   });
 
+  async function getCartBasedDiscount(val) {
+    $("#promocode_discount_item").hide();
+    await $.ajax({
+      type: "GET",
+      url: url + "sell_development/getShoppingAmountBasedDiscount",
+      data: { price: val },
+      dataType: "json",
+      success: function (res) {
+        if (parseFloat(res.shopping_based_discount) > 0) {
+          if ($("#isShow").val() == 1) {
+            val = parseFloat($("#total_gst").text()) + parseFloat(val);
+          }
+
+          var pay_total = parseFloat(
+            val - parseFloat(res.shopping_based_discount).toFixed(2)
+          );
+          $("#shopping_based_discount").val(res.shopping_based_discount);
+
+          $("#total_pay").html(parseFloat(pay_total).toFixed(2));
+          $("#hidden_total_pay").val(parseFloat(pay_total).toFixed(2)); //new for pos
+
+          $("#shopping_based_discount_amount").html(
+            parseFloat(res.shopping_based_discount).toFixed(2)
+          );
+          $("#shopping_based_discountPercentage").html(
+            parseFloat(res.shopping_based_discountPercentage).toFixed(2)
+          );
+
+          $("#promocode_item").hide();
+          $("#cart_based_item").show();
+        } else {
+          $("#shopping_based_discount").val(0);
+          if ($("#isShow").val() == 1) {
+            val = parseFloat($("#total_gst").text()) + parseFloat(val);
+          }
+          $("#total_pay").html(parseFloat(val).toFixed(2));
+          $("#hidden_total_pay").val(parseFloat(val).toFixed(2)); //new for pos
+
+          $("#promocode_item").show();
+          $("#cart_based_item").hide();
+        }
+
+        $("#hidden_subtotal").val(val);
+        // $("#hidden_total").val(val);
+
+        // $("#hidden_discount_total").val(
+        //   parseFloat(res.total_savings).toFixed(2)
+        // );
+      },
+    });
+
+    $("#promocode").val("");
+    $("#promo_err").html("");
+  }
+
+  // Dipesh
+  $("#checkPromocode").click(function () {
+    var siteCurrency = $("#siteCurrency").val();
+    var promocode = $("#promocode").val();
+    var base_url = $("#base_url").val();
+    var total_price = parseFloat($("#subtotal").text());
+
+    $("#applied_promo").val("");
+    $("#promoAmount").html("0");
+    $(".promocode-applied").hide();
+
+    $("#promo_err").html("");
+
+    $.ajax({
+      url: base_url + "sell_development/validate_promocode", //change by dipesh
+      type: "post",
+      data: { promocode: promocode, total_price: total_price },
+      dataType: "json",
+      success: function (response) {
+        $("#promo_err").html(response.message);
+        if (response.success == "1") {
+          let val = parseFloat($("#total_pay").html());
+          if ($("#applied").val() === "false") {
+            $("#total_pay").html(
+              parseFloat(val - parseFloat(response.data)).toFixed(2)
+            );
+            $("#hidden_total_pay").val(
+              parseFloat(val - parseFloat(response.data)).toFixed(2)
+            );
+            $("#applied").val("true");
+          } else {
+            $("#promo_err").html("Promocode already applied!");
+          }
+
+          $("#promocode_discount").html(parseFloat(response.data).toFixed(2));
+          $("#promocode_discount_item").show();
+
+          // // finalAmount = (orderAmount + parseFloat(shipping_charge) - parseFloat(response.data)).toFixed(2)
+          // finalAmount = parseFloat(orderAmount - response.data).toFixed(2);
+          // // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
+          // if ($("#totalSaving").length) {
+          //   var amount = response.data;
+          //   var promocodeDiscount =
+          //     parseFloat(response.withoutPromo) + parseFloat(amount);
+          //   $("#totalSaving").html(
+          //     siteCurrency + " " + promocodeDiscount.toFixed(2)
+          //   );
+          // }
+          // $("#promoAmount").html(response.data.toFixed(2));
+          // $("#checkout_final").html(finalAmount);
+          // $(".promocode-applied").show();
+          // $("#applied_promo").val(promocode);
+        } else {
+          $("#hidden_total_pay").val(
+            parseFloat(val - parseFloat(total_price)).toFixed(2)
+          );
+          $("#hidden_subtotal").val(total_price);
+          // $("#applied_promo").val("");
+          // $("#checkout_final").html(
+          //   (
+          //     parseFloat(response.orderAmount) + parseFloat(shipping_charge)
+          //   ).toFixed(2)
+          // );
+          // var promocodeDiscount = parseFloat(response.withoutPromo);
+          // $("#totalSaving").html(
+          //   siteCurrency + " " + promocodeDiscount.toFixed(2)
+          // );
+        }
+      },
+    });
+  });
+
+  // promocode
   $(document).on("keyup", "#disc_percentage", function () {
     var disc = $(this).val();
     if (disc > 99) {
@@ -569,7 +702,7 @@ var PRIVACY = (function () {
       $(this).next("label").html("Discount must be less than 100%");
       // Dipesh
       $("#paypal_form").on("submit", function (e) {
-        e.preventDefault();
+        return;
       });
 
       // $('#span_pay').css("display","none");
@@ -577,7 +710,7 @@ var PRIVACY = (function () {
       // $(this).val("");
       $(this).next("label").html("Discount value not be minus");
       $("#paypal_form").on("submit", function (e) {
-        e.preventDefault();
+        return;
       });
     } else {
       $("#paypal_form").on("submit", function (e) {
@@ -607,30 +740,29 @@ var PRIVACY = (function () {
   });
 
   calculate_disc_percentage();
-  function calculate_disc_percentage() {
+  async function calculate_disc_percentage() {
     var sub_total = calculateSubtotal();
     if (sub_total == 0) {
       $("#span_pay").addClass("hide");
+      $("#promocode_item").addClass("hide");
     } else {
       $("#span_pay").removeClass("hide");
+      $("#promocode_item").removeClass("hide");
     }
-    var disc_percentage = $("#disc_percentage").val();
-    if (disc_percentage == "") {
-      disc_percentage = 0;
-    }
+    // var disc_percentage = 0;
+    // $("#disc_percentage").val();
+    getCartBasedDiscount(sub_total);
 
-    var extra_discount = (sub_total * disc_percentage) / 100;
+    // var pay_total = sub_total - shopping_based_discount;
+    // $("#total_pay").html(pay_total.toFixed(2));
 
-    $("#discount_total").html(extra_discount.toFixed(2));
-    var pay_total = sub_total - extra_discount;
-    $("#total_pay").html(pay_total.toFixed(2));
-    $("#hidden_subtotal").val(sub_total);
-    $("#hidden_total").val(sub_total);
+    // $("#hidden_subtotal").val(sub_total);
+    // $("#hidden_total").val(sub_total);
 
-    $("#hidden_discount_total").val(extra_discount.toFixed(2));
-    $("#hidden_total_pay").val(pay_total.toFixed(2));
-    $("#paypal_amount").val(pay_total.toFixed(2));
-    return extra_discount;
+    // $("#hidden_discount_total").val(shopping_based_discount.toFixed(2));
+    // $("#hidden_total_pay").val(pay_total.toFixed(2));
+    // $("#paypal_amount").val(pay_total.toFixed(2));
+    // return shopping_based_discount;
   }
   function calculateSubtotal() {
     var sub_total = 0;
@@ -638,7 +770,9 @@ var PRIVACY = (function () {
       sub_total += parseFloat($(this).text());
     });
     var final_subtotal = sub_total.toFixed(2);
+
     $("#subtotal").html(final_subtotal);
+    // $("#total_pay").html(pay_amount.toFixed(2));
     return final_subtotal;
   }
   // calculateSubtotal();

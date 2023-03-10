@@ -260,7 +260,7 @@ if ($register_result[0]->type == '0') {
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <input type="number" id="counted_cash" class="form-control" placeholder="Enter Amount" value="<?php echo ($register_result[0]->counted > 0) ? $register_result[0]->counted : "0.00"; ?>" onkeyup="cash_summary(this.value, <?php echo $register_result[0]->id; ?>)">
+                                                                <input type="number" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" id="counted_cash" class="form-control" placeholder="Enter Amount" value="<?php echo ($register_result[0]->counted > 0) ? $register_result[0]->counted : "0.00"; ?>" onkeyup="cash_summary(this.value, <?php echo $register_result[0]->id; ?>)">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -433,7 +433,7 @@ if ($register_result[0]->type == '0') {
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <input type="number" class="form-control" value="<?php echo ($register_result[0]->credit_card_counted > 0) ?   $register_result[0]->credit_card_counted : "0.00"; ?>" placeholder="Enter Amount" id="credit_card_counted" onkeyup="credit_card_summary(this.value, <?php echo $register_result[0]->id; ?>)">
+                                                                <input type="number" class="form-control" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" value="<?php echo ($register_result[0]->credit_card_counted > 0) ?   $register_result[0]->credit_card_counted : "0.00"; ?>" placeholder="Enter Amount" id="credit_card_counted" onkeyup="credit_card_summary(this.value, <?php echo $register_result[0]->id; ?>)">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
