@@ -100,7 +100,7 @@ var PRIVACY = (function () {
         isParked: isParked,
       },
       success: function (output) {
-        $("#hidden_discount_total").val(res.total_savings);
+        $("#hidden_discount_total").val(output.total_savings);
         // $('#search_prod').val('');
         $(".overlay").css("display", "none");
         if (output.status == 0) {
@@ -332,7 +332,7 @@ var PRIVACY = (function () {
           $("#hidden_discount_total").val(output.total_savings);
           // console.log("output", output);
           if (output.status == 0) {
-            bootbox.alert("Product is not available", function () {});
+            bootbox.alert("Product is not available", function () { });
           }
           that.val(output.exist_quantity);
           that
@@ -529,7 +529,7 @@ var PRIVACY = (function () {
         if (output.status) {
           that.parent().remove();
         } else {
-          bootbox.alert("Something Went Wrong", function () {});
+          bootbox.alert("Something Went Wrong", function () { });
         }
       },
     });
