@@ -485,6 +485,7 @@ class Sell_development extends Vendor_Controller
     {
         if ($this->input->post()) {
             $re = $this->this_model->viewOrderDetails($this->input->post());
+            // dd($re);
             $o_detail = '';
 
             $html = '';
@@ -500,14 +501,14 @@ class Sell_development extends Vendor_Controller
             </li>';
             }
 
-            //$shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($re['orderInfo'][0]->total);
+            $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($re['orderInfo'][0]->total);
 
             $shopping_based_html = '';
             if ($re['orderInfo'][0]->shopping_amount_based_discount > 0) {
                 $shopping_based_html  = '<li>
                 <div>
                     <h6>Cart Amount Based Discount(%)</h6>
-                    <h6> - ' . '(' . 10 . '%)' . numberFormat($re['orderInfo'][0]->shopping_amount_based_discount) . '</h6>
+                    <h6> - ' . '(' . $shoppingDiscount[0]->discount_percentage . '%)' . numberFormat($re['orderInfo'][0]->shopping_amount_based_discount) . '</h6>
                 </div>
             </li>';
             }
