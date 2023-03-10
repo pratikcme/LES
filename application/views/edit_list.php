@@ -122,7 +122,12 @@
     // let id = $("#base_url").val();
     let user_id = $("#user_id").val();
     let vendor_id = $("#vendor_id").val();
-
+    var country_code = $('#country_code').val();
+    $(document).on('change','#country_code',function () {
+        country_code = $(this).val();
+        $('#phone').val('');
+    });
+    alert(country_code);
     $('#editUserForm').validate({
         rules: {
             fname: {
@@ -139,11 +144,11 @@
                 remote: {
                     url: "<?php echo base_url() . 'vendor/get_valid_user_email' ?>",
                     type: "post",
+                    async: false,
                     data: {
                         user_id: user_id,
                         vendor_id: vendor_id,
                     },
-                    async: false,
                 }
             },
             phone: {
@@ -158,6 +163,9 @@
                     data: {
                         user_id: user_id,
                         vendor_id: vendor_id,
+                        country_code : function (){
+                            return country_code;
+                        }
                     },
                 }
             },

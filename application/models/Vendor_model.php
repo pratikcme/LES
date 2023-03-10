@@ -481,12 +481,17 @@ class vendor_model extends My_model
         $phone = $this->input->post("phone");
         $vendor_id = $this->input->post("vendor_id");
         $user_id = $this->input->post("user_id");
+        $country_code = $this->input->post("country_code");
 
         $data['select'] = ['phone'];
-        $data['where'] = ['phone' => $phone, 'vendor_id' => $vendor_id, 'id !=' => $user_id];
+        $data['where'] = [
+            'country_code'=>$country_code,
+            'phone' => $phone, 
+            'vendor_id' => $vendor_id, 
+            'id !=' => $user_id
+        ];
         $data['table'] = "user";
         $result = $this->selectRecords($data);
-
         if ($result) {
             return "false";
         } else {
