@@ -13,6 +13,7 @@ $('#frmAddEdit').validate({
             remote: {
                 url: url + 'cart_amount_based_discount/checkAmountExist',
                 type: "POST",
+                async: false,
                 data: {
                     update_id: function () {
                         return $('#id').val();
@@ -42,7 +43,7 @@ $('#frmAddEdit').validate({
         $('body').attr('disabled', 'disabled');
         $('#btnSubmit').attr('disabled', 'disabled');
         $('#btnSubmit').value('please wait');
-        $(form).submit();
+        form.submit();
     }
 
 });
