@@ -346,33 +346,46 @@ class Sell_development extends Vendor_Controller
             $this->load->model('api_v3/common_model', 'co_model');
             $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
 
+
+
+
             if ($isParked > 0) {
-                $price = $avail_quantity[0]->discount_price;
 
-                // dk
-                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
+                if ($avail_quantity[0]->quantity >= $demand_quantity) {
+
+                    $price = $avail_quantity[0]->discount_price;
+
+                    // dk
+                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                        $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
+                    }
+
+                    $this->this_model->updateParkedQuantity($this->input->post(), $price);
+                    $result = $this->this_model->OrderTemp($isParked);
+                } else {
+                    $status = '0';
                 }
-
-                $this->this_model->updateParkedQuantity($this->input->post(), $price);
-                $result = $this->this_model->OrderTemp($isParked);
 
                 // $status = '1';
             } else {
-                // if($demand_quantity > $avail_quantity[0]->quantity){
-                // $status = '0';
-                // }else{
-                $price =  $avail_quantity[0]->discount_price;
 
-                // dk
-                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
+                // CHeck Product quantity Dipesh
+
+                if ($avail_quantity[0]->quantity >= $demand_quantity) {
+
+                    $price =  $avail_quantity[0]->discount_price;
+
+                    // dk
+                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                        $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
+                    }
+
+                    $this->this_model->updateTempQuantity($this->input->post(), $price);
+                    $status = '1';
+                    $result = $this->this_model->OrderTempWithoutPark();
+                } else {
+                    $status = '0';
                 }
-
-
-                $this->this_model->updateTempQuantity($this->input->post(), $price);
-                $status = '1';
-                $result = $this->this_model->OrderTempWithoutPark();
                 // }
             }
 
@@ -395,6 +408,8 @@ class Sell_development extends Vendor_Controller
             } else {
                 $resultIdWish = $this->this_model->OrderTempWithoutPark($temp_id);
             }
+
+            // dd($resultIdWish);
 
             echo json_encode([
                 'status' => $status, 'subtotal' => $this->numberFormat($sub_total),

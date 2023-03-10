@@ -458,11 +458,13 @@ class vendor_model extends My_model
         $vendor_id = $this->input->post("vendor_id");
         $user_id = $this->input->post("user_id");
 
+        // dd($this->input->post());
+
         $data['select'] = ['email'];
         $data['where'] = [
-            'email' => $email, 
-            'vendor_id' => $vendor_id, 
-            'status !='=> '9',
+            'email' => $email,
+            'vendor_id' => $vendor_id,
+            'status !=' => '9',
             'id !=' => $user_id
         ];
         $data['table'] = "user";
@@ -481,9 +483,12 @@ class vendor_model extends My_model
         $phone = $this->input->post("phone");
         $vendor_id = $this->input->post("vendor_id");
         $user_id = $this->input->post("user_id");
+        $country_code = $this->input->post("country_code");
+
+        // dd($this->input->post);
 
         $data['select'] = ['phone'];
-        $data['where'] = ['phone' => $phone, 'vendor_id' => $vendor_id, 'id !=' => $user_id];
+        $data['where'] = ['phone' => $phone, 'vendor_id' => $vendor_id, 'id !=' => $user_id, 'country_code' => $country_code, 'status !=' => 9];
         $data['table'] = "user";
         $result = $this->selectRecords($data);
 

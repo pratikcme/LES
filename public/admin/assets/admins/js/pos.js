@@ -100,7 +100,7 @@ var PRIVACY = (function () {
         isParked: isParked,
       },
       success: function (output) {
-        $("#hidden_discount_total").val(res.total_savings);
+        $("#hidden_discount_total").val(output.total_savings);
         // $('#search_prod').val('');
         $(".overlay").css("display", "none");
         if (output.status == 0) {
@@ -333,6 +333,15 @@ var PRIVACY = (function () {
           // console.log("output", output);
           if (output.status == 0) {
             bootbox.alert("Product is not available", function () {});
+            that
+              .parent()
+              .parent()
+              .prev()
+              .find(".this_quantity")
+              .html(output.exist_quantity);
+
+            $(that).val(output.exist_quantity);
+            return;
           }
           that.val(output.exist_quantity);
           that

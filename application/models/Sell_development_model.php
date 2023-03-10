@@ -38,7 +38,7 @@ class Sell_development_model extends My_model
         $varient = $this->checkProductVarient($varient_id);
         $isAvailable = $this->checkProductAvailableInTemporder($varient_id, $this->branch_id);
 
-
+        // dd($isAvailable[0]->quantity);
         $this->load->model('api_v3/common_model', 'co_model');
         // dd($this->session);
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
@@ -46,10 +46,9 @@ class Sell_development_model extends My_model
         // $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
         if (!empty($isAvailable)) {
 
-            if ($varient[0]->quantity >= $isAvailable[0]->quantity) {
+            if ($varient[0]->quantity >= $isAvailable[0]->quantity + $quantity) {
 
                 $updateQuantity = $isAvailable[0]->quantity + $quantity;
-
 
 
                 $actual_price = number_format((float)$varient[0]->price, 2, '.', '');
@@ -88,9 +87,8 @@ class Sell_development_model extends My_model
         } else {
             // dd($varient);
             if ($varient[0]->quantity > 0) {
+
                 $varient_id = $varient[0]->id;
-
-
 
                 $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
                 $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
@@ -143,71 +141,82 @@ class Sell_development_model extends My_model
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
         if (!empty($isAvailable)) {
             // update
-            $updateQuantity = $isAvailable[0]->quantity + $quantity;
 
-            $actaul_price = number_format((float)$varient[0]->price, 2, '.', '');
-            $discount_per = $varient[0]->discount_per;
-            $discount_price = ($actaul_price * $discount_per) / 100;
+            if ($varient[0]->quantity >= $isAvailable[0]->quantity + $quantity) {
 
-            $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                $updateQuantity = $isAvailable[0]->quantity + $quantity;
 
-            // dk
-            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                $actaul_price = number_format((float)$varient[0]->price, 2, '.', '');
+                $discount_per = $varient[0]->discount_per;
+                $discount_price = ($actaul_price * $discount_per) / 100;
+
+                $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+
+                // dk
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                }
+
+                $updatePrice = $updateQuantity * $price;
+
+                $update_discount_price = $discount_price * $updateQuantity;
+
+                $updatePrice = number_format((float)$updatePrice, 2, '.', '');
+
+                $updateArray = [
+                    'quantity' => $updateQuantity,
+                    'price' => $updatePrice,
+                    // 'discount_price' => number_format((float)$update_discount_price, 2, '.', ''),
+                    'dt_updated' => strtotime(DATE_TIME),
+                ];
+                $data['table'] = 'parked_order_details';
+                $data['update'] = $updateArray;
+                $data['where'] = ['id' => $isAvailable[0]->id];
+                $r = $this->updateRecords($data);
+                $response = 1;
+            } else {
+                $response = 0;
             }
-
-            $updatePrice = $updateQuantity * $price;
-
-            $update_discount_price = $discount_price * $updateQuantity;
-
-            $updatePrice = number_format((float)$updatePrice, 2, '.', '');
-
-            $updateArray = [
-                'quantity' => $updateQuantity,
-                'price' => $updatePrice,
-                // 'discount_price' => number_format((float)$update_discount_price, 2, '.', ''),
-                'dt_updated' => strtotime(DATE_TIME),
-            ];
-            $data['table'] = 'parked_order_details';
-            $data['update'] = $updateArray;
-            $data['where'] = ['id' => $isAvailable[0]->id];
-            $r = $this->updateRecords($data);
-            $response = 1;
         } else {
             // insert
-            $varient_id = $varient[0]->id;
 
-            $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
-            $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
-            $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
+            if ($varient[0]->quantity > 0) {
+                $varient_id = $varient[0]->id;
 
-            // dk
-            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
+                $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
+
+                // dk
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                }
+
+                // dd($price);
+                $date = strtotime(DATE_TIME);
+                $insertedData = [
+                    'branch_id' => $this->branch_id,
+                    'parked_order_id' => $parked_id,
+                    'product_id' => $product_id,
+                    'product_weight_id' => $varient_id,
+                    'weight_id' => $varient[0]->weight_id,
+                    'quantity' => $quantity,
+                    'actual_price' => $varient[0]->price,
+                    'actual_discount' => $varient[0]->discount_per,
+                    'discount' => $discount_percentage,
+                    'discount_price' => number_format((float)$price, 2, '.', ''),
+                    'price' => $price,
+                    'status' => '1',
+                    'dt_added' => $date,
+                    'dt_updated' => $date,
+                ];
+                $data['table'] = 'parked_order_details';
+                $data['insert'] = $insertedData;
+                $result = $this->insertRecord($data);
+                $response = 1;
+            } else {
+                $response = 0;
             }
-
-            // dd($price);
-            $date = strtotime(DATE_TIME);
-            $insertedData = [
-                'branch_id' => $this->branch_id,
-                'parked_order_id' => $parked_id,
-                'product_id' => $product_id,
-                'product_weight_id' => $varient_id,
-                'weight_id' => $varient[0]->weight_id,
-                'quantity' => $quantity,
-                'actual_price' => $varient[0]->price,
-                'actual_discount' => $varient[0]->discount_per,
-                'discount' => $discount_percentage,
-                'discount_price' => number_format((float)$price, 2, '.', ''),
-                'price' => $price,
-                'status' => '1',
-                'dt_added' => $date,
-                'dt_updated' => $date,
-            ];
-            $data['table'] = 'parked_order_details';
-            $data['insert'] = $insertedData;
-            $result = $this->insertRecord($data);
-            $response = 1;
         }
 
         $this->getUpdatedParkedOrder($parked_id); // update table parked_order
@@ -1945,7 +1954,7 @@ class Sell_development_model extends My_model
     {
         $this->branch_id = $this->session->userdata('id');
         $where = [
-            'po.order_from'=>'0',
+            'po.order_from' => '0',
             'po.status' => '1', 'po.payment_type !=' => '2',
             'po.branch_id' => $this->branch_id
         ];
@@ -1995,8 +2004,8 @@ class Sell_development_model extends My_model
     {
         $this->branch_id = $this->session->userdata('id');
         $where = [
-            'po.order_from'=>'0',
-            'po.status' => '1', 
+            'po.order_from' => '0',
+            'po.status' => '1',
             'po.payment_type !=' => '2',
             'po.branch_id' => $this->branch_id
         ];
