@@ -463,28 +463,31 @@ elseif($_SERVER['SERVER_NAME']=='ori.launchestore.com' || $_SERVER['SERVER_NAME'
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#004A99";
 }
-
-else{
- //    $primaryColor= "#E50914";
- //    $secondaryColor= "#000";
- //    $lightPrimary= "#ff774b";
- //    $lightColor= "#fff";
- //    $borderColor= "#710006";
- //    $borderColor2= "#004846";
- //    $darkHeaderBackground = "#222";
- //    $navbarColor = "#818181";
- //    $cartBtnBackground = "#E50914";
- //    $cartBtnColor = "#fff";
- //    $loginBtnBackground = "#E50914";
- //    $loginBtnColor = "#fff";
- //    $loginBtnborder = "#b50009";
- //    $logoWidth = "75px";
-//     $abtImgWidth = "350px";
-//     $hvrClr = "#fff";
- //    $cartNum = "#000";
-
-
-     $primaryColor= "#113A8E";
+elseif($_SERVER['SERVER_NAME']=='yashindustries.co' ||  $_SERVER['SERVER_NAME'] == 'www.yashindustries.co'){
+ 
+    $primaryColor= "#113A8E";
+    $secondaryColor= "#113A8E";
+    $lightColor=  "#fff";
+    $borderColor= "#113A8E";
+    $borderColor2= "#113A8E";
+    $lightPrimary= "#ff774b";
+    $headerBackground = "#fff";
+    $navbarColor = "#113A8E";
+    $cartBtnBackground= "#113A8E";
+    $cartBtnColor="#fff";
+    $loginBtnBackground="#113A8E"; 
+    $loginBtnColor="#fff";
+    $loginBtnborder="#113A8E";
+    $logoWidth = "120px";
+    $abtImgWidth= "350px";
+    $hvrClr= "#113a8e";
+    $cartNum=  "#000";
+    $categoryColor = "#000";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#fff";
+  }else{
+ 
+  $primaryColor= "#113A8E";
   $secondaryColor= "#113A8E";
   $lightColor=  "#fff";
   $borderColor= "#113A8E";
@@ -505,25 +508,6 @@ else{
   $categoryActiveBg = "#000";
   $categoryActiveColor = "#fff";
 }
-
-// else{
-//     $primaryColor= "#000";
-//     $secondaryColor= "#9F0C10";
-//     $lightPrimary= "#ff774b";
-//     $lightColor= "#fff";
-//     $borderColor= "#006598";
-//     $borderColor= "#006598";
-//     $borderColor2= "#9F0C10"; 
-//     $darkHeaderBackground = "#373854";
-//     $navbarColor = "#FFF";
-//     $cartBtnBackground = "#9f0c10";
-//     $cartBtnColor = "#fff";
-//     $loginBtnBackground = "#9f0c10";
-//     $loginBtnColor = "#fff";
-//     $loginBtnborder = "#000";
-//     $logoWidth = "150px";
-//     $cartNum = "green";
-// }   
 
 ?>
 
