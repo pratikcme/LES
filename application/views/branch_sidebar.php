@@ -119,7 +119,7 @@
     <a class="<?php if ($this->uri->segment(1) == 'delivery' && $this->uri->segment(2) == 'delivery_list') { ?> active <?php } ?>"
         href="<?php echo base_url() . 'delivery/delivery_list/'; ?>">
         <i class="fa fa-users"></i>
-        <span>Delivery Staff</span>
+        <span>Delivery List</span>
     </a>
 </li>
 <?php if ($this->countCategory == 1) { ?>
@@ -150,7 +150,7 @@
     <a class="<?php if ($this->uri->segment(1) == 'staff') { ?> active <?php } ?>"
         href="<?php echo base_url() . 'staff'; ?>">
         <i class="fa fa-user"></i>
-        <span>Packaging Staff</span>
+        <span>Staff</span>
     </a>
 </li>
 <li>
