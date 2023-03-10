@@ -134,7 +134,7 @@ $('#select-all').click(function(){
     var checkit = false;
     jQuery.validator.addMethod("lettersonly", function(value, element) {
         return this.optional(element) || /^[a-z ]+$/i.test(value);
-    }, "Please enter lettersonly"); 
+    }, "Please enter letters only"); 
 
     $('#brand_form').validate({
         rules: {
