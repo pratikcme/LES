@@ -485,13 +485,15 @@ class vendor_model extends My_model
         $user_id = $this->input->post("user_id");
         $country_code = $this->input->post("country_code");
 
-        // dd($this->input->post);
-
         $data['select'] = ['phone'];
-        $data['where'] = ['phone' => $phone, 'vendor_id' => $vendor_id, 'id !=' => $user_id, 'country_code' => $country_code, 'status !=' => 9];
+        $data['where'] = [
+            'country_code' => $country_code,
+            'phone' => $phone,
+            'vendor_id' => $vendor_id,
+            'id !=' => $user_id
+        ];
         $data['table'] = "user";
         $result = $this->selectRecords($data);
-
         if ($result) {
             return "false";
         } else {

@@ -38,10 +38,9 @@ class Cart_amount_based_discount extends Vendor_Controller
         $data['FormAction'] = base_url().'Cart_amount_based_discount/edit/'.$d_id;
         $data['updated_id'] = $d_id;
         if($this->input->post()){
-           dd($this->input->post());
             $result = $this->this_model->updateRecord($this->input->post());
             if($result){
-                  $this->utility->setFlashMessage($response['status'], $response['message']);
+                $this->utility->setFlashMessage($response['status'], $response['message']);
                 redirect(base_url().'Cart_amount_based_discount');
              }
             

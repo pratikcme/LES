@@ -70,7 +70,7 @@
         </div>
        
         <div class="col-md-4 col-sm-4 col-12">
-          <div class="see-all-wrap"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div>
+          <!-- <div class="see-all-wrap"> <a href="<?=base_url().'products'?>"><?=$this->lang->line('See All')?></a> </div> -->
         </div>
 
      

@@ -11,6 +11,7 @@ $("#frmAddEdit").validate({
       remote: {
         url: url + "cart_amount_based_discount/checkAmountExist",
         type: "POST",
+        async: false,
         data: {
           update_id: function () {
             return $("#id").val();
@@ -18,28 +19,24 @@ $("#frmAddEdit").validate({
         },
       },
     },
+    //     discount_percentage: {
+    //         required: true,
+    //         number: true,
+    //         range: [1, 99]
+    //     },
+    //   },
+    // },
     discount_percentage: {
       required: true,
       number: true,
       range: [1, 99],
     },
-  },
-  messages: {
-    cart_amount: {
-      required: "Please enter cart amount",
-      number: "Please enter valid number",
-      remote: "Value already exist",
+    submitHandler: function (form) {
+      $("body").attr("disabled", "disabled");
+      $("#btnSubmit").attr("disabled", "disabled");
+      $("#btnSubmit").value("please wait");
+      form.submit();
     },
-    discount_percentage: {
-      required: "Please enter percentage",
-      number: "Please enter valid number",
-    },
-  },
-  submitHandler: function (form) {
-    $("body").attr("disabled", "disabled");
-    $("#btnSubmit").attr("disabled", "disabled");
-    $("#btnSubmit").value("please wait");
-    $(form).submit();
   },
 });
 
