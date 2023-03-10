@@ -865,6 +865,7 @@ function getSalesHistory($TableData)
     $name = str_replace(' ', '_', $row->customer_name);
     $sub_array = array();
     $sub_array[] = '<div><div><h5>' . $sno++ . '</h5></div></div>';
+    $sub_array[] = '<a target="_blank" href='.base_url().'/order/order_detail?id='.$CI->utility->safe_b64encode($row->id).'>'.$row->order_no.'</a>';
     $sub_array[] = '<div>
                      <div>
                         <h5>' . date('d F Y h:i:s A', $row->dt_added) . '</h5>
