@@ -151,6 +151,7 @@
                 digits: true,
                 minlength: 10,
                 maxlength: 15,
+                async: false,
                 remote: {
                     url: "<?php echo base_url() . 'vendor/get_valid_user_mobile' ?>",
                     type: "post",
@@ -158,7 +159,6 @@
                         user_id: user_id,
                         vendor_id: vendor_id,
                     },
-                    async: false,
                 }
             },
         },
