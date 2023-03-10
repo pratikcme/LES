@@ -127,7 +127,6 @@
         country_code = $(this).val();
         $('#phone').val('');
     });
-    alert(country_code);
     $('#editUserForm').validate({
         rules: {
             fname: {
