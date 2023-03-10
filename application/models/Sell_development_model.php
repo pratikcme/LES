@@ -10,6 +10,23 @@ class Sell_development_model extends My_model
 
     function findProductBykey($postdata)
     {
+        // $data['table'] = TABLE_PRODUCT . ' as p';
+        // $data['join'] = [
+        //     TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.product_id=p.id', 'LEFT'],
+        //     TABLE_WEIGHT . ' as w' => ['pw.weight_id = w.id', 'LEFT']
+        // ];
+        // $data['select'] = ['pw.id as pw_id'];
+        // $data['where'] = [
+        //     'p.branch_id' => $this->branch_id,
+        //     'p.status !=' => '9',
+        //     'pw.status !=' => '9',
+        //     'w.status !=' => '9',
+        //     'pw.IsPosMostLike'=>'1'
+        // ];
+        // $re = $this->selectFromJoin($data,true);
+
+        // unset($data);
+        $notFoundThisId = implode(',',array_column($re,'pw_id'));
 
         $data['table'] = TABLE_PRODUCT . ' as p';
         $data['join'] = [
@@ -17,15 +34,17 @@ class Sell_development_model extends My_model
             TABLE_WEIGHT . ' as w' => ['pw.weight_id = w.id', 'LEFT']
         ];
         $data['select'] = ['w.name as weight_name', 'p.name', 'p.id as product_id', 'p.name', 'pw.id as pw_id', 'pw.*'];
-        $data['where'] = [
-            'p.branch_id' => $this->branch_id,
-            'p.status !=' => '9',
-            'pw.status !=' => '9',
-            'w.status !=' => '9'
-        ];
+        // if(!empty($re)){
+        //     $data['where']['pw.id NOT IN ('.$notFoundThisId.') AND 1='] = '1';
+        // }
+        $data['where']['p.branch_id'] = $this->branch_id;
+        $data['where']['p.status !='] = '9'; 
+        $data['where']['pw.status !='] = '9'; 
+        $data['where']['w.status !='] = '9'; 
         $data['group']['like'] = ['p.name', $postdata['keyValue'], 'match'];
         $data['group']['or_like'] = ['pw.qr_code', $postdata['keyValue'], 'match'];
         return $this->selectFromJoin($data);
+        lq();
         echo $this->db->last_query();
     }
 

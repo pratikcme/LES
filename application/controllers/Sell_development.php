@@ -485,42 +485,43 @@ class Sell_development extends Vendor_Controller
     {
         if ($this->input->post()) {
             $re = $this->this_model->viewOrderDetails($this->input->post());
+            // dd($re);
             $o_detail = '';
 
             foreach ($re['order_details'] as $key => $v) {
                 $o_detail .= '<tr>
-    <td>' . $v->name . '</td>
-    <td>' . $v->quantity . '</td>
-    <td>' . $v->discount . '</td>
-    <td>' . $v->calculation_price . '</td>
-</tr>';
+                                <td>' . $v->name . '</td>
+                                <td>' . $v->quantity . '</td>
+                                <td>' . $v->discount . '</td>
+                                <td>' . $v->calculation_price . '</td>
+                            </tr>';
             }
             $o_info = '<li>
-    <div>
-        <h6>Subtotal </h6>
-        <h6>' . $re['orderInfo'][0]->total . '</h6>
-    </div>
-</li>
-<li>
-    <div>
-        <h6>Discount(%)</h6>
-        <h6>' . $re['orderInfo'][0]->order_discount . '</h6>
-    </div>
-</li>
-<li>
-    <div>
-        <h6>Discount Price </h6>
-        <h6>' . $re['orderInfo'][0]->total_saving . '</h6>
-    </div>
-</li>
-<li>
-    <div>
-        <h6>Total </h6>
-        <h6>' . numberFormat($re['orderInfo'][0]->payable_amount) . '</h6>
-    </div>
-</li>';
+                        <div>
+                            <h6>Subtotal </h6>
+                            <h6>' . $re['orderInfo'][0]->total . '</h6>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h6>Discount(%)</h6>
+                            <h6>' . $re['orderInfo'][0]->order_discount . '</h6>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h6>Discount Price </h6>
+                            <h6>' . $re['orderInfo'][0]->total_saving . '</h6>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h6>Total </h6>
+                            <h6>' . numberFormat($re['orderInfo'][0]->payable_amount) . '</h6>
+                        </div>
+                    </li>';
             $date = ' <h4></h4>
-<h5> <span>Date : </span> ' . date('d -m- Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
+                    <h5> <span>Date : </span> ' . date('d -m- Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
 
             echo json_encode(['o_detail' => $o_detail, 'o_info' => $o_info, 'date' => $date]);
         }
