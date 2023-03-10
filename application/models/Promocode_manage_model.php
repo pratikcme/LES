@@ -31,6 +31,7 @@ class Promocode_manage_model extends My_model{
             'max_use' => $postData['max_use'],
             'max_cart' => $postData['max_cart'],
             'min_cart' => $postData['min_cart'],
+            'notes' => $postData['notes'],
             'start_date' => date('Y-m-d',strtotime($postData['start_date'])),
             'end_date' => date('Y-m-d',strtotime($postData['end_date'])),
             'dt_created' => DATE_TIME,
@@ -60,6 +61,7 @@ class Promocode_manage_model extends My_model{
             'max_use' => $postData['max_use'],
             'max_cart' => $postData['max_cart'],
             'min_cart' => $postData['min_cart'],
+            'notes' => $postData['notes'],
             'start_date' => date('Y-m-d',strtotime($postData['start_date'])),
             'end_date' => date('Y-m-d',strtotime($postData['end_date'])),
             'dt_updated' => DATE_TIME

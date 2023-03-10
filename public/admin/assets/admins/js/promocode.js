@@ -6,7 +6,11 @@ $(document).ready(function () {
 
 $.validator.addMethod("endDate", function (value, element) {
     var startDate = $('.start_date').val();
-    return Date.parse(startDate) <= Date.parse(value) || value == "";
+    if (startDate != '') {
+        return Date.parse(startDate) <= Date.parse(value) || value == "";
+    } else {
+        return true;
+    }
 }, "* End date must be grater than start date");
 
 // $.validator.addMethod("startDate", function (value, element) {
@@ -24,6 +28,7 @@ $('#frmAddEdit').validate({
         min_cart: { required: true, number: true, min: 1, maxlength: 6 },
         start_date: { required: true },
         end_date: { required: true, endDate: true },
+        notes: { maxlength: 150 },
     },
     messages: {
 

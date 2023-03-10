@@ -277,13 +277,17 @@ $(document).on('change', '.vendor_nav', function () {
 	var session_vendor_id = $('#session_vendor_id').val();
 	var pagelink = url + 'vendors/set';
 	var sess_my_count = $('#itemCount').text();
+	if (vendor_id == '') {
+		window.location.href = url;
+		return false;
+	}
 	if (session_vendor_id != '') {
 		if (vendor_id != session_vendor_id) {
 			if (sess_my_count > 0) {
 
 				swal({
 					title: language.Are_you_sure,
-					text: language.Are_you_sure.order_from_one_shop_message,
+					text: language.order_from_one_shop_message,
 					icon: "warning",
 					buttons: true,
 					dangerMode: true,
@@ -541,6 +545,7 @@ $(document).on('click', '.inc', function () {
 			async: false,
 			data: { product_id: product_id, weight_id: weight_id, product_weight_id: product_weight_id, action: action },
 			success: function (output) {
+				console.log(output);
 				// window.location.reload();
 				$('#updated_list').html(output.updated_list);
 				setTimeout(function () {

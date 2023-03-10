@@ -22,8 +22,8 @@ class Product extends Vendor_Controller
     public function product_list()
     {
         // echo '1';die;
-        $data['table_js'] = array('product.js','product_new.js');
-        $data['start'] = array('PRODUCT.table()','PRODUCT_NEW.table()');
+        $data['table_js'] = array('product_new.js');
+        $data['start'] = array('PRODUCT_NEW.table()');
         $data['css'] = ['style.css'];
         // if(isset($_GET['new']) && $_GET['new'] == 'new'){
         // }else{

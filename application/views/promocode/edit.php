@@ -74,6 +74,10 @@
                                   <input type="date" id="end_date" value="<?php echo @$editData[0]->end_date; ?>" name="end_date" class="form-control end_date">
                                   <label for="end_date" style="color: red" class="error"> </label>
                               </div>
+                              <div class="form-group">
+                                  <label for="end_date">Notes</label>
+                                  <textarea name="notes" class="form-control"><?=$editData[0]->notes; ?></textarea>
+                              </div>
 
                             </div>
                          </div>

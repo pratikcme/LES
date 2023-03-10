@@ -459,11 +459,16 @@ class vendor_model extends My_model
         $user_id = $this->input->post("user_id");
 
         $data['select'] = ['email'];
-        $data['where'] = ['email' => $email, 'vendor_id' => $vendor_id, 'id !=' => $user_id];
+        $data['where'] = [
+            'email' => $email, 
+            'vendor_id' => $vendor_id, 
+            'status !='=> '9',
+            'id !=' => $user_id
+        ];
         $data['table'] = "user";
         $result = $this->selectRecords($data);
-
-        if ($result) {
+        // lq();
+        if (!empty($result)) {
             return "false";
         } else {
             return "true";

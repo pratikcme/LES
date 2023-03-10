@@ -63,7 +63,7 @@ include('header.php');
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
 <!--                                    <a href="price_list" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>-->
-                                    <input type="submit" class="btn btn-info pull-right margin_top_label" value="Download demo Excel" name="submit">
+                                    <input type="submit" class="btn btn-info pull-right margin_top_label" value="Download Demo Excel" name="submit">
                                 </div>
                             </div>
                         </form>

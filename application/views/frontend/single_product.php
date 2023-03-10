@@ -164,8 +164,9 @@
             <p>
               <?=$productDetail[0]->content?>
             </p>
-            <h6><?=$this->lang->line('Category')?> : <span><?=$productDetail[0]->category_name?></span>
-            <?=$this->lang->line('Brand')?>: <span><?=$productDetail[0]->brand_name?></span>
+            <h6>
+              <?=$this->lang->line('Category')?> : <span><?=$productDetail[0]->category_name?></span>
+              <?=$this->lang->line('Brand')?> : <span><?=$productDetail[0]->brand_name?></span>
             </h6>
           </div>
         </div>

@@ -1,4 +1,5 @@
 var PRODUCT_NEW = (function () {
+    // alert();
     var HandleTable = function () {
         $(document).on("click", ".status_deleted", function () {
             var url = $("#url").val();
@@ -63,7 +64,7 @@ var PRODUCT_NEW = (function () {
     var HandleTable2 = function () {
         var url = $("#url").val();
         var supplier_id = $("#supplier_id").val();
-        var dataTable = $("#example_product_new").DataTable({
+        var dataTable = $("#example_product").DataTable({
             processing: true,
             serverSide: true,
             order: [],

@@ -198,6 +198,7 @@ $lang['Discount'] = 'Discount';
 $lang['Brands'] = 'Brands';
 $lang['Maximum order quantity reached'] = "Maximum order quantity reached";
 $lang['Item Out Of Stock'] = "Item Out Of Stock";
+$lang['item out of stock'] = "Item Out Of Stock"; // controller
 $lang['Product not available'] = "Product not available";
 $lang['out of stock'] = "out of stock";
 

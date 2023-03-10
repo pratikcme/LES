@@ -351,7 +351,7 @@ function getStaffListAjax($TableData)
   $start = $TableData['start'] + 1;
   foreach ($fetch_data as $row) {
     if ($row->status == 1) {
-      $status = '<input type="button" data-val=' . $CI->utility->encode($row->id) . ' class="vendor_status btn btn-primary btn-xs" value="active">';
+      $status = '<input type="button" data-val=' . $CI->utility->encode($row->id) . ' class="vendor_status btn btn-primary btn-xs" value="Active">';
     } else {
       $status = '<input type="button" data-val=' . $CI->utility->encode($row->id) . ' class="vendor_status btn btn-danger btn-xs" value="In-active">';
     }
@@ -510,16 +510,16 @@ function getProductListNewAjax($TableData)
     $sub_array[] = '<div class="dropdown">
     <span><i class="fa-solid fa-ellipsis-vertical action-dropdown-btn"></i></span>
     <div class="action-dropdown">
-        <a href=' . base_url() . 'product/product_weight_list?product_id=' . $CI->utility->encode($row->id) . '>
+        <a  href=' . base_url() . 'product/product_weight_list?product_id=' . $CI->utility->encode($row->id) . '>
         <span>
         <img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-1.svg" alt="">
         </span>Manage Variants</a>
-        <a href=' . base_url() . 'product/product_profile?id=' . $CI->utility->encode($row->id) . '>
+        <a href=' . base_url() . 'product/product_profile?id=' . $CI->utility->encode($row->id).'>
         <span>
         <img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-2.svg" alt="">
         </span>Edit product</a>
-        <a href="javascript:;" onclick="single_hard_delete(' . $row->id . ')"><span><img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-3.svg" alt=""></span>Delete Product </a>
-        <a href=' . base_url() . 'product/product_image_list?product_id=' . $CI->utility->encode($row->id) . '><span><img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-4.svg" alt=""></span>Product Image</a>
+        <a  href="javascript:;" onclick="single_hard_delete(' . $row->id . ')"><span><img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-3.svg" alt=""></span>Delete Product </a>
+        <a  href=' . base_url() . 'product/product_image_list?product_id=' . $CI->utility->encode($row->id) . '><span><img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-4.svg" alt=""></span>Product Image</a>
     </div>
 </div>';              
     $data[] = $sub_array;

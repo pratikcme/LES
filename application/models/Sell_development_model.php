@@ -1945,6 +1945,7 @@ class Sell_development_model extends My_model
     {
         $this->branch_id = $this->session->userdata('id');
         $where = [
+            'po.order_from'=>'0',
             'po.status' => '1', 'po.payment_type !=' => '2',
             'po.branch_id' => $this->branch_id
         ];
@@ -1994,7 +1995,9 @@ class Sell_development_model extends My_model
     {
         $this->branch_id = $this->session->userdata('id');
         $where = [
-            'po.status' => '1', 'po.payment_type !=' => '2',
+            'po.order_from'=>'0',
+            'po.status' => '1', 
+            'po.payment_type !=' => '2',
             'po.branch_id' => $this->branch_id
         ];
         $this->db->select('po.*,c.customer_name,v.name as vendor_name');

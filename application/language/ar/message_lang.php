@@ -199,6 +199,7 @@ $lang['Discount'] = 'تخفيض';
 $lang['Brands'] = 'العلامات التجارية';
 $lang['Maximum order quantity reached'] = "تم الوصول إلى الحد الأقصى لكمية الطلب";
 $lang['Item Out Of Stock'] = "عنصر نفد المخزون";
+$lang['item out of stock'] = "عنصر نفد المخزون"; // controller
 $lang['Product not available'] = "المنتج غير متوفر";
 $lang['out of stock'] = "إنتهى من المخزن";
 
