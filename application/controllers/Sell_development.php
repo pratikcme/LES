@@ -488,13 +488,38 @@ class Sell_development extends Vendor_Controller
             // dd($re);
             $o_detail = '';
 
+            $html = '';
+            $amount = 0;
+
+            if ($re['orderInfo'][0]->promocode_used == 1) {
+                $amount = $this->this_model->getPromocodeAmount($re['orderInfo'][0]->order_id);
+                $html = '<li>
+                <div>
+                    <h6>Promocode Discount(%)</h6>
+                    <h6> - ' . '(' . $amount->percentage . '%)' . numberFormat($amount->amount) . '</h6>
+                </div>
+            </li>';
+            }
+
+            $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($re['orderInfo'][0]->total);
+
+            $shopping_based_html = '';
+            if ($re['orderInfo'][0]->shopping_amount_based_discount > 0) {
+                $shopping_based_html  = '<li>
+                <div>
+                    <h6>Cart Amount Based Discount(%)</h6>
+                    <h6> - ' . '(' . $shoppingDiscount[0]->discount_percentage . '%)' . numberFormat($re['orderInfo'][0]->shopping_amount_based_discount) . '</h6>
+                </div>
+            </li>';
+            }
+
             foreach ($re['order_details'] as $key => $v) {
                 $o_detail .= '<tr>
-                                <td>' . $v->name . '</td>
-                                <td>' . $v->quantity . '</td>
-                                <td>' . $v->discount . '</td>
-                                <td>' . $v->calculation_price . '</td>
-                            </tr>';
+                    <td>' . $v->name . '</td>
+                    <td>' . $v->quantity . '</td>
+                    <td>' . $v->discount . '</td>
+                    <td>' . $v->calculation_price . '</td>
+                    </tr>';
             }
             $o_info = '<li>
                         <div>
@@ -502,18 +527,7 @@ class Sell_development extends Vendor_Controller
                             <h6>' . $re['orderInfo'][0]->total . '</h6>
                         </div>
                     </li>
-                    <li>
-                        <div>
-                            <h6>Discount(%)</h6>
-                            <h6>' . $re['orderInfo'][0]->order_discount . '</h6>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h6>Discount Price </h6>
-                            <h6>' . $re['orderInfo'][0]->total_saving . '</h6>
-                        </div>
-                    </li>
+                    ' . $html . '' . $shopping_based_html  . '
                     <li>
                         <div>
                             <h6>Total </h6>

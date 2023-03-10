@@ -1087,7 +1087,7 @@ class Sell_development_model extends My_model
                     'promocode_id' => $promocode_id,
                     'promocode_name' => $promocode_name,
                     'percentage' => $promocode_percentage,
-                    'amount' => $promocode_amount,
+                    'amount' => numberFormat($promocode_amount),
                     'dt_created' => DATE_TIME,
                     'dt_updated' => DATE_TIME
                 ];
@@ -1390,9 +1390,10 @@ class Sell_development_model extends My_model
 
         $html = '';
         foreach ($res as $type) { ?>
-            <div class="catg_list" id="catg_list" onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-            </div>
+<div class="catg_list" id="catg_list"
+    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+</div>
 <?php }
         echo $html;
 
@@ -1915,7 +1916,6 @@ class Sell_development_model extends My_model
 
     public function viewOrderDetails($postdata)
     {
-
         $this->branch_id = $this->session->userdata('id');
         $order_id = $this->utility->safe_b64decode($postdata['order_id']);
 
@@ -1928,7 +1928,7 @@ class Sell_development_model extends My_model
         $result =  $this->selectFromJoin($data);
         unset($data);
         $data['table'] = TABLE_ORDER;
-        $data['select'] = ['total', 'payment_type', 'order_discount', 'payable_amount', 'dt_added', 'total_saving'];
+        $data['select'] = ['total', 'payment_type', 'order_discount', 'payable_amount', 'dt_added', 'total_saving', 'promocode_used', 'shopping_amount_based_discount', 'id as order_id'];
         $data['where'] = ['id' => $order_id, 'branch_id' => $this->branch_id, 'status!=' => '9'];
         $r = $this->selectRecords($data);
         return ['order_details' => $result, 'orderInfo' => $r];
@@ -2156,6 +2156,18 @@ class Sell_development_model extends My_model
         $response["orderAmount"] = floatval($total_price);
         // $response["withoutPromo"] = totalSaving() + $discountValue;
         return $response;
+    }
+
+    // DIpesh Adding sell history
+    public function getPromocodeAmount($id)
+    {
+        // $branch_id = $this->session->userdata('id');
+        $data['select'] = ['*'];
+        $data['table'] = TABLE_ORDER_PROMOCODE;
+        $data['where'] = ['order_id' => $id];
+
+        $res = $this->selectRecords($data);
+        return $res[0];
     }
 }
 
