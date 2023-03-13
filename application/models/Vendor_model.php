@@ -494,12 +494,18 @@ class vendor_model extends My_model
         ];
         $data['table'] = "user";
         $result = $this->selectRecords($data);
+        $cont = $this->countRecords($data);
         // lq();
-        if (!empty($result)) {
-            return "true";
+        if( $cont > 0 ){
+            return  'false';
         } else {
-            return "false";
+            return 'true';
         }
+        // if (!empty($result)) {
+        //     return "true";
+        // } else {
+        //     return "false";
+        // }
     }
 
 
