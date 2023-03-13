@@ -486,13 +486,7 @@ class vendor_model extends My_model
         $country_code = $this->input->post("country_code");
 
         $data['select'] = ['*'];
-        // $data['where'] = [
-        //     'country_code' => $country_code,
-        //     'phone' => $phone,
-        //     'vendor_id' => $vendor_id,
-        //     'id !=' => $user_id
-        // ];
-        $data['where']['status !='] = '9';
+        $data['where']['status !='] = '9'   ;
         $data['where']['country_code'] = $country_code;
         $data['where']['phone'] =  $phone;
         $data['where']['vendor_id'] = $vendor_id;
@@ -506,11 +500,6 @@ class vendor_model extends My_model
         } else {
             return 'true';
         }
-        // if (!empty($result)) {
-        //     return "true";
-        // } else {
-        //     return "false";
-        // }
     }
 
 
