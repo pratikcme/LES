@@ -385,6 +385,7 @@ class Product_model extends My_model
 		if (!isset($data['order'])) {
 			$data['order'] = 'pw.quantity DESC';
 		}
+	
 		$data['where']['p.branch_id'] = $this->branch_id;
 		$data['where']['pw.status !='] = '9';
 		$data['where']['p.status'] = '1';

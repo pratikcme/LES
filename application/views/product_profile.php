@@ -68,6 +68,10 @@
                                                 <?php } ?>
                                             </select>
                                         </div> 
+                                    <div class="form-group">
+                                        <label for="name" class="display_priority">Display Priority</label>
+                                        <input type="number" class="form-control" id="display_priority" name="display_priority" placeholder="Product Priority" min='1' value="<?=(isset($result) && $result['display_priority'] != NULL) ? $result['display_priority'] : '' ?>">
+                                    </div>
                                 </div>
                                
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

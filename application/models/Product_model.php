@@ -77,6 +77,7 @@ class product_model extends My_model
                         'about' => $about,
                         'content' => $content,
                         'gst' => $gst,
+                        'display_priority'    => $_POST['display_priority'],
                         'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                     );
                     $this->db->where('id', $id);
@@ -106,7 +107,7 @@ class product_model extends My_model
             }
             ## Add Product ##
             else {
-                
+                dd($_POST);die;
                 if ($_FILES['image']['name'] != '') {
                     $image = time() . $_FILES['image']['name'];
                 } else {
@@ -131,6 +132,7 @@ class product_model extends My_model
                     'content' => $content,
                     'status' => '1',
                     'gst'    => $gst,
+                    'display_priority'    => $_POST['display_priority'],
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                 );
