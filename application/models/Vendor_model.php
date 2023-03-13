@@ -497,9 +497,9 @@ class vendor_model extends My_model
         $cont = $this->countRecords($data);
         // lq();
         if( $cont > 0 ){
-            return 'true';
-        } else {
             return  'false';
+        } else {
+            return 'true';
         }
         // if (!empty($result)) {
         //     return "true";
