@@ -495,7 +495,7 @@ class vendor_model extends My_model
         $data['table'] = "user";
         $result = $this->selectRecords($data);
         $cont = $this->countRecords($data);
-        lq();
+        // lq();
         if( $cont > 0 ){
             return  'false';
         } else {
