@@ -486,12 +486,16 @@ class vendor_model extends My_model
         $country_code = $this->input->post("country_code");
 
         $data['select'] = ['*'];
-        $data['where'] = [
-            'country_code' => $country_code,
-            'phone' => $phone,
-            'vendor_id' => $vendor_id,
-            'id !=' => $user_id
-        ];
+        // $data['where'] = [
+        //     'country_code' => $country_code,
+        //     'phone' => $phone,
+        //     'vendor_id' => $vendor_id,
+        //     'id !=' => $user_id
+        // ];
+        $data['where']['country_code'] = $country_code;
+        $data['where']['phone'] =  $phone;
+        $data['where']['vendor_id'] = $vendor_id;
+        $data['where']['id !='] = $user_id;
         $data['table'] = "user";
         $result = $this->selectRecords($data);
         $cont = $this->countRecords($data);
