@@ -46,7 +46,7 @@ class Vendor extends CI_Controller
     foreach ($fetch_data as $row) {
 
       if ($row->status == 1) {
-        $status = '<input type="button" data-val=' . $this->utility->encode($row->id) . ' class="vendor_status btn btn-primary btn-xs" value="active">';
+        $status = '<input type="button" data-val=' . $this->utility->encode($row->id) . ' class="vendor_status btn btn-primary btn-xs" value="Active">';
       } else {
         $status = '<input type="button" data-val=' . $this->utility->encode($row->id) . ' class="vendor_status btn btn-danger btn-xs" value="In-active">';
       }
