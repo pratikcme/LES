@@ -485,7 +485,7 @@ class vendor_model extends My_model
         $user_id = $this->input->post("user_id");
         $country_code = $this->input->post("country_code");
 
-        $data['select'] = ['phone'];
+        $data['select'] = ['*'];
         $data['where'] = [
             'country_code' => $country_code,
             'phone' => $phone,
@@ -494,7 +494,8 @@ class vendor_model extends My_model
         ];
         $data['table'] = "user";
         $result = $this->selectRecords($data);
-        if ($result) {
+        // lq();
+        if (empty($result)) {
             return "false";
         } else {
             return "true";
