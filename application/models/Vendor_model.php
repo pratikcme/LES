@@ -492,6 +492,7 @@ class vendor_model extends My_model
         //     'vendor_id' => $vendor_id,
         //     'id !=' => $user_id
         // ];
+        $data['where']['status !='] = '9';
         $data['where']['country_code'] = $country_code;
         $data['where']['phone'] =  $phone;
         $data['where']['vendor_id'] = $vendor_id;
