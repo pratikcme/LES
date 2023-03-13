@@ -142,54 +142,7 @@ input[type="text"]:focus{
 
                             </div>
                          </div>
-                         <!-- <div class="col-md-6 col-sm-12 col-xs-12 padding-zero">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                  <label for="offer_title">Offer Title</label>
-                                  <input type="text" id="offer_title" name="offer_title" class="form-control" <?=($this->uri->segment(3) =='' ) ? 'disabled' : '' ?>>
-                                  <label for="offer_title" style="color: red" class="error"><?php echo @form_error('offer_title'); ?></label>
-                               </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                               <div class="form-group">
-                                  <label for="offer_title">Offer Percent</label>
-                                  <input type="text" name="offer_percent" class="form-control" <?=($this->uri->segment(3) =='' ) ? 'disabled' : '' ?>>
-                                  <label for="offer_percent" class="error"></label>
-                               </div>
-                            </div>
-                         </div> -->
-                          <!-- <div class="col-md-6 col-sm-12 col-xs-12 padding-zero">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                               <div class="form-group">
-                                  <label for="start_date"> Start date</label>
-                                  <input type="text" id="start_date" name="start_date" class="form-control datetime" <?=($this->uri->segment(3) =='' ) ? 'disabled' : '' ?> autocomplete="off" >
-                                  <label for="start_date" style="color: red" class="error"><?php echo @form_error('start_date'); ?></label>
-                               </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                               <div class="form-group">
-                                  <label for="end_date">End date</label>
-                                  <input type="text" id="end_date" name="end_date" class="form-control datetime_end" <?=($this->uri->segment(3) =='' ) ? 'disabled' : '' ?> autocomplete="off">
-                                  <label for="end_date" style="color: red" class="error"><?php echo @form_error('end_date'); ?></label>
-                               </div>
-                            </div>
-                         </div> -->
-                         <!-- <div class="col-md-6 col-sm-12 col-xs-12 padding-zero">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                               <div class="form-group">
-                                  <label for="start_time">Start time</label>
-                                  <input type="time" id="start_time" name="start_time" class="form-control" <?=($this->uri->segment(3) =='' ) ? 'disabled' : '' ?>>
-                                  <label for="start_time" style="color: red" class="error"><?php echo @form_error('start_time'); ?></label>
-                               </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                               <div class="form-group">
-                                  <label for="end_time">End time</label>
-                                  <input type="time" id="end_time" name="end_time" class="form-control" <?=($this->uri->segment(3) =='' ) ? 'disabled' : '' ?>>
-                                  <label for="end_time" style="color: red" class="error"><?php echo @form_error('end_time'); ?></label>
-                               </div>
-                            </div>
-                         </div> -->
+                      
                      </div>
                      <input type="hidden" name="hidden_varient_id" id='hidden_varient_id'>
                       <table class="display table table-bordered table-striped dataTable" id="example_product_offer"
