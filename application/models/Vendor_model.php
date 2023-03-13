@@ -495,7 +495,7 @@ class vendor_model extends My_model
         $data['table'] = "user";
         $result = $this->selectRecords($data);
         // lq();
-        if (empty($result)) {
+        if (!empty($result)) {
             return "true";
         } else {
             return "false";
