@@ -374,7 +374,7 @@ class Utility
         $body['notify'] = 'notification';
         $url = 'https://fcm.googleapis.com/fcm/send';
         $fields = array(
-            'to' =>'5e3a64e370c01590',
+            'to' => $deviceId['device_id'],
             'data' => $body
         );
         // echo $key;exit;
@@ -416,7 +416,7 @@ class Utility
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_json);
         $result = curl_exec($ch);
         curl_close($ch);
-        print_r($result);exit;
+        // print_r($result);exit;
         return $result;
     }
 
