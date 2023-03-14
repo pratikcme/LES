@@ -43,7 +43,7 @@ class PushNotification extends Admin_Controller{
             }
         }
         $result = $this->this_model->getNotificationKey();
-        dd($iosDevice);  
+        // dd($iosDevice);  
 
         if(!empty($iosDevice)){
             foreach ($iosDevice as $key => $value) {
