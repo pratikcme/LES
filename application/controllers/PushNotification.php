@@ -30,6 +30,7 @@ class PushNotification extends Admin_Controller{
 
     public function callNotification(){
         // dd($this->input->post());
+        $vendor_id = $this->session->userdata('vendor_admin_id');
         $androidDevice = [];
         $iosDevice = [];
         $device =  $this->this_model->getUserDevice();
@@ -50,7 +51,7 @@ class PushNotification extends Admin_Controller{
                 'title'=>$this->input->post('title'),
                 'message'=>$this->input->post('message')
             ];
-            $response = $this->utility->PushNotification($deviceToken, $body, $result);
+            $response = $this->utility->PushNotification($deviceToken, $body, $result,$this->input->post(),$vendor_id);
             dd($response);
             // $response = array('success' => '1', 'message' => 'Approved Branch', 'data' => $result);
             // echo json_encode($response);

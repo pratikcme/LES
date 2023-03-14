@@ -480,7 +480,25 @@ class Utility
         return $setResponse;
     }
 
-    public function  PushNotification($deviceToken,$body,$result){
+    public function  PushNotification($deviceToken,$body,$result,$postData,$vendor_id){
+        $ios_url = 'https://api.push.apple.com/3/device/';
+        $ios_data = array(
+            'aps' => array(
+                'alert' => array(
+                    'title' => $body['title'],
+                    'body' => $body['message']
+                ),
+                'badge' => 1,
+                'sound' => 'default'
+            ),
+            'data' => array(
+                'product_id' => $postData['product_id'],
+                'category_id' => $postData['category_id'],
+                'vendor_id' => $vendor_id,
+                'branch_id' => $postData['branch']
+                )
+            );
+            
         $android_url = 'https://fcm.googleapis.com/fcm/send';
         $android_data = array(
             'notification' => array(
@@ -488,20 +506,36 @@ class Utility
                 'body' => $body['message']
             ),
             'data' => array(
-                'key' => 'value'
+                'product_id' => $postData['product_id'],
+                'category_id' => $postData['category_id'],
+                'vendor_id' => $vendor_id,
+                'branch_id' => $postData['branch']
             ),
             'priority' => 'high'
         );
+        $device_tokens = $deviceToken['device_id'];
 
-        $android_tokens = $deviceToken['device_id'];
         // Set the headers for the cURL requests
         $headers = array(
             'Content-Type: application/json',
             'Authorization: key='.$result[0]->user_firebase_key, // For Android notifications only
             'apns-topic: '.$result[0]->user_bandle_id, // For iOS notifications only
         );
+        dd($device_tokens);
+        foreach ($device_tokens as $token) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $ios_url . $token);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($ios_data));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $result = curl_exec($ch);
+            curl_close($ch);
+        }
+    
+        
         $android_fields = array(
-            'registration_ids' => $android_tokens,
+            'registration_ids' => $device_tokens,
             'data' => $android_data,
         );
         dd( $android_fields);
