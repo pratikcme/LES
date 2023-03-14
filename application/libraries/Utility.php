@@ -520,10 +520,9 @@ class Utility
 
         // Set the headers for the cURL requests
         // .$result[0]->user_bandle_id
-        // .$result[0]->user_firebase_key,
         $headers = array(
             'Content-Type: application/json',
-            'Authorization: key= AAAAIhCnTt0:APA91bEAjiw53KeCGPM4Ns6lfvvBlihTd5FTrWo3_yW9ozu0iM8vs1MBErm1g0hOel4UXdk9zCtsX2l0YCa99XCystgrOsjyQ2lvZWcimH0FcNgNqBsKWWPEiniN9M2z5dBIhwaIizPH', // For Android notifications only
+            'Authorization: key='.$result[0]->user_firebase_key, // For Android notifications only
             'apns-topic: com.cme.bigbucket', // For iOS notifications only
         );
         // dd($headers);
