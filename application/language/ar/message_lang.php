@@ -60,7 +60,7 @@ $lang['Total'] = "مجموع";
 
 $lang['Product'] = "منتج";
 $lang['Quantity'] = "كمية";
-$lang['Price'] = "السعر";
+$lang['price'] = "السعر";
 $lang['Action'] = "فعل";
 $lang['Proceed to checkout'] = "الشروع في الخروج";
 $lang['clear cart'] = "عربة واضحة";
