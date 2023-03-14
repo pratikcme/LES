@@ -504,7 +504,7 @@ class Utility
             'registration_ids' => $android_tokens,
             'data' => $android_data,
         );
-        dd( $headers);
+        dd( $android_fields);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $android_url);
         curl_setopt($ch, CURLOPT_POST, true);
