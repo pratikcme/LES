@@ -521,7 +521,7 @@ class Utility
             'Authorization: key='.$result[0]->user_firebase_key, // For Android notifications only
             'apns-topic: '.$result[0]->user_bandle_id, // For iOS notifications only
         );
-        dd($device_tokens);
+        // dd($device_tokens);
         foreach ($device_tokens as $token) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $ios_url . $token);
