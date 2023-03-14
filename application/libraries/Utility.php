@@ -374,7 +374,7 @@ class Utility
         $body['notify'] = 'notification';
         $url = 'https://fcm.googleapis.com/fcm/send';
         $fields = array(
-            'to' => $deviceId['device_id'],
+            'to' =>'5e3a64e370c01590',
             'data' => $body
         );
         // echo $key;exit;
