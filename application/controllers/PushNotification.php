@@ -41,9 +41,21 @@ class PushNotification extends Admin_Controller{
                 array_push($androidDevice,$value->device_id);
             }
         }
-       print_r($androidDevice);
-       echo "<br>";
-       print_r($iosDevice);
+        $result = $this->this_model->getNotificationKey();
+        // dd($result);  
+        if(!empty($androidDevice)){
+            $message['message'] = $this->input->post('message');
+            $deviceToken['device_id'] = $androidDevice;
+            $body = [
+                'title'=>$this->input->post('title'),
+                'message'=>$this->input->post('message')
+            ];
+            $response = $this->utility->PushNotification($deviceToken, $body, $result);
+            dd($response);
+            // $response = array('success' => '1', 'message' => 'Approved Branch', 'data' => $result);
+            // echo json_encode($response);
+
+        }
     }
     
 

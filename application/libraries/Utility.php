@@ -369,16 +369,14 @@ class Utility
         $body['type'] = $type;
         $body['badge'] = $unread;
         $body['notify'] = 'notification';
-
         $url = 'https://fcm.googleapis.com/fcm/send';
         $fields = array(
             'to' => $deviceId['device_id'],
             'data' => $body
         );
-
         // echo $key;exit;
         $fields_json = json_encode($fields);
-
+        // dd($fields_json);
         if (isset($deviceId['delivery_notification'])) {
             // echo '1';die;
             $headers = array(
@@ -480,6 +478,42 @@ class Utility
         }
 
         return $setResponse;
+    }
+
+    public function  PushNotification($deviceToken,$body,$result){
+        $android_url = 'https://fcm.googleapis.com/fcm/send';
+        $android_data = array(
+            'notification' => array(
+                'title' => $body['title'],
+                'body' => $body['message']
+            ),
+            'data' => array(
+                'key' => 'value'
+            ),
+            'priority' => 'high'
+        );
+
+        $android_tokens = $deviceToken['device_id'];
+        // Set the headers for the cURL requests
+        $headers = array(
+            'Content-Type: application/json',
+            'Authorization: key='.$result[0]->user_firebase_key, // For Android notifications only
+            'apns-topic: '.$result[0]->user_bandle_id, // For iOS notifications only
+        );
+        $android_fields = array(
+            'registration_ids' => $android_tokens,
+            'data' => $android_data,
+        );
+        dd( $headers);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $android_url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($android_fields));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        dd($result);
     }
 }
 

@@ -23,5 +23,12 @@ class PushNotification_model extends My_model
         return $this->selectFromJoin($data);
 
     }
+
+    public function getNotificationKey(){   
+        $data['table'] = 'firebase';
+        $data['select'] = ['*'];
+        $data['where'] = ['vendor_id'=>$this->vendor_id]; 
+        return $this->selectRecords($data);
+    }
 }
 ?>
