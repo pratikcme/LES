@@ -44,6 +44,15 @@ class PushNotification extends Admin_Controller{
         }
         $result = $this->this_model->getNotificationKey();
         // dd($result);  
+        if(!empty($iosDevice)){
+            $message['message'] = $this->input->post('message');
+            $deviceToken['device_id'] = $iosDevice;
+            $body = [
+                'title'=>$this->input->post('title'),
+                'message'=>$this->input->post('message')
+            ];
+            $response = $this->utility->PushNotification($deviceToken, $body, $result,$this->input->post(),$vendor_id); 
+        }
         if(!empty($androidDevice)){
             $message['message'] = $this->input->post('message');
             $deviceToken['device_id'] = $androidDevice;
@@ -53,9 +62,6 @@ class PushNotification extends Admin_Controller{
             ];
             $response = $this->utility->PushNotification($deviceToken, $body, $result,$this->input->post(),$vendor_id);
             dd($response);
-            // $response = array('success' => '1', 'message' => 'Approved Branch', 'data' => $result);
-            // echo json_encode($response);
-
         }
     }
     
