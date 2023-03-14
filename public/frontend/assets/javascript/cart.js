@@ -192,9 +192,9 @@ $(document).ready(function () {
               .next("td")
               .next("td")
               .html(
-                "<p><span>" +
+                "<p><span class='notranslate'>" +
                 siteCurrency +
-                '</span><span class="total">' +
+                '</span><span class="total notranslate">' +
                 output.new_total +
                 "</span></p>"
               );
@@ -280,9 +280,9 @@ $(document).ready(function () {
               .next("td")
               .next("td")
               .html(
-                "<p><span>" +
+                "<p><span class='notranslate'>" +
                 siteCurrency +
-                '</span><span class="total">' +
+                '</span><span class="total notranslate">' +
                 output.new_total +
                 "</span></p>"
               );
@@ -323,6 +323,10 @@ $(document).ready(function () {
     var subtot = 0;
     $(".total").each(function () {
       var total = $(this).html();
+      if (total.match(/\<font.+\>/)) {
+        total = $(this).find('font').html();
+        alert(total);
+      }
       // var  total = total.substring(3, total.length);
       subtot += parseFloat(total);
     });

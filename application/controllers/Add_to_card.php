@@ -345,6 +345,7 @@ class Add_to_card extends User_Controller
 			'updated_list' => NavbarDropdown(),
 			'delivery_charge' => $new_deliveryCharge
 		];
+		// dd($response);
 		echo json_encode($response);
 	}
 }

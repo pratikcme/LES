@@ -535,7 +535,7 @@ label.error.mobile_verfication {
                                 href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>">
                                 <div class="your-order-detail-wrap">
                                     <h6><?=$value['product_name']?></h6>
-                                    <p><?=$value['quantity']?> X <span><?=$this->siteCurrency?></span>
+                                    <p><?=$value['quantity']?> X <span class='notranslate'><?=$this->siteCurrency?></span>
                                         <?=$value['discount_price']?></p>
                                 </div>
                             </a>
@@ -561,7 +561,7 @@ label.error.mobile_verfication {
                                 href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
                                 <div class="your-order-detail-wrap">
                                     <h6><?=$value->product_name?></h6>
-                                    <p><?=$value->quantity?> X <span><?=$this->siteCurrency?></span>
+                                    <p><?=$value->quantity?> X <span class='notranslate'><?=$this->siteCurrency?></span>
                                         <?=$value->discount_price?></p>
                                 </div>
                             </a>
@@ -577,7 +577,7 @@ label.error.mobile_verfication {
                                     Tax)</h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
-                                    <p><span><?=$this->siteCurrency?></span> <span
+                                    <p><span class='notranslate'><?=$this->siteCurrency?></span> <span
                                             id="checkout_subtotal"><?=$getMycartSubtotal?></span></p>
                                 </div>
                             </div>
@@ -587,7 +587,7 @@ label.error.mobile_verfication {
                                 <h6><?=$this->lang->line('Tax (Gst)')?></h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
-                                    <p><span><?=$this->siteCurrency?></span> <span id=""><?=$TotalGstAmount?></span></p>
+                                    <p><span class='notranslate'><?=$this->siteCurrency?></span> <span id=""><?=$TotalGstAmount?></span></p>
                                 </div>
                             </div>
                         </li>
@@ -596,7 +596,7 @@ label.error.mobile_verfication {
                                 <h6><?=$this->lang->line('Delivery Charges')?></h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
-                                    <p><span><?=$this->siteCurrency?></span>
+                                    <p><span class='notranslate'><?=$this->siteCurrency?></span>
                                         <?=(isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping,2,'.','') : '0.00' ?>
                                     </p>
                                 </div>
@@ -609,7 +609,7 @@ label.error.mobile_verfication {
                                 <h6>Cart Discount</h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
-                                    <p><span><?=$this->siteCurrency?></span> <span
+                                    <p><span class='notranslate'><?=$this->siteCurrency?></span> <span
                                             id="shoppingBasedDiscount"><?=$shopping_based_discount?></span></p>
                                 </div>
                             </div>
@@ -620,7 +620,7 @@ label.error.mobile_verfication {
                                 <h6>Promocode Discount</h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
-                                    <p><span><?=$this->siteCurrency?></span> <span id="promoAmount"></span></p>
+                                    <p><span class='notranslate'><?=$this->siteCurrency?></span> <span id="promoAmount"></span></p>
                                 </div>
                             </div>
                         </li>
@@ -630,7 +630,7 @@ label.error.mobile_verfication {
                                 <h6> <?=$this->lang->line('Total')?></h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
-                                    <p><span><?=$this->siteCurrency?></span>
+                                    <p><span class='notranslate'><?=$this->siteCurrency?></span>
                                         <span id="checkout_final">
                                             <?php if(isset($calc_shiping) && is_numeric($calc_shiping)) {
                                     if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
@@ -659,7 +659,7 @@ label.error.mobile_verfication {
                         <li class="saving">
                             <?php $totalSaving = totalSaving() + $shopping_based_discount ; ?>
                             <p><?=$this->lang->line('You will save')?> <span
-                                    id='totalSaving'><?=$this->siteCurrency.' '.$totalSaving?></span>
+                                    id='totalSaving' class='notranslate'><?=$this->siteCurrency.' '.$totalSaving?></span>
                                 <?=$this->lang->line('on this order')?></p>
                         </li>
                         <?php } ?>

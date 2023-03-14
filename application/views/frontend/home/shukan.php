@@ -183,7 +183,7 @@
           <div class="feature-detail">
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
-            <h6><span><?=$this->siteCurrency?></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
+            <h6><span class='notranslate'><?=$this->siteCurrency?></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
             <p><?=($value->quantity > 25 ) ? 'Available (in stock)' : 'limited stock' ?></p>
           </div>
           <?php 
@@ -251,7 +251,7 @@
           <div class="feature-detail">
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
-            <h6><span><?=$this->siteCurrency?></span><?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
+            <h6><span class='notranslate'><?=$this->siteCurrency?></span><?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
             <p><?=($value->quantity > 25 ) ? 'Available (in stock)' : 'limited stock' ?></p>
           </div>
           <?php 
@@ -331,7 +331,7 @@
           <div class="feature-detail">
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
-            <h6><span><?=$this->siteCurrency?></span><?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
+            <h6><span class='notranslate'><?=$this->siteCurrency?></span><?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
             <p><?=($value->quantity > 25 ) ? 'Available (in stock)' : 'limited stock' ?></p>
           </div>
           <?php 
