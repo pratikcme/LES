@@ -242,9 +242,8 @@
         },
         
         submitHandler: function (form) {
-                
                 $('.btn').attr('disabled','disabled');
-                $(form).submit();
+                form.submit();
                 
             }
     });
