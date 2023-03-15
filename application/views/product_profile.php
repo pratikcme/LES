@@ -242,10 +242,10 @@
         },
         
         submitHandler: function (form) {
-                $('.btn').attr('disabled','disabled');
-                form.submit();
+            // $('.btn').attr('disabled','disabled');
+            form.submit();
                 
-            }
+        }
     });
 </script>
 <?php include('footer.php'); ?>
