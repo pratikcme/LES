@@ -107,6 +107,7 @@
         <!-- page end-->
     </section>
 </section>
+<input type="hidden" id="base_url" value="<?=base_url()?>">
 <!--main content end-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
@@ -142,7 +143,7 @@
             });
         });
     });
-
+    var base_url = $('#base_url').val();
     $('#product_form').validate({
         
         rules: {
@@ -184,6 +185,17 @@
             },
             tags : {
                 maxlength: 15,
+            },
+            display_priority : {
+                remote: {
+                    url: base_url+"product/check_display_priority",
+                    type: "post",
+                    data: {
+                    product_id: function() {
+                        return $( "#id" ).val();
+                    }
+                    }
+                }
             }
         },
         messages: {

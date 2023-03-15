@@ -271,7 +271,7 @@ class Product_model extends My_model
 		}
 		if (isset($postdata['sort'])) {
 			if ($postdata['sort'] == 'high_low') {
-				$data["order"] = 'pw.discount_price DESC , pw.quantity DESC';
+				$data["order"] = 'dp ASC,pw.discount_price DESC , pw.quantity DESC';
 			}
 			if ($postdata['sort'] == 'low_high') {
 				$data["order"] = 'pw.discount_price ASC,pw.quantity DESC';
@@ -285,7 +285,7 @@ class Product_model extends My_model
 				$data['where']['discount_per >']  = '0';
 			}
 			if ($postdata['sort'] == 'alphabetically') {
-				$data["order"] = 'p.name ASC,pw.quantity DESC';
+				$data["order"] = 'dp ASC,p.name ASC,pw.quantity DESC';
 			}
 
 			if ($postdata['sort'] == 'last_30_days') {
@@ -378,19 +378,20 @@ class Product_model extends My_model
 			isset($postdata['sub_id']) && $postdata['sub_id'] == '' &&
 			isset($postdata['cat_id']) && $postdata['cat_id'] == ''
 		) {
-			$data['order'] = 'pw.quantity DESC , p.id DESC';
+			
+			$data['order'] = 'dp ASC,pw.quantity DESC , p.id DESC';
 		}
 
 		$limit = 20;
 		if (!isset($data['order'])) {
-			$data['order'] = 'pw.quantity DESC';
+			$data['order'] = 'dp ASC,pw.quantity DESC';
 		}
 	
 		$data['where']['p.branch_id'] = $this->branch_id;
 		$data['where']['pw.status !='] = '9';
 		$data['where']['p.status'] = '1';
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*','p.*',"IF(p.display_priority IS NULL, 'N/A', p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
@@ -1305,4 +1306,5 @@ class Product_model extends My_model
 		$data['where'] = ['user_id' => $user_id];
 		return $this->deleteRecords($data);
 	}
+
 }

@@ -194,5 +194,11 @@ class Product extends Vendor_Controller
    public function parmanentDeleteProduct(){
         $this->this_model->parmanentDeleteProduct();
    }
+
+   public function check_display_priority(){
+    if($this->input->post()){
+        $this->this_model->check_display_priority($this->input->post());
+    }
+   }
 }
 ?>
