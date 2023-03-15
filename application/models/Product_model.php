@@ -1167,5 +1167,20 @@ class product_model extends My_model
                     $data['order'] = 'image_order';
                     return $this->selectRecords($data);
                 }
+
+                public function check_display_priority($postData){
+                    if($postData['product_id'] != ''){
+                        $data['where']['id !='] = $postData['product_id'];
+                    }
+                    $data['table'] = TABLE_PRODUCT;
+                    $data['where']['display_priority'] = $postData['display_priority'];
+                    $data['where']['status !='] = '9';
+                    $return = $this->countRecords($data);
+                    if($return > 0){
+                        echo "false";
+                    }else{
+                        echo "true";
+                    }
+                }
             }
             
