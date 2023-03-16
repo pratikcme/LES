@@ -60,6 +60,7 @@ class Add_to_card extends User_Controller
 					$errormsg = $this->lang->line('Product not available');
 				} else {
 					$errormsg = $this->lang->line('Item Out of Stock');
+					$errormsg = 'Item Out of Stock';
 				}
 				// exit();
 			} else {
