@@ -594,8 +594,8 @@ function getOrderListAjax($TableData)
   $data = array();
 
   foreach ($fetch_data as $row) {
-    $otp_status = $CI->this_model->checkSelfPickUpOtpIsVerified($row->id);
     $otp_status = '0';
+    $otp_status = $CI->this_model->checkSelfPickUpOtpIsVerified($row->id);
     if (!empty($otp_status)) {
       $otp_status = $otp_status[0]->status;
     }
@@ -639,8 +639,10 @@ function getOrderListAjax($TableData)
     } elseif ($row->order_status == '8') {
       $rowcolor = "style='background-color:#3da449 !important; color: white; font-weight:bold;'";
       $attr8 = 'SELECTED';
-      // $otpAttr = 'disabled';
-      // $otpValue = "verified";
+      $otpAttr = 'disabled';
+      if ($otp_status == '1' || (!empty($otp_status_not_selfpickup) && $otp_status_not_selfpickup[0]->otp_verify == '1')) {
+        $otpValue = "verified";
+      }
     } else {
       $rowcolor = "style='background-color:#fe4552 !important; color: white; font-weight:bold;'";
       $attr9 = 'SELECTED';
