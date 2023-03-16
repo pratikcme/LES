@@ -238,7 +238,7 @@
             <h6><span><?=$this->siteCurrency?></i></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
             <?php if($value->quantity >= 25){ ?> 
             <p><?=$this->lang->line('Available(Instock)')?></p>
-            <?php }elseif($value->quantity <= 0){ ?>
+            <?php }else{ ?>
               <p><?=$this->lang->line('Limited Stock')?></p>
             <?php } ?> 
           </div>
