@@ -70,7 +70,7 @@ error_reporting(0);
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <!--breadcrumbs start -->
             <ul class="breadcrumb">
-               <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/dashboard'; ?>">Home</a> / <a href="<?php echo base_url().'vendor/vendor_list'; ?>">Vendor</a> / <?php echo $reqName; ?></a></li>
+               <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/dashboard'; ?>">Home</a> / <a href="<?php echo base_url().'vendor/vendor_list'; ?>">Branch setting</a> / <?php echo $reqName; ?></a></li>
             </ul>
             <!--breadcrumbs end -->
          </div>
@@ -80,7 +80,7 @@ error_reporting(0);
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <section class="panel">
                <header class="panel-heading">
-                  <?php echo $reqName; ?> Vendor
+                  <?php echo $reqName; ?> Branch
                </header>
                <form  enctype="multipart/form-data"  role="form" method="post" action="<?php echo base_url().'vendor/new_vendor_register'; ?>" name="vendor_form" id="vendor_form">
                   <input type="hidden" id="id" name="id" value="<?php echo $result['id']; ?>">
