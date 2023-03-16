@@ -8,8 +8,8 @@ class Home_model extends My_model{
 	    $data['select'] = ['c.*'];
 		$data['table'] = TABLE_CATEGORY. ' as c';
 	    $data['join'] = [
-	    	TABLE_PRODUCT.' as p' =>['p.category_id = c.id','INNER'],
-	    	TABLE_PRODUCT_WEIGHT.' as pw' =>['pw.product_id = p.id','INNER']
+	    	TABLE_PRODUCT.' as p' =>['p.category_id = c.id','LEFT'],
+	    	TABLE_PRODUCT_WEIGHT.' as pw' =>['pw.product_id = p.id','LEFT']
 	];
 		$data['where'] = [
 							'c.status !=' => '9',
