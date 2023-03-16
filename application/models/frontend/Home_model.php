@@ -9,7 +9,7 @@ class Home_model extends My_model{
 		$data['table'] = TABLE_CATEGORY. ' as c';
 	    $data['join'] = [
 	    	TABLE_PRODUCT.' as p' =>['p.category_id = c.id','LEFT'],
-	    	TABLE_PRODUCT_WEIGHT.' as pw' =>['pw.product_id = p.id','LEFT']
+	    	TABLE_PRODUCT_WEIGHT.' as pw' =>['pw.product_id = p.id','LEFT']	
 	];
 		$data['where'] = [
 							'c.status !=' => '9',
@@ -19,8 +19,7 @@ class Home_model extends My_model{
 						];
 		$data['groupBy'] = 'c.id';
 		// $data['limit'] = '12'; 
-	    /* return */ $this->selectFromJoin($data);
-		lq();
+	    return $this->selectFromJoin($data);
 		// echo $this->db->last_query();die;
 	}	
  function getWebBannerImage(){
