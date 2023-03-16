@@ -255,9 +255,7 @@ class Add_to_card extends User_Controller
 						$errormsg = $this->lang->line('Maximum order quantity reached');
 						$qun = $result[0]->max_order_qty;
 					} else if ($qun > $result[0]->quantity) {
-						$errormsg = $this->lang->line('Item Out of Stock');
-						$errormsg = 'Item Out of Stock';
-
+						$errormsg = $this->lang->line('item out of stock');
 					} else {
 
 						$price = $value['discount_price'] * $qun;
