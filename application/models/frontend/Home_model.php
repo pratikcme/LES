@@ -15,7 +15,7 @@ class Home_model extends My_model{
 							'c.status !=' => '9',
 							'c.branch_id'=>$branch_id,
 							'p.status' =>'1',
-							'pw.status'=>'1', 
+							// 'pw.status'=>'1', 
 						];
 		$data['groupBy'] = 'c.id';
 		// $data['limit'] = '12'; 
