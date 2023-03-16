@@ -235,6 +235,9 @@
                 // required: "Please enter gst percent",
                 maxlength: "Please enter maximum 15 character",
                 // number : "Please enter number only",
+            },
+            display_priority: {
+                remote : 'Priority already assigned'
             }
         },
         error: function(label) {
