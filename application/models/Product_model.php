@@ -107,7 +107,6 @@ class product_model extends My_model
             }
             ## Add Product ##
             else {
-                dd($_POST);die;
                 if ($_FILES['image']['name'] != '') {
                     $image = time() . $_FILES['image']['name'];
                 } else {
