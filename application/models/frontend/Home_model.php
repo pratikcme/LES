@@ -8,20 +8,19 @@ class Home_model extends My_model{
 	    $data['select'] = ['c.*'];
 		$data['table'] = TABLE_CATEGORY. ' as c';
 	    $data['join'] = [
-	    	TABLE_PRODUCT.' as p' =>['p.category_id = c.id','LEFT'],
-	    	TABLE_PRODUCT_WEIGHT.' as pw' =>['pw.product_id = p.id','LEFT']	
+	    	TABLE_PRODUCT.' as p' =>['p.category_id = c.id','INNER'],
+	    	TABLE_PRODUCT_WEIGHT.' as pw' =>['pw.product_id = p.id','INNER']
 	];
 		$data['where'] = [
 							'c.status !=' => '9',
 							'c.branch_id'=>$branch_id,
 							'p.status' =>'1',
-							// 'pw.status'=>'1', 
+							'pw.status'=>'1', 
 						];
 		$data['groupBy'] = 'c.id';
 		// $data['limit'] = '12'; 
 	    return $this->selectFromJoin($data);
-		lq();
-		// echo $this->db->last_query();die;
+	    // echo $this->db->last_query();die;
 	}	
  function getWebBannerImage(){
  
