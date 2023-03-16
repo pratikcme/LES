@@ -409,6 +409,8 @@ class Product_model extends My_model
 			// $page = $page + 1	;
 			$display = 'none';
 		}
+		$data['display'] = $display;
+		$data['page'] = $page;
 
 		$wish_pid = $this->getUsersWishlist();
 		if (!empty($product)) {
@@ -443,7 +445,11 @@ class Product_model extends My_model
 						$d_none = 'd-none';
 					}
 				}
+				$data['d_show'] = $d_show;
+				$data['d_none'] = $d_none;
+
 				$addQuantity = $this->findProductAddQuantity($value->id, $value->product_weight_id);
+				$data['addQuantity'] = $addQuantity;
 				$this->load->model('frontend/home_model', 'home_model');
 				// $product[$key]->rating  = $this->home_model->selectStarRatting($value->id);
 				$varientQuantity = $this->checkVarientQuantity($value->id);
@@ -452,12 +458,14 @@ class Product_model extends My_model
 				if ($varientQuantity == '0') {
 					$p_outofstock .= '<div class="out-stock"><span class="out-heading">'.$this->lang->line('out of stock').'</span></div>';
 				}
+				$data['p_outofstock'] = $p_outofstock;
 				$class = '';
 				if (!empty($wish_pid)) {
 					if (in_array($value->id, $wish_pid)) {
 						$class = 'fas .fa-heart';
 					}
 				}
+				$data['class'] = $class;
 
 				if (!empty($value->image) || $value->image != '') {
 					$image = $value->image;
@@ -472,63 +480,57 @@ class Product_model extends My_model
 					$image = $this->v2_common_model->default_product_image();
 				}
 				$image = str_replace(' ', '%20', $image);
+				$data['image'] = $image;
 				$value->name = character_limiter($value->name, 30);
-				$product_html .= '<div class="col-lg-3 col-md-6 col-sm-6">
-					        <div class="product-wrapper">
-					        ' . $p_outofstock . '
-					          <div class="wishlist-wrapper">';
-				if ($value->discount_per > '0') {
-					$product_html .= '<div class="offer-wrap">
-					              <p>' . $value->discount_per . ' % off</p>
-					            </div>';
-				} else {
-					$product_html .= '<div class="">
-					            </div>';
-				}
-				$product_html .= '<div class="wishlist-icon" style="display:none" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-product_weight_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>
-					              <i class="far fa-heart ' . $class . '"></i>
-					            </div>
-					          </div>
-					          <a href=' . base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) . '>
-					          <div class="feat-img">
-					            <img src=' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $image . '>
-					          </div>
-					          </a>
-					          <div class="feature-detail">
-					             <a href=' . base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) . '><h5	>' . $value->name . '</h5></a>
-					            <h6><span class="notranslate">' . $this->siteCurrency . '</span> ' . number_format((float)$value->discount_price, 2, '.', '') . '</h6>
-					            <p>';
-				if ($value->quantity > 25) {
-					$product_html .= $this->lang->line('Available(Instock)');
-				} else {
-					$product_html .= $this->lang->line('Limited Stock');
-				}
-				$product_html .= '</p></div>
-					          <div class="feature-bottom-wrap">
-					            <div class="cart addcartbutton d-none" data-product_id=' . $this->utility->safe_b64encode($value->id) . '>
-					               <i class="fas fa-shopping-basket"></i>
-					            </div>
-					            <div class="new_add_to_cart ' . $d_none . '" >
-					            <button class="btn addcartbutton" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-varient_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>'.$this->lang->line('add to cart').'</button>
-					            </div>
-					            <div class="quantity-wrap ' . $d_show . '">
-              						<button class="dec cart-qty-minus" data-product_weight_id=' . $value->product_weight_id . '><span class="minus"><i class="fa fa-minus"></i></span></button>
-              						<input class="qty" type="text" name="" value=' . $addQuantity . ' data-product_id=' . $value->id . ' data-weight_id=' . $value->weight_id . ' readonly>
-              						<button class="inc cart-qty-plus" data-product_weight_id=' . $value->product_weight_id . ' ><span><i class="fa fa-plus"></i></span></button>
-            					</div>
-					          </div>
-					        </div>
-      					</div>';
-				// $product_html.='</p>
-				// <div class="new_add_to_cart '.$d_none.'" >
-				//         	 <button class="btn addcartbutton" data-product_id='.$this->utility->safe_b64encode($value->id).'>Add To Cart</button>
-				//    	</div>
-				//    <div class="quantity-wrap '.$d_show.'">
-				//      <button class="dec cart-qty-minus" data-product_weight_id='.$value->product_weight_id.'><span class="minus"><i class="fa fa-minus"></i></span></button>
-				//      <input class="qty" type="text" name="" value='.(!empty($value->addQuantity)) ? $value->addQuantity : "1" .'  data-product_id='.$value->id.' data-weight_id='.$value->weight_id.' readonly>
-				//      <button class="inc cart-qty-plus" data-product_weight_id='.$value->product_weight_id.'><span><i class="fa fa-plus"></i></span></button>
-				//    </div>
-				//  ';
+				$data['value'] = $value;
+				$product_html .= $this->load->view('frontend/ajaxView/product',$data,true); 
+
+				// $product_html .= '<div class="col-lg-3 col-md-6 col-sm-6">
+				// 	        <div class="product-wrapper">
+				// 	        ' . $p_outofstock . '
+				// 	          <div class="wishlist-wrapper">';
+				// if ($value->discount_per > '0') {
+				// 	$product_html .= '<div class="offer-wrap">
+				// 	              <p>' . $value->discount_per . ' % off</p>
+				// 	            </div>';
+				// } else {
+				// 	$product_html .= '<div class="">
+				// 	            </div>';
+				// }
+				// $product_html .= '<div class="wishlist-icon" style="display:none" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-product_weight_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>
+				// 	              <i class="far fa-heart ' . $class . '"></i>
+				// 	            </div>
+				// 	          </div>
+				// 	          <a href=' . base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) . '>
+				// 	          <div class="feat-img">
+				// 	            <img src=' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $image . '>
+				// 	          </div>
+				// 	          </a>
+				// 	          <div class="feature-detail">
+				// 	             <a href=' . base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) . '><h5	>' . $value->name . '</h5></a>
+				// 	            <h6><span class="notranslate">' . $this->siteCurrency . '</span> ' . number_format((float)$value->discount_price, 2, '.', '') . '</h6>
+				// 	            <p>';
+				// if ($value->quantity > 25) {
+				// 	$product_html .= $this->lang->line('Available(Instock)');
+				// } else {
+				// 	$product_html .= $this->lang->line('Limited Stock');
+				// }
+				// $product_html .= '</p></div>
+				// 	          <div class="feature-bottom-wrap">
+				// 	            <div class="cart addcartbutton d-none" data-product_id=' . $this->utility->safe_b64encode($value->id) . '>
+				// 	               <i class="fas fa-shopping-basket"></i>
+				// 	            </div>
+				// 	            <div class="new_add_to_cart ' . $d_none . '" >
+				// 	            <button class="btn addcartbutton" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-varient_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>'.$this->lang->line('add to cart').'</button>
+				// 	            </div>
+				// 	            <div class="quantity-wrap ' . $d_show . '">
+              	// 					<button class="dec cart-qty-minus" data-product_weight_id=' . $value->product_weight_id . '><span class="minus"><i class="fa fa-minus"></i></span></button>
+              	// 					<input class="qty" type="text" name="" value=' . $addQuantity . ' data-product_id=' . $value->id . ' data-weight_id=' . $value->weight_id . ' readonly>
+              	// 					<button class="inc cart-qty-plus" data-product_weight_id=' . $value->product_weight_id . ' ><span><i class="fa fa-plus"></i></span></button>
+            	// 				</div>
+				// 	          </div>
+				// 	        </div>
+      			// 		</div>';
 			}
 			$product_html .= '<div class="col-md-12" style="display:' . $display . '">
         						<button type="button" class="btn show-more" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>'.$this->lang->line('Show More').'</button>

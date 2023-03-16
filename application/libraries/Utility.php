@@ -372,13 +372,16 @@ class Utility
         $body['type'] = $type;
         $body['badge'] = $unread;
         $body['notify'] = 'notification';
+
         $url = 'https://fcm.googleapis.com/fcm/send';
+        
         $fields = array(
             'to' => $deviceId['device_id'],
             'data' => $body
         );
         // echo $key;exit;
         $fields_json = json_encode($fields);
+        // dd($fields_json);
         // dd($fields_json);
         if (isset($deviceId['delivery_notification'])) {
             // echo '1';die;
@@ -390,7 +393,7 @@ class Utility
         } else {
             if ($key == NULL) {
                 // $headers = array(
-                //     'Authorization: key= AAAAN7pGzqM:APA91bGjSoksYAJHdxtvBaNqt2VCqKuNiBzJiYsMwvNVuyGAJ8Iuj1HNEClo_VkzgdGuTHWoHp7O9FYP7Et_l2eI_iNNEEePeao3Q5qlVNNMIsp93_60xvxAAPMvIspLzQ3nsFM6_9n7',
+                //     'Authorization: key= AAAAIhCnTt0:APA91bEAjiw53KeCGPM4Ns6lfvvBlihTd5FTrWo3_yW9ozu0iM8vs1MBErm1g0hOel4UXdk9zCtsX2l0YCa99XCystgrOsjyQ2lvZWcimH0FcNgNqBsKWWPEiniN9M2z5dBIhwaIizPH',
                 //     'Content-Type: application/json'
                 // );
                 $headers = array(
@@ -516,6 +519,7 @@ class Utility
             ),
             'priority' => 'high'
         );
+        // dd($android_data);
         $device_tokens = $deviceToken['device_id'];
 
         // Set the headers for the cURL requests
@@ -523,8 +527,9 @@ class Utility
         $headers = array(
             'Content-Type: application/json',
             'Authorization: key='.$result[0]->user_firebase_key, // For Android notifications only
-            'apns-topic: com.cme.bigbucket', // For iOS notifications only
+            // 'apns-topic: com.cme.bigbucket', // For iOS notifications only
         );
+        // dd($headers);
         // dd($headers);
         // foreach ($device_tokens as $token) {
         //     $ch = curl_init();
@@ -543,7 +548,7 @@ class Utility
             'registration_ids' => $device_tokens,
             'data' => $android_data,
         );
-        // dd( $android_fields);
+        // dd( json_encode($android_fields));
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $android_url);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -554,6 +559,7 @@ class Utility
         curl_close($ch);
         dd($result);
     }
+    
 }
 
 ?>

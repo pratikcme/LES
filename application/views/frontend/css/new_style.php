@@ -5291,4 +5291,15 @@ z-index:-5;
 .product-detail-wrapper{
 	position:relative
 }
+
+.card-icon i, .star-img {
+    color: #fda72f;
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.blank-ratting {
+    color: #cbcbcb !important;
+}
+
 </style>

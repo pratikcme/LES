@@ -79,18 +79,19 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('D1', 'Brand');
         $this->excel->getActiveSheet()->setCellValue('E1', 'Product name');
         $this->excel->getActiveSheet()->setCellValue('F1', 'Product Content');
-        $this->excel->getActiveSheet()->setCellValue('G1', 'About');
+        $this->excel->getActiveSheet()->setCellValue('G1', 'Description');
+        $this->excel->getActiveSheet()->setCellValue('H1', 'Display Priority');
         // $this->excel->getActiveSheet()->setCellValue('H1', 'Supplier');
-        $this->excel->getActiveSheet()->setCellValue('H1', 'Varient');
-        $this->excel->getActiveSheet()->setCellValue('I1', 'Varient Unit');
-        $this->excel->getActiveSheet()->setCellValue('J1', 'Package');
-        $this->excel->getActiveSheet()->setCellValue('K1', 'Quantity');
-        $this->excel->getActiveSheet()->setCellValue('L1', 'Purchase Price');
-        $this->excel->getActiveSheet()->setCellValue('M1', 'Maximum Retail Price');
-        $this->excel->getActiveSheet()->setCellValue('N1', 'Discount');
-        $this->excel->getActiveSheet()->setCellValue('O1', 'Image');
-        $this->excel->getActiveSheet()->setCellValue('P1', 'GST');
-        $this->excel->getActiveSheet()->setCellValue('Q1', 'Max Order Qty');
+        $this->excel->getActiveSheet()->setCellValue('I1', 'Varient');
+        $this->excel->getActiveSheet()->setCellValue('J1', 'Varient Unit');
+        $this->excel->getActiveSheet()->setCellValue('K1', 'Package');
+        $this->excel->getActiveSheet()->setCellValue('L1', 'Quantity');
+        $this->excel->getActiveSheet()->setCellValue('M1', 'Purchase Price');
+        $this->excel->getActiveSheet()->setCellValue('N1', 'Maximum Retail Price');
+        $this->excel->getActiveSheet()->setCellValue('O1', 'Discount');
+        $this->excel->getActiveSheet()->setCellValue('P1', 'Image');
+        $this->excel->getActiveSheet()->setCellValue('Q1', 'GST');
+        $this->excel->getActiveSheet()->setCellValue('R1', 'Max Order Qty');
 
 
         $this->excel->getActiveSheet()->getStyle('A1:Q1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
@@ -209,7 +210,7 @@ class Import extends Vendor_Controller
 
         for ($i = 2; $i <= 150; $i++) {
 
-            $objValidation4 = $this->excel->getActiveSheet()->getCell('I'.$i.'')->getDataValidation();
+            $objValidation4 = $this->excel->getActiveSheet()->getCell('J'.$i.'')->getDataValidation();
             $objValidation4->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
             $objValidation4->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
             $objValidation4->setAllowBlank(false);
@@ -226,7 +227,7 @@ class Import extends Vendor_Controller
 
         for ($i = 2; $i <= 150; $i++) {
 
-            $objValidation5 = $this->excel->getActiveSheet()->getCell('J'.$i.'')->getDataValidation();
+            $objValidation5 = $this->excel->getActiveSheet()->getCell('K'.$i.'')->getDataValidation();
             $objValidation5->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
             $objValidation5->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
             $objValidation5->setAllowBlank(false);
@@ -265,13 +266,15 @@ class Import extends Vendor_Controller
             $this->db->query('TRUNCATE TABLE temp_product_weight');
             $this->db->query('TRUNCATE TABLE temp_product_image');
             $result = $this->this_model->importExcel($this->input->post());
-            if($result){
+            if($result['status']){
                 // $this->utility->setFlashMessage('success',"Product uploaded successfully");
                 $number = rand(10,100);
                 redirect(base_url().'import/import_excel/'.$this->utility->safe_b64encode($number));
             }else{
-
-                $this->utility->setFlashMessage('danger',"Somthing went Wrong");
+                $this->db->query('TRUNCATE TABLE temp_product');
+                $this->db->query('TRUNCATE TABLE temp_product_weight');
+                $this->db->query('TRUNCATE TABLE temp_product_image');
+                $this->utility->setFlashMessage('danger',$result['message']);
             }
             redirect(base_url().'import/import_excel');
         }
@@ -310,12 +313,13 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('H1', 'Product_price');
         $this->excel->getActiveSheet()->setCellValue('I1', 'Discount(%)');
         $this->excel->getActiveSheet()->setCellValue('J1', 'Maximum order quantity');
+        $this->excel->getActiveSheet()->setCellValue('K1', 'Display priority');
 
 
-        $this->excel->getActiveSheet()->getStyle('A1:J1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $this->excel->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
-        $this->excel->getActiveSheet()->getStyle('A1:J1')->getFont()->setSize(12);
-        $this->excel->getActiveSheet()->getStyle('A1:J1')->getFill()->getStartColor()->setARGB('#333');
+        $this->excel->getActiveSheet()->getStyle('A1:K1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFont()->setBold(true);
+        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFont()->setSize(12);
+        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFill()->getStartColor()->setARGB('#333');
 
         $default_border = array(
             'style' => PHPExcel_Style_Border::BORDER_THIN,
@@ -374,6 +378,7 @@ class Import extends Vendor_Controller
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H'.$k.'', ''.$v->price.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I'.$k.'', ''.$v->discount_per.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->max_order_qty.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
             $k++;
             $x++;
             }
@@ -399,10 +404,11 @@ class Import extends Vendor_Controller
         $this->load->library('excel');
         if($this->input->post()){
             $result = $this->this_model->UpdateProductQuantity($this->input->post());
-                $this->utility->setFlashMessage('success',"Product quantity updated successfully");
-            if($result){
+            if($result['status']){
+                $this->utility->setFlashMessage('success',$result['message']);
             }else{
-                $this->utility->setFlashMessage('danger',"Somthing went Wrong");
+                // echo '11';die;
+                $this->utility->setFlashMessage('danger',$result['message']);
             }
             redirect(base_url().'import/import_excel');
         }

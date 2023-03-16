@@ -45,29 +45,34 @@ class PushNotification extends Admin_Controller{
         $result = $this->this_model->getNotificationKey();
         // dd($iosDevice);  
 
-        if(!empty($iosDevice)){
-            foreach ($iosDevice as $key => $value) {
-                $deviceToken['device_id'] = $value;
-                $msg['message'] = $this->input->post('message');
-                # code...
-               $response =  $this->utility->notificationForIOS($deviceToken, $msg, $status=NULL, $unread=NULL, $key=NULL, $result);
-                // dd($response);
-            } 
-        }
+        // if(!empty($iosDevice)){
+        //     foreach ($iosDevice as $key => $value) {
+        //         $deviceToken['device_id'] = $value;
+        //         $msg['message'] = $this->input->post('message');
+        //         # code...
+        //        $response =  $this->utility->notificationForIOS($deviceToken, $msg, $status=NULL, $unread=NULL, $key=NULL, $result);
+        //         dd($response);
+        //     } 
+        // }
+        // dd($androidDevice);
         // if(!empty($androidDevice)){
         //     // $message['message'] = $this->input->post('message');
-        //     // foreach ($androidDevice as $key => $value) {
+        //     foreach ($androidDevice as $key => $value) {
         //         $deviceToken['device_id'] = $value;
-        //     //     $message = $this->input->post('message');
+        //         $message['message'] = $this->input->post('message');
                 
-        //     $this->utility->notificationForAndroid($deviceToken, 'asdfsafds', $jsonDat='', $type=NULL, $unread=NULL, $key=NULL, $result);
-        //     // }
-        //     // $body = [
-        //     //     'title'=>$this->input->post('title'),
-        //     //     'message'=>$this->input->post('message')
-        //     // ];
-        //     // $response = $this->utility->PushNotification($deviceToken, $body, $result,$this->input->post(),$vendor_id);
-        //     dd($response);
+        //         $respon = $this->utility->notificationForAndroid($deviceToken, $message, $jsonDat='', $type=NULL, $unread=NULL, $key=NULL, $result);
+        //         dd($respon );
+        // }
+        // $androidDevice = ['dfd','fsa'];
+            $deviceToken['device_id'] = $androidDevice;
+            $body = [
+                'title'=>$this->input->post('title'),
+                'message'=>$this->input->post('message')
+            ];
+            $response = $this->utility->PushNotification($deviceToken, $body, $result,$this->input->post(),$vendor_id);
+            // $response = $this->utility->send_notification($body);
+            dd($response);
         // }
     }
     

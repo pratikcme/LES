@@ -84,6 +84,14 @@
             </div>
           <?php } ?>
           <h1><?=$productDetail[0]->name?></h1>
+          <div class="feature-detail">
+              <div class="card-icon mb-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star blank-ratting"></i>
+          </div>
           <div class="product-price">
             <p><?=$this->siteCurrency?>
               <?=number_format((float)$varientDetails[0]->discount_price, 2, '.', '')?>
