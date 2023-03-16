@@ -19,7 +19,8 @@ class Home_model extends My_model{
 						];
 		$data['groupBy'] = 'c.id';
 		// $data['limit'] = '12'; 
-	    return $this->selectFromJoin($data);
+	    /* return */ $this->selectFromJoin($data);
+		lq();
 		// echo $this->db->last_query();die;
 	}	
  function getWebBannerImage(){
