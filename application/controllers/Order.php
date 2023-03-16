@@ -83,6 +83,7 @@ class Order extends Vendor_Controller
     }
     public function verify_otp()
     {
+        dd($this->input->post());
         if($this->input->post('isSelfPickup') == '0'){
            $r =  $this->this_model->verify_otp();
             $status = $this->this_model->checkLatestOrderStaus($this->input->post());
