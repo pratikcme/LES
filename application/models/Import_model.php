@@ -442,7 +442,7 @@ class Import_model extends My_model {
             $categoryId = $this->input->post('catgeory');
             
             $products = $this->getProductByBranchID($categoryId);
-            dd($products);
+            // dd($products);
             $arrayProducts = array_column($products,'display_priority');
             // dd($arrayProducts);
             $object = PHPExcel_IOFactory::load($path);
@@ -487,7 +487,7 @@ class Import_model extends My_model {
                     if(in_array($display_priority,$arrayProducts)){
                         return  ['status'=>false,'message'=>$display_priority.' priority already assigned remove/change priority and try again..']; 
                      }
-
+                     echo '1';die;
                     $discount_price = ($price * $discount)/100; 
 
                   
