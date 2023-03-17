@@ -169,6 +169,10 @@ display: none !important;
 .VIpgJd-ZVi9od-ORHb-OEVmcd{
 display:none !important
 }
+.goog-te-gadget .goog-te-combo {
+    margin: 4px 0;
+    width: 209px !important;
+}
 </style>
 <?php $lang = json_encode($this->lang->language);
   // dd($lang);
