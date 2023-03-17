@@ -361,9 +361,11 @@ class Import extends Vendor_Controller
        //  }
         $k = 2;
         $x = 1;
+        // echo $count;die;
         foreach ($product as $i => $value){
             foreach ($value->productVarient as $key => $v) {
-        	   $type = 'Old';
+                $count += count($value->productVarient);
+                $type = 'Old';
                if($key == 0){
                 $type = 'New';
                }
@@ -379,6 +381,7 @@ class Import extends Vendor_Controller
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->max_order_qty.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
                 
+                
                 $objValidation3 = $this->excel->getActiveSheet()->getCell('K'.$k.'')->getDataValidation();
                 $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
                 $objValidation3->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_STOP );
@@ -387,8 +390,7 @@ class Import extends Vendor_Controller
                 $objValidation3->setShowErrorMessage(true);
                 $objValidation3->setErrorTitle('Input error');
                 $objValidation3->setError('Dublicate value not allowed');
-                $objValidation3->setFormula1('=COUNTIF($K$1:$K$'.$k.',K'.$x.')=1');
-            
+                $objValidation3->setFormula1('=COUNTIF($K$1:$K$1500,K'.$k.')=1');
             $k++;
             $x++;
         }
