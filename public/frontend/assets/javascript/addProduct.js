@@ -207,8 +207,8 @@ var ADDPRODUCT = function () {
         data: { product_varient_id: product_varient_id },
         dataType: 'json',
         success: function (output) {
-          // alert(output.discount_price);
-          $('.product-price').html('<p>' + siteCurrency + ' ' + output.discount_price + '<span class="orginal-price">' + siteCurrency + ' ' + output.product_price + '</span></p>');
+          // alert(siteCurrency);
+          $('.product-price').html('<p class="notranslate">' + siteCurrency + ' ' + output.discount_price + '<span class="orginal-price notranslate">' + siteCurrency + ' ' + output.product_price + '</span></p>');
           // $('.slider-for').html(output.image_div);
 
           $('.product-slider .slider-for').slick('unslick');

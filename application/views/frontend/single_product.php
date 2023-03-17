@@ -93,7 +93,7 @@
               <i class="fas fa-star blank-ratting"></i>
           </div>
           <div class="product-price">
-            <p><?=$this->siteCurrency?>
+            <p class="notranslate"><?=$this->siteCurrency?>
               <?=number_format((float)$varientDetails[0]->discount_price, 2, '.', '')?>
               <span class="orginal-price" style="<?=($varientDetails[0]->discount_per== 0) ? 'display:none' : '' ?>">
                 <?=$this->siteCurrency?>
