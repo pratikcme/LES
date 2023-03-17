@@ -404,7 +404,7 @@ $maxRow = 500;
                 $objValidation3->setShowErrorMessage(true);
                 $objValidation3->setErrorTitle('Input error');
                 $objValidation3->setError('Dublicate value not allowed');
-                $objValidation3->setFormula1('=COUNTIF($K$1:$K$'.$k.',K'.$x.')=1');
+                $objValidation3->setFormula1('=COUNTIF($K$2:$K$'.$k.',K'.$x.')=1');
             
             $k++;
             $x++;
