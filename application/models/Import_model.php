@@ -442,6 +442,7 @@ class Import_model extends My_model {
             $categoryId = $this->input->post('catgeory');
             
             $products = $this->getProductByBranchID($categoryId);
+            
             $arrayProducts = array_column($products,'display_priority');
             // dd($arrayProducts);
             $object = PHPExcel_IOFactory::load($path);
@@ -477,6 +478,7 @@ class Import_model extends My_model {
                     if($display_priority!=''){
                         $excelDisplayPriority[] = $display_priority;
                     }
+
                     $indexes = array_keys($excelDisplayPriority, $display_priority);
                     if(count($indexes) > 1){
                         return  ['status'=>false,'message'=> 'priority is repeated in excel remove/change priority and try again..'];
