@@ -526,6 +526,7 @@ class Import_model extends My_model {
                             $dataa['update']['display_priority'] = $display_priority;
                             $dataa['where']['id'] = $Varient[$i]->product_id; 
                             $this->updateRecords($dataa);
+                            lq();
 
                             $data['update']['dt_updated'] = strtotime(DATE_TIME);
                             $lastId = $this->updateRecords($data);
