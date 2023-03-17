@@ -442,7 +442,7 @@ class Import_model extends My_model {
             $categoryId = $this->input->post('catgeory');
             
             $products = $this->getProductByBranchID($categoryId);
-            
+            dd($products);
             $arrayProducts = array_column($products,'display_priority');
             // dd($arrayProducts);
             $object = PHPExcel_IOFactory::load($path);
