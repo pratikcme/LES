@@ -139,7 +139,8 @@ class Import extends Vendor_Controller
         // }
 
 //        $this->excel->getActiveSheet()->getProtection()->setSheet(true);
-        for ($i = 2; $i <= 150; $i++) {
+$maxRow = 500;
+        for ($i = 2; $i <= $maxRow; $i++) {
 
             $objValidation = $this->excel->getActiveSheet()->getCell('B'.$i.'')->getDataValidation();
             $objValidation->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
@@ -154,9 +155,9 @@ class Import extends Vendor_Controller
             $objValidation->setPrompt('Please pick a value from the drop-down list.');
             $objValidation->setFormula1('"New,Old"');
 
-        }
+        // }
 
-        for ($i = 2; $i <= 150; $i++) {
+        // for ($i = 2; $i <= 150; $i++) {
 
             $objValidation1 = $this->excel->getActiveSheet()->getCell('C'.$i.'')->getDataValidation();
             $objValidation1->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
@@ -171,9 +172,9 @@ class Import extends Vendor_Controller
             $objValidation1->setPrompt('Please pick a value from the drop-down list.');
             $objValidation1->setFormula1('"'. implode(',',$subCatgeoryList).'"');
 
-        }
+        // }
 
-        for ($i = 2; $i <= 150; $i++) {
+        // for ($i = 2; $i <= 150; $i++) {
 
             $objValidation2 = $this->excel->getActiveSheet()->getCell('D'.$i.'')->getDataValidation();
             $objValidation2->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
@@ -188,7 +189,11 @@ class Import extends Vendor_Controller
             $objValidation2->setPrompt('Please pick a value from the drop-down list.');
             $objValidation2->setFormula1('"'. implode(',',$brandList).'"');
 
-        }
+        // }
+
+       
+        
+        
 
         // for ($i = 2; $i <= 150; $i++) {
 
@@ -208,7 +213,7 @@ class Import extends Vendor_Controller
 
         // }
 
-        for ($i = 2; $i <= 150; $i++) {
+        // for ($i = 2; $i <= 150; $i++) {
 
             $objValidation4 = $this->excel->getActiveSheet()->getCell('J'.$i.'')->getDataValidation();
             $objValidation4->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
@@ -223,9 +228,9 @@ class Import extends Vendor_Controller
             $objValidation4->setPrompt('Please pick a value from the drop-down list.');
             $objValidation4->setFormula1('"'. implode(',',$unitList).'"');
 
-        }
+        // }
 
-        for ($i = 2; $i <= 150; $i++) {
+        // for ($i = 2; $i <= 150; $i++) {
 
             $objValidation5 = $this->excel->getActiveSheet()->getCell('K'.$i.'')->getDataValidation();
             $objValidation5->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
@@ -240,9 +245,20 @@ class Import extends Vendor_Controller
             $objValidation5->setPrompt('Please pick a value from the drop-down list.');
             $objValidation5->setFormula1('"'. implode(',',$packageList).'"');
 
-        }
+            $objValidation3 = $this->excel->getActiveSheet()->getCell('H'.$i.'')->getDataValidation();
+            $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
+            $objValidation3->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_STOP );
+            $objValidation3->setAllowBlank(TRUE);
+            $objValidation3->setShowInputMessage(true);
+            $objValidation3->setShowErrorMessage(true);
+            $objValidation3->setErrorTitle('Input error');
+            $objValidation3->setError('Dublicate value not allowed');
+            $objValidation3->setFormula1('=COUNTIF($H$1:$H$'.$maxRow.',H'.$i.')=1');
+            
 
-        
+
+        }
+   
 
         //ob_start();
         $filename = $this->input->post('catgory_name').'.xlsx';
@@ -314,7 +330,7 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('I1', 'Discount(%)');
         $this->excel->getActiveSheet()->setCellValue('J1', 'Maximum order quantity');
         $this->excel->getActiveSheet()->setCellValue('K1', 'Display priority');
-
+        
 
         $this->excel->getActiveSheet()->getStyle('A1:K1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
         $this->excel->getActiveSheet()->getStyle('A1:K1')->getFont()->setBold(true);
@@ -379,9 +395,20 @@ class Import extends Vendor_Controller
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I'.$k.'', ''.$v->discount_per.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->max_order_qty.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
+                $objValidation3 = $this->excel->getActiveSheet()->getCell('K'.$k.'')->getDataValidation();
+                $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
+            
+                $objValidation3->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_STOP );
+                $objValidation3->setAllowBlank(TRUE);
+                $objValidation3->setShowInputMessage(true);
+                $objValidation3->setShowErrorMessage(true);
+                $objValidation3->setErrorTitle('Input error');
+                $objValidation3->setError('Dublicate value not allowed');
+                $objValidation3->setFormula1('=COUNTIF($K$1:$K$'.$k.',K'.$x.')=1');
+            
             $k++;
             $x++;
-            }
+        }
 
         }
 
