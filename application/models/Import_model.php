@@ -508,6 +508,12 @@ class Import_model extends My_model {
                             }
                             $data['table'] = 'product_weight';
                             $data['where']['id'] =  $firstVarient_id;
+                            
+                            $dataa['table'] = TABLE_PRODUCT;
+                            $dataa['update']['display_priority'] = $display_priority;
+                            $dataa['where']['id'] = $Varient[$i]->product_id; 
+                            $this->updateRecords($dataa);
+                            // lq();
                         }
                         if ($type == 'Old') {  
                             $Varient_id = $Varient[$i]->id;  
@@ -522,11 +528,7 @@ class Import_model extends My_model {
                             $data['where']['id'] =  $Varient_id;
 
                         }
-                            $dataa['table'] = TABLE_PRODUCT;
-                            $dataa['update']['display_priority'] = $display_priority;
-                            $dataa['where']['id'] = $Varient[$i]->product_id; 
-                            $this->updateRecords($dataa);
-                            // lq();
+                            
 
                             $data['update']['dt_updated'] = strtotime(DATE_TIME);
                             $lastId = $this->updateRecords($data);
