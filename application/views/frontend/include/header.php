@@ -166,6 +166,9 @@ top: 0px !important;
 .goog-te-banner-frame.skiptranslate {
 display: none !important;
 } 
+.VIpgJd-ZVi9od-ORHb-OEVmcd{
+display:none !important
+}
 </style>
 <?php $lang = json_encode($this->lang->language);
   // dd($lang);
