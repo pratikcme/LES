@@ -2782,8 +2782,6 @@ height: 60px;
 }
 
 .category-menu-wrapper ul li a{
-    margin-bottom: 4px;
-    display: inline-block;
     color:  var(--categoryColor);
     font-family: 'OpenSans-SemiBold';
 }
