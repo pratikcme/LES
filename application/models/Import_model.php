@@ -582,12 +582,12 @@ class Import_model extends My_model {
     public function insertExcelRecordParmanent(){
         $check = 0; 
         $tempRecords = $this->tempTableRecords('temp_product');
-        dd($tempRecords);
         foreach ($tempRecords as $key => $records) {
             $temp_product_id = $tempRecords[$key]->id;
             unset($tempRecords[$key]->id);
             // dd($tempRecords[$key]);
             $this->db->insert(TABLE_PRODUCT,$tempRecords[$key]);
+            lq();
             $product_id = $this->db->insert_id();
             $temp_product_weight = $this->tempTableRecords('temp_product_weight',['product_id'=>$temp_product_id]);
             $check++;
