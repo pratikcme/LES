@@ -2121,6 +2121,8 @@ height: 60px;
 }
 
 .category-menu-wrapper ul li a{
+    margin-bottom: 4px;
+    display: inline-block;
     color: #ffffff;
     font-family: 'OpenSans-SemiBold';
 }
