@@ -609,6 +609,7 @@ class Import_model extends My_model {
                  } 
             }
         }
+        dd($check);
         return $check;
 
     }
