@@ -319,7 +319,12 @@ class product_model extends My_model
             $data['where']['product_id'] = $v;
             $varient_ids = $this->selectRecords($data);
             unset($data);
-            
+            foreach ($varient_ids as $key => $value) {
+                $data['where'] = ['product_weight_id' => $value->id];
+                $data['table'] = 'my_cart';
+                $this->deleteRecords($data);
+            }
+            unset($data);
             $data['where'] = ['id' => $v];
             $data['table'] = 'product';
             $this->deleteRecords($data);
@@ -327,11 +332,6 @@ class product_model extends My_model
             unset($data);
             
             //Product Delete Form Cart 
-            foreach ($varient_ids as $key => $value) {
-                $data['where'] = ['product_weight_id' => $value->id];
-                $data['table'] = 'my_cart';
-                $this->deleteRecords($data);
-            }
         }
         
         ob_get_clean();
