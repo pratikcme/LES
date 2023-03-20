@@ -609,7 +609,7 @@ class Import_model extends My_model {
                  } 
             }
         }
-        dd($check);
+        // dd($check);
         return $check;
 
     }
