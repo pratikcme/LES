@@ -77,7 +77,7 @@ class product_model extends My_model
                         'about' => $about,
                         'content' => $content,
                         'gst' => $gst,
-                        'display_priority'    => $_POST['display_priority'],
+                        'display_priority'    => ($_POST['display_priority'] != '') ? $_POST['display_priority'] : NULL,
                         'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                     );
                     $this->db->where('id', $id);
@@ -131,7 +131,7 @@ class product_model extends My_model
                     'content' => $content,
                     'status' => '1',
                     'gst'    => $gst,
-                    'display_priority'    => $_POST['display_priority'],
+                    'display_priority'    => ($_POST['display_priority'] != '') ? $_POST['display_priority'] : NULL,
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                 );
