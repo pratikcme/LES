@@ -271,7 +271,7 @@ class Product_model extends My_model
 		}
 		if (isset($postdata['sort'])) {
 			if ($postdata['sort'] == 'high_low') {
-				$data["order"] = 'dp ASC,pw.discount_price DESC , pw.quantity DESC';
+				$data["order"] = 'pw.discount_price DESC , pw.quantity DESC';
 			}
 			if ($postdata['sort'] == 'low_high') {
 				$data["order"] = 'pw.discount_price ASC,pw.quantity DESC';
@@ -285,7 +285,7 @@ class Product_model extends My_model
 				$data['where']['discount_per >']  = '0';
 			}
 			if ($postdata['sort'] == 'alphabetically') {
-				$data["order"] = 'dp ASC,p.name ASC,pw.quantity DESC';
+				$data["order"] = 'p.name ASC,pw.quantity DESC';
 			}
 
 			if ($postdata['sort'] == 'last_30_days') {

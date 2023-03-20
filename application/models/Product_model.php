@@ -80,6 +80,7 @@ class product_model extends My_model
                         'display_priority'    => ($_POST['display_priority'] != '') ? $_POST['display_priority'] : NULL,
                         'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                     );
+                    // dd($data);
                     $this->db->where('id', $id);
                     $this->db->where('branch_id', $branch_id);
                     $this->db->update('product', $data);
