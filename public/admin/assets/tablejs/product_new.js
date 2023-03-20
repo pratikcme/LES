@@ -30,7 +30,7 @@ var PRODUCT_NEW = (function () {
                 },
                 // bFilter: false,
             });
-        });
+        })
 
         var url = $("#url").val();
         var dataTable = $("#example_product_new").DataTable({
@@ -55,6 +55,8 @@ var PRODUCT_NEW = (function () {
                 sEmptyTable: "Product list Not Available",
                 sZeroRecords: "Product Not Available",
             },
+        }).on('xhr.dt', function () {
+            $('.checkboxMain').prop('checked', false);
         });
         // $(dataTable.table().body()).attr("role", "alert");
         // $(dataTable.table().body()).attr("aria-live", "polite");
