@@ -26,7 +26,7 @@ class Sell_development_model extends My_model
         // $re = $this->selectFromJoin($data,true);
 
         // unset($data);
-        $notFoundThisId = implode(',',array_column($re,'pw_id'));
+        $notFoundThisId = implode(',', array_column($re, 'pw_id'));
 
         $data['table'] = TABLE_PRODUCT . ' as p';
         $data['join'] = [
@@ -38,9 +38,9 @@ class Sell_development_model extends My_model
         //     $data['where']['pw.id NOT IN ('.$notFoundThisId.') AND 1='] = '1';
         // }
         $data['where']['p.branch_id'] = $this->branch_id;
-        $data['where']['p.status !='] = '9'; 
-        $data['where']['pw.status !='] = '9'; 
-        $data['where']['w.status !='] = '9'; 
+        $data['where']['p.status !='] = '9';
+        $data['where']['pw.status !='] = '9';
+        $data['where']['w.status !='] = '9';
         $data['group']['like'] = ['p.name', $postdata['keyValue'], 'match'];
         $data['group']['or_like'] = ['pw.qr_code', $postdata['keyValue'], 'match'];
         return $this->selectFromJoin($data);
@@ -83,8 +83,6 @@ class Sell_development_model extends My_model
                     $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
                 }
 
-
-
                 $updatePrice = $updateQuantity * $price;
 
                 $update_discount_price = $discount_price * $updateQuantity;
@@ -117,7 +115,18 @@ class Sell_development_model extends My_model
                     $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
                 }
 
-                // dd($price);
+                // new for Discount
+                if ($discount_percentage > 0) {
+                    $disc_price = ($varient[0]->price * $discount_percentage) / 100;
+                    $price =  $varient[0]->price - $disc_price;
+                }
+
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $gst_per = ($price * $varient[0]->gst) / 100;
+                    $price = $price - $gst_per;
+                }
+
+
                 $total = $quantity * $price;
 
                 $date = strtotime(DATE_TIME);
@@ -209,6 +218,17 @@ class Sell_development_model extends My_model
                 // dk
                 if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                     $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                }
+
+                // new for Discount
+                if ($discount_percentage > 0) {
+                    $disc_price = ($varient[0]->price * $discount_percentage) / 100;
+                    $price =  $varient[0]->price - $disc_price;
+                }
+
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $gst_per = ($price * $varient[0]->gst) / 100;
+                    $price = $price - $gst_per;
                 }
 
                 // dd($price);
@@ -442,25 +462,33 @@ class Sell_development_model extends My_model
         $discount =  $postdata['discount'];
         $temp_id =  $postdata['temp_id'];
         $quantity =  $postdata['quantity'];
+
         $actual_discount_price =  $postdata['actual_discount_price'];
         $result = $this->checkProductVarient($varient_id);
         $product_price = $result[0]->price;
 
-        // dk
+
+        $disc_per = ($result[0]->price * $discount) / 100;
+        $discounted_price = $product_price -  $disc_per;
+
+        $gst_amount = ($discounted_price * $result[0]->gst) / 100;
         if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-            $product_price = number_format((float)$result[0]->without_gst_price, 2, '.', '');
+            $discounted_price = $discounted_price - $gst_amount;
         }
 
-        $disc_price = (($product_price * $discount) / 100) * $quantity;
-        $updatprice = $product_price * $quantity;
-        $updatprice = $updatprice - $disc_price;
+        $newPrice = $discounted_price  * $quantity;
+
+        // $updatprice =  $newPrice * $quantity;
+
+        // dk
+        // dd($newPrice);
 
 
         $updateData = array(
             'quantity' => $quantity,
-            'price' => numberFormat($updatprice),
+            'price' => numberFormat($newPrice),
             'discount' => numberFormat($discount),
-            'discount_price' => numberFormat($disc_price)
+            'discount_price' => numberFormat($discounted_price)
         );
 
         $data['table'] = $table_name;
@@ -470,7 +498,8 @@ class Sell_development_model extends My_model
         if ($isParked > 0) {
             $this->getUpdatedParkedOrder($isParked);
         }
-        return numberFormat($updatprice);
+        return array('discount_per' => numberFormat($discount), 'discount_price' => numberFormat($discounted_price), 'gst' => $gst_amount, 'sub_total' => numberFormat($newPrice));
+        // return numberFormat($updatprice);
     }
 
     public function getParkedOrderList()
@@ -922,12 +951,21 @@ class Sell_development_model extends My_model
             redirect(base_url() . '	sell_development');
             exit;
         }
-        if (isset($postdata['case']) && $postdata['case'] == 'Cash') {
-            $payment_type = '0';
+        // if (isset($postdata['case']) && $postdata['case'] == 'Cash') {
+        //     $payment_type = '0';
+        // }
+
+        // if (isset($postdata['credit_card']) && $postdata['credit_card'] == 'Credit Card') {
+        //     $payment_type = '1';
+        // }
+
+
+        if (isset($postdata['payment']) && $postdata['payment'] == 'Credit Card') {
+            $payment_type = '1';
         }
 
-        if (isset($postdata['credit_card']) && $postdata['credit_card'] == 'Credit Card') {
-            $payment_type = '1';
+        if (isset($postdata['payment']) && $postdata['payment'] == 'Cash') {
+            $payment_type = '0';
         }
 
         $insertion = array(
@@ -1390,10 +1428,9 @@ class Sell_development_model extends My_model
 
         $html = '';
         foreach ($res as $type) { ?>
-<div class="catg_list" id="catg_list"
-    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-</div>
+            <div class="catg_list" id="catg_list" onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+            </div>
 <?php }
         echo $html;
 
@@ -1535,6 +1572,18 @@ class Sell_development_model extends My_model
 
         echo 1;
         exit;
+    }
+
+    public function changeParkTime($postdata)
+    {
+        $id = $postdata['id'];
+
+        $data['update'] = ['dt_added' => strtotime(DATE_TIME)];
+        $data['where'] = ['id' => $id];
+        $data['table'] = 'parked_order';
+        $this->updateRecords($data);
+        // strtotime(DATE_TIME)
+        echo 1;
     }
 
     public function update_discount_parked_order($postdata)
@@ -1849,12 +1898,14 @@ class Sell_development_model extends My_model
             'po.order_discount as order_discount',
             'p.name as product_name', 'pw.price as actual_price',
             'pw.discount_price as product_price', 'pw.discount_per as product_discount', 'ot.*',
-            'ot.discount_price as discount_per_product', 'p.gst', 'po.customer_id'
+            'ot.discount_price as discount_per_product', 'p.gst', 'po.customer_id',
+            'w.name as weight_name', 'pw.weight_no as weight_no'
         ];
         $data['join'] = [
             'product_weight as pw' => ['pw.id = ot.product_weight_id', 'LEFT'],
             'product as p' => ['p.id = pw.product_id', 'LEFT'],
-            'parked_order as po' => ['po.id = ot.parked_order_id', 'LEFT']
+            'parked_order as po' => ['po.id = ot.parked_order_id', 'LEFT'],
+            'weight as w' => ['pw.weight_id = w.id', 'LEFT']
         ];
         $data['where'] = [
             'ot.branch_id' => $this->branch_id,
@@ -1887,11 +1938,12 @@ class Sell_development_model extends My_model
         $data['table'] = 'order_temp as ot';
         $data['select'] = [
             'p.name as product_name', 'pw.price as actual_price',
-            'pw.discount_price as product_price', 'pw.without_gst_price as without_gst_price', 'pw.discount_per as product_discount', 'ot.*', 'ot.discount_price as discount_per_product', 'p.gst'
+            'pw.discount_price as product_price', 'pw.without_gst_price as without_gst_price', 'pw.discount_per as product_discount', 'ot.*', 'ot.discount_price as discount_per_product', 'p.gst', 'w.name as weight_name', 'pw.weight_no as weight_no'
         ];
         $data['join'] = [
             'product_weight as pw' => ['pw.id = ot.product_weight_id', 'LEFT'],
             'product as p' => ['p.id = pw.product_id', 'LEFT'],
+            'weight as w' => ['pw.weight_id = w.id', 'LEFT']
         ];
         $data['where']['ot.branch_id'] = $this->branch_id;
         $data['where']['ot.park'] = '0';

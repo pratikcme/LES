@@ -1,0 +1,12 @@
+:root {
+    /* colors */
+    --primary-color: #5b6e84;
+    --green: #45BF55;
+    --light: #FF6C60;
+    --dark: #2A3542;
+
+    /* fonts */
+    --bold: 'OpenSans-Bold';
+    --semibold: 'OpenSans-SemiBold';
+    --regular: 'OpenSans-Regular';
+}

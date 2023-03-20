@@ -1173,21 +1173,20 @@ label.error {
                               <label for="name" id="sel_cat"
                                  class="product_header">Category</label>
                            </div>
-                        </div> -->
+                            </div> -->
                                 <!-- <div class="sel_catagory_itm">
-                           <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no_padd click_box">
-                                <?php foreach ($category as $type) { ?>
-                                <div class="catg_list" id="catg_list"
-                                        onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-                                        <a href="javascript:;"><span><?php echo $type->name; ?></span></a>
-                                </div>
-                              <?php } ?>
-                           </div>
-                        </div> -->
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no_padd click_box">
+                                    <?php foreach ($category as $type) { ?>
+                                    <div class="catg_list" id="catg_list"
+                                            onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+                                            <a href="javascript:;"><span><?php echo $type->name; ?></span></a>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            </div> -->
                                 <div class="quick-layout-wrapper no-quick-keys">
                                     <h2>Quick keys</h2>
                                     <div class="select_category_item">
-
                                         <?php foreach ($IsPosMostLike as $key => $value) : ?>
                                         <div class="quick-view">
                                             <span class='remove_quick_list_item' data-pw_id="<?= $value->id ?>"><i
@@ -1286,7 +1285,7 @@ label.error {
                                     <input type="hidden" name="base_url" id="base_url" value="<?= base_url() ?>">
                                     <input type="hidden" name="applied" id="applied" value="false">
                                     <input type="hidden" name="parked_order_id" id="parked_order_id"
-                                        value="<?=$parked_order_id ?>">
+                                        value="<?= $parked_order_id ?>">
                                     <!-- Dk added -->
                                     <!-- <input type="hidden" name="user_name"
                                                     value="<?php echo $user_row[0]->name; ?>"/>
@@ -1360,12 +1359,9 @@ label.error {
                                                 style="<?= (empty($order_temp_result)) ? 'display:none' : 'display:block' ?>">
                                                 <button type="button" class="btn items_count" id='discard_sell'>discard
                                                     sale</button>
-
                                                 <?php } ?>
                                             </div>
-
                                         </div>
-
                                         <?php
                                                 if (isset($parked_order_id) && !empty($parked_order_id)) {
                                                 ?>
@@ -1599,9 +1595,9 @@ label.error {
                                                                         type="button">Apply</button>
                                                                 </div>
                                                                 <span style="color: red" id="error"></span>
-                                                                <?= $currency . ' '; ?>
+                                                                <!-- <?= $currency . ' '; ?>
                                                                 <span
-                                                                    id="discount_total"><?= number_format((float)0, 2, '.', '') ?></span>
+                                                                    id="discount_total"><?= number_format((float)0, 2, '.', '') ?></span> -->
                                                                 <!-- Dipesh Added  -->
                                                             </div>
                                                         </div>
@@ -1652,10 +1648,10 @@ label.error {
                                                         <?php } ?>
                                                         <!-- Add Brand : Modal -->
                                                         <!-- <div class="modal fade " id="myModal" tabindex="-1"
-                                                            role="dialog" aria-labelledby="myModalLabel"
-                                                            aria-hidden="true" style="display: none;">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content"
+                                                                role="dialog" aria-labelledby="myModalLabel"
+                                                                aria-hidden="true" style="display: none;">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content"
                                                                 id="modal_div_id">
                                                                 <div class="modal-header">
                                                                     <button type="button" class="close"
@@ -1737,6 +1733,7 @@ label.error {
         </div>
     </section>
 </section>
+
 <!-- Add Type : Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
     style="display: none;">
@@ -1766,6 +1763,7 @@ label.error {
         </div>
     </div>
 </div>
+
 <input type="hidden" id="isParked"
     value="<?= (isset($parked_order_id) && !empty($parked_order_id)) ? $parked_order_id : '0' ?>">
 <?php
@@ -1942,7 +1940,6 @@ $('#model').validate({
         }
 
     },
-
 });
 
 
