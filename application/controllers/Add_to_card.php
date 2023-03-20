@@ -59,7 +59,7 @@ class Add_to_card extends User_Controller
 				if ($result[0]->quantity == '0') {
 					$errormsg = $this->lang->line('Product not available');
 				} else {
-					$errormsg = $this->lang->line('Item Out of Stock');
+					$errormsg = $this->lang->line('item out of stock');
 				}
 				// exit();
 			} else {
@@ -255,7 +255,7 @@ class Add_to_card extends User_Controller
 						$errormsg = $this->lang->line('Maximum order quantity reached');
 						$qun = $result[0]->max_order_qty;
 					} else if ($qun > $result[0]->quantity) {
-						$errormsg = $this->lang->line('Item Out of Stock');
+						$errormsg = $this->lang->line('item out of stock');
 					} else {
 
 						$price = $value['discount_price'] * $qun;
@@ -287,7 +287,7 @@ class Add_to_card extends User_Controller
 
 			} elseif ($qun > $result[0]->quantity) {
 				$errormsg = $this->lang->line('item out of stock');
-				$old_qun = $result[0]->quantity; // available quantity 
+				$old_qun = $cartTable[0]->quantity; // available quantity 
 				$update_id = $cartTable[0]->id;
 				$this->this_model->update_my_card($update_id, $old_qun);
 			} else {
@@ -345,6 +345,7 @@ class Add_to_card extends User_Controller
 			'updated_list' => NavbarDropdown(),
 			'delivery_charge' => $new_deliveryCharge
 		];
+		// dd($response);
 		echo json_encode($response);
 	}
 }

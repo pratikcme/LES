@@ -4,7 +4,6 @@ Class Banners_model extends My_model{
 
     function __construct(){
      $this->vendor_id = $this->session->userdata('vendor_admin_id');
-
     }
 
     private function set_upload_options_banner_promotion()

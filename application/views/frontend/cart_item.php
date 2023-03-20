@@ -22,7 +22,7 @@
                             <tr>
                                 <th class="w-45"><?=$this->lang->line('Product')?></th>
                                 <th class="w-20 text-center"><?=$this->lang->line('Quantity')?></th>
-                                <th class="w-20 text-center"><?=$this->lang->line('Price')?></th>
+                                <th class="w-20 text-center"><?=$this->lang->line('price')?></th>
                                 <th class="w-5 text-center"><?=$this->lang->line('Total')?></th>
                                 <th class="w-10 text-center"><?=$this->lang->line('Action')?></th>
                             </tr>
@@ -91,16 +91,20 @@
                                 </td>
                                 <td class="text-center">
                                     <?php if ($value['discount_per'] > 0) : ?>
-                                    <p class="discount-on">
-                                        <span><?= $this->siteCurrency ?></span><?= $product[0]->price ?>
+                                    <p class="discount-on notranslate">
+                                        <span class="notranslate"><?= $this->siteCurrency ?></span><?= $product[0]->price ?>
                                     </p>
                                     <?php endif ?>
-                                    <p><span><?= $this->siteCurrency ?></span><?= $product[0]->discount_price ?></p>
+                                    <p class="notranslate"><span class="notranslate"><?= $this->siteCurrency ?></span><?= $product[0]->discount_price ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p>
-                                        <span><?= $this->siteCurrency ?></span><span
-                                            class="total"><?= number_format((float)$calculation_price, 2, '.', '') ?></span>
+                                    <p class="notranslate">
+                                        <span  class="notranslate">
+                                            <?= $this->siteCurrency ?>
+                                        </span>
+                                        <span class="total notranslate">
+                                            <?= number_format((float)$calculation_price, 2, '.', '') ?>
+                                        </span>
                                     </p>
                                 </td>
                                 <td class="text-center">
@@ -128,7 +132,7 @@
                         <div class="total-count">
                             <h6><?=$this->lang->line('Sub Total')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
-                                <p>
+                                <p class="notranslate">
                                     <span><?= $this->siteCurrency ?>
                                     </span> <span id="final_subtotal"><?= getMycartSubtotal() ?></span>
                                 </p>
@@ -137,7 +141,7 @@
                         <div class="total-count">
                             <h6><?=$this->lang->line('Delivery Charges')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
-                                <p id="delivery_charge"><span><?= $this->siteCurrency ?></span>
+                                <p id="delivery_charge" class="notranslate"><span><?= $this->siteCurrency ?></span>
 
                                     <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ? $calc_shiping : '0.00' ?>
                                 </p>
@@ -146,7 +150,7 @@
                         <div class="total-count">
                             <h6><?=$this->lang->line('Total')?> </h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
-                                <p id="total"><span><?= $this->siteCurrency ?></span>
+                                <p id="total"class="notranslate" ><span><?= $this->siteCurrency ?></span>
                                     <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ?  number_format(getMycartSubtotal() + $calc_shiping, 2, '.', '') : getMycartSubtotal(); ?>
                                 </p>
                             </div>
@@ -174,7 +178,7 @@
                             <tr>
                                 <th class="w-45"><?=$this->lang->line('Product')?></th>
                                 <th class="w-20 text-center"><?=$this->lang->line('Quantity')?></th>
-                                <th class="w-20 text-center"><?=$this->lang->line('Price')?></th>
+                                <th class="w-20 text-center"><?=$this->lang->line('price')?></th>
                                 <th class="w-5 text-center"><?=$this->lang->line('Total')?></th>
                                 <th class="w-10 text-center"><?=$this->lang->line('Action')?></th>
                             </tr>
@@ -229,15 +233,19 @@
                                 </td>
                                 <td class="text-center">
                                     <?php if ($value->discount_per > 0) : ?>
-                                    <p class="discount-on"><span><?= $this->siteCurrency ?></span><?= $value->price ?>
+                                    <p class="discount-on notranslate"><span><?= $this->siteCurrency ?></span><?= $value->price ?>
                                     </p>
                                     <?php endif ?>
-                                    <p><span><?= $this->siteCurrency ?></span><?= $value->discount_price ?></p>
+                                    <p class="notranslate"><span><?= $this->siteCurrency ?></span><?= $value->discount_price ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p>
-                                        <span><?= $this->siteCurrency ?></span><span
-                                            class="total"><?= number_format((float)$calculation_price, 2, '.', '') ?></span>
+                                    <p class="notranslate">
+                                        <span>
+                                            <?= $this->siteCurrency ?>
+                                        </span>
+                                        <span class="total notranslate">
+                                            <?= number_format((float)$calculation_price, 2, '.', '') ?>
+                                        </span>
                                     </p>
                                 </td>
 
@@ -264,7 +272,7 @@
                         <div class="total-count">
                             <h6><?=$this->lang->line('Sub Total')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
-                                <p>
+                                <p class="notranslate">
                                     <span><?= $this->siteCurrency ?>
                                     </span> <span id="final_subtotal"><?= getMycartSubtotal() ?></span>
                                 </p>
@@ -273,7 +281,7 @@
                         <div class="total-count">
                             <h6><?=$this->lang->line('Delivery Charges')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
-                                <p id="delivery_charge"><span><?= $this->siteCurrency ?></span>
+                                <p id="delivery_charge" class="notranslate"><span><?= $this->siteCurrency ?></span>
                                     <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ? $calc_shiping : '0.00' ?>
                                 </p>
                             </div>
@@ -281,7 +289,7 @@
                         <div class="total-count">
                             <h6><?=$this->lang->line('Total')?></h6>
                             <div class="price-seperator"> <span class="seperator">:</span>
-                                <p id="total"><span><?= $this->siteCurrency ?></span>
+                                <p id="total" class="notranslate"><span><?= $this->siteCurrency ?></span>
                                     <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ?  number_format(getMycartSubtotal() + $calc_shiping, 2, '.', '') : getMycartSubtotal(); ?>
                                 </p>
                             </div>

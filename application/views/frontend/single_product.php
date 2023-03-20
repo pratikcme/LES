@@ -84,8 +84,16 @@
             </div>
           <?php } ?>
           <h1><?=$productDetail[0]->name?></h1>
+          <div class="feature-detail">
+              <div class="card-icon mb-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star blank-ratting"></i>
+          </div>
           <div class="product-price">
-            <p><?=$this->siteCurrency?>
+            <p class="notranslate"><?=$this->siteCurrency?>
               <?=number_format((float)$varientDetails[0]->discount_price, 2, '.', '')?>
               <span class="orginal-price" style="<?=($varientDetails[0]->discount_per== 0) ? 'display:none' : '' ?>">
                 <?=$this->siteCurrency?>
@@ -230,7 +238,7 @@
             <h6><span><?=$this->siteCurrency?></i></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
             <?php if($value->quantity >= 25){ ?> 
             <p><?=$this->lang->line('Available(Instock)')?></p>
-            <?php }elseif($value->quantity <= 0){ ?>
+            <?php }else{ ?>
               <p><?=$this->lang->line('Limited Stock')?></p>
             <?php } ?> 
           </div>

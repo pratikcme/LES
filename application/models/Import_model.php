@@ -178,6 +178,17 @@ class Import_model extends My_model {
         return $this->selectRecords($data); 
     }
 
+    public function getProductByBranchID($category_id = ''){
+        if($category_id != ''){
+            $data['where']['category_id!='] = $category_id;  
+        }
+        $data['table'] = TABLE_PRODUCT;
+        $data['select'] = ['display_priority'];
+        $data['where']['status!='] = '9';
+        $data['where']['branch_id'] = $this->branch_id;
+        $data['where']['display_priority !='] = '';
+        return $this->selectRecords($data,true);
+    }
 
     function importExcel(){
         // echo '1';die;
@@ -189,7 +200,8 @@ class Import_model extends My_model {
             // $getCategory = $this->getCatgory($name[0]);
             // $categoryId = $getCategory[0]->id;
             $categoryId = $this->input->post('catgeory');
-
+            $products = $this->getProductByBranchID();
+            $arrayProducts = array_column($products,'display_priority');
             $object = PHPExcel_IOFactory::load($path);
             $lastInsertedId = '';
             foreach ($object->getWorksheetIterator() as $worksheet) {
@@ -209,18 +221,23 @@ class Import_model extends My_model {
                     $productContent = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
                     $productAbout = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
                     // $supplier = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-                    $varient = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-                    $unit = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+                    $display_priority = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+                    $varient = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+                    $unit = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
                     
-                    $package = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-                    $qty = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
-                    $purchasePrice = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
+                    $package = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+                    $qty = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
+                    $purchasePrice = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
 
-                    $retailPrice = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
-                    $dicount = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
-                    $image = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
-                    $gst = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
-                    $max_order_qty = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
+                    $retailPrice = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
+                    $dicount = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+                    $image = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
+                    $gst = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
+                    $max_order_qty = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
+
+                    if(in_array($display_priority,$arrayProducts)){
+                       return  ['status'=>false,'message'=>$display_priority.' priority already assigned remove/change priority and try again..']; 
+                    }
             // print_r($type);
             // echo "<br>";
             // print_r($subCategory);
@@ -230,6 +247,8 @@ class Import_model extends My_model {
             // print_r($productContent);
             // echo "<br>";
             // print_r($productAbout);
+            // echo "<br>";
+            // print_r($display_prority);
             // echo "<br>";
             // print_r($varient);
             // echo "<br>";
@@ -243,7 +262,6 @@ class Import_model extends My_model {
             // echo "<br>";
             // print_r($retailPrice);
             // echo "<br>";
-
             // print_r($dicount);
             // echo "<br>";
             // print_r($image);
@@ -298,6 +316,7 @@ class Import_model extends My_model {
                             $data['insert']['about'] = $productAbout;
                             $data['insert']['content'] = $productContent;
                             $data['insert']['gst'] = $gst;
+                            $data['insert']['display_priority'] = $display_priority;
                             $data['insert']['status'] = '1';
                             $data['insert']['dt_added'] = strtotime(date('Y-m-d H:i:s'));
                             $data['insert']['dt_updated'] = strtotime(date('Y-m-d H:i:s'));
@@ -374,7 +393,7 @@ class Import_model extends My_model {
                
             }
         }
-        return true;
+        return ['status'=>true];
     } 
 
     public function getProductOfCategory($postData){
@@ -389,7 +408,7 @@ class Import_model extends My_model {
         $category_id = $result[0]->id;
         unset($data);
         $data['table'] = TABLE_PRODUCT;
-        $data['select'] = ['id','name as product_name'];
+        $data['select'] = ['id','name as product_name','display_priority'];
         $data['where'] = [
             'category_id'=>$category_id,
             'status!='=>'9'
@@ -420,11 +439,25 @@ class Import_model extends My_model {
         if (isset($_FILES["file"]["name"])) {
             $path = $_FILES["file"]["tmp_name"];
             $name = explode('.',$_FILES["file"]["name"]);
-           
             $categoryId = $this->input->post('catgeory');
-
+            
+            $products = $this->getProductByBranchID($categoryId);
+            // dd($products);
+            $arrayProducts = array_column($products,'display_priority');
+            // dd($arrayProducts);
             $object = PHPExcel_IOFactory::load($path);
             $lastInsertedId = '';
+            // foreach ($object->getWorksheetIterator() as $worksheet) {
+            //     $highestRow = $worksheet->getHighestRow();
+            //     $highestColumn = $worksheet->getHighestColumn();
+            //     for ($row = 2; $row <= $highestRow; $row++) {
+            //         $display_priority = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+            //         if($display_priority!=''){
+            //             $excelDisplayPriority[] = $display_priority;
+            //         }
+            //     }
+            // }
+            // dd($excelDisplayPriority);
             foreach ($object->getWorksheetIterator() as $worksheet) {
                 $highestRow = $worksheet->getHighestRow();
                 $highestColumn = $worksheet->getHighestColumn();
@@ -441,9 +474,20 @@ class Import_model extends My_model {
                     $price = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
                     $discount = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
                     $max_order_qty = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+                    $display_priority = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+                    if($display_priority!=''){
+                        $excelDisplayPriority[] = $display_priority;
+                    }
 
-                  
+                    $indexes = array_keys($excelDisplayPriority, $display_priority);
+                    if(count($indexes) > 1){
+                        return  ['status'=>false,'message'=> 'priority is repeated in excel remove/change priority and try again..'];
+                    }
 
+                    if(in_array($display_priority,$arrayProducts)){
+                        return  ['status'=>false,'message'=>$display_priority.' priority already assigned remove/change priority and try again..']; 
+                     }
+                    //  echo '1';die;
                     $discount_price = ($price * $discount)/100; 
 
                   
@@ -453,7 +497,7 @@ class Import_model extends My_model {
                     if($type != ''){
 
                         if ($type == 'New') {
-                            $i = 0 ;
+                            $i = 0 ;  
                             $firstVarient_id = $Varient[$i]->id;
                             $data['update']['quantity'] = $qty;
                             $data['update']['price'] = $price;
@@ -464,9 +508,14 @@ class Import_model extends My_model {
                             }
                             $data['table'] = 'product_weight';
                             $data['where']['id'] =  $firstVarient_id;
-                        }
-                        if ($type == 'Old') {   
                             
+                            $dataa['table'] = TABLE_PRODUCT;
+                            $dataa['update']['display_priority'] = $display_priority;
+                            $dataa['where']['id'] = $Varient[$i]->product_id; 
+                            $this->updateRecords($dataa);
+                            // lq();
+                        }
+                        if ($type == 'Old') {  
                             $Varient_id = $Varient[$i]->id;  
                             $data['update']['quantity'] = $qty;
                             $data['update']['price'] = $price;
@@ -479,23 +528,22 @@ class Import_model extends My_model {
                             $data['where']['id'] =  $Varient_id;
 
                         }
+                            
 
-                      
-                        $data['update']['dt_updated'] = strtotime(DATE_TIME);
-                        $lastId = $this->updateRecords($data);
-                       
-                        $lastInsertedId = $lastId;
+                            $data['update']['dt_updated'] = strtotime(DATE_TIME);
+                            $lastId = $this->updateRecords($data);
+                            $lastInsertedId = $lastId;
 
                     }else{
-                        return false;
+                        return ['status'=>false,'message'=>'somthing Went Wrong'];
                     }
                     $i++;
                 }
                 // retrun 
             }
-            return true;
+            return ['status'=>true,'message'=>"Product quantity updated successfully"];
         }else{
-            return false;
+            return ['status'=>false,'message'=>'somthing Went Wrong'];
         }
     }
 
@@ -532,11 +580,12 @@ class Import_model extends My_model {
     }
 
     public function insertExcelRecordParmanent(){
-        $check = ''; 
+        $check = 1; 
         $tempRecords = $this->tempTableRecords('temp_product');
         foreach ($tempRecords as $key => $records) {
             $temp_product_id = $tempRecords[$key]->id;
             unset($tempRecords[$key]->id);
+            // dd($tempRecords[$key]);
             $this->db->insert(TABLE_PRODUCT,$tempRecords[$key]);
             $product_id = $this->db->insert_id();
             $temp_product_weight = $this->tempTableRecords('temp_product_weight',['product_id'=>$temp_product_id]);
@@ -560,6 +609,7 @@ class Import_model extends My_model {
                  } 
             }
         }
+        // dd($check);
         return $check;
 
     }

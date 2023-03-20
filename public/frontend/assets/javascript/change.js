@@ -96,6 +96,9 @@ var CHANGE = function () {
                     required: true,
                     minlength: 6,
                     maxlength: 15,
+                },
+                gst: {
+                    maxlength: 15,
                 }
             },
             messages: {

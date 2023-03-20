@@ -274,6 +274,7 @@ class Utility
 
         $deviceId = $deviceIds['device_id'];
         $msg = $msg['message'];
+        
 
         if (isset($deviceIds['for_staff'])) {
             $ck = $staff_bandle_id;
@@ -285,7 +286,7 @@ class Utility
                 $ck = $delivery_bandle_id;
             }
         }
-
+        // echo $ck;
         $payload = array(
             'iss' => $team_id,
             'iat' => time()
@@ -299,6 +300,7 @@ class Utility
         $keyid = $key_id;                            # <- Your Key ID
         $teamid = $team_id;                           # <- Your Team ID (see Developer Portal)
         $bundleid = $ck;                # <- Your Bundle ID
+        
         $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
         // $token = '5412db72d82307bb3b606eeae2885bd742c2acc9806a7c0f4b76b9b723e11adf';              # <- Device Token
         $token = $deviceId;              # <- Device Token
@@ -339,6 +341,7 @@ class Utility
         ));
 
         $result = curl_exec($http2ch);
+        dd( $result);
         if ($result === FALSE) {
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
@@ -371,14 +374,15 @@ class Utility
         $body['notify'] = 'notification';
 
         $url = 'https://fcm.googleapis.com/fcm/send';
+        
         $fields = array(
             'to' => $deviceId['device_id'],
             'data' => $body
         );
-
         // echo $key;exit;
         $fields_json = json_encode($fields);
-
+        // dd($fields_json);
+        // dd($fields_json);
         if (isset($deviceId['delivery_notification'])) {
             // echo '1';die;
             $headers = array(
@@ -389,7 +393,7 @@ class Utility
         } else {
             if ($key == NULL) {
                 // $headers = array(
-                //     'Authorization: key= AAAAN7pGzqM:APA91bGjSoksYAJHdxtvBaNqt2VCqKuNiBzJiYsMwvNVuyGAJ8Iuj1HNEClo_VkzgdGuTHWoHp7O9FYP7Et_l2eI_iNNEEePeao3Q5qlVNNMIsp93_60xvxAAPMvIspLzQ3nsFM6_9n7',
+                //     'Authorization: key= AAAAIhCnTt0:APA91bEAjiw53KeCGPM4Ns6lfvvBlihTd5FTrWo3_yW9ozu0iM8vs1MBErm1g0hOel4UXdk9zCtsX2l0YCa99XCystgrOsjyQ2lvZWcimH0FcNgNqBsKWWPEiniN9M2z5dBIhwaIizPH',
                 //     'Content-Type: application/json'
                 // );
                 $headers = array(
@@ -481,6 +485,81 @@ class Utility
 
         return $setResponse;
     }
+
+    public function  PushNotification($deviceToken,$body,$result,$postData,$vendor_id){
+        // $ios_url = 'https://api.push.apple.com/3/device/';
+        // $ios_data = array(
+        //     'aps' => array(
+        //         'alert' => array(
+        //             'title' => $body['title'],
+        //             'body' => $body['message']
+        //         ),
+        //         'badge' => 1,
+        //         'sound' => 'default'
+        //     ),
+        //     'data' => array(
+        //         'product_id' => $postData['product_id'],
+        //         'category_id' => $postData['category_id'],
+        //         'vendor_id' => $vendor_id,
+        //         'branch_id' => $postData['branch']
+        //         )
+        //     );
+            
+        $android_url = 'https://fcm.googleapis.com/fcm/send';
+        $android_data = array(
+            'notification' => array(
+                'title' => $body['title'],
+                'body' => $body['message']
+            ),
+            'data' => array(
+                'product_id' => $postData['product_id'],
+                'category_id' => $postData['category_id'],
+                'vendor_id' => $vendor_id,
+                'branch_id' => $postData['branch']
+            ),
+            'priority' => 'high'
+        );
+        // dd($android_data);
+        $device_tokens = $deviceToken['device_id'];
+
+        // Set the headers for the cURL requests
+        // .$result[0]->user_bandle_id
+        $headers = array(
+            'Content-Type: application/json',
+            'Authorization: key='.$result[0]->user_firebase_key, // For Android notifications only
+            // 'apns-topic: com.cme.bigbucket', // For iOS notifications only
+        );
+        // dd($headers);
+        // dd($headers);
+        // foreach ($device_tokens as $token) {
+        //     $ch = curl_init();
+        //     curl_setopt($ch, CURLOPT_URL, $ios_url . $token);
+        //     curl_setopt($ch, CURLOPT_POST, true);
+        //     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($ios_data));
+        //     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        //     $result = curl_exec($ch);
+        //     curl_close($ch);
+        //     dd($result);
+        // }
+    
+        
+        $android_fields = array(
+            'registration_ids' => $device_tokens,
+            'data' => $android_data,
+        );
+        // dd( json_encode($android_fields));
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $android_url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($android_fields));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        dd($result);
+    }
+    
 }
 
 ?>

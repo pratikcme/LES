@@ -276,5 +276,11 @@
         <span>Feedback</span>
     </a>
 </li>
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'pushNotification' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'pushNotification'; ?>">
+        <i class="fa fa-file" aria-hidden="true"></i>
+        <span>Push Notification</span>
+    </a>
+</li>
 
 

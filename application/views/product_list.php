@@ -135,7 +135,8 @@ $product_result = $product_query->result();
 <!--main content end-->
 <script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
-    setTimeout(function () { $('#msg').hide(); }, 4000);
+    setTimeout(function () { $('#msg').hide(); }, 5000);
+   
     
     /*Single Delete Script*/    
      function single_hard_delete(value) {

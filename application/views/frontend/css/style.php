@@ -2782,6 +2782,8 @@ height: 60px;
 }
 
 .category-menu-wrapper ul li a{
+    margin-bottom: 4px;
+    display: inline-block;
     color:  var(--categoryColor);
     font-family: 'OpenSans-SemiBold';
 }
@@ -6871,6 +6873,15 @@ width: 374px;
 }
 
 
+.card-icon i, .star-img {
+    color: #fda72f !important;
+    width: 16px !important;
+    height: 16px !important;
 }
+
+}
+
+
+
 
 </style>

@@ -68,11 +68,15 @@
                                                 <?php } ?>
                                             </select>
                                         </div> 
+                                    <div class="form-group">
+                                        <label for="name" class="display_priority">Display Priority</label>
+                                        <input type="number" class="form-control" id="display_priority" name="display_priority" placeholder="Product Priority" min='1' value="<?=(isset($result) && $result['display_priority'] != NULL) ? $result['display_priority'] : '' ?>">
+                                    </div>
                                 </div>
                                
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <label for="name" class="margin_top_label">About<span class="required" aria-required="true"></span></label>
+                                        <label for="name" class="margin_top_label">Description<span class="required" aria-required="true"></span></label>
                                         <textarea class="form-control margin_top_input ckeditor" id="about" placeholder="About" name="about" rows="5"><?=(isset($result) && $result['about'] != '') ? $result['about'] : ''?></textarea>
                                     </div>
                                     <div class="form-group">
@@ -103,6 +107,7 @@
         <!-- page end-->
     </section>
 </section>
+<input type="hidden" id="base_url" value="<?=base_url()?>">
 <!--main content end-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
@@ -138,7 +143,7 @@
             });
         });
     });
-
+    var base_url = $('#base_url').val();
     $('#product_form').validate({
         
         rules: {
@@ -180,6 +185,17 @@
             },
             tags : {
                 maxlength: 15,
+            },
+            display_priority : {
+                remote: {
+                    url: base_url+"product/check_display_priority",
+                    type: "post",
+                    data: {
+                    product_id: function() {
+                        return $( "#id" ).val();
+                    }
+                    }
+                }
             }
         },
         messages: {
@@ -219,6 +235,9 @@
                 // required: "Please enter gst percent",
                 maxlength: "Please enter maximum 15 character",
                 // number : "Please enter number only",
+            },
+            display_priority: {
+                remote : 'Priority already assigned'
             }
         },
         error: function(label) {
@@ -226,11 +245,10 @@
         },
         
         submitHandler: function (form) {
+            // $('.btn').attr('disabled','disabled');
+            form.submit();
                 
-                $('.btn').attr('disabled','disabled');
-                $(form).submit();
-                
-            }
+        }
     });
 </script>
 <?php include('footer.php'); ?>

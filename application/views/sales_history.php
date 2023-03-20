@@ -215,6 +215,7 @@
          <thead>
             <tr>
                <th>Sno.</th>
+               <th>OrderNo.</th>
                <th>Receipt</th>
                <th>Customer</th>
                <th>Sold by</th>

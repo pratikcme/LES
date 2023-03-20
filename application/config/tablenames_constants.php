@@ -37,6 +37,7 @@ define('TABLE_OFFER_DETAIL', 'offer_detail');
 define('TABLE_PROMOCODE', 'promocode');
 define('TABLE_ORDER_PROMOCODE', 'order_promocode');
 define('TABLE_SHOPPING_BASED_DISCOUNT', 'amount_based_discount');
+define('TABLE_DEVICE', 'device');
 
 
 // ADMIN CONSTANT

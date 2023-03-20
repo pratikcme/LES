@@ -163,7 +163,8 @@ include('header.php');
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js"></script>
 
     <script>
-
+         setTimeout(function () { $('.alert').hide(); }, 5000);
+         
         $('#file').change(function () {
             var filename = $(this).val();
             var ext = /^.+\.([^.]+)$/.exec(filename);

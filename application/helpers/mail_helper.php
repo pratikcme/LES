@@ -126,7 +126,6 @@ function NavbarDropdown(){
   $CI->load->model('common_model');
   $default_product_image =$CI->common_model->default_product_image();
   if($CI->session->userdata('user_id') == ''){
-
     if(isset($_SESSION['My_cart'])){
       foreach ($_SESSION['My_cart'] as $key => $value) {
         $encode_id=  $CI->utility->safe_b64encode($value['product_id']);
@@ -145,28 +144,15 @@ function NavbarDropdown(){
           }
         }
       
-
-        $html .= '<li>
-        <a href='.base_url().'products/productDetails/'.$encode_id.'/'.$varient_id.'>
-        <div class="cart-img-wrap">
-        <img src='.base_url().'/public/images/'.$CI->folder.'product_image/'.$value["image"].'>
-        </div>
-        </a>
-        <a href='.base_url().'products/productDetails/'.$encode_id.'/'.$varient_id.'>
-        <div class="cart-detail-wrap">
-        <h6>'.$value["product_name"].'</h6>
-        <p><span>'.$value["quantity"].'</span> X '.number_format((float)$value['discount_price'], 2, '.', '').'</p>
-        </div>
-        </a>
-        <a href="javescript:" class="remove_item" data-product_id='.$value["product_id"].' data-product_weight_id='.$value["product_weight_id"].'>
-        <div class="cart-delete">
-        <i class="fas fa-times-circle"></i>
-        </div>
-        </a>
-        </li>';
+        $data['value'] = $value;
+        $data['product_image'] = $product_image;
+        $data['encode_id'] = $encode_id;
+        $data['varient_id'] = $varient_id;
+        $html .= $CI->load->view('frontend/ajaxView/cart_view_without_login',$data,true);
       }
     }
   }else{
+    
      $CI->load->model('frontend/product_model','product_model');
      
      $my_cart = $CI->product_model->getMyCart();
@@ -190,25 +176,11 @@ function NavbarDropdown(){
         
         $encode_id =  $CI->utility->safe_b64encode($value->product_id);
         $varient_id =  $CI->utility->safe_b64encode($value->product_weight_id);
-
-        $html .= '<li>
-        <a href='.base_url().'products/productDetails/'.$encode_id.'/'.$varient_id.'>
-        <div class="cart-img-wrap">
-        <img src='.base_url().'public/images/'.$CI->folder.'product_image/'.$value->image.'>
-        </div>
-        </a>
-        <a href='.base_url().'products/productDetails/'.$encode_id.'/'.$varient_id.'>
-        <div class="cart-detail-wrap">
-        <h6>'.$value->product_name.'</h6>
-        <p><span>'.$value->quantity.'</span> X '.number_format((float)$product_image[0]->discount_price, 2, '.', '').'</p>
-        </div>
-        </a>
-        <a href="javescript:" class="remove_item" data-product_id='.$value->product_id.' data-product_weight_id='.$value->product_weight_id.'>
-        <div class="cart-delete">
-        <i class="fas fa-times-circle"></i>
-        </div>
-        </a>
-        </li>';
+        $data['value'] = $value;
+        $data['product_image'] = $product_image;
+        $data['encode_id'] = $encode_id;
+        $data['varient_id'] = $varient_id;
+        $html .= $CI->load->view('frontend/ajaxView/cart_view_with_login',$data,true);
      }
   }
   return $html;

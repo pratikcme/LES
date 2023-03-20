@@ -77,6 +77,7 @@ class product_model extends My_model
                         'about' => $about,
                         'content' => $content,
                         'gst' => $gst,
+                        'display_priority'    => $_POST['display_priority'],
                         'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                     );
                     $this->db->where('id', $id);
@@ -106,7 +107,6 @@ class product_model extends My_model
             }
             ## Add Product ##
             else {
-                
                 if ($_FILES['image']['name'] != '') {
                     $image = time() . $_FILES['image']['name'];
                 } else {
@@ -131,6 +131,7 @@ class product_model extends My_model
                     'content' => $content,
                     'status' => '1',
                     'gst'    => $gst,
+                    'display_priority'    => $_POST['display_priority'],
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                 );
@@ -318,7 +319,12 @@ class product_model extends My_model
             $data['where']['product_id'] = $v;
             $varient_ids = $this->selectRecords($data);
             unset($data);
-            
+            foreach ($varient_ids as $key => $value) {
+                $data['where'] = ['product_weight_id' => $value->id];
+                $data['table'] = 'my_cart';
+                $this->deleteRecords($data);
+            }
+            unset($data);
             $data['where'] = ['id' => $v];
             $data['table'] = 'product';
             $this->deleteRecords($data);
@@ -326,11 +332,6 @@ class product_model extends My_model
             unset($data);
             
             //Product Delete Form Cart 
-            foreach ($varient_ids as $key => $value) {
-                $data['where'] = ['product_weight_id' => $value->id];
-                $data['table'] = 'my_cart';
-                $this->deleteRecords($data);
-            }
         }
         
         ob_get_clean();
@@ -1164,6 +1165,21 @@ class product_model extends My_model
                     $data['where']['product_variant_id'] = $id;
                     $data['order'] = 'image_order';
                     return $this->selectRecords($data);
+                }
+
+                public function check_display_priority($postData){
+                    if($postData['product_id'] != ''){
+                        $data['where']['id !='] = $postData['product_id'];
+                    }
+                    $data['table'] = TABLE_PRODUCT;
+                    $data['where']['display_priority'] = $postData['display_priority'];
+                    $data['where']['status !='] = '9';
+                    $return = $this->countRecords($data);
+                    if($return > 0){
+                        echo "false";
+                    }else{
+                        echo "true";
+                    }
                 }
             }
             
