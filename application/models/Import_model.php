@@ -580,7 +580,7 @@ class Import_model extends My_model {
     }
 
     public function insertExcelRecordParmanent(){
-        $check = 0; 
+        $check = 1; 
         $tempRecords = $this->tempTableRecords('temp_product');
         foreach ($tempRecords as $key => $records) {
             $temp_product_id = $tempRecords[$key]->id;
