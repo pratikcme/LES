@@ -12,6 +12,7 @@ Class Vendors_model extends My_model{
 		$data['order'] = 'id desc';
 		return $this->selectRecords($data);
 	}
+	
 
 	public function add($postData){
 		// dd($postData);

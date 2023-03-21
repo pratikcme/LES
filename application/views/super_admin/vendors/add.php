@@ -102,13 +102,9 @@
                   <div class="col-sm-12">
                    <select class="form-control" name="store_type">
                     <option value="">Select Store Type</option>
-                    <option value="grocery">Grocery</option>
-                    <option value="apparels&garments">Apparels&Garments</option>
-                    <option value="furniture">Furniture</option>
-                    <option value="gift">Gift</option>
-                    <option value="cake&bakery">Cake&Bakery</option>
-                    <option value="kitchen">Kitchen</option>
-                    <option value="jewellery">Jewellery</option>
+                    <?php foreach($getStore as $key => $value){?>
+                      <option value="<?=$value->name?>"><?=$value->name?></option>
+                      <?php } ?>
                   </select>
                 </div>
                 </div>

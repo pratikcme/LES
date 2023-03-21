@@ -181,7 +181,314 @@
       </div>
     </div>
   </div>
+
+   <!-- =================review-box================== -->
+<section class="p-50 review-box">
+    <div class="container">
+        <div class="my-review-wrapper">
+            
+            <!-- ----review-header--- -->
+            <div class="review-header">
+                <h2>Ratings & reviews</h2>
+            </div>
+            
+            <!-- ----review-content--- -->
+            <div class="review-content">
+                <div class="left-content">
+                    <div>
+                        <h3><strong>4.4</strong><span>/5</span></h3>
+                    </div>
+                    <div>
+                        <h4>Overall Rating</h4>
+                        <p>3398 verified ratings</p>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <h6>Write your review !</h6>
+                    <div class="enter-review-btn">
+                        <a href="#"  data-toggle="modal" data-target="#exampleModal">Write Review</a>
+                    </div>
+                </div>
+            </div> 
+
+            <!-- ----review-comment-part--- -->
+            <div class="review-comment-wrapper">
+                <div class="row">
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="testimonial-box">
+                            <!--top------------------------->
+                            <div class="box-top">
+                                <!--profile----->
+                                <div class="profile">
+                                    <!--img---->
+                                    <div class="profile-img">
+                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
+                                    </div>
+                                    <!--name-and-username-->
+                                    <div class="name-user">
+                                        <strong>Liam mendes</strong>
+                                        <span>@liammendes</span>
+                                    </div>
+                                </div>
+                                <!--reviews------>
+                                <div class="reviews">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i><!--Empty star-->
+                                </div>
+                            </div>
+                            <!--Comments---------------------------------------->
+                            <div class="client-comment">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="testimonial-box">
+                            <!--top------------------------->
+                            <div class="box-top">
+                                <!--profile----->
+                                <div class="profile">
+                                    <!--img---->
+                                    <div class="profile-img">
+                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
+                                    </div>
+                                    <!--name-and-username-->
+                                    <div class="name-user">
+                                        <strong>Liam mendes</strong>
+                                        <span>@liammendes</span>
+                                    </div>
+                                </div>
+                                <!--reviews------>
+                                <div class="reviews">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i><!--Empty star-->
+                                </div>
+                            </div>
+                            <!--Comments---------------------------------------->
+                            <div class="client-comment">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="testimonial-box">
+                            <!--top------------------------->
+                            <div class="box-top">
+                                <!--profile----->
+                                <div class="profile">
+                                    <!--img---->
+                                    <div class="profile-img">
+                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
+                                    </div>
+                                    <!--name-and-username-->
+                                    <div class="name-user">
+                                        <strong>Liam mendes</strong>
+                                        <span>@liammendes</span>
+                                    </div>
+                                </div>
+                                <!--reviews------>
+                                <div class="reviews">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i><!--Empty star-->
+                                </div>
+                            </div>
+                            <!--Comments---------------------------------------->
+                            <div class="client-comment">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="testimonial-box">
+                            <!--top------------------------->
+                            <div class="box-top">
+                                <!--profile----->
+                                <div class="profile">
+                                    <!--img---->
+                                    <div class="profile-img">
+                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
+                                    </div>
+                                    <!--name-and-username-->
+                                    <div class="name-user">
+                                        <strong>Liam mendes</strong>
+                                        <span>@liammendes</span>
+                                    </div>
+                                </div>
+                                <!--reviews------>
+                                <div class="reviews">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i><!--Empty star-->
+                                </div>
+                            </div>
+                            <!--Comments---------------------------------------->
+                            <div class="client-comment">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="testimonial-box">
+                            <!--top------------------------->
+                            <div class="box-top">
+                                <!--profile----->
+                                <div class="profile">
+                                    <!--img---->
+                                    <div class="profile-img">
+                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
+                                    </div>
+                                    <!--name-and-username-->
+                                    <div class="name-user">
+                                        <strong>Liam mendes</strong>
+                                        <span>@liammendes</span>
+                                    </div>
+                                </div>
+                                <!--reviews------>
+                                <div class="reviews">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i><!--Empty star-->
+                                </div>
+                            </div>
+                            <!--Comments---------------------------------------->
+                            <div class="client-comment">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="testimonial-box">
+                            <!--top------------------------->
+                            <div class="box-top">
+                                <!--profile----->
+                                <div class="profile">
+                                    <!--img---->
+                                    <div class="profile-img">
+                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
+                                    </div>
+                                    <!--name-and-username-->
+                                    <div class="name-user">
+                                        <strong>Liam mendes</strong>
+                                        <span>@liammendes</span>
+                                    </div>
+                                </div>
+                                <!--reviews------>
+                                <div class="reviews">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i><!--Empty star-->
+                                </div>
+                            </div>
+                            <!--Comments---------------------------------------->
+                            <div class="client-comment">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="testimonial-box">
+                            <!--top------------------------->
+                            <div class="box-top">
+                                <!--profile----->
+                                <div class="profile">
+                                    <!--img---->
+                                    <div class="profile-img">
+                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
+                                    </div>
+                                    <!--name-and-username-->
+                                    <div class="name-user">
+                                        <strong>Liam mendes</strong>
+                                        <span>@liammendes</span>
+                                    </div>
+                                </div>
+                                <!--reviews------>
+                                <div class="reviews">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i><!--Empty star-->
+                                </div>
+                            </div>
+                            <!--Comments---------------------------------------->
+                            <div class="client-comment">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>  
+        </div>
+    </div>
 </section>
+
+
+<!-- -----write-review-modal---- -->
+<!-- Modal -->  
+  <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Reviews</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <div class="rating-box">
+            <h2>Rating</h2>
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+
+          <div class="review-text-box">
+            <h2>Comments</h2>
+                <input type="text" name="text" placeholder="Your Comments"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Submit</button>
+          </div>
+      </div>
+    </div>
+  </div>
+<!-- ================================================= -->
+
+
+</section>
+
+
+
+
+
 <!-- =================RELATED PRODUCTS SECTION================= -->
 
 <?php  if(count($related_product) > 4){ ?>

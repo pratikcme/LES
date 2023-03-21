@@ -8,6 +8,7 @@ class Branches extends Super_Admin_Controller{
 		$this->url = 'super_admin/branches/';
 		$this->load->model('super_admin/branches_model','this_model');
 		$this->load->model('super_admin/vendors_model','vendors_model');
+		$this->load->model('super_admin/store_type_model');
 	}
 
 	public function index()
@@ -43,6 +44,7 @@ class Branches extends Super_Admin_Controller{
 		$data['init'] = array('BRANCHES.edit()');
 		$data['editData'] = $this->this_model->getBranch($d_id);
 		// dd($data['editData']);
+		$data['getStore'] = $this->store_type_model->getStore();
 		$data['FormAction'] = base_url().$this->url.'edit/'.$branch_id;
 		if($this->input->post()){
 			$responce = $this->this_model->updateBranch($d_id,$this->input->post());

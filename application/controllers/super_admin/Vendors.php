@@ -7,6 +7,7 @@ class Vendors extends Super_Admin_Controller{
 		parent::__construct();
 		$this->url = 'super_admin/vendors/';
 		$this->load->model('super_admin/vendors_model','this_model');
+		$this->load->model('super_admin/store_type_model');
 	}
 
 	public function index()
@@ -22,6 +23,7 @@ class Vendors extends Super_Admin_Controller{
 		$data['page'] = 'super_admin/vendors/add';
 		$data['js'] = array('vendors.js');
 		$data['init'] = array('VENDORS.add()');
+		$data['getStore'] = $this->store_type_model->getStore();
 		$data['FormAction'] = base_url().$this->url.'add';
 		if($this->input->post()){
 			$this->this_model->add($this->input->post());
@@ -48,6 +50,7 @@ class Vendors extends Super_Admin_Controller{
 		$data['init'] = array('VENDORS.edit()');
 		$data['editData'] = $this->this_model->getVendors($d_id);
 		$data['FormAction'] = base_url().$this->url.'edit/'.$vendor_id;
+		$data['getStore'] = $this->store_type_model->getStore();
 		if($this->input->post()){
 			$responce = $this->this_model->updateVendors($d_id,$this->input->post());
 			if($responce){

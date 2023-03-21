@@ -26,6 +26,9 @@
             <li class="">
               <a href="<?=base_url()?>super_admin/projectConfig" class="nav-link "><i class="far fa-check-square"></i><span>Configration</span></a>
             </li>
+            <li class="">
+              <a href="<?=base_url()?>super_admin/store_type" class="nav-link "><i class="far fa-check-square"></i><span>Store Type</span></a>
+            </li>
             <!-- <li class="">
               <a href="<?=base_url()?>admin/experience" class="nav-link "><i class="far fa-file" aria-hidden="true" ></i><span>Experience level</span></a>
             </li> -->
