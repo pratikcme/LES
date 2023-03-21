@@ -384,7 +384,7 @@ class Product_model extends My_model
 
 		$limit = 20;
 		if (!isset($data['order'])) {
-			$data['order'] = 'dp ASC';
+			$data['order'] = 'dp ASC,pw.quantity DESC';
 		}
 	
 		$data['where']['p.branch_id'] = $this->branch_id;
@@ -399,7 +399,7 @@ class Product_model extends My_model
 		$data['groupBy'] = 'p.id';
 		$data['limit'] = $page * $limit;
 		$product = $this->selectFromJoin($data);
-		// lq();
+		lq(); 
 		$total_result = $this->countRecords($data);
 		$pages = ceil($total_result / 20);
 		if ($page < $pages) {
