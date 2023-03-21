@@ -288,6 +288,8 @@ class Import extends Vendor_Controller
     	 $product = $this->this_model->getProductOfCategory($this->input->post());
          foreach ($product as $key => $value) {
              $res = $this->this_model->getVarientOfProduct($value->id,$this->branch_id);
+            echo $this->db->last_query();
+             dd($res);
              $product[$key]->productVarient = $res;
             }
         dd($product);
