@@ -397,15 +397,16 @@ class Import_model extends My_model {
     } 
 
     public function getProductOfCategory($postData){
-        $data['table'] = TABLE_CATEGORY;
-        $data['select'] = ['*'];
-        $data['where'] = [
-            'name'=>$postData['catgory_name'],
-            'status!='=>'9'
-        ];
-        $result = $this->selectRecords($data);
+        // $data['table'] = TABLE_CATEGORY;
+        // $data['select'] = ['*'];
+        // $data['where'] = [
+        //     'name'=>$postData['catgory_name'],
+        //     'status!='=>'9'
+        // ];
+        // $result = $this->selectRecords($data);
         // echo $this->db->last_query();die;
-        $category_id = $result[0]->id;
+        // $category_id = $result[0]->id;
+        $category_id = $postData['catgeory'];
         unset($data);
         $data['table'] = TABLE_PRODUCT;
         $data['select'] = ['id','name as product_name','display_priority'];

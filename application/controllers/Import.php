@@ -283,18 +283,15 @@ class Import extends Vendor_Controller
 
     public function genrate_excel_for_update(){
     	 $category_name = $this->input->post('catgory_name');
-        dd($this->input->post());die;
+        // print_r($category_name);die;
     	 // $category_name = ['category_name'=>"Grocery"];
     	 $product = $this->this_model->getProductOfCategory($this->input->post());
-         lq();
          foreach ($product as $key => $value) {
              $res = $this->this_model->getVarientOfProduct($value->id,$this->branch_id);
-            echo $this->db->last_query();
-             dd($res);
              $product[$key]->productVarient = $res;
             }
-        dd($product);
-            
+            dd($product);
+
 
     	 // echo "<pre>" ;
     	 // print_r($product);die;
