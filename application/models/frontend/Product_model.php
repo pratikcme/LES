@@ -384,7 +384,7 @@ class Product_model extends My_model
 
 		$limit = 20;
 		if (!isset($data['order'])) {
-			$data['order'] = 'dp ASC,pw.quantity DESC';
+			$data['order'] = 'dp ASC';
 		}
 	
 		$data['where']['p.branch_id'] = $this->branch_id;
