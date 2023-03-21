@@ -458,7 +458,7 @@
           </button>
         </div>
         <div class="modal-body">
-        <div class="rating-box">
+        <div class="rating-box d-none">
             <h2>Rating</h2>
               <div class="stars">
                 <i class="fas fa-star"></i>
@@ -467,7 +467,7 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </div>
-            </div>
+        </div>
 
           <div class="review-text-box">
             <h2>Comments</h2>
