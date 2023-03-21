@@ -85,7 +85,7 @@
           <?php } ?>
           <h1><?=$productDetail[0]->name?></h1>
           <div class="feature-detail">
-              <div class="card-icon mb-2">
+              <div class="card-icon mb-2 d-none">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -183,7 +183,7 @@
   </div>
 
    <!-- =================review-box================== -->
-<section class="p-50 review-box">
+<section class="p-50 review-box d-none">
     <div class="container">
         <div class="my-review-wrapper">
             
@@ -448,7 +448,7 @@
 
 <!-- -----write-review-modal---- -->
 <!-- Modal -->  
-  <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade my-review-modal d-none" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -458,7 +458,7 @@
           </button>
         </div>
         <div class="modal-body">
-        <div class="rating-box d-none">
+        <div class="rating-box">
             <h2>Rating</h2>
               <div class="stars">
                 <i class="fas fa-star"></i>
@@ -467,7 +467,7 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </div>
-        </div>
+            </div>
 
           <div class="review-text-box">
             <h2>Comments</h2>
