@@ -374,14 +374,14 @@
           <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
             <div class="feat-img"> <img class="lazy" data-src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>"> </div>
           </a>
-          <div class="feature-detail d-none">
-              <div class="card-icon">
+          <div class="feature-detail">
+              <div class="card-icon d-none">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-          </div>
+              </div>
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> 
             </a>
