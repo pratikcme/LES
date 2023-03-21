@@ -290,9 +290,6 @@ class Import extends Vendor_Controller
              $res = $this->this_model->getVarientOfProduct($value->id,$this->branch_id);
              $product[$key]->productVarient = $res;
             }
-            dd($product);
-
-
     	 // echo "<pre>" ;
     	 // print_r($product);die;
 
