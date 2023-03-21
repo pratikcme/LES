@@ -391,7 +391,7 @@ class Product_model extends My_model
 		$data['where']['pw.status !='] = '9';
 		$data['where']['p.status'] = '1';
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*','p.*',"IF(p.display_priority IS NULL, 'N/A', p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*','p.*',"IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
@@ -399,7 +399,7 @@ class Product_model extends My_model
 		$data['groupBy'] = 'p.id';
 		$data['limit'] = $page * $limit;
 		$product = $this->selectFromJoin($data);
-		lq(); 
+	
 		$total_result = $this->countRecords($data);
 		$pages = ceil($total_result / 20);
 		if ($page < $pages) {
