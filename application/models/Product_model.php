@@ -56,6 +56,7 @@ class product_model extends My_model
                         'about' => $about,
                         'content' => $content,
                         'gst' => $gst,
+                        'display_priority'    => ($_POST['display_priority'] != '') ? $_POST['display_priority'] : NULL,
                         'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                     );
                     $this->db->where('branch_id', $branch_id);
