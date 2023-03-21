@@ -1,6 +1,6 @@
 <?php
 
-$lang['Cancle'] = 'إلغاء';
+$lang['Cancel'] = 'إلغاء';
 $lang['login'] = 'تسجيل الدخول';
 $lang['About Us'] = 'معلومات عنا';
 $lang['Privacy Policy'] = 'سياسة الخصوصية';

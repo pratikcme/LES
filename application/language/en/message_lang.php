@@ -1,5 +1,5 @@
 <?php
-$lang['Cancle'] = 'Cancle';
+$lang['Cancel'] = 'Cancel';
 $lang['login'] = 'Login';
 $lang['About Us'] = 'About Us';
 $lang['Privacy Policy'] = 'Privacy Policy';

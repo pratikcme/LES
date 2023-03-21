@@ -459,7 +459,7 @@
                               <button type="submit" id="addAddress"  class="btn save-btn"><?=$this->lang->line('Save')?></button>
                            </div>
                            <div class="col-md-6 col-sm-6">
-                              <button class="btn cancel-btn"><?=$this->lang->line('Cancle')?></button>
+                              <button class="btn cancel-btn"><?=$this->lang->line('Cancel')?></button>
                            </div>
                         </div>
                      </form>
