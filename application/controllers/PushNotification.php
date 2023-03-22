@@ -46,13 +46,13 @@ class PushNotification extends Admin_Controller{
         $result = $this->this_model->getNotificationKey();
         // dd($iosDevice); 
 
-        if(!empty($iosDevice)){
-            foreach ($iosDevice as $key => $value) {
-                $deviceToken['device_id'] = $value;
-                $msg['message'] = $this->input->post('message');
-                $response =  $this->utility->PushNotification($deviceToken, $msg, $status=NULL, $unread=NULL, $key=NULL, $result,$this->input->post(),$vendor_id);
-            } 
-        }
+        // if(!empty($iosDevice)){
+        //     foreach ($iosDevice as $key => $value) {
+        //         $deviceToken['device_id'] = $value;
+        //         $msg['message'] = $this->input->post('message');
+        //         $response =  $this->utility->PushNotification($deviceToken, $msg, $status=NULL, $unread=NULL, $key=NULL, $result,$this->input->post(),$vendor_id);
+        //     } 
+        // }
         // dd($androidDevice);
         if(!empty($androidDevice)){
             // $message['message'] = $this->input->post('message');
