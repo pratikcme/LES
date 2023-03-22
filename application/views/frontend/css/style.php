@@ -509,28 +509,49 @@ elseif($_SERVER['SERVER_NAME']=='yashindustries.co' ||  $_SERVER['SERVER_NAME'] 
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#fff";
   }
-  else{
- 
-  $primaryColor= "#113A8E";
-  $secondaryColor= "#113A8E";
-  $lightColor=  "#fff";
-  $borderColor= "#113A8E";
-  $borderColor2= "#113A8E";
-  $lightPrimary= "#ff774b";
-  $headerBackground = "#fff";
-  $navbarColor = "#113A8E";
-  $cartBtnBackground= "#113A8E";
-  $cartBtnColor="#fff";
-  $loginBtnBackground="#113A8E"; 
-  $loginBtnColor="#fff";
-  $loginBtnborder="#113A8E";
-  $logoWidth = "120px";
-  $abtImgWidth= "350px";
-  $hvrClr= "#113a8e";
-  $cartNum=  "#000";
-  $categoryColor = "#000";
-  $categoryActiveBg = "#000";
-  $categoryActiveColor = "#fff";
+  elseif($_SERVER['SERVER_NAME']=='fashion.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.fashion.launchestore.com'){
+    
+    $primaryColor= "#37bdbd";
+    $secondaryColor= "#37bdbd";
+    $lightColor=  "#fff";
+    $borderColor= "#37bdbd";
+    $borderColor2= "#37bdbd";
+    $lightPrimary= "#ff774b";
+    $headerBackground = "#fff";
+    $navbarColor = "#37bdbd";
+    $cartBtnBackground= "#37bdbd";
+    $cartBtnColor="#fff";
+    $loginBtnBackground="#37bdbd"; 
+    $loginBtnColor="#fff";
+    $loginBtnborder="#37bdbd";
+    $logoWidth = "120px";
+    $abtImgWidth= "350px";
+    $hvrClr= "#37bdbd";
+    $cartNum=  "#000";
+    $categoryColor = "#000";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#fff";
+    }else{
+    $primaryColor= "#113A8E";
+    $secondaryColor= "#113A8E";
+    $lightColor=  "#fff";
+    $borderColor= "#113A8E";
+    $borderColor2= "#113A8E";
+    $lightPrimary= "#ff774b";
+    $headerBackground = "#fff";
+    $navbarColor = "#113A8E";
+    $cartBtnBackground= "#113A8E";
+    $cartBtnColor="#fff";
+    $loginBtnBackground="#113A8E"; 
+    $loginBtnColor="#fff";
+    $loginBtnborder="#113A8E";
+    $logoWidth = "120px";
+    $abtImgWidth= "350px";
+    $hvrClr= "#113a8e";
+    $cartNum=  "#000";
+    $categoryColor = "#000";
+    $categoryActiveBg = "#000";
+    $categoryActiveColor = "#fff";
 }
 
 ?>
