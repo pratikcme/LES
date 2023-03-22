@@ -35,7 +35,7 @@
                 ?>
                             <?php
                 if (isset($_SESSION['My_cart']) && $_SESSION['My_cart'] != '') {
-
+                    
                   foreach ($_SESSION['My_cart'] as $key => $value) {
                     $CI->load->model('frontend/product_model');
                     $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
@@ -60,8 +60,13 @@
                                     <div class="cart-item">
                                         <a
                                             href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value["product_id"]) . '/' . $this->utility->safe_b64encode($value["product_weight_id"]) ?>">
-                                            <div class="cart-img-wrap"> <img
-                                                    src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $product[0]->image ?>">
+                                            <div class="cart-img-wrap"> 
+                                            <?php if(isset($value['food_type']) && $value['food_type'] == '1'){ ?>
+                                                <img src="<?=base_url().'public/frontend/assets/images/vage-icon.svg'?>" alt="veg-icon" class="veg-icon">
+                                            <?php }else if(isset($value['food_type']) && $value['food_type'] == '2'){ ?>
+                                                <img src="<?=base_url().'public/frontend/assets/images/non-vage-icon.svg'?>" alt="nonveg-icon" class="nonveg-icon">
+                                            <?php } ?>
+                                                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $product[0]->image ?>">
                                             </div>
                                         </a>
                                         <a
@@ -201,9 +206,12 @@
                                         <a
                                             href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                                             <div class="cart-img-wrap">
-
-                                                <img
-                                                    src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>">
+                                            <?php if(isset($value->food_type) && $value->food_type == '1'){ ?>
+                                                <img src="<?=base_url().'public/frontend/assets/images/vage-icon.svg'?>" alt="veg-icon" class="veg-icon">
+                                            <?php }else if(isset($value->food_type) && $value->food_type == '2'){ ?>
+                                                <img src="<?=base_url().'public/frontend/assets/images/non-vage-icon.svg'?>" alt="nonveg-icon" class="nonveg-icon">
+                                            <?php } ?>
+                                                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>">
                                             </div>
                                         </a>
                                         <a

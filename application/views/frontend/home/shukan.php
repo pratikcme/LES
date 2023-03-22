@@ -246,7 +246,14 @@
             <div class="wishlist-icon" style="display: none" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"> <i class="far fa-heart <?=$class?>"></i> </div>
           </div>
           <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
-            <div class="feat-img"> <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>"> </div>
+            <div class="feat-img"> 
+            <?php if(isset($value->food_type) && $value->food_type == '1'){ ?>
+                <img src="<?=base_url().'public/frontend/assets/images/vage-icon.svg'?>" alt="veg-icon" class="veg-icon">
+              <?php }else if(isset($value->food_type) && $value->food_type == '2'){ ?>
+                <img src="<?=base_url().'public/frontend/assets/images/non-vage-icon.svg'?>" alt="nonveg-icon" class="nonveg-icon">
+              <?php } ?>
+              <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>"> 
+            </div>
           </a>
           <div class="feature-detail">
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
@@ -326,7 +333,14 @@
             <div class="wishlist-icon" style="display: none" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"> <i class="far fa-heart <?=$class?>"></i> </div>
           </div>
           <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
-            <div class="feat-img"> <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>"> </div>
+            <div class="feat-img"> 
+              <?php if(isset($value->food_type) && $value->food_type == '1'){ ?>
+                <img src="<?=base_url().'public/frontend/assets/images/vage-icon.svg'?>" alt="veg-icon" class="veg-icon">
+              <?php }else if(isset($value->food_type) && $value->food_type == '2'){ ?>
+                <img src="<?=base_url().'public/frontend/assets/images/non-vage-icon.svg'?>" alt="nonveg-icon" class="nonveg-icon">
+              <?php } ?>
+              <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>"> 
+            </div>
           </a>
           <div class="feature-detail">
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">

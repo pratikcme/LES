@@ -35,19 +35,6 @@
             </div>
           </div>
         </div> -->
-        <div class="form-group">
-          <label for="approved" class="col-sm-2 col-form-label pl-0">Store type</label>
-          <div class="row">
-            <div class="col-sm-9">
-             <select class="form-control" name="store_type">
-              <option value="">Select Store Type</option>
-              <?php foreach($getStore as $key => $value){?>
-                <option value="<?=$value->name?>" <?=($value->name == $editData[0]->store_type) ? "SELECTED" : "" ?>><?=$value->name?></option>
-              <?php } ?>
-            </select>
-          </div>
-        </div>
-      </div>
        <!--  <div class="form-group">
           <label for="webTitle" class="col-sm-2 col-form-label pl-0">Web Title</label>
           <div class="row">

@@ -304,7 +304,7 @@ $vendor_id = $this->session->userdata('id');
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <?php } ?>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB-nS3x_SS2JjPSrbq772nwf4QEHRSK1y4" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBW43KgTNs_Kusuvbian6KYGi_QzXOLS4w" type="text/javascript"></script>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->

@@ -39,6 +39,7 @@ define('TABLE_ORDER_PROMOCODE', 'order_promocode');
 define('TABLE_SHOPPING_BASED_DISCOUNT', 'amount_based_discount');
 define('TABLE_DEVICE', 'device');
 define('TABLE_STORE_TYPE', 'store_type');
+define('TABLE_FOOD_CATEGORY', 'food_category');
 
 
 // ADMIN CONSTANT

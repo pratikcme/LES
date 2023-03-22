@@ -457,6 +457,7 @@ class Products extends User_Controller
 
 	public function cart_item()
 	{
+		// dd($_SESSION['My_cart']);
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		$my_cart = $this->this_model->getMyCart();

@@ -1,8 +1,26 @@
 <?php
 class product_model extends My_model
 {
+    function __construct(){
+        $this->vendor_id = $this->session->userdata['branch_vendor_id']; // branch table fk vendor_id
+    }
     
-    
+    public function checkStoretype(){
+        $data['table'] = ADMIN;
+        $data['where'] = ['id'=>$this->vendor_id];
+        $data['select'] = ['*'];
+        $res = $this->selectRecords($data);
+        unset($data);
+        if(!empty($res)){
+            $store_type_id = $res[0]->store_type;
+            $data['table'] = TABLE_FOOD_CATEGORY;
+            $data['where'] = ['store_type_id'=>$store_type_id];
+            $re = $this->countRecords($data);
+            return $re; 
+        }
+        return false;
+    }
+
     public function Product_add_update()
     {
         
@@ -57,6 +75,7 @@ class product_model extends My_model
                         'content' => $content,
                         'gst' => $gst,
                         'display_priority'    => ($_POST['display_priority'] != '') ? $_POST['display_priority'] : NULL,
+                        'food_type'=>(isset($_POST['food_type'])) ? $_POST['food_type'] : '0', 
                         'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                     );
                     $this->db->where('branch_id', $branch_id);
@@ -79,6 +98,7 @@ class product_model extends My_model
                         'content' => $content,
                         'gst' => $gst,
                         'display_priority'    => ($_POST['display_priority'] != '') ? $_POST['display_priority'] : NULL,
+                        'food_type'=>(isset($_POST['food_type'])) ? $_POST['food_type'] : '0', 
                         'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                     );
                     // dd($data);

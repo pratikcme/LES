@@ -77,6 +77,7 @@ class Product extends Vendor_Controller
         $data['id'] = $id;
         $data['category_id'] = $category_id;
         $data['tags'] = $tags;
+        $data['isDisplayFoodType'] = $this->this_model->checkStoretype(); //its value 1 means 
         $this->load->view('product_profile',$data);
     }
     
