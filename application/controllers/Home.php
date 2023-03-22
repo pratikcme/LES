@@ -74,7 +74,7 @@ class Home extends User_Controller
 			$data['new_arrival'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 		}
 
-
+		// dd($data['new_arrival']);die;
 		$data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids);
 		$top_selling_core = array();
 		foreach ($data['top_sell_core'] as $key => $value) {
@@ -98,7 +98,6 @@ class Home extends User_Controller
 
 			$top_selling_core[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 		}
-
 		$data['top_sell'] = $top_selling_core;
 
 		@$data['banner'] = $this->this_model->getWebBannerImage();
