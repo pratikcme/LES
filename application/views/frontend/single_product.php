@@ -183,7 +183,7 @@
   </div>
 
    <!-- =================review-box================== -->
-<section class="p-50 review-box d-none">
+<section class="p-50 review-box d-none ">
     <div class="container">
         <div class="my-review-wrapper">
             
