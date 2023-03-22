@@ -751,6 +751,7 @@ background-color: transparent;
 display: flex;
 align-items: center;
 justify-content: center;
+position: relative;
 }
  
 .cart-view-wrap .cart-view-content ul li .cart-img-wrap img

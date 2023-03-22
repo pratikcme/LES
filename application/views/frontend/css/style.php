@@ -182,29 +182,7 @@ elseif($_SERVER['SERVER_NAME']=='bigbucket.launchestore.com'|| $_SERVER['SERVER_
     $categoryColor = "#fff";
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#000";
-
-
-
- // $primaryColor= "#113A8E";
- //  $secondaryColor= "#113A8E";
- //  $lightColor=  "#fff";
- //  $borderColor= "#113A8E";
- //  $borderColor2= "#113A8E";
- //  $lightPrimary= "#ff774b";
- //  $headerBackground = "#fff";
- //  $navbarColor = "#113A8E";
- //  $cartBtnBackground= "#113A8E";
- //  $cartBtnColor="#fff";
- //  $loginBtnBackground="#113A8E"; 
- //  $loginBtnColor="#fff";
- //  $loginBtnborder="#113A8E";
- //  $logoWidth = "75px";
- //  $abtImgWidth= "350px";
- //  $hvrClr= "#fff";
- //  $cartNum=  "#000";
 }
-
-
 elseif($_SERVER['SERVER_NAME']=='shukantea.com' || $_SERVER['SERVER_NAME']=='www.shukantea.com'){
     $primaryColor= "#000";
     $secondaryColor= "#9F0C10";
@@ -249,14 +227,6 @@ elseif($_SERVER['SERVER_NAME']=='magnus.launchestore.com'){
     $categoryActiveColor = "#000";
 
 
-// $primaryColor= "#000";
-// $secondaryColor= "#9F0C10";
-// $lightPrimary= "#ff774b";
-// $lightColor= "#fff";
-// $borderColor= "#006598";
-// $borderColor= "#006598";
-// $borderColor2= "#9F0C10"; 
-
 }elseif($_SERVER['SERVER_NAME']=='laxmiraj.launchestore.com' || $_SERVER['SERVER_NAME'] == 'laxmirajdryfruit.com' || $_SERVER['SERVER_NAME'] == 'www.laxmirajdryfruit.com'){
     $primaryColor= "#004A99";
     $secondaryColor= "#002042";
@@ -277,21 +247,7 @@ elseif($_SERVER['SERVER_NAME']=='magnus.launchestore.com'){
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#004A99";
 
-
-// $primaryColor= "#000";
-// $secondaryColor= "#9F0C10";
-// $lightPrimary= "#ff774b";
-// $lightColor= "#fff";
-// $borderColor= "#006598";
-// $borderColor= "#006598";
-// $borderColor2= "#9F0C10"; 
- 
-
-}
-
-//#2ebc41
-//#0f8b1f
-elseif($_SERVER['SERVER_NAME']=='ogworld.launchestore.com'){
+}elseif($_SERVER['SERVER_NAME']=='ogworld.launchestore.com'){
 
     $primaryColor= "#2ebc41";
     $secondaryColor= "#000";
@@ -358,19 +314,7 @@ elseif($_SERVER['SERVER_NAME']=='iwingzy.launchestore.com'){
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#004A99";
 
-
-// $primaryColor= "#000";
-// $secondaryColor= "#9F0C10";
-// $lightPrimary= "#ff774b";
-// $lightColor= "#fff";
-// $borderColor= "#006598";
-// $borderColor= "#006598";
-// $borderColor2= "#9F0C10"; 
-
-}
-
-
-elseif($_SERVER['SERVER_NAME']=='www.iwingzy.in' || $_SERVER['SERVER_NAME']=='iwingzy.in'){
+}elseif($_SERVER['SERVER_NAME']=='www.iwingzy.in' || $_SERVER['SERVER_NAME']=='iwingzy.in'){
     $primaryColor= "#ed1c24";
     $secondaryColor= "#000";
     $lightPrimary= "#ff774b";
@@ -414,8 +358,6 @@ elseif($_SERVER['SERVER_NAME']=='www.iwingzy.in' || $_SERVER['SERVER_NAME']=='iw
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#004A99";
 }
-
-
 elseif($_SERVER['SERVER_NAME']=='www.dpdecor.launchestore.com'){
     $primaryColor= "#16aa9c";
     $secondaryColor= "#000";
@@ -437,10 +379,6 @@ elseif($_SERVER['SERVER_NAME']=='www.dpdecor.launchestore.com'){
     $categoryActiveColor = "#C41E49";
 
 }
-
-
-
-
 elseif($_SERVER['SERVER_NAME']=='ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com'){
  
     $primaryColor= "#E50914";
@@ -531,7 +469,54 @@ elseif($_SERVER['SERVER_NAME']=='yashindustries.co' ||  $_SERVER['SERVER_NAME'] 
     $categoryColor = "#000";
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#fff";
-    }else{
+}
+elseif($_SERVER['SERVER_NAME']=='furniture.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.furniture.launchestore.com'){
+    
+    $primaryColor= "#6F4436";
+    $secondaryColor= "#a1693d";
+    $lightColor=  "#fff";
+    $borderColor= "#6F4436";
+    $borderColor2= "#6F4436";
+    $lightPrimary= "#ff774b";
+    $headerBackground = "#fff";
+    $navbarColor = "#6F4436";
+    $cartBtnBackground= "#6F4436";
+    $cartBtnColor="#fff";
+    $loginBtnBackground="#6F4436"; 
+    $loginBtnColor="#fff";
+    $loginBtnborder="#6F4436";
+    $logoWidth = "120px";
+    $abtImgWidth= "350px";
+    $hvrClr= "#113a8e";
+    $cartNum=  "#000";
+    $categoryColor = "#000";
+    $categoryActiveBg = "#000";
+    $categoryActiveColor = "#fff";
+}
+elseif($_SERVER['SERVER_NAME']=='jewellery.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.jewellery.launchestore.com'){
+    
+    $primaryColor= "#c99410";
+    $secondaryColor= "#000000";
+    $lightColor=  "#fff";
+    $borderColor= "#c99410";
+    $borderColor2= "#c99410";
+    $lightPrimary= "#ff774b";
+    $headerBackground = "#fff";
+    $navbarColor = "#113A8E";
+    $cartBtnBackground= "#c99410";
+    $cartBtnColor="#fff";
+    $loginBtnBackground="#6F4436"; 
+    $loginBtnColor="#fff";
+    $loginBtnborder="#c99410";
+    $logoWidth = "120px";
+    $abtImgWidth= "350px";
+    $hvrClr= "#113a8e";
+    $cartNum=  "#000";
+    $categoryColor = "#000";
+    $categoryActiveBg = "#000";
+    $categoryActiveColor = "#fff";
+}
+else{
     $primaryColor= "#113A8E";
     $secondaryColor= "#113A8E";
     $lightColor=  "#fff";
@@ -1455,6 +1440,7 @@ background-color: #e1eaf4;
 display: flex;
 align-items: center;
 justify-content: center;
+position: relative;
 }
  
 .cart-view-wrap .cart-view-content ul li .cart-img-wrap img
