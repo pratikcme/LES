@@ -393,7 +393,7 @@ class Utility
         } else {
             if ($key == NULL) {
                 // $headers = array(
-                //     'Authorization: key= AAAAIhCnTt0:APA91bEAjiw53KeCGPM4Ns6lfvvBlihTd5FTrWo3_yW9ozu0iM8vs1MBErm1g0hOel4UXdk9zCtsX2l0YCa99XCystgrOsjyQ2lvZWcimH0FcNgNqBsKWWPEiniN9M2z5dBIhwaIizPH',
+                //     'Authorization: key= AAAALq1yxcI:APA91bGStraJWPxR8rYRHngek2KHiTFHzMAdhB45NcnBXpBvU0KrABqUf1MYjuaEOH5-R5TA5pBnrsWS9C4jr0I834F0wWcgVM8wOvAZPK9ejdu4fLj5E45LifTUcRBom0ScA44KFVu3',
                 //     'Content-Type: application/json'
                 // );
                 $headers = array(
@@ -419,7 +419,7 @@ class Utility
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_json);
         $result = curl_exec($ch);
         curl_close($ch);
-        print_r($result);exit;
+        // print_r($result);exit;
         return $result;
     }
 
@@ -487,12 +487,7 @@ class Utility
     }
 
     public function  PushNotification($deviceIds, $msg, $status, $unread, $key, $result,$postData=[],$vendor_id){
-        // $CI = &get_instance();
-        // $CI->load->model('common_model');        
-        // $result = $CI->common_model->getNotificationKey();
-        // if(empty($result)){
-        //     return true;
-        // }
+
         $key_id = $result[0]->key_id;
         $team_id = $result[0]->team_id;
         $user_bandle_id = $result[0]->user_bandle_id;
@@ -532,14 +527,7 @@ class Utility
         $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
         // $token = '754618CF3FB271923EAF0EBB3078C5FE0E75C362D69AC5C9348926FF7E9DEF2F';              # <- Device Token
         $token = $deviceId;              # <- Device Token
-
-        // $message = '{
-        //     "aps":{
-        //             "alert":"' . $msg . '",
-        //             "sound":"default","status":"' . $status . '"
-        //         }
-        // }';
-
+        
         $message = array(
             'aps' => array(
                 'alert' => array(
@@ -596,7 +584,67 @@ class Utility
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
         $status = curl_getinfo($http2ch, CURLINFO_HTTP_CODE);
-        // return true;
+        return true;
+    }
+
+    public function pushNotificationAndroid($androidDeviceToken,$postData,$result,$vendor_id){
+        // Your FCM project API key
+        $apiKey = $result[0]->user_firebase_key;;
+
+        // The device registration token(s) you want to send the notification to
+        $deviceTokens = $androidDeviceToken;
+
+        // The notification message
+        $message = [
+            'title' => $postData['title'],
+            'body' => $postData['message'],
+            // 'icon' => '',
+            'priority' => 'high',
+            // 'badge' => '',
+            'notify' => 'notification'
+        ];
+
+        // The data payload
+        $data = [
+            'product_id' => $postData['product_id'],
+            'category_id' => $postData['category_id'],
+            'vendor_id' => $vendor_id,
+            'branch_id' => $postData['branch']
+        ];
+
+        // The request body
+        $body = [
+            'registration_ids' => $deviceTokens,
+            'notification' => $message,
+            'data' => $data
+        ];
+        // dd($body);
+        // The request headers
+        $headers = [
+            'Authorization: key=' . $apiKey,
+            'Content-Type: application/json'
+        ];
+        // dd($headers);
+        // Send the notification request to FCM using cURL
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        // Check the response from FCM
+        // if (!$response) {
+        //     echo 'Error: Failed to send notification.';
+        // } else {
+        //     $responseData = json_decode($response, true);
+        //     $successCount = $responseData['success'];
+        //     echo "Successfully sent notification to $successCount devices.";
+        //     return true;
+        // }
+        return true;
     }
     
 }
