@@ -516,6 +516,7 @@ public  $order_column_offer_product = array("p.product_name","pw.quantity","pw.d
         $data['update']['discount_per'] = $discount;
         $data['update']['discount_price'] = $discount_price;
         $data['where'] = ['id'=>$v_id];
+        dd($data);die;
         return $this->updateRecords($data);
     }
     public function test(){
