@@ -5576,7 +5576,31 @@ z-index:-5;
 .stars i.active {
         color: #ffb851;
         /* transform: scale(1.2); */
-    }
+}
+
+
+/* -----feature-product-new-icon-----    */
+.feat-img{
+    position: relative;
+
+}
+
+.veg-icon{
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    z-index: 10;
+    width:20px !important;
+    height:20px !important;
+}
+.nonveg-icon{
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    z-index: 2;
+    width: 20px !important;
+    height:20px !important;
+}
 
 @media only screen and (min-width:1200px) and (max-width: 1399px) {  
 }

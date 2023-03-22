@@ -485,7 +485,31 @@ elseif($_SERVER['SERVER_NAME']=='yashindustries.co' ||  $_SERVER['SERVER_NAME'] 
     $categoryColor = "#000";
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#fff";
-  }else{
+  }
+  elseif($_SERVER['SERVER_NAME']=='beauty.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.beauty.launchestore.com'){
+ 
+    $primaryColor= "#d34ba3";
+    $secondaryColor= "#d34ba3";
+    $lightColor=  "#fff";
+    $borderColor= "#d34ba3";
+    $borderColor2= "#d34ba3";
+    $lightPrimary= "#ff774b";
+    $headerBackground = "#fff";
+    $navbarColor = "#d34ba3";
+    $cartBtnBackground= "#d34ba3";
+    $cartBtnColor="#fff";
+    $loginBtnBackground="#d34ba3"; 
+    $loginBtnColor="#fff";
+    $loginBtnborder="#d34ba3";
+    $logoWidth = "120px";
+    $abtImgWidth= "350px";
+    $hvrClr= "#d34ba3";
+    $cartNum=  "#000";
+    $categoryColor = "#000";
+    $categoryActiveBg = "#fff";
+    $categoryActiveColor = "#fff";
+  }
+  else{
  
   $primaryColor= "#113A8E";
   $secondaryColor= "#113A8E";
@@ -7161,6 +7185,29 @@ width: 374px;
         /* transform: scale(1.2); */
     }
 
+
+/* -----feature-product-new-icon-----    */
+.feat-img{
+    position: relative;
+
+}
+
+.veg-icon{
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    z-index: 10;
+    width:20px !important;
+    height:20px !important;
+}
+.nonveg-icon{
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    z-index: 2;
+    width: 20px !important;
+    height:20px !important;
+}
 
 @media only screen and (min-width:1200px) and (max-width: 1399px) {  
 }
