@@ -419,7 +419,7 @@ class Utility
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_json);
         $result = curl_exec($ch);
         curl_close($ch);
-        // print_r($result);exit;
+        print_r($result);exit;
         return $result;
     }
 

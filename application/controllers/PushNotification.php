@@ -54,15 +54,16 @@ class PushNotification extends Admin_Controller{
             } 
         }
         // dd($androidDevice);
-        // if(!empty($androidDevice)){
-        //     // $message['message'] = $this->input->post('message');
-        //     foreach ($androidDevice as $key => $value) {
-        //         $deviceToken['device_id'] = $value;
-        //         $message['message'] = $this->input->post('message');
+        if(!empty($androidDevice)){
+            // $message['message'] = $this->input->post('message');
+            foreach ($androidDevice as $key => $value) {
+                $deviceToken['device_id'] = $value;
+                $message['message'] = $this->input->post('message');
                 
-        //         $respon = $this->utility->notificationForAndroid($deviceToken, $message, $jsonDat='', $type=NULL, $unread=NULL, $key=NULL, $result);
-        //         dd($respon );
-        // }
+                $respon = $this->utility->notificationForAndroid($deviceToken, $message, $jsonDat='', $type=NULL, $unread=NULL, $key=NULL, $result);
+                dd($respon );
+        }
+     }
         // $androidDevice = ['dfd','fsa'];
             // $deviceToken['device_id'] = $androidDevice;
             // $body = [
