@@ -103,7 +103,7 @@
                    <select class="form-control" name="store_type">
                     <option value="">Select Store Type</option>
                     <?php foreach($getStore as $key => $value){?>
-                      <option value="<?=$value->name?>"><?=$value->name?></option>
+                      <option value="<?=$value->id?>"><?=$value->name?></option>
                       <?php } ?>
                   </select>
                 </div>
