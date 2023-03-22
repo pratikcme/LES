@@ -2,7 +2,7 @@
 <footer class="site-footer">
     <div class="text-center">
         <?php $current_year = date('Y'); ?>
-        Copyright - <?php echo $current_year; ?> | Grocery by CMExpertise Infotech Pvt Ltd
+        Copyright - <?php echo $current_year; ?> | LaunchEstore by CMExpertise Infotech Pvt Ltd
     </div>
     <!--  <a href="#" class="go-top">
          <i class="fa fa-angle-up"></i>
