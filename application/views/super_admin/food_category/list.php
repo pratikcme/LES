@@ -11,7 +11,7 @@
       <div class="row">
         <form id="Form" method="POST" action="<?=$FormAction?>" class="new-cust-form basic-form" enctype='multipart/form-data'>
           <div class="invoice-title border-grey">
-            <h3 class="mb-0"><span><i class="far fa-file-alt"></i></span> Select Food Category</h3>
+            <h3 class="mb-0"><span><i class="far fa-file-alt"></i></span> Select Store Type For Food Category</h3>
           </div>
 
             <div class="row mt-5">
