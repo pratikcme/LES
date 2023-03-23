@@ -83,7 +83,7 @@
         </li>
     </ul>
 </li>
-<li class="sub-menu" style="display: none;">
+<!-- <li class="sub-menu" style="display: none;">
     <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'customer') { ?> active <?php } ?>">
         <i class="fa fa-user"></i>
         <span>Customer</span>
@@ -100,7 +100,7 @@
                 href="<?php echo base_url() . 'customer/customer_group_list/'; ?>">Group </a>
         </li>
     </ul>
-</li>
+</li> -->
 <!-- <li>
     <a class="<?php if ($this->uri->segment(1) == 'delivery') { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
@@ -115,13 +115,31 @@
         </li>
     </ul>
 </li> -->
-<li>
-    <a class="<?php if ($this->uri->segment(1) == 'delivery' && $this->uri->segment(2) == 'delivery_list') { ?> active <?php } ?>"
-        href="<?php echo base_url() . 'delivery/delivery_list/'; ?>">
-        <i class="fa fa-users"></i>
-        <span>Delivery Staff</span>
+
+<li class="sub-menu">
+    <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'import') { ?> active <?php } ?>">
+        <i class="fa fa-bar-chart-o"></i>
+        <span>Staff</span>
+        <i class="fas fa-chevron-right"></i>
     </a>
+    <ul class="sub">
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'delivery' && $this->uri->segment(2) == 'delivery_list') { ?> active <?php } ?>"
+                href="<?php echo base_url() . 'delivery/delivery_list/'; ?>">
+                <i class="fa fa-users"></i>
+                <span>Delivery Staff</span>
+            </a>
+        </li>
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'staff') { ?> active <?php } ?>"
+                href="<?php echo base_url() . 'staff'; ?>">
+                <i class="fa fa-user"></i>
+                <span>Packaging Staff</span>
+            </a>
+        </li>
+    </ul>
 </li>
+
 <?php if ($this->countCategory == 1) { ?>
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'home_content') { ?> active <?php } ?>" href="#">
@@ -146,13 +164,6 @@
     </ul>
 </li>
 <?php } ?>
-<li>
-    <a class="<?php if ($this->uri->segment(1) == 'staff') { ?> active <?php } ?>"
-        href="<?php echo base_url() . 'staff'; ?>">
-        <i class="fa fa-user"></i>
-        <span>Packaging Staff</span>
-    </a>
-</li>
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'category') { ?> active <?php } ?>"
         href="<?php echo base_url() . 'category/category_list/'; ?>">

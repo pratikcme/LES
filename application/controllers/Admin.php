@@ -688,10 +688,10 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
                     'webLogo' => $webLogo,
                     'favicon_image' => $favicon_image,
                     'img_folder' => $this->input->post('folder_name'),
-                    'android_version' => $this->input->post('android_version'),
-                    'android_isforce' => $this->input->post('android_isforce'),
-                    'ios_version' => $this->input->post('ios_version'),
-                    'ios_isforce' => $this->input->post('ios_isforce'),
+                    // 'android_version' => $this->input->post('android_version'),
+                    // 'android_isforce' => $this->input->post('android_isforce'),
+                    // 'ios_version' => $this->input->post('ios_version'),
+                    // 'ios_isforce' => $this->input->post('ios_isforce'),
                     'display_price_with_gst' => $this->input->post('display_price_with_gst'),
                     'dt_updated' => date('Y-m-d H:i:s')
                 );

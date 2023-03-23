@@ -115,11 +115,7 @@ img#img_preview {
                                     <label for="">Owner Name<span class="required" aria-required="true"> *
                                         </span></label>
                                     <input type="text" name="fname" class="form-control" id="fname" placeholder="Name"
-                                        value="<?php if (isset($app_result['owner_name'])) {
-                                                                                                              echo $app_result['owner_name'];
-                                                                                                            } else {
-                                                                                                              echo $app_result['name'];
-                                                                                                            } ?>">
+                                        value="<?php if (isset($app_result['owner_name'])) { echo $app_result['owner_name']; } else {echo $app_result['name'];} ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Email<span class="required" aria-required="true"> * </span></label>
@@ -304,7 +300,7 @@ img#img_preview {
                         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                             <?php if ($vendor_id == 0) { ?>
                             <div class="customer padding_dropdown margin_btm">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for=""> Android version :<span class="required" aria-required="true"> *
                                         </span></label>
                                     <input type="text" name="android_version" class="form-control" id="android_version"
@@ -329,7 +325,7 @@ img#img_preview {
                                         </span></label>
                                     <input type="text" name="ios_isforce" class="form-control" id="ios_isforce"
                                         placeholder="Ios isforce" value="<?php echo $app_result['ios_isforce']; ?>">
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="">Display price without gst<span class="required" aria-required="true">
                                             * </span></label>

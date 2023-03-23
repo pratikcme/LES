@@ -1,3 +1,11 @@
+<style>
+    .demo a.active i{
+        trandform:rotate(-45deg) !important
+    } 
+    .demo a i{
+        trandform:rotate(0deg) !important
+    } 
+</style>
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'dashboard') { ?> active <?php } ?>" href="<?php echo base_url() . 'admin/dashboard/'; ?>">
         <i class="fa fa-dashboard"></i>
@@ -8,12 +16,6 @@
     <a class="<?php if ($this->uri->segment(1) == 'vendor' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'vendor/vendor_list'; ?>">
         <i class="fa fa-tree"></i>
         <span>Branch Setting</span>
-    </a>
-</li>
-<li>
-    <a class="<?php if ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'user_list') { ?> active <?php } ?>" href="<?php echo base_url() . 'admin/user_list/'; ?>">
-        <i class="fa fa-user"></i>
-        <span>User List</span>
     </a>
 </li>
 <li>
@@ -106,12 +108,6 @@
         </li>
     </ul>
 </li> -->
-<li>
-    <a class="<?php if ($this->uri->segment(2) == 'messagelist' || $this->uri->segment(2) == 'add') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/messagelist'; ?>">
-        <i class="fas fa-comment-dots"></i>
-        <span>User Message List</span>
-    </a>
-</li>
 <li style="display:none">
     <a class="<?php if ($this->uri->segment(1) == 'city' && $this->uri->segment(2) == 'city_list' || $this->uri->segment(2) == 'city_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'city/city_list/'; ?>">
         <i class="fa fa-building"></i>
@@ -163,16 +159,48 @@
     </ul>
 </li>
 
-<li>
-    <a class="<?php if ($this->uri->segment(1) == 'firebase' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'firebase'; ?>">
-        <i class="fa fa-credit-card" aria-hidden="true"></i>
-        <span>Common keys</span>
-    </a>
-</li>
 <li style="display: none">
     <a class="<?php if ($this->uri->segment(1) == 'subscription' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'subscription'; ?>">
         <i class="fa fa-envelope"></i>
         <span>Subcription</span>
+    </a>
+</li>
+<li>
+    <a
+        class="<?php if ($this->uri->segment(2) == 'user_list' || $this->uri->segment(2) == 'messagelist' || $this->uri->segment(1) == 'feedback') { ?> active <?php } ?>"
+        href="#"
+    >
+        <i class="fa fa-cog"></i>
+        <span>Manage Users </span>
+        <i
+            class="fas fa-chevron-right <?=($this->uri->segment(2) == 'user_list' || $this->uri->segment(2) == 'messagelist' || $this->uri->segment(1) == 'feedback') ? 'rotate' : '' ?>"
+        ></i>
+    </a>
+    <ul>
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'user_list') { ?> active <?php } ?>" href="<?php echo base_url() . 'admin/user_list/'; ?>">
+                <i class="fa fa-user"></i>
+                <span>User List</span>
+            </a>
+        </li>
+        <li>
+            <a class="<?php if ($this->uri->segment(2) == 'messagelist' || $this->uri->segment(2) == 'add') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/messagelist'; ?>">
+                <i class="fas fa-comment-dots"></i>
+                <span>User Message List</span>
+            </a>
+        </li>
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'feedback' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'feedback'; ?>">
+                <i class="fa fa-file" aria-hidden="true"></i>
+                <span>Feedback</span>
+            </a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'firebase' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'firebase'; ?>">
+        <i class="fa fa-credit-card" aria-hidden="true"></i>
+        <span>Common keys</span>
     </a>
 </li>
 <li>
@@ -268,12 +296,6 @@
     <a class="<?php if ($this->uri->segment(1) == 'offer') { ?> active <?php } ?>" href="<?php echo base_url() . 'offer'; ?>">
         <i class="fa fa-crosshairs"></i>
         <span>Offer</span>
-    </a>
-</li>
-<li>
-    <a class="<?php if ($this->uri->segment(1) == 'feedback' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'feedback'; ?>">
-        <i class="fa fa-file" aria-hidden="true"></i>
-        <span>Feedback</span>
     </a>
 </li>
 <li>

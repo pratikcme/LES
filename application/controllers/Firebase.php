@@ -13,7 +13,7 @@ class Firebase extends Admin_Controller{
 		$data['init'] = array('FIREBASE.init()');
 		$data['getData'] = $this->this_model->getFireBase();
 		// print_r($data['getData']);die;
-		if($this->input->post()){		
+		if($this->input->post()){	
 				$data = $this->this_model->editUpdateFireBase($this->input->post());
 				if($data){ 
 					$this->utility->setFlashMessage($data[0],$data[1]);
