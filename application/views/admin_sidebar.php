@@ -38,7 +38,7 @@
         <li>
             <a class="<?php if ($this->uri->segment(2) == 'term') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/term'; ?>">
                 <i class="fa fa-file"></i>
-                <span>Term & condition</span>
+                <span>Terms & conditions</span>
             </a>
         </li>
     </ul>
