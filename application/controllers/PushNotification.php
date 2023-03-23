@@ -7,6 +7,7 @@ class PushNotification extends Admin_Controller{
 		parent::__construct();
 		$this->load->model('pushNotification_model','this_model');
         $this->load->model('banners_model','banners_model');
+        $this->url = 'pushNotification';
 	}
 
 	public function index()
@@ -31,7 +32,7 @@ class PushNotification extends Admin_Controller{
     public function callNotification(){
         // dd($this->input->post());
         $vendor_id = $this->session->userdata('vendor_admin_id');
-        $androidDevice = [];
+        $androidDeviceToken = [];
         $iosDevice = [];
         $device =  $this->this_model->getUserDevice();
         
@@ -40,39 +41,25 @@ class PushNotification extends Admin_Controller{
                 array_push($iosDevice,$value->token);
             }
             if($value->type == 'a' || $value->type == 'A'){
-                array_push($androidDevice,$value->device_id);
+                array_push($androidDeviceToken,$value->token);
             }
         }
         $result = $this->this_model->getNotificationKey();
-        // dd($iosDevice); 
-
         if(!empty($iosDevice)){
             foreach ($iosDevice as $key => $value) {
                 $deviceToken['device_id'] = $value;
                 $msg['message'] = $this->input->post('message');
-                $response =  $this->utility->PushNotification($deviceToken, $msg, $status=NULL, $unread=NULL, $key=NULL, $result,$this->input->post(),$vendor_id);
+                $respon =  $this->utility->PushNotification($deviceToken, $msg, $status=NULL, $unread=NULL, $key=NULL, $result,$this->input->post(),$vendor_id);
             } 
         }
-        // dd($androidDevice);
-        // if(!empty($androidDevice)){
-        //     // $message['message'] = $this->input->post('message');
-        //     foreach ($androidDevice as $key => $value) {
-        //         $deviceToken['device_id'] = $value;
-        //         $message['message'] = $this->input->post('message');
-                
-        //         $respon = $this->utility->notificationForAndroid($deviceToken, $message, $jsonDat='', $type=NULL, $unread=NULL, $key=NULL, $result);
-        //         dd($respon );
-        // }
-        // $androidDevice = ['dfd','fsa'];
-            // $deviceToken['device_id'] = $androidDevice;
-            // $body = [
-            //     'title'=>$this->input->post('title'),
-            //     'message'=>$this->input->post('message')
-            // ];
-            // $response = $this->utility->PushNotification($deviceToken, $body, $result,$this->input->post(),$vendor_id);
-            // $response = $this->utility->send_notification($body);
-            // dd($response);
-        // }
+        if(!empty($androidDeviceToken)){
+            $message['message'] = $this->input->post('message');
+            $respon = $this->utility->pushNotificationAndroid($androidDeviceToken,$this->input->post(),$result,$vendor_id);
+        }
+        if($respon){
+            $this->utility->setFlashMessage('success',"Notification send successfully");
+            redirect(base_url().$this->url);
+        }
         
     }
     
