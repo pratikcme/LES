@@ -3,8 +3,8 @@
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<?=base_url().'home'?>">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Return & Refund</li>
+        <li class="breadcrumb-item"><a href="<?=base_url().'home'?>"><?=$this->lang->line('home')?></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('Return & Refund')?></li>
       </ol>
     </nav>
   </div>

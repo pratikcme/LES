@@ -490,7 +490,7 @@ elseif($_SERVER['SERVER_NAME']=='furniture.launchestore.com' ||  $_SERVER['SERVE
     $hvrClr= "#113a8e";
     $cartNum=  "#000";
     $categoryColor = "#000";
-    $categoryActiveBg = "#000";
+    $categoryActiveBg = "#fff";
     $categoryActiveColor = "#fff";
 }
 elseif($_SERVER['SERVER_NAME']=='jewellery.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.jewellery.launchestore.com'){

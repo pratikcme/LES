@@ -5,6 +5,7 @@ $lang['About Us'] = 'About Us';
 $lang['Privacy Policy'] = 'Privacy Policy';
 $lang['Term & Conditions'] = 'Terms & Conditions';
 $lang['Refund & Return / Shipping policy'] = 'Refund & Return / Shipping policy';
+$lang['Return & Refund'] = 'Return & Refund';
 $lang['Contact Us'] = 'Contact Us';
 $lang['SHOP BY CATEGORIES'] = 'SHOP BY CATEGORIES';
 $lang['NEW PRODUCTS'] = 'NEW PRODUCTS';

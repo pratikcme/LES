@@ -6,6 +6,7 @@ $lang['About Us'] = 'معلومات عنا';
 $lang['Privacy Policy'] = 'سياسة الخصوصية';
 $lang['Term & Conditions'] = 'الشروط والأحكام';
 $lang['Refund & Return / Shipping policy'] = 'سياسة الاسترداد والإرجاع / الشحن';
+$lang['Return & Refund'] = 'استرداد عودة';
 $lang['Contact Us'] = 'اتصل بنا';
 $lang['SHOP BY CATEGORIES'] = 'تسوق حسب الفئات';
 $lang['NEW PRODUCTS'] = 'منتجات جديدة';
