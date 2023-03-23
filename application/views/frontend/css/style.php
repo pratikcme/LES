@@ -427,7 +427,7 @@ elseif($_SERVER['SERVER_NAME']=='yashindustries.co' ||  $_SERVER['SERVER_NAME'] 
   elseif($_SERVER['SERVER_NAME']=='beauty.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.beauty.launchestore.com'){
  
     $primaryColor= "#d34ba3";
-    $secondaryColor= "#d34ba3";
+    $secondaryColor= "#000";
     $lightColor=  "#fff";
     $borderColor= "#d34ba3";
     $borderColor2= "#d34ba3";
@@ -450,7 +450,7 @@ elseif($_SERVER['SERVER_NAME']=='yashindustries.co' ||  $_SERVER['SERVER_NAME'] 
   elseif($_SERVER['SERVER_NAME']=='fashion.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.fashion.launchestore.com'){
     
     $primaryColor= "#37bdbd";
-    $secondaryColor= "#37bdbd";
+    $secondaryColor= "#000";
     $lightColor=  "#fff";
     $borderColor= "#37bdbd";
     $borderColor2= "#37bdbd";
@@ -513,7 +513,7 @@ elseif($_SERVER['SERVER_NAME']=='jewellery.launchestore.com' ||  $_SERVER['SERVE
     $hvrClr= "#c99410";
     $cartNum=  "#000";
     $categoryColor = "#000";
-    $categoryActiveBg = "#000";
+    $categoryActiveBg = "#fff";
     $categoryActiveColor = "#fff";
 }
 else{
