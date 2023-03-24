@@ -31,16 +31,16 @@ class Store_type extends Super_Admin_Controller{
 		$this->load->view(SUPER_ADMIN_LAYOUT,$data);
 	}
 
-    public function delete($id){
-        $id = $this->utility->safe_b64decode($id);
-        $res = $this->this_model->delete($id);
-        if($res){
-            $this->utility->setFlashMessage('success','Store type deleted successfully');
-        }else{
-            $this->utility->setFlashMessage('success','Somthing Went Wrong');
-        }
-        redirect(base_url().$this->url);
-    }
+    // public function delete($id){
+    //     $id = $this->utility->safe_b64decode($id);
+    //     $res = $this->this_model->delete($id);
+    //     if($res){
+    //         $this->utility->setFlashMessage('success','Store type deleted successfully');
+    //     }else{
+    //         $this->utility->setFlashMessage('success','Somthing Went Wrong');
+    //     }
+    //     redirect(base_url().$this->url);
+    // }
 
 	public function edit($store_type_id=''){
 		$d_id = $this->utility->safe_b64decode($store_type_id);

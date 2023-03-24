@@ -68,6 +68,13 @@ img#img_preview {
     background-color: #58c9f3;
     border-color: #58c9f3;
 }
+.layout-profile{
+    padding-bottom:50px;
+}
+.layout-profile .btn{
+    margin-top:50px;
+}
+
 </style>
 <!--main content start-->
 <section id="main-content">
@@ -132,13 +139,13 @@ img#img_preview {
                                 <?php
 
                 if ($vendor_id == 0) { ?>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="">Folder Name<span class="required" aria-required="true"> *
                                         </span></label>
                                     <input type="text" name="folder_name" class="form-control" id="folder_name"
                                         placeholder="Folder name" value="<?php echo $app_result['img_folder']; ?>"
                                         maxlength="25" <?= ($app_result['img_folder'] != '') ? "readonly" : "" ?>>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label class="margin_top_label">Favicon Image:<span class="required"
                                             aria-required="true"> * </span></label>
@@ -478,7 +485,7 @@ img#img_preview {
                             <!--  -->
                         </div>
                         <?php if ($vendor_id == 0) { ?>
-                        <div style="text-align: right;padding-right: 50px">
+                        <div class="layout-profile" style="text-align: right;padding-right: 50px">
                             <a href="<?php echo base_url() . 'index.php/admin/dashboard'; ?>" data-toggle='modal'
                                 class=" btn btn-danger btn-s-xs" nam e="cancel">Cancel</a>
                             <input type="submit" name="submit" id="sbtFrm" value="Update"
@@ -487,7 +494,7 @@ img#img_preview {
                         <?php } ?>
                         <?php
             if ($vendor_id != 0) { ?>
-                        <div style="text-align: right;padding-right: 50px">
+                        <div class="layout-profile" style="text-align: right;padding-right: 50px">
                             <a href="<?php echo base_url() . 'index.php/admin/dashboard'; ?>" data-toggle='modal'
                                 class=" btn btn-danger btn-s-xs" nam e="cancel">Cancel</a>
                             <input type="submit" name="submit" id="sbtFrm" value="Update"

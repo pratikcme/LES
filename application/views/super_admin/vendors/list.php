@@ -30,6 +30,7 @@
                           <th>Email</th>
                           <th>Phone Number</th>
                           <th>Server Name</th>
+                          <th>Image Folder</th>
                           <th>Status</th>
                           <th>Action</th>
                       </tr>
@@ -42,6 +43,7 @@
                         <td><?=$value->email?></td>
                         <td><?=$value->phone_no?></td>
                         <td><a class="redirect_to" href="javascript:" data-href="<?=$value->server_name?>"><?=$value->server_name?></a></td>
+                        <td><?=$value->img_folder?></td>
                         <td><a class="badge <?=($value->status =='0')? 'badge-danger':'badge-success'?>" href="<?=base_url().'super_admin/vendors/change_status/'.$this->utility->safe_b64encode($value->id)?>"><?=($value->status=='0') ? 'Inactive' : 'Active' ?></a></td>
                         <td>
                           <a  href="<?=base_url().'super_admin/vendors/edit/'.$this->utility->safe_b64encode($value->id)?>" class="btn btn-danger btn-action"  data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"  style="color: white"></i></a> 

@@ -39,7 +39,7 @@
                         <td><?=$value->name?></td>
                         <td>
                           <a  href="<?=base_url().$this->url.'edit/'.$this->utility->safe_b64encode($value->id)?>" class="btn btn-danger btn-action"  data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"  style="color: white"></i></a> 
-                          <a  href="<?=base_url().$this->url.'delete/'.$this->utility->safe_b64encode($value->id)?>" class="btn btn-danger btn-action"  data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-trash" style="color: white"></i></a> 
+                          <a  href="<?=base_url().$this->url.'delete/'.$this->utility->safe_b64encode($value->id)?>" class="btn btn-danger btn-action d-none"  data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-trash" style="color: white"></i></a> 
                       </tr> 
                        <?php } ?>
                     </tbody>
