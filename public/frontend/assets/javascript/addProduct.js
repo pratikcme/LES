@@ -230,14 +230,14 @@ var ADDPRODUCT = function () {
           }
           if (output.varient_quantity > 25) {
             $('.in-stock').remove();
-            $('<div class="in-stock"><h6>' + stockMessage + '</h6></div>').insertBefore('#product_detail h1');
+            $('<div class="in-stock"><h6>' + stockMessage1 + '</h6></div>').insertBefore('#product_detail h1');
           } else {
             $('.in-stock').remove();
             $style = '';
             if (output.varient_quantity <= 0) {
               $style = 'none';
             }
-            $('<div class="in-stock" style="display:' + $style + '" ><h6>' + stockMessage1 + '</h6></div>').insertBefore('#product_detail h1');
+            $('<div class="in-stock" style="display:' + $style + '" ><h6>' + stockMessage + '</h6></div>').insertBefore('#product_detail h1');
           }
           if (output.cartProductQuantity == 0) {
             var qnt = 1;
@@ -272,7 +272,7 @@ var ADDPRODUCT = function () {
   })
 
 
-  $(document).on('click', '#btnSubmit', function () {
+  $(document).on('click', '#btnSubmit', function (event) {
     event.preventDefault();
     var that = $(this);
     var session_user_id = $(this).data('user_session_id');
