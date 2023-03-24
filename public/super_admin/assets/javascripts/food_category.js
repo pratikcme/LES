@@ -14,7 +14,7 @@ $('#Form').validate({
         form.submit();
     }
 });
-jQuery('#store_type').multiSelect('select_all');
+jQuery('#store_type').multiSelect();
 // $('#store_type').multiSelect({
 //     selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='Search in selection'>",
 //     selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='Search in selected'>",
