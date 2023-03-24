@@ -75,6 +75,8 @@
                                     <?php if($isDisplayFoodType == 1){?>
                                         <div class="form-group">
                                             <label for="veg">Food Type</label> <br>
+                                            <label for="vage" style="postion:relative; top:-5px;">None</label>
+                                            <input type="radio" name="food_type" id="vage" value="0" <?=(isset($result) && $result['food_type'] == '0') ? 'CHECKED' : '' ?>>
                                             <label for="vage" style="postion:relative; top:-5px;">Veg.</label>
                                             <input type="radio" name="food_type" id="vage" value="1" <?=(isset($result) && $result['food_type'] == '1') ? 'CHECKED' : '' ?>>
                                             <label for="non-vage" class="display_priority">Non Veg</label>
