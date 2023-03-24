@@ -1,3 +1,45 @@
+$(document).on('click', '#reviewModel', function () {
+  $('.fa-star').removeClass('active');
+  $('#Comments').val('');
+})
+
+$(document).on('click', '#btnSubmit', function () {
+  var base_url = $('#url').val();
+  let product_id = $('#ratting_product_id').val();
+  let varient_id = $('#ratting_product_varient_id').val();
+  let ratetIndex = 0;
+  $('.fa-star').each(function () {
+    if ($(this).hasClass('active')) {
+      ratetIndex += 1;
+    }
+  })
+  let comment = $('#Comments').val();
+  if (comment == '') {
+    $('#error').html('Please enter your comment');
+    return false;
+  } else if (comment.length > 250) {
+    $('#error').html('Your comment not more than 250 character');
+    return false;
+  }
+  $.ajax({
+    url: base_url + 'products/review',
+    type: 'post',
+    async: false,
+    data: { product_id: product_id, varient_id: varient_id, ratetIndex: ratetIndex, comment: comment },
+    dataType: 'json',
+    success: function (output) {
+      if (output.status == '1') {
+        swal('Thanks For Your Review');
+      }
+      setTimeout(function () {
+        window.location.reload();
+        // $(".close").click();
+      }, 2000);
+
+    }
+  })
+})
+
 function productDetail() {
   $('.slider-for').slick({
     slidesToShow: 1,
@@ -208,6 +250,23 @@ var ADDPRODUCT = function () {
         dataType: 'json',
         success: function (output) {
           // alert(siteCurrency);
+          if (output.productReviewCount == 0) {
+            $('#review-section').addClass('d-none');
+          } else {
+            $('#review-section').removeClass('d-none');
+          }
+          if (output.isVarientExist == 0 || output.countParticularUserReview >= 1) {
+            $('#writeReviewSection').addClass('d-none');
+          } else {
+            $('#writeReviewSection').removeClass('d-none');
+          }
+          $('#verified_ratting').html(output.productReviewCount + ' verified ratings');
+          $('#appendReview').html(output.reviewSection);
+          $('#avg').html(output.avgRatting);
+          $('#starRattingOfVarient').html(output.varientWishStarRatting);
+
+
+
           $('.product-price').html('<p class="notranslate">' + siteCurrency + ' ' + output.discount_price + '<span class="orginal-price notranslate">' + siteCurrency + ' ' + output.product_price + '</span></p>');
           // $('.slider-for').html(output.image_div);
 
@@ -229,15 +288,17 @@ var ADDPRODUCT = function () {
             $('.orginal-price').css('display', '');
           }
           if (output.varient_quantity > 25) {
+            alert(1);
             $('.in-stock').remove();
-            $('<div class="in-stock"><h6>' + stockMessage + '</h6></div>').insertBefore('#product_detail h1');
+            $('<div class="in-stock"><h6>' + stockMessage1 + '</h6></div>').insertBefore('#product_detail h1');
           } else {
+            alert(2);
             $('.in-stock').remove();
             $style = '';
             if (output.varient_quantity <= 0) {
               $style = 'none';
             }
-            $('<div class="in-stock" style="display:' + $style + '" ><h6>' + stockMessage1 + '</h6></div>').insertBefore('#product_detail h1');
+            $('<div class="in-stock" style="display:' + $style + '" ><h6>' + stockMessage + '</h6></div>').insertBefore('#product_detail h1');
           }
           if (output.cartProductQuantity == 0) {
             var qnt = 1;
@@ -254,6 +315,7 @@ var ADDPRODUCT = function () {
           }
           $('#qnt').val(qnt);
           $('#product_weight_id').val(output.product_weight_id);
+          $('#ratting_product_varient_id').val(output.product_variant_id); //update in ratting module  
 
         }
       })
@@ -272,7 +334,7 @@ var ADDPRODUCT = function () {
   })
 
 
-  $(document).on('click', '#btnSubmit', function () {
+  $(document).on('click', '#btnSubmit', function (event) {
     event.preventDefault();
     var that = $(this);
     var session_user_id = $(this).data('user_session_id');
