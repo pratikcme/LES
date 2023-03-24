@@ -20,7 +20,7 @@
                   <label for="store_in"></label>
                   <div class="row">
                     <div class="col-sm-12">
-                     <select multiple='multiple' name="store_type[]" id="store_type" class="form-control" style="position: absolute; left: -9999px;">
+                     <select name="store_type[]" id="store_type" class="form-control" style="position: absolute; left: -9999px;" multiple='multiple'>
                      <?php foreach ($store_type as $key => $value) { ?>
                         <option value="<?=$value->id?>" <?=(in_array($value->id,$foodCategory)) ? 'selected' : '' ?>><?=$value->name?></option>
                         <?php } ?> 
