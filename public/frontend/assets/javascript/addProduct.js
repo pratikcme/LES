@@ -1,7 +1,7 @@
 $(document).on('click', '#reviewModel', function () {
   $('.fa-star').removeClass('active');
   $('#Comments').val('');
-  $('#error').val('');
+  $('#error').html('');
 })
 
 $(document).on('click', '#btnSubmit', function () {
