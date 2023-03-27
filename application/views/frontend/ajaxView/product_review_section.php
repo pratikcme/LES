@@ -7,8 +7,8 @@
               <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
             </div>
             <div class="name-user">
-              <strong> <?=$value->fname .' '.$value->fname?> </strong>
-              <span>@ <?=$value->fname .''.$value->fname?> </span>
+              <strong> <?=$value->fname .' '.$value->lname?> </strong>
+              <span>@ <?=$value->fname .''.$value->lname?> </span>
             </div>
           </div>
           <div class="reviews"> <?php for ($i=1; $i <=$value->ratting ; $i++) { ?> <i class="fas fa-star"></i> <?php } ?> <?php for ($i=1; $i <=(5-$value->ratting) ; $i++) { ?> <i class="fas fa-star blank-ratting"></i> <?php } ?>
