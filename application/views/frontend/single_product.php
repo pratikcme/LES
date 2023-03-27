@@ -188,7 +188,7 @@
   </div>
 
    <!-- =================review-box================== -->
-<section class="p-50 review-box <?=(base_url() != 'http://localhost/stagging/') ? 'd-none' : '' ?> ">
+<section class="p-50 review-box">
     <div class="container">
         <div class="my-review-wrapper">
             
@@ -221,7 +221,7 @@
             </div> 
 
             <!-- ----review-comment-part--- -->
-            <div class="review-comment-wrapper <?=(count($product_review) == 0) ? 'd-none' : '' ?>" id='review-section' >
+            <div class="review-comment-wrapper" id='review-section' >
                 <div class="row" id="appendReview">
                 <?php foreach ($product_review as $key => $value) { ?>
                     <div class="col-xl-6 col-lg-6 col-md-6">
@@ -273,7 +273,7 @@
 
 <!-- -----write-review-modal---- -->
 <!-- Modal -->  
-  <div class="modal fade my-review-modal <?=(base_url() != 'http://localhost/stagging/') ? 'd-none' : '' ?>" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
