@@ -166,9 +166,10 @@ class Products extends User_Controller
 		if (empty($data['productDetail'])) {
 			$data['isAvailable'] = '0';
 		}
-
+		$varient_id = $this->utility->safe_b64decode($this->uri->segment(4));
 		$this->load->model('frontend/home_model', 'home_model');
-		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id);
+		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id,$varient_id);
+		// dd($data['productDetail']);
 		$varient_ids = explode(',', $data['productDetail'][0]->product_variant_id);
 		$w_name = explode(',', $data['productDetail'][0]->wight_name);
 		$w_no = explode(',', $data['productDetail'][0]->wight_no);
@@ -207,14 +208,13 @@ class Products extends User_Controller
 		$data['discount_per'] =  $discount_per;
 		$data['image'] = $image;
 		$data['product_id'] = $id;
-
-		// $data['ForUsersComment'] = $this->this_model->checkOrderItemExist($product_id);
-		// $product_review = $this->this_model->getProductReview($product_id);
-		// foreach ($product_review as $key => $value) {
-		// 	$username =  $this->this_model->getProductReviewUser($value->user_id);			
-		// 	$product_review[$key]->user_name = $username[0]->fname ;
-		// }
-		// $data['product_review'] = $product_review;
+		
+		
+		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id,$varient_id);
+		$product_review = $this->this_model->getProductReview($product_id,$varient_id);
+		$countParticularUserReview = $this->this_model->countParticularUserReview($product_id,$varient_id);
+		$data['countParticularUserReview'] = $countParticularUserReview;
+		$data['product_review'] = $product_review;
 		$category_name = $this->this_model->getNameCateBrand(TABLE_CATEGORY, $data['productDetail'][0]->category_id);
 		$brand_name = $this->this_model->getNameCateBrand(TABLE_BRAND, $data['productDetail'][0]->brand_id);
 		$data['productDetail'][0]->category_name = $category_name;
@@ -242,7 +242,7 @@ class Products extends User_Controller
 				$value->discount_price = $value->without_gst_price;
 			}
 		}
-
+		// dd($data['varientDetails']);
 		$data['product_image'] = $this->this_model->getProductImage($var_id);
 
 		foreach ($data['product_image'] as $key => $value) {
@@ -284,95 +284,6 @@ class Products extends User_Controller
 		$data['product_weight_id'] = $this->uri->segment(4);
 		$this->loadView(USER_LAYOUT, $data);
 	}
-
-	public function productreview()
-	{
-
-
-		$result =  $this->this_model->getinsertedProductReview($this->input->post());
-		$user_id = $this->session->userdata('user_id');
-		$revew_id = $result[0]->id;
-
-
-		$username =  $this->this_model->getProductReviewUser($user_id);
-
-
-
-		$result[0]->user_name = $username[0]->fname;
-
-		$new_date = date('F d yy', $result[0]->dt_created);
-		$time =  date("h:i A", $result[0]->dt_created);
-
-		$html = '<li class="post_review' . $result[0]->user_id . '">
-						<input type="hidden" class="revew_user_id" value="' . $user_id . '">
-						<input type="hidden" class="revew_id" value="' . $result[0]->id . '">
-						<div class="post-content">
-                             <div class="entry-meta">
-                                 					<div class="posted-on">
-                                     				 <a href="#">' . $result[0]->user_name . '</a>
-                                                        <p>Posted on ' . $new_date . '</p>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                    </div>
-                             </div>
-                                                <div class="entry-content">
-                                                    <p>' . $result[0]->review . '</p>
-                                                </div>
-                                            </div>
-                                        </li>';
-		echo json_encode(['html' => $html, 'ratting' => $result[0]->ratting, 'review_id' => $result[0]->id, 'user_id' => $user_id]);
-	}
-
-	public function productreviewupdate()
-	{
-		// print_r($this->input->post());
-
-		$update =  $this->this_model->getUpdateProductReview($this->input->post());
-		$result = $this->this_model->getUpdatedProductReview($this->input->post());
-		$user_id = $this->session->userdata('user_id');
-		// $revew_id = $result[0]->;
-
-
-
-		$username =  $this->this_model->getProductReviewUser($user_id);
-
-
-
-		$result[0]->user_name = $username[0]->fname;
-
-		$new_date = date('F d yy', $result[0]->dt_created);
-		$time =  date("h:i A", $result[0]->dt_created);
-
-		$html = '<li class="post_review' . $result[0]->user_id . '">
-						<input type="hidden" class="revew_user_id" value="' . $user_id . '">
-						<input type="hidden" class="revew_id" value="' . $result[0]->id . '">
-						<div class="post-content">
-                             <div class="entry-meta">
-                                 					<div class="posted-on">
-                                     				 <a href="#">' . $result[0]->user_name . '</a>
-                                                        <p>Posted on ' . $new_date . '</p>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                        <i class="far fa-star ratted' . $user_id . '"></i>
-                                                    </div>
-                             </div>
-                                                <div class="entry-content">
-                                                    <p>' . $result[0]->review . '</p>
-                                                </div>
-                                            </div>
-                                        </li>';
-		echo json_encode(['html' => $html, 'ratting' => $result[0]->ratting, 'review_id' => $result[0]->id, 'user_id' => $user_id]);
-	}
-
 
 	public function getDataProductWeight()
 	{
@@ -436,6 +347,24 @@ class Products extends User_Controller
 			$result[0]->discount_price =  $result[0]->without_gst_price;
 		}
 		// echo $result[0]->discount_price;die;
+		$isVarientExist= $this->this_model->checkOrderItemExist($result[0]->product_id,$result[0]->id);
+		$data['product_review'] = $this->this_model->getProductReview($result[0]->product_id,$result[0]->id);
+		$userSection = $this->load->view('frontend/ajaxView/product_review_section',$data,true);
+		$countParticularUserReview = $this->this_model->countParticularUserReview($result[0]->product_id,$result[0]->id);
+		$avgr = 0;
+		$count = 0;
+		foreach ($data['product_review'] as $key => $value){
+			$count = $count + $value->ratting ;
+			$avgr = $count/count($data['product_review']);
+		}
+		$starHtml = ''; 
+		$ratting = $data['product_review'][0]->ratting;
+		for ($j=1; $j<=$ratting;$j++ ) { 
+			$starHtml .='<i class="fas fa-star"></i>';
+		  }
+		for ($i=1; $i <= 5-$ratting; $i++) {
+			$starHtml .='<i class="fas fa-star blank-ratting"></i>';
+		} 
 		$response = [
 			'product_weight_id' => $result[0]->id,
 			'product_price' => number_format((float)$result[0]->price, 2, '.', ''),
@@ -449,7 +378,14 @@ class Products extends User_Controller
 			'isInWishList' => $class,
 			'cartProductQuantity' => $quantity,
 			'product_variant_id' => $this->utility->safe_b64encode($result[0]->id),
-			'product_id' => $this->utility->safe_b64encode($result[0]->product_id)
+			'product_id' => $this->utility->safe_b64encode($result[0]->product_id),
+			'reviewSection'=>$userSection,
+			'isVarientExist'=>(empty($isVarientExist)) ? 0 : count($isVarientExist),
+			'countParticularUserReview'=>$countParticularUserReview,
+			'productReviewCount' => count($data['product_review']),
+			'avgRatting'=>$avgr,
+			'varientWishStarRatting' => $starHtml
+			
 		];
 		echo json_encode($response);
 	}
@@ -681,5 +617,12 @@ class Products extends User_Controller
 		}
 		$this->utility->setFlashMessage($success, $messages);
 		echo json_encode(['status' => $status]);
+	}
+
+	public function review(){
+		if($this->input->is_ajax_request()){
+		 	$response = $this->this_model->insertReview($this->input->post());
+			echo json_encode(['status'=>'1']);
+		}
 	}
 }

@@ -55,10 +55,10 @@ class Home_model extends My_model{
 			return $return;
 	}
 
-	public function selectStarRatting($id){
-		$num_rows = $this->db->query("SELECT * FROM  user_product_review  WHERE product_id='$id' ");
+	public function selectStarRatting($id,$varient_id){
+		$num_rows = $this->db->query("SELECT * FROM  user_product_review  WHERE product_id='$id' AND product_varient_id='$varient_id'");
 		$num = $num_rows->num_rows();
-			$result = $this->db->query("SELECT SUM(ratting) as total_rate FROM  user_product_review  WHERE product_id='$id'");
+			$result = $this->db->query("SELECT SUM(ratting) as total_rate FROM  user_product_review  WHERE product_id='$id' AND product_varient_id='$varient_id'");
 			$res = $result->result();
 		
 		if($res > 0 && $num !=0){
@@ -66,7 +66,7 @@ class Home_model extends My_model{
 		}else{
 		 $average = '0';
  		}	
-		 return ['no_of_user'=>$num,'rating'=>$average]; 
+		 return ['no_of_user'=>$num,'rating'=> floor($average)]; 
 	}
 
 	// public function selectbanner(){

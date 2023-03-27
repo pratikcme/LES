@@ -288,11 +288,9 @@ var ADDPRODUCT = function () {
             $('.orginal-price').css('display', '');
           }
           if (output.varient_quantity > 25) {
-            alert(1);
             $('.in-stock').remove();
             $('<div class="in-stock"><h6>' + stockMessage1 + '</h6></div>').insertBefore('#product_detail h1');
           } else {
-            alert(2);
             $('.in-stock').remove();
             $style = '';
             if (output.varient_quantity <= 0) {
@@ -479,7 +477,7 @@ var ADDPRODUCT = function () {
     var varient_id = $(this).data('varient_id');
     var url = $('#url').val();
     var qnt = $(this).parent().next('div').find('input:text').val();
-    // alert(qnt); 
+
     var siteCurrency = $('#siteCurrency').val(); // currency is dynamic
     if (qnt == 0) {
       $(this).next('div').find('input:text').val('1');

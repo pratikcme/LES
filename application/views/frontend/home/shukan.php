@@ -181,6 +181,20 @@
             <div class="feat-img"> <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>"> </div>
           </a>
           <div class="feature-detail">
+            <div class="card-icon">
+              <?php for ($j=1;$j<=$value->ratting['rating'];$j++) {?>
+                <i class="fas fa-star"></i>
+              <?php } ?>
+              
+              <?php for ($i=1; $i <= 5-$value->ratting['rating']; $i++) { ?> 
+                <i class="fas fa-star blank-ratting"></i>
+              <?php } ?>
+              <!-- <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i> -->
+            </div>
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
             <h6><span class='notranslate'><?=$this->siteCurrency?></span> <?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
@@ -256,6 +270,20 @@
             </div>
           </a>
           <div class="feature-detail">
+            <div class="card-icon">
+              <?php for ($j=1;$j<=$value->ratting['rating'];$j++) {?>
+                <i class="fas fa-star"></i>
+              <?php } ?>
+              
+              <?php for ($i=1; $i <= 5-$value->ratting['rating']; $i++) { ?> 
+                <i class="fas fa-star blank-ratting"></i>
+              <?php } ?>
+              <!-- <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i> -->
+            </div>
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
             <h6><span class='notranslate'><?=$this->siteCurrency?></span><?=number_format((float)$value->discount_price, 2, '.', '')?></h6>
@@ -343,6 +371,20 @@
             </div>
           </a>
           <div class="feature-detail">
+          <div class="card-icon">
+            <?php for ($j=1;$j<=$value->ratting['rating'];$j++) {?>
+                <i class="fas fa-star"></i>
+              <?php } ?>
+              
+              <?php for ($i=1; $i <= 5-$value->ratting['rating']; $i++) { ?> 
+                <i class="fas fa-star blank-ratting"></i>
+              <?php } ?>
+              <!-- <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i> -->
+            </div>
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
               <h5><?=$value->name?></h5> </a>
             <h6><span class='notranslate'><?=$this->siteCurrency?></span><?=number_format((float)$value->discount_price, 2, '.', '')?></h6>

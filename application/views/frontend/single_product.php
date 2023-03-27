@@ -74,7 +74,7 @@
       <div class="col-lg-6">
         <div class="product-detail-wrapper" id="product_detail">
           <div class="detail"></div>
-          <?php if($varientDetails[0]->quantity > '25'){ ?>
+          <?php if($varientDetails[0]->quantity > 25){ ?>
             <div class="in-stock">
               <h6><?=$this->lang->line('Available(Instock)')?></h6>
             </div>
@@ -85,12 +85,17 @@
           <?php } ?>
           <h1><?=$productDetail[0]->name?></h1>
           <div class="feature-detail">
-              <div class="card-icon mb-2 d-none">
+              <div class="card-icon mb-2" id="starRattingOfVarient">
+              <?php for ($j=1;$j<=$productDetail[0]->rating['rating'];$j++) {?>
+                <i class="fas fa-star"></i>
+              <?php } ?>
+              <?php for ($i=1; $i <= 5-$productDetail[0]->rating['rating']; $i++) { ?> 
+                <i class="fas fa-star blank-ratting"></i>
+              <?php } ?>
+              <!-- <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star blank-ratting"></i>
+              <i class="fas fa-star blank-ratting"></i> -->
           </div>
           <div class="product-price">
             <p class="notranslate"><?=$this->siteCurrency?>
@@ -183,7 +188,7 @@
   </div>
 
    <!-- =================review-box================== -->
-<section class="p-50 review-box d-none ">
+<section class="p-50 review-box <?=(base_url() != 'http://localhost/stagging/') ? 'd-none' : '' ?> ">
     <div class="container">
         <div class="my-review-wrapper">
             
@@ -195,26 +200,30 @@
             <!-- ----review-content--- -->
             <div class="review-content">
                 <div class="left-content">
+                <?php $count = 0;?>  
+                <?php foreach ($product_review as $key => $value) { ?>
+                    <?php $count =+ $value->ratting ; $avgr = $count/count($product_review)?>
+                <?php } ?>
                     <div>
-                        <h3><strong>4.4</strong><span>/5</span></h3>
+                        <h3><strong id='avg'><?=($avgr) ? $avgr : 0?></strong><span>/5</span></h3>
                     </div>
                     <div>
                         <h4>Overall Rating</h4>
-                        <p>3398 verified ratings</p>
+                        <p id="verified_ratting"><?=count($product_review)?> verified ratings</p>
                     </div>
                 </div>
-                <div class="right-content">
+                <div id="writeReviewSection" class="right-content <?=(empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>">
                     <h6>Write your review !</h6>
                     <div class="enter-review-btn">
-                        <a href="#"  data-toggle="modal" data-target="#exampleModal">Write Review</a>
+                        <a href="#"  data-toggle="modal" id="reviewModel" data-target="#exampleModal">Write Review</a>
                     </div>
                 </div>
             </div> 
 
             <!-- ----review-comment-part--- -->
-            <div class="review-comment-wrapper">
-                <div class="row">
-
+            <div class="review-comment-wrapper <?=(count($product_review) == 0) ? 'd-none' : '' ?>" id='review-section' >
+                <div class="row" id="appendReview">
+                <?php foreach ($product_review as $key => $value) { ?>
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="testimonial-box">
                             <!--top------------------------->
@@ -227,217 +236,33 @@
                                     </div>
                                     <!--name-and-username-->
                                     <div class="name-user">
-                                        <strong>Liam mendes</strong>
-                                        <span>@liammendes</span>
+                                        <strong><?=$value->fname .' '.$value->fname?></strong>
+                                        <span>@<?=$value->fname .''.$value->fname?></span>
                                     </div>
                                 </div>
                                 <!--reviews------>
                                 <div class="reviews">
+                                  <?php for ($i=1; $i <=$value->ratting ; $i++) { ?>
+                                    <i class="fas fa-star"></i>
+                                    <?php } ?>
+                                    <?php for ($i=1; $i <=(5-$value->ratting) ; $i++) { ?>
+                                    <i class="fas fa-star blank-ratting"></i>
+                                    <?php } ?>
+                                    <!-- <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i><!--Empty star-->
+                                    <i class="far fa-star"></i> -->
                                 </div>
                             </div>
                             <!--Comments---------------------------------------->
                             <div class="client-comment">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                                <p><?=$value->review?></p>
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
 
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="testimonial-box">
-                            <!--top------------------------->
-                            <div class="box-top">
-                                <!--profile----->
-                                <div class="profile">
-                                    <!--img---->
-                                    <div class="profile-img">
-                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
-                                    </div>
-                                    <!--name-and-username-->
-                                    <div class="name-user">
-                                        <strong>Liam mendes</strong>
-                                        <span>@liammendes</span>
-                                    </div>
-                                </div>
-                                <!--reviews------>
-                                <div class="reviews">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i><!--Empty star-->
-                                </div>
-                            </div>
-                            <!--Comments---------------------------------------->
-                            <div class="client-comment">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="testimonial-box">
-                            <!--top------------------------->
-                            <div class="box-top">
-                                <!--profile----->
-                                <div class="profile">
-                                    <!--img---->
-                                    <div class="profile-img">
-                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
-                                    </div>
-                                    <!--name-and-username-->
-                                    <div class="name-user">
-                                        <strong>Liam mendes</strong>
-                                        <span>@liammendes</span>
-                                    </div>
-                                </div>
-                                <!--reviews------>
-                                <div class="reviews">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i><!--Empty star-->
-                                </div>
-                            </div>
-                            <!--Comments---------------------------------------->
-                            <div class="client-comment">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="testimonial-box">
-                            <!--top------------------------->
-                            <div class="box-top">
-                                <!--profile----->
-                                <div class="profile">
-                                    <!--img---->
-                                    <div class="profile-img">
-                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
-                                    </div>
-                                    <!--name-and-username-->
-                                    <div class="name-user">
-                                        <strong>Liam mendes</strong>
-                                        <span>@liammendes</span>
-                                    </div>
-                                </div>
-                                <!--reviews------>
-                                <div class="reviews">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i><!--Empty star-->
-                                </div>
-                            </div>
-                            <!--Comments---------------------------------------->
-                            <div class="client-comment">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="testimonial-box">
-                            <!--top------------------------->
-                            <div class="box-top">
-                                <!--profile----->
-                                <div class="profile">
-                                    <!--img---->
-                                    <div class="profile-img">
-                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
-                                    </div>
-                                    <!--name-and-username-->
-                                    <div class="name-user">
-                                        <strong>Liam mendes</strong>
-                                        <span>@liammendes</span>
-                                    </div>
-                                </div>
-                                <!--reviews------>
-                                <div class="reviews">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i><!--Empty star-->
-                                </div>
-                            </div>
-                            <!--Comments---------------------------------------->
-                            <div class="client-comment">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="testimonial-box">
-                            <!--top------------------------->
-                            <div class="box-top">
-                                <!--profile----->
-                                <div class="profile">
-                                    <!--img---->
-                                    <div class="profile-img">
-                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
-                                    </div>
-                                    <!--name-and-username-->
-                                    <div class="name-user">
-                                        <strong>Liam mendes</strong>
-                                        <span>@liammendes</span>
-                                    </div>
-                                </div>
-                                <!--reviews------>
-                                <div class="reviews">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i><!--Empty star-->
-                                </div>
-                            </div>
-                            <!--Comments---------------------------------------->
-                            <div class="client-comment">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="testimonial-box">
-                            <!--top------------------------->
-                            <div class="box-top">
-                                <!--profile----->
-                                <div class="profile">
-                                    <!--img---->
-                                    <div class="profile-img">
-                                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
-                                    </div>
-                                    <!--name-and-username-->
-                                    <div class="name-user">
-                                        <strong>Liam mendes</strong>
-                                        <span>@liammendes</span>
-                                    </div>
-                                </div>
-                                <!--reviews------>
-                                <div class="reviews">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i><!--Empty star-->
-                                </div>
-                            </div>
-                            <!--Comments---------------------------------------->
-                            <div class="client-comment">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                
             </div>  
@@ -448,7 +273,7 @@
 
 <!-- -----write-review-modal---- -->
 <!-- Modal -->  
-  <div class="modal fade my-review-modal d-none" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade my-review-modal <?=(base_url() != 'http://localhost/stagging/') ? 'd-none' : '' ?>" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -471,11 +296,15 @@
 
           <div class="review-text-box">
             <h2>Comments</h2>
-                <input type="text" name="text" placeholder="Your Comments"/>
+                <textarea name="Comments" id="Comments"  placeholder="Your Comments"></textarea>
+                <!-- <input type="text" name="Comments" id="Comments" placeholder="Your Comments"/> -->
+                <label for="error" id="error" style="color:red" ></label>
           </div>
+          <input type="hidden" name="product_id" id="ratting_product_id" value="<?=$product_id?>">
+          <input type="hidden" name="varient_id" id="ratting_product_varient_id" value="<?=$varient_id?>">
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn" data-dismiss="modal">Submit</button>
+            <button type="button" class="btn" id="btnSubmit"  >Submit</button>
           </div>
       </div>
     </div>

@@ -432,7 +432,10 @@ class Product_model extends My_model
 				}
 			}
 			$product_html = '';
+			$this->load->model('frontend/home_model', 'home_model');
+			// dd($product);
 			foreach ($product as $key => $value) {
+				$value->ratting = $this->home_model->selectStarRatting($value->id,$value->product_weight_id);
 				if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 					$value->discount_price =  $value->without_gst_price;
 				}
@@ -1005,7 +1008,7 @@ class Product_model extends My_model
 		return acos(sin($lat2 * ($rad)) * sin($lat1 * $rad) + cos($lat2 * $rad) * cos($lat1 * $rad) * cos($lon2 * $rad - $lon1 * $rad)) * 6371;
 	}
 
-	public function checkOrderItemExist($product_id)
+	public function checkOrderItemExist($product_id,$varient_id)
 	{
 
 		$vender_id = $this->branch_id;
@@ -1014,85 +1017,12 @@ class Product_model extends My_model
 		$data['select'] = ['*'];
 		$data['where'] =  [
 			'product_id' => $product_id,
+			'product_weight_id' => $varient_id,
 			'user_id' => $user_id,
 			'branch_id' => $vender_id
 		];
 		$data['groupBy'] = 'product_id';
 		return $this->selectRecords($data);
-	}
-
-	public function getProductReview($product_id)
-	{
-		$vender_id = $this->branch_id;
-		$user_id = $this->session->userdata('user_id');
-		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-		$data['select'] = ['*'];
-		$data['where'] =  [
-			'product_id' => $product_id,
-			// 'user_id'=>$user_id,
-			'branch_id' => $vender_id
-		];
-		return $this->selectRecords($data);
-	}
-
-	public function getProductReviewUser($id)
-	{
-		$data['table'] = TABLE_USER;
-		$data['select'] = ['fname'];
-		$data['where']['id'] = $id;
-		return $this->selectRecords($data);
-	}
-
-	public function getinsertedProductReview($postData)
-	{
-
-		$product_id = $this->utility->safe_b64decode($postData['product_id']);
-		$insertdata = array(
-			'product_id' => $product_id,
-			'branch_id' => $this->branch_id,
-			'user_id' => $this->session->userdata('user_id'),
-			'review' => $postData['review'],
-			'ratting' => $postData['ratting'],
-			'dt_created' => strtotime(DATE_TIME),
-			'dt_updated' => strtotime(DATE_TIME),
-		);
-		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-		$data['insert'] = $insertdata;
-		$last_id = $this->insertRecord($data);
-		unset($data);
-		if ($last_id) {
-			$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-			$data['select'] = ['*'];
-			$data['where']['id'] = $last_id;
-			return $this->selectRecords($data);
-		}
-	}
-
-	public function getUpdatedProductReview($postData)
-	{
-
-		$product_id = $this->utility->safe_b64decode($postData['product_id']);
-		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-		$data['select'] = ['*'];
-		$data['where'] = ['user_id' => $this->session->userdata('user_id'), 'product_id' => $product_id];
-		return $this->selectRecords($data);
-	}
-
-	public function getUpdateProductReview($postData)
-	{
-		$product_id = $this->utility->safe_b64decode($postData['product_id']);
-		$update = array(
-			'product_id' => $product_id,
-			'branch_id' => $this->branch_id,
-			'user_id' => $this->session->userdata('user_id'),
-			'review' => $postData['review'],
-			'ratting' => $postData['ratting'],
-			'dt_updated' => strtotime(DATE_TIME),
-		);
-		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-		$data['update'] = $update;
-		$data['where'] = ['user_id' => $this->session->userdata('user_id'), 'product_id' => $product_id];
-		return $this->updateRecords($data);
 	}
 
 	public function checkProductExist($postdata)
@@ -1107,6 +1037,27 @@ class Product_model extends My_model
 			'branch_id' => $this->branch_id,
 		];
 		return $this->selectRecords($data);
+	}
+
+	public function getProductReview($product_id,$varient_id){
+		$data['table'] = TABLE_USER_PRODUCT_REVIEW .' upr';
+		$data['select'] = ['upr.*','u.fname','u.lname'];
+		$data['join'] = [TABLE_USER.' u'=>['upr.user_id=u.id','LEFT']];
+		$data['where'] = [
+			'product_id'=>$product_id,
+			'product_varient_id'=>$varient_id,
+		];
+		return $this->selectFromJoin($data);
+	}
+	public function countParticularUserReview($product_id,$varient_id){
+		$data['table'] = TABLE_USER_PRODUCT_REVIEW ;
+		$data['select'] = ['*'];
+		$data['where'] = [
+			'product_id'=>$product_id,
+			'product_varient_id'=>$varient_id,
+			'user_id'=>$this->session->userdata('user_id')
+		];
+		return $this->countRecords($data);
 	}
 
 	public function insertProductToWishlist($insertArray)
@@ -1310,6 +1261,22 @@ class Product_model extends My_model
 		$data['table'] = TABLE_MY_CART;
 		$data['where'] = ['user_id' => $user_id];
 		return $this->deleteRecords($data);
+	}
+
+	public function insertReview($postData){
+		$insertData = array(
+			'user_id' => $this->session->userdata('user_id'),
+			'branch_id' => $this->session->userdata('branch_id'),
+			'product_id'=>$this->utility->safe_b64decode($postData['product_id']),
+			'product_varient_id'=>$this->utility->safe_b64decode($postData['varient_id']),
+			'review'=> $postData['comment'],
+			'ratting'=> $postData['ratetIndex'],
+			'dt_created' => date('Y-m-d h:i:s'),
+			'dt_updated' => date('Y-m-d h:i:s')
+		);
+		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
+		$data['insert'] = $insertData;
+		return $this->insertRecord($data);
 	}
 
 }

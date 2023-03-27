@@ -2071,6 +2071,12 @@ header .navbrand a img {
      margin-bottom: 0px;
 }
 
+.product-detail-wrapper .feature-detail .card-icon{
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+
 .feature-bottom-wrap{
     display: flex;
     justify-content: space-between;
@@ -3811,6 +3817,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin-right: 20px;
+position: relative;
 }
 
 
@@ -3926,6 +3933,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin-right: 20px;
+position: relative;
 }
 
 
@@ -7163,7 +7171,35 @@ width: 374px;
     border: 1px solid #666666 !important;
     outline: none !important;
 }
+
 .review-text-box input::placeholder{
+    font-family: var("OpenSans-Regular");
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #666666;
+}
+
+.review-text-box textarea{
+    border: 1px solid #666666 !important;
+    background: #fff;
+    border-radius: 5px !important;
+    padding: 10px !important;
+    width: 100%;
+    height:150px;
+}
+.review-text-box textarea:focus{
+    box-shadow: none !important;
+    border: 1px solid #666666 !important;
+}
+.review-text-box textarea:focus-visible{
+    box-shadow: none !important;
+    border: 1px solid #666666 !important;
+    outline: none !important;
+}
+
+.review-text-box textarea::placeholder{
     font-family: var("OpenSans-Regular");
     font-size: 14px;
     font-weight: 400;

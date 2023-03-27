@@ -29,7 +29,6 @@ class Users extends User_Controller {
 		$data['faq'] = $this->this_model->getFaq();
 		$this->load->model($this->myvalues->orderFrontEnd['model'],'order_model');
 		$data['order'] = $this->this_model->selectOrders();
-		// dd($data['order']);
 		$orderDetais = [];
 		$this->load->model('api_admin_model');
 
@@ -234,13 +233,15 @@ class Users extends User_Controller {
 	}
 
 	public function view($id){
-		error_reporting(0);
+		// error_reporting(0);
 		$this->load->model($this->myvalues->orderFrontEnd['model'],'order_model');
 		$view_detail = $this->order_model->selectOrderDetails($id);
-		// print_r($view_detail);die;
+		// dd($view_detail);die;
 		foreach ($view_detail as $key => $value) {
 			$pr = $this->order_model->selectproductname($value->product_id);
 			$w = $this->this_model->getDetails($value->product_weight_id);
+			$isvegNonveg = $this->this_model->CheckIsFoodCategory($value->product_id);
+			$value->food_type = $isvegNonveg->food_type;
 			$view_detail[$key]->weight_number =  $w[0]->weight_no;
 			$view_detail[$key]->weight_name =  $w[0]->name;
 			$view_detail[$key]->package =  $w[0]->package;
@@ -248,7 +249,7 @@ class Users extends User_Controller {
 				$view_detail[$key]->product_name =  $pr[0]->name;
 			 	$view_detail[$key]->product_image =  $pr_img[0]->image;
 			}
-			// print_r($view_detail);die;
+			// dd($view_detail);die;
 		return $view_detail;
 	}
 
