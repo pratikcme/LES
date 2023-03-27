@@ -221,7 +221,7 @@
             </div> 
 
             <!-- ----review-comment-part--- -->
-            <div class="review-comment-wrapper" id='review-section' >
+            <div class="review-comment-wrapper <?=(empty($product_review))? 'd-none' : '' ?>" id='review-section' >
                 <div class="row" id="appendReview">
                 <?php foreach ($product_review as $key => $value) { ?>
                     <div class="col-xl-6 col-lg-6 col-md-6">
