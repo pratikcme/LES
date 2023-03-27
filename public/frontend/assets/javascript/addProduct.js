@@ -14,6 +14,10 @@ $(document).on('click', '#btnSubmit', function () {
     }
   })
   let comment = $('#Comments').val();
+  if (ratetIndex == 0) {
+    swal('Please Provide Star Ratting');
+    return false;
+  }
   if (comment == '') {
     $('#error').html('Please enter your comment');
     return false;
