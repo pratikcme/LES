@@ -236,8 +236,8 @@
                                     </div>
                                     <!--name-and-username-->
                                     <div class="name-user">
-                                        <strong><?=$value->fname .' '.$value->fname?></strong>
-                                        <span>@<?=$value->fname .''.$value->fname?></span>
+                                        <strong><?=$value->fname .' '.$value->lname?></strong>
+                                        <span>@<?=$value->fname .''.$value->lname?></span>
                                     </div>
                                 </div>
                                 <!--reviews------>
