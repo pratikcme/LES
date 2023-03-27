@@ -535,7 +535,8 @@ class Utility
                     'body' => $postData['message']
                 ),
                 'badge' => 1,
-                'sound' => 'default'
+                'sound' => 'default',
+                'isProductDetails' => '1'
             ),
             'data' => array(
                 'product_id' => $postData['product_id'],
