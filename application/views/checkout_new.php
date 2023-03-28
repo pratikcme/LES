@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include 'header.php';
 //echo '1';die;
 
 $vendor_id = $this->session->userdata('id');
@@ -14,7 +14,7 @@ $vendor_id = $this->session->userdata('id');
                 } ?>
                 <?php if ($this->session->flashdata('msg') && $this->session->flashdata('msg') != '') { ?>
                 <div class="alert alert-success fade in">
-                    <strong>Success!</strong> <?php echo $this->session->flashdata('msg');; ?>
+                    <strong>Success!</strong> <?php echo $this->session->flashdata('msg'); ?>
                 </div>
                 <?php }
                 unset($this->session->flashdata); ?>
@@ -49,7 +49,7 @@ $vendor_id = $this->session->userdata('id');
                     </div>
                     <div class="">
                         <div class="quick-keys-wrap">
-                            <?php foreach ($IsPosMostLike as $key => $value) :  ?>
+                            <?php foreach ($IsPosMostLike as $key => $value) : ?>
 
                             <div class="quick-view-wrap add_quick_product" data-product_id="<?= $value->product_id ?>"
                                 data-pw_id="<?= $value->id ?>">
@@ -88,6 +88,7 @@ $vendor_id = $this->session->userdata('id');
                         <input type="hidden" name="cmd" value="_xclick" />
                         <input type="hidden" name="no_note" value="1">
                         <input type="hidden" name="lc" value="UK" />
+                        <input type="hidden" name="currency" id="currency" value="<?= $currency ?>">
                         <input type="hidden" name="currency_code" value="<?= $currency_code ?>">
                         <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
                         <input type="hidden" name="shopping_based_discount" value="<?= $shopping_based_discount ?>"
@@ -124,7 +125,7 @@ $vendor_id = $this->session->userdata('id');
                                     Sale</button>
 
                                 <button type="button" class="border-btn d-inline-block discard_class"
-                                    id="<?= (isset($parked_order_id) && !empty($parked_order_id))  ? 'discard_parked_sell' : 'discard_sell' ?>">Discard
+                                    id="<?= (isset($parked_order_id) && !empty($parked_order_id)) ? 'discard_parked_sell' : 'discard_sell' ?>">Discard
                                     Sale</button>
                                 <!-- <span class="border-btn d-inline-block active">Retrieve Sale</span>
                                     <span class="border-btn d-inline-block">Park Sale</span>
@@ -137,7 +138,6 @@ $vendor_id = $this->session->userdata('id');
                                     <h5>Parked Sale</h5>
                                 </li>
                                 <?php
-
                                         foreach ($order_row as $key => $value) { ?>
                                 <li class="popover-list-item">
                                     <a
@@ -195,7 +195,6 @@ $vendor_id = $this->session->userdata('id');
                                 <div class="cart-items-main-section" id="cart_items">
                                     <?php
                                             foreach ($order_temp_result as $key => $value) {
-
                                             ?>
                                     <div class="cart-item-drap-bg">
                                         <span class="addBtn">Add</span>
@@ -234,7 +233,7 @@ $vendor_id = $this->session->userdata('id');
                                                         <input type="number"
                                                             onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
                                                             name="qnt<?= $value->id ?>" class="qunt" min="1"
-                                                            data-actual_discount_price="<?= number_format((float)$value->discount_price, 2, '.', '') ?>"
+                                                            data-actual_discount_price="<?= number_format((float) $value->discount_price, 2, '.', '') ?>"
                                                             data-product_weight_id="<?= $value->product_weight_id ?>"
                                                             data-temp_id="<?= $value->id ?>"
                                                             value="<?= $value->quantity ?>"
@@ -247,8 +246,8 @@ $vendor_id = $this->session->userdata('id');
                                                             name="discount<?= $value->id ?>" class="disc"
                                                             data-product_weight_id="<?= $value->product_weight_id ?>"
                                                             data-temp_id="<?= $value->id ?>"
-                                                            value="<?= (fmod($value->discount, 1) !== 0.00) ? numberFormat($value->discount) : (int)$value->discount ?>"
-                                                            data-actual_discount_price="<?= number_format((float)$value->discount_price, 2, '.', '') ?>"
+                                                            value="<?= (fmod($value->discount, 1) !== 0.00) ? numberFormat($value->discount) : (int) $value->discount ?>"
+                                                            data-actual_discount_price="<?= number_format((float) $value->discount_price, 2, '.', '') ?>"
                                                             data-isParked="<?= (isset($parked_order_id) ? $parked_order_id : '0') ?>">
 
                                                     </div>
@@ -288,16 +287,16 @@ $vendor_id = $this->session->userdata('id');
                                         <p>Subtotal</p>
                                         <p><?= $currency . ' '; ?>
                                             <span class="subtotal"
-                                                id="subtotal"><?= number_format((float)$subtotal, 2, '.', '') ?></span>
+                                                id="subtotal"><?= number_format((float) $subtotal, 2, '.', '') ?></span>
                                         </p>
                                     </div>
                                     <div id="cart_based_item">
                                         <p>Cart based Discount</p>
                                         <p>- (<span id="shopping_based_discountPercentage">
-                                                <?= ($shopping_based_discountPercentage) ?>
-                                            </span>%) <?= $currency . ' '; ?>
+                                                <?= (fmod($shopping_based_discountPercentage, 1) !== 0.00) ? numberFormat($shopping_based_discountPercentage) : number_format((int) $shopping_based_discountPercentage) ?>
+                                            </span>%)
                                             <span
-                                                id="shopping_based_discount_amount"><?= number_format((float)$shopping_based_discount, 2, '.', '') ?></span>
+                                                id="shopping_based_discount_amount"><?= $currency . ' '; ?><?= number_format((float) $shopping_based_discount, 2, '.', '') ?></span>
                                         </p>
                                     </div>
                                     <div id="promocode_discount_item">
@@ -308,7 +307,7 @@ $vendor_id = $this->session->userdata('id');
                                         <p>Tax GST (<?= $isShow ? 'Excluded' : 'Included' ?>)</p>
                                         <p><?= $currency . ' '; ?>
                                             <span
-                                                id="total_gst"><?= number_format((float)$total_gst, 2, '.', '') ?></span>
+                                                id="total_gst"><?= number_format((float) $total_gst, 2, '.', '') ?></span>
                                         </p>
                                     </div>
                                 </div>
@@ -327,7 +326,7 @@ $vendor_id = $this->session->userdata('id');
                                     <button class="btn-apply total-main">
                                         <span>Pay</span>
                                         <span><?= $currency . ' '; ?><span
-                                                id="total_pay"><?= number_format((float)$subtotal, 2, '.', '') ?></span></span>
+                                                id="total_pay"><?= number_format((float) $subtotal, 2, '.', '') ?></span></span>
                                     </button>
                                 </div>
                             </div>
@@ -506,4 +505,4 @@ if (isset($parked_order_id) && !empty($parked_order_id)) { ?>
     </div>
 </div>
 
-<?php include('footer.php'); ?>
+<?php include 'footer.php'; ?>

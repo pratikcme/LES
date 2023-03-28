@@ -141,6 +141,7 @@ class Product extends Vendor_Controller
         $data['weight_result'] = $this->this_model->getWeightResult();
         $data['package_results'] = $this->this_model->getPackageResults();
         $data['product_id'] = $this->utility->decode($_GET['product_id']);
+        
         if(isset($_GET['id'])){
             $id = $this->utility->decode($_GET['id']);
             $data['product_id'] = $this->utility->decode($_GET['product_id']);

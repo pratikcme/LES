@@ -15,6 +15,19 @@ class Register extends Vendor_Controller
     {
         //added by Dipesh
         $data['register_result'] = $this->this_model->getRegister();
+        $data['user_result'] = $this->this_model->getUserData();
+        $data['total'] = $this->this_model->getRegisterCashTotal($data['register_result']);
+        $data['online_result'] = $this->this_model->getRegisterOnlineResult($data['register_result']);
+
+        if (!empty($data['register_result'])) {
+            $data['transaction']  = $data['register_result'][0]->transaction;
+        } else {
+            $data['transaction']  = "0.00";
+        }
+
+        $currency = $this->this_model->getCurrency();
+        $data['currency'] = $currency[0]->value;
+
         $this->load->view('registeropen', $data);
     }
 
@@ -22,6 +35,10 @@ class Register extends Vendor_Controller
     {
         //added by Dipesh
         $data['register_result'] = $this->this_model->getRegister();
+        $data['user_result'] = $this->this_model->getUserData();
+        $data['total'] = $this->this_model->getRegisterCashTotal($data['register_result']);
+        $currency = $this->this_model->getCurrency();
+        $data['currency'] = $currency[0]->value;
         $this->load->view('registerclosure', $data);
     }
 
@@ -34,11 +51,7 @@ class Register extends Vendor_Controller
 
     public function closure_summary_list()
     {
-
-
         $data['closures_list'] = $this->this_model->getClosedList();
-
-
         $this->load->view('closure_summary_list', $data);
         // $data['title'] = "Register";
         // $data['page'] = 'user/register';
@@ -49,9 +62,7 @@ class Register extends Vendor_Controller
     }
 
     public function exportExcelData($records)
-
     {
-
         $heading = false;
 
         if (!empty($records))

@@ -290,6 +290,7 @@ var PRIVACY = (function () {
     var order_tempId = $(event.target)
       .find(".revomeRecord")
       .data("order_tempid");
+
     var isParked = $(this).data("isparked");
 
     $.ajax({
@@ -905,10 +906,12 @@ var PRIVACY = (function () {
   // changeParkTime
   $("#changeParkTime").on("click", function (e) {
     var id = $("#parked_id").val();
+    var subtotal = calculateSubtotal();
+
     $.ajax({
       type: "post",
       url: url + "sell_development/changeParkTime",
-      data: { id: id },
+      data: { id: id, subtotal: subtotal },
       success: function (res) {
         if (res == 1) {
           location.href = url + "sell_development";
@@ -918,8 +921,13 @@ var PRIVACY = (function () {
   });
   //
 
+  function isFloat(x) {
+    return !!(x % 1);
+  }
+
   async function getCartBasedDiscount(val) {
     $("#promocode_discount_item").hide();
+    let cur = $("#currency").val();
     await $.ajax({
       type: "GET",
       url: url + "sell_development/getShoppingAmountBasedDiscount",
@@ -941,11 +949,16 @@ var PRIVACY = (function () {
           $("#hidden_total_pay").val(parseFloat(pay_total).toFixed(2)); //new for pos
 
           $("#shopping_based_discount_amount").html(
-            parseFloat(res.shopping_based_discount).toFixed(2)
+            cur + parseFloat(res.shopping_based_discount).toFixed(2)
           );
-          $("#shopping_based_discountPercentage").html(
-            parseFloat(res.shopping_based_discountPercentage).toFixed(2)
-          );
+
+          isFloat(res.shopping_based_discountPercentage)
+            ? $("#shopping_based_discountPercentage").html(
+                parseFloat(res.shopping_based_discountPercentage).toFixed(2)
+              )
+            : $("#shopping_based_discountPercentage").html(
+                parseInt(res.shopping_based_discountPercentage)
+              );
 
           $("#promocode_item").hide();
           $("#cart_based_item").show();

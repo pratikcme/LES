@@ -48,6 +48,180 @@ class Sell_development_model extends My_model
         echo $this->db->last_query();
     }
 
+    // Dipesh Added for Get Order
+    public function findOrderByKey($postData)
+    {
+        $data['table'] = 'order';
+        $data['select'] = ['*'];
+        $data['where'] = ['branch_id' => $this->branch_id, 'order_from' => '0'];
+        $data['group']['like'] = ['order_no', $postData['keyValue'], 'match'];
+
+        $res = $this->selectRecords($data);
+        return $res;
+    }
+    // just to check
+
+    // 
+
+    // Dipesh Added 
+    public function showAllSoldProducts($order_id)
+    {
+        $this->branch_id = $this->session->userdata('id');
+
+        $data['table'] =  TABLE_ORDER_DETAILS . ' as od';
+        $data['select'] = ['od.calculation_price as price', 'o.sub_total as sub_total', 'o.shopping_amount_based_discount as cart_based', 'o.promocode_used as promocode_used', 'od.id as order_details_id', 'od.discount as discount', 'od.actual_price as actual_price', 'od.discount_price as discount_price', 'od.order_id as order_id', 'od.quantity as quantity', 'od.dt_updated', 'p.name', 'pw.weight_no as weight_no', 'w.name as weight_name', 'w.id as weight_id', 'p.id as product_id', 'pw.id as product_weight_id', 'p.name as product_name'];
+        $data['join'] = [
+            TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT'],
+            TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=od.product_weight_id', 'LEFT'],
+            TABLE_WEIGHT . ' as w' => ['w.id = pw.weight_id', 'LEFT'],
+            TABLE_ORDER . ' as o' => ['od.order_id = o.id', 'LEFT']
+            // 'refund_order_details as r_od' => ['r_od.order_details_id = od.id', 'LEFT']
+        ];
+        $data['where'] = ['od.order_id' => $order_id, 'od.status!=' => '9'];
+
+        $result =  $this->selectFromJoin($data);
+
+        unset($data);
+        $data['table'] = TABLE_ORDER;
+        $data['select'] = ['total', 'payment_type', 'order_discount', 'payable_amount', 'dt_added', 'total_saving', 'promocode_used', 'shopping_amount_based_discount', 'id as order_id'];
+        $data['where'] = ['id' => $order_id, 'branch_id' => $this->branch_id, 'status!=' => '9'];
+        $r = $this->selectRecords($data);
+        return ['order_details' => $result, 'orderInfo' => $r];
+    }
+    //Refund checkout added 
+    public function order_refund_checkout($postdata)
+    {
+        $data['insert'] = [
+            'order_id' => $postdata['order_id'][0],
+            'branch_id' => $this->branch_id,
+            'discount_percentage' => $postdata['cart_based'],
+            'discount_amount' => numberFormat($postdata['discount_amount']),
+            'sub_total' => $postdata['subtotal'],
+            'refund_amount' => $postdata['refund_amount'],
+            'dt_added' => strtotime(DATE_TIME),
+            'dt_updated' => strtotime(DATE_TIME),
+        ];
+
+        $data['table'] = 'refund_order';
+
+        $last_id = $this->insertRecord($data, true);
+        unset($data);
+
+        $total_savings = 0;
+        $total_item = 0;
+        foreach ($postdata['product_name'] as $key => $value) :
+            $qntName = 'qnt' . $postdata['order_details_id'][$key];
+            $total_savings += ($postdata['actual_price'][$key] - $postdata['discount_price'][$key]) * $postdata[$qntName];
+            $total_item += $total_item + $postdata[$qntName];
+            $insertion[] = array(
+                'branch_id' => $this->branch_id,
+                'order_id' => $postdata['order_id'][$key],
+                'order_details_id' => $postdata['order_details_id'][$key],
+                'refund_order_id' => $last_id,
+                'product_id' => $postdata['product_id'][$key],
+                'product_weight_id' => $postdata['product_weight_id'][$key],
+                'weight_id' => $postdata['weight_id'][$key],
+                'quantity' => $postdata[$qntName],
+                'actual_price' => numberFormat($postdata['actual_price'][$key]),
+                'discount' => $postdata['discount'][$key],
+                'discount_price' => $postdata['discount_price'][$key],
+                'calculation_price' => $postdata['calculation_price'][$key],
+                'status' => '1',
+                'delivery_status' => '1',
+                'dt_added' => strtotime(DATE_TIME),
+                'dt_updated' => strtotime(DATE_TIME),
+            );
+
+            $qnt = $postdata[$qntName];
+            $pw_id = $postdata['product_weight_id'][$key];
+
+            $data['select'] = ['*'];
+            $data['table'] = 'refund_order_details';
+            $data['where'] = ['order_details_id' => $postdata['order_details_id'][0]];
+
+            $check = $this->selectRecords($data);
+
+            if (count($check) > 0) {
+                unset($data);
+                $data['table'] = 'refund_order_details';
+                $data['where'] = ['order_id' => $postdata['order_id'][0]];
+                $this->deleteRecords($data);
+            }
+            unset($data);
+
+            $this->db->query("UPDATE product_weight SET quantity = quantity + ' $qnt',temp_quantity = 0 WHERE id = '$pw_id'");
+
+        endforeach;
+
+        $data['insert'] = $insertion;
+
+        $data['table'] = 'refund_order_details';
+        $res = $this->insertBatchRecord($data);
+
+        unset($data);
+
+        $data['update']['total_items'] = $total_item;
+        $data['update']['total_savings'] = numberFormat($total_savings);
+        $data['where'] = ['id' => $last_id];
+        $data['table'] = 'refund_order';
+        $this->updateRecords($data);
+        unset($data);
+
+        $order_details_id = $postdata['order_details_id'][$key];
+
+        // Removed By Dipesh No Need to Delete from Order Details
+        // unset($data);
+        // $data['select'] = ['quantity', 'order_id'];
+        // $data['table'] = TABLE_ORDER_DETAILS;
+        // $data['where'] = ['id' => $order_details_id];
+        // $res = $this->selectRecords($data);
+
+        // if (($res[0]->quantity - $qnt) > 0) {
+        //     $this->db->query("UPDATE order_details SET quantity = quantity - ' $qnt' WHERE id = '$order_details_id'");
+        // } else {
+        //     unset($data);
+        //     $data['table'] = TABLE_ORDER_DETAILS;
+        //     $data['where'] = ['id' => $order_details_id];
+        //     $this->deleteRecords($data);
+        //     // remain for delete from order table
+        // }
+
+        $this->session->set_flashdata("msg", "Order refunded successfully.");
+        redirect(base_url() . '	sell_development/return_sell');
+    }
+    // 
+    public function getReturnedQuantity($od_id)
+    {
+        $data['select'] = ['quantity'];
+        $data['table'] = 'refund_order_details';
+        $data['where'] = ['order_details_id' => $od_id];
+        $res = $this->selectRecords($data);
+        if (count($res) > 0) {
+            return $res[0]->quantity;
+        } else {
+            return 0;
+        }
+    }
+    // Dipesh getSingleProduct Removed
+    // public function getSingleProductData($product_id, $order_id, $product_weight_id)
+    // {
+
+    //     $data['select'] = ['od.calculation_price as price', 'od.id as order_details_id', 'od.actual_price as actual_price', 'od.discount as discount', 'pw.weight_no as weight_no', 'w.name as weight_name', 'p.name as product_name', 'pw.id as product_weight_id', 'od.discount_price as discount_price', 'od.quantity as quantity'];
+    //     $data['table'] = TABLE_ORDER_DETAILS . ' as od';
+    //     $data['join'] = [
+    //         TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT'],
+    //         TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=od.product_weight_id', 'LEFT'],
+    //         TABLE_WEIGHT . ' as w' => ['w.id = pw.weight_id', 'LEFT']
+    //     ];
+
+    //     $data['where'] = ['od.product_id' => $product_id, 'od.order_id' => $order_id, 'od.product_weight_id' => $product_weight_id, 'od.branch_id' => $this->branch_id, 'od.status!=' => '9'];
+    //     $res = $this->selectFromJoin($data);
+
+    //     // dd($res);
+    //     return $res[0];
+    // }
+    // 
+
     public function addProducttoTempOrder($postdata)
     {
 
@@ -157,7 +331,6 @@ class Sell_development_model extends My_model
 
     public function addProducttoParkedOrder($postdata)
     {
-
         $product_id = $postdata['product_id'];
         $varient_id = $postdata['pw_id'];
         $parked_id = $postdata['isParked'];
@@ -341,8 +514,6 @@ class Sell_development_model extends My_model
     {
         $this->branch_id = $this->session->userdata('id');
 
-
-
         if (isset($postdata['customber_id'])) {
             $data['where'] = ['id' => $postdata['customber_id'], 'branch_id' => $this->branch_id, 'status!=' => '9'];
         } else {
@@ -382,9 +553,6 @@ class Sell_development_model extends My_model
         $update_quantity = $postdata['qunt'];
         $actual_discount_price = $postdata['actual_discount_price'];
 
-
-
-
         $data['table'] = TABLE_ORDER_TEMP;
         $data['select'] = ['*'];
         $data['where'] = ['id' => $temp_id];
@@ -392,12 +560,9 @@ class Sell_development_model extends My_model
 
         $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
 
-
         $update_price = ($price * $update_quantity);
         // - $discount;
         unset($data);
-
-
 
         $updateData = array(
             'quantity' => $update_quantity,
@@ -949,6 +1114,7 @@ class Sell_development_model extends My_model
 
             $this->session->set_flashdata("msg", "Order parked successfully.");
             redirect(base_url() . '	sell_development');
+
             exit;
         }
         // if (isset($postdata['case']) && $postdata['case'] == 'Cash') {
@@ -1577,6 +1743,7 @@ class Sell_development_model extends My_model
     public function changeParkTime($postdata)
     {
         $id = $postdata['id'];
+        $subtotal = $postdata['subtotal'];
 
         $data['update'] = ['dt_added' => strtotime(DATE_TIME)];
         $data['where'] = ['id' => $id];
@@ -1584,6 +1751,13 @@ class Sell_development_model extends My_model
         $this->updateRecords($data);
         // strtotime(DATE_TIME)
         echo 1;
+
+        if ($subtotal == 0) {
+            unset($data);
+            $data['where'] = ['id' => $id];
+            $data['table'] = 'parked_order';
+            $this->deleteRecords($data);
+        }
     }
 
     public function update_discount_parked_order($postdata)
@@ -1972,18 +2146,57 @@ class Sell_development_model extends My_model
         $order_id = $this->utility->safe_b64decode($postdata['order_id']);
 
         $data['table'] =  TABLE_ORDER_DETAILS . ' as od';
-        $data['select'] = ['od.calculation_price', 'od.discount', 'od.quantity', 'od.dt_updated', 'p.name'];
+        $data['select'] = [
+            'od.calculation_price',
+            'od.discount',
+            'od.discount_price as discounted_price',
+            'od.quantity as quantity',
+            'od.dt_updated',
+            'p.name',
+            'od.id as order_details_id',
+            'od.actual_price as actual_price'
+        ];
         $data['join'] = [
-            TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT']
+            TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT'],
+            // 'refund_order_details as r_od' => ['r_od.order_details_id = od.id', 'LEFT']
         ];
         $data['where'] = ['od.order_id' => $order_id, 'od.status!=' => '9'];
-        $result =  $this->selectFromJoin($data);
+        $result = $this->selectFromJoin($data);
+
         unset($data);
         $data['table'] = TABLE_ORDER;
         $data['select'] = ['total', 'payment_type', 'order_discount', 'payable_amount', 'dt_added', 'total_saving', 'promocode_used', 'shopping_amount_based_discount', 'id as order_id'];
         $data['where'] = ['id' => $order_id, 'branch_id' => $this->branch_id, 'status!=' => '9'];
+
         $r = $this->selectRecords($data);
-        return ['order_details' => $result, 'orderInfo' => $r];
+        unset($data);
+
+        $data['table'] =   'refund_order_details as r_od';
+
+        $data['select'] = [
+            'r_od.discount_price as discounted_price',
+            'p.name',
+            'r_od.discount as discount',
+            'r_od.calculation_price as calculation_price',
+            'r_od.quantity as quantity',
+            'r_od.actual_price as actual_price'
+        ];
+        $data['join'] = [
+            TABLE_PRODUCT . ' as p' => ['r_od.product_id=p.id', 'LEFT'],
+        ];
+        $data['where'] = ['r_od.order_id' => $order_id, 'r_od.status!=' => '9'];
+        $return_result = $this->selectFromJoin($data);
+        // later
+        unset($data);
+
+        $data['table'] = 'refund_order';
+        $data['select'] = ['discount_percentage as return_discount_per', 'discount_amount as return_discount_amount', 'sub_total as total', 'refund_amount as payable_amount', 'total_items', 'dt_added'];
+        $data['where'] = ['order_id' => $order_id, 'branch_id' => $this->branch_id];
+
+        $rerturn_r = $this->selectRecords($data);
+
+        // return common later
+        return ['order_details' => $result, 'orderInfo' => $r, 'return_order_details' => $return_result, 'return_orderInfo' => $rerturn_r];
     }
 
     public function addCustomer($postdata)
@@ -2141,7 +2354,6 @@ class Sell_development_model extends My_model
         $promocode = $this->selectRecords($data);
         // $getMycartSubtotal = getMycartSubtotal();
 
-
         if (empty($promocode)) {
             $response["success"] = 0;
             $response["message"] = "No Promocode Found";
@@ -2167,8 +2379,6 @@ class Sell_development_model extends My_model
         }
 
         unset($data);
-
-
 
         if ($total_price < $promocode[0]->min_cart) {
             $response["success"] = 0;
@@ -2219,7 +2429,68 @@ class Sell_development_model extends My_model
         $data['where'] = ['order_id' => $id];
 
         $res = $this->selectRecords($data);
+        if (count($res) > 0) {
+            return $res[0];
+        } else {
+            return 0;
+        }
+    }
+
+    public function getUserData()
+    {
+        $user_id = $this->session->userdata['id'];
+        $data['select'] = ['name'];
+        $data['table'] = TABLE_VENDOR;
+        $data['where'] = ['id' => $user_id];
+
+        $res = $this->selectRecords($data, true);
         return $res[0];
+    }
+
+    // 
+    public function getRegisterCashTotal($register_result)
+    {
+        if (!empty($register_result)) {
+            $register_id = $register_result[0]->id;
+
+            $data['select'] = ['sum(total) as total'];
+            $data['table'] = TABLE_ORDER;
+            $data['where'] = [
+                'register_id' => $register_id,
+                'payment_type' => '0'
+            ];
+            $res = $this->selectRecords($data, true);
+
+
+            $total = '0.00';
+
+            if (!empty($res)) {
+                $total =  number_format((float)$res[0]['total'], 2, '.', '');
+            } else {
+                $total = '0.00';
+            }
+            return $total;
+        } else {
+            return "0.00";
+        }
+    }
+
+    public function getRegisterOnlineResult($register_result)
+    {
+        if (!empty($register_result)) {
+            $register_id = $register_result[0]->id;
+
+            $data['select'] = ['sum(total) as total'];
+            $data['table'] = TABLE_ORDER;
+            $data['where'] = [
+                'register_id' => $register_id,
+                'payment_type' => '1'
+            ];
+            $res = $this->selectRecords($data, true);
+            return $res[0];
+        } else {
+            return [];
+        }
     }
 }
 

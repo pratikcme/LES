@@ -36,6 +36,20 @@ var HISTORY = (function () {
         $("#dynamic_tr").html(out.o_detail);
         $("#dynamic_li").html(out.o_info);
         $("#dynamic_date").html(out.date);
+        $("#return_details").hide();
+        if (out.return_detail !== "") {
+          $("#main_table").addClass("col-md-6");
+          $("#main_table").removeClass("col-md-12");
+
+          $("#return_dynamic_tr").html(out.return_detail);
+          $("#return_details").show();
+          $("#return_date").html(out.return_date);
+
+          $("#return_dynamic_li").html(out.return_info);
+        } else {
+          $("#main_table").removeClass("col-md-6");
+          $("#main_table").addClass("col-md-12");
+        }
       },
     });
   });

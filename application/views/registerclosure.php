@@ -1,23 +1,21 @@
 <?php
 include('header.php');
 date_default_timezone_set('Asia/Calcutta');
-$user_id = $this->session->userdata['id'];
-$user_query = $this->db->query("SELECT name FROM vendor WHERE id = $user_id");
-$user_result = $user_query->row_array();
+// $user_id = $this->session->userdata['id'];
+// $user_query = $this->db->query("SELECT name FROM vendor WHERE id = $user_id");
+// $user_result = $user_query->row_array();
 
 
-if (!empty($register_result)) {
+// if (!empty($register_result)) {
 
-    $register_id = $register_result[0]->id;
-    $order_row = $this->db->query("SELECT SUM(`total`) as total FROM `order` WHERE register_id = '$register_id' AND payment_type = '0'");
-    $order_result = $order_row->row_array();
-}
+//     $register_id = $register_result[0]->id;
+//     $order_row = $this->db->query("SELECT SUM(`total`) as total FROM `order` WHERE register_id = '$register_id' AND payment_type = '0'");
+//     $order_result = $order_row->row_array();
+// }
 
 if ($register_result[0]->type == '1') {
     redirect(base_url() . 'index.php/register/open_register');
 }
-
-
 ?>
 
 <script type="text/javascript">
@@ -319,17 +317,17 @@ if ($register_result[0]->type == '1') {
                                                 <div class="drawer_cash">
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="summary_cash">
-                                                            <h4>Expected ($)</h4>
+                                                            <h4>Expected (<?= $currency ?>)</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="summary_cash">
-                                                            <h4>Counted ($)</h4>
+                                                            <h4>Counted (<?= $currency ?>)</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="summary_cash">
-                                                            <h4>Differences ($) </h4>
+                                                            <h4>Differences (<?= $currency ?>) </h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -403,7 +401,7 @@ if ($register_result[0]->type == '1') {
 
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                         <div class="cash_movement">
-                                                            <span>Transaction ($)</span>
+                                                            <span>Transaction (<?= $currency ?>)</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -462,8 +460,8 @@ if ($register_result[0]->type == '1') {
 
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
                                                         <div class="cash_recieved">
-                                                            <p><?php if (!empty($order_result)) {
-                                                                    echo number_format((float)$order_result['total'], 2, '.', '');;
+                                                            <p><?php if (!empty($total)) {
+                                                                    echo number_format((float)$total, 2, '.', '');;
                                                                 } else {
                                                                     echo '0.00';
                                                                 }  ?>
@@ -505,17 +503,17 @@ if ($register_result[0]->type == '1') {
                                                     <div class="drawer_cash">
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Expected ($)</h4>
+                                                                <h4>Expected (<?= $currency ?>)</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Counted ($)</h4>
+                                                                <h4>Counted (<?= $currency ?>)</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Differences ($) </h4>
+                                                                <h4>Differences (<?= $currency ?>) </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -611,17 +609,17 @@ if ($register_result[0]->type == '1') {
                                                     <div class="drawer_cash">
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Expected ($)</h4>
+                                                                <h4>Expected (<?= $currency ?>)</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Counted ($)</h4>
+                                                                <h4>Counted (<?= $currency ?>)</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Differences ($) </h4>
+                                                                <h4>Differences (<?= $currency ?>) </h4>
                                                             </div>
                                                         </div>
                                                     </div>

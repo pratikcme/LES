@@ -238,8 +238,6 @@ $vendor_id = $this->session->userdata['id'];
 
                                     </div>
 
-
-
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padd_rght_0">
 
                                         <div class="view_sammary">
@@ -696,10 +694,10 @@ $vendor_id = $this->session->userdata['id'];
 
                                                         <div class="summary_cash">
                                                             <p><?php if (!empty($register_result)) {
-                                                            echo $register_result[0]->transaction;
-                                                        } else {
-                                                            echo '0.00';
-                                                        }  ?>
+                                                                    echo $register_result[0]->transaction;
+                                                                } else {
+                                                                    echo '0.00';
+                                                                }  ?>
                                                             </p>
                                                         </div>
 
@@ -771,10 +769,10 @@ $vendor_id = $this->session->userdata['id'];
 
 
                                                             <p><?php if (!empty($register_result)) {
-                                                            echo number_format((float)$register_result[0]->counted, 2, '.', '');
-                                                        } else {
-                                                            echo '0.00';
-                                                        }  ?>
+                                                                    echo number_format((float)$register_result[0]->counted, 2, '.', '');
+                                                                } else {
+                                                                    echo '0.00';
+                                                                }  ?>
                                                             </p>
 
                                                         </div>

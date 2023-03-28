@@ -378,7 +378,7 @@ class Product_model extends My_model
 			isset($postdata['sub_id']) && $postdata['sub_id'] == '' &&
 			isset($postdata['cat_id']) && $postdata['cat_id'] == ''
 		) {
-			
+
 			$data['order'] = 'dp ASC,pw.quantity DESC , p.id DESC';
 		}
 
@@ -386,12 +386,12 @@ class Product_model extends My_model
 		if (!isset($data['order'])) {
 			$data['order'] = 'dp ASC,pw.quantity DESC';
 		}
-	
+
 		$data['where']['p.branch_id'] = $this->branch_id;
 		$data['where']['pw.status !='] = '9';
 		$data['where']['p.status'] = '1';
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*','p.*',"IF(p.display_priority IS NULL, 'N/A', p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*', 'p.*', "IF(p.display_priority IS NULL, 'N/A', p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
@@ -456,7 +456,7 @@ class Product_model extends My_model
 				// $checkMycart = $this->checkMycartProduct($this->session->userdata('user_id'));
 				$p_outofstock = '';
 				if ($varientQuantity == '0') {
-					$p_outofstock .= '<div class="out-stock"><span class="out-heading">'.$this->lang->line('out of stock').'</span></div>';
+					$p_outofstock .= '<div class="out-stock"><span class="out-heading">' . $this->lang->line('out of stock') . '</span></div>';
 				}
 				$data['p_outofstock'] = $p_outofstock;
 				$class = '';
@@ -483,7 +483,7 @@ class Product_model extends My_model
 				$data['image'] = $image;
 				$value->name = character_limiter($value->name, 30);
 				$data['value'] = $value;
-				$product_html .= $this->load->view('frontend/ajaxView/product',$data,true); 
+				$product_html .= $this->load->view('frontend/ajaxView/product', $data, true);
 
 				// $product_html .= '<div class="col-lg-3 col-md-6 col-sm-6">
 				// 	        <div class="product-wrapper">
@@ -524,16 +524,16 @@ class Product_model extends My_model
 				// 	            <button class="btn addcartbutton" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-varient_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>'.$this->lang->line('add to cart').'</button>
 				// 	            </div>
 				// 	            <div class="quantity-wrap ' . $d_show . '">
-              	// 					<button class="dec cart-qty-minus" data-product_weight_id=' . $value->product_weight_id . '><span class="minus"><i class="fa fa-minus"></i></span></button>
-              	// 					<input class="qty" type="text" name="" value=' . $addQuantity . ' data-product_id=' . $value->id . ' data-weight_id=' . $value->weight_id . ' readonly>
-              	// 					<button class="inc cart-qty-plus" data-product_weight_id=' . $value->product_weight_id . ' ><span><i class="fa fa-plus"></i></span></button>
-            	// 				</div>
+				// 					<button class="dec cart-qty-minus" data-product_weight_id=' . $value->product_weight_id . '><span class="minus"><i class="fa fa-minus"></i></span></button>
+				// 					<input class="qty" type="text" name="" value=' . $addQuantity . ' data-product_id=' . $value->id . ' data-weight_id=' . $value->weight_id . ' readonly>
+				// 					<button class="inc cart-qty-plus" data-product_weight_id=' . $value->product_weight_id . ' ><span><i class="fa fa-plus"></i></span></button>
+				// 				</div>
 				// 	          </div>
 				// 	        </div>
-      			// 		</div>';
+				// 		</div>';
 			}
 			$product_html .= '<div class="col-md-12" style="display:' . $display . '">
-        						<button type="button" class="btn show-more" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>'.$this->lang->line('Show More').'</button>
+        						<button type="button" class="btn show-more" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>' . $this->lang->line('Show More') . '</button>
       						</div>';
 		} else {
 			$product_html = '<h3>No Product Found  </h3>';
@@ -639,7 +639,7 @@ class Product_model extends My_model
 
 
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pw.price', 'pw.discount_price', 'pw.id as variant_id', 'pw.quantity', 'GROUP_CONCAT(pw.id) as product_variant_id', 'GROUP_CONCAT(w.name) as wight_name', 'GROUP_CONCAT(pw.discount_per) as discount_per', 'GROUP_CONCAT(pw.weight_no) as wight_no'];
+		$data['select'] = ['p.*', 'pw.price', 'pw.discount_price', 'pw.id as variant_id', 'pw.quantity', 'GROUP_CONCAT(pw.id) as product_variant_id', 'GROUP_CONCAT(w.name) as wight_name', 'GROUP_CONCAT(pw.discount_per) as discount_per', 'GROUP_CONCAT(pw.weight_no) as wight_no', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			// TABLE_PRODUCT_IMAGE .' as pi'=>['pw.id = pi.product_variant_id','LEFT'],
@@ -841,7 +841,7 @@ class Product_model extends My_model
 		// $proId = $this->utility->safe_b64decode($postdata['pro_id']);
 
 		$data['table'] = TABLE_PRODUCT_WEIGHT;
-		$data['select'] = ['id', 'price', 'quantity', 'weight_no', 'discount_per', 'discount_price', 'product_id', 'without_gst_price'];
+		$data['select'] = ['id', 'price', 'quantity', 'weight_no', 'discount_per', 'discount_price', 'product_id', 'without_gst_price', 'limited_stock'];
 		$data['where'] = [
 			'status!=' => '9',
 			'id' => $this->utility->safe_b64decode($postdata['product_varient_id']),
@@ -880,7 +880,7 @@ class Product_model extends My_model
 
 
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.weight_id', 'pw.discount_per', 'pw.discount_price','pw.without_gst_price','pw.max_order_qty'];
+		$data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.weight_id', 'pw.discount_per', 'pw.discount_price', 'pw.without_gst_price', 'pw.max_order_qty'];
 		$data['join'] = [TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT']];
 		$data['where'] = [
 			'p.status !=' => '9',
@@ -1308,5 +1308,4 @@ class Product_model extends My_model
 		$data['where'] = ['user_id' => $user_id];
 		return $this->deleteRecords($data);
 	}
-
 }

@@ -161,6 +161,7 @@ class Products extends User_Controller
 		$data['js'] = array('addProduct.js');
 		// $data['init'] = array('ADDPRODUCT.init()');
 		$data['productDetail'] = $this->this_model->ProductDetails($product_id);
+		// dd($data);
 
 		$data['isAvailable'] = '1';
 		if (empty($data['productDetail'])) {
@@ -444,6 +445,7 @@ class Products extends User_Controller
 			'discount_price' => number_format((float)$result[0]->discount_price, 2, '.', ''),
 			'discount_per' => $result[0]->discount_per,
 			'varient_quantity' => $result[0]->quantity,
+			'limited_stock' => $result[0]->limited_stock,
 			'image_div' => $div_nav,
 			'image_div_for' => $div_for,
 			'isInWishList' => $class,

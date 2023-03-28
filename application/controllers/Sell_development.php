@@ -183,12 +183,181 @@ class Sell_development extends Vendor_Controller
                     </div>
                 </li>';
             }
-
             $html .= '</ul>';
 
             echo json_encode(['res' => $html]);
         }
     }
+
+    // Dipesh Added for Refund
+    public function return_sell()
+    {
+        $data['currency_code'] = $this->this_model->getCurrencyCode();
+        $data['js'] = array('return_pos.js');
+        $data['css'] = ['sell_style.css'];
+        $currency = $this->this_model->getCurrency();
+        $data['currency'] = $currency[0]->value;
+
+        $this->load->view("return_sell", $data);
+    }
+    // Dipesh Added for Get Order 
+    public function findOrderByKey()
+    {
+        if ($this->input->post()) {
+            $class = 'add_order';
+            $currency = $this->input->post("currency");
+
+            $res = $this->this_model->findOrderByKey($this->input->post());
+            // dd($res);die;
+            // foreach ($res as $val) :
+            //     $result = $this->this_model->getOrderDetailsList($val->id);
+            // endforeach;
+
+            $html = '<ul>';
+            foreach ($res as $key => $value) {
+                // $value->discount_price = number_format((float)$value->discount_price, '2', '.', '');
+                $html .= '<li class="popover-list-item ' . $class . '" data-order_id=' . $value->id . ' . data-customer_id=' . $value->customer_id . '  >
+                    <div class="product-list-wrapper">
+                        <div>
+                            <div>
+                                <h5>' . $value->order_no . '</h5>
+                                <h5>' . date('d/m/Y h:i A', $value->dt_updated) . '</h5>
+                            </div>
+                            <div class="total-wrapper">
+                                <h5>' . $currency . ' ' . numberFormat($value->payable_amount) . '</h5>
+                            </div>
+                        </div>
+                    </div>
+                </li>';
+            }
+        }
+        $html .= '</ul>';
+
+        echo json_encode(['res' => $html]);
+    }
+    // Dipesh Added for adding sold Products
+    public function showAllSoldProducts()
+    {
+        if ($this->input->post()) {
+            $order_id = $this->input->post('order_id');
+            $customer_id = $this->input->post('customer_id');
+            $res = $this->this_model->showAllSoldProducts($order_id);
+
+            $customerHtml = '';
+            if ($customer_id != '0' && !empty($customer_id)) {
+                $data['customerData'] = $this->this_model->getCustomerDetails($customer_id);
+                $customerHtml .= $this->load->view("pos/customer_data", $data, true);
+                unset($data);
+            }
+
+            $html = '';
+            $data['products'] = $res['order_details'];
+
+            $promocode_used = "0";
+            $cart_based = "0";
+
+            if ($data['products'][0]->promocode_used !== '0') {
+                $promocode_used = $this->this_model->getPromocodeAmount($data['products'][0]->order_id);
+            }
+
+            if ($data['products'][0]->cart_based !== '0') {
+                $cart_based = ($data['products'][0]->cart_based * 100) / $data['products'][0]->sub_total;
+            }
+
+            $cart_html = '';
+
+            foreach ($data['products'] as $key => $value) :
+                $returned_quantity = $this->this_model->getReturnedQuantity($value->order_details_id);
+                if ($returned_quantity != 0) {
+                    $val['value'] = $value;
+
+                    $val['value']->returned_quantity = $returned_quantity;
+                    $val['value']->price = numberFormat($val['value']->quantity * $val['value']->discount_price);
+                    $val['value']->noDelete = true;
+                    $cart_html .=  $this->load->view("pos/cart_item_refund", $val, true);
+                    unset($data['products'][$key]);
+                }
+            endforeach;
+
+            $data['order_id'] = $order_id;
+
+            $html .=  $this->load->view("pos/quick_product", $data, true);
+
+            echo json_encode(['result' => $html, 'customer_html' => $customerHtml, 'cart_html' => $cart_html, 'promocode_used' => $promocode_used, 'cart_based' => $cart_based, 'sub_total' => $data['products'][0]->sub_total]);
+        }
+    }
+    // Dipesh for add product 
+    public function addSoldProductToCart()
+    {
+        if ($this->input->post()) {
+            $postdata = $this->input->post();
+            $data['value'] = (object)[];
+
+            $data['value']->product_id = $postdata["product_id"];
+            $data['value']->order_id = $postdata["order_id"];
+            $data['value']->product_weight_id = $postdata["product_weight_id"];
+            $data['value']->product_name = $postdata["product_name"];
+            $data['value']->weight_no = $postdata["weight_no"];
+            $data['value']->weight_name = $postdata["weight_name"];
+            $data['value']->quantity = $postdata["quantity"];
+            $data['value']->discount_price = $postdata["discount_price"];
+            $data['value']->discount = $postdata["discount"];
+            $data['value']->actual_price = $postdata["actual_price"];
+            $data['value']->order_details_id = $postdata["order_details_id"];
+            $data['value']->price = $postdata["price"];
+            $data['value']->weight_id = $postdata["weight_id"];
+
+            $data['value']->returned_quantity = $this->this_model->getReturnedQuantity($postdata["order_details_id"]);
+
+            $html = '';
+
+            $currency = $this->this_model->getCurrency();
+            $data['currency'] = $currency[0]->value;
+            $data['js'] = array('return_pos.js');
+            $data['css'] = ['sell_style.css'];
+
+            if (count($data['value']) > 0) {
+                $html .=  $this->load->view("pos/cart_item_refund", $data, true);
+                echo json_encode(['status' => 1, 'result' => $html]);
+            }
+        }
+    }
+    // remove 
+    public function removeSoldProductFromCart()
+    {
+        if ($this->input->post()) {
+            $postdata = $this->input->post();
+            $data['value'] = (object)[];
+
+            $data['value']->product_id = $postdata["product_id"];
+            $data['value']->order_id = $postdata["order_id"];
+            $data['value']->product_weight_id = $postdata["product_weight_id"];
+            $data['value']->product_name = $postdata["product_name"];
+            $data['value']->weight_no = $postdata["weight_no"];
+            $data['value']->weight_name = $postdata["weight_name"];
+            $data['value']->quantity = $postdata["quantity"];
+            $data['value']->discount_price = $postdata["discount_price"];
+            $data['value']->discount = $postdata["discount"];
+            $data['value']->actual_price = $postdata["actual_price"];
+            $data['value']->order_details_id = $postdata["order_details_id"];
+            $data['value']->price = $postdata["price"];
+            $data['value']->weight_id = $postdata["weight_id"];
+
+            $data['products'] = [$data['value']];
+            $html =  $this->load->view("pos/quick_product", $data, true);
+            echo json_encode(['result' => $html, 'status' => 1]);
+        }
+    }
+    // 
+    // Refund for submit
+    public function order_refund_checkout()
+    {
+        if (count($this->input->post('product_name')) > 0) {
+            $res = $this->this_model->order_refund_checkout($this->input->post()); //DK
+        }
+        redirect(base_url() . '	sell_development/return_sell');
+    }
+    // Done
 
 
     public function addProducttoTempOrder()
@@ -213,6 +382,8 @@ class Sell_development extends Vendor_Controller
                 $total_gst = 0;
                 $total_savings = 0;
 
+                $currency = $this->this_model->getCurrency();
+
                 foreach ($result as $key => $value) {
                     $gst_amount = ($value->discount_price * $value->gst) / 100;
                     $total_gst += $gst_amount * $value->quantity;
@@ -224,6 +395,7 @@ class Sell_development extends Vendor_Controller
 
                     $data['value'] = $value;
                     $data['parked_order_id'] = $this->input->post('isParked');
+                    $data['currency'] = $currency[0]->value;
 
                     $html .= $this->load->view('cart_item_ajax', $data, true);
                 }
@@ -282,23 +454,23 @@ class Sell_development extends Vendor_Controller
             $html = '';
             foreach ($res as $key => $value) {
                 $html .= '<ul>
-    <li class="popover-list-item select_customer" data-customer_id=' . $value->id . '>
-        <a href="#">
-            <div class="customer-wrap">
-                <div class="profile-avatar">
-                    ' . $value->customer_name[0] . '
+            <li class="popover-list-item select_customer" data-customer_id=' . $value->id . '>
+            <a href="#">
+                <div class="customer-wrap">
+                    <div class="profile-avatar">
+                        ' . $value->customer_name[0] . '
+                    </div>
+                    <div class="list-items">
+                        <h4>' . $value->customer_name . '</h4>
+                        <p>' . $value->customercode . '</p>
+                    </div>
                 </div>
-                <div class="list-items">
-                    <h4>' . $value->customer_name . '</h4>
-                    <p>' . $value->customercode . '</p>
+                <div class="remove-close" style="display:none">
+                    <span><i class="fa fa-times" aria-hidden="true"></i></span>
                 </div>
-            </div>
-            <div class="remove-close" style="display:none">
-                <span><i class="fa fa-times" aria-hidden="true"></i></span>
-            </div>
-        </a>
-    </li>
-</ul>';
+            </a>
+                </li>
+            </ul>';
             }
             echo json_encode(['result' => $html]);
         }
@@ -313,6 +485,7 @@ class Sell_development extends Vendor_Controller
             } else {
                 $res = $this->this_model->remove($this->input->post());
             }
+
             if ($res) {
                 $status = 1;
                 $result = $this->this_model->OrderTempWithoutPark();
@@ -398,22 +571,16 @@ class Sell_development extends Vendor_Controller
                         $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
                     }
 
-
-
                     // new for Discount
                     if ($discount_percentage > 0) {
                         $disc_price = ($avail_quantity[0]->price * $discount_percentage) / 100;
                         $price =  $avail_quantity[0]->price - $disc_price;
                     }
 
-
                     if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                         $gst_per = ($price * $avail_quantity[0]->gst) / 100;
                         $price = $price - $gst_per;
                     }
-
-
-
 
                     $this->this_model->updateTempQuantity($this->input->post(), $price);
                     $status = '1';
@@ -531,13 +698,13 @@ class Sell_development extends Vendor_Controller
         if ($this->input->post()) {
             $res = $this->this_model->getProductVarient($this->input->post());
             $html .= '<div class="category-list product_quick_list" data-product_weight_id=' . $res[0]->id . '>
-    <a href="javascript:">
-        <div>
-            <h4>' . $res[0]->name . '</h4>
-            <p>' . $res[0]->weight_no . ' ' . $res[0]->weight_name . '</p>
-        </div>
-    </a>
-</div>';
+            <a href="javascript:">
+                <div>
+                    <h4>' . $res[0]->name . '</h4>
+                    <p>' . $res[0]->weight_no . ' ' . $res[0]->weight_name . '</p>
+                </div>
+                </a>
+            </div>';
             echo json_encode(['list' => $html]);
         }
     }
@@ -579,60 +746,99 @@ class Sell_development extends Vendor_Controller
     {
         if ($this->input->post()) {
             $re = $this->this_model->viewOrderDetails($this->input->post());
-            // dd($re);
             $o_detail = '';
+            $o_info = '';
 
-            $html = '';
-            $amount = 0;
+            $data['orderInfo'] = $re['orderInfo'][0];
+            $data['amount'] = $this->this_model->getPromocodeAmount($data['orderInfo']->order_id);
 
-            if ($re['orderInfo'][0]->promocode_used == 1) {
-                $amount = $this->this_model->getPromocodeAmount($re['orderInfo'][0]->order_id);
-                $html = '<li>
-    <div>
-        <h6>Promocode Discount(%)</h6>
-        <h6> - ' . '(' . $amount->percentage . '%)' . numberFormat($amount->amount) . '</h6>
-    </div>
-</li>';
+            // $data['shoppingDiscount'] =  $this->this_model->checkShoppingBasedDiscount($data['orderInfo']->total);
+            $data['shoppingDiscount'] = $data['orderInfo']->shopping_amount_based_discount * 100  / $data['orderInfo']->total;
+
+            $o_info .= $this->load->view('pos/pos_order_details', $data, true);
+
+            $ro_info = "";
+            if (count($re['return_orderInfo']) > 0) {
+                unset($data);
+                $data['orderInfo'] = $re['return_orderInfo'][0];
+                $data['removedDiscountPercentage'] = $data['orderInfo']->return_discount_per;
+                $data['removedDiscountAmount'] = $data['orderInfo']->return_discount_amount;
+
+                $ro_info .=  $this->load->view('pos/pos_order_details', $data, true);
             }
 
-            $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($re['orderInfo'][0]->total);
+            unset($data);
 
-            $shopping_based_html = '';
-            if ($re['orderInfo'][0]->shopping_amount_based_discount > 0) {
-                $shopping_based_html = '<li>
-    <div>
-        <h6>Cart Amount Based Discount(%)</h6>
-        <h6> - ' . '(' . $shoppingDiscount[0]->discount_percentage . '%)' .
-                    numberFormat($re['orderInfo'][0]->shopping_amount_based_discount) . '</h6>
-    </div>
-</li>';
+            $data['order_details'] =  $re['order_details'];
+            $o_detail  = $this->load->view('pos/pos_order_info', $data, true);
+
+            $ro_detail = "";
+            if (count($re['return_order_details']) > 0) {
+                unset($data);
+                $data['order_details'] = $re['return_order_details'];
+                $ro_detail = $this->load->view('pos/pos_order_info', $data, true);
             }
 
-            foreach ($re['order_details'] as $key => $v) {
-                $o_detail .= '<tr>
-    <td>' . $v->name . '</td>
-    <td>' . $v->quantity . '</td>
-    <td>' . $v->discount . '</td>
-    <td>' . $v->calculation_price . '</td>
-</tr>';
-            }
-            $o_info = '<li>
-    <div>
-        <h6>Subtotal </h6>
-        <h6>' . $re['orderInfo'][0]->total . '</h6>
-    </div>
-</li>
-' . $html . '' . $shopping_based_html . '
-<li>
-    <div>
-        <h6>Total </h6>
-        <h6>' . numberFormat($re['orderInfo'][0]->payable_amount) . '</h6>
-    </div>
-</li>';
+            // removed for test purpose
+            // if ($re['orderInfo'][0]->promocode_used == 1) {
+            //     $amount = $this->this_model->getPromocodeAmount($re['orderInfo'][0]->order_id);
+            //     $html = '<li>
+            //     <div>
+            //         <h6>Promocode Discount(%)</h6>
+            //         <h6> - ' . '(' . $amount->percentage . '%)' . numberFormat($amount->amount) . '</h6>
+            //         </div>
+            //     </li>';
+            // }
+
+            // same
+            // $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($re['orderInfo'][0]->total);
+
+            // $shopping_based_html = '';
+            // if ($re['orderInfo'][0]->shopping_amount_based_discount > 0) {
+            //     $shopping_based_html = '<li>
+            //     <div>
+            //         <h6>Cart Amount Based Discount(%)</h6>
+            //         <h6> - ' . '(' . $shoppingDiscount[0]->discount_percentage . '%)' .
+            //         numberFormat($re['orderInfo'][0]->shopping_amount_based_discount) . '</h6>
+            //     </div>
+            //     </li>';
+            // }
+
+            // foreach ($re['order_details'] as $key => $v) {
+            //     $returned_quantity = $this->this_model->getReturnedQuantity($v->order_details_id);
+            //     $o_detail .= '<tr>
+            //         <td>' . $v->name . '</td>
+            //         <td>' . $v->quantity  . '</td>
+            //         <td>' .  $returned_quantity  . '</td>
+            //         <td>' . $v->discount . '</td>
+            //         <td>' . $v->calculation_price . '</td>
+            //     </tr>';
+            // }
+
+
+            // same
+            // $o_info = '<li>
+            //         <div>
+            //             <h6>Subtotal </h6>
+            //             <h6>' . $re['orderInfo'][0]->total . '</h6>
+            //         </div>
+            //     </li>
+            //     ' . $html . '' . $shopping_based_html . '
+            //     <li>
+            //         <div>
+            //             <h6>Total </h6>
+            //             <h6>' . numberFormat($re['orderInfo'][0]->payable_amount) . '</h6>
+            //         </div>
+            //     </li>';
+
+
             $date = ' <h4></h4>
-<h5> <span>Date : </span> ' . date('d -m- Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
+                <h5> <span>Date : </span> ' . date('d - m - Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
 
-            echo json_encode(['o_detail' => $o_detail, 'o_info' => $o_info, 'date' => $date]);
+            $return_date = ' <h4></h4>
+                <h5> <span>Refund Date : </span> ' . date('d - m - Y', $re['return_orderInfo'][0]->dt_added) . ' </h5>';
+
+            echo json_encode(['o_detail' => $o_detail, 'o_info' => $o_info, 'return_detail' => $ro_detail, 'return_info' => $ro_info, 'date' => $date, 'return_date' => $return_date]);
         }
     }
 
@@ -679,8 +885,6 @@ class Sell_development extends Vendor_Controller
 
     public function check_quantity()
     {
-
-
         $return = $this->this_model->check_quantity($_POST);
         echo $return;
         exit();
@@ -719,8 +923,6 @@ class Sell_development extends Vendor_Controller
     ## Sell : Temp Products Div Append ##
     public function temp_order()
     {
-
-
         $return = $this->this_model->temp_order($this->input->post());
         echo $return;
         exit();
@@ -1099,12 +1301,12 @@ WHERE id = $register_id");
         $vendor_id = $this->session->userdata('id');
         $search = $_GET['search'];
         $query_product = $this->db->query("SELECT p.* FROM product as p
-INNER JOIN category as c on p.category_id = c.id
-INNER JOIN subcategory as s on p.subcategory_id = s.id
-WHERE p.status != '9' AND (p.name LIKE '%$search%'
-OR c.name LIKE '%$search%'
-OR s.name LIKE '%$search%')
-AND p.vendor_id = '$vendor_id' ORDER BY id DESC ");
+        INNER JOIN category as c on p.category_id = c.id
+        INNER JOIN subcategory as s on p.subcategory_id = s.id
+        WHERE p.status != '9' AND (p.name LIKE '%$search%'
+        OR c.name LIKE '%$search%'
+        OR s.name LIKE '%$search%')
+        AND p.vendor_id = '$vendor_id' ORDER BY id DESC ");
         $result = $query_product->result();
 
         $i = '1';
@@ -1496,7 +1698,6 @@ category_id ='$type_id' ORDER BY id DESC ");
 
                 public function select_product_variant()
                 {
-
 
                     $type_id = $_GET['type_id'];
 
