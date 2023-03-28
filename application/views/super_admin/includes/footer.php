@@ -21,7 +21,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB-nS3x_SS2JjPSrbq772nwf4QEHRSK1y4" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="<?php echo base_url(); ?>public/js/jquery.multi-select.js"></script>
+<script src="<?php echo base_url(); ?>public/js/search_multivendor.js"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBW43KgTNs_Kusuvbian6KYGi_QzXOLS4w" type="text/javascript"></script>
+ 
  <script type="text/javascript">
   function initAutocomplete(id) {
     var res = id.split("_");

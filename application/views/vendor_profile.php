@@ -86,34 +86,6 @@ error_reporting(0);
                   <input type="hidden" id="id" name="id" value="<?php echo $result['id']; ?>">
                   <input type="hidden" id="web" name="web" value="1">
                   <div class="panel-body">
-                   <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="form-group">
-                        <label for="" class="margin_top_label">Enter Domain Name :<span class="required" aria-required="true"> * </span>
-                        </label>                            
-                        <input type="text"  name="domain_name" placeholder="Domain Name" autocomplete="off" class="dis form-control margin_top_input" value="<?php if(isset($result['domain_name'])){ echo $result['domain_name']; }else{ echo $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/'; } ?>">
-                        <span style="color: red;"><?php echo form_error('domain_name'); ?></span>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="form-group row ">
-                            <div class="col-md-12">
-                              <label class="margin_top_label">Store Type :<span class="required" aria-required="true"> * </span>
-                              </label>
-                              <select class="form-control" name="store_type">
-                                <option value="" >Select Store Type</option>
-                                <option value="grocery" <?=($result['store_type'] == 'grocery') ? "SELECTED" : "";?>>Grocery</option>
-                                <option value="apparels&garments" <?=($result['store_type'] == 'apparels&garments') ? "SELECTED" : ""?>>Apparels&Garments</option>
-                                <option value="furniture" <?=($result['store_type'] == 'furniture') ? "SELECTED" : "" ?>>Furniture</option>
-                                <option value="gift" <?=($result['store_type'] == 'gift') ? "SELECTED" : ""?>>Gift</option>
-                                <option value="cake&bakery" <?=($result['store_type'] == 'cake&bakery') ? "SELECTED" : ""?>>Cake&Bakery</option>
-                                <option value="kitchen" <?=($result['store_type'] == 'kitchen') ? "SELECTED" : ""?>>Kitchen</option>
-                                <option value="jewellery" <?=($result['store_type'] == 'jewellery') ? "SELECTED" : ""?>>Jewellery</option>
-                              </select>
-                            </div>
-                          </div>  
-                    </div>
-                  </div>
                      <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                            <div class="form-group">
@@ -242,8 +214,7 @@ error_reporting(0);
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
- <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeCDbEPFYP5aVlxPzE8ZDE2O3I_pelYOM&v=3.exp&libraries=places"></script> -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-nS3x_SS2JjPSrbq772nwf4QEHRSK1y4&v=3.exp&libraries=places"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW43KgTNs_Kusuvbian6KYGi_QzXOLS4w&v=3.exp&libraries=places"></script>
  
    </body>
 <script type="text/javascript">

@@ -59,8 +59,6 @@ class vendor_model extends My_model
                 $dataupdate = array(
                     'image' => $image,
                     'logo_image' => $logo,
-                    'domain_name' => $_POST['domain_name'],
-                    'store_type' => $_POST['store_type'],
                     'location' => $_POST['location'],
                     'latitude' => $_POST['latitude'],
                     'longitude' => $_POST['longitude'],
@@ -105,8 +103,6 @@ class vendor_model extends My_model
                     'vendor_id' => $this->session->userdata('vendor_admin_id'),
                     'image' => $image,
                     'logo_image' => $logo,
-                    'domain_name' => $_POST['domain_name'],
-                    'store_type' => $_POST['store_type'],
                     'location' => $_POST['location'],
                     'latitude' => $_POST['latitude'],
                     'longitude' => $_POST['longitude'],

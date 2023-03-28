@@ -16,7 +16,7 @@
                 <li> <a href="<?=base_url().'contact'?>"><?=$this->lang->line('Contact Us')?></a> </li>
               </ul>
             </div>
-            <div id="google_translate_element"></div>
+            <div id="google_translate_element" style="display:none"></div>
             <!-- <select class="lang-change" onchange="javascript:window.location.href='<?php echo base_url(); ?>LanguageSwitcher/switchLang/'+this.value;">
               <option value="en" <?php if($this->session->userdata('site_lang') == 'en') echo 'selected="selected"'; ?>>English</option>
               <option value="ar" <?php if($this->session->userdata('site_lang') == 'ar') echo 'selected="selected"'; ?>>Arabic</option>
@@ -122,6 +122,11 @@
                      <li>
                           <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
                         <div class="cart-img-wrap">
+                        <?php if(isset($value->food_type) && $value->food_type == '1'){ ?>
+                              <img src="<?=base_url().'public/frontend/assets/images/vage-icon.svg'?>" alt="veg-icon" class="veg-icon">
+                          <?php }else if(isset($value->food_type) && $value->food_type == '2'){ ?>
+                              <img src="<?=base_url().'public/frontend/assets/images/non-vage-icon.svg'?>" alt="nonveg-icon" class="nonveg-icon">
+                          <?php } ?>
                           <img src="<?=base_url()?>public/images/<?=$this->folder?>product_image/<?=($value->image != '') ? $value->image : 'defualt.png' ?>">
                         </div>
                       </a>

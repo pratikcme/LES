@@ -79,6 +79,17 @@
                   </select>
             </div>
           </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="store_type" >Store Type</label>
+                <select class="form-control" name="store_type">
+                  <option value="">Select Store Type</option>
+                  <?php foreach($getStore as $key => $value){?>
+                    <option value="<?=$value->id?>" <?=($value->id==$editData[0]->store_type) ? 'SELECTED' : ''?>><?=$value->name?></option>
+                    <?php } ?>
+                </select>
+            </div>
+          </div>
         </div>
       
         <div class="row">

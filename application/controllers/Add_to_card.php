@@ -107,7 +107,8 @@ class Add_to_card extends User_Controller
 					'quantity' => $quantity,
 					'image' => $result[0]->image,
 					'total' => $result[0]->discount_price * $quantity,
-					'product_weight_id' => $result[0]->pw_id
+					'product_weight_id' => $result[0]->pw_id,
+					'food_type' =>$result[0]->food_type
 				);
 
 				// print_r($cart_item);

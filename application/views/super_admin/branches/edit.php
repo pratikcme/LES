@@ -35,23 +35,6 @@
             </div>
           </div>
         </div> -->
-        <div class="form-group">
-          <label for="approved" class="col-sm-2 col-form-label pl-0">Store type</label>
-          <div class="row">
-            <div class="col-sm-9">
-             <select class="form-control" name="store_type">
-              <option value="">Select Store Type</option>
-              <option value="grocery" <?=($editData[0]->store_type=='grocery') ? 'SELECTED' : '' ?>>Grocery</option>
-              <option value="apparels&garments" <?=($editData[0]->store_type=='apparels&garments') ? 'SELECTED' : '' ?>>Apparels&Garments</option>
-              <option value="furniture" <?=($editData[0]->store_type=='furniture') ? 'SELECTED' : '' ?>>Furniture</option>
-              <option value="gift" <?=($editData[0]->store_type=='gift') ? 'SELECTED' : '' ?>>Gift</option>
-              <option value="cake&bakery" <?=($editData[0]->store_type=='cake&bakery') ? 'SELECTED' : '' ?>>Cake&Bakery</option>
-              <option value="kitchen" <?=($editData[0]->store_type=='kitchen') ? 'SELECTED' : '' ?>>Kitchen</option>
-              <option value="jewellery" <?=($editData[0]->store_type=='jewellery') ? 'SELECTED' : '' ?>>Jewellery</option>
-            </select>
-          </div>
-        </div>
-      </div>
        <!--  <div class="form-group">
           <label for="webTitle" class="col-sm-2 col-form-label pl-0">Web Title</label>
           <div class="row">

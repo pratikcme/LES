@@ -751,6 +751,7 @@ background-color: transparent;
 display: flex;
 align-items: center;
 justify-content: center;
+position: relative;
 }
  
 .cart-view-wrap .cart-view-content ul li .cart-img-wrap img
@@ -5303,5 +5304,379 @@ z-index:-5;
 .blank-ratting {
     color: #cbcbcb !important;
 }
+
+
+
+
+/* ===================review-box-product-details========================= */
+.my-review-wrapper{
+    background-color: #ffffff;
+    box-shadow:rgba(0,19,37,0.72);
+    width: 100%;
+    height: 100%;
+
+}
+.review-header {
+    border-bottom: 1px solid rgba(111,121,129,0.22);
+}
+.review-header h2{
+    font-size: 18px;
+    line-height: 24px;
+    padding: 16px 20px;
+    color: var(--secondary-color);
+    font-family: "OpenSans-Bold";
+    margin-bottom: 0px;
+}
+.review-content{
+    display: flex;
+    /* align-items: center; */
+    padding: 32px 32px 24px 16px;
+    border-bottom: 1px solid rgba(111,121,129,0.22);
+}
+.review-content .left-content{
+    display: flex;
+    gap: 10px;
+    padding: 8px 12px;
+    border-right: 2px solid rgba(111, 121, 129, 0.22);
+}
+.review-content h3{
+    font-family: "OpenSans-Bold";
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -0.3px;
+    color: rgba(0, 19, 37, 0.92);
+}
+.review-content h3 span {
+    font-family: "OpenSans-SemiBold";
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -0.3px;
+    color: rgba(0, 19, 37, 0.92);
+}
+.review-content h4{
+    font-family: "OpenSans-Medium";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+    color: rgba(0, 19, 37, 0.92);
+    margin-bottom: 0px;
+}
+.review-content p{
+    font-family: var("OpenSans-Regular");
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #666666;
+    margin-bottom: 0px;
+}
+.review-content .right-content{
+    margin: 0px 24px;
+}
+.review-content .right-content h6{
+    font-family: "OpenSans-Regular";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #666666;
+    /* padding-bottom: 8px; */
+}
+.right-content .enter-review-btn{
+    margin-top: 14px;
+}
+ .right-content .enter-review-btn a{
+   padding: 8px 16px;
+   background: none;
+    border: 1px solid rgba(111, 121, 129, 0.22);
+    font-family: "OpenSans-SemiBold";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: var(--secondary-color) !important;
+    text-decoration: none;
+}
+
+
+
+
+.review-comment-wrapper{
+    padding: 30px 20px;
+    height: 470px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.testimonial-box{
+    /* width:500px; */
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    padding: 20px;
+    /* margin: 15px; */
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.profile-img{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.profile-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.profile{
+    display: flex;
+    align-items: center;
+}
+.name-user{
+    display: flex;
+    flex-direction: column;
+}
+.name-user strong{
+    font-family: "OpenSans-SemiBold";
+    color: #000;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+}
+.name-user span{
+    font-family: "OpenSans-Regular";
+    color: #666666;
+    font-size: 14px;
+}
+.reviews{
+    color: #f9d71c;
+}
+.box-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.client-comment p{
+    font-family: "OpenSans-Regular";
+    font-size: 14px;
+    color: #666666;
+}
+/* .testimonial-box:hover{
+    transform: translateY(-10px);
+    transition: all ease 0.3s;
+} */
+
+
+/* ----modal-css--- */
+.my-review-modal .modal-header{
+    border-bottom: none !important;
+}
+.my-review-modal .modal-title{
+    font-family: "OpenSans-SemiBold";
+    font-size: 20px;
+    color: #000;
+}
+.star-review-wrapper ul {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.star-review-wrapper ul li{
+    list-style: none;
+    position: relative;
+}
+.star-review-wrapper ul li span{
+    font-size: 18px;
+    position: relative;
+}
+
+
+.techno-check {
+    position: relative;
+}
+.techno_checkbox {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    cursor: pointer;
+    border-radius: 50% !important;
+}
+.techno-check input[type=checkbox]{
+     visibility: visible !important;
+}
+.techno_checkbox:checked~span:before{
+    content: "\f005";
+    font-family: "FontAwesome";
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    background: var(--common-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    top: 0px;
+    right: 0px;
+    color: #f9d71c !important;
+    z-index: 5;
+}
+.review-text-box input{
+    border: 1px solid #666666 !important;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+.review-text-box input:focus{
+    box-shadow: none !important;
+    border: 1px solid #666666 !important;
+}
+.review-text-box input:focus-visible{
+    box-shadow: none !important;
+    border: 1px solid #666666 !important;
+    outline: none !important;
+}
+.review-text-box input::placeholder{
+    font-family: "OpenSans-Regular";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #666666;
+}
+.modal-body h2 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #000;
+    font-family: "OpenSans-SemiBold";
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+}
+.review-text-box{
+    margin-top: 25px;
+}
+.rating-box .stars {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.stars i {
+  font-size: 25px;
+  color: #b5b8b1;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.stars i.active {
+        color: #ffb851;
+        /* transform: scale(1.2); */
+}
+
+
+/* -----feature-product-new-icon-----    */
+.feat-img{
+    position: relative;
+
+}
+
+.veg-icon{
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    z-index: 10;
+    width:20px !important;
+    height:20px !important;
+}
+.nonveg-icon{
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    z-index: 2;
+    width: 20px !important;
+    height:20px !important;
+}
+
+@media only screen and (min-width:1200px) and (max-width: 1399px) {  
+}
+
+@media only screen and (min-width:768px) and (max-width: 991px) {
+    .box-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .profile{
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width: 767px){
+    .review-content h3{
+        font-size: 28px;
+    }
+    .review-content h3 span{
+        font-size: 28px;
+    }
+    .review-content{
+        padding: 32px 15px 24px 15px;
+    }
+}
+
+@media only screen and (min-width:425px) and (max-width: 575px){
+    .review-content h3{
+        font-size: 28px;
+    }
+    .review-content h3 span{
+        font-size: 28px;
+    }
+    .review-content{
+        padding: 32px 15px 24px 15px;
+        flex-direction: column;
+    }
+    .right-content{
+        margin-left: 15px !important;
+        margin-top: 10px !important;
+    }
+    .left-content{
+        border-right: none !important;
+    }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 424px){
+    .review-content h3{
+        font-size: 28px;
+    }
+    .review-content h3 span{
+        font-size: 28px;
+    }
+    .review-content{
+        padding: 32px 15px 24px 15px;
+        flex-direction: column;
+    }
+    .right-content{
+        margin-left: 15px !important;
+        margin-top: 10px !important;
+    }
+    .left-content{
+        border-right: none !important;
+    }
+    .box-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .profile{
+        margin-bottom: 20px;
+    }
+}
+
+
+
 
 </style>

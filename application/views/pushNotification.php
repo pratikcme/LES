@@ -1,9 +1,9 @@
 <?php $this->load->view('header.php')?>
 <section id="main-content">
+   <section class="wrapper">
    <?php if($this->session->flashdata('myMessage') != '' ){
       echo $this->session->flashdata('myMessage');
       } ?>              
-   <section class="wrapper">
       <!-- page start-->
       <div class="row">
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -60,7 +60,7 @@
                                </div>
                                <div class="form-group" >
                                   <label for="message">Message</label>
-                                  <input type="text" id="message" name="message" class="form-control">
+                                  <input type="text" id="message" name="message" class="form-control" autocomplete="off">
                                   <label for="message" style="color: red" class="error"><?php echo @form_error('message'); ?></label>
                                </div>
                             </div>

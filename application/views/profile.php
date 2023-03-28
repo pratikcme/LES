@@ -68,6 +68,13 @@ img#img_preview {
     background-color: #58c9f3;
     border-color: #58c9f3;
 }
+.layout-profile{
+    padding-bottom:50px;
+}
+.layout-profile .btn{
+    margin-top:50px;
+}
+
 </style>
 <!--main content start-->
 <section id="main-content">
@@ -115,11 +122,7 @@ img#img_preview {
                                     <label for="">Owner Name<span class="required" aria-required="true"> *
                                         </span></label>
                                     <input type="text" name="fname" class="form-control" id="fname" placeholder="Name"
-                                        value="<?php if (isset($app_result['owner_name'])) {
-                                                                                                              echo $app_result['owner_name'];
-                                                                                                            } else {
-                                                                                                              echo $app_result['name'];
-                                                                                                            } ?>">
+                                        value="<?php if (isset($app_result['owner_name'])) { echo $app_result['owner_name']; } else {echo $app_result['name'];} ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Email<span class="required" aria-required="true"> * </span></label>
@@ -136,13 +139,13 @@ img#img_preview {
                                 <?php
 
                 if ($vendor_id == 0) { ?>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="">Folder Name<span class="required" aria-required="true"> *
                                         </span></label>
                                     <input type="text" name="folder_name" class="form-control" id="folder_name"
                                         placeholder="Folder name" value="<?php echo $app_result['img_folder']; ?>"
                                         maxlength="25" <?= ($app_result['img_folder'] != '') ? "readonly" : "" ?>>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label class="margin_top_label">Favicon Image:<span class="required"
                                             aria-required="true"> * </span></label>
@@ -304,7 +307,7 @@ img#img_preview {
                         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                             <?php if ($vendor_id == 0) { ?>
                             <div class="customer padding_dropdown margin_btm">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for=""> Android version :<span class="required" aria-required="true"> *
                                         </span></label>
                                     <input type="text" name="android_version" class="form-control" id="android_version"
@@ -329,7 +332,7 @@ img#img_preview {
                                         </span></label>
                                     <input type="text" name="ios_isforce" class="form-control" id="ios_isforce"
                                         placeholder="Ios isforce" value="<?php echo $app_result['ios_isforce']; ?>">
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="">Display price without gst<span class="required" aria-required="true">
                                             * </span></label>
@@ -482,7 +485,7 @@ img#img_preview {
                             <!--  -->
                         </div>
                         <?php if ($vendor_id == 0) { ?>
-                        <div style="text-align: right;padding-right: 50px">
+                        <div class="layout-profile" style="text-align: right;padding-right: 50px">
                             <a href="<?php echo base_url() . 'index.php/admin/dashboard'; ?>" data-toggle='modal'
                                 class=" btn btn-danger btn-s-xs" nam e="cancel">Cancel</a>
                             <input type="submit" name="submit" id="sbtFrm" value="Update"
@@ -491,7 +494,7 @@ img#img_preview {
                         <?php } ?>
                         <?php
             if ($vendor_id != 0) { ?>
-                        <div style="text-align: right;padding-right: 50px">
+                        <div class="layout-profile" style="text-align: right;padding-right: 50px">
                             <a href="<?php echo base_url() . 'index.php/admin/dashboard'; ?>" data-toggle='modal'
                                 class=" btn btn-danger btn-s-xs" nam e="cancel">Cancel</a>
                             <input type="submit" name="submit" id="sbtFrm" value="Update"

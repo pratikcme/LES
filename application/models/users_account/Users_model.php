@@ -330,7 +330,7 @@ class Users_model extends My_model
             TABLE_WEIGHT . ' as w' => ['w.id = pw.weight_id', 'LEFT'],
             'package as pkg' => ['pkg.id = pw.package', 'LEFT'],
         ];
-        $data['select'] = ['wl.*', 'pw.id as product_varient_id', 'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.price as actual_price', 'w.id as weight_id'];
+        $data['select'] = ['wl.*', 'pw.id as product_varient_id','p.food_type' ,'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.price as actual_price', 'w.id as weight_id'];
         $data['where']['wl.user_id'] = $this->session->userdata('user_id');
         if (isset($_SESSION['branch_id']) && $_SESSION['branch_id'] != '') {
             $data['where']['wl.branch_id'] = $this->session->userdata('branch_id');
@@ -450,6 +450,14 @@ class Users_model extends My_model
         ];
         $data['order'] = 'dt_updated DESC';
         return $this->selectRecords($data);
+    }
+
+    public function CheckIsFoodCategory($varient_id){
+        $data['table'] = TABLE_PRODUCT;
+        $data['select'] = ['food_type']; 
+        $data['where'] = ['id'=>$varient_id];
+        $return = $this->selectRecords($data);
+        return $return[0];
     }
 
     public function getBranchDetails($branch_id)

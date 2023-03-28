@@ -15,13 +15,10 @@ class Home extends User_Controller
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
-	public function index()
-	{
-		// dd($this->lang);
+	public function index(){
+		
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-		// dd($isShow);
-
 
 		$data['page'] = 'frontend/home/home';
 		$subcategory = $this->this_model->countSubcategory();
@@ -34,7 +31,7 @@ class Home extends User_Controller
 			$data['home_section_one'] = $this->home_content_model->getHomeSection_one();
 			$data['background_image'] = $this->home_content_model->getSectionOneBackground();
 		}
-		// dd($data['page']);
+		
 		$data['js'] = array('add_to_cart.js');
 
 		$data['category'] = $this->this_model->selectCategory();
@@ -72,6 +69,7 @@ class Home extends User_Controller
 			$value->addQuantity = $addQuantity;
 
 			$data['new_arrival'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
+			$value->ratting = $this->this_model->selectStarRatting($value->id,$value->pw_id);
 		}
 
 
@@ -97,8 +95,10 @@ class Home extends User_Controller
 			$varientQuantity = $this->this_model->checkVarientQuantity($value->id);
 
 			$top_selling_core[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
+			
+			$value->ratting = $this->this_model->selectStarRatting($value->id,$value->pw_id);
 		}
-
+		
 		$data['top_sell'] = $top_selling_core;
 
 		@$data['banner'] = $this->this_model->getWebBannerImage();

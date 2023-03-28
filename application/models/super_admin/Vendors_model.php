@@ -12,6 +12,7 @@ Class Vendors_model extends My_model{
 		$data['order'] = 'id desc';
 		return $this->selectRecords($data);
 	}
+	
 
 	public function add($postData){
 		// dd($postData);
@@ -467,18 +468,19 @@ Class Vendors_model extends My_model{
 
 	public function updateVendors($vendor_id,$postData){
 		$updateArray = [
-			'email'=>	$postData['email'],
-			'approved_branch'=>	$postData['approved'],
-			'login_type'=>	$postData['login_type'], // 0 => login with email ; 1=> login with mobile
-			'display_price_with_gst'=>	$postData['display_price_with_gst'],
-			'webTitle'=>	$postData['webTitle'],
-			'android_version'=>	$postData['android_version'],
-			'ios_version'=>	$postData['ios_version'],
-			'android_isforce'=>	$postData['android_isforce'],
-			'ios_isforce'=>	$postData['ios_isforce'],
-			'dt_updated'=> strtotime(DATE_TIME),
-			'locality'=> $postData['locality'],
-			'language_support' => $postData['language_support']
+			'email'			 		 =>	$postData['email'],
+			'approved_branch'		 =>	$postData['approved'],
+			'store_type'	 		 => $postData['store_type'],
+			'login_type'	 		 =>	$postData['login_type'], // 0 => login with email ; 1=> login with mobile
+			'webTitle'		 		 =>	$postData['webTitle'],
+			'android_version'		 =>	$postData['android_version'],
+			'ios_version'	 		 =>	$postData['ios_version'],
+			'android_isforce'		 =>	$postData['android_isforce'],
+			'ios_isforce'	 		 =>	$postData['ios_isforce'],
+			'display_price_with_gst' =>	$postData['display_price_with_gst'],
+			'locality'				 => $postData['locality'],
+			'language_support' 		 => $postData['language_support'],
+			'dt_updated'			 => strtotime(DATE_TIME),
 		]; 	
 		$data['table'] = ADMIN;
 		$data['update'] = $updateArray;

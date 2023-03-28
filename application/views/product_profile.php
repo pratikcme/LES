@@ -72,6 +72,17 @@
                                         <label for="name" class="display_priority">Display Priority</label>
                                         <input type="number" class="form-control" id="display_priority" name="display_priority" placeholder="Product Priority" min='1' value="<?=(isset($result) && $result['display_priority'] != NULL) ? $result['display_priority'] : '' ?>">
                                     </div>
+                                    <?php if($isDisplayFoodType == 1){?>
+                                        <div class="form-group">
+                                            <label for="veg">Food Type</label> <br>
+                                            <label for="vage" style="postion:relative; top:-5px;">None</label>
+                                            <input type="radio" name="food_type" id="vage" value="0" <?=(isset($result) && $result['food_type'] == '0') ? 'CHECKED' : '' ?>>
+                                            <label for="vage" style="postion:relative; top:-5px;">Veg.</label>
+                                            <input type="radio" name="food_type" id="vage" value="1" <?=(isset($result) && $result['food_type'] == '1') ? 'CHECKED' : '' ?>>
+                                            <label for="non-vage" class="display_priority">Non Veg</label>
+                                            <input type="radio" name="food_type" id="non-vage" style="postion:relative; top:-5px;"  value="2" <?=(isset($result) && $result['food_type'] == '2') ? 'CHECKED' : '' ?>>   
+                                        </div>
+                                    <?php } ?>
                                 </div>
                                
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

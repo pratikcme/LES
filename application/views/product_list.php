@@ -337,6 +337,7 @@ $product_result = $product_query->result();
     })
 
     $(document).ready(function(){
+        
         $('.checkboxMain').on('click',function(){
             if(this.checked){
                 $('.checkbox_user').each(function(){

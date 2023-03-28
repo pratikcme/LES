@@ -71,9 +71,9 @@
                         <?php } ?>
                     </div>
                     <div class="slider slider-nav">
-                        <?php foreach ($product_image as $key => $value) { ?>
+                        <?php foreach ($product_image as $key => $value){ ?>
                         <div class="thumnail"> <img
-                                src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>">
+                                src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>">
                         </div>
                         <?php } ?>
                     </div>
@@ -82,69 +82,49 @@
             <div class="col-lg-6">
                 <div class="product-detail-wrapper" id="product_detail">
                     <div class="detail"></div>
-
-
-                    <!-- <?php if ($varientDetails[0]->quantity > '25') { ?>
+                    <?php if($varientDetails[0]->quantity > 25){ ?>
                     <div class="in-stock">
-                        <h6><?= $this->lang->line('Available(Instock)') ?></h6>
+                        <h6><?=$this->lang->line('Available(Instock)')?></h6>
                     </div>
-                    <?php } else { ?>
+                    <?php }else{ ?>
                     <div class="in-stock">
-                        <h6><?= $this->lang->line('Limited Stock') ?></h6>
+                        <h6><?=$this->lang->line('Limited Stock')?></h6>
                     </div>
-                    <?php } ?> -->
-
-
-                    <?php if ($varientDetails[0]->quantity < $varientDetails[0]->limited_stock && $varientDetails[0]->quantity > 0) { ?>
-
-                    <div class="in-stock">
-                        <h6><?= $this->lang->line('Limited Stock') ?></h6>
-                    </div>
-                    <?php } else if ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) { ?>
-
-                    <div class="in-stock">
-                        <h6><?= $this->lang->line('Available(Instock)') ?></h6>
-                    </div>
-                    <?php } else {
-                    ?>
-                    <div class="in-stock">
-                        <h6><?= $this->lang->line('Out Of Stock') ?>
-                            Out of Stock
-                            <!-- later for language done by DIpesh -->
-                        </h6>
-                    </div>
-                    <?php
-                    } ?>
-
-                    <h1><?= $productDetail[0]->name ?></h1>
+                    <?php } ?>
+                    <h1><?=$productDetail[0]->name?></h1>
                     <div class="feature-detail">
-                        <div class="card-icon mb-2">
+                        <div class="card-icon mb-2" id="starRattingOfVarient">
+                            <?php for ($j=1;$j<=$productDetail[0]->rating['rating'];$j++) {?>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <?php } ?>
+                            <?php for ($i=1; $i <= 5-$productDetail[0]->rating['rating']; $i++) { ?>
                             <i class="fas fa-star blank-ratting"></i>
+                            <?php } ?>
+                            <!-- <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star blank-ratting"></i> -->
                         </div>
                         <div class="product-price">
-                            <p class="notranslate"><?= $this->siteCurrency ?>
-                                <?= number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
+                            <p class="notranslate"><?=$this->siteCurrency?>
+                                <?=number_format((float)$varientDetails[0]->discount_price, 2, '.', '')?>
                                 <span class="orginal-price"
-                                    style="<?= ($varientDetails[0]->discount_per == 0) ? 'display:none' : '' ?>">
-                                    <?= $this->siteCurrency ?>
-                                    <?= number_format((float)$varientDetails[0]->price, 2, '.', '') ?>
+                                    style="<?=($varientDetails[0]->discount_per== 0) ? 'display:none' : '' ?>">
+                                    <?=$this->siteCurrency?>
+                                    <?=number_format((float)$varientDetails[0]->price, 2, '.', '')?>
                                 </span>
                             </p>
                         </div>
                         <div class="product-vairant">
                             <?php foreach ($varient as $key => $value) { ?>
                             <span
-                                class="variant product_varient_id <?= ($varientDetails[0]->id == $value) ? 'active' : '' ?>"
-                                data-varient_id="<?= $this->utility->safe_b64encode($value) ?>">
-                                <?= $weight_no[$key] . ' ' . $weight_name[$key] ?>
+                                class="variant product_varient_id <?=($varientDetails[0]->id == $value) ? 'active' : '' ?>"
+                                data-varient_id="<?=$this->utility->safe_b64encode($value)?>">
+                                <?=$weight_no[$key].' '.$weight_name[$key]?>
                             </span>
                             <?php } ?>
                         </div>
-                        <?php
+                        <?php 
             $d_none = '';
             $d_show = 'd-none';
             if (!empty($item_weight_id)) {
@@ -230,7 +210,146 @@
                 </div>
             </div>
         </div>
+        <<<<<<< HEAD=======</div>
+    </div>
+    </div>
+
+    <!-- =================review-box================== -->
+    <section class="p-50 review-box">
+        <div class="container">
+            <div class="my-review-wrapper">
+
+                <!-- ----review-header--- -->
+                <div class="review-header">
+                    <h2>Ratings & reviews</h2>
+                </div>
+
+                <!-- ----review-content--- -->
+                <div class="review-content">
+                    <div class="left-content">
+                        <?php $count = 0;?>
+                        <?php foreach ($product_review as $key => $value) { ?>
+                        <?php $count =+ $value->ratting ; $avgr = $count/count($product_review)?>
+                        <?php } ?>
+                        <div>
+                            <h3><strong id='avg'><?=($avgr) ? $avgr : 0?></strong><span>/5</span></h3>
+                        </div>
+                        <div>
+                            <h4>Overall Rating</h4>
+                            <p id="verified_ratting"><?=count($product_review)?> verified ratings</p>
+                        </div>
+                    </div>
+                    <div id="writeReviewSection"
+                        class="right-content <?=(empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>">
+                        <h6>Write your review !</h6>
+                        <div class="enter-review-btn">
+                            <a href="#" data-toggle="modal" id="reviewModel" data-target="#exampleModal">Write
+                                Review</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ----review-comment-part--- -->
+                <div class="review-comment-wrapper <?=(empty($product_review))? 'd-none' : '' ?>" id='review-section'>
+                    <div class="row" id="appendReview">
+                        <?php foreach ($product_review as $key => $value) { ?>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="testimonial-box">
+                                <!--top------------------------->
+                                <div class="box-top">
+                                    <!--profile----->
+                                    <div class="profile">
+                                        <!--img---->
+                                        <div class="profile-img">
+                                            <img
+                                                src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" />
+                                        </div>
+                                        <!--name-and-username-->
+                                        <div class="name-user">
+                                            <strong><?=$value->fname .' '.$value->lname?></strong>
+                                            <span>@<?=$value->fname .''.$value->lname?></span>
+                                        </div>
+                                    </div>
+                                    <!--reviews------>
+                                    <div class="reviews">
+                                        <?php for ($i=1; $i <=$value->ratting ; $i++) { ?>
+                                        <i class="fas fa-star"></i>
+                                        <?php } ?>
+                                        <?php for ($i=1; $i <=(5-$value->ratting) ; $i++) { ?>
+                                        <i class="fas fa-star blank-ratting"></i>
+                                        <?php } ?>
+                                        <!-- <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i> -->
+                                    </div>
+                                </div>
+                                <!--Comments---------------------------------------->
+                                <div class="client-comment">
+                                    <p><?=$value->review?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- -----write-review-modal---- -->
+    <!-- Modal -->
+    <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Reviews</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="rating-box">
+                        <h2>Rating</h2>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="review-text-box">
+                        <h2>Comments</h2>
+                        <textarea name="Comments" id="Comments" placeholder="Your Comments"></textarea>
+                        <!-- <input type="text" name="Comments" id="Comments" placeholder="Your Comments"/> -->
+                        <label for="error" id="error" style="color:red"></label>
+                    </div>
+                    <input type="hidden" name="product_id" id="ratting_product_id" value="<?=$product_id?>">
+                    <input type="hidden" name="varient_id" id="ratting_product_varient_id" value="<?=$varient_id?>">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" id="btnSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ================================================= -->
+
+
+    >>>>>>> b598c34b9add7e6eae45f376284c5fdb21a3dbd8
 </section>
+
+
+
+
+
 <!-- =================RELATED PRODUCTS SECTION================= -->
 
 <?php if (count($related_product) > 4) { ?>

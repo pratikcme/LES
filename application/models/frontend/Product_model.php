@@ -271,7 +271,7 @@ class Product_model extends My_model
 		}
 		if (isset($postdata['sort'])) {
 			if ($postdata['sort'] == 'high_low') {
-				$data["order"] = 'dp ASC,pw.discount_price DESC , pw.quantity DESC';
+				$data["order"] = 'pw.discount_price DESC , pw.quantity DESC';
 			}
 			if ($postdata['sort'] == 'low_high') {
 				$data["order"] = 'pw.discount_price ASC,pw.quantity DESC';
@@ -285,7 +285,7 @@ class Product_model extends My_model
 				$data['where']['discount_per >']  = '0';
 			}
 			if ($postdata['sort'] == 'alphabetically') {
-				$data["order"] = 'dp ASC,p.name ASC,pw.quantity DESC';
+				$data["order"] = 'p.name ASC,pw.quantity DESC';
 			}
 
 			if ($postdata['sort'] == 'last_30_days') {
@@ -391,7 +391,7 @@ class Product_model extends My_model
 		$data['where']['pw.status !='] = '9';
 		$data['where']['p.status'] = '1';
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'p.*', "IF(p.display_priority IS NULL, 'N/A', p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*', 'p.*', "IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
@@ -399,7 +399,7 @@ class Product_model extends My_model
 		$data['groupBy'] = 'p.id';
 		$data['limit'] = $page * $limit;
 		$product = $this->selectFromJoin($data);
-		// lq();
+
 		$total_result = $this->countRecords($data);
 		$pages = ceil($total_result / 20);
 		if ($page < $pages) {
@@ -432,7 +432,10 @@ class Product_model extends My_model
 				}
 			}
 			$product_html = '';
+			$this->load->model('frontend/home_model', 'home_model');
+			// dd($product);
 			foreach ($product as $key => $value) {
+				$value->ratting = $this->home_model->selectStarRatting($value->id, $value->product_weight_id);
 				if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 					$value->discount_price =  $value->without_gst_price;
 				}
@@ -1005,94 +1008,23 @@ class Product_model extends My_model
 		return acos(sin($lat2 * ($rad)) * sin($lat1 * $rad) + cos($lat2 * $rad) * cos($lat1 * $rad) * cos($lon2 * $rad - $lon1 * $rad)) * 6371;
 	}
 
-	public function checkOrderItemExist($product_id)
+	public function checkOrderItemExist($product_id, $varient_id)
 	{
 
 		$vender_id = $this->branch_id;
 		$user_id = $this->session->userdata('user_id');
-		$data['table'] = TABLE_ORDER_DETAILS;
-		$data['select'] = ['*'];
+		$data['table'] = TABLE_ORDER_DETAILS . ' od';
+		$data['join'] = [TABLE_ORDER . ' as o' => ['o.id=od.order_id', 'LEFT']];
+		$data['select'] = ['od.*'];
 		$data['where'] =  [
-			'product_id' => $product_id,
-			'user_id' => $user_id,
-			'branch_id' => $vender_id
+			'od.product_id' => $product_id,
+			'od.product_weight_id' => $varient_id,
+			'o.user_id' => $user_id,
+			'o.branch_id' => $vender_id,
+			'o.order_status' => '8',
 		];
-		$data['groupBy'] = 'product_id';
-		return $this->selectRecords($data);
-	}
-
-	public function getProductReview($product_id)
-	{
-		$vender_id = $this->branch_id;
-		$user_id = $this->session->userdata('user_id');
-		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-		$data['select'] = ['*'];
-		$data['where'] =  [
-			'product_id' => $product_id,
-			// 'user_id'=>$user_id,
-			'branch_id' => $vender_id
-		];
-		return $this->selectRecords($data);
-	}
-
-	public function getProductReviewUser($id)
-	{
-		$data['table'] = TABLE_USER;
-		$data['select'] = ['fname'];
-		$data['where']['id'] = $id;
-		return $this->selectRecords($data);
-	}
-
-	public function getinsertedProductReview($postData)
-	{
-
-		$product_id = $this->utility->safe_b64decode($postData['product_id']);
-		$insertdata = array(
-			'product_id' => $product_id,
-			'branch_id' => $this->branch_id,
-			'user_id' => $this->session->userdata('user_id'),
-			'review' => $postData['review'],
-			'ratting' => $postData['ratting'],
-			'dt_created' => strtotime(DATE_TIME),
-			'dt_updated' => strtotime(DATE_TIME),
-		);
-		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-		$data['insert'] = $insertdata;
-		$last_id = $this->insertRecord($data);
-		unset($data);
-		if ($last_id) {
-			$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-			$data['select'] = ['*'];
-			$data['where']['id'] = $last_id;
-			return $this->selectRecords($data);
-		}
-	}
-
-	public function getUpdatedProductReview($postData)
-	{
-
-		$product_id = $this->utility->safe_b64decode($postData['product_id']);
-		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-		$data['select'] = ['*'];
-		$data['where'] = ['user_id' => $this->session->userdata('user_id'), 'product_id' => $product_id];
-		return $this->selectRecords($data);
-	}
-
-	public function getUpdateProductReview($postData)
-	{
-		$product_id = $this->utility->safe_b64decode($postData['product_id']);
-		$update = array(
-			'product_id' => $product_id,
-			'branch_id' => $this->branch_id,
-			'user_id' => $this->session->userdata('user_id'),
-			'review' => $postData['review'],
-			'ratting' => $postData['ratting'],
-			'dt_updated' => strtotime(DATE_TIME),
-		);
-		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
-		$data['update'] = $update;
-		$data['where'] = ['user_id' => $this->session->userdata('user_id'), 'product_id' => $product_id];
-		return $this->updateRecords($data);
+		$data['groupBy'] = 'od.product_id';
+		return $this->selectFromJoin($data);
 	}
 
 	public function checkProductExist($postdata)
@@ -1107,6 +1039,29 @@ class Product_model extends My_model
 			'branch_id' => $this->branch_id,
 		];
 		return $this->selectRecords($data);
+	}
+
+	public function getProductReview($product_id, $varient_id)
+	{
+		$data['table'] = TABLE_USER_PRODUCT_REVIEW . ' upr';
+		$data['select'] = ['upr.*', 'u.fname', 'u.lname'];
+		$data['join'] = [TABLE_USER . ' u' => ['upr.user_id=u.id', 'LEFT']];
+		$data['where'] = [
+			'product_id' => $product_id,
+			'product_varient_id' => $varient_id,
+		];
+		return $this->selectFromJoin($data);
+	}
+	public function countParticularUserReview($product_id, $varient_id)
+	{
+		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
+		$data['select'] = ['*'];
+		$data['where'] = [
+			'product_id' => $product_id,
+			'product_varient_id' => $varient_id,
+			'user_id' => $this->session->userdata('user_id')
+		];
+		return $this->countRecords($data);
 	}
 
 	public function insertProductToWishlist($insertArray)
@@ -1238,8 +1193,11 @@ class Product_model extends My_model
 		}
 
 		$data['table'] = TABLE_MY_CART . ' as mc';
-		$data['join'] = [TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=mc.product_weight_id', 'LEFT']];
-		$data['select'] = ['mc.*', 'pw.discount_price', 'pw.product_id', 'pw.price', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['join'] = [
+			TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=mc.product_weight_id', 'LEFT'],
+			TABLE_PRODUCT . ' as p' => ['pw.product_id=p.id', 'LEFT']
+		];
+		$data['select'] = ['p.food_type', 'mc.*', 'pw.discount_price', 'pw.product_id', 'pw.price', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
 		$data['where']['mc.user_id'] = $user_id;
 		$data['where']['mc.branch_id'] = $this->branch_id;
 		$return = $this->selectFromJoin($data);
@@ -1307,5 +1265,22 @@ class Product_model extends My_model
 		$data['table'] = TABLE_MY_CART;
 		$data['where'] = ['user_id' => $user_id];
 		return $this->deleteRecords($data);
+	}
+
+	public function insertReview($postData)
+	{
+		$insertData = array(
+			'user_id' => $this->session->userdata('user_id'),
+			'branch_id' => $this->session->userdata('branch_id'),
+			'product_id' => $this->utility->safe_b64decode($postData['product_id']),
+			'product_varient_id' => $this->utility->safe_b64decode($postData['varient_id']),
+			'review' => $postData['comment'],
+			'ratting' => $postData['ratetIndex'],
+			'dt_created' => date('Y-m-d h:i:s'),
+			'dt_updated' => date('Y-m-d h:i:s')
+		);
+		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
+		$data['insert'] = $insertData;
+		return $this->insertRecord($data);
 	}
 }
