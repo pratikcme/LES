@@ -1013,16 +1013,18 @@ class Product_model extends My_model
 
 		$vender_id = $this->branch_id;
 		$user_id = $this->session->userdata('user_id');
-		$data['table'] = TABLE_ORDER_DETAILS;
-		$data['select'] = ['*'];
+		$data['table'] = TABLE_ORDER_DETAILS .' od';
+		$data['join'] = [TABLE_ORDER .' as o'=>['o.id=od.order_id','LEFT']];
+		$data['select'] = ['od.*'];
 		$data['where'] =  [
-			'product_id' => $product_id,
-			'product_weight_id' => $varient_id,
-			'user_id' => $user_id,
-			'branch_id' => $vender_id
+			'od.product_id' => $product_id,
+			'od.product_weight_id' => $varient_id,
+			'o.user_id' => $user_id,
+			'o.branch_id' => $vender_id,
+			'o.order_status' => '8',
 		];
-		$data['groupBy'] = 'product_id';
-		return $this->selectRecords($data);
+		$data['groupBy'] = 'od.product_id';
+		return $this->selectFromJoin($data);
 	}
 
 	public function checkProductExist($postdata)
