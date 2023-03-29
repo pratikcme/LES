@@ -426,7 +426,7 @@
                         </a>
                         <h6><span><?= $this->siteCurrency ?></i></span>
                             <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
-                        <?php if ($value->varientQuantity >= $value->limited_stock) { ?>
+                        <?php if ($value->varientQuantity > $value->limited_stock) { ?>
                         <p><?= $this->lang->line('Available(Instock)') ?></p>
                         <?php } else { ?>
                         <p><?= $this->lang->line('Limited Stock') ?></p>
@@ -465,14 +465,14 @@
                         </div>
                     </div>
                     <!-- <div class="feature-bottom-wrap">
-            <div class="cart addcartbutton" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"> <i class="fas fa-shopping-basket"></i>
-            </div>
-            <div class="quantity-wrap">
-              <button class="cart-qty-minus"><span class="minus"><i class="fa fa-minus"></i></span></button>
-              <input class="qty" type="text" name="" value="1" min="1" disabled="disabled">
-              <button class="cart-qty-plus"><span><i class="fa fa-plus"></i></span></button>
-            </div>
-          </div> -->
+                        <div class="cart addcartbutton" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"> <i class="fas fa-shopping-basket"></i>
+                        </div>
+                        <div class="quantity-wrap">
+                        <button class="cart-qty-minus"><span class="minus"><i class="fa fa-minus"></i></span></button>
+                        <input class="qty" type="text" name="" value="1" min="1" disabled="disabled">
+                        <button class="cart-qty-plus"><span><i class="fa fa-plus"></i></span></button>
+                        </div>
+                    </div> -->
                 </div>
             </div>
             <?php endforeach ?>
