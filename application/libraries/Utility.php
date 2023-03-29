@@ -204,8 +204,12 @@ class Utility
         $message = array(
             'message' => $deviceToken['message'],
         );
-echo $deviceToken['type'];exit;
+
         if ($deviceToken['type'] == 'i' || $deviceToken['type'] == 'I') {
+            echo $key."<br>";
+            echo $message."<br>";
+            echo $type."<br>";
+exit;
             $this->notificationForIOS($deviceToken, $message, $type, $unread, $key, $result);
         } else if ($deviceToken['type'] == 'a' || $deviceToken['type'] == 'A') {
             $this->notificationForAndroid($deviceToken, $message, $jsonData, $type, $unread, $key, $result);
