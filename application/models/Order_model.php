@@ -267,7 +267,7 @@ class Order_model extends My_model
             ],
         ];
         $send = $this->selectFromJoin($data);
-        echo "<pre>";print_r($send);exit;
+
         $order_status = $send[0]->order_status;
         $branch_id = $send[0]->branch_id;
         if ($order_status == '1') {
@@ -312,6 +312,7 @@ class Order_model extends My_model
                 );
 
                   $this->load->model('api_v3/api_model','api_v3_model');
+                  echo $branch_id;exit;
                 $result = $this->api_v3_model->getNotificationKey($branch_id);
                 $this->utility->sendNotification($dataArray, $notification_type,$result);
             }
