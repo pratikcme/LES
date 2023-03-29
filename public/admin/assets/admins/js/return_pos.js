@@ -48,6 +48,7 @@ var PRIVACY = (function () {
       url: url + "sell_development/showAllSoldProducts",
       type: "POST",
       dataType: "JSON",
+
       data: {
         order_id: order_id,
         customer_id: customer_id,
@@ -374,6 +375,7 @@ var PRIVACY = (function () {
       url: url + "sell_development/addSoldProductToCart",
       type: "POST",
       dataType: "JSON",
+      async: false,
       data: {
         product_id: product_id,
         product_weight_id: product_weight_id,
@@ -453,6 +455,7 @@ var PRIVACY = (function () {
       url: url + "sell_development/removeSoldProductFromCart",
       type: "POST",
       dataType: "JSON",
+      async: false,
       data: {
         product_id: product_id,
         product_weight_id: product_weight_id,
