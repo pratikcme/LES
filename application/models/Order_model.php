@@ -312,7 +312,7 @@ class Order_model extends My_model
                 );
 
                   $this->load->model('api_v3/api_model','api_v3_model');
-                  echo $branch_id;exit;
+                 
                 $result = $this->api_v3_model->getNotificationKey($branch_id);
                 $this->utility->sendNotification($dataArray, $notification_type,$result);
             }
