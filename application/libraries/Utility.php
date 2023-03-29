@@ -206,10 +206,7 @@ class Utility
         );
 
         if ($deviceToken['type'] == 'i' || $deviceToken['type'] == 'I') {
-            echo $key."<br>";
-            echo $message."<br>";
-            echo $type."<br>";
-exit;
+         
             $this->notificationForIOS($deviceToken, $message, $type, $unread, $key, $result);
         } else if ($deviceToken['type'] == 'a' || $deviceToken['type'] == 'A') {
             $this->notificationForAndroid($deviceToken, $message, $jsonData, $type, $unread, $key, $result);
@@ -264,7 +261,7 @@ exit;
     }
 
     function notificationForIOS($deviceIds, $msg, $status, $unread, $key, $result)
-    {
+    {   
         // $CI = &get_instance();
         // $CI->load->model('common_model');        
         // $result = $CI->common_model->getNotificationKey();
@@ -276,7 +273,12 @@ exit;
         $user_bandle_id = $result[0]->user_bandle_id;
         $staff_bandle_id = $result[0]->staff_bandle_id;
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
-
+        echo "<pre>";
+echo $key_id;
+echo $team_id;
+echo $user_bandle_id;
+echo $staff_bandle_id;
+echo $delivery_bandle_id;exit;
         $deviceId = $deviceIds['device_id'];
         $msg = $msg['message'];
         
