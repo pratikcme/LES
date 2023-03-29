@@ -55,14 +55,14 @@
                     </div>
                     <div class="slider slider-for">
                         <?php
-            if (count($product_image) > 0) {
-              foreach ($product_image as $key => $value) { ?>
+                        if (count($product_image) > 0) {
+                            foreach ($product_image as $key => $value) { ?>
                         <div class="main-img-wrapper xzoom-container"> <img class="slide-img demo-trigger"
                                 src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                 data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>">
                         </div>
                         <?php }
-            } else { ?>
+                        } else { ?>
                         <div class="main-img-wrapper xzoom-container"> <img class="slide-img demo-trigger"
                                 src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $image[0] ?>"
                                 data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $image[0] ?>">
@@ -71,9 +71,9 @@
                         <?php } ?>
                     </div>
                     <div class="slider slider-nav">
-                        <?php foreach ($product_image as $key => $value){ ?>
+                        <?php foreach ($product_image as $key => $value) { ?>
                         <div class="thumnail"> <img
-                                src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>">
+                                src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>">
                         </div>
                         <?php } ?>
                     </div>
@@ -82,59 +82,69 @@
             <div class="col-lg-6">
                 <div class="product-detail-wrapper" id="product_detail">
                     <div class="detail"></div>
-                    <?php if($varientDetails[0]->quantity > 25){ ?>
+
+                    <?php if ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) { ?>
                     <div class="in-stock">
-                        <h6><?=$this->lang->line('Available(Instock)')?></h6>
+                        <h6><?= $this->lang->line('Available(Instock)') ?></h6>
                     </div>
-                    <?php }else{ ?>
+                    <?php } else if ($varientDetails[0]->quantity <= $varientDetails[0]->limited_stock && $varientDetails[0]->quantity > 0) { ?>
                     <div class="in-stock">
-                        <h6><?=$this->lang->line('Limited Stock')?></h6>
+                        <h6><?= $this->lang->line('Limited Stock') ?></h6>
                     </div>
-                    <?php } ?>
-                    <h1><?=$productDetail[0]->name?></h1>
+                    <?php } else {
+                    ?>
+                    <div class="in-stock">
+                        <h6>
+                            <?= $this->lang->line('out of stock') ?>
+                        </h6>
+                    </div>
+                    <?php
+                    } ?>
+
+                    <h1><?= $productDetail[0]->name ?></h1>
                     <div class="feature-detail">
                         <div class="card-icon mb-2" id="starRattingOfVarient">
-                            <?php for ($j=1;$j<=$productDetail[0]->rating['rating'];$j++) {?>
+                            <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
                             <i class="fas fa-star"></i>
                             <?php } ?>
-                            <?php for ($i=1; $i <= 5-$productDetail[0]->rating['rating']; $i++) { ?>
+                            <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
                             <i class="fas fa-star blank-ratting"></i>
                             <?php } ?>
                             <!-- <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star blank-ratting"></i> -->
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star blank-ratting"></i> -->
                         </div>
                         <div class="product-price">
-                            <p class="notranslate"><?=$this->siteCurrency?>
-                                <?=number_format((float)$varientDetails[0]->discount_price, 2, '.', '')?>
+                            <p class="notranslate"><?= $this->siteCurrency ?>
+                                <?= number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
                                 <span class="orginal-price"
-                                    style="<?=($varientDetails[0]->discount_per== 0) ? 'display:none' : '' ?>">
-                                    <?=$this->siteCurrency?>
-                                    <?=number_format((float)$varientDetails[0]->price, 2, '.', '')?>
+                                    style="<?= ($varientDetails[0]->discount_per == 0) ? 'display:none' : '' ?>">
+                                    <?= $this->siteCurrency ?>
+                                    <?= number_format((float)$varientDetails[0]->price, 2, '.', '') ?>
                                 </span>
                             </p>
                         </div>
                         <div class="product-vairant">
                             <?php foreach ($varient as $key => $value) { ?>
                             <span
-                                class="variant product_varient_id <?=($varientDetails[0]->id == $value) ? 'active' : '' ?>"
-                                data-varient_id="<?=$this->utility->safe_b64encode($value)?>">
-                                <?=$weight_no[$key].' '.$weight_name[$key]?>
+                                class="variant product_varient_id <?= ($varientDetails[0]->id == $value) ? 'active' : '' ?>"
+                                data-varient_id="<?= $this->utility->safe_b64encode($value) ?>">
+                                <?= $weight_no[$key] . ' ' . $weight_name[$key] ?>
                             </span>
                             <?php } ?>
                         </div>
-                        <?php 
-            $d_none = '';
-            $d_show = 'd-none';
-            if (!empty($item_weight_id)) {
-              if (in_array($varientDetails[0]->id, $item_weight_id)) {
-                $d_show = '';
-                $d_none = 'd-none';
-              }
-            }
+                        <?php
+                        $d_none = '';
+                        $d_show = 'd-none';
+                        if (!empty($item_weight_id)) {
+                            if (in_array($varientDetails[0]->id, $item_weight_id)) {
+                                $d_show = '';
+                                $d_none = 'd-none';
+                            }
+                        }
 
-            ?>
+                        ?>
                         <div class="d-flex align-items-center add-after-wrapper">
                             <div class="quantity-wrap <?= $d_show ?>">
                                 <button class="dec cart-qty-minus decqnt"
@@ -162,13 +172,13 @@
                                 </a>
                                 <?php } ?>
                                 <?php
-                $product_id = $this->uri->segment(3);
-                $varient_id = $this->uri->segment(4);
-                $url = base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id;
-                ?>
+                                $product_id = $this->uri->segment(3);
+                                $varient_id = $this->uri->segment(4);
+                                $url = base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id;
+                                ?>
                                 <?php
-                if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
-                  $mobile = '91' . $BranchDetails[0]->phone_no; ?>
+                                if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
+                                    $mobile = '91' . $BranchDetails[0]->phone_no; ?>
                                 <a target="_black" id='whatsapp_link'
                                     href="https://wa.me/<?= $mobile ?>/?text=<?= $url ?>">
                                     <button class="btn hover whatsapp-help-btn" id=""><i
@@ -210,7 +220,7 @@
                 </div>
             </div>
         </div>
-        <<<<<<< HEAD=======</div>
+    </div>
     </div>
     </div>
 
@@ -227,20 +237,21 @@
                 <!-- ----review-content--- -->
                 <div class="review-content">
                     <div class="left-content">
-                        <?php $count = 0;?>
+                        <?php $count = 0; ?>
                         <?php foreach ($product_review as $key => $value) { ?>
-                        <?php $count =+ $value->ratting ; $avgr = $count/count($product_review)?>
+                        <?php $count = +$value->ratting;
+                            $avgr = $count / count($product_review) ?>
                         <?php } ?>
                         <div>
-                            <h3><strong id='avg'><?=($avgr) ? $avgr : 0?></strong><span>/5</span></h3>
+                            <h3><strong id='avg'><?= ($avgr) ? $avgr : 0 ?></strong><span>/5</span></h3>
                         </div>
                         <div>
                             <h4>Overall Rating</h4>
-                            <p id="verified_ratting"><?=count($product_review)?> verified ratings</p>
+                            <p id="verified_ratting"><?= count($product_review) ?> verified ratings</p>
                         </div>
                     </div>
                     <div id="writeReviewSection"
-                        class="right-content <?=(empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>">
+                        class="right-content <?= (empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>">
                         <h6>Write your review !</h6>
                         <div class="enter-review-btn">
                             <a href="#" data-toggle="modal" id="reviewModel" data-target="#exampleModal">Write
@@ -250,7 +261,7 @@
                 </div>
 
                 <!-- ----review-comment-part--- -->
-                <div class="review-comment-wrapper <?=(empty($product_review))? 'd-none' : '' ?>" id='review-section'>
+                <div class="review-comment-wrapper <?= (empty($product_review)) ? 'd-none' : '' ?>" id='review-section'>
                     <div class="row" id="appendReview">
                         <?php foreach ($product_review as $key => $value) { ?>
                         <div class="col-xl-6 col-lg-6 col-md-6">
@@ -266,16 +277,16 @@
                                         </div>
                                         <!--name-and-username-->
                                         <div class="name-user">
-                                            <strong><?=$value->fname .' '.$value->lname?></strong>
-                                            <span>@<?=$value->fname .''.$value->lname?></span>
+                                            <strong><?= $value->fname . ' ' . $value->lname ?></strong>
+                                            <span>@<?= $value->fname . '' . $value->lname ?></span>
                                         </div>
                                     </div>
                                     <!--reviews------>
                                     <div class="reviews">
-                                        <?php for ($i=1; $i <=$value->ratting ; $i++) { ?>
+                                        <?php for ($i = 1; $i <= $value->ratting; $i++) { ?>
                                         <i class="fas fa-star"></i>
                                         <?php } ?>
-                                        <?php for ($i=1; $i <=(5-$value->ratting) ; $i++) { ?>
+                                        <?php for ($i = 1; $i <= (5 - $value->ratting); $i++) { ?>
                                         <i class="fas fa-star blank-ratting"></i>
                                         <?php } ?>
                                         <!-- <i class="fas fa-star"></i>
@@ -286,7 +297,7 @@
                                 </div>
                                 <!--Comments---------------------------------------->
                                 <div class="client-comment">
-                                    <p><?=$value->review?></p>
+                                    <p><?= $value->review ?></p>
                                 </div>
                             </div>
                         </div>
@@ -331,8 +342,8 @@
                         <!-- <input type="text" name="Comments" id="Comments" placeholder="Your Comments"/> -->
                         <label for="error" id="error" style="color:red"></label>
                     </div>
-                    <input type="hidden" name="product_id" id="ratting_product_id" value="<?=$product_id?>">
-                    <input type="hidden" name="varient_id" id="ratting_product_varient_id" value="<?=$varient_id?>">
+                    <input type="hidden" name="product_id" id="ratting_product_id" value="<?= $product_id ?>">
+                    <input type="hidden" name="varient_id" id="ratting_product_varient_id" value="<?= $varient_id ?>">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" id="btnSubmit">Submit</button>
@@ -343,7 +354,7 @@
     <!-- ================================================= -->
 
 
-    >>>>>>> b598c34b9add7e6eae45f376284c5fdb21a3dbd8
+
 </section>
 
 
@@ -372,17 +383,17 @@
 
 
             <?php foreach ($related_product as $key => $value) :
-          $value->name = character_limiter($value->name, 30);
-          if (($value->product_image == '') || !file_exists('public/images/' . $this->folder . 'product_image/' . $value->product_image)) {
-            $CI = &get_instance();
-            $CI->load->model('common_model');
-            $value->product_image = $default_product_image;
-          }
-          $class = '';
-          if (in_array($value->id, $wish_pid)) {
-            $class = 'fas .fa-heart';
-          }
-        ?>
+                    $value->name = character_limiter($value->name, 30);
+                    if (($value->product_image == '') || !file_exists('public/images/' . $this->folder . 'product_image/' . $value->product_image)) {
+                        $CI = &get_instance();
+                        $CI->load->model('common_model');
+                        $value->product_image = $default_product_image;
+                    }
+                    $class = '';
+                    if (in_array($value->id, $wish_pid)) {
+                        $class = 'fas .fa-heart';
+                    }
+                ?>
             <div class="item">
                 <div class="product-wrapper">
                     <?php if ($value->varientQuantity == '0') { ?>
@@ -415,23 +426,23 @@
                         </a>
                         <h6><span><?= $this->siteCurrency ?></i></span>
                             <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
-                        <?php if ($value->quantity >= 25) { ?>
+                        <?php if ($value->varientQuantity >= $value->limited_stock) { ?>
                         <p><?= $this->lang->line('Available(Instock)') ?></p>
                         <?php } else { ?>
                         <p><?= $this->lang->line('Limited Stock') ?></p>
                         <?php } ?>
                     </div>
                     <?php
-              $d_none = '';
-              $d_show = 'd-none';
-              if (!empty($item_weight_id)) {
-                if (in_array($value->pw_id, $item_weight_id)) {
-                  $d_show = '';
-                  $d_none = 'd-none';
-                }
-              }
+                            $d_none = '';
+                            $d_show = 'd-none';
+                            if (!empty($item_weight_id)) {
+                                if (in_array($value->pw_id, $item_weight_id)) {
+                                    $d_show = '';
+                                    $d_none = 'd-none';
+                                }
+                            }
 
-              ?>
+                            ?>
                     <div class="feature-bottom-wrap ">
                         <div class="cart addcartbutton d-none"
                             data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"> <i

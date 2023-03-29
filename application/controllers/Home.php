@@ -71,7 +71,7 @@ class Home extends User_Controller
 			$data['new_arrival'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 			$value->ratting = $this->this_model->selectStarRatting($value->id,$value->pw_id);
 		}
-
+		
 
 		$data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids);
 		$top_selling_core = array();

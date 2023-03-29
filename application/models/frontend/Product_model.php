@@ -391,7 +391,7 @@ class Product_model extends My_model
 		$data['where']['pw.status !='] = '9';
 		$data['where']['p.status'] = '1';
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'p.*', "IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*', 'p.*', "IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
@@ -456,6 +456,7 @@ class Product_model extends My_model
 				$this->load->model('frontend/home_model', 'home_model');
 				// $product[$key]->rating  = $this->home_model->selectStarRatting($value->id);
 				$varientQuantity = $this->checkVarientQuantity($value->id);
+
 				// $checkMycart = $this->checkMycartProduct($this->session->userdata('user_id'));
 				$p_outofstock = '';
 				if ($varientQuantity == '0') {
@@ -486,6 +487,8 @@ class Product_model extends My_model
 				$data['image'] = $image;
 				$value->name = character_limiter($value->name, 30);
 				$data['value'] = $value;
+				$data['value']->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
+				// dd($data['value']->varientQuantity);
 				$product_html .= $this->load->view('frontend/ajaxView/product', $data, true);
 
 				// $product_html .= '<div class="col-lg-3 col-md-6 col-sm-6">
@@ -1118,9 +1121,8 @@ class Product_model extends My_model
 	public function getRelatedProduct($cat_id, $varient_ids)
 	{
 
-
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pi.image as product_image', 'pw.id as pw_id', 'pw.price', 'pw.discount_price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*', 'pi.image as product_image', 'pw.id as pw_id', 'pw.price', 'pw.discount_price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT'],

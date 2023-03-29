@@ -153,6 +153,7 @@ class Products extends User_Controller
 				die;
 			}
 		}
+
 		$default_product_image = $this->common_model->default_product_image();
 		$data['default_product_image'] = $default_product_image;
 		$product_id = $this->utility->safe_b64decode($id);
@@ -169,7 +170,7 @@ class Products extends User_Controller
 		}
 		$varient_id = $this->utility->safe_b64decode($this->uri->segment(4));
 		$this->load->model('frontend/home_model', 'home_model');
-		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id,$varient_id);
+		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id, $varient_id);
 		// dd($data['productDetail']);
 		$varient_ids = explode(',', $data['productDetail'][0]->product_variant_id);
 		$w_name = explode(',', $data['productDetail'][0]->wight_name);
@@ -209,11 +210,10 @@ class Products extends User_Controller
 		$data['discount_per'] =  $discount_per;
 		$data['image'] = $image;
 		$data['product_id'] = $id;
-		
-		
-		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id,$varient_id);
-		$product_review = $this->this_model->getProductReview($product_id,$varient_id);
-		$countParticularUserReview = $this->this_model->countParticularUserReview($product_id,$varient_id);
+
+		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id, $varient_id);
+		$product_review = $this->this_model->getProductReview($product_id, $varient_id);
+		$countParticularUserReview = $this->this_model->countParticularUserReview($product_id, $varient_id);
 		$data['countParticularUserReview'] = $countParticularUserReview;
 		$data['product_review'] = $product_review;
 		$category_name = $this->this_model->getNameCateBrand(TABLE_CATEGORY, $data['productDetail'][0]->category_id);
@@ -348,24 +348,24 @@ class Products extends User_Controller
 			$result[0]->discount_price =  $result[0]->without_gst_price;
 		}
 		// echo $result[0]->discount_price;die;
-		$isVarientExist= $this->this_model->checkOrderItemExist($result[0]->product_id,$result[0]->id);
-		$data['product_review'] = $this->this_model->getProductReview($result[0]->product_id,$result[0]->id);
-		$userSection = $this->load->view('frontend/ajaxView/product_review_section',$data,true);
-		$countParticularUserReview = $this->this_model->countParticularUserReview($result[0]->product_id,$result[0]->id);
+		$isVarientExist = $this->this_model->checkOrderItemExist($result[0]->product_id, $result[0]->id);
+		$data['product_review'] = $this->this_model->getProductReview($result[0]->product_id, $result[0]->id);
+		$userSection = $this->load->view('frontend/ajaxView/product_review_section', $data, true);
+		$countParticularUserReview = $this->this_model->countParticularUserReview($result[0]->product_id, $result[0]->id);
 		$avgr = 0;
 		$count = 0;
-		foreach ($data['product_review'] as $key => $value){
-			$count = $count + $value->ratting ;
-			$avgr = $count/count($data['product_review']);
+		foreach ($data['product_review'] as $key => $value) {
+			$count = $count + $value->ratting;
+			$avgr = $count / count($data['product_review']);
 		}
-		$starHtml = ''; 
+		$starHtml = '';
 		$ratting = $data['product_review'][0]->ratting;
-		for ($j=1; $j<=$ratting;$j++ ) { 
-			$starHtml .='<i class="fas fa-star"></i>';
-		  }
-		for ($i=1; $i <= 5-$ratting; $i++) {
-			$starHtml .='<i class="fas fa-star blank-ratting"></i>';
-		} 
+		for ($j = 1; $j <= $ratting; $j++) {
+			$starHtml .= '<i class="fas fa-star"></i>';
+		}
+		for ($i = 1; $i <= 5 - $ratting; $i++) {
+			$starHtml .= '<i class="fas fa-star blank-ratting"></i>';
+		}
 		$response = [
 			'product_weight_id' => $result[0]->id,
 			'product_price' => number_format((float)$result[0]->price, 2, '.', ''),
@@ -381,13 +381,13 @@ class Products extends User_Controller
 			'cartProductQuantity' => $quantity,
 			'product_variant_id' => $this->utility->safe_b64encode($result[0]->id),
 			'product_id' => $this->utility->safe_b64encode($result[0]->product_id),
-			'reviewSection'=>$userSection,
-			'isVarientExist'=>(empty($isVarientExist)) ? 0 : count($isVarientExist),
-			'countParticularUserReview'=>$countParticularUserReview,
+			'reviewSection' => $userSection,
+			'isVarientExist' => (empty($isVarientExist)) ? 0 : count($isVarientExist),
+			'countParticularUserReview' => $countParticularUserReview,
 			'productReviewCount' => count($data['product_review']),
-			'avgRatting'=>$avgr,
+			'avgRatting' => $avgr,
 			'varientWishStarRatting' => $starHtml
-			
+
 		];
 		echo json_encode($response);
 	}
@@ -621,10 +621,11 @@ class Products extends User_Controller
 		echo json_encode(['status' => $status]);
 	}
 
-	public function review(){
-		if($this->input->is_ajax_request()){
-		 	$response = $this->this_model->insertReview($this->input->post());
-			echo json_encode(['status'=>'1']);
+	public function review()
+	{
+		if ($this->input->is_ajax_request()) {
+			$response = $this->this_model->insertReview($this->input->post());
+			echo json_encode(['status' => '1']);
 		}
 	}
 }

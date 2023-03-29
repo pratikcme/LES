@@ -252,6 +252,8 @@ var ADDPRODUCT = (function () {
     var stockMessage = language.js_limited_stock;
     var stockMessage1 = language.js_available_instock;
 
+    var outOfStock = language["out of stock"];
+
     $("#product_varient_id").val(product_varient_id); //update hidden field
     if (product_varient_id != "") {
       $(".weight-error").html("");
@@ -331,7 +333,10 @@ var ADDPRODUCT = (function () {
             );
             $(".orginal-price").css("display", "");
           }
-          if (output.varient_quantity > 25) {
+
+          if (
+            parseInt(output.varient_quantity) > parseInt(output.limited_stock)
+          ) {
             $(".in-stock").remove();
             $(
               '<div class="in-stock"><h6>' + stockMessage1 + "</h6></div>"
@@ -340,15 +345,12 @@ var ADDPRODUCT = (function () {
             $(".in-stock").remove();
 
             if (output.varient_quantity <= 0) {
-              stockMessage1 = "Out Of Stock";
+              stockMessage = outOfStock;
               // chnaged message insted chaning condition by Dipesh
             }
+
             $(
-              '<div class="in-stock" style="display:' +
-                $style +
-                '" ><h6>' +
-                stockMessage +
-                "</h6></div>"
+              '<div class="in-stock"  ><h6>' + stockMessage + "</h6></div>"
             ).insertBefore("#product_detail h1");
           }
 

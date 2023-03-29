@@ -234,7 +234,8 @@
                 </a>
                 <h6><span class='notranslate'><?= $this->siteCurrency ?></span>
                   <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
-                <p><?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+
+                <p><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                 </p>
               </div>
               <?php
@@ -319,7 +320,8 @@
                     </a>
                     <h6><span class='notranslate'><?= $this->siteCurrency ?></span>
                       <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
-                    <p><?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                    <p>
+                      <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                     </p>
                   </div>
                   <?php
@@ -382,7 +384,8 @@
         <?php if ($key < 25) { ?>
           <div class="item">
             <div class="product-wrapper">
-              <?php if ($value->varientQuantity == '0') { ?>
+              <?php
+              if ($value->varientQuantity == '0') { ?>
                 <div class="out-stock"><span class="out-heading"><?= $this->lang->line('out of stock') ?></span>
                 </div>
               <?php } ?>
@@ -415,7 +418,8 @@
 
                 <h6><span class='notranslate'><?= $this->siteCurrency ?></span>
                   <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
-                <p><?= ($value->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+
+                <p><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                 </p>
               </div>
               <?php
@@ -441,14 +445,14 @@
                 </div>
               </div>
               <!--  <div class="feature-bottom-wrap">
-            <div class="cart addcartbutton" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"> <i class="fas fa-shopping-basket"></i>
-            </div>
-            <div class="quantity-wrap">
-              <button class="cart-qty-minus"><span class="minus"><i class="fa fa-minus"></i></span></button>
-              <input class="qty" type="text" name="" value="<?= $value->addQuantity ?>">
-              <button class="cart-qty-plus"><span><i class="fa fa-plus"></i></span></button>
-            </div>
-          </div> -->
+                <div class="cart addcartbutton" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"> <i class="fas fa-shopping-basket"></i>
+                </div>
+                <div class="quantity-wrap">
+                  <button class="cart-qty-minus"><span class="minus"><i class="fa fa-minus"></i></span></button>
+                  <input class="qty" type="text" name="" value="<?= $value->addQuantity ?>">
+                  <button class="cart-qty-plus"><span><i class="fa fa-plus"></i></span></button>
+                </div>
+              </div> -->
             </div>
           </div>
         <?php } ?>
@@ -459,7 +463,9 @@
     <div id="new_product_2" class="owl-carousel top-feature-slider new_product_2 <?= ($slide_cnt < 25) ? 'd-none' : '' ?> ">
       <?php foreach ($new_arrival as $key => $value) : $slide_cnt = $key ?>
         <?php $value->name = character_limiter($value->name, 30); ?>
-        <?php if ($key >= 25) { ?>
+        <?php if ($key >= 25) {
+
+        ?>
           <div class="item">
             <div class="product-wrapper">
               <?php if ($value->varientQuantity == '0') { ?>
@@ -487,7 +493,8 @@
                 </a>
                 <h6><span class='notranslate'><?= $this->siteCurrency ?></span><?= number_format((float)$value->discount_price, 2, '.', '') ?>
                 </h6>
-                <p><?= ($value->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                <p>
+                  <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                 </p>
               </div>
               <?php
