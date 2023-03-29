@@ -273,12 +273,7 @@ class Utility
         $user_bandle_id = $result[0]->user_bandle_id;
         $staff_bandle_id = $result[0]->staff_bandle_id;
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
-        echo "<pre>";
-echo $key_id;
-echo $team_id;
-echo $user_bandle_id;
-echo $staff_bandle_id;
-echo $delivery_bandle_id;exit;
+  
         $deviceId = $deviceIds['device_id'];
         $msg = $msg['message'];
         
