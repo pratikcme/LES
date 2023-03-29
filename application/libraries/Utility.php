@@ -201,7 +201,7 @@ class Utility
     function sendNotification($deviceToken, $type = null, $result, $unread = null, $key = NULL)
     {   
 
-        print_r($deviceToken);exit;
+
         $jsonData = '';
         $message = array(
             'message' => $deviceToken['message'],
@@ -346,7 +346,7 @@ class Utility
         ));
 
         $result = curl_exec($http2ch);
-        dd( $result);
+       
         if ($result === FALSE) {
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
