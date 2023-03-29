@@ -311,7 +311,7 @@ class Order_model extends My_model
                     'message' => $message,
                 );
 
-                dd($dataArray);
+               
                   $this->load->model('api_v3/api_model','api_v3_model');
 
                 $result = $this->api_v3_model->getNotificationKey($branch_id);
