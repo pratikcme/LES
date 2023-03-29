@@ -199,13 +199,16 @@ class Utility
 
 
     function sendNotification($deviceToken, $type = null, $result, $unread = null, $key = NULL)
-    {
+    {   
+
+
         $jsonData = '';
         $message = array(
             'message' => $deviceToken['message'],
         );
 
         if ($deviceToken['type'] == 'i' || $deviceToken['type'] == 'I') {
+         
             $this->notificationForIOS($deviceToken, $message, $type, $unread, $key, $result);
         } else if ($deviceToken['type'] == 'a' || $deviceToken['type'] == 'A') {
             $this->notificationForAndroid($deviceToken, $message, $jsonData, $type, $unread, $key, $result);
@@ -260,7 +263,7 @@ class Utility
     }
 
     function notificationForIOS($deviceIds, $msg, $status, $unread, $key, $result)
-    {
+    {   
         // $CI = &get_instance();
         // $CI->load->model('common_model');        
         // $result = $CI->common_model->getNotificationKey();
@@ -343,7 +346,7 @@ class Utility
         ));
 
         $result = curl_exec($http2ch);
-        dd( $result);
+       
         if ($result === FALSE) {
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
