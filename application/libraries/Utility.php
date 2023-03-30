@@ -493,13 +493,13 @@ class Utility
 
     public function  PushNotification($deviceIds, $msg, $status, $unread, $key, $result,$postData=[],$vendor_id){
 
-        $key_id = $result[0]->key_id;
-        $team_id = $result[0]->team_id;
-        $user_bandle_id = $result[0]->user_bandle_id;
+        echo $key_id = $result[0]->key_id."<br>";
+        echo $team_id = $result[0]->team_id;"<br>";
+        echo $user_bandle_id = $result[0]->user_bandle_id;
         $staff_bandle_id = $result[0]->staff_bandle_id;
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
 
-        $deviceId = $deviceIds['device_id'];
+        echo $deviceId = $deviceIds['device_id'];exit;
         $msg = $msg['message'];
         
 
