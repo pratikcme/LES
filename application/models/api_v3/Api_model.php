@@ -121,7 +121,7 @@ class Api_model extends My_model {
             $this->updateRecords($data);
 
         }
-        echo "hi";exit;
+
         unset($data);
         if(isset($postData['facebook_token_id']) && $postData['facebook_token_id']!='' ){
             $data['where']['facebook_token_id'] = $postData['facebook_token_id'];           
@@ -141,7 +141,7 @@ class Api_model extends My_model {
         $data['limit'] = 1;
         $data['table'] = 'user';        
         $getUser =  $this->selectRecords($data,true);
-
+        dd($getUser);
         return $this->sendLoginResponse($getUser[0],$postData);
 
     }
