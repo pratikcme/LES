@@ -2888,13 +2888,15 @@ class Api_model extends My_model {
             $data['join'] = ['staff_device as d' => ['d.user_id = s.id', 'INNER']];
             $data['table'] = 'staff as s';
             $select = $this->selectFromJoin($data);
+            dd($select);
             foreach ($select as $key => $value) {
                 $notification_type = 'new_order';
                 $dataArray = array('device_id' => $value->token, 'type' => $value->type, 'message' => $message, 'for_staff' => true);
                 $key = "AAAAiEVdA8M:APA91bHLObncewgHcuCHN1vlK8KON4pyixZ3MpBXG0PRfr6Fh3qMUe7ZF66t7TGv5Bzfz-zr4MGP93SBwELaDFtFDfSnMxmtKcU2lrGth6TVGfrVodrp-WOLgAeRGMf0ESD1pJc0e_En";
 
                 $result = $this->getNotificationKey($branch_id);
-                $this->utility_apiv2->sendNotification($dataArray, $notification_type,$result, NULL, $key);
+                //$this->utility_apiv2->sendNotification($dataArray, $notification_type,$result, NULL, $key);
+                $this->utility_api->sendNotification($dataArray, $notification_type,$result, NULL, $key);
             }
         }
 
