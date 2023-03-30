@@ -38,7 +38,7 @@ class Api_model extends My_model {
             $dataIns['insert']['facebook_token_id'] = $postData['facebook_token_id'];
         }else
         if(isset($postData['gmail_token_id']) && $postData['gmail_token_id']!='' ){
-            echo "hi";exit;
+          
             $data['where']['gmail_token_id'] = $postData['gmail_token_id']; 
             $data['update']['gmail_token_id'] = $postData['gmail_token_id']; 
             $dataIns['insert']['gmail_token_id'] = $postData['gmail_token_id'];
@@ -56,6 +56,7 @@ class Api_model extends My_model {
         $data['where']['vendor_id'] = $postData['vendor_id'];
         $data['where']['status !='] = '9';
         $data['table'] = 'user';
+        dd($data);exit;
         $getUser = $this->selectRecords($data);  
         
         if(!isset($postData['country_code']) || $postData['country_code']=='') {
