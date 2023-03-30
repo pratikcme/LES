@@ -30,7 +30,7 @@ class Api_model extends My_model {
     }
 
     public function user_register($postData){
-       
+        dd($postData);
         if(isset($postData['facebook_token_id']) && $postData['facebook_token_id']!=''){
           
             $data['where']['facebook_token_id'] = $postData['facebook_token_id'];
