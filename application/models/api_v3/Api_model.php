@@ -58,7 +58,7 @@ class Api_model extends My_model {
         $data['table'] = 'user';
        
         $getUser = $this->selectRecords($data);  
-        dd($getUser);
+    
         if(!isset($postData['country_code']) || $postData['country_code']=='') {
             $postData['country_code'] = '+91';
         }
@@ -97,7 +97,7 @@ class Api_model extends My_model {
             if($in){
                 $response["success"] = 1;
                 $response["message"] = "Account created successfully";
-                return $response;
+                
             }else{
                 $response["success"] = 0;
                 $response["message"] = "Account is not created";
