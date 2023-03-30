@@ -300,7 +300,7 @@ class Utility
         if ($result[0]->p8_file != '') {
             $keyfile = $result[0]->p8_file;               # <- Your AuthKey file  
         }
-
+        echo $keyfile;die;
         $keyid = $key_id;                            # <- Your Key ID
         $teamid = $team_id;                           # <- Your Team ID (see Developer Portal)
         $bundleid = $ck;                # <- Your Bundle ID
