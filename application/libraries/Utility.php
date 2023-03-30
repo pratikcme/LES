@@ -301,8 +301,8 @@ class Utility
             $keyfile = $result[0]->p8_file;               # <- Your AuthKey file  
         }
 
-       echo $keyid = $key_id; die;                            # <- Your Key ID
-        $teamid = $team_id;                           # <- Your Team ID (see Developer Portal)
+      $keyid = $key_id;                          # <- Your Key ID
+        echo  $teamid = $team_id; die;                          # <- Your Team ID (see Developer Portal)
         $bundleid = $ck;                # <- Your Bundle ID
         
         $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
