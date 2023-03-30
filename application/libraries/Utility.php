@@ -305,7 +305,8 @@ class Utility
      $teamid = $team_id;                        # <- Your Team ID (see Developer Portal)
        $bundleid = $ck;                # <- Your Bundle ID
         
-        $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        // $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        $url = 'https://api.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
         // $url = 'http://api.push.apple.com';
         // $token = '5412db72d82307bb3b606eeae2885bd742c2acc9806a7c0f4b76b9b723e11adf';              # <- Device Token
         $token = $deviceId;              # <- Device Token
@@ -346,7 +347,7 @@ class Utility
         ));
 
         $result = curl_exec($http2ch);
-       
+        
         if ($result === FALSE) {
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
@@ -500,6 +501,7 @@ class Utility
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
 
         $deviceId = $deviceIds['device_id'];
+
         $msg = $msg['message'];
         
 
