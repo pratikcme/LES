@@ -56,9 +56,9 @@ class Api_model extends My_model {
         $data['where']['vendor_id'] = $postData['vendor_id'];
         $data['where']['status !='] = '9';
         $data['table'] = 'user';
-        dd($data);exit;
+       
         $getUser = $this->selectRecords($data);  
-        
+        dd($getUser);
         if(!isset($postData['country_code']) || $postData['country_code']=='') {
             $postData['country_code'] = '+91';
         }
