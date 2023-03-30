@@ -302,8 +302,8 @@ class Utility
         }
 
       $keyid = $key_id;                          # <- Your Key ID
-        echo  $teamid = $team_id; die;                          # <- Your Team ID (see Developer Portal)
-        $bundleid = $ck;                # <- Your Bundle ID
+     $teamid = $team_id;                        # <- Your Team ID (see Developer Portal)
+       echo  $bundleid = $ck;exit;                # <- Your Bundle ID
         
         $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
         // $url = 'http://api.push.apple.com';
