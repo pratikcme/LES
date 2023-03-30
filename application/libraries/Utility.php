@@ -300,7 +300,7 @@ class Utility
         if ($result[0]->p8_file != '') {
             $keyfile = $result[0]->p8_file;               # <- Your AuthKey file  
         }
-        echo $keyfile;die;
+
         $keyid = $key_id;                            # <- Your Key ID
         $teamid = $team_id;                           # <- Your Team ID (see Developer Portal)
         $bundleid = $ck;                # <- Your Bundle ID
@@ -346,7 +346,7 @@ class Utility
         ));
 
         $result = curl_exec($http2ch);
-       
+        dd($result);
         if ($result === FALSE) {
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
