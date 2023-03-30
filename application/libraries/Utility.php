@@ -499,9 +499,7 @@ class Utility
         $staff_bandle_id = $result[0]->staff_bandle_id;
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
 
-        
-        $deviceId = "$deviceIds['device_id']";
-
+        $deviceId = $deviceIds['device_id'];
         $msg = $msg['message'];
         
 
