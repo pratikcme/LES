@@ -500,6 +500,7 @@ class Utility
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
 
         $deviceId = $deviceIds['device_id'];
+        
         $msg = $msg['message'];
         
 
@@ -584,7 +585,7 @@ class Utility
         ));
 
         $result = curl_exec($http2ch);
-      
+
         if ($result === FALSE) {
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
