@@ -32,6 +32,7 @@ class PushNotification extends Admin_Controller{
     public function callNotification(){
         // dd($this->input->post());
         $vendor_id = $this->session->userdata('vendor_admin_id');
+        echo $vendor_id;exit;
         $androidDeviceToken = [];
         $iosDevice = [];
         $device =  $this->this_model->getUserDevice();
@@ -46,7 +47,7 @@ class PushNotification extends Admin_Controller{
         }
         $result = $this->this_model->getNotificationKey();
         if(!empty($iosDevice)){
-            dd($iosDevice);exit;
+
             foreach ($iosDevice as $key => $value) {
                 $deviceToken['device_id'] = $value;
                 $msg['message'] = $this->input->post('message');
