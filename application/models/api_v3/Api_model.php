@@ -2888,7 +2888,7 @@ class Api_model extends My_model {
             $data['join'] = ['staff_device as d' => ['d.user_id = s.id', 'INNER']];
             $data['table'] = 'staff as s';
             $select = $this->selectFromJoin($data);
-            dd($select);
+          
             foreach ($select as $key => $value) {
                 $notification_type = 'new_order';
                 $dataArray = array('device_id' => $value->token, 'type' => $value->type, 'message' => $message, 'for_staff' => true);
