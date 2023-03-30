@@ -270,15 +270,11 @@ class Utility
         // if(empty($result)){
         //     return true;
         // }
-        // $key_id = $result[0]->key_id;
-        // $team_id = $result[0]->team_id;
-        // $user_bandle_id = $result[0]->user_bandle_id;
-        // $staff_bandle_id = $result[0]->staff_bandle_id;
-        // $delivery_bandle_id = $result[0]->delivery_bandle_id;
-
-        $user_bandle_id = "com.cme.laxmirajdryfruits";
-        $key_id = "WN3MJTDSU6";
-        $team_id = "H4G2PA6K4T";
+        $key_id = $result[0]->key_id;
+        $team_id = $result[0]->team_id;
+        $user_bandle_id = $result[0]->user_bandle_id;
+        $staff_bandle_id = $result[0]->staff_bandle_id;
+        $delivery_bandle_id = $result[0]->delivery_bandle_id;
 
         $deviceId = $deviceIds['device_id'];
         $msg = $msg['message'];
