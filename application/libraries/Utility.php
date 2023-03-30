@@ -305,8 +305,8 @@ class Utility
      $teamid = $team_id;                        # <- Your Team ID (see Developer Portal)
        $bundleid = $ck;                # <- Your Bundle ID
         
-        // $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
-        $url = 'https://api.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        // $url = 'https://api.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
         // $url = 'http://api.push.apple.com';
         // $token = '5412db72d82307bb3b606eeae2885bd742c2acc9806a7c0f4b76b9b723e11adf';              # <- Device Token
         $token = $deviceId;              # <- Device Token
