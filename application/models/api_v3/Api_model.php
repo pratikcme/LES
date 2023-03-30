@@ -121,7 +121,7 @@ class Api_model extends My_model {
             $this->updateRecords($data);
 
         }
-
+        echo "hi";exit;
         unset($data);
         if(isset($postData['facebook_token_id']) && $postData['facebook_token_id']!='' ){
             $data['where']['facebook_token_id'] = $postData['facebook_token_id'];           
