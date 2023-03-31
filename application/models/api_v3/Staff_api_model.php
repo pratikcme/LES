@@ -260,7 +260,7 @@ class staff_api_model extends my_model {
             $this->load->model('api_v3/api_admin_model');
             $order_log_data = array('order_id' => $order_id ,'status'=>'2');
             $this->api_admin_model->order_logs($order_log_data);
-
+             $this->send_notificaion($order_id);
 
         }
         if ($result) {
@@ -270,6 +270,7 @@ class staff_api_model extends my_model {
         }
         return $response;
     }
+
     function delivery_status($postdata) {
         $order_id = $postdata['order_id'];
         $date = strtotime(DATE_TIME);
@@ -316,6 +317,8 @@ class staff_api_model extends my_model {
         }
         return $response;
     }
+
+
     public function send_notificaion($order_id) {
         $data['select'] = ['o.user_id', 'd.token', 'd.type', 'd.device_id', 'u.notification_status', 'o.order_status', 'o.order_no','o.branch_id'];
         $data['where'] = ['o.id' => $order_id];
