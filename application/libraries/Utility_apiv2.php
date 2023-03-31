@@ -302,7 +302,7 @@ class Utility_apiv2
             'iat' => time()
         );
         # <- Your AuthKey file
-          $keyfile = 'AuthKey_QUHR7V9B5Z.p8';
+          $keyfile = 'AuthKey_WN3MJTDSU6.p8';
           if($result[0]->p8_file != ''){
             $keyfile = $result[0]->p8_file;               # <- Your AuthKey file  
           }  
@@ -311,7 +311,10 @@ class Utility_apiv2
           $teamid = $team_id;                           # <- Your Team ID (see Developer Portal)
           $bundleid = $ck;                # <- Your Bundle ID
          
-          $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        //   $url = 'https://api.development.push.apple.com';
+          $url = 'http://api.push.apple.com';
+          
+          # <- development url, or use http://api.push.apple.com for production environment
           // $token = '5412db72d82307bb3b606eeae2885bd742c2acc9806a7c0f4b76b9b723e11adf';              # <- Device Token
           $token = $deviceId;              # <- Device Token
 
