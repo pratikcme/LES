@@ -25,7 +25,7 @@ class Delivery_api extends CI_Controller
         if (isset($postdata['email']) && isset($postdata['password']) && isset($postdata['device_id']) && isset($postdata['type']) && isset($postdata['token'])) {
 
             $result = $this->this_model->login($postdata);
-             print_r($result);exit;
+           
             // $result[0]->multiple_lang_type = $result[0]->multiLanguageType; 
             if ($result != 0) {
 
