@@ -77,7 +77,7 @@
                                                    <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="promocode_status btn btn-danger btn-xs" value="In-active"> 
                                                 <?php } ?>
                                                 </td>
-                                            <td>
+                                           
                                             <td>
                                                 <a href="javascript:;" onclick="single_delete(<?php echo $value->id; ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                              
