@@ -1669,7 +1669,7 @@ class Api_model extends My_model {
     }
 
     public function checkShoppingBasedDiscount($cartTotal,$branch_id){
-        $query = $this->db->query('SELECT *,('.$cartTotal.' - cart_amount) AS CA FROM `amount_based_discount` where status = "1" branch_id = '.$branch_id.' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        $query = $this->db->query('SELECT *,('.$cartTotal.' - cart_amount) AS CA FROM `amount_based_discount` where status = "1" AND branch_id = '.$branch_id.' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
         // lq();
         return $re;
