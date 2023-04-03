@@ -34,6 +34,7 @@ class Promocode_manage_model extends My_model{
             'notes' => $postData['notes'],
             'start_date' => date('Y-m-d',strtotime($postData['start_date'])),
             'end_date' => date('Y-m-d',strtotime($postData['end_date'])),
+            'status' => '1',
             'dt_created' => DATE_TIME,
             'dt_updated' => DATE_TIME
         );
