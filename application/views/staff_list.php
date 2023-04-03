@@ -114,6 +114,7 @@
 <script type="text/javascript">
     setTimeout(function () { $('#msg').hide(); }, 4000);
 
+
     /*Single Delete Script*/
     $(document).on('click','.vendor_status',function(){
                 var id = $(this).attr('data-val');
