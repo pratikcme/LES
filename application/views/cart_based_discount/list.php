@@ -63,6 +63,16 @@
                                             <td><?=$key+1;;?></td>
                                             <td><?=$value->cart_amount;?></td>
                                             <td><?=$value->discount_percentage;?></td>
+                                            <td> 
+                                                <?php if($value->status==1){ ?>
+                                               
+                                                 <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="promocode_status btn btn-primary btn-xs" value="active"> 
+
+                                                <?php }else{ ?>
+                                                   <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="promocode_status btn btn-danger btn-xs" value="In-active"> 
+                                                <?php } ?>
+                                                </td>
+                                            <td>
                                             <td>
                                                 <a href="javascript:;" onclick="single_delete(<?php echo $value->id; ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                              
@@ -203,6 +213,35 @@
             readUploadedImage(this);
         });
     }
+    
+</script>
+
+<script>
+      /* active Inactive status Script*/
+      $(document).on('click','.cart_base_amt_status',function(){
+                var id = $(this).attr('data-val');
+                $.ajax({
+                    url: '<?php echo base_url().'cart_amount_based_discount/status_change'; ?>' ,
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+
+                        if (data.status == 1) {
+                            bootbox.alert("Status Changed successfully.", function() {
+                                window.location.reload(true);
+                            });
+                        }
+                        else {
+                            alert('Failed to delete selected user.');
+                        }
+                    },
+                    error: function () {
+                        alert('Failed to delete selected user.');
+                    }
+                });
+            });
+           
     
 </script>
    

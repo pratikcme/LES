@@ -245,7 +245,7 @@
    
 
 <script>
-      /*Single Delete Script*/
+      /* active Inactive status Script*/
       $(document).on('click','.promocode_status',function(){
                 var id = $(this).attr('data-val');
                 $.ajax({
