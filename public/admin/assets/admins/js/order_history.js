@@ -33,22 +33,40 @@ var HISTORY = (function () {
       url: url + "sell_development/viewOrderDetails",
       data: { order_id: order_id, name: name },
       success: function (out) {
-        $("#dynamic_tr").html(out.o_detail);
-        $("#dynamic_li").html(out.o_info);
-        $("#dynamic_date").html(out.date);
+        // $("#dynamic_tr").html(out.o_detail);
+        // $("#dynamic_li").html(out.o_info);
+        // $("#dynamic_date").html(out.date);
+        $("#main_table").html(out.order_details_Html);
+        let sub_total = 0;
+        $(".order_price").each(function () {
+          sub_total += parseFloat($(this).text());
+        });
+
+        $("#order_subtotal").html(parseFloat(sub_total).toFixed(2));
         $("#return_details").hide();
-        if (out.return_detail !== "") {
-          $("#main_table").addClass("col-md-6");
-          $("#main_table").removeClass("col-md-12");
 
-          $("#return_dynamic_tr").html(out.return_detail);
+        if (out.returnOrder_details_Html !== null) {
+          // $("#main_table").addClass("col-md-6");
+          // $("#main_table").removeClass("col-md-12");
           $("#return_details").show();
-          $("#return_date").html(out.return_date);
 
-          $("#return_dynamic_li").html(out.return_info);
+          // $("#return_dynamic_tr").html(out.return_detail);
+          // $("#return_date").html(out.return_date);
+          // $("#return_dynamic_li").html(out.return_info);
+          $("#return_details").html(out.returnOrder_details_Html);
+
+          let return_sub_total = 0;
+          $(".return_order_price").each(function () {
+            return_sub_total += parseFloat($(this).text());
+          });
+          $("#return_order_subtotal").html(
+            parseFloat(return_sub_total).toFixed(2)
+          );
+          $(".modal-content").removeClass("one");
         } else {
-          $("#main_table").removeClass("col-md-6");
-          $("#main_table").addClass("col-md-12");
+          $(".modal-content").addClass("one");
+          // $("#main_table").removeClass("col-md-6");
+          // $("#main_table").addClass("col-md-12");
         }
       },
     });

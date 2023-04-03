@@ -294,6 +294,19 @@ var PRIVACY = (function () {
       uncount_total += parseFloat($(this).val());
     });
 
+    var gst = 0;
+    $(".gst_amount").each(function () {
+      gst += parseFloat($(this).val());
+    });
+
+    var uncount_gst = 0;
+    $(".uncount_gst_amount").each(function () {
+      uncount_gst += parseFloat($(this).val());
+    });
+
+    $("#total_gst").html(parseFloat(gst - uncount_gst).toFixed(2));
+    $("#counted_total_gst").val(parseFloat(gst - uncount_gst).toFixed(2));
+
     var final_subtotal = parseFloat(sub_total - uncount_total).toFixed(2);
 
     if (final_subtotal > 0) {
@@ -303,6 +316,7 @@ var PRIVACY = (function () {
         ? $("#removed_cartbased_item").show()
         : $("#removed_cartbased_item").hide();
       $(".total-main").show();
+
       // document.getElementById("refund_btn").style.display = "none";
     } else {
       $("#removed_cartbased_item").hide();
@@ -348,8 +362,26 @@ var PRIVACY = (function () {
       $("#return_shopping_based_discount_amount").html()
     );
 
-    $("#total_pay").html(parseFloat(subtotal - discAmt).toFixed(2));
+    let isShow = $("#isShow").val();
+
     $("#refund_amount").val(parseFloat(subtotal - discAmt).toFixed(2));
+    if (isShow == 1) {
+      $("#refund_amount").val(
+        parseFloat(
+          parseFloat($("#refund_amount").val()) +
+            parseFloat($("#total_gst").html())
+        ).toFixed(2)
+      );
+      $("#total_pay").html(
+        parseFloat(parseFloat($("#refund_amount").val())).toFixed(2)
+      );
+    } else {
+      $("#refund_amount").val(parseFloat($("#refund_amount").val()).toFixed(2));
+      $("#total_pay").html(
+        parseFloat(parseFloat($("#refund_amount").val())).toFixed(2)
+      );
+    }
+
     // addDraggable();
   }
 
@@ -366,8 +398,10 @@ var PRIVACY = (function () {
     var discount = $(this).data("discount");
     var actual_price = $(this).data("actual_price");
     var order_details_id = $(this).data("order_details_id");
+    var without_gst_price = $(this).data("without_gst_price");
+    var gst = $(this).data("gst");
 
-    var price = $(this).data("price");
+    // var price = $(this).data("price");
 
     var that = $(this);
 
@@ -388,8 +422,10 @@ var PRIVACY = (function () {
         discount: discount,
         actual_price: actual_price,
         order_details_id: order_details_id,
-        price: price,
+        // price: price,
         weight_id: weight_id,
+        without_gst_price: without_gst_price,
+        gst: gst,
       },
       success: function (output) {
         if (output.status == 1) {
@@ -409,7 +445,8 @@ var PRIVACY = (function () {
   $(document).on("change", ".qunt", function (e) {
     var qnt = $(this).val();
     var max = parseInt($(this).attr("max"));
-    var price = parseFloat($(this).data("actual_discount_price"));
+    var price = parseFloat($(this).data("actual_calculation_price"));
+    var gst_amount = parseFloat($(this).data("gst_amount"));
 
     if (qnt > max) {
       $(this).val(max);
@@ -425,10 +462,12 @@ var PRIVACY = (function () {
         .html(qnt);
 
       let sub = parseFloat(qnt * price).toFixed(2);
+      let newGSt = parseFloat(qnt * gst_amount).toFixed(2);
 
       $(this).parent().parent().next().find(".sub_total").html(sub);
 
       $(this).parent().find(".calculation_price").val(sub);
+      $(this).parent().find(".gst_amount").val(newGSt);
 
       calculate_refund_subtotal();
     }
@@ -448,7 +487,10 @@ var PRIVACY = (function () {
     var discount = $(this).data("discount");
     var actual_price = $(this).data("actual_price");
     var order_details_id = $(this).data("order_details_id");
-    var price = $(this).data("price");
+
+    var without_gst_price = $(this).data("without_gst_price");
+    var gst = $(this).data("gst");
+    // var price = $(this).data("price");
     var that = $(this);
 
     $.ajax({
@@ -468,8 +510,9 @@ var PRIVACY = (function () {
         discount: discount,
         actual_price: actual_price,
         order_details_id: order_details_id,
-        price: price,
         weight_id: weight_id,
+        without_gst_price: without_gst_price,
+        gst: gst,
       },
       success: function (output) {
         if (output.status == 1) {

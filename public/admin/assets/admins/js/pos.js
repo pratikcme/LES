@@ -95,6 +95,7 @@ var PRIVACY = (function () {
       url: url + "sell_development/addProducttoTempOrder",
       type: "POST",
       dataType: "JSON",
+      async: false,
       data: {
         product_id: product_id,
         pw_id: pw_id,
@@ -152,6 +153,7 @@ var PRIVACY = (function () {
       url: url + "sell_development/addProducttoTempOrder",
       type: "POST",
       dataType: "JSON",
+      async: false,
       data: {
         product_id: product_id,
         pw_id: pw_id,
@@ -291,7 +293,8 @@ var PRIVACY = (function () {
       .find(".revomeRecord")
       .data("order_tempid");
 
-    var isParked = $(this).data("isparked");
+    // console.log("parekd", event.target);
+    var isParked = $(event.target).find(".revomeRecord").data("isparked");
 
     $.ajax({
       url: url + "sell_development/removeRecord",
@@ -523,6 +526,7 @@ var PRIVACY = (function () {
         url: url + "sell_development/add_quantity",
         type: "POST",
         dataType: "JSON",
+        async: false,
         data: {
           product_weight_id: product_weight_id,
           temp_id: temp_id,
@@ -535,7 +539,9 @@ var PRIVACY = (function () {
           $("#hidden_discount_total").val(output.total_savings);
           // console.log("output", output);
           if (output.status == 0) {
-            bootbox.alert("Product is not available", function () {});
+            bootbox.alert("Product is not available", function () {
+              return;
+            });
             that
               .parent()
               .parent()
@@ -614,6 +620,7 @@ var PRIVACY = (function () {
         url: url + "sell_development/add_quantity",
         type: "POST",
         dataType: "JSON",
+        async: false,
         data: {
           product_weight_id: product_weight_id,
           temp_id: temp_id,
@@ -622,6 +629,7 @@ var PRIVACY = (function () {
           isParked: isParked,
           discount: discount,
         },
+
         success: function (output) {
           $("#hidden_discount_total").val(output.total_savings);
           // console.log("output", output);

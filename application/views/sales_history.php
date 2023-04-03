@@ -183,13 +183,34 @@ $vendor_id = $this->session->userdata('id');
 
     #view .modal-dialog {
         width: 100%;
-        max-width: 1611px;
+        max-width: 800px;
     }
 
-    /* #view .modal-dialog .one {
-    width: 100%;
-    max-width: 800px;
-} */
+    #view .modal-body .col-md-12 {}
+
+    .supportive-div {
+        height: 300px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .supportive-div::-webkit-scrollbar {
+        display: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    #view .modal-content {
+        height: 600px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    #view .modal-content.one {
+        height: 450px;
+        overflow: unset;
+        /* overflow-y: scroll; */
+    }
 </style>
 <section id="main-content">
     <section class="wrapper site-min-height">
@@ -364,8 +385,8 @@ $vendor_id = $this->session->userdata('id');
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6" id="main_table">
-                                <div class="customer_name_date" id="dynamic_date">
+                            <div class="col-md-12" id="main_table">
+                                <!-- <div class="customer_name_date" id="dynamic_date">
 
                                 </div>
                                 <table class="table sale-detail">
@@ -376,6 +397,7 @@ $vendor_id = $this->session->userdata('id');
                                             <th>Product Price($)</th>
                                             <th>Discount(%)</th>
                                             <th>Discounted Price($)</th>
+                                            <th>Gst</th>
                                             <th>Price($)</th>
                                         </tr>
                                     </thead>
@@ -386,11 +408,11 @@ $vendor_id = $this->session->userdata('id');
                                     <ul id="dynamic_li">
 
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
 
-                            <div class="col-md-6" id="return_details">
-                                <div class="customer_name_date" id="return_date">
+                            <div class="col-md-12" id="return_details">
+                                <!-- <div class="customer_name_date" id="return_date">
 
                                 </div>
                                 <table class="table sale-detail">
@@ -411,17 +433,14 @@ $vendor_id = $this->session->userdata('id');
                                     <ul id="return_dynamic_li">
 
                                     </ul>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
-
         <!-- page end-->
     </section>
 </section>
