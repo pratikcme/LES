@@ -306,7 +306,7 @@ class Delivery_model extends My_model{
      public function get_valid_emails(){
         $email = $this->input->post('email');
         $data['select'] = ['email'];
-        $data['where'] = ['email'=>$email];
+        $data['where'] = ['email'=>$email,'branch_id' =>  $this->session->userdata('id')];
         $data['table'] = "staff";
         $result = $this->selectRecords($data);
         
