@@ -71,10 +71,10 @@
                                             <td> 
                                                 <?php if($value->status==1){ ?>
                                                
-                                                 <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="promocode_status btn btn-primary btn-xs" value="active"> 
+                                                 <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="cart_base_amt_status btn btn-primary btn-xs" value="active"> 
 
                                                 <?php }else{ ?>
-                                                   <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="promocode_status btn btn-danger btn-xs" value="In-active"> 
+                                                   <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="cart_base_amt_status btn btn-danger btn-xs" value="In-active"> 
                                                 <?php } ?>
                                                 </td>
                                            
