@@ -34,6 +34,7 @@ class Promocode_manage_model extends My_model{
             'notes' => $postData['notes'],
             'start_date' => date('Y-m-d',strtotime($postData['start_date'])),
             'end_date' => date('Y-m-d',strtotime($postData['end_date'])),
+            'status' => '1',
             'dt_created' => DATE_TIME,
             'dt_updated' => DATE_TIME
         );
@@ -114,6 +115,34 @@ class Promocode_manage_model extends My_model{
         echo json_encode(['status'=>1]);
     }
         
+    }
+
+    public function promocode_change_status($id)
+    {
+
+        $id = $this->utility->decode($id);
+
+        $this->db->select('*');
+        $this->db->where('id', $id);
+        $this->db->where('status', '1');
+        $this->db->from('promocode');
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $data = array('status' => '0');
+            $this->db->where('id', $id);
+            $this->db->update('promocode', $data);
+        } else {
+            $data = array('status' => '1');
+            $this->db->where('id', $id);
+            $this->db->update('promocode', $data);
+        }
+
+        ob_get_clean();
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 1]);
+        exit;
     }
  
 }

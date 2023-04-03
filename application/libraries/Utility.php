@@ -199,12 +199,16 @@ class Utility
 
 
     function sendNotification($deviceToken, $type = null, $result, $unread = null, $key = NULL)
-    {
+    {   
+
+
         $jsonData = '';
         $message = array(
             'message' => $deviceToken['message'],
         );
+
         if ($deviceToken['type'] == 'i' || $deviceToken['type'] == 'I') {
+         
             $this->notificationForIOS($deviceToken, $message, $type, $unread, $key, $result);
         } else if ($deviceToken['type'] == 'a' || $deviceToken['type'] == 'A') {
             $this->notificationForAndroid($deviceToken, $message, $jsonData, $type, $unread, $key, $result);
@@ -259,7 +263,7 @@ class Utility
     }
 
     function notificationForIOS($deviceIds, $msg, $status, $unread, $key, $result)
-    {
+    {   
         // $CI = &get_instance();
         // $CI->load->model('common_model');        
         // $result = $CI->common_model->getNotificationKey();
@@ -271,8 +275,8 @@ class Utility
         $user_bandle_id = $result[0]->user_bandle_id;
         $staff_bandle_id = $result[0]->staff_bandle_id;
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
-
-        $deviceId = $deviceIds['device_id'];
+         $deviceId = $deviceIds['device_id'];
+    
         $msg = $msg['message'];
         
 
@@ -297,11 +301,13 @@ class Utility
             $keyfile = $result[0]->p8_file;               # <- Your AuthKey file  
         }
 
-        $keyid = $key_id;                            # <- Your Key ID
-        $teamid = $team_id;                           # <- Your Team ID (see Developer Portal)
-        $bundleid = $ck;                # <- Your Bundle ID
+      $keyid = $key_id;                          # <- Your Key ID
+     $teamid = $team_id;                        # <- Your Team ID (see Developer Portal)
+       $bundleid = $ck;                # <- Your Bundle ID
         
         $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        // $url = 'https://api.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        // $url = 'http://api.push.apple.com';
         // $token = '5412db72d82307bb3b606eeae2885bd742c2acc9806a7c0f4b76b9b723e11adf';              # <- Device Token
         $token = $deviceId;              # <- Device Token
 
@@ -341,7 +347,7 @@ class Utility
         ));
 
         $result = curl_exec($http2ch);
-        dd( $result);
+        
         if ($result === FALSE) {
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
@@ -488,13 +494,13 @@ class Utility
 
     public function  PushNotification($deviceIds, $msg, $status, $unread, $key, $result,$postData=[],$vendor_id){
 
-        $key_id = $result[0]->key_id;
-        $team_id = $result[0]->team_id;
-        $user_bandle_id = $result[0]->user_bandle_id;
-        $staff_bandle_id = $result[0]->staff_bandle_id;
-        $delivery_bandle_id = $result[0]->delivery_bandle_id;
-
+         $key_id = $result[0]->key_id;
+         $team_id = $result[0]->team_id;
+         $user_bandle_id = $result[0]->user_bandle_id;
+         $staff_bandle_id = $result[0]->staff_bandle_id;
+         $delivery_bandle_id = $result[0]->delivery_bandle_id;
         $deviceId = $deviceIds['device_id'];
+
         $msg = $msg['message'];
         
 

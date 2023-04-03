@@ -163,6 +163,8 @@ class staff_api_model extends my_model {
         return $package_name;
     }
     function product_check($postdata) {
+
+       
         $product_weight_id = explode(',', $postdata['product_weight_id']);
         $order_id = $postdata['order_id'];
         $staff_id = $postdata['staff_id'];

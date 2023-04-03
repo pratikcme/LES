@@ -30,7 +30,7 @@ class Api_model extends My_model {
     }
 
     public function user_register($postData){
-       
+     
         if(isset($postData['facebook_token_id']) && $postData['facebook_token_id']!=''){
           
             $data['where']['facebook_token_id'] = $postData['facebook_token_id'];
@@ -56,8 +56,9 @@ class Api_model extends My_model {
         $data['where']['vendor_id'] = $postData['vendor_id'];
         $data['where']['status !='] = '9';
         $data['table'] = 'user';
+       
         $getUser = $this->selectRecords($data);  
-        
+    
         if(!isset($postData['country_code']) || $postData['country_code']=='') {
             $postData['country_code'] = '+91';
         }
@@ -96,7 +97,7 @@ class Api_model extends My_model {
             if($in){
                 $response["success"] = 1;
                 $response["message"] = "Account created successfully";
-                return $response;
+                // return $response;
             }else{
                 $response["success"] = 0;
                 $response["message"] = "Account is not created";
@@ -140,7 +141,7 @@ class Api_model extends My_model {
         $data['limit'] = 1;
         $data['table'] = 'user';        
         $getUser =  $this->selectRecords($data,true);
-
+      
         return $this->sendLoginResponse($getUser[0],$postData);
 
     }
@@ -1668,7 +1669,7 @@ class Api_model extends My_model {
     }
 
     public function checkShoppingBasedDiscount($cartTotal,$branch_id){
-        $query = $this->db->query('SELECT *,('.$cartTotal.' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = '.$branch_id.' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        $query = $this->db->query('SELECT *,('.$cartTotal.' - cart_amount) AS CA FROM `amount_based_discount` where status = "1" AND branch_id = '.$branch_id.' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
         // lq();
         return $re;
@@ -1902,7 +1903,7 @@ class Api_model extends My_model {
         $promocode = $postData['promocode'];
         $branch_id = $postData['branch_id'];
         $date = date('Y-m-d'); 
-        $data['where'] = ['branch_id'=>$branch_id,'name'=>$promocode];
+        $data['where'] = ['branch_id'=>$branch_id,'name'=>$promocode,'status' => '1'];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
 
@@ -2887,6 +2888,7 @@ class Api_model extends My_model {
             $data['join'] = ['staff_device as d' => ['d.user_id = s.id', 'INNER']];
             $data['table'] = 'staff as s';
             $select = $this->selectFromJoin($data);
+         
             foreach ($select as $key => $value) {
                 $notification_type = 'new_order';
                 $dataArray = array('device_id' => $value->token, 'type' => $value->type, 'message' => $message, 'for_staff' => true);
@@ -2894,6 +2896,7 @@ class Api_model extends My_model {
 
                 $result = $this->getNotificationKey($branch_id);
                 $this->utility_apiv2->sendNotification($dataArray, $notification_type,$result, NULL, $key);
+                //$this->utility_api->sendNotification($dataArray, $notification_type,$result, NULL, $key);
             }
         }
 

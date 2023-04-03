@@ -76,6 +76,13 @@ class Cart_amount_based_discount extends Vendor_Controller
     }
 
 
+    public function status_change()
+    {
+        $id = $_GET['id'];
+        $this->this_model->cart_base_amt_discount_status($id);
+    }
+
+
    
 }
 

@@ -69,6 +69,12 @@ class Promocode_manage extends Vendor_Controller
         
     }   
 
+    public function status_change()
+    {
+        $id = $_GET['id'];
+        $this->this_model->promocode_change_status($id);
+    }
+
 
    
 }

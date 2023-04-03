@@ -16,7 +16,7 @@
                 <li> <a href="<?=base_url().'contact'?>"><?=$this->lang->line('Contact Us')?></a> </li>
               </ul>
             </div>
-            <div id="google_translate_element" style="display:none"></div>
+            <div id="google_translate_element" style="display:block"></div>
             <!-- <select class="lang-change" onchange="javascript:window.location.href='<?php echo base_url(); ?>LanguageSwitcher/switchLang/'+this.value;">
               <option value="en" <?php if($this->session->userdata('site_lang') == 'en') echo 'selected="selected"'; ?>>English</option>
               <option value="ar" <?php if($this->session->userdata('site_lang') == 'ar') echo 'selected="selected"'; ?>>Arabic</option>

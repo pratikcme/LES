@@ -119,6 +119,36 @@ class Cart_amount_based_discount_model extends My_model{
             return "true";
         }
     }
+
+    
+
+    public function cart_base_amt_discount_status($id)
+    {
+
+        $id = $this->utility->decode($id);
+
+        $this->db->select('*');
+        $this->db->where('id', $id);
+        $this->db->where('status', '1');
+        $this->db->from(TABLE_SHOPPING_BASED_DISCOUNT);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $data = array('status' => '0');
+            $this->db->where('id', $id);
+            $this->db->update(TABLE_SHOPPING_BASED_DISCOUNT, $data);
+        } else {
+            $data = array('status' => '1');
+            $this->db->where('id', $id);
+            $this->db->update(TABLE_SHOPPING_BASED_DISCOUNT, $data);
+        }
+
+        ob_get_clean();
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 1]);
+        exit;
+    }
  
 }
 
