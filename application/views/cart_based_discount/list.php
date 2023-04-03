@@ -48,6 +48,11 @@
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">Discount Percentage 
+                                        </th>   
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 200px;">Status 
                                         </th>                                   
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
