@@ -447,7 +447,7 @@ class Checkout_model extends My_model
         $promocode = $postData['promocode'];
         $branch_id = $this->session->userdata('branch_id');
         $date = date('Y-m-d');
-        $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode];
+        $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode,'status' => '1'];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
         $getMycartSubtotal = getMycartSubtotal();
