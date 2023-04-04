@@ -51,7 +51,7 @@
             <!-- ---tab-1-- -->
             <div id="tab-1" class="container tab-pane active">
               <h2 class="title">Account <span>Details</span></h2>
-              <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+              <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <div class="myaccout-detail-tab">
                 <!-- <div class="choose-img">
                   <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="">
