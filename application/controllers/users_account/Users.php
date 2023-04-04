@@ -94,7 +94,6 @@ class Users extends User_Controller {
 
 		$data['item_weight_id'] = $item_weight_id;
 		$data['wishlist']	= $this->this_model->getWishlist();
-		dd($data['wishlist']);	
 		$this->loadView($this->user_layout,$data);
 	}
 
