@@ -1,5 +1,5 @@
 <?php
-
+$lang['Cart Discount'] = 'سلة الخصم';
 $lang['Sign up'] = 'اشتراك';
 $lang['Cancel'] = 'إلغاء';
 $lang['login'] = 'تسجيل الدخول';

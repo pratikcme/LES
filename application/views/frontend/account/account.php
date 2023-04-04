@@ -231,7 +231,7 @@
                            <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?> 
                               <li class="total-wrap">
                                  <div class="total-count">
-                                    <h6>Cart Discount</h6>
+                                    <h6><?=$this->lang->line('Cart Discount')?></h6>
                                     <div class="price-seperator">
                                        <span class="seperator">:</span>
                                        <p><span><!-- <i class="fas fa-rupee-sign"></i> --> - <?=$this->siteCurrency?></span><?=number_format((float)$value->shopping_amount_based_discount,2,'.','')?></p>

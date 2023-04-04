@@ -20,6 +20,7 @@ $lang['send_otp'] = 'Send OTP';
 
 // end template 2
 
+$lang['Cart Discount'] = 'Cart Discount';
 $lang['Cancel'] = 'Cancel';
 $lang['login'] = 'Login';
 $lang['About Us'] = 'About Us';
