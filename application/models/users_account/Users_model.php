@@ -9,8 +9,8 @@ class Users_model extends My_model
         if (isset($_FILES['profileimage']) && $_FILES['profileimage']['error'] == 0) {
 
             $UploadPath = "public/images/" . $this->folder . "user_profile/";
-            echo $UploadPath;die;
             $uploadImage =  upload_single_image($_FILES, 'uprofile', $UploadPath);
+            dd($uploadImage);
             $uploadImage = $uploadImage['data']['file_name'];
             $data['update']['profileimage'] =  $uploadImage;
 
