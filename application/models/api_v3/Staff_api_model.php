@@ -189,7 +189,7 @@ class staff_api_model extends my_model {
                 return $response;
             }
         }
-         print_r($results);die;
+        
         // echo 1;exit;
         $data['update'] = ['delevery_status' => '0','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
@@ -201,19 +201,20 @@ class staff_api_model extends my_model {
         $data['where_in'] = ['product_weight_id' => $product_weight_id];
         $data['table'] = 'order_details';
         $result = $this->updateRecords($data);
-        // print_r($result);die;
+        // print_r($result);
+        die;
         unset($data);
         $data['select'] = ['count(order_id) as value','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
         $data['table'] = 'order_details';
         $res = $this->selectRecords($data);
-        $res = $res[0]->value;
+       echo $res = $res[0]->value."<br>";
         unset($data);
         $data['select'] = ['count(delevery_status) as value','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['delevery_status' => '1', 'order_id' => $order_id];
         $data['table'] = 'order_details';
         $res2 = $this->selectRecords($data);
-        $res2 = $res2[0]->value;
+        echo $res2 = $res2[0]->value;exit;
         unset($data);
         if ($res == $res2) {
             $date = strtotime(DATE_TIME);
