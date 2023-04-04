@@ -124,19 +124,17 @@
               <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
 
               <div class="sub-tabs container">
-                <ul class="nav nav-pills" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1">Completed</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill"
-                      href="#subtab-2">Process</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill"
-                      href="#subtab-3">Cancel</a>
-                  </li>
-                </ul>
+                  <ul class="nav nav-pills" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1">Completed</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2">Process</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3">Cancel</a>
+                    </li>
+                  </ul>
                </div>            
 
               <div class="my-order-details">
@@ -145,6 +143,7 @@
 
                   <!-- ------sub-tab-1----- -->
                   <div id="subtab-1" class="container tab-pane active" >
+                    <?php foreach ($order as $key => $value) { ?>
                     <div class="main-accordion">
                       <div class="accordion-heading">
                         <a href="#" class="delivered-btn">Delivered</a>
@@ -252,13 +251,14 @@
 
                       </div>
                     </div>
+                    <?php } ?>
                   </div>
 
                   <!-- ------sub-tab-2----- -->
                   <div id="subtab-2" class="container tab-pane " >
                     <div class="main-accordion">
                       <div class="accordion-heading">
-                        <a href="" class="delivered-btn">Delivered</a>
+                        <a href="" class="delivered-btn">Deliveredddddddddddd</a>
 
                         <div class="my-order-text">
                           <h3>Orders: <span> #3,345,512</span></h3>
