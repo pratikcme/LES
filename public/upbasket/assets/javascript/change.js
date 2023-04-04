@@ -61,8 +61,6 @@ $('#ChangeUserPass').validate({
 });
 
 
-
-
 $(".phone").inputFilter(function (value) {
     return /^-?\d*$/.test(value) && (value.length <= "15");
 });
