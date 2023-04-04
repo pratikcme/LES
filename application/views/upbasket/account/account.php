@@ -24,27 +24,25 @@
           <!-- Nav pills -->
           <ul class="nav nav-pills" role="tablist">
             <li class="nav-item">
-              <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#tab-1">My Account</a>
+              <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#tab-1"><?=$this->lang->line('My account')?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#tab-2">My Orders</a>
+              <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#tab-2"><?=$this->lang->line('My orders')?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#tab-3">My Wishlist</a>
+              <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#tab-3"><?=$this->lang->line('My Wishlist')?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-4">My
-                Address</a>
+              <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-5">Logout</a>
+              <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('logout')?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-6">Delete
-                Account</a>
+              <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-6"><?=$this->lang->line('Delete Account')?></a>
             </li>
           </ul>
-        </div>
+      </div>
 
 
         <!-- Tab panes -->
