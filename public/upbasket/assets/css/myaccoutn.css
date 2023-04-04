@@ -176,7 +176,7 @@
     border-radius: 90px;
     padding-left: 25px;
     height: 45px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .myaccout-detail-tab input:focus {
