@@ -56,61 +56,60 @@
                 <!-- <div class="choose-img">
                   <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="">
                 </div> -->
-                  <div class="choose-img">
-                          <input type="file" class="choose-input" accept="image/*" onchange="loadFile(event)">
-                          <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="" id="output" class="button">
-                          <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
-                  </div>
+                <div class="choose-img">
+                    <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
+                    <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="" id="output" class="button">
+                    <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
+                </div>
                 <div class="get-detials-account">
-                  <form action="">
+                  <form id='ChangePass' action="<?=base_url().'users_account/users/account'?>" method="post">
                     <div class="row">
                       <div class="col-xxl-6 col-md-6">
                         <div class="mb-3">
                           <label for="fname" class="form-label">First Name<span>*</span></label>
-                          <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Enter Your FirstName">
+                          <input type="text" class="form-control" name="fname" placeholder="<?=$this->lang->line('First Name*')?>" value="<?=$userDetails[0]->fname?>" id="fname" aria-describedby="fname">
                         </div>
                       </div>
                       <div class="col-xxl-6 col-md-6">
                         <div class="mb-3">
                           <label for="lname" class="form-label">Last Name<span>*</span></label>
-                          <input type="text" class="form-control" id="lname" aria-describedby="lname" placeholder="Enter Your LastName">
+                          <input type="text" class="form-control" name="lname" placeholder="<?=$this->lang->line('Last Name*')?>" value="<?=$userDetails[0]->lname?>" id="lname" aria-describedby="lname">
                         </div>
                       </div>
                       <div class="col-xxl-12">
                         <div class="mb-3">
                           <label for="email" class="form-label">Email Address<span>*</span></label>
-                          <input type="email" class="form-control" id="email" aria-describedby="Enter Your E-mail"
-                            placeholder="Enter Your E-mail">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="<?=$this->lang->line('Email*')?>" value="<?=$userDetails[0]->email?>" readonly aria-describedby="Enter Your E-mail" >
                         </div>
                       </div>
                       <div class="col-xxl-12">
                         <div class="mb-3">
                           <label for="text" class="form-label">GST Number<span>*</span></label>
-                          <input type="text" class="form-control" id="text" aria-describedby="text"
+                          <input type="text" class="form-control" name="user_gst_number" placeholder="<?=$this->lang->line('Gst number')?>" value="<?=$userDetails[0]->user_gst_number?>" aria-describedby="text"
                             placeholder="22AAAAA0000A1Z5">
                         </div>
                       </div>
                       <div class="col-xxl-6 col-md-6">
                         <div class="tab-select-box">
                           <label for="Country-code" class="form-label">Country Code<span>*</span></label>
-                          <select class="form-select" aria-label="Country-code">
-                            <option selected>(+91) Inadia </option>
-                            <option value="1">Surt</option>
-                            <option value="2">Baroda</option>
-                            <option value="3">Ohter</option>
+                          <select class="form-select" name="country_code" id="country_code" aria-label="Country-code">
+                          <?php foreach(GetDialcodelist() as $key => $value){ ?>
+                                       <option <?=($key==$userDetails[0]->country_code)?'selected':'';?> value="<?=$key;?>"><?=$value;?></option>
+                                 <?php } ?>
                           </select>
                         </div>
                       </div>
+                      <input type="hidden" id="exiting_country" value="<?=$userDetails[0]->country_code?>">
+                      <input type="hidden" id="exiting_phone" value="<?=$userDetails[0]->phone?>">
                       <div class="col-xxl-6 col-md-6">
                         <div class="mb-3">
                           <label for="m-number" class="form-label">Mobile Number<span>*</span></label>
-                          <input type="tel" class="form-control" id="text" aria-describedby="text"
-                            placeholder="Enter Your Number">
+                          <input type="tel" class="form-control"  name="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" class="phone" id="phone" value="<?=$userDetails[0]->phone?>"  aria-describedby="text">
                         </div>
                       </div>
                       <div class="tab-save-btn">
                         <!-- <button type="submit" class=" signin-btn-green">Save</button> -->
-                        <input class="common-input-btn" type="submit" value="Save"/>
+                        <input class="common-input-btn" type="submit" id="btnAccSubmit" class="btn"><?=$this->lang->line('Save')?>/>
                       </div>
                     </div>
                   </form>
