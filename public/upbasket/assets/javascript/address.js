@@ -35,7 +35,6 @@ $('#phone').on('blur', function () {
     checkNumber();
 })
 
-alert(language.Save);
 function checkNumber() {
 
     var exiting_country = $('#exiting_country').val()
@@ -44,12 +43,12 @@ function checkNumber() {
 
     var phone = $('#phone').val()
     if ((country_code != exiting_country) || (exiting_phone != phone)) {
-        $("#btnAccSubmit").html('Send OTP');
+        $("#btnAccSubmit").val('Send OTP');
         $("#btnAccSubmit").addClass('otp');
         $("#btnAccSubmit").attr('type', 'button');
         console.log('yes')
     } else {
-        $("#btnAccSubmit").html('Save');
+        $("#btnAccSubmit").val(language.Save);
         $("#btnAccSubmit").removeClass('otp');
         $("#btnAccSubmit").attr('type', 'submit');
     }
