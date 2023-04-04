@@ -182,7 +182,7 @@
                         <div class="my-order-details-content">
                           <div class="order-details-img">
                             <div class="accordion-img-wrapper">
-                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-1.png" alt="">
+                              <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$v->product_image?>" alt="">
                             </div>
                             <div class="img-about-text">
                               <h3><?=$v->product_name?></h3>
