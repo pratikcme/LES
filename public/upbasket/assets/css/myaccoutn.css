@@ -16,6 +16,11 @@
     animation-name: accounttitlebefore !important;
 }
 
+.fade:not(.show) {
+    opacity: 0;
+    display: none;
+}
+
 @keyframes accounttitlebefore {
     0% {
         left: 610px;
