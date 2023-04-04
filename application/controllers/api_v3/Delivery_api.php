@@ -28,8 +28,17 @@ class Delivery_api extends CI_Controller
                 $this->response($response);
             }
         }
+
+        
     }
 
+    protected function response($response)
+    {
+        $response = json_encode($response);
+        $response = str_replace('null', "\"\"", $response);
+        echo $response;
+        die;
+    }
     public function login()
     {
        
