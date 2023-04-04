@@ -28,7 +28,7 @@ class Users_model extends My_model
         $data['where']['id'] =  $this->session->userdata('user_id');
         /*$response =*/
         $this->updateRecords($data);
-        lq();
+        // lq();
         if (isset($postData['otp']) && $postData['otp'] != '') {
             unset($data);
             $data['select'] = ['*'];
