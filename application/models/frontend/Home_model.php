@@ -23,8 +23,7 @@ class Home_model extends My_model{
 	    // echo $this->db->last_query();die;
 	}	
  function getWebBannerImage(){
-
-		dd($_SESSION);
+ 
 		$branch_id = $this->session->userdata('branch_id');
         // $data['table'] = 'web_banners';
         $data['table'] = 'banners';
