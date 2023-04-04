@@ -1,3 +1,4 @@
+<?php dd($banner);die; ?>
 <!-- -----hero-section--- -->
 <section class="hero-section"
   style="background-image: url('<?=base_url().'public/images/'.$this->folder.'web_banners/'.$banner[0]->web_banner_image?>')">
@@ -11,7 +12,7 @@
           <h3><span>100%</span> HEALTHY & AFFORDABLE</h3> -->
           <h1><?=$banner[0]->main_title?></h1>
           <h3><?=$banner[0]->sub_title?></h3>
-          <a href="./product-listing-2.php" class="hero-btn">shop now</a>
+          <a href="<?=base_url().'products'?>" class="hero-btn">shop now</a>
         </div>
       </div>
     </div>
