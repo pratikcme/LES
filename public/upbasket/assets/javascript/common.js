@@ -454,16 +454,15 @@ $(document).on('click', '.dec', function () {
 						success: function (output) {
 							if (output.result == 'true') {
 								swal(language.Cart_Item_Deleted);
-								that.parent().removeClass('transparent-wrap');
 								var currntPath = window.location.href;
 								var segments = currntPath.split('/');
 								if (output.count == 0) {
 									$('#itemCount').css('display', 'none');
 									// window.location.reload();
 								}
-
+								alert('fsd');
 								// segments[4] when live
-								if (segments[4] == 'productDetails' && !that.hasClass('related_cat')) {
+								if (segments[3] == 'productDetails' && !that.hasClass('related_cat')) {
 									that.parent().addClass('d-none');
 									that.parent().next('div.order-btn').find('a:first').removeClass('d-none');
 								} else {
@@ -473,9 +472,6 @@ $(document).on('click', '.dec', function () {
 								}
 
 								$('#itemCount').html(output.count);
-								if (output.count == 0) {
-									$('#nav_cart_dropdown').addClass('d-none');
-								}
 								$('#updated_list').html(output.updated_list);
 								$('#nav_subtotal').html(output.final_total);
 							}
