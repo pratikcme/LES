@@ -466,7 +466,7 @@
             <!-- ---tab-3-- -->
             <div id="tab-3" class="container tab-pane fade">
               <h2 class="title">My <span>Wishlist </span></h2>
-              <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+              <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
 
               <div class="cart-product-detail mywishlist-part">
                 <table id="table-two-axis" class="two-axis">
@@ -474,15 +474,15 @@
                     <tr>
                       <th colspan="2">product</th>
                       <th>price</th>
-                      <th>Stock Status</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php foreach ($variable as $key => $value) { ?>
                     <tr>
                       <td class="mywishlist-part-img">
                       <span class="bt-content">
-                        <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                        <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a> -->
                         <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-1.png" alt=""></div>
                       </span>
                         <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
@@ -500,17 +500,32 @@
                         </div>
                       </td>
                       <td>
-                        In Stock
-                      </td>
-                      <td>
+                      <?php 
+                            $d_none = '';
+                            $d_show = 'd-none';
+                            if(!empty($item_weight_id)){
+                              if(in_array($value->product_weight_id,$item_weight_id)){
+                               $d_show = '';
+                               $d_none = 'd-none';
+                             }
+                           }
+                      ?>
                         <div>
-                          <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                            Cart</a>
+                          <a href="javascript:" class="add-cart-btn addcartbutton <?=$d_none?>"
+                          data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>"><span><iclass="fa-solid fa-cart-shopping"></i></span> Add to Cart
+                          </a>
+                          <div class="product-detail-quentity <?=$d_show?>">
+                              <div class="qty-container">
+                                <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->id?>" data-weight_id="<?=$value->weight_id?>">
+                                <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                              </div>
+                          </div>
                         </div>
                       </td>
                     </tr>
-
-                    <tr>
+                    <?php } ?>
+                    <!-- <tr>
                       <td class="mywishlist-part-img">
                         <span class="bt-content">
                           <div>
@@ -568,7 +583,7 @@
                             Cart</a>
                         </div>
                       </td>
-                    </tr>
+                    </tr> -->
 
 
                   </tbody>
