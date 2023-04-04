@@ -6,9 +6,9 @@ class Users_model extends My_model
 
     public function varifiy_password($postData)
     {
-        dd($_FILES);
+
         if (isset($_FILES['profileimage']) && $_FILES['profileimage']['error'] == 0) {
-            dd($_FILES);
+            
             $UploadPath = "public/images/" . $this->folder . "user_profile/";
             $uploadImage =  upload_single_image($_FILES, 'uprofile', $UploadPath);
             dd($uploadImage);
