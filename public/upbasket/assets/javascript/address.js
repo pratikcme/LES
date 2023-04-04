@@ -35,13 +35,13 @@ $('#phone').on('blur', function () {
     checkNumber();
 })
 
-
+alert(language.save);
 function checkNumber() {
 
     var exiting_country = $('#exiting_country').val()
     var exiting_phone = $('#exiting_phone').val();
-
     var country_code = $('#country_code').val();
+
     var phone = $('#phone').val()
     if ((country_code != exiting_country) || (exiting_phone != phone)) {
         $("#btnAccSubmit").html('Send OTP');
