@@ -189,7 +189,7 @@ class staff_api_model extends my_model {
                 return $response;
             }
         }
-        // print_r($results);die;
+         print_r($results);die;
         // echo 1;exit;
         $data['update'] = ['delevery_status' => '0','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
