@@ -1,4 +1,3 @@
-alert();
 (function ($) {
     $.fn.inputFilter = function (inputFilter) {
         return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
