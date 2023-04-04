@@ -113,6 +113,7 @@ class Home extends User_Controller
 		$data['top_sell'] = $top_selling_core;
 		// dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
+		lq();
 		// dd($data['banner']);die;
 
 		$item_weight_id = [];

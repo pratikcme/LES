@@ -1,4 +1,4 @@
-<?php dd($banner);die; ?>
+
 <!-- -----hero-section--- -->
 <section class="hero-section"
   style="background-image: url('<?=base_url().'public/images/'.$this->folder.'web_banners/'.$banner[0]->web_banner_image?>')">
