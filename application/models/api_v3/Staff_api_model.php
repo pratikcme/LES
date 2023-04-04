@@ -202,7 +202,7 @@ class staff_api_model extends my_model {
         $data['table'] = 'order_details';
         $result = $this->updateRecords($data);
         // print_r($result);
-        die;
+        
         unset($data);
         $data['select'] = ['count(order_id) as value','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
