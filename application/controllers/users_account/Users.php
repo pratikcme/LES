@@ -62,7 +62,7 @@ class Users extends User_Controller {
 		}
 
 		if($this->input->post()){
-			dd($this->input->post());
+			// dd($this->input->post());
 			$validation = $this->setRulesAccount(); 
 			if($validation){
 				$response = $this->this_model->varifiy_password	($this->input->post());
