@@ -121,7 +121,7 @@
             <!-- ---tab-2-- -->
             <div id="tab-2" class="container tab-pane fade">
               <h2 class="title">My <span>Orders</span></h2>
-              <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+              <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
 
               <div class="sub-tabs container">
                   <ul class="nav nav-pills" role="tablist">
