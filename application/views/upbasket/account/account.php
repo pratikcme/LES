@@ -55,59 +55,67 @@
               <h2 class="title">Account <span>Details</span></h2>
               <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
               <div class="myaccout-detail-tab">
-                <div class="choose-img">
+                <!-- <div class="choose-img">
                   <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="">
-                </div>
-                <div class="get-detials-account">
-                  <div class="row">
-                    <div class="col-xxl-6 col-md-6">
-                      <div class="mb-3">
-                        <label for="fname" class="form-label">First Name<span>*</span></label>
-                        <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Enter Your FirstName">
-                      </div>
-                    </div>
-                    <div class="col-xxl-6 col-md-6">
-                      <div class="mb-3">
-                        <label for="lname" class="form-label">Last Name<span>*</span></label>
-                        <input type="text" class="form-control" id="lname" aria-describedby="lname" placeholder="Enter Your LastName">
-                      </div>
-                    </div>
-                    <div class="col-xxl-12">
-                      <div class="mb-3">
-                        <label for="email" class="form-label">Email Address<span>*</span></label>
-                        <input type="email" class="form-control" id="email" aria-describedby="Enter Your E-mail"
-                          placeholder="Enter Your E-mail">
-                      </div>
-                    </div>
-                    <div class="col-xxl-12">
-                      <div class="mb-3">
-                        <label for="text" class="form-label">GST Number<span>*</span></label>
-                        <input type="text" class="form-control" id="text" aria-describedby="text"
-                          placeholder="22AAAAA0000A1Z5">
-                      </div>
-                    </div>
-                    <div class="col-xxl-6 col-md-6">
-                      <div class="tab-select-box">
-                        <label for="Country-code" class="form-label">Country Code<span>*</span></label>
-                        <select class="form-select" aria-label="Country-code">
-                          <option selected>(+91) Inadia </option>
-                          <option value="1">Surt</option>
-                          <option value="2">Baroda</option>
-                          <option value="3">Ohter</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-xxl-6 col-md-6">
-                      <div class="mb-3">
-                        <label for="m-number" class="form-label">Mobile Number<span>*</span></label>
-                        <input type="tel" class="form-control" id="text" aria-describedby="text"
-                          placeholder="Enter Your Number">
-                      </div>
-                    </div>
-                    <div class="tab-save-btn">
-                      <a href="#">Save</a>
-                    </div>
+                </div> -->
+                  <div class="choose-img">
+                          <input type="file" class="choose-input" accept="image/*" onchange="loadFile(event)">
+                          <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="" id="output" class="button">
+                          <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
                   </div>
+                <div class="get-detials-account">
+                  <form action="">
+                    <div class="row">
+                      <div class="col-xxl-6 col-md-6">
+                        <div class="mb-3">
+                          <label for="fname" class="form-label">First Name<span>*</span></label>
+                          <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Enter Your FirstName">
+                        </div>
+                      </div>
+                      <div class="col-xxl-6 col-md-6">
+                        <div class="mb-3">
+                          <label for="lname" class="form-label">Last Name<span>*</span></label>
+                          <input type="text" class="form-control" id="lname" aria-describedby="lname" placeholder="Enter Your LastName">
+                        </div>
+                      </div>
+                      <div class="col-xxl-12">
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Email Address<span>*</span></label>
+                          <input type="email" class="form-control" id="email" aria-describedby="Enter Your E-mail"
+                            placeholder="Enter Your E-mail">
+                        </div>
+                      </div>
+                      <div class="col-xxl-12">
+                        <div class="mb-3">
+                          <label for="text" class="form-label">GST Number<span>*</span></label>
+                          <input type="text" class="form-control" id="text" aria-describedby="text"
+                            placeholder="22AAAAA0000A1Z5">
+                        </div>
+                      </div>
+                      <div class="col-xxl-6 col-md-6">
+                        <div class="tab-select-box">
+                          <label for="Country-code" class="form-label">Country Code<span>*</span></label>
+                          <select class="form-select" aria-label="Country-code">
+                            <option selected>(+91) Inadia </option>
+                            <option value="1">Surt</option>
+                            <option value="2">Baroda</option>
+                            <option value="3">Ohter</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-xxl-6 col-md-6">
+                        <div class="mb-3">
+                          <label for="m-number" class="form-label">Mobile Number<span>*</span></label>
+                          <input type="tel" class="form-control" id="text" aria-describedby="text"
+                            placeholder="Enter Your Number">
+                        </div>
+                      </div>
+                      <div class="tab-save-btn">
+                        <!-- <button type="submit" class=" signin-btn-green">Save</button> -->
+                        <input class="common-input-btn" type="submit" value="Save"/>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -617,7 +625,12 @@
                   <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
               </div>
+               
+              <div class="adrress-btn">
+                 <a href="" class="signin-btn-green" data-bs-toggle="modal" data-bs-target="#addres-popup ">Add New Address</a>
+              </div>
             </div>
+
 
             <!-- ---tab-5-- -->
             <div id="tab-5" class="container tab-pane fade">
@@ -629,3 +642,89 @@
 
       </div>
   </section>
+  
+<!-- --------address-popup---- -->
+<!-- Modal -->
+<div class="modal fade address-popup" id="addres-popup" tabindex="-1" aria-labelledby="addres-popup" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-sharp fa-regular fa-circle-xmark"></i></button>
+      <div class="modal-body">
+          <div class="accordion-content-3">
+              <h3>Add Address</h3>
+              <form action="">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <label for="fname" class="form-label">First Name<span>*</span></label>
+                    <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Mike">
+                  </div>
+
+                  <div class="col-lg-6">
+                    <label for="lname" class="form-label">Last Name<span>*</span></label>
+                    <input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Hussy">
+                  </div>
+
+                  <div class="col-lg-12">
+                    <label for="text" class="form-label">Country / Region<span>*</span></label>
+                    <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="+91 99989 99899">
+                  </div>
+
+                  <div class="col-lg-12">
+                    <label for="add" class="form-label">Street address<span>*</span></label>
+                    <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Address">
+                  </div>
+
+                  <div class="col-lg-12">
+                    <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Apartment, suite, etc.">
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="select-box">
+                      <label for="city" class="form-label">Town / City<span>*</span></label>
+                    <select class="form-select" aria-label="city">
+                      <option selected>Ahmedabad</option>
+                      <option value="1">Surt</option>
+                      <option value="2">Baroda</option>
+                      <option value="3">Ohter</option>
+                    </select>
+                  </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="select-box">
+                      <label for="state" class="form-label">State<span>*</span></label>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Gujarat</option>
+                      <option value="1">Surt</option>
+                      <option value="2">Baroda</option>
+                      <option value="3">Ohter</option>
+                    </select>
+                  </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="select-box">
+                      <label for="state" class="form-label">State<span>*</span></label>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Gujarat</option>
+                      <option value="1">Surt</option>
+                      <option value="2">Baroda</option>
+                      <option value="3">Ohter</option>
+                    </select>
+                  </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
+                    <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="380050">
+                  </div>
+                  <div class="save-btn text-center">
+                    <button type="submit" class=" signin-btn-green">Save</button>
+                  </div>
+                </div>
+              </form>  
+              </div>
+          </div>
+    </div>
+  </div>
+</div>
