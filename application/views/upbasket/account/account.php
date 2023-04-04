@@ -59,7 +59,7 @@
                 <div class="get-detials-account">
                   <form id='ChangePass' action="<?=base_url().'users_account/users/account'?>" method="post">
                     <div class="choose-img">
-                    <input type="file" name="profileimage"  accept="image/*" >
+                    <input type="file" name="profileimage" class="form-control"  accept="image/*" >
                         <!-- <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)"> -->
                         <img src="<?=($userDetails[0]->profileimage !='' ) ? base_url().'public/images/'.$this->folder.'user_profile/'.$userDetails[0]->profileimage : $this->theme_base_url.'/assets/images/myaccount-choose-img.png' ?>" alt="" id="output" class="button">
                         <button type="button" class="choose-btn"><i class="fa-solid fa-camera"></i></button>
