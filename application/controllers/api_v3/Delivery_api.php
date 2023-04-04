@@ -23,7 +23,7 @@ class Delivery_api extends CI_Controller
 
             if ($validate == false) {
 
-                $response = array('status' => 5, 'message' => "Invalid Authentication");
+                $response = array('success' => 5, 'message' => "Invalid Authentication");
 
                 $this->response($response);
             }
