@@ -56,15 +56,20 @@
                 <!-- <div class="choose-img">
                   <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="">
                 </div> -->
+                <!-- <div class="choose-img">
+                    <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
+                    <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="" id="output" class="button">
+                    <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
+                </div> -->
                 <div class="get-detials-account">
                   <form id='ChangePass' action="<?=base_url().'users_account/users/account'?>" method="post">
-                    <div class="choose-img">
-                        <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
-                        <img src="<?=($userDetails[0]->profileimage !='' ) ? base_url().'public/images/'.$this->folder.'user_profile/'.$userDetails[0]->profileimage : $this->theme_base_url.'/assets/images/myaccount-choose-img.png' ?>" alt="" id="output" class="button">
-                        <button type="button" class="choose-btn"><i class="fa-solid fa-camera"></i></button>
-                    </div>
-                    <input type="hidden" name="hidden_image" value="<?=$userDetails[0]->profileimage?>">
                     <div class="row">
+                    <div class="col-xxl-6 col-md-6">
+                        <div class="mb-3">
+                          <label for="fname" class="form-label">First Name<span>*</span></label>
+                          <input type="file" class="form-control" name="profileimage" >
+                        </div>
+                      </div>
                       <div class="col-xxl-6 col-md-6">
                         <div class="mb-3">
                           <label for="fname" class="form-label">First Name<span>*</span></label>
