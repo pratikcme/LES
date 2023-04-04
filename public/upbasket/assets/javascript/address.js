@@ -35,7 +35,7 @@ $('#phone').on('blur', function () {
     checkNumber();
 })
 
-alert(language.save);
+alert(language.Save);
 function checkNumber() {
 
     var exiting_country = $('#exiting_country').val()
