@@ -355,3 +355,16 @@ if ($("body").hasClass("rtl")) {
 // $(document).ready(function () {
 //   $("#table-two-axis").basictable();
 // });
+
+
+//   -----checkout-image-choose---
+var loadFile = function (event) {
+  var output = document.getElementById('output');
+  output.src = URL.createObjectURL(event.target.files[0]);
+};
+
+$(document).ready(function () {
+  $(".choose-btn").click(function () {
+    $("input[type='file']").trigger('click');
+  });
+});
