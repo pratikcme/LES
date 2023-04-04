@@ -6,7 +6,6 @@ class Users_model extends My_model
 
     public function varifiy_password($postData)
     {
-        echo $this->folder ;die;
         if (isset($_FILES['profileimage']) && $_FILES['profileimage']['error'] == 0) {
 
             $UploadPath = "public/images/" . $this->folder . "user_profile/";
@@ -18,8 +17,7 @@ class Users_model extends My_model
 
             unlink($UploadPath . $old_one);
         }
-        echo $UploadPath;
-        dd($uploadImage);
+   
 
         $data['table'] = TABLE_USER;
         $data['update']['fname'] = $postData['fname'];
