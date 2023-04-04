@@ -69,7 +69,7 @@ class Sell_development_model extends My_model
         $this->branch_id = $this->session->userdata('id');
 
         $data['table'] =  TABLE_ORDER_DETAILS . ' as od';
-        $data['select'] = ['od.calculation_price as price', 'o.sub_total as sub_total', 'o.shopping_amount_based_discount as cart_based', 'o.promocode_used as promocode_used', 'od.id as order_details_id', 'od.discount as discount', 'od.actual_price as actual_price', 'od.discount_price as discount_price', 'od.order_id as order_id', 'od.quantity as quantity', 'od.dt_updated', 'p.name', 'pw.weight_no as weight_no', 'w.name as weight_name', 'w.id as weight_id', 'p.id as product_id', 'pw.id as product_weight_id', 'p.name as product_name'];
+        $data['select'] = ['od.calculation_price as price', 'od.gst as gst', 'od.without_gst_price as without_gst_price', 'o.sub_total as sub_total', 'o.shopping_amount_based_discount as cart_based', 'o.promocode_used as promocode_used', 'od.id as order_details_id', 'od.discount as discount', 'od.actual_price as actual_price', 'od.discount_price as discount_price', 'od.order_id as order_id', 'od.quantity as quantity', 'od.dt_updated', 'p.name', 'pw.weight_no as weight_no', 'w.name as weight_name', 'w.id as weight_id', 'p.id as product_id', 'pw.id as product_weight_id', 'p.name as product_name'];
         $data['join'] = [
             TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT'],
             TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=od.product_weight_id', 'LEFT'],
@@ -79,7 +79,8 @@ class Sell_development_model extends My_model
         ];
         $data['where'] = ['od.order_id' => $order_id, 'od.status!=' => '9'];
 
-        $result =  $this->selectFromJoin($data);
+        $result = $this->selectFromJoin($data);
+        // dd($order_id);
 
         unset($data);
         $data['table'] = TABLE_ORDER;
@@ -91,12 +92,13 @@ class Sell_development_model extends My_model
     //Refund checkout added 
     public function order_refund_checkout($postdata)
     {
+
         $data['insert'] = [
             'order_id' => $postdata['order_id'][0],
             'branch_id' => $this->branch_id,
             'discount_percentage' => $postdata['cart_based'],
             'discount_amount' => numberFormat($postdata['discount_amount']),
-            'sub_total' => $postdata['subtotal'],
+            'sub_total' => $postdata['isShow'] == true ? ($postdata['counted_total_gst'] + $postdata['subtotal']) : $postdata['subtotal'],
             'refund_amount' => $postdata['refund_amount'],
             'dt_added' => strtotime(DATE_TIME),
             'dt_updated' => strtotime(DATE_TIME),
@@ -111,8 +113,9 @@ class Sell_development_model extends My_model
         $total_item = 0;
         foreach ($postdata['product_name'] as $key => $value) :
             $qntName = 'qnt' . $postdata['order_details_id'][$key];
+
             $total_savings += ($postdata['actual_price'][$key] - $postdata['discount_price'][$key]) * $postdata[$qntName];
-            $total_item += $total_item + $postdata[$qntName];
+            $total_item +=  $postdata[$qntName];
             $insertion[] = array(
                 'branch_id' => $this->branch_id,
                 'order_id' => $postdata['order_id'][$key],
@@ -125,7 +128,11 @@ class Sell_development_model extends My_model
                 'actual_price' => numberFormat($postdata['actual_price'][$key]),
                 'discount' => $postdata['discount'][$key],
                 'discount_price' => $postdata['discount_price'][$key],
-                'calculation_price' => $postdata['calculation_price'][$key],
+                'calculation_price' => numberFormat($postdata['discount_price'][$key] * $postdata[$qntName]),
+                // add new fields here
+                'without_gst_price' => $postdata['without_gst_price'][$key],
+                'gst' => $postdata['gst'][$key],
+                // 
                 'status' => '1',
                 'delivery_status' => '1',
                 'dt_added' => strtotime(DATE_TIME),
@@ -243,29 +250,29 @@ class Sell_development_model extends My_model
 
                 $updateQuantity = $isAvailable[0]->quantity + $quantity;
 
-
                 $actual_price = number_format((float)$varient[0]->price, 2, '.', '');
-
 
                 $discount_per = $varient[0]->discount_per;
 
                 $discount_price = ($actual_price * $discount_per) / 100;
 
                 $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
-                // dk
+
                 if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                    // $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                    $price = $varient[0]->discount_price - (($varient[0]->discount_price * $varient[0]->gst) / 100);
+                    // dd($varient[0]->discount_price);
+                    // $price = $price - ($gst_amount * $varient[0]->quantity);
                 }
 
                 $updatePrice = $updateQuantity * $price;
-
+                // dd($updatePrice);
                 $update_discount_price = $discount_price * $updateQuantity;
 
-                $updatePrice = number_format((float)$updatePrice, 2, '.', '');
+                // $updatePrice = number_format((float)$updatePrice, 2, '.', '');
 
                 $updateArray = [
                     'quantity' => $updateQuantity,
-                    'price' => number_format((float)$updatePrice, 2, '.', ''),
                     'dt_updated' => strtotime(DATE_TIME),
                     // 'discount_price' => number_format((float) $newVal, 2, '.', '')
                 ];
@@ -281,13 +288,13 @@ class Sell_development_model extends My_model
 
                 $varient_id = $varient[0]->id;
 
-                $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                // $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
                 $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
 
 
-                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
-                }
+                // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                // $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                // }
 
                 // new for Discount
                 if ($discount_percentage > 0) {
@@ -295,11 +302,8 @@ class Sell_development_model extends My_model
                     $price =  $varient[0]->price - $disc_price;
                 }
 
-                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $gst_per = ($price * $varient[0]->gst) / 100;
-                    $price = $price - $gst_per;
-                }
-
+                $gst_per = ($price * $varient[0]->gst) / 100;
+                $without_gst_price = $price - $gst_per;
 
                 $total = $quantity * $price;
 
@@ -310,13 +314,15 @@ class Sell_development_model extends My_model
                     'product_weight_id' => $varient_id,
                     'quantity' => $quantity,
                     'actual_price' => $varient[0]->price,
-                    'price' => number_format((float)$total, 2, '.', ''),
+                    // 'price' => number_format((float)$total, 2, '.', ''), //remove later by Dipesh
                     'status' => '1',
                     'dt_added' => $date,
                     'dt_updated' => $date,
                     'park' => '0',
+                    'gst' => $varient[0]->gst,
                     'discount' => $discount_percentage,
-                    'discount_price' => number_format((float)$price, 2, '.', '')
+                    'discount_price' => number_format((float)$price, 2, '.', ''),
+                    'without_gst_price' => numberFormat($without_gst_price)
                 ];
                 $data['table'] = TABLE_ORDER_TEMP;
                 $data['insert'] = $insertedData;
@@ -355,18 +361,19 @@ class Sell_development_model extends My_model
 
                 // dk
                 if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                    // $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                    $price = $varient[0]->discount_price - (($varient[0]->discount_price * $varient[0]->gst) / 100);
                 }
 
-                $updatePrice = $updateQuantity * $price;
+                // $updatePrice = $updateQuantity * $price;
 
                 $update_discount_price = $discount_price * $updateQuantity;
 
-                $updatePrice = number_format((float)$updatePrice, 2, '.', '');
+                // $updatePrice = number_format((float)$updatePrice, 2, '.', '');
 
                 $updateArray = [
                     'quantity' => $updateQuantity,
-                    'price' => $updatePrice,
+                    // 'price' => $updatePrice,
                     // 'discount_price' => number_format((float)$update_discount_price, 2, '.', ''),
                     'dt_updated' => strtotime(DATE_TIME),
                 ];
@@ -384,14 +391,14 @@ class Sell_development_model extends My_model
             if ($varient[0]->quantity > 0) {
                 $varient_id = $varient[0]->id;
 
-                $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                // $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
                 $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
-                $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
+                // $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
 
                 // dk
-                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
-                }
+                // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                //     $price = number_format((float)$varient[0]->without_gst_price, 2, '.', '');
+                // }
 
                 // new for Discount
                 if ($discount_percentage > 0) {
@@ -399,12 +406,14 @@ class Sell_development_model extends My_model
                     $price =  $varient[0]->price - $disc_price;
                 }
 
-                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $gst_per = ($price * $varient[0]->gst) / 100;
-                    $price = $price - $gst_per;
-                }
+                // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                //     $price = $varient[0]->discount_price - (($varient[0]->discount_price * $varient[0]->gst) / 100);
+                // }
 
-                // dd($price);
+
+                $gst_per = ($price * $varient[0]->gst) / 100;
+                $without_gst_price = $price - $gst_per;
+
                 $date = strtotime(DATE_TIME);
                 $insertedData = [
                     'branch_id' => $this->branch_id,
@@ -417,11 +426,14 @@ class Sell_development_model extends My_model
                     'actual_discount' => $varient[0]->discount_per,
                     'discount' => $discount_percentage,
                     'discount_price' => number_format((float)$price, 2, '.', ''),
-                    'price' => $price,
+                    // 'price' => $price,
+                    'gst' => $varient[0]->gst,
                     'status' => '1',
                     'dt_added' => $date,
                     'dt_updated' => $date,
+                    'without_gst_price' => $without_gst_price
                 ];
+                // dd($insertedData);
                 $data['table'] = 'parked_order_details';
                 $data['insert'] = $insertedData;
                 $result = $this->insertRecord($data);
@@ -438,12 +450,13 @@ class Sell_development_model extends My_model
     public function getUpdatedParkedOrder($parked_id)
     {
         $data['table'] = 'parked_order as po';
-        $data['select'] = ['po.order_discount', 'pow.price'];
+        $data['select'] = ['po.order_discount'];
         $data['join'] = ['parked_order_details as pow' => ['po.id = pow.parked_order_id', 'LEFT']];
         $data['where'] = [
             'po.branch_id' => $this->branch_id, 'pow.parked_order_id' => $parked_id, 'po.status' => '1'
         ];
         $ParkOrder = $this->selectFromJoin($data);
+        // dd($ParkOrder);
         $total = 0;
         foreach ($ParkOrder as $key => $value) {
             $total += $value->price;
@@ -558,7 +571,7 @@ class Sell_development_model extends My_model
         $data['where'] = ['id' => $temp_id];
         $re = $this->selectRecords($data);
 
-        $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
+        // $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
 
         $update_price = ($price * $update_quantity);
         // - $discount;
@@ -566,7 +579,6 @@ class Sell_development_model extends My_model
 
         $updateData = array(
             'quantity' => $update_quantity,
-            'price' => numberFormat($update_price),
             // 'discount_price' => numberFormat($update_price)
         );
 
@@ -583,7 +595,6 @@ class Sell_development_model extends My_model
         $update_quantity = $postdata['qunt'];
         $actual_discount_price = $postdata['actual_discount_price'];
 
-
         $data['table'] = 'parked_order_details';
         $data['select'] = ['*'];
         $data['where'] = ['id' => $temp_id];
@@ -591,14 +602,14 @@ class Sell_development_model extends My_model
 
         // $discount = (($price * $re[0]->discount) / 100) * $update_quantity;
 
-        $update_price = ($price * $update_quantity);
+        // $update_price = ($price * $update_quantity);
         //  - $discount;
 
         unset($data);
 
         $updateData = array(
             'quantity' => $update_quantity,
-            'price' => numberFormat($update_price),
+            // 'price' => numberFormat($update_price),
             // 'discount_price' => numberFormat($discount)
         );
 
@@ -623,6 +634,7 @@ class Sell_development_model extends My_model
         }
 
         $this->branch_id = $this->session->userdata('id');
+
         $varient_id = $postdata['product_weight_id'];
         $discount =  $postdata['discount'];
         $temp_id =  $postdata['temp_id'];
@@ -634,24 +646,19 @@ class Sell_development_model extends My_model
 
 
         $disc_per = ($result[0]->price * $discount) / 100;
-        $discounted_price = $product_price -  $disc_per;
+        $discounted_price = $product_price - $disc_per;
 
         $gst_amount = ($discounted_price * $result[0]->gst) / 100;
+
         if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
             $discounted_price = $discounted_price - $gst_amount;
         }
 
         $newPrice = $discounted_price  * $quantity;
 
-        // $updatprice =  $newPrice * $quantity;
-
-        // dk
-        // dd($newPrice);
-
-
         $updateData = array(
             'quantity' => $quantity,
-            'price' => numberFormat($newPrice),
+            // 'price' => numberFormat($newPrice),//Removed by Dipesh
             'discount' => numberFormat($discount),
             'discount_price' => numberFormat($discounted_price)
         );
@@ -659,6 +666,7 @@ class Sell_development_model extends My_model
         $data['table'] = $table_name;
         $data['update'] = $updateData;
         $data['where'] = ['id' => $temp_id, 'branch_id' => $this->branch_id];
+
         $this->updateRecords($data);
         if ($isParked > 0) {
             $this->getUpdatedParkedOrder($isParked);
@@ -753,6 +761,7 @@ class Sell_development_model extends My_model
         $parked_id = $postdata['isParked'];
 
         $this->getUpdatedParkedOrder($parked_id);
+
         return true;
     }
 
@@ -988,7 +997,7 @@ class Sell_development_model extends My_model
 
     function order_checkout($postdata)
     {
-
+        // dd($postdata);
 
         $park = isset($postdata['parked_order_id']) && $postdata['parked_order_id'] != '' ? 'park' : '';
 
@@ -1042,9 +1051,7 @@ class Sell_development_model extends My_model
 
             $last_id = $this->insertRecord($data);
 
-
             $this->checkAndUsePromocode($promocode, $applied, $last_id, $sub_total);
-
 
             foreach ($postdata as $key => $value) {
                 unset($data);
@@ -1056,7 +1063,7 @@ class Sell_development_model extends My_model
 
                     if ($product_temp_id != '') {
 
-                        $data['select'] = ['product_weight_id', 'quantity', 'price', 'discount', 'discount_price', 'actual_price'];
+                        $data['select'] = ['product_weight_id', 'quantity',  'discount', 'discount_price', 'actual_price', 'without_gst_price', 'gst'];
                         $data['where'] = ['id' => $product_temp_id];
                         $data['table'] = 'order_temp';
                         $pro_temp_result = $this->selectRecords($data);
@@ -1071,15 +1078,11 @@ class Sell_development_model extends My_model
                             $quantity_temp = '0';
                         }
 
-
                         /*27/10/2022*/
 
                         $product_detail = $this->get_product_from_variant($p_id);
 
                         // $discount_price = ($product_detail->price * $quantity_temp) - $pro_temp_result[0]->price;//shown Discount price
-
-
-
 
                         $insertion = array(
                             'branch_id' => $this->branch_id,
@@ -1092,7 +1095,9 @@ class Sell_development_model extends My_model
                             'actual_discount' => $product_detail->discount,
                             'discount' => $pro_temp_result[0]->discount,
                             'discount_price' => $pro_temp_result[0]->discount_price,
-                            'price' => $pro_temp_result[0]->price,
+                            // 'price' => $pro_temp_result[0]->price, //Removed By Dipesh
+                            'without_gst_price' => $pro_temp_result[0]->without_gst_price,
+                            'gst' => $pro_temp_result[0]->gst, //added by Dipesh
                             'status' => '1',
                             'dt_added' => strtotime(DATE_TIME),
                             'dt_updated' => strtotime(DATE_TIME),
@@ -1134,6 +1139,8 @@ class Sell_development_model extends My_model
             $payment_type = '0';
         }
 
+
+
         $insertion = array(
             'order_from' => $order_from,
             'order_no' => $iOrderNo,
@@ -1157,12 +1164,13 @@ class Sell_development_model extends My_model
         $data['insert'] = $insertion;
         $data['table'] = 'order';
 
-
         $last_id = $this->insertRecord($data);
+
 
         $this->checkAndUsePromocode($promocode, $applied, $last_id, $sub_total);
 
         //  check 
+
 
 
         $total_item = 0;
@@ -1176,8 +1184,7 @@ class Sell_development_model extends My_model
                 if ($product_temp_id != '') {
 
                     if ($park == "park") {
-
-                        $data['select'] = ['parked_order_id', 'product_weight_id', 'quantity', 'price', 'discount', 'discount_price', 'actual_price'];
+                        $data['select'] = ['parked_order_id', 'product_weight_id', 'without_gst_price', 'gst', 'quantity', 'discount', 'discount_price', 'actual_price'];
                         $data['where'] = ['id' => $product_temp_id];
                         $data['table'] = 'parked_order_details';
 
@@ -1186,7 +1193,7 @@ class Sell_development_model extends My_model
                         $parked_order_id = $pro_temp_result[0]->parked_order_id;
                     } else {
 
-                        $data['select'] = ['product_weight_id', 'quantity', 'price', 'discount', 'discount_price', 'actual_price'];
+                        $data['select'] = ['product_weight_id', 'quantity', 'without_gst_price', 'gst', 'discount', 'discount_price', 'actual_price'];
                         $data['where'] = ['id' => $product_temp_id];
                         $data['table'] = 'order_temp';
                         $pro_temp_result = $this->selectRecords($data);
@@ -1194,10 +1201,10 @@ class Sell_development_model extends My_model
                         $parked_order_id = 0;
                     }
 
-
                     $p_id = $pro_temp_result[0]->product_weight_id;
                     $quantity_temp = $pro_temp_result[0]->quantity;
                     $total_item = $total_item + $quantity_temp;
+
                     unset($data);
 
                     if ($quantity_temp == '') {
@@ -1206,11 +1213,21 @@ class Sell_development_model extends My_model
 
                     $product_detail = $this->get_product_from_variant($p_id);
 
-
                     $this->db->query("UPDATE product_weight SET  quantity = quantity - '$quantity_temp',temp_quantity = 0 WHERE id = '$p_id'");
 
                     // $discount_price = ($product_detail->price * $quantity_temp) - $pro_temp_result[0]->price;
 
+
+                    // calculate after gst
+                    $pro_temp_result[0]->without_gst_price = numberFormat($pro_temp_result[0]->discount_price - ($pro_temp_result[0]->discount_price * $pro_temp_result[0]->gst / 100));
+                    // $pro_temp_result[0]->without_gst_price = $pro_temp_result[0]->quantity * $gst;
+
+                    // if (isset($postdata['isShow'])) {
+                    $pro_temp_result[0]->price =  $pro_temp_result[0]->discount_price * $pro_temp_result[0]->quantity;
+                    // } else {
+                    // }
+
+                    // 
                     $insertion = array(
                         'branch_id' => $this->branch_id,
                         'order_id' => $last_id,
@@ -1221,7 +1238,9 @@ class Sell_development_model extends My_model
                         'actual_price' => numberFormat($pro_temp_result[0]->actual_price),
                         'actual_discount' => $product_detail->discount_per,
                         'discount' => $pro_temp_result[0]->discount,
-                        'discount_price' => $pro_temp_result[0]->discount_price,
+                        'discount_price' => numberFormat($pro_temp_result[0]->discount_price),
+                        'without_gst_price' => numberFormat($pro_temp_result[0]->without_gst_price), // added
+                        'gst' => $pro_temp_result[0]->gst, // by Dipesh
                         'calculation_price' => $pro_temp_result[0]->price,
                         'status' => '1',
                         'delevery_status' => '1',
@@ -1594,9 +1613,10 @@ class Sell_development_model extends My_model
 
         $html = '';
         foreach ($res as $type) { ?>
-            <div class="catg_list" id="catg_list" onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-            </div>
+<div class="catg_list" id="catg_list"
+    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+</div>
 <?php }
         echo $html;
 
@@ -2111,7 +2131,7 @@ class Sell_development_model extends My_model
 
         $data['table'] = 'order_temp as ot';
         $data['select'] = [
-            'p.name as product_name', 'pw.price as actual_price',
+            'p.name as product_name', 'pw.price as actual_price', 'ot.without_gst_price as without_gst_price',
             'pw.discount_price as product_price', 'pw.without_gst_price as without_gst_price', 'pw.discount_per as product_discount', 'ot.*', 'ot.discount_price as discount_per_product', 'p.gst', 'w.name as weight_name', 'pw.weight_no as weight_no'
         ];
         $data['join'] = [
@@ -2154,7 +2174,9 @@ class Sell_development_model extends My_model
             'od.dt_updated',
             'p.name',
             'od.id as order_details_id',
-            'od.actual_price as actual_price'
+            'od.actual_price as actual_price',
+            'od.without_gst_price as without_gst_price',
+            'od.gst as gst'
         ];
         $data['join'] = [
             TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT'],
@@ -2179,7 +2201,9 @@ class Sell_development_model extends My_model
             'r_od.discount as discount',
             'r_od.calculation_price as calculation_price',
             'r_od.quantity as quantity',
-            'r_od.actual_price as actual_price'
+            'r_od.actual_price as actual_price',
+            'r_od.without_gst_price as without_gst_price',
+            'r_od.gst as gst'
         ];
         $data['join'] = [
             TABLE_PRODUCT . ' as p' => ['r_od.product_id=p.id', 'LEFT'],

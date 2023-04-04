@@ -50,8 +50,7 @@ class Sell_development extends Vendor_Controller
                 $data['order_row'][$key]->customerData = $this->this_model->getCustomerDetails($val->customer_id);
             }
         endforeach;
-        // dd($data['order_row']);
-
+        // dd($data['order_row']);//
 
         // for shopping based discount Dipesh
         // $discountValue = 0;
@@ -61,12 +60,21 @@ class Sell_development extends Vendor_Controller
         $total_savings = 0; //test Dipesh
         foreach ($data['order_temp_result'] as $key => $value) :
 
-            $sub_total += $value->price;
-            $gst_amount = ($value->product_price * $value->gst) / 100;
+            // $sub_total += $value->price;
+            $gst_amount = ($value->discount_price * $value->gst) / 100;
 
             $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
-            // $data['order_temp_result'][$key] = $this->getWeightData
-            $gst  += $gst_amount * $value->quantity;
+
+            $gst += $gst_amount * $value->quantity;
+
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $data['order_temp_result'][$key]->price = $value->without_gst_price * $value->quantity;
+            } else {
+                $data['order_temp_result'][$key]->price = $value->discount_price * $value->quantity;
+            }
+
+            $sub_total += $data['order_temp_result'][$key]->price;
+
         endforeach;
 
         $data['subtotal'] = $sub_total;
@@ -197,6 +205,16 @@ class Sell_development extends Vendor_Controller
         $data['css'] = ['sell_style.css'];
         $currency = $this->this_model->getCurrency();
         $data['currency'] = $currency[0]->value;
+        // 
+
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
+        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+            $data['isShow'] = true;
+        } else {
+            $data['isShow'] = false;
+        }
 
         $this->load->view("return_sell", $data);
     }
@@ -266,14 +284,33 @@ class Sell_development extends Vendor_Controller
 
             $cart_html = '';
 
+            // 
+            $this->load->model('api_v3/common_model', 'co_model');
+            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $data['isShow'] = true;
+            }
+
             foreach ($data['products'] as $key => $value) :
                 $returned_quantity = $this->this_model->getReturnedQuantity($value->order_details_id);
                 if ($returned_quantity != 0) {
                     $val['value'] = $value;
 
                     $val['value']->returned_quantity = $returned_quantity;
-                    $val['value']->price = numberFormat($val['value']->quantity * $val['value']->discount_price);
+                    $val['value']->price = $data['isShow'] ? numberFormat($val['value']->quantity * $val['value']->without_gst_price) : numberFormat($val['value']->quantity * $val['value']->discount_price);
                     $val['value']->noDelete = true;
+
+                    $val['value']->single_gst_amount = ($val['value']->discount_price * $val['value']->gst) / 100;
+
+                    $val['value']->gst_amount = $val['value']->single_gst_amount * $val['value']->returned_quantity;
+
+                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                        $val['isShow'] = true;
+                    } else {
+                        $val['isShow'] = false;
+                    }
+
                     $cart_html .=  $this->load->view("pos/cart_item_refund", $val, true);
                     unset($data['products'][$key]);
                 }
@@ -304,8 +341,11 @@ class Sell_development extends Vendor_Controller
             $data['value']->discount = $postdata["discount"];
             $data['value']->actual_price = $postdata["actual_price"];
             $data['value']->order_details_id = $postdata["order_details_id"];
-            $data['value']->price = $postdata["price"];
+            // $data['value']->price = $postdata["price"];
             $data['value']->weight_id = $postdata["weight_id"];
+            // 
+            $data['value']->without_gst_price = $postdata["without_gst_price"];
+            $data['value']->gst = $postdata["gst"];
 
             $data['value']->returned_quantity = $this->this_model->getReturnedQuantity($postdata["order_details_id"]);
 
@@ -315,6 +355,21 @@ class Sell_development extends Vendor_Controller
             $data['currency'] = $currency[0]->value;
             $data['js'] = array('return_pos.js');
             $data['css'] = ['sell_style.css'];
+
+            $this->load->model('api_v3/common_model', 'co_model');
+            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
+            $data['isShow'] = false;
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $data['isShow'] = true;
+                $data['value']->price = numberFormat($data['value']->without_gst_price * $data['value']->quantity);
+            } else {
+                $data['value']->price = numberFormat($data['value']->discount_price * $data['value']->quantity);
+            }
+
+            $data['value']->single_gst_amount = ($data['value']->discount_price * $data['value']->gst) / 100;
+
+            $data['value']->gst_amount = $data['value']->single_gst_amount * $data['value']->quantity;
 
             if (count($data['value']) > 0) {
                 $html .=  $this->load->view("pos/cart_item_refund", $data, true);
@@ -340,8 +395,22 @@ class Sell_development extends Vendor_Controller
             $data['value']->discount = $postdata["discount"];
             $data['value']->actual_price = $postdata["actual_price"];
             $data['value']->order_details_id = $postdata["order_details_id"];
-            $data['value']->price = $postdata["price"];
+            // $data['value']->price = $postdata["price"];
             $data['value']->weight_id = $postdata["weight_id"];
+            // 
+            $data['value']->without_gst_price = $postdata["without_gst_price"];
+            $data['value']->gst = $postdata["gst"];
+
+            $this->load->model('api_v3/common_model', 'co_model');
+            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
+            $data['isShow'] = false;
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $data['isShow'] = true;
+                $data['value']->price = numberFormat($data['value']->without_gst_price * $data['value']->quantity);
+            } else {
+                $data['value']->price = numberFormat($data['value']->discount_price * $data['value']->quantity);
+            }
 
             $data['products'] = [$data['value']];
             $html =  $this->load->view("pos/quick_product", $data, true);
@@ -384,23 +453,36 @@ class Sell_development extends Vendor_Controller
 
                 $currency = $this->this_model->getCurrency();
 
+                $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
                 foreach ($result as $key => $value) {
                     $gst_amount = ($value->discount_price * $value->gst) / 100;
                     $total_gst += $gst_amount * $value->quantity;
-                    $sub_total += $value->price;
+                    $data['value'] = $value;
+
+                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                        $data['value']->price = $value->without_gst_price * $value->quantity;
+                        $data['isShow'] = true;
+                    } else {
+                        $data['value']->price = $value->discount_price * $value->quantity;
+                        $data['isShow'] = false;
+                    }
+
+                    $sub_total += $data['value']->price;
+
                     $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
                     $total_discount += $value->discount_per_product;
 
                     $dis = ($value->discount != 0) ? $value->discount : "0 %";
 
-                    $data['value'] = $value;
                     $data['parked_order_id'] = $this->input->post('isParked');
                     $data['currency'] = $currency[0]->value;
 
                     $html .= $this->load->view('cart_item_ajax', $data, true);
                 }
+
                 echo json_encode([
-                    'status' => 1, 'result' => $html, 'subtotal' => $this->numberFormat($sub_total),
+                    'status' => 1, 'result' => $html, 'subtotal' => numberFormat($sub_total),
                     'total_gst' => $this->numberFormat($total_gst),
                     'total_savings' => numberFormat($total_savings),
                     'count' => count($result)
@@ -536,9 +618,9 @@ class Sell_development extends Vendor_Controller
                     $price = $avail_quantity[0]->discount_price;
 
                     // dk
-                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                        $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
-                    }
+                    // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    //     $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
+                    // }
 
                     // new for Discount
                     if ($discount_percentage > 0) {
@@ -547,8 +629,9 @@ class Sell_development extends Vendor_Controller
                     }
 
                     if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                        $gst_per = ($price * $avail_quantity[0]->gst) / 100;
-                        $price = $price - $gst_per;
+                        // $gst_per = ($price * $avail_quantity[0]->gst) / 100;
+                        // $price = $price - $gst_per;
+                        $price = $price - ($price * $avail_quantity[0]->gst) / 100;
                     }
 
                     $this->this_model->updateParkedQuantity($this->input->post(), $price);
@@ -556,20 +639,18 @@ class Sell_development extends Vendor_Controller
                 } else {
                     $status = '0';
                 }
-
                 // $status = '1';
             } else {
 
                 // Check Product quantity Dipesh
-
                 if ($avail_quantity[0]->quantity >= $demand_quantity) {
 
                     $price =  $avail_quantity[0]->discount_price;
 
-                    // dk
-                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                        $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
-                    }
+                    // // dk
+                    // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    //     $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
+                    // }
 
                     // new for Discount
                     if ($discount_percentage > 0) {
@@ -578,8 +659,8 @@ class Sell_development extends Vendor_Controller
                     }
 
                     if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                        $gst_per = ($price * $avail_quantity[0]->gst) / 100;
-                        $price = $price - $gst_per;
+                        $price = $price - ($price * $avail_quantity[0]->gst) / 100;
+                        // $price = $avail_quantity[0]->price;
                     }
 
                     $this->this_model->updateTempQuantity($this->input->post(), $price);
@@ -610,7 +691,12 @@ class Sell_development extends Vendor_Controller
                 $resultIdWish = $this->this_model->OrderTempWithoutPark($temp_id);
             }
 
-            // dd($resultIdWish);
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $resultIdWish[0]->price = numberFormat($resultIdWish[0]->without_gst_price * $resultIdWish[0]->quantity);
+            } else {
+                $resultIdWish[0]->price = numberFormat($resultIdWish[0]->discount_price * $resultIdWish[0]->quantity);
+            }
+
 
             echo json_encode([
                 'status' => $status, 'subtotal' => $this->numberFormat($sub_total),
@@ -637,13 +723,7 @@ class Sell_development extends Vendor_Controller
             $total_gst = 0;
             $total_savings = 0;
 
-            // if ($isParked > 0) {
-            //     $resultIdWish = $this->this_model->getUpdatedParkedRow($this->input->post('isParked'));
-            // } else {
-            //     $resultIdWish = $this->this_model->OrderTempWithoutPark($this->input->post('temp_id'));
-            // }
-
-            $parked_id = (isset($_POST['isParked']) && !empty($_POST['isParked'])) ?  $this->input->post('isParked') : '0';
+            $parked_id = (isset($_POST['isParked']) && !empty($_POST['isParked'])) ? $this->input->post('isParked') : '0';
             if (isset($_POST['isParked']) && !empty($_POST['isParked'])) {
                 $parked_id = $this->input->post('isParked');
                 $result = $this->this_model->OrderTemp($parked_id);
@@ -652,12 +732,26 @@ class Sell_development extends Vendor_Controller
             }
 
             foreach ($result as $key => $value) {
-                $price = $value->price;
+                // start
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $value->price = numberFormat($value->without_gst_price * $value->quantity);
+                } else {
+                    $value->price = numberFormat($value->discount_price * $value->quantity);
+                }
+
+                // check
+                // $price = $value->price;
 
                 $r = $this->this_model->checkProductVarient($value->product_weight_id);
 
                 if ($value->product_weight_id == $product_weight_id) {
                     $gst_amount = $res['gst'];
+                    $actual = '';
+                    if ($res['discount_per'] > 0) {
+                        $actual = '<h5>(' . $currency[0]->value . ' ' . '
+                    <s>' . numberFormat($value->actual_price) . '</s> )
+                    </h5>';
+                    }
                 } else {
                     $gst_amount = ($value->discount_price * $r[0]->gst) / 100;
                 }
@@ -665,18 +759,20 @@ class Sell_development extends Vendor_Controller
                 $total_gst += $gst_amount * $value->quantity;
 
                 $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
-                $sub_total += $price;
+                $sub_total += $value->price;
             }
+
+            // dd($result);
 
 
             $currency = $this->this_model->getCurrency();
 
-            $actual = '';
-            if ($res['discount_per'] > 0) {
-                $actual = '<h5>(' . $currency[0]->value . ' ' . '
-                <s>' . numberFormat($value->actual_price) . '</s> )
-                </h5>';
-            }
+            // $actual = '';
+            // if ($res['discount_per'] > 0) {
+            //     $actual = '<h5>(' . $currency[0]->value . ' ' . '
+            //     <s>' . numberFormat($value->actual_price) . '</s> )
+            //     </h5>';
+            // }
             // dd($result[0]->discount_price);
 
             echo json_encode([
@@ -746,38 +842,80 @@ class Sell_development extends Vendor_Controller
     {
         if ($this->input->post()) {
             $re = $this->this_model->viewOrderDetails($this->input->post());
-            $o_detail = '';
-            $o_info = '';
 
+            $this->load->model('api_v3/common_model', 'co_model');
+            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+            $data['isShow'] = false;
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $data['isShow'] = true;
+            }
+
+            $currency = $this->this_model->getCurrency();
+            $data['currency'] = $currency[0]->value;
+
+            $data['order_total_gst'] = 0;
+            // added before
             $data['orderInfo'] = $re['orderInfo'][0];
-            $data['amount'] = $this->this_model->getPromocodeAmount($data['orderInfo']->order_id);
+            $data['order_details'] =  $re['order_details'];
 
-            // $data['shoppingDiscount'] =  $this->this_model->checkShoppingBasedDiscount($data['orderInfo']->total);
+            $data['amount'] = $this->this_model->getPromocodeAmount($data['orderInfo']->order_id);
             $data['shoppingDiscount'] = $data['orderInfo']->shopping_amount_based_discount * 100  / $data['orderInfo']->total;
 
-            $o_info .= $this->load->view('pos/pos_order_details', $data, true);
+            $order_details_Html = $this->load->view('pos/sale_details', $data, true);
 
-            $ro_info = "";
             if (count($re['return_orderInfo']) > 0) {
                 unset($data);
-                $data['orderInfo'] = $re['return_orderInfo'][0];
-                $data['removedDiscountPercentage'] = $data['orderInfo']->return_discount_per;
-                $data['removedDiscountAmount'] = $data['orderInfo']->return_discount_amount;
+                // for refund new
+                $data['return_details'] = true;
+                $data['isShow'] = false;
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $data['isShow'] = true;
+                }
 
-                $ro_info .=  $this->load->view('pos/pos_order_details', $data, true);
-            }
+                $currency = $this->this_model->getCurrency();
+                $data['currency'] = $currency[0]->value;
 
-            unset($data);
+                $data['order_total_gst'] = 0;
 
-            $data['order_details'] =  $re['order_details'];
-            $o_detail  = $this->load->view('pos/pos_order_info', $data, true);
-
-            $ro_detail = "";
-            if (count($re['return_order_details']) > 0) {
-                unset($data);
                 $data['order_details'] = $re['return_order_details'];
-                $ro_detail = $this->load->view('pos/pos_order_info', $data, true);
+                $data['orderInfo'] = $re['return_orderInfo'][0];
+
+                $data['removedDiscountPercentage'] = $re['return_orderInfo'][0]->return_discount_per;
+                $data['removedDiscountAmount'] = $re['return_orderInfo'][0]->return_discount_amount;
+
+                $returnOrder_details_Html = $this->load->view('pos/sale_details', $data, true);
             }
+
+            // dd($o_detail);
+            // die;
+            // for refund later
+
+            // $ro_detail = "";
+            // if (count($re['return_order_details']) > 0) {
+            //     unset($data);
+            //     $data['order_details'] = $re['return_order_details'];
+            //     $ro_detail = $this->load->view('pos/pos_order_info', $data, true);
+            // }
+
+            // end
+
+            // $data['amount'] = $this->this_model->getPromocodeAmount($data['orderInfo']->order_id);
+
+            // // $data['shoppingDiscount'] =  $this->this_model->checkShoppingBasedDiscount($data['orderInfo']->total);
+            // $data['shoppingDiscount'] = $data['orderInfo']->shopping_amount_based_discount * 100  / $data['orderInfo']->total;
+
+            // $o_info .= $this->load->view('pos/pos_order_details', $data, true);
+
+            // $ro_info = "";
+            // if (count($re['return_orderInfo']) > 0) {
+            //     unset($data);
+            //     $data['orderInfo'] = $re['return_orderInfo'][0];
+
+            //     $data['removedDiscountPercentage'] = $data['orderInfo']->return_discount_per;
+            //     $data['removedDiscountAmount'] = $data['orderInfo']->return_discount_amount;
+
+            //     $ro_info .=  $this->load->view('pos/pos_order_details', $data, true);
+            // }
 
             // removed for test purpose
             // if ($re['orderInfo'][0]->promocode_used == 1) {
@@ -815,7 +953,6 @@ class Sell_development extends Vendor_Controller
             //     </tr>';
             // }
 
-
             // same
             // $o_info = '<li>
             //         <div>
@@ -832,13 +969,13 @@ class Sell_development extends Vendor_Controller
             //     </li>';
 
 
-            $date = ' <h4></h4>
-                <h5> <span>Date : </span> ' . date('d - m - Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
+            // $date = ' <h4></h4>
+            //     <h5> <span>Date : </span> ' . date('d - m - Y', $re['orderInfo'][0]->dt_added) . ' </h5>';
 
-            $return_date = ' <h4></h4>
-                <h5> <span>Refund Date : </span> ' . date('d - m - Y', $re['return_orderInfo'][0]->dt_added) . ' </h5>';
-
-            echo json_encode(['o_detail' => $o_detail, 'o_info' => $o_info, 'return_detail' => $ro_detail, 'return_info' => $ro_info, 'date' => $date, 'return_date' => $return_date]);
+            // $return_date = ' <h4></h4>
+            //     <h5> <span>Refund Date : </span> ' . date('d - m - Y', $re['return_orderInfo'][0]->dt_added) . ' </h5>';
+            // 'o_detail' => $o_detail, 'o_info' => $o_info, 'return_detail' => $ro_detail, 'return_info' => $ro_info, 'date' => $date, 'return_date' => $return_date
+            echo json_encode(['order_details_Html' => $order_details_Html, 'returnOrder_details_Html' => $returnOrder_details_Html]);
         }
     }
 

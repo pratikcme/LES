@@ -9,7 +9,7 @@ class Login_model extends My_model{
 
 	public function register_user($postData){
 		// dd($postData);
-		$insertData = array(
+			$insertData = array(
 				'fname' => $postData['fname'],
 				'lname' => $postData['lname'],
 				'email' => $postData['email'],
@@ -25,10 +25,10 @@ class Login_model extends My_model{
 				'dt_updated' => strtotime(DATE_TIME)
 			);
 
-		$data['table'] = TABLE_USER;
-		$data['insert'] = $insertData;
-		$last_id = $this->insertRecord($data);
-		return TRUE;
+			$data['table'] = TABLE_USER;
+			$data['insert'] = $insertData;
+			$last_id = $this->insertRecord($data);
+			return TRUE;
  		
 	}
 

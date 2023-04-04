@@ -12,9 +12,9 @@ $vendor_id = $this->session->userdata('id');
                     echo $this->session->flashdata('myMessage');
                 } ?>
                 <?php if ($this->session->flashdata('msg') && $this->session->flashdata('msg') != '') { ?>
-                <div class="alert alert-success fade in">
-                    <strong>Success!</strong> <?php echo $this->session->flashdata('msg');; ?>
-                </div>
+                    <div class="alert alert-success fade in">
+                        <strong>Success!</strong> <?php echo $this->session->flashdata('msg');; ?>
+                    </div>
                 <?php }
                 unset($this->session->flashdata); ?>
             </div>
@@ -54,12 +54,10 @@ $vendor_id = $this->session->userdata('id');
                     <!-- add form Dipesh -->
                     <!-- form with new Design -->
 
-                    <form method="post" action="<?php echo base_url() . 'sell_development/order_refund_checkout/'; ?>"
-                        id="paypal_form" class="paypal" name="checkout_sell">
+                    <form method="post" action="<?php echo base_url() . 'sell_development/order_refund_checkout/'; ?>" id="paypal_form" class="paypal" name="checkout_sell">
                         <!-- novalidate changed by Dipesh -->
                         <input type="hidden" name="vendor_id" id="user_id" value="<?php echo $vendor_id; ?>">
-                        <input type="hidden" name="customer" id="set_customer"
-                            value="<?= (isset($order_temp_result[0]->customer_id)) ? $order_temp_result[0]->customer_id : 0 ?>">
+                        <input type="hidden" name="customer" id="set_customer" value="<?= (isset($order_temp_result[0]->customer_id)) ? $order_temp_result[0]->customer_id : 0 ?>">
                         <!-- <input type="hidden" name="hidden_subtotal" id="hidden_subtotal" value="0.00">
                         <input type="hidden" name="hidden_discount_total" id="hidden_discount_total"
                             value="<?= $total_savings ?>">
@@ -87,8 +85,7 @@ $vendor_id = $this->session->userdata('id');
                         <!-- check -->
                         <div class="top justify-content-end">
                             <div class="button-top d-flex justify-content-end">
-                                <button type="button" class="border-btn d-inline-block discard_class"
-                                    id="discard_sell">Discard
+                                <button type="button" class="border-btn d-inline-block discard_class" id="discard_sell">Discard
                                     Sale</button>
                             </div>
                         </div>
@@ -136,8 +133,7 @@ $vendor_id = $this->session->userdata('id');
                                     <div>
                                         <p>Subtotal</p>
                                         <p><?= $currency . ' '; ?>
-                                            <span class="subtotal"
-                                                id="refund_subtotal"><?= number_format((float)$subtotal, 2, '.', '') ?></span>
+                                            <span class="subtotal" id="refund_subtotal"><?= number_format((float)$subtotal, 2, '.', '') ?></span>
                                         </p>
                                     </div>
 
@@ -156,6 +152,14 @@ $vendor_id = $this->session->userdata('id');
                                             <span id="return_shopping_based_discount_amount">0</span>
                                         </p>
                                     </div>
+
+                                    <div>
+                                        <p>Tax GST (<?= $isShow ? 'Excluded' : 'Included' ?>)</p>
+                                        <p><?= $currency . ' '; ?>
+                                            <span id="total_gst"><?= number_format((float) 0, 2, '.', '') ?></span>
+                                        </p>
+                                    </div>
+                                    <input type="hidden" name="counted_total_gst" id="counted_total_gst" value="<?= number_format((float) 0, 2, '.', '') ?>">
                                     <!-- <div id="promocode_discount_item">
                                         <p>Promocode Discount</p>
                                         <p>- <?= $currency . ' '; ?> <span id="promocode_discount">0.00</span> </p>
@@ -181,8 +185,7 @@ $vendor_id = $this->session->userdata('id');
                                     </div>
                                     <button class="btn-apply total-main" id="refund_btn">
                                         <span>Refund</span>
-                                        <span><?= $currency . ' '; ?><span
-                                                id="total_pay"><?= number_format((float)0, 2, '.', '') ?></span></span>
+                                        <span><?= $currency . ' '; ?><span id="total_pay"><?= number_format((float)0, 2, '.', '') ?></span></span>
                                     </button>
                                 </div>
                             </div>
