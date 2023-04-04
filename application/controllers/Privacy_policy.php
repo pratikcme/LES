@@ -25,12 +25,12 @@ class Privacy_policy extends User_Controller {
 
 	public function index()
 	{
-		$data['page'] = 'frontend/account/privacy_policy';
+		$data['page'] = $_SESSION['template_name'].'/account/privacy_policy';
 		$data['privacy'] = $this->this_model->getData();
 		// echo '<pre>';
 		// print_r($data['privacy']);
 		// exit;
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 	}
 }
   

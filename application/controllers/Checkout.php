@@ -81,7 +81,7 @@ class Checkout extends User_Controller
       exit();
     }
 
-    $data['page'] = 'frontend/checkout';
+    $data['page'] = $_SESSION['template_name'].'/checkout';
     $data['js'] = array('checkout.js', 'address.js', 'payment_stripe.js');
     $data['init'] = array('CHECKOUT.init()', 'ADDRESS.init()');
     $data['userAddress'] = $this->this_model->getUserdetail();
@@ -286,7 +286,7 @@ class Checkout extends User_Controller
     $data['GatewayType'] = $getActivePaymentMethod[0]->type;
     $data['selfPickupTimeChart'] = $this->this_model->getSelfPickupTimeChart();
     $data['country_code'] = GetDialcodelist();
-    $this->loadView(USER_LAYOUT, $data);
+    $this->loadView($this->user_layout, $data);
   }
 
   function validate_promocode()

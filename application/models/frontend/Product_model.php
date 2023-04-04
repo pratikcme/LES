@@ -642,7 +642,7 @@ class Product_model extends My_model
 
 
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pw.price', 'pw.discount_price', 'pw.id as variant_id', 'pw.quantity', 'GROUP_CONCAT(pw.id) as product_variant_id', 'GROUP_CONCAT(w.name) as wight_name', 'GROUP_CONCAT(pw.discount_per) as discount_per', 'GROUP_CONCAT(pw.weight_no) as wight_no'];
+		$data['select'] = ['p.*','pw.discount_per as discount_percentage','pw.price', 'pw.discount_price', 'pw.id as variant_id', 'pw.quantity', 'GROUP_CONCAT(pw.id) as product_variant_id', 'GROUP_CONCAT(w.name) as wight_name', 'GROUP_CONCAT(pw.discount_per) as discount_per', 'GROUP_CONCAT(pw.weight_no) as wight_no'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			// TABLE_PRODUCT_IMAGE .' as pi'=>['pw.id = pi.product_variant_id','LEFT'],
@@ -1047,6 +1047,7 @@ class Product_model extends My_model
 			'product_id'=>$product_id,
 			'product_varient_id'=>$varient_id,
 		];
+		$data['order'] = 'upr.id desc';
 		return $this->selectFromJoin($data);
 	}
 	public function countParticularUserReview($product_id,$varient_id){
@@ -1191,9 +1192,11 @@ class Product_model extends My_model
 		$data['table'] = TABLE_MY_CART . ' as mc';
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=mc.product_weight_id', 'LEFT'],
-			TABLE_PRODUCT .' as p'=> ['pw.product_id=p.id','LEFT']
+			TABLE_PRODUCT .' as p'=> ['pw.product_id=p.id','LEFT'],
+			TABLE_WEIGHT . ' as w'=> ['pw.weight_id=w.id','LEFT'],
+			TABLE_PACKAGE . ' as pkg'=> ['pw.weight_id=pkg.id','LEFT'],
 		];
-		$data['select'] = ['p.food_type','mc.*', 'pw.discount_price', 'pw.product_id', 'pw.price', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['pkg.package as package_name','w.name as weight_name','pw.weight_no','p.food_type','mc.*', 'pw.discount_price', 'pw.product_id', 'pw.price', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
 		$data['where']['mc.user_id'] = $user_id;
 		$data['where']['mc.branch_id'] = $this->branch_id;
 		$return = $this->selectFromJoin($data);
@@ -1269,14 +1272,17 @@ class Product_model extends My_model
 			'branch_id' => $this->session->userdata('branch_id'),
 			'product_id'=>$this->utility->safe_b64decode($postData['product_id']),
 			'product_varient_id'=>$this->utility->safe_b64decode($postData['varient_id']),
+			'review_title' => (isset($postData['review_title'])) ? $postData['review_title'] : NULL,
 			'review'=> $postData['comment'],
 			'ratting'=> $postData['ratetIndex'],
 			'dt_created' => date('Y-m-d h:i:s'),
 			'dt_updated' => date('Y-m-d h:i:s')
 		);
+		// dd($insertData);
 		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
 		$data['insert'] = $insertData;
 		return $this->insertRecord($data);
 	}
+
 
 }

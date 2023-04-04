@@ -15,13 +15,13 @@ class Users extends User_Controller {
 	}
 
 	public function account(){	
-		// echo '11';die;
+	
 
 		$data['action_name'] = $this->input->get('name');
 		if(isset($_GET['name'])){
 			$uri_segment = $_GET['name'];
 		}
-		$data['page'] = 'frontend/account/account';
+		$data['page'] = $_SESSION['template_name'].'/account/account';
 		$data['js'] = array('change.js','address.js','add_to_cart.js');
 		$data['init'] = array('CHANGE.init()','ADDRESS.init()');
 		$data['userDetails'] = $this->this_model->selectUserDetail();
@@ -93,7 +93,7 @@ class Users extends User_Controller {
 
 		$data['item_weight_id'] = $item_weight_id;
 		$data['wishlist']	= $this->this_model->getWishlist();
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 	}
 
 
@@ -123,7 +123,7 @@ class Users extends User_Controller {
 		$data['page'] = 'frontend/account/address_list';
 		$data['js'] = array('address.js');
 		$data['get_address'] = $this->this_model->getUserAddress();			
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 	}
 	public function update_password(){
 		if($this->input->post()){
@@ -181,7 +181,7 @@ class Users extends User_Controller {
 					redirect(base_url().'users_account/users/accountdetails');
 				}
 			}
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 	}
 
 

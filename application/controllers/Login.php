@@ -48,9 +48,8 @@ class Login extends User_Controller {
 		if(isset($this->user_id) && $this->user_id != ''){
 			redirect(base_url());
 		}
-
 		$data['appLinks'] = $this->common_keys;
-		$data['page'] = 'frontend/account/login';
+		$data['page'] =  $_SESSION['template_name'].'/account/login';
 		$data['js'] = array('login.js');
 		$data['init'] = array('LOGIN.login()');	
 	    $path = $this->uri->segment(1);
@@ -152,7 +151,7 @@ class Login extends User_Controller {
 		      }
 		      $data['googleUrl'] = $GoogleUrl;
 		      // print_r('1');die;
-			$this->loadView(USER_LAYOUT,$data);
+			$this->loadView($this->user_layout,$data);
 		}
 
 	public function loginFromlink($postData){
@@ -210,7 +209,7 @@ class Login extends User_Controller {
 		if(isset($this->user_id) && $this->user_id != ''){
 			redirect(base_url());
 		}
-		$data['page'] = 'frontend/account/registration';
+		$data['page'] = $_SESSION['template_name'].'/account/registration';
 		$data['js'] = array('login.js');
 		$data['init'] = array('LOGIN.init()');
 
@@ -248,7 +247,7 @@ class Login extends User_Controller {
       			$GoogleUrl = base_url().'register';
     		  }
       		$data['googleUrl'] = $GoogleUrl;
-		$this->loadView(USER_LAYOUT,$data);	
+		$this->loadView($this->user_layout,$data);	
 	}
 
 	public function user_register(){
@@ -284,7 +283,7 @@ class Login extends User_Controller {
 				}
 			}
 		
-		$this->loadView(USER_LAYOUT,$data);	
+		$this->loadView($this->user_layout,$data);	
 	}
 	public function sendOtpLogin(){
 		$this->load->model('api_v3/api_model','api_model');
@@ -499,7 +498,7 @@ class Login extends User_Controller {
 			redirect(base_url());
 		}
 		
-		$data['page'] = 'frontend/account/forgetpassword';
+		$data['page'] = $_SESSION['template_name'].'/account/forgetpassword';
 		$data['js'] = array('login.js');
 		$data['init'] = array('LOGIN.forget()');
 			if($this->input->post()){
@@ -521,7 +520,7 @@ class Login extends User_Controller {
 
 			}
 
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 
 	}
 

@@ -1,0 +1,4422 @@
+/* .my-account-section{
+    background: #F5F5F5;
+} */
+
+.my-account-section .title {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.my-account-section .title::before {
+    left: 48% !important;
+}
+
+.my-account-section .title::after {
+    /* left: 610px !important; */
+    animation-name: accounttitlebefore !important;
+}
+
+@keyframes accounttitlebefore {
+    0% {
+        left: 610px;
+        width: 10px;
+    }
+
+    50% {
+        width: 10px;
+    }
+
+    90% {
+        width: 10px;
+    }
+
+    100% {
+        left: 665px;
+        width: 0px;
+    }
+}
+
+
+.my-account-section .pera {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.account-details-tabs .nav-pills {
+    border: 1px solid var(--myaccoutn-tab-border) !important;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.account-details-tabs .nav-link {
+    background: var(--myaccoutn-tab-bg) !important;
+    width: 215.67px !important;
+    border-right: 1px solid var(--myaccoutn-tab-border) !important;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--myaccoutn-tab-text) !important;
+    box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.account-details-tabs .details-tabs .nav-link.active {
+    background: var(--myaccoutn-tab-active-bg) !important;
+    color: var(--common-white) !important;
+}
+
+
+.myaccout-detail-tab {
+    width: 1096px;
+    border: 1px solid #D9E2ED;
+    box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
+    border-radius: 20px;
+    margin: 0px auto;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 50px;
+}
+
+.myaccout-detail-tab label span {
+    color: #FF1D1D !important;
+}
+
+.myaccout-detail-tab .choose-img {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #F2F5F3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    position: relative;
+    margin-bottom: 75px !important;
+    cursor: pointer;
+}
+
+.myaccout-detail-tab .choose-img::before {
+    content: "\f083";
+    position: absolute;
+    font-family: "FontAwesome";
+    background: var(--myaccoutn-tab-active-bg);
+    color: var(--common-white);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 122px;
+    left: 142px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.myaccout-detail-tab label {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--myaccoutn-tab-label-text);
+}
+
+.myaccout-detail-tab input {
+    background: var(--myaccoutn-tab-input-bg);
+    border: 1px solid var(--myaccoutn-tab-input-border);
+
+    border-radius: 90px;
+    padding-left: 25px;
+    height: 45px;
+    margin-bottom: 30px;
+}
+
+.myaccout-detail-tab input:focus {
+    /* box-shadow: none; */
+    border: 1px solid var(--myaccoutn-tab-input-border);
+    box-shadow: 0px 4px 7px rgba(34, 37, 40, 0.05) !important;
+}
+
+.myaccout-detail-tab input::placeholder {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--myaccoutn-tab-text);
+}
+
+.tab-select-box select {
+    background: #FFFFFF;
+    border: 1px solid var(--myaccoutn-tab-input-border);
+    /* box-shadow: 0px 4px 7px rgb(34 37 40 / 5%); */
+    border-radius: 90px;
+    padding-left: 25px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    height: 45px;
+    appearance: none;
+    background-image: url(../images/selectarrow.png);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position-y: 19px;
+    background-position-x: 410px;
+    margin-bottom: 30px;
+}
+
+.tab-select-box select:focus {
+    /* box-shadow: none; */
+    border: 1px solid var(--myaccoutn-tab-input-border) !important;
+    box-shadow: 0px 4px 7px rgb(34 37 40 / 5%) !important;
+}
+
+.tab-save-btn {
+    margin-top: 30px !important;
+    margin-bottom: 50px !important;
+}
+
+.tab-save-btn a {
+    padding: 15px 80px 15px 80px;
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0px 4px 10px rgba(43, 174, 74, 0.2);
+    border-radius: 90px;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--common-white) !important;
+    transition: 0.3s;
+}
+
+.tab-save-btn a:hover {
+    border: 1px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color) !important;
+}
+
+
+
+.mywishlist-part {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block;
+    margin: auto;
+}
+
+.mywishlist-part table {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.mywishlist-part .add-cart-btn {
+    font-size: 13px;
+}
+
+.mywishlist-part-img .bt-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.mywishlist-part-img a {
+    color: var(--primary-color) !important;
+}
+
+.mywishlist-part th:nth-child(1) {
+    padding-left: 85px !important;
+}
+
+.mywishlist-part td:nth-child(2) {
+    padding-left: 0px !important;
+}
+
+.mywishlist-part td:nth-child(4) {
+    color: var(--primary-color);
+}
+
+
+.address-wrapper {
+    background: #fff;
+    border: 1px solid var(--myaccoutn-tab-border);
+    box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
+    border-radius: 20px;
+    padding: 35px 40px 37px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.address-text h3 {
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 40px;
+    color: var(--myaccoutn-tab-label-text);
+}
+
+.address-text p {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0.03em;
+    color: var(--myaccoutn-tab-text);
+    margin-bottom: 0px;
+}
+
+.address-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.address-icons .add-address-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-color);
+    color: #fff !important;
+}
+
+.address-icons .delet-address-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FF5348;
+    color: #fff !important;
+}
+
+
+
+
+.sub-tabs .nav-pills {
+    width: 100%;
+    max-width: 649px !important;
+    border-radius: 20px 20px 0px 0px !important;
+    overflow: hidden;
+}
+
+.sub-tabs .nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background: var(--primary-color) !important;
+    color: var(--common-white) !important;
+}
+
+.delivered-btn {
+    padding: 8px 22px 8px 22px;
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: #fff !important;
+    border-radius: 5px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    transition: 0.3s;
+}
+
+/* .delivered-btn:hover{
+    border: 1px solid #2BAE4A;
+    background: transparent;
+    color: #2BAE4A !important;
+} */
+.my-order-text h3 {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--login-wrapper-label);
+    margin-bottom: 20px;
+}
+
+.my-order-text h3 span {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--login-wrapper-placholder);
+}
+
+.my-order-text p {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--login-wrapper-placholder);
+}
+
+.my-order-text p span {
+    margin-right: 15px;
+}
+
+.my-order-details .accordion-heading {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    border-radius: 0px 0px 0px 0px !important;
+    background: #fff !important;
+    border-bottom: 1px solid var(--myaccoutn-tab-border);
+}
+
+.my-order-details .accordion-content {
+    padding: 0px 0px 0px 0px;
+}
+
+.my-order-details .accordion-content:nth-child(4) {
+    margin-bottom: 0px;
+}
+
+.my-order-details .main-accordion {
+    width: 100% !important;
+    max-width: 100% !important;
+
+}
+
+.my-order-details .accordion-heading::before {
+    top: 76px;
+    right: 39px;
+}
+
+.my-order-details-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 80px 20px 45px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--myaccoutn-tab-border);
+}
+
+.accordion-img-wrapper {
+    width: 125px;
+    height: 125px;
+    background: #FFFFFF;
+    border: 1px solid #D9E2ED;
+    box-shadow: 0px 5px 12px rgba(34, 37, 40, 0.1);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-details-img {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+}
+
+.accordion-img-wrapper img {
+    width: 100%;
+    max-width: 80px;
+}
+
+.img-about-text h3 {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--login-wrapper-label);
+}
+
+.img-about-text h5 {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: var(--login-wrapper-placholder);
+}
+
+.img-about-text p {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: var(--login-wrapper-placholder);
+}
+
+.accordion-price-text h4 {
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    color: #11405A;
+}
+
+.all-detalis-left h4 {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 48px;
+    color: var(--login-wrapper-label);
+    cursor: pointer;
+}
+
+.all-detalis-right h3 {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 48px;
+    color: #11405A;
+    cursor: pointer;
+}
+
+.all-detalis-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 45px;
+    padding-right: 80px;
+    padding-bottom: 20px;
+
+}
+
+#subtab-2 .delivered-btn {
+    background: orange !important;
+    color: #fff !important;
+    border: 1px solid orange !important;
+}
+
+#subtab-3 .delivered-btn {
+    background: red !important;
+    color: #fff !important;
+    border: 1px solid red !important;
+}
+
+
+.adrress-btn {
+    text-align: center;
+    position: relative;
+    padding-top: 50px;
+}
+
+.address-popup .modal-content {
+    position: relative;
+}
+
+.address-popup .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    opacity: 1 !important;
+    z-index: 2;
+    background: none !important;
+    font-size: 25px;
+    color: var(--common-btn-color);
+}
+
+.address-popup .modal-body {
+    padding: 50px;
+}
+
+.address-popup .modal-body h3 {
+    font-family: 'Poppins';
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 60px;
+    color: var(--title-first-color);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.address-popup .modal-body {
+    height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (min-width: 1280px) and (max-width: 1399px) {
+
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 50px;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 410px;
+        margin-bottom: 30px;
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 76px;
+        right: 39px;
+        font-size: 20px;
+    }
+
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+    .mywishlist-part table td:nth-child(1) {
+        padding-left: 34px !important;
+    }
+
+
+    /* --tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 50px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+        margin-bottom: 0px;
+    }
+
+
+    /* ------tab-3-css---- */
+    .mywishlist-part .add-cart-btn {
+        font-size: 12px;
+        padding: 10px 20px 10px 20px;
+    }
+
+    .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mywishlist-part .cart-detail-text h4 {
+        font-size: 14px;
+    }
+
+    .mywishlist-part .cart-price-text h3 {
+        font-size: 16px;
+    }
+
+    table td:nth-child(5) {
+        padding-left: 0px;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 525px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 580px;
+            width: 0px;
+        }
+    }
+}
+
+/* ========================================================== */
+/* ========================================================== */
+
+@media screen and (min-width: 1200px) and (max-width: 1279px) {
+
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 50px;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 410px;
+        margin-bottom: 30px;
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 76px;
+        right: 39px;
+        font-size: 20px;
+    }
+
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+
+    /* --tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 50px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+        margin-bottom: 0px;
+    }
+
+
+    /* ------tab-3-css---- */
+    .mywishlist-part .add-cart-btn {
+        font-size: 10px;
+        padding: 10px 20px 10px 20px;
+    }
+
+    .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mywishlist-part .cart-detail-text h4 {
+        font-size: 14px;
+    }
+
+    .mywishlist-part .cart-price-text h3 {
+        font-size: 16px;
+    }
+
+    table td:nth-child(5) {
+        padding-left: 0px;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 525px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 580px;
+            width: 0px;
+        }
+    }
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 50px;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 320px;
+        margin-bottom: 30px;
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 76px;
+        right: 39px;
+        font-size: 20px;
+    }
+
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+
+    /* --tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+        margin-bottom: 0px;
+    }
+
+
+    /* ------tab-3-css---- */
+    .mywishlist-part .add-cart-btn {
+        font-size: 10px;
+        padding: 10px 20px 10px 20px;
+    }
+
+    .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mywishlist-part .cart-detail-text h4 {
+        font-size: 14px;
+    }
+
+    .mywishlist-part .cart-price-text h3 {
+        font-size: 16px;
+    }
+
+    table td:nth-child(5) {
+        padding-left: 0px;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 440px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 493px;
+            width: 0px;
+        }
+    }
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (min-width: 912px) and (max-width: 1023px) {
+
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 50px;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 210px;
+        margin-bottom: 30px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+
+    /* --tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+        margin-bottom: 0px;
+    }
+
+
+    /* ------tab-3-css---- */
+    .mywishlist-part .add-cart-btn {
+        font-size: 10px;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mywishlist-part .cart-detail-text h4 {
+        font-size: 14px;
+    }
+
+    .mywishlist-part .cart-price-text h3 {
+        font-size: 16px;
+    }
+
+    table td:nth-child(5) {
+        padding-left: 0px;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 325px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 378px;
+            width: 0px;
+        }
+    }
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (min-width: 820px) and (max-width: 911px) {
+
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 50px;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 205px;
+        margin-bottom: 30px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+
+    /* --tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+        margin-bottom: 0px;
+    }
+
+
+    /* ------tab-3-css---- */
+    .mywishlist-part .add-cart-btn {
+        font-size: 10px;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mywishlist-part .cart-detail-text h4 {
+        font-size: 14px;
+    }
+
+    .mywishlist-part .cart-price-text h3 {
+        font-size: 16px;
+    }
+
+    table td:nth-child(5) {
+        padding-left: 0px;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 325px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 378px;
+            width: 0px;
+        }
+    }
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (min-width: 768px) and (max-width: 819px) {
+
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 50px;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 205px;
+        margin-bottom: 30px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+
+    /* --tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+        margin-bottom: 0px;
+    }
+
+
+    /* ------tab-3-css---- */
+    .mywishlist-part .add-cart-btn {
+        font-size: 10px;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mywishlist-part .cart-detail-text h4 {
+        font-size: 14px;
+    }
+
+    .mywishlist-part .cart-price-text h3 {
+        font-size: 16px;
+    }
+
+    table td:nth-child(5) {
+        padding-left: 0px;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 325px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 378px;
+            width: 0px;
+        }
+    }
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (min-width: 541px) and (max-width: 767px) {
+
+    /* ----tab-1-css-- */
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+    }
+
+    .my-account-section .title::before {
+        left: 43% !important;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 214px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 268px;
+            width: 0px;
+        }
+    }
+
+    .myaccout-detail-tab .choose-img::before {
+        content: "\f083";
+        position: absolute;
+        font-family: "FontAwesome";
+        background: var(--myaccoutn-tab-active-bg);
+        color: var(--common-white);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 96px;
+        left: 114px;
+        font-size: 16px;
+    }
+
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .account-details-tabs .nav-link {
+        background: var(--myaccoutn-tab-bg) !important;
+        width: 150px !important;
+        border-right: 1px solid var(--myaccoutn-tab-border) !important;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--myaccoutn-tab-text) !important;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        /* display: flow-root; */
+    }
+
+    .account-details-tabs nav ul li a {
+        display: flex !important;
+    }
+
+    .tab-save-btn a {
+        padding: 10px 50px 10px 50px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        box-shadow: 0px 4px 10px rgb(43 174 74 / 20%);
+        border-radius: 90px;
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--common-white) !important;
+        transition: 0.3s;
+    }
+
+    .sub-tabs .nav-pills {
+        display: flex !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .tab-save-btn {
+        margin-top: 10px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 30px !important;
+    }
+
+    .myaccout-detail-tab .choose-img img {
+        width: 100%;
+        max-width: 130px;
+    }
+
+
+
+    /* ----------tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 20px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 20px;
+    }
+
+    .my-order-text h3 span {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 29px;
+        right: 20px;
+    }
+
+    .accordion-img-wrapper {
+        width: 70px;
+        height: 70px;
+        background: #FFFFFF;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my-order-details-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px 0px 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+
+    .order-details-img {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .accordion-img-wrapper img {
+        width: 100%;
+        max-width: 60px;
+    }
+
+    .img-about-text h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 0px;
+    }
+
+    .img-about-text h5 {
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.02em;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .accordion-price-text h4 {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 36px;
+        color: #11405A;
+    }
+
+    .all-detalis-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .all-detalis-left h4 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 30px;
+        color: var(--login-wrapper-label);
+        cursor: pointer;
+    }
+
+    .all-detalis-right h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 30px;
+        color: #11405A;
+        cursor: pointer;
+    }
+
+
+    /* ------tab-3-css-- */
+    .mywishlist-part-img {
+        flex-direction: row;
+    }
+
+    .mywishlist-part th:nth-child(1) {
+        font-size: 13px;
+    }
+
+    .mywishlist-part th:nth-child(2) {
+        padding-left: 0px;
+        font-size: 13px;
+    }
+
+    .mywishlist-part th:nth-child(3) {
+        padding-left: 0px;
+        font-size: 13px;
+    }
+
+    .mywishlist-part th:nth-child(4) {
+        padding-left: 0px;
+        font-size: 13px;
+    }
+
+    .cart-product-detail table td:nth-child(2) {
+        padding-left: 0px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    table td {
+        padding-left: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--cart-counter-border);
+    }
+
+    .mywishlist-part-img a {
+        color: #2BAE4A !important;
+        position: relative;
+        left: -25px;
+    }
+
+    .mywishlist-part .mywishlist-part-img {
+        position: relative;
+        left: 15px;
+    }
+
+    .mywishlist-part .cart-detail-text h4 {
+        font-size: 13px;
+    }
+
+    .cart-product-detail table td:nth-child(5) .add-cart-btn {
+        margin-bottom: 20px !important;
+    }
+
+    .mywishlist-part table.bt tbody td:nth-child(5):before {
+        visibility: hidden;
+        margin-bottom: 10px;
+    }
+
+    .mywishlist-part-img .cart-detail-img {
+        width: 55px;
+        height: 55px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: -50px !important;
+    }
+
+    .mywishlist-part .add-cart-btn {
+        font-size: 9px !important;
+    }
+
+    .mywishlist-part th:nth-child(1) {
+        padding-left: 25px !important;
+    }
+
+
+    /* ----tab-4-css--- */
+    .address-text h3 {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 40px;
+        color: var(--myaccoutn-tab-label-text);
+    }
+
+    .address-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.03em;
+        color: var(--myaccoutn-tab-text);
+        margin-bottom: 15px;
+    }
+
+    .address-wrapper {
+        background: #fff;
+        border: 1px solid var(--myaccoutn-tab-border);
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        padding: 15px 30px 20px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 380px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (min-width: 415px) and (max-width: 540px) {
+
+    /* ----tab-1-css-- */
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+    }
+
+    .my-account-section .title::before {
+        left: 43% !important;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 214px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 268px;
+            width: 0px;
+        }
+    }
+
+
+    .myaccout-detail-tab .choose-img::before {
+        content: "\f083";
+        position: absolute;
+        font-family: "FontAwesome";
+        background: var(--myaccoutn-tab-active-bg);
+        color: var(--common-white);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 96px;
+        left: 114px;
+        font-size: 16px;
+    }
+
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .account-details-tabs .nav-link {
+        background: var(--myaccoutn-tab-bg) !important;
+        width: 150px !important;
+        border-right: 1px solid var(--myaccoutn-tab-border) !important;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--myaccoutn-tab-text) !important;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        /* display: flow-root; */
+    }
+
+    .account-details-tabs nav ul li a {
+        display: flex !important;
+    }
+
+    .tab-save-btn a {
+        padding: 10px 50px 10px 50px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        box-shadow: 0px 4px 10px rgb(43 174 74 / 20%);
+        border-radius: 90px;
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--common-white) !important;
+        transition: 0.3s;
+    }
+
+    .sub-tabs .nav-pills {
+        display: flex !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .tab-save-btn {
+        margin-top: 10px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 30px !important;
+    }
+
+    .myaccout-detail-tab .choose-img img {
+        width: 100%;
+        max-width: 130px;
+    }
+
+
+
+    /* ----------tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 20px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 20px;
+    }
+
+    .my-order-text h3 span {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 29px;
+        right: 20px;
+    }
+
+    .accordion-img-wrapper {
+        width: 70px;
+        height: 70px;
+        background: #FFFFFF;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my-order-details-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px 0px 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+
+    .order-details-img {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .accordion-img-wrapper img {
+        width: 100%;
+        max-width: 60px;
+    }
+
+    .img-about-text h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 0px;
+    }
+
+    .img-about-text h5 {
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.02em;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .accordion-price-text h4 {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 36px;
+        color: #11405A;
+    }
+
+    .all-detalis-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .all-detalis-left h4 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 30px;
+        color: var(--login-wrapper-label);
+        cursor: pointer;
+    }
+
+    .all-detalis-right h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 30px;
+        color: #11405A;
+        cursor: pointer;
+    }
+
+
+    /* ------tab-3-css-- */
+    .mywishlist-part-img {
+        flex-direction: row;
+    }
+
+    .cart-product-detail table td:nth-child(2) {
+        padding-left: 30px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .mywishlist-part-img a {
+        color: #2BAE4A !important;
+        position: relative;
+        left: 120px;
+    }
+
+    .cart-product-detail table td:nth-child(5) .add-cart-btn {
+        margin-bottom: 20px !important;
+    }
+
+    .mywishlist-part table.bt tbody td:nth-child(5):before {
+        visibility: hidden;
+        margin-bottom: 10px;
+    }
+
+    .mywishlist-part-img .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: -50px !important;
+    }
+
+
+    /* ----tab-4-css--- */
+    .address-text h3 {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 40px;
+        color: var(--myaccoutn-tab-label-text);
+    }
+
+    .address-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.03em;
+        color: var(--myaccoutn-tab-text);
+        margin-bottom: 15px;
+    }
+
+    .address-wrapper {
+        background: #fff;
+        border: 1px solid var(--myaccoutn-tab-border);
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        padding: 15px 30px 20px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 380px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (max-width: 414px) {
+
+    /* ----tab-1-css-- */
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+    }
+
+    .my-account-section .title::before {
+        left: 43% !important;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 157px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 212px;
+            width: 0px;
+        }
+    }
+
+    .myaccout-detail-tab .choose-img::before {
+        content: "\f083";
+        position: absolute;
+        font-family: "FontAwesome";
+        background: var(--myaccoutn-tab-active-bg);
+        color: var(--common-white);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 96px;
+        left: 114px;
+        font-size: 16px;
+    }
+
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .account-details-tabs .nav-link {
+        background: var(--myaccoutn-tab-bg) !important;
+        width: 150px !important;
+        border-right: 1px solid var(--myaccoutn-tab-border) !important;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--myaccoutn-tab-text) !important;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        /* display: flow-root; */
+    }
+
+    .account-details-tabs nav ul li a {
+        display: flex !important;
+    }
+
+    .tab-save-btn a {
+        padding: 10px 50px 10px 50px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        box-shadow: 0px 4px 10px rgb(43 174 74 / 20%);
+        border-radius: 90px;
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--common-white) !important;
+        transition: 0.3s;
+    }
+
+    .sub-tabs .nav-pills {
+        display: flex !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .tab-save-btn {
+        margin-top: 10px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 30px !important;
+    }
+
+    .myaccout-detail-tab .choose-img img {
+        width: 100%;
+        max-width: 130px;
+    }
+
+
+
+    /* ----------tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 20px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 20px;
+    }
+
+    .my-order-text h3 span {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 29px;
+        right: 20px;
+    }
+
+    .accordion-img-wrapper {
+        width: 70px;
+        height: 70px;
+        background: #FFFFFF;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my-order-details-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px 0px 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+
+    .order-details-img {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .accordion-img-wrapper img {
+        width: 100%;
+        max-width: 60px;
+    }
+
+    .img-about-text h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 0px;
+    }
+
+    .img-about-text h5 {
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.02em;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .accordion-price-text h4 {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 36px;
+        color: #11405A;
+    }
+
+    .all-detalis-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .all-detalis-left h4 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 30px;
+        color: var(--login-wrapper-label);
+        cursor: pointer;
+    }
+
+    .all-detalis-right h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 30px;
+        color: #11405A;
+        cursor: pointer;
+    }
+
+
+    /* ------tab-3-css-- */
+    .mywishlist-part-img {
+        flex-direction: row;
+    }
+
+    .cart-product-detail table td:nth-child(2) {
+        padding-left: 30px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .mywishlist-part-img a {
+        color: #2BAE4A !important;
+        position: relative;
+        left: 120px;
+    }
+
+    .cart-product-detail table td:nth-child(5) .add-cart-btn {
+        margin-bottom: 20px !important;
+    }
+
+    .mywishlist-part table.bt tbody td:nth-child(5):before {
+        visibility: hidden;
+        margin-bottom: 10px;
+    }
+
+    .mywishlist-part-img .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: -50px !important;
+    }
+
+
+    /* ----tab-4-css--- */
+    .address-text h3 {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 40px;
+        color: var(--myaccoutn-tab-label-text);
+    }
+
+    .address-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.03em;
+        color: var(--myaccoutn-tab-text);
+        margin-bottom: 15px;
+    }
+
+    .address-wrapper {
+        background: #fff;
+        border: 1px solid var(--myaccoutn-tab-border);
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        padding: 15px 20px 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 260px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (max-width: 393px) {
+
+    /* ----tab-1-css-- */
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+    }
+
+    .my-account-section .title::before {
+        left: 43% !important;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 147px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 203px;
+            width: 0px;
+        }
+    }
+
+    .myaccout-detail-tab .choose-img::before {
+        content: "\f083";
+        position: absolute;
+        font-family: "FontAwesome";
+        background: var(--myaccoutn-tab-active-bg);
+        color: var(--common-white);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 96px;
+        left: 114px;
+        font-size: 16px;
+    }
+
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .account-details-tabs .nav-link {
+        background: var(--myaccoutn-tab-bg) !important;
+        width: 150px !important;
+        border-right: 1px solid var(--myaccoutn-tab-border) !important;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--myaccoutn-tab-text) !important;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        /* display: flow-root; */
+    }
+
+    .account-details-tabs nav ul li a {
+        display: flex !important;
+    }
+
+    .tab-save-btn a {
+        padding: 10px 50px 10px 50px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        box-shadow: 0px 4px 10px rgb(43 174 74 / 20%);
+        border-radius: 90px;
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--common-white) !important;
+        transition: 0.3s;
+    }
+
+    .sub-tabs .nav-pills {
+        display: flex !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .tab-save-btn {
+        margin-top: 10px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 30px !important;
+    }
+
+    .myaccout-detail-tab .choose-img img {
+        width: 100%;
+        max-width: 130px;
+    }
+
+
+
+    /* ----------tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 20px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 20px;
+    }
+
+    .my-order-text h3 span {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 29px;
+        right: 20px;
+    }
+
+    .accordion-img-wrapper {
+        width: 70px;
+        height: 70px;
+        background: #FFFFFF;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my-order-details-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px 0px 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+
+    .order-details-img {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .accordion-img-wrapper img {
+        width: 100%;
+        max-width: 60px;
+    }
+
+    .img-about-text h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 0px;
+    }
+
+    .img-about-text h5 {
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.02em;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .accordion-price-text h4 {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 36px;
+        color: #11405A;
+    }
+
+    .all-detalis-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .all-detalis-left h4 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 30px;
+        color: var(--login-wrapper-label);
+        cursor: pointer;
+    }
+
+    .all-detalis-right h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 30px;
+        color: #11405A;
+        cursor: pointer;
+    }
+
+
+    /* ------tab-3-css-- */
+    .mywishlist-part-img {
+        flex-direction: row;
+    }
+
+    .cart-product-detail table td:nth-child(2) {
+        padding-left: 30px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .mywishlist-part-img a {
+        color: #2BAE4A !important;
+        position: relative;
+        left: 120px;
+    }
+
+    .cart-product-detail table td:nth-child(5) .add-cart-btn {
+        margin-bottom: 20px !important;
+    }
+
+    .mywishlist-part table.bt tbody td:nth-child(5):before {
+        visibility: hidden;
+        margin-bottom: 10px;
+    }
+
+    .mywishlist-part-img .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: -50px !important;
+    }
+
+
+    /* ----tab-4-css--- */
+    .address-text h3 {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 40px;
+        color: var(--myaccoutn-tab-label-text);
+    }
+
+    .address-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.03em;
+        color: var(--myaccoutn-tab-text);
+        margin-bottom: 15px;
+    }
+
+    .address-wrapper {
+        background: #fff;
+        border: 1px solid var(--myaccoutn-tab-border);
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        padding: 15px 20px 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 240px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .address-popup .modal-body {
+        padding: 30px;
+    }
+
+    .address-popup .modal-body h3 {
+        margin-bottom: 30px !important;
+    }
+
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (max-width: 390px) {
+
+    /* ----tab-1-css-- */
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+    }
+
+    .my-account-section .title::before {
+        left: 42% !important;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 144px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 198px;
+            width: 0px;
+        }
+    }
+
+    .myaccout-detail-tab .choose-img::before {
+        content: "\f083";
+        position: absolute;
+        font-family: "FontAwesome";
+        background: var(--myaccoutn-tab-active-bg);
+        color: var(--common-white);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 96px;
+        left: 114px;
+        font-size: 16px;
+    }
+
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .account-details-tabs .nav-link {
+        background: var(--myaccoutn-tab-bg) !important;
+        width: 150px !important;
+        border-right: 1px solid var(--myaccoutn-tab-border) !important;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--myaccoutn-tab-text) !important;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        /* display: flow-root; */
+    }
+
+    .account-details-tabs nav ul li a {
+        display: flex !important;
+    }
+
+    .tab-save-btn a {
+        padding: 10px 50px 10px 50px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        box-shadow: 0px 4px 10px rgb(43 174 74 / 20%);
+        border-radius: 90px;
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--common-white) !important;
+        transition: 0.3s;
+    }
+
+    .sub-tabs .nav-pills {
+        display: flex !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .tab-save-btn {
+        margin-top: 10px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 30px !important;
+    }
+
+    .myaccout-detail-tab .choose-img img {
+        width: 100%;
+        max-width: 130px;
+    }
+
+
+
+    /* ----------tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 20px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 20px;
+    }
+
+    .my-order-text h3 span {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 29px;
+        right: 20px;
+    }
+
+    .accordion-img-wrapper {
+        width: 70px;
+        height: 70px;
+        background: #FFFFFF;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my-order-details-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px 0px 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+
+    .order-details-img {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .accordion-img-wrapper img {
+        width: 100%;
+        max-width: 60px;
+    }
+
+    .img-about-text h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 0px;
+    }
+
+    .img-about-text h5 {
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.02em;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .accordion-price-text h4 {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 36px;
+        color: #11405A;
+    }
+
+    .all-detalis-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .all-detalis-left h4 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 30px;
+        color: var(--login-wrapper-label);
+        cursor: pointer;
+    }
+
+    .all-detalis-right h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 30px;
+        color: #11405A;
+        cursor: pointer;
+    }
+
+
+    /* ------tab-3-css-- */
+    .mywishlist-part-img {
+        flex-direction: row;
+    }
+
+    .cart-product-detail table td:nth-child(2) {
+        padding-left: 30px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .mywishlist-part-img a {
+        color: #2BAE4A !important;
+        position: relative;
+        left: 120px;
+    }
+
+    .cart-product-detail table td:nth-child(5) .add-cart-btn {
+        margin-bottom: 20px !important;
+    }
+
+    .mywishlist-part table.bt tbody td:nth-child(5):before {
+        visibility: hidden;
+        margin-bottom: 10px;
+    }
+
+    .mywishlist-part-img .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: -50px !important;
+    }
+
+
+    /* ----tab-4-css--- */
+    .address-text h3 {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 40px;
+        color: var(--myaccoutn-tab-label-text);
+    }
+
+    .address-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.03em;
+        color: var(--myaccoutn-tab-text);
+        margin-bottom: 15px;
+    }
+
+    .address-wrapper {
+        background: #fff;
+        border: 1px solid var(--myaccoutn-tab-border);
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        padding: 15px 20px 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 240px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+
+
+
+
+
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (max-width: 375px) {
+
+    /* ----tab-1-css-- */
+    .myaccout-detail-tab {
+        width: 100%;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+    }
+
+    .my-account-section .title::before {
+        left: 43% !important;
+    }
+
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 142px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 195px;
+            width: 0px;
+        }
+    }
+
+
+    .myaccout-detail-tab .choose-img::before {
+        content: "\f083";
+        position: absolute;
+        font-family: "FontAwesome";
+        background: var(--myaccoutn-tab-active-bg);
+        color: var(--common-white);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 96px;
+        left: 114px;
+        font-size: 16px;
+    }
+
+    .account-details-tabs .nav-pills {
+        border: 1px solid var(--myaccoutn-tab-border) !important;
+        width: 100%;
+        border-radius: 10px;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .account-details-tabs .nav-link {
+        background: var(--myaccoutn-tab-bg) !important;
+        width: 150px !important;
+        border-right: 1px solid var(--myaccoutn-tab-border) !important;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--myaccoutn-tab-text) !important;
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        /* display: flow-root; */
+    }
+
+    .account-details-tabs nav ul li a {
+        display: flex !important;
+    }
+
+    .tab-save-btn a {
+        padding: 10px 50px 10px 50px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        box-shadow: 0px 4px 10px rgb(43 174 74 / 20%);
+        border-radius: 90px;
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--common-white) !important;
+        transition: 0.3s;
+    }
+
+    .sub-tabs .nav-pills {
+        display: flex !important;
+    }
+
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .checkout-bottom-right-img {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        opacity: 0.1;
+        z-index: -1;
+        display: none;
+    }
+
+    .checkout-mid-left-img {
+        position: absolute;
+        top: 800px;
+        left: 0;
+        width: 100%;
+        max-width: 100px;
+        z-index: -1;
+        display: none;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 50px !important;
+    }
+
+    .tab-save-btn {
+        margin-top: 10px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .myaccout-detail-tab .choose-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #F2F5F3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        position: relative;
+        margin-bottom: 30px !important;
+    }
+
+    .myaccout-detail-tab .choose-img img {
+        width: 100%;
+        max-width: 130px;
+    }
+
+
+
+    /* ----------tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        width: 100%;
+        border-radius: 0px 0px 0px 0px !important;
+        background: #fff !important;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 20px;
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 20px;
+    }
+
+    .my-order-text h3 span {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-text h3 {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 15px;
+    }
+
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        background: #2BAE4A;
+        border: 1px solid #2BAE4A;
+        color: #fff !important;
+        border-radius: 5px;
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: 0.3s;
+    }
+
+    .my-order-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .my-order-details .accordion-heading::before {
+        top: 29px;
+        right: 20px;
+    }
+
+    .accordion-img-wrapper {
+        width: 70px;
+        height: 70px;
+        background: #FFFFFF;
+        border: 1px solid #D9E2ED;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my-order-details-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px 0px 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--myaccoutn-tab-border);
+    }
+
+
+    .order-details-img {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .accordion-img-wrapper img {
+        width: 100%;
+        max-width: 60px;
+    }
+
+    .img-about-text h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--login-wrapper-label);
+        margin-bottom: 0px;
+    }
+
+    .img-about-text h5 {
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.02em;
+        color: var(--login-wrapper-placholder);
+    }
+
+    .accordion-price-text h4 {
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 36px;
+        color: #11405A;
+    }
+
+    .all-detalis-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .all-detalis-left h4 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 30px;
+        color: var(--login-wrapper-label);
+        cursor: pointer;
+    }
+
+    .all-detalis-right h3 {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 30px;
+        color: #11405A;
+        cursor: pointer;
+    }
+
+
+    /* ------tab-3-css-- */
+    .mywishlist-part-img {
+        flex-direction: row;
+    }
+
+    .cart-product-detail table td:nth-child(2) {
+        padding-left: 30px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .mywishlist-part table.bt tbody td:nth-child(5):before {
+        visibility: hidden;
+        margin-bottom: 10px;
+    }
+
+    .mywishlist-part-img .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+        border-radius: 10px;
+        border: 1px solid var(--cart-counter-border);
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: -50px !important;
+    }
+
+    .mywishlist-part-img a {
+        color: #2BAE4A !important;
+        position: relative;
+        left: 120px;
+    }
+
+    .cart-product-detail table td:nth-child(5) .add-cart-btn {
+        margin-bottom: 20px !important;
+    }
+
+
+
+    /* ----tab-4-css--- */
+    .address-text h3 {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 40px;
+        color: var(--myaccoutn-tab-label-text);
+    }
+
+    .address-text p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.03em;
+        color: var(--myaccoutn-tab-text);
+        margin-bottom: 15px;
+    }
+
+    .address-wrapper {
+        background: #fff;
+        border: 1px solid var(--myaccoutn-tab-border);
+        box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
+        border-radius: 20px;
+        padding: 15px 20px 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
+
+    .tab-select-box select {
+        background: #FFFFFF;
+        border: 1px solid #C5CCD5;
+        box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+        border-radius: 90px;
+        padding-left: 25px;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        height: 45px;
+        appearance: none;
+        background-image: url(../images/selectarrow.png);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 225px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .tab-select-box option {
+        width: 100% !important;
+        max-width: 200px !important;
+    }
+
+}
+
+/* ========================================================== */
+/* ========================================================== */
+@media screen and (max-width: 320px) {
+    .my-account-section .title::after {
+        /* left: 610px !important; */
+        animation-name: accounttitlebefore;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes accounttitlebefore {
+        0% {
+            left: 118px;
+            width: 10px;
+        }
+
+        50% {
+            width: 10px;
+        }
+
+        90% {
+            width: 10px;
+        }
+
+        100% {
+            left: 172px;
+            width: 0px;
+        }
+    }
+}

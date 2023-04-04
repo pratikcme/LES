@@ -89,7 +89,7 @@ define('LATITUDE',23.0225); // default jeddah latitude
 define('LONGITUDE',72.5714); //default jeddah longitude
 /*layout constant*/
 
-define('USER_LAYOUT','frontend/layout');
+define('USER_LAYOUT','layout');
 
 
 // define('SITE_URL', 'http://localhost/grocery_ecommarce');

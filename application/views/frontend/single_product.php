@@ -1,3 +1,4 @@
+
 <style type="text/css">
   
   .quantity-wrap {
@@ -127,7 +128,7 @@
           <div class="d-flex align-items-center add-after-wrapper">
             <div class="quantity-wrap <?=$d_show?>">
               <button class="dec cart-qty-minus decqnt" data-product_weight_id="<?=$varientDetails[0]->id?>"><span class="minus"><i class="fa fa-minus"></i></span></button>
-              <input class="qty" id="qnt" type="" name="" data-product_id = "<?= $this->utility->safe_b64decode($product_id)?>" value="<?=($cartQuantityForVarient != '') ? $cartQuantityForVarient : 1 ?>" readonly>
+              <input class="qty" id="qnt"  data-product_id = "<?= $this->utility->safe_b64decode($product_id)?>" value="<?=($cartQuantityForVarient != '') ? $cartQuantityForVarient : 1 ?>" readonly>
               <button class="inc cart-qty-plus incqnt" data-product_weight_id="<?=$varientDetails[0]->id?>"><span><i class="fa fa-plus"></i></span></button>
             </div>
             <?php if($isAvailable != '0'){ ?>
@@ -140,7 +141,7 @@
                 <button class="btn hover" id="order_now"><?=$this->lang->line('order now')?></button>
               </a>
             <?php } ?>
-               <?php 
+              <?php 
               $product_id = $this->uri->segment(3);
               $varient_id = $this->uri->segment(4);
               $url = base_url().'products/productDetails/'.$product_id.'/'.$varient_id;
@@ -200,7 +201,9 @@
             <!-- ----review-content--- -->
             <div class="review-content">
                 <div class="left-content">
-                <?php $count = 0;?>  
+                <?php $count = 0; 
+                      $avgr  =  0;
+                ?>  
                 <?php foreach ($product_review as $key => $value) { ?>
                     <?php $count =+ $value->ratting ; $avgr = $count/count($product_review)?>
                 <?php } ?>

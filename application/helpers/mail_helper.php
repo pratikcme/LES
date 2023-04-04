@@ -121,67 +121,48 @@ function NavbarDropdown(){
   $html = '';
   $CI = &get_instance();
   $CI->load->model('api_v3/common_model','co_model');
-  $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+  $data['isShow'] = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
   
   $CI->load->model('common_model');
-  $default_product_image =$CI->common_model->default_product_image();
+  $default_product_image = $CI->common_model->default_product_image();
+  $data['default_product_image'] = $default_product_image;
   if($CI->session->userdata('user_id') == ''){
     if(isset($_SESSION['My_cart'])){
-      foreach ($_SESSION['My_cart'] as $key => $value) {
-        $encode_id=  $CI->utility->safe_b64encode($value['product_id']);
-        $varient_id =  $CI->utility->safe_b64encode($value['product_weight_id']);
-        $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
-
-        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-          $value['discount_price'] = $product[0]->without_gst_price;
-        }else{
-          $value['discount_price'] = $product[0]->discount_price;
-        }
-       
-        if(!file_exists('public/images/'.$CI->folder.'product_image/'.$value["image"]) || $value["image"] == '' ){
-          if(strpos($value["image"], '%20') === true || $value["image"] == ''){
-            $value["image"] = $default_product_image;
-          }
-        }
-      
-        $data['value'] = $value;
-        $data['product_image'] = $product_image;
-        $data['encode_id'] = $encode_id;
-        $data['varient_id'] = $varient_id;
-        $html .= $CI->load->view('frontend/ajaxView/cart_view_without_login',$data,true);
-      }
+      $data['sample'] = '1';
+      // dd($_SESSION['My_cart']);
+      $html = $CI->load->view($CI->session->userdata('template_name').'/ajaxView/cart_view_without_login',$data,true);
     }
   }else{
     
      $CI->load->model('frontend/product_model','product_model');
      
      $my_cart = $CI->product_model->getMyCart();
-      
-     foreach ($my_cart as $key => $value) {
-        $product_image = $CI->product_model->GetUsersProductInCart($value->product_weight_id);
+     $data['my_cart'] = $my_cart;
+    //  foreach ($my_cart as $key => $value) {
+    //     $product_image = $CI->product_model->GetUsersProductInCart($value->product_weight_id);
 
-        if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-            $product_image[0]->discount_price = $product_image[0]->without_gst_price;
-        }  
+    //     if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+    //         $product_image[0]->discount_price = $product_image[0]->without_gst_price;
+    //     }  
 
-        $product_image[0]->image = preg_replace('/\s+/', '%20', $product_image[0]->image);
-        if(!file_exists('public/images/'.$CI->folder.'product_image/'.$product_image[0]->image) || $product_image[0]->image == '' ){
-          if(strpos($product_image[0]->image, '%20') === true || $product_image[0]->image == ''){
-            $product_image[0]->image = $default_product_image;
-          }
-        }
+    //     $product_image[0]->image = preg_replace('/\s+/', '%20', $product_image[0]->image);
+    //     if(!file_exists('public/images/'.$CI->folder.'product_image/'.$product_image[0]->image) || $product_image[0]->image == '' ){
+    //       if(strpos($product_image[0]->image, '%20') === true || $product_image[0]->image == ''){
+    //         $product_image[0]->image = $default_product_image;
+    //       }
+    //     }
         
-        $value->product_name = $product_image[0]->name;
-        $value->image = $product_image[0]->image;
+    //     $value->product_name = $product_image[0]->name;
+    //     $value->image = $product_image[0]->image;
         
-        $encode_id =  $CI->utility->safe_b64encode($value->product_id);
-        $varient_id =  $CI->utility->safe_b64encode($value->product_weight_id);
-        $data['value'] = $value;
-        $data['product_image'] = $product_image;
-        $data['encode_id'] = $encode_id;
-        $data['varient_id'] = $varient_id;
-        $html .= $CI->load->view('frontend/ajaxView/cart_view_with_login',$data,true);
-     }
+    //     $encode_id =  $CI->utility->safe_b64encode($value->product_id);
+    //     $varient_id =  $CI->utility->safe_b64encode($value->product_weight_id);
+    //     $data['value'] = $value;
+    //     $data['product_image'] = $product_image;
+    //     $data['encode_id'] = $encode_id;
+    //     $data['varient_id'] = $varient_id;
+        $html = $CI->load->view($CI->session->userdata('template_name').'/ajaxView/cart_view_with_login',$data,true);
+    //  }
   }
   return $html;
 }

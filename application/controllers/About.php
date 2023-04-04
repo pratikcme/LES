@@ -15,13 +15,13 @@ class About extends User_Controller {
 	public function index()
 	{
 		// dd($_SESSION);
-		$data['page'] = 'frontend/about.php';
+		$data['page'] = $_SESSION['template_name'].'/about.php';
 		$data['about_banner'] = $this->this_model->getAboutBanner();
-		// dd($data['about_banner']);
 		$data['about_section_one'] = $this->this_model->getAboutSectionOne();
 		$data['about_section_two'] = $this->this_model->getAboutSectionTwo();
+		// dd($data['about_section_two']);
 		$data['totalVendor'] = $this->this_model->totalVendor();
 		$data['totalCustomber'] = $this->this_model->totalCustomber();
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 	}
 }

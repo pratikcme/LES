@@ -1,5 +1,6 @@
 <?php
 
+$lang['Sign up'] = 'اشتراك';
 $lang['Cancel'] = 'إلغاء';
 $lang['login'] = 'تسجيل الدخول';
 $lang['About Us'] = 'معلومات عنا';

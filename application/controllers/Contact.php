@@ -18,14 +18,14 @@ class Contact extends User_Controller
 	{
 		// echo '1';die;
 		// print_r($_SESSION);die;
-		$data['page'] = 'frontend/contact';
+		$data['page'] = $_SESSION['template_name'].'/contact';
 		$data['js'] = array('contactus.js');
 		$data['init'] = array('CONTACT.init()');
 		$data['contact_us'] = $this->this_model->getContact();
 		if ($this->input->post()) {
 			$validation = $this->setRules();
+			// print_r($validation);die;
 			if ($validation) {
-				// print_r($this->input->post());die;
 				$postdata = $this->input->post();
 				$re = $this->this_model->insertContactUs($postdata);
 				if ($re) {
@@ -38,7 +38,7 @@ class Contact extends User_Controller
 			}
 		}
 
-		$this->loadView(USER_LAYOUT, $data);
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function setRules()

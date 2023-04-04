@@ -96,7 +96,7 @@
                         }
                     ?>
                      <li>
-                          <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>">
+                        <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>">
                         <div class="cart-img-wrap">
                           <img src="<?=base_url()?>public/images/<?=$this->folder?>product_image/<?=$product[0]->image?>">
                         </div>

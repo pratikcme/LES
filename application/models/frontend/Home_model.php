@@ -66,7 +66,7 @@ class Home_model extends My_model{
 		}else{
 		 $average = '0';
  		}	
-		 return ['no_of_user'=>$num,'rating'=> floor($average)]; 
+		 return ['no_of_user'=>$num,'rating'=> round($average)]; 
 	}
 
 	// public function selectbanner(){

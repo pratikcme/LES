@@ -1,10 +1,9 @@
 var CONTACT = function () {
-
     // $(document).ready(function(){
     //        $('.alert').fadeOut(5000);
     //    });
     var handleContactForm = function () {
-
+        alert();
         $('#form').validate({
             rules: {
                 fname: { required: true, maxlength: 15 },

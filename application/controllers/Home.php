@@ -16,11 +16,11 @@ class Home extends User_Controller
 	}
 
 	public function index(){
-		
+		// dd($_SESSION);
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
-		$data['page'] = 'frontend/home/home';
+		$data['page'] = $_SESSION['template_name'].'/home/home';
 		$subcategory = $this->this_model->countSubcategory();
 		$data['subcategory'] = count($subcategory);
 
@@ -89,6 +89,17 @@ class Home extends User_Controller
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
 			}
+			if (!empty($value->image) || $value->image != '') {
+				$image = $value->image;
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
+					// $image = 'defualt.png';	
+					$image = $default_product_image;
+				} else {
+					$image = $value->image;
+				}
+			} else {
+				$image = $default_product_image;
+			}
 			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
 			$value->addQuantity = $addQuantity;
 
@@ -100,7 +111,7 @@ class Home extends User_Controller
 		}
 		
 		$data['top_sell'] = $top_selling_core;
-
+		// dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
 		// dd($data['banner']);die;
 
@@ -122,8 +133,8 @@ class Home extends User_Controller
 		$data['item_weight_id'] = $item_weight_id;
 		$data['offer_list'] = $this->this_model->get_offer($this->session->userdata('branch_id'));
 
-		// dd($data);
-		$this->loadView(USER_LAYOUT, $data);
+		// dd($data['top_sell']);
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function get_offer_product_listing($offer_id)
@@ -154,7 +165,7 @@ class Home extends User_Controller
 			$addQuantity = $this->product_model->findProductAddQuantity($value->product_id, $value->product_varient_id);
 			$value->my_cart_quantity = $addQuantity;
 		}
-		$this->loadView(USER_LAYOUT, $data);
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function get_notification()

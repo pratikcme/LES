@@ -401,6 +401,7 @@ $(document).on('click', '.removeWishlistItem', function () {
 })
 
 var base_url = $('#url').val();
+
 $(".myInput").autocomplete({
 	source: base_url + 'products/backend_script',
 	minLength: 2,

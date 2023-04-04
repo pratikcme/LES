@@ -24,9 +24,9 @@ class Terms_condition extends User_Controller {
 
 
 	public function index(){
-		$data['page'] = 'frontend/account/terms_condition';
+		$data['page'] = $_SESSION['template_name'].'/account/terms_condition';
 		$data['term'] = $this->this_model->getTermData();
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 	}
 }
   

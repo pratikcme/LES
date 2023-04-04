@@ -582,7 +582,7 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     public function update_profile()
     {
         // error_reporting(E_ALL);
-        // dd($_POST);
+        // dd($_FILES);
         if (isset($_REQUEST['submit']) && $_REQUEST['submit'] == 'Update') {
 
             $branch_id = $this->session->userdata['id'];
@@ -596,14 +596,15 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
 
             if ($branch_id != 0) {
                 $ownername = $this->input->post('ownername');
+
                 if (isset($_FILES) && ($_FILES['vendorimage']['name'] != '')) {
                     $path = 'public/images/' . $this->folder . 'vendor_shop';
-                    $result = upload_single_image_Byname($_FILES, 'image', $path);
+                    $result = upload_single_image_Byname($_FILES['vendorimage'], 'vendorimage', $path);
                     $vendorimage = $result['data']['file_name'];
                 } else {
                     $vendorimage =  $this->input->post('old_file');
                 }
-
+                // echo $vendorimage; die;
                 if (isset($_FILES) && ($_FILES['default_image']['name'] != '')) {
                     $path = 'public/images/' . $this->folder . 'product_image';
                     $result = upload_single_image_Byname($_FILES['default_image'], 'default_image', $path);

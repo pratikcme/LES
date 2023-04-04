@@ -21,21 +21,6 @@
             <input type="text" name="email" placeholder="<?=$this->lang->line('Enter Email*')?>">
           </div>
           <label for="email" class="error"><?=@form_error('email')?></label>
-          
-<!--            <div class="input-wrapper">
-            <span><i class="fas fa-lock"></i></span>
-            <input type="password" name="" placeholder="Enter old password*" id="password">
-            <span id="eye"><i class="far fa-eye-slash"></i></span>
-            <i class="far fa-eye-slash"></i>
-          </div> -->
-<!-- 
-           <div class="input-wrapper">
-            <span><i class="fas fa-lock"></i></span>
-            <input type="password" name="" placeholder="Enter New password*" id="cpassword">
-            <span id="ceye"><i class="far fa-eye-slash"></i></span>
-            <i class="far fa-eye-slash"></i>
-          </div> -->
-
 
           <button type="submit" id="btnSubmit" class="btn create-btn"><?=$this->lang->line('Reset Password')?></button>
 

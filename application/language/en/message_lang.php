@@ -1,4 +1,24 @@
 <?php
+// template 2 up basket
+$lang['Sign up'] = 'Sign up';
+$lang['Shop Cart'] = 'Shop Cart';
+$lang['Product Detail'] = 'Product Detail';
+$lang['Your rating'] = 'Your rating';
+$lang['Submit'] = 'Submit';
+$lang['Add a review'] = 'Add a review';
+$lang['Your review'] = 'Your review';
+$lang['Description'] = 'Description';
+$lang['Information'] = 'Information';
+$lang['Reviews'] = 'Reviews';
+$lang['Customer Reviews'] = 'Customer Reviews';
+$lang['Login Account'] = 'Login Account';
+$lang['New Customer'] = 'New Customer';
+$lang['your cart'] = 'your cart';
+$lang['Shop'] = 'Shop';
+$lang['Process'] = 'Process';
+
+// end template 2
+
 $lang['Cancel'] = 'Cancel';
 $lang['login'] = 'Login';
 $lang['About Us'] = 'About Us';
@@ -27,7 +47,7 @@ $lang['send'] = 'send';
 
 // vendor/vendor page
 $lang['vendor'] = 'vendor';
-$lang['home'] = 'home';
+$lang['home'] = 'Home';
 
 //product page frontend
 $lang['product listing'] = 'product listing';
@@ -263,7 +283,7 @@ $lang['Your_Cart_Item_is_safe'] = "Your Cart Item is safe!";
 $lang['Ok'] = "Ok";
 $lang['Cancel'] = "Cancel";
 $lang['js_limited_stock'] = 'Limited Stock';
-$lang['js_available_instock'] = 'Available(Instock)';
+$lang['js_available_instock'] = 'Available (Instock)';
 
 
 // my account /profile validation

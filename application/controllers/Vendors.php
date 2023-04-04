@@ -16,7 +16,7 @@ class Vendors extends User_Controller {
 
 	public function index(){
 		
-		$data['page'] = 'frontend/vendor/vendor';
+		$data['page'] = $_SESSION['template_name'].'/vendor/vendor';
 		$data['js'] = array('vendor.js');
 		$data['branch'] = $this->this_model->branchList();
 		
@@ -51,13 +51,12 @@ class Vendors extends User_Controller {
 	
 		
 		if(isset($_SESSION['currentlat']) && $_SESSION['currentlat'] != '' && isset($_SESSION['currentlat']) && $_SESSION['currentlong'] !=''){
-			// echo '<pre>';
-			// print_r($_SESSION);die;
+
 			$data['is_set'] = '1';
 		}else{
 			$data['is_set'] = '0';
 		}
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 		
 	}
 
@@ -69,7 +68,7 @@ class Vendors extends User_Controller {
 		foreach ($data['branch'] as $key => $value) {
 		$data['branch'][$key]->product_count = $this->this_model->venderProductCount($value->id);
 		};	
-		$this->loadView(USER_LAYOUT,$data);
+		$this->loadView($this->user_layout,$data);
 	}
 
 	public function set($id = ''){
@@ -125,32 +124,34 @@ class Vendors extends User_Controller {
 			// print_r($record);
 			// die;
 			$vendor_html = '';
-			foreach ($record as $key => $value) {
-	$attr = (isset($_SESSION["vendor_id"]) && $value->id == $_SESSION["vendor_id"]) ? "checked" : "";
-	$vendor_html .=	'<div class="col-md-6">
-          <div class="vendor-loc">
-            <div class="vendor-header">
-              <div class="address-chk-box '.$attr.' ">
-               <label> Defualt
-                  <input class="vendor-chk" type="checkbox" ' .$attr.'>
-                  <span class="blue"></span>
-                </label>
-              </div>
-            </div>
-            <div class="vendor-1">
-              <div class="vendor-img">
-                <img src='.base_url().'public/images/'.$this->folder.'vendor_shop/'.$value->image .'>
-              </div>
-              <div class="vendor-detail">
-                <a href="javascript:" class="vendor" data-ven_id='.$value->id.'><h5>'.$value->name.'</h5></a>
-                <p>'.$value->location.'</p>
-                <p>+91-'.$value->phone_no.'</p>
-              </div>
-            </div>
-          </div>
-        </div>';
-				
-	}
+			$data['record'] = $record; 
+			$vendor_html = $this->load->view($_SESSION['template_name'].'/ajaxView/vendor_search',$data,true);
+
+		// 	foreach ($record as $key => $value) {
+		// 	$data['attr'] = (isset($_SESSION["vendor_id"]) && $value->id == $_SESSION["vendor_id"]) ? "checked" : "";
+		// 		$vendor_html .=	'<div class="col-md-6">
+		// 		<div class="vendor-loc">
+		// 			<div class="vendor-header">
+		// 			<div class="address-chk-box '.$attr.' ">
+		// 			<label> Defualt
+		// 				<input class="vendor-chk" type="checkbox" ' .$attr.'>
+		// 				<span class="blue"></span>
+		// 				</label>
+		// 			</div>
+		// 			</div>
+		// 			<div class="vendor-1">
+		// 			<div class="vendor-img">
+		// 				<img src='.base_url().'public/images/'.$this->folder.'vendor_shop/'.$value->image .'>
+		// 			</div>
+		// 			<div class="vendor-detail">
+		// 				<a href="javascript:" class="vendor" data-ven_id='.$value->id.'><h5>'.$value->name.'</h5></a>
+		// 				<p>'.$value->location.'</p>
+		// 				<p>+91-'.$value->phone_no.'</p>
+		// 			</div>
+		// 			</div>
+		// 		</div>
+		// 		</div>';	
+		// }
 
 			// print_r($vendor_html);
 			echo json_encode(['vendor_html'=>$vendor_html]);

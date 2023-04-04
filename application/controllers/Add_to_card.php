@@ -17,11 +17,8 @@ class Add_to_card extends User_Controller
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
-	public function addProducToCart()
-	{
-
-
-
+	public function addProducToCart(){
+		
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		if ($this->input->post()) {
@@ -326,7 +323,7 @@ class Add_to_card extends User_Controller
 				// dd($new_deliveryC);
 			}
 		}
-
+		// dd($_SESSION['My_cart']);
 		if (!isset($errormsg)) {
 			$errormsg = '';
 		}
@@ -346,7 +343,6 @@ class Add_to_card extends User_Controller
 			'updated_list' => NavbarDropdown(),
 			'delivery_charge' => $new_deliveryCharge
 		];
-		// dd($response);
 		echo json_encode($response);
 	}
 }

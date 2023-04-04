@@ -1,3 +1,24 @@
+<?php
+	foreach ($my_cart as $key => $value) {
+         $product_image = $this->product_model->GetUsersProductInCart($value->product_weight_id);
+
+         if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+             $product_image[0]->discount_price = $product_image[0]->without_gst_price;
+         }  
+
+         $product_image[0]->image = preg_replace('/\s+/', '%20', $product_image[0]->image);
+         if(!file_exists('public/images/'.$this->folder.'product_image/'.$product_image[0]->image) || $product_image[0]->image == '' ){
+           if(strpos($product_image[0]->image, '%20') === true || $product_image[0]->image == ''){
+             $product_image[0]->image = $default_product_image;
+           }
+         }
+        
+         $value->product_name = $product_image[0]->name;
+         $value->image = $product_image[0]->image;
+        
+         $encode_id =  $this->utility->safe_b64encode($value->product_id);
+         $varient_id =  $this->utility->safe_b64encode($value->product_weight_id);
+?>
 <li>
 	<a href="<?=base_url().'products/productDetails/'.$encode_id.'/'.$varient_id ?>">
 		<div class="cart-img-wrap">
@@ -18,3 +39,4 @@
 		<div class="cart-delete"> <i class="fas fa-times-circle"></i> </div>
 	</a>
 </li>
+<?php } ?>
