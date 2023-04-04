@@ -483,20 +483,20 @@
                       <td class="mywishlist-part-img">
                       <span class="bt-content">
                         <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a> -->
-                        <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-1.png" alt=""></div>
+                        <div class="cart-detail-img"><img src="<?=$value->image?>" alt=""></div>
                       </span>
                         <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
                         <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-1.png" alt=""></div> -->
                       </td>
                       <td>
                         <div class="cart-detail-text">
-                          <h4>Almond (Regular)</h4>
-                          <h5>500 Gms</h5>
+                          <h4><?=$value->name?></h4>
+                          <h5><?=$this->value->weight_no .' '.$this->weight_name?></h5>
                         </div>
                       </td>
                       <td>
                         <div class="cart-price-text">
-                          <h3>₹398.00</h3>
+                          <h3 class="notranslate"><?=$this->siteCurrency .' '.numberFormat($value->discount_price) ?></h3>
                         </div>
                       </td>
                       <td>
