@@ -478,7 +478,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($variable as $key => $value) { ?>
+                    <?php foreach ($wishlist as $key => $value) { ?>
                     <tr>
                       <td class="mywishlist-part-img">
                       <span class="bt-content">
