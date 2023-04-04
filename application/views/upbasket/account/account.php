@@ -142,7 +142,7 @@
                 <div class="accordion-items">
 
                   <!-- ------sub-tab-1----- -->
-                  <div id="subtab-1" class="container tab-pane active" >
+                  <div id="subtab-1" class="container tab-pane fade active show" >
                     <?php foreach ($order as $key => $value) {
                       if($value->order_status != '8'){
                         continue;
@@ -236,7 +236,7 @@
                   </div>
 
                   <!-- ------sub-tab-2----- -->
-                  <div id="subtab-2" class="container tab-pane " >
+                  <div id="subtab-2" class="container tab-pane fade" >
                     <div class="main-accordion">
                       <div class="accordion-heading">
                         <a href="" class="delivered-btn">Delivere</a>
@@ -347,7 +347,7 @@
                   </div>
 
                   <!-- ------sub-tab-3----- -->
-                  <div id="subtab-3" class="container tab-pane ">
+                  <div id="subtab-3" class="container tab-pane fade">
                     <div class="main-accordion">
                       <div class="accordion-heading">
                         <a href="" class="delivered-btn">Delivered</a>
