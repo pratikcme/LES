@@ -208,13 +208,13 @@ class staff_api_model extends my_model {
         $data['where'] = ['order_id' => $order_id];
         $data['table'] = 'order_details';
         $res = $this->selectRecords($data);
-       echo $res = $res[0]->value."<br>";
+       $res = $res[0]->value;
         unset($data);
         $data['select'] = ['count(delevery_status) as value','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['delevery_status' => '1', 'order_id' => $order_id];
         $data['table'] = 'order_details';
         $res2 = $this->selectRecords($data);
-        echo $res2 = $res2[0]->value;exit;
+       $res2 = $res2[0]->value;
         unset($data);
         if ($res == $res2) {
             $date = strtotime(DATE_TIME);
