@@ -43,7 +43,7 @@ function checkNumber() {
 
     var phone = $('#phone').val()
     if ((country_code != exiting_country) || (exiting_phone != phone)) {
-        $("#btnAccSubmit").val('Send OTP');
+        $("#btnAccSubmit").val(language.Send_OTP);
         $("#btnAccSubmit").addClass('otp');
         $("#btnAccSubmit").attr('type', 'button');
         console.log('yes')

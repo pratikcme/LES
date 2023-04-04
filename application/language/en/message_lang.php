@@ -16,6 +16,7 @@ $lang['New Customer'] = 'New Customer';
 $lang['your cart'] = 'your cart';
 $lang['Shop'] = 'Shop';
 $lang['Process'] = 'Process';
+$lang['Send OTP'] = 'Send OTP';
 
 // end template 2
 
