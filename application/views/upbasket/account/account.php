@@ -36,7 +36,7 @@
               <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('logout')?></a>
+              <a class="nav-link dashboard-tabs languge-active-img" id="logout" data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('logout')?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-6"><?=$this->lang->line('Delete Account')?></a>
