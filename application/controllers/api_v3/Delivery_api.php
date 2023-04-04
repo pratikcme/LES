@@ -14,6 +14,20 @@ class Delivery_api extends CI_Controller
 
 
         $this->load->model('api_v3/delivery_api_model', 'this_model');
+
+        if (($this->router->fetch_method() != 'login') && ($this->router->fetch_method() != 'send_notification') && ($this->router->fetch_method() != 'check_otp') && ($this->router->fetch_method() != 'logout') && ($this->router->fetch_method() != 'update_userDetail')) {
+
+
+
+            $validate = $this->this_model->token_validate();
+
+            if ($validate == false) {
+
+                $response = array('status' => 5, 'message' => "Invalid Authentication");
+
+                $this->response($response);
+            }
+        }
     }
 
     public function login()
