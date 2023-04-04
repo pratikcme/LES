@@ -487,7 +487,7 @@ class staff_api_model extends my_model {
             return false;
         } else {
             $data['select'] = ['count(0) as count'];
-            $data['where'] = ['token' => $_SERVER['HTTP_X_API_TOKEN']];
+            $data['where'] = ['token' => $_SERVER['HTTP_X_API_TOKEN'],'status' => '1'];
             $data['table'] = 'staff';
             $response = $this->selectRecords($data);
             if (@$response[0]->count == 0) {
