@@ -488,14 +488,10 @@ $(document).on('click', '.dec', function () {
 			data: { product_id: product_id, weight_id: weight_id, product_weight_id: product_weight_id, action: action },
 			success: function (output) {
 				that.val(quantity);
-				that.parent().removeClass('transparent-wrap');
-
 				$('#updated_list').html(output.updated_list);
 				// window.location.reload();
 				if (output.errormsg == '') {
 					$('#nav_subtotal').html(output.final_total);
-					// $('.total'+product_id+'_'+product_weight_id).html(output.new_total);
-					// $('#order_total').html(currency+' '+(subtot+parseInt(shipping_charge)));
 				} else {
 					that.next('input').val(output.max_qun);
 					swal(output.errormsg);
