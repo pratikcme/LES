@@ -13,7 +13,7 @@ class Delivery_api_model extends My_model
         $pass = $postdata['password'];
         $pass = md5($pass);
         $data['select'] = ['s.id','s.name','s.email','s.phone_no','s.image','s.vehicle_name','s.vehicle_type','s.vehicle_number','s.id_proof_number','s.id_proof_image','s.current_status','s.status','v.multiLanguageType','s.branch_id','s.token'];
-        $data['where'] = ['s.email' => $email, 's.password' => $pass,'s.status' => '1'];
+        $data['where'] = ['s.email' => $email, 's.password' => $pass];
         $data['table'] = 'delivery_user as s';
         $data['join'] = ['branch  AS v' => ['v.id = s.branch_id', 'LEFT', ]];
         $res = $this->selectFromJoin($data, true);
