@@ -84,7 +84,7 @@
     color: #FF1D1D !important;
 }
 
-.myaccout-detail-tab .choose-img {
+/* .myaccout-detail-tab .choose-img{
     width: 190px;
     height: 190px;
     border-radius: 50%;
@@ -97,7 +97,6 @@
     margin-bottom: 75px !important;
     cursor: pointer;
 }
-
 .myaccout-detail-tab .choose-img::before {
     content: "\f083";
     position: absolute;
@@ -114,6 +113,52 @@
     left: 142px;
     font-size: 20px;
     cursor: pointer;
+} */
+
+.myaccout-detail-tab .choose-btn {
+    content: "\f083";
+    position: absolute;
+    font-family: "FontAwesome";
+    background-color: var(--secondary-color);
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 122px;
+    left: 142px;
+    font-size: 20px !important;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.myaccout-detail-tab .choose-img {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #FBF1E8;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0px auto;
+    position: relative;
+    margin-bottom: 75px !important;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.choose-input {
+    display: none;
+}
+
+.myaccout-detail-tab .choose-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
 .myaccout-detail-tab label {
