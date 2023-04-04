@@ -61,7 +61,7 @@
                     <div class="choose-img">
                         <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
                         <img src="<?=($userDetails[0]->profileimage !='' ) ? base_url().'public/images/'.$this->folder.'user_profile/'.$userDetails[0]->profileimage : $this->theme_base_url.'/assets/images/myaccount-choose-img.png' ?>" alt="" id="output" class="button">
-                        <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
+                        <button type="button" class="choose-btn"><i class="fa-solid fa-camera"></i></button>
                     </div>
                     <input type="hidden" name="hidden_image" value="<?=$userDetails[0]->profileimage?>">
                     <div class="row">
