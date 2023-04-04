@@ -517,7 +517,7 @@
                           <div class="product-detail-quentity <?=$d_show?>">
                               <div class="qty-container">
                                 <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->product_weight_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                                <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->product_id?>" data-weight_id="<?=$value->weight_id?>">
+                                <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->product_id?>" data-weight_id="<?=$value->weight_id?>" readonly>
                                 <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->product_weight_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
                               </div>
                           </div>
