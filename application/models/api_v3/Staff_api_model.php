@@ -233,6 +233,7 @@ class staff_api_model extends my_model {
             $data['where'] = ['o.id' => $order_id];
             $data['table'] = 'order as o';
             $del = $this->selectFromJoin($data, true);
+            print_r($del);exit;
             $isSelfPickup = $del[0]['isSelfPickup'];
             $del = $del[0]['delivery_by'];
             $this->send_notificaion($order_id);
