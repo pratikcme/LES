@@ -109,7 +109,7 @@
                       </div>
                       <div class="tab-save-btn">
                         <!-- <button type="submit" class=" signin-btn-green">Save</button> -->
-                        <input class="common-input-btn" type="submit" id="btnAccSubmit" class="btn"><?=$this->lang->line('Save')?>/>
+                        <input class="common-input-btn" type="submit" id="btnAccSubmit" class="btn"><?=$this->lang->line('Save')?>"/>
                       </div>
                     </div>
                   </form>
