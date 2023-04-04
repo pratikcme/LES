@@ -105,7 +105,7 @@
                       <div class="col-xxl-6 col-md-6">
                         <div class="mb-3">
                           <label for="m-number" class="form-label">Mobile Number<span>*</span></label>
-                          <input type="tel" class="form-control phone"  name="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" id="phone" value="<?=$userDetails[0]->phone?>"  aria-describedby="text">
+                          <input type="tel" class="form-control phone" id="phone" name="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" value="<?=$userDetails[0]->phone?>"  aria-describedby="text">
                         </div>
                       </div>
                       <div class="tab-save-btn">
