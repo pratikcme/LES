@@ -97,7 +97,7 @@ $lang['continue with facebook'] = 'continue with facebook';
 $lang['continue with google'] = 'continue with google';
 
 // placeHolder
-$lang['Gst number'] = 'رقم Gst';
+$lang['Gst number'] = 'Gst number';
 
 $lang['Email*'] = 'Email*';
 $lang['password*'] = 'password*';
