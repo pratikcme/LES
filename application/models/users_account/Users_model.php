@@ -10,6 +10,7 @@ class Users_model extends My_model
 
             $UploadPath = "public/images/" . $this->folder . "user_profile/";
             $uploadImage =  upload_single_image($_FILES, 'uprofile', $UploadPath);
+            echo $uploadImage;die;
             $uploadImage = $uploadImage['data']['file_name'];
             $data['update']['profileimage'] =  $uploadImage;
 
