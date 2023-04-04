@@ -235,7 +235,227 @@
                     <?php } ?>
                   </div>
 
-               
+                  <!-- ------sub-tab-2----- -->
+                  <div id="subtab-2" class="container tab-pane " >
+                    <div class="main-accordion">
+                      <div class="accordion-heading">
+                        <a href="" class="delivered-btn">Deliveressssssssssssssssssss</a>
+
+                        <div class="my-order-text">
+                          <h3>Orders: <span> #3,345,512</span></h3>
+                          <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
+                          </h3>
+                          <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
+                        </div>
+                      </div>
+                      <div class="accordion-content">
+                        <div class="my-order-details-content">
+                          <div class="order-details-img">
+                            <div class="accordion-img-wrapper">
+                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-1.png" alt="">
+                            </div>
+                            <div class="img-about-text">
+                              <h3>Almond (Regular)</h3>
+                              <h5>500 Gms</h5>
+                              <p>Qty: <span>1</span></p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-price-text">
+                            <h4>₹398.00</h4>
+                          </div>
+                        </div>
+
+                        <div class="my-order-details-content">
+                          <div class="order-details-img">
+                            <div class="accordion-img-wrapper">
+                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png" alt="">
+                            </div>
+                            <div class="img-about-text">
+                              <h3>Almond (Regular)</h3>
+                              <h5>500 Gms</h5>
+                              <p>Qty: <span>1</span></p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-price-text">
+                            <h4>₹398.00</h4>
+                          </div>
+                        </div>
+
+                        <div class="my-order-details-content">
+                          <div class="order-details-img">
+                            <div class="accordion-img-wrapper">
+                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png" alt="">
+                            </div>
+                            <div class="img-about-text">
+                              <h3>Almond (Regular)</h3>
+                              <h5>500 Gms</h5>
+                              <p>Qty: <span>1</span></p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-price-text">
+                            <h4>₹398.00</h4>
+                          </div>
+                        </div>
+
+                        <div class="my-order-details-content">
+                          <div class="order-details-img">
+                            <div class="accordion-img-wrapper">
+                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png" alt="">
+                            </div>
+                            <div class="img-about-text">
+                              <h3>Almond (Regular)</h3>
+                              <h5>500 Gms</h5>
+                              <p>Qty: <span>1</span></p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-price-text">
+                            <h4>₹398.00</h4>
+                          </div>
+                        </div>
+
+                        <div class="all-detalis-wrapper">
+                          <div class="all-detalis-left">
+                            <h4>Total Amount</h4>
+                            <h4>Product Discount</h4>
+                            <h4>Total Amount Before Tax</h4>
+                            <h4>Total Tax Amount</h4>
+                            <h4>Delivery Charges</h4>
+                            <h4>Total Item</h4>
+                            <h4>Promocode Discount</h4>
+                            <h4>Final Total</h4>
+                            <h4>Self Pick Up OTP</h4>
+                          </div>
+                          <div class="all-detalis-right">
+                            <h3>₹398.00</h3>
+                            <h3>-₹20.00</h3>
+                            <h3>₹18.00</h3>
+                            <h3>₹0.00</h3>
+                            <h3>Free</h3>
+                            <h3>1</h3>
+                            <h3>₹0.00</h3>
+                            <h3>₹18.00 </h3>
+                            <h3>0565</h3>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ------sub-tab-2----- -->
+                  <div id="subtab-3" class="container tab-pane ">
+                    <div class="main-accordion">
+                      <div class="accordion-heading">
+                        <a href="" class="delivered-btn">Delivered</a>
+
+                        <div class="my-order-text">
+                          <h3>Orders: <span> #3,345,512</span></h3>
+                          <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
+                          </h3>
+                          <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
+                        </div>
+                      </div>
+                      <div class="accordion-content">
+                        <div class="my-order-details-content">
+                          <div class="order-details-img">
+                            <div class="accordion-img-wrapper">
+                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-1.png" alt="">
+                            </div>
+                            <div class="img-about-text">
+                              <h3>Almond (Regular)</h3>
+                              <h5>500 Gms</h5>
+                              <p>Qty: <span>1</span></p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-price-text">
+                            <h4>₹398.00</h4>
+                          </div>
+                        </div>
+
+                        <div class="my-order-details-content">
+                          <div class="order-details-img">
+                            <div class="accordion-img-wrapper">
+                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png" alt="">
+                            </div>
+                            <div class="img-about-text">
+                              <h3>Almond (Regular)</h3>
+                              <h5>500 Gms</h5>
+                              <p>Qty: <span>1</span></p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-price-text">
+                            <h4>₹398.00</h4>
+                          </div>
+                        </div>
+
+                        <div class="my-order-details-content">
+                          <div class="order-details-img">
+                            <div class="accordion-img-wrapper">
+                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png" alt="">
+                            </div>
+                            <div class="img-about-text">
+                              <h3>Almond (Regular)</h3>
+                              <h5>500 Gms</h5>
+                              <p>Qty: <span>1</span></p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-price-text">
+                            <h4>₹398.00</h4>
+                          </div>
+                        </div>
+
+                        <div class="my-order-details-content">
+                          <div class="order-details-img">
+                            <div class="accordion-img-wrapper">
+                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png" alt="">
+                            </div>
+                            <div class="img-about-text">
+                              <h3>Almond (Regular)</h3>
+                              <h5>500 Gms</h5>
+                              <p>Qty: <span>1</span></p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-price-text">
+                            <h4>₹398.00</h4>
+                          </div>
+                        </div>
+
+                        <div class="all-detalis-wrapper">
+                          <div class="all-detalis-left">
+                            <h4>Total Amount</h4>
+                            <h4>Product Discount</h4>
+                            <h4>Total Amount Before Tax</h4>
+                            <h4>Total Tax Amount</h4>
+                            <h4>Delivery Charges</h4>
+                            <h4>Total Item</h4>
+                            <h4>Promocode Discount</h4>
+                            <h4>Final Total</h4>
+                            <h4>Self Pick Up OTP</h4>
+                          </div>
+                          <div class="all-detalis-right">
+                            <h3>₹398.00</h3>
+                            <h3>-₹20.00</h3>
+                            <h3>₹18.00</h3>
+                            <h3>₹0.00</h3>
+                            <h3>Free</h3>
+                            <h3>1</h3>
+                            <h3>₹0.00</h3>
+                            <h3>₹18.00 </h3>
+                            <h3>0565</h3>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
                </div>
