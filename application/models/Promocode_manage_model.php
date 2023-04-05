@@ -34,7 +34,7 @@ class Promocode_manage_model extends My_model{
     public function addRecord($postData){
      dd($postData);
         $insert = array(
-            'branch_id'=>$postData['branch_id'],
+            'branch_id'=>$postData['branch'],
             'name' => $postData['name'],
             'percentage' => $postData['percentage'],
             'max_use' => $postData['max_use'],
