@@ -8,14 +8,16 @@ class Promocode_manage_model extends My_model{
 
 
     public function allData($id = ''){
+         
         if($id != ''){
-            $data['where']['id'] = $id;
+            $data['where']['p.id'] = $id;
         }
-        $data['table'] = TABLE_PROMOCODE;
-        $data['select'] = ['*'];
-        $data['where']['branch_id'] = $this->branch_id;
+        $data['table'] = TABLE_PROMOCODE.' as p';
+        $data['select'] = ['p.*','b.name as branch_name'];
+        $data['join'] = ['branch as b'=>['b.id = p.branch_id','LEFT']];
+        $data['where']['b.vendor_id'] = $this->vendor_id;
         $data['order'] = 'id desc';
-        return $this->selectRecords($data);        
+        return $this->selectFromJoin($data); 
     }
 
  
