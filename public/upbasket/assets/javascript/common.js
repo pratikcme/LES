@@ -490,9 +490,8 @@ $(document).on('click', '.dec', function () {
 				that.val(quantity);
 				$('#updated_list').html(output.updated_list);
 				// window.location.reload();
-				$('#display_subtotal').html(siteCurrency + output.final_total);
 				if (output.errormsg == '') {
-					// $('#nav_subtotal').html(output.final_total);
+					$('#display_subtotal').html(siteCurrency + output.final_total);
 				} else {
 					that.next('input').val(output.max_qun);
 					swal(output.errormsg);
