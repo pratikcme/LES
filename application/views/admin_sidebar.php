@@ -295,7 +295,7 @@
 
 <li>
     <a class="<?php if (($this->uri->segment(1) == 'offer' || $this->uri->segment(1) == 'promocode_manage' || $this->uri->segment(1) == 'cart_amount_based_discount' )) { ?> active <?php } ?>" href="#">
-    <i class="fa fa-tag fa-stack-1x fa-inverse"></i>
+    <i class="fa fa-tag fa-stack-1x"></i>
         <span>Discount</span>
         <i class="fas fa-chevron-right <?=($this->uri->segment(1) == 'admins' && ($this->uri->segment(1) == 'offer' || $this->uri->segment(1) == 'promocode_manage' || $this->uri->segment(1) == 'cart_amount_based_discount' )) ? 'rotate' : ''?>"></i>
     </a>
