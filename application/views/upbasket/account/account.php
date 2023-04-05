@@ -1,7 +1,6 @@
  <style>
  .pac-container {  
-    z-index: 9999999 !important;
-    display: block !important;
+    z-index: 9999999;
 }
  </style>
  <!-- ----hero-section--- -->
