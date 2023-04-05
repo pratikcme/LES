@@ -20,13 +20,6 @@ $("#frmAddEdit").validate({
         },
       },
     },
-    //     discount_percentage: {
-    //         required: true,
-    //         number: true,
-    //         range: [1, 99]
-    //     },
-    //   },
-    // },
     discount_percentage: {
       required: true,
       number: true,
