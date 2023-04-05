@@ -1195,15 +1195,17 @@ class product_model extends My_model
 
     public function check_display_priority($postData)
     {
+        $branch_id = $this->session->userdata['id'];
         
         if ($postData['product_id'] != '') {
             $data['where']['id !='] = $postData['product_id'];
         }
         $data['table'] = TABLE_PRODUCT;
         $data['where']['display_priority'] = $postData['display_priority'];
+        $data['where']['branch_id'] = $branch_id;
         $data['where']['status !='] = '9';
         $return = $this->countRecords($data);
-        dd($return);
+        
         if ($return > 0) {
             echo "false";
         } else {
