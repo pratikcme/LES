@@ -36,7 +36,7 @@ class Promocode_manage extends Admin_Controller
         $this->id = $this->utility->decode($d_id);
         $data['js'] = array('promocode.js');
         $data['FormAction'] = base_url().'Promocode_manage/edit/'.$d_id;
-       
+        $data['branchList'] = $this->this_model->getBranch();
         if($this->input->post()){
            
             $result = $this->this_model->updateRecord($this->input->post());
