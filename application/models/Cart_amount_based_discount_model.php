@@ -39,6 +39,7 @@ class Cart_amount_based_discount_model extends My_model{
             'branch_id'=> $postData['branch'],
             'cart_amount' => $postData['cart_amount'],
             'discount_percentage' => $postData['discount_percentage'],
+            'status' => '1',
             'dt_created' => DATE_TIME,
             'dt_updated' => DATE_TIME
         );
