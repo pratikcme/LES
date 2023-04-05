@@ -334,6 +334,7 @@
                 <div class="input-group mb-3">
                   <label for="text">If you have a coupon code, please apply it below.</label><br>
                   <input type="text" class="form-control" placeholder="Coupon Code" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <span class="error" id="promo_err"></span>
                   <span class="input-group-text" id="basic-addon2">Apply</span>
                 </div>
                </div>
