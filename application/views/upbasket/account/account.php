@@ -565,15 +565,15 @@
             <div id="tab-4" class="container tab-pane fade">
               <h2 class="title">My <span>Address</span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
-
+            <?php foreach ($get_address as $key => $value) { 
+                $status = ($value->status == '0') ? 'is_default ' : '';
+              ?>
               <div class="address-wrapper">
-
                 <div class="ship-check text-end">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="1" id="id1">
+                    <input class="form-check-input <?=$status?>" type="checkbox" value="1" id="id1"  <?=($value->status == '1') ? 'checked' : '' ?>>
                     <label class="form-check-label" for="id1">
-                        default
-                    </label>
+                    <?=$this->lang->line('Default')?>
                   </div>
                 </div>
 
@@ -587,8 +587,8 @@
                   <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
               </div>
-
-              <div class="address-wrapper">
+              <?php } ?>
+              <!-- <div class="address-wrapper">
               
                 <div class="ship-check text-end">
                   <div class="form-check">
@@ -608,7 +608,7 @@
                   <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
                   <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
-              </div>
+              </div> -->
                
               <div class="adrress-btn">
                  <a href="" class="signin-btn-green cancel-btn" data-bs-toggle="modal" data-bs-target="#addres-popup ">Add New Address</a>
