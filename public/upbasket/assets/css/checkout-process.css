@@ -952,6 +952,7 @@ input:focus {
     color: var(--listing-2-normal-text) !important;
     margin-bottom: 0px;
     margin-top: 3px;
+    width: 80px;
 }
 
 .address-wrp {
