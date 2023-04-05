@@ -470,12 +470,13 @@ $(document).on('click', '.dec', function () {
 
 								$('#itemCount').html(output.count);
 								$('#updated_list').html(output.updated_list);
-								$('#nav_subtotal').html(output.final_total);
+								$('#display_subtotal').html(siteCurrency + output.final_total);
+								// $('#nav_subtotal').html(output.final_total);
 							}
 						}
 					})
 				} else {
-					that.parent().removeClass('transparent-wrap');
+					// that.parent().removeClass('transparent-wrap');
 					that.next('input').val(1);
 				}
 			});
