@@ -19,7 +19,7 @@
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <section class="panel">
                <header class="panel-heading">
-                  Add
+                  Update
                </header>
                <form id="frmAddEdit" method="post" enctype="multipart/form-data" action="<?=$FormAction?>">
                   <input type="hidden" id="id" name="id" value="">
@@ -95,7 +95,7 @@
                      <div class="col-md-12 col-sm-12 col-xs-12">
                         <!-- <span class="panel-body padding-zero" > -->
                         <a href="<?=base_url().'promocode_manage'?>" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>
-                        <input type="submit" class="btn btn-info pull-right margin_top_label" value="Add" id="btnSubmit" name="submit">
+                        <input type="submit" class="btn btn-info pull-right margin_top_label" value="Update" id="btnSubmit" name="submit">
                         <!-- </span> -->
                      </div>
                   </div>
