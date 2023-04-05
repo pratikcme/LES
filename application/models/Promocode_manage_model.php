@@ -52,7 +52,7 @@ class Promocode_manage_model extends My_model{
         
     
         $res = $this->insertRecord($data); 
-        echo $this->db->last_query();exit;
+        // echo $this->db->last_query();exit;
         if($res){
             $jsone_response['status'] = 'success';
             $jsone_response['message'] = 'Data added success!!!';
