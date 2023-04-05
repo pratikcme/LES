@@ -288,6 +288,7 @@ var ADDPRODUCT = function () {
           } else {
             $('#is_aval_stock').html(stockMessage);
           }
+          alert();
           if (output.cartProductQuantity == 0) {
             var qnt = 1;
             that.next('div').find('a:first').removeClass('d-none');
