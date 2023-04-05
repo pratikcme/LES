@@ -238,9 +238,9 @@
                   <!-- ------sub-tab-2----- -->
                   <div id="subtab-2" class="container tab-pane fade" >
                   <?php foreach ($order as $key => $value) {
-                      // if($value->order_status == '8' || $value->order_status == '9'){
-                      //   continue;
-                      // }
+                      if($value->order_status == '8' || $value->order_status == '9'){
+                        continue;
+                      }
                     date_default_timezone_set('Asia/Kolkata');
                     $date =  date('d M Y, h:i A', $value->dt_updated); 
                     if($value->order_status == '1'){
@@ -331,114 +331,96 @@
 
                   <!-- ------sub-tab-3----- -->
                   <div id="subtab-3" class="container tab-pane fade">
-                    <div class="main-accordion">
+                  <?php foreach ($order as $key => $value) {
+                      if($value->order_status != '9'){
+                        continue;
+                      }
+                    date_default_timezone_set('Asia/Kolkata');
+                    $date =  date('d M Y, h:i A', $value->dt_updated); 
+                    if($value->order_status == '1'){
+                        $status = 'Processing';
+                      }elseif($value->order_status == '2'){
+                        $status = 'Pending';
+                     }elseif($value->order_status == '3'){
+                        $status = 'Ready';
+                     }elseif($value->order_status == '4'){
+                        $status = 'Pickup';
+                     }elseif ($value->order_status == '5') {
+                        $status = 'on the way';
+                     }elseif ($value->order_status == '8') {
+                        $status = 'Delivered';
+                     }else{
+                        $status = 'Cancel';
+                     }  
+                    ?>
+                   <div class="main-accordion">
                       <div class="accordion-heading">
-                        <a href="" class="delivered-btn">Delivered</a>
+                        <a href="javascript:" class="cancel-btn "><?=$status?></a>
 
                         <div class="my-order-text">
-                          <h3>Orders: <span> #3,345,512</span></h3>
-                          <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
+                          <h3>Order Number: <span><?=str_replace('Order','', $value->order_no);?></span></h3>
+                          <h3>Delivered to: <span> <?=$value->delivered_address?></span>
                           </h3>
-                          <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
+                          <p><span><i class="fa-regular fa-clock"></i></span><?= $date?></p>
                         </div>
                       </div>
                       <div class="accordion-content">
+                      <?php foreach ($value->orderDetails as $k => $v) { ?>
                         <div class="my-order-details-content">
                           <div class="order-details-img">
                             <div class="accordion-img-wrapper">
-                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-1.png" alt="">
+                              <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$v->product_image?>" alt="">
                             </div>
                             <div class="img-about-text">
-                              <h3>Almond (Regular)</h3>
-                              <h5>500 Gms</h5>
-                              <p>Qty: <span>1</span></p>
+                              <h3><?=$v->product_name?></h3>
+                              <h5><?=$v->weight_number .' '.$v->weight_name ?></h5>
+                              <p>Qty: <span><?=$value->quantity?></span></p>
                             </div>
                           </div>
 
                           <div class="accordion-price-text">
-                            <h4>₹398.00</h4>
+                            <h4><?=$this->siteCurrency .' '. numberFormat($v->discount_price)?></h4>
                           </div>
                         </div>
-
-                        <div class="my-order-details-content">
-                          <div class="order-details-img">
-                            <div class="accordion-img-wrapper">
-                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png" alt="">
-                            </div>
-                            <div class="img-about-text">
-                              <h3>Almond (Regular)</h3>
-                              <h5>500 Gms</h5>
-                              <p>Qty: <span>1</span></p>
-                            </div>
-                          </div>
-
-                          <div class="accordion-price-text">
-                            <h4>₹398.00</h4>
-                          </div>
-                        </div>
-
-                        <div class="my-order-details-content">
-                          <div class="order-details-img">
-                            <div class="accordion-img-wrapper">
-                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png" alt="">
-                            </div>
-                            <div class="img-about-text">
-                              <h3>Almond (Regular)</h3>
-                              <h5>500 Gms</h5>
-                              <p>Qty: <span>1</span></p>
-                            </div>
-                          </div>
-
-                          <div class="accordion-price-text">
-                            <h4>₹398.00</h4>
-                          </div>
-                        </div>
-
-                        <div class="my-order-details-content">
-                          <div class="order-details-img">
-                            <div class="accordion-img-wrapper">
-                              <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png" alt="">
-                            </div>
-                            <div class="img-about-text">
-                              <h3>Almond (Regular)</h3>
-                              <h5>500 Gms</h5>
-                              <p>Qty: <span>1</span></p>
-                            </div>
-                          </div>
-
-                          <div class="accordion-price-text">
-                            <h4>₹398.00</h4>
-                          </div>
-                        </div>
+                      <?php } ?>
 
                         <div class="all-detalis-wrapper">
                           <div class="all-detalis-left">
-                            <h4>Total Amount</h4>
-                            <h4>Product Discount</h4>
-                            <h4>Total Amount Before Tax</h4>
-                            <h4>Total Tax Amount</h4>
-                            <h4>Delivery Charges</h4>
-                            <h4>Total Item</h4>
-                            <h4>Promocode Discount</h4>
-                            <h4>Final Total</h4>
-                            <h4>Self Pick Up OTP</h4>
+                            <h4><?=$this->lang->line('Total Amount')?></h4>
+                            <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?> 
+                              <h4><?=$this->lang->line('Cart Discount')?></h4>
+                            <?php } ?>
+                            <h4><?=$this->lang->line('Product Discount')?></h4>
+                            <h4><?=$this->lang->line('Total Amount Before Tax')?></h4>
+                            <h4><?=$this->lang->line('Total Tax Amount')?></h4>
+                            <h4><?=$this->lang->line('Delivery Charges')?></h4>
+                            <h4><?=$this->lang->line('Total Item')?></h4>
+                            <h4><?=$this->lang->line('Promocode Discount')?></h4>
+                            <h4><?=$this->lang->line('Final Total')?></h4>
+                            <h4><?=($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP"?></h4>
                           </div>
                           <div class="all-detalis-right">
-                            <h3>₹398.00</h3>
-                            <h3>-₹20.00</h3>
-                            <h3>₹18.00</h3>
-                            <h3>₹0.00</h3>
-                            <h3>Free</h3>
-                            <h3>1</h3>
-                            <h3>₹0.00</h3>
-                            <h3>₹18.00 </h3>
-                            <h3>0565</h3>
+                            <h3 class="notranslate"><?=$this->siteCurrency .' '. number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
+                            
+                            <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?>
+                              <h3 class="notranslate">-<?=$this->siteCurrency .' '.number_format((float)$value->shopping_amount_based_discount,2,'.','')?></h3>
+                            <?php } ?>
+                            <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$value->total_saving,2,'.','')?></h3>
+                            
+                            <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$value->sub_total - $value->TotalGstAmount,2,'.','')?></h3>
+                            <h3 class="notranslate"><?=$this->siteCurrency .' '.$order[$key]->TotalGstAmount?></h3>
+                            <h3 class="notranslate"><?=($value->delivery_charge != '0') ? $this->siteCurrency.' '.number_format($value->delivery_charge,2,'.','') : 'FREE'?></h3>
+                            <h3 class="notranslate"><?=$value->total_item?></h3>
+                            <h3 class="notranslate"><?=$this->siteCurrency.' '.$value->promocode_discount?></h3>
+                            <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
+                            <h3><?=$value->isSelfPickup_details[0]->otp?></h3>
                           </div>
                         </div>
 
                       </div>
                     </div>
-                  </div>
+                    <?php } ?>
+                   </div>
 
                 </div>
                </div>
