@@ -147,7 +147,7 @@
                               </div>
                               <div class="drop-text">
                                 <h4><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"><?=$value->product_name?></a></h4>
-                                <!-- <p>500 Gms</p> -->
+                                <p><?=$value->weight_no.' '.$value->weight_name?></p>
                                 <h3><?=$this->siteCurrency .' '.number_format((float)$value->discount_price, 2, '.', '')?> </h3>
                               </div>
                               <div class="cancel-btn remove_item" data-product_id="<?=$value->product_id?>" data-product_weight_id="<?=$value->product_weight_id?>">
