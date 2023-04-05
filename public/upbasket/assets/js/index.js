@@ -1,3 +1,13 @@
+$(document).ready(function () {
+  $(".new-add").click(function () {
+    $(".ship-address").show();
+  });
+
+  $(".ship-close").click(function () {
+    $(".ship-address").hide();
+  })
+});
+
 new WOW().init();
 
 // -------shop-cart-counter-count-js---------
