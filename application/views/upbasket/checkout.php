@@ -323,13 +323,65 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="cart-total-text-1">Delivery Charges</td>
-                      <td class="cart-total-text-2">₹50.00</td>
+                      <td class="cart-total-text-1"><?=$this->lang->line('Tax (Gst)')?></td>
+                      <td class="cart-total-text-2">
+                        <span class='notranslate'><?=$this->siteCurrency?></span> 
+                        <span ><?=$TotalGstAmount?></span>
+                      </td>
                     </tr>
                     <tr>
-                      <td class="cart-total-text-1">Delivery Charges</td>
-                      <td class="cart-total-text-2">₹1134.00</td>
+                      <td class="cart-total-text-1"><?=$this->lang->line('Delivery Charges')?></td>
+                      <td class="cart-total-text-2">
+                        <span class='notranslate'><?=$this->siteCurrency?></span> 
+                        <span ><?=(isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping,2,'.','') : '0.00' ?></span>
+                      </td>
                     </tr>
+                    <?php if( $shopping_based_discount > 0 ){?>
+                      <tr>
+                        <td class="cart-total-text-1"><?=$this->lang->line('Cart Discount')?></td>
+                        <td class="cart-total-text-2">
+                          <span class='notranslate'><?=$this->siteCurrency?></span> 
+                          <span id="shoppingBasedDiscount"><?=$shopping_based_discount?></span></td>
+                      </tr>
+                    <?php } ?>
+                      <tr class="promocode-applied" style="display:none;">
+                        <td class="cart-total-text-1"><?=$this->lang->line('Promocode Discount')?></td>
+                        <td class="cart-total-text-2">
+                          <span class='notranslate'><?=$this->siteCurrency?></span> 
+                          <span id="promoAmount"></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="cart-total-text-1"><?=$this->lang->line('Total')?></td>
+                        <td class="cart-total-text-2">
+                          <span class='notranslate'><?=$this->siteCurrency?></span> 
+                          <span id="checkout_final" >
+                          <?php 
+                          if(isset($calc_shiping) && is_numeric($calc_shiping)) {
+
+                                if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                                   $to = $getMycartSubtotal+$calc_shiping + $TotalGstAmount; 
+                                }else{
+                                   $to = $getMycartSubtotal+$calc_shiping;
+                                }
+                                $f_amount = $to-$shopping_based_discount;
+                                echo number_format((float)$f_amount,2,'.',''); 
+
+                            }else{ 
+
+                                if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                                   $tot = $getMycartSubtotal + $TotalGstAmount; 
+                                }else{
+                                   $tot = $getMycartSubtotal;
+                                }
+                                $f_amount = $tot-$shopping_based_discount;
+                                 echo number_format((float)$f_amount,2);
+                                 
+                            } ?>
+                          </span>
+                        </td>
+                      </tr>
+
                   </tbody>
                 </table>
             </div>

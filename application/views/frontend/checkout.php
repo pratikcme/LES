@@ -577,8 +577,10 @@ label.error.mobile_verfication {
                                     Tax)</h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
-                                    <p><span class='notranslate'><?=$this->siteCurrency?></span> <span
-                                            id="checkout_subtotal"><?=$getMycartSubtotal?></span></p>
+                                    <p>
+                                        <span class='notranslate'><?=$this->siteCurrency?></span> 
+                                        <span id="checkout_subtotal"><?=$getMycartSubtotal?></span>
+                                    </p>
                                 </div>
                             </div>
                         </li>
@@ -606,7 +608,7 @@ label.error.mobile_verfication {
                         <?php if( $shopping_based_discount > 0 ){?>
                         <li class="total-wrap">
                             <div class="total-count">
-                                <h6>Cart Discount</h6>
+                                <h6><?=$this->lang->line('Cart Discount')?></h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
                                     <p><span class='notranslate'><?=$this->siteCurrency?></span> <span
@@ -617,7 +619,7 @@ label.error.mobile_verfication {
                         <?php } ?>
                         <li class="total-wrap promocode-applied" style="display:none;">
                             <div class="total-count">
-                                <h6>Promocode Discount</h6>
+                                <h6><?=$this->lang->line('Promocode Discount')?></h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
                                     <p><span class='notranslate'><?=$this->siteCurrency?></span> <span id="promoAmount"></span></p>
