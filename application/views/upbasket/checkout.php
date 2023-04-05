@@ -1,5 +1,5 @@
  <style>
- span.error{
+ label.error{
   color:red;
  }
  </style>
@@ -300,7 +300,7 @@
                   <label for="text">If you have a coupon code, please apply it below.</label><br>
                     <div class="promo-apply-wrapper">
                       <input type="text" class="form-control" placeholder="Coupon Code" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                      <span class="error" id="promo_err"></span>
+                      <label class="error" id="promo_err"></label>
                       <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
                     </div>
                   </div>
