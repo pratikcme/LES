@@ -221,12 +221,12 @@
                 <span>Minimum Cart Value</span>
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a class="<?php if ($this->uri->segment(1) == 'setting' && $this->uri->segment(2) == 'profit_percent') { ?> active <?php } ?>" href="<?php echo base_url() . 'setting/profit_percent/'; ?>">
                 <i class="fa fa-cog"></i>
                 <span>Profit Percentage</span>
             </a>
-        </li>
+        </li> -->
         <li style="display: none;">
             <a class="<?php if ($this->uri->segment(1) == 'setting' && $this->uri->segment(2) == 'subscription') { ?> active <?php } ?>" href="<?php echo base_url() . 'setting/subscription/'; ?>">
                 <i class="fa fa-cog"></i>
