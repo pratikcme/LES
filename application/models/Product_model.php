@@ -567,7 +567,7 @@ class product_model extends My_model
         $discount_price_cal = (($price * $discount_per) / 100);
         $discount_price = $price - $discount_price;
         // $discount_price = number_format((float)$discount_price_cal, 2, '.', '');
-        $final_discount_price = number_format((float)$price - $discount_price, 2, '.', '');
+        $final_discount_price = number_format((float)$discount_price, 2, '.', '');
         echo $final_discount_price;die;
         // $whole = floor($unit);      
         // $fraction = $unit - $whole;
