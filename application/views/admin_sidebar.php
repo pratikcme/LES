@@ -246,8 +246,9 @@
         class="<?php if ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') { ?> active <?php } ?>"
         href="#"
     >
-        <i class="fa fa-cog"></i>
-        <span>Settings</span>
+    <i class='fa-solid fa-receipt'></i>
+
+        <span>Delivery & Pickup</span>
         <i
             class="fas fa-chevron-right <?=($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') ? 'rotate' : '' ?>"
         ></i>
