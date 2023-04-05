@@ -69,80 +69,120 @@
               </div>
             
               <div class="main-accordion">
-              <div class="accordion-heading">Shipping address</div>
-              <div class="accordion-content accordion-content-3">
-                <div class="row">
+                <div class="accordion-heading">Shipping address</div>
+                <div class="accordion-content accordion-content-3">
+                  <div class="address-wrapper">
+                    <div class="ship-check text-end">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" id="id1">
+                        <label class="form-check-label" for="id1">
+                            default
+                        </label>
+                      </div>
+                    </div>
 
-                  <div class="col-lg-6">
-                    <label for="fname" class="form-label">First Name<span>*</span></label>
-                    <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Mike">
+                    <div class="address-wrp d-flex">
+                      <div class="address-text">
+                        <h3>Office</h3>
+                        <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
+                          America</p>
+                      </div>
+                      <div class="address-icons">
+                        <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
+                      </div>
+                    </div>
                   </div>
-
-                  <div class="col-lg-6">
-                    <label for="lname" class="form-label">Last Name<span>*</span></label>
-                    <input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Hussy">
-                  </div>
-
-                  <div class="col-lg-12">
-                    <label for="text" class="form-label">Country / Region<span>*</span></label>
-                    <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="+91 99989 99899">
-                  </div>
-
-                  <div class="col-lg-12">
-                    <label for="add" class="form-label">Street address<span>*</span></label>
-                    <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Address">
-                  </div>
-
-                  <div class="col-lg-12">
-                    <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Apartment, suite, etc.">
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="select-box">
-                      <label for="city" class="form-label">Town / City<span>*</span></label>
-                    <select class="form-select" aria-label="city">
-                      <option selected>Ahmedabad</option>
-                      <option value="1">Surt</option>
-                      <option value="2">Baroda</option>
-                      <option value="3">Ohter</option>
-                    </select>
-                  </div>
+                  <div class="new-address text-end">
+                      <button type="button" class="new-add">New Address</button>
                   </div>
 
-                  <div class="col-lg-6">
-                    <div class="select-box">
-                      <label for="state" class="form-label">State<span>*</span></label>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Gujarat</option>
-                      <option value="1">Surt</option>
-                      <option value="2">Baroda</option>
-                      <option value="3">Ohter</option>
-                    </select>
-                  </div>
-                  </div>
+                  <form action="" class="ship-address">
+                    
+                    <div class="text-end">
+                      <button type="button" class="ship-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-sharp fa-regular fa-circle-xmark"></i></button>
+                    </div>
 
-                  <div class="col-lg-6">
-                    <div class="select-box">
-                      <label for="state" class="form-label">State<span>*</span></label>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Gujarat</option>
-                      <option value="1">Surt</option>
-                      <option value="2">Baroda</option>
-                      <option value="3">Ohter</option>
-                    </select>
-                  </div>
-                  </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <label for="fname" class="form-label">First Name<span>*</span></label>
+                        <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Mike">
+                      </div>
 
-                  <div class="col-lg-6">
-                    <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
-                    <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="380050">
-                  </div>
-                  <div class="save-btn">
-                     <a href="#">save</a>
-                  </div>
+                      <div class="col-lg-6">
+                        <label for="lname" class="form-label">Last Name<span>*</span></label>
+                        <input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Hussy">
+                      </div>
 
+                      <div class="col-lg-12">
+                        <div class="country-select">
+                            <label for="text" class="form-label">Country / Region<span>*</span></label><br>
+                              <select name="Country" id="Country">
+                                <option value="1234">india</option>
+                                <option value="1234">india</option>
+                                <option value="1234">india</option>
+                                <option value="1234">india</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <label for="add" class="form-label">Street address<span>*</span></label>
+                        <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Address">
+                      </div>
+
+                      <div class="col-lg-12">
+                        <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Apartment, suite, etc.">
+                      </div>
+
+                      <div class="col-lg-6">
+                        <div class="select-box">
+                          <label for="city" class="form-label">Town / City<span>*</span></label>
+                        <select class="form-select" aria-label="city">
+                          <option selected>Ahmedabad</option>
+                          <option value="1">Surt</option>
+                          <option value="2">Baroda</option>
+                          <option value="3">Ohter</option>
+                        </select>
+                      </div>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <div class="select-box">
+                          <label for="state" class="form-label">State<span>*</span></label>
+                        <select class="form-select" aria-label="Default select example">
+                          <option selected>Gujarat</option>
+                          <option value="1">Surt</option>
+                          <option value="2">Baroda</option>
+                          <option value="3">Ohter</option>
+                        </select>
+                      </div>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <div class="select-box">
+                          <label for="state" class="form-label">State<span>*</span></label>
+                        <select class="form-select" aria-label="Default select example">
+                          <option selected>Gujarat</option>
+                          <option value="1">Surt</option>
+                          <option value="2">Baroda</option>
+                          <option value="3">Ohter</option>
+                        </select>
+                      </div>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
+                        <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="380050">
+                      </div>
+                      <div class="save-btn">
+                        <!-- <button type="submit" class=" signin-btn-green">Save</button> -->
+                        <input class="common-input-btn" type="Submit" value="Save"/>
+                      </div>
+
+                    </div>
+                  </form>  
                 </div>
-              </div>
               </div>
 
               <div class="main-accordion">

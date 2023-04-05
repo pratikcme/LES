@@ -829,6 +829,112 @@ input:focus {
     }
 }
 
+/* shopping-address */
+.new-address button {
+    background: var(--common-btn-color);
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    color: var(--common-white) !important;
+    padding: 12px 30px 12px 30px;
+    border-radius: 90px;
+    text-transform: capitalize;
+    margin-bottom: 25px;
+    transition: 0.5s;
+    border: 1px solid var(--common-btn-color);
+}
+
+
+.ship-address {
+    background: #fff;
+    border: 1px solid var(--myaccoutn-tab-border);
+    box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
+    border-radius: 20px;
+    padding: 45px 40px 37px 30px;
+    position: relative;
+    display: none;
+}
+
+.ship-close i {
+    font-size: 20px;
+}
+
+.ship-close {
+    border: none;
+    background-color: transparent;
+}
+
+.address-wrapper {
+    position: relative;
+}
+
+.accordion-content-3 .address-wrapper {
+    padding: 35px 32px 37px 30px;
+    position: relative;
+}
+
+.ship-address .text-end {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.address-wrapper .form-check-input:checked {
+    background-color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
+    height: 20px !important;
+    width: 20px !important;
+}
+
+.ship-check {
+    margin-bottom: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.ship-check .form-check-input:checked[type=checkbox] {
+    background-repeat: no-repeat;
+    height: 25px;
+}
+
+.ship-check .form-check-input[type=checkbox] {
+    height: 20px;
+    width: 20px;
+    float: inherit !important;
+}
+
+.ship-check .form-check {
+    border: 1px solid var(--myaccoutn-tab-border);
+    /* max-width: 120px; */
+    display: inline-block;
+    margin-left: auto;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.ship-check .form-check .form-check-input {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.ship-check .form-check-label {
+    margin-bottom: 0;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--listing-2-normal-text) !important;
+    margin-bottom: 0px;
+    margin-top: 3px;
+}
+
+.address-wrp {
+    margin-top: 40px;
+}
+
 
 
 /* =================================================== */
@@ -3440,6 +3546,14 @@ input:focus {
 
 
 }
+
+@media only screen and (max-width:575px) {
+    .address-wrp {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+}
+
 
 /* =================================================== */
 /* =================================================== */

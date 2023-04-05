@@ -562,24 +562,44 @@
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
 
               <div class="address-wrapper">
-                <div class="address-text">
+
+                <div class="ship-check text-end">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" id="id1">
+                    <label class="form-check-label" for="id1">
+                        default
+                    </label>
+                  </div>
+                </div>
+
+                <div class="address-text mt-3">
                   <h3>Office</h3>
                   <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
                     America</p>
                 </div>
-                <div class="address-icons">
+                <div class="address-icons mt-3">
                   <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
                   <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
               </div>
 
               <div class="address-wrapper">
-                <div class="address-text">
+              
+                <div class="ship-check text-end">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" id="id1">
+                    <label class="form-check-label" for="id1">
+                        default
+                    </label>
+                  </div>
+                </div>
+
+                <div class="address-text mt-3">
                   <h3>Home</h3>
                   <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
                     America</p>
                 </div>
-                <div class="address-icons">
+                <div class="address-icons mt-3">
                   <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
                   <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
