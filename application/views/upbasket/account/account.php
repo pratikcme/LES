@@ -650,7 +650,7 @@
 
                   <div class="col-lg-12">
                     <label for="add" class="form-label">Location<span>*</span></label>
-                    <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location"  aria-describedby="add"  placeholder="<?=$this->lang->line('Enter Location')?>"autocomplete="off">
+                    <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location"  aria-describedby="add"  placeholder="<?=$this->lang->line('Enter Location')?>">
                     <label for="departure_address" class="error" style="display: none;"></label>
                     <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
                     <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">

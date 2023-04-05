@@ -65,7 +65,6 @@
               // Get the place details from the autocomplete object.
               var place = autocomplete.getPlace();
               console.log(place);
-              alert(place);
               // console.log(place.address_components);
               var url  = window.location.href; 
               var base_url = $('#url').val();
