@@ -238,9 +238,9 @@
                   <!-- ------sub-tab-2----- -->
                   <div id="subtab-2" class="container tab-pane fade" >
                   <?php foreach ($order as $key => $value) {
-                      if($value->order_status == '8' || $value->order_status == '9'){
-                        continue;
-                      }
+                      // if($value->order_status == '8' || $value->order_status == '9'){
+                      //   continue;
+                      // }
                     date_default_timezone_set('Asia/Kolkata');
                     $date =  date('d M Y, h:i A', $value->dt_updated); 
                     if($value->order_status == '1'){
