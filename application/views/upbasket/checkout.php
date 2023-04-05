@@ -335,7 +335,7 @@
                   <label for="text">If you have a coupon code, please apply it below.</label><br>
                   <input type="text" name="promocode" id="promocode" class="form-control" placeholder="Enter Promocode" aria-label="Recipient's username" aria-describedby="basic-addon2">
                   <span class="error" id="promo_err"></span>
-                  <button id="checkPromocode" type="button" class="input-group-text" id="basic-addon2">Apply</button>
+                  <span class="input-group-text" id="basic-addon2"><button id="checkPromocode" type="button">Apply</button></span>
                 </div>
                </div>
 
