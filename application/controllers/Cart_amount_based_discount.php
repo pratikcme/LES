@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Cart_amount_based_discount extends Vendor_Controller
+class Cart_amount_based_discount extends Admin_Controller
 {
      function __construct(){
         parent::__construct();
