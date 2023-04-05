@@ -289,51 +289,11 @@
                      </div> 
                   </div>
                   <?php } ?>
-                  <!-- <div class="order-wrapper">
-                     <div class="order-wrapper-img">
-                      <a href="./product-details.html"><img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png" alt=""></a>
-                     </div> 
-                     <div class="order-wrapper-text">
-                        <h4><a href="./product-details.html">Saffron (Kesar)</a></h4>
-                        <h5>500 Gms</h5>
-                        <h3>₹398.00</h3>
-                     </div> 
-                  </div>
-                  <div class="order-wrapper">
-                     <div class="order-wrapper-img">
-                      <a href="./product-details.html"><img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png" alt=""></a>
-                     </div> 
-                     <div class="order-wrapper-text">
-                        <h4><a href="./product-details.html">Pistachio (Pista)</a></h4>
-                        <h5>500 Gms</h5>
-                        <h3>₹398.00</h3>
-                     </div> 
-                  </div>
-                  <div class="order-wrapper">
-                     <div class="order-wrapper-img">
-                      <a href="./product-details.html"><img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png" alt=""></a>
-                     </div> 
-                     <div class="order-wrapper-text">
-                        <h4><a href="./product-details.html">Pistachio (Pista)</a></h4>
-                        <h5>500 Gms</h5>
-                        <h3>₹398.00</h3>
-                     </div> 
-                  </div>
-                  <div class="order-wrapper">
-                     <div class="order-wrapper-img">
-                      <a href="./product-details.html"><img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-5.png" alt=""></a>
-                     </div> 
-                     <div class="order-wrapper-text">
-                        <h4><a href="./product-details.html">Pistachio (Pista)</a></h4>
-                        <h5>500 Gms</h5>
-                        <h3>₹398.00</h3>
-                     </div> 
-                  </div> -->
                </div>
 
-               <div class="coupon-code-wrapper">
+               <!-- <div class="coupon-code-wrapper">
                   <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
-               </div>
+               </div> -->
 
                <div class="have-code-part">
                 <div class="input-group mb-3">
@@ -353,8 +313,12 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="cart-total-text-1">Subtotal</td>
-                      <td class="cart-total-text-2">₹398.00</td>
+                      <td class="cart-total-text-1"><?=$this->lang->line('Sub Total')?>
+                      <br>
+                      (<?=($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)</td>
+                      <td class="cart-total-text-2">
+                        <span>₹</span> 
+                        <span>398.00</span></td>
                     </tr>
                     <tr>
                       <td class="cart-total-text-1">Delivery Charges</td>
@@ -392,6 +356,85 @@
       </div>
     </div> 
   </section>
+  <input type="hidden" name="" id="s_charge" value="<?=$this->utility->safe_b64encode($calc_shiping)?>">
+    <input type="hidden" name="" id="shipping_charge"
+        value="<?=(isset($calc_shiping) && $calc_shiping != '' ) ? number_format((float)$calc_shiping,2,'.','') : '0.00'?>">
+    <input type="hidden" name="" id="AddressNotInRange" value="<?=$AddressNotInRange?>">
+    <input type="hidden" name="" id="checkAddress" value="<?=(!empty($userAddress) ? "1" : "0")?>">
+    <input type="hidden" name="" id="CheckisSelfPickup"
+        value="<?=($this->session->userdata('isSelfPickup') == '' || $this->session->userdata('isSelfPickup') == '0') ? "0" : "1"?>">
+
+    </div>
+    <?php if($GatewayType == '1'){?>
+    <form name='razorpayform' action="<?php echo base_url().'checkout/verify';?>" method="POST">
+        <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+        <input type="hidden" name="razorpay_signature" id="razorpay_signature">
+    </form>
+    <?php }elseif ($GatewayType == '2') { ?>
+    <input type="hidden" name="publishableKey" id="publishableKey">
+
+    <form id="stipeForm" action="<?php echo base_url().'checkout/stripepost';?>" method="post">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<?php echo $publishableKey?>" data-amount="<?=$amount?>" data-name="<?=$this->siteTitle?>"
+            data-description="<?=$this->siteTitle?>" data-image="<?=$this->siteLogo?>"
+            data-currency="<?=$currency_code?>" data-email="<?=$user_email?>">
+        </script>
+    </form>
+
+    <?php }else{ ?>
+    <!-- <div id="paytm-checkoutjs" style="display: none"></div> -->
+    <?php } ?>
+    <script>
+
+    </script>
+    <input type="hidden" id="razerData" data-json='<?=$data?>'>
+    <input type="hidden" id="paytm" data-json='<?=$paytm?>'>
+</section>
+
+
+<script type="text/javascript">
+function onScriptLoad(txnToken, orderId, amount) {
+    // console.log(orderId);
+    var config = {
+        "root": "",
+        "flow": "DEFAULT",
+        "merchant": {
+            "name": '<?=$this->siteTitle?>',
+            "logo": '<?=$this->siteLogo?>'
+        },
+        "style": {
+            "headerBackgroundColor": "#8dd8ff",
+            "headerColor": "#3f3f40"
+        },
+        "data": {
+            "orderId": orderId,
+            "token": txnToken,
+            "tokenType": "TXN_TOKEN",
+            "amount": amount,
+        },
+        "handler": {
+            "notifyMerchant": function(eventName, data) {
+                if (eventName == 'SESSION_EXPIRED') {
+                    alert("Your session has expired!!");
+                    location.reload();
+                }
+            }
+        }
+    };
+
+    if (window.Paytm && window.Paytm.CheckoutJS) {
+        // console.log('in');
+        // initialze configuration using init method
+        window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+            console.log('Before JS Checkout invoke');
+            // after successfully update configuration invoke checkoutjs
+            window.Paytm.CheckoutJS.invoke();
+        }).catch(function onError(error) {
+            console.log("Error => ", error);
+        });
+    }
+}
+</script>
 
   <!-- =============place order popup=========== -->
   <div id="myModal" class="modal">
