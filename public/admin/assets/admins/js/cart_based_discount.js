@@ -5,6 +5,7 @@ $(document).ready(function () {
 
 $("#frmAddEdit").validate({
   rules: {
+    branch: { required: true },
     cart_amount: {
       required: true,
       number: true,
@@ -31,6 +32,11 @@ $("#frmAddEdit").validate({
       number: true,
       range: [1, 99],
     },
+    messages:{
+      branch: { required: "Please select branch" },
+      cart_amount:{required:"Please enter cart amount",number:"Please enter value in digit only",remote:"Discount is already available on this amount"},
+      discount_percentage:{required:"Please enter discount price",number:"Please enter value in digit only",rage:"Please enter range between 1 to 99"}
+    }
     submitHandler: function (form) {
       $("body").attr("disabled", "disabled");
       $("#btnSubmit").attr("disabled", "disabled");
