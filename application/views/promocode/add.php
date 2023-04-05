@@ -32,8 +32,8 @@
                                         <select class="form-control" name="branch" id="branch1">
                                             <option value="">Select Branch</option>
                                             <<?php foreach ($branchList as $key => $value): ?>
-                                            <!-- <option value="<?=$value->id?>"><?=$value->name?></option> -->
-                                            <option value="<?=base_url().'offer/add/'.$value->id?>" <?=($value->id == $this->uri->segment(3)) ? "SELECTED" : "" ?>><?=$value->name?></option>
+                                        
+                                            <option value="<?= $value->id?>"><?=$value->name?></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
