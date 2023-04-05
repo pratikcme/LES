@@ -259,7 +259,7 @@ class User_Controller extends MY_Controller
             $my_cart[$key]->product_name = $product_image[0]->name;
             $my_cart[$key]->image = $product_image[0]->image;
         }
-        // dd($my_cart);
+        dd($my_cart);
         $data['mycart'] = $my_cart;
         $data['notification'] = $this->common_model->userNotify();
         $data['userInformation'] = $this->users->getUserDetails();
