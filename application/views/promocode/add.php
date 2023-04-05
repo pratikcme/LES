@@ -29,7 +29,7 @@
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                         <label for="branch">Branch</label>
-                                        <select class="form-control" name="branch" id="branch1" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                        <select class="form-control" name="branch" id="branch1">
                                             <option value="">Select Branch</option>
                                             <<?php foreach ($branchList as $key => $value): ?>
                                             <!-- <option value="<?=$value->id?>"><?=$value->name?></option> -->
