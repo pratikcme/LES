@@ -376,12 +376,11 @@
                                 }
                                 $f_amount = $tot-$shopping_based_discount;
                                  echo number_format((float)$f_amount,2);
-                                 
+
                             } ?>
                           </span>
                         </td>
                       </tr>
-
                   </tbody>
                 </table>
             </div>
