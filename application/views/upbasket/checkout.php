@@ -317,8 +317,9 @@
                       <br>
                       (<?=($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)</td>
                       <td class="cart-total-text-2">
-                        <span>₹</span> 
-                        <span>398.00</span></td>
+                        <span class='notranslate'><?=$this->setCurrency?></span> 
+                        <span id="checkout_subtotal"><?=$getMycartSubtotal?></span>
+                      </td>
                     </tr>
                     <tr>
                       <td class="cart-total-text-1">Delivery Charges</td>
