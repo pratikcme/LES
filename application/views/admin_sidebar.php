@@ -292,12 +292,36 @@
         </li>
     </ul>
 </li> -->
+// Discount //
+
 <li>
-    <a class="<?php if ($this->uri->segment(1) == 'offer') { ?> active <?php } ?>" href="<?php echo base_url() . 'offer'; ?>">
-        <i class="fa fa-crosshairs"></i>
-        <span>Offer</span>
+    <a class="<?php if (($this->uri->segment(1) == 'offer' || $this->uri->segment(1) == 'promocode_manage' || $this->uri->segment(1) == 'cart_amount_based_discount' )) { ?> active <?php } ?>" href="#">
+        <i class="fa fa-users"></i>
+        <span>Terms</span>
+        <i class="fas fa-chevron-right <?=($this->uri->segment(1) == 'admins' && ($this->uri->segment(1) == 'offer' || $this->uri->segment(1) == 'promocode_manage' || $this->uri->segment(1) == 'cart_amount_based_discount' )) ? 'rotate' : ''?>"></i>
     </a>
+    <ul>
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'offer') { ?> active <?php } ?>" href="<?php echo base_url() . 'offer'; ?>">
+            <i class="fa fa-crosshairs"></i>
+                <span>Offer</span>
+            </a>
+        </li>
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'promocode_manage') { ?> active <?php } ?>" href="<?php echo base_url() . 'promocode_manage'; ?>">
+            <i class="fa fa-code" aria-hidden="true"></i>
+                <span>Manage Promocode</span>
+            </a>
+        </li>
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'cart_amount_based_discount') { ?> active <?php } ?>" href="<?php echo base_url() . 'cart_amount_based_discount'; ?>">
+            <i class="fa fa-percentage" aria-hidden="true"></i>
+                <span>Cart Based Discount</span>
+            </a>
+        </li>
+    </ul>
 </li>
+
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'pushNotification' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'pushNotification'; ?>">
         <i class="fa fa-file" aria-hidden="true"></i>
