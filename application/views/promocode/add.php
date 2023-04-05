@@ -27,7 +27,16 @@
                      <div class="row">
                          <div class="col-md-6 col-sm-12 col-xs-12 padding-zero">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                              
+                            <div class="form-group">
+                                        <label for="branch">Branch</label>
+                                        <select class="form-control" name="branch" id="branch1" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                            <option value="">Select Branch</option>
+                                            <<?php foreach ($branchList as $key => $value): ?>
+                                            <!-- <option value="<?=$value->id?>"><?=$value->name?></option> -->
+                                            <option value="<?=base_url().'offer/add/'.$value->id?>" <?=($value->id == $this->uri->segment(3)) ? "SELECTED" : "" ?>><?=$value->name?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
                               <div class="form-group">
                                   <label for="name">Name</label>
                                   <input type="text" id="name" name="name" class="form-control">

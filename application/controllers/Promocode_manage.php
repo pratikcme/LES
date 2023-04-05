@@ -20,6 +20,7 @@ class Promocode_manage extends Admin_Controller
         $data['page'] = 'promocode/add';
         $data['js'] = array('promocode.js');
         $data['FormAction'] = base_url().'Promocode_manage/add';
+        $data['branchList'] = $this->this_model->getBranch();
             if($this->input->post()){          
                 $result = $this->this_model->addRecord($this->input->post());
                  if($result){

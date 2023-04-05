@@ -20,6 +20,13 @@ class Promocode_manage_model extends My_model{
         return $this->selectFromJoin($data); 
     }
 
+    public function getBranch(){
+        $data['table'] = 'branch';
+        $data['select'] = ['*'];
+        $data['where'] = ['vendor_id'=>$this->vendor_id,'status'=>'1'];
+        return  $this->selectRecords($data);
+    }
+
  
 
 
