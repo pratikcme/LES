@@ -331,7 +331,6 @@
 
                   <!-- ------sub-tab-3----- -->
                   <div id="subtab-3" class="container tab-pane fade">
-                    <?php dd($order) ?>
                   <?php foreach ($order as $key => $value) {
                       if($value->order_status != '9'){
                         continue;
