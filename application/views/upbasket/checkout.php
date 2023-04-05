@@ -1,3 +1,8 @@
+ <style>
+ span.error{
+  color:red;
+ }
+ </style>
  <!-- ----hero-section--- -->
  <section class="hero-section listing-hero-sec">
     <div class="container">
