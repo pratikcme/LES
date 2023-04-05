@@ -9,14 +9,16 @@ class Cart_amount_based_discount_model extends My_model{
 
 
     public function allData($id = ''){
+     
         if($id != ''){
-            $data['where']['id'] = $id;
+            $data['where']['sbd.id'] = $id;
         }
-        $data['table'] = TABLE_SHOPPING_BASED_DISCOUNT;
-        $data['select'] = ['*'];
-        $data['where']['branch_id'] = $this->branch_id;
+        $data['table'] = TABLE_SHOPPING_BASED_DISCOUNT.' as sbd';
+        $data['select'] = ['sbd.*','b.name as branch_name'];
+        $data['join'] = ['branch as b'=>['b.id = sbd.branch_id','LEFT']];
+        $data['where']['b.vendor_id'] = $this->vendor_id;
         $data['order'] = 'id desc';
-        return $this->selectRecords($data);        
+        return $this->selectFromJoin($data);
     }
 
  
