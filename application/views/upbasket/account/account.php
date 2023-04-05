@@ -355,7 +355,7 @@
                     ?>
                    <div class="main-accordion">
                       <div class="accordion-heading">
-                        <a href="javascript:" class="cancel-btn "><?=$status?></a>
+                        <a href="javascript:" class="delivered-btn"><?=$status?></a>
 
                         <div class="my-order-text">
                           <h3>Order Number: <span><?=str_replace('Order','', $value->order_no);?></span></h3>
