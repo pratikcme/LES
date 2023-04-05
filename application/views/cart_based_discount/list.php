@@ -71,7 +71,7 @@
                                           <tr>
                                            
                                             <td><?=$key+1;?></td>
-                                            <td><?=$value->branch;;?></td>
+                                            <td><?=$value->branch_name;;?></td>
                                             <td><?=$value->cart_amount;?></td>
                                             <td><?=$value->discount_percentage;?></td>
                                             <td> 
