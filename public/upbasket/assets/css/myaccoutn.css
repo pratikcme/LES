@@ -572,9 +572,9 @@
     color: var(--common-btn-color);
 }
 
-.address-popup .modal-body {
+/* .address-popup .modal-body {
     padding: 50px;
-}
+} */
 
 .address-popup .modal-body h3 {
     font-family: 'Poppins';
