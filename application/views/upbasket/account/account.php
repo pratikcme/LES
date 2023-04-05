@@ -631,43 +631,79 @@
       <div class="modal-body">
           <div class="accordion-content-3">
               <h3>Add Address</h3>
-              <form action="">
+              <form method="post" id="RegisterForm" action="https://stagging.launchestore.com/users_account/users/add_address" class="address-form" autocomplete="off">
                 <div class="row">
-                  <div class="col-lg-6">
-                    <label for="fname" class="form-label">First Name<span>*</span></label>
-                    <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Mike">
+                  <div class="col-lg-12">
+                    <label for="fname" class="form-label">Full Name<span>*</span></label>
+                    <input type="text" name="fname" class="form-control fname" id="fname" aria-describedby="fname" placeholder="Full Name">
                   </div>
 
-                  <div class="col-lg-6">
+                  <!-- <div class="col-lg-6">
                     <label for="lname" class="form-label">Last Name<span>*</span></label>
                     <input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Hussy">
+                  </div> -->
+
+                  <div class="col-lg-12">
+                    <label for="text" class="form-label">Mobile Number<span>*</span></label>
+                    <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="Mobile number">
                   </div>
 
                   <div class="col-lg-12">
-                    <label for="text" class="form-label">Country / Region<span>*</span></label>
-                    <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="+91 99989 99899">
+                    <label for="add" class="form-label">Location<span>*</span></label>
+                    <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location"  aria-describedby="add"  placeholder="Enter Location" autocomplete="off">
+                    <label for="departure_address" class="error" style="display: none;"></label>
+                    <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
+                    <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">
                   </div>
 
                   <div class="col-lg-12">
-                    <label for="add" class="form-label">Street address<span>*</span></label>
-                    <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Address">
-                  </div>
-
-                  <div class="col-lg-12">
-                    <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Apartment, suite, etc.">
+                    <input type="text" class="form-control landmark" aria-describedby="add" placeholder="Landmark">
                   </div>
 
                   <div class="col-lg-6">
                     <div class="select-box">
                       <label for="city" class="form-label">Town / City<span>*</span></label>
-                    <select class="form-select" aria-label="city">
-                      <option selected>Ahmedabad</option>
-                      <option value="1">Surt</option>
-                      <option value="2">Baroda</option>
-                      <option value="3">Ohter</option>
-                    </select>
+                      <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="city" autocomplete="off">
+                    </div>
                   </div>
+
+                  <div class="col-lg-6">
+                    <div class="select-box">
+                      <label for="state" class="form-label">State<span>*</span></label>
+                      <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="State" autocomplete="off">
+                    </div>
                   </div>
+
+                  <div class="col-lg-6">
+                    <div class="select-box">
+                      <label for="country" class="form-label">Country<span>*</span></label>
+                      <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="country" autocomplete="off">
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="select-box">
+                      <label for="pincode" class="form-label">Pincode<span>*</span></label>
+                      <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="pincode" autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="select-box">
+                      <label for="address" class="form-label">Address<span>*</span></label>
+                      <textarea type="text" name="address" class="form-control pincode" id="address" placeholder="Enter Address" autocomplete="off"></textarea>
+                    </div>
+                  </div>
+                  <!-- <div class="col-lg-6">
+                    <div class="select-box">
+                      <label for="state" class="form-label">State<span>*</span></label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Gujarat</option>
+                        <option value="1">Surt</option>
+                        <option value="2">Baroda</option>
+                        <option value="3">Ohter</option>
+                      </select>
+                    </div>
+                  </div> -->
 
                   <div class="col-lg-6">
                     <div class="select-box">
@@ -681,24 +717,12 @@
                   </div>
                   </div>
 
-                  <div class="col-lg-6">
-                    <div class="select-box">
-                      <label for="state" class="form-label">State<span>*</span></label>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Gujarat</option>
-                      <option value="1">Surt</option>
-                      <option value="2">Baroda</option>
-                      <option value="3">Ohter</option>
-                    </select>
-                  </div>
-                  </div>
-
-                  <div class="col-lg-6">
+                  <!-- <div class="col-lg-6">
                     <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
                     <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="380050">
-                  </div>
+                  </div> -->
                   <div class="save-btn text-center">
-                    <button type="submit" class=" signin-btn-green">Save</button>
+                    <button type="submit" id="addAddress" class=" signin-btn-green">Save</button>
                   </div>
                 </div>
               </form>  
