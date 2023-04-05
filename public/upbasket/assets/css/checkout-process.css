@@ -499,11 +499,16 @@ input:focus {
     background: #2BAE4A !important;
     box-shadow: 0px 4px 10px rgb(43 174 74 / 20%);
     border-radius: 90px;
-    position: relative;
-    top: -45px;
-    left: 298px;
+    position: absolute;
+    top: 0;
+    right: 76px;
     text-align: center !important;
     padding-left: 47px !important;
+}
+
+.promo-apply-wrapper {
+    position: relative;
+    width: 100%;
 }
 
 .place-order-btn {

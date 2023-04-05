@@ -298,12 +298,13 @@
                <div class="have-code-part">
                 <div class="input-group mb-3">
                   <label for="text">If you have a coupon code, please apply it below.</label><br>
-                  <input type="text" class="form-control" placeholder="Coupon Code" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                  <span class="error" id="promo_err"></span>
-                  <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
-                </div>
+                    <div class="promo-apply-wrapper">
+                      <input type="text" class="form-control" placeholder="Coupon Code" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      <span class="error" id="promo_err"></span>
+                      <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
+                    </div>
+                  </div>
                </div>
-
                <div class="cart-totals-part">
                 <table >
                   <thead class="head-title">
