@@ -1195,6 +1195,7 @@ class product_model extends My_model
 
     public function check_display_priority($postData)
     {
+        dd($postData);
         if ($postData['product_id'] != '') {
             $data['where']['id !='] = $postData['product_id'];
         }
