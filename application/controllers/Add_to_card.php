@@ -31,7 +31,7 @@ class Add_to_card extends User_Controller
 			$getWeight = $this->this_model->getWeightName($result[0]->weight_id);
 		}
 
-		dd($result);
+		dd($getWeight);
 		$this->load->model('common_model');
 		$default_product_image = $this->common_model->default_product_image();
 		// dd($default_product_image);
@@ -105,7 +105,9 @@ class Add_to_card extends User_Controller
 					'image' => $result[0]->image,
 					'total' => $result[0]->discount_price * $quantity,
 					'product_weight_id' => $result[0]->pw_id,
-					'food_type' =>$result[0]->food_type
+					'food_type' =>$result[0]->food_type,
+					'weight_no'=>$result[0]->weight_no,
+					'weight_name'=>$getWeight[0]->name
 				);
 
 				// print_r($cart_item);
