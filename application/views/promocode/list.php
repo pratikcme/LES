@@ -47,6 +47,11 @@
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 200px;">Branch 
+                                        </th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">Percentage 
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
@@ -87,6 +92,7 @@
                                            
                                             <td><?=$key+1;;?></td>
                                             <td><?=$value->name;?></td>
+                                            <td><?=$value->branch_name;?></td>
                                             <td><?=$value->percentage;?></td>
                                             <td><?=$value->start_date?></td>
                                             <td><?=$value->end_date?></td>
