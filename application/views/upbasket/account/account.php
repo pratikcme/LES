@@ -456,7 +456,7 @@
                       <td>
                         <div class="cart-detail-text">
                           <h4><?=$value->name?></h4>
-                          <h5><?=$this->value->weight_no .' '.$this->weight_name?></h5>
+                          <h5><?=$value->value->weight_no .' '.$value->weight_name?></h5>
                         </div>
                       </td>
                       <td>
