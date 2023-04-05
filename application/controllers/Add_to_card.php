@@ -30,8 +30,6 @@ class Add_to_card extends User_Controller
 			$result = $this->this_model->DefaultProductAddInCart($varient_id);
 			$getWeight = $this->this_model->getWeightName($result[0]->weight_id);
 		}
-
-		dd($getWeight);
 		$this->load->model('common_model');
 		$default_product_image = $this->common_model->default_product_image();
 		// dd($default_product_image);
