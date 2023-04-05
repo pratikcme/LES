@@ -33,7 +33,7 @@
                                             <option value="">Select Branch</option>
                                             <<?php foreach ($branchList as $key => $value): ?>
                                         
-                                            <option <?= ($value->id == $editData[0]->branch_id)?> value="<?= $value->id?>"><?=$value->name?></option>
+                                            <option <?= ($value->id == $editData[0]->branch_id)?"SELECTED":""?> value="<?= $value->id?>"><?=$value->name?></option>
                                             <?php endforeach ?>
                                         </select>
                                         <label for="branch" style="color: red" class="error"><?php echo @form_error('branch'); ?></label>
