@@ -1,6 +1,6 @@
  <style>
- pac-container {  
-    z-index: 10000 !important;
+ .pac-container {  
+    z-index: 9999999 !important;
     display: block !important;
 }
  </style>
