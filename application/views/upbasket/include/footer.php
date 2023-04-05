@@ -45,7 +45,7 @@
    	<script type="text/javascript">
 
       function initAutocomplete(id) {
-
+        alert(id);
               var res = id.split("_");
               geo = res[0];
               console.log(res);
