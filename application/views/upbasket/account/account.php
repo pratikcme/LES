@@ -187,7 +187,7 @@
                             <div class="img-about-text">
                               <h3><?=$v->product_name?></h3>
                               <h5><?=$v->weight_number .' '.$v->weight_name ?></h5>
-                              <p>Qty: <span><?=$value->quantity?></span></p>
+                              <p>Qty: <span><?=$v->quantity?></span></p>
                             </div>
                           </div>
 
@@ -281,7 +281,7 @@
                             <div class="img-about-text">
                               <h3><?=$v->product_name?></h3>
                               <h5><?=$v->weight_number .' '.$v->weight_name ?></h5>
-                              <p>Qty: <span><?=$value->quantity?></span></p>
+                              <p>Qty: <span><?=$v->quantity?></span></p>
                             </div>
                           </div>
 
