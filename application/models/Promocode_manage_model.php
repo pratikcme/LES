@@ -67,6 +67,7 @@ class Promocode_manage_model extends My_model{
 
     public function updateRecord($postData){
          $update = array(
+            'branch_id'=>$postData['branch'],
             'name' => $postData['name'],
             'percentage' => $postData['percentage'],
             'max_use' => $postData['max_use'],
