@@ -36,7 +36,7 @@ class Cart_amount_based_discount_model extends My_model{
     public function addRecord($postData){
         // dd($postData);
         $insert = array(
-            'branch_id'=>$this->branch_id,
+            'branch_id'=> $postData['branch'],
             'cart_amount' => $postData['cart_amount'],
             'discount_percentage' => $postData['discount_percentage'],
             'dt_created' => DATE_TIME,
@@ -61,6 +61,7 @@ class Cart_amount_based_discount_model extends My_model{
 
     public function updateRecord($postData){
          $update = array(
+            'branch_id'=>  $postData['branch'],
             'cart_amount' => $postData['cart_amount'],
             'discount_percentage' => $postData['discount_percentage'],
             'dt_updated' => DATE_TIME
