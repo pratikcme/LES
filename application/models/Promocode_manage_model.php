@@ -32,7 +32,7 @@ class Promocode_manage_model extends My_model{
 
   ## Add Update ##
     public function addRecord($postData){
-
+        print_r($postData);exit;
         $insert = array(
             'branch_id'=>$this->branch_id,
             'name' => $postData['name'],
