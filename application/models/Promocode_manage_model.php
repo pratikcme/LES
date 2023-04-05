@@ -13,7 +13,7 @@ class Promocode_manage_model extends My_model{
         }
         $data['table'] = TABLE_PROMOCODE;
         $data['select'] = ['*'];
-        $data['where']['branch_id'] = $this->branch_id;
+        // $data['where']['branch_id'] = $this->branch_id;
         $data['order'] = 'id desc';
         return $this->selectRecords($data);        
     }
