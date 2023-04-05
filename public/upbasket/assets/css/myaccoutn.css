@@ -1,3 +1,4 @@
+text/css myaccoutn.css (ASCII text)
 /* .my-account-section{
     background: #F5F5F5;
 } */
@@ -14,11 +15,6 @@
 .my-account-section .title::after {
     /* left: 610px !important; */
     animation-name: accounttitlebefore !important;
-}
-
-.fade:not(.show) {
-    opacity: 0;
-    display: none;
 }
 
 @keyframes accounttitlebefore {
@@ -181,7 +177,7 @@
     border-radius: 90px;
     padding-left: 25px;
     height: 45px;
-    /* margin-bottom: 30px; */
+    margin-bottom: 30px;
 }
 
 .myaccout-detail-tab input:focus {
@@ -556,8 +552,6 @@
 
 .address-popup .modal-content {
     position: relative;
-    width: 100% !important;
-    max-width: 100% !important;
 }
 
 .address-popup .btn-close {
@@ -576,12 +570,6 @@
     padding: 50px;
 }
 
-.address-popup .modal-content {
-    position: relative;
-    width: 100% !important;
-    max-width: 100% !important;
-}
-
 .address-popup .modal-body h3 {
     font-family: 'Poppins';
     font-size: 30px;
@@ -592,10 +580,25 @@
     margin-bottom: 50px;
 }
 
-.address-popup .modal-body {
+/* .address-popup .modal-body{
     height: 500px;
     overflow: hidden;
     overflow-y: scroll;
+} */
+.address-popup .accordion-content {
+    display: block !important;
+}
+
+.address-popup .modal-content {
+    position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.address-popup .modal-dialog {
+    width: 100%;
+    max-width: 900px;
+    margin: 0px auto;
 }
 
 
@@ -3143,6 +3146,10 @@
         background-position-x: 260px;
         margin-bottom: 30px;
         width: 100%;
+    }
+
+    .address-popup .modal-body {
+        padding: 0px !important;
     }
 }
 
