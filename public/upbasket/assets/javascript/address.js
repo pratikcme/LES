@@ -234,6 +234,7 @@ var ADDRESS = function () {
         $('#departure_longitude').val('');
 
     })
+    alert();
     var handleAddressForm = function () {
         $('#RegisterForm').validate({
             rules: {
