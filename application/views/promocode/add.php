@@ -36,7 +36,7 @@
                                             <option value="<?= $value->id?>"><?=$value->name?></option>
                                             <?php endforeach ?>
                                         </select>
-                                        <label for="name" style="color: red" class="error"><?php echo @form_error('branch'); ?></label>
+                                        <label for="branch" style="color: red" class="error"><?php echo @form_error('branch'); ?></label>
                                     </div>
                               <div class="form-group">
                                   <label for="name">Name</label>
