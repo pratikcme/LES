@@ -829,6 +829,29 @@ input:focus {
     }
 }
 
+/* select-new-css */
+.accordion-content-3 .country-select select {
+    background: #FFFFFF;
+    border: 1px solid #C5CCD5;
+    box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+    border-radius: 90px;
+    padding-left: 25px;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    height: 45px;
+    appearance: none;
+    background-image: url(../images/selectarrow.png);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position-y: 19px;
+    background-position-x: 620px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+
 /* shopping-address */
 .new-address button {
     background: var(--common-btn-color);
