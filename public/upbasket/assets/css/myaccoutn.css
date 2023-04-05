@@ -556,6 +556,8 @@
 
 .address-popup .modal-content {
     position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
 }
 
 .address-popup .btn-close {
