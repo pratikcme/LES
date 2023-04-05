@@ -18,7 +18,6 @@ class Add_to_card extends User_Controller
 	}
 
 	public function addProducToCart(){
-		dd($_SESSION);
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		if ($this->input->post()) {
@@ -32,6 +31,7 @@ class Add_to_card extends User_Controller
 			$getWeight = $this->this_model->getWeightName($result[0]->weight_id);
 		}
 
+		dd($result);
 		$this->load->model('common_model');
 		$default_product_image = $this->common_model->default_product_image();
 		// dd($default_product_image);
