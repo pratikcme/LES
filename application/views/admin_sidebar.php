@@ -239,21 +239,38 @@
                 <span>Currency</span>
             </a>
         </li>
-        <li>
-            <a class="<?php if ($this->uri->segment(1) == 'delivery_charge') { ?>< active ><?php } ?><" href="<?php echo base_url() . 'delivery_charge/'; ?>">
-                <i class="fa fa-cog"></i>
-                <span>Delivery Charge</span>
-            </a>
+       
+       
+        <li> 
+        <a
+        class="<?php if ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') { ?> active <?php } ?>"
+        href="#"
+    >
+        <i class="fa fa-cog"></i>
+        <span>Settings</span>
+        <i
+            class="fas fa-chevron-right <?=($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') ? 'rotate' : '' ?>"
+        ></i>
+    </a> 
+            <ul> 
+                <li>
+                    <a class="<?php if ($this->uri->segment(1) == 'delivery_charge') { ?>< active ><?php } ?><" href="<?php echo base_url() . 'delivery_charge/'; ?>">
+                        <i class="fa fa-cog"></i>
+                        <span>Delivery Charge</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="<?php if ($this->uri->segment(1) == 'time_slot' && $this->uri->segment(2) == 'time_slot_list' || $this->uri->segment(2) == 'time_slot_profile') { ?> active <?php } ?>"
+                        href="<?php echo base_url() . 'time_slot/time_slot_list/'; ?>"
+                    >
+                        <i class="fa fa-clock-o"></i>
+                        <span>Time Slot</span>
+                    </a>
+                </li>
+            </ul>
         </li>
-        <li>
-            <a
-                class="<?php if ($this->uri->segment(1) == 'time_slot' && $this->uri->segment(2) == 'time_slot_list' || $this->uri->segment(2) == 'time_slot_profile') { ?> active <?php } ?>"
-                href="<?php echo base_url() . 'time_slot/time_slot_list/'; ?>"
-            >
-                <i class="fa fa-clock-o"></i>
-                <span>Time Slot</span>
-            </a>
-        </li>
+    
     </ul>
 </li>
 <!-- <li>
