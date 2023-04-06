@@ -4,6 +4,9 @@
  }
  </style>
  <!-- ----hero-section--- -->
+ <?php if(isset($Host)){ ?>
+<script type="application/javascript" src="<?=$Host.'/merchantpgpui/checkoutjs/merchants/'.$MID ?>.js"></script>
+<?php } ?>
  <section class="hero-section listing-hero-sec">
     <div class="container">
       <!-- <h2>Home /<span>Checkout</span></h2> -->
