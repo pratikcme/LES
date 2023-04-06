@@ -438,7 +438,7 @@ class vendor_model extends My_model
         $email = $this->input->post('email');
         $data['select'] = ['email'];
         $data['where'] = ['email' => $email];
-        $data['table'] = "vendor";
+        $data['table'] = "branch";
         $result = $this->selectRecords($data);
 
         if ($result) {
@@ -931,6 +931,7 @@ class vendor_model extends My_model
     }
 
     public $order_column = array("name", "owner_name", "phone_no", "email");
+
     public function make_query($postData)
     {
 
