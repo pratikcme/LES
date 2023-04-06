@@ -233,6 +233,7 @@ class Users_model extends My_model
         ];
         $data['update']['status'] = '1';
         $resl = $this->updateRecords($data);
+        lq();
     }
 
     public function getEditAddress($id)
