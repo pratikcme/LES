@@ -462,7 +462,6 @@ class Checkout_model extends My_model
         }
         $sub_total = number_format((float)($getMycartSubtotal - $discountValue), 2, '.', '');
         $total_price = number_format((float)$sub_total, 2, '.', '');
-        echo $total_price;die;
 
         if (empty($promocode)) {
             $response["success"] = 0;
