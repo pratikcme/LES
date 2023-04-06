@@ -238,13 +238,7 @@ var ADDRESS = function () {
         })
         errorNone();
     })
-    $(document).on('click', '.add_form_action', function () {
 
-        $('#RegisterForm')[0].reset();
-        $('#departure_latitude').val('');
-        $('#departure_longitude').val('');
-
-    })
     // var handleAddressForm = function () {
     $('#RegisterForm').validate({
         rules: {
