@@ -123,7 +123,7 @@
     </a>
     <ul>
         <li>
-            <a class="<?php if ($this->uri->segment(1) == 'web_setting' && $this->uri->segment(2) == 'fav_image') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_section_one'; ?>">
+            <a class="<?php if ($this->uri->segment(1) == 'web_setting' && $this->uri->segment(2) == 'fav_image') { ?> active <?php } ?>" href="<?php echo base_url() . 'web_setting/fav_image'; ?>">
                 <i class="fa fa-edit"></i>
                 <span>Favicon Image</span>
             </a>
