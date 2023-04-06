@@ -168,7 +168,7 @@ var CHECKOUT = (function () {
     }
 
     var promocode = $("#applied_promo").val();
-
+    alert(time_slot_id);
     // alert('All services are disabled');
     // return false;
     if (paymentOption == 0) {
