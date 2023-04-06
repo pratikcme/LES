@@ -237,6 +237,7 @@ var ADDRESS = function () {
         errorNone();
     })
     $(document).on('click', '.add_form_action', function () {
+        alert(language.js_add_address);
         $('#address_title').html(language.js_add_address);
         $('#RegisterForm')[0].reset();
         $('#departure_latitude').val('');
