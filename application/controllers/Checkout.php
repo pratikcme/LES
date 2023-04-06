@@ -63,6 +63,7 @@ class Checkout extends User_Controller
       }
     } else {
       $my_cart = $this->product_model->getMyCart(); //return value of mycart and 
+      dd($my_cart);
       foreach ($my_cart as $key => $value) {
         $myCartValue += $value->discount_price * $value->quantity;
 
