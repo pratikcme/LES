@@ -63,20 +63,16 @@ class Checkout extends User_Controller
       }
     } else {
       $my_cart = $this->product_model->getMyCart(); //return value of mycart and 
-      $i = 0;
-      foreach ($my_cart as $key => $value) {
-        if ($i == 2) {
-          $myCartValue += $value->discount_price * $value->quantity;
-          echo "product" . $myCartValue . "<br>";
-          $gst = $this->api_model->getProductGst($value->product_id);
-          echo "gst" . $gst . "<br>";
-          $gst_amount = ($value->discount_price * $gst) / 100;
 
-          $total_gst += $gst_amount * $value->quantity;
-          echo "tot_gst" . $total_gst;
-          exit;
-        }
-        $t++;
+      foreach ($my_cart as $key => $value) {
+
+        $myCartValue += $value->discount_price * $value->quantity;
+
+        $gst = $this->api_model->getProductGst($value->product_id);
+
+        $gst_amount = ($value->discount_price * $gst) / 100;
+
+        $total_gst += $gst_amount * $value->quantity;
       }
     }
     $data['TotalGstAmount'] = number_format((float)$total_gst, '2', '.', '');
