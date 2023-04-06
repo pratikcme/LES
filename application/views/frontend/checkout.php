@@ -862,7 +862,18 @@ function onScriptLoad(txnToken, orderId, amount) {
     </div>
 </div>
 <style>
+.date-time-common{
+    padding: 25px 15px;
+    background-color: #f7f7f7; 
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #999;
+}
 
+.ui-widget.ui-widget-content {
+    width: 100% !important;
+    left:0px !important;
+}
 .ui-datepicker-calendar .ui-state-default {
     width: 100% !important;
 }
