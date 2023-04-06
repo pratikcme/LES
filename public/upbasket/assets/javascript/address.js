@@ -194,7 +194,7 @@ var ADDRESS = function () {
             data: { id: id },
             dataType: 'json',
             success: function (output) {
-                $('#address_title').html(language.update_address);
+                $('#address_title').html(language.js_update_address);
                 $("#departure_address").rules("remove", "required");
                 $('.fname').val(output.result[0].name);
                 $('.mob_no').val(output.result[0].phone);
