@@ -634,7 +634,7 @@ label.error.mobile_verfication {
                                     <span class="seperator">:</span>
                                     <p><span class='notranslate'><?=$this->siteCurrency?></span>
                                         <span id="checkout_final">
-                                            <?php if(isset($calc_shiping) && is_numeric($calc_shiping)) {
+                                <?php if(isset($calc_shiping) && is_numeric($calc_shiping)) {
                                     if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
                                        $to = $getMycartSubtotal+$calc_shiping + $TotalGstAmount; 
                                     }else{

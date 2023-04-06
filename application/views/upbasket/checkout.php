@@ -71,28 +71,27 @@
               <div class="main-accordion">
                 <div class="accordion-heading">Shipping address</div>
                 <div class="accordion-content accordion-content-3">
+                <?php foreach ($get_address as $key => $value) { 
+                    $status = ($value->status == '0') ? 'is_default ' : ''; ?>
                   <div class="address-wrapper">
                     <div class="ship-check text-end">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="id1">
+                        <input class="from_account form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" <?=($value->status == '1') ? 'checked' : '' ?>>
                         <label class="form-check-label" for="id1">
-                            default
-                        </label>
+                        <?=$this->lang->line('Default')?>
                       </div>
                     </div>
 
-                    <div class="address-wrp d-flex">
-                      <div class="address-text">
-                        <h3>Office</h3>
-                        <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
-                          America</p>
-                      </div>
-                      <div class="address-icons">
-                        <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
-                      </div>
+                    <div class="address-text mt-3">
+                      <h3><?=$value->name?></h3>
+                      <p><?=$value->address?></p>
+                    </div>
+                    <div class="address-icons mt-3">
+                      <a href="javascript:" class="add-address-btn edit_address" data-id='<?=$this->utility->safe_b64encode($value->id)?>'><i class="fa-solid fa-pen-to-square"></i></a>
+                      <a href="javascript:" class="delet-address-btn remove_address" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                   </div>
+                <?php } ?>
                   <div class="new-address text-end">
                       <button type="button" class="new-add">New Address</button>
                   </div>
