@@ -25,6 +25,14 @@ class Web_setting extends Admin_Controller
 
     public function web_logo()
     {
-        // $this->load->view('profile', $data);
+
+        $email = $this->session->userdata('email');
+        $data['app_result'] = $this->vendor_model->vendorByIdEmail($email);
+
+
+        if ($this->input->post()) {
+            $this->vendor_model->favicon_image($this->input->post());
+        }
+        $this->load->view('web_setting/web_logo', $data);
     }
 }
