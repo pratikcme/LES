@@ -1124,7 +1124,6 @@ class Sell_development_model extends My_model
             exit;
         }
 
-        dd("outer");
         // if (isset($postdata['case']) && $postdata['case'] == 'Cash') {
         //     $payment_type = '0';
         // }
@@ -2285,6 +2284,8 @@ class Sell_development_model extends My_model
             $this->db->like("v.name", $postData["search"]["value"]);
             $this->db->or_like("c.customer_name", $postData["search"]["value"]);
             $this->db->or_like("c.customercode", $postData["search"]["value"]);
+            // 
+            $this->db->or_like("po.order_no", $postData["search"]["value"]);
             // $this->db->or_like("po.dt_added as", $postData["search"]["value"]);
             $this->db->or_like("po.payable_amount", $postData["search"]["value"]);
             $this->db->group_end();
