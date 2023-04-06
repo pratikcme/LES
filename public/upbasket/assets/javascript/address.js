@@ -134,6 +134,7 @@ var ADDRESS = function () {
 
 
     var query_string = $('#get_parameter').val();
+    alert(query_string);
     if (query_string == 'change' || query_string == 'my_account') {
         $('#tab-1').removeClass('active show');
 
