@@ -156,10 +156,6 @@ class Users_model extends My_model
             'dt_added' => strtotime(DATE_TIME),
             'dt_updated' => strtotime(DATE_TIME),
         ];
-        dd($data['insert']);
-        // echo '2';
-        // print_r($data['insert']);
-        // exit();
         return $this->insertRecord($data);
     }
 
