@@ -263,11 +263,11 @@
                   </div>
                   </div>
             -->
-            <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
-                        <div class="date-wrap">
-                            <div id="datepicker" class="datepicker"></div>
-                        </div>
-                        <?php } ?>
+                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
+                  <div class="date-wrap">
+                      <div id="datepicker" class="datepicker"></div>
+                  </div>
+                <?php } ?>
                 </div>
                 </div>
                 <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
