@@ -124,6 +124,7 @@ class Checkout extends User_Controller
     $data['time_slot'] = $this->this_model->getTimeSlot();
     // dd($data['time_slot']);
     $getActivePaymentMethod = $this->this_model->ActivePaymentMethod();
+    lq();
     $data['payment_option'] = $getActivePaymentMethod[0]->type;
     print_r($data['payment_option']);
     $data['phone'] = '0';
