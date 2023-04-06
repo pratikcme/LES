@@ -638,7 +638,7 @@
 
       </div>
   </section>
-  
+  <input type="hidden" id="get_parameter" value="<?=(isset($_GET['name']) ? $_GET['name'] : '' )?>">
 <!-- --------address-popup---- -->
 <!-- Modal -->
 <div class="modal fade address-popup" id="addres-popup" tabindex="-1" aria-labelledby="addres-popup" aria-hidden="true">

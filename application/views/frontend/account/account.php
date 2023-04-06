@@ -540,8 +540,8 @@
                   <div class="wihslist-wrapper address-wrapper bg-white">
                                           <div class="your-order-header address-header" id="address-header">
                         <h4><span><i class="fas fa-lock"></i></span><?=$this->lang->line('Change Password')?> </h4>
-                     
-                     </div>                     <form id='ChangeUserPass' action="<?=base_url().'users_account/users/update_password'?>" method="post" class="account-form">
+                  </div>
+                     <form id='ChangeUserPass' action="<?=base_url().'users_account/users/update_password'?>" method="post" class="account-form">
                         <div class="row">
                            <div class="col-md-12">
                               <div class="input-wrapper">
