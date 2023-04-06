@@ -40,7 +40,7 @@ class Checkout extends User_Controller
   {
     $this->load->model('api_v3/common_model', 'co_model');
     $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-    // dd($isShow);
+    dd($isShow);
     $data['isShow'] = $isShow;
 
 
