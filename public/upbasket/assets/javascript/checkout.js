@@ -116,13 +116,13 @@ var CHECKOUT = (function () {
         paymentOption = $(this).val();
       }
     });
+    swal(language.please_select_Payment_method);
 
     if (paymentOption == "-1") {
       $("#payBtn_error").html(language.please_select_Payment_method);
       return false;
     }
     if (paymentOption == "") {
-      swal(language.please_select_Payment_method);
       $("#payBtn_error").html(language.please_select_Payment_method);
       return false;
     }
