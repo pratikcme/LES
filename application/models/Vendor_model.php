@@ -1240,7 +1240,7 @@ class vendor_model extends My_model
         $this->db->where('id', $app_id);
         $this->db->update('vendor', $data);
         $this->session->set_flashdata('msg', 'Favicon image  has been updated successfully.');
-        redirect(base_url() . 'web_setting/fav_image');
+        redirect(base_url() . 'web_setting');
     }
 
     public function web_logo($postData)
@@ -1268,6 +1268,6 @@ class vendor_model extends My_model
         $this->db->where('id', $app_id);
         $this->db->update('vendor', $data);
         $this->session->set_flashdata('msg', 'Web logo  has been updated successfully.');
-        redirect(base_url() . 'web_setting/web_logo');
+        redirect(base_url() . 'web_setting');
     }
 }
