@@ -29,7 +29,7 @@
           <!-- Nav pills -->
           <ul class="nav nav-pills" role="tablist">
             <li class="nav-item">
-              <a class="nav-link dashboard-tabs <?=($action_name == 'my_account') ? 'active' : ''?> " data-bs-toggle="pill" href="#tab-1"><?=$this->lang->line('My account')?></a>
+              <a class="nav-link dashboard-tabs <?=($action_name == 'my_account' || $action_name == '' ) ? 'active' : ''?> " data-bs-toggle="pill" href="#tab-1"><?=$this->lang->line('My account')?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link dashboard-tabs experience-active-img <?=($action_name == 'order') ? 'active' : ''?>" data-bs-toggle="pill" href="#tab-2"><?=$this->lang->line('My orders')?></a>
@@ -57,7 +57,7 @@
         <div class="tab-details">
           <div class="tab-content account-details-content">
             <!-- ---tab-1-- -->
-            <div id="tab-1" class="container tab-pane active">
+            <div id="tab-1" class="container tab-pane <?=($action_name == 'my_account' || $action_name == '' ) ? 'active show' : ''?>">
               <h2 class="title">Account <span>Details</span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <div class="myaccout-detail-tab">
