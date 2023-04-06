@@ -430,7 +430,7 @@
                   </tbody>
                 </table>
             </div>
-            <button class="place-order-btn" id="myBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></button>
+            <button class="place-order-btn" id="payBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></button>
 
             <div class="our-secure-product">
                 <div class="secure-product-wrapper">
