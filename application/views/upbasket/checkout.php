@@ -555,3 +555,4 @@ function onScriptLoad(txnToken, orderId, amount) {
     </div>
    </div> 
   </div>
+  <input type="hidden" id="get_parameter" value="<?=(isset($_GET['name']) ? $_GET['name'] : '' )?>">
