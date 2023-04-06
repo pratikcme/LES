@@ -112,13 +112,13 @@ class Checkout extends User_Controller
     }
     dd($data['calc_shiping']);
 
-    if ($data['calc_shiping'] == 'notInRange') {
+    if ($data['calc_shiping'] == '0.00') {
       $calc_shiping = 0;
       $data['AddressNotInRange'] = '0';
     } else {
       $data['AddressNotInRange'] = '1';
     }
-
+    echo $data['AddressNotInRange']; die;
     $this->load->model($this->myvalues->usersAccount['model'], 'that_model');
     $data['get_address'] = $this->that_model->getUserAddress();
     $data['time_slot'] = $this->this_model->getTimeSlot();
