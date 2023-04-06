@@ -116,6 +116,12 @@
                           <input type="tel" class="form-control phone" id="phone" name="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" value="<?=$userDetails[0]->phone?>"  aria-describedby="text">
                         </div>
                       </div>
+                      <div class="col-xxl-12 col-md-12 varification" style="display: none;">
+                        <div class="mb-3">
+                          <label for="otp" class="form-label">Otp<span>*</span></label>
+                          <input type="text" class="form-control" id="otp" name="otp" placeholder="<?=$this->lang->line('otp')?>" value="<?=$userDetails[0]->phone?>"  aria-describedby="text">
+                        </div>
+                      </div>
                       <div class="tab-save-btn">
                         <!-- <button type="submit" class=" signin-btn-green">Save</button> -->
                         <input type="submit" class="common-input-btn" id="btnAccSubmit" value="<?=$this->lang->line('Save')?>"/>
