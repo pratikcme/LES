@@ -38,7 +38,7 @@
               <a class="nav-link dashboard-tabs eduction-active-img <?=($action_name == 'wishlist') ? 'active' : ''?>" data-bs-toggle="pill" href="#tab-3"><?=$this->lang->line('My Wishlist')?></a>
             </li>
             <li class="nav-item">
-              <a class="from_account nav-link dashboard-tabs certificates-active-img <?=($action_name == 'my_address') ? 'active' : ''?>" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
+              <a class="nav-link dashboard-tabs certificates-active-img <?=($action_name == 'my_address') ? 'active' : ''?>" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link dashboard-tabs languge-active-img" id="logout" data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('logout')?></a>
@@ -571,7 +571,7 @@
               <div class="address-wrapper">
                 <div class="ship-check text-end">
                   <div class="form-check">
-                    <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" id="id1"  <?=($value->status == '1') ? 'checked' : '' ?>>
+                    <input class="from_account form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" id="id1"  <?=($value->status == '1') ? 'checked' : '' ?>>
                     <label class="form-check-label" for="id1">
                     <?=$this->lang->line('Default')?>
                   </div>
