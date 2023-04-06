@@ -118,7 +118,8 @@
     <a class="<?php if ($this->uri->segment(1) == 'web_setting') { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
         <span>Web Setting</span>
-        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'web_setting') ? 'rotate' : '' ?>"></i>
+
+        <i class="fa fa-globe" <?= ($this->uri->segment(1) == 'web_setting') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li>
