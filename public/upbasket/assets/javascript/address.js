@@ -152,9 +152,9 @@ var ADDRESS = function () {
             method: 'post',
             data: { id: id },
             success: function (output) {
-                alert(that.hasClass('from_account'));
                 if (that.hasClass('from_account')) {
                     window.location.href = url + "users_account/users/account?name=my_address";
+                    return false;
                 }
                 window.location.reload();
             }
