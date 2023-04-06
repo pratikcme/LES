@@ -598,7 +598,7 @@
 
             <div id="tab-7" class="container tab-pane fade">
               <h2 class="title">Change<span>  Password</span></h2>
-              <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+              <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <div class="myaccout-detail-tab">
                 <form action="">
                   <div class="row">
