@@ -68,12 +68,12 @@ class Checkout extends User_Controller
         $myCartValue += $value->discount_price * $value->quantity;
 
         $gst = $this->api_model->getProductGst($value->product_id);
+        echo $gst;
+        exit;
         $gst_amount = ($value->discount_price * $gst) / 100;
 
         $total_gst += $gst_amount * $value->quantity;
       }
-      echo $total_gst;
-      exit;
     }
     $data['TotalGstAmount'] = number_format((float)$total_gst, '2', '.', '');
     $data['AmountWithoutGst'] = number_format((float)($myCartValue - $gst_amount), '2', '.', '');
