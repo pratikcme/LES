@@ -195,7 +195,7 @@
           
               if($segment1 != ''){ ?> 
                 <input type="text" class="form-control" id='myInput' data-search_val= ""  placeholder="<?=$placeholder?>">
-                <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span> Search</span>
+                <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span></span>
               <?php } ?>
             </div>
           </div>
