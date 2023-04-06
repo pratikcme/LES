@@ -46,6 +46,7 @@
         </li>
     </ul>
 </li>
+
 <li style="display: none;">
     <a class="<?php if ($this->uri->segment(2) == 'faq') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/faq'; ?>">
         <i class="fa fa-file"></i>
@@ -112,6 +113,43 @@
         <span>City</span>
     </a>
 </li>
+
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'web_setting') { ?> active <?php } ?>" href="#">
+        <i class="fa fa-users"></i>
+        <span>Web Setting</span>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'web_setting') ? 'rotate' : '' ?>"></i>
+    </a>
+    <ul>
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'web_setting' && $this->uri->segment(2) == 'fav_image') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_section_one'; ?>">
+                <i class="fa fa-users"></i>
+                <span>Favicon Image</span>
+            </a>
+        </li>
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'web_setting' && $this->uri->segment(3) == 'web_logo' || $this->uri->segment(2) == 'add') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_section_two'; ?>">
+                <i class="fa fa-university"></i>
+                <span>Web Setting</span>
+            </a>
+        </li>
+        <li>
+            <a class="<?php if ($this->uri->segment(2) == 'about' && $this->uri->segment(3) == 'banner' || $this->uri->segment(2) == 'set_profit') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/banner'; ?>">
+                <i class="fa fa-university"></i>
+                <span>About Banner</span>
+            </a>
+        </li>
+        <li>
+            <a class="<?php if ($this->uri->segment(2) == 'about' && $this->uri->segment(3) == 'about_app') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_app'; ?>">
+                <i class="fa fa-university"></i>
+                <span>About App</span>
+            </a>
+        </li>
+    </ul>
+</li>
+
+
+
 <li>
     <a class="<?php if ($this->uri->segment(1) == "admin" || $this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight') { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
@@ -156,6 +194,7 @@
                 <span>Unit</span>
             </a>
         </li>
+
     </ul>
 </li>
 
@@ -320,6 +359,7 @@
         </li>
     </ul>
 </li>
+
 
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'pushNotification') { ?> active <?php } ?>" href="<?php echo base_url() . 'pushNotification'; ?>">
