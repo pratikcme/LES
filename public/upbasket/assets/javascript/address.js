@@ -132,6 +132,10 @@ var ADDRESS = function () {
         })
     });
 
+    $('.tab-pane').ready(function () {
+        $(this).removeClass('active show');
+    })
+
     $(document).on('click', '.add_form_action', function () {
         $("#departure_address").rules("add", "required");
         $('#RegisterForm').attr('action', url + 'users_account/users/add_address');
