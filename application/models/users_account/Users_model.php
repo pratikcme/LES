@@ -248,18 +248,6 @@ class Users_model extends My_model
     {
         // print_r($postData);die;
         $id = $postData['update_id'];
-        // $data['update'] = [
-        //      					'user_id' => $this->session->userdata('user_id'),
-        //      					'name'=>$postData['name'],
-        //      					'phone'=>$postData['phone'],
-        //      					'country'=>$postData['country'],
-        //      					'state'=>$postData['state'],
-        //      					'city'=>$postData['city'],
-        //      					'pincode'=>$postData['pincode'],
-        //      					'address'=>$postData['address'],
-
-        //      					'dt_updated'=>strtotime(DATE_TIME),
-        //      				  ];
         $data['update']['user_id'] = $this->session->userdata('user_id');
         $data['update']['name'] = $postData['fname'];
         $data['update']['phone'] = $postData['phone'];

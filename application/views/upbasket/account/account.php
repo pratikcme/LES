@@ -571,7 +571,7 @@
               <div class="address-wrapper">
                 <div class="ship-check text-end">
                   <div class="form-check">
-                    <input class="from_account form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" id="id1"  <?=($value->status == '1') ? 'checked' : '' ?>>
+                    <input class="from_account form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" <?=($value->status == '1') ? 'checked' : '' ?>>
                     <label class="form-check-label" for="id1">
                     <?=$this->lang->line('Default')?>
                   </div>
@@ -634,7 +634,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-sharp fa-regular fa-circle-xmark"></i></button>
       <div class="modal-body">
           <div class="accordion-content-3">
-              <h3><?=$this->lang->line('Add New Address')?></h3>
+              <h3 id='address_title'><?=$this->lang->line('Add New Address')?></h3>
               <form method="post" id="RegisterForm" action="<?=base_url().'users_account/users/add_address'?>" class="address-form" autocomplete="off">
                 <div class="row">
                   <div class="col-lg-12">
