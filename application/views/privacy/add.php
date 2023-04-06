@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <section class="panel">
-                    <header class="panel-heading"> Addddd</header>
+                    <header class="panel-heading"> Add</header>
                     <form id="frmAddEdit" method="post" enctype="multipart/form-data" action="<?= base_url() ?>admins/privacy_policy">
                         <input type="hidden" name="update_id" value="<?= (!empty($getPrivacy) ? $getPrivacy[0]->id : '') ?>">
                         <div class="panel-body">
