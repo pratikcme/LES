@@ -105,8 +105,7 @@ var CHECKOUT = (function () {
 
   var paymentOption = "-1";
   $(document).on("click", "#payBtn", function () {
-    alert();
-    return false;
+
     if (($("#credit").checked = true)) {
       $("#paytm-checkoutjs").addClass("test");
       $(".ptm-own-element").css("display", "block !important");
@@ -171,6 +170,8 @@ var CHECKOUT = (function () {
 
     // alert('All services are disabled');
     // return false;
+    alert(paymentOption);
+    return false;
     if (paymentOption == 0) {
       $(".loader-main").removeClass("d-none");
       CheckSelfPickUpEnable();
