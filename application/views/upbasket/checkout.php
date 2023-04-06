@@ -451,6 +451,8 @@
       </div>
     </div> 
   </section>
+  <input type="hidden" id="get_parameter" value="<?=(isset($_GET['name']) ? $_GET['name'] : '' )?>">
+
   <input type="hidden" name="" id="s_charge" value="<?=$this->utility->safe_b64encode($calc_shiping)?>">
     <input type="hidden" name="" id="shipping_charge"
         value="<?=(isset($calc_shiping) && $calc_shiping != '' ) ? number_format((float)$calc_shiping,2,'.','') : '0.00'?>">
@@ -555,4 +557,3 @@ function onScriptLoad(txnToken, orderId, amount) {
     </div>
    </div> 
   </div>
-  <input type="hidden" id="get_parameter" value="<?=(isset($_GET['name']) ? $_GET['name'] : '' )?>">
