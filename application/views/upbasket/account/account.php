@@ -661,7 +661,7 @@
                   </div>
 
                   <div class="col-lg-12">
-                    <input type="text" class="form-control landmark" aria-describedby="add" placeholder="<?=$this->lang->line('Landmark')?>">
+                    <input type="text" class="form-control landmark" name="landmark" i="landmark" aria-describedby="add" placeholder="<?=$this->lang->line('Landmark')?>">
                   </div>
 
                   <div class="col-lg-6">
