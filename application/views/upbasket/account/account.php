@@ -582,8 +582,8 @@
                   <p><?=$value->address?></p>
                 </div>
                 <div class="address-icons mt-3">
-                  <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                  <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
+                  <a href="javascript:" class="add-address-btn edit_address" data-id='<?=$this->utility->safe_b64encode($value->id)?>'><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a href="javascript:" class="delet-address-btn remove_address" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
               </div>
               <?php } ?>
