@@ -152,7 +152,7 @@ var ADDRESS = function () {
             method: 'post',
             data: { id: id },
             success: function (output) {
-                window.location.reload();
+                // window.location.reload();
             }
         })
         // }
