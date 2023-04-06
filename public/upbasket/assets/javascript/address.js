@@ -194,7 +194,7 @@ var ADDRESS = function () {
             data: { id: id },
             dataType: 'json',
             success: function (output) {
-                $('#address_title').html('Update Address');
+                $('#address_title').html(language.update_address);
                 $("#departure_address").rules("remove", "required");
                 $('.fname').val(output.result[0].name);
                 $('.mob_no').val(output.result[0].phone);
@@ -237,6 +237,7 @@ var ADDRESS = function () {
         errorNone();
     })
     $(document).on('click', '.add_form_action', function () {
+        $('#address_title').html(language.js_add_address);
         $('#RegisterForm')[0].reset();
         $('#departure_latitude').val('');
         $('#departure_longitude').val('');

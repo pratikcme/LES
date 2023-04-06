@@ -1,5 +1,8 @@
 <?php
 // template 2 up basket
+$lang['js_add_address'] =  'Add New Address';
+$lang['js_update_address'] =  'Update Address';
+
 $lang['Sign up'] = 'Sign up';
 $lang['Shop Cart'] = 'Shop Cart';
 $lang['Product Detail'] = 'Product Detail';
