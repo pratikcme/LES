@@ -65,18 +65,13 @@ class Checkout extends User_Controller
       $my_cart = $this->product_model->getMyCart(); //return value of mycart and 
 
       foreach ($my_cart as $key => $value) {
-        if ($key == 1) {
-          $myCartValue += $value->discount_price * $value->quantity;
+        $myCartValue += $value->discount_price * $value->quantity;
 
-          $gst = $this->api_model->getProductGst($value->product_id);
+        $gst = $this->api_model->getProductGst($value->product_id);
 
-          $gst_amount = ($value->discount_price * $gst) / 100;
+        $gst_amount = ($value->discount_price * $gst) / 100;
 
-          $total_gst += $gst_amount * $value->quantity;
-          echo $total_gst;
-        } else {
-          exit;
-        }
+        $total_gst += $gst_amount * $value->quantity;
       }
     }
     $data['TotalGstAmount'] = number_format((float)$total_gst, '2', '.', '');
