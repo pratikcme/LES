@@ -40,8 +40,8 @@
             </div>
           </div>
         </li>
-        <hr>
       </div>
+      <hr>
   <?php } ?>
   <li>
     <div class="total-amount p-0 notranslate">
