@@ -7,7 +7,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--breadcrumbs start -->
                 <ul class="breadcrumb">
-                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url() . 'admin/index'; ?>">Home</a> / <?= (!empty($getPrivacy) ? 'privacy' : 'privacy ') ?></a></li>
+                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url() . 'admin/index'; ?>">Home</a> / Web Setting /</a></li>
                 </ul>
                 <!--breadcrumbs end -->
             </div>
