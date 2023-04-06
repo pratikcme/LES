@@ -197,7 +197,7 @@ var ADDRESS = function () {
                 $("#departure_address").rules("remove", "required");
                 $('.fname').val(output.result[0].name);
                 $('.mob_no').val(output.result[0].phone);
-                $('.landmark').val(output.result[0].landmark);
+                $('#landmark').val(output.result[0].landmark);
                 $('#city').val(output.result[0].city);
                 $('#state').val(output.result[0].state);
                 $('#country').val(output.result[0].country);
