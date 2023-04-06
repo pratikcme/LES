@@ -195,6 +195,7 @@ var ADDRESS = function () {
             dataType: 'json',
             success: function (output) {
                 $("#departure_address").rules("remove", "required");
+                alert(output.result[0].name);
                 $('.fname').val(output.result[0].name);
                 $('.mob_no').val(output.result[0].phone);
                 $('.landmark').val(output.result[0].landmark);
