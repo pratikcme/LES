@@ -268,7 +268,7 @@
                 </div>
                   
                   <div class="time-wrapper">  
-                    <?php foreach ($variable as $key => $value) { ?>
+                    <?php foreach ($time_slot as $key => $value) { ?>
                     <div class="form-check">
                       <input class="time_slot_checked" type="radio" id="Default-1"  name="time_slot" value="<?=$value->id?>" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
                       <label class="form-check-label" for="Default-1">
