@@ -1049,8 +1049,9 @@ class Sell_development_model extends My_model
             $data['insert'] = $insertion;
             $data['table'] = 'parked_order';
 
-            $last_id = $this->insertRecord($data);
-
+            // temp
+            // $this->insertRecord($data);
+            $last_id = 336;
             $this->checkAndUsePromocode($promocode, $applied, $last_id, $sub_total);
 
             foreach ($postdata as $key => $value) {
@@ -1295,6 +1296,7 @@ class Sell_development_model extends My_model
                 $promocode_amount =  ($sub_total / 100) * $promocodeData[0]->percentage;
             }
         }
+
 
         // dd($promocode_amount);
 
@@ -2191,6 +2193,7 @@ class Sell_development_model extends My_model
         $data['where'] = ['id' => $order_id, 'branch_id' => $this->branch_id, 'status!=' => '9'];
 
         $r = $this->selectRecords($data);
+
         unset($data);
 
         $data['table'] =   'refund_order_details as r_od';
@@ -2214,12 +2217,13 @@ class Sell_development_model extends My_model
         unset($data);
 
         $data['table'] = 'refund_order';
-        $data['select'] = ['discount_percentage as return_discount_per', 'discount_amount as return_discount_amount', 'sub_total as total', 'refund_amount as payable_amount', 'total_items', 'dt_added'];
+        $data['select'] = ['discount_percentage as return_discount_per', 'sum(discount_amount) as return_discount_amount', 'sum(sub_total) as total', 'sum(refund_amount) as payable_amount', 'total_items', 'dt_added'];
         $data['where'] = ['order_id' => $order_id, 'branch_id' => $this->branch_id];
-
+        $data['groupBy'] = ['refund_amount'];
         $rerturn_r = $this->selectRecords($data);
-
+        // dd($rerturn_r);
         // return common later
+
         return ['order_details' => $result, 'orderInfo' => $r, 'return_order_details' => $return_result, 'return_orderInfo' => $rerturn_r];
     }
 
@@ -2266,10 +2270,14 @@ class Sell_development_model extends My_model
             'po.status' => '1', 'po.payment_type !=' => '2',
             'po.branch_id' => $this->branch_id
         ];
-        $this->db->select('po.*,c.customer_name,v.name as vendor_name,c.customercode');
+        $this->db->select('po.*,c.customer_name ,(po.payable_amount - ro.refund_amount) as new_total  ,v.name as vendor_name,c.customercode'); //last added Dk
         $this->db->from('order as po');
         $this->db->join('vendor as v', 'v.id = po.branch_id', 'LEFT');
         $this->db->join('customer as c', 'c.id = po.customer_id', 'LEFT');
+        $this->db->join('refund_order as ro', 'po.id = ro.order_id', 'LEFT');
+        // added by Dipesh
+
+        // 
         $this->db->where($where);
         if (isset($postData["search"]["value"]) && $postData["search"]["value"] != '') {
             $this->db->group_start();

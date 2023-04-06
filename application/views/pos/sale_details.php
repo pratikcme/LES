@@ -15,6 +15,7 @@
                 <th>Price(<?= $currency ?>)</th>
             </tr>
         </thead>
+        <input type="hidden" id="isShow" value="<?= $isShow ?>">
         <tbody>
             <?php
             foreach ($order_details as $key => $v) {
@@ -49,18 +50,28 @@
         </tbody>
     </table>
     <div class="order_data_view">
+        <?php
+        // if (!$isShow) {
+        $newAmt =   numberFormat($orderInfo->total - $total_gst_amount);
+        $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $newAmt;
+        // } else {
+        //     dd($orderInfo->total);
+        // }
+        ?>
         <ul>
             <li>
                 <div>
                     <h6>Subtotal </h6>
                     <h6> <?= $currency . ' ' ?> <span id="<?= isset($return_details) && $return_details == true  ? 'return_order_subtotal' : 'order_subtotal' ?>">
-                            <?= $orderInfo->total ?></span></h6>
+                            <?= $isShow ? $orderInfo->total  :  numberFormat($orderInfo->total - $total_gst_amount) ?></span>
+                    </h6>
                 </div>
             </li>
             <li>
                 <div>
-                    <h6>Total GST (<?= $isShow ? ('Excluded') : ('Included') ?>)</h6>
-                    <h6><?= $currency . ' ' . numberFormat($total_gst_amount) ?></h6>
+                    <h6>Total GST </h6>
+                    <h6><?= $currency . ' '  ?> <span id="<?= isset($return_details) && $return_details == true  ? 'return_total_gst' : 'total_gst' ?>"><?= numberFormat($total_gst_amount) ?></span>
+                    </h6>
                 </div>
             </li>
             <?php

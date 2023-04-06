@@ -42,7 +42,16 @@ var HISTORY = (function () {
           sub_total += parseFloat($(this).text());
         });
 
+        let isShow = $("#isShow").val();
+
+        let gstAmt = parseFloat($("#total_gst").text()).toFixed(2);
+
+        if (isShow.trim() == "") {
+          sub_total = sub_total - gstAmt;
+        }
+
         $("#order_subtotal").html(parseFloat(sub_total).toFixed(2));
+
         $("#return_details").hide();
 
         if (out.returnOrder_details_Html !== null) {
@@ -59,9 +68,20 @@ var HISTORY = (function () {
           $(".return_order_price").each(function () {
             return_sub_total += parseFloat($(this).text());
           });
-          $("#return_order_subtotal").html(
-            parseFloat(return_sub_total).toFixed(2)
-          );
+
+          if (isShow.trim() == "") {
+            $("#return_order_subtotal").html(
+              parseFloat(
+                return_sub_total -
+                  parseFloat($("#return_total_gst").text()).toFixed(2)
+              ).toFixed(2)
+            );
+          } else {
+            $("#return_order_subtotal").html(
+              parseFloat(return_sub_total).toFixed(2)
+            );
+          }
+
           $(".modal-content").removeClass("one");
         } else {
           $(".modal-content").addClass("one");

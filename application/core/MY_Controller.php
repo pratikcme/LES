@@ -89,10 +89,10 @@ class Admin_Controller extends MY_Controller
     public $user_type = null;
     public $user_id = null;
 
+
     function __construct()
     {
         parent::__construct();
-
         if ($this->session->userdata('vendor_admin') != '1') {
             redirect(base_url() . 'admin/dashboard');
         }
@@ -109,6 +109,8 @@ class Vendor_Controller extends MY_Controller
     function __construct()
     {
         parent::__construct();
+
+
         if ($this->session->userdata('branch_admin') != '1') {
             redirect(base_url() . 'admin/dashboard');
         }
@@ -419,6 +421,7 @@ class Super_Admin_Controller extends MY_Controller
     function __construct()
     {
         parent::__construct();
+
         if ($this->session->userdata['validSuperAdmin'] == '') {
             redirect(base_url() . 'admin');
         }

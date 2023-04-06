@@ -145,6 +145,13 @@ $vendor_id = $this->session->userdata('id');
 
                                     <input type="hidden" name="refund_amount" id="refund_amount" value="0">
 
+                                    <input type="hidden" id="front_cartBased" value="">
+                                    <div>
+                                        <p>Tax GST </p>
+                                        <p><?= $currency . ' '; ?>
+                                            <span id="total_gst"><?= number_format((float) 0, 2, '.', '') ?></span>
+                                        </p>
+                                    </div>
                                     <div id="removed_cartbased_item">
                                         <p class="tag_removed">Removed Cart based Discount</p>
                                         <p>- (<span id="return_shopping_based_discountPercentage">
@@ -153,12 +160,6 @@ $vendor_id = $this->session->userdata('id');
                                         </p>
                                     </div>
 
-                                    <div>
-                                        <p>Tax GST (<?= $isShow ? 'Excluded' : 'Included' ?>)</p>
-                                        <p><?= $currency . ' '; ?>
-                                            <span id="total_gst"><?= number_format((float) 0, 2, '.', '') ?></span>
-                                        </p>
-                                    </div>
                                     <input type="hidden" name="counted_total_gst" id="counted_total_gst" value="<?= number_format((float) 0, 2, '.', '') ?>">
                                     <!-- <div id="promocode_discount_item">
                                         <p>Promocode Discount</p>

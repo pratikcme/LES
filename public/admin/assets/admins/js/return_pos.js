@@ -39,6 +39,8 @@ var PRIVACY = (function () {
     window.location.reload();
   });
 
+  let flag = true;
+
   //   Add Order
   $(document).on("click", ".add_order", function () {
     var order_id = $(this).data("order_id");
@@ -48,7 +50,6 @@ var PRIVACY = (function () {
       url: url + "sell_development/showAllSoldProducts",
       type: "POST",
       dataType: "JSON",
-
       data: {
         order_id: order_id,
         customer_id: customer_id,
@@ -61,10 +62,39 @@ var PRIVACY = (function () {
           $("#sub_total").text(output.sub_total);
 
           if (output.cart_based != "0") {
+            // let cartBased = 0;
+            // cartBased =
+            //   (output.cart_based * 100) / parseFloat(output.sub_total);
             $("#cart_based").val(output.cart_based);
-            $("#return_shopping_based_discountPercentage").text(
-              output.cart_based
-            );
+            // $("#front_cartBased").val(output.cart_based);
+            // if (flag == true) {
+            //   // if ($("#front_cartBased").val() != "") {
+            //   //   let cartBased =
+            //   //     (parseFloat($("#front_cartBased").val()) * 100) / final_subtotal;
+            //   //   $("#cart_based").val(cartBased);
+            //   //   // $("#return_shopping_based_discountPercentage").text(
+            //   //   //   parseFloat(cartBased).toFixed(2)
+            //   //   // );
+            //   // }
+
+            //   flag = false;
+            // }
+            // if (isShow !== "") {
+            //   let amt = parseFloat(
+            //     parseFloat(output.sub_total) -
+            //       parseFloat($("#total_gst").text())
+            //   ).toFixed(2);
+
+            //   cartBased = (output.cart_based * 100) / amt;
+            // } else {
+            // }
+
+            // $("#cart_based").val(parseFloat(cartBased).toFixed(2));
+
+            // $("#return_shopping_based_discountPercentage").text(
+            //   output.cart_based
+            // );
+
             $("#cart_based_item").show();
             $(".tag_removed").text("Removed Cart based Discount");
           } else if (output.promocode_used.percentage != undefined) {
@@ -309,9 +339,27 @@ var PRIVACY = (function () {
 
     var final_subtotal = parseFloat(sub_total - uncount_total).toFixed(2);
 
+    let isShow = $("#isShow").val();
+
+    if (isShow != "1") {
+      final_subtotal = parseFloat(
+        parseFloat(final_subtotal) - parseFloat($("#total_gst").html())
+      ).toFixed(2);
+
+      // if ($("#front_cartBased").val() != "") {
+      //   let cartBased =
+      //     (parseFloat($("#front_cartBased").val()) * 100) / final_subtotal;
+      //   $("#cart_based").val(cartBased);
+      //   // $("#return_shopping_based_discountPercentage").text(
+      //   //   parseFloat(cartBased).toFixed(2)
+      //   // );
+      // }
+    }
+
     if (final_subtotal > 0) {
       $("#refund_subtotal").html(final_subtotal);
       $("#subtotal").val(final_subtotal);
+
       parseFloat($("#cart_based").val()) > 0
         ? $("#removed_cartbased_item").show()
         : $("#removed_cartbased_item").hide();
@@ -319,6 +367,7 @@ var PRIVACY = (function () {
 
       // document.getElementById("refund_btn").style.display = "none";
     } else {
+      //
       $("#removed_cartbased_item").hide();
       $("#refund_subtotal").html(0);
       $("#subtotal").val(0);
@@ -344,6 +393,16 @@ var PRIVACY = (function () {
     // } else {
     let amt = parseFloat($("#refund_subtotal").text()).toFixed(2);
 
+    // if (isShow != "1") {
+    //   // alert("here");
+    //   amt = parseFloat(
+    //     parseFloat(amt) + parseFloat($("#total_gst").html())
+    //   ).toFixed(2);
+    // }
+
+    // console.log("amounrt", amt);
+    // return;
+
     $("#return_shopping_based_discount_amount").html(
       parseFloat((amt * disc) / 100).toFixed(2)
     );
@@ -362,25 +421,25 @@ var PRIVACY = (function () {
       $("#return_shopping_based_discount_amount").html()
     );
 
-    let isShow = $("#isShow").val();
+    // let isShow = $("#isShow").val();
 
     $("#refund_amount").val(parseFloat(subtotal - discAmt).toFixed(2));
-    if (isShow == 1) {
-      $("#refund_amount").val(
-        parseFloat(
-          parseFloat($("#refund_amount").val()) +
-            parseFloat($("#total_gst").html())
-        ).toFixed(2)
-      );
-      $("#total_pay").html(
-        parseFloat(parseFloat($("#refund_amount").val())).toFixed(2)
-      );
-    } else {
-      $("#refund_amount").val(parseFloat($("#refund_amount").val()).toFixed(2));
-      $("#total_pay").html(
-        parseFloat(parseFloat($("#refund_amount").val())).toFixed(2)
-      );
-    }
+    // if (isShow == 1) {
+    $("#refund_amount").val(
+      parseFloat(
+        parseFloat($("#refund_amount").val()) +
+          parseFloat($("#total_gst").html())
+      ).toFixed(2)
+    );
+    $("#total_pay").html(
+      parseFloat(parseFloat($("#refund_amount").val())).toFixed(2)
+    );
+    // } else {
+    // $("#refund_amount").val(parseFloat($("#refund_amount").val()).toFixed(2));
+    // $("#total_pay").html(
+    //   parseFloat(parseFloat($("#refund_amount").val())).toFixed(2)
+    // );
+    // }
 
     // addDraggable();
   }
