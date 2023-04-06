@@ -88,7 +88,7 @@ class Checkout_model extends My_model
 
 
         $res = $this->selectRecords($data);
-
+        dd($res);
         if (count($res)) {
             return $res[0]->delivery_charge;
         } else {
