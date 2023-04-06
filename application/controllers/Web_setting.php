@@ -7,17 +7,19 @@ class Web_setting extends Admin_Controller
     {
 
         parent::__construct();
-        $vendor_id = $this->session->userdata['id'];
-        $this->load->model('package_model', 'this_model');
+        require_once APPPATH . 'config/tablenames_constants.php';
+        $this->load->model('vendor_model', 'vendor_model');
     }
 
     public function fav_image()
     {
-        echo "fav_image";
+        $email = $this->session->userdata('email');
+        $data['app_result'] = $this->vendor_model->vendorByIdEmail($email);
+        $this->load->view('profile', $data);
     }
 
     public function web_logo()
     {
-        echo "web_logo";
+        // $this->load->view('profile', $data);
     }
 }
