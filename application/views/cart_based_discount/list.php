@@ -42,6 +42,11 @@
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 200px;">Branch
+                                        </th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">Cart Amount 
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
@@ -65,7 +70,8 @@
                                       <?php foreach ($promocodes as $key => $value) { ?>
                                           <tr>
                                            
-                                            <td><?=$key+1;;?></td>
+                                            <td><?=$key+1;?></td>
+                                            <td><?=$value->branch_name;;?></td>
                                             <td><?=$value->cart_amount;?></td>
                                             <td><?=$value->discount_percentage;?></td>
                                             <td> 

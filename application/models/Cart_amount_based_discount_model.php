@@ -9,14 +9,24 @@ class Cart_amount_based_discount_model extends My_model{
 
 
     public function allData($id = ''){
+     
         if($id != ''){
-            $data['where']['id'] = $id;
+            $data['where']['sbd.id'] = $id;
         }
-        $data['table'] = TABLE_SHOPPING_BASED_DISCOUNT;
-        $data['select'] = ['*'];
-        $data['where']['branch_id'] = $this->branch_id;
+        $data['table'] = TABLE_SHOPPING_BASED_DISCOUNT.' as sbd';
+        $data['select'] = ['sbd.*','b.name as branch_name'];
+        $data['join'] = ['branch as b'=>['b.id = sbd.branch_id','LEFT']];
+        $data['where']['b.vendor_id'] = $this->vendor_id;
         $data['order'] = 'id desc';
-        return $this->selectRecords($data);        
+        return $this->selectFromJoin($data);
+    }
+
+
+    public function getBranch(){
+        $data['table'] = 'branch';
+        $data['select'] = ['*'];
+        $data['where'] = ['vendor_id'=>$this->vendor_id,'status'=>'1'];
+        return  $this->selectRecords($data);
     }
 
  
@@ -26,9 +36,10 @@ class Cart_amount_based_discount_model extends My_model{
     public function addRecord($postData){
         // dd($postData);
         $insert = array(
-            'branch_id'=>$this->branch_id,
+            'branch_id'=> $postData['branch'],
             'cart_amount' => $postData['cart_amount'],
             'discount_percentage' => $postData['discount_percentage'],
+            'status' => '1',
             'dt_created' => DATE_TIME,
             'dt_updated' => DATE_TIME
         );
@@ -51,6 +62,7 @@ class Cart_amount_based_discount_model extends My_model{
 
     public function updateRecord($postData){
          $update = array(
+            'branch_id'=>  $postData['branch'],
             'cart_amount' => $postData['cart_amount'],
             'discount_percentage' => $postData['discount_percentage'],
             'dt_updated' => DATE_TIME

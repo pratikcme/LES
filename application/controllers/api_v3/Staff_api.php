@@ -19,6 +19,8 @@ class Staff_api extends Staff_Controller {
     }
     public function order_list() {
         $postdata = $this->input->post();
+
+     
         if (isset($postdata['branch_id'])) {
             $response = $this->this_model->order_list($postdata);
         } else {

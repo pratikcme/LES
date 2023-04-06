@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Cart_amount_based_discount extends Vendor_Controller
+class Cart_amount_based_discount extends Admin_Controller
 {
      function __construct(){
         parent::__construct();
@@ -21,6 +21,7 @@ class Cart_amount_based_discount extends Vendor_Controller
         $data['page'] = 'cart_based_discount/add';
         $data['js'] = array('cart_based_discount.js');
         $data['FormAction'] = base_url().'Cart_amount_based_discount/add';
+        $data['branchList'] = $this->this_model->getBranch();
             if($this->input->post()){          
                 $result = $this->this_model->addRecord($this->input->post());
                  if($result){
@@ -37,6 +38,7 @@ class Cart_amount_based_discount extends Vendor_Controller
         $data['js'] = array('cart_based_discount.js');
         $data['FormAction'] = base_url().'Cart_amount_based_discount/edit/'.$d_id;
         $data['updated_id'] = $d_id;
+        $data['branchList'] = $this->this_model->getBranch();
         if($this->input->post()){
             $result = $this->this_model->updateRecord($this->input->post());
             if($result){

@@ -19,7 +19,7 @@
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <section class="panel">
                <header class="panel-heading">
-                  Edit
+                  Update
                </header>
                <form id="frmAddEdit" method="post" enctype="multipart/form-data" action="<?=$FormAction?>">
                   <input type="hidden" id="id" name="id" value="<?=(isset($updated_id)) ? $updated_id : '' ?>">
@@ -27,6 +27,17 @@
                      <div class="row">
                          <div class="col-md-6 col-sm-12 col-xs-12 padding-zero">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                        <label for="branch">Branch</label>
+                                        <select class="form-control" name="branch" id="branch1">
+                                            <option value="">Select Branch</option>
+                                            <<?php foreach ($branchList as $key => $value): ?>
+                                        
+                                            <option <?= ($value->id == $editData[0]->branch_id)?"SELECTED":""?> value="<?= $value->id?>"><?=$value->name?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                        <label for="branch" style="color: red" class="error"><?php echo @form_error('branch'); ?></label>
+                                    </div>
                               <div class="form-group">
                                   <label for="max_cart"> Cart Amount</label>
                                   <input type="text" id="cart_amount" name="cart_amount" class="form-control" value="<?=$editData[0]->cart_amount?>">
@@ -47,7 +58,7 @@
                      <div class="col-md-12 col-sm-12 col-xs-12">
                         <!-- <span class="panel-body padding-zero" > -->
                         <a href="<?=base_url().'cart_amount_based_discount'?>" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>
-                        <input type="submit" class="btn btn-info pull-right margin_top_label" value="Add" id="btnSubmit" name="submit">
+                        <input type="submit" class="btn btn-info pull-right margin_top_label" value="Update" id="btnSubmit" name="submit">
                         <!-- </span> -->
                      </div>
                   </div>

@@ -12,7 +12,7 @@ class Delivery_api_model extends My_model
         $email = $postdata['email'];
         $pass = $postdata['password'];
         $pass = md5($pass);
-        $data['select'] = ['s.id','s.name','s.email','s.phone_no','s.image','s.vehicle_name','s.vehicle_type','s.vehicle_number','s.id_proof_number','s.id_proof_image','s.current_status','s.status','v.multiLanguageType','s.branch_id'];
+        $data['select'] = ['s.id','s.name','s.email','s.phone_no','s.image','s.vehicle_name','s.vehicle_type','s.vehicle_number','s.id_proof_number','s.id_proof_image','s.current_status','s.status','v.multiLanguageType','s.branch_id','s.token'];
         $data['where'] = ['s.email' => $email, 's.password' => $pass];
         $data['table'] = 'delivery_user as s';
         $data['join'] = ['branch  AS v' => ['v.id = s.branch_id', 'LEFT', ]];
@@ -22,9 +22,10 @@ class Delivery_api_model extends My_model
             $res[0]['multiple_lang_type'] = $res[0]['multiLanguageType'];
             $res = $res[0];
             unset($data);
-            $this->add_device($postdata,$res['id']);
+            $token = $this->add_device($postdata,$res['id']);
             $res['image'] = base_url().'public/images/'.$this->folder.'delivery_profile/'.$res['image'];
             $res['id_proof_image'] = base_url().'public/images/'.$this->folder.'delivery_id/'.$res['id_proof_image'];
+            $res['token'] = $token;
 
         }else{
             $res = false;
@@ -53,6 +54,16 @@ class Delivery_api_model extends My_model
         $data['insert'] = $insert;
         $data['table'] = 'delivery_user_device';
         $re = $this->insertRecord($data);
+        unset($data);
+        unset($data);
+        $token = md5('user_' . time());
+        $data['update']['token'] = $token;
+        $data['update']['dt_updated'] = DATE_TIME;
+
+        $data['where'] = ['id' => $user_id];
+        $data['table'] = 'delivery_user';
+        $updateRecord = $this->updateRecords($data);
+        return $token;
     }
 
 
@@ -533,6 +544,24 @@ class Delivery_api_model extends My_model
         $this->v2_common_model->user_login_logout_logs($login_logs);
         
         return true;
+    }
+
+
+    function token_validate() {
+        // print_r($_SERVER);die;
+        if ((!isset($_SERVER['HTTP_X_API_TOKEN'])) || (empty($_SERVER['HTTP_X_API_TOKEN']))) {
+            return false;
+        } else {
+            $data['select'] = ['count(0) as count'];
+            $data['where'] = ['token' => $_SERVER['HTTP_X_API_TOKEN'],'status' => '1'];
+            $data['table'] = 'delivery_user';
+            $response = $this->selectRecords($data);
+            if (@$response[0]->count == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 
 }

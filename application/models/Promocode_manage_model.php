@@ -8,14 +8,23 @@ class Promocode_manage_model extends My_model{
 
 
     public function allData($id = ''){
+         
         if($id != ''){
-            $data['where']['id'] = $id;
+            $data['where']['p.id'] = $id;
         }
-        $data['table'] = TABLE_PROMOCODE;
-        $data['select'] = ['*'];
-        $data['where']['branch_id'] = $this->branch_id;
+        $data['table'] = TABLE_PROMOCODE.' as p';
+        $data['select'] = ['p.*','b.name as branch_name'];
+        $data['join'] = ['branch as b'=>['b.id = p.branch_id','LEFT']];
+        $data['where']['b.vendor_id'] = $this->vendor_id;
         $data['order'] = 'id desc';
-        return $this->selectRecords($data);        
+        return $this->selectFromJoin($data); 
+    }
+
+    public function getBranch(){
+        $data['table'] = 'branch';
+        $data['select'] = ['*'];
+        $data['where'] = ['vendor_id'=>$this->vendor_id,'status'=>'1'];
+        return  $this->selectRecords($data);
     }
 
  
@@ -23,9 +32,9 @@ class Promocode_manage_model extends My_model{
 
   ## Add Update ##
     public function addRecord($postData){
-
+   
         $insert = array(
-            'branch_id'=>$this->branch_id,
+            'branch_id'=>$postData['branch'],
             'name' => $postData['name'],
             'percentage' => $postData['percentage'],
             'max_use' => $postData['max_use'],
@@ -43,6 +52,7 @@ class Promocode_manage_model extends My_model{
         
     
         $res = $this->insertRecord($data); 
+        // echo $this->db->last_query();exit;
         if($res){
             $jsone_response['status'] = 'success';
             $jsone_response['message'] = 'Data added success!!!';
@@ -57,6 +67,7 @@ class Promocode_manage_model extends My_model{
 
     public function updateRecord($postData){
          $update = array(
+            'branch_id'=>$postData['branch'],
             'name' => $postData['name'],
             'percentage' => $postData['percentage'],
             'max_use' => $postData['max_use'],
