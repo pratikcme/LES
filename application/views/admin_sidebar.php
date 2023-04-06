@@ -121,13 +121,13 @@
     <ul>
 
         <li>
-            <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'discount_list') { ?> active <?php } ?>" href="#">
+            <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list')) { ?> active <?php } ?>" href="#">
                 <i class="fa fa-users"></i>
                 <span>Filter</span>
-                <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'discount_list') ? 'rotate' : '' ?>"></i>
+                <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list')) ? 'rotate' : '' ?>"></i>
             </a>
-            <ul>
 
+            <ul>
                 <li>
                     <a class="<?php if ($this->uri->segment(1) == 'price_list' && $this->uri->segment(2) == 'price' || $this->uri->segment(2) == 'price_list' || $this->uri->segment(2) == 'price_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'price_list/price/'; ?>">
                         <i class="fa fa-money"></i>
@@ -142,11 +142,7 @@
                     </a>
                 </li>
             </ul>
-
         </li>
-
-
-
         <li>
             <a class="<?php if ($this->uri->segment(1) == 'package' || $this->uri->segment(2) == 'package_list' || $this->uri->segment(2) == 'package_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'package'; ?>">
                 <i class="fa fa-cubes"></i>
