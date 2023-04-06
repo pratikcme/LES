@@ -116,7 +116,7 @@
     <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight') { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
         <span>Product Setting</span>
-        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list')) ? 'rotate' : '' ?>"></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
 
