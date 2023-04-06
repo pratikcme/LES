@@ -133,18 +133,6 @@
                 <span>Web Setting</span>
             </a>
         </li>
-        <li>
-            <a class="<?php if ($this->uri->segment(2) == 'about' && $this->uri->segment(3) == 'banner' || $this->uri->segment(2) == 'set_profit') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/banner'; ?>">
-                <i class="fa fa-university"></i>
-                <span>About Banner</span>
-            </a>
-        </li>
-        <li>
-            <a class="<?php if ($this->uri->segment(2) == 'about' && $this->uri->segment(3) == 'about_app') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_app'; ?>">
-                <i class="fa fa-university"></i>
-                <span>About App</span>
-            </a>
-        </li>
     </ul>
 </li>
 
