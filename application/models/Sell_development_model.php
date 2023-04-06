@@ -288,7 +288,7 @@ class Sell_development_model extends My_model
 
                 $varient_id = $varient[0]->id;
 
-                // $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                $price = number_format((float)$varient[0]->price, 2, '.', '');
                 $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
 
 
@@ -307,6 +307,7 @@ class Sell_development_model extends My_model
 
                 $total = $quantity * $price;
 
+                // dd($price);
                 $date = strtotime(DATE_TIME);
                 $insertedData = [
                     'branch_id' => $this->branch_id,
@@ -391,7 +392,7 @@ class Sell_development_model extends My_model
             if ($varient[0]->quantity > 0) {
                 $varient_id = $varient[0]->id;
 
-                // $price = number_format((float)$varient[0]->discount_price, 2, '.', '');
+                $price = number_format((float)$varient[0]->price, 2, '.', '');
                 $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
                 // $discounInPrice = ($varient[0]->price * $varient[0]->discount_per) / 100;
 
@@ -1615,10 +1616,9 @@ class Sell_development_model extends My_model
 
         $html = '';
         foreach ($res as $type) { ?>
-<div class="catg_list" id="catg_list"
-    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-</div>
+            <div class="catg_list" id="catg_list" onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+            </div>
 <?php }
         echo $html;
 
