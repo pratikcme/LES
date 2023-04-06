@@ -307,6 +307,7 @@
                       </label>
                     </div>
                     <?php } ?>
+                    
                   </div>
                 </div>
               </div>
@@ -430,6 +431,7 @@
                   </tbody>
                 </table>
             </div>
+            <input type="hidden" id="applied_promo">
             <button class="place-order-btn" id="payBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></button>
 
             <div class="our-secure-product">
