@@ -239,6 +239,10 @@ var ADDRESS = function () {
         errorNone();
     })
 
+    $('#checkout-add-address').click(function () {
+        $('#RegisterForm').css('display', 'block');
+    })
+
     // var handleAddressForm = function () {
     $('#RegisterForm').validate({
         rules: {
