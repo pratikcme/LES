@@ -16,8 +16,10 @@ class Web_setting extends Admin_Controller
         $email = $this->session->userdata('email');
         $data['app_result'] = $this->vendor_model->vendorByIdEmail($email);
 
-        dd($this->input->post());
 
+        if ($this->input->post()) {
+            $this->vendor_model->favicon_image($this->input->post());
+        }
         $this->load->view('web_setting/fav_image', $data);
     }
 

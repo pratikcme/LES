@@ -482,7 +482,7 @@ class vendor_model extends My_model
         $country_code = $this->input->post("country_code");
 
         $data['select'] = ['*'];
-        $data['where']['status !='] = '9'   ;
+        $data['where']['status !='] = '9';
         $data['where']['country_code'] = $country_code;
         $data['where']['phone'] =  $phone;
         $data['where']['vendor_id'] = $vendor_id;
@@ -491,7 +491,7 @@ class vendor_model extends My_model
         $result = $this->selectRecords($data);
         $cont = $this->countRecords($data);
         // lq();
-        if( $cont > 0 ){
+        if ($cont > 0) {
             return  'false';
         } else {
             return 'true';
@@ -1213,5 +1213,33 @@ class vendor_model extends My_model
         $data['table'] = 'vendor';
         $result = $this->selectRecords($data);
         return $result;
+    }
+
+
+    public function favicon_image($postData)
+    {
+
+        $app_id = $postData['app_id'];
+
+
+        if ($_FILES['favicon_image']['name'] != '' && $_FILES['favicon_image']['error'] == 0) {
+            $path = 'public/client_logo';
+            $result = upload_single_image_ByName($_FILES, 'favicon_image', $path);
+            $favicon_image = $result['data']['file_name'];
+            if (file_exists($path . '/' . $this->input->post('old_favicon'))); {
+                delete_single_image($path, $this->input->post('old_favicon'));
+            }
+        } else {
+            $favicon_image =  $this->input->post('old_favicon');
+        }
+
+        $data = array(
+            'favicon_image' => $favicon_image,
+            'dt_updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('id', $app_id);
+        $this->db->update('vendor', $data);
+        $this->session->set_flashdata('msg', 'Favicon image  has been updated successfully.');
+        redirect(base_url() . 'web_setting/fav_image');
     }
 }
