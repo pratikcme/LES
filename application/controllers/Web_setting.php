@@ -31,7 +31,7 @@ class Web_setting extends Admin_Controller
 
 
         if ($this->input->post()) {
-            $this->vendor_model->favicon_image($this->input->post());
+            $this->vendor_model->web_logo($this->input->post());
         }
         $this->load->view('web_setting/web_logo', $data);
     }
