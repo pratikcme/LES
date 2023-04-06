@@ -74,7 +74,7 @@ class Checkout extends User_Controller
     $data['TotalGstAmount'] = number_format((float)$total_gst, '2', '.', '');
     $data['AmountWithoutGst'] = number_format((float)($myCartValue - $gst_amount), '2', '.', '');
 
-    echo $myCartValue ; die;
+    echo $defaultCartValue ; die;
     if ($myCartValue < $defaultCartValue) {
       $this->utility->setFlashMessage_cartValue('danger', 'Minimum cart value should be greater than ' . $this->session->userdata('de_currency') . ' ' . $defaultCartValue);
       redirect(base_url() . 'home');
