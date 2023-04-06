@@ -113,31 +113,12 @@
         <span>City</span>
     </a>
 </li>
-
 <li>
-    <a class="<?php if ($this->uri->segment(1) == 'web_setting') { ?> active <?php } ?>" href="#">
-        <i class="fa fa-globe"></i>
+    <a class="<?php if ($this->uri->segment(1) == 'web_setting') { ?> active <?php } ?>" href="<?php echo base_url() . 'web_setting'; ?>">
+        <i class="fa fa-tree"></i>
         <span>Web Setting</span>
-
-        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'web_setting') ? 'rotate' : '' ?>"></i>
     </a>
-    <ul>
-        <li>
-            <a class="<?php if ($this->uri->segment(1) == 'web_setting' && $this->uri->segment(2) == 'fav_image') { ?> active <?php } ?>" href="<?php echo base_url() . 'web_setting/fav_image'; ?>">
-                <i class="fa fa-edit"></i>
-                <span>Favicon Image</span>
-            </a>
-        </li>
-        <li>
-            <a class="<?php if ($this->uri->segment(1) == 'web_setting' && $this->uri->segment(2) == 'web_logo') { ?> active <?php } ?>" href="<?php echo base_url() . 'web_setting/web_logo'; ?>">
-                <i class="fa fa-picture-o"></i>
-                <span>Web Logo</span>
-            </a>
-        </li>
-    </ul>
 </li>
-
-
 
 <li>
     <a class="<?php if ($this->uri->segment(1) == "admin" || $this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight') { ?> active <?php } ?>" href="#">
