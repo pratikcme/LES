@@ -359,7 +359,7 @@ label.error.mobile_verfication {
                         <?php } ?>
                         <div class="time-wrap">
                             <?php
-                      if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
+                            if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
                             <div class="time-box">
                                 <div class="time-title">
                                     <h6>Pickup Timing</h6>

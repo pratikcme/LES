@@ -268,13 +268,15 @@
                 </div>
                   
                   <div class="time-wrapper">  
+                    <?php foreach ($variable as $key => $value) { ?>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="Default-1" id="Default-1">
+                      <input class="time_slot_checked" type="radio" id="Default-1"  name="time_slot" value="<?=$value->id?>" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
                       <label class="form-check-label" for="Default-1">
-                        9am to 10am
+                      <?=$value->start_time?> - <?=$value->end_time?>
                       </label>
                     </div>
-                    <div class="form-check">
+                    <?php } ?>
+                    <!-- <div class="form-check">
                       <input class="form-check-input" type="radio" name="Default-1" id="Default-2">
                       <label class="form-check-label" for="Default-2">
                         11am to 2pm
@@ -291,7 +293,7 @@
                       <label class="form-check-label" for="Default-4">
                         6pm to 8pm
                       </label>
-                    </div>
+                    </div> -->
                   </div>
                   
                      
