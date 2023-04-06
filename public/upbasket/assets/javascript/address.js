@@ -134,7 +134,6 @@ var ADDRESS = function () {
 
 
     var query_string = $('#get_parameter').val();
-    alert(query_string);
     if (query_string == 'change' || query_string == 'my_address' || query_string == 'wishlist' || query_string == 'order') {
         $('#tab-1').removeClass('active show');
 
