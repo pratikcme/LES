@@ -1332,8 +1332,6 @@ class Sell_development_model extends My_model
 
 
         $this->branch_id = $this->session->userdata('id');
-
-
         if (isset($postdata['customer'])) {
             $user_id = $postdata['customer'];
         }
@@ -2216,13 +2214,12 @@ class Sell_development_model extends My_model
         // later
         unset($data);
 
+
         $data['table'] = 'refund_order';
         $data['select'] = ['discount_percentage as return_discount_per', 'sum(discount_amount) as return_discount_amount', 'sum(sub_total) as total', 'sum(refund_amount) as payable_amount', 'total_items', 'dt_added'];
         $data['where'] = ['order_id' => $order_id, 'branch_id' => $this->branch_id];
 
         $rerturn_r = $this->selectRecords($data);
-        // dd($rerturn_r);
-        // return common later
 
         return ['order_details' => $result, 'orderInfo' => $r, 'return_order_details' => $return_result, 'return_orderInfo' => $rerturn_r];
     }

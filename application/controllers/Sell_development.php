@@ -877,7 +877,8 @@ class Sell_development extends Vendor_Controller
 
             $order_details_Html = $this->load->view('pos/sale_details', $data, true);
 
-            if (count($re['return_orderInfo']) > 0) {
+            // dd($re['return_orderInfo'][0]);
+            if ($re['return_orderInfo'][0]->payable_amount != NULL) {
                 unset($data);
                 // for refund new
                 $data['return_details'] = true;
