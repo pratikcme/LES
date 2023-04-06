@@ -72,6 +72,7 @@ class Checkout extends User_Controller
         $gst_amount = ($value->discount_price * $gst) / 100;
 
         $total_gst += $gst_amount * $value->quantity;
+        exit;
       }
     }
     $data['TotalGstAmount'] = number_format((float)$total_gst, '2', '.', '');
