@@ -123,14 +123,14 @@
     <ul>
         <li>
             <a class="<?php if ($this->uri->segment(1) == 'web_setting' && $this->uri->segment(2) == 'fav_image') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_section_one'; ?>">
-                <i class="fa fa-users"></i>
+                <i class="fa fa-edit"></i>
                 <span>Favicon Image</span>
             </a>
         </li>
         <li>
             <a class="<?php if ($this->uri->segment(1) == 'web_setting' && $this->uri->segment(3) == 'web_logo' || $this->uri->segment(2) == 'add') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_section_two'; ?>">
-                <i class="fa fa-university"></i>
-                <span>Web Setting</span>
+                <i class="fa fa-picture"></i>
+                <span>Web Logo</span>
             </a>
         </li>
     </ul>
