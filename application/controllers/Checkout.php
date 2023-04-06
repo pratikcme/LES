@@ -110,8 +110,6 @@ class Checkout extends User_Controller
       $data['calc_shiping'] = $calc_shiping;
 
     }
-    dd($data['calc_shiping']);
-
     if ($data['calc_shiping'] == '0.00') {
       $calc_shiping = 0;
       $data['AddressNotInRange'] = '0';
@@ -119,6 +117,7 @@ class Checkout extends User_Controller
       $data['AddressNotInRange'] = '1';
     }
     echo $data['AddressNotInRange']; die;
+
     $this->load->model($this->myvalues->usersAccount['model'], 'that_model');
     $data['get_address'] = $this->that_model->getUserAddress();
     $data['time_slot'] = $this->this_model->getTimeSlot();
