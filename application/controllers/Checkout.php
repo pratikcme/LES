@@ -116,8 +116,7 @@ class Checkout extends User_Controller
     } else {
       $data['AddressNotInRange'] = '1';
     }
-    echo $data['AddressNotInRange']; die;
-
+ 
     $this->load->model($this->myvalues->usersAccount['model'], 'that_model');
     $data['get_address'] = $this->that_model->getUserAddress();
     $data['time_slot'] = $this->this_model->getTimeSlot();
