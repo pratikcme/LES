@@ -75,7 +75,7 @@ class Checkout_model extends My_model
         $getkm = $this->circle_distance($lat, $long, $get_vandor_address[0]->latitude, $get_vandor_address[0]->longitude);
         $getkm = round($getkm);
 
-        // print_r($getkm);die;
+        print_r($getkm);die;
         unset($data);
         $data['select'] = ['id'];
         $data['table'] = 'delivery_charge';
@@ -88,7 +88,7 @@ class Checkout_model extends My_model
 
 
         $res = $this->selectRecords($data);
-        dd($res);
+        
         if (count($res)) {
             return $res[0]->delivery_charge;
         } else {
