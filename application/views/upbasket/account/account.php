@@ -124,7 +124,7 @@
             </div>
 
             <!-- ---tab-2-- -->
-            <div id="tab-2" class="container tab-pane fade">
+            <div id="tab-2" class="container tab-pane fade <?=($action_name == 'order') ? 'active show' : '' ?>">
               <h2 class="title">My <span>Orders</span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
 
@@ -147,7 +147,7 @@
                 <div class="accordion-items">
 
                   <!-- ------sub-tab-1----- -->
-                  <div id="subtab-1" class="container tab-pane fade <?=($action_name == 'my_account') ? 'active show' : '' ?>" >
+                  <div id="subtab-1" class="container tab-pane fade active show" >
                     <?php foreach ($order as $key => $value) {
                       if($value->order_status != '8'){
                         continue;
