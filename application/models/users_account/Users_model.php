@@ -151,11 +151,12 @@ class Users_model extends My_model
             'address' => $postData['address'],
             'latitude' => $postData['latitude'],
             'longitude' => $postData['longitude'],
-            'landmark' => $postData['landmark'],
+            'landmark' => ($postData['landmark'] != '') ? $postData['landmark'] : '',
             'status' => $status,
             'dt_added' => strtotime(DATE_TIME),
             'dt_updated' => strtotime(DATE_TIME),
         ];
+        dd($data['insert']);
         // echo '2';
         // print_r($data['insert']);
         // exit();
