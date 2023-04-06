@@ -145,7 +145,6 @@ var ADDRESS = function () {
     $(document).on('change', '.is_default', function () {
         var id = $(this).attr('data-id');
         var that = $(this);
-        alert(id);
         // var x = confirm('would you like to change address');
         // if(x){
         $.ajax({
