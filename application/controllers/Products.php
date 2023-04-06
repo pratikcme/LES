@@ -26,7 +26,7 @@ class Products extends User_Controller
 			$data['getBycatID'] = $_GET['cat_id'];
 		}
 
-		$data['page'] = 'frontend/product';
+		$data['page'] = $_SESSION['template_name'].'/product';
 		$data['js'] = array('product.js?v=' . js_version, 'add_to_cart.js?v=' . js_version);
 		$data['category'] = $this->this_model->selectCategory();
 		// print_r($data['category']);die;
