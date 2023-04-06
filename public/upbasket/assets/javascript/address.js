@@ -182,11 +182,8 @@ var ADDRESS = function () {
     $(document).on('click', '.edit_address', function () {
         var id = $(this).attr('data-id');
         var that = $(this);
-        if ($('#billing-new-add').length) {
-            $('#billing-new-add').css('display', 'block');
-            $('#billing-add').css('display', 'none');
-        } else {
-            $('#new-address-wrap').css('display', 'block');
+        if ($('#RegisterForm').hasClass('ship-address')) {
+            $('#RegisterForm').css('display', 'block');
         }
         $.ajax({
             url: url + '/users_account/users/edit',
@@ -239,9 +236,7 @@ var ADDRESS = function () {
         errorNone();
     })
 
-    $('#checkout-add-address').click(function () {
-        $('#RegisterForm').css('display', 'block');
-    })
+
 
     // var handleAddressForm = function () {
     $('#RegisterForm').validate({
