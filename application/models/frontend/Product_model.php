@@ -261,9 +261,9 @@ class Product_model extends My_model
 
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-		dd($isShow);
-		exit;
-		// print_r($postdata);die;
+
+		print_r($postdata);
+		die;
 		if (isset($postdata['slider'])) {
 			$postdata['getCatByURL'] = $this->utility->safe_b64encode($postdata['getCatByURL']);
 		}
