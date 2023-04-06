@@ -263,11 +263,9 @@
                   </div>
                   </div>
             -->
-                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                   <div class="date-wrap">
                       <div id="datepicker" class="datepicker"></div>
                   </div>
-                <?php } ?>
                 </div>
                 </div>
                 <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
@@ -281,24 +279,6 @@
                     </div>
                     <?php } ?>
                     <?php } ?>
-                    <!-- <div class="form-check">
-                      <input class="form-check-input" type="radio" name="Default-1" id="Default-2">
-                      <label class="form-check-label" for="Default-2">
-                        11am to 2pm
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="Default-1" id="Default-3">
-                      <label class="form-check-label" for="Default-3">
-                        3pm to 5pm
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="Default-1" id="Default-4">
-                      <label class="form-check-label" for="Default-4">
-                        6pm to 8pm
-                      </label>
-                    </div> -->
                   </div>
                   
                      

@@ -565,7 +565,7 @@
             <div id="tab-4" class="container tab-pane fade <?=($action_name == 'my_address') ? 'active show' : '' ?>">
               <h2 class="title">My <span>Address</span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
-            <?php foreach ($get_address as $key => $value) { 
+              <?php foreach ($get_address as $key => $value) { 
                 $status = ($value->status == '0') ? 'is_default ' : '';
               ?>
               <div class="address-wrapper">
@@ -586,7 +586,8 @@
                   <a href="javascript:" class="delet-address-btn remove_address" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
               </div>
-              <?php } ?>   
+              <?php } ?>
+   
               <div class="adrress-btn">
                  <a href="" class="signin-btn-green cancel-btn" data-bs-toggle="modal" data-bs-target="#addres-popup ">Add New Address</a>
               </div>
