@@ -40,6 +40,9 @@
             <li class="nav-item">
               <a class="nav-link dashboard-tabs certificates-active-img <?=($action_name == 'my_address') ? 'active' : ''?>" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
             </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link dashboard-tabs certificates-active-img active" data-bs-toggle="pill" href="#tab-7" aria-selected="true" role="tab">Change Password</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link dashboard-tabs languge-active-img" id="logout" data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('logout')?></a>
             </li>
@@ -593,7 +596,37 @@
               </div>
             </div>
 
-
+            <div id="tab-7" class="container tab-pane fade">
+              <h2 class="title">Change<span>  Password</span></h2>
+              <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+              <div class="myaccout-detail-tab">
+                <form action="">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="mb-3">
+                        <label for="text" class="form-label">Current Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label for="text" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label for="text" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                      </div>
+                    </div>
+                    <div class="tab-save-btn">
+                      <input class="common-input-btn" type="submit" value="Submit"/>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
             <!-- ---tab-5-- -->
             <div id="tab-5" class="container tab-pane fade">
 
