@@ -121,10 +121,10 @@
     <ul>
 
         <li>
-            <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'price' || $this->uri->segment(2) == 'price_list' || $this->uri->segment(2) == 'price_profile' || $this->uri->segment(2) == 'discount_list' || $this->uri->segment(2) == 'discount_profile') { ?> active <?php } ?>" href="#">
+            <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'price' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'price_list') || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'price_profile') || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'discount_list') || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'discount_profile')) { ?> active <?php } ?>" href="#">
                 <i class="fa fa-users"></i>
                 <span>Filter</span>
-                <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'price' || $this->uri->segment(2) == 'price_list' || $this->uri->segment(2) == 'price_profile' || $this->uri->segment(2) == 'discount_list' || $this->uri->segment(2) == 'discount_profile') ? 'rotate' : '' ?>"></i>
+                <i class="fas fa-chevron-right <?= $this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'price' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'price_list') || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'price_profile') || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'discount_list') || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'discount_profile') ? 'rotate' : '' ?>"></i>
             </a>
 
             <ul>
