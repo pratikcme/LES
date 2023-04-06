@@ -57,7 +57,7 @@
         <div class="tab-details">
           <div class="tab-content account-details-content">
             <!-- ---tab-1-- -->
-            <div id="tab-1" class="container tab-pane fade active">
+            <div id="tab-1" class="container tab-pane fade active show">
               <h2 class="title">Account <span>Details</span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <div class="myaccout-detail-tab">
