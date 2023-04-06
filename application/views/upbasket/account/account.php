@@ -119,7 +119,7 @@
                       <div class="col-xxl-12 col-md-12 varification" style="display: none;">
                         <div class="mb-3">
                           <label for="otp" class="form-label">Otp<span>*</span></label>
-                          <input type="text" class="form-control" id="otp" name="otp" placeholder="<?=$this->lang->line('otp')?>" value="<?=$userDetails[0]->phone?>"  aria-describedby="text">
+                          <input type="text" class="form-control" id="otp" name="otp" placeholder="<?=$this->lang->line('otp')?>"  >
                         </div>
                       </div>
                       <div class="tab-save-btn">
