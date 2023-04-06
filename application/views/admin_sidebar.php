@@ -121,10 +121,10 @@
     <ul>
 
         <li>
-            <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list')) { ?> active <?php } ?>" href="#">
+            <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'price' || $this->uri->segment(2) == 'price_list' || $this->uri->segment(2) == 'price_profile' || $this->uri->segment(2) == 'discount_list' || $this->uri->segment(2) == 'discount_profile') { ?> active <?php } ?>" href="#">
                 <i class="fa fa-users"></i>
                 <span>Filter</span>
-                <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list')) ? 'rotate' : '' ?>"></i>
+                <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'price' || $this->uri->segment(2) == 'price_list' || $this->uri->segment(2) == 'price_profile' || $this->uri->segment(2) == 'discount_list' || $this->uri->segment(2) == 'discount_profile') ? 'rotate' : '' ?>"></i>
             </a>
 
             <ul>
@@ -136,7 +136,7 @@
                 </li>
 
                 <li>
-                    <a class="<?php if ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'discount_list' || $this->uri->segment(2) == 'discount_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'admin/discount_list/'; ?>">
+                    <a class="<?php if ($this->uri->segment(2) == 'discount_list' || $this->uri->segment(2) == 'discount_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'admin/discount_list/'; ?>">
                         <i class="fa fa-tags"></i>
                         <span>Filter Discount</span>
                     </a>
