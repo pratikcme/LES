@@ -596,32 +596,33 @@
               </div>
             </div>
 
-            <div id="tab-7" class="container tab-pane fade">
+            <div id="tab-7" class="container tab-pane fade <?=($action_name == 'change') ? 'active show' : '' ?> ">
               <h2 class="title">Change<span>  Password</span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <div class="myaccout-detail-tab">
-                <form action="">
+                <form id='ChangeUserPass' action="<?=base_url().'users_account/users/update_password'?>" method="post">
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="mb-3">
                         <label for="text" class="form-label">Current Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                        <input type="password" class="form-control"  name="old_pass" placeholder="<?=$this->lang->line('current password')?>" required="">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="mb-3">
                         <label for="text" class="form-label">New Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                        <input type="password" class="form-control" name="new_pass" id="password_new" placeholder="<?=$this->lang->line('new password')?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="mb-3">
                         <label for="text" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                        <input type="password" class="form-control" name="confirm_pass" placeholder="<?=$this->lang->line('Confirm password')?>">
                       </div>
                     </div>
                     <div class="tab-save-btn">
-                      <input class="common-input-btn" type="submit" value="Submit"/>
+                    <button type="submit" class="common-input-btn btn" id="btnChangeUserPass"><?=$this->lang->line('Submit')?></button>
+                      <!-- <input class="common-input-btn" type="submit" value="Submit"/> -->
                     </div>
                   </div>
                 </form>
