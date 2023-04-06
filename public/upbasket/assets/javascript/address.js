@@ -132,7 +132,12 @@ var ADDRESS = function () {
         })
     });
 
-    // $('#tab-1').removeClass('active show');
+
+    var query_string = $('#get_parameter').val();
+    if (query_string == 'change' || query_string == 'my_account') {
+        $('#tab-1').removeClass('active show');
+
+    }
 
     $(document).on('click', '.add_form_action', function () {
         $("#departure_address").rules("add", "required");
