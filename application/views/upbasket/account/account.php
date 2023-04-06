@@ -578,9 +578,8 @@
                 </div>
 
                 <div class="address-text mt-3">
-                  <h3>Office</h3>
-                  <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
-                    America</p>
+                  <h3><?=$value->name?></h3>
+                  <p><?=$value->address?></p>
                 </div>
                 <div class="address-icons mt-3">
                   <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
