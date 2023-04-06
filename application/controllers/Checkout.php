@@ -40,7 +40,7 @@ class Checkout extends User_Controller
   {
     $this->load->model('api_v3/common_model', 'co_model');
     $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-    // dd($isShow);
+
     $data['isShow'] = $isShow;
 
 
@@ -63,11 +63,14 @@ class Checkout extends User_Controller
       }
     } else {
       $my_cart = $this->product_model->getMyCart(); //return value of mycart and 
+
       foreach ($my_cart as $key => $value) {
         $myCartValue += $value->discount_price * $value->quantity;
 
         $gst = $this->api_model->getProductGst($value->product_id);
+
         $gst_amount = ($value->discount_price * $gst) / 100;
+
         $total_gst += $gst_amount * $value->quantity;
       }
     }
