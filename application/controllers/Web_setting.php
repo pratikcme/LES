@@ -15,7 +15,7 @@ class Web_setting extends Admin_Controller
     {
         $email = $this->session->userdata('email');
         $data['app_result'] = $this->vendor_model->vendorByIdEmail($email);
-        $this->load->view('profile', $data);
+        $this->load->view('web_setting/fav_image', $data);
     }
 
     public function web_logo()
