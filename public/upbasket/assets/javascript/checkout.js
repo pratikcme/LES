@@ -105,6 +105,8 @@ var CHECKOUT = (function () {
 
   var paymentOption = "-1";
   $(document).on("click", "#payBtn", function () {
+    alert();
+    return false;
     if (($("#credit").checked = true)) {
       $("#paytm-checkoutjs").addClass("test");
       $(".ptm-own-element").css("display", "block !important");
