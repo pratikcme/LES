@@ -228,6 +228,7 @@ var ADDRESS = function () {
     // });
 
     $(document).on('click', '.cancel-btn', function () {
+        $('#RegisterForm').attr('action', url + 'users_account/users/add_address');
         $('#address_title').html(language.js_add_address);
         $('#RegisterForm')[0].reset();
         $('#departure_latitude').val('');
