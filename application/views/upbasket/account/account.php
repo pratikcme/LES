@@ -147,7 +147,7 @@
                 <div class="accordion-items">
 
                   <!-- ------sub-tab-1----- -->
-                  <div id="subtab-1" class="container tab-pane fade active show" >
+                  <div id="subtab-1" class="container tab-pane fade <?=($action_name == 'my_account') ? 'active show' : '' ?>" >
                     <?php foreach ($order as $key => $value) {
                       if($value->order_status != '8'){
                         continue;
@@ -241,7 +241,7 @@
                   </div>
 
                   <!-- ------sub-tab-2----- -->
-                  <div id="subtab-2" class="container tab-pane fade" >
+                  <div id="subtab-2" class="container tab-pane fade <?=($action_name == 'order') ? 'active show' : '' ?>" >
                   <?php foreach ($order as $key => $value) {
                       if($value->order_status == '8' || $value->order_status == '9'){
                         continue;
@@ -434,7 +434,7 @@
             </div>
 
             <!-- ---tab-3-- -->
-            <div id="tab-3" class="container tab-pane fade">
+            <div id="tab-3" class="container tab-pane fade <?=($action_name == 'wishlist') ? 'active show' : '' ?>">
               <h2 class="title">My <span>Wishlist </span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
 
@@ -562,7 +562,7 @@
             </div>
 
             <!-- ---tab-4-- -->
-            <div id="tab-4" class="container tab-pane fade">
+            <div id="tab-4" class="container tab-pane fade <?=($action_name == 'my_address') ? 'active show' : '' ?>">
               <h2 class="title">My <span>Address</span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
             <?php foreach ($get_address as $key => $value) { 
