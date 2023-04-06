@@ -123,7 +123,7 @@ class Users_model extends My_model
 
     public function AddUserAddress($postData)
     {
-
+        dd($postData);
         $data['table'] = TABLE_USER_ADDRESS;
         $data['select'] = ['*'];
         $data['where'] = [
