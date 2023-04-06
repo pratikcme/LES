@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Package extends Admin_Controller
+class Web_setting extends Admin_Controller
 {
     function __construct()
     {
