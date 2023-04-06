@@ -41,7 +41,7 @@
               <a class="nav-link dashboard-tabs certificates-active-img <?=($action_name == 'my_address') ? 'active' : ''?>" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link dashboard-tabs certificates-active-img active" data-bs-toggle="pill" href="#tab-7" aria-selected="true" role="tab">Change Password</a>
+              <a class="nav-link dashboard-tabs certificates-active-img <?=($action_name == 'change') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-7" aria-selected="true" role="tab">Change Password</a>
             </li>
             <li class="nav-item">
               <a class="nav-link dashboard-tabs languge-active-img" id="logout" data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('logout')?></a>
