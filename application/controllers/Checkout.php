@@ -125,10 +125,11 @@ class Checkout extends User_Controller
     // dd($data['time_slot']);
     $getActivePaymentMethod = $this->this_model->ActivePaymentMethod();
     $data['payment_option'] = $getActivePaymentMethod[0]->type;
-
+    print_r($data['payment_option']);
     $data['phone'] = '0';
     $data['is_verify'] = '0';
     $vendor = $this->this_model->getVendorAddress();
+    dd($vendor);
     $data['isOnlinePayment'] = $vendor[0]->isOnlinePayment;
     $data['isCOD'] = $vendor[0]->isCOD;
     $data['isDeliveryTimeDate'] = $vendor[0]->delivery_time_date;
