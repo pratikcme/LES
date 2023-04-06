@@ -183,8 +183,20 @@
           <!-- -----mobile-search-btn---- -->
           <div class="mobile-search-btn">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search product">
+            <?php if($this->uri->segment(1) == ''){ ?>
+              <input type="text" class="form-control" id='search' data-search_val= ""  placeholder="Search vendor..">
               <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span></span>
+            <?php } ?>
+            <?php 
+                if($this->uri->segment(1) != ''){ 
+                  $placeholder = $this->lang->line('Search product..');
+                }
+                $segment1 = $this->uri->segment(1);
+          
+              if($segment1 != ''){ ?> 
+                <input type="text" class="form-control" id='myInput' data-search_val= ""  placeholder="<?=$placeholder?>">
+                <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span> Search</span>
+              <?php } ?>
             </div>
           </div>
 
