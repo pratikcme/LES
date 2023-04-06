@@ -1,10 +1,11 @@
 <style>
-    .demo a.active i{
-        trandform:rotate(-45deg) !important
-    } 
-    .demo a i{
-        trandform:rotate(0deg) !important
-    } 
+    .demo a.active i {
+        trandform: rotate(-45deg) !important
+    }
+
+    .demo a i {
+        trandform: rotate(0deg) !important
+    }
 </style>
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'dashboard') { ?> active <?php } ?>" href="<?php echo base_url() . 'admin/dashboard/'; ?>">
@@ -13,16 +14,16 @@
     </a>
 </li>
 <li>
-    <a class="<?php if ($this->uri->segment(1) == 'vendor' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'vendor/vendor_list'; ?>">
+    <a class="<?php if ($this->uri->segment(1) == 'vendor') { ?> active <?php } ?>" href="<?php echo base_url() . 'vendor/vendor_list'; ?>">
         <i class="fa fa-tree"></i>
         <span>Branch Setting</span>
     </a>
 </li>
 <li>
-    <a class="<?php if ($this->uri->segment(1) == 'admins' && ($this->uri->segment(2) == 'privacy_policy' || $this->uri->segment(2) == 'return_refund' || $this->uri->segment(2) == 'term' )) { ?> active <?php } ?>" href="#">
+    <a class="<?php if ($this->uri->segment(1) == 'admins' && ($this->uri->segment(2) == 'privacy_policy' || $this->uri->segment(2) == 'return_refund' || $this->uri->segment(2) == 'term')) { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
         <span>Terms</span>
-        <i class="fas fa-chevron-right <?=($this->uri->segment(1) == 'admins' && ($this->uri->segment(2) == 'privacy_policy' || $this->uri->segment(2) == 'return_refund' || $this->uri->segment(2) == 'term' )) ? 'rotate' : ''?>"></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'admins' && ($this->uri->segment(2) == 'privacy_policy' || $this->uri->segment(2) == 'return_refund' || $this->uri->segment(2) == 'term')) ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li>
@@ -55,7 +56,7 @@
     <a class="<?php if ($this->uri->segment(2) == 'about') { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
         <span>About</span>
-        <i class="fas fa-chevron-right <?=($this->uri->segment(2) == 'about') ? 'rotate' : ''?>"></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(2) == 'about') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li>
@@ -65,10 +66,7 @@
             </a>
         </li>
         <li>
-            <a
-                class="<?php if ($this->uri->segment(2) == 'about' && $this->uri->segment(3) == 'about_section_two' || $this->uri->segment(2) == 'add') { ?> active <?php } ?>"
-                href="<?php echo base_url() . 'admins/about/about_section_two'; ?>"
-            >
+            <a class="<?php if ($this->uri->segment(2) == 'about' && $this->uri->segment(3) == 'about_section_two' || $this->uri->segment(2) == 'add') { ?> active <?php } ?>" href="<?php echo base_url() . 'admins/about/about_section_two'; ?>">
                 <i class="fa fa-university"></i>
                 <span>Testimonials</span>
             </a>
@@ -91,7 +89,7 @@
     <a class="<?php if ($this->uri->segment(2) == 'messagelist' || $this->uri->segment(2) == 'contactinfo') { ?> active <?php } ?>" href="#">
         <i class="fa fa-phone"></i>
         <span>Contact</span>
-        <i class="fas fa-chevron-right <?=($this->uri->segment(2) == 'messagelist' || $this->uri->segment(2) == 'contactinfo') ? 'rotate' : ''?>"></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(2) == 'messagelist' || $this->uri->segment(2) == 'contactinfo') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li style="display: none;">
@@ -115,41 +113,47 @@
     </a>
 </li>
 <li>
-    <a
-        class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list' ) ) { ?> active <?php } ?>"
-        href="#"
-    >
+    <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list')) { ?> active <?php } ?>" href="#">
         <i class="fa fa-users"></i>
         <span>Product Setting</span>
-        <i
-            class="fas fa-chevron-right <?=($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list' )) ? 'rotate' : ''?>"
-        ></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(1) == 'package' || $this->uri->segment(1) == 'weight' || ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) != 'dashboard' && $this->uri->segment(2) != 'user_list')) ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
+
         <li>
-            <a
-                class="<?php if ($this->uri->segment(1) == 'price_list' && $this->uri->segment(2) == 'price' || $this->uri->segment(2) == 'price_list' || $this->uri->segment(2) == 'price_profile') { ?> active <?php } ?>"
-                href="<?php echo base_url() . 'price_list/price/'; ?>"
-            >
-                <i class="fa fa-money"></i>
-                <span>Filter Price</span>
+            <a class="<?php if ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'discount_list') { ?> active <?php } ?>" href="#">
+                <i class="fa fa-users"></i>
+                <span>Filter</span>
+                <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'price_list' || $this->uri->segment(2) == 'discount_list') ? 'rotate' : '' ?>"></i>
             </a>
+            <ul>
+
+                <li>
+                    <a class="<?php if ($this->uri->segment(1) == 'price_list' && $this->uri->segment(2) == 'price' || $this->uri->segment(2) == 'price_list' || $this->uri->segment(2) == 'price_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'price_list/price/'; ?>">
+                        <i class="fa fa-money"></i>
+                        <span>Filter Price</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="<?php if ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'discount_list' || $this->uri->segment(2) == 'discount_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'admin/discount_list/'; ?>">
+                        <i class="fa fa-tags"></i>
+                        <span>Filter Discount</span>
+                    </a>
+                </li>
+            </ul>
+
         </li>
+
+
+
         <li>
             <a class="<?php if ($this->uri->segment(1) == 'package' || $this->uri->segment(2) == 'package_list' || $this->uri->segment(2) == 'package_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'package'; ?>">
                 <i class="fa fa-cubes"></i>
                 <span>Package</span>
             </a>
         </li>
-        <li>
-            <a
-                class="<?php if ($this->uri->segment(1) == 'admin' && $this->uri->segment(2) == 'discount_list' || $this->uri->segment(2) == 'discount_profile') { ?> active <?php } ?>"
-                href="<?php echo base_url() . 'admin/discount_list/'; ?>"
-            >
-                <i class="fa fa-tags"></i>
-                <span>Filter Discount</span>
-            </a>
-        </li>
+
         <li>
             <a class="<?php if ($this->uri->segment(1) == 'weight' && $this->uri->segment(2) == 'weight_list' || $this->uri->segment(2) == 'weight_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'weight/weight_list/'; ?>">
                 <i class="fa fa-balance-scale"></i>
@@ -160,21 +164,16 @@
 </li>
 
 <li style="display: none">
-    <a class="<?php if ($this->uri->segment(1) == 'subscription' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'subscription'; ?>">
+    <a class="<?php if ($this->uri->segment(1) == 'subscription') { ?> active <?php } ?>" href="<?php echo base_url() . 'subscription'; ?>">
         <i class="fa fa-envelope"></i>
         <span>Subcription</span>
     </a>
 </li>
 <li>
-    <a
-        class="<?php if ($this->uri->segment(2) == 'user_list' || $this->uri->segment(2) == 'messagelist' || $this->uri->segment(1) == 'feedback') { ?> active <?php } ?>"
-        href="#"
-    >
+    <a class="<?php if ($this->uri->segment(2) == 'user_list' || $this->uri->segment(2) == 'messagelist' || $this->uri->segment(1) == 'feedback') { ?> active <?php } ?>" href="#">
         <i class="fa fa-cog"></i>
         <span>Manage Users </span>
-        <i
-            class="fas fa-chevron-right <?=($this->uri->segment(2) == 'user_list' || $this->uri->segment(2) == 'messagelist' || $this->uri->segment(1) == 'feedback') ? 'rotate' : '' ?>"
-        ></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(2) == 'user_list' || $this->uri->segment(2) == 'messagelist' || $this->uri->segment(1) == 'feedback') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li>
@@ -190,7 +189,7 @@
             </a>
         </li>
         <li>
-            <a class="<?php if ($this->uri->segment(1) == 'feedback' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'feedback'; ?>">
+            <a class="<?php if ($this->uri->segment(1) == 'feedback') { ?> active <?php } ?>" href="<?php echo base_url() . 'feedback'; ?>">
                 <i class="fa fa-file" aria-hidden="true"></i>
                 <span>Feedback</span>
             </a>
@@ -198,21 +197,16 @@
     </ul>
 </li>
 <li>
-    <a class="<?php if ($this->uri->segment(1) == 'firebase' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'firebase'; ?>">
+    <a class="<?php if ($this->uri->segment(1) == 'firebase') { ?> active <?php } ?>" href="<?php echo base_url() . 'firebase'; ?>">
         <i class="fa fa-credit-card" aria-hidden="true"></i>
         <span>Common keys</span>
     </a>
 </li>
 <li>
-    <a
-        class="<?php if ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') { ?> active <?php } ?>"
-        href="#"
-    >
+    <a class="<?php if ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') { ?> active <?php } ?>" href="#">
         <i class="fa fa-cog"></i>
         <span>Settings</span>
-        <i
-            class="fas fa-chevron-right <?=($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') ? 'rotate' : '' ?>"
-        ></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li>
@@ -239,21 +233,16 @@
                 <span>Currency</span>
             </a>
         </li>
-       
-       
-        <li> 
-        <a
-        class="<?php if ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') { ?> active <?php } ?>"
-        href="#"
-    >
-    <i class='fa-solid fa-receipt'></i>
 
-        <span>Delivery & Pickup</span>
-        <i
-            class="fas fa-chevron-right <?=($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') ? 'rotate' : '' ?>"
-        ></i>
-    </a> 
-            <ul> 
+
+        <li>
+            <a class="<?php if ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') { ?> active <?php } ?>" href="#">
+                <i class='fa-solid fa-receipt'></i>
+
+                <span>Delivery & Pickup</span>
+                <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') ? 'rotate' : '' ?>"></i>
+            </a>
+            <ul>
                 <li>
                     <a class="<?php if ($this->uri->segment(1) == 'delivery_charge') { ?>< active ><?php } ?><" href="<?php echo base_url() . 'delivery_charge/'; ?>">
                         <i class="fa fa-cog"></i>
@@ -261,24 +250,21 @@
                     </a>
                 </li>
                 <li>
-                    <a
-                        class="<?php if ($this->uri->segment(1) == 'time_slot' && $this->uri->segment(2) == 'time_slot_list' || $this->uri->segment(2) == 'time_slot_profile') { ?> active <?php } ?>"
-                        href="<?php echo base_url() . 'time_slot/time_slot_list/'; ?>"
-                    >
+                    <a class="<?php if ($this->uri->segment(1) == 'time_slot' && $this->uri->segment(2) == 'time_slot_list' || $this->uri->segment(2) == 'time_slot_profile') { ?> active <?php } ?>" href="<?php echo base_url() . 'time_slot/time_slot_list/'; ?>">
                         <i class="fa fa-clock-o"></i>
                         <span>Time Slot</span>
                     </a>
                 </li>
             </ul>
         </li>
-    
+
     </ul>
 </li>
 <!-- <li>
     <a class="<?php if ($this->uri->segment(1) == 'banners') { ?> active <?php } ?>" href="#">
         <i class="fa fa-picture-o"></i>
         <span>Banner</span>
-        <i class="fas fa-chevron-right <?=($this->uri->segment(1) == 'banners') ? 'rotate' : '' ?>"></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'banners') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li>
@@ -299,7 +285,7 @@
     <a class="<?php if ($this->uri->segment(1) == 'offer') { ?> active <?php } ?>" href="#">
         <i class="fa fa-picture-o"></i>
         <span>Offer</span>
-        <i class="fas fa-chevron-right <?=($this->uri->segment(1) == 'offer') ? 'rotate' : '' ?>"></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'offer') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li>
@@ -312,27 +298,27 @@
 </li> -->
 
 <li>
-    <a class="<?php if (($this->uri->segment(1) == 'offer' || $this->uri->segment(1) == 'promocode_manage' || $this->uri->segment(1) == 'cart_amount_based_discount' )) { ?> active <?php } ?>" href="#">
-    <i class="fa fa-tag fa-lg"></i>
+    <a class="<?php if (($this->uri->segment(1) == 'offer' || $this->uri->segment(1) == 'promocode_manage' || $this->uri->segment(1) == 'cart_amount_based_discount')) { ?> active <?php } ?>" href="#">
+        <i class="fa fa-tag fa-lg"></i>
         <span>Discount</span>
-        <i class="fas fa-chevron-right <?=($this->uri->segment(1) == 'admins' && ($this->uri->segment(1) == 'offer' || $this->uri->segment(1) == 'promocode_manage' || $this->uri->segment(1) == 'cart_amount_based_discount' )) ? 'rotate' : ''?>"></i>
+        <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'admins' && ($this->uri->segment(1) == 'offer' || $this->uri->segment(1) == 'promocode_manage' || $this->uri->segment(1) == 'cart_amount_based_discount')) ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
         <li>
             <a class="<?php if ($this->uri->segment(1) == 'offer') { ?> active <?php } ?>" href="<?php echo base_url() . 'offer'; ?>">
-            <i class="fa fa-crosshairs"></i>
+                <i class="fa fa-crosshairs"></i>
                 <span>Offer</span>
             </a>
         </li>
         <li>
             <a class="<?php if ($this->uri->segment(1) == 'promocode_manage') { ?> active <?php } ?>" href="<?php echo base_url() . 'promocode_manage'; ?>">
-            <i class="fa fa-code" aria-hidden="true"></i>
+                <i class="fa fa-code" aria-hidden="true"></i>
                 <span>Manage Promocode</span>
             </a>
         </li>
         <li>
             <a class="<?php if ($this->uri->segment(1) == 'cart_amount_based_discount') { ?> active <?php } ?>" href="<?php echo base_url() . 'cart_amount_based_discount'; ?>">
-            <i class="fa fa-percentage" aria-hidden="true"></i>
+                <i class="fa fa-percentage" aria-hidden="true"></i>
                 <span>Cart Based Discount</span>
             </a>
         </li>
@@ -340,10 +326,8 @@
 </li>
 
 <li>
-    <a class="<?php if ($this->uri->segment(1) == 'pushNotification' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'pushNotification'; ?>">
+    <a class="<?php if ($this->uri->segment(1) == 'pushNotification') { ?> active <?php } ?>" href="<?php echo base_url() . 'pushNotification'; ?>">
         <i class="fa fa-file" aria-hidden="true"></i>
         <span>Push Notification</span>
     </a>
 </li>
-
-
