@@ -311,7 +311,7 @@ $lang['Please_enter_at_least_6_charecter']= 'Please enter at least 6 charecter';
 $lang['Please_select_less_then_20_charecter']= 'Please select less then 20 charecter';
 $lang['please_select_Payment_method'] = 'please select Payment method';
 $lang['Please_enter_your_Address'] = 'Please enter your Address';
-$lang['We_do_not_deliver_to_your_selected_Address'] = 'We do not deliver to your chosen address';
+$lang['We_do_not_deliver_to_your_selected_Address'] = 'We do not deliver to your selected address';
 
 //login page js validation message
 $lang['please_enter_email'] = 'Please enter email';
