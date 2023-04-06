@@ -568,7 +568,7 @@ class product_model extends My_model
         $discount_price = $price - $discount_price_cal;
         // $discount_price = number_format((float)$discount_price_cal, 2, '.', '');
         $final_discount_price = number_format((float)$discount_price, 2, '.', '');
-       
+
         // $whole = floor($unit);      
         // $fraction = $unit - $whole;
         // if($fraction == 0){
@@ -599,7 +599,7 @@ class product_model extends My_model
                 'discount_price' => $final_discount_price,
                 'dt_updated' => strtotime(date('Y-m-d H:i:s')),
             );
-            // dd($data);
+            dd($data);
             if (isset($_POST['max_order_qty'])) {
                 $data['max_order_qty'] = $_POST['max_order_qty'];
 
@@ -1196,7 +1196,7 @@ class product_model extends My_model
     public function check_display_priority($postData)
     {
         $branch_id = $this->session->userdata['id'];
-        
+
         if ($postData['product_id'] != '') {
             $data['where']['id !='] = $postData['product_id'];
         }
@@ -1205,7 +1205,7 @@ class product_model extends My_model
         $data['where']['branch_id'] = $branch_id;
         $data['where']['status !='] = '9';
         $return = $this->countRecords($data);
-        
+
         if ($return > 0) {
             echo "false";
         } else {
