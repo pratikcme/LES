@@ -170,8 +170,6 @@ var CHECKOUT = (function () {
 
     // alert('All services are disabled');
     // return false;
-    alert(paymentOption);
-    return false;
     if (paymentOption == 0) {
       $(".loader-main").removeClass("d-none");
       CheckSelfPickUpEnable();
