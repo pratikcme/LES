@@ -1,3 +1,4 @@
+<div class="supportive-dropdown">
 <?php 
  foreach ($my_cart as $key => $value) {
     $product_image = $this->product_model->GetUsersProductInCart($value->product_weight_id);
@@ -18,7 +19,6 @@
     $encode_id =  $this->utility->safe_b64encode($value->product_id);
     $varient_id =  $this->utility->safe_b64encode($value->product_weight_id);
 ?>
-    <div class="supportive-dropdown">
         <li>
             <div class="cart-drop-menu cart-drop-menu-1">
                 <div class="drop-img">
@@ -40,9 +40,9 @@
                 </div>
             </div>
         </li>
+        <hr>
+        <?php } ?>
     </div>
-    <hr>
-    <?php } ?>
         <li>
             <div class="total-amount p-0 notranslate">
             <p>Total</p>

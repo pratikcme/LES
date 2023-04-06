@@ -1,3 +1,4 @@
+<div class="supportive-dropdown">
 <?php
    foreach ($_SESSION['My_cart'] as $key => $value) {
     $encode_id=  $this->utility->safe_b64encode($value['product_id']);
@@ -18,7 +19,6 @@
       }
     }
     ?>
-    <div class="supportive-dropdown">
       <li>
         <div class="cart-drop-menu cart-drop-menu-1">
             <div class="drop-img">
@@ -40,9 +40,9 @@
             </div>
           </div>
         </li>
-      </div>
-      <hr>
-  <?php } ?>
+        <hr>
+      <?php } ?>
+    </div>
   <li>
     <div class="total-amount p-0 notranslate">
       <p>Total</p>
