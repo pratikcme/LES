@@ -599,7 +599,7 @@ class product_model extends My_model
                 'discount_price' => $final_discount_price,
                 'dt_updated' => strtotime(date('Y-m-d H:i:s')),
             );
-            dd($data);
+            // dd($data);
             if (isset($_POST['max_order_qty'])) {
                 $data['max_order_qty'] = $_POST['max_order_qty'];
 
