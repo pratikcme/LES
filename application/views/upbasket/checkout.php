@@ -96,7 +96,7 @@
                       <button type="button" class="new-add">New Address</button>
                   </div>
 
-                  <form method="post" id="RegisterForm" action="<?=base_url().'users_account/users/add_address'?>" class="address-form" autocomplete="off">
+                  <form method="post" id="RegisterForm" action="<?=base_url().'users_account/users/add_address'?>" class="ship-address" autocomplete="off">
                     <div class="row">
                       <div class="col-lg-12">
                         <label for="fname" class="form-label">Full Name<span>*</span></label>
