@@ -657,11 +657,13 @@ class Sell_development extends Vendor_Controller
                     //     $price = number_format((float)$avail_quantity[0]->without_gst_price, 2, '.', '');
                     // }
 
+
                     // new for Discount
                     if ($discount_percentage > 0) {
                         $disc_price = ($avail_quantity[0]->price * $discount_percentage) / 100;
                         $price =  $avail_quantity[0]->price - $disc_price;
                     }
+
 
                     if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                         $price = $price - ($price * $avail_quantity[0]->gst) / 100;
@@ -779,11 +781,16 @@ class Sell_development extends Vendor_Controller
             //     </h5>';
             // }
             // dd($result[0]->discount_price);
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $exist  = $res['without_gst_price'];
+            } else {
+                $exist = $res['discount_price'];
+            }
 
             echo json_encode([
                 'status' => 1, 'subtotal' => $this->numberFormat($sub_total),
                 'total_gst' => $this->numberFormat($total_gst),
-                'exist_price' => $res['discount_price'],
+                'exist_price' => $exist,
                 'discount' =>  $res['discount_per'],
                 'actual_price' => $actual,
                 'exist_total' => $res['sub_total'],
@@ -865,7 +872,6 @@ class Sell_development extends Vendor_Controller
 
             $data['amount'] = $this->this_model->getPromocodeAmount($data['orderInfo']->order_id);
             // dd($data['orderInfo']->total);
-
 
             $data['shoppingDiscount'] = $data['orderInfo']->shopping_amount_based_discount * 100  / $data['orderInfo']->total;
 
@@ -1014,6 +1020,7 @@ class Sell_development extends Vendor_Controller
     public function parked_sell_list()
     {
         $data['order_row'] = $this->this_model->getParkedOrderList();
+        // dd($data['order_row']);
         $this->load->view('parked_sell_list', $data);
     }
 

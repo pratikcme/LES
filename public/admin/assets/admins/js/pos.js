@@ -950,10 +950,11 @@ var PRIVACY = (function () {
           // );
 
           $("#shopping_based_discount").val(res.shopping_based_discount);
-
+          $("#discount_amt").val(res.shopping_based_discount);
           $("#total_pay").html(
             parseFloat(val - res.shopping_based_discount).toFixed(2)
           );
+          $("#discount").val(res.shopping_based_discountPercentage);
           $("#hidden_total_pay").val(
             parseFloat(val - res.shopping_based_discount).toFixed(2)
           ); //new for pos
@@ -974,7 +975,8 @@ var PRIVACY = (function () {
           $("#cart_based_item").show();
         } else {
           $("#shopping_based_discount").val(0);
-
+          $("#discount").val(0);
+          $("#discount_amt").val(0);
           // if ($("#isShow").val() == "1") {
           val = parseFloat(val) + parseFloat($("#total_gst").text());
           // }
@@ -986,7 +988,7 @@ var PRIVACY = (function () {
           $("#cart_based_item").hide();
         }
 
-        $("#hidden_subtotal").val(val);
+        $("#hidden_subtotal").val(parseFloat(Math.round(val)).toFixed(2));
         // $("#hidden_total").val(val);
 
         // $("#hidden_discount_total").val(
@@ -1018,6 +1020,7 @@ var PRIVACY = (function () {
       data: { promocode: promocode, total_price: total_price },
       dataType: "json",
       success: function (response) {
+        console.log("response", response);
         $("#promo_err").html(response.message);
         let val = parseFloat($("#total_pay").html());
         if (response.success == "1") {
@@ -1034,6 +1037,18 @@ var PRIVACY = (function () {
           }
 
           $("#promocode_discount").html(parseFloat(response.data).toFixed(2));
+          $("#discount_amt").val(parseFloat(response.data).toFixed(2));
+
+          let per =
+            (parseFloat(response.data).toFixed(2) * 100) /
+            parseFloat(response.orderAmount).toFixed(2);
+
+          $("#discount").val(parseFloat(per).toFixed(2));
+
+          isFloat(per)
+            ? $("#promocode_per").html(parseFloat(per).toFixed(2))
+            : $("#promocode_per").html(parseInt(per));
+
           $("#promocode_discount_item").show();
 
           // // finalAmount = (orderAmount + parseFloat(shipping_charge) - parseFloat(response.data)).toFixed(2)
@@ -1055,7 +1070,9 @@ var PRIVACY = (function () {
           $("#hidden_total_pay").val(
             parseFloat(val - parseFloat(total_price)).toFixed(2)
           );
-          $("#hidden_subtotal").val(total_price);
+          $("#hidden_subtotal").val(Math.round(total_price));
+          $("#discount").val(0);
+          $("#discount_amt").val(0);
           // $("#applied_promo").val("");
           // $("#checkout_final").html(
           //   (

@@ -282,6 +282,8 @@ $vendor_id = $this->session->userdata('id');
 
                                     <button type="button" class="btn-apply" id="checkPromocode">Apply</button>
                                 </div>
+                                <input type="hidden" name="discount" id="discount" value="0">
+                                <input type="hidden" name="discount_amt" id="discount_amt" value="0">
                                 <span class="" id="promo_err"></span>
                                 <div class="subtotal-wrap">
                                     <div>
@@ -309,7 +311,12 @@ $vendor_id = $this->session->userdata('id');
                                     </div>
                                     <div id="promocode_discount_item">
                                         <p>Promocode Discount</p>
-                                        <p>- <?= $currency . ' '; ?> <span id="promocode_discount">0.00</span> </p>
+                                        <p>-
+                                            (<span id="promocode_per">
+                                                0
+                                            </span>%)
+
+                                            <?= $currency . ' '; ?> <span id="promocode_discount">0.00</span> </p>
                                     </div>
                                 </div>
                                 <div class="total-payment-wrap">

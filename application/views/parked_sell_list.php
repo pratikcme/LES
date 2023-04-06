@@ -69,16 +69,11 @@ $order_row = $order_query->result();
                                         </tr>
                                     </thead>
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
-
                                         <?php
                                         if (count($order_row) > 0) {
-
                                         ?>
-
                                             <?php foreach ($order_row as $order) { ?>
-
                                                 <tr class="gradeX odd">
-
                                                     <td class=""><?php echo $order->vendor_name; ?></td>
                                                     <td class="">
                                                         <?php echo isset($order->customer_name) ?  $order->customer_name : ' - ' ?>
