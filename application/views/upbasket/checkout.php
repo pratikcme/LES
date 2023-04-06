@@ -76,7 +76,7 @@
                   <div class="address-wrapper">
                     <div class="ship-check text-end">
                       <div class="form-check">
-                        <input class="from_account form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" <?=($value->status == '1') ? 'checked' : '' ?>>
+                        <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" <?=($value->status == '1') ? 'checked' : '' ?>>
                         <label class="form-check-label" for="id1">
                         <?=$this->lang->line('Default')?>
                       </div>
