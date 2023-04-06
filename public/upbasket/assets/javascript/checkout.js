@@ -122,6 +122,7 @@ var CHECKOUT = (function () {
       return false;
     }
     if (paymentOption == "") {
+      swal(language.please_select_Payment_method);
       $("#payBtn_error").html(language.please_select_Payment_method);
       return false;
     }
