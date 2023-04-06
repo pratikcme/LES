@@ -203,7 +203,7 @@
                   <div class="dates-day-wrapper">
                     <div class="owl-3 owl-carousel owl-theme">
 
-                  <div class="date-checkd">
+                  <!-- <div class="date-checkd">
                   <input class="checked-div" type="radio" name="radioname" value="one_value">
                   <div class="dates-wrapper">
                       <h4>Tus</h4>
@@ -262,11 +262,15 @@
                       <p>Nov 13</p>
                   </div>
                   </div>
-           
-                  
+            -->
+            <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
+                        <div class="date-wrap">
+                            <div id="datepicker" class="datepicker"></div>
+                        </div>
+                        <?php } ?>
                 </div>
                 </div>
-                  
+                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                   <div class="time-wrapper">  
                     <?php foreach ($time_slot as $key => $value) { ?>
                     <div class="form-check">
@@ -275,6 +279,7 @@
                       <?=$value->start_time?> - <?=$value->end_time?>
                       </label>
                     </div>
+                    <?php } ?>
                     <?php } ?>
                     <!-- <div class="form-check">
                       <input class="form-check-input" type="radio" name="Default-1" id="Default-2">
