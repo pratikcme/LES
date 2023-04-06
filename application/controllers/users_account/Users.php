@@ -212,7 +212,8 @@ class Users extends User_Controller {
 						redirect($url);
 						exit;
 					}
-					redirect(base_url().'users_account/users/account?name=my_address');
+					// redirect(base_url().'users_account/users/account?name=my_address');
+					redirect($_SERVER['HTTP_REFERER']);
 				}else{
 					$this->utility->setFlashMessage('danger','Something went wrong ');
 					if(isset($_POST['redirect_url']) && $_POST['redirect_url'] != ''){
@@ -220,7 +221,8 @@ class Users extends User_Controller {
 						redirect($url);
 						exit;
 					}
-					redirect(base_url().'users_account/users/account?name=my_address');
+					// redirect(base_url().'users_account/users/account?name=my_address');
+					redirect($_SERVER['HTTP_REFERER']);
 				}
 			}
 	}
