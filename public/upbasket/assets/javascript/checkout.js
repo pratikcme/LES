@@ -116,9 +116,9 @@ var CHECKOUT = (function () {
         paymentOption = $(this).val();
       }
     });
-    swal(language.please_select_Payment_method);
 
     if (paymentOption == "-1") {
+      swal(language.please_select_Payment_method);
       $("#payBtn_error").html(language.please_select_Payment_method);
       return false;
     }
