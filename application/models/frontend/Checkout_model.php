@@ -450,7 +450,7 @@ class Checkout_model extends My_model
         $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
-        dd($promocode);
+        lq();
         $getMycartSubtotal = getMycartSubtotal();
         $discountValue = 0;
         $shoppingDiscount = $this->checkShoppingBasedDiscount();
