@@ -1242,4 +1242,32 @@ class vendor_model extends My_model
         $this->session->set_flashdata('msg', 'Favicon image  has been updated successfully.');
         redirect(base_url() . 'web_setting/fav_image');
     }
+
+    public function web_logo($postData)
+    {
+
+        $app_id = $postData['app_id'];
+
+
+        if ($_FILES['webLogo']['name'] != '' && $_FILES['webLogo']['error'] == 0) {
+            $path = 'public/client_logo';
+            $files = $_FILES;
+            $result = upload_single_image_ByName($_FILES, 'webLogo', $path);
+            $webLogo = $result['data']['file_name'];
+            if (file_exists($path . '/' . $this->input->post('old_webLogo'))); {
+                delete_single_image($path, $this->input->post('old_webLogo'));
+            }
+        } else {
+            $webLogo =  $this->input->post('old_webLogo');
+        }
+
+        $data = array(
+            'webLogo' => $webLogo,
+            'dt_updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('id', $app_id);
+        $this->db->update('vendor', $data);
+        $this->session->set_flashdata('msg', 'Web logo  has been updated successfully.');
+        redirect(base_url() . 'web_setting/web_logo');
+    }
 }
