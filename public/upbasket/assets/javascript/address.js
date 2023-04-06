@@ -195,7 +195,6 @@ var ADDRESS = function () {
             dataType: 'json',
             success: function (output) {
                 $("#departure_address").rules("remove", "required");
-                alert(output.result[0].name);
                 $('.fname').val(output.result[0].name);
                 $('.mob_no').val(output.result[0].phone);
                 $('.landmark').val(output.result[0].landmark);
@@ -210,6 +209,7 @@ var ADDRESS = function () {
                 $('#departure_address').val(output.result[0].google_location);
                 $('#departure_latitude').val(output.result[0].latitude);
                 $('#departure_longitude').val(output.result[0].longitude);
+                $('#addres-popup').modal('show');
             }
         })
     });
