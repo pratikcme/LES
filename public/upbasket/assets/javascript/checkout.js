@@ -1,4 +1,27 @@
 var CHECKOUT = (function () {
+  var is_self_pickup = $('#CheckisSelfPickup').val();
+
+  if (is_self_pickup == 0) {
+    var minDate = 2;
+    var maxDate = "2d";
+  } else {
+    var minDate = 0;
+    var maxDate = "6d";
+  }
+
+  $(function () {
+    if ($("#datepicker").length) {
+      $("#datepicker").datepicker(
+        {
+          minDate: minDate,
+          maxDate: maxDate,
+          dateFormat: 'D,dd-mm-yy'
+        }
+      );
+    }
+  });
+
+
   var url = $("#url").val();
   var address_checked = false;
   $(".default_check").each(function (index, element) {
@@ -278,18 +301,18 @@ var CHECKOUT = (function () {
       $(".loader-main").removeClass("d-none");
       $("#stipeForm").append(
         '<input type="hidden" name="delivery_date" value="' +
-          delivery_date +
-          '" />'
+        delivery_date +
+        '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="time_slot_id" value="' +
-          time_slot_id +
-          '" />'
+        time_slot_id +
+        '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="user_gst_number" value="' +
-          user_gst_number +
-          '" />'
+        user_gst_number +
+        '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="promocode" value="' + promocode + '" />'
@@ -315,7 +338,7 @@ var CHECKOUT = (function () {
               delivery_date: delivery_date,
               user_gst_number: user_gst_number,
             },
-            success: function (output) {},
+            success: function (output) { },
           });
           onScriptLoad(details.txnToken, details.orderId, details.amount);
         }, 1000);
