@@ -57,7 +57,7 @@
         <div class="tab-details">
           <div class="tab-content account-details-content">
             <!-- ---tab-1-- -->
-            <div id="tab-1" class="container tab-pane fade <?=($action_name == 'my_account' || $action_name == '' ) ? 'active show' : ''?>">
+            <div id="tab-1" class="container tab-pane active">
               <h2 class="title">Account <span>Details</span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <div class="myaccout-detail-tab">
