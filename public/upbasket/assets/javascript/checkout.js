@@ -127,7 +127,7 @@ var CHECKOUT = (function () {
     }
   });
 
-  $('#myModal').model('show');
+  $('#myModal').modal('show');
   return false;
   var paymentOption = "-1";
   $(document).on("click", "#payBtn", function () {
