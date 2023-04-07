@@ -431,7 +431,7 @@ var CHECKOUT = (function () {
     window.location.href = url + "home";
   });
 
-  $(document).on("click", ".isSelfPickup", function () {
+  $(document).on("click", "#isSelfPickup", function () {
     $(".loader-main").removeClass("d-none");
     var isSelfPickup = 0;
     if ($(this).is(":checked")) {
