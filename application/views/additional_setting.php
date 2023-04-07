@@ -209,3 +209,5 @@ include('header.php');
             $(form).submit();
         }
     });
+
+    <?php include('footer.php'); ?>
