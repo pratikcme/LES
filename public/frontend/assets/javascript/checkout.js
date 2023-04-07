@@ -132,8 +132,7 @@ var CHECKOUT = (function () {
     if ($("#datepicker").length) {
       var delivery_date = $("#datepicker").val();
     }
-    alert(delivery_date);
-    return false;
+
     var AddressNotInRange = $("#AddressNotInRange").val();
     var checkAddress = $("#checkAddress").val();
     var isSelfPickup = $("#CheckisSelfPickup").val();
