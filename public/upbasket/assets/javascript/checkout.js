@@ -9,7 +9,7 @@ if (is_self_pickup == 0) {
 }
 
 if ($("#datepicker").length) {
-  var datepicker = $("#datepicker").datepicker(
+  $("#datepicker").datepicker(
     {
       inline: true,
       startDate: minDate,
@@ -18,10 +18,13 @@ if ($("#datepicker").length) {
       format: 'D,dd-mm-yyyy',
 
     }
-  ).data("datepicker");
-  var currentDate = new Date();
-  datepicker.setDate(currentDate);
+  );
 }
+var deliveryDate = '';
+$("#datepicker").on('click', function () {
+  deliveryDate = $(this).attr('data-date');
+  alert(deliveryDate);
+});
 // $(document).ready(function () { // jquery datepicker
 //   $('#datepicker').datepicker({
 //     inline: true,
