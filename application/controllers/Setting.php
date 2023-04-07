@@ -16,7 +16,7 @@ class Setting extends Admin_Controller
     public function index()
     {
         $email = $this->session->userdata('email');
-        $data['app_result'] = $this->vendor_model->vendorByIdEmail($email);
+        $data['app_result'] = $this->this_model->vendorByIdEmail($email);
         $data['resultcartData'] = $this->this_model->getCartValue();
         $data['resultcurrencyData'] = $this->this_model->getDefaultCurrency();
         $this->load->view('additional_setting', $data);
