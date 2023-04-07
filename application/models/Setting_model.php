@@ -73,7 +73,7 @@ class Setting_model extends My_model
 
     public function update_display_price_without_gst()
     {
-        dd($this->input->post());
+
         $id = $this->input->post('app_id');
         $data = array(
             'display_price_with_gst' => $this->input->post('display_price_with_gst'),
