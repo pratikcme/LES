@@ -1,4 +1,4 @@
-
+$("#datepicker").datepicker();
 
 var CHECKOUT = (function () {
   var url = $("#url").val();

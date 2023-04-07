@@ -15,9 +15,9 @@
   <input type="hidden" name="" id="session_my_cart" value="<?=$set?>">
   <input type="hidden" name="session_vendor_id" id="session_vendor_id" value="<?=(isset($_SESSION['branch_id'])) ? $_SESSION["branch_id"] : '' ?>">
 <!-- -----jquary-min----- -->
-<script src="<?=$this->theme_base_url.'/assets/js/jquery.min.js'?>"></script>
+<!-- <script src="<?=$this->theme_base_url.'/assets/js/jquery.min.js'?>"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 <!--  js animate-link -->
@@ -28,9 +28,6 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- bootstrap-datepicker-js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/164071/Drift.min.js'></script>
 
@@ -229,7 +226,9 @@
           setTimeout(function () { $('#registered').hide(); }, 6000);
             
       </script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js" type="text/javascript"></script> 
     <script src="<?=base_url();?>public/<?=$_SESSION['template_name']?>/assets/javascript/common.js?v=<?=js_version?>"></script>
