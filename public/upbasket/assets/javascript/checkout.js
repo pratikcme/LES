@@ -1,6 +1,7 @@
 var is_self_pickup = $('#CheckisSelfPickup').val();
 if (is_self_pickup == 0) {
-  var minDate = 2;
+  var minDate = new Date();
+  minDate.setDate(startDate.getDate() + 2);;
   var maxDate = "+2d";
 } else {
   var minDate = 0;
