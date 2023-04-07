@@ -206,7 +206,7 @@
                   <div class="dates-day-wrapper">
                     <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                       <?php } ?>
-                       <div id="datepicker" class="datepicker"></div>
+                       <div id="datepicker" class="hasDatepicker"></div>
                   </div>
                   <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                   <div class="time-wrapper">  
