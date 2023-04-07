@@ -7,15 +7,14 @@ if (is_self_pickup == 0) {
   var minDate = new Date();
   var maxDate = "+6d";
 }
-alert(minDate + '/' + maxDate);
 
 if ($("#datepicker").length) {
   $("#datepicker").datepicker(
     {
       startDate: minDate,
       endDate: maxDate,
-      dateFormat: 'D,dd-mm-yy'
       // maxDate: maxDate,
+      format: 'D,dd-mm-yyyy'
     }
   );
 }
