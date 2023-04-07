@@ -102,7 +102,7 @@
                   </form>
               </div> -->
             </div>
-             
+             <?=dd($_SESSION);die;?>
             <div class="main-accordion">
               <div class="accordion-heading">Delivery Method</div>
               <div class="accordion-content ">
