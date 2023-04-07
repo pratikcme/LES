@@ -70,7 +70,7 @@ include('header.php');
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        <?php if ($result['id'] != '') {
+                        <?php if ($resultcartData['id'] != '') {
                             echo "Update Minimum Cart Value";
                         } else {
                             echo "Add Minimum Cart Value";
@@ -78,20 +78,20 @@ include('header.php');
 
                     </header>
                     <form role="form" method="post" action="<?php echo base_url() . 'setting/cart_add'; ?>" name="cart_value" id="cart_value" enctype="multipart/form-data">
-                        <input type="hidden" id="id" name="id" value="<?php echo $result['id']; ?>">
+                        <input type="hidden" id="id" name="id" value="<?php echo $resultcartData['id']; ?>">
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name" id="cat" class="margin_top_label">Minimum Cart Value :<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" class="form-control margin_top_input" id="cart_min_value" name="cart_min_value" placeholder="Minimum cart value" value="<?php echo $result['value']; ?>">
+                                        <input type="text" class="form-control margin_top_input" id="cart_min_value" name="cart_min_value" placeholder="Minimum cart value" value="<?php echo $resultcartData['value']; ?>">
                                     </div>
 
 
                                 </div>
 
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <?php if ($result['id'] != '') {
+                                    <?php if ($resultcartData['id'] != '') {
                                         $btn = "Update ";
                                     } else {
                                         $btn = "Add ";
@@ -105,7 +105,7 @@ include('header.php');
                 </section>
                 <section class="panel">
                     <header class="panel-heading">
-                        <?php if ($result['id'] != '') {
+                        <?php if ($resultcurrencyData['id'] != '') {
                             echo "Update Currency Symbol";
                         } else {
                             echo "Add Currency Symbol";
@@ -113,20 +113,20 @@ include('header.php');
 
                     </header>
                     <form role="form" method="post" action="<?php echo base_url() . 'setting/currency_add'; ?>" name="currency" id="currency" enctype="multipart/form-data">
-                        <input type="hidden" id="id" name="id" value="<?php echo $result['id']; ?>">
+                        <input type="hidden" id="id" name="id" value="<?php echo $resultcurrencyData['id']; ?>">
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name" id="cat" class="margin_top_label">Currency Symbol:<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" class="form-control margin_top_input" id="currency" name="currency" placeholder="Currency symbol" value="<?php echo $result['value']; ?>">
+                                        <input type="text" class="form-control margin_top_input" id="currency" name="currency" placeholder="Currency symbol" value="<?php echo $resultcurrencyData['value']; ?>">
                                     </div>
 
 
                                 </div>
 
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <?php if ($result['id'] != '') {
+                                    <?php if ($resultcurrencyData['id'] != '') {
                                         $btn = "Update ";
                                     } else {
                                         $btn = "Add ";
