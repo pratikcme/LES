@@ -1,34 +1,42 @@
 var is_self_pickup = $('#CheckisSelfPickup').val();
+// if (is_self_pickup == 0) {
+//   var minDate = new Date();
+//   minDate.setDate(minDate.getDate() + 2)
+//   var maxDate = "+2d";
+// } else {
+//   var minDate = new Date();
+//   var maxDate = "+6d";
+// }
+
+// if ($("#datepicker").length) {
+//   $("#datepicker").datepicker(
+//     {
+//       startDate: minDate,
+//       endDate: maxDate,
+//       // maxDate: maxDate,
+//       format: 'D,dd-mm-yyyy',
+//     }
+//   );
+// }
 if (is_self_pickup == 0) {
-  var minDate = new Date();
-  minDate.setDate(minDate.getDate() + 2)
-  var maxDate = "+2d";
+  var minDate = 2;
+  var maxDate = "2d";
 } else {
-  var minDate = new Date();
-  var maxDate = "+6d";
+  var minDate = 0;
+  var maxDate = "6d";
 }
 
-if ($("#datepicker").length) {
-  $("#datepicker").datepicker(
-    {
-      startDate: minDate,
-      endDate: maxDate,
-      // maxDate: maxDate,
-      format: 'D,dd-mm-yyyy',
-    }
-  );
-}
-// $(document).ready(function () { // jquery datepicker
-//   $('#datepicker').datepicker({
-//     inline: true,
-//     firstDay: 1,
-//     showOtherMonths: true,
-//     dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-//     minDate: minDate,
-//     maxDate: maxDate,
-//     dateFormat: 'D,dd-mm-yy'
-//   })
-// });
+$(function () {
+  if ($("#datepicker").length) {
+    $("#datepicker").datepicker(
+      {
+        minDate: minDate,
+        maxDate: maxDate,
+        dateFormat: 'D,dd-mm-yy'
+      }
+    );
+  }
+});
 
 var CHECKOUT = (function () {
   var url = $("#url").val();
