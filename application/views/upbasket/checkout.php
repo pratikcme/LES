@@ -45,7 +45,6 @@
 
 .ui-datepicker-calendar thead th {
     color: var(--primary-color) !important;
-    font-family: Poppins !important; 
     font-size: 16px !important;
     font-weight: 400px !important;
 }
@@ -110,7 +109,7 @@
                 <div class="accordion-content-2">
                 <div class="form-check radio-outer-line">
                   <input class="form-check-input default_check" type="radio" name="flexRadioDefault" 
-                  id="isSelfPickup" checked>
+                  id="isSelfPickup" <?=(!isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] != '1') ?  "checked" : "" ?>>
                   <label class="form-check-label" for="flexRadioDefault1" >
                     <span><i class="fa-solid fa-truck"></i></span>Ship
                   </label>
