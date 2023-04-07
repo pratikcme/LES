@@ -1536,7 +1536,7 @@ class Api_model extends My_model {
 
             $my_cart_result = $this->selectFromJoin($data,true);
         
-           
+            dd($my_cart_result);
             $counter = 0;
             $total_gst = 0;
             if (count($my_cart_result) > 0) {
@@ -4144,5 +4144,3 @@ class Api_model extends My_model {
     }
 
 }
-
-?>
