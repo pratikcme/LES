@@ -11,9 +11,9 @@ alert(minDate + '/' + maxDate);
 if ($("#datepicker").length) {
   $("#datepicker").datepicker(
     {
-      minDate: minDate,
-      maxDate: maxDate,
-      dateFormat: 'D,dd-mm-yy'
+      minDate: 0,
+      // maxDate: maxDate,
+      // dateFormat: 'D,dd-mm-yy'
     }
   );
 }
