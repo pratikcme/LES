@@ -53,6 +53,11 @@ class Setting_model extends My_model
         redirect(base_url() . 'setting');
         exit();
     }
+
+    public function update_display_price_without_gst()
+    {
+        dd($this->input->post());
+    }
     public function profit_add()
     {
         $profit = $this->input->post('profit');

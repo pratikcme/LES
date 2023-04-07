@@ -15,6 +15,8 @@ class Setting extends Admin_Controller
 
     public function index()
     {
+        $email = $this->session->userdata('email');
+        $data['app_result'] = $this->vendor_model->vendorByIdEmail($email);
         $data['resultcartData'] = $this->this_model->getCartValue();
         $data['resultcurrencyData'] = $this->this_model->getDefaultCurrency();
         $this->load->view('additional_setting', $data);
@@ -31,6 +33,11 @@ class Setting extends Admin_Controller
     {
         $this->this_model->currency_add();
     }
+    public function update_display_price_without_gst()
+    {
+        $this->this_model->update_display_price_without_gst();
+    }
+
 
     public function profit_percent()
     {

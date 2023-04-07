@@ -138,6 +138,43 @@ include('header.php');
                             </div>
                     </form>
                 </section>
+
+                <section class="panel">
+                    <header class="panel-heading">
+                        <?php
+                        echo "Update Display price without gst";
+                        ?>
+
+                    </header>
+                    <form role="form" method="post" action="<?php echo base_url() . 'setting/update_display_price_without_gst'; ?>" name="currency" id="currency" enctype="multipart/form-data">
+                        <input type="hidden" name="app_id" id="app_id" value="<?php echo $app_result['id']; ?>">
+                        <div class="panel-body">
+                            <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">Display price without gst<span class="required" aria-required="true">
+                                                * </span></label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="radio" name="display_price_with_gst" class="display_price_with_gst" value="0" <?= ($app_result['display_price_with_gst'] == '0') ? 'checked' : '' ?>>
+                                                Disabled
+                                                <input type="radio" name="display_price_with_gst" class="display_price_with_gst" value="1" <?= ($app_result['display_price_with_gst'] == '1') ? 'checked' : '' ?>>Enabled
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+                                    <a href="<?php echo base_url() . 'admin/dashboard'; ?>" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>
+                                    <input type="submit" class="btn btn-info pull-right margin_top_label" value="<?php echo 'update'; ?>" name="submit">
+                                </div>
+                            </div>
+                    </form>
+                </section>
             </div>
 
             <!--Map Part-->
