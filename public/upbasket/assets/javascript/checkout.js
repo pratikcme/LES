@@ -14,7 +14,7 @@ if ($("#datepicker").length) {
     {
       startDate: minDate,
       endDate: maxDate,
-      format: 'D,dd-mm-yyyy'
+      dateFormat: 'D,dd-mm-yy'
       // maxDate: maxDate,
     }
   );
