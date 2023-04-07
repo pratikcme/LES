@@ -1,5 +1,5 @@
 var is_self_pickup = $('#CheckisSelfPickup').val();
-$("#myModal").modal("show");
+$('#myModal').modal('show');
 // if (is_self_pickup == 0) {
 //   var minDate = new Date();
 //   minDate.setDate(minDate.getDate() + 2)
