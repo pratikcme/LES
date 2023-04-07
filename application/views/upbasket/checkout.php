@@ -11,14 +11,14 @@
 
 
 .ui-datepicker-calendar th:nth-child(1) {
-    padding-left: 0px;
+    padding-left: 0px !important;
 }
 
 .ui-datepicker-calendar td:nth-child(2) {
-    padding-left: 0px;
+    padding-left: 0px !important;
 }
 .ui-datepicker-calendar th:nth-child(3) {
-     padding-left: 0px; 
+     padding-left: 0px !important; 
 }
 
 .ui-datepicker-title {
