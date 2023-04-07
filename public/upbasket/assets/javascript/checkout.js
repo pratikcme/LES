@@ -13,13 +13,13 @@ if ($("#datepicker").length) {
   $("#datepicker").datepicker(
     {
       startDate: minDate,
-      endDate: maxDate
+      endDate: maxDate,
       // maxDate: maxDate,
-      dateFormat: 'D,dd-mm-yy'
+      format: 'D,dd-mm-yyyy'
     }
   );
 }
-// $(document).ready(function () {
+// $(document).ready(function () { // jquery datepicker
 //   $('#datepicker').datepicker({
 //     inline: true,
 //     firstDay: 1,
@@ -167,7 +167,7 @@ var CHECKOUT = (function () {
     if ($("#datepicker").length) {
       var delivery_date = $("#datepicker").val();
     }
-
+    alert(delivery_date);
     var AddressNotInRange = $("#AddressNotInRange").val();
     var checkAddress = $("#checkAddress").val();
     var isSelfPickup = $("#CheckisSelfPickup").val();
