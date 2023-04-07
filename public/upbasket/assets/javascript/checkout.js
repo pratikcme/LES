@@ -16,7 +16,7 @@ if ($("#datepicker").length) {
       // maxDate: maxDate,
       format: 'D,dd-mm-yyyy',
       onSelect: function (dateText) {
-        $("#datepicker").attr('data-date', dateText); // update selected date display
+        alert(dateText);
       }
     }
   );
