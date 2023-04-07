@@ -17,7 +17,7 @@ class Setting extends Admin_Controller
     {
         $data['resultcartData'] = $this->this_model->getCartValue();
         $data['resultcurrencyData'] = $this->this_model->getDefaultCurrency();
-        $this->load->view('additional_setting');
+        $this->load->view('additional_setting', $data);
     }
 
 
