@@ -17,19 +17,8 @@ if ($("#datepicker").length) {
       format: 'D,dd-mm-yyyy',
     }
   ).data('datepicker');
-
-  // get selected date when button is clicked
-  $("#get-selected-date").on("click", function () {
-    var selectedDate = datepicker.getDate();
-    if (selectedDate !== null) {
-      var formattedDate = datepicker.formatDate("dd/mm/yyyy", selectedDate);
-      alert(formattedDate);
-      $("#selected-date").text(formattedDate);
-    } else {
-      $("#selected-date").text("");
-    }
-  });
-
+  var selectedDate = datepicker.getDate();
+  alert(selectedDate);
 }
 // $(document).ready(function () { // jquery datepicker
 //   $('#datepicker').datepicker({
