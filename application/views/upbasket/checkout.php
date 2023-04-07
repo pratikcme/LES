@@ -47,6 +47,7 @@
     color: var(--primary-color) !important;
     font-family: Poppins !important; 
     font-size: 16px !important;
+    font-weight: 400px !important;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active{
