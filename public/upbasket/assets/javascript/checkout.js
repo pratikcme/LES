@@ -1,50 +1,23 @@
 var is_self_pickup = $('#CheckisSelfPickup').val();
-
-// if (is_self_pickup == 0) {
-//   var minDate = new Date();
-//   minDate.setDate(minDate.getDate() + 2)
-//   var maxDate = "+2d";
-// } else {
-//   var minDate = new Date();
-//   var maxDate = "+6d";
-// }
-
-// if ($("#datepicker").length) {
-//   $("#datepicker").datepicker(
-//     {
-//       inline: true,
-//       startDate: minDate,
-//       endDate: maxDate,
-//       // maxDate: maxDate,
-//       format: 'D,dd-mm-yyyy',
-
-//     }
-//   );
-// }
 if (is_self_pickup == 0) {
-  var minDate = 2;
-  var maxDate = "2d";
+  var minDate = new Date();
+  minDate.setDate(minDate.getDate() + 2)
+  var maxDate = "+2d";
 } else {
-  var minDate = 0;
-  var maxDate = "6d";
+  var minDate = new Date();
+  var maxDate = "+6d";
 }
 
-$(function () {
-  if ($("#datepicker").length) {
-    $("#datepicker").datepicker(
-      {
-        minDate: minDate,
-        maxDate: maxDate,
-        dateFormat: 'D,dd-mm-yy'
-      }
-    );
-  }
-});
-var deliveryDate = '';
-$("#datepicker").on('click', function () {
-  deliveryDate = $(this).attr('data-date');
-  alert(deliveryDate);
-});
+if ($("#datepicker").length) {
+  $("#datepicker").datepicker(
+    {
+      startDate: minDate,
+      endDate: maxDate,
+      // maxDate: maxDate,
+      format: 'D,dd-mm-yyyy',
+    }
+  );
+}
 // $(document).ready(function () { // jquery datepicker
 //   $('#datepicker').datepicker({
 //     inline: true,
