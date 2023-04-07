@@ -1,17 +1,17 @@
 var is_self_pickup = $('#CheckisSelfPickup').val();
 if (is_self_pickup == 0) {
-  var minDate = 2;
-  var maxDate = "2d";
+  var minDate = new Date();
+  var maxDate = "+2d";
 } else {
   var minDate = 0;
-  var maxDate = "6d";
+  var maxDate = "+6d";
 }
 alert(minDate + '/' + maxDate);
 
 if ($("#datepicker").length) {
   $("#datepicker").datepicker(
     {
-      startDate: new Date(),
+      startDate: minDate,
       endDate: "+6d "
       // maxDate: maxDate,
       // dateFormat: 'D,dd-mm-yy'
