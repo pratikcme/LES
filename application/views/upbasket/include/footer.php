@@ -17,6 +17,8 @@
 <!-- -----jquary-min----- -->
 <!-- <script src="<?=$this->theme_base_url.'/assets/js/jquery.min.js'?>"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- bootstrap-datepicker-js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -38,8 +40,6 @@
 <!-- -----slider-js-- -->
 <script src="<?=$this->theme_base_url.'/assets/js/index.js'?>"></script>
 <script src="<?=$this->theme_base_url.'/assets/js/slider.js'?>"></script>
-<!-- bootstrap-datepicker-js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
