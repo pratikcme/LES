@@ -14,7 +14,11 @@ if ($("#datepicker").length) {
       startDate: minDate,
       endDate: maxDate,
       // maxDate: maxDate,
-      format: 'D,dd-mm-yyyy'
+      format: 'D,dd-mm-yyyy',
+      onSelect: function (dateText) {
+        alert(dateText);
+        $("#selected-date").text(dateText); // update selected date display
+      }
     }
   );
 }
@@ -165,10 +169,6 @@ var CHECKOUT = (function () {
     var delivery_date = "";
     if ($("#datepicker").length) {
       var delivery_date = $("#datepicker").val();
-      $("#get-date").click(function () {
-        var delivery_date = $("#datepicker").datepicker("getDate");
-        alert("Selected date: " + selectedDate);
-      });
     }
     alert(delivery_date);
     var AddressNotInRange = $("#AddressNotInRange").val();
