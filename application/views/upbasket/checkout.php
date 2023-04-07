@@ -30,24 +30,30 @@
 }
 
 .ui-datepicker-title {
-    font-size: 18px;
+    font-size: 18px !important; 
     color: var(--primary-color);
-    font-family: "OpenSans-Bold";
+    font-family: Poppins !important;
 }
 
 .ui-datepicker {
     background-color: #fff;
-    box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid #999;
+    box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2 !important);
+    border-radius: 0.5rem !important; 
+    padding: 0.5rem !important;
+    border: 1px solid #999 !important;
 }
 
 .ui-datepicker-calendar thead th {
-    color: var(--primary-color);
-    font-family: "OpenSans-Bold";
-    font-size: 16px;
+    color: var(--primary-color) !important;
+    font-family: Poppins !important; 
+    font-size: 16px !important;
 }
+
+.ui-state-active, .ui-widget-content .ui-state-active{
+  background-color: var(--primary-color) !important;
+  border-color:var(--primary-color) !important;
+}
+
  </style>
  <!-- ----hero-section--- -->
  <?php if(isset($Host)){ ?>
