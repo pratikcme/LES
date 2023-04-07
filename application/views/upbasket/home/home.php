@@ -23,29 +23,42 @@
 
 <!-- Indicators/dots -->
 <div class="carousel-indicators">
-  <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-  <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-  <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+  <?php foreach ($banner as $key => $value) { ?> 
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="<?=$key?>" class="<?=($key==0) ? 'active' : '' ?>"></button>
+  <?php } ?>
+  <!-- <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+  <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> -->
 </div>
 
 <!-- The slideshow/carousel -->
 <div class="carousel-inner">
-<section class="hero-section carousel-item active">
-  <div class="container">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12"></div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="hero-content">
-            <h5>PROVIDING <span>QUALITY</span> PRODUCTS</h5>
-            <h1>ORGANIC <span>DRY FRUITS</span></h1>
-            <h3><span>100%</span> HEALTHY & AFFORDABLE</h3>
-            <a href="./product-listing-2.php" class="hero-btn">shop now</a>
+<?php foreach ($banner as $key => $value) { ?>
+  <section class="hero-section carousel-item <?=($key == 0) ? "active" : ""?>">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12"></div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="hero-content">
+              <!-- <h5>PROVIDING <span>QUALITY</span> PRODUCTS</h5>
+              <h1>ORGANIC <span>DRY FRUITS</span></h1>
+              <h3><span>100%</span> HEALTHY & AFFORDABLE</h3> -->
+              <h1><?=$value->main_title?></h1>
+              <h3><?=$value->sub_title?></h3>
+              <?php if($value->type == '1'){ ?>
+               <a href="<?=base_url().'products'?>" class="hero-btn"><?=$this->lang->line('Shop Now')?></a>
+               <?php }else if($value->type == '2'){ ?>
+                <a href="<?=base_url().'products?cat_id='.$this->utility->safe_b64encode($value->category_id)?>" class="hero-btn"><?=$this->lang->line('Shop Now')?></a>
+              <?php }else{ ?>
+                <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_varient_id)?>" class="hero-btn"><?=$this->lang->line('Shop Now')?></a>
+              <?php } ?>
+              <!-- <a href="./product-listing-2.php" class="hero-btn">shop now</a> -->
+            </div>
           </div>
-        </div>
+      </div>
     </div>
-  </div>
-</section>
-<section class="hero-section carousel-item ">
+  </section>
+<?php } ?>
+<!-- <section class="hero-section carousel-item ">
   <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12"></div>
@@ -74,7 +87,7 @@
         </div>
     </div>
   </div>
-</section>
+</section> -->
 </div>
 </div>
 
