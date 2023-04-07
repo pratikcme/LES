@@ -4,7 +4,7 @@ if (is_self_pickup == 0) {
   minDate.setDate(minDate.getDate() + 2)
   var maxDate = "+2d";
 } else {
-  var minDate = 0;
+  var minDate = new Date();
   var maxDate = "+6d";
 }
 alert(minDate + '/' + maxDate);
