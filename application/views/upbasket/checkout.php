@@ -204,74 +204,10 @@
                 <div class="accordion-heading">Delivery Schedule</div>
                 <div class="accordion-content  accordion-content-4">
                   <div class="dates-day-wrapper">
-                    <div class="owl-3 owl-carousel owl-theme">
-
-                  <!-- <div class="date-checkd">
-                  <input class="checked-div" type="radio" name="radioname" value="one_value">
-                  <div class="dates-wrapper">
-                      <h4>Tus</h4>
-                      <p>Nov 08</p>
+                    <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
+                      <div id="calendar" class="hasDatepicker"></div>
+                    <?php } ?>
                   </div>
-                  </div>
-                 
-                  
-                  <div class="date-checkd">
-                    <input class="checked-div" type="radio" name="radioname" value="one_value">
-                  <div class="dates-wrapper">
-                      <h4>Wed</h4>
-                      <p>Nov 09</p>
-                  </div>
-                  </div>
-                
-                  
-                  <div class="date-checkd">
-                    <input class="checked-div" type="radio" name="radioname" value="one_value">
-                  <div class="dates-wrapper">
-                      <h4>thu</h4>
-                      <p>Nov 10</p>
-                  </div>
-                  </div>
-                 
-
-                  <div class="date-checkd">
-                    <input class="checked-div" type="radio" name="radioname" value="one_value">
-                  <div class="dates-wrapper">
-                      <h4>fri</h4>
-                      <p>Nov 11</p>
-                  </div>
-                  </div>
-               
-                  <div class="date-checkd">
-                    <input class="checked-div" type="radio" name="radioname" value="one_value">
-                  <div class="dates-wrapper">
-                      <h4>sat</h4>
-                      <p>Nov 12</p>
-                  </div>
-                  </div>
-                  
-
-                  <div class="date-checkd">
-                    <input class="checked-div" type="radio" name="radioname" value="one_value">
-                  <div class="dates-wrapper">
-                      <h4>sun</h4>
-                      <p>Nov 13</p>
-                  </div>
-                  </div>
-             
-                  <div class="date-checkd">
-                    <input class="checked-div" type="radio" name="radioname" value="one_value">
-                  <div class="dates-wrapper">
-                      <h4>mon</h4>
-                      <p>Nov 13</p>
-                  </div>
-                  </div>
-            -->
-                  <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
-                    <div class="date-wrap">
-                        <div id="datepicker" class="datepicker"></div>
-                    </div>
-                  <?php } ?>
-                </div>
                 </div>
                 <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                   <div class="time-wrapper">  
