@@ -1,9 +1,33 @@
+var is_self_pickup = $('#CheckisSelfPickup').val();
+
+if (is_self_pickup == 0) {
+  var minDate = 2;
+  var maxDate = "2d";
+} else {
+  var minDate = 0;
+  var maxDate = "6d";
+}
+
+$(function () {
+  if ($("#datepicker").length) {
+    $("#datepicker").datepicker(
+      {
+        minDate: minDate,
+        maxDate: maxDate,
+        dateFormat: 'D,dd-mm-yy'
+      }
+    );
+  }
+});
 $(document).ready(function () {
   $('#datepicker').datepicker({
     inline: true,
     firstDay: 1,
     showOtherMonths: true,
-    dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    minDate: minDate,
+    maxDate: maxDate,
+    dateFormat: 'D,dd-mm-yy'
   })
 });
 
