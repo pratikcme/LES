@@ -54,6 +54,23 @@ class Setting_model extends My_model
         exit();
     }
 
+    public function vendorByIdEmail($email)
+    {
+
+        $branch_id = $this->session->userdata['id'];
+        if ($branch_id == 0) {
+            $data['table'] = 'vendor';
+            $data['where']['id'] = $this->vendor_id;
+        } else {
+            $data['table'] = 'branch';
+            $data['where']['email'] = $email;
+            $data['where']['id'] = $branch_id;
+        }
+        $data['select'] = ['*'];
+        $re = $this->selectRecords($data, true);
+        return $re[0];
+    }
+
     public function update_display_price_without_gst()
     {
         dd($this->input->post());
