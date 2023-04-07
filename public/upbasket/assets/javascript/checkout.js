@@ -1,5 +1,5 @@
 
-$('#calendar').datepicker({
+$('#datepicker').datepicker({
   inline: true,
   firstDay: 1,
   showOtherMonths: true,
