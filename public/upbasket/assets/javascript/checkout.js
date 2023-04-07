@@ -127,10 +127,11 @@ var CHECKOUT = (function () {
     }
   });
 
+  $('#myModal').model('show');
+  return false;
   var paymentOption = "-1";
   $(document).on("click", "#payBtn", function () {
-    $('#myModal').model('show');
-    return false;
+
     if (($("#credit").checked = true)) {
       $("#paytm-checkoutjs").addClass("test");
       $(".ptm-own-element").css("display", "block !important");
