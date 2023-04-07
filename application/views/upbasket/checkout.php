@@ -2,6 +2,44 @@
  span.error{
   color:red;
  }
+ .dates-day-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ui-datepicker-calendar th:nth-child(1) {
+    padding-left: 0px;
+}
+
+.ui-datepicker-calendar td:nth-child(2) {
+    padding-left: 0px;
+}
+.ui-datepicker-calendar th:nth-child(3) {
+     padding-left: 0px; 
+}
+
+.ui-datepicker-title {
+    font-size: 18px;
+    color: var(--secondary-color);
+    font-family: "OpenSans-Bold";
+}
+
+.ui-datepicker {
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #999;
+}
+
+.ui-datepicker-calendar thead th {
+    color: var(--secondary-color);
+    font-family: "OpenSans-Bold";
+    font-size: 16px;
+}
  </style>
  <!-- ----hero-section--- -->
  <?php if(isset($Host)){ ?>
@@ -56,13 +94,15 @@
               <div class="accordion-content ">
                 <div class="accordion-content-2">
                 <div class="form-check radio-outer-line">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input default_check" type="radio" name="flexRadioDefault" 
+                  id="isSelfPickup" checked>
+                  <label class="form-check-label" for="flexRadioDefault1" >
                     <span><i class="fa-solid fa-truck"></i></span>Ship
                   </label>
                 </div>
                 <div class="form-check radio-outer-line">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <input class="form-check-input default_check" type="radio" name="flexRadioDefault"
+                   id="isSelfPickup" <?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?> >
                   <label class="form-check-label" for="flexRadioDefault2">
                     <span><i class="fa-solid fa-store"></i></span>Pick up
                   </label>
