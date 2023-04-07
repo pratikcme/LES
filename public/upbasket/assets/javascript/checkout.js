@@ -4,9 +4,9 @@ if (is_self_pickup == 0) {
   minDate.setDate(minDate.getDate() + 2)
   var maxDate = "+2d";
 } else {
+  var minDate = new Date();
+  var maxDate = "+6d";
 }
-var minDate = new Date();
-var maxDate = "+6d";
 alert(minDate + '/' + maxDate);
 
 if ($("#datepicker").length) {
@@ -15,7 +15,7 @@ if ($("#datepicker").length) {
       startDate: minDate,
       endDate: maxDate
       // maxDate: maxDate,
-      // dateFormat: 'D,dd-mm-yy'
+      dateFormat: 'D,dd-mm-yy'
     }
   );
 }
