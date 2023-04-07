@@ -25,9 +25,13 @@
      padding-left: 0px !important; 
 }
 
+.ui-datepicker-calendar  th:nth-child(4) {
+    padding-left: 0px !important;
+}
+
 .ui-datepicker-title {
     font-size: 18px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-family: "OpenSans-Bold";
 }
 
@@ -40,7 +44,7 @@
 }
 
 .ui-datepicker-calendar thead th {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-family: "OpenSans-Bold";
     font-size: 16px;
 }
