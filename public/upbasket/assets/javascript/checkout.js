@@ -9,17 +9,27 @@ if (is_self_pickup == 0) {
 }
 
 if ($("#datepicker").length) {
-  $("#datepicker").datepicker(
+  var datepicker = $("#datepicker").datepicker(
     {
       startDate: minDate,
       endDate: maxDate,
       // maxDate: maxDate,
       format: 'D,dd-mm-yyyy',
-      onSelect: function (dateText) {
-        alert(dateText);
-      }
     }
-  );
+  ).data('datepicker');
+
+  // get selected date when button is clicked
+  $("#get-selected-date").on("click", function () {
+    var selectedDate = datepicker.getDate();
+    if (selectedDate !== null) {
+      var formattedDate = datepicker.formatDate("dd/mm/yyyy", selectedDate);
+      alert(formattedDate);
+      $("#selected-date").text(formattedDate);
+    } else {
+      $("#selected-date").text("");
+    }
+  });
+
 }
 // $(document).ready(function () { // jquery datepicker
 //   $('#datepicker').datepicker({
