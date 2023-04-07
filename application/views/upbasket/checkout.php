@@ -205,8 +205,8 @@
                 <div class="accordion-content  accordion-content-4">
                   <div class="dates-day-wrapper">
                     <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
-                       <div id="calendar" class="hasDatepicker"></div>
-                    <?php } ?>
+                      <?php } ?>
+                      <div id="calendar" class="hasDatepicker"></div>
                   </div>
                   <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                   <div class="time-wrapper">  
