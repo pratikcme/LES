@@ -39,7 +39,7 @@
 <!-- <script src="<?=$this->theme_base_url.'/assets/js/zoom.js'?>"></script> -->
 <!-- <script src="<?=$this->theme_base_url.'/assets/js/dropdown.js'?>"></script> -->
 <!-- -----slider-js-- -->
-<!-- <script src="<?=$this->theme_base_url.'/assets/js/index.js'?>"></script> -->
+<script src="<?=$this->theme_base_url.'/assets/js/index.js'?>"></script>
 <!-- <script src="<?=$this->theme_base_url.'/assets/js/slider.js'?>"></script> -->
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
