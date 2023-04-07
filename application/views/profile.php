@@ -308,7 +308,7 @@ $vendor_id = $this->session->userdata['id'];
                                     <input type="text" name="ios_isforce" class="form-control" id="ios_isforce"
                                         placeholder="Ios isforce" value="<?php echo $app_result['ios_isforce']; ?>">
                                 </div> -->
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="">Display price without gst<span class="required" aria-required="true">
                                                 * </span></label>
                                         <div class="row">
@@ -318,7 +318,7 @@ $vendor_id = $this->session->userdata['id'];
                                                 <input type="radio" name="display_price_with_gst" class="display_price_with_gst" value="1" <?= ($app_result['display_price_with_gst'] == '1') ? 'checked' : '' ?>>Enabled
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="form-group">
                                     <label class="margin_top_label">Web Logo :<span class="required"
                                             aria-required="true"> * </span></label>
