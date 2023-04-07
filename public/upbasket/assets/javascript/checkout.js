@@ -9,16 +9,15 @@ if (is_self_pickup == 0) {
 }
 
 if ($("#datepicker").length) {
-  var datepicker = $("#datepicker").datepicker(
+  $("#datepicker").datepicker(
     {
       startDate: minDate,
       endDate: maxDate,
       // maxDate: maxDate,
       format: 'D,dd-mm-yyyy',
+
     }
-  ).data('datepicker');
-  var selectedDate = datepicker.getDate();
-  alert(selectedDate);
+  );
 }
 // $(document).ready(function () { // jquery datepicker
 //   $('#datepicker').datepicker({
