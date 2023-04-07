@@ -11,8 +11,8 @@ alert(minDate + '/' + maxDate);
 if ($("#datepicker").length) {
   $("#datepicker").datepicker(
     {
-      startDate: new Date(),
-      endDate: "+6d"
+      startDate: 0,
+      endDate: "+6d "
       // maxDate: maxDate,
       // dateFormat: 'D,dd-mm-yy'
     }
