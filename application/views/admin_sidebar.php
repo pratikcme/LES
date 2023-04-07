@@ -214,12 +214,15 @@
         <i class="fas fa-chevron-right <?= ($this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'delivery_charge' || $this->uri->segment(1) == 'time_slot' || $this->uri->segment(1) == 'setting' || $this->uri->segment(1) == 'setting') ? 'rotate' : '' ?>"></i>
     </a>
     <ul>
+
         <li>
-            <a class="<?php if ($this->uri->segment(1) == 'setting' && $this->uri->segment(2) == 'cart_value') { ?> active <?php } ?>" href="<?php echo base_url() . 'setting/cart_value/'; ?>">
+            <a class="<?php if ($this->uri->segment(1) == 'setting') { ?> active <?php } ?>" href="<?php echo base_url() . 'setting'; ?>">
                 <i class="fa fa-cog"></i>
-                <span>Minimum Cart Value</span>
+                <span>Additional Setting</span>
             </a>
         </li>
+
+
         <!-- <li>
             <a class="<?php if ($this->uri->segment(1) == 'setting' && $this->uri->segment(2) == 'profit_percent') { ?> active <?php } ?>" href="<?php echo base_url() . 'setting/profit_percent/'; ?>">
                 <i class="fa fa-cog"></i>
