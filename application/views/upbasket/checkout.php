@@ -108,15 +108,15 @@
               <div class="accordion-content ">
                 <div class="accordion-content-2">
                 <div class="form-check radio-outer-line">
-                  <input class="form-check-input default_check" type="radio" name="flexRadioDefault" 
-                  id="isSelfPickup" <?=(!isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] != '1') ?  "checked" : "" ?>>
+                  <input class="form-check-input isSelfPickup " type="radio" name="flexRadioDefault" 
+                   <?=(!isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] != '1') ?  "checked" : "" ?>>
                   <label class="form-check-label" for="flexRadioDefault1" >
                     <span><i class="fa-solid fa-truck"></i></span>Ship
                   </label>
                 </div>
                 <div class="form-check radio-outer-line">
-                  <input class="form-check-input default_check" type="radio" name="flexRadioDefault"
-                   id="isSelfPickup" <?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?> >
+                  <input class="form-check-input isSelfPickup" type="radio" name="flexRadioDefault"
+                   <?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?> >
                   <label class="form-check-label" for="flexRadioDefault2">
                     <span><i class="fa-solid fa-store"></i></span>Pick up
                   </label>

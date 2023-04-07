@@ -46,6 +46,7 @@ var CHECKOUT = (function () {
       address_checked = true;
     }
   });
+
   $(document).on("click", "#nextButton", function () {
     if ($(".default_check").length) {
       $(".default_check").each(function (index, element) {
@@ -55,24 +56,7 @@ var CHECKOUT = (function () {
       });
     }
 
-    if (address_checked) {
-      $(this).parent().parent().parent().prev().removeClass("active");
-      if ($(this).parent().parent().parent().hasClass("full_height")) {
-        $(this).parent().parent().parent().removeClass("full_height");
-      }
 
-      $(this).parent().parent().parent().removeAttr("style");
-      $(this).parent().parent().parent().next().next().addClass("active");
-      $(this)
-        .parent()
-        .parent()
-        .parent()
-        .next()
-        .next()
-        .next()
-        .css("max-height", "662px");
-      // $('.panel').css("max-height","191px");
-    }
   });
 
   // if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
@@ -174,7 +158,7 @@ var CHECKOUT = (function () {
     if ($("#datepicker").length) {
       var delivery_date = $("#datepicker").val();
     }
-    alert(delivery_date);
+
     var AddressNotInRange = $("#AddressNotInRange").val();
     var checkAddress = $("#checkAddress").val();
     var isSelfPickup = $("#CheckisSelfPickup").val();
@@ -447,7 +431,7 @@ var CHECKOUT = (function () {
     window.location.href = url + "home";
   });
 
-  $(document).on("click", "#isSelfPickup", function () {
+  $(document).on("click", ".isSelfPickup", function () {
     $(".loader-main").removeClass("d-none");
     var isSelfPickup = 0;
     if ($(this).is(":checked")) {
