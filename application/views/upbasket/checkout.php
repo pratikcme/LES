@@ -199,7 +199,46 @@
                   </form> 
                 </div>
               </div>
+              <div class="main-accordion">
+              <div class="accordion-heading">Delivery Schedule</div>
+              <div class="accordion-content  accordion-content-4">
+                <div class="dates-day-wrapper">
+                  <div id="calendar" class="hasDatepicker"></div>
+                </div>
 
+                <form action="">
+                  <div class="time-wrapper">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="Default-1" id="Default-1">
+                      <label class="form-check-label" for="Default-1">
+                        9am to 10am
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="Default-1" id="Default-2">
+                      <label class="form-check-label" for="Default-2">
+                        11am to 2pm
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="Default-1" id="Default-3">
+                      <label class="form-check-label" for="Default-3">
+                        3pm to 5pm
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="Default-1" id="Default-4">
+                      <label class="form-check-label" for="Default-4">
+                        6pm to 8pm
+                      </label>
+                    </div>
+                  </div>
+                </form>
+
+
+              </div>
+            </div>
+            
               <div class="main-accordion">
                 <div class="accordion-heading">Delivery Schedule</div>
                 <div class="accordion-content  accordion-content-4">
