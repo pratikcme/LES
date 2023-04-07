@@ -21,26 +21,26 @@
 <!-- bootstrap-datepicker-js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script> -->
 
 <!--  js animate-link -->
-<script src="<?=$this->theme_base_url.'/assets/js/wow.min.js'?>"></script>
+<!-- <script src="<?=$this->theme_base_url.'/assets/js/wow.min.js'?>"></script> -->
 
 <!-- ----owl-min-js----- -->
-<script src="<?=$this->theme_base_url.'/assets/js/owl.carousel.min.js'?>"></script>
+<!-- <script src="<?=$this->theme_base_url.'/assets/js/owl.carousel.min.js'?>"></script> -->
 
 <!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script> -->
 
-<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/164071/Drift.min.js'></script>
+<!-- <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/164071/Drift.min.js'></script> -->
 
 
   <!-- -----dropdown-js-- -->
-<script src="<?=$this->theme_base_url.'/assets/js/zoom.js'?>"></script>
-<script src="<?=$this->theme_base_url.'/assets/js/dropdown.js'?>"></script>
+<!-- <script src="<?=$this->theme_base_url.'/assets/js/zoom.js'?>"></script> -->
+<!-- <script src="<?=$this->theme_base_url.'/assets/js/dropdown.js'?>"></script> -->
 <!-- -----slider-js-- -->
-<script src="<?=$this->theme_base_url.'/assets/js/index.js'?>"></script>
-<script src="<?=$this->theme_base_url.'/assets/js/slider.js'?>"></script>
+<!-- <script src="<?=$this->theme_base_url.'/assets/js/index.js'?>"></script> -->
+<!-- <script src="<?=$this->theme_base_url.'/assets/js/slider.js'?>"></script> -->
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
