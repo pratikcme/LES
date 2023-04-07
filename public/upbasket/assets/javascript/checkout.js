@@ -164,8 +164,12 @@ var CHECKOUT = (function () {
     // }
     var delivery_date = "";
     if ($("#datepicker").length) {
+      var delivery_date = $("#datepicker").val();
+      $("#get-date").click(function () {
+        var delivery_date = $("#datepicker").datepicker("getDate");
+        alert("Selected date: " + selectedDate);
+      });
     }
-    var delivery_date = $("#datepicker").val();
     alert(delivery_date);
     var AddressNotInRange = $("#AddressNotInRange").val();
     var checkAddress = $("#checkAddress").val();
