@@ -235,12 +235,7 @@
                 <span>Set Subscription Plan</span>
             </a>
         </li>
-        <li>
-            <a class="<?php if ($this->uri->segment(1) == 'setting' && $this->uri->segment(2) == 'currency') { ?> active <?php } ?>" href="<?php echo base_url() . 'setting/currency/'; ?>">
-                <i class="fa fa-cog"></i>
-                <span>Currency</span>
-            </a>
-        </li>
+
 
 
         <li>
