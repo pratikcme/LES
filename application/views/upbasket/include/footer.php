@@ -17,7 +17,7 @@
 <!-- -----jquary-min----- -->
 <script src="<?=$this->theme_base_url.'/assets/js/jquery.min.js'?>"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 <!--  js animate-link -->
