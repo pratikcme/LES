@@ -1,5 +1,4 @@
 var is_self_pickup = $('#CheckisSelfPickup').val();
-alert(is_self_pickup);
 if (is_self_pickup == 0) {
   var minDate = 2;
   var maxDate = "2d";
@@ -7,6 +6,8 @@ if (is_self_pickup == 0) {
   var minDate = 0;
   var maxDate = "6d";
 }
+alert(minDate + '/' + maxDate);
+
 if ($("#datepicker").length) {
   $("#datepicker").datepicker(
     {
