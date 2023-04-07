@@ -126,7 +126,6 @@ var CHECKOUT = (function () {
       $("#gst_number").css("display", "none");
     }
   });
-
   var paymentOption = "-1";
   $(document).on("click", "#payBtn", function () {
 
