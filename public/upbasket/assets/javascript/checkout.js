@@ -7,18 +7,15 @@ if (is_self_pickup == 0) {
   var minDate = 0;
   var maxDate = "6d";
 }
-
-$(function () {
-  if ($("#datepicker").length) {
-    $("#datepicker").datepicker(
-      {
-        minDate: minDate,
-        maxDate: maxDate,
-        dateFormat: 'D,dd-mm-yy'
-      }
-    );
-  }
-});
+if ($("#datepicker").length) {
+  $("#datepicker").datepicker(
+    {
+      minDate: minDate,
+      maxDate: maxDate,
+      dateFormat: 'D,dd-mm-yy'
+    }
+  );
+}
 // $(document).ready(function () {
 //   $('#datepicker').datepicker({
 //     inline: true,
