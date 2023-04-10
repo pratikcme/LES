@@ -244,7 +244,9 @@
                 <div id="datepicker"></div>
                </div> 
                <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
-               
+                <div class="time-wrapper">
+                  <p><?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
+                </div>
                  <?php }else{ ?>
                   <div class="time-wrapper">
                    <?php foreach ($time_slot as $key => $value) { ?> 
