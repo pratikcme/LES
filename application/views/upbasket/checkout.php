@@ -532,7 +532,7 @@ function onScriptLoad(txnToken, orderId, amount) {
               <div class="modal-body">
                 <form id="OtpVerification" method="post" action="<?=base_url().'checkout/OtpVerification'?>">
                   <label for="mobilenumber" class="form-label"><?=$this->lang->line('Please enter Otp')?></label>
-                  <input type="text" class="form-control"  name="otp"  id="otp"  placeholder="Please enter 4 digit otp*" maxlength="4" required="">
+                  <input type="text" class="form-control" style="border:1px solid gray"  name="otp"  id="otp"  placeholder="Please enter 4 digit otp*" maxlength="4" required="">
                   <br>
                   <button type="submit" id="btnSubmit"><?=$this->lang->line('Submit')?></button>
               </form>
