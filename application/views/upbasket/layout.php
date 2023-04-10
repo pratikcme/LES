@@ -9,6 +9,7 @@
 </head>
 <!-- <body class="rtl" dir="rtl"> -->
 <body>
+  <section class="loader-main"></section>
 <header>
     <?php $this->load->view($_SESSION['template_name'].'/include/body_header'); ?>
 </header>
