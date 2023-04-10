@@ -126,19 +126,14 @@
                <?php print_r($_SESSION['isSelfPickup']);?>
                <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
                 <div class="main-accordion">
-                <div class="accordion-heading">Pickup Timing</div>
+                <div class="accordion-heading"><?=$this->lang->line('Pickup Address')?></div>
                 <div class="accordion-content accordion-content-3">
                   <div class="address-wrapper">
                     <div class="ship-check text-end">
                     </div>
-
                     <div class="address-text mt-3">
                       <p> <?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
                     </div>
-                    <!-- <div class="address-icons mt-3">
-                      <a href="javascript:" class="add-address-btn edit_address" data-id='<?=$this->utility->safe_b64encode($value->id)?>'><i class="fa-solid fa-pen-to-square"></i></a>
-                      <a href="javascript:" class="delet-address-btn remove_address" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-solid fa-trash-can"></i></a>
-                    </div> -->
                   </div>
                 </div>
               </div>
