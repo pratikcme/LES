@@ -139,6 +139,7 @@ class User_Controller extends MY_Controller
         }
         $this->load->model($this->myvalues->vendorFrontEnd['model'], 'vendor_model');
         $response = $this->vendor_model->ApprovedVendor();
+
         if (!empty($response)) {
             if ($response[0]->status == '0') {
                 echo '<h3 style = "text-align: center;font-size: xxx-large;">Your Account is Inactive.</h3>
@@ -146,13 +147,13 @@ class User_Controller extends MY_Controller
                 die;
             }
         }
-        if ($this->session->userdata('template_name') == '' || $this->session->userdata('template_name') != $response[0]->theme_name){
+        if ($this->session->userdata('template_name') == '' || $this->session->userdata('template_name') != $response[0]->theme_name) {
             $_SESSION['template_name'] = $response[0]->theme_name;
         }
-        
-        $this->user_layout = $_SESSION['template_name'].'/'.USER_LAYOUT;
-        $this->theme_base_url = base_url().'public/'.$_SESSION['template_name']; //template wise base url
-        
+
+        $this->user_layout = $_SESSION['template_name'] . '/' . USER_LAYOUT;
+        $this->theme_base_url = base_url() . 'public/' . $_SESSION['template_name']; //template wise base url
+
         if ($this->session->userdata('vendor_id') == '' || $this->session->userdata('vendor_id') == NULL) {
 
             $this->load->model($this->myvalues->vendorFrontEnd['model'], 'vendor_model');
@@ -236,18 +237,18 @@ class User_Controller extends MY_Controller
         $my_cart = $this->product_model->getMyCart();
         // lq();
         $default_product_image = $this->common_model->default_product_image();
-        
+
         $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
         foreach ($my_cart as $key => $value) {
-            
+
             if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                 $value->discount_price = $value->without_gst_price;
             }
-            
+
             $product_image = $this->product_model->GetUsersProductInCart($value->product_weight_id);
-            
+
             if (!file_exists('public/images/' . $this->folder . 'product_image/' . $product_image[0]->image) || $product_image[0]->image == '') {
                 if (strpos($product_image[0]->image, '%20') === true || $product_image[0]->image == '') {
                     $product_image[0]->image = $default_product_image;

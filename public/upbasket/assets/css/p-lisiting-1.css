@@ -192,6 +192,21 @@
 }
 
 
+/* ---new-css--- */
+
+.brands-part .ctg-left{
+    gap: 5px;
+    margin-left: 20px ;
+}
+
+.brands-part .form-check-input:checked {
+    background-color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
+    
+}
+
+
+
 
 
 

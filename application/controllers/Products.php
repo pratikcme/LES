@@ -16,6 +16,8 @@ class Products extends User_Controller
 		// 	$this->utility->setFlashMessage('danger','Please select branch');
 		// 	redirect(base_url());
 		// }
+
+
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
@@ -26,7 +28,7 @@ class Products extends User_Controller
 			$data['getBycatID'] = $_GET['cat_id'];
 		}
 
-		$data['page'] = $_SESSION['template_name'].'/product';
+		$data['page'] = $_SESSION['template_name'] . '/product';
 		$data['js'] = array('product.js?v=' . js_version, 'add_to_cart.js?v=' . js_version);
 		$data['category'] = $this->this_model->selectCategory();
 		// print_r($data['category']);die;
@@ -129,7 +131,7 @@ class Products extends User_Controller
 	{
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-		
+
 		if (!isset($_SESSION['branch_id'])) {
 			$productID = $this->uri->segment(3);
 			$varientID = $this->uri->segment(4);
@@ -158,8 +160,8 @@ class Products extends User_Controller
 		$data['default_product_image'] = $default_product_image;
 		$product_id = $this->utility->safe_b64decode($id);
 		$var_id = $this->uri->segment('4');
-		$data['page'] = $_SESSION['template_name'].'/single_product';
-		$data['js'] = array('addProduct.js','add_to_cart.js');
+		$data['page'] = $_SESSION['template_name'] . '/single_product';
+		$data['js'] = array('addProduct.js', 'add_to_cart.js');
 		// $data['init'] = array('ADDPRODUCT.init()');
 		$data['productDetail'] = $this->this_model->ProductDetails($product_id);
 		$data['isAvailable'] = '1';
@@ -168,7 +170,7 @@ class Products extends User_Controller
 		}
 		$varient_id = $this->utility->safe_b64decode($this->uri->segment(4));
 		$this->load->model('frontend/home_model', 'home_model');
-		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id,$varient_id);
+		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id, $varient_id);
 		// dd($data['productDetail']);
 		$varient_ids = explode(',', $data['productDetail'][0]->product_variant_id);
 		$w_name = explode(',', $data['productDetail'][0]->wight_name);
@@ -205,11 +207,11 @@ class Products extends User_Controller
 		$data['discount_per'] =  $discount_per;
 		$data['image'] = $image;
 		$data['product_id'] = $id;
-		
-		
-		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id,$varient_id);
-		$product_review = $this->this_model->getProductReview($product_id,$varient_id);
-		$countParticularUserReview = $this->this_model->countParticularUserReview($product_id,$varient_id);
+
+
+		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id, $varient_id);
+		$product_review = $this->this_model->getProductReview($product_id, $varient_id);
+		$countParticularUserReview = $this->this_model->countParticularUserReview($product_id, $varient_id);
 		$data['countParticularUserReview'] = $countParticularUserReview;
 		$data['product_review'] = $product_review;
 		$category_name = $this->this_model->getNameCateBrand(TABLE_CATEGORY, $data['productDetail'][0]->category_id);
@@ -222,12 +224,12 @@ class Products extends User_Controller
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
 			}
-			
+
 			// $v_image = $this->this_model->getVarientImage($value->pw_id);
 			// $related_product[$key]->product_image = $v_image[0]->image;
 			$varientQuantity = $this->home_model->checkVarientQuantity($value->id);
 			$related_product[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
-			$value->ratting = $this->home_model->selectStarRatting($value->id,$value->pw_id);
+			$value->ratting = $this->home_model->selectStarRatting($value->id, $value->pw_id);
 		}
 		$data['productDetail'][0]->brand_name = $brand_name;
 		$data['related_product'] = $related_product;
@@ -325,7 +327,7 @@ class Products extends User_Controller
 				// $p_image = 'defualt.png';
 				if (strpos($value->image, '%20') === true || $value->image == '') {
 					$value->image = $this->common_model->default_product_image();
-				}else{
+				} else {
 					$value->image = $this->common_model->default_product_image();
 				}
 			}
@@ -339,13 +341,12 @@ class Products extends User_Controller
 			$div_for .= '</div>';
 
 			$upbasket_thumb .= '<div class="swiper-slide">
-								<img src="'.base_url().'public/images/'.$this->folder.'product_image/'.$value->image.'">
+								<img src="' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image . '">
 								</div>';
 			$upbasket_zoom_image .= '<div class="swiper-slide">
-					<a href="#"><img data-enlargable class="drift-demo-trigger" src="'.base_url().'public/images/'.$this->folder.'product_image/'.$value->image.'"
-					data-zoom="'.base_url().'public/images/'.$this->folder.'product_image/'.$value->image.'" /></a>
-		  			</div>'; 
-
+					<a href="#"><img data-enlargable class="drift-demo-trigger" src="' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image . '"
+					data-zoom="' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image . '" /></a>
+		  			</div>';
 		}
 		// $data['image'] = $image;
 		// print_r($data['image']);die;
@@ -353,29 +354,29 @@ class Products extends User_Controller
 		if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 			$result[0]->discount_price =  $result[0]->without_gst_price;
 		}
-		$isVarientExist= $this->this_model->checkOrderItemExist($result[0]->product_id,$result[0]->id);
-		$data['product_review'] = $this->this_model->getProductReview($result[0]->product_id,$result[0]->id);
+		$isVarientExist = $this->this_model->checkOrderItemExist($result[0]->product_id, $result[0]->id);
+		$data['product_review'] = $this->this_model->getProductReview($result[0]->product_id, $result[0]->id);
 
-		$userSection = $this->load->view($_SESSION['template_name'].'/ajaxView/product_review_section',$data,true);
-		$countParticularUserReview = $this->this_model->countParticularUserReview($result[0]->product_id,$result[0]->id);
+		$userSection = $this->load->view($_SESSION['template_name'] . '/ajaxView/product_review_section', $data, true);
+		$countParticularUserReview = $this->this_model->countParticularUserReview($result[0]->product_id, $result[0]->id);
 		$avgr = 0;
 		$count = 0;
-		foreach ($data['product_review'] as $key => $value){
-			$count = $count + $value->ratting ;
-			$avgr = $count/count($data['product_review']);
+		foreach ($data['product_review'] as $key => $value) {
+			$count = $count + $value->ratting;
+			$avgr = $count / count($data['product_review']);
 		}
-		$starHtml = ''; 
+		$starHtml = '';
 		$upbasket_starHtml = '';
 		$ratting = $data['product_review'][0]->ratting;
-		
-		for ($j=1; $j<=$ratting;$j++ ) { 
-			$starHtml .='<i class="fas fa-star"></i>';
+
+		for ($j = 1; $j <= $ratting; $j++) {
+			$starHtml .= '<i class="fas fa-star"></i>';
 			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
-		  }
-		for ($i=1; $i <= 5-$ratting; $i++) {
-			$starHtml .='<i class="fas fa-star blank-ratting"></i>';
+		}
+		for ($i = 1; $i <= 5 - $ratting; $i++) {
+			$starHtml .= '<i class="fas fa-star blank-ratting"></i>';
 			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
-		} 
+		}
 		$response = [
 			'product_weight_id' => $result[0]->id,
 			'product_price' => number_format((float)$result[0]->price, 2, '.', ''),
@@ -390,17 +391,17 @@ class Products extends User_Controller
 			'cartProductQuantity' => $quantity,
 			'product_variant_id' => $this->utility->safe_b64encode($result[0]->id),
 			'product_id' => $this->utility->safe_b64encode($result[0]->product_id),
-			'reviewSection'=>$userSection,
-			'isVarientExist'=>(empty($isVarientExist)) ? 0 : count($isVarientExist),
-			'countParticularUserReview'=>$countParticularUserReview,
+			'reviewSection' => $userSection,
+			'isVarientExist' => (empty($isVarientExist)) ? 0 : count($isVarientExist),
+			'countParticularUserReview' => $countParticularUserReview,
 			'productReviewCount' => count($data['product_review']),
-			'avgRatting'=> round($avgr),
+			'avgRatting' => round($avgr),
 			'varientWishStarRatting' => $starHtml,
-			'upbasket_starHtml'=> $upbasket_starHtml.'  '. round($avgr),
+			'upbasket_starHtml' => $upbasket_starHtml . '  ' . round($avgr),
 			'upbasket_thumb' => $upbasket_thumb,
 			'upbasket_zoom_image' => $upbasket_zoom_image,
 
-			
+
 		];
 		echo json_encode($response);
 	}
@@ -416,7 +417,7 @@ class Products extends User_Controller
 			redirect(base_url() . 'home');
 		}
 
-		$data['page'] = $_SESSION['template_name'].'/cart_item';
+		$data['page'] = $_SESSION['template_name'] . '/cart_item';
 		$data['js'] = array('cart.js?v=' . js_version);
 		$data['calc_shiping'] = 'NotInRange'; //default shipping in NotInRange when user nou login its equal to 0
 		if ($this->session->userdata('user_id') != '') {
@@ -635,26 +636,28 @@ class Products extends User_Controller
 		echo json_encode(['status' => $status]);
 	}
 
-	public function review(){
-		if($this->input->is_ajax_request()){
-		 	$response = $this->this_model->insertReview($this->input->post());
-			echo json_encode(['status'=>'1']);
+	public function review()
+	{
+		if ($this->input->is_ajax_request()) {
+			$response = $this->this_model->insertReview($this->input->post());
+			echo json_encode(['status' => '1']);
 		}
 	}
 
 	// from template 2 (up basket)
 
-	public function productReview(){
-		if($this->input->post()){
+	public function productReview()
+	{
+		if ($this->input->post()) {
 			$res = $this->this_model->insertReview($this->input->post());
-			if($res){
-				$this->utility->setFlashMessage('success','Thanks for Review');
-			}else{
-				$this->utility->setFlashMessage('danger','Somthing Went Wrong');
+			if ($res) {
+				$this->utility->setFlashMessage('success', 'Thanks for Review');
+			} else {
+				$this->utility->setFlashMessage('danger', 'Somthing Went Wrong');
 			}
 			$product_id = $this->input->post('product_id');
 			$varient_id = $this->input->post('varient_id');
-			redirect(base_url().'products/productDetails/'.$product_id.'/'.$varient_id);
+			redirect(base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id);
 		}
 	}
 }
