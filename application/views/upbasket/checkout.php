@@ -123,7 +123,6 @@
                 </div>
               </div>
               </div>
-               <?php print_r($_SESSION['isSelfPickup']);?>
                <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
                 <div class="main-accordion">
                 <div class="accordion-heading"><?=$this->lang->line('Pickup Address')?></div>
