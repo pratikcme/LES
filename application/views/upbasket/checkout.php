@@ -103,10 +103,11 @@
                 </div>
                 </div>
               </div>
+
               <div class="main-accordion">
                 <div class="accordion-heading">Shipping address</div>
                 <div class="accordion-content accordion-content-3">
-                <?php foreach ($get_address as $key => $value) { 
+                  <?php foreach ($get_address as $key => $value) { 
                     $status = ($value->status == '0') ? 'is_default ' : ''; ?>
                   <div class="address-wrapper">
                     <div class="ship-check text-end">
@@ -126,7 +127,7 @@
                       <a href="javascript:" class="delet-address-btn remove_address" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                   </div>
-                <?php } ?>
+                  <?php } ?>
                   <div class="new-address text-end">
                       <button type="button" id="checkout-add-address" class="new-add">New Address</button>
                   </div>
@@ -230,7 +231,7 @@
                     </div>
                   </form> 
                 </div>
-              </div>
+              
 
               <div class="main-accordion">
                 <div class="accordion-heading">Delivery Schedule</div>
@@ -279,6 +280,7 @@
                   </div>
                 </div>
               </div>
+            </div>
             </div>
         </div>
       </div>
