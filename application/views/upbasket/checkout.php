@@ -130,8 +130,6 @@
                 <div class="accordion-content accordion-content-3">
                   <div class="address-wrapper">
                     <div class="ship-check text-end">
-                      <div class="form-check">
-                      </div>
                     </div>
 
                     <div class="address-text mt-3">
