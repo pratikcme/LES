@@ -102,8 +102,9 @@
                   </form>
               </div> -->
             </div>
+             <?php print_r($_SESSION);?>
             <div class="main-accordion">
-              <div class="accordion-heading">Delivery Method</div>
+                <div class="accordion-heading">Delivery Method</div>
                 <div class="accordion-content ">
                   <div class="accordion-content-2">
                     <div class="form-check radio-outer-line">
@@ -122,7 +123,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            
               <div class="main-accordion">
                 <div class="accordion-heading">Shipping address</div>
                 <div class="accordion-content accordion-content-3">
