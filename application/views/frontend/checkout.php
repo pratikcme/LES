@@ -810,9 +810,10 @@ function onScriptLoad(txnToken, orderId, amount) {
               <div class="input-wrapper ">
                   <span><i class="fas fa-mobile"></i></span>
                   <select name="country_code" class="country_code" required="">
-                      <option value="">Select Country Code</option>
-                                        
-                      </select>
+                  <?php foreach ($country_code as $key => $value): ?>
+                            <option value="<?=$key?>" <?=($key == '+91') ? "SELECTED" : "" ?>><?=$key?></option>
+                            <?php endforeach ?>                     
+                    </select>
                   <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Mobile Number*" required="">
               </div>
               <label for="phoneNumber" class="error mobile_verfication" style="display: none;"></label>
@@ -823,7 +824,7 @@ function onScriptLoad(txnToken, orderId, amount) {
       </div>
     </div>
 </div>
-<div class="modal fade otp-popup mobileModal11" id="mobileModal11">
+<!-- <div class="modal fade otp-popup mobileModal11" id="mobileModal11">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
@@ -845,7 +846,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <div class="modal mobileModal" id="Otp">
