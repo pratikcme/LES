@@ -86,8 +86,8 @@
             <!-- ----------accordian-part------ -->
               <div class="accordion-items">
 
-                <div class="main-accordion">
-                <!-- <div class="accordion-heading">Contact Informaions</div>
+                <!-- <div class="main-accordion">
+                 <div class="accordion-heading">Contact Informaions</div>
                 <div class="accordion-content  accordion-content-1">
                     <form action="">
                       <div class="mb-3">
@@ -99,7 +99,7 @@
                         <input type="text" class="form-control" id="phonenumber" placeholder="+91 99989 99899">
                       </div>
                     </form>
-                </div> -->
+                </div> - -->
                 </div>
                 <div class="main-accordion">
                   <div class="accordion-heading">Delivery Method</div>
@@ -301,7 +301,7 @@
                 
 
                </div>
-               </div>
+              </div>
           </div>
         </div>
         <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
