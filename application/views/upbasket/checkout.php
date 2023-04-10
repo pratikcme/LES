@@ -102,7 +102,7 @@
                   </form>
               </div> -->
             </div>
-             <?php print_r($_SESSION);?>
+             <?php print_r($_SESSION['isSelfPickup']);?>
             <div class="main-accordion">
               <div class="accordion-heading">Delivery Method</div>
               <div class="accordion-content ">
