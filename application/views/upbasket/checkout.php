@@ -107,7 +107,7 @@
            </div>
            <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){ ?>
            <div class="main-accordion">
-             <div class="accordion-heading"><?=$this->lang->line('Pickup Timing')?></div>
+             <div class="accordion-heading"><?=$this->lang->line('Pickup Address')?></div>
              <div class="accordion-content accordion-content-3">
                 <div class="address-wrapper">
                  <div class="address-text mt-3">
