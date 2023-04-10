@@ -106,17 +106,7 @@
                   </div>
                 </div>
                 <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
-                <div class="main-accordion">
-                  <div class="accordion-heading"><?=$this->lang->line('Pickup Address')?></div>
-                  <div class="accordion-content accordion-content-3">
-                      <div class="address-wrapper">
-                          <div class="ship-check text-end"></div>
-                          <div class="address-text mt-3">
-                            <p><?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
-                          </div>
-                      </div>
-                  </div>
-                </div>
+               
                 <?php }else{ ?>
                 <div class="main-accordion">
                   <div class="accordion-heading">Shipping address</div>
