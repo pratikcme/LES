@@ -250,7 +250,7 @@
                     </form> 
                   </div>
                 </div>
-
+                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                 <div class="main-accordion">
                   <div class="accordion-heading">Delivery Schedule</div>
                   <div class="accordion-content  accordion-content-4">
@@ -259,7 +259,6 @@
                         <?php } ?>
                         <div id="datepicker"></div>
                     </div>
-                    <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                     <div class="time-wrapper">  
                       <?php foreach ($time_slot as $key => $value) { ?>
                       <div class="form-check">
@@ -268,7 +267,6 @@
                         <?=$value->start_time?> - <?=$value->end_time?>
                         </label>
                       </div>
-                      <?php } ?>
                       <?php } ?>
                     </div>  
                   </div>
@@ -300,7 +298,8 @@
 
                 
 
-              </div>
+               </div>
+               <?php } ?>
                </div>
           </div>
         </div>
