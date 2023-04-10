@@ -385,7 +385,11 @@
            </table>
          </div>
          <input type="hidden" id="applied_promo">
-         <button class="place-order-btn" id="payBtn" data-toggle="modal"> <?=$this->lang->line('Place order')?> </button>
+         <?php if($phone == '0' || $is_verify == '0'){ ?>
+            <button type="button" class="btn btn-primary" id="verify" data-bs-toggle="modal" data-bs-target="#exampleModal"><?=$this->lang->line('Verify Mobile')?></button>
+        <?php }else{ ?>
+          <button class="place-order-btn" id="payBtn" data-toggle="modal"> <?=$this->lang->line('Place order')?> </button>
+        <?php } ?>
          <div class="our-secure-product">
            <div class="secure-product-wrapper">
              <div class="icon">
@@ -495,6 +499,25 @@ function onScriptLoad(txnToken, orderId, amount) {
     }
 }
 </script>
+
+
+  <!-- Modal -->
+  <div class="modal fade otp-popup mobileModal" id="mobileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="container">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              <div class="modal-body">
+                <form action="">
+                  <label for="mobilenumber" class="form-label">Please Enter Mobile Number</label>
+                  <input type="text" class="form-control" id="mobilenumber" placeholder="Enter Your Number">
+                  <button type="submit">Submit</button>
+              </form>
+              </div>
+          </div>
+        </div>
+      </div>  
+    </div>
 
   <!-- =============place order popup=========== -->
   <div id="order_success" class="modal">
