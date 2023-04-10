@@ -242,10 +242,8 @@
                   <div class="accordion-heading">Delivery Schedule</div>
                   <div class="accordion-content  accordion-content-4">
                     <div class="dates-day-wrapper">
-                      <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
-                        <?php } ?>
                         <div id="datepicker"></div>
-                    </div>
+                     </div>
                     <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
                     <div class="time-wrapper">  
                       <?php foreach ($time_slot as $key => $value) { ?>
@@ -285,7 +283,6 @@
                   </div>
               </div>
           </div>
-                      </div>
         <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
             <div class="checkout-order-detils">
                 <div class="mydiv-wrapper">
