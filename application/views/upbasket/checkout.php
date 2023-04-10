@@ -239,12 +239,22 @@
            <div class="main-accordion">
              <div class="accordion-heading">Delivery Schedule</div>
              <div class="accordion-content  accordion-content-4">
-               <div class="dates-day-wrapper"> <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> <?php } ?> <div id="datepicker"></div>
-               </div> <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> <div class="time-wrapper"> <?php foreach ($time_slot as $key => $value) { ?> <div class="form-check">
-                   <input class="time_slot_checked" type="radio" id="Default-1" name="time_slot" value="
-																								<?=$value->id?>" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+               <div class="dates-day-wrapper"> 
+                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> <?php } ?> 
+                <div id="datepicker"></div>
+               </div> 
+               <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
+                    <p><?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
+                 <?php }else{?>
+                  <div class="time-wrapper">
+                   <?php foreach ($time_slot as $key => $value) { ?> 
+                    <div class="form-check">
+                   <input class="time_slot_checked" type="radio" id="Default-1" name="time_slot" value=" <?=$value->id?>" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
                    <label class="form-check-label" for="Default-1"> <?=$value->start_time?> - <?=$value->end_time?> </label>
-                 </div> <?php } ?> </div> <?php } ?>
+                 </div> 
+                 <?php } ?> 
+                </div>
+                 <?php } ?>
              </div>
            </div>
            <div class="main-accordion">
