@@ -388,28 +388,27 @@
               <button class="place-order-btn" id="payBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></button>
 
               <div class="our-secure-product">
-                  <div class="secure-product-wrapper">
-                      <div class="icon">
+                    <div class="secure-product-wrapper">
+                        <div class="icon">
                           <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/ShieldCheck.svg" alt=""></a>
-                      </div>
-                      <div class="text">
-                        <h3>100% Genuine Products</h3>
-                      </div>
-                  </div>
-                  <div class="secure-product-wrapper">
+                        </div>
+                        <div class="text">
+                          <h3>100% Genuine Products</h3>
+                        </div>
+                    </div>
+                    <div class="secure-product-wrapper">
                       <div class="icon">
                           <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/Medal.svg" alt=""></a>
                       </div>
                       <div class="text">
                         <h3>Secure Payments</h3>
                       </div>
-                  </div>
+                    </div>
               </div>
-            </div>
           </div>
-
       </div>
     </div>
+  </div>
   </section>
   
 
