@@ -523,6 +523,24 @@ function onScriptLoad(txnToken, orderId, amount) {
       </div>  
     </div>
 
+        <!-- Modal otp -->
+    <div class="modal fade otp-popup"  id="Otp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="container">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              <div class="modal-body">
+                <form id="OtpVerification" method="post" action="<?=base_url().'checkout/OtpVerification'?>">
+                  <label for="mobilenumber" class="form-label">Please enter Otp</label>
+                  <input type="text" class="form-control"  name="otp"  id="otp"  placeholder="Please enter 4 digit otp*" maxlength="4" required="">
+                  <button type="submit" id="btnSubmit">Submit</button>
+              </form>
+              </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+
   <!-- =============place order popup=========== -->
   <div id="order_success" class="modal">
    <div class="container"> 
