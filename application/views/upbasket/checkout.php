@@ -112,6 +112,7 @@
                 <div class="address-wrapper">
                  <div class="address-text mt-3">
                   <?php foreach ($get_address as $key => $value) { ?> 
+                    <h3> <?=$value->name?> </h3>
                     <p><?=$value->address?></p>
                   <?php } ?>
                  </div>
