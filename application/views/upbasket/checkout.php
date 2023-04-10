@@ -283,16 +283,13 @@
              <h3>Your Orders</h3>
            </div> <?php foreach ($mycart as $key => $value) { ?> <div class="order-wrapper">
              <div class="order-wrapper-img">
-               <a href="
-																									<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
-                 <img src="
-																										<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>" alt="">
+               <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
+                 <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>" alt="">
                </a>
              </div>
              <div class="order-wrapper-text">
                <h4>
-                 <a href="
-																											<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"> <?=$value->product_name?> </a>
+                 <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"> <?=$value->product_name?> </a>
                </h4>
                <h5> <?=$value->weight_no.' '.$value->weight_name?> </h5>
                <h3> <?=$this->siteCurrency . number_format((float)$value->discount_price,'2','.','')?> </h3>
@@ -386,7 +383,7 @@
          </div>
          <input type="hidden" id="applied_promo">
          <?php if($phone == '0' || $is_verify == '0'){ ?>
-            <button type="button" class="btn btn-primary" id="verify" data-bs-toggle="modal" data-bs-target="#exampleModal"><?=$this->lang->line('Verify Mobile')?></button>
+            <button type="button" class="btn btn-primary" id="verify"><?=$this->lang->line('Verify Mobile')?></button>
         <?php }else{ ?>
           <button class="place-order-btn" id="payBtn" data-toggle="modal"> <?=$this->lang->line('Place order')?> </button>
         <?php } ?>
