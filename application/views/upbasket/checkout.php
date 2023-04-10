@@ -558,7 +558,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             <h5>Your order number is <span id="orderId"></span></h5>
 
             <div class="continue-btn">
-               <a href="./index.html">Continue Shopping</a>
+               <a href="<?=base_url().'home'?>"><?=$this->lang->line('continue shopping')?></a>
             </div>
         </div>
       </div>

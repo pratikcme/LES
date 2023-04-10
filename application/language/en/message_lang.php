@@ -23,6 +23,9 @@ $lang['send_otp'] = 'Send OTP';
 $lang['Pick up'] = 'Pick up';
 $lang['Please Enter Mobile Number'] = 'Please Enter Mobile Number';
 $lang['Please enter Otp'] = 'Please enter Otp';
+$lang['continue shopping'] = 'Continue Shopping';
+$lang['thanks for shopping'] = 'thanks for shopping';
+$lang['order placed successfully'] = 'order placed successfully';
 
 
 // end template 2

@@ -778,7 +778,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             <!-- Modal body -->
             <div class="modal-body text-center">
                 <div>
-                    <h3>thanks for shopping</h3>
+                    <h3><?=$this->lang->line('thanks for shopping')?></h3>
                 </div>
                 <div class="my-3">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
@@ -791,7 +791,7 @@ function onScriptLoad(txnToken, orderId, amount) {
                     <p id="orderId"></p>
                 </div>
                 <div>
-                    <a href="<?=base_url().'home'?>" class="shopping_btn">continue shopping</a>
+                    <a href="<?=base_url().'home'?>" class="shopping_btn"><?=$this->lang->line('continue shopping')?></a>
                 </div>
             </div>
 
