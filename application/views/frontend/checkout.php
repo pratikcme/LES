@@ -170,8 +170,7 @@ label.error.mobile_verfication {
 
                     </div>
 
-                    <button
-                        class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line("Pickup Address") : $this->lang->line('Delivery Address') ?></button>
+                    <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line("Pickup Address") : $this->lang->line('Delivery Address') ?></button>
                     <div class="panel full_height address_panel" style="max-height: 100%;">
                         <div class="add-new-address-wrapper" id="billing-new-add">
                             <div class="new-add-header">
@@ -345,10 +344,10 @@ label.error.mobile_verfication {
                         <?php } ?>
                     </div>
                 </div>
-                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
-                <button
-                    class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line('Pickup') : $this->lang->line('Delivery')  ?>
-                    <?=$this->lang->line('Time & Date')?></button>
+                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
+                <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line('Pickup') : $this->lang->line('Delivery')  ?>
+                    <?=$this->lang->line('Time & Date')?>
+                </button>
                 <?php } ?>
                 <div class="panel">
                     <div class="date-time-common">
