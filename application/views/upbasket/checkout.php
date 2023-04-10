@@ -83,26 +83,8 @@
       <div class="row">
         <div class="col-xxl-7 col-xl-7 col-lg-6 col-md-6">
            <div class="fill-detali-part">
-
-            <!-- ----------accordian-part------ -->
             <div class="accordion-items">
-
               <div class="main-accordion">
-              <!-- <div class="accordion-heading">Contact Informaions</div>
-              <div class="accordion-content  accordion-content-1">
-                  <form action="">
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email Address<span>*</span></label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="mikehussy@gmail.com">
-                    </div>
-                    <div class="mb-3">
-                      <label for="number" class="form-label">Mobile Number<span>*</span></label>
-                      <input type="text" class="form-control" id="phonenumber" placeholder="+91 99989 99899">
-                    </div>
-                  </form>
-              </div> -->
-            </div>
-            <div class="main-accordion">
               <div class="accordion-heading">Delivery Method</div>
               <div class="accordion-content ">
                 <div class="accordion-content-2">
@@ -121,8 +103,6 @@
                 </div>
                 </div>
               </div>
-              </div>
-            
               <div class="main-accordion">
                 <div class="accordion-heading">Shipping address</div>
                 <div class="accordion-content accordion-content-3">
@@ -299,12 +279,8 @@
                   </div>
                 </div>
               </div>
-
             </div>
-           </div>
         </div>
-
-        
         <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
            <div class="checkout-order-detils">
                <div class="mydiv-wrapper">
