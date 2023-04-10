@@ -100,7 +100,7 @@
                       </div>
                     </form>
                 </div> - -->
-                </div>
+                <!-- </div> -->
                 <div class="main-accordion">
                   <div class="accordion-heading">Delivery Method</div>
                   <div class="accordion-content ">
