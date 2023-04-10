@@ -131,15 +131,11 @@
                   <div class="address-wrapper">
                     <div class="ship-check text-end">
                       <div class="form-check">
-                        <!-- <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" <?=($value->status == '1') ? 'checked' : '' ?>>
-                        <label class="form-check-label" for="id1">
-                        <?=$this->lang->line('Default')?> -->
                       </div>
                     </div>
 
                     <div class="address-text mt-3">
-                      <h3><?=$value->name?></h3>
-                      <p><?=$value->address?></p>
+                      <p> <?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
                     </div>
                     <!-- <div class="address-icons mt-3">
                       <a href="javascript:" class="add-address-btn edit_address" data-id='<?=$this->utility->safe_b64encode($value->id)?>'><i class="fa-solid fa-pen-to-square"></i></a>
