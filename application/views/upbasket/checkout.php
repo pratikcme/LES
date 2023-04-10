@@ -277,7 +277,7 @@
                 <div class="main-accordion">
                   <div class="accordion-heading">Payment Option</div>
                   <div class="accordion-content">
-                    <div class="accordion-content accordion-content-5 accordion-5">
+                    <div class="accordion-content-2 accordion-5">
                     <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?>
                       <div class="form-check radio-outer-line">
                         <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?=$payment_option?>" <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?>>
@@ -298,8 +298,6 @@
                     </div>
                   </div>
                 </div>
-
-              </div>
           </div>
           <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
               <div class="checkout-order-detils">
