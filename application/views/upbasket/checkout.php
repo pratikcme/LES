@@ -245,6 +245,7 @@
                </div> 
                <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
                 <div class="time-wrapper">
+                  <h3><?=$this->lang->line('Pickup Timing')?></h3>
                   <p><?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
                 </div>
                  <?php }else{ ?>

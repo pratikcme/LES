@@ -135,6 +135,7 @@ $lang['self pickup'] = 'self pickup';
 $lang['Order Summary'] = 'Order Summary';
 $lang['Delivery Address'] = 'Delivery Address';
 $lang['Pickup Address'] = 'Pickup Address';
+$lang['Pickup Timing'] = 'Pickup Timing';
 
 $lang['Pickup'] = 'Pickup';
 $lang['Delivery'] = 'Delivery';

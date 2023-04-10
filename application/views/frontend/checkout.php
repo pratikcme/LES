@@ -310,18 +310,17 @@ label.error.mobile_verfication {
                                         <?php if($this->session->userdata('isSelfPickup') == '' || $this->session->userdata('isSelfPickup') == '0'){ ?>
                                         <h6><?=$value->phone?></h6>
                                     </div>
-                                    <p><?=$value->address .'<br>'.$value->city.','.$value->state.' '.$value->country ?>
-                                    </p>
+                                    <p><?=$value->address .'<br>'.$value->city.','.$value->state.' '.$value->country ?> </p>
                                     <?=($value->landmark != '') ? '<p>Landmark :- '.$value->landmark.'</p>' : ''; ?>
                                     <p>pincode :- <?=$value->pincode?></p>
                                     <?php }else{ ?>
                                     <h6>+91 <?=$value->phone_no?></h6>
-                        </div>
-                        <p><?=$value->address ?> </p>
-                        <?php } ?>
-                        </li>
-                        <?php endforeach ?>
-                        </ul>
+                                 </div>
+                                 <p><?=$value->address ?> </p>
+                                    <?php } ?>
+                                </li>
+                                <?php endforeach ?>
+                            </ul>
                         <?php if($this->session->userdata('isSelfPickup') == '' || $this->session->userdata('isSelfPickup') == '0'){ ?>
                         <div class="billing-btn">
                             <button class="btn add-new-address"><?=$this->lang->line('Add new address')?></button>
@@ -347,7 +346,7 @@ label.error.mobile_verfication {
                             if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
                             <div class="time-box">
                                 <div class="time-title">
-                                    <h6>Pickup Timing</h6>
+                                    <h6><?=$this->lang->line('Pickup Timing')?></h6>
                                 </div>
                                 <div class="pickup_timming mt-3">
                                     <?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?>

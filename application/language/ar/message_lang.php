@@ -113,6 +113,8 @@ $lang['Order Summary'] = 'ملخص الطلب';
 $lang['Delivery Address'] = 'عنوان التسليم';
 $lang['Pickup Address'] = 'عنوان الاستلام';
 $lang['Payment Option'] = 'خيار الدفع';
+$lang['Pickup Timing'] = 'توقيت الالتقاط';
+
 
 $lang['Pickup'] = 'يلتقط';
 $lang['Delivery'] = 'توصيل';
