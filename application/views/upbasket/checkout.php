@@ -497,7 +497,7 @@ function onScriptLoad(txnToken, orderId, amount) {
 </script>
 
   <!-- =============place order popup=========== -->
-  <div id="myModal" class="modal">
+  <div id="order_success" class="modal">
    <div class="container"> 
     <div class="modal-content">
       <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
