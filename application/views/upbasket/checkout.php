@@ -500,28 +500,29 @@ function onScriptLoad(txnToken, orderId, amount) {
 
   <!-- Modal -->
   <div class="modal fade otp-popup mobileModal" id="mobileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="container">
-        <div class="modal-dialog">
-          <div class="modal-content">
-              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
-              <div class="modal-body">
-                <form id="mobileNumber" method="post" action="<?=base_url().'checkout/updateMobileNumber'?>">
-                  <label for="mobilenumber" class="form-label">Please Enter Mobile Number</label>
-                    <select name="country_code" class="country_code" required="">
-                        <option value="">Select Country Code</option>
-                        <?php foreach ($country_code as $key => $value): ?>
-                        <option value="<?=$key?>" <?=($key == '+91') ? "SELECTED" : "" ?>><?=$key?></option>
-                        <?php endforeach ?>
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
+          <div class="modal-body">
+            <form id="mobileNumber" class="mobileNum-form" method="post" action="https://stagging.launchestore.com/checkout/updateMobileNumber" novalidate="novalidate" autocomplete="off">
+              <label for="">please Enter Mobile Number</label>
+              <div class="input-wrapper ">
+                  <span><i class="fas fa-mobile"></i></span>
+                  <select name="country_code" class="country_code" required="">
+                  <?php foreach ($country_code as $key => $value): ?>
+                            <option value="<?=$key?>" <?=($key == '+91') ? "SELECTED" : "" ?>><?=$key?></option>
+                            <?php endforeach ?>                     
                     </select>
-                  <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Mobile Number*">
-                  <label for="phoneNumber" class="error mobile_verfication"></label>
-                  <button type="submit" id="btnSubmit">Submit</button>
-              </form>
+                  <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Mobile Number*" required="">
               </div>
+              <label for="phoneNumber" class="error mobile_verfication" style="display: none;"></label>
+
+              <button type="submit" id="btnSubmit" class="s-btn">submit</button>
+            </form>
           </div>
-        </div>
-      </div>  
+      </div>
     </div>
+</div>
 
         <!-- Modal otp -->
     <div class="modal fade otp-popup"  id="Otp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
