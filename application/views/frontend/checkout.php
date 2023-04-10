@@ -800,7 +800,7 @@ function onScriptLoad(txnToken, orderId, amount) {
 </div>
 
 
-<div class="modal fade otp-popup mobileModal" id="mobileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade otp-popup" id="" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
