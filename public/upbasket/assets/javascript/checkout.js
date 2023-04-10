@@ -194,8 +194,6 @@ var CHECKOUT = (function () {
     // alert('All services are disabled');
     // return false;
     if (paymentOption == 0) {
-      $("#order_success").modal("show");
-      return false;
       $(".loader-main").removeClass("d-none");
       CheckSelfPickUpEnable();
       $.ajax({
