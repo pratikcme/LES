@@ -504,7 +504,7 @@ function onScriptLoad(txnToken, orderId, amount) {
       <div class="modal-content">
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
           <div class="modal-body">
-            <form id="mobileNumber" class="mobileNum-form" method="post" action="https://stagging.launchestore.com/checkout/updateMobileNumber" novalidate="novalidate" autocomplete="off">
+            <form id="mobileNumber" class="mobileNum-form" method="post" action="<?=base_url().'checkout/updateMobileNumber'?>" novalidate="novalidate" autocomplete="off">
               <label for=""><?=$this->lang->line('Please Enter Mobile Number')?></label>
               <div class="input-wrapper ">
                   <span><i class="fas fa-mobile"></i></span>
