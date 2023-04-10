@@ -1055,7 +1055,7 @@ input:focus {
 }
 
 .accordion-content-2 .form-check-input:checked[type=checkbox] {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color) !important;
 }
 
 /* =================================================== */
