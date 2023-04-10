@@ -1054,6 +1054,10 @@ input:focus {
     background-color: transparent !important;
 }
 
+.accordion-content-2 .form-check-input:checked[type=checkbox] {
+    background-color: var(--primary-color);
+}
+
 /* =================================================== */
 /* =================================================== */
 @media screen and (min-width:1280px) and (max-width:1399px) {
