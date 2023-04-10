@@ -124,7 +124,7 @@
               </div>
               </div>
                <?php print_r($_SESSION['isSelfPickup']);?>
-               <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
+               <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
                 <div class="main-accordion">
                 <div class="accordion-heading">Pickup Timing</div>
                 <div class="accordion-content accordion-content-3">
