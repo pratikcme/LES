@@ -526,7 +526,6 @@ function onScriptLoad(txnToken, orderId, amount) {
 
         <!-- Modal otp -->
     <div class="modal fade otp-popup"  id="Otp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="container">
         <div class="modal-dialog">
           <div class="modal-content">
               <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
@@ -539,8 +538,7 @@ function onScriptLoad(txnToken, orderId, amount) {
               </form>
               </div>
           </div>
-        </div>
-      </div>  
+        </div> 
     </div>
 
   <!-- =============place order popup=========== -->
