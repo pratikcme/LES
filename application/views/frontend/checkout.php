@@ -177,8 +177,7 @@ label.error.mobile_verfication {
                                 <p><?=$this->lang->line('Add new address')?></p>
                                 <!-- <button class=""><span style="margin-right: 3px;"> <i class="fas fa-crosshairs"></i> </span> use my current location</button> -->
                             </div>
-                            <form method="post" id="RegisterForm"
-                                action="<?=base_url().'users_account/users/add_address'?>" class="address-form">
+                            <form method="post" id="RegisterForm" action="<?=base_url().'users_account/users/add_address'?>" class="address-form">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
                                         <div class="input-wrapper">
@@ -242,12 +241,12 @@ label.error.mobile_verfication {
                                             <span><i class="fas fa-globe-americas"></i></span>
                                             <input type="text" name="country" placeholder="country" id="country">
                                             <!--  <select>
-                                 <option>Country</option>
-                                 <option>India</option>
-                                 <option>Australia</option>
-                                 <option>UK</option>
-                                 </select>
-                                 <span class="select-down-arrow"><i class="fas fa-chevron-down"></i></span> -->
+                                                    <option>Country</option>
+                                                    <option>India</option>
+                                                    <option>Australia</option>
+                                                    <option>UK</option>
+                                                    </select>
+                                                <span class="select-down-arrow"><i class="fas fa-chevron-down"></i></span> -->
                                         </div>
                                         <label for="country" class="error"><?=@form_error('country')?></label>
                                     </div>
@@ -268,18 +267,6 @@ label.error.mobile_verfication {
                                         </div>
                                         <label for="address" class="error"></label>
                                     </div>
-                                    <!-- <div class="col-lg-6">
-                           <div class="input-wrapper">
-                                 <span><i class="fas fa-list-alt"></i></span>
-                                 <select>
-                                   <option>Address type</option>
-                                   <option>home</option>
-                                   <option>office</option>
-                                   <option>other</option>
-                                 </select>
-                                 <span class="select-down-arrow"><i class="fas fa-chevron-down"></i></span>
-                             </div>
-                           </div> -->
                                     <div class="col-md-6 col-sm-6">
                                         <button type="submit" id="addAddress"
                                             class="btn save-btn"><?=$this->lang->line('Save')?></button>
@@ -323,19 +310,17 @@ label.error.mobile_verfication {
                                         <?php if($this->session->userdata('isSelfPickup') == '' || $this->session->userdata('isSelfPickup') == '0'){ ?>
                                         <h6><?=$value->phone?></h6>
                                     </div>
-                                    <p><?=$value->address .'<br>'.$value->city.','.$value->state.' '.$value->country ?>
-                                    </p>
+                                    <p><?=$value->address .'<br>'.$value->city.','.$value->state.' '.$value->country ?> </p>
                                     <?=($value->landmark != '') ? '<p>Landmark :- '.$value->landmark.'</p>' : ''; ?>
                                     <p>pincode :- <?=$value->pincode?></p>
                                     <?php }else{ ?>
                                     <h6>+91 <?=$value->phone_no?></h6>
-                        </div>
-                        <p><?=$value->address ?> </p>
-                        <!-- <p><?=$value->location ?> </p> -->
-                        <?php } ?>
-                        </li>
-                        <?php endforeach ?>
-                        </ul>
+                                 </div>
+                                 <p><?=$value->address ?> </p>
+                                    <?php } ?>
+                                </li>
+                                <?php endforeach ?>
+                            </ul>
                         <?php if($this->session->userdata('isSelfPickup') == '' || $this->session->userdata('isSelfPickup') == '0'){ ?>
                         <div class="billing-btn">
                             <button class="btn add-new-address"><?=$this->lang->line('Add new address')?></button>
@@ -344,10 +329,10 @@ label.error.mobile_verfication {
                         <?php } ?>
                     </div>
                 </div>
-                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
-                <button class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line('Pickup') : $this->lang->line('Delivery')  ?>
-                    <?=$this->lang->line('Time & Date')?>
-                </button>
+                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
+                <button
+                    class="billing-btns active"><?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  $this->lang->line('Pickup') : $this->lang->line('Delivery')  ?>
+                    <?=$this->lang->line('Time & Date')?></button>
                 <?php } ?>
                 <div class="panel">
                     <div class="date-time-common">
@@ -361,7 +346,7 @@ label.error.mobile_verfication {
                             if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
                             <div class="time-box">
                                 <div class="time-title">
-                                    <h6>Pickup Timing</h6>
+                                    <h6><?=$this->lang->line('Pickup Timing')?></h6>
                                 </div>
                                 <div class="pickup_timming mt-3">
                                     <?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?>

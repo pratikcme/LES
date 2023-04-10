@@ -20,6 +20,7 @@ $lang['your cart'] = 'your cart';
 $lang['Shop'] = 'Shop';
 $lang['Process'] = 'Process';
 $lang['send_otp'] = 'Send OTP';
+$lang['Pick up'] = 'Pick up';
 
 // end template 2
 
@@ -135,6 +136,7 @@ $lang['self pickup'] = 'self pickup';
 $lang['Order Summary'] = 'Order Summary';
 $lang['Delivery Address'] = 'Delivery Address';
 $lang['Pickup Address'] = 'Pickup Address';
+$lang['Pickup Timing'] = 'Pickup Timing';
 
 $lang['Pickup'] = 'Pickup';
 $lang['Delivery'] = 'Delivery';

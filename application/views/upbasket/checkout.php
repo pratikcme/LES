@@ -93,14 +93,14 @@
                    <label class="form-check-label" for="flexRadioDefault1">
                      <span>
                        <i class="fa-solid fa-truck"></i>
-                     </span>Use Gst Number </label>
+                     </span><?=$this->lang->line('Use Gst Number')?></label>
                  </div>
                  <div class="form-check radio-outer-line">
                    <input class="form-check-input" id="isSelfPickup" type="checkbox" name="flexRadioDefault" <?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
                    <label class="form-check-label" for="flexRadioDefault2">
                      <span>
                        <i class="fa-solid fa-store"></i>
-                     </span>Pick up </label>
+                     </span><?=$this->lang->line('Pick up')?></label>
                  </div>
                </div>
              </div>
@@ -111,16 +111,20 @@
              <div class="accordion-content accordion-content-3">
                 <div class="address-wrapper">
                  <div class="address-text mt-3">
-                   <p><?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
+                  <?php foreach ($get_address as $key => $value) { ?> 
+                    <h3> <?=$value->name?> </h3>
+                    <p><?=$value->address?></p>
+                  <?php } ?>
                  </div>
                </div> 
              </div>
            </div>
            <?php }else{?> 
             <div class="main-accordion">
-             <div class="accordion-heading">Shipping address</div>
-             <div class="accordion-content accordion-content-3"> <?php foreach ($get_address as $key => $value) { 
-                    $status = ($value->status == '0') ? 'is_default ' : ''; ?> <div class="address-wrapper">
+             <div class="accordion-heading"><?=$this->lang->line('Delivery Address')?></div>
+             <div class="accordion-content accordion-content-3"> 
+              <?php foreach ($get_address as $key => $value) { 
+                  $status = ($value->status == '0') ? 'is_default ' : ''; ?> <div class="address-wrapper">
                  <div class="ship-check text-end">
                    <div class="form-check">
                      <input class="form-check-input 
@@ -235,12 +239,25 @@
            <div class="main-accordion">
              <div class="accordion-heading">Delivery Schedule</div>
              <div class="accordion-content  accordion-content-4">
-               <div class="dates-day-wrapper"> <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> <?php } ?> <div id="datepicker"></div>
-               </div> <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> <div class="time-wrapper"> <?php foreach ($time_slot as $key => $value) { ?> <div class="form-check">
-                   <input class="time_slot_checked" type="radio" id="Default-1" name="time_slot" value="
-																								<?=$value->id?>" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
-                   <label class="form-check-label" for="Default-1"> <?=$value->start_time?> - <?=$value->end_time?> </label>
-                 </div> <?php } ?> </div> <?php } ?>
+               <div class="dates-day-wrapper"> 
+                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> <?php } ?> 
+                <div id="datepicker"></div>
+               </div> 
+               <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
+                <div class="time-wrapper">
+                  <h3><?=$this->lang->line('Pickup Timing')?></h3>
+                  <p><?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
+                </div>
+                 <?php }else{ ?>
+                  <div class="time-wrapper">
+                   <?php foreach ($time_slot as $key => $value) { ?> 
+                    <div class="form-check">
+                      <input class="time_slot_checked" type="radio" id="Default-1" name="time_slot" value=" <?=$value->id?>" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="Default-1"> <?=$value->start_time?> - <?=$value->end_time?> </label>
+                    </div> 
+                    <?php } ?> 
+                  </div> 
+                  <?php } ?>
              </div>
            </div>
            <div class="main-accordion">
@@ -480,7 +497,7 @@ function onScriptLoad(txnToken, orderId, amount) {
 </script>
 
   <!-- =============place order popup=========== -->
-  <div id="myModal" class="modal">
+  <div id="order_success" class="modal">
    <div class="container"> 
     <div class="modal-content">
       <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
@@ -493,7 +510,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             <h2>Thank you.</h2>
             <h3>Your order has been received</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <h5>Your order number is <span>3598767</span></h5>
+            <h5>Your order number is <span id="orderId"></span></h5>
 
             <div class="continue-btn">
                <a href="./index.html">Continue Shopping</a>

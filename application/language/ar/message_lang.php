@@ -1,4 +1,30 @@
 <?php
+// template 2 up basket
+$lang['js_add_address'] =  'Add New Address';
+$lang['js_update_address'] =  'Update Address';
+
+$lang['Sign up'] = 'Sign up';
+$lang['Shop Cart'] = 'Shop Cart';
+$lang['Product Detail'] = 'Product Detail';
+$lang['Your rating'] = 'Your rating';
+$lang['Submit'] = 'Submit';
+$lang['Add a review'] = 'Add a review';
+$lang['Your review'] = 'Your review';
+$lang['Description'] = 'Description';
+$lang['Information'] = 'Information';
+$lang['Reviews'] = 'Reviews';
+$lang['Customer Reviews'] = 'Customer Reviews';
+$lang['Login Account'] = 'Login Account';
+$lang['New Customer'] = 'New Customer';
+$lang['your cart'] = 'your cart';
+$lang['Shop'] = 'Shop';
+$lang['Process'] = 'Process';
+$lang['send_otp'] = 'Send OTP';
+$lang['Pick up'] = 'Pick up';
+
+// end template 2
+
+
 $lang['Cart Discount'] = 'سلة الخصم';
 $lang['Sign up'] = 'اشتراك';
 $lang['Cancel'] = 'إلغاء';
@@ -22,6 +48,7 @@ $lang['Shop Now'] = 'تسوق الآن';
 $lang['Search product..'] = 'بحث عن منتج ..';
 $lang['Categories'] = 'فئات';
 $lang['new product'] = 'منتج جديد';
+
 
 //Contact us page
 
@@ -113,6 +140,8 @@ $lang['Order Summary'] = 'ملخص الطلب';
 $lang['Delivery Address'] = 'عنوان التسليم';
 $lang['Pickup Address'] = 'عنوان الاستلام';
 $lang['Payment Option'] = 'خيار الدفع';
+$lang['Pickup Timing'] = 'توقيت الالتقاط';
+
 
 $lang['Pickup'] = 'يلتقط';
 $lang['Delivery'] = 'توصيل';
