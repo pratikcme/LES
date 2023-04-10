@@ -528,7 +528,7 @@ function onScriptLoad(txnToken, orderId, amount) {
       <div class="container">
         <div class="modal-dialog">
           <div class="modal-content">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
               <div class="modal-body">
                 <form id="OtpVerification" method="post" action="<?=base_url().'checkout/OtpVerification'?>">
                   <label for="mobilenumber" class="form-label">Please enter Otp</label>
