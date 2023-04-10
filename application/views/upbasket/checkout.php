@@ -105,7 +105,27 @@
                </div>
              </div>
            </div>
+           <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){ ?>
            <div class="main-accordion">
+             <div class="accordion-heading">Shipping address</div>
+             <div class="accordion-content accordion-content-3">
+                <div class="address-wrapper">
+                 <!-- <div class="ship-check text-end">
+                   <div class="form-check">
+                     <input class="form-check-input 
+													<?=$status?>" data-id="
+													<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" <?=($value->status == '1') ? 'checked' : '' ?>>
+                     <label class="form-check-label" for="id1"> <?=$this->lang->line('Default')?>
+                   </div>
+                 </div> -->
+                 <div class="address-text mt-3">
+                   <p><?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?></p>
+                 </div>
+               </div> 
+             </div>
+           </div>
+           <?php }else{?> 
+            <div class="main-accordion">
              <div class="accordion-heading">Shipping address</div>
              <div class="accordion-content accordion-content-3"> <?php foreach ($get_address as $key => $value) { 
                     $status = ($value->status == '0') ? 'is_default ' : ''; ?> <div class="address-wrapper">
@@ -218,7 +238,8 @@
                  </div>
                </form>
              </div>
-           </div>
+           </div> 
+           <?php } ?>
            <div class="main-accordion">
              <div class="accordion-heading">Delivery Schedule</div>
              <div class="accordion-content  accordion-content-4">
