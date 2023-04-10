@@ -303,6 +303,7 @@
                </div>
               </div>
           </div>
+        </div>
         <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
             <div class="checkout-order-detils">
                 <div class="mydiv-wrapper">
