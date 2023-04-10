@@ -805,13 +805,13 @@ function onScriptLoad(txnToken, orderId, amount) {
     <div class="modal-dialog">
         <div class="modal-content">
             <label for="country_code" class="error"></label>
-            <h6 class="mobile-title">Please Enter Mobile Number</h6>
+            <h6 class="mobile-title"><?=$this->lang->line('please Enter Mobile Number')?></h6>
             <form id="mobileNumber" class="mobileNum-form" method="post"
                 action="<?=base_url().'checkout/updateMobileNumber'?>">
                 <div class="input-wrapper m-0">
                     <span><i class="fas fa-mobile"></i></span>
                     <select name="country_code" class="country_code" required="">
-                        <option value="">Select Country Code</option>
+                        <option value=""><?=$this->lang->line('Select Country Code')?></option>
                         <?php foreach ($country_code as $key => $value): ?>
                         <option value="<?=$key?>" <?=($key == '+91') ? "SELECTED" : "" ?>><?=$key?></option>
                         <?php endforeach ?>
@@ -820,7 +820,7 @@ function onScriptLoad(txnToken, orderId, amount) {
                 </div>
                 <label for="phoneNumber" class="error mobile_verfication"></label>
 
-                <button type="submit" id="btnSubmit" class="s-btn">submit</button>
+                <button type="submit" id="btnSubmit" class="s-btn"><?=$this->lang->line('Submit')?></button>
             </form>
         </div>
     </div>
@@ -830,7 +830,7 @@ function onScriptLoad(txnToken, orderId, amount) {
 
     <div class="modal-dialog">
         <div class="modal-content">
-            <h6 class="mobile-title">Please enter Otp</h6>
+            <h6 class="mobile-title"><?=$this->lang->line('Please enter Otp')?></h6>
             <form id="OtpVerification" class="mobileNum-form" method="post"
                 action="<?=base_url().'checkout/OtpVerification'?>">
                 <div class="input-wrapper m-0">
@@ -840,7 +840,7 @@ function onScriptLoad(txnToken, orderId, amount) {
                 </div>
                 <label for="otp" class="error mobile_verfication"></label>
                 <label id="invalid" style="display: none; color: red">Invalid Otp</label>
-                <button type="submit" id="btnSubmit" class="s-btn">submit</button>
+                <button type="submit" id="btnSubmit" class="s-btn"><?=$this->lang->line('Submit')?></button>
             </form>
         </div>
     </div>

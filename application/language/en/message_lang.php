@@ -21,6 +21,9 @@ $lang['Shop'] = 'Shop';
 $lang['Process'] = 'Process';
 $lang['send_otp'] = 'Send OTP';
 $lang['Pick up'] = 'Pick up';
+$lang['please Enter Mobile Number'] = 'please Enter Mobile Number';
+$lang['Please enter Otp'] = 'Please enter Otp';
+
 
 // end template 2
 

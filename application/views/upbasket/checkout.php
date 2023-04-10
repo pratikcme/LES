@@ -505,7 +505,7 @@ function onScriptLoad(txnToken, orderId, amount) {
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
           <div class="modal-body">
             <form id="mobileNumber" class="mobileNum-form" method="post" action="https://stagging.launchestore.com/checkout/updateMobileNumber" novalidate="novalidate" autocomplete="off">
-              <label for="">please Enter Mobile Number</label>
+              <label for=""><?=$this->lang->line('please Enter Mobile Number')?></label>
               <div class="input-wrapper ">
                   <span><i class="fas fa-mobile"></i></span>
                   <select name="country_code" class="country_code" required="">
@@ -517,7 +517,7 @@ function onScriptLoad(txnToken, orderId, amount) {
               </div>
               <label for="phoneNumber" class="error mobile_verfication" style="display: none;"></label>
               <br>
-              <button type="submit" id="btnSubmit" class="s-btn">submit</button>
+              <button type="submit" id="btnSubmit" class="s-btn"><?=$this->lang->line('Submit')?></button>
             </form>
           </div>
       </div>
@@ -532,10 +532,10 @@ function onScriptLoad(txnToken, orderId, amount) {
               <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
               <div class="modal-body">
                 <form id="OtpVerification" method="post" action="<?=base_url().'checkout/OtpVerification'?>">
-                  <label for="mobilenumber" class="form-label">Please enter Otp</label>
+                  <label for="mobilenumber" class="form-label"><?=$this->lang->line('Please enter Otp')?></label>
                   <input type="text" class="form-control"  name="otp"  id="otp"  placeholder="Please enter 4 digit otp*" maxlength="4" required="">
                   <br>
-                  <button type="submit" id="btnSubmit">Submit</button>
+                  <button type="submit" id="btnSubmit"><?=$this->lang->line('Submit')?></button>
               </form>
               </div>
           </div>
