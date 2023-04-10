@@ -126,14 +126,14 @@
                <?php print_r($_SESSION['isSelfPickup']);?>
                <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?> 
                 <div class="main-accordion">
-                <div class="accordion-heading"><?=$this->lang->line('Delivery Address')?></div>
+                <div class="accordion-heading">Pickup Timing</div>
                 <div class="accordion-content accordion-content-3">
                   <div class="address-wrapper">
                     <div class="ship-check text-end">
                       <div class="form-check">
-                        <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" <?=($value->status == '1') ? 'checked' : '' ?>>
+                        <!-- <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox" <?=($value->status == '1') ? 'checked' : '' ?>>
                         <label class="form-check-label" for="id1">
-                        <?=$this->lang->line('Default')?>
+                        <?=$this->lang->line('Default')?> -->
                       </div>
                     </div>
 
@@ -141,10 +141,10 @@
                       <h3><?=$value->name?></h3>
                       <p><?=$value->address?></p>
                     </div>
-                    <div class="address-icons mt-3">
+                    <!-- <div class="address-icons mt-3">
                       <a href="javascript:" class="add-address-btn edit_address" data-id='<?=$this->utility->safe_b64encode($value->id)?>'><i class="fa-solid fa-pen-to-square"></i></a>
                       <a href="javascript:" class="delet-address-btn remove_address" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-solid fa-trash-can"></i></a>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
