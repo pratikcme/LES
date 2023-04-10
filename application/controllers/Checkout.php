@@ -120,7 +120,7 @@ class Checkout extends User_Controller
     $this->load->model($this->myvalues->usersAccount['model'], 'that_model');
     $data['get_address'] = $this->that_model->getUserAddress();
     $data['time_slot'] = $this->this_model->getTimeSlot();
-    // dd($data['time_slot']);
+    dd($data['time_slot']);
     $getActivePaymentMethod = $this->this_model->ActivePaymentMethod();
     $data['payment_option'] = $getActivePaymentMethod[0]->type;
     $data['phone'] = '0';
@@ -283,7 +283,6 @@ class Checkout extends User_Controller
     $data['GatewayType'] = $getActivePaymentMethod[0]->type;
     $data['selfPickupTimeChart'] = $this->this_model->getSelfPickupTimeChart();
     $data['country_code'] = GetDialcodelist();
-    dd($time_slot);die;
     $this->loadView($this->user_layout, $data);
   }
 
