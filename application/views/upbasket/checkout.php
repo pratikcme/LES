@@ -139,7 +139,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
                 <?php }else{ ?>
                 <div class="main-accordion">
                   <div class="accordion-heading">Shipping address</div>
@@ -268,7 +267,6 @@
                       </div>
                     </form> 
                   </div>
-                </div>
                 <?php } ?>
                 <div class="main-accordion">
                   <div class="accordion-heading">Delivery Schedule</div>
