@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <section class="panel">
-                                <header class="panel-heading">Order Report</header>
+                                <header class="panel-heading">Reports</header>
                                 <div class="panel-body">
                                     <div class="adv-table">
                                         <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
