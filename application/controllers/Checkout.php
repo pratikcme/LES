@@ -128,6 +128,7 @@ class Checkout extends User_Controller
     $vendor = $this->this_model->getVendorAddress();
     $data['isOnlinePayment'] = $vendor[0]->isOnlinePayment;
     $data['isCOD'] = $vendor[0]->isCOD;
+    dd($vendor);
     $data['isDeliveryTimeDate'] = $vendor[0]->delivery_time_date;
     if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') {
 
