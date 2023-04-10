@@ -295,152 +295,154 @@
                       
                     </div>
                   </div>
-                </div>
-                <!-- </div> -->
+               
+               
 
                 
 
               </div>
+               </div>
           </div>
-          <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
-              <div class="checkout-order-detils">
-                  <div class="mydiv-wrapper">
-                      <div class="mydiv-header">
-                          <h3>Your Orders</h3>
+        </div>
+        <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
+            <div class="checkout-order-detils">
+                <div class="mydiv-wrapper">
+                    <div class="mydiv-header">
+                        <h3>Your Orders</h3>
+                    </div>
+                    <?php foreach ($mycart as $key => $value) { ?>
+                    <div class="order-wrapper">
+                      <div class="order-wrapper-img">
+                          <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"><img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>" alt=""></a>
+                      </div> 
+                      <div class="order-wrapper-text">
+                          <h4><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"><?=$value->product_name?></a></h4>
+                          <h5><?=$value->weight_no.' '.$value->weight_name?></h5>
+                          <h3><?=$this->siteCurrency . number_format((float)$value->discount_price,'2','.','')?></h3>
+                      </div> 
+                    </div>
+                    <?php } ?>
+                </div>
+
+                <!-- <div class="coupon-code-wrapper">
+                    <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
+                </div> -->
+
+                <div class="have-code-part">
+                  <div class="input-group mb-3">
+                    <label for="text">If you have a coupon code, please apply it below.</label><br>
+                      <div class="promo-apply-wrapper">
+                        <input type="text" class="form-control" id="promocode" placeholder="Enter Promocode" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <br>
+                        <span class="error" id="promo_err"></span>
+                        <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
                       </div>
-                      <?php foreach ($mycart as $key => $value) { ?>
-                      <div class="order-wrapper">
-                        <div class="order-wrapper-img">
-                            <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"><img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>" alt=""></a>
-                        </div> 
-                        <div class="order-wrapper-text">
-                            <h4><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"><?=$value->product_name?></a></h4>
-                            <h5><?=$value->weight_no.' '.$value->weight_name?></h5>
-                            <h3><?=$this->siteCurrency . number_format((float)$value->discount_price,'2','.','')?></h3>
-                        </div> 
-                      </div>
+                    </div>
+                </div>
+                <div class="cart-totals-part">
+                  <table >
+                    <thead class="head-title">
+                      <tr>
+                        <th colspan="2">Cart totals</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="cart-total-text-1"><?=$this->lang->line('Sub Total')?>
+                        <br>
+                        (<?=($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)</td>
+                        <td class="cart-total-text-2">
+                          <span class='notranslate'><?=$this->siteCurrency?></span> 
+                          <span id="checkout_subtotal"><?=$getMycartSubtotal?></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="cart-total-text-1"><?=$this->lang->line('Tax (Gst)')?></td>
+                        <td class="cart-total-text-2">
+                          <span class='notranslate'><?=$this->siteCurrency?></span> 
+                          <span ><?=$TotalGstAmount?></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="cart-total-text-1"><?=$this->lang->line('Delivery Charges')?></td>
+                        <td class="cart-total-text-2">
+                          <span class='notranslate'><?=$this->siteCurrency?></span> 
+                          <span ><?=(isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping,2,'.','') : '0.00' ?></span>
+                        </td>
+                      </tr>
+                      <?php if( $shopping_based_discount > 0 ){?>
+                        <tr>
+                          <td class="cart-total-text-1"><?=$this->lang->line('Cart Discount')?></td>
+                          <td class="cart-total-text-2">
+                            <span class='notranslate'><?=$this->siteCurrency?></span> 
+                            <span id="shoppingBasedDiscount"><?=$shopping_based_discount?></span></td>
+                        </tr>
                       <?php } ?>
-                  </div>
+                        <tr class="promocode-applied" style="display:none;">
+                          <td class="cart-total-text-1"><?=$this->lang->line('Promocode Discount')?></td>
+                          <td class="cart-total-text-2">
+                            <span class='notranslate'><?=$this->siteCurrency?></span> 
+                            <span id="promoAmount"></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="cart-total-text-1"><?=$this->lang->line('Total')?></td>
+                          <td class="cart-total-text-2">
+                            <span class='notranslate'><?=$this->siteCurrency?></span> 
+                            <span id="checkout_final" >
+                            <?php 
+                            if(isset($calc_shiping) && is_numeric($calc_shiping)) {
 
-                  <!-- <div class="coupon-code-wrapper">
-                      <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
-                  </div> -->
+                                  if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                                    $to = $getMycartSubtotal+$calc_shiping + $TotalGstAmount; 
+                                  }else{
+                                    $to = $getMycartSubtotal+$calc_shiping;
+                                  }
+                                  $f_amount = $to-$shopping_based_discount;
+                                  echo number_format((float)$f_amount,2,'.',''); 
 
-                  <div class="have-code-part">
-                    <div class="input-group mb-3">
-                      <label for="text">If you have a coupon code, please apply it below.</label><br>
-                        <div class="promo-apply-wrapper">
-                          <input type="text" class="form-control" id="promocode" placeholder="Enter Promocode" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                          <br>
-                          <span class="error" id="promo_err"></span>
-                          <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
-                        </div>
+                              }else{ 
+
+                                  if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                                    $tot = $getMycartSubtotal + $TotalGstAmount; 
+                                  }else{
+                                    $tot = $getMycartSubtotal;
+                                  }
+                                  $f_amount = $tot-$shopping_based_discount;
+                                  echo number_format((float)$f_amount,2);
+
+                              } ?>
+                            </span>
+                          </td>
+                        </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <input type="hidden" id="applied_promo">
+              <button class="place-order-btn" id="payBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></button>
+
+              <div class="our-secure-product">
+                  <div class="secure-product-wrapper">
+                      <div class="icon">
+                          <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/ShieldCheck.svg" alt=""></a>
+                      </div>
+                      <div class="text">
+                        <h3>100% Genuine Products</h3>
                       </div>
                   </div>
-                  <div class="cart-totals-part">
-                    <table >
-                      <thead class="head-title">
-                        <tr>
-                          <th colspan="2">Cart totals</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="cart-total-text-1"><?=$this->lang->line('Sub Total')?>
-                          <br>
-                          (<?=($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)</td>
-                          <td class="cart-total-text-2">
-                            <span class='notranslate'><?=$this->siteCurrency?></span> 
-                            <span id="checkout_subtotal"><?=$getMycartSubtotal?></span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="cart-total-text-1"><?=$this->lang->line('Tax (Gst)')?></td>
-                          <td class="cart-total-text-2">
-                            <span class='notranslate'><?=$this->siteCurrency?></span> 
-                            <span ><?=$TotalGstAmount?></span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="cart-total-text-1"><?=$this->lang->line('Delivery Charges')?></td>
-                          <td class="cart-total-text-2">
-                            <span class='notranslate'><?=$this->siteCurrency?></span> 
-                            <span ><?=(isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping,2,'.','') : '0.00' ?></span>
-                          </td>
-                        </tr>
-                        <?php if( $shopping_based_discount > 0 ){?>
-                          <tr>
-                            <td class="cart-total-text-1"><?=$this->lang->line('Cart Discount')?></td>
-                            <td class="cart-total-text-2">
-                              <span class='notranslate'><?=$this->siteCurrency?></span> 
-                              <span id="shoppingBasedDiscount"><?=$shopping_based_discount?></span></td>
-                          </tr>
-                        <?php } ?>
-                          <tr class="promocode-applied" style="display:none;">
-                            <td class="cart-total-text-1"><?=$this->lang->line('Promocode Discount')?></td>
-                            <td class="cart-total-text-2">
-                              <span class='notranslate'><?=$this->siteCurrency?></span> 
-                              <span id="promoAmount"></span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="cart-total-text-1"><?=$this->lang->line('Total')?></td>
-                            <td class="cart-total-text-2">
-                              <span class='notranslate'><?=$this->siteCurrency?></span> 
-                              <span id="checkout_final" >
-                              <?php 
-                              if(isset($calc_shiping) && is_numeric($calc_shiping)) {
-
-                                    if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                                      $to = $getMycartSubtotal+$calc_shiping + $TotalGstAmount; 
-                                    }else{
-                                      $to = $getMycartSubtotal+$calc_shiping;
-                                    }
-                                    $f_amount = $to-$shopping_based_discount;
-                                    echo number_format((float)$f_amount,2,'.',''); 
-
-                                }else{ 
-
-                                    if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                                      $tot = $getMycartSubtotal + $TotalGstAmount; 
-                                    }else{
-                                      $tot = $getMycartSubtotal;
-                                    }
-                                    $f_amount = $tot-$shopping_based_discount;
-                                    echo number_format((float)$f_amount,2);
-
-                                } ?>
-                              </span>
-                            </td>
-                          </tr>
-                      </tbody>
-                    </table>
-                </div>
-                <input type="hidden" id="applied_promo">
-                <button class="place-order-btn" id="payBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></button>
-
-                <div class="our-secure-product">
-                    <div class="secure-product-wrapper">
-                        <div class="icon">
-                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/ShieldCheck.svg" alt=""></a>
-                        </div>
-                        <div class="text">
-                          <h3>100% Genuine Products</h3>
-                        </div>
-                    </div>
-                    <div class="secure-product-wrapper">
-                        <div class="icon">
-                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/Medal.svg" alt=""></a>
-                        </div>
-                        <div class="text">
-                          <h3>Secure Payments</h3>
-                        </div>
-                    </div>
-                </div>
+                  <div class="secure-product-wrapper">
+                      <div class="icon">
+                          <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/Medal.svg" alt=""></a>
+                      </div>
+                      <div class="text">
+                        <h3>Secure Payments</h3>
+                      </div>
+                  </div>
               </div>
             </div>
-          
           </div>
+        
+        </div>
     </div> 
   </section>
   
