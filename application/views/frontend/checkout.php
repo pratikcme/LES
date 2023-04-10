@@ -801,29 +801,29 @@ function onScriptLoad(txnToken, orderId, amount) {
 
 
 <div class="modal mobileModal" id="mobileModal">
-
     <div class="modal-dialog">
         <div class="modal-content">
-            <label for="country_code" class="error"></label>
-            <h6 class="mobile-title">Please Enter Mobile Number</h6>
-            <form id="mobileNumber" class="mobileNum-form" method="post" action="<?=base_url().'checkout/updateMobileNumber'?>">
-                <div class="input-wrapper m-0">
+            <div class="modal-body">
+                <form id="mobileNumber" class="mobileNum-form" method="post" action="<?=base_url().'checkout/updateMobileNumber'?>" novalidate="novalidate" autocomplete="off">
+                <label for="">please Enter Mobile Number</label>
+                <div class="input-wrapper ">
                     <span><i class="fas fa-mobile"></i></span>
                     <select name="country_code" class="country_code" required="">
-                        <option value="">Select Country Code</option>
-                        <?php foreach ($country_code as $key => $value): ?>
-                        <option value="<?=$key?>" <?=($key == '+91') ? "SELECTED" : "" ?>><?=$key?></option>
-                        <?php endforeach ?>
+                            <option value="">Select Country Code</option>
+                            <?php foreach ($country_code as $key => $value): ?>
+                            <option value="<?=$key?>" <?=($key == '+91') ? "SELECTED" : "" ?>><?=$key?></option>
+                            <?php endforeach ?>
                     </select>
                     <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Mobile Number*" required="">
                 </div>
-                    <label for="phoneNumber" class="error mobile_verfication"></label>
-                    <button type="submit" id="btnSubmit" class="s-btn">submit</button>
-                </div>
-            </form>
+                <label for="phoneNumber" class="error mobile_verfication"></label>
+                <button type="submit" id="btnSubmit" class="s-btn">submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
 
 <div class="modal mobileModal" id="Otp">
     <div class="modal-dialog">
