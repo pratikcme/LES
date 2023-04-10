@@ -596,7 +596,7 @@ class Utility
     public function pushNotificationAndroid($androidDeviceToken, $postData, $result, $vendor_id)
     {
         // Your FCM project API key
-        dd($postData);
+
         $apiKey = $result[0]->user_firebase_key;;
 
         // The device registration token(s) you want to send the notification to
