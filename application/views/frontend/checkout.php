@@ -805,7 +805,7 @@ function onScriptLoad(txnToken, orderId, amount) {
     <div class="modal-dialog">
         <div class="modal-content">
             <label for="country_code" class="error"></label>
-            <h6 class="mobile-title"><?=$this->lang->line('please Enter Mobile Number')?></h6>
+            <h6 class="mobile-title"><?=$this->lang->line('Please Enter Mobile Number')?></h6>
             <form id="mobileNumber" class="mobileNum-form" method="post"
                 action="<?=base_url().'checkout/updateMobileNumber'?>">
                 <div class="input-wrapper m-0">

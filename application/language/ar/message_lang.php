@@ -21,7 +21,7 @@ $lang['Shop'] = 'Shop';
 $lang['Process'] = 'Process';
 $lang['send_otp'] = 'Send OTP';
 $lang['Pick up'] = 'Pick up';
-$lang['please Enter Mobile Number'] = 'الرجاء إدخال رقم الهاتف المحمول';
+$lang['Please Enter Mobile Number'] = 'الرجاء إدخال رقم الهاتف المحمول';
 $lang['Please enter Otp'] = 'الرجاء إدخال Otp';
 
 // end template 2
