@@ -505,10 +505,17 @@ function onScriptLoad(txnToken, orderId, amount) {
           <div class="modal-content">
               <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> -->
               <div class="modal-body">
-                <form action="">
+                <form id="mobileNumber" method="post" action="<?=base_url().'checkout/updateMobileNumber'?>">
                   <label for="mobilenumber" class="form-label">Please Enter Mobile Number</label>
-                  <input type="text" class="form-control" id="mobilenumber" placeholder="Enter Your Number">
-                  <button type="submit">Submit</button>
+                    <select name="country_code" class="country_code" required="">
+                        <option value="">Select Country Code</option>
+                        <?php foreach ($country_code as $key => $value): ?>
+                        <option value="<?=$key?>" <?=($key == '+91') ? "SELECTED" : "" ?>><?=$key?></option>
+                        <?php endforeach ?>
+                    </select>
+                  <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Mobile Number*">
+                  <label for="phoneNumber" class="error mobile_verfication"></label>
+                  <button type="submit" id="btnSubmit">Submit</button>
               </form>
               </div>
           </div>

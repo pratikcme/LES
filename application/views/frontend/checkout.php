@@ -806,8 +806,7 @@ function onScriptLoad(txnToken, orderId, amount) {
         <div class="modal-content">
             <label for="country_code" class="error"></label>
             <h6 class="mobile-title">Please Enter Mobile Number</h6>
-            <form id="mobileNumber" class="mobileNum-form" method="post"
-                action="<?=base_url().'checkout/updateMobileNumber'?>">
+            <form id="mobileNumber" class="mobileNum-form" method="post" action="<?=base_url().'checkout/updateMobileNumber'?>">
                 <div class="input-wrapper m-0">
                     <span><i class="fas fa-mobile"></i></span>
                     <select name="country_code" class="country_code" required="">
@@ -827,7 +826,6 @@ function onScriptLoad(txnToken, orderId, amount) {
 </div>
 
 <div class="modal mobileModal" id="Otp">
-
     <div class="modal-dialog">
         <div class="modal-content">
             <h6 class="mobile-title">Please enter Otp</h6>
