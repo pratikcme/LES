@@ -582,7 +582,7 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     public function update_profile()
     {
         // error_reporting(E_ALL);
-        // dd($_FILES);
+        dd($_POST);
         if (isset($_REQUEST['submit']) && $_REQUEST['submit'] == 'Update') {
 
             $branch_id = $this->session->userdata['id'];
