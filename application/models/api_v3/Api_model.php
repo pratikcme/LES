@@ -2756,7 +2756,7 @@ class Api_model extends My_model
             $data['groupBy'] = 'p.id';
             $data['table'] = 'product as p';
             $result = $this->selectFromJoin($data);
-            // print_r($result);exit;
+            lq();
             // echo $this->db->last_query();exit;
             unset($data);
             if (count($result) > 0) {
