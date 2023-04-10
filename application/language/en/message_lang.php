@@ -20,6 +20,7 @@ $lang['your cart'] = 'your cart';
 $lang['Shop'] = 'Shop';
 $lang['Process'] = 'Process';
 $lang['send_otp'] = 'Send OTP';
+$lang['Pick up'] = 'Pick up';
 
 // end template 2
 
