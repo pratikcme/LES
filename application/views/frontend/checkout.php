@@ -800,7 +800,7 @@ function onScriptLoad(txnToken, orderId, amount) {
 </div>
 
 
-<div class="modal mobileModal" id="mobileModal">
+<div class="modal fade otp-popup mobileModal" id="mobileModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
