@@ -516,7 +516,7 @@ function onScriptLoad(txnToken, orderId, amount) {
                   <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Mobile Number*" required="">
               </div>
               <label for="phoneNumber" class="error mobile_verfication" style="display: none;"></label>
-
+              <br>
               <button type="submit" id="btnSubmit" class="s-btn">submit</button>
             </form>
           </div>
@@ -534,6 +534,7 @@ function onScriptLoad(txnToken, orderId, amount) {
                 <form id="OtpVerification" method="post" action="<?=base_url().'checkout/OtpVerification'?>">
                   <label for="mobilenumber" class="form-label">Please enter Otp</label>
                   <input type="text" class="form-control"  name="otp"  id="otp"  placeholder="Please enter 4 digit otp*" maxlength="4" required="">
+                  <br>
                   <button type="submit" id="btnSubmit">Submit</button>
               </form>
               </div>
