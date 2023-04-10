@@ -85,7 +85,7 @@
            <div class="fill-detali-part">
 
             <!-- ----------accordian-part------ -->
-            <div class="accordion-items">
+             <div class="accordion-items">
 
               <div class="main-accordion">
               <!-- <div class="accordion-heading">Contact Informaions</div>
@@ -101,17 +101,16 @@
                     </div>
                   </form>
               </div> -->
-            </div>
-             <?php print_r($_SESSION);?>
-            <div class="main-accordion">
+              </div>
+              <div class="main-accordion">
                 <div class="accordion-heading">Delivery Method</div>
                 <div class="accordion-content ">
                   <div class="accordion-content-2">
                     <div class="form-check radio-outer-line">
-                      <input class="form-check-input" id="user_gst_number" type="checkbox" name="flexRadioDefault">
-                      <label class="form-check-label" for="flexRadioDefault1" >
-                        <span><i class="fa-solid fa-truck"></i></span>Use Gst Number
-                      </label>
+                        <input class="form-check-input" id="user_gst_number" type="checkbox" name="flexRadioDefault">
+                        <label class="form-check-label" for="flexRadioDefault1" >
+                          <span><i class="fa-solid fa-truck"></i></span>Use Gst Number
+                        </label>
                     </div>
                     <div class="form-check radio-outer-line">
                       <input class="form-check-input" id="isSelfPickup" type="checkbox" name="flexRadioDefault"
