@@ -817,9 +817,9 @@ function onScriptLoad(txnToken, orderId, amount) {
                     </select>
                     <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Mobile Number*" required="">
                 </div>
-                <label for="phoneNumber" class="error mobile_verfication"></label>
-
-                <button type="submit" id="btnSubmit" class="s-btn">submit</button>
+                    <label for="phoneNumber" class="error mobile_verfication"></label>
+                    <button type="submit" id="btnSubmit" class="s-btn">submit</button>
+                </div>
             </form>
         </div>
     </div>
