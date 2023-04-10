@@ -291,7 +291,8 @@
                       <?php } ?>
                     </div>  
                   </div>
-                  <div class="main-accordion">
+               </div>
+               <div class="main-accordion">
                   <div class="accordion-heading">Payment Option</div>
                   <div class="accordion-content">
                     <div class="accordion-content-2 accordion-5">
@@ -314,12 +315,6 @@
                       
                     </div>
                   </div>
-               
-               
-
-                
-
-               </div>
               </div>
           </div>
         </div>
