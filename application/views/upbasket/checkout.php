@@ -383,9 +383,9 @@
          </div>
          <input type="hidden" id="applied_promo">
          <?php if($phone == '0' || $is_verify == '0'){ ?>
-            <button type="button" class="btn btn-primary" id="verify"><?=$this->lang->line('Verify Mobile')?></button>
+            <button type="button" class="place-order-btn" id="verify"><?=$this->lang->line('Verify Mobile')?></button>
         <?php }else{ ?>
-          <button class="place-order-btn" id="payBtn" data-toggle="modal"> <?=$this->lang->line('Place order')?> </button>
+          <button class="place-order-btn" id="payBtn"> <?=$this->lang->line('Place order')?> </button>
         <?php } ?>
          <div class="our-secure-product">
            <div class="secure-product-wrapper">
