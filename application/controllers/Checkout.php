@@ -283,6 +283,7 @@ class Checkout extends User_Controller
     $data['GatewayType'] = $getActivePaymentMethod[0]->type;
     $data['selfPickupTimeChart'] = $this->this_model->getSelfPickupTimeChart();
     $data['country_code'] = GetDialcodelist();
+    dd($time_slot);die;
     $this->loadView($this->user_layout, $data);
   }
 
