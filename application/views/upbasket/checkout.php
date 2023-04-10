@@ -122,7 +122,7 @@
                   </div>
                 </div>
               
-              <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
+                <?php if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
                 <div class="main-accordion">
                   <div class="accordion-heading"><?=$this->lang->line('Pickup Address')?></div>
                   <div class="accordion-content accordion-content-3">
@@ -140,7 +140,7 @@
                     </div>
                   </div>
                 </div>
-              <?php }else{ ?>
+                <?php }else{ ?>
                 <div class="main-accordion">
                   <div class="accordion-heading">Shipping address</div>
                   <div class="accordion-content accordion-content-3">
@@ -269,7 +269,7 @@
                     </form> 
                   </div>
                 </div>
-              <?php } ?>
+                <?php } ?>
                 <div class="main-accordion">
                   <div class="accordion-heading">Delivery Schedule</div>
                   <div class="accordion-content  accordion-content-4">
@@ -317,6 +317,7 @@
                   </div>
               </div>
           </div>
+                      </div>
         <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
             <div class="checkout-order-detils">
                 <div class="mydiv-wrapper">
