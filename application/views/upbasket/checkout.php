@@ -121,7 +121,7 @@
            </div>
            <?php }else{?> 
             <div class="main-accordion">
-             <div class="accordion-heading">Shipping address</div>
+             <div class="accordion-heading"><?=$this->lang->line('Delivery Address')?></div>
              <div class="accordion-content accordion-content-3"> 
               <?php foreach ($get_address as $key => $value) { 
                   $status = ($value->status == '0') ? 'is_default ' : ''; ?> <div class="address-wrapper">
