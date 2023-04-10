@@ -231,59 +231,57 @@
                     </div>
                   </form> 
                 </div>
-              
+              </div>
+                <div class="main-accordion">
+                  <div class="accordion-heading">Delivery Schedule</div>
+                    <div class="accordion-content  accordion-content-4">
+                      <div class="dates-day-wrapper">
+                        <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
+                          <?php } ?>
+                          <div id="datepicker"></div>
+                      </div>
+                      <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
+                        <div class="time-wrapper">  
+                          <?php foreach ($time_slot as $key => $value) { ?>
+                          <div class="form-check">
+                            <input class="time_slot_checked" type="radio" id="Default-1"  name="time_slot" value="<?=$value->id?>" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="Default-1">
+                            <?=$value->start_time?> - <?=$value->end_time?>
+                            </label>
+                          </div>
+                          <?php } ?>
+                        </div>  
+                        <?php } ?>
+                    </div>
+                </div>
 
-              <div class="main-accordion">
-                <div class="accordion-heading">Delivery Schedule</div>
-                <div class="accordion-content  accordion-content-4">
-                  <div class="dates-day-wrapper">
-                    <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
+                <div class="main-accordion">
+                  <div class="accordion-heading">Payment Option</div>
+                  <div class="accordion-content">
+                    <div class="accordion-content-2 accordion-5">
+                    <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?>
+                      <div class="form-check radio-outer-line">
+                        <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?=$payment_option?>" <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?>>
+                        <label class="form-check-label" for="Credit/Debit Card">
+                        <?=$this->lang->line('Credit/Debit Card')?>
+                        </label>
+                      </div>
                       <?php } ?>
-                       <div id="datepicker"></div>
-                  </div>
-                  <?php if( $isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1' ) { ?>
-                  <div class="time-wrapper">  
-                    <?php foreach ($time_slot as $key => $value) { ?>
-                    <div class="form-check">
-                      <input class="time_slot_checked" type="radio" id="Default-1"  name="time_slot" value="<?=$value->id?>" <?=($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
-                      <label class="form-check-label" for="Default-1">
-                      <?=$value->start_time?> - <?=$value->end_time?>
-                      </label>
+                      <?php if($isCOD == '1'){ ?>
+                      <div class="form-check radio-outer-line">
+                        <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="Cash On Delivery" value="0" <?=($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : ''?>>
+                        <label class="form-check-label" for="Cash On Delivery">
+                        <?=$this->lang->line('Cash On Delivery')?>
+                        </label>
+                      </div>
+                      <?php } ?>
+                      
                     </div>
-                    <?php } ?>
-                    <?php } ?>
-                  </div>  
-                </div>
-              </div>
-
-              <div class="main-accordion">
-                <div class="accordion-heading">Payment Option</div>
-                <div class="accordion-content">
-                  <div class="accordion-content-2 accordion-5">
-                  <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?>
-                    <div class="form-check radio-outer-line">
-                      <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?=$payment_option?>" <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?>>
-                      <label class="form-check-label" for="Credit/Debit Card">
-                      <?=$this->lang->line('Credit/Debit Card')?>
-                      </label>
-                    </div>
-                    <?php } ?>
-                    <?php if($isCOD == '1'){ ?>
-                    <div class="form-check radio-outer-line">
-                      <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="Cash On Delivery" value="0" <?=($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : ''?>>
-                      <label class="form-check-label" for="Cash On Delivery">
-                      <?=$this->lang->line('Cash On Delivery')?>
-                      </label>
-                    </div>
-                    <?php } ?>
-                    
                   </div>
                 </div>
               </div>
-            </div>
-            </div>
+          </div>
         </div>
-      </div>
       <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
          <div class="checkout-order-detils">
              <div class="mydiv-wrapper">
