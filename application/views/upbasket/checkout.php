@@ -102,25 +102,26 @@
                   </form>
               </div> -->
             </div>
+             <?php print_r($_SESSION);?>
             <div class="main-accordion">
               <div class="accordion-heading">Delivery Method</div>
-                <div class="accordion-content ">
-                  <div class="accordion-content-2">
-                  <div class="form-check radio-outer-line">
-                    <input class="form-check-input" id="user_gst_number" type="checkbox" name="flexRadioDefault">
-                    <label class="form-check-label" for="flexRadioDefault1" >
-                      <span><i class="fa-solid fa-truck"></i></span>Use Gst Number
-                    </label>
-                  </div>
-                  <div class="form-check radio-outer-line">
-                    <input class="form-check-input" id="isSelfPickup" type="checkbox" name="flexRadioDefault"
-                    <?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?> >
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      <span><i class="fa-solid fa-store"></i></span>Pick up
-                    </label>
-                  </div>
-                  </div>
+              <div class="accordion-content ">
+                <div class="accordion-content-2">
+                <div class="form-check radio-outer-line">
+                  <input class="form-check-input" id="user_gst_number" type="checkbox" name="flexRadioDefault">
+                  <label class="form-check-label" for="flexRadioDefault1" >
+                    <span><i class="fa-solid fa-truck"></i></span>Use Gst Number
+                  </label>
                 </div>
+                <div class="form-check radio-outer-line">
+                  <input class="form-check-input" id="isSelfPickup" type="checkbox" name="flexRadioDefault"
+                   <?=(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?> >
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    <span><i class="fa-solid fa-store"></i></span>Pick up
+                  </label>
+                </div>
+                </div>
+              </div>
               </div>
             
               <div class="main-accordion">
