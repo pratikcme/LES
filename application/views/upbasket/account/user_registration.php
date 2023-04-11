@@ -15,7 +15,7 @@
                     <input type="hidden" id="user_id">
                         <div class="mb-3">
                             <div class="tab-select-box">
-                            <label for="Country-code" class="form-label">Country Code<span>*</span></label>
+                            <label for="Country-code" class="form-label"><?=$this->lang->line('Select country code')?><span>*</span></label>
                             <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
                                 <?php foreach($country_code as $key => $value){ ?>
                                     <option value="<?=$key;?>"><?=$value;?></option>
@@ -24,8 +24,8 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="text" class="form-label">Mobile Number<span>*</span></label>
-                            <input type="text" name="phone" id="phone" class="form-control mob_no" aria-describedby="text" placeholder="Mobile Number*" required>
+                            <label for="text" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
+                            <input type="text" name="phone" id="phone" class="form-control mob_no" aria-describedby="text" placeholder="<?=$this->lang->line('Mobile Number*')?>" required>
                         </div>
                         <div id="completeOTP">
                             <div class="mb-3">
@@ -35,23 +35,23 @@
                             </div>
                              <h3 class="mt-4">
                                 <span id="resetcounter">Didn't get the code? </span>
-                                <span href="javascript:" id="resend" >Resend OTP</span>
+                                <span href="javascript:" id="resend" ><?=$this->lang->line('Resend')?> OTP</span>
                             </h3>
                         </div>
                         <div id="completeProfile" style="display:none">
                             <div class="mb-3">
-                                <label for="fname-text" class="form-label">First Name<span>*</span></label>
+                                <label for="fname-text" class="form-label"><?=$this->lang->line('First Name')?><span>*</span></label>
                                 <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name*" required>
                                 <label for="fname" class="error"></label>
                             </div>
                             <div class="mb-3">
-                                <label for="fname-text" class="form-label">Last Name<span>*</span></label>
+                                <label for="fname-text" class="form-label"><?=$this->lang->line('Last Name')?><span>*</span></label>
                                 <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name*" required>
                                 <label for="lname" class="error"></label>
                             </div>
                             <div class="mb-3">
-                                <label for="fname-text" class="form-label">First Name<span>*</span></label>
-                                <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+                                <label for="fname-text" class="form-label"> <?=$this->lang->line('Enter Email')?><span>*</span></label>
+                                <input type="text" name="email" id="email" class="form-control" placeholder="<?=$this->lang->line('Enter Email*')?>">
                                 <label for="email" class="error"></label>
                             </div>
                         </div>
@@ -62,10 +62,10 @@
                         </div> -->
                         
                         <div class="mb-3 tab-save-btn">
-                            <button type="button" class="common-input-btn send" id="frmBtn">Send Code</button>
+                            <button type="button" class="common-input-btn send" id="frmBtn"><?=$this->lang->line('Send Code')?></button>
                         </div>
                         
-                        <h3 class="mt-4">did not receive otp? <span href="#">Resend</span></h3>
+                        <!-- <h3 class="mt-4 d-none">did not receive otp? <span href="#">Resend</span></h3> -->
 
                     </form>
               </div>

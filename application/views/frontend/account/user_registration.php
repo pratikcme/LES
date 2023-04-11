@@ -25,46 +25,46 @@
           </div>
         <div class="input-wrapper">
           <span><i class="fas fa-mobile"></i></span>
-          <input type="text" name="phone" id="phone"  class="mob_no" placeholder="Mobile Number*" required>
+          <input type="text" name="phone" id="phone"  class="mob_no" placeholder="<?=$this->lang->line('Mobile Number*')?>" required>
         </div>
 
           <label for="phone" class="error"></label>
 
           <div id="completeOTP">
+            <div class="input-wrapper">
+              <span><i class="fas fa-key"></i></span>
+              <input type="text" name="otp" id="otp"  class="OTP" placeholder="OTP" required>
+            </div>
 
-          <div class="input-wrapper">
-            <span><i class="fas fa-key"></i></span>
-            <input type="text" name="otp" id="otp"  class="OTP" placeholder="OTP" required>
+            <label for="otp" class="varify-error error"></label>
+            <label id="resetcounter">Didn't get the code? </label>
+            <button type="button" id="resend" ><?=$this->lang->line('Resend')?> OTP</button>
           </div>
 
-          <label for="otp" class="varify-error error"></label>
-          <label id="resetcounter">Didn't get the code? </label>
-          <button type="button" id="resend" >Resend OTP</button>
-          </div>
           <div id="completeProfile" style="display:none">
             <div class="input-wrapper">
               <span><i class="fas fa-user"></i></span>
-              <input type="text" name="fname" id="fname" placeholder="First Name*" required>
+              <input type="text" name="fname" id="fname" placeholder="<?=$this->lang->line('First Name*')?>" required>
             </div>
             <label for="fname" class="error"></label>
 
             <div class="input-wrapper">
               <span><i class="fas fa-user"></i></span>
-              <input type="text" name="lname" id="lname" placeholder="Last Name*" required>
+              <input type="text" name="lname" id="lname" placeholder="<?=$this->lang->line('Last Name*')?>" required>
             </div>
             <label for="lname" class="error"></label>
 
 
           <div class="input-wrapper">
             <span><i class="fas fa-envelope"></i></span>
-            <input type="text" name="email" id="email" placeholder="Email">
+            <input type="text" name="email" id="email" placeholder="<?=$this->lang->line('Enter Email*')?>">
           </div>
          <label for="email" class="error"></label>
         </div>
 
 
 
-          <button type="button" class="btn create-btn send" id="frmBtn">Send Code</button>
+          <button type="button" class="btn create-btn send" id="frmBtn"><?=$this->lang->line('Send Code')?></button>
 
           
         </form>

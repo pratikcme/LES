@@ -130,6 +130,15 @@ $lang['Mobile Number*'] = 'رقم الهاتف المحمول*';
 $lang['Confirm password*'] = 'تأكيد كلمة المرور*';
 $lang['Enter Email*'] = 'أدخل البريد الإلكتروني *';
 
+/* login with mobile */
+$lang['First Name'] = 'First Name';
+$lang['Last Name'] = 'Last Name';
+$lang['Select country code'] = 'Select country code';
+$lang['Mobile Number'] = 'Mobile Number';
+$lang['Confirm password'] = 'Confirm password';
+$lang['Enter Email'] = 'Enter Email';
+$lang['Send Code'] = 'Send Code';
+$lang['Resend'] = 'Resend';
 
 // forget password
 $lang['forgotten'] = 'نسي';
