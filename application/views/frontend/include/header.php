@@ -54,6 +54,7 @@
   <!-- <link rel="stylesheet" type="text/css" href="<?=base_url()?>public/frontend/assets/css/new_style.css"> -->
  <!--  <link rel="stylesheet" type="text/css" href="<?=base_url()?>public/frontend/assets/css/responsive.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
 
 <style type="text/css">
 	label.error{
