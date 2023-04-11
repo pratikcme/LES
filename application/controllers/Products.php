@@ -220,10 +220,9 @@ class Products extends User_Controller
 		$brand_name = $this->this_model->getNameCateBrand(TABLE_BRAND, $data['productDetail'][0]->brand_id);
 		$data['productDetail'][0]->category_name = $category_name;
 		$related_product = $this->this_model->getRelatedProduct($data['productDetail'][0]->category_id, $data['varient']);
-		// lq();
+		lq();
 		foreach ($related_product as $key => $value) {
 			$value->ratting = $this->home_model->selectStarRatting($value->id, $value->pw_id);
-			lq();
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
 			}
