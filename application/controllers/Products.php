@@ -221,9 +221,8 @@ class Products extends User_Controller
 		$data['productDetail'][0]->category_name = $category_name;
 		$related_product = $this->this_model->getRelatedProduct($data['productDetail'][0]->category_id, $data['varient']);
 		// lq();
-		dd($related_product);
 		foreach ($related_product as $key => $value) {
-			$value->ratting = $this->home_model->selectStarRatting($value->id, $value->product_weight_id);
+			$value->ratting = $this->home_model->selectStarRatting($value->id, $value->pw_id);
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
 			}
@@ -234,7 +233,7 @@ class Products extends User_Controller
 			$varientQuantity = $this->home_model->checkVarientQuantity($value->id);
 			$related_product[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 		}
-		// default_image_1646383094.png
+		dd($related_product);
 		$data['productDetail'][0]->brand_name = $brand_name;
 		$data['related_product'] = $related_product;
 
