@@ -26,12 +26,20 @@
                             <label for="text" class="form-label">Mobile Number<span>*</span></label>
                             <input type="text" name="phone" id="phone" class="form-control mob_no" aria-describedby="text" placeholder="Mobile Number*" required>
                         </div>
+                        <div id="completeOTP">
+                            <div class="mb-3">
+                                <label for="otp-text" class="form-label">Otp<span>*</span></label>
+                                <input type="text" name="otp" id="otp" class="form-control OTP" placeholder="OTP">
+                                <label for="otp" class="varify-error error"></label>
+                            </div>
+                             <h3 class="mt-4"><<span id="resetcounter">Didn't get the code? </span><span href="javascript:" id="resend" >Resend OTP</span></h3>
+                        </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="otp-text" class="form-label">Otp<span>*</span></label>
                             <input type="text" class="form-control" id="otp-text" aria-describedby="otp-text"
                             placeholder="Enter Your Otp Number">
-                        </div>
+                        </div> -->
                         
                         <div class="mb-3 tab-save-btn">
                             <button type="submit" class="common-input-btn">Submit</button>
