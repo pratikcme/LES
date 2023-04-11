@@ -575,15 +575,15 @@ class Products extends User_Controller
 		}
 	}
 
-	// public function setSelfPick()
-	// {
-	// 	if ($this->input->post()) {
-	// 		dd($this->input->post());
-	// 		$val = $this->input->post('isSelfPickup');
-	// 		$_SESSION['isSelfPickup'] = $val;
-	// 		echo '1';
-	// 	}
-	// }
+	public function setSelfPick()
+	{
+		if ($this->input->post()) {
+			dd($this->input->post());
+			$val = $this->input->post('isSelfPickup');
+			$_SESSION['isSelfPickup'] = $val;
+			echo '1';
+		}
+	}
 
 	public function getCategoryName()
 	{
