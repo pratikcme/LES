@@ -171,7 +171,7 @@ class Products extends User_Controller
 		$varient_id = $this->utility->safe_b64decode($this->uri->segment(4));
 		$this->load->model('frontend/home_model', 'home_model');
 		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id, $varient_id);
-		// dd($data['productDetail']);
+		dd($data['productDetail']);
 		$varient_ids = explode(',', $data['productDetail'][0]->product_variant_id);
 		$w_name = explode(',', $data['productDetail'][0]->wight_name);
 		$w_no = explode(',', $data['productDetail'][0]->wight_no);
