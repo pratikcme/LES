@@ -106,6 +106,7 @@ class Checkout extends User_Controller
     $calc_shiping = 0;
 
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
+      echo '212121';
       $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
       if($calc_shiping =='0.00'){
         echo "ddd";
