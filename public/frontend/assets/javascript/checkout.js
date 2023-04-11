@@ -417,7 +417,7 @@ var CHECKOUT = (function () {
       type: "post",
       data: { isSelfPickup: isSelfPickup },
       success: function (output) {
-        // window.location.href = url + "checkout";
+        window.location.href = url + "checkout";
       },
     });
   });
