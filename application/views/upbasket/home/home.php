@@ -33,7 +33,7 @@
 <!-- The slideshow/carousel -->
 <div class="carousel-inner">
 <?php foreach ($banner as $key => $value) { ?>
-  <section class="hero-section carousel-item <?=($key == 0) ? "active" : ""?>">
+  <section class="hero-section carousel-item <?=($key == 0) ? "active" : ""?>" style="background-image: url(<?=base_url().'public/images/'.$this->folder.'web_banners/'.$value->web_banner_image?>)">
     <div class="container">
       <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-12"></div>
