@@ -180,5 +180,4 @@ display:none !important
 <script type="text/javascript">
     var language = <?=$lang; ?>;
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
 <input type="hidden" id="siteCurrency" value="<?=$this->siteCurrency?>">
