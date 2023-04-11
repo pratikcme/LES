@@ -115,7 +115,7 @@ class Checkout extends User_Controller
       echo '1';die;
       $data['AddressNotInRange'] = '0';
     } else {
-      echo '2';die;
+      echo '2';
       $data['AddressNotInRange'] = '1';
     }
  
