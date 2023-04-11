@@ -2,7 +2,7 @@
 // if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
 //     window.location.reload();
 // }
-console.log(language);
+
 $(document).ready(function () {
 	$('.alert').show();
 	$('.alert').fadeOut(10000);
@@ -415,6 +415,19 @@ $("#myInput").autocomplete({
 	}
 });
 
+$("#myInputMobile").autocomplete({
+	source: base_url + 'products/backend_script',
+	minLength: 2,
+	focus: function (event, ui) {
+		$(event.target).val(ui.item.label);
+		return false;
+	},
+	select: function (event, ui) {
+		$(event.target).val(ui.item.label);
+		window.location = ui.item.value;
+		return false;
+	}
+});
 // $(document).on('keyup','.myInput',function(){
 // })
 
