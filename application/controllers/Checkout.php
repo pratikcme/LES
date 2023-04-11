@@ -112,8 +112,10 @@ class Checkout extends User_Controller
     }
     if ($data['calc_shiping'] == '0.00') {
       $calc_shiping = 0;
+      echo '1';die;
       $data['AddressNotInRange'] = '0';
     } else {
+      echo '2';die;
       $data['AddressNotInRange'] = '1';
     }
  

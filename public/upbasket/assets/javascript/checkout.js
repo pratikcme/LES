@@ -191,8 +191,7 @@ var CHECKOUT = (function () {
     }
 
     var promocode = $("#applied_promo").val();
-    // alert('All services are disabled');
-    // return false;
+
     if (paymentOption == 0) {
       $(".loader-main").removeClass("d-none");
       CheckSelfPickUpEnable();
