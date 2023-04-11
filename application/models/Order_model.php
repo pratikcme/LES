@@ -35,7 +35,7 @@ class Order_model extends My_model
 
     public function userDetails($user_id){
         $data['table'] = 'user_address as ua';
-        $data['where'] = ['ua.user_id'=>$user_id];
+        $data['where'] = ['ua.user_id'=>$user_id,'status'=>'1'];
         $data['select'] = ['ua.name','ua.address','city','ua.state','ua.country','ua.phone'];
         $result = $this->selectRecords($data);
         return $result[0]; 
