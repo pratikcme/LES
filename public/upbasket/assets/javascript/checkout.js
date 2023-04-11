@@ -433,10 +433,9 @@ var CHECKOUT = (function () {
     if ($(this).is(":checked")) {
       isSelfPickup = 1;
     }
-    alert(isSelfPickup);
     var url = $("#url").val();
     $.ajax({
-      url: url + "products/setSelfPick",
+      url: url + "checkout/setSelfPick",
       type: "post",
       data: { isSelfPickup: isSelfPickup },
       success: function (output) {

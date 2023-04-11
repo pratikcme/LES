@@ -411,6 +411,7 @@ var CHECKOUT = (function () {
       isSelfPickup = 1;
     }
     var url = $("#url").val();
+
     $.ajax({
       url: url + "checkout/setSelfPick",
       type: "post",
