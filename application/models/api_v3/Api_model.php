@@ -2735,7 +2735,7 @@ class Api_model extends My_model
             $total_count = $results;
 
             unset($data);
-            $data['select'] = ['p.*'];
+            $data['select'] = ['p.*', 'IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp'];
             if ($defualt_product == 1) {
                 $data['where'] = ['p.status !=' => '9', 'pw.status !=' => '9', 'pw.quantity >=' => '0', 'p.branch_id' => $branch_id];
             } else {
@@ -2748,7 +2748,7 @@ class Api_model extends My_model
             $data['join'] = ['product_weight  AS pw' => ['pw.product_id = p.id', 'INNER']];
             $data['order'] = 'min(pw.discount_price) * 1 ASC';
             //order change on 8 march
-            $data['order'] = 'pw.quantity desc';
+            $data['order'] = 'dp ASC,pw.quantity desc';
             $data['limit'] = $limit;
             if ($offset != 0) {
                 $data['skip'] = $cal;
