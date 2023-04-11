@@ -194,7 +194,7 @@
                 $segment1 = $this->uri->segment(1);
           
               if($segment1 != ''){ ?> 
-                <input type="text" class="form-control" id='myInput' data-search_val= ""  placeholder="<?=$placeholder?>">
+                <input type="text" class="form-control" id='myInputMobile' data-search_val= ""  placeholder="<?=$placeholder?>">
                 <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span></span>
               <?php } ?>
             </div>
