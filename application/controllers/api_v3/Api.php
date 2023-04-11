@@ -1365,7 +1365,7 @@ class Api extends Apiuser_Controller {
         $post = $this->input->post();
         $req = array('vendor_id','device_id');
         $response = $this->checkRequiredField($post, $req);
-        $this->this_model->my_cart($this->input->post());
+    $this->this_model->my_cart($this->input->post());
     }
 
     ## Delete My Cart Item ##
@@ -2199,5 +2199,3 @@ class Api extends Apiuser_Controller {
 
 
 }
-
-?>

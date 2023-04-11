@@ -659,34 +659,9 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
                     }
                 }
 
-                if ($_FILES['webLogo']['name'] != '' && $_FILES['webLogo']['error'] == 0) {
-                    $path = 'public/client_logo';
-                    $files = $_FILES;
-                    $result = upload_single_image_ByName($_FILES, 'webLogo', $path);
-                    $webLogo = $result['data']['file_name'];
-                    if (file_exists($path . '/' . $this->input->post('old_webLogo'))); {
-                        delete_single_image($path, $this->input->post('old_webLogo'));
-                    }
-                } else {
-                    $webLogo =  $this->input->post('old_webLogo');
-                }
-
-                if ($_FILES['favicon_image']['name'] != '' && $_FILES['favicon_image']['error'] == 0) {
-                    $path = 'public/client_logo';
-                    $result = upload_single_image_ByName($_FILES, 'favicon_image', $path);
-                    $favicon_image = $result['data']['file_name'];
-                    if (file_exists($path . '/' . $this->input->post('old_favicon'))); {
-                        delete_single_image($path, $this->input->post('old_favicon'));
-                    }
-                } else {
-                    $favicon_image =  $this->input->post('old_favicon');
-                }
-
                 $data = array(
                     'name' => $name,
                     'phone_no' => $phone,
-                    'webLogo' => $webLogo,
-                    'favicon_image' => $favicon_image,
                     'img_folder' => $this->input->post('folder_name'),
                     // 'android_version' => $this->input->post('android_version'),
                     // 'android_isforce' => $this->input->post('android_isforce'),

@@ -1,8 +1,8 @@
 <li class="sub-menu" style="display: ''">
-    <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'sell' || $this->uri->segment(1) == 'register' ||  $this->uri->segment(1) == "sell_development") { ?> active <?php } ?>">
+    <!-- <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'sell' || $this->uri->segment(1) == 'register' ||  $this->uri->segment(1) == "sell_development") { ?> active <?php } ?>">
         <i class="fa fa-tags"></i>
         <span>Sell</span>
-    </a>
+    </a> -->
     <ul class="sub">
         <!-- <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?> > <a href="<?php echo base_url() . 'sell/index/'; ?>">Sell</a></li> -->
         <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url() . 'sell_development/index/'; ?>">Sell development</a></li>
@@ -203,7 +203,7 @@
 <li>
     <a class="<?php if ($this->uri->segment(1) == 'order' && $this->uri->segment(2) == 'order_report') { ?> active <?php } ?>" href="<?php echo base_url() . 'order/order_report'; ?>">
         <i class="fa fa-file"></i>
-        <span>Order Report</span>
+        <span>Product Wise Report</span>
     </a>
 </li>
 <li>
