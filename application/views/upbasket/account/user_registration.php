@@ -38,7 +38,23 @@
                                 <span href="javascript:" id="resend" >Resend OTP</span>
                             </h3>
                         </div>
-
+                        <div id="completeProfile" style="display:none">
+                            <div class="mb-3">
+                                <label for="fname-text" class="form-label">First Name<span>*</span></label>
+                                <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name*" required>
+                                <label for="fname" class="error"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fname-text" class="form-label">Last Name<span>*</span></label>
+                                <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name*" required>
+                                <label for="lname" class="error"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fname-text" class="form-label">First Name<span>*</span></label>
+                                <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+                                <label for="email" class="error"></label>
+                            </div>
+                        </div>
                         <!-- <div class="mb-3">
                             <label for="otp-text" class="form-label">Otp<span>*</span></label>
                             <input type="text" class="form-control" id="otp-text" aria-describedby="otp-text"
