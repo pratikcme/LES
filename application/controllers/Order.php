@@ -36,6 +36,7 @@ class Order extends Vendor_Controller
         if(isset($_GET['vendor_id'])  &&  $_GET['vendor_id'] != ""){
            $vendor_id = $this->utility->decode($_GET['vendor_id']);
         }
+        echo $order_id;die;
         $data['order_detail_result'] = $this->this_model->order_detail_query($order_id);
         @$user_id =$data['order_detail_result'][0]->user_id;
         $data['user_detail'] = $this->this_model->userDetails($user_id);
