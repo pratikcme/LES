@@ -33,7 +33,10 @@
                                 <input type="text" name="otp" id="otp" class="form-control OTP" placeholder="OTP">
                                 <label for="otp" class="varify-error error"></label>
                             </div>
-                             <h3 class="mt-4"><<span id="resetcounter">Didn't get the code? </span><span href="javascript:" id="resend" >Resend OTP</span></h3>
+                             <h3 class="mt-4">
+                                <span id="resetcounter">Didn't get the code? </span>
+                                <span href="javascript:" id="resend" >Resend OTP</span>
+                            </h3>
                         </div>
 
                         <!-- <div class="mb-3">
