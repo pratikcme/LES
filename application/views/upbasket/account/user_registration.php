@@ -15,18 +15,16 @@
                         <div class="mb-3">
                             <div class="tab-select-box">
                             <label for="Country-code" class="form-label">Country Code<span>*</span></label>
-                            <select class="form-select" aria-label="Country-code">
-                                <option selected>(+91) Inadia </option>
-                                <option value="1">Surt</option>
-                                <option value="2">Baroda</option>
-                                <option value="3">Ohter</option>
+                            <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
+                                <?php foreach($country_code as $key => $value){ ?>
+                                    <option value="<?=$key;?>"><?=$value;?></option>
+                                <?php } ?>  
                             </select>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="text" class="form-label">Mobile Number<span>*</span></label>
-                            <input type="tel" class="form-control" id="text" aria-describedby="text"
-                            placeholder="Enter Your Number">
+                            <input type="text" name="phone" id="phone" class="form-control mob_no" aria-describedby="text" placeholder="Mobile Number*" required>
                         </div>
 
                         <div class="mb-3">
