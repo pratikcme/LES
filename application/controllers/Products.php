@@ -220,18 +220,18 @@ class Products extends User_Controller
 		$brand_name = $this->this_model->getNameCateBrand(TABLE_BRAND, $data['productDetail'][0]->brand_id);
 		$data['productDetail'][0]->category_name = $category_name;
 		$related_product = $this->this_model->getRelatedProduct($data['productDetail'][0]->category_id, $data['varient']);
-		lq();
+		// lq();
+		$this->load->model('frontend/home_model');
 		foreach ($related_product as $key => $value) {
-			$value->ratting = $this->home_model->selectStarRatting($value->id, $value->pw_id);
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
 			}
-
+			
 			// $v_image = $this->this_model->getVarientImage($value->pw_id);
 			// $related_product[$key]->product_image = $v_image[0]->image;
-			$this->load->model('frontend/home_model');
 			$varientQuantity = $this->home_model->checkVarientQuantity($value->id);
 			$related_product[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
+			$value->ratting = $this->home_model->selectStarRatting($value->id, $value->pw_id);
 		}
 		
 		$data['productDetail'][0]->brand_name = $brand_name;
