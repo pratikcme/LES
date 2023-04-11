@@ -57,6 +57,7 @@ class Order_model extends My_model
     public function makeOrder($fromStripe = '')
     {
         $this->load->model('api_v3/Api_model', 'api_v3_model');
+        dd($_POST);die;
         $user_id = $this->session->userdata('user_id');
         $branch_id = $this->session->userdata('branch_id');
         $vendor_id = $this->session->userdata('vendor_id');
