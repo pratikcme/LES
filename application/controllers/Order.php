@@ -40,11 +40,8 @@ class Order extends Vendor_Controller
         $data['order_detail_result'] = $this->this_model->order_detail_query($order_id);
         $user_id = $data['order_detail_result'][0]->user_id;
         $data['user_detail'] = $this->this_model->userDetails($user_id);
-        dd($data['user_detail']);
         $data['user'] = $this->this_model->user($user_id);
-        // print_r($data['user']);die;
         $data['vendor_detail'] = $this->this_model->vendorDetail($vendor_id);
-        
         $data['order_detail'] = $this->this_model->orderDetails($order_id);
         $total_gst = 0 ;
         foreach ($data['order_detail_result'] as $key => $value) {
@@ -53,7 +50,6 @@ class Order extends Vendor_Controller
             $gst_amount = ($value->discount_price * $gst)/100;
             $total_gst += $gst_amount * $value->quantity;
         }
-        
         $data['total_gst'] = $total_gst;
         $data['getcurrency'] = $this->this_model->queryCurrency();
         $this->load->view('order_invoice',$data);
