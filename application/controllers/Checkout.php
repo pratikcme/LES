@@ -107,14 +107,17 @@ class Checkout extends User_Controller
 
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
       $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      $data['calc_shiping'] = $calc_shiping;
-
+      if($calc_shiping =='0.00'){
+        $data['calc_shiping'] = 'notInRange';
+      }
     }
-    if ($calc_shiping == 'NotInRange') {
+    dd($data['calc_shiping']);
+    if ($data['calc_shiping'] == 'notInRange'){
       $calc_shiping = 0;
+      echo '1';
       $data['AddressNotInRange'] = '0';
-      $data['calc_shiping'] = '0.00';
     } else {
+      echo '2';
       $data['AddressNotInRange'] = '1';
     }
  
