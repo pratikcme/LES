@@ -111,9 +111,8 @@ class Checkout extends User_Controller
 
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
       $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      if($calc_shiping =='0.00'){
-        $data['calc_shiping'] = 'notInRange';
-      }
+      $data['calc_shiping'] = $calc_shiping;
+
       // dd($data['calc_shiping']);
     }
 
