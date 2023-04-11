@@ -555,7 +555,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             <h2>Thank you.</h2>
             <h3>Your order has been received</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <h5>Your order number is <span id="orderId"></span></h5>
+            <h5 id="orderId"></h5>
 
             <div class="continue-btn">
                <a href="<?=base_url().'home'?>"><?=$this->lang->line('continue shopping')?></a>
