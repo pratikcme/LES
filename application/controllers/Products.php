@@ -223,6 +223,7 @@ class Products extends User_Controller
 		// lq();
 		foreach ($related_product as $key => $value) {
 			$value->ratting = $this->home_model->selectStarRatting($value->id, $value->pw_id);
+			lq();
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
 			}
@@ -233,7 +234,7 @@ class Products extends User_Controller
 			$varientQuantity = $this->home_model->checkVarientQuantity($value->id);
 			$related_product[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 		}
-		dd($related_product);
+		
 		$data['productDetail'][0]->brand_name = $brand_name;
 		$data['related_product'] = $related_product;
 
