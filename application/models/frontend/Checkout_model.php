@@ -89,7 +89,7 @@ class Checkout_model extends My_model
         if (count($res)) {
             return $res[0]->delivery_charge;
         } else {
-            $res = '0.00';
+            $res = 'N';
             return $res;
         }
 
