@@ -412,11 +412,11 @@ var CHECKOUT = (function () {
     }
     var url = $("#url").val();
     $.ajax({
-      url: url + "products/setSelfPick",
+      url: url + "checkout/setSelfPick",
       type: "post",
       data: { isSelfPickup: isSelfPickup },
       success: function (output) {
-        window.location.href = url + "checkout";
+        // window.location.href = url + "checkout";
       },
     });
   });

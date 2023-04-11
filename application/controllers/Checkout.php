@@ -739,4 +739,14 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
 
     echo json_encode($data);
   }
+
+  public function setSelfPick()
+	{
+		if ($this->input->post()) {
+			dd($this->input->post());
+			$val = $this->input->post('isSelfPickup');
+			$_SESSION['isSelfPickup'] = $val;
+			echo '1';
+		}
+	}
 }
