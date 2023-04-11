@@ -222,158 +222,149 @@ class Order_model extends My_model
                 }
             }
 
-            if (!empty($my_order_result)) {
+        // if (!empty($my_order_result)) {
 
-                if (!empty($my_order_result)) {
-                    foreach ($my_order_result as $my_order) {
-                        $var_id = $my_order->product_weight_id;
-                        $qnt = $my_order->quantity;
-                        $updatedQTY = $this->check_udpate_quantity($var_id, $qnt, $user_id);
-                        if (!$updatedQTY) {
-                            continue;
-                        }
+            if (!empty($my_order_result)) {
+                foreach ($my_order_result as $my_order) {
+                    $var_id = $my_order->product_weight_id;
+                    $qnt = $my_order->quantity;
+                    $updatedQTY = $this->check_udpate_quantity($var_id, $qnt, $user_id);
+                    if (!$updatedQTY) {
+                        continue;
                     }
-                    /*Order*/
+                }
+                /*Order*/
+                $data = array(
+                    'order_from' => '1',
+                    'user_id' => $user_id,
+                    'branch_id' => $branch_id,
+                    'user_address_id' => $user_address_id,
+                    'time_slot_id' => $time_slot_id,
+                    'payment_type' => $payment_type,
+                    'total_saving' => $total_savings,
+                    'total_item' => $total_item,
+                    'sub_total' => $sub_total,
+                    'user_gst_number' => $user_gst_number,
+                    'delivery_charge' => $delivery_charge,
+                    'total' => $total_price,
+                    'payable_amount' => $total_price + $delivery_charge - $promocode_amount - $discountValue,
+                    'order_no' => $iOrderNo,
+                    'isSelfPickup' => (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') ? '0' : '1',
+                    'delivery_date' => $delivery_date,
+                    'orderId_payment_gateway' => $orderId_payment_gateway,
+                    'payment_transaction_id' => $transaction_id,
+                    'paymentMethod' => $paymentMethod,
+                    'name' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->name : $user[0]->fname,
+                    'mobile' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->phone : $user[0]->phone,
+                    'delivered_address' => $address,
+                    'status' => '1',
+                    'order_status' => '1',
+                    'promocode_used' => (isset($promocode_amount) && $promocode_amount > 0) ? 1 : 0,
+                    'shopping_amount_based_discount' => $discountValue,
+                    'dt_added' => strtotime(date('Y-m-d H:i:s')),
+                    'dt_updated' => strtotime(date('Y-m-d H:i:s')),
+                );
+                dd( $data);
+                $this->db->insert('order', $data);
+                $last_insert_id = $this->db->insert_id();
+                $otpForSelfPickup = '';
+                // if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){
+                $otpForSelfPickup = rand(1000, 9999);
+                $this->load->model('api_v3/api_model', 'api_v3_model');
+                $this->api_v3_model->selfPickUp_otp($last_insert_id, $user_id, $otpForSelfPickup);
+                // }
+                $this->load->model('api_v3/api_admin_model', 'api_v3_api_admin_model');
+                $order_log_data = array('order_id' => $last_insert_id, 'branch_id' => $branch_id, 'status' => '1');
+                $this->api_v3_api_admin_model->order_logs($order_log_data);
+                foreach ($my_order_result as $my_order) {
+                    $var_id = $my_order->product_weight_id;
+                    $qnt =  $my_order->quantity;
+                    if ((int)$qnt < 0) {
+                        $qnt = 0;
+                    }
+                    // $qnt_query = $this->db->query("UPDATE product_weight SET quantity = quantity -  $qnt,temp_quantity = temp_quantity - $qnt WHERE status != '9' AND id = '$var_id'");
                     $data = array(
-                        'order_from' => '1',
-                        'user_id' => $user_id,
-                        'branch_id' => $branch_id,
-                        'user_address_id' => $user_address_id,
-                        'time_slot_id' => $time_slot_id,
-                        'payment_type' => $payment_type,
-                        'total_saving' => $total_savings,
-                        'total_item' => $total_item,
-                        'sub_total' => $sub_total,
-                        'user_gst_number' => $user_gst_number,
-                        'delivery_charge' => $delivery_charge,
-                        'total' => $total_price,
-                        'payable_amount' => $total_price + $delivery_charge - $promocode_amount - $discountValue,
-                        'order_no' => $iOrderNo,
-                        'isSelfPickup' => (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') ? '0' : '1',
-                        'delivery_date' => $delivery_date,
-                        'orderId_payment_gateway' => $orderId_payment_gateway,
-                        'payment_transaction_id' => $transaction_id,
-                        'paymentMethod' => $paymentMethod,
-                        'name' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->name : $user[0]->fname,
-                        'mobile' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->phone : $user[0]->phone,
-                        'delivered_address' => $address,
+                        'order_id' => $last_insert_id,
+                        'branch_id' => $my_order->branch_id,
+                        'user_id' => $my_order->user_id,
+                        'product_id' => $my_order->product_id,
+                        'weight_id' => $my_order->weight_id,
+                        'product_weight_id' => $my_order->product_weight_id,
+                        'quantity' => $my_order->quantity,
+                        'actual_price' => $my_order->actual_price,
+                        'discount' => $my_order->discount_per,
+                        'discount_price' => $my_order->discount_price,
+                        'calculation_price' => ($my_order->discount_price * $my_order->quantity),
                         'status' => '1',
-                        'order_status' => '1',
-                        'promocode_used' => (isset($promocode_amount) && $promocode_amount > 0) ? 1 : 0,
-                        'shopping_amount_based_discount' => $discountValue,
                         'dt_added' => strtotime(date('Y-m-d H:i:s')),
                         'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                     );
-                    dd( $data);
-
-                    $this->db->insert('order', $data);
-                    $last_insert_id = $this->db->insert_id();
-
-                    $otpForSelfPickup = '';
-                    // if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){
-                    $otpForSelfPickup = rand(1000, 9999);
-                    $this->load->model('api_v3/api_model', 'api_v3_model');
-                    $this->api_v3_model->selfPickUp_otp($last_insert_id, $user_id, $otpForSelfPickup);
-                    // }
-
-                    $this->load->model('api_v3/api_admin_model', 'api_v3_api_admin_model');
-                    $order_log_data = array('order_id' => $last_insert_id, 'branch_id' => $branch_id, 'status' => '1');
-                    $this->api_v3_api_admin_model->order_logs($order_log_data);
-
-                    foreach ($my_order_result as $my_order) {
-
-                        $var_id = $my_order->product_weight_id;
-                        $qnt =  $my_order->quantity;
-                        if ((int)$qnt < 0) {
-                            $qnt = 0;
-                        }
-
-                        // $qnt_query = $this->db->query("UPDATE product_weight SET quantity = quantity -  $qnt,temp_quantity = temp_quantity - $qnt WHERE status != '9' AND id = '$var_id'");
-
-                        $data = array(
-                            'order_id' => $last_insert_id,
-                            'branch_id' => $my_order->branch_id,
-                            'user_id' => $my_order->user_id,
-                            'product_id' => $my_order->product_id,
-                            'weight_id' => $my_order->weight_id,
-                            'product_weight_id' => $my_order->product_weight_id,
-                            'quantity' => $my_order->quantity,
-                            'actual_price' => $my_order->actual_price,
-                            'discount' => $my_order->discount_per,
-                            'discount_price' => $my_order->discount_price,
-                            'calculation_price' => ($my_order->discount_price * $my_order->quantity),
-                            'status' => '1',
-                            'dt_added' => strtotime(date('Y-m-d H:i:s')),
-                            'dt_updated' => strtotime(date('Y-m-d H:i:s')),
-                        );
-                        $this->db->insert('order_details', $data);
-                        $last_order_d_id = $this->db->insert_id();
-                        $total_profit = (($my_order->discount_price * $my_order->quantity) * $profit_per) / 100;
-                        $this->insert_profit($last_insert_id, $last_order_d_id, $my_order->branch_id, $total_profit);
-                        //  $this->this_model->update_quantity($my_order->product_weight_id,$my_order->quantity);
-                    }
-                    if (isset($promocode) && $promocode != '') {
-
-                        if (!empty($promocodeData)) {
-                            $promocode_id = $promocodeData[0]->id;
-                            $promocode_name = $promocodeData[0]->name;
-                            $promocode_percentage = $promocodeData[0]->percentage;
-                            unset($data);
-                            $data['insert'] = [
-                                'order_id' => $last_insert_id,
-                                'promocode_id' => $promocode_id,
-                                'promocode_name' => $promocode_name,
-                                'percentage' => $promocode_percentage,
-                                'amount' => $promocode_amount,
-                                'dt_created' => DATE_TIME,
-                                'dt_updated' => DATE_TIME
-                            ];
-                            $data['table'] = TABLE_ORDER_PROMOCODE;
-                            $this->insertRecord($data);
-                        }
-                    }
-                } else {
-                    $response = array();
-                    $response["success"] = 0;
-                    $response["message"] = "Your Cart is Empty";
-                    $output = json_encode(array('responsedata' => $response));
-                    return $output;
-                    exit;
+                    $this->db->insert('order_details', $data);
+                    $last_order_d_id = $this->db->insert_id();
+                    $total_profit = (($my_order->discount_price * $my_order->quantity) * $profit_per) / 100;
+                    $this->insert_profit($last_insert_id, $last_order_d_id, $my_order->branch_id, $total_profit);
+                    //  $this->this_model->update_quantity($my_order->product_weight_id,$my_order->quantity);
                 }
-
-                /*Remove From My Cart*/
-                $this->db->query('UNLOCK TABLES;');
-                $this->db->query("DELETE FROM my_cart WHERE user_id = '$user_id'  AND branch_id = '$branch_id'");
-                $message = 'new order ' . $iOrderNo;
-                $branchNotification = array(
-                    'order_id'         =>  $last_insert_id,
-                    'branch_id'          =>  $branch_id,
-                    'notification_type' => 'new_order',
-                    'message'          => $message,
-                    'status'           => '0',
-                    'dt_created'       => DATE_TIME,
-                    'dt_updated'       => DATE_TIME
-                );
-                $this->api_v3_model->pushAdminNotification($branchNotification);
-                $response = array();
-                $response["success"] = 1;
-                $response["message"] = "Thank you for your order";
-                $response["order_number"] = $iOrderNo;
-                $output = json_encode(array('responsedata' => $response));
-
-                $this->api_v3_model->send_staff_notification($branch_id, "New Order In Your store");
-                $this->api_v3_model->emailTemplate($user_id, $branch_id, $last_insert_id);
-
-                $this->session->unset_userdata('isSelfPickup');
-                $this->session->unset_userdata('My_cart');
-                return $output;
+                if (isset($promocode) && $promocode != '') {
+                    if (!empty($promocodeData)) {
+                        $promocode_id = $promocodeData[0]->id;
+                        $promocode_name = $promocodeData[0]->name;
+                        $promocode_percentage = $promocodeData[0]->percentage;
+                        unset($data);
+                        $data['insert'] = [
+                            'order_id' => $last_insert_id,
+                            'promocode_id' => $promocode_id,
+                            'promocode_name' => $promocode_name,
+                            'percentage' => $promocode_percentage,
+                            'amount' => $promocode_amount,
+                            'dt_created' => DATE_TIME,
+                            'dt_updated' => DATE_TIME
+                        ];
+                        $data['table'] = TABLE_ORDER_PROMOCODE;
+                        $this->insertRecord($data);
+                    }
+                }
             } else {
                 $response = array();
                 $response["success"] = 0;
-                $response["message"] = "Invalid data";
+                $response["message"] = "Your Cart is Empty";
                 $output = json_encode(array('responsedata' => $response));
                 return $output;
+                exit;
             }
+            /*Remove From My Cart*/
+            $this->db->query('UNLOCK TABLES;');
+            $this->db->query("DELETE FROM my_cart WHERE user_id = '$user_id'  AND branch_id = '$branch_id'");
+            $message = 'new order ' . $iOrderNo;
+            $branchNotification = array(
+                'order_id'         =>  $last_insert_id,
+                'branch_id'          =>  $branch_id,
+                'notification_type' => 'new_order',
+                'message'          => $message,
+                'status'           => '0',
+                'dt_created'       => DATE_TIME,
+                'dt_updated'       => DATE_TIME
+            );
+            $this->api_v3_model->pushAdminNotification($branchNotification);
+            $response = array();
+            $response["success"] = 1;
+            $response["message"] = "Thank you for your order";
+            $response["order_number"] = $iOrderNo;
+            $output = json_encode(array('responsedata' => $response));
+
+            $this->api_v3_model->send_staff_notification($branch_id, "New Order In Your store");
+            $this->api_v3_model->emailTemplate($user_id, $branch_id, $last_insert_id);
+
+            $this->session->unset_userdata('isSelfPickup');
+            $this->session->unset_userdata('My_cart');
+            return $output;
+        // } else {
+        //     $response = array();
+        //     $response["success"] = 0;
+        //     $response["message"] = "Invalid data";
+        //     $output = json_encode(array('responsedata' => $response));
+        //     return $output;
+        // }
         }
     }
 
