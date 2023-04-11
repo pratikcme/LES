@@ -49,12 +49,12 @@
 
           <!-- ------login-right-image-- -->
           <div class="login-images col-xxl-6 col-lg-6">
-            <img src="./assets/images/login-say-img.svg" alt="" class="login-say-img">
-            <img src="./assets/images/login-mail-img.svg" alt="" class="login-mail-img">
-            <img src="./assets/images/login-tree-img.svg" alt="" class="login-tree-img">
-            <img src="./assets/images/login-wall-bg.png" alt="" class="login-wall-bg">
+            <img src="<?=$this->theme_base_url?>/assets/images/login-say-img.svg" alt="" class="login-say-img">
+            <img src="<?=$this->theme_base_url?>/assets/images/login-mail-img.svg" alt="" class="login-mail-img">
+            <img src="<?=$this->theme_base_url?>/assets/images/login-tree-img.svg" alt="" class="login-tree-img">
+            <img src="<?=$this->theme_base_url?>/assets/images/login-wall-bg.png" alt="" class="login-wall-bg">
             <div class="login-img-part">
-                <img src="./assets/images/login-girl-img.svg" alt="">
+                <img src="<?=$this->theme_base_url?>/assets/images/login-girl-img.svg" alt="">
             </div>
           </div>
         </div>
