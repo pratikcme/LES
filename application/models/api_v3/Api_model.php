@@ -1,152 +1,148 @@
 <?php
-require_once ('application/libraries/vendor/autoload.php');
-class Api_model extends My_model {
-    
-    public function getVendorId(){
-        $domain_name = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/';
+require_once('application/libraries/vendor/autoload.php');
+class Api_model extends My_model
+{
+
+    public function getVendorId()
+    {
+        $domain_name = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/';
         $data['select'] = ['*'];
-        $data['where'] = ['status!=' => '9','domain_name' => $domain_name];
+        $data['where'] = ['status!=' => '9', 'domain_name' => $domain_name];
         $data['table'] = TABLE_BRANCH;
         return $this->selectRecords($data);
-
     }
 
-    public function user_login($postData){
-        $data['where']['email'] = $postData['email'];  
+    public function user_login($postData)
+    {
+        $data['where']['email'] = $postData['email'];
         $data['where']['vendor_id'] = $postData['vendor_id'];
         $data['where']['password']  = md5($postData['password']);
         $data['where']['status !=']  = '9';
         $data['table'] = 'user';
-        $getUser = $this->selectRecords($data,true);
-        if(empty($getUser)){
+        $getUser = $this->selectRecords($data, true);
+        if (empty($getUser)) {
             $response["success"] = 0;
             $response["message"] = "Invalid email or password";
             return $response;
         }
-         // if ($getUser[0]['email_verify'] == '1') { }
-        return $this->sendLoginResponse($getUser[0],$postData);
-        
-
+        // if ($getUser[0]['email_verify'] == '1') { }
+        return $this->sendLoginResponse($getUser[0], $postData);
     }
 
-    public function user_register($postData){
-     
-        if(isset($postData['facebook_token_id']) && $postData['facebook_token_id']!=''){
-          
+    public function user_register($postData)
+    {
+
+        if (isset($postData['facebook_token_id']) && $postData['facebook_token_id'] != '') {
+
             $data['where']['facebook_token_id'] = $postData['facebook_token_id'];
             $data['update']['facebook_token_id'] = $postData['facebook_token_id'];
             $dataIns['insert']['facebook_token_id'] = $postData['facebook_token_id'];
-        }else
-        if(isset($postData['gmail_token_id']) && $postData['gmail_token_id']!='' ){
-          
-            $data['where']['gmail_token_id'] = $postData['gmail_token_id']; 
-            $data['update']['gmail_token_id'] = $postData['gmail_token_id']; 
-            $dataIns['insert']['gmail_token_id'] = $postData['gmail_token_id'];
+        } else
+        if (isset($postData['gmail_token_id']) && $postData['gmail_token_id'] != '') {
 
-        }else
-        if(isset($postData['apple_token_id']) && $postData['apple_token_id']!='' ){
-          
-            $data['where']['apple_token_id'] = $postData['apple_token_id']; 
-            $data['update']['apple_token_id'] = $postData['apple_token_id']; 
+            $data['where']['gmail_token_id'] = $postData['gmail_token_id'];
+            $data['update']['gmail_token_id'] = $postData['gmail_token_id'];
+            $dataIns['insert']['gmail_token_id'] = $postData['gmail_token_id'];
+        } else
+        if (isset($postData['apple_token_id']) && $postData['apple_token_id'] != '') {
+
+            $data['where']['apple_token_id'] = $postData['apple_token_id'];
+            $data['update']['apple_token_id'] = $postData['apple_token_id'];
             $dataIns['insert']['apple_token_id'] = $postData['apple_token_id'];
-        }else{
-            $data['where']['email'] = $postData['email'];          
+        } else {
+            $data['where']['email'] = $postData['email'];
         }
 
         $data['where']['vendor_id'] = $postData['vendor_id'];
         $data['where']['status !='] = '9';
         $data['table'] = 'user';
-       
-        $getUser = $this->selectRecords($data);  
-    
-        if(!isset($postData['country_code']) || $postData['country_code']=='') {
+
+        $getUser = $this->selectRecords($data);
+
+        if (!isset($postData['country_code']) || $postData['country_code'] == '') {
             $postData['country_code'] = '+91';
         }
 
-        if(empty($getUser)){
-            $checkAlreadyRegisterWithEmail = $this->check_register($postData['email'],$postData['vendor_id']);
+        if (empty($getUser)) {
+            $checkAlreadyRegisterWithEmail = $this->check_register($postData['email'], $postData['vendor_id']);
 
             $token = md5($this->utility->encode($postData['email']));
-           
-            $dataIns['insert']['vendor_id']=$postData['vendor_id'];
-            $dataIns['insert']['fname']= $postData['fname'];
-            $dataIns['insert']['lname']= $postData['lname'];
-            $dataIns['insert']['email']= $postData['email'];
-            $dataIns['insert']['password']= (isset($postData['password']) && $postData['password']!='')?md5($postData['password']):NULL;
-            $dataIns['insert']['country_code']= (isset($postData['country_code']) && $postData['country_code'] !='') ? $postData['country_code']:NULL;
-            $dataIns['insert']['login_type']= $postData['login_type'];
-            $dataIns['insert']['phone']= $postData['phone'];
-            $dataIns['insert']['status']= '1';
-            $dataIns['insert']['email_token']= $token;
-            $dataIns['insert']['email_verify']='1';
-            $dataIns['insert']['dt_added']= strtotime(DATE_TIME);
-            $dataIns['insert']['dt_updated']= strtotime(DATE_TIME);                 
+
+            $dataIns['insert']['vendor_id'] = $postData['vendor_id'];
+            $dataIns['insert']['fname'] = $postData['fname'];
+            $dataIns['insert']['lname'] = $postData['lname'];
+            $dataIns['insert']['email'] = $postData['email'];
+            $dataIns['insert']['password'] = (isset($postData['password']) && $postData['password'] != '') ? md5($postData['password']) : NULL;
+            $dataIns['insert']['country_code'] = (isset($postData['country_code']) && $postData['country_code'] != '') ? $postData['country_code'] : NULL;
+            $dataIns['insert']['login_type'] = $postData['login_type'];
+            $dataIns['insert']['phone'] = $postData['phone'];
+            $dataIns['insert']['status'] = '1';
+            $dataIns['insert']['email_token'] = $token;
+            $dataIns['insert']['email_verify'] = '1';
+            $dataIns['insert']['dt_added'] = strtotime(DATE_TIME);
+            $dataIns['insert']['dt_updated'] = strtotime(DATE_TIME);
             $dataIns['table'] = 'user';
-            if($checkAlreadyRegisterWithEmail){
+            if ($checkAlreadyRegisterWithEmail) {
                 unset($data['where']);
-                $data['update']['fname']= $postData['fname'];
-                $data['update']['lname']= $postData['lname'];
+                $data['update']['fname'] = $postData['fname'];
+                $data['update']['lname'] = $postData['lname'];
 
                 $data['where']['email'] = $postData['email'];
                 $data['where']['vendor_id'] = $postData['vendor_id'];
                 $data['table'] = 'user';
                 $in = $this->updateRecords($data);
-            }else{
+            } else {
                 $in = $this->insertRecord($dataIns);
             }
-            if($in){
+            if ($in) {
                 $response["success"] = 1;
                 $response["message"] = "Account created successfully";
                 // return $response;
-            }else{
+            } else {
                 $response["success"] = 0;
                 $response["message"] = "Account is not created";
                 return $response;
             }
-
-
-           
-        }else{
+        } else {
             unset($data);
-            if($postData['login_type']=='0'){
-                $data['update']['password']= md5($postData['password']);
+            if ($postData['login_type'] == '0') {
+                $data['update']['password'] = md5($postData['password']);
             }
             //update with selected records
             $data['where']['id'] = $getUser[0]->id;
-            $data['update']['fname']= $postData['fname'];
-            $data['update']['lname']= $postData['lname'];
-            $data['update']['email']= $postData['email'];
+            $data['update']['fname'] = $postData['fname'];
+            $data['update']['lname'] = $postData['lname'];
+            $data['update']['email'] = $postData['email'];
             $data['table'] = 'user';
 
             $this->updateRecords($data);
-
         }
 
         unset($data);
-        if(isset($postData['facebook_token_id']) && $postData['facebook_token_id']!='' ){
-            $data['where']['facebook_token_id'] = $postData['facebook_token_id'];           
-        }else
-        if(isset($postData['gmail_token_id']) && $postData['gmail_token_id']!='' ){
-            $data['where']['gmail_token_id'] = $postData['gmail_token_id']; 
-        }else
-        if(isset($postData['apple_token_id']) && $postData['apple_token_id']!='' ){         
-            $data['where']['apple_token_id'] = $postData['apple_token_id'];           
-        }else{
-            $data['where']['email'] = $postData['email'];  
+        if (isset($postData['facebook_token_id']) && $postData['facebook_token_id'] != '') {
+            $data['where']['facebook_token_id'] = $postData['facebook_token_id'];
+        } else
+        if (isset($postData['gmail_token_id']) && $postData['gmail_token_id'] != '') {
+            $data['where']['gmail_token_id'] = $postData['gmail_token_id'];
+        } else
+        if (isset($postData['apple_token_id']) && $postData['apple_token_id'] != '') {
+            $data['where']['apple_token_id'] = $postData['apple_token_id'];
+        } else {
+            $data['where']['email'] = $postData['email'];
         }
         $data['where']['vendor_id'] = $postData['vendor_id'];
         $data['where']['status'] = '1';
 
         $data['order'] = 'id desc';
         $data['limit'] = 1;
-        $data['table'] = 'user';        
-        $getUser =  $this->selectRecords($data,true);
-      
-        return $this->sendLoginResponse($getUser[0],$postData);
+        $data['table'] = 'user';
+        $getUser =  $this->selectRecords($data, true);
 
+        return $this->sendLoginResponse($getUser[0], $postData);
     }
 
-    function sendLoginResponse($userdata,$postData){
+    function sendLoginResponse($userdata, $postData)
+    {
 
         $device_id = $postData['device_id'];
         $login_type = $postData['login_type'];
@@ -155,12 +151,12 @@ class Api_model extends My_model {
         $user_id = $userdata['id'];
 
         $data['select'] = ['COUNT(*) as total'];
-        $data['where'] = [" (mc.user_id= '".$user_id."' OR mc.device_id= '".$device_id."') AND mc.vendor_id = '".$vendor_id."' AND mc.status != " => '9'];
+        $data['where'] = [" (mc.user_id= '" . $user_id . "' OR mc.device_id= '" . $device_id . "') AND mc.vendor_id = '" . $vendor_id . "' AND mc.status != " => '9'];
         $data['table'] = 'my_cart as mc';
         $data['order'] = 'mc.id DESC';
         $cartData = $this->selectRecords($data);
 
-       
+
 
         $total_count = $cartData[0]->total;
 
@@ -169,21 +165,21 @@ class Api_model extends My_model {
 
         $total_count = $this->get_total($postdata);
         $notification_status = $this->notification_status($userdata['id']);
-        $path = base_url().'public/images/'.$this->folder.'user_profile/';
+        $path = base_url() . 'public/images/' . $this->folder . 'user_profile/';
         $data = array(
-                        'id' => $userdata['id'], 
-                        'fname' => $userdata['fname'], 
-                        'lname' => $userdata['lname'], 
-                        'email' => $userdata['email'],
-                        'country_code' => $userdata['country_code'],
-                        'phone' => $userdata['phone'], 
-                        'profileimage' => ($userdata['profileimage']!='')?$path.$userdata['profileimage']:'',
-                        'user_gst_number' => ($userdata['user_gst_number'] == null) ? "" : $userdata['user_gst_number'], 
-                        'login_type' => $login_type, 
-                        'cart_item' => $total_count[0]->cart_items, 
-                        'notification_status' => $notification_status, 
-                        'mobile_verify' => $userdata['is_verify']
-                    );
+            'id' => $userdata['id'],
+            'fname' => $userdata['fname'],
+            'lname' => $userdata['lname'],
+            'email' => $userdata['email'],
+            'country_code' => $userdata['country_code'],
+            'phone' => $userdata['phone'],
+            'profileimage' => ($userdata['profileimage'] != '') ? $path . $userdata['profileimage'] : '',
+            'user_gst_number' => ($userdata['user_gst_number'] == null) ? "" : $userdata['user_gst_number'],
+            'login_type' => $login_type,
+            'cart_item' => $total_count[0]->cart_items,
+            'notification_status' => $notification_status,
+            'mobile_verify' => $userdata['is_verify']
+        );
         $this->update_device($userdata, $postData);
         $login_logs = [
             'user_id' => $user_id,
@@ -192,7 +188,7 @@ class Api_model extends My_model {
             'type' => 'user',
             'dt_created' => DATE_TIME
         ];
-        $this->load->model('api_v3/common_model','v2_common_model');
+        $this->load->model('api_v3/common_model', 'v2_common_model');
         $this->v2_common_model->user_login_logout_logs($login_logs);
 
 
@@ -204,10 +200,11 @@ class Api_model extends My_model {
         return $response;
     }
 
-    public function order_status($postdata) {
+    public function order_status($postdata)
+    {
         $order_id = $postdata['order_id'];
         $data['select'] = ['v.delivery_by'];
-        $data['join'] = ['order as o' => ['o.branch_id = v.id', 'LEFT'], ];
+        $data['join'] = ['order as o' => ['o.branch_id = v.id', 'LEFT'],];
         $data['where'] = ['o.id' => $order_id];
         $data['table'] = 'branch as v';
         $re = $this->selectFromJoin($data, true);
@@ -220,19 +217,19 @@ class Api_model extends My_model {
             $res = $this->selectFromJoin($data, true);
             if ($res) {
                 $res = $res[0];
-                $res['image'] = base_url() . 'public/images/'.$this->folder.'delivery_profile/' . $res['image'];
+                $res['image'] = base_url() . 'public/images/' . $this->folder . 'delivery_profile/' . $res['image'];
             }
             // $this->db->last_query();
-            
+
         } else {
             $data['select'] = ['v.image', 's.name', 's.phone_no', 's.vehicle_number', 's.vehicle_name', 'o.order_status', 'o.dt_updated as update_date'];
-            $data['join'] = ['order as o ' => ['s.id = o.staff_id', 'LEFT'], 'branch as v ' => ['s.branch_id = v.id', 'LEFT'], ];
+            $data['join'] = ['order as o ' => ['s.id = o.staff_id', 'LEFT'], 'branch as v ' => ['s.branch_id = v.id', 'LEFT'],];
             $data['where'] = ['o.id' => $order_id];
             $data['table'] = 'staff as s';
             $res = $this->selectFromJoin($data, true);
             if ($res) {
                 $res = $res[0];
-                $res['image'] = base_url() . 'public/images/'.$this->folder.'vendor_shop/' . $res['image'];
+                $res['image'] = base_url() . 'public/images/' . $this->folder . 'vendor_shop/' . $res['image'];
                 $res['update_date'] = date('d-M', $res['update_date']);
             }
         }
@@ -243,7 +240,7 @@ class Api_model extends My_model {
             $data['select'] = ['o.user_id', 'd.token', 'd.type', 'd.device_id', 'u.notification_status', 'o.order_status', 'o.order_no'];
             $data['where'] = ['o.id' => $order_id];
             $data['table'] = 'order AS o';
-            $data['join'] = ['device AS d' => ['d.user_id = o.user_id', 'LEFT'], 'user AS u' => ['u.id = o.user_id', 'LEFT'], ];
+            $data['join'] = ['device AS d' => ['d.user_id = o.user_id', 'LEFT'], 'user AS u' => ['u.id = o.user_id', 'LEFT'],];
             $send = $this->selectFromJoin($data);
             $order_status = $send[0]->order_status;
             if ($order_status == '1') {
@@ -272,9 +269,10 @@ class Api_model extends My_model {
     }
 
 
-    public function check_branch() {
+    public function check_branch()
+    {
 
-        $server_name = $_SERVER['SERVER_NAME'];    
+        $server_name = $_SERVER['SERVER_NAME'];
         $data['table'] = ADMIN;
         $data['select'] = ['*'];
         // $data['where'] = ['id' => '2'];
@@ -284,26 +282,29 @@ class Api_model extends My_model {
         // return (int)$result[0]->approved_branch;
     }
 
-    
-    public function user_info($postdata){
+
+    public function user_info($postdata)
+    {
         $user_id = $postdata['user_id'];
         $data['table'] = TABLE_USER;
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$user_id];
+        $data['where'] = ['id' => $user_id];
         return $this->selectRecords($data);
     }
 
-    public function checkIsUserExist($postdata){
+    public function checkIsUserExist($postdata)
+    {
         $data['table'] = TABLE_USER;
         $data['select'] = ['*'];
         $data['where'] = [
-                            'email'=>$postdata['email'],
-                            'login_type'=>'0'
-                        ];
+            'email' => $postdata['email'],
+            'login_type' => '0'
+        ];
         $return = $this->selectRecords($data);
         return $return;
     }
-    public function revokeFb($facebookToken) {
+    public function revokeFb($facebookToken)
+    {
         $data['table'] = 'user';
         $data['select'] = ['*'];
         $data['where'] = ['facebook_token_id' => $facebookToken];
@@ -312,7 +313,7 @@ class Api_model extends My_model {
         unset($data);
         if (!empty($res)) {
             $data['table'] = 'user';
-            $data['update'] = ['status' => '0','dt_updated'=>strtotime(DATE_TIME)];
+            $data['update'] = ['status' => '0', 'dt_updated' => strtotime(DATE_TIME)];
             $data['where'] = ['facebook_token_id' => $facebookToken];
             $this->updateRecords($data);
             return true;
@@ -320,7 +321,8 @@ class Api_model extends My_model {
             return false;
         }
     }
-    public function vendor_list() {
+    public function vendor_list()
+    {
 
         $user_id = $_POST['user_id'];
         $vendor_id = $_POST['vendor_id'];
@@ -335,25 +337,25 @@ class Api_model extends My_model {
             $find = "";
         }
         $data['select'] = ['id', 'name', 'email', 'phone_no', 'location', 'latitude', 'longitude', 'image', $find];
-        $data['where'] = ['status' => '1','vendor_id'=>$vendor_id];
+        $data['where'] = ['status' => '1', 'vendor_id' => $vendor_id];
         $data['table'] = TABLE_BRANCH;
         $result = $this->selectRecords($data);
         $cu['select'] = ['*', $find];
-        $cu['where'] = ['status' => '1','vendor_id'=>$vendor_id];
+        $cu['where'] = ['status' => '1', 'vendor_id' => $vendor_id];
         $cu['table'] = TABLE_BRANCH;
         $total_count = $this->selectRecords($cu);
         unset($data);
         $data['select'] = ['value'];
-        $data['where'] = ['request_id' => 1 , 'vendor_id'=>$_POST['vendor_id']];
+        $data['where'] = ['request_id' => 1, 'vendor_id' => $_POST['vendor_id']];
         $data['table'] = 'set_default';
         $min_value = $this->selectRecords($data);
         unset($data);
         $data['select'] = ['value'];
-        $data['where'] = ['request_id' => '3' ,'vendor_id'=>$_POST['vendor_id']];
+        $data['where'] = ['request_id' => '3', 'vendor_id' => $_POST['vendor_id']];
         $data['table'] = 'set_default';
         $cur_value = $this->selectRecords($data);
         foreach ($result as $key => $value) {
-            $value->image = base_url() . 'public/images/'.$this->folder.'vendor_shop/' . $value->image;
+            $value->image = base_url() . 'public/images/' . $this->folder . 'vendor_shop/' . $value->image;
             $value->total_products = $this->total_shop_product_if_varient_exists($value->id);
             $result[$key]->categoryCount = (int)$this->categoryCount();
             $result[$key]->subcategoryCount = (int)$this->subcategoryCount();
@@ -364,10 +366,10 @@ class Api_model extends My_model {
             $response['total_count'] = count($total_count);
             $response['cart_minimum_value'] = $min_value[0]->value;
             $response['currency'] = $cur_value[0]->value;
-            $response['cart_item'] = ($this->countCartItem($user_id) != 0 ) ? (string)$this->countCartItem($user_id) : "" ;
+            $response['cart_item'] = ($this->countCartItem($user_id) != 0) ? (string)$this->countCartItem($user_id) : "";
             $response["data"] = $result;
-            if($_POST['user_id'] != ''){
-            $response['userupdate_data'] = $this->userInfo($_POST); 
+            if ($_POST['user_id'] != '') {
+                $response['userupdate_data'] = $this->userInfo($_POST);
             }
         } else {
             $response['success'] = 0;
@@ -375,13 +377,14 @@ class Api_model extends My_model {
         }
         return $response;
     }
-    public function get_vendor($postdata) {
+    public function get_vendor($postdata)
+    {
         $data['select'] = ['id', 'name', 'email', 'phone_no', 'location', 'latitude', 'longitude', 'image'];
         $data['where'] = ['id' => $postdata['id']];
         $data['table'] = 'vendor';
         $result = $this->selectRecords($data);
         foreach ($result as $key => $value) {
-            $value->image = base_url() . 'public/images/'.$this->folder.'vendor_shop/' . $value->image;
+            $value->image = base_url() . 'public/images/' . $this->folder . 'vendor_shop/' . $value->image;
             $value->total_products = $this->total_shop_product($value->id);
         }
         if ($result) {
@@ -394,29 +397,30 @@ class Api_model extends My_model {
         }
         return $response;
     }
-    function total_shop_product_if_varient_exists($id = NULL, $category_id = NULL) {
+    function total_shop_product_if_varient_exists($id = NULL, $category_id = NULL)
+    {
         // $data['select'] = ['COUNT(p.id) as total_product'];
         $data['select'] = ['DISTINCT(p.id) as countedId'];
-      
+
         if ($category_id != '') {
             $data['where']['p.category_id'] = $category_id;
-        }else{
+        } else {
             $data['where']['p.branch_id'] = $id;
         }
         $data['where']['p.status !='] = '9';
         $data['where']['pw.status !='] = '9';
         $data['where']['c.status !='] = '9';
-        
+
         $data['table'] = 'product AS p';
-        $data['join'] = ['product_weight as pw' =>['pw.product_id = p.id','INNER'],
-                        'category as c'=>['p.category_id=c.id','INNER']
-                        ];
+        $data['join'] = [
+            'product_weight as pw' => ['pw.product_id = p.id', 'INNER'],
+            'category as c' => ['p.category_id=c.id', 'INNER']
+        ];
         $res = $this->selectFromJoin($data);
         return (string)count($res);
-       
-        
     }
-    function total_shop_product($id = NULL, $category_id = NULL) {
+    function total_shop_product($id = NULL, $category_id = NULL)
+    {
         $data['select'] = ['COUNT(p.id) as total_product'];
         if (isset($id) && $id != '') {
             $data['where']['p.vendor_id'] = $id;
@@ -425,18 +429,19 @@ class Api_model extends My_model {
             $data['where']['p.category_id'] = $category_id;
         }
         $data['where']['p.status !='] = '9';
-     
+
         $data['table'] = 'product AS p';
         $result = $this->selectRecords($data);
-      
+
         return $result[0]->total_product;
     }
-    function category_list($postdata) {
+    function category_list($postdata)
+    {
         if (isset($postdata['branch_id']) && $postdata['branch_id'] != '') {
             $branch_id = $postdata['branch_id'];
             $data['table'] = TABLE_BRANCH;
             $data['select'] = ['*'];
-            $data['where'] = ['id'=>$branch_id,'status!='=>9];
+            $data['where'] = ['id' => $branch_id, 'status!=' => 9];
             $vendor = $this->selectRecords($data);
             $vendor_id = $vendor[0]->vendor_id;
 
@@ -449,7 +454,7 @@ class Api_model extends My_model {
             foreach ($result as $row) {
                 $check = $this->check_variant_from_category($row->id);
                 $total_product = $this->total_shop_product_if_varient_exists($branch_id, $row->id);
-                $row->image = base_url() . 'public/images/'.$this->folder.'category/' . $row->image;
+                $row->image = base_url() . 'public/images/' . $this->folder . 'category/' . $row->image;
                 $row->total_product = $total_product;
             }
             $total_product = [];
@@ -466,23 +471,22 @@ class Api_model extends My_model {
                 $response["data"] = $result;
                 unset($data);
                 $data['select'] = ['value'];
-                $data['where'] = ['request_id' => 1,'vendor_id'=>$vendor_id];
+                $data['where'] = ['request_id' => 1, 'vendor_id' => $vendor_id];
                 $data['table'] = 'set_default';
                 $min_value = $this->selectRecords($data);
                 unset($data);
                 $data['select'] = ['value'];
-                $data['where'] = ['request_id' => 3 ,'vendor_id'=>$vendor_id];
+                $data['where'] = ['request_id' => 3, 'vendor_id' => $vendor_id];
                 $data['table'] = 'set_default';
                 $cur_value = $this->selectRecords($data);
                 $response['cart_minimum_value'] = $min_value[0]->value;
                 $response['currency'] = $cur_value[0]->value;
                 $response['categoryCount'] = $this->categoryCount($branch_id);
                 $response['subcategoryCount'] = $this->subcategoryCount($branch_id);
-                $response['cart_item'] = ($this->countCartItem($user_id) != 0 ) ? (string)$this->countCartItem($user_id) : "" ;
-                if($_POST['user_id'] != ''){
+                $response['cart_item'] = ($this->countCartItem($user_id) != 0) ? (string)$this->countCartItem($user_id) : "";
+                if ($_POST['user_id'] != '') {
                     $response["userupdate_data"] = $this->userInfo($postdata);
                 }
-                
             } else {
                 $response['success'] = 1;
                 $response['message'] = "No Match found";
@@ -494,78 +498,81 @@ class Api_model extends My_model {
         return $response;
     }
 
-    public function countCartItem($user_id){
+    public function countCartItem($user_id)
+    {
         $data['select'] = ['*'];
-        $data['where'] = ['user_id'=>$user_id];
+        $data['where'] = ['user_id' => $user_id];
         $data['table'] = 'my_cart';
         return $this->countRecords($data);
     }
 
-    public function categoryCount($branch_id = ''){
-      // $data['select'] = ['*'];
-      // $data['where'] = ['status!=' => '9','domain_name' => $_POST['domain']];
-      // $data['table'] = 'vendor';
-      // $vendor = $this->selectRecords($data);
-      // $branch_id = $vendor[0]->id;
-      // unset($data);
-        if($branch_id != ''){
+    public function categoryCount($branch_id = '')
+    {
+        // $data['select'] = ['*'];
+        // $data['where'] = ['status!=' => '9','domain_name' => $_POST['domain']];
+        // $data['table'] = 'vendor';
+        // $vendor = $this->selectRecords($data);
+        // $branch_id = $vendor[0]->id;
+        // unset($data);
+        if ($branch_id != '') {
             $branch_id = $_POST['branch_id'];
         }
-        if(isset($_POST['vendor_id'])){
+        if (isset($_POST['vendor_id'])) {
             $branch_id = $this->getExistingBranchId($_POST['vendor_id']);
-        }  
+        }
 
-      $data['select'] = ['count(*) as categoryCount'];
-      $data['where'] = ['status!=' => '9','branch_id' => $branch_id];
-      // $data['where'] = ['status!=' => '9','vendor_id' => $branch_id];
-      $data['table'] = 'category';
-      $categoryCount = $this->selectRecords($data);
-      // echo $this->db->last_query();die;
-      return (int)$categoryCount[0]->categoryCount;
-
+        $data['select'] = ['count(*) as categoryCount'];
+        $data['where'] = ['status!=' => '9', 'branch_id' => $branch_id];
+        // $data['where'] = ['status!=' => '9','vendor_id' => $branch_id];
+        $data['table'] = 'category';
+        $categoryCount = $this->selectRecords($data);
+        // echo $this->db->last_query();die;
+        return (int)$categoryCount[0]->categoryCount;
     }
 
-    public function subcategoryCount($branch_id = ''){
-       // $data['select'] = ['*'];
-       // $data['where'] = ['status!=' => '9','domain_name' => $_POST['domain']];
-       // $data['table'] = 'vendor';
-       // $vendor = $this->selectRecords($data);
-       // $branch_id = $vendor[0]->id;
-       // unset($data);
-        if($branch_id != ''){
+    public function subcategoryCount($branch_id = '')
+    {
+        // $data['select'] = ['*'];
+        // $data['where'] = ['status!=' => '9','domain_name' => $_POST['domain']];
+        // $data['table'] = 'vendor';
+        // $vendor = $this->selectRecords($data);
+        // $branch_id = $vendor[0]->id;
+        // unset($data);
+        if ($branch_id != '') {
             $branch_id = $_POST['branch_id'];
-        } 
-        if(isset($_POST['vendor_id'])){
+        }
+        if (isset($_POST['vendor_id'])) {
             $branch_id = $this->getExistingBranchId($_POST['vendor_id']);
-        } 
+        }
 
-       $data['select'] = ['count(*) as subcategoryCount'];
-       $data['where'] = ['status!=' => '9','branch_id' => $branch_id];
-       // $data['where'] = ['status!=' => '9','vendor_id' => $branch_id];
-       $data['table'] = 'subcategory';
-       $subcategoryCount = $this->selectRecords($data);
-       // echo $this->db->last_query();die;
-      return (int)$subcategoryCount[0]->subcategoryCount;
-
+        $data['select'] = ['count(*) as subcategoryCount'];
+        $data['where'] = ['status!=' => '9', 'branch_id' => $branch_id];
+        // $data['where'] = ['status!=' => '9','vendor_id' => $branch_id];
+        $data['table'] = 'subcategory';
+        $subcategoryCount = $this->selectRecords($data);
+        // echo $this->db->last_query();die;
+        return (int)$subcategoryCount[0]->subcategoryCount;
     }
 
-    public function vendorCount($vendor_id=''){
-       // $data['select'] = ['*'];
-       // $data['where'] = ['status!=' => '9','domain_name' => $_POST['domain']];
-       // $data['table'] = 'vendor';
-       // $vendor = $this->selectRecords($data);
-       // $branch_id = $vendor[0]->id;
-       // unset($data);
+    public function vendorCount($vendor_id = '')
+    {
+        // $data['select'] = ['*'];
+        // $data['where'] = ['status!=' => '9','domain_name' => $_POST['domain']];
+        // $data['table'] = 'vendor';
+        // $vendor = $this->selectRecords($data);
+        // $branch_id = $vendor[0]->id;
+        // unset($data);
         // $data['select'] = ['count(*) as venderCount'];
         $data['select'] = ['*'];
-        $data['where'] = ['status' =>'1','vendor_id'=>$vendor_id];
+        $data['where'] = ['status' => '1', 'vendor_id' => $vendor_id];
         $data['table'] = TABLE_BRANCH;
         $venderCount = $this->selectRecords($data);
         // echo $this->db->last_query();die;
-        return $venderCount;        
-        return $venderCount[0]->venderCount;        
+        return $venderCount;
+        return $venderCount[0]->venderCount;
     }
-    function check_variant_from_category($category_id) {
+    function check_variant_from_category($category_id)
+    {
         $data['select'] = ['pw.quantity', 'pw.id'];
         $data['where'] = ['p.category_id' => $category_id, 'p.status !=' => '9'];
         $data['table'] = 'product AS p';
@@ -581,23 +588,23 @@ class Api_model extends My_model {
             }
         }
     }
-    function subcategory_list($postdata) {
-        
-        if(!isset($postdata['category_id'])){
+    function subcategory_list($postdata)
+    {
+
+        if (!isset($postdata['category_id'])) {
             $data['table'] = 'category';
             $data['select'] = ['id'];
-            $data['where'] = ['status!='=>'9','branch_id'=>$postdata['branch_id']];
+            $data['where'] = ['status!=' => '9', 'branch_id' => $postdata['branch_id']];
             $category_id = $this->selectRecords($data);
             $postdata['category_id'] = $category_id[0]->id;
-            
         }
-        
+
         if (isset($postdata['category_id']) && $postdata['category_id'] != '') {
             $category_id = $postdata['category_id'];
             $branch_id = $postdata['branch_id'];
             $data['table'] = TABLE_BRANCH;
             $data['select'] = ['*'];
-            $data['where'] = ['id'=>$branch_id,'status!='=>9];
+            $data['where'] = ['id' => $branch_id, 'status!=' => 9];
             $vendor = $this->selectRecords($data);
             $vendor_id = $vendor[0]->vendor_id;
             unset($data);
@@ -608,7 +615,7 @@ class Api_model extends My_model {
             $data['where'] = ['category_id' => $category_id, 'branch_id' => $branch_id, 'status !=' => '9'];
             $data['table'] = 'subcategory';
             $result = $this->selectRecords($data);
-            
+
             foreach ($result as $key => $value) {
                 unset($data);
                 $data['table'] = 'product as p';
@@ -616,19 +623,19 @@ class Api_model extends My_model {
                     'product_weight as pw' => ['p.id=pw.product_id', 'LEFT'],
                     'product_image as pi' => ['pi.product_variant_id = pw.id', 'LEFT']
                 ];
-                $data['select'] = ['*','pi.image as product_varient_image'];
+                $data['select'] = ['*', 'pi.image as product_varient_image'];
                 $data['where'] = ['pw.branch_id' => $branch_id, 'pw.status !=' => '9', 'p.subcategory_id' => $value->id];
                 $data['groupBy'] = 'pi.product_variant_id';
                 $total_product = $this->checkProductcount($data);
                 $r = $this->selectFromJoin($data);
-               
-                    $result[$key]->count = count($r);
 
-                    $result[$key]->image = base_url() . 'public/images/'.$this->folder.'product_image/'.$r[0]->product_varient_image;
-                    $result[$key]->subcategory_id = $value->id; 
-                    $result[$key]->total_product = (string)$total_product;
+                $result[$key]->count = count($r);
+
+                $result[$key]->image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $r[0]->product_varient_image;
+                $result[$key]->subcategory_id = $value->id;
+                $result[$key]->total_product = (string)$total_product;
             }
-           
+
             $total_product = [];
             foreach ($result as $key => $row) {
                 $total_product[$key] = $row->count;
@@ -640,23 +647,21 @@ class Api_model extends My_model {
                 $response["data"] = $result;
                 unset($data);
                 $data['select'] = ['value'];
-                $data['where'] = ['request_id' => 1,'vendor_id'=>$vendor_id];
+                $data['where'] = ['request_id' => 1, 'vendor_id' => $vendor_id];
                 $data['table'] = 'set_default';
                 $min_value = $this->selectRecords($data);
                 unset($data);
                 $data['select'] = ['value'];
-                $data['where'] = ['request_id' => 3,'vendor_id'=>$vendor_id];
+                $data['where'] = ['request_id' => 3, 'vendor_id' => $vendor_id];
                 $data['table'] = 'set_default';
                 $cur_value = $this->selectRecords($data);
                 $response['cart_minimum_value'] = $min_value[0]->value;
                 $response['currency'] = $cur_value[0]->value;
                 $response['categoryCount'] = (int)$this->categoryCount($branch_id);
                 $response['subcategoryCount'] = (int)$this->subcategoryCount($branch_id);
-                if (isset($postdata['user_id'])&&$postdata['user_id'] != '') {
+                if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
                     $response["userupdate_data"] = $this->userInfo($postdata);
                 }
-
-
             } else {
                 $response['success'] = 1;
                 $response['message'] = "No Match found";
@@ -668,7 +673,8 @@ class Api_model extends My_model {
         return $response;
     }
 
-    public function checkProductcount($data){
+    public function checkProductcount($data)
+    {
         $data;
         $data['groupBy'] = 'p.id';
         $re = $this->selectFromJoin($data);
@@ -676,7 +682,8 @@ class Api_model extends My_model {
         return count($re);
     }
 
-    function brand_list($postdata) {
+    function brand_list($postdata)
+    {
         if (isset($postdata['category_id']) && $postdata['category_id'] != '') {
             $category_id = $postdata['category_id'];
             $data['select'] = ['*'];
@@ -698,9 +705,10 @@ class Api_model extends My_model {
         return $response;
     }
     //check register
-    function check_register($email,$vendor_id) {
+    function check_register($email, $vendor_id)
+    {
         $data['select'] = ['*'];
-        $data['where'] = ['email' => $email,'vendor_id' => $vendor_id,'status !='=> '9'];
+        $data['where'] = ['email' => $email, 'vendor_id' => $vendor_id, 'status !=' => '9'];
         $data['table'] = 'user';
         $result = $this->selectRecords($data);
         if (count($result) > 0) {
@@ -709,10 +717,11 @@ class Api_model extends My_model {
             return false;
         }
     }
-    function update_device($userdata, $postData) {
+    function update_device($userdata, $postData)
+    {
         $user_id = $userdata['id'];
 
-        if(!isset($postData['device_token'])&&$postData['device_token']==''){
+        if (!isset($postData['device_token']) && $postData['device_token'] == '') {
             return false;
         }
         $this->delete_token($user_id, $postData['device_token']);
@@ -738,23 +747,26 @@ class Api_model extends My_model {
         }
         return true;
     }
-    function checkDevice($postData) {
+    function checkDevice($postData)
+    {
         $data['select'] = ['id'];
         $data['where'] = ['device_id' => $postData];
         $data['table'] = "device";
         $result = $this->countRecords($data);
         return $result;
     }
-    function tokenGenrate($result, $loginType) {
+    function tokenGenrate($result, $loginType)
+    {
         //      $token = md5('user_' . time());
         //      $data['update']['token'] = $token;
         //      $data['where'] = ['id' => $user_id];
         //      $data['table'] = "user";
         //      $updateRecord = $this->updateRecords($data);
         // return $data;
-        
+
     }
-    function delete_token($user_id, $device_id = null) {
+    function delete_token($user_id, $device_id = null)
+    {
         $data['where']['user_id'] = $user_id;
         $data['table'] = "device";
         $this->deleteRecords($data);
@@ -764,8 +776,9 @@ class Api_model extends My_model {
         $this->deleteRecords($data);
         return true;
     }
-    function get_total($postdata) {
-        
+    function get_total($postdata)
+    {
+
         if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
             $user_id = $postdata['user_id'];
         } else {
@@ -773,11 +786,11 @@ class Api_model extends My_model {
                 $device_id = $postdata['device_id'];
             }
         }
-        $data['join'] = ['product_weight as pw' =>['pw.id = mc.product_weight_id','INNER']];
-       
-        
-            $data['select'] = ['sum(pw.price * mc.quantity) as total_price','sum(pw.discount_price * mc.quantity ) AS total', 'count(mc.id) AS cart_items'];
-        
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
+
+
+        $data['select'] = ['sum(pw.price * mc.quantity) as total_price', 'sum(pw.discount_price * mc.quantity ) AS total', 'count(mc.id) AS cart_items'];
+
 
         if (isset($user_id) && $user_id != 0 && $user_id != '') {
             $data['where'] = ['mc.user_id' => $user_id];
@@ -786,11 +799,11 @@ class Api_model extends My_model {
                 $data['where'] = ['mc.device_id' => $device_id, 'mc.user_id' => 0];
             }
         }
-         if (isset($postdata['branch_id']) && $postdata['branch_id'] != '') {
-                $data['where']['mc.branch_id'] = $postdata['branch_id'];
-         }elseif(isset($postdata['vendor_id']) && $postdata['vendor_id'] != ''){
-                $data['where']['mc.vendor_id'] = $postdata['vendor_id'];
-         }
+        if (isset($postdata['branch_id']) && $postdata['branch_id'] != '') {
+            $data['where']['mc.branch_id'] = $postdata['branch_id'];
+        } elseif (isset($postdata['vendor_id']) && $postdata['vendor_id'] != '') {
+            $data['where']['mc.vendor_id'] = $postdata['vendor_id'];
+        }
 
         $data['table'] = 'my_cart as mc';
         $result = $this->selectFromJoin($data);
@@ -798,7 +811,8 @@ class Api_model extends My_model {
         return $result;
     }
 
-    function get_actual_total($postdata) {
+    function get_actual_total($postdata)
+    {
 
         if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
             $user_id = $postdata['user_id'];
@@ -807,7 +821,7 @@ class Api_model extends My_model {
                 $device_id = $postdata['device_id'];
             }
         }
-        $data['select'] = ['mc.quantity','pw.price'];
+        $data['select'] = ['mc.quantity', 'pw.price'];
         if (isset($user_id) && $user_id != 0 && $user_id != '') {
             $data['where'] = ['mc.user_id' => $user_id];
         } else {
@@ -815,14 +829,14 @@ class Api_model extends My_model {
                 $data['where'] = ['mc.device_id' => $device_id, 'user_id' => 0];
             }
         }
-        
-         if (isset($postdata['branch_id']) && $postdata['branch_id'] != '') {
+
+        if (isset($postdata['branch_id']) && $postdata['branch_id'] != '') {
             $data['where']['mc.branch_id'] = $postdata['branch_id'];
-         }elseif(isset($postdata['vendor_id']) && $postdata['vendor_id'] != ''){
+        } elseif (isset($postdata['vendor_id']) && $postdata['vendor_id'] != '') {
             $data['where']['mc.vendor_id'] = $postdata['vendor_id'];
-         }
+        }
         $data['table'] = 'my_cart as mc';
-        $data['join'] = ['product_weight as pw' =>['pw.id = mc.product_weight_id','INNER']];
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
 
         $result = $this->selectFromJoin($data);
         $gettotal = 0;
@@ -832,34 +846,35 @@ class Api_model extends My_model {
             $total = $quantity * $actual_price;
             $gettotal = $total + $gettotal;
         }
-        
+
         return $gettotal;
-
     }
-    public function gstCalculation($postData) {
-      
-        $data['table'] = 'my_cart as mc';
-        $data['join'] = ['product_weight as pw' =>['pw.id = mc.product_weight_id','INNER']];
-        $data['select'] = ['pw.product_id','pw.discount_price','mc.quantity'];
+    public function gstCalculation($postData)
+    {
 
-        if(isset($postData['user_id'])){
-             $data['where']['mc.user_id'] = $postData['user_id'];     
+        $data['table'] = 'my_cart as mc';
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
+        $data['select'] = ['pw.product_id', 'pw.discount_price', 'mc.quantity'];
+
+        if (isset($postData['user_id'])) {
+            $data['where']['mc.user_id'] = $postData['user_id'];
         }
-        if(isset($postData['device_id'])){
-             $data['where']['mc.device_id'] = $postData['device_id'];     
+        if (isset($postData['device_id'])) {
+            $data['where']['mc.device_id'] = $postData['device_id'];
         }
         $result = $this->selectFromJoin($data);
         $total_gst = 0;
-        
+
         foreach ($result as $key => $value) {
             $gst = $this->getProductGst($value->product_id);
             $gst_amount = ($value->discount_price * $gst) / 100;
-            $total_gst+= $gst_amount * $value->quantity;
+            $total_gst += $gst_amount * $value->quantity;
         }
         return $total_gst;
     }
 
-    public function gstCalculationForOrder($order_id) {
+    public function gstCalculationForOrder($order_id)
+    {
         $data['table'] = 'order_details';
         $data['select'] = ['*'];
         $data['where'] = ['order_id' => $order_id];
@@ -868,13 +883,14 @@ class Api_model extends My_model {
         foreach ($result as $key => $value) {
             $gst = $this->getProductGst($value->product_id);
             $gst_amount = ($value->discount_price * $gst) / 100;
-            $total_gst+= $gst_amount * $value->quantity;
+            $total_gst += $gst_amount * $value->quantity;
         }
         return $total_gst;
     }
-    function filter($postdata) {
+    function filter($postdata)
+    {
 
-        $this->load->model('api_v3/common_model','co_model');
+        $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
 
         $branch_id = $postdata['branch_id'];
@@ -909,44 +925,43 @@ class Api_model extends My_model {
             $price_id = explode(',', $price_id);
             $data['select'] = ['*'];
             $data['where'] = ['status !=' => '9'];
-            $data['where_in'] = ['id' => $price_id, ];
+            $data['where_in'] = ['id' => $price_id,];
             $data['table'] = 'price';
             $data['order'] = 'id DESC';
             $price_result = $this->selectRecords($data);
-           
+
             $pricewhere = '(';
             $pwwhere = '(';
             foreach ($price_result as $key => $row) {
-              
-                $pricewhere.= "(w.discount_price >='" . $row->start_price . "' AND w.discount_price <= '" . $row->end_price . "') OR";
-                $pwwhere.= "(discount_price >='" . $row->start_price . "' AND discount_price <= '" . $row->end_price . "') OR";
+
+                $pricewhere .= "(w.discount_price >='" . $row->start_price . "' AND w.discount_price <= '" . $row->end_price . "') OR";
+                $pwwhere .= "(discount_price >='" . $row->start_price . "' AND discount_price <= '" . $row->end_price . "') OR";
             }
             if (in_array("999", $price_id)) {
                 unset($data);
                 $data['select'] = ['max(end_price) as end_price'];
                 $data['table'] = 'price';
-                $data['where'] = ['status !=' => '9','vendor_id'=>$postdata['vendor_id']];
+                $data['where'] = ['status !=' => '9', 'vendor_id' => $postdata['vendor_id']];
                 $data['order'] = 'id DESC';
                 $selectmax = $this->selectRecords($data);
                 // echo $this->db->last_query();
-                $pricewhere.= "(w.discount_price >='" . $selectmax[0]->end_price . "') OR";
-                $pwwhere.= "(discount_price >='" . $selectmax[0]->end_price . "') OR";
+                $pricewhere .= "(w.discount_price >='" . $selectmax[0]->end_price . "') OR";
+                $pwwhere .= "(discount_price >='" . $selectmax[0]->end_price . "') OR";
                 // echo $pwwhere;die;
-                
+
             }
             $pricewhere = rtrim($pricewhere, 'OR');
-            $pricewhere.= ') AND';
+            $pricewhere .= ') AND';
             $data_where[$pricewhere] = "1=1";
             $pwwhere = rtrim($pwwhere, 'OR');
-            $pwwhere.= ') AND';
+            $pwwhere .= ') AND';
             $data_pwwhere[$pwwhere] = "1=1";
-            
         }
         if (isset($discount_id) && $discount_id != '') {
             $discount_id = explode(',', $discount_id);
             $data['select'] = ['*'];
             $data['where'] = ['status !=' => '9'];
-            $data['where_in'] = ['id' => $discount_id, ];
+            $data['where_in'] = ['id' => $discount_id,];
             $data['table'] = 'discount';
             $data['order'] = 'id DESC';
             $discount_result = $this->selectRecords($data);
@@ -957,33 +972,31 @@ class Api_model extends My_model {
             $diswhere = '(';
             $dwwhere = '(';
             foreach ($discount_result as $key => $row) {
-                
-                $diswhere.= "(w.discount_per >='" . $row->start_discount . "' AND w.discount_per <= '" . $row->end_discount . "') OR";
-                $dwwhere.= "(discount_per >='" . $row->start_discount . "' AND discount_per <= '" . $row->end_discount . "') OR";
+
+                $diswhere .= "(w.discount_per >='" . $row->start_discount . "' AND w.discount_per <= '" . $row->end_discount . "') OR";
+                $dwwhere .= "(discount_per >='" . $row->start_discount . "' AND discount_per <= '" . $row->end_discount . "') OR";
             }
             $diswhere = rtrim($diswhere, 'OR');
-            $diswhere.= ') AND';
+            $diswhere .= ') AND';
             $data_where[$diswhere] = "1=1";
             $dwwhere = rtrim($dwwhere, 'OR');
-            $dwwhere.= ') AND';
+            $dwwhere .= ') AND';
             $data_pwwhere[$dwwhere] = "1=1";
-          
-            
         }
         $data_where_in = array();
         if (isset($brand_id) && $brand_id != '') {
             $brand_id = explode(",", $brand_id);
             $data_where_in['p.brand_id'] = $brand_id;
             // $data['where'] = ['category_id  IN ('.$category_id.') AND status !=' => '9'];
-            
+
         }
         unset($data);
-         if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
             $pro_weight->discount_price = $pro_weight->without_gst_price;
-            $data['select'] = ['p.*', 'max(w.without_gst_price) AS maxdis', 'min(w.without_gst_price) AS mindis']; 
-        }else{
-            $data['select'] = ['p.*', 'max(w.discount_price) AS maxdis', 'min(w.discount_price) AS mindis'];    
-        } 
+            $data['select'] = ['p.*', 'max(w.without_gst_price) AS maxdis', 'min(w.without_gst_price) AS mindis'];
+        } else {
+            $data['select'] = ['p.*', 'max(w.discount_price) AS maxdis', 'min(w.discount_price) AS mindis'];
+        }
 
         $data['table'] = 'product AS p';
         $data['join'] = ['product_weight  AS w' => ['w.product_id = p.id', 'LEFT']];
@@ -998,7 +1011,7 @@ class Api_model extends My_model {
             $data_where['p.subcategory_id'] = $subcategory_id;
         }
         $data['where'] = $data_where;
-      
+
         $data['where_in'] = $data_where_in;
         $data['groupBy'] = 'id';
         if ($sort == 'low_high') {
@@ -1008,25 +1021,25 @@ class Api_model extends My_model {
             $data["order"] = 'max(w.discount_price) * 1 DESC';
         }
         $cal = 10;
-        
+
         $result = $this->selectFromJoin($data);
         // print_r($result);die;
         $i = 1;
         foreach ($result as $key => $value) {
-            if($offset > 0){
-                if($key >= $offset * 10 && $key <= (($offset+1) * 10)-1 ){
+            if ($offset > 0) {
+                if ($key >= $offset * 10 && $key <= (($offset + 1) * 10) - 1) {
                     continue;
-                   }else{
+                } else {
                     unset($result[$key]);
-                   }
-            }else if($offset == 0){
-                if($key >= 10){
+                }
+            } else if ($offset == 0) {
+                if ($key >= 10) {
                     unset($result[$key]);
-                    $i++;   
+                    $i++;
                 }
             }
         }
-     
+
         unset($data['limit']);
         unset($data['skip']);
         $count = $this->selectFromJoin($data, true);
@@ -1051,10 +1064,10 @@ class Api_model extends My_model {
                     $data['order'] = 'id DESC';
                 }
                 $product_weight_result = $this->selectRecords($data);
-              
+
                 if ($counter == 3) {
                 }
-              
+
                 $new_array_product_weight = array();
                 foreach ($product_weight_result as $pro_weight) {
                     $package_id = $pro_weight->package;
@@ -1069,34 +1082,34 @@ class Api_model extends My_model {
                     $product_image_result = $this->selectRecords($data);
                     unset($data);
                     $data['select'] = ['name'];
-                    $data['where'] = ['id' => $weight_id, ];
+                    $data['where'] = ['id' => $weight_id,];
                     $data['table'] = 'weight';
                     $weight_result = $this->selectRecords($data, true);
                     // print_r($weight_id);exit;
                     $weight_name = $weight_result[0]['name'];
                     $data['select'] = ['quantity'];
                     if (isset($user_id) && isset($device_id)) {
-                        $data['where'] = [ 'product_weight_id' => $product_weight_id, 'user_id' => $user_id, 'device_id' => $device_id];
+                        $data['where'] = ['product_weight_id' => $product_weight_id, 'user_id' => $user_id, 'device_id' => $device_id];
                     } else if (isset($user_id) || isset($device_id)) {
-                        $data['where'] = ['product_weight_id' => $product_weight_id, ];
+                        $data['where'] = ['product_weight_id' => $product_weight_id,];
                         $data['where_or'] = ['user_id' => $user_id, 'device_id' => $device_id];
                     }
                     $data['table'] = 'my_cart';
                     $my_cart_result = $this->selectRecords($data, true);
-                   
+
                     if (count($my_cart_result) <= 0) {
                         $my_cart_result = array();
                         $my_cart_quantity = '0';
                     } else {
                         $my_cart_quantity = $my_cart_result[0]['quantity'];
                     }
-                    
 
-                     if (count($product_image_result) <= 0) {
-                                $image = '';
-                            } else {
-                                $image = base_url() . 'public/images/'.$this->folder.'product_image/' . $product_image_result[0]->image;
-                            }
+
+                    if (count($product_image_result) <= 0) {
+                        $image = '';
+                    } else {
+                        $image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $product_image_result[0]->image;
+                    }
                     $image = str_replace(' ', '%20', $image);
 
 
@@ -1106,12 +1119,12 @@ class Api_model extends My_model {
                 $product_weight_array = $new_array_product_weight;
                 $new_array_product_image = array();
                 foreach ($product_image_result as $pro_image) {
-                    $data = array('id' => $pro_image->id, 'product_id' => $pro_image->product_id, 'image' => base_url() . 'public/images/'.$this->folder.'product_image/' . $pro_image->image, 'thumb_image' => base_url() . 'public/images/'.$this->folder.'product_image_thumb/' . $pro_image->image,);
+                    $data = array('id' => $pro_image->id, 'product_id' => $pro_image->product_id, 'image' => base_url() . 'public/images/' . $this->folder . 'product_image/' . $pro_image->image, 'thumb_image' => base_url() . 'public/images/' . $this->folder . 'product_image_thumb/' . $pro_image->image,);
                     array_push($new_array_product_image, $data);
                 }
                 $product_image_array = $new_array_product_image;
-               
-              
+
+
                 $set_data = array();
                 $set_data['id'] = $row->id;
                 $set_data['category_id'] = $row->category_id;
@@ -1128,8 +1141,6 @@ class Api_model extends My_model {
                 $set_data['product_image'] = $product_image_array;
                 $getdata[] = $set_data;
                 $counter++;
-             
-                
             }
             $response['success'] = "1";
             $response['message'] = "Product list";
@@ -1144,35 +1155,36 @@ class Api_model extends My_model {
             echo $output;
         }
     }
-    function add_to_cart($postdata) {
+    function add_to_cart($postdata)
+    {
         $vendor_id = $postdata['vendor_id']; //new 
         $quantity = $postdata['quantity'];
         $product_weight_id = $postdata['product_weight_id'];
         $branch_id = $postdata['branch_id'];
 
-        if (isset($postdata['user_id']) && $postdata['user_id'] != ''&& $postdata['user_id'] != 0) {
+        if (isset($postdata['user_id']) && $postdata['user_id'] != '' && $postdata['user_id'] != 0) {
             $user_id = $postdata['user_id'];
         } else {
             $user_id = 0;
         }
         $device_id = $postdata['device_id'];
         $cart_count = 0;
-        
+
         $data['select'] = ['*'];
         if (isset($user_id) && $user_id != '' && $user_id != 0) {
             $data['where']['user_id'] = $user_id;
         }
-        if ((!isset($user_id) || $user_id == ''|| $user_id == 0) && isset($postdata['device_id'])) {
+        if ((!isset($user_id) || $user_id == '' || $user_id == 0) && isset($postdata['device_id'])) {
             $data['where']['device_id'] = $device_id;
             $data['where']['user_id'] = 0;
         }
-       
+
         $data['where']['branch_id'] = $branch_id;
         $data['where']['product_weight_id'] = $product_weight_id;
-       
+
         $data['table'] = 'my_cart';
         $pro_available_query = $this->selectRecords($data);
-      
+
         unset($data);
         $data['select'] = ['*'];
         $data['where']['id'] = $product_weight_id;
@@ -1180,41 +1192,40 @@ class Api_model extends My_model {
         $data['where']['branch_id'] = $branch_id;
         $data['table'] = 'product_weight';
         $product_weight_result = $this->selectRecords($data, true);
-        
+
         $dt_updated = strtotime(DATE_TIME);
         if (count($pro_available_query) > 0) {
             unset($data);
             $update = array(
-                'device_id' => $device_id, 
+                'device_id' => $device_id,
                 'user_id' => $user_id,
-                'quantity' => $quantity,               
+                'quantity' => $quantity,
                 'dt_updated' => $dt_updated
-                );
+            );
             $data['update'] = $update;
-            
+
             $data['where']['branch_id'] = $branch_id;
             $data['where']['product_weight_id'] = $product_weight_id;
-         
+
             if (isset($user_id) && $user_id != '' && $user_id != 0) {
                 $data['where']['user_id'] = $user_id;
             }
-            if ((!isset($user_id) || $user_id == ''|| $user_id == 0) && isset($postdata['device_id'])) {
+            if ((!isset($user_id) || $user_id == '' || $user_id == 0) && isset($postdata['device_id'])) {
                 $data['where']['device_id'] = $device_id;
                 $data['where']['user_id'] = 0;
             }
             $data['table'] = 'my_cart';
             $updatecart = $this->updateRecords($data);
-
         } else {
             $insertion = array(
                 'branch_id' => $branch_id,
-                'vendor_id'=>$vendor_id,
-                'quantity' => $quantity,   
-                'device_id' => $device_id, 
-                'product_weight_id' => $product_weight_id, 
+                'vendor_id' => $vendor_id,
+                'quantity' => $quantity,
+                'device_id' => $device_id,
+                'product_weight_id' => $product_weight_id,
                 'user_id' => $user_id,
-                'status' => '1', 
-                'dt_added' => strtotime(DATE_TIME), 
+                'status' => '1',
+                'dt_added' => strtotime(DATE_TIME),
                 'dt_updated' => strtotime(DATE_TIME)
             );
             $data['insert'] = $insertion;
@@ -1223,7 +1234,8 @@ class Api_model extends My_model {
         }
         return true;
     }
-    function get_package($id) {
+    function get_package($id)
+    {
         $package_name = "";
         if ($id > 0) {
             $data['select'] = ['*'];
@@ -1236,29 +1248,30 @@ class Api_model extends My_model {
         }
         return $package_name;
     }
-    function update_my_cart($arr,$default_qty=false) {
+    function update_my_cart($arr, $default_qty = false)
+    {
         foreach ($arr as $row) {
             //            print_r($row);exit;
             $id = $row->id;
             $p_id = $row->product_weight_id;
             $quantity = $row->quantity;
-            $data['select'] = ['price', 'discount_price', 'discount_per','quantity'];
+            $data['select'] = ['price', 'discount_price', 'discount_per', 'quantity'];
             $data['where'] = ['id' => $p_id];
             $data['table'] = 'product_weight';
             $res = $this->selectRecords($data, true);
             unset($data);
-            if($default_qty){
+            if ($default_qty) {
 
                 $avail_quantity = (int)$res[0]['quantity'];
-                if($avail_quantity <= 0 || $quantity <= 0 ){
+                if ($avail_quantity <= 0 || $quantity <= 0) {
                     unset($data);
-                   
+
 
                     unset($data);
                 }
-                if((int)$quantity > $avail_quantity){
+                if ((int)$quantity > $avail_quantity) {
                     unset($data);
-                    $data['update'] = ['quantity'=>$avail_quantity];
+                    $data['update'] = ['quantity' => $avail_quantity];
                     $quantity = $avail_quantity;
                 }
             }
@@ -1276,25 +1289,26 @@ class Api_model extends My_model {
             $data['where'] = ['id' => $id];
             $data['table'] = 'my_cart';
             $this->updateRecords($data);
-                       // echo $this->db->last_query();die;
+            // echo $this->db->last_query();die;
             //            exit;
-            
+
         }
     }
 
-    function check_udpate_quantity($variant_id,$cart_qty,$user_id){
+    function check_udpate_quantity($variant_id, $cart_qty, $user_id)
+    {
         sleep(0.951);
         // file_put_contents("/cartcheck.txt","cartIn ".$user_id);
         $this->unreserve_product_userwise($user_id);
-        
+
         $data['select'] = ['*'];
-        $data['where'] = ['pw.id'=>$variant_id];
+        $data['where'] = ['pw.id' => $variant_id];
         $data['table'] = 'product_weight as pw';
         $get_variant = $this->selectRecords($data);
-        if(count($get_variant) >0){
+        if (count($get_variant) > 0) {
             $quantity = (int)$get_variant[0]->quantity;
             $temp_quantity = (int)$get_variant[0]->quantity;
-            if((int)$cart_qty>$quantity){
+            if ((int)$cart_qty > $quantity) {
                 $response = array();
                 $postdata['user_id'] = $user_id;
                 $gettotal = $this->get_total($postdata);
@@ -1314,25 +1328,26 @@ class Api_model extends My_model {
             //     $this->deleteRecords($data);
             // }
             unset($data);
-            $data['update'] = ['pw.quantity'=>$updatedQTY,'pw.temp_quantity'=>$updatedtmpqty,'dt_updated'=>strtotime(DATE_TIME)];
-            $data['where'] = ['pw.id'=>$variant_id];
+            $data['update'] = ['pw.quantity' => $updatedQTY, 'pw.temp_quantity' => $updatedtmpqty, 'dt_updated' => strtotime(DATE_TIME)];
+            $data['where'] = ['pw.id' => $variant_id];
             $data['table'] = 'product_weight as pw';
             $this->updateRecords($data);
 
             return true;
         }
-        return false;        
+        return false;
     }
-    function set_reserve_quantity($user_id){
+    function set_reserve_quantity($user_id)
+    {
         $this->db->query('LOCK TABLES `my_cart` WRITE,`order` WRITE,`order_details` WRITE,product_weight as pw WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE;');
         $postdata['user_id'] = $user_id;
         $this->unreserve_product_userwise($user_id);
         sleep(0.751);
         $data['select'] = ['*'];
-        $data['where'] = ['status !=' => '9','user_id'=>$user_id];
+        $data['where'] = ['status !=' => '9', 'user_id' => $user_id];
         $data['table'] = 'my_cart';
         $my_order_result = $this->selectRecords($data);
-        if(empty($my_order_result)){
+        if (empty($my_order_result)) {
             $response = array();
             $gettotal = $this->get_total($postdata);
             $response["cart_count"] = (int)$gettotal[0]->cart_items;
@@ -1348,13 +1363,13 @@ class Api_model extends My_model {
             $cart_qty = $my_order->quantity;
             unset($data);
             $data['select'] = ['*'];
-            $data['where'] = ['id'=>$variant_id];
+            $data['where'] = ['id' => $variant_id];
             $data['table'] = 'product_weight as pw';
-            $get_variant = $this->selectRecords($data);           
-            if(count($get_variant) > 0){
+            $get_variant = $this->selectRecords($data);
+            if (count($get_variant) > 0) {
                 $quantity = (int)$get_variant[0]->quantity;
                 $my_order->avail_quantity = (int)$get_variant[0]->quantity;
-                if((int)$cart_qty>$quantity){
+                if ((int)$cart_qty > $quantity) {
                     $response = array();
                     $gettotal = $this->get_total($postdata);
                     $response["cart_count"] = (int)$gettotal[0]->cart_items;
@@ -1365,7 +1380,6 @@ class Api_model extends My_model {
                     die;
                 }
             }
-
         }
 
         foreach ($my_order_result as $my_order) {
@@ -1373,257 +1387,257 @@ class Api_model extends My_model {
             $cart_qty = $my_order->quantity;
             $quantity = (int)$my_order->avail_quantity;
 
-                
+
             $updatedQTY = $quantity - $cart_qty;
 
             unset($data);
-            $data['update'] = ['quantity'=>$updatedQTY,'dt_updated' => strtotime(DATE_TIME)];
-            $data['where'] = ['id'=>$variant_id];
+            $data['update'] = ['quantity' => $updatedQTY, 'dt_updated' => strtotime(DATE_TIME)];
+            $data['where'] = ['id' => $variant_id];
             $data['table'] = 'product_weight as pw';
             $this->updateRecords($data);
 
             unset($data);
-            $data['update'] = ['is_reserved'=>'1','dt_updated' => strtotime(DATE_TIME)];
-            $data['where'] = ['id'=>$my_order->id];
+            $data['update'] = ['is_reserved' => '1', 'dt_updated' => strtotime(DATE_TIME)];
+            $data['where'] = ['id' => $my_order->id];
             $data['table'] = 'my_cart';
             $this->updateRecords($data);
 
-            if($updatedQTY <= 0){
+            if ($updatedQTY <= 0) {
                 // unset($data);
                 // $data['where'] = ['product_weight_id'=>$variant_id,'user_id !='=>$user_id,'is_reserved'=>'0'];
                 // $data['table'] = 'my_cart';
                 // $this->deleteRecords($data);
             }
             unset($data);
-            $data['where'] = [                             
-                                'user_id'=>$user_id,
-                                'product_variant_id'=>$variant_id
-                            ];
+            $data['where'] = [
+                'user_id' => $user_id,
+                'product_variant_id' => $variant_id
+            ];
             $data['table'] = 'order_reservation';
             $this->deleteRecords($data);
             unset($data);
             $data['insert'] = [
-                                'quantity'=>$cart_qty,
-                                'user_id'=>$user_id,
-                                'product_variant_id'=>$variant_id,
-                                'dt_created'=>DATE_TIME
-                            ];
+                'quantity' => $cart_qty,
+                'user_id' => $user_id,
+                'product_variant_id' => $variant_id,
+                'dt_created' => DATE_TIME
+            ];
             $data['table'] = 'order_reservation';
             $this->insertRecord($data);
 
-         
-            $this->db->query('UNLOCK TABLES;');
-           
-          
-        }
-            return true;
-    }
-         
-    
 
-     function unreserve_quantity(){
+            $this->db->query('UNLOCK TABLES;');
+        }
+        return true;
+    }
+
+
+
+    function unreserve_quantity()
+    {
 
         $setBefore = strtotime('-15 minutes');
         $data['select'] = ['*'];
-        $data['where'] = ['dt_created <= '=>date('Y-m-d h:i:s',$setBefore)];
+        $data['where'] = ['dt_created <= ' => date('Y-m-d h:i:s', $setBefore)];
         $data['table'] = 'order_reservation';
         $select = $this->selectRecords($data);
-       
+
         foreach ($select as $key => $value) {
             unset($data);
 
             $data['select'] = ['*'];
-            $data['where'] = ['id'=>$value->product_variant_id];
+            $data['where'] = ['id' => $value->product_variant_id];
             $data['table'] = 'product_weight';
             $get_variant = $this->selectRecords($data);
             $quantity = (int)$get_variant[0]->quantity;
             $updatedQTY = $quantity + $value->quantity;
             unset($data);
-            $data['update'] = ['quantity'=>$updatedQTY,'dt_updated'=>strtotime(DATE_TIME)];
-            $data['where'] = ['id'=>$value->product_variant_id];
+            $data['update'] = ['quantity' => $updatedQTY, 'dt_updated' => strtotime(DATE_TIME)];
+            $data['where'] = ['id' => $value->product_variant_id];
             $data['table'] = 'product_weight';
             $this->updateRecords($data);
             unset($data);
-            $data['where'] = ['id'=>$value->id];
+            $data['where'] = ['id' => $value->id];
             $data['table'] = 'order_reservation';
             $this->deleteRecords($data);
 
             unset($data);
-            $data['update'] = ['is_reserved'=>'0'];
-            $data['where'] = ['product_weight_id'=>$value->product_variant_id,'user_id'=>$value->user_id,'dt_updated'=>strtotime(DATE_TIME)];
+            $data['update'] = ['is_reserved' => '0'];
+            $data['where'] = ['product_weight_id' => $value->product_variant_id, 'user_id' => $value->user_id, 'dt_updated' => strtotime(DATE_TIME)];
             $data['table'] = 'my_cart as mc';
             $this->updateRecords($data);
         }
-       return true;
+        return true;
     }
 
 
-    function unreserve_product_userwise($user_id){
+    function unreserve_product_userwise($user_id)
+    {
         sleep(0.751);
         $data['select'] = ['*'];
-        $data['where'] = ['user_id'=>$user_id];
+        $data['where'] = ['user_id' => $user_id];
         $data['table'] = 'order_reservation';
         $select = $this->selectRecords($data);
         foreach ($select as $key => $value) {
             // dd($value);
             unset($data);
-        
+
             $data['select'] = ['*'];
-            $data['where'] = ['id'=>$value->product_variant_id];
+            $data['where'] = ['id' => $value->product_variant_id];
             $data['table'] = "product_weight as pw";
 
             $get_variant = $this->selectRecords($data);
-     
+
             $quantity = (int) $get_variant[0]->quantity;
             $updatedQTY = $quantity + $value->quantity;
             unset($data);
-            $data['update'] = ['quantity'=>$updatedQTY];
-            $data['where'] = ['id'=>$value->product_variant_id];
+            $data['update'] = ['quantity' => $updatedQTY];
+            $data['where'] = ['id' => $value->product_variant_id];
             $data['table'] = 'product_weight as pw';
             $this->updateRecords($data);
             unset($data);
-            $data['where'] = ['id'=>$value->id];
+            $data['where'] = ['id' => $value->id];
             $data['table'] = 'order_reservation';
             $this->deleteRecords($data);
 
 
             unset($data);
-            $data['update'] = ['is_reserved'=>'0'];
-            $data['where'] = ['product_weight_id'=>$value->product_variant_id,'user_id'=>$value->user_id];
+            $data['update'] = ['is_reserved' => '0'];
+            $data['where'] = ['product_weight_id' => $value->product_variant_id, 'user_id' => $value->user_id];
             $data['table'] = 'my_cart';
             $this->updateRecords($data);
         }
         // die;
-       return true;
+        return true;
     }
-    function deleteUserCart($user_id) {
-        $data['where'] = ['user_id'=>$user_id];
+    function deleteUserCart($user_id)
+    {
+        $data['where'] = ['user_id' => $user_id];
         $data['table'] = 'my_cart';
         $this->deleteRecords($data);
         return true;
     }
 
     //user cart
-    function my_cart($postdata) {
-         $this->load->model('api_v3/common_model','co_model');
-            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
+    function my_cart($postdata)
+    {
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
 
-            $response['show_qty_alert'] = false;
-       
-            $actual_price_total = 0;
-            $discount_price_total = 0;
-            if (isset($postdata['user_id']) && $postdata['user_id'] != ''&& $postdata['user_id'] != 0) {
-                $user_id = $postdata['user_id'];
-            } else {
-                $user_id = 0;
-            }
-            if (isset($postdata['device_id'])) {
-                $device_id = $postdata['device_id'];
-            }
-            $data['select'] = ['mc.*','pw.product_id','pw.discount_price'];
-            if (isset($user_id) && $user_id != '') {
-                $data['where']['mc.user_id'] = $user_id;
-            }
-            if ((!isset($user_id) || $user_id == ''|| $user_id == 0) && isset($device_id)) {
-                $data['where']['mc.device_id'] = $device_id;
-                $data['where']['mc.user_id'] = 0;
-            }
-            if(isset($postdata['vendor_id']) && $postdata['vendor_id'] != ''){
-                $data['where']['mc.vendor_id'] = $postdata['vendor_id'];
-            }
-            $data['table'] = 'my_cart as mc';
-            $data['join'] = ['product_weight as pw' =>['pw.id = mc.product_weight_id','INNER']];
+        $response['show_qty_alert'] = false;
 
-            $my_cart_result = $this->selectFromJoin($data,true);
-        
-           
-            $counter = 0;
-            $total_gst = 0;
-            if (count($my_cart_result) > 0) {
-                foreach ($my_cart_result as $row) {
-                    $is_favourite = "0";
-                        if(isset($_POST['user_id']) && $_POST['user_id'] != '' ){
-                            $wishlistCheck = ['user_id'=>$_POST['user_id'],'product_weight_id'=>$row['product_weight_id'],'branch_id'=>$row['branch_id']];
-                            $is_favourite = $this->checkProductExistInWishlist($wishlistCheck);
-                        }
-                    $row['is_favourite'] = $is_favourite;
-                    // if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                    //     $row['discount_price'] = $row['without_gst_price'];
-                    // }
+        $actual_price_total = 0;
+        $discount_price_total = 0;
+        if (isset($postdata['user_id']) && $postdata['user_id'] != '' && $postdata['user_id'] != 0) {
+            $user_id = $postdata['user_id'];
+        } else {
+            $user_id = 0;
+        }
+        if (isset($postdata['device_id'])) {
+            $device_id = $postdata['device_id'];
+        }
+        $data['select'] = ['mc.*', 'pw.product_id', 'pw.discount_price'];
+        if (isset($user_id) && $user_id != '') {
+            $data['where']['mc.user_id'] = $user_id;
+        }
+        if ((!isset($user_id) || $user_id == '' || $user_id == 0) && isset($device_id)) {
+            $data['where']['mc.device_id'] = $device_id;
+            $data['where']['mc.user_id'] = 0;
+        }
+        if (isset($postdata['vendor_id']) && $postdata['vendor_id'] != '') {
+            $data['where']['mc.vendor_id'] = $postdata['vendor_id'];
+        }
+        $data['table'] = 'my_cart as mc';
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
 
-                    $row['calculation_price'] = $row['discount_price'] * $row['quantity'];
-                    $product_weight_id = $row['product_weight_id'];
-                    $product_id = $row['product_id'];
-                  
-                    unset($data);
-                    $data['select'] = ['*'];
-                    $data['where'] = ['status !=' => '9', 'product_id' => $product_id, 'product_variant_id' => $product_weight_id];
-                    $data['table'] = 'product_image';
-                  
-                    $product_image_result = $this->selectRecords($data);
-                   
-                     if (count($product_image_result) <= 0) {
-                                $proimg = '';
-                            } else {
-                                $proimg = base_url() . 'public/images/'.$this->folder.'product_image/' . $product_image_result[0]->image;
-                            }
-                    $proimg = str_replace(' ', '%20', $proimg);
-
-                    $prothimg = $proimg;
-                    unset($data);
-                    
-
-                    $data['select'] = ['pw.*', 'p.name as product_name', 'p.image as product_image', 'w.name as product_weight_name', 'p.gst'];
-                    $data['where'] = ['pw.id' => $product_weight_id, 'pw.status !=' => '9'];
-                    $data['table'] = 'product_weight as pw';
-                    $data['join'] = ['product  AS p' => ['p.id = pw.product_id', 'LEFT'], 'weight  AS w' => ['w.id = pw.weight_id', 'LEFT'], ];
-                    $product_weight_result = $this->selectFromJoin($data, true);
-
-                    
-                    $branch_id = $product_weight_result[0]['branch_id'];
-                    $package_id = $product_weight_result[0]['package'];
-                    $package_name = $this->get_package($package_id);
-
-                    $weight_id = $product_weight_result[0]['weight_id'];
-
-                    $product_unit = $product_weight_result[0]['weight_no'];
-                    $product_name = $product_weight_result[0]['product_name'];
-                    $product_image = $product_weight_result[0]['product_image'];
-                    $product_weight_name = $product_weight_result[0]['product_weight_name'];
-                    $product_actual_price = $product_weight_result[0]['price'];
-                    $product_discount_price = $product_weight_result[0]['discount_price'];
-                    
-                    $gst = $product_weight_result[0]['gst'];
-                    $avail_quantity = (int)$product_weight_result[0]['quantity'];
-
-                    $gst_amount = ($product_discount_price * $gst) / 100;
-                    $total_gst += $gst_amount * $row['quantity'];
-
-                    $discount_price_total = ($product_actual_price * $row['quantity']) - $row['calculation_price'] + $discount_price_total;
-                    if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                        $product_discount_price = $product_weight_result[0]['without_gst_price'];
-                    }   
-                    unset($data);
-                    $data = $row;
-                    
-                    $data['product_unit'] = $product_unit . ' ' . $product_weight_name;
-                    $data['product_name'] = $product_name;
-                    $data['product_actual_price'] = $product_actual_price;
-                    $data['product_discount_price'] = $product_discount_price;
-                    $data['avail_quantity'] = $avail_quantity;
-                    $data['discount_per'] = $product_weight_result[0]['discount_per'];
-                   
-                    $data['product_image'] = $proimg;
-                    $data['package_name'] = $package_name;
-                    $data['product_image_thumb'] = $prothimg;
-                   
-                    $data['gst_amount_per_product'] = number_format((float)$gst_amount, '2', '.', '');
-                    $getdata[] = $data;
-                    $counter++;
-                    $actual_price_total = $row['quantity'] * $product_actual_price + $actual_price_total;
+        $my_cart_result = $this->selectFromJoin($data, true);
 
 
+        $counter = 0;
+        $total_gst = 0;
+        if (count($my_cart_result) > 0) {
+            foreach ($my_cart_result as $row) {
+                $is_favourite = "0";
+                if (isset($_POST['user_id']) && $_POST['user_id'] != '') {
+                    $wishlistCheck = ['user_id' => $_POST['user_id'], 'product_weight_id' => $row['product_weight_id'], 'branch_id' => $row['branch_id']];
+                    $is_favourite = $this->checkProductExistInWishlist($wishlistCheck);
                 }
+                $row['is_favourite'] = $is_favourite;
+                // if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                //     $row['discount_price'] = $row['without_gst_price'];
+                // }
+
+                $row['calculation_price'] = $row['discount_price'] * $row['quantity'];
+                $product_weight_id = $row['product_weight_id'];
+                $product_id = $row['product_id'];
+
+                unset($data);
+                $data['select'] = ['*'];
+                $data['where'] = ['status !=' => '9', 'product_id' => $product_id, 'product_variant_id' => $product_weight_id];
+                $data['table'] = 'product_image';
+
+                $product_image_result = $this->selectRecords($data);
+
+                if (count($product_image_result) <= 0) {
+                    $proimg = '';
+                } else {
+                    $proimg = base_url() . 'public/images/' . $this->folder . 'product_image/' . $product_image_result[0]->image;
+                }
+                $proimg = str_replace(' ', '%20', $proimg);
+
+                $prothimg = $proimg;
+                unset($data);
+
+
+                $data['select'] = ['pw.*', 'p.name as product_name', 'p.image as product_image', 'w.name as product_weight_name', 'p.gst'];
+                $data['where'] = ['pw.id' => $product_weight_id, 'pw.status !=' => '9'];
+                $data['table'] = 'product_weight as pw';
+                $data['join'] = ['product  AS p' => ['p.id = pw.product_id', 'LEFT'], 'weight  AS w' => ['w.id = pw.weight_id', 'LEFT'],];
+                $product_weight_result = $this->selectFromJoin($data, true);
+
+
+                $branch_id = $product_weight_result[0]['branch_id'];
+                $package_id = $product_weight_result[0]['package'];
+                $package_name = $this->get_package($package_id);
+
+                $weight_id = $product_weight_result[0]['weight_id'];
+
+                $product_unit = $product_weight_result[0]['weight_no'];
+                $product_name = $product_weight_result[0]['product_name'];
+                $product_image = $product_weight_result[0]['product_image'];
+                $product_weight_name = $product_weight_result[0]['product_weight_name'];
+                $product_actual_price = $product_weight_result[0]['price'];
+                $product_discount_price = $product_weight_result[0]['discount_price'];
+
+                $gst = $product_weight_result[0]['gst'];
+                $avail_quantity = (int)$product_weight_result[0]['quantity'];
+
+                $gst_amount = ($product_discount_price * $gst) / 100;
+                $total_gst += $gst_amount * $row['quantity'];
+
+                $discount_price_total = ($product_actual_price * $row['quantity']) - $row['calculation_price'] + $discount_price_total;
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $product_discount_price = $product_weight_result[0]['without_gst_price'];
+                }
+                unset($data);
+                $data = $row;
+
+                $data['product_unit'] = $product_unit . ' ' . $product_weight_name;
+                $data['product_name'] = $product_name;
+                $data['product_actual_price'] = $product_actual_price;
+                $data['product_discount_price'] = $product_discount_price;
+                $data['avail_quantity'] = $avail_quantity;
+                $data['discount_per'] = $product_weight_result[0]['discount_per'];
+
+                $data['product_image'] = $proimg;
+                $data['package_name'] = $package_name;
+                $data['product_image_thumb'] = $prothimg;
+
+                $data['gst_amount_per_product'] = number_format((float)$gst_amount, '2', '.', '');
+                $getdata[] = $data;
+                $counter++;
+                $actual_price_total = $row['quantity'] * $product_actual_price + $actual_price_total;
+            }
             $gettotal = $this->get_total($postdata);
             $getactual = $this->get_actual_total($postdata);
             $my_cal = $gettotal[0]->total;
@@ -1634,14 +1648,14 @@ class Api_model extends My_model {
                 $getactual = 0.0;
             }
             $discountValue = 0;
-            $shoppingDiscount = $this->checkShoppingBasedDiscount($my_cal,$branch_id);
+            $shoppingDiscount = $this->checkShoppingBasedDiscount($my_cal, $branch_id);
             // dd($shoppingDiscount);
-            if(!empty($shoppingDiscount)){
-              if($my_cal >= $shoppingDiscount[0]->cart_amount){
-                $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                $discountValue = $my_cal * $discountPercentage/100;
-                $discountValue = number_format((float)$discountValue,2,'.','');
-              }
+            if (!empty($shoppingDiscount)) {
+                if ($my_cal >= $shoppingDiscount[0]->cart_amount) {
+                    $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+                    $discountValue = $my_cal * $discountPercentage / 100;
+                    $discountValue = number_format((float)$discountValue, 2, '.', '');
+                }
             }
             // $this->update_my_cart($my_cart_result,true);
             $response['success'] = "1";
@@ -1650,12 +1664,12 @@ class Api_model extends My_model {
             $response["actual_price_total"] = $getactual;
             $response["shopping_based_discount"] = $discountValue;
             $response["discount_price_total"] = number_format((float)$getactual - $my_cal, '2', '.', '');
-            $response["total_price"] = number_format((float)($my_cal-$discountValue), '2', '.', '');
+            $response["total_price"] = number_format((float)($my_cal - $discountValue), '2', '.', '');
 
             $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
-            $response["amountWithoutGst"] = number_format((float)($my_cal - $total_gst-$discountValue), '2', '.', '');
-           
-            
+            $response["amountWithoutGst"] = number_format((float)($my_cal - $total_gst - $discountValue), '2', '.', '');
+
+
             $response["data"] = $getdata;
             echo $output = json_encode(array('responsedata' => $response));
             exit;
@@ -1668,45 +1682,47 @@ class Api_model extends My_model {
         }
     }
 
-    public function checkShoppingBasedDiscount($cartTotal,$branch_id){
-        $query = $this->db->query('SELECT *,('.$cartTotal.' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = '.$branch_id.' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+    public function checkShoppingBasedDiscount($cartTotal, $branch_id)
+    {
+        $query = $this->db->query('SELECT *,(' . $cartTotal . ' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = ' . $branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
         // lq();
         return $re;
         // return
     }
 
-    public function get_cart_variant($postdata) {
-        if (isset($postdata['user_id']) && $postdata['user_id'] != ''&& $postdata['user_id'] != 0) {
-                $user_id = $postdata['user_id'];
+    public function get_cart_variant($postdata)
+    {
+        if (isset($postdata['user_id']) && $postdata['user_id'] != '' && $postdata['user_id'] != 0) {
+            $user_id = $postdata['user_id'];
         } else {
             $user_id = 0;
         }
         if (isset($postdata['device_id'])) {
             $device_id = $postdata['device_id'];
         }
-        $data['select'] = ['mc.*','pw.product_id','pw.discount_price'];
+        $data['select'] = ['mc.*', 'pw.product_id', 'pw.discount_price'];
         if (isset($user_id) && $user_id != '') {
             $data['where']['mc.user_id'] = $user_id;
         }
-        if ((!isset($user_id) || $user_id == ''|| $user_id == 0) && isset($device_id)) {
+        if ((!isset($user_id) || $user_id == '' || $user_id == 0) && isset($device_id)) {
             $data['where']['mc.device_id'] = $device_id;
             $data['where']['mc.user_id'] = 0;
         }
-        if(isset($postdata['vendor_id']) && $postdata['vendor_id'] != ''){
+        if (isset($postdata['vendor_id']) && $postdata['vendor_id'] != '') {
             $data['where']['mc.vendor_id'] = $postdata['vendor_id'];
         }
         $product_weight_id = $postdata['product_weight_id'];
         $data['where']['product_weight_id'] = $product_weight_id;
         $data['table'] = 'my_cart as mc';
-        $data['join'] = ['product_weight as pw' =>['pw.id = mc.product_weight_id','INNER']];
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
 
-        return $this->selectFromJoin($data,true);
-
+        return $this->selectFromJoin($data, true);
     }
 
 
-    public function getProductGst($id) {
+    public function getProductGst($id)
+    {
         $data['table'] = TABLE_PRODUCT;
         $data['select'] = ['gst'];
         $data['where'] = ['id' => $id];
@@ -1714,17 +1730,18 @@ class Api_model extends My_model {
         return $result[0]->gst;
     }
     //set cart to user from device
-    function set_user_cart($postdata) {
+    function set_user_cart($postdata)
+    {
         $user_id = $postdata['user_id'];
         $device_id = $postdata['device_id'];
         $vendor_id = $postdata['vendor_id'];
         $data['select'] = ['branch_id'];
-        $data['where'] = ['user_id' => $user_id,'vendor_id'=>$vendor_id];
+        $data['where'] = ['user_id' => $user_id, 'vendor_id' => $vendor_id];
         $data['table'] = 'my_cart';
         $get_cart_user = $this->selectRecords($data);
         //delete when user add from different vendor
         $data['select'] = ['branch_id'];
-        $data['where'] = ['device_id' => $device_id, 'user_id' => 0,'vendor_id'=>$vendor_id];
+        $data['where'] = ['device_id' => $device_id, 'user_id' => 0, 'vendor_id' => $vendor_id];
         $data['table'] = 'my_cart';
         $get_cart_device = $this->selectRecords($data);
         if (count($get_cart_device) > 0 && count($get_cart_user) > 0) {
@@ -1737,7 +1754,7 @@ class Api_model extends My_model {
         }
         unset($data);
         $data['update'] = ['user_id' => $user_id];
-        $data['where'] = ['device_id' => $device_id, 'user_id' => 0,'vendor_id'=>$vendor_id];
+        $data['where'] = ['device_id' => $device_id, 'user_id' => 0, 'vendor_id' => $vendor_id];
         $data['table'] = 'my_cart';
         $result = $this->updateRecords($data);
         $data['select'] = ['*'];
@@ -1777,11 +1794,12 @@ class Api_model extends My_model {
         }
         return true;
     }
-    function get_filter($postdata) {
+    function get_filter($postdata)
+    {
         $vendor_id = $postdata['vendor_id'];
         $data['select'] = ['id', 'start_price', 'end_price', 'status', 'dt_added', 'dt_updated'];
         $data['table'] = 'price';
-        $data['where'] = ['status !=' => '9','vendor_id'=>$vendor_id];
+        $data['where'] = ['status !=' => '9', 'vendor_id' => $vendor_id];
         $data['order'] = 'start_price ASC,end_price DESC';
         $result = $this->selectRecords($data, true);
         // print_r($result);die;
@@ -1806,7 +1824,7 @@ class Api_model extends My_model {
         unset($getdata);
         $data['select'] = ['id', 'start_discount', 'end_discount', 'status', 'dt_added', 'dt_updated'];
         $data['table'] = 'discount';
-        $data['where'] = ['status !=' => '9','vendor_id'=>$vendor_id];
+        $data['where'] = ['status !=' => '9', 'vendor_id' => $vendor_id];
         $result = $this->selectRecords($data);
         $total_count = $this->countRecords($data);
         if (count($result) > 0) {
@@ -1815,7 +1833,7 @@ class Api_model extends My_model {
             $return[1]["data"] = $result;
         }
         if (isset($postdata['category_id']) && $postdata['category_id'] != '') {
-                $category_id = $postdata['category_id'];
+            $category_id = $postdata['category_id'];
 
             unset($data);
             $data['select'] = ['id', 'name', 'dt_added', 'dt_updated'];
@@ -1832,7 +1850,7 @@ class Api_model extends My_model {
             $return[2]["filter_name"] = 'Brand';
             $return[2]["data"] = $result;
             //            }
-            
+
         }
         // print_r($return);exit;
         $return[3]["filter_name"] = 'Sort By';
@@ -1844,84 +1862,87 @@ class Api_model extends My_model {
     }
 
 
-    public function AddUserAddress($postData){
-            // print_r($postData);die;
+    public function AddUserAddress($postData)
+    {
+        // print_r($postData);die;
         $data['table'] = TABLE_USER_ADDRESS;
         $data['select'] = ['*'];
         $data['where'] = [
-            'user_id'=>$postData['user_id'],
-            'status' =>'1'
+            'user_id' => $postData['user_id'],
+            'status' => '1'
         ];
         $ua = $this->selectRecords($data);
-        if(empty($ua)){
+        if (empty($ua)) {
             $status = '1';
-        }else{
+        } else {
             $status = '0';
         }
         unset($data);
         $data['table'] = TABLE_USER_ADDRESS;
         $data['insert'] = [
-                            'user_id' => $postData['user_id'],
-                            'name'=>$postData['name'],
-                            'pincode'=>$postData['pincode'],
-                            'address'=>$postData['address'],
-                            'landmark'=>$postData['landmark'],
-                            'city'=>$postData['city'],
-                            'state'=>$postData['state'],
-                            'country'=>$postData['country'],
-                            'phone'=>$postData['phone'],
-                            'latitude'=>$postData['latitude'],
-                            'longitude'=>$postData['longitude'],
-                            'status'=>$status,
-                            'dt_added'=>strtotime(DATE_TIME),
-                            'dt_updated'=>strtotime(DATE_TIME),
-                          ];
+            'user_id' => $postData['user_id'],
+            'name' => $postData['name'],
+            'pincode' => $postData['pincode'],
+            'address' => $postData['address'],
+            'landmark' => $postData['landmark'],
+            'city' => $postData['city'],
+            'state' => $postData['state'],
+            'country' => $postData['country'],
+            'phone' => $postData['phone'],
+            'latitude' => $postData['latitude'],
+            'longitude' => $postData['longitude'],
+            'status' => $status,
+            'dt_added' => strtotime(DATE_TIME),
+            'dt_updated' => strtotime(DATE_TIME),
+        ];
         // echo '2';
         // print_r($data['insert']);
         // exit();
         return $this->insertRecord($data);
     }
 
-    public function set_default_address($postData){
+    public function set_default_address($postData)
+    {
         $address_id = $postData['address_id'];
         $user_id = $postData['user_id'];
         $data['table'] = TABLE_USER_ADDRESS;
-        $data['update'] = ['status'=>'0'];
+        $data['update'] = ['status' => '0'];
         $data['where'] = [
-            'user_id'=>$user_id,
+            'user_id' => $user_id,
         ];
         $ua = $this->updateRecords($data);
         unset($data);
         $data['table'] = TABLE_USER_ADDRESS;
-        $data['update'] = ['status'=>'1'];
-        $data['where'] = ['id'=>$address_id];
+        $data['update'] = ['status' => '1'];
+        $data['where'] = ['id' => $address_id];
         return $this->updateRecords($data);
     }
 
-    function validate_promocode($postData){
+    function validate_promocode($postData)
+    {
         $user_id = $postData['user_id'];
         $promocode = $postData['promocode'];
         $branch_id = $postData['branch_id'];
-        $date = date('Y-m-d'); 
-        $data['where'] = ['branch_id'=>$branch_id,'name'=>$promocode];
+        $date = date('Y-m-d');
+        $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
 
-        if(empty($promocode)){
+        if (empty($promocode)) {
             $response["success"] = 0;
-            $response["message"] = "No Promocode Found";   
+            $response["message"] = "No Promocode Found";
             return $response;
         }
 
-        if($date < $promocode[0]->start_date){
+        if ($date < $promocode[0]->start_date) {
             $response["success"] = 0;
-            $response["message"] = "Promocode is not started yet";   
+            $response["message"] = "Promocode is not started yet";
             return $response;
         }
 
-        if($date > $promocode[0]->end_date){
+        if ($date > $promocode[0]->end_date) {
             $response["success"] = 0;
-            $response["message"] = "Promocode is expiered";   
+            $response["message"] = "Promocode is expiered";
             return $response;
         }
 
@@ -1931,15 +1952,15 @@ class Api_model extends My_model {
         $sub_total = number_format((float)$my_cart_result['sub_total'], 2, '.', '');
         $total_price = number_format((float)$sub_total, 2, '.', '');
 
-        if($total_price < $promocode[0]->min_cart){
+        if ($total_price < $promocode[0]->min_cart) {
             $response["success"] = 0;
-            $response["message"] = "Cart Minimum ".$promocode[0]->min_cart.' amount is required';   
+            $response["message"] = "Cart Minimum " . $promocode[0]->min_cart . ' amount is required';
             return $response;
         }
 
-        if($total_price > $promocode[0]->max_cart){
+        if ($total_price > $promocode[0]->max_cart) {
             $response["success"] = 0;
-            $response["message"] = "Maximum ".$promocode[0]->max_cart.' Cart amount is required';   
+            $response["message"] = "Maximum " . $promocode[0]->max_cart . ' Cart amount is required';
             return $response;
         }
 
@@ -1947,31 +1968,29 @@ class Api_model extends My_model {
         $data['select'] = ['count(*) as count'];
         $data['where'] = ['promocode_id' => $promocode[0]->id];
         $data['table'] = TABLE_ORDER_PROMOCODE;
-        $order_promocode = $this->selectRecords($data); 
+        $order_promocode = $this->selectRecords($data);
 
-        if($order_promocode[0]->count >= $promocode[0]->max_use){
+        if ($order_promocode[0]->count >= $promocode[0]->max_use) {
             $response["success"] = 0;
-            $response["message"] = "Promocode is reached limit";   
+            $response["message"] = "Promocode is reached limit";
             return $response;
         }
 
-        $calculate = ($total_price / 100 ) * $promocode[0]->percentage;
+        $calculate = ($total_price / 100) * $promocode[0]->percentage;
 
         $response["success"] = 1;
-        $response["message"] = "Promocode applied";   
-        $response["data"] = $calculate;   
+        $response["message"] = "Promocode applied";
+        $response["data"] = $calculate;
         return $response;
-
-
-
     }
 
-    function getCartTotal($user_id){
-        $data['join'] = ['product_weight as pw' =>['pw.id = mc.product_weight_id','INNER']];       
+    function getCartTotal($user_id)
+    {
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
         $data['table'] = 'my_cart as mc';
-        $data['select'] = ['sum(pw.discount_price * mc.quantity ) AS sub_total','sum((pw.price - pw.discount_price) * mc.quantity) AS total_savings', 'count(mc.id) AS cart_items','COUNT(*) as total_item'];
-        $data['where'] = ['mc.status !='=>'9','mc.user_id'=>$user_id];
-        return $this->selectFromJoin($data,true);
+        $data['select'] = ['sum(pw.discount_price * mc.quantity ) AS sub_total', 'sum((pw.price - pw.discount_price) * mc.quantity) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+        $data['where'] = ['mc.status !=' => '9', 'mc.user_id' => $user_id];
+        return $this->selectFromJoin($data, true);
     }
 
     // public function checkUserNotDelete($user_id){
@@ -1981,8 +2000,9 @@ class Api_model extends My_model {
     //     return $this->selectRecords($data);
     // }
 
-    function checkout($postdata){
-     
+    function checkout($postdata)
+    {
+
         $user_id = $_POST['user_id'];
         // $isUserExist = $this->checkUserNotDelete($user_id);
         // if(!empty($isUserExist) && $isUserExist[0]->status == '9'){
@@ -2007,9 +2027,9 @@ class Api_model extends My_model {
         $refundTxnId = $_POST['refundTxnId']; // this paymentIntent(stipe),paytm(order_id), use for refund if pament done via mobile app
         $isSelfPickup = $_POST['isSelfPickup'];
         $delivery_date = $_POST['delivery_date'];
-     
+
         $profit_per = 0;
-        if ($time_slot_id == - 1) {
+        if ($time_slot_id == -1) {
             $time_slot_id = $this->getRandomTimeSlot();
         }
         $get_persentage = $this->get_profit_per();
@@ -2021,21 +2041,21 @@ class Api_model extends My_model {
         $cartTotal = $my_cart_result['sub_total'];
 
         $discountValue = 0;
-        $shoppingDiscount = $this->checkShoppingBasedDiscount($cartTotal,$branch_id);
+        $shoppingDiscount = $this->checkShoppingBasedDiscount($cartTotal, $branch_id);
         // dd($shoppingDiscount);
-        if(!empty($shoppingDiscount)){
-          if($cartTotal >= $shoppingDiscount[0]->cart_amount){
-            $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-            $discountValue = $cartTotal * $discountPercentage/100;
-            $discountValue = number_format((float)$discountValue,2,'.','');
-          }
+        if (!empty($shoppingDiscount)) {
+            if ($cartTotal >= $shoppingDiscount[0]->cart_amount) {
+                $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+                $discountValue = $cartTotal * $discountPercentage / 100;
+                $discountValue = number_format((float)$discountValue, 2, '.', '');
+            }
         }
 
         if (isset($_POST['payment_type']) && isset($_POST['branch_id']) && isset($_POST['time_slot_id'])) {
             if (isset($_POST['user_id'])) {
 
                 $this->db->query('LOCK TABLES my_cart as mc WRITE,`order` WRITE,`order_details` WRITE,product_weight as pw WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
-                
+
                 sleep(0.751);
 
 
@@ -2058,20 +2078,21 @@ class Api_model extends My_model {
 
                 $promocode_amount = 0;
 
-                if(isset($postdata['promocode']) && $postdata['promocode'] !=''){
+                if (isset($postdata['promocode']) && $postdata['promocode'] != '') {
                     unset($data);
-                    $data['where'] = ['branch_id'=>$branch_id,'name'=>$postdata['promocode']];
+                    $data['where'] = ['branch_id' => $branch_id, 'name' => $postdata['promocode']];
                     $data['table'] = TABLE_PROMOCODE;
                     $promocodeData = $this->selectRecords($data);
 
-                    if(!empty($promocodeData)){
-                        $promocode_amount =  ($total_price / 100 ) * $promocodeData[0]->percentage;
+                    if (!empty($promocodeData)) {
+                        $promocode_amount =  ($total_price / 100) * $promocodeData[0]->percentage;
                     }
                 }
-                
+
 
                 /*Generate Order Number*/
-                function random_orderNo($length = 10) {
+                function random_orderNo($length = 10)
+                {
                     $chars = "1234567890";
                     $order = substr(str_shuffle($chars), 0, $length);
                     return $order;
@@ -2083,59 +2104,59 @@ class Api_model extends My_model {
                 /*Order Details*/
 
                 unset($data);
-               $my_order_result = $this->getCart($user_id);
+                $my_order_result = $this->getCart($user_id);
                 if (!empty($my_order_result)) {
                     foreach ($my_order_result as $my_order) {
                         $var_id = $my_order->product_weight_id;
                         $qnt = $my_order->quantity;
-                        $updatedQTY = $this->check_udpate_quantity($var_id,$qnt,$user_id);
-                        if(!$updatedQTY){
+                        $updatedQTY = $this->check_udpate_quantity($var_id, $qnt, $user_id);
+                        if (!$updatedQTY) {
                             continue;
                         }
                     }
                     /*Order*/
-                     $data['insert'] = [
-                            'order_from' => '1', 
-                            'user_id' => $user_id, 
-                            'branch_id' => $branch_id, 
-                            'user_address_id' => $user_address_id, 
-                            'time_slot_id' => $time_slot_id, 
-                            'payment_type' => $payment_type, 
-                            'total_saving' => $total_savings + $promocode_amount, 
-                            'total_item' => $total_item, 
-                            'sub_total' => $sub_total,
-                            'delivery_charge' => $delivery_charge,
-                            'total' => $total_price,
-                            'payable_amount' => $total_price + $delivery_charge - $promocode_amount - $discountValue,
-                            'order_no' => $iOrderNo,
-                            'orderId_payment_gateway'=>$refundTxnId,
-                            'user_gst_number' => $user_gst_number,
-                            'status' => '1',
-                            'isSelfPickup' => $isSelfPickup,
-                            'delivery_date' => $delivery_date,
-                            'payment_transaction_id' => $transaction_id,
-                            'paymentMethod' => $paymentMethod,
-                            'name' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->name : $user[0]->fname, 
-                            'mobile' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->phone : $user[0]->phone, 
-                            'delivered_address' => $address, 
-                            'promocode_used'=> (isset($promocode_amount) && $promocode_amount > 0)?1:0,
-                            'shopping_amount_based_discount'=>$discountValue,
-                            'dt_added' => strtotime(DATE_TIME), 
-                            'dt_updated' => strtotime(DATE_TIME)
-                        ];
-                 
+                    $data['insert'] = [
+                        'order_from' => '1',
+                        'user_id' => $user_id,
+                        'branch_id' => $branch_id,
+                        'user_address_id' => $user_address_id,
+                        'time_slot_id' => $time_slot_id,
+                        'payment_type' => $payment_type,
+                        'total_saving' => $total_savings + $promocode_amount,
+                        'total_item' => $total_item,
+                        'sub_total' => $sub_total,
+                        'delivery_charge' => $delivery_charge,
+                        'total' => $total_price,
+                        'payable_amount' => $total_price + $delivery_charge - $promocode_amount - $discountValue,
+                        'order_no' => $iOrderNo,
+                        'orderId_payment_gateway' => $refundTxnId,
+                        'user_gst_number' => $user_gst_number,
+                        'status' => '1',
+                        'isSelfPickup' => $isSelfPickup,
+                        'delivery_date' => $delivery_date,
+                        'payment_transaction_id' => $transaction_id,
+                        'paymentMethod' => $paymentMethod,
+                        'name' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->name : $user[0]->fname,
+                        'mobile' => (isset($userDetails) && !empty($userDetails)) ? $userDetails[0]->phone : $user[0]->phone,
+                        'delivered_address' => $address,
+                        'promocode_used' => (isset($promocode_amount) && $promocode_amount > 0) ? 1 : 0,
+                        'shopping_amount_based_discount' => $discountValue,
+                        'dt_added' => strtotime(DATE_TIME),
+                        'dt_updated' => strtotime(DATE_TIME)
+                    ];
+
                     $data['table'] = 'order';
                     $last_insert_id = $this->insertRecord($data);
-            
+
                     $otpForSelfPickup = '';
-                    
+
                     // if (isset($_POST['isSelfPickup']) && $_POST['isSelfPickup'] == '1') {
-                        $otpForSelfPickup = rand(1000, 9999);
-                        $this->selfPickUp_otp($last_insert_id, $user_id, $otpForSelfPickup);
+                    $otpForSelfPickup = rand(1000, 9999);
+                    $this->selfPickUp_otp($last_insert_id, $user_id, $otpForSelfPickup);
                     // }
 
                     $this->load->model('api_v3/api_admin_model');
-                    $order_log_data = array('order_id' => $last_insert_id, 'status'=>'1' );
+                    $order_log_data = array('order_id' => $last_insert_id, 'status' => '1');
                     $this->api_admin_model->order_logs($order_log_data);
 
 
@@ -2143,67 +2164,65 @@ class Api_model extends My_model {
                         $var_id = $my_order->product_weight_id;
                         $qnt = $my_order->quantity;
                         $calculation_price = $my_order->discount_price * $my_order->quantity;
-                   
+
                         $data['insert'] = [
-                                        'order_id' => $last_insert_id, 
-                                        'branch_id' => $my_order->branch_id, 
-                                        'user_id' => $my_order->user_id, 
-                                        'product_id' => $my_order->product_id, 
-                                        'weight_id' => $my_order->weight_id, 
-                                        'product_weight_id' => $my_order->product_weight_id, 
-                                        'quantity' => $my_order->quantity, 
-                                        'actual_price' => $my_order->actual_price,
-                                        'discount' => $my_order->discount_per,
-                                        'discount_price' => $my_order->discount_price,
-                                        'calculation_price' => $calculation_price,
-                                        'status' => '1',
-                                        'dt_added' => strtotime(DATE_TIME),
-                                        'dt_updated' => strtotime(DATE_TIME)
-                                    ];
+                            'order_id' => $last_insert_id,
+                            'branch_id' => $my_order->branch_id,
+                            'user_id' => $my_order->user_id,
+                            'product_id' => $my_order->product_id,
+                            'weight_id' => $my_order->weight_id,
+                            'product_weight_id' => $my_order->product_weight_id,
+                            'quantity' => $my_order->quantity,
+                            'actual_price' => $my_order->actual_price,
+                            'discount' => $my_order->discount_per,
+                            'discount_price' => $my_order->discount_price,
+                            'calculation_price' => $calculation_price,
+                            'status' => '1',
+                            'dt_added' => strtotime(DATE_TIME),
+                            'dt_updated' => strtotime(DATE_TIME)
+                        ];
                         $data['table'] = 'order_details';
                         $last_order_d_id = $this->insertRecord($data);
 
-                        
+
                         $total_profit = ($calculation_price * $profit_per) / 100;
-                       
+
                         $this->insert_profit($last_insert_id, $last_order_d_id, $my_order->branch_id, $total_profit);
-                       
-                        
                     }
 
-                 if(isset($postdata['promocode']) && $postdata['promocode'] !=''){
-                    
-                    if(!empty($promocodeData)){
-                        $promocode_id = $promocodeData[0]->id;
-                        $promocode_name = $promocodeData[0]->name;
-                        $promocode_percentage = $promocodeData[0]->percentage;
-                        unset($data);
-                        $data['insert'] =[
-                                            'order_id'=>$last_insert_id,
-                                            'promocode_id'=>$promocode_id,
-                                            'promocode_name'=>$promocode_name,
-                                            'percentage'=>$promocode_percentage,
-                                            'amount'=>$promocode_amount,
-                                            'dt_created'=>DATE_TIME,
-                                            'dt_updated'=>DATE_TIME
-                                        ];
-                        $data['table'] = TABLE_ORDER_PROMOCODE;
-                        $this->insertRecord($data);
+                    if (isset($postdata['promocode']) && $postdata['promocode'] != '') {
+
+                        if (!empty($promocodeData)) {
+                            $promocode_id = $promocodeData[0]->id;
+                            $promocode_name = $promocodeData[0]->name;
+                            $promocode_percentage = $promocodeData[0]->percentage;
+                            unset($data);
+                            $data['insert'] = [
+                                'order_id' => $last_insert_id,
+                                'promocode_id' => $promocode_id,
+                                'promocode_name' => $promocode_name,
+                                'percentage' => $promocode_percentage,
+                                'amount' => $promocode_amount,
+                                'dt_created' => DATE_TIME,
+                                'dt_updated' => DATE_TIME
+                            ];
+                            $data['table'] = TABLE_ORDER_PROMOCODE;
+                            $this->insertRecord($data);
+                        }
                     }
-                }
 
 
                     /*Remove From My Cart*/
                     $this->db->query('UNLOCK TABLES;');
                     $this->deleteUserCart($user_id);
                     /*Admin Notification*/
-                    $message = 'new order '.$iOrderNo ;
+                    $message = 'new order ' . $iOrderNo;
                     $branchNotification = array(
                         'order_id'         =>  $last_insert_id,
                         'branch_id'          =>  $branch_id,
-                        'notification_type'=> 'new_order',
+                        'notification_type' => 'new_order',
                         'message'          => $message,
-                        'status'           =>'0',
+                        'status'           => '0',
                         'dt_created'       => DATE_TIME,
                         'dt_updated'       => DATE_TIME
                     );
@@ -2243,14 +2262,16 @@ class Api_model extends My_model {
             echo $output;
         }
     }
-    function getCart($user_id){
-        $data['select'] = ['mc.*','pw.product_id','pw.weight_id','pw.price as actual_price','pw.discount_per','pw.discount_price'];
-        $data['where'] = ['mc.status !='=>'9','mc.user_id'=>$user_id];
-        $data['join'] = ['product_weight as pw' =>['pw.id = mc.product_weight_id','INNER']];
+    function getCart($user_id)
+    {
+        $data['select'] = ['mc.*', 'pw.product_id', 'pw.weight_id', 'pw.price as actual_price', 'pw.discount_per', 'pw.discount_price'];
+        $data['where'] = ['mc.status !=' => '9', 'mc.user_id' => $user_id];
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
         $data['table'] = 'my_cart as mc';
         return $this->selectFromJoin($data);
     }
-    function delete_cart($postdata) {
+    function delete_cart($postdata)
+    {
         if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
             $user_id = $postdata['user_id'];
         } else {
@@ -2275,16 +2296,18 @@ class Api_model extends My_model {
         }
         return true;
     }
-        //update quantity when checkout
-    function update_quantity($product_weight_id, $quantity) {
+    //update quantity when checkout
+    function update_quantity($product_weight_id, $quantity)
+    {
         $data['update'] = ['quantity' => $quantity, 'temp_quantity' => '0'];
         $data['where']['id'] = $product_weight_id;
         $data['table'] = 'product_weight';
         $this->updateRecords($data);
         return true;
     }
-        //check profit persentage %%
-    function get_profit_per() {
+    //check profit persentage %%
+    function get_profit_per()
+    {
         $data['select'] = ['value'];
         $data['where'] = ['request_id' => '2'];
         $data['table'] = 'set_default';
@@ -2293,16 +2316,18 @@ class Api_model extends My_model {
             return $result[0]->value;
         }
     }
-        //insert profit after checkout
-    function insert_profit($order_id, $order_d_id, $branch_id, $total_profit) {
+    //insert profit after checkout
+    function insert_profit($order_id, $order_d_id, $branch_id, $total_profit)
+    {
         $date = DATE_TIME;
         $data['insert'] = array('order_id' => $order_id, 'order_detail_id' => $order_d_id, 'branch_id' => $branch_id, 'total_profit' => $total_profit, 'dt_created' => $date, 'dt_updated' => $date);
         $data['table'] = 'profit';
         $this->insertRecord($data);
     }
 
-    function get_delivery_charge($lat, $long, $branch_id,$cartTotal) {
-        $data['select'] = ['vendor_id','latitude', 'longitude'];
+    function get_delivery_charge($lat, $long, $branch_id, $cartTotal)
+    {
+        $data['select'] = ['vendor_id', 'latitude', 'longitude'];
         $data['table'] = 'branch';
         $data['where'] = ['id' => $branch_id];
         $get_vandor_address = $this->selectRecords($data);
@@ -2313,9 +2338,9 @@ class Api_model extends My_model {
         // $data['select'] = ['price'];
         $data['select'] = ['id'];
         $data['table'] = 'delivery_charge';
-        $data['where'] = ['start_range <=' => $getkm, 'end_range >=' => $getkm,'vendor_id'=>$vendor_id];
+        $data['where'] = ['start_range <=' => $getkm, 'end_range >=' => $getkm, 'vendor_id' => $vendor_id];
         // $get_range = $this->selectRecords($data);
-        $range_id = $this->selectRecords($data,true);
+        $range_id = $this->selectRecords($data, true);
 
         unset($data);
         $data['select'] = ['delivery_charge'];
@@ -2328,7 +2353,7 @@ class Api_model extends My_model {
             $res = '0.00';
             return $res;
         }
-        
+
         // print_r($get_range);die;
         // if (count($get_range)) {
         //     return $get_range[0]->price;
@@ -2336,13 +2361,15 @@ class Api_model extends My_model {
         //     return 'N';
         // }
     }
-    function circle_distance($lat1, $lon1, $lat2, $lon2) {
+    function circle_distance($lat1, $lon1, $lat2, $lon2)
+    {
         $rad = 3.14 / 180;
         // $rad = 3.14 / 5000000;
         return acos(sin($lat2 * ($rad)) * sin($lat1 * $rad) + cos($lat2 * $rad) * cos($lat1 * $rad) * cos($lon2 * $rad - $lon1 * $rad)) * 6371;
     }
-   
-    function notification_status($id) {
+
+    function notification_status($id)
+    {
         $data['select'] = ['notification_status'];
         $data['where'] = ['id' => $id];
         $data['table'] = "user";
@@ -2350,7 +2377,8 @@ class Api_model extends My_model {
         return $response[0]['notification_status'];
     }
 
-    function push_notify($postData) {
+    function push_notify($postData)
+    {
         if (isset($postData['status'])) {
             if ($postData['status'] == '') {
                 $data['select'] = ['notification_status'];
@@ -2388,46 +2416,47 @@ class Api_model extends My_model {
         }
         return $response;
     }
-    public function verify_mobile($postData) {
-       
+    public function verify_mobile($postData)
+    {
+
         $user_id = $postData['user_id'];
         $country_code = $postData['country_code'];
-        $check_str = str_split($country_code); 
-        if($check_str[0] != '+'){
-            $country_code = '+'.$country_code;
+        $check_str = str_split($country_code);
+        if ($check_str[0] != '+') {
+            $country_code = '+' . $country_code;
         }
         $mobile = $postData['phone'];
 
         $userData['select'] = ['*'];
         $userData['table'] = 'user';
-        $userData['where'] = ['country_code' => $postData['country_code'],'phone'=>$mobile,'id !=' => $user_id,'status !=' =>'9','vendor_id'=>$postData['vendor_id']];
+        $userData['where'] = ['country_code' => $postData['country_code'], 'phone' => $mobile, 'id !=' => $user_id, 'status !=' => '9', 'vendor_id' => $postData['vendor_id']];
         $userDetail = $this->selectRecords($userData);
-        if(!empty($userDetail) ){
+        if (!empty($userDetail)) {
             $response["success"] = 0;
             $response["message"] = "This mobile number is linked with another account";
             return $response;
         }
 
-        $mobile_number = $country_code.''.$mobile;
+        $mobile_number = $country_code . '' . $mobile;
         $generator = "135792468";
-        $otp = rand(1111,9999);
-        if($mobile == '9875105843'){
-            $otp = '1234'; 
+        $otp = rand(1111, 9999);
+        if ($mobile == '9875105843') {
+            $otp = '1234';
         }
-        
+
         $data = array('otp' => $otp, 'dt_updated' => strtotime(DATE_TIME));
         $res = $this->db->update("user", $data, array("id" => $postData['user_id']));;
         // $this->sendOtp($mobile_number,$otp);
-        
+
         if ($res) {
-            if($_SERVER['SERVER_NAME']=='ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com'){
-                $this->send_otp_int($mobile_number,$otp);
-            }else{
+            if ($_SERVER['SERVER_NAME'] == 'ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com') {
+                $this->send_otp_int($mobile_number, $otp);
+            } else {
                 // $mobile_number = '+91'.$mobile;
-                $this->sendOtp($mobile_number,$otp);
+                $this->sendOtp($mobile_number, $otp);
             }
 
-            
+
 
 
             $response = array();
@@ -2438,34 +2467,35 @@ class Api_model extends My_model {
         }
     }
 
-    public function sendOtp($mobile_number, $otp) {
+    public function sendOtp($mobile_number, $otp)
+    {
         // echo '1';die;
-       $ch = curl_init();
-            $sms = urlencode("Thank you for registration. Your OTP is ".$otp." CMEXPE");
+        $ch = curl_init();
+        $sms = urlencode("Thank you for registration. Your OTP is " . $otp . " CMEXPE");
 
-            $url = "http://nimbusit.info/api/pushsms.php?user=104803&key=010UQmX0MjVAhakszP25&sender=CMEXPE&mobile=".$mobile_number."&text=".$sms."&entityid=1701163101500457392&templateid=1707163213124829525";
+        $url = "http://nimbusit.info/api/pushsms.php?user=104803&key=010UQmX0MjVAhakszP25&sender=CMEXPE&mobile=" . $mobile_number . "&text=" . $sms . "&entityid=1701163101500457392&templateid=1707163213124829525";
 
-            // print_r($url);die;
-            curl_setopt($ch, CURLOPT_URL, $url); 
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-            $output = curl_exec($ch);
-            curl_close($ch); 
-            return true;
-    
+        // print_r($url);die;
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return true;
     }
 
-    public function send_otp_int($mobile_number,$otp){
+    public function send_otp_int($mobile_number, $otp)
+    {
         // echo TWILO_ACCOUNT_SID;die;
         // $accountSid = 'AC7feb595d1a3d1f813b0348c0aec36718'; //its testing
         $accountSid = TWILO_ACCOUNT_SID;
         $token = TWILO_TOKEN;
-        $url = 'https://api.twilio.com/2010-04-01/Accounts/'.TWILO_ACCOUNT_SID.'/Messages.json';
+        $url = 'https://api.twilio.com/2010-04-01/Accounts/' . TWILO_ACCOUNT_SID . '/Messages.json';
 
         // $otp = mt_rand('100000','999999');
         $data = [
-         'From' => TWILO_PHONE_NUMBER,
-         'To' => $mobile_number,
-         'Body' => "Your Verification code is ".$otp,
+            'From' => TWILO_PHONE_NUMBER,
+            'To' => $mobile_number,
+            'Body' => "Your Verification code is " . $otp,
 
         ];
         // print_r($data);die;
@@ -2485,122 +2515,126 @@ class Api_model extends My_model {
 
 
 
-        public function verify_mobile_verification_code($postData) {
-            $verifyOtp = $this->db->get_where('user', array('id' => $postData['user_id'], 'otp' => $postData['otp']))->result();
-            if (count($verifyOtp) > 0) {
-                $this->db->update('user', array('phone' => $postData['phone'], 'country_code' => $postData['country_code'], 'otp' => NULL, 'is_verify' => '1'), array('id' => $postData['user_id']));
+    public function verify_mobile_verification_code($postData)
+    {
+        $verifyOtp = $this->db->get_where('user', array('id' => $postData['user_id'], 'otp' => $postData['otp']))->result();
+        if (count($verifyOtp) > 0) {
+            $this->db->update('user', array('phone' => $postData['phone'], 'country_code' => $postData['country_code'], 'otp' => NULL, 'is_verify' => '1'), array('id' => $postData['user_id']));
 
-                // $data['select'] = ['*'];
-                // $data['table'] = 'user';
-                // $data['where'] = ['country_code' => $postData['country_code'],'phone'=>$mobile,'user_id !=' $user_id];
-                // $other = $this->selectRecords($data);
-                // foreach($other as $key => $value){
-                //     unset($data);
-                //     $data['update'] =>['status'=>'9'];
-                //     $data['where'] = ['id'=>$value->id];
-                //     $data['table'] = 'user';
-                //     $this->updateRecords($data); 
-                // }
+            // $data['select'] = ['*'];
+            // $data['table'] = 'user';
+            // $data['where'] = ['country_code' => $postData['country_code'],'phone'=>$mobile,'user_id !=' $user_id];
+            // $other = $this->selectRecords($data);
+            // foreach($other as $key => $value){
+            //     unset($data);
+            //     $data['update'] =>['status'=>'9'];
+            //     $data['where'] = ['id'=>$value->id];
+            //     $data['table'] = 'user';
+            //     $this->updateRecords($data); 
+            // }
 
 
-                $userData['select'] = ['*'];
-                $userData['table'] = 'user';
-                $userData['where'] = ['id' => $postData['user_id']];
-                $userDetail = $this->selectRecords($userData);
+            $userData['select'] = ['*'];
+            $userData['table'] = 'user';
+            $userData['where'] = ['id' => $postData['user_id']];
+            $userDetail = $this->selectRecords($userData);
 
-                $postdata = array('user_id' => $postData['user_id'], 'device_id' => $postData['device_id'],'vendor_id'=>$postData['vendor_id']);
-                $this->set_user_cart($postdata);
-                $total_count = $this->get_total($postdata);
-                $notification_status = $this->notification_status($postData['user_id']);
-                if($userDetail[0]->profileimage != '' ||  $userDetail[0]->profileimage != NULL){
-                    $userDetail[0]->profileimage = base_url().'public/images'.$this->folder.'user_profile/'.$userDetail[0]->profileimage; 
-                }else{
-                    $userDetail[0]->profileimage =  "";
-                }
-
-                $datass = array('id' => $userDetail[0]->id, 'fname' => $userDetail[0]->fname, 'lname' => $userDetail[0]->lname, 'email' => $userDetail[0]->email, 'phone' => $userDetail[0]->phone, 'user_gst_number' => ($userDetail[0]->user_gst_number == null) ? "" : $userDetail[0]->user_gst_number, 'login_type' => $userDetail[0]->login_type, 'cart_item' => $total_count[0]->cart_items, 'notification_status' => $notification_status, 'mobile_verify' => $userDetail[0]->is_verify,'profileimage'=>$userDetail[0]->profileimage);
-                
-                $response["success"] = 1;
-                $response["message"] = "otp is verifired";
-                $response["user_data"] = $datass;
-                return $response;
+            $postdata = array('user_id' => $postData['user_id'], 'device_id' => $postData['device_id'], 'vendor_id' => $postData['vendor_id']);
+            $this->set_user_cart($postdata);
+            $total_count = $this->get_total($postdata);
+            $notification_status = $this->notification_status($postData['user_id']);
+            if ($userDetail[0]->profileimage != '' ||  $userDetail[0]->profileimage != NULL) {
+                $userDetail[0]->profileimage = base_url() . 'public/images' . $this->folder . 'user_profile/' . $userDetail[0]->profileimage;
             } else {
-                $response["success"] = 0;
-                $response["message"] = "Code is unvalid";
-                return $response;
+                $userDetail[0]->profileimage =  "";
             }
-        }
-        function logout($postdata) {
-            $user_id = $postdata['user_id'];
-            $vendor_id = $postdata['vendor_id'];
-            $device_id = $postdata['device_id'];
-            $data['where']['user_id'] = $user_id;
-            $data['table'] = "device";
-            $this->deleteRecords($data);
-            unset($data);
-            $data['where']['device_id'] = $device_id;
-            $data['table'] = "device";
-            $this->deleteRecords($data);
 
-            $login_logs = [
-                'user_id' => $user_id,
-                'vendor_id' =>  $vendor_id,
-                'status' => 'logout',
-                'type' => 'user',
-                'dt_created' => DATE_TIME
-            ];
-            $this->load->model('api_v3/common_model','v2_common_model');
-            $this->v2_common_model->user_login_logout_logs($login_logs);
+            $datass = array('id' => $userDetail[0]->id, 'fname' => $userDetail[0]->fname, 'lname' => $userDetail[0]->lname, 'email' => $userDetail[0]->email, 'phone' => $userDetail[0]->phone, 'user_gst_number' => ($userDetail[0]->user_gst_number == null) ? "" : $userDetail[0]->user_gst_number, 'login_type' => $userDetail[0]->login_type, 'cart_item' => $total_count[0]->cart_items, 'notification_status' => $notification_status, 'mobile_verify' => $userDetail[0]->is_verify, 'profileimage' => $userDetail[0]->profileimage);
 
-            return true;
+            $response["success"] = 1;
+            $response["message"] = "otp is verifired";
+            $response["user_data"] = $datass;
+            return $response;
+        } else {
+            $response["success"] = 0;
+            $response["message"] = "Code is unvalid";
+            return $response;
         }
-        function cancle_order($postdata) {
-            $order_id = $postdata['order_id'];
-            $data['select'] = ['branch_id','order_status','order_no'];
-            $data['where'] = ['id' => $order_id];
-            $data['table'] = 'order';
-            $get = $this->selectRecords($data);
-            $branch_id = $get[0]->branch_id;
-            $order_no = $get[0]->order_no;
-            if(count($get)>0){
-                if($get[0]->order_status=='8'){
-                    return false;
-                }
-                $send_status = 'Cancelled';
-                $type = 'order_cancelled';
-                $message = $order_no .' is '.$send_status;
-                $branchNotification = array(
-                    'order_id'         =>  $order_id,
-                    'branch_id'          =>  $branch_id,
-                    'notification_type'=> $type,
-                    'message'          => $message,
-                    'status'           =>'0',
-                    'dt_created'       => DATE_TIME,
-                    'dt_updated'       => DATE_TIME
-                );
-                $this->pushAdminNotification($branchNotification); 
-                $this->cancle_order_quntity_reset($order_id);
-                unset($data);
-                $date = strtotime(DATE_TIME);
-                $data['update'] = ['order_status' => '9', 'dt_updated' => $date];
-                $data['where'] = ['id' => $order_id];
-                $data['table'] = 'order';
-                $this->updateRecords($data);
-                unset($data);
-                $data['where'] = ['order_id' => $order_id];
-                $data['table'] = 'delivery_order';
-                $this->deleteRecords($data);
-                $data['table'] = 'selfPickup_otp';
-                $this->deleteRecords($data);
-                return true;
-            }else{
+    }
+    function logout($postdata)
+    {
+        $user_id = $postdata['user_id'];
+        $vendor_id = $postdata['vendor_id'];
+        $device_id = $postdata['device_id'];
+        $data['where']['user_id'] = $user_id;
+        $data['table'] = "device";
+        $this->deleteRecords($data);
+        unset($data);
+        $data['where']['device_id'] = $device_id;
+        $data['table'] = "device";
+        $this->deleteRecords($data);
+
+        $login_logs = [
+            'user_id' => $user_id,
+            'vendor_id' =>  $vendor_id,
+            'status' => 'logout',
+            'type' => 'user',
+            'dt_created' => DATE_TIME
+        ];
+        $this->load->model('api_v3/common_model', 'v2_common_model');
+        $this->v2_common_model->user_login_logout_logs($login_logs);
+
+        return true;
+    }
+    function cancle_order($postdata)
+    {
+        $order_id = $postdata['order_id'];
+        $data['select'] = ['branch_id', 'order_status', 'order_no'];
+        $data['where'] = ['id' => $order_id];
+        $data['table'] = 'order';
+        $get = $this->selectRecords($data);
+        $branch_id = $get[0]->branch_id;
+        $order_no = $get[0]->order_no;
+        if (count($get) > 0) {
+            if ($get[0]->order_status == '8') {
                 return false;
             }
+            $send_status = 'Cancelled';
+            $type = 'order_cancelled';
+            $message = $order_no . ' is ' . $send_status;
+            $branchNotification = array(
+                'order_id'         =>  $order_id,
+                'branch_id'          =>  $branch_id,
+                'notification_type' => $type,
+                'message'          => $message,
+                'status'           => '0',
+                'dt_created'       => DATE_TIME,
+                'dt_updated'       => DATE_TIME
+            );
+            $this->pushAdminNotification($branchNotification);
+            $this->cancle_order_quntity_reset($order_id);
+            unset($data);
+            $date = strtotime(DATE_TIME);
+            $data['update'] = ['order_status' => '9', 'dt_updated' => $date];
+            $data['where'] = ['id' => $order_id];
+            $data['table'] = 'order';
+            $this->updateRecords($data);
+            unset($data);
+            $data['where'] = ['order_id' => $order_id];
+            $data['table'] = 'delivery_order';
+            $this->deleteRecords($data);
+            $data['table'] = 'selfPickup_otp';
+            $this->deleteRecords($data);
+            return true;
+        } else {
+            return false;
         }
-    function cancle_order_quntity_reset($order_id){
-        
+    }
+    function cancle_order_quntity_reset($order_id)
+    {
+
         $data['select'] = ['*'];
-        $data['where'] = ['order_id'=>$order_id];
+        $data['where'] = ['order_id' => $order_id];
         $data['table'] = 'order_details';
         $select = $this->selectRecords($data);
         // print_r($select);die;
@@ -2608,14 +2642,14 @@ class Api_model extends My_model {
             unset($data);
 
             $data['select'] = ['*'];
-            $data['where'] = ['id'=>$value->product_weight_id];
+            $data['where'] = ['id' => $value->product_weight_id];
             $data['table'] = 'product_weight';
             $get_variant = $this->selectRecords($data);
             $quantity = (int)$get_variant[0]->quantity;
             $updatedQTY = $quantity + (int)$value->quantity;
             unset($data);
-            $data['update'] = ['quantity'=>$updatedQTY];
-            $data['where'] = ['id'=>$value->product_weight_id];
+            $data['update'] = ['quantity' => $updatedQTY];
+            $data['where'] = ['id' => $value->product_weight_id];
             $data['table'] = 'product_weight';
             $this->updateRecords($data);
             unset($data);
@@ -2626,918 +2660,950 @@ class Api_model extends My_model {
 
         }
         // die;
-       return true;
+        return true;
     }
 
-        function check_quantity($qnt, $variant_id) {
-            $data['select'] = ['quantity','max_order_qty'];
-            $data['where'] = ['id' => $variant_id];
-            $data['table'] = 'product_weight';
-            $res = $this->selectRecords($data);
-            $stock_qnt = $res[0]->quantity;
-            $max_order_qty = $res[0]->max_order_qty;
-            if ($stock_qnt < $qnt) {
-                $response = array();
-                $response["success"] = 6;
-                $response["message"] = "Item is out of stock";
-                return $response;
-            }
-
-            if ($max_order_qty!='' && $max_order_qty!='0' && $qnt > $max_order_qty) {
-                $response = array();
-                $response["success"] = 6;
-                $response["message"] = "Maximum order quantity reached";
-                return $response;
-            }
+    function check_quantity($qnt, $variant_id)
+    {
+        $data['select'] = ['quantity', 'max_order_qty'];
+        $data['where'] = ['id' => $variant_id];
+        $data['table'] = 'product_weight';
+        $res = $this->selectRecords($data);
+        $stock_qnt = $res[0]->quantity;
+        $max_order_qty = $res[0]->max_order_qty;
+        if ($stock_qnt < $qnt) {
             $response = array();
-            $response["success"] = 1;
+            $response["success"] = 6;
+            $response["message"] = "Item is out of stock";
             return $response;
         }
 
-
-        function check_qnt($id) {
-            $data['select'] = ['quantity'];
-            $data['where'] = ['id' => $id];
-            $data['table'] = 'product_weight';
-            $res = $this->selectRecords($data);
-            $stock_qnt = $res[0]->quantity;
-            if ($stock_qnt <= 0 || $stock_qnt == '') {
-                return 1;
-            } else {
-                return 0;
-            }
+        if ($max_order_qty != '' && $max_order_qty != '0' && $qnt > $max_order_qty) {
+            $response = array();
+            $response["success"] = 6;
+            $response["message"] = "Maximum order quantity reached";
+            return $response;
         }
-        function get_product_list($postdata) {
-            $this->load->model('api_v3/common_model','co_model');
-            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
+        $response = array();
+        $response["success"] = 1;
+        return $response;
+    }
 
-            if(isset($postdata['defualt_product'])){
-                $defualt_product = $postdata['defualt_product'];
-            }else{
-                $defualt_product = '';
+
+    function check_qnt($id)
+    {
+        $data['select'] = ['quantity'];
+        $data['where'] = ['id' => $id];
+        $data['table'] = 'product_weight';
+        $res = $this->selectRecords($data);
+        $stock_qnt = $res[0]->quantity;
+        if ($stock_qnt <= 0 || $stock_qnt == '') {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    function get_product_list($postdata)
+    {
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
+
+        if (isset($postdata['defualt_product'])) {
+            $defualt_product = $postdata['defualt_product'];
+        } else {
+            $defualt_product = '';
+        }
+
+        $branch_id = $postdata['branch_id'];
+        $category_id = $postdata['category_id'];
+        $subcategory_id = $postdata['subcategory_id'];
+        if (isset($branch_id)) {
+            $limit = '10';
+            $offset = $postdata['offset'];
+            $cal = $limit * $offset;
+            if ($defualt_product == 1) {
+                $data['where'] = ['p.status !=' => '9', 'pw.status !=' => '9', 'p.branch_id' => $branch_id];
+            } else {
+                $data['where'] = ['p.status !=' => '9', 'pw.status !=' => '9', 'p.subcategory_id' => $subcategory_id, 'p.category_id' => $category_id];
             }
-            
-            $branch_id = $postdata['branch_id'];
-            $category_id = $postdata['category_id'];
-            $subcategory_id = $postdata['subcategory_id'];
-            if (isset($branch_id)) {
-                $limit = '10';
-                $offset = $postdata['offset'];
-                $cal = $limit * $offset;
-                if($defualt_product == 1){
-                $data['where'] = ['p.status !=' => '9','pw.status !=' => '9','p.branch_id'=>$branch_id];    
-                }else{
-                $data['where'] = ['p.status !=' => '9', 'pw.status !=' => '9','p.subcategory_id' => $subcategory_id, 'p.category_id' => $category_id];
-                }
-               
-                $data['join'] = ['product_weight  AS pw' => ['pw.product_id = p.id', 'INNER']];
-                $data['groupBy'] = 'p.id';
-                $data['table'] = 'product as p';
-                $results = $this->countRecords($data);
-              
-                $total_count = $results;
-              
-                unset($data);
-                $data['select'] = ['p.*'];
-                if($defualt_product == 1){
-                    $data['where'] = ['p.status !=' => '9','pw.status !=' => '9','pw.quantity >=' => '0','p.branch_id'=>$branch_id];    
-                }else{
+
+            $data['join'] = ['product_weight  AS pw' => ['pw.product_id = p.id', 'INNER']];
+            $data['groupBy'] = 'p.id';
+            $data['table'] = 'product as p';
+            $results = $this->countRecords($data);
+
+            $total_count = $results;
+
+            unset($data);
+            $data['select'] = ['p.*'];
+            if ($defualt_product == 1) {
+                $data['where'] = ['p.status !=' => '9', 'pw.status !=' => '9', 'pw.quantity >=' => '0', 'p.branch_id' => $branch_id];
+            } else {
                 $data['where'] = [
-                    'p.status !=' => '9', 'pw.status !=' => '9','pw.quantity >=' => '0', 
-                    'p.subcategory_id' => $subcategory_id, 
+                    'p.status !=' => '9', 'pw.status !=' => '9', 'pw.quantity >=' => '0',
+                    'p.subcategory_id' => $subcategory_id,
                     'p.category_id' => $category_id
-                    ];
-                }
-                $data['join'] = ['product_weight  AS pw' => ['pw.product_id = p.id', 'INNER']];
-                $data['order'] = 'min(pw.discount_price) * 1 ASC';
-                //order change on 8 march
-                $data['order'] = 'pw.quantity desc';
-                $data['limit'] = $limit;
-                if ($offset != 0) {
-                    $data['skip'] = $cal;
-                }
-                $data['groupBy'] = 'p.id';
-                $data['table'] = 'product as p';
-                $result = $this->selectFromJoin($data);
-                // print_r($result);exit;
-                // echo $this->db->last_query();exit;
-                unset($data);
-                if (count($result) > 0) {
-                    foreach ($result as $row => $p_row) {
-                        $product_id = $p_row->id;
-                        $data['select'] = ['pw.*', 'w.name as weighname'];
-                        $data['where'] = ['pw.status !=' => '9', 'pw.product_id' => $product_id];
-                        $data['join'] = ['weight  AS w' => ['pw.weight_id = w.id', 'LEFT'], 'product AS p' => ['pw.product_id = p.id', 'LEFT'], ];
-                     
-                        $data['order'] = 'pw.discount_price ASC';
-                        $data['table'] = 'product_weight as pw';
-                        $product_query = $this->selectFromJoin($data);
-                      
-                        unset($data);
-                        unset($getdata);
-                        foreach ($product_query as $r => $product_variant) {
-                            // print_r($product_query);exit;
-                            if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                                $product_variant->discount_price = $product_variant->without_gst_price;
-                            }
-
-                            $product_variant_id = $product_variant->id;
-                          
-                            $package_id = $product_variant->package;
-                            $package_name = $this->get_package($package_id);
-                            unset($data);
-                            $data['select'] = ['*'];
-                            $data['where'] = ['status !=' => '9', 'product_id' => $product_id, 'product_variant_id' => $product_variant_id];
-                            $data['table'] = 'product_image ';
-                            $product_image = $this->selectRecords($data);
-                           
-                            if (count($product_image) <= 0) {
-                                $image = '';
-                            } else {
-                                $image = base_url() . 'public/images/'.$this->folder.'product_image/' . $product_image[0]->image;
-                            }
-                            $image = str_replace(' ', '%20', $image);
-                            unset($data);
-                            $data['select'] = ['quantity'];
-                            $data['where']['product_weight_id'] = $product_variant_id;
-                            $data['where']['status !='] = 9;
-                            $data['where']['branch_id'] = $branch_id;
-                            if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
-                                $data['where']['user_id'] = $postdata['user_id'];
-                            } else {
-                                if (isset($postdata['device_id'])) {
-                                    $data['where']['device_id'] = $postdata['device_id'];
-                                    $data['where']['user_id'] = 0;
-                                }
-                            }
-                            $data['table'] = 'my_cart';
-                            $result_cart = $this->selectRecords($data);
-                            if (count($result_cart) > 0) {
-                                $my_cart_quantity = $result_cart[0]->quantity;
-                            } else {
-                                $my_cart_quantity = '0';
-                            }
-                            $weight_name = $product_query[$r]->weighname;
-                            $data = array(
-                                        'id' => $product_variant->id, 
-                                        'product_id' => $product_variant->product_id, 
-                                        'weight_id' => $product_variant->weight_id, 
-                                        'unit' => ($product_variant->weight_no) . ' ' . $weight_name, 
-                                        'actual_price' => $product_variant->price, 
-                                        'quantity' => $product_variant->quantity, 
-                                        'discount_per' => $product_variant->discount_per, 
-                                        'discount_price' => $product_variant->discount_price, 
-                                        'package_name' => $package_name, 
-                                        'my_cart_quantity' => $my_cart_quantity,
-                                        'variant_image' => $image
-                                    );
-                            $getdata[] = $data;
-                        }
-                        $product_weight_array = $getdata;
-                        $proimg = $image;
-                        $prothimg = $image;
-                        $getimage = [];
-                        foreach ($product_image as $pro_image) {
-                            $pro_image->image = str_replace(' ', '%20', $pro_image->image);
-                            $imagedata = array('id' => $pro_image->id, 'product_id' => $pro_image->product_id, 'image' => base_url() . 'public/images/'.$this->folder.'product_image/' . $pro_image->image, 'thumb_image' => base_url() . 'public/images/'.$this->folder.'product_image_thumb/' . $pro_image->image,);
-                            $getimage[] = $imagedata;
-                        }
-                        $product_image_array = $getimage;
-                        $datas = array();
-                        $datas['id'] = $p_row->id;
-                        $datas['category_id'] = $p_row->category_id;
-                        $datas['brand_id'] = $p_row->brand_id;
-                        $datas['name'] = $p_row->name;
-                        $datas['image'] = $proimg;
-                        $datas['image_thumb'] = $prothimg;
-                        $datas['about'] = $p_row->about;
-                        $datas['content'] = $p_row->content;
-                        $datas['status'] = $p_row->status;
-                        $datas['dt_added'] = $p_row->dt_added;
-                        $datas['dt_updated'] = $p_row->dt_updated;
-                        $datas['product_weight'] = $product_weight_array;
-                        $datas['product_image'] = $product_image_array;
-                        $setdata[] = $datas;
-                    }
-                    $offset = $offset + 1;
-                    $response['offset'] = $offset;
-                    $response['success'] = "1";
-                    $response['message'] = "Product list";
-                    $response["data"] = $setdata;
-                    $response['count'] = $total_count;
-                    unset($data);
-                    $data['select'] = ['value'];
-                    $data['where'] = ['request_id' => 1,'vendor_id'=>$postdata['vendor_id']];
-                    $data['table'] = 'set_default';
-                    $min_value = $this->selectRecords($data);
-                    unset($data);
-                    $data['select'] = ['value'];
-                    $data['where'] = ['request_id' => '3','vendor_id'=>$postdata['vendor_id']];
-                    $data['table'] = 'set_default';
-                    $cur_value = $this->selectRecords($data);
-                    $response['cart_minimum_value'] = $min_value[0]->value;
-                    $response['currency'] = $cur_value[0]->value;
-                    $response['categoryCount'] = (int)$this->categoryCount();
-                    $response['subcategoryCount'] = (int)$this->subcategoryCount();
-                    $response['cart_item'] = (isset($postdata['user_id']) && $postdata['user_id']!='') ? (string)$this->countCartItem($postdata['user_id']) : "" ;
-                    if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
-                        $response["userupdate_data"] = $this->userInfo($postdata);
-                    }
-                     echo $output = json_encode(array('responsedata' => $response));
-                } else {
-                    $response = array();
-                    $response["success"] = 0;
-                    $response["message"] = "No record found";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                }
-            } else {
-                $response = array();
-                $response["success"] = 0;
-                $response["message"] = "Invalid data";
-                $output = json_encode(array('responsedata' => $response));
-                echo $output;
-            }
-            exit;
-        }
-
-       public function userInfo($postdata){
-            $user_id = $postdata['user_id'];
-            $data['table'] = TABLE_USER;
-            $data['select'] = ['id','fname','lname','phone','email','country_code','login_type','is_verify','email_verify','status','user_gst_number','notification_status','dt_added','dt_updated','is_verify','profileimage'];
-            $data['where'] = ['id'=>$user_id];
-            $result = $this->selectRecords($data);
-            if($result[0]->profileimage != '' || $result[0]->profileimage != NULL){
-                $result[0]->profileimage = base_url().'public/images/'.$this->folder.'user_profile/'.$result[0]->profileimage;
-            }else{
-                $result[0]->profileimage = "";
-            }
-            $result[0]->mobile_verify = $result[0]->is_verify;
-
-            $result_count = $this->db->query("SELECT COUNT(*) as total  FROM my_cart as mc WHERE  mc.user_id= '$user_id' AND mc.status != '9' ORDER BY mc.id DESC");
-            $row_count = $result_count->result();
-            // echo $this->db->last_query();die;
-            $total_count = $row_count[0]->total;
-            $result[0]->cart_item = $total_count;           
-            return $result[0];
-       } 
-
-        function send_staff_notification($branch_id, $message) {
-            $data['select'] = ['d.*'];
-            $data['where'] = ['s.branch_id' => $branch_id];
-            $data['join'] = ['staff_device as d' => ['d.user_id = s.id', 'INNER']];
-            $data['table'] = 'staff as s';
-            $select = $this->selectFromJoin($data);
-         
-            foreach ($select as $key => $value) {
-                $notification_type = 'new_order';
-                $dataArray = array('device_id' => $value->token, 'type' => $value->type, 'message' => $message, 'for_staff' => true);
-                $key = "AAAAiEVdA8M:APA91bHLObncewgHcuCHN1vlK8KON4pyixZ3MpBXG0PRfr6Fh3qMUe7ZF66t7TGv5Bzfz-zr4MGP93SBwELaDFtFDfSnMxmtKcU2lrGth6TVGfrVodrp-WOLgAeRGMf0ESD1pJc0e_En";
-
-                $result = $this->getNotificationKey($branch_id);
-                $this->utility_apiv2->sendNotification($dataArray, $notification_type,$result, NULL, $key);
-                //$this->utility_api->sendNotification($dataArray, $notification_type,$result, NULL, $key);
-            }
-        }
-
-
-        public function getNotificationKey($branch_id){   
-            $data['table'] = 'firebase as f';
-            $data['join'] = ['branch as b'=>['b.vendor_id=f.vendor_id','INNER']];
-            $data['select'] = ['f.*'];
-            $data['where'] = ['b.id'=>$branch_id]; 
-            return $this->selectFromJoin($data);
-        }
-
-        public function notification_list($postData) {
-            $data['select'] = ['notification', 'dt_created'];
-            $data['table'] = 'notification';
-            $data['where'] = ['user_id' => $postData['user_id']];
-            $data['order'] = 'id desc';
-            return $this->selectRecords($data);
-        }
-        public function getUserAddressDetails($address_id) {
-            $data['table'] = 'user_address';
-            $data['select'] = ['*'];
-            $data['where'] = ['id' => $address_id];
-            return $this->selectRecords($data);
-        }
-        public function getRandomTimeSlot() {
-            $data['table'] = 'time_slot';
-            $data['select'] = ['id'];
-            $data['where'] = ['status !=' => '9'];
-            $data['order'] = 'rand()';
-            $data['limit'] = '1';
-            $r = $this->selectRecords($data);
-            return $time_slot_id = $r[0]->id;
-        }
-        public function getVendorAddress($id) {
-            $data['table'] = 'branch';
-            $data['select'] = ['name', 'location'];
-            $data['where'] = ['id' => $id, 'status !=' => '9'];
-            $r = $this->selectRecords($data);
-            return $r;
-        }
-
-        public function insertUsersFeedback($postdata) {
-            if (isset($postdata['user_id']) && $postdata['user_id'] != '' && $postdata['vendor_id']) {
-                $this->isUserFeedbackExists($postdata);
-                $data['table'] = 'feedback';
-                $data['insert']['vendor_id'] = $postdata['vendor_id'];
-                $data['insert']['user_id'] = $postdata['user_id'];
-                $data['insert']['like_dislike'] = $postdata['islike'];
-                $data['insert']['dt_created'] = DATE_TIME;
-                $data['insert']['dt_updated'] = DATE_TIME;
-                $res = $this->insertRecord($data);
-                if ($res) {
-                    $response = array();
-                    $response["success"] = 1;
-                    $response["message"] = "Feedback Inserted";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                } else {
-                    $response = array();
-                    $response["success"] = 0;
-                    $response["message"] = "Somthing went wrong";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                }
-            } else {
-                $response = array();
-                $response["success"] = 0;
-                $response["message"] = "Invalid data";
-                $output = json_encode(array('responsedata' => $response));
-                echo $output;
-            }
-            die;
-        }
-        public function isUserFeedbackExists($postdata) {
-            $user_id = $postdata['user_id'];
-            $vendor_id = $postdata['vendor_id'];
-            $data['table'] = 'feedback';
-            $data['where']['vendor_id'] = $vendor_id;
-            $data['where']['user_id'] = $user_id;
-            $res = $this->selectRecords($data);
-            if (!empty($res)) {
-                unset($data);
-                $date = DATE_TIME;
-                $data['table'] = 'feedback';
-                $data['where']['user_id'] = $user_id;
-                $data['where']['vendor_id'] = $vendor_id;
-                $data['update']['like_dislike'] = $postdata['islike'];
-                $data['update']['dt_updated'] = $date;
-                $res = $this->updateRecords($data);
-
-                if ($res) {
-                    $response = array();
-                    $response["success"] = 1;
-                    $response["message"] = "Feedback Updated successfully";
-                    $output = json_encode(array('responsedata' => $response));
-                    echo $output;
-                    exit;
-                }
-            }
-        }
-        
-        public function make_payment_new($postData) {
-            
-            require_once APPPATH . 'libraries/stripe/init.php';
-            header('Content-Type: application/json');
-            $json_str = file_get_contents('php://input');
-            $json_obj = json_decode($json_str);
-            $amts = "";
-            $currs = "";
-            $amts = $json_obj->amount;
-            $currs = $json_obj->currency;
-            $branch_id = $json_obj->branch_id;
-            $this->db->select('*');
-            $this->db->where('branch_id', $branch_id);
-            $this->db->where('payment_opt', '2');
-            $get_seceret_key = $this->db->get('payment_method')->result();
-
-            if ($get_seceret_key[0]->IsTestOrLive == '0') {
-                $get_seceret_key[0]->secret_key = $get_seceret_key[0]->test_secret_key;
-            }
-            // print_r($get_seceret_key[0]->secret_key);die;
-            \Stripe\Stripe::setApiKey($get_seceret_key[0]->secret_key);
-            // Use an existing Customer ID if this is a returning customer.
-            $customer = \Stripe\Customer::create();
-            $ephemeralKey = \Stripe\EphemeralKey::create(['customer' => $customer->id], ['stripe_version' => '2020-08-27']);
-            $paymentIntent = \Stripe\PaymentIntent::create(['amount' => $amts, 'currency' => $currs, 'customer' => $customer->id, ]);
-            $output = ['paymentIntent' => $paymentIntent->client_secret, 'ephemeralKey' => $ephemeralKey->secret, 'customer' => $customer->id, 'transaction_id' => $paymentIntent->id];
-            echo json_encode($output);
-            // return $response->withJson([
-            //   'paymentIntent' => $paymentIntent->client_secret,
-            //   'ephemeralKey' => $ephemeralKey->secret,
-            //   'customer' => $customer->id
-            // ])->withStatus(200);
-            
-        }
-        /* testing purpose paytm  integration */
-        public function paytm_payment($customer = '') {
-            function clean($string) {
-              $string = str_replace('-', '', $string); // Replaces all spaces with hyphens.
-              return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-            }
-            header('Content-Type: application/json');
-            if ($customer == '') {
-                $customer_detail = file_get_contents('php://input');
-            } else {
-                $customer_detail = $customer;
-            }
-            $json_obj = json_decode($customer_detail);
-            $orderId = $json_obj->orderId;
-            $callbackUrl = $json_obj->callbackUrl;
-            $value = $json_obj->value;
-            $currency = $json_obj->currency;
-            $cust_id = "CUST_" . time();
-            $branch_id = $json_obj->branch_id;
-            $this->db->select('*');
-            $this->db->where('branch_id', $branch_id);
-            $this->db->where('payment_opt', '3');
-            $getPaytmCreditial = $this->db->get('payment_method')->result();
-            // print_r($getPaytmCreditial);die;
-            if ($getPaytmCreditial[0]->IsTestOrLive == '0') {
-                $getPaytmCreditial[0]->publish_key = $getPaytmCreditial[0]->test_publish_key;
-            }
-            // print_r($getPaytmCreditial);die;
-            $paytmParams = array();
-            $paytmParams["body"] = array("requestType" => "Payment", "mid" => $getPaytmCreditial[0]->publish_key, "websiteName" => clean($this->siteTitle), "orderId" => $orderId, "callbackUrl" => $callbackUrl, "txnAmount" => array("value" => $value, "currency" => $currency,), "userInfo" => array("custId" => $cust_id,),);
-            // print_r($paytmParams);die;
-            /*
-             * Generate checksum by parameters we have in body
-             * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
-            */
-            $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $getPaytmCreditial[0]->secret_key);
-            $paytmParams["head"] = array("signature" => $checksum);
-            $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
-            /* for Staging */
-            // $url = "https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=" . $getPaytmCreditial[0]->publish_key . "&orderId=" . $orderId;
-            /* for Production */
-            $url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=". $getPaytmCreditial[0]->publish_key . "&orderId=" . $orderId;
-            
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-            $response = curl_exec($ch);
-            print_r($response);
-        }
-        public function paytm_payment_checksum_only() {
-            function clean($string) {
-              $string = str_replace('-', '', $string); // Replaces all spaces with hyphens.
-              return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-            }
-            header('Content-Type: application/json');
-            $customer_detail = file_get_contents('php://input');
-            $json_obj = json_decode($customer_detail);
-            $orderId = $json_obj->orderId;
-            $callbackUrl = $json_obj->callbackUrl;
-            $value = $json_obj->value;
-            $currency = $json_obj->currency;
-            $cust_id = $json_obj->cust_id;
-            $paytmParams = array();
-
-            $this->db->select('*');
-            $this->db->where('branch_id', '1');
-            $this->db->where('payment_opt', '3');
-            $getPaytmCreditial = $this->db->get('payment_method')->result();
-            // print_r($getPaytmCreditial);die;
-            if ($getPaytmCreditial[0]->IsTestOrLive == '0') {
-                $getPaytmCreditial[0]->publish_key = $getPaytmCreditial[0]->test_publish_key;
-            }
-
-
-            $paytmParams["body"] = array("requestType" => "Payment", "mid" => $getPaytmCreditial[0]->publish_key, "websiteName" => clean($this->siteTitle), "orderId" => $orderId, "callbackUrl" => $callbackUrl, "txnAmount" => array("value" => $value, "currency" => $currency,), "userInfo" => array("custId" => $cust_id,),);
-            /*
-             * Generate checksum by parameters we have in body
-             * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
-            */
-            $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $getPaytmCreditial[0]->secret_key);
-            $paytmParams["head"] = array("signature" => $checksum);
-            $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
-            echo $post_data;
-            // /* for Staging */
-            // $url = "https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=oxzjXy66674454941399&orderId=".$orderId;
-            // /* for Production */
-            // // $url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765";
-            // $ch = curl_init($url);
-            // curl_setopt($ch, CURLOPT_POST, 1);
-            // curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            // curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-            // $response = curl_exec($ch);
-            // print_r($response);
-            
-        }
-        public function paytmStatus($orderId) {
-            $data['table'] = TABLE_ORDER_DETAILS;
-            $data['select'] = ['*'];
-            $data['where'] = ['order_id' => $orderId];
-            $res = $this->selectRecords($data);
-            $branch_id = $res[0]->vendor_id;
-            $this->db->select('*');
-            $this->db->where('branch_id', $branch_id);
-            $this->db->where('payment_opt', '3');
-            $getPaytmCreditial = $this->db->get('payment_method')->result();
-            if ($getPaytmCreditial[0]->IsTestOrLive == '0') {
-                $getPaytmCreditial[0]->publish_key = $getPaytmCreditial[0]->test_publish_key;
-                $getPaytmCreditial[0]->secret_key = $getPaytmCreditial[0]->test_secret_key;
-            }
-            $paytmParams = array();
-            /* body parameters */
-            $paytmParams["body"] = array(
-            /* Find your MID in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys */
-            "mid" => $getPaytmCreditial[0]->publish_key,
-            /* Enter your order id which needs to be check status for */
-            "orderId" => $orderId,);
-            /**
-             * Generate checksum by parameters we have in body
-             * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
-             */
-            $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $getPaytmCreditial[0]->secret_key);
-            /* head parameters */
-            $paytmParams["head"] = array(
-            /* put generated checksum value here */
-            "signature" => $checksum);
-            /* prepare JSON string for request */
-            $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
-            /* for Staging */
-            // $url = "https://securegw-stage.paytm.in/v3/order/status";
-            /* for Production */
-            $url = "https://securegw.paytm.in/v3/order/status";
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-            $response = curl_exec($ch);
-            // json_decode($response);
-            $customerData = json_decode($response);
-            if ($customerData->body->resultInfo->resultCode == 01) {
-                $response_message['type'] = "success";
-                $response_message['message'] = "Your transation is successfully";
-            } elseif ($customerData->body->resultInfo->resultCode == 400) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Transaction status not confirmed yet.";
-            } elseif ($customerData->body->resultInfo->resultCode == 402) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Looks like the payment is not complete. Please wait while we confirm the status with your bank.";
-            } elseif ($customerData->body->resultInfo->resultCode == 810) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Your transation is faild";
-            } elseif ($customerData->body->resultInfo->resultCode == 501) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Server is down";
-            } elseif ($customerData->body->resultInfo->resultCode == 335) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Mid is invalid";
-            } elseif ($customerData->body->resultInfo->resultCode == 334) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Invalid Order ID";
-            } elseif ($customerData->body->resultInfo->resultCode == 295) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Your payment failed as the UPI ID entered is incorrect. Please try again by entering a valid VPA or use a different method to complete the payment.";
-            } elseif ($customerData->body->resultInfo->resultCode == 235) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Wallet balance Insufficient, bankName=WALLET";
-            } elseif ($customerData->body->resultInfo->resultCode == 227) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Your payment has been declined by your bank. Please contact your bank for any queries. If money has been deducted from your account, your bank will inform us within 48 hrs and we will refund the same.";
-            } elseif ($customerData->body->resultInfo->resultCode == 401) {
-                $response_message['type'] = "danger";
-                $response_message['message'] = "Your payment has been declined by your bank. Please contact your bank for any queries. If money has been deducted from your account, your bank will inform us within 48 hrs and we will refund the same.";
-            }
-            return $response_message;
-        }
-        /* testing purpose paytm  integration */
-        public function verifyUserEmailByToken($postData) {
-            $userDetail = $this->utility_apiv2->decode($postData);
-            $userData = json_decode($userDetail);
-            $check_token = $this->db->query("SELECT id FROM user where id = '$userData->id' AND email_token = '$userData->token'  AND email_verify='2'");
-            $response = $check_token->result();
-            // print_r($response);die;
-            /* if got token in database then update token as empty and user status is active */
-            if (count($response) > 0) {
-                unset($data);
-                $updatedata = array('email_token' => '', 'email_verify' => '1',);
-                $this->db->update('user', $updatedata, array('id' => $response[0]->id));
-                return true;
-            } else {
-                return false;
-            }
-        }
-        public function getUserDetails($user_id) {
-            $data['table'] = 'user';
-            $data['where'] = ['id' => $user_id];
-            $data['select'] = ['*'];
-            return $this->selectRecords($data);
-        }
-        public function selfPickUp_otp($order_id, $user_id, $otp) {
-            $date = DATE_TIME;
-            $insert = array('order_id' => $order_id, 'user_id' => $user_id, 'otp' => $otp, 'dt_created' => $date);
-            $data['table'] = 'selfPickup_otp';
-            $data['insert'] = $insert;
-            return $this->insertRecord($data);
-        }
-
-        public function contactus($postData) {
-            if (!empty($postData)) {
-                $insertContactDetail = [
-                    "fname" => $postData['name'], 
-                    'vendor_id'=>$postData['vendor_id'],
-                    "email" => $postData['email'], 
-                    "mobile_no" => $postData['mobile'], 
-                    "message" => $postData['message'],
-                    "created_at" => DATE_TIME,
-                    "updated_at" => DATE_TIME
                 ];
-                $data['insert'] = $insertContactDetail;
-                $data['table'] = TABLE_CONTACT_US;
-                $contacusId = $this->insertRecord($data);
-                unset($data);
-                $vendor_id = $postData['vendor_id'];
-                $data['table'] = 'vendor';
-                $data['select'] = ['*'];
-                $data['where'] = ['id'=>$vendor_id];
-                $result = $this->selectRecords($data);
-                $sendToMail = $result[0]->email;                
-                // print_r($result);die;
-                if (!empty($contacusId)) {
-                    $userDetail["name"] = $postData['name'];
-                    $userDetail["email"] = $postData['email'];
-                    $userDetail["mobile_no"] = $postData['mobile'];
-                    $userDetail["messages"] = $postData['message'];
-                    $datas['message'] = $this->load->view('contact_us_template', $userDetail, true);
-                    $datas['subject'] = 'Contact Us';
-                    // $datas["to"] = "cmexpertise@gmail.com";
-                    $datas["to"] = $sendToMail;
+            }
+            $data['join'] = ['product_weight  AS pw' => ['pw.product_id = p.id', 'INNER']];
+            $data['order'] = 'min(pw.discount_price) * 1 ASC';
+            //order change on 8 march
+            $data['order'] = 'pw.quantity desc';
+            $data['limit'] = $limit;
+            if ($offset != 0) {
+                $data['skip'] = $cal;
+            }
+            $data['groupBy'] = 'p.id';
+            $data['table'] = 'product as p';
+            $result = $this->selectFromJoin($data);
+            // print_r($result);exit;
+            // echo $this->db->last_query();exit;
+            unset($data);
+            if (count($result) > 0) {
+                foreach ($result as $row => $p_row) {
+                    $product_id = $p_row->id;
+                    $data['select'] = ['pw.*', 'w.name as weighname'];
+                    $data['where'] = ['pw.status !=' => '9', 'pw.product_id' => $product_id];
+                    $data['join'] = ['weight  AS w' => ['pw.weight_id = w.id', 'LEFT'], 'product AS p' => ['pw.product_id = p.id', 'LEFT'],];
 
-                    $res = $this->sendMailSMTP($datas);
-                    if ($res) {
-                        $response["success"] = 1;
-                        $response["message"] = "successfully sent your detail to admin";
+                    $data['order'] = 'pw.discount_price ASC';
+                    $data['table'] = 'product_weight as pw';
+                    $product_query = $this->selectFromJoin($data);
+
+                    unset($data);
+                    unset($getdata);
+                    foreach ($product_query as $r => $product_variant) {
+                        // print_r($product_query);exit;
+                        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                            $product_variant->discount_price = $product_variant->without_gst_price;
+                        }
+
+                        $product_variant_id = $product_variant->id;
+
+                        $package_id = $product_variant->package;
+                        $package_name = $this->get_package($package_id);
+                        unset($data);
+                        $data['select'] = ['*'];
+                        $data['where'] = ['status !=' => '9', 'product_id' => $product_id, 'product_variant_id' => $product_variant_id];
+                        $data['table'] = 'product_image ';
+                        $product_image = $this->selectRecords($data);
+
+                        if (count($product_image) <= 0) {
+                            $image = '';
+                        } else {
+                            $image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $product_image[0]->image;
+                        }
+                        $image = str_replace(' ', '%20', $image);
+                        unset($data);
+                        $data['select'] = ['quantity'];
+                        $data['where']['product_weight_id'] = $product_variant_id;
+                        $data['where']['status !='] = 9;
+                        $data['where']['branch_id'] = $branch_id;
+                        if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
+                            $data['where']['user_id'] = $postdata['user_id'];
+                        } else {
+                            if (isset($postdata['device_id'])) {
+                                $data['where']['device_id'] = $postdata['device_id'];
+                                $data['where']['user_id'] = 0;
+                            }
+                        }
+                        $data['table'] = 'my_cart';
+                        $result_cart = $this->selectRecords($data);
+                        if (count($result_cart) > 0) {
+                            $my_cart_quantity = $result_cart[0]->quantity;
+                        } else {
+                            $my_cart_quantity = '0';
+                        }
+                        $weight_name = $product_query[$r]->weighname;
+                        $data = array(
+                            'id' => $product_variant->id,
+                            'product_id' => $product_variant->product_id,
+                            'weight_id' => $product_variant->weight_id,
+                            'unit' => ($product_variant->weight_no) . ' ' . $weight_name,
+                            'actual_price' => $product_variant->price,
+                            'quantity' => $product_variant->quantity,
+                            'discount_per' => $product_variant->discount_per,
+                            'discount_price' => $product_variant->discount_price,
+                            'package_name' => $package_name,
+                            'my_cart_quantity' => $my_cart_quantity,
+                            'variant_image' => $image
+                        );
+                        $getdata[] = $data;
                     }
+                    $product_weight_array = $getdata;
+                    $proimg = $image;
+                    $prothimg = $image;
+                    $getimage = [];
+                    foreach ($product_image as $pro_image) {
+                        $pro_image->image = str_replace(' ', '%20', $pro_image->image);
+                        $imagedata = array('id' => $pro_image->id, 'product_id' => $pro_image->product_id, 'image' => base_url() . 'public/images/' . $this->folder . 'product_image/' . $pro_image->image, 'thumb_image' => base_url() . 'public/images/' . $this->folder . 'product_image_thumb/' . $pro_image->image,);
+                        $getimage[] = $imagedata;
+                    }
+                    $product_image_array = $getimage;
+                    $datas = array();
+                    $datas['id'] = $p_row->id;
+                    $datas['category_id'] = $p_row->category_id;
+                    $datas['brand_id'] = $p_row->brand_id;
+                    $datas['name'] = $p_row->name;
+                    $datas['image'] = $proimg;
+                    $datas['image_thumb'] = $prothimg;
+                    $datas['about'] = $p_row->about;
+                    $datas['content'] = $p_row->content;
+                    $datas['status'] = $p_row->status;
+                    $datas['dt_added'] = $p_row->dt_added;
+                    $datas['dt_updated'] = $p_row->dt_updated;
+                    $datas['product_weight'] = $product_weight_array;
+                    $datas['product_image'] = $product_image_array;
+                    $setdata[] = $datas;
                 }
+                $offset = $offset + 1;
+                $response['offset'] = $offset;
+                $response['success'] = "1";
+                $response['message'] = "Product list";
+                $response["data"] = $setdata;
+                $response['count'] = $total_count;
+                unset($data);
+                $data['select'] = ['value'];
+                $data['where'] = ['request_id' => 1, 'vendor_id' => $postdata['vendor_id']];
+                $data['table'] = 'set_default';
+                $min_value = $this->selectRecords($data);
+                unset($data);
+                $data['select'] = ['value'];
+                $data['where'] = ['request_id' => '3', 'vendor_id' => $postdata['vendor_id']];
+                $data['table'] = 'set_default';
+                $cur_value = $this->selectRecords($data);
+                $response['cart_minimum_value'] = $min_value[0]->value;
+                $response['currency'] = $cur_value[0]->value;
+                $response['categoryCount'] = (int)$this->categoryCount();
+                $response['subcategoryCount'] = (int)$this->subcategoryCount();
+                $response['cart_item'] = (isset($postdata['user_id']) && $postdata['user_id'] != '') ? (string)$this->countCartItem($postdata['user_id']) : "";
+                if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
+                    $response["userupdate_data"] = $this->userInfo($postdata);
+                }
+                echo $output = json_encode(array('responsedata' => $response));
             } else {
                 $response = array();
                 $response["success"] = 0;
-                $response["message"] = "something went wrong";
+                $response["message"] = "No record found";
+                $output = json_encode(array('responsedata' => $response));
+                echo $output;
             }
+        } else {
+            $response = array();
+            $response["success"] = 0;
+            $response["message"] = "Invalid data";
             $output = json_encode(array('responsedata' => $response));
             echo $output;
         }
-        public function sendMailSMTP($data) {
-            // print_r($data ["message"]);die;
-            $config['protocol'] = "smtp";
-            $config['smtp_host'] = "162.241.86.206";
-            $config['smtp_port'] = '587';
-            $config['smtp_user'] = "test@launchestore.com";
-            // $config ['smtp_user'] = "sahid.cmexpertise@gmail.com";
-            $config['smtp_pass'] = "HhZ~sU(@drk_";
-            $config['smtp_timeout'] = 20;
-            $config['priority'] = 1;
-            $config['charset'] = 'utf-8';
-            $config['wordwrap'] = TRUE;
-            $config['crlf'] = "\r\n";
-            $config['newline'] = "\r\n";
-            $config['mailtype'] = "html";
-            $CI = & get_instance();
-            $message = $data["message"];
-            $CI->load->library('email', $config);
-            $CI->email->initialize($config);
-            $CI->email->clear();
-            $CI->email->from($config['smtp_user'], $this->siteTitle);
-            $CI->email->to($data["to"]);
-            if (isset($data["bcc"])) {
-                $CI->email->bcc($data["bcc"]);
-            }
-            $CI->email->reply_to($config['smtp_user'], '<noreply@stagegator.com>');
-            $CI->email->subject($data["subject"]);
-            if(isset($data["attachment"]) && !empty($data["attachment"])){
-                $CI->email->attach($data["attachment"]);
-            }
-            $CI->email->message($message);
-            $response = $CI->email->send();
-            return true;
+        exit;
+    }
+
+    public function userInfo($postdata)
+    {
+        $user_id = $postdata['user_id'];
+        $data['table'] = TABLE_USER;
+        $data['select'] = ['id', 'fname', 'lname', 'phone', 'email', 'country_code', 'login_type', 'is_verify', 'email_verify', 'status', 'user_gst_number', 'notification_status', 'dt_added', 'dt_updated', 'is_verify', 'profileimage'];
+        $data['where'] = ['id' => $user_id];
+        $result = $this->selectRecords($data);
+        if ($result[0]->profileimage != '' || $result[0]->profileimage != NULL) {
+            $result[0]->profileimage = base_url() . 'public/images/' . $this->folder . 'user_profile/' . $result[0]->profileimage;
+        } else {
+            $result[0]->profileimage = "";
         }
-        public function get_about_app() {
-            $vendor_id = $_POST['vendor_id'];
-            $data['table'] = TABLE_ABOUT_US;
-            $data['select'] = ['about', 'website', 'contact_number', 'email'];
-            $data['where'] = ['vendor_id'=>$vendor_id];
-            return $this->selectRecords($data);
-        }
-        public function emailTemplate($user_id, $branch_id, $o_id) {
-            // echo '1';die;
-            $data['table'] = TABLE_ORDER;
-            $data['select'] = ['id', 'branch_id', 'user_id', 'user_address_id', 'order_no', 'isSelfPickup', 'delivery_date', 'payment_transaction_id', 'name', 'mobile', 'delivered_address', 'delivery_charge', 'total', 'dt_added', 'delivery_charge', 'order_no', 'delivery_date','total_item','total_saving','payable_amount','user_gst_number','promocode_used','shopping_amount_based_discount'];
-            // $data['join'] = [TABLE_ORDER_DETAILS .' as od'=>['o.id=od.order_id','LEFT']];
-            $data['where'] = ['status !=' => '9', 'id' => $o_id];
-            $re = $this->selectRecords($data);
-            if($re[0]->promocode_used == '1'){
-                $order_promocode_amount = $this->get_order_promocode_discount($re[0]->id); 
-                $instance_discount = number_format((float)$order_promocode_amount[0]->amount,'2','.','');
-            }else{
-                $amount = 0;
-                $instance_discount = number_format((float)$amount,'2','.','');
-            }
-            $re[0]->promocode_discount = $instance_discount;
-            $order_id = $re[0]->id;
-            unset($data);
-            $data['table'] = TABLE_ORDER_DETAILS . ' as od';
-            $data['select'] = ['od.id', 'od.product_id', 'od.product_weight_id', 'od.quantity', 'od.actual_price', 'od.discount_price', 'od.calculation_price', 'p.name'];
-            $data['join'] = [TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT']];
-            $data['where'] = ['od.status !=' => '9', 'od.order_id' => $order_id];
-            $result = $this->selectFromJoin($data);
+        $result[0]->mobile_verify = $result[0]->is_verify;
 
-            $re[0]->order_details = $result;
-            $total_gst = 0;
-            
-            foreach ($result as $key => $value) {
-                $gst = $this->getProductGst($value->product_id);
-                $gst_amount = ($value->discount_price * $gst) / 100;
-                $total_gst += $gst_amount * $value->quantity;
-            }
-            $re[0]->TotalGstAmount = number_format((float)$total_gst, 2, '.', '');
-            unset($data);
-            $user_email = $this->getUserEmail($user_id);
-           
-            if($re[0]->user_gst_number == ''){
-              $user_gst_number = $user_email[0]->user_gst_number;
-            }
+        $result_count = $this->db->query("SELECT COUNT(*) as total  FROM my_cart as mc WHERE  mc.user_id= '$user_id' AND mc.status != '9' ORDER BY mc.id DESC");
+        $row_count = $result_count->result();
+        // echo $this->db->last_query();die;
+        $total_count = $row_count[0]->total;
+        $result[0]->cart_item = $total_count;
+        return $result[0];
+    }
 
-            $u_email = $user_email[0]->email;
-            $u_name = $user_email[0]->fname;
-            $vendor = $this->getVendoremail($re[0]->branch_id);
-            $vendor_email = $vendor[0]->email;
-            $vendor_name = $vendor[0]->owner_name;
-            // print_r($vendor);die;
-            $data['order_details'] = $re;
-            $user_address_id = $re[0]->user_address_id;
-            $data['shopping_based_discount'] = $re[0]->shopping_amount_based_discount;
-            if ($user_address_id != 0) {
-                $data['user_address'] = $this->getUserAddress($user_address_id);
-            }else{
-                $data['user_address'] = $vendor;
-            }
-             for ($i = 0;$i < 2;$i++) {
-                
-                if ($i == 0) {
-                    $data['email_to'] = $vendor_name;
-                    $sendTo = $vendor_email;
-                    $data['for_vendor'] = 'vendor';
-                    $data['user_gst_number'] = '';
-                } else {
-                    $data['email_to'] = $u_name;
-                    $sendTo = $u_email;
-                    $data['for_vendor'] = 'user';
-                    $data['user_gst_number'] = $user_gst_number;
-                }
-                $emailTemplate = $this->load->view('emailTemplate/customer_template_', $data, true);
-                if($i == 1){
-                    // $pdf = $this->load->view('emailTemplate/pdf_customer_template', $data, true);
+    function send_staff_notification($branch_id, $message)
+    {
+        $data['select'] = ['d.*'];
+        $data['where'] = ['s.branch_id' => $branch_id];
+        $data['join'] = ['staff_device as d' => ['d.user_id = s.id', 'INNER']];
+        $data['table'] = 'staff as s';
+        $select = $this->selectFromJoin($data);
 
-                    // require_once 'vendor/autoload.php';
-                    // $mpdf = new \Mpdf\Mpdf();
-                    // // dd($mpdf);
-                    // $mpdf->WriteHTML($pdf);
-                    // $file_name = 'order'.time();
-                    // // Saves file on the server as 'filename.pdf'
-                    // $file = $mpdf->Output(FCPATH.'public/'.$file_name.'.pdf', \Mpdf\Output\Destination::FILE);
-                    // $datas['attachment'] = FCPATH.'public/'.$file_name.".pdf";
-                }
+        foreach ($select as $key => $value) {
+            $notification_type = 'new_order';
+            $dataArray = array('device_id' => $value->token, 'type' => $value->type, 'message' => $message, 'for_staff' => true);
+            $key = "AAAAiEVdA8M:APA91bHLObncewgHcuCHN1vlK8KON4pyixZ3MpBXG0PRfr6Fh3qMUe7ZF66t7TGv5Bzfz-zr4MGP93SBwELaDFtFDfSnMxmtKcU2lrGth6TVGfrVodrp-WOLgAeRGMf0ESD1pJc0e_En";
 
-                $datas['message'] = $emailTemplate;
-                $datas['subject'] = 'Your Order';
-                $datas["to"] = $sendTo;
-                // $datas["to"] = 'sahid.cmexpertise@gmail.com';
-                $res = $this->sendMailSMTP($datas);
-                if($i >= 1){
-                    return true;
-                    @unlink(FCPATH.'public/'.$file_name.".pdf");
-                    return true;
-                }
-            }
-        }
-
-         public function emailTemplate_testing($user_id, $branch_id, $o_id) {
-
-            $data['table'] = TABLE_ORDER;
-            $data['select'] = ['id', 'branch_id', 'user_id', 'user_address_id', 'order_no', 'isSelfPickup', 'delivery_date', 'payment_transaction_id', 'name', 'mobile', 'delivered_address', 'delivery_charge', 'total', 'dt_added', 'delivery_charge', 'order_no', 'delivery_date','total_item','total_saving','payable_amount'];
-            // $data['join'] = [TABLE_ORDER_DETAILS .' as od'=>['o.id=od.order_id','LEFT']];
-            $data['where'] = ['status !=' => '9', 'id' => $o_id];
-            $re = $this->selectRecords($data);
-            $order_id = $re[0]->id;
-            unset($data);
-            $data['table'] = TABLE_ORDER_DETAILS . ' as od';
-            $data['select'] = ['od.id', 'od.product_id', 'od.product_weight_id', 'od.quantity', 'od.actual_price', 'od.discount_price', 'od.calculation_price', 'p.name'];
-            $data['join'] = [TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT'], ];
-            $data['where'] = ['od.status !=' => '9', 'od.order_id' => $order_id];
-            $result = $this->selectFromJoin($data);
-            $re[0]->order_details = $result;
-            $total_gst = 0;
-            foreach ($result as $key => $value) {
-                $gst = $this->getProductGst($value->product_id);
-                $gst_amount = ($value->discount_price * $gst) / 100;
-                $total_gst+= $gst_amount * $value->quantity;
-            }
-            $re[0]->TotalGstAmount = number_format((float)$total_gst, 2, '.', '');
-            unset($data);
-            $user_email = $this->getUserEmail($user_id);
-            // print_r($user_email);die;
-            $u_email = $user_email[0]->email;
-            $u_name = $user_email[0]->fname;
-            $vendor = $this->getVendoremail($re[0]->vendor_id);
-            $vendor_email = $vendor[0]->email;
-            $vendor_name = $vendor[0]->owner_name;
-            // print_r($user_email);die;
-            $data['order_details'] = $re;
-            $user_address_id = $re[0]->user_address_id;
-            if ($user_address_id != 0) {
-                $data['user_address'] = $this->getUserAddress($user_address_id);
-            }else{
-                $data['user_address'] = $vendor;
-            }
-            // echo "<pre>";
-            // print_r($data);die;
-            for ($i = 0;$i < 2;$i++) {
-                if ($i == 0) {
-                    $data['email_to'] = $vendor_name;
-                    $sendTo = $vendor_email;
-                    $data['for_vendor'] = 'vendor';
-                    $data['user_gst_number'] = '';
-                } else {
-                    $data['email_to'] = $u_name;
-                    $sendTo = $u_email;
-                    $data['for_vendor'] = 'user';
-                    $data['user_gst_number'] = $user_gst_number;
-                }
-
-                $emailTemplate = $this->load->view('emailTemplate/customer_template_', $data, true);
-              
-                if($i == 1){
-                     $pdf = $this->load->view('emailTemplate/pdf_customer_template', $data, true);
-                    require_once 'vendor/autoload.php';
-                    $mpdf = new \Mpdf\Mpdf();
-                    $mpdf->WriteHTML($pdf);
-                    $file_name = 'order'.time();
-                    // Saves file on the server as 'filename.pdf'
-                    $file = $mpdf->Output(FCPATH.'public/'.$file_name.'.pdf', \Mpdf\Output\Destination::FILE);
-                    $datas['attachment'] = FCPATH.'public/'.$file_name.".pdf";
-                
-                }
-                $datas['message'] = $emailTemplate;
-                $datas['subject'] = 'Your Order';
-                $datas["to"] = $sendTo;
-                // $datas["to"] = 'sahid.cmexpertise@gmail.com';
-                $res = $this->sendMailSMTP($datas);
-                unlink(FCPATH.'public/'.$file_name.".pdf");
+            $result = $this->getNotificationKey($branch_id);
+            $this->utility_apiv2->sendNotification($dataArray, $notification_type, $result, NULL, $key);
+            //$this->utility_api->sendNotification($dataArray, $notification_type,$result, NULL, $key);
         }
     }
 
-        public function getUserAddress($address_id) {
-            $data['table'] = TABLE_USER_ADDRESS;
+
+    public function getNotificationKey($branch_id)
+    {
+        $data['table'] = 'firebase as f';
+        $data['join'] = ['branch as b' => ['b.vendor_id=f.vendor_id', 'INNER']];
+        $data['select'] = ['f.*'];
+        $data['where'] = ['b.id' => $branch_id];
+        return $this->selectFromJoin($data);
+    }
+
+    public function notification_list($postData)
+    {
+        $data['select'] = ['notification', 'dt_created'];
+        $data['table'] = 'notification';
+        $data['where'] = ['user_id' => $postData['user_id']];
+        $data['order'] = 'id desc';
+        return $this->selectRecords($data);
+    }
+    public function getUserAddressDetails($address_id)
+    {
+        $data['table'] = 'user_address';
+        $data['select'] = ['*'];
+        $data['where'] = ['id' => $address_id];
+        return $this->selectRecords($data);
+    }
+    public function getRandomTimeSlot()
+    {
+        $data['table'] = 'time_slot';
+        $data['select'] = ['id'];
+        $data['where'] = ['status !=' => '9'];
+        $data['order'] = 'rand()';
+        $data['limit'] = '1';
+        $r = $this->selectRecords($data);
+        return $time_slot_id = $r[0]->id;
+    }
+    public function getVendorAddress($id)
+    {
+        $data['table'] = 'branch';
+        $data['select'] = ['name', 'location'];
+        $data['where'] = ['id' => $id, 'status !=' => '9'];
+        $r = $this->selectRecords($data);
+        return $r;
+    }
+
+    public function insertUsersFeedback($postdata)
+    {
+        if (isset($postdata['user_id']) && $postdata['user_id'] != '' && $postdata['vendor_id']) {
+            $this->isUserFeedbackExists($postdata);
+            $data['table'] = 'feedback';
+            $data['insert']['vendor_id'] = $postdata['vendor_id'];
+            $data['insert']['user_id'] = $postdata['user_id'];
+            $data['insert']['like_dislike'] = $postdata['islike'];
+            $data['insert']['dt_created'] = DATE_TIME;
+            $data['insert']['dt_updated'] = DATE_TIME;
+            $res = $this->insertRecord($data);
+            if ($res) {
+                $response = array();
+                $response["success"] = 1;
+                $response["message"] = "Feedback Inserted";
+                $output = json_encode(array('responsedata' => $response));
+                echo $output;
+            } else {
+                $response = array();
+                $response["success"] = 0;
+                $response["message"] = "Somthing went wrong";
+                $output = json_encode(array('responsedata' => $response));
+                echo $output;
+            }
+        } else {
+            $response = array();
+            $response["success"] = 0;
+            $response["message"] = "Invalid data";
+            $output = json_encode(array('responsedata' => $response));
+            echo $output;
+        }
+        die;
+    }
+    public function isUserFeedbackExists($postdata)
+    {
+        $user_id = $postdata['user_id'];
+        $vendor_id = $postdata['vendor_id'];
+        $data['table'] = 'feedback';
+        $data['where']['vendor_id'] = $vendor_id;
+        $data['where']['user_id'] = $user_id;
+        $res = $this->selectRecords($data);
+        if (!empty($res)) {
+            unset($data);
+            $date = DATE_TIME;
+            $data['table'] = 'feedback';
+            $data['where']['user_id'] = $user_id;
+            $data['where']['vendor_id'] = $vendor_id;
+            $data['update']['like_dislike'] = $postdata['islike'];
+            $data['update']['dt_updated'] = $date;
+            $res = $this->updateRecords($data);
+
+            if ($res) {
+                $response = array();
+                $response["success"] = 1;
+                $response["message"] = "Feedback Updated successfully";
+                $output = json_encode(array('responsedata' => $response));
+                echo $output;
+                exit;
+            }
+        }
+    }
+
+    public function make_payment_new($postData)
+    {
+
+        require_once APPPATH . 'libraries/stripe/init.php';
+        header('Content-Type: application/json');
+        $json_str = file_get_contents('php://input');
+        $json_obj = json_decode($json_str);
+        $amts = "";
+        $currs = "";
+        $amts = $json_obj->amount;
+        $currs = $json_obj->currency;
+        $branch_id = $json_obj->branch_id;
+        $this->db->select('*');
+        $this->db->where('branch_id', $branch_id);
+        $this->db->where('payment_opt', '2');
+        $get_seceret_key = $this->db->get('payment_method')->result();
+
+        if ($get_seceret_key[0]->IsTestOrLive == '0') {
+            $get_seceret_key[0]->secret_key = $get_seceret_key[0]->test_secret_key;
+        }
+        // print_r($get_seceret_key[0]->secret_key);die;
+        \Stripe\Stripe::setApiKey($get_seceret_key[0]->secret_key);
+        // Use an existing Customer ID if this is a returning customer.
+        $customer = \Stripe\Customer::create();
+        $ephemeralKey = \Stripe\EphemeralKey::create(['customer' => $customer->id], ['stripe_version' => '2020-08-27']);
+        $paymentIntent = \Stripe\PaymentIntent::create(['amount' => $amts, 'currency' => $currs, 'customer' => $customer->id,]);
+        $output = ['paymentIntent' => $paymentIntent->client_secret, 'ephemeralKey' => $ephemeralKey->secret, 'customer' => $customer->id, 'transaction_id' => $paymentIntent->id];
+        echo json_encode($output);
+        // return $response->withJson([
+        //   'paymentIntent' => $paymentIntent->client_secret,
+        //   'ephemeralKey' => $ephemeralKey->secret,
+        //   'customer' => $customer->id
+        // ])->withStatus(200);
+
+    }
+    /* testing purpose paytm  integration */
+    public function paytm_payment($customer = '')
+    {
+        function clean($string)
+        {
+            $string = str_replace('-', '', $string); // Replaces all spaces with hyphens.
+            return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+        }
+        header('Content-Type: application/json');
+        if ($customer == '') {
+            $customer_detail = file_get_contents('php://input');
+        } else {
+            $customer_detail = $customer;
+        }
+        $json_obj = json_decode($customer_detail);
+        $orderId = $json_obj->orderId;
+        $callbackUrl = $json_obj->callbackUrl;
+        $value = $json_obj->value;
+        $currency = $json_obj->currency;
+        $cust_id = "CUST_" . time();
+        $branch_id = $json_obj->branch_id;
+        $this->db->select('*');
+        $this->db->where('branch_id', $branch_id);
+        $this->db->where('payment_opt', '3');
+        $getPaytmCreditial = $this->db->get('payment_method')->result();
+        // print_r($getPaytmCreditial);die;
+        if ($getPaytmCreditial[0]->IsTestOrLive == '0') {
+            $getPaytmCreditial[0]->publish_key = $getPaytmCreditial[0]->test_publish_key;
+        }
+        // print_r($getPaytmCreditial);die;
+        $paytmParams = array();
+        $paytmParams["body"] = array("requestType" => "Payment", "mid" => $getPaytmCreditial[0]->publish_key, "websiteName" => clean($this->siteTitle), "orderId" => $orderId, "callbackUrl" => $callbackUrl, "txnAmount" => array("value" => $value, "currency" => $currency,), "userInfo" => array("custId" => $cust_id,),);
+        // print_r($paytmParams);die;
+        /*
+             * Generate checksum by parameters we have in body
+             * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
+            */
+        $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $getPaytmCreditial[0]->secret_key);
+        $paytmParams["head"] = array("signature" => $checksum);
+        $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
+        /* for Staging */
+        // $url = "https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=" . $getPaytmCreditial[0]->publish_key . "&orderId=" . $orderId;
+        /* for Production */
+        $url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=" . $getPaytmCreditial[0]->publish_key . "&orderId=" . $orderId;
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+        $response = curl_exec($ch);
+        print_r($response);
+    }
+    public function paytm_payment_checksum_only()
+    {
+        function clean($string)
+        {
+            $string = str_replace('-', '', $string); // Replaces all spaces with hyphens.
+            return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+        }
+        header('Content-Type: application/json');
+        $customer_detail = file_get_contents('php://input');
+        $json_obj = json_decode($customer_detail);
+        $orderId = $json_obj->orderId;
+        $callbackUrl = $json_obj->callbackUrl;
+        $value = $json_obj->value;
+        $currency = $json_obj->currency;
+        $cust_id = $json_obj->cust_id;
+        $paytmParams = array();
+
+        $this->db->select('*');
+        $this->db->where('branch_id', '1');
+        $this->db->where('payment_opt', '3');
+        $getPaytmCreditial = $this->db->get('payment_method')->result();
+        // print_r($getPaytmCreditial);die;
+        if ($getPaytmCreditial[0]->IsTestOrLive == '0') {
+            $getPaytmCreditial[0]->publish_key = $getPaytmCreditial[0]->test_publish_key;
+        }
+
+
+        $paytmParams["body"] = array("requestType" => "Payment", "mid" => $getPaytmCreditial[0]->publish_key, "websiteName" => clean($this->siteTitle), "orderId" => $orderId, "callbackUrl" => $callbackUrl, "txnAmount" => array("value" => $value, "currency" => $currency,), "userInfo" => array("custId" => $cust_id,),);
+        /*
+             * Generate checksum by parameters we have in body
+             * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
+            */
+        $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $getPaytmCreditial[0]->secret_key);
+        $paytmParams["head"] = array("signature" => $checksum);
+        $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
+        echo $post_data;
+        // /* for Staging */
+        // $url = "https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=oxzjXy66674454941399&orderId=".$orderId;
+        // /* for Production */
+        // // $url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765";
+        // $ch = curl_init($url);
+        // curl_setopt($ch, CURLOPT_POST, 1);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+        // $response = curl_exec($ch);
+        // print_r($response);
+
+    }
+    public function paytmStatus($orderId)
+    {
+        $data['table'] = TABLE_ORDER_DETAILS;
+        $data['select'] = ['*'];
+        $data['where'] = ['order_id' => $orderId];
+        $res = $this->selectRecords($data);
+        $branch_id = $res[0]->vendor_id;
+        $this->db->select('*');
+        $this->db->where('branch_id', $branch_id);
+        $this->db->where('payment_opt', '3');
+        $getPaytmCreditial = $this->db->get('payment_method')->result();
+        if ($getPaytmCreditial[0]->IsTestOrLive == '0') {
+            $getPaytmCreditial[0]->publish_key = $getPaytmCreditial[0]->test_publish_key;
+            $getPaytmCreditial[0]->secret_key = $getPaytmCreditial[0]->test_secret_key;
+        }
+        $paytmParams = array();
+        /* body parameters */
+        $paytmParams["body"] = array(
+            /* Find your MID in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys */
+            "mid" => $getPaytmCreditial[0]->publish_key,
+            /* Enter your order id which needs to be check status for */
+            "orderId" => $orderId,
+        );
+        /**
+         * Generate checksum by parameters we have in body
+         * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
+         */
+        $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $getPaytmCreditial[0]->secret_key);
+        /* head parameters */
+        $paytmParams["head"] = array(
+            /* put generated checksum value here */
+            "signature" => $checksum
+        );
+        /* prepare JSON string for request */
+        $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
+        /* for Staging */
+        // $url = "https://securegw-stage.paytm.in/v3/order/status";
+        /* for Production */
+        $url = "https://securegw.paytm.in/v3/order/status";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        $response = curl_exec($ch);
+        // json_decode($response);
+        $customerData = json_decode($response);
+        if ($customerData->body->resultInfo->resultCode == 01) {
+            $response_message['type'] = "success";
+            $response_message['message'] = "Your transation is successfully";
+        } elseif ($customerData->body->resultInfo->resultCode == 400) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Transaction status not confirmed yet.";
+        } elseif ($customerData->body->resultInfo->resultCode == 402) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Looks like the payment is not complete. Please wait while we confirm the status with your bank.";
+        } elseif ($customerData->body->resultInfo->resultCode == 810) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Your transation is faild";
+        } elseif ($customerData->body->resultInfo->resultCode == 501) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Server is down";
+        } elseif ($customerData->body->resultInfo->resultCode == 335) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Mid is invalid";
+        } elseif ($customerData->body->resultInfo->resultCode == 334) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Invalid Order ID";
+        } elseif ($customerData->body->resultInfo->resultCode == 295) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Your payment failed as the UPI ID entered is incorrect. Please try again by entering a valid VPA or use a different method to complete the payment.";
+        } elseif ($customerData->body->resultInfo->resultCode == 235) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Wallet balance Insufficient, bankName=WALLET";
+        } elseif ($customerData->body->resultInfo->resultCode == 227) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Your payment has been declined by your bank. Please contact your bank for any queries. If money has been deducted from your account, your bank will inform us within 48 hrs and we will refund the same.";
+        } elseif ($customerData->body->resultInfo->resultCode == 401) {
+            $response_message['type'] = "danger";
+            $response_message['message'] = "Your payment has been declined by your bank. Please contact your bank for any queries. If money has been deducted from your account, your bank will inform us within 48 hrs and we will refund the same.";
+        }
+        return $response_message;
+    }
+    /* testing purpose paytm  integration */
+    public function verifyUserEmailByToken($postData)
+    {
+        $userDetail = $this->utility_apiv2->decode($postData);
+        $userData = json_decode($userDetail);
+        $check_token = $this->db->query("SELECT id FROM user where id = '$userData->id' AND email_token = '$userData->token'  AND email_verify='2'");
+        $response = $check_token->result();
+        // print_r($response);die;
+        /* if got token in database then update token as empty and user status is active */
+        if (count($response) > 0) {
+            unset($data);
+            $updatedata = array('email_token' => '', 'email_verify' => '1',);
+            $this->db->update('user', $updatedata, array('id' => $response[0]->id));
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function getUserDetails($user_id)
+    {
+        $data['table'] = 'user';
+        $data['where'] = ['id' => $user_id];
+        $data['select'] = ['*'];
+        return $this->selectRecords($data);
+    }
+    public function selfPickUp_otp($order_id, $user_id, $otp)
+    {
+        $date = DATE_TIME;
+        $insert = array('order_id' => $order_id, 'user_id' => $user_id, 'otp' => $otp, 'dt_created' => $date);
+        $data['table'] = 'selfPickup_otp';
+        $data['insert'] = $insert;
+        return $this->insertRecord($data);
+    }
+
+    public function contactus($postData)
+    {
+        if (!empty($postData)) {
+            $insertContactDetail = [
+                "fname" => $postData['name'],
+                'vendor_id' => $postData['vendor_id'],
+                "email" => $postData['email'],
+                "mobile_no" => $postData['mobile'],
+                "message" => $postData['message'],
+                "created_at" => DATE_TIME,
+                "updated_at" => DATE_TIME
+            ];
+            $data['insert'] = $insertContactDetail;
+            $data['table'] = TABLE_CONTACT_US;
+            $contacusId = $this->insertRecord($data);
+            unset($data);
+            $vendor_id = $postData['vendor_id'];
+            $data['table'] = 'vendor';
             $data['select'] = ['*'];
-            $data['where'] = ['id' => $address_id];
-            return $this->selectRecords($data);
+            $data['where'] = ['id' => $vendor_id];
+            $result = $this->selectRecords($data);
+            $sendToMail = $result[0]->email;
+            // print_r($result);die;
+            if (!empty($contacusId)) {
+                $userDetail["name"] = $postData['name'];
+                $userDetail["email"] = $postData['email'];
+                $userDetail["mobile_no"] = $postData['mobile'];
+                $userDetail["messages"] = $postData['message'];
+                $datas['message'] = $this->load->view('contact_us_template', $userDetail, true);
+                $datas['subject'] = 'Contact Us';
+                // $datas["to"] = "cmexpertise@gmail.com";
+                $datas["to"] = $sendToMail;
+
+                $res = $this->sendMailSMTP($datas);
+                if ($res) {
+                    $response["success"] = 1;
+                    $response["message"] = "successfully sent your detail to admin";
+                }
+            }
+        } else {
+            $response = array();
+            $response["success"] = 0;
+            $response["message"] = "something went wrong";
         }
-        public function getUserEmail($user_id) {
-            // echo $user_id;die;
-            $data['table'] = TABLE_USER;
-            $data['select'] = ['fname', 'email','user_gst_number'];
-            $data['where'] = ['id' => $user_id];
-            return $this->selectRecords($data);
+        $output = json_encode(array('responsedata' => $response));
+        echo $output;
+    }
+    public function sendMailSMTP($data)
+    {
+        // print_r($data ["message"]);die;
+        $config['protocol'] = "smtp";
+        $config['smtp_host'] = "162.241.86.206";
+        $config['smtp_port'] = '587';
+        $config['smtp_user'] = "test@launchestore.com";
+        // $config ['smtp_user'] = "sahid.cmexpertise@gmail.com";
+        $config['smtp_pass'] = "HhZ~sU(@drk_";
+        $config['smtp_timeout'] = 20;
+        $config['priority'] = 1;
+        $config['charset'] = 'utf-8';
+        $config['wordwrap'] = TRUE;
+        $config['crlf'] = "\r\n";
+        $config['newline'] = "\r\n";
+        $config['mailtype'] = "html";
+        $CI = &get_instance();
+        $message = $data["message"];
+        $CI->load->library('email', $config);
+        $CI->email->initialize($config);
+        $CI->email->clear();
+        $CI->email->from($config['smtp_user'], $this->siteTitle);
+        $CI->email->to($data["to"]);
+        if (isset($data["bcc"])) {
+            $CI->email->bcc($data["bcc"]);
         }
-        public function getVendoremail($branch_id) {
-            $data['table'] = TABLE_BRANCH;
-            $data['select'] = ['*'];
-            $data['where'] = ['id' => $branch_id];
-            return $this->selectRecords($data);
+        $CI->email->reply_to($config['smtp_user'], '<noreply@stagegator.com>');
+        $CI->email->subject($data["subject"]);
+        if (isset($data["attachment"]) && !empty($data["attachment"])) {
+            $CI->email->attach($data["attachment"]);
+        }
+        $CI->email->message($message);
+        $response = $CI->email->send();
+        return true;
+    }
+    public function get_about_app()
+    {
+        $vendor_id = $_POST['vendor_id'];
+        $data['table'] = TABLE_ABOUT_US;
+        $data['select'] = ['about', 'website', 'contact_number', 'email'];
+        $data['where'] = ['vendor_id' => $vendor_id];
+        return $this->selectRecords($data);
+    }
+    public function emailTemplate($user_id, $branch_id, $o_id)
+    {
+        // echo '1';die;
+        $data['table'] = TABLE_ORDER;
+        $data['select'] = ['id', 'branch_id', 'user_id', 'user_address_id', 'order_no', 'isSelfPickup', 'delivery_date', 'payment_transaction_id', 'name', 'mobile', 'delivered_address', 'delivery_charge', 'total', 'dt_added', 'delivery_charge', 'order_no', 'delivery_date', 'total_item', 'total_saving', 'payable_amount', 'user_gst_number', 'promocode_used', 'shopping_amount_based_discount'];
+        // $data['join'] = [TABLE_ORDER_DETAILS .' as od'=>['o.id=od.order_id','LEFT']];
+        $data['where'] = ['status !=' => '9', 'id' => $o_id];
+        $re = $this->selectRecords($data);
+        if ($re[0]->promocode_used == '1') {
+            $order_promocode_amount = $this->get_order_promocode_discount($re[0]->id);
+            $instance_discount = number_format((float)$order_promocode_amount[0]->amount, '2', '.', '');
+        } else {
+            $amount = 0;
+            $instance_discount = number_format((float)$amount, '2', '.', '');
+        }
+        $re[0]->promocode_discount = $instance_discount;
+        $order_id = $re[0]->id;
+        unset($data);
+        $data['table'] = TABLE_ORDER_DETAILS . ' as od';
+        $data['select'] = ['od.id', 'od.product_id', 'od.product_weight_id', 'od.quantity', 'od.actual_price', 'od.discount_price', 'od.calculation_price', 'p.name'];
+        $data['join'] = [TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT']];
+        $data['where'] = ['od.status !=' => '9', 'od.order_id' => $order_id];
+        $result = $this->selectFromJoin($data);
+
+        $re[0]->order_details = $result;
+        $total_gst = 0;
+
+        foreach ($result as $key => $value) {
+            $gst = $this->getProductGst($value->product_id);
+            $gst_amount = ($value->discount_price * $gst) / 100;
+            $total_gst += $gst_amount * $value->quantity;
+        }
+        $re[0]->TotalGstAmount = number_format((float)$total_gst, 2, '.', '');
+        unset($data);
+        $user_email = $this->getUserEmail($user_id);
+
+        if ($re[0]->user_gst_number == '') {
+            $user_gst_number = $user_email[0]->user_gst_number;
         }
 
-    public function getExistingBranchId($branch_id){
-            $data['table'] = 'vendor as a'; // vendor
-            $data['select'] = ['b.id'];
-            $data['join'] = ['branch as b'=>['a.id=b.vendor_id','LEFT']];
-            $data['where'] = ['a.id'=>$branch_id,'b.status'=>'1'];
-            $return =  $this->selectFromJoin($data);
-            // echo $this->db->last_query();die;
-            return $return[0]->id;
+        $u_email = $user_email[0]->email;
+        $u_name = $user_email[0]->fname;
+        $vendor = $this->getVendoremail($re[0]->branch_id);
+        $vendor_email = $vendor[0]->email;
+        $vendor_name = $vendor[0]->owner_name;
+        // print_r($vendor);die;
+        $data['order_details'] = $re;
+        $user_address_id = $re[0]->user_address_id;
+        $data['shopping_based_discount'] = $re[0]->shopping_amount_based_discount;
+        if ($user_address_id != 0) {
+            $data['user_address'] = $this->getUserAddress($user_address_id);
+        } else {
+            $data['user_address'] = $vendor;
         }
+        for ($i = 0; $i < 2; $i++) {
 
-     public function refundPaytm($postData){
-            $payment_transaction_id = $postData['payment_transaction_id'];
-            $orderId_payment_gateway = $postData['orderId_payment_gateway'];
-            $mid_or_publishKey = $postData['mid_or_publishKey'];
-            $secret_key = $postData['secret_key'];
-            $refund_amount = $postData['refund_amount'];
+            if ($i == 0) {
+                $data['email_to'] = $vendor_name;
+                $sendTo = $vendor_email;
+                $data['for_vendor'] = 'vendor';
+                $data['user_gst_number'] = '';
+            } else {
+                $data['email_to'] = $u_name;
+                $sendTo = $u_email;
+                $data['for_vendor'] = 'user';
+                $data['user_gst_number'] = $user_gst_number;
+            }
+            $emailTemplate = $this->load->view('emailTemplate/customer_template_', $data, true);
+            if ($i == 1) {
+                // $pdf = $this->load->view('emailTemplate/pdf_customer_template', $data, true);
+
+                // require_once 'vendor/autoload.php';
+                // $mpdf = new \Mpdf\Mpdf();
+                // // dd($mpdf);
+                // $mpdf->WriteHTML($pdf);
+                // $file_name = 'order'.time();
+                // // Saves file on the server as 'filename.pdf'
+                // $file = $mpdf->Output(FCPATH.'public/'.$file_name.'.pdf', \Mpdf\Output\Destination::FILE);
+                // $datas['attachment'] = FCPATH.'public/'.$file_name.".pdf";
+            }
+
+            $datas['message'] = $emailTemplate;
+            $datas['subject'] = 'Your Order';
+            $datas["to"] = $sendTo;
+            // $datas["to"] = 'sahid.cmexpertise@gmail.com';
+            $res = $this->sendMailSMTP($datas);
+            if ($i >= 1) {
+                return true;
+                @unlink(FCPATH . 'public/' . $file_name . ".pdf");
+                return true;
+            }
+        }
+    }
+
+    public function emailTemplate_testing($user_id, $branch_id, $o_id)
+    {
+
+        $data['table'] = TABLE_ORDER;
+        $data['select'] = ['id', 'branch_id', 'user_id', 'user_address_id', 'order_no', 'isSelfPickup', 'delivery_date', 'payment_transaction_id', 'name', 'mobile', 'delivered_address', 'delivery_charge', 'total', 'dt_added', 'delivery_charge', 'order_no', 'delivery_date', 'total_item', 'total_saving', 'payable_amount'];
+        // $data['join'] = [TABLE_ORDER_DETAILS .' as od'=>['o.id=od.order_id','LEFT']];
+        $data['where'] = ['status !=' => '9', 'id' => $o_id];
+        $re = $this->selectRecords($data);
+        $order_id = $re[0]->id;
+        unset($data);
+        $data['table'] = TABLE_ORDER_DETAILS . ' as od';
+        $data['select'] = ['od.id', 'od.product_id', 'od.product_weight_id', 'od.quantity', 'od.actual_price', 'od.discount_price', 'od.calculation_price', 'p.name'];
+        $data['join'] = [TABLE_PRODUCT . ' as p' => ['od.product_id=p.id', 'LEFT'],];
+        $data['where'] = ['od.status !=' => '9', 'od.order_id' => $order_id];
+        $result = $this->selectFromJoin($data);
+        $re[0]->order_details = $result;
+        $total_gst = 0;
+        foreach ($result as $key => $value) {
+            $gst = $this->getProductGst($value->product_id);
+            $gst_amount = ($value->discount_price * $gst) / 100;
+            $total_gst += $gst_amount * $value->quantity;
+        }
+        $re[0]->TotalGstAmount = number_format((float)$total_gst, 2, '.', '');
+        unset($data);
+        $user_email = $this->getUserEmail($user_id);
+        // print_r($user_email);die;
+        $u_email = $user_email[0]->email;
+        $u_name = $user_email[0]->fname;
+        $vendor = $this->getVendoremail($re[0]->vendor_id);
+        $vendor_email = $vendor[0]->email;
+        $vendor_name = $vendor[0]->owner_name;
+        // print_r($user_email);die;
+        $data['order_details'] = $re;
+        $user_address_id = $re[0]->user_address_id;
+        if ($user_address_id != 0) {
+            $data['user_address'] = $this->getUserAddress($user_address_id);
+        } else {
+            $data['user_address'] = $vendor;
+        }
+        // echo "<pre>";
+        // print_r($data);die;
+        for ($i = 0; $i < 2; $i++) {
+            if ($i == 0) {
+                $data['email_to'] = $vendor_name;
+                $sendTo = $vendor_email;
+                $data['for_vendor'] = 'vendor';
+                $data['user_gst_number'] = '';
+            } else {
+                $data['email_to'] = $u_name;
+                $sendTo = $u_email;
+                $data['for_vendor'] = 'user';
+                $data['user_gst_number'] = $user_gst_number;
+            }
+
+            $emailTemplate = $this->load->view('emailTemplate/customer_template_', $data, true);
+
+            if ($i == 1) {
+                $pdf = $this->load->view('emailTemplate/pdf_customer_template', $data, true);
+                require_once 'vendor/autoload.php';
+                $mpdf = new \Mpdf\Mpdf();
+                $mpdf->WriteHTML($pdf);
+                $file_name = 'order' . time();
+                // Saves file on the server as 'filename.pdf'
+                $file = $mpdf->Output(FCPATH . 'public/' . $file_name . '.pdf', \Mpdf\Output\Destination::FILE);
+                $datas['attachment'] = FCPATH . 'public/' . $file_name . ".pdf";
+            }
+            $datas['message'] = $emailTemplate;
+            $datas['subject'] = 'Your Order';
+            $datas["to"] = $sendTo;
+            // $datas["to"] = 'sahid.cmexpertise@gmail.com';
+            $res = $this->sendMailSMTP($datas);
+            unlink(FCPATH . 'public/' . $file_name . ".pdf");
+        }
+    }
+
+    public function getUserAddress($address_id)
+    {
+        $data['table'] = TABLE_USER_ADDRESS;
+        $data['select'] = ['*'];
+        $data['where'] = ['id' => $address_id];
+        return $this->selectRecords($data);
+    }
+    public function getUserEmail($user_id)
+    {
+        // echo $user_id;die;
+        $data['table'] = TABLE_USER;
+        $data['select'] = ['fname', 'email', 'user_gst_number'];
+        $data['where'] = ['id' => $user_id];
+        return $this->selectRecords($data);
+    }
+    public function getVendoremail($branch_id)
+    {
+        $data['table'] = TABLE_BRANCH;
+        $data['select'] = ['*'];
+        $data['where'] = ['id' => $branch_id];
+        return $this->selectRecords($data);
+    }
+
+    public function getExistingBranchId($branch_id)
+    {
+        $data['table'] = 'vendor as a'; // vendor
+        $data['select'] = ['b.id'];
+        $data['join'] = ['branch as b' => ['a.id=b.vendor_id', 'LEFT']];
+        $data['where'] = ['a.id' => $branch_id, 'b.status' => '1'];
+        $return =  $this->selectFromJoin($data);
+        // echo $this->db->last_query();die;
+        return $return[0]->id;
+    }
+
+    public function refundPaytm($postData)
+    {
+        $payment_transaction_id = $postData['payment_transaction_id'];
+        $orderId_payment_gateway = $postData['orderId_payment_gateway'];
+        $mid_or_publishKey = $postData['mid_or_publishKey'];
+        $secret_key = $postData['secret_key'];
+        $refund_amount = $postData['refund_amount'];
 
 
-            $paytmParams = array();
+        $paytmParams = array();
 
-            $paytmParams["body"] = array(
+        $paytmParams["body"] = array(
             "mid"          => $mid_or_publishKey, //merchand id
             "txnType"      => "REFUND",
             "orderId"      => $orderId_payment_gateway, //order is return at the time of refund rsponse
@@ -3550,7 +3616,7 @@ class Api_model extends My_model {
         * Generate checksum by parameters we have in body
         * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
         */
-        $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES),$secret_key);
+        $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $secret_key);
 
         $paytmParams["head"] = array(
             "signature"   => $checksum
@@ -3567,15 +3633,16 @@ class Api_model extends My_model {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json")); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
         $response = curl_exec($ch);
-            // print_r($response);die;
+        // print_r($response);die;
         return $response;
         print_r($response);
-    } 
+    }
 
-     public function refundPaymentRazar($postdata){
+    public function refundPaymentRazar($postdata)
+    {
 
         // $orderId_payment_gateway = $postdata['orderId_payment_gateway'];
         $MERCHANT_KEY_ID = $postdata['mid_or_publishKey'];
@@ -3589,94 +3656,94 @@ class Api_model extends My_model {
         // \-X POST https://api.razorpay.com/v1/payments/pay_29QQoUBi66xm2f/refund 
         // \-H 'Content-Type: application/json' 
         // \-d '{  "amount": 1166.10 *100 }'
-            
-            // $amount =  116610;
-            // $MERCHANT_KEY_ID = 'rzp_test_2KJtiEbwl9AXI6';
-            // $SECRET_KEY_ID = 'gSAdPsPXnalbVoAsc1PeWJLP';
-            // $rzr_order_id = "pay_IYu07du9ISB6sT";
 
-            $post_data = array('amount' =>$amount);
-            $post_data = json_encode($post_data);
-            $url = "https://api.razorpay.com/v1/payments/".$rzr_order_id."/refund";
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_USERPWD, $MERCHANT_KEY_ID.":".$SECRET_KEY_ID); // Input your Razorpay Key Id and Secret 
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json")); 
-            $response = curl_exec($ch);
-            return $response;
-            print_r($response);
+        // $amount =  116610;
+        // $MERCHANT_KEY_ID = 'rzp_test_2KJtiEbwl9AXI6';
+        // $SECRET_KEY_ID = 'gSAdPsPXnalbVoAsc1PeWJLP';
+        // $rzr_order_id = "pay_IYu07du9ISB6sT";
 
-        }
+        $post_data = array('amount' => $amount);
+        $post_data = json_encode($post_data);
+        $url = "https://api.razorpay.com/v1/payments/" . $rzr_order_id . "/refund";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_USERPWD, $MERCHANT_KEY_ID . ":" . $SECRET_KEY_ID); // Input your Razorpay Key Id and Secret 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+        $response = curl_exec($ch);
+        return $response;
+        print_r($response);
+    }
 
-        public function refundPaymentStripe($postdata){
-         // error_reporting(E_ALL);    
-         // ini_set('display_errors', 1);
-            require_once('application/libraries/stripe/init.php');
-            // $orderId_payment_gateway = $postdata['orderId_payment_gateway'];
-            $MERCHANT_KEY_ID = $postdata['mid_or_publishKey'];
-            $SECRET_KEY_ID = $postdata['secret_key'];
-            $strip_order_id  = $postdata['payment_transaction_id'];
-            $orderId_payment_gateway = $postdata['orderId_payment_gateway']; //order_id
-            $refund_amount = $postdata['refund_amount'];
-            $amount = ($refund_amount * 100); 
-            // $amount = (int) number_format((float)$amount,2,'.','');
+    public function refundPaymentStripe($postdata)
+    {
+        // error_reporting(E_ALL);    
+        // ini_set('display_errors', 1);
+        require_once('application/libraries/stripe/init.php');
+        // $orderId_payment_gateway = $postdata['orderId_payment_gateway'];
+        $MERCHANT_KEY_ID = $postdata['mid_or_publishKey'];
+        $SECRET_KEY_ID = $postdata['secret_key'];
+        $strip_order_id  = $postdata['payment_transaction_id'];
+        $orderId_payment_gateway = $postdata['orderId_payment_gateway']; //order_id
+        $refund_amount = $postdata['refund_amount'];
+        $amount = ($refund_amount * 100);
+        // $amount = (int) number_format((float)$amount,2,'.','');
 
-            try {
-                // Use a Stripe PHP library method that may throw an exception....
-                $stripe = new \Stripe\StripeClient($SECRET_KEY_ID);
-                $response = $stripe->refunds->create([
-                  'charge' => $orderId_payment_gateway,
-                  'amount' => $amount
-              ]);
-
-            } catch (\Stripe\Error\Base $e) {
+        try {
+            // Use a Stripe PHP library method that may throw an exception....
+            $stripe = new \Stripe\StripeClient($SECRET_KEY_ID);
+            $response = $stripe->refunds->create([
+                'charge' => $orderId_payment_gateway,
+                'amount' => $amount
+            ]);
+        } catch (\Stripe\Error\Base $e) {
             // Code to do something with the $e exception object when an error occurs
-              dd($e->getMessage()); die;
-
-          } catch (Exception $e) {
+            dd($e->getMessage());
+            die;
+        } catch (Exception $e) {
             // Catch any other non-Stripe exceptions
             $response = $e->getError();
             // $response = $response->code;
-            $this->utility_apiv2->setFlashMessage('success',$response->code); 
-          }
-
-            // dd($response);die;
-          return $response;
-
-            // return $refunds;
+            $this->utility_apiv2->setFlashMessage('success', $response->code);
         }
 
+        // dd($response);die;
+        return $response;
+
+        // return $refunds;
+    }
+
     //Developer : Shahid Abdul Rahman     
-    public function get_offer($vendor_id =''){
+    public function get_offer($vendor_id = '')
+    {
         $today = date('Y-m-d');
         $time = date('H:i:00');
 
 
-        $data['table'] = TABLE_OFFER .' as o';
-        $data['join'] = [TABLE_OFFER_DETAIL . ' as od'=>['o.id=od.offer_id','LEFT']];
-        $data['select'] = ['o.id','o.branch_id','o.offer_title','o.offer_percent','od.product_varient_id','o.image','start_date','end_date','start_time','end_time'];
-        $data['where'] = ['o.vendor_id'=>$vendor_id,'start_date <='=>$today,'end_date >='=>$today];
-        $data['having'] = ['start_time <= '=>$time];
+        $data['table'] = TABLE_OFFER . ' as o';
+        $data['join'] = [TABLE_OFFER_DETAIL . ' as od' => ['o.id=od.offer_id', 'LEFT']];
+        $data['select'] = ['o.id', 'o.branch_id', 'o.offer_title', 'o.offer_percent', 'od.product_varient_id', 'o.image', 'start_date', 'end_date', 'start_time', 'end_time'];
+        $data['where'] = ['o.vendor_id' => $vendor_id, 'start_date <=' => $today, 'end_date >=' => $today];
+        $data['having'] = ['start_time <= ' => $time];
         $data['groupBy'] = 'o.id';
         $result = $this->selectFromJoin($data);
         unset($data);
         foreach ($result as $k => $v) {
-            if($v->end_date == $today && $v->end_time <= $time){
+            if ($v->end_date == $today && $v->end_time <= $time) {
                 unset($result[$k]);
                 continue;
             }
-            
-            $v->image = base_url() . 'public/images/'.$this->folder.'offer_image/' . $v->image;
-            $data['select'] = ['c.name as category_name','p.category_id','pw.product_id'];
+
+            $v->image = base_url() . 'public/images/' . $this->folder . 'offer_image/' . $v->image;
+            $data['select'] = ['c.name as category_name', 'p.category_id', 'pw.product_id'];
             $data['table'] = TABLE_PRODUCT_WEIGHT . ' as pw';
             $data['join'] = [
-                TABLE_PRODUCT .' as p'=>['p.id=pw.product_id','LEFT'],
-                TABLE_CATEGORY . ' as c'=>['c.id = p.category_id','LEFT']
+                TABLE_PRODUCT . ' as p' => ['p.id=pw.product_id', 'LEFT'],
+                TABLE_CATEGORY . ' as c' => ['c.id = p.category_id', 'LEFT']
             ];
-            $data['where'] = ['pw.id'=>$v->product_varient_id,'pw.status !='=> '9'];
+            $data['where'] = ['pw.id' => $v->product_varient_id, 'pw.status !=' => '9'];
             $res = $this->selectFromJoin($data);
             $v->category_id = $res[0]->category_id;
             $v->category_name = $res[0]->category_name;
@@ -3684,24 +3751,25 @@ class Api_model extends My_model {
         }
         // dd($result);
         return $result;
-
     }
 
-    public function check_branch_is_active($branch_id){
+    public function check_branch_is_active($branch_id)
+    {
         $data['table'] = 'branch';
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$branch_id];
+        $data['where'] = ['id' => $branch_id];
         $res = $this->selectRecords($data);
         return $res[0];
     }
-    public function check($offer_id){
-        $data['table'] = TABLE_OFFER .' as o';
+    public function check($offer_id)
+    {
+        $data['table'] = TABLE_OFFER . ' as o';
         $data['join'] = [
-            TABLE_OFFER_DETAIL . ' as od'=>['o.id=od.offer_id','LEFT'],
-            TABLE_PRODUCT_WEIGHT . ' as pw'=>['pw.id = od.product_varient_id','LEFT'],
+            TABLE_OFFER_DETAIL . ' as od' => ['o.id=od.offer_id', 'LEFT'],
+            TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id = od.product_varient_id', 'LEFT'],
         ];
-        $data['select'] = ['o.id','o.branch_id','o.offer_title','o.offer_percent','od.product_varient_id','o.image'];
-        $data['where'] = ['o.id'=>$offer_id];
+        $data['select'] = ['o.id', 'o.branch_id', 'o.offer_title', 'o.offer_percent', 'od.product_varient_id', 'o.image'];
+        $data['where'] = ['o.id' => $offer_id];
         $data['groupBy'] = 'pw.product_id';
         $result = $this->selectFromJoin($data);
         return $result;
@@ -3709,48 +3777,49 @@ class Api_model extends My_model {
 
 
     //Developer : Pratik S Shah
-    public function sendOtpLogin($postData){
-       $data['table'] = 'user';
-       $data['select'] = ['*'];
-       $data['where']['phone'] = $postData['phone'];
-       $data['where']['country_code'] = $postData['country_code'];
-       $data['where']['vendor_id'] = $postData['vendor_id'];
-       $data['where']['status !='] = '9';
-       $re = $this->selectRecords($data,true);
-       unset($data);
-       if(empty($re)){
-            $insertData = array(
-                'phone'=>$postData['phone'],
-                'country_code'=>$postData['country_code'],                
-                'vendor_id'=>$postData['vendor_id'],
-                'login_type'=>'4',
-                'email_verify'=>'0',
-                'dt_added'=>strtotime(DATE_TIME),
-                'dt_updated'=>strtotime(DATE_TIME),
-            );
+    public function sendOtpLogin($postData)
+    {
         $data['table'] = 'user';
-        $data['insert'] = $insertData;
-        $user_id = $this->insertRecord($data); // return last id
-        
-       }else{         
-           $user_id = $re[0]['id'];
-       }
+        $data['select'] = ['*'];
+        $data['where']['phone'] = $postData['phone'];
+        $data['where']['country_code'] = $postData['country_code'];
+        $data['where']['vendor_id'] = $postData['vendor_id'];
+        $data['where']['status !='] = '9';
+        $re = $this->selectRecords($data, true);
+        unset($data);
+        if (empty($re)) {
+            $insertData = array(
+                'phone' => $postData['phone'],
+                'country_code' => $postData['country_code'],
+                'vendor_id' => $postData['vendor_id'],
+                'login_type' => '4',
+                'email_verify' => '0',
+                'dt_added' => strtotime(DATE_TIME),
+                'dt_updated' => strtotime(DATE_TIME),
+            );
+            $data['table'] = 'user';
+            $data['insert'] = $insertData;
+            $user_id = $this->insertRecord($data); // return last id
+
+        } else {
+            $user_id = $re[0]['id'];
+        }
         $varify =  $this->verify_mobile(
-                                        [
-                                        'user_id'=>$user_id,
-                                        'country_code'=>$postData['country_code'],
-                                        'phone'=>$postData['phone']
-                                        ]
-                                    );
+            [
+                'user_id' => $user_id,
+                'country_code' => $postData['country_code'],
+                'phone' => $postData['phone']
+            ]
+        );
         $response["success"] = 1;
         $response["message"] = "successfully sent otp on your mobile";
         $response['data'] = $varify['otp'];
         return $response;
-       
     }
 
-    function VarifyOtpLogin($postData){
-       
+    function VarifyOtpLogin($postData)
+    {
+
         $device_id = $postData['device_id'];
         $data['select'] = ['*'];
         $data['table'] = 'user';
@@ -3759,20 +3828,20 @@ class Api_model extends My_model {
         $data['where']['phone'] = $postData['phone'];
         $data['where']['status !='] = '9';
 
-        $re = $this->selectRecords($data,true);
+        $re = $this->selectRecords($data, true);
         unset($data);
-        if(!empty($re)){
-           if($re[0]['otp'] == $postData['otp']){
+        if (!empty($re)) {
+            if ($re[0]['otp'] == $postData['otp']) {
 
                 $data['update'] = [
-                            'otp' => '',
-                            'is_verify' => '1',
-                            'status'=>'1',
-                            ];
-                $data['where'] = ['id'=>$re[0]['id']];
+                    'otp' => '',
+                    'is_verify' => '1',
+                    'status' => '1',
+                ];
+                $data['where'] = ['id' => $re[0]['id']];
                 $data['table'] = 'user';
                 $d = $this->updateRecords($data);
-                if($d){
+                if ($d) {
                     $re[0]['is_verify'] = '1';
                 }
                 unset($data);
@@ -3781,104 +3850,105 @@ class Api_model extends My_model {
                 // $data['where']['id'] = $re[0]['id'];
                 // $res = $this->selectRecords($data,true);
                 $postdata = array(
-                                    'user_id' => $re[0]['id'], 
-                                    'device_id' => $device_id, 
-                                    'vendor_id' => $postData['vendor_id']
-                                );
+                    'user_id' => $re[0]['id'],
+                    'device_id' => $device_id,
+                    'vendor_id' => $postData['vendor_id']
+                );
                 $this->set_user_cart($postdata);
-                $response =  $this->sendLoginResponse($re[0],$postData);
-
-           }else{
+                $response =  $this->sendLoginResponse($re[0], $postData);
+            } else {
                 $response["success"] = 0;
-                $response["message"] = "Invalid Otp";                
-           }
-        }else{
+                $response["message"] = "Invalid Otp";
+            }
+        } else {
             $response["success"] = 0;
-            $response["message"] = "Data is not found"; 
+            $response["message"] = "Data is not found";
         }
         return $response;
     }
 
-  
-    public function completeProfile($postData){
+
+    public function completeProfile($postData)
+    {
         $user_id = $postData['user_id'];
         $fname = $postData['fname'];
         $lname = $postData['lname'];
         $email = $postData['email'];
         $user_gst_number = $postData['user_gst_number'];
-        if (!file_exists("public/images/".$this->folder."user_profile/")) {
-            mkdir("public/images/".$this->folder."user_profile/", 0777, true);
+        if (!file_exists("public/images/" . $this->folder . "user_profile/")) {
+            mkdir("public/images/" . $this->folder . "user_profile/", 0777, true);
         }
-        if(isset($_FILES['profileimage']) && $_FILES['profileimage']['error'] == 0){
-            $UploadPath = "public/images/".$this->folder."user_profile/";
-            $uploadImage =  upload_single_image($_FILES,'uprofile',$UploadPath);
-            $uploadImage = $uploadImage['data']['file_name'];   
+        if (isset($_FILES['profileimage']) && $_FILES['profileimage']['error'] == 0) {
+            $UploadPath = "public/images/" . $this->folder . "user_profile/";
+            $uploadImage =  upload_single_image($_FILES, 'uprofile', $UploadPath);
+            $uploadImage = $uploadImage['data']['file_name'];
             $data['update']['profileimage'] =  $uploadImage;
         }
-        $path = base_url().'public/images/'.$this->folder.'user_profile/';
+        $path = base_url() . 'public/images/' . $this->folder . 'user_profile/';
         $data['table'] = TABLE_USER;
         $data['update']['fname'] = $fname;
         $data['update']['lname'] = $lname;
         $data['update']['email'] = $email;
         $data['update']['user_gst_number'] = $user_gst_number;
         $data['update']['dt_updated'] = strtotime(DATE_TIME);
-        $data['where'] = ['id'=>$user_id];
+        $data['where'] = ['id' => $user_id];
         $result = $this->updateRecords($data);
 
         unset($data);
-        if($result){
+        if ($result) {
             $data['table'] = TABLE_USER;
             $data['select'] = ['*'];
-            $data['where'] = ['id'=>$user_id];
-            $r = $this->selectRecords($data,true);
+            $data['where'] = ['id' => $user_id];
+            $r = $this->selectRecords($data, true);
             // $response["user_data"] = $r[0];  
-            $response =  $this->sendLoginResponse($r[0],$postData,true);
+            $response =  $this->sendLoginResponse($r[0], $postData, true);
             $response["success"] = 1;
-            $response["message"] = "Profile Updated";  
+            $response["message"] = "Profile Updated";
         }
         return $response;
     }
 
     public function delete_user($postData)
     {
-       
+
         $data['select'] = ['*'];
-        $data['where'] = ['order_status <'=>'8','user_id'=>$postData['user_id']];
+        $data['where'] = ['order_status <' => '8', 'user_id' => $postData['user_id']];
         $data['table'] = TABLE_ORDER;
         $checkOrder = $this->selectRecords($data);
-        if(!empty($checkOrder)){
+        if (!empty($checkOrder)) {
             $response["success"] = 0;
             $response["message"] = "Please wait for deliver current order or cancle ongoing order";
             return $response;
         }
         unset($data);
-        $data['where'] = ['user_id'=>$postData['user_id']];
+        $data['where'] = ['user_id' => $postData['user_id']];
         $data['table'] = TABLE_MY_CART;
         $this->deleteRecords($data);
         unset($data);
-        $data['where'] = ['user_id'=>$postData['user_id']];
+        $data['where'] = ['user_id' => $postData['user_id']];
         $data['table'] = 'device';
         $this->deleteRecords($data);
         unset($data);
-        $data['update'] = ['status'=>'9'];
-        $data['where'] = ['id'=>$postData['user_id'] ];
+        $data['update'] = ['status' => '9'];
+        $data['where'] = ['id' => $postData['user_id']];
         $data['table'] = TABLE_USER;
         $this->updateRecords($data);
         $response["success"] = 1;
-        $response["message"] = "User Account is permanant deleted";  
+        $response["message"] = "User Account is permanant deleted";
         return $response;
     }
 
-    public function get_offer_varient_listing($postData){
-        $data['table'] = TABLE_OFFER_DETAIL .' as od';
+    public function get_offer_varient_listing($postData)
+    {
+        $data['table'] = TABLE_OFFER_DETAIL . ' as od';
         $data['join'] = [
-            TABLE_PRODUCT_WEIGHT.' as pw'=>['pw.id=od.product_varient_id','LEFT'],
-            TABLE_PRODUCT.' as p'=>['p.id=pw.product_id','LEFT'],
-            TABLE_WEIGHT.' as w'=>['w.id = pw.weight_id','LEFT'],
-            'package as pkg'=>['pkg.id = pw.package','LEFT'],
+            TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=od.product_varient_id', 'LEFT'],
+            TABLE_PRODUCT . ' as p' => ['p.id=pw.product_id', 'LEFT'],
+            TABLE_WEIGHT . ' as w' => ['w.id = pw.weight_id', 'LEFT'],
+            'package as pkg' => ['pkg.id = pw.package', 'LEFT'],
         ];
-        $data['select'] = ['od.*','pw.id as product_varient_id','pw.price','pw.price','pw.discount_price','pw.weight_no','w.name as weight_name','pw.discount_per','pkg.package as package_name','pw.max_order_qty','p.name','pw.product_id','p.branch_id','pw.quantity as available_quantity','pw.price as actual_price','w.id as weight_id'];
-        $data['where'] = ['od.offer_id'=>$postData['offer_id']];
+        $data['select'] = ['od.*', 'pw.id as product_varient_id', 'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.price as actual_price', 'w.id as weight_id'];
+        $data['where'] = ['od.offer_id' => $postData['offer_id']];
         $return =  $this->selectFromJoin($data);
         unset($data);
         $branch_id = $return[0]->branch_id;
@@ -3906,33 +3976,34 @@ class Api_model extends My_model {
 
             $v->my_cart_quantity = $my_cart_quantity;
             $image = $this->getVarient_image($v->product_varient_id);
-            $v->image = base_url() . 'public/images/'.$this->folder.'product_image/'.$image[0]->image;
+            $v->image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $image[0]->image;
             $v->image = str_replace(' ', '%20', $v->image);
         }
         $response["success"] = 1;
-        $response["message"] = "offer details data";  
-        $response["data"] = $return;  
+        $response["message"] = "offer details data";
+        $response["data"] = $return;
         return $response;
-
     }
 
-    public function get_order_promocode_discount($order_id){
+    public function get_order_promocode_discount($order_id)
+    {
         $data['table'] = TABLE_ORDER_PROMOCODE;
-        $data['where'] = ['order_id'=>$order_id];
+        $data['where'] = ['order_id' => $order_id];
         $data['select'] = ['*'];
         return $this->selectRecords($data);
-     }
+    }
 
-    public function getVarient_image($varient_id){
+    public function getVarient_image($varient_id)
+    {
         $data['table'] = TABLE_PRODUCT_IMAGE;
-        $data['where'] = ['product_variant_id'=>$varient_id];
+        $data['where'] = ['product_variant_id' => $varient_id];
         $data['select'] = ['*'];
         return $this->selectRecords($data);
+    }
 
-     }
-
-     /*Developer : Shahid abdul Rahman */
-    public function pushAdminNotification($insertData){
+    /*Developer : Shahid abdul Rahman */
+    public function pushAdminNotification($insertData)
+    {
         $data['table'] = 'admin_notification';
         $data['insert'] = $insertData;
         $return = $this->insertRecord($data);
@@ -3942,15 +4013,15 @@ class Api_model extends My_model {
         $message = $insertData['message'];
 
         $result = $this->getNotificationKey($branch_id);
-        $details = $this->getBranchDeviceData($branch_id); 
-        if(!empty($details)){
+        $details = $this->getBranchDeviceData($branch_id);
+        if (!empty($details)) {
             $type = $details[0]->type;
             $device_id = $details[0]->token;
             $deviceToken['message'] = $message;
             $deviceToken['type'] = $type;
             $deviceToken['device_id'] = $device_id;
             $deviceToken['for_admin'] = true;
-            $this->utility_apiv2->sendNotification($deviceToken,$notification_type,$result);
+            $this->utility_apiv2->sendNotification($deviceToken, $notification_type, $result);
             // if($notification_status == '1'){
             // }
             unset($data);
@@ -3958,70 +4029,74 @@ class Api_model extends My_model {
         return true;
     }
 
-    public function getBranchDeviceData($branch_id){
+    public function getBranchDeviceData($branch_id)
+    {
         $data['table'] = 'branch_device';
         $data['branch_id'] = $branch_id;
         $data['select'] = ['*'];
         return $this->selectRecords($data);
     }
 
-    public function isBranchActive($branch_id){
+    public function isBranchActive($branch_id)
+    {
         $data['table'] = 'branch';
         $data['select'] = ['*'];
-        $data['where'] = ['id'=>$branch_id];
+        $data['where'] = ['id' => $branch_id];
         $res = $this->selectRecords($data);
-        if(!empty($res)){
-            return $res[0]->status; 
+        if (!empty($res)) {
+            return $res[0]->status;
         }
     }
-    
-    public function checkProductExistInWishlist($postdata){
+
+    public function checkProductExistInWishlist($postdata)
+    {
         $data['table'] = 'wishlist';
         $data['select'] = ['*'];
         $data['where'] = [
-            'product_weight_id'=>$postdata['product_weight_id'],
-            'user_id'=>$postdata['user_id'],
-            'branch_id'=>$postdata['branch_id'],
+            'product_weight_id' => $postdata['product_weight_id'],
+            'user_id' => $postdata['user_id'],
+            'branch_id' => $postdata['branch_id'],
         ];
         $return = $this->selectRecords($data);
-        if(!empty($return)){
+        if (!empty($return)) {
             return "1";
         }
         return "0";
-    
     }
 
-    public function getActiveBranchList($postData){
+    public function getActiveBranchList($postData)
+    {
         $data['table'] = TABLE_BRANCH;
-        $data['select'] = ['id','name'];
-        $data['where'] = ['vendor_id'=>$postData['vendor_id'],'status'=>'1'];
+        $data['select'] = ['id', 'name'];
+        $data['where'] = ['vendor_id' => $postData['vendor_id'], 'status' => '1'];
         $return = $this->selectRecords($data);
-        if(!empty($return)){
+        if (!empty($return)) {
             $response["success"] = 1;
-            $response["message"] = "Branch List";  
-            $response["data"] = $return;  
-        }else{
+            $response["message"] = "Branch List";
+            $response["data"] = $return;
+        } else {
             $response["success"] = 0;
-            $response["message"] = "There Is No Active Branch";  
+            $response["message"] = "There Is No Active Branch";
             $response["data"] = $return;
         }
         return $response;
     }
 
-    public function getWishlist($postData){
+    public function getWishlist($postData)
+    {
         $data['table'] = 'wishlist as wl';
         $data['join'] = [
-            TABLE_PRODUCT_WEIGHT.' as pw'=>['pw.id=wl.product_weight_id','LEFT'],
-            TABLE_PRODUCT.' as p'=>['p.id=pw.product_id','LEFT'],
-            TABLE_WEIGHT.' as w'=>['w.id = pw.weight_id','LEFT'],
-            'package as pkg'=>['pkg.id = pw.package','LEFT'],
+            TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=wl.product_weight_id', 'LEFT'],
+            TABLE_PRODUCT . ' as p' => ['p.id=pw.product_id', 'LEFT'],
+            TABLE_WEIGHT . ' as w' => ['w.id = pw.weight_id', 'LEFT'],
+            'package as pkg' => ['pkg.id = pw.package', 'LEFT'],
         ];
-        $data['select'] = ['wl.*','pw.id as product_varient_id','pw.price','pw.price','pw.discount_price','pw.weight_no','w.name as weight_name','pw.discount_per','pkg.package as package_name','pw.max_order_qty','p.name','pw.product_id','p.branch_id','pw.quantity as available_quantity','pw.price as actual_price','w.id as weight_id'];
+        $data['select'] = ['wl.*', 'pw.id as product_varient_id', 'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.price as actual_price', 'w.id as weight_id'];
         $data['where']['wl.user_id'] = $postData['user_id'];
-        if(isset($postData['vendor_id']) && $postData['vendor_id'] != ''){
+        if (isset($postData['vendor_id']) && $postData['vendor_id'] != '') {
             $data['where']['wl.vendor_id'] = $postData['vendor_id'];
         }
-        if(isset($postData['branch_id']) && $postData['branch_id'] != ''){
+        if (isset($postData['branch_id']) && $postData['branch_id'] != '') {
             $data['where']['wl.branch_id'] = $postData['branch_id'];
         }
         $return =  $this->selectFromJoin($data);
@@ -4051,96 +4126,99 @@ class Api_model extends My_model {
 
             $v->my_cart_quantity = $my_cart_quantity;
             $image = $this->getVarient_image($v->product_varient_id);
-            $v->image = base_url() . 'public/images/'.$this->folder.'product_image/'.$image[0]->image;
+            $v->image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $image[0]->image;
             $v->image = str_replace(' ', '%20', $v->image);
         }
         $response["success"] = 1;
-        $response["message"] = "Wishlist";  
-        $response["data"] = $return;  
+        $response["message"] = "Wishlist";
+        $response["data"] = $return;
         return $response;
     }
 
-    public function AddRemoveFromWishlist($postData){
+    public function AddRemoveFromWishlist($postData)
+    {
         $result = $this->checkProductExist($postData);
         $product_variant = $this->ProductVarient($postData['product_varient_id']);
-        if(empty($result)){
-            if($postData['is_favourite'] == '1'){
+        if (empty($result)) {
+            if ($postData['is_favourite'] == '1') {
                 $array_wish =  array(
-                    'product_weight_id' => $product_variant[0]->pw_id, 
-                    'user_id'    => $postData['user_id'], 
-                    'vendor_id'  => $postData['vendor_id'], 
-                    'branch_id'  => $product_variant[0]->branch_id, 
+                    'product_weight_id' => $product_variant[0]->pw_id,
+                    'user_id'    => $postData['user_id'],
+                    'vendor_id'  => $postData['vendor_id'],
+                    'branch_id'  => $product_variant[0]->branch_id,
                     'created_by' => $postData['user_id'],
                     'updated_by' => $postData['user_id'],
                     'dt_created' => DATE_TIME,
-                    'dt_updated' => DATE_TIME 
+                    'dt_updated' => DATE_TIME
                 );
                 $this->insertProductToWishlist($array_wish);
                 $response['success'] = '1';
                 $response['messages'] = 'Product Added To Wishlist';
                 $response['is_favourite'] = '1';
-            }else{
+            } else {
                 $response['success'] = '0';
                 $response['messages'] = 'Product Already Remove From Wishlist';
-                $response['is_favourite'] = '0'; 
+                $response['is_favourite'] = '0';
             }
-
-        }else{
-            if(!empty($result)){
-            if($postData['is_favourite'] == '0'){
+        } else {
+            if (!empty($result)) {
+                if ($postData['is_favourite'] == '0') {
                     $this->removeProductToWishlist($result[0]->id);
                     $response['success'] = '1';
                     $response['messages'] = 'Product Remove From Wishlist';
                     $response['is_favourite'] = '0';
-                }else{
+                } else {
                     $response['success'] = '0';
                     $response['messages'] = 'Product Already Added To Wishlist';
                     $response['is_favourite'] = '1';
+                }
             }
-            }
-        }        
+        }
         return $response;
     }
 
-    public function checkProductExist($postdata){
+    public function checkProductExist($postdata)
+    {
         $product_weight_id = $postdata['product_varient_id'];
         $data['table'] = 'wishlist';
         $data['select'] = ['*'];
         $data['where'] = [
-            'product_weight_id'=>$product_weight_id,
-            'user_id'=>$postdata['user_id'],
-            'vendor_id'=>$postdata['vendor_id'],
+            'product_weight_id' => $product_weight_id,
+            'user_id' => $postdata['user_id'],
+            'vendor_id' => $postdata['vendor_id'],
         ];
         return $this->selectRecords($data);
-    
     }
 
-    public function ProductVarient($varient_id){
+    public function ProductVarient($varient_id)
+    {
 
         $data['table'] = TABLE_PRODUCT . " as p";
         $data['select'] = [
-            'p.*','pw.price','pw.id as pw_id', 'pw.quantity','pw.weight_id','pw.discount_per','pw.discount_price','pi.image','pw.weight_no','pw.max_order_qty','pw.without_gst_price'];
-            $data['join'] = [
-                TABLE_PRODUCT_WEIGHT .' as pw'=>['p.id = pw.product_id','LEFT'],
-                TABLE_PRODUCT_IMAGE .' as pi'=>['pw.id = pi.product_variant_id','LEFT']
-            ];
-            $data['where']['p.status'] = '1';
-            $data['where']['pw.status!='] = '9';
-            $data['where']['pw.id'] = $varient_id;
-            // $data['groupBy'] = 'p.id';   
-            return $this->selectFromJoin($data);         
-        }
+            'p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.weight_id', 'pw.discount_per', 'pw.discount_price', 'pi.image', 'pw.weight_no', 'pw.max_order_qty', 'pw.without_gst_price'
+        ];
+        $data['join'] = [
+            TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
+            TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
+        ];
+        $data['where']['p.status'] = '1';
+        $data['where']['pw.status!='] = '9';
+        $data['where']['pw.id'] = $varient_id;
+        // $data['groupBy'] = 'p.id';   
+        return $this->selectFromJoin($data);
+    }
 
-    public function insertProductToWishlist($insertArray){
+    public function insertProductToWishlist($insertArray)
+    {
         $data['table'] = 'wishlist';
         $data['insert'] = $insertArray;
         return $this->insertRecord($data);
     }
 
-    public function removeProductToWishlist($id){
+    public function removeProductToWishlist($id)
+    {
         $data['table'] = 'wishlist';
         $data['where']['id'] = $id;
         return $this->deleteRecords($data);
     }
-
 }
