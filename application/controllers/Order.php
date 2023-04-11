@@ -38,6 +38,7 @@ class Order extends Vendor_Controller
         }
 
         $data['order_detail_result'] = $this->this_model->order_detail_query($order_id);
+        lq();
         print_r($data['order_detail_result']);
         $user_id = $data['order_detail_result'][0]->user_id;
         $data['user_detail'] = $this->this_model->userDetails($user_id);
