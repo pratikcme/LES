@@ -111,7 +111,7 @@ class Checkout extends User_Controller
         $data['calc_shiping'] = 'notInRange';
       }
     }
-    dd($_SESSION);
+    // dd($_SESSION);
     // dd($data['calc_shiping']);
     if ($data['calc_shiping'] == 'notInRange'){
       $calc_shiping = 0;
