@@ -131,7 +131,7 @@ $vendor_id = $this->session->userdata('id');
                                 <hr> -->
                                 <div class="subtotal-wrap">
                                     <div>
-                                        <p>Subtotal</p>
+                                        <p>Products Subtotal</p>
                                         <p><?= $currency . ' '; ?>
                                             <span class="subtotal" id="refund_subtotal"><?= number_format((float)$subtotal, 2, '.', '') ?></span>
                                         </p>
@@ -146,8 +146,22 @@ $vendor_id = $this->session->userdata('id');
                                     <input type="hidden" name="refund_amount" id="refund_amount" value="0">
 
                                     <input type="hidden" id="front_cartBased" value="">
+                                    <!-- new -->
+                                    <div class="dis_subtotal">
+                                        <p>Products GST</p>
+                                        <p><?= $currency . ' '; ?>
+                                            <span class="dis_gst"><?= number_format((float) 0, 2, '.', '') ?></span>
+                                        </p>
+                                    </div>
+                                    <div class="dis_subtotal">
+                                        <p>Sub total</p>
+                                        <p><?= $currency . ' '; ?>
+                                            <span class="dis_sub_val"><?= number_format((float) 0, 2, '.', '') ?></span>
+                                        </p>
+                                    </div>
+                                    <!-- end -->
                                     <div>
-                                        <p>Tax GST </p>
+                                        <p class="gstName">Products GST </p>
                                         <p><?= $currency . ' '; ?>
                                             <span id="total_gst"><?= number_format((float) 0, 2, '.', '') ?></span>
                                         </p>

@@ -65,7 +65,6 @@
             <h4>
                 <p><?= $value->product_name ?></p>
             </h4>
-
             <div class="cart-inner-detail">
                 <h4>
                     <p><span class="m-0"><?= $value->weight_no . ' ' . $value->weight_name ?></span>
@@ -74,7 +73,7 @@
                 <h4 class="mx-2">
                     <span class="this_quantity">
                         <?= $value->quantity ?></span> <i class="fas fa-times"></i>
-                    <span class="this_price">
+                    <span class="this_price" data-actual_price="<?= $value->actual_price ?>" data-gst="<?= $value->gst ?>">
                         <?= $isShow ? numberFormat(($value->discount_price -  ($value->discount_price *  $value->gst) / 100)) : numberFormat($value->discount_price) ?></span></span>
                 </h4>
 

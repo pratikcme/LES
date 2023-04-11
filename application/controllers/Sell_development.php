@@ -94,6 +94,8 @@ class Sell_development extends Vendor_Controller
             $data['subtotal'] = $sub_total - $data['shopping_based_discount'];
         }
 
+        // dd($data);
+
         $this->load->view('checkout_new', $data);
         // $this->load->view('checkout', $data); //change the new main view
     }
@@ -160,6 +162,12 @@ class Sell_development extends Vendor_Controller
     // 
     public function findProductBykey()
     {
+
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
+        $currency = $this->this_model->getCurrency();
+        $cur = $currency[0]->value;
         if ($this->input->post()) {
             $class = 'add_product';
             if (isset($_POST['from'])) {
@@ -169,19 +177,25 @@ class Sell_development extends Vendor_Controller
             // dd($res);die;
             $html = '<ul>';
             foreach ($res as $key => $value) {
-                $value->discount_price = number_format((float)$value->discount_price, '2', '.', '');
+                $price = number_format((float)$value->discount_price, '2', '.', '');
+
+                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $discount_amt = $value->discount_price * $value->gst / 100;
+                    $price = $value->discount_price - $discount_amt;
+                }
+
                 $html .= '<li class="popover-list-item ' . $class . '" data-product_id=' . $value->product_id . ' data-pw_id=' . $value->pw_id . ' >
-                    <div class="product-list-wrapper">
-                        <div>
+                        <div class="product-list-wrapper">
                             <div>
-                                <h5>' . $value->name . '</h5>
-                                <h5>' . $value->weight_no . ' ' . $value->weight_name . '</h5>
-                            </div>
-                            <div class="total-wrapper">
-                                <h5>' . $value->discount_price . '</h5>
+                                <div>
+                                    <h5>' . $value->name . '</h5>
+                                    <h5>' . $value->weight_no . ' ' . $value->weight_name . '</h5>
+                                </div>
+                                <div class="total-wrapper">
+                                    <h5>'  . $cur . ' ' . numberFormat($price) . '</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </li>';
             }
             $html .= '</ul>';
@@ -235,7 +249,7 @@ class Sell_development extends Vendor_Controller
                                 <h5>' . date('d/m/Y h:i A', $value->dt_updated) . '</h5>
                             </div>
                             <div class="total-wrapper">
-                                <h5>' . $currency . ' ' . numberFormat($value->payable_amount) . '</h5>
+                             <h5>' . $currency . ' ' . numberFormat($value->payable_amount) . '</h5>
                             </div>
                         </div>
                     </div>
@@ -296,6 +310,13 @@ class Sell_development extends Vendor_Controller
             foreach ($data['products'] as $key => $value) :
                 $returned_quantity = $this->this_model->getReturnedQuantity($value->order_details_id);
 
+                $other_dis = 0;
+                if ($cart_based > 0) {
+                    $other_dis = $cart_based;
+                } else if (isset($promocode_used->percentage) && $promocode_used->percentage > 0) {
+                    $other_dis = $promocode_used->percentage;
+                }
+
                 if ($returned_quantity != 0) {
                     $abc['value'] = $value;
 
@@ -306,7 +327,17 @@ class Sell_development extends Vendor_Controller
                     $abc['value']->price = $data['isShow'] ? numberFormat($abc['value']->quantity * $abc['value']->without_gst_price) : numberFormat($abc['value']->quantity * $abc['value']->discount_price);
                     $abc['value']->noDelete = true;
 
+                    if ($other_dis > 0) {
+                        $valNew =  $abc['value']->discount_price - ($abc['value']->discount_price * $other_dis) / 100;
+                        $abc['value']->single_gst_discounted_amount = $valNew * $abc['value']->gst / 100;
+                    } else {
+                        $abc['value']->single_gst_discounted_amount = 0;
+                    }
+                    // else {
                     $abc['value']->single_gst_amount = ($abc['value']->discount_price * $abc['value']->gst) / 100;
+                    // }
+
+
 
                     $abc['value']->gst_amount = $abc['value']->single_gst_amount * $abc['value']->returned_quantity;
 
@@ -315,6 +346,9 @@ class Sell_development extends Vendor_Controller
                     } else {
                         $abc['isShow'] = false;
                     }
+
+                    $currency = $this->this_model->getCurrency();
+                    $abc['currency'] = $currency[0]->value;
 
                     $cart_html .=  $this->load->view("pos/cart_item_refund", $abc, true);
                     unset($data['products'][$key]);
@@ -839,6 +873,7 @@ class Sell_development extends Vendor_Controller
     {
         $data['register_result'] = $this->this_model->getRegister(); //changed Dipesh
         $data['order_row'] = $this->this_model->orderHistory();
+        // dd($data['order_row']);
         $data['js'] = array('order_history.js');
         $this->load->view('sales_history', $data);
     }
@@ -896,8 +931,9 @@ class Sell_development extends Vendor_Controller
                 $data['orderInfo'] = $re['return_orderInfo'][0];
 
                 $data['removedDiscountPercentage'] = $re['return_orderInfo'][0]->return_discount_per;
-                $data['removedDiscountAmount'] = $re['return_orderInfo'][0]->return_discount_amount;
+                $data['removedDiscountAmount'] = numberFormat($re['return_orderInfo'][0]->return_discount_amount);
 
+                // dd($data['removedDiscountAmount']);
                 $returnOrder_details_Html = $this->load->view('pos/sale_details', $data, true);
             }
 

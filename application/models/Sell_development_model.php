@@ -33,7 +33,7 @@ class Sell_development_model extends My_model
             TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.product_id=p.id', 'LEFT'],
             TABLE_WEIGHT . ' as w' => ['pw.weight_id = w.id', 'LEFT']
         ];
-        $data['select'] = ['w.name as weight_name', 'p.name', 'p.id as product_id', 'p.name', 'pw.id as pw_id', 'pw.*'];
+        $data['select'] = ['w.name as weight_name', 'p.name', 'p.id as product_id', 'p.name', 'pw.id as pw_id', 'pw.*', 'p.gst as gst'];
         // if(!empty($re)){
         //     $data['where']['pw.id NOT IN ('.$notFoundThisId.') AND 1='] = '1';
         // }
@@ -92,13 +92,13 @@ class Sell_development_model extends My_model
     //Refund checkout added 
     public function order_refund_checkout($postdata)
     {
-
+        // the gst is wrong for now by Dipesh
         $data['insert'] = [
             'order_id' => $postdata['order_id'][0],
             'branch_id' => $this->branch_id,
-            'discount_percentage' => $postdata['cart_based'],
+            'discount_percentage' => numberFormat($postdata['cart_based']),
             'discount_amount' => numberFormat($postdata['discount_amount']),
-            'sub_total' => $postdata['isShow'] == true ? ($postdata['counted_total_gst'] + $postdata['subtotal']) : $postdata['subtotal'],
+            'sub_total' => $postdata['subtotal'],
             'refund_amount' => $postdata['refund_amount'],
             'dt_added' => strtotime(DATE_TIME),
             'dt_updated' => strtotime(DATE_TIME),
@@ -625,8 +625,6 @@ class Sell_development_model extends My_model
 
     public function updateDiscount($postdata, $isShow)
     {
-
-
         $isParked = $this->input->post('isParked');
         if ($isParked > 0) {
             $table_name = 'parked_order_details';
@@ -683,10 +681,8 @@ class Sell_development_model extends My_model
         ];
         $data['select'] = [' po.*', 'c.customer_name', 'v.name as vendor_name'];
         $data['where'] = ['po.status' => '1', 'po.branch_id' => $this->branch_id];
-        $data['orderBy'] = 'po.id DESC';
+        $data['order'] = 'po.id DESC';
 
-        // $this->selectFromJoin($data);
-        // lq();
         return $this->selectFromJoin($data);
     }
 
@@ -1004,6 +1000,7 @@ class Sell_development_model extends My_model
         // $user_id = $postdata['vendor_id']; //Dipesh vendor_id from branch_id
 
         $sub_total = $postdata['hidden_subtotal'];
+
         // $disc_percentage = $postdata['disc_percentage'];
         $discount_total = $postdata['hidden_discount_total'];
         $total = $postdata['hidden_total'];
@@ -1029,6 +1026,8 @@ class Sell_development_model extends My_model
         $on = random_orderNo(15);
         $iOrderNo = $od . $on;
 
+        // $sub_total = numberFormat($postdata['discount_amt'] / ($postdata['discount'] / 100));
+        // dd($postdata['discount']);
         // $disc_percentage = 0; //added by Dipesh
 
         $order_from = '0';
@@ -1041,7 +1040,7 @@ class Sell_development_model extends My_model
                 // 
                 'payable_amount' => $hidden_total_pay,
                 'total_saving' => $postdata['discount_amt'],
-                'total' => $sub_total,
+                'total' => $total,
                 'order_discount' => $postdata['discount'], //removed by Dipesh 
                 // 
                 'status' => '1',
@@ -1051,9 +1050,9 @@ class Sell_development_model extends My_model
             $data['insert'] = $insertion;
             $data['table'] = 'parked_order';
 
-
             $last_id = $this->insertRecord($data);
-            $this->checkAndUsePromocode($promocode, $applied, $last_id, $sub_total);
+            // ask to check later by Dipesh
+            // $this->checkAndUsePromocode($promocode, $applied, $last_id, $sub_total);
 
             foreach ($postdata as $key => $value) {
                 unset($data);
@@ -1132,7 +1131,6 @@ class Sell_development_model extends My_model
         //     $payment_type = '1';
         // }
 
-
         if (isset($postdata['payment']) && $postdata['payment'] == 'Credit Card') {
             $payment_type = '1';
         }
@@ -1140,8 +1138,6 @@ class Sell_development_model extends My_model
         if (isset($postdata['payment']) && $postdata['payment'] == 'Cash') {
             $payment_type = '0';
         }
-
-
 
         $insertion = array(
             'order_from' => $order_from,
@@ -1166,7 +1162,9 @@ class Sell_development_model extends My_model
         $data['insert'] = $insertion;
         $data['table'] = 'order';
 
+        //Dk temp
         $last_id = $this->insertRecord($data);
+        // $last_id = 131;
 
 
         $this->checkAndUsePromocode($promocode, $applied, $last_id, $sub_total);
@@ -1284,7 +1282,6 @@ class Sell_development_model extends My_model
     function checkAndUsePromocode($promocode, $applied, $last_id, $sub_total)
     {
         // for applied promocode
-
         $promocode_amount = 0;
 
         if (isset($promocode) && $applied == 'true') {
@@ -1297,9 +1294,6 @@ class Sell_development_model extends My_model
                 $promocode_amount =  ($sub_total / 100) * $promocodeData[0]->percentage;
             }
         }
-
-
-        // dd($promocode_amount);
 
         if (isset($promocode) && $applied == 'true') {
 
@@ -2211,15 +2205,16 @@ class Sell_development_model extends My_model
         ];
         $data['where'] = ['r_od.order_id' => $order_id, 'r_od.status!=' => '9'];
         $return_result = $this->selectFromJoin($data);
+        // dd($return_result);
         // later
         unset($data);
 
-
         $data['table'] = 'refund_order';
-        $data['select'] = ['discount_percentage as return_discount_per', 'sum(discount_amount) as return_discount_amount', 'sum(sub_total) as total', 'sum(refund_amount) as payable_amount', 'total_items', 'dt_added'];
+        $data['select'] = ['discount_percentage as return_discount_per', 'sum(discount_amount) as return_discount_amount', 'round(sum(sub_total),2) as total', 'sum(refund_amount) as payable_amount', 'total_items', 'dt_added'];
         $data['where'] = ['order_id' => $order_id, 'branch_id' => $this->branch_id];
 
         $rerturn_r = $this->selectRecords($data);
+        // dd($rerturn_r);
 
         return ['order_details' => $result, 'orderInfo' => $r, 'return_order_details' => $return_result, 'return_orderInfo' => $rerturn_r];
     }
@@ -2265,14 +2260,15 @@ class Sell_development_model extends My_model
         $where = [
             'po.order_from' => '0',
             'po.status' => '1', 'po.payment_type !=' => '2',
-            'po.branch_id' => $this->branch_id
+            'po.branch_id' => $this->branch_id,
         ];
-        $this->db->select('po.*,c.customer_name ,(po.payable_amount - ro.refund_amount) as new_total  ,v.name as vendor_name,c.customercode'); //last added Dk
+        $this->db->select('po.*,c.customer_name ,(po.payable_amount - COALESCE(sum(ro.refund_amount),0)) as new_total  ,v.name as vendor_name,c.customercode'); //last added Dk
         $this->db->from('order as po');
         $this->db->join('vendor as v', 'v.id = po.branch_id', 'LEFT');
         $this->db->join('customer as c', 'c.id = po.customer_id', 'LEFT');
         $this->db->join('refund_order as ro', 'po.id = ro.order_id', 'LEFT');
         // added by Dipesh
+        $this->db->group_by('po.id');
 
         // 
         $this->db->where($where);
@@ -2304,6 +2300,8 @@ class Sell_development_model extends My_model
         }
 
         $query = $this->db->get();
+
+        // dd($query->result());
         return $query->result();
         // echo $this->db->last_query();
     }

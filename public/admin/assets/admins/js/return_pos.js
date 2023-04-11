@@ -66,6 +66,9 @@ var PRIVACY = (function () {
             // cartBased =
             //   (output.cart_based * 100) / parseFloat(output.sub_total);
             $("#cart_based").val(output.cart_based);
+            // showExtraGst();
+            setNewGSt(parseFloat(output.cart_based).toFixed(2));
+            //
             // $("#front_cartBased").val(output.cart_based);
             // if (flag == true) {
             //   // if ($("#front_cartBased").val() != "") {
@@ -99,6 +102,8 @@ var PRIVACY = (function () {
             $(".tag_removed").text("Removed Cart based Discount");
           } else if (output.promocode_used.percentage != undefined) {
             $("#cart_based").val(output.promocode_used.percentage);
+            // showExtraGst();
+            setNewGSt(parseFloat(output.promocode_used.percentage).toFixed(2));
             $("#cart_based_item").show();
             $(".tag_removed").text("Removed Promocode Discount");
             $("#return_shopping_based_discountPercentage").text(
@@ -106,6 +111,7 @@ var PRIVACY = (function () {
             );
           } else {
             $("#cart_based").val(0);
+            hideExtraGst();
           }
 
           $("#prod-list").css("display", "none");
@@ -313,6 +319,60 @@ var PRIVACY = (function () {
   // }
   //
 
+  $(".dis_subtotal").hide();
+  function setNewGSt(discPer) {
+    let newGst = 0;
+
+    $(".this_price").each(function () {
+      let quantity = parseInt($(this).parent().find(".this_quantity").text());
+      let amt = parseFloat($(this).data("actual_price")).toFixed(2);
+      let disc = parseFloat(
+        $(this).parent().parent().parent().next().find(".disc").val()
+      ).toFixed(2);
+      let amtDisc = amt - (amt * disc) / 100;
+      let cartBased =
+        amtDisc - (amtDisc * parseFloat(discPer).toFixed(2)) / 100;
+      let gstPer = parseFloat($(this).data("gst")).toFixed(2);
+      newGst += ((cartBased * gstPer) / 100) * quantity;
+    });
+
+    let uncount_gst_discounted_amount = 0;
+    $(".uncount_gst_discounted_amount").each(function () {
+      uncount_gst_discounted_amount += parseFloat($(this).val());
+    });
+
+    // console.log("called", parseFloat(uncount_gst_discounted_amount).toFixed(2));
+    // return;
+
+    $("#total_gst").text(
+      parseFloat(
+        newGst - parseFloat(uncount_gst_discounted_amount).toFixed(2)
+      ).toFixed(2)
+    );
+  }
+
+  function showExtraGst() {
+    let oldGst = parseFloat($("#total_gst").text());
+    $(".dis_subtotal")
+      .find(".dis_sub_val")
+      .text(
+        parseFloat(parseFloat($("#refund_subtotal").text()) + oldGst).toFixed(2)
+      );
+
+    $(".dis_subtotal").find(".dis_gst").text(parseFloat(oldGst).toFixed(2));
+    $(".dis_subtotal").parent().find(".gstName").text("Updated GST");
+
+    $(".dis_subtotal").show();
+  }
+
+  function hideExtraGst() {
+    $(".dis_subtotal").hide();
+    $(".dis_subtotal").find(".dis_sub_val").text(0);
+    $(".dis_subtotal").find(".dis_gst").text(0);
+
+    $(".dis_subtotal").parent().find(".gstName").text("Products GST");
+  }
+
   async function calculate_refund_subtotal(check) {
     var sub_total = 0;
     $(".sub_total").each(function () {
@@ -357,23 +417,37 @@ var PRIVACY = (function () {
     }
 
     if (final_subtotal > 0) {
-      $("#refund_subtotal").html(final_subtotal);
-      $("#subtotal").val(final_subtotal);
+      $("#refund_subtotal").html(parseFloat(final_subtotal).toFixed(2));
 
-      parseFloat($("#cart_based").val()) > 0
-        ? $("#removed_cartbased_item").show()
-        : $("#removed_cartbased_item").hide();
+      let discount = parseFloat($("#cart_based").val());
+
+      if (discount > 0) {
+        showExtraGst();
+        setNewGSt(discount);
+        $("#removed_cartbased_item").show();
+      } else {
+        hideExtraGst();
+        $("#removed_cartbased_item").hide();
+      }
+
+      // parseFloat($("#cart_based").val()) > 0 ?  : ;
+      // parseFloat($("#cart_based").val()) > 0
+      //   ? $("#removed_cartbased_item").show()
+      //   : $("#removed_cartbased_item").hide();
+
+      $("#subtotal").val(parseFloat(final_subtotal).toFixed(2));
       $(".total-main").show();
 
       // document.getElementById("refund_btn").style.display = "none";
     } else {
       //
       $("#removed_cartbased_item").hide();
-      $("#refund_subtotal").html(0);
+      $("#refund_subtotal").html(parseFloat(0).toFixed(2));
       $("#subtotal").val(0);
       $("#total_pay").val(parseFloat(0).toFixed(2));
       $("#refund_amount").html(parseFloat(0).toFixed(2));
       $(".total-main").hide();
+      hideExtraGst();
       // document.querySelector(".total-main").style.display = "flex";
     }
 
@@ -392,7 +466,6 @@ var PRIVACY = (function () {
     //     : $("#shopping_based_discountPercentage").html(parseInt(disc));
     // } else {
     let amt = parseFloat($("#refund_subtotal").text()).toFixed(2);
-
     // if (isShow != "1") {
     //   // alert("here");
     //   amt = parseFloat(
@@ -413,6 +486,14 @@ var PRIVACY = (function () {
           parseFloat(disc).toFixed(2)
         )
       : $("#return_shopping_based_discountPercentage").html(parseInt(disc));
+
+    // if (disc > 0) {
+    //   showExtraGst();
+    //   setNewGSt(disc);
+    // }
+    //  else {
+    //   hideExtraGst();
+    // }
 
     // }
 

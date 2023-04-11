@@ -1212,4 +1212,29 @@ class product_model extends My_model
             echo "true";
         }
     }
+
+
+    // Dk Added
+    public function get_unique_barcode($postData)
+    {
+        $qr_code = $this->input->post('qr_code');
+        $branch_id = $this->session->userdata['id'];
+
+        $id = $this->input->post('id');
+        if ($id != '') {
+            $data['where']['id != '] = $id;
+        }
+        $data['select'] = ['*'];
+        $data['where']['branch_id'] = $branch_id;
+        $data['where']['qr_code'] = $qr_code;
+        $data['table'] = TABLE_PRODUCT_WEIGHT;
+        $result = $this->selectRecords($data);
+
+        if (count($result) > 0) {
+            return "false";
+        } else {
+            return "true";
+        }
+    }
+    // 
 }

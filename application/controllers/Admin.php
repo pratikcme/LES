@@ -113,7 +113,6 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     }
     public function index()
     {
-
         $this->load->model('vendor_model');
         $data['grap'] = json_encode($this->vendor_model->getChartData());
 
@@ -121,16 +120,17 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     }
     public function change_delivery_type()
     {
-
         $this->load->model('vendor_model');
         $this->vendor_model->change_delivery_type();
     }
 
     public function login()
     {
+        // Temp Removed By Dipesh For Work On Super Admin
         if (base_url() == 'https://admin.launchestore.com/') {
             redirect(base_url() . 'super_admin/login');
         }
+        // again added for pos changes
         if (isset($_SESSION['super_admin']) || isset($_SESSION['vendor_admin'])) {
             redirect(base_url() . 'admin/dashboard');
         }
