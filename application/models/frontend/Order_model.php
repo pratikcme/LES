@@ -70,19 +70,14 @@ class Order_model extends My_model
         $user_address_id = '';
         $paymentMethod = '';
         if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') {
-            echo '1';
-            dd($_SESSION);
             $address = 'self pick';
             $this->load->model('api_v3/api_model', 'api_v3_model');
             $user = $this->api_v3_model->getUserDetails($user_id);
         } else {
-            echo '2';
-            dd($_SESSION);
             $userDetails = $this->getAddress();
             $address = $userDetails[0]->address . ' ' . $userDetails[0]->city . ' ' . $userDetails[0]->state . ' ' . $userDetails[0]->country;
             $user_address_id = $userDetails[0]->id;
         }
-        die;
 
         $payment_type = '0'; // COD
         if (isset($_REQUEST['payment_type'])) {
@@ -228,15 +223,6 @@ class Order_model extends My_model
             }
 
             if (!empty($my_order_result)) {
-                foreach ($my_order_result as $my_order) {
-                    $var_id = $my_order->product_weight_id;
-                    $qnt = $my_order->quantity;
-                    $updatedQTY = $this->check_udpate_quantity($var_id, $qnt, $user_id);
-                    if (!$updatedQTY) {
-                        continue;
-                    }
-                }
-
 
                 if (!empty($my_order_result)) {
                     foreach ($my_order_result as $my_order) {
