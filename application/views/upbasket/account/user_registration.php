@@ -11,7 +11,8 @@
               
               <!-- ---------login-deails-wrappper----- -->
                 <div class="login-deatils-wrapper mobile-login">
-                    <form action="login.php">
+                    <form id="Register_Form" method="post" action="<?=base_url().'register'?>">
+                    <input type="hidden" id="user_id">
                         <div class="mb-3">
                             <div class="tab-select-box">
                             <label for="Country-code" class="form-label">Country Code<span>*</span></label>
@@ -42,7 +43,7 @@
                         </div> -->
                         
                         <div class="mb-3 tab-save-btn">
-                            <button type="submit" class="common-input-btn">Submit</button>
+                            <button type="button" class="common-input-btn send" id="frmBtn">Send Code</button>
                         </div>
                         
                         <h3 class="mt-4">did not receive otp? <span href="#">Resend</span></h3>
