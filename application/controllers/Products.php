@@ -283,6 +283,7 @@ class Products extends User_Controller
 		$data['item_weight_id'] = $item_weight_id;
 		$data['BranchDetails'] = $this->this_model->getBranchDtails();
 		$data['product_weight_id'] = $this->uri->segment(4);
+		dd($data['related_product']);
 		$this->loadView(USER_LAYOUT, $data);
 	}
 
