@@ -54,8 +54,7 @@ class Home_model extends My_model
 		$data['limit'] = 50;
 
 		$return = $this->selectFromJoin($data);
-		echo $this->db->last_query();
-		die;
+		// echo $this->db->last_query();die;
 		return $return;
 	}
 
