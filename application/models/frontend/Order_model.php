@@ -274,7 +274,7 @@ class Order_model extends My_model
                         'dt_added' => strtotime(date('Y-m-d H:i:s')),
                         'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                     );
-                    dd( $data);
+                    // dd( $data);
 
                     $this->db->insert('order', $data);
                     $last_insert_id = $this->db->insert_id();
