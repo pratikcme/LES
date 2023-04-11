@@ -57,7 +57,6 @@ class Order_model extends My_model
     public function makeOrder($fromStripe = '')
     {
         $this->load->model('api_v3/Api_model', 'api_v3_model');
-        dd($_POST);die;
         $user_id = $this->session->userdata('user_id');
         $branch_id = $this->session->userdata('branch_id');
         $vendor_id = $this->session->userdata('vendor_id');
@@ -71,15 +70,19 @@ class Order_model extends My_model
         $user_address_id = '';
         $paymentMethod = '';
         if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') {
+            echo '1';
+            dd($_SESSION);
             $address = 'self pick';
             $this->load->model('api_v3/api_model', 'api_v3_model');
             $user = $this->api_v3_model->getUserDetails($user_id);
         } else {
+            echo '2';
+            dd($_SESSION);
             $userDetails = $this->getAddress();
             $address = $userDetails[0]->address . ' ' . $userDetails[0]->city . ' ' . $userDetails[0]->state . ' ' . $userDetails[0]->country;
             $user_address_id = $userDetails[0]->id;
         }
-
+        die;
 
         $payment_type = '0'; // COD
         if (isset($_REQUEST['payment_type'])) {
