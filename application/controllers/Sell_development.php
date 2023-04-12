@@ -59,14 +59,15 @@ class Sell_development extends Vendor_Controller
         $gst = 0;
         $total_savings = 0; //test Dipesh
         foreach ($data['order_temp_result'] as $key => $value) :
-            $gst_amount = ($value->discount_price * $value->gst) / 100;
-            $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
-            $gst += $gst_amount * $value->quantity;
+            // dd($value->discount_price);
+            $gst_amount = (numberFormat($value->discount_price) * $value->gst) / 100;
+            $total_savings += ($value->actual_price - numberFormat($value->discount_price)) * $value->quantity;
+            $gst += numberFormat($gst_amount) * numberFormat($value->quantity);
 
             if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                 $data['order_temp_result'][$key]->price = $value->without_gst_price * $value->quantity;
             } else {
-                $data['order_temp_result'][$key]->price = $value->discount_price * $value->quantity;
+                $data['order_temp_result'][$key]->price = numberFormat($value->discount_price) * $value->quantity;
             }
             $sub_total += $data['order_temp_result'][$key]->price;
         endforeach;
@@ -88,6 +89,7 @@ class Sell_development extends Vendor_Controller
         $data['shopping_based_discount'] = $arr['shopping_based_discount'];
 
         $data['total_gst'] = $gst;
+        // dd(numberFormat($gst));
 
         $data['total_savings'] = numberFormat($total_savings);
         if ($data['shopping_based_discount'] > 0) {
@@ -339,7 +341,7 @@ class Sell_development extends Vendor_Controller
 
 
 
-                    $abc['value']->gst_amount = $abc['value']->single_gst_amount * $abc['value']->returned_quantity;
+                    $abc['value']->gst_amount = numberFormat($abc['value']->single_gst_amount) * $abc['value']->returned_quantity;
 
                     if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                         $abc['isShow'] = true;
@@ -408,7 +410,7 @@ class Sell_development extends Vendor_Controller
 
             $data['value']->single_gst_amount = ($data['value']->discount_price * $data['value']->gst) / 100;
 
-            $data['value']->gst_amount = $data['value']->single_gst_amount * $data['value']->quantity;
+            $data['value']->gst_amount = numberFormat($data['value']->single_gst_amount) * $data['value']->quantity;
 
             if (count($data['value']) > 0) {
                 $html .=  $this->load->view("pos/cart_item_refund", $data, true);
@@ -496,7 +498,7 @@ class Sell_development extends Vendor_Controller
 
                 foreach ($result as $key => $value) {
                     $gst_amount = ($value->discount_price * $value->gst) / 100;
-                    $total_gst += $gst_amount * $value->quantity;
+                    $total_gst += numberFormat($gst_amount) * $value->quantity;
                     $data['value'] = $value;
 
                     if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
@@ -617,7 +619,7 @@ class Sell_development extends Vendor_Controller
 
                 foreach ($result as $key => $value) {
                     $gst_amount = ($value->discount_price * $value->gst) / 100;
-                    $total_gst += $gst_amount * $value->quantity;
+                    $total_gst += numberFormat($gst_amount) * $value->quantity;
                     $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
                     $sub_total += $value->price;
                     $total_discount += $value->discount_per_product;
@@ -721,7 +723,7 @@ class Sell_development extends Vendor_Controller
 
                 $r = $this->this_model->checkProductVarient($value->product_weight_id);
                 $gst_amount = ($value->discount_price * $r[0]->gst) / 100;
-                $total_gst += $gst_amount * $value->quantity;
+                $total_gst += numberFormat($gst_amount) * $value->quantity;
                 $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
                 $sub_total += $price;
             }
@@ -797,7 +799,7 @@ class Sell_development extends Vendor_Controller
                     $gst_amount = ($value->discount_price * $r[0]->gst) / 100;
                 }
 
-                $total_gst += $gst_amount * $value->quantity;
+                $total_gst += numberFormat($gst_amount) * $value->quantity;
 
                 $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
                 $sub_total += $value->price;

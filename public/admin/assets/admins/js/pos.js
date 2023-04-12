@@ -950,12 +950,12 @@ var PRIVACY = (function () {
       let gstPer = parseFloat($(this).data("gst")).toFixed(2);
       newGst += ((cartBased * gstPer) / 100) * quantity;
     });
+
     $("#total_gst").text(parseFloat(newGst).toFixed(2));
   }
 
   function showExtraGst() {
     let oldGst = parseFloat($("#total_gst").text());
-
     $(".dis_subtotal")
       .find(".dis_sub_val")
       .text(parseFloat(parseFloat($("#subtotal").text()) + oldGst).toFixed(2));
@@ -1240,16 +1240,18 @@ var PRIVACY = (function () {
     $(".sub_total").each(function () {
       sub_total += parseFloat($(this).text());
     });
-    var final_subtotal = sub_total.toFixed(2);
+
+    var final_subtotal = parseFloat(sub_total).toFixed(2);
 
     $("#subtotal").html(final_subtotal);
 
     let isShow = $("#isShow").val();
-
     if (isShow !== "1") {
-      let gst = parseFloat($("#total_gst").text()).toFixed(2);
+      let gst = parseFloat($("#total_gst").text()).toFixed(2); //check
 
-      $("#subtotal").html(parseFloat(final_subtotal - gst).toFixed(2));
+      $("#subtotal").html(
+        parseFloat(parseFloat(final_subtotal) - parseFloat(gst)).toFixed(2)
+      );
       return parseFloat(final_subtotal - gst).toFixed(2);
     }
 
