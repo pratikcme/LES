@@ -270,7 +270,7 @@ class Checkout extends User_Controller
         $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
-
+      dd($data['Host']);
 
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
@@ -729,7 +729,6 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
         $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
-      dd($data['Host']);
 
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
