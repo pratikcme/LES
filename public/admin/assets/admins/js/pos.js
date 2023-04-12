@@ -137,6 +137,7 @@ var PRIVACY = (function () {
       },
     });
     // },1000);
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   $(document).on("click", ".add_quick_product", function (e) {
@@ -182,6 +183,7 @@ var PRIVACY = (function () {
       },
     });
     // },1000);
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   // function displayBlock(parm) {
@@ -252,6 +254,7 @@ var PRIVACY = (function () {
     if (!btn.is(e.target)) {
       $("#myDropdown").hide();
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   function myFunction() {
@@ -314,6 +317,7 @@ var PRIVACY = (function () {
         }
       },
     });
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   }
 
   // function addQuant(val, qnt) {
@@ -466,6 +470,7 @@ var PRIVACY = (function () {
         // }, 400);
       },
     });
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   // $(".qunt").inputFilter(function(value) {
@@ -575,6 +580,7 @@ var PRIVACY = (function () {
         },
       });
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   // new design
@@ -669,6 +675,7 @@ var PRIVACY = (function () {
         },
       });
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   }
 
   // $(document).on("click", ".dec", function () {
@@ -685,6 +692,7 @@ var PRIVACY = (function () {
     if ($(this).val() == "") {
       $(this).val("0.00");
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   //re added by dipesh now discount needed
@@ -775,6 +783,7 @@ var PRIVACY = (function () {
         });
       }
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   $("#disc_percentage").keyup(function () {
@@ -853,6 +862,7 @@ var PRIVACY = (function () {
         $("#add_search_prod").val("");
       },
     });
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   $(".remove_quick_list_item").click(function () {
@@ -952,6 +962,7 @@ var PRIVACY = (function () {
     });
 
     $("#total_gst").text(parseFloat(newGst).toFixed(2));
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   }
 
   function showExtraGst() {
@@ -1051,6 +1062,7 @@ var PRIVACY = (function () {
 
     $("#promocode").val("");
     $("#promo_err").html("");
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   }
 
   // Dipesh
@@ -1148,6 +1160,7 @@ var PRIVACY = (function () {
         }
       },
     });
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   // promocode

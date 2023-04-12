@@ -96,7 +96,7 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
 
             if ($total_discounted_gst > 0) {
                 // if ($return_details == true) :
-                //     dd($orderInfo->total);
+
                 // endif;
             ?>
             <li>

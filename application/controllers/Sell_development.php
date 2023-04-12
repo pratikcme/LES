@@ -904,13 +904,16 @@ class Sell_development extends Vendor_Controller
 
             $data['order_total_gst'] = 0;
             // added before
+
             $data['orderInfo'] = $re['orderInfo'][0];
+            // dd($data['orderInfo']);
             $data['order_details'] =  $re['order_details'];
 
             $data['amount'] = $this->this_model->getPromocodeAmount($data['orderInfo']->order_id);
             // dd($data['orderInfo']->total);
 
             $data['shoppingDiscount'] = $data['orderInfo']->shopping_amount_based_discount * 100  / $data['orderInfo']->total;
+
 
             $order_details_Html = $this->load->view('pos/sale_details', $data, true);
 
