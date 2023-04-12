@@ -259,7 +259,6 @@ class Checkout extends User_Controller
       );
 
       $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
-      dd($post_data);
       /* for Production */
       $url = 'https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
       $data['Host'] = 'https://securegw.paytm.in'; // production
