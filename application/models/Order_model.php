@@ -588,6 +588,7 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
             $orderId_payment_gateway = $res[0]->orderId_payment_gateway;
             $refund_amount = $res[0]->total;
             $paymentOpt = $this->getPaymentMethodCredential($paymentMethod);
+            dd($paymentOpt);
             $mid_or_publishKey = $paymentOpt[0]->publish_key;
             $secret_key = $paymentOpt[0]->secret_key;
            
