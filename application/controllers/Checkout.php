@@ -641,7 +641,7 @@ class Checkout extends User_Controller
     if ($calc_shiping == 'notInRange') {
         $calc_shiping = 0;
     }
-    echo $calc_shiping ; die;
+    
     if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type == 1) { // razor payment
 
       $api = new Api($publish_key, $scret_key);
