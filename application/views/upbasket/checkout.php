@@ -263,14 +263,20 @@
            <div class="main-accordion">
              <div class="accordion-heading">Payment Option</div>
              <div class="accordion-content">
-               <div class="accordion-content-2 accordion-5"> <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?> <div class="form-check radio-outer-line">
-                   <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="
-																									<?=$payment_option?>" <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?>>
+               <div class="accordion-content-2 accordion-5"> 
+                <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?> 
+                  <div class="form-check radio-outer-line">
+                   <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?=$payment_option?>" 
+                   <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?>>
                    <label class="form-check-label" for="Credit/Debit Card"> <?=$this->lang->line('Credit/Debit Card')?> </label>
-                 </div> <?php } ?> <?php if($isCOD == '1'){ ?> <div class="form-check radio-outer-line">
+                 </div> <?php } ?> 
+                 <?php if($isCOD == '1'){ ?> 
+                  <div class="form-check radio-outer-line">
                    <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="Cash On Delivery" value="0" <?=($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : ''?>>
                    <label class="form-check-label" for="Cash On Delivery"> <?=$this->lang->line('Cash On Delivery')?> </label>
-                 </div> <?php } ?> </div>
+                 </div> 
+                 <?php } ?> 
+                </div>
              </div>
            </div>
          </div>
@@ -357,23 +363,23 @@
                    <span id="checkout_final"> <?php 
                           if(isset($calc_shiping) && is_numeric($calc_shiping)) {
 
-                                if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                                  $to = $getMycartSubtotal+$calc_shiping + $TotalGstAmount; 
-                                }else{
-                                  $to = $getMycartSubtotal+$calc_shiping;
-                                }
-                                $f_amount = $to-$shopping_based_discount;
-                                echo number_format((float)$f_amount,2,'.',''); 
+                              if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                                $to = $getMycartSubtotal+$calc_shiping + $TotalGstAmount; 
+                              }else{
+                                $to = $getMycartSubtotal+$calc_shiping;
+                              }
+                              $f_amount = $to-$shopping_based_discount;
+                              echo number_format((float)$f_amount,2,'.',''); 
 
                             }else{ 
 
-                                if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                                  $tot = $getMycartSubtotal + $TotalGstAmount; 
-                                }else{
-                                  $tot = $getMycartSubtotal;
-                                }
-                                $f_amount = $tot-$shopping_based_discount;
-                                echo number_format((float)$f_amount,2);
+                              if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
+                                $tot = $getMycartSubtotal + $TotalGstAmount; 
+                              }else{
+                                $tot = $getMycartSubtotal;
+                              }
+                              $f_amount = $tot-$shopping_based_discount;
+                              echo number_format((float)$f_amount,2);
 
                             } ?> </span>
                  </td>
@@ -390,10 +396,7 @@
          <div class="our-secure-product">
            <div class="secure-product-wrapper">
              <div class="icon">
-               <a href="#">
-                 <img src="
-																																<?=$this->theme_base_url?>/assets/images/ShieldCheck.svg" alt="">
-               </a>
+               <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/ShieldCheck.svg" alt=""></a>
              </div>
              <div class="text">
                <h3>100% Genuine Products</h3>
@@ -402,9 +405,7 @@
            <div class="secure-product-wrapper">
              <div class="icon">
                <a href="#">
-                 <img src="
-																																	<?=$this->theme_base_url?>/assets/images/Medal.svg" alt="">
-               </a>
+                 <img src="<?=$this->theme_base_url?>/assets/images/Medal.svg" alt=""></a>
              </div>
              <div class="text">
                <h3>Secure Payments</h3>
