@@ -340,7 +340,7 @@ var CHECKOUT = (function () {
         if (output.response == 0) {
           window.location.reload();
         }
-
+        alert();
         $("#razerData").attr("data-json", output.data);
         $("#paytm").attr("data-json", output.paytm);
         $(".stripe-amount").attr("data-json", output.amount);
