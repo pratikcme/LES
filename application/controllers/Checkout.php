@@ -647,7 +647,6 @@ class Checkout extends User_Controller
       $api = new Api($publish_key, $scret_key);
       $amt = $getMycartSubtotal + $calc_shiping;
       $amt = numberFormat($amt);
-      echo $amt;
       $razorpayOrder = $api->order->create(array(
         'receipt' => rand(),
         'amount' => $amt * 100, // 2000 rupees in paise
