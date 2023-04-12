@@ -149,7 +149,6 @@ class Checkout extends User_Controller
     $scret_key = $getActivePaymentMethod[0]->secret_key;
 
     if ($getActivePaymentMethod[0]->IsTestOrLive == '0') {
-      echo '1';die;
       $publish_key = $getActivePaymentMethod[0]->test_publish_key;
       $scret_key = $getActivePaymentMethod[0]->test_secret_key;
     }
