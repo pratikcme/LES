@@ -702,9 +702,9 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
       );
       dd($paytmParams);
       /*
-* Generate checksum by parameters we have in body
-* Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
-*/
+      * Generate checksum by parameters we have in body
+      * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
+      */
       $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $MKY);
 
       $user_id = $this->session->userdata('user_id');
