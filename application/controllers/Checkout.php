@@ -166,12 +166,7 @@ class Checkout extends User_Controller
     $data['shopping_based_discountPercentage'] = $discountPercentage;
     $data['shopping_based_discount'] = $discountValue;
     $getMycartSubtotal = getMycartSubtotal();
-    // echo getMycartSubtotal();
-    // echo "<br>";
-    // echo $discountValue;
-    // echo "<br>";
-    // echo $getMycartSubtotal;
-    // die;
+    
     $data['getMycartSubtotal'] = $getMycartSubtotal;
     $data['array'] = [];
     $data['data'] = json_encode([]);
@@ -225,8 +220,10 @@ class Checkout extends User_Controller
       $od = 'Order #';
       $on = time();
       $on = "PYTM_ORDR_" . $on;
-      $MID = trim($publish_key);
-      $MKY = trim($scret_key);
+      // $MID = trim($publish_key);
+      // $MKY = trim($scret_key);
+      $MID = 'oxzjXy66674454941399';
+      $MKY = 'IysGgZ_ro05LoFIo';
       $amt =  $getMycartSubtotal + $calc_shiping + $total_gst - $discountValue;
       $amt = number_format($amt, 2, '.', '');
       $custId = "CUST_" . time();
