@@ -610,7 +610,6 @@ class Checkout extends User_Controller
 
 
     $data['getMycartSubtotal'] = $getMycartSubtotal;
-    dd($data['getMycartSubtotal']);
     $data['array'] = [];
     $data['data'] = json_encode([]);
 
@@ -743,7 +742,7 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
       $data['paytm'] = json_encode($array);
     }
     $data['GatewayType'] = $getActivePaymentMethod[0]->type;
-
+    dd($data);
     echo json_encode($data);
   }
 
