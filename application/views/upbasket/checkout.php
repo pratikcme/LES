@@ -492,7 +492,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             // after successfully update configuration invoke checkoutjs
             window.Paytm.CheckoutJS.invoke();
         }).catch(function onError(error) {
-            // console.log("Error => ", error);
+            console.log("Error => ", error);
         });
     }
 }
