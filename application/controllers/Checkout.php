@@ -589,7 +589,7 @@ class Checkout extends User_Controller
       $promo = $this->this_model->validate_promocode($this->input->post());
       if ($promo['success'] == '1') {
         $promoDiscount = $promo['data'];
-        $getMycartSubtotal = $promo['orderAmount'] - $promoDiscount;
+        $getMycartSubtotal = numberFormat($promo['orderAmount'] - $promoDiscount);
       } else {
         echo json_encode(['response' => '0']);
         die;
@@ -645,7 +645,7 @@ class Checkout extends User_Controller
     if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type == 1) { // razor payment
 
       $api = new Api($publish_key, $scret_key);
-      $amt = $getMycartSubtotal + numberFormat($calc_shiping);
+      $amt = $getMycartSubtotal + $calc_shiping;
       $razorpayOrder = $api->order->create(array(
         'receipt' => rand(),
         'amount' => $amt * 100, // 2000 rupees in paise
