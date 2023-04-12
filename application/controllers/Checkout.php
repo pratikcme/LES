@@ -648,7 +648,7 @@ class Checkout extends User_Controller
       $amt = $getMycartSubtotal + $calc_shiping; 
       $razorpayOrder = $api->order->create(array(
         'receipt' => rand(),
-        'amount' => (int)$amt * 100, // 2000 rupees in paise
+        'amount' => (float)$amt * 100, // 2000 rupees in paise
         'currency' => $currency_code,
         'payment_capture' => 1 // auto capture
       ));
@@ -742,7 +742,6 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
       $data['paytm'] = json_encode($array);
     }
     $data['GatewayType'] = $getActivePaymentMethod[0]->type;
-    dd($data);
     echo json_encode($data);
   }
 
