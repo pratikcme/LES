@@ -1,5 +1,6 @@
 <li class="sub-menu" style="display: ''">
-    <!-- <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'sell' || $this->uri->segment(1) == 'register' ||  $this->uri->segment(1) == "sell_development") { ?> active <?php } ?>">
+    <!-- <a href="javascript:;"
+        class="dcjq-parent <?php if ($this->uri->segment(1) == 'sell' || $this->uri->segment(1) == 'register' ||  $this->uri->segment(1) == "sell_development") { ?> active <?php } ?>">
         <i class="fa fa-tags"></i>
         <span>Sell</span>
     </a> -->
