@@ -36,7 +36,7 @@ var ORDER = function () {
 				dataType: "JSON",
 				success: function (out) {
 					if (out.success == 1) {
-						// window.location.reload();	
+						window.location.reload();
 					}
 				}
 			})
