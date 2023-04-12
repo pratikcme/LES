@@ -127,7 +127,6 @@ class Checkout extends User_Controller
     $data['phone'] = '0';
     $data['is_verify'] = '0';
     $vendor = $this->this_model->getVendorAddress();
-    dd($vendor);
     $data['isOnlinePayment'] = $vendor[0]->isOnlinePayment;
     $data['isCOD'] = $vendor[0]->isCOD;
     $data['isDeliveryTimeDate'] = $vendor[0]->delivery_time_date;
