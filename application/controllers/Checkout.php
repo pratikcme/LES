@@ -589,7 +589,6 @@ class Checkout extends User_Controller
       $promo = $this->this_model->validate_promocode($this->input->post());
       if ($promo['success'] == '1') {
         $promoDiscount = $promo['data'];
-        var_dump($promoDiscount);
         $getMycartSubtotal = $promo['orderAmount'] - $promoDiscount;
       } else {
         echo json_encode(['response' => '0']);
