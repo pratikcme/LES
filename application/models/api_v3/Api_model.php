@@ -3540,9 +3540,9 @@ class Api_model extends My_model {
             "orderId"      => $orderId_payment_gateway, //order is return at the time of refund rsponse
             "txnId"        => $payment_transaction_id,
             "refId"        => $orderId_payment_gateway, //order is return at the time of refund rsponse
-            "refundAmount" => 1.00,
+            "refundAmount" => $refund_amount,
         );
-
+        dd($paytmParams["body"]);
         /*
         * Generate checksum by parameters we have in body
         * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
