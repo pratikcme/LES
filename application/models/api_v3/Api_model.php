@@ -3556,10 +3556,10 @@ class Api_model extends My_model {
         $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
 
         /* for Staging */
-        $url = "https://securegw-stage.paytm.in/refund/apply";
+        // $url = "https://securegw-stage.paytm.in/refund/apply";
 
         /* for Production */
-        // $url = "https://securegw.paytm.in/refund/apply";
+        $url = "https://securegw.paytm.in/refund/apply";
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POST, 1);
