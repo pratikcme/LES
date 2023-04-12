@@ -166,7 +166,12 @@ class Checkout extends User_Controller
     $data['shopping_based_discountPercentage'] = $discountPercentage;
     $data['shopping_based_discount'] = $discountValue;
     $getMycartSubtotal = getMycartSubtotal();
-    
+    // echo getMycartSubtotal();
+    // echo "<br>";
+    // echo $discountValue;
+    // echo "<br>";
+    // echo $getMycartSubtotal;
+    // die;
     $data['getMycartSubtotal'] = $getMycartSubtotal;
     $data['array'] = [];
     $data['data'] = json_encode([]);
@@ -222,8 +227,6 @@ class Checkout extends User_Controller
       $on = "PYTM_ORDR_" . $on;
       $MID = trim($publish_key);
       $MKY = trim($scret_key);
-      // $MID = 'oxzjXy66674454941399';
-      // $MKY = 'IysGgZ_ro05LoFIo';
       $amt =  $getMycartSubtotal + $calc_shiping + $total_gst - $discountValue;
       $amt = number_format($amt, 2, '.', '');
       $custId = "CUST_" . time();
@@ -254,8 +257,9 @@ class Checkout extends User_Controller
       $paytmParams["head"] = array(
         "signature" => $checksum
       );
-    
+
       $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
+
       /* for Production */
       $url = 'https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
       $data['Host'] = 'https://securegw.paytm.in'; // production
@@ -265,7 +269,7 @@ class Checkout extends User_Controller
         $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
-      
+
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
@@ -700,11 +704,10 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
           "custId" => $custId,
         ),
       );
-      dd($paytmParams);
       /*
-      * Generate checksum by parameters we have in body
-      * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
-      */
+* Generate checksum by parameters we have in body
+* Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
+*/
       $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $MKY);
 
       $user_id = $this->session->userdata('user_id');
@@ -724,7 +727,7 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
         $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
-      
+
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
