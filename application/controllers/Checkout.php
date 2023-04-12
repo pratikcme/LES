@@ -233,7 +233,7 @@ class Checkout extends User_Controller
       $paytmParams["body"] = array(
         "requestType"  => "Payment",
         "mid"      => $MID,
-        "websiteName"  => 'WEBSTAGING',
+        "websiteName"  => clean($this->siteTitle),
         "orderId"    => $on,
         "callbackUrl"  => $callbackUrl,
         "txnAmount"   => array(
