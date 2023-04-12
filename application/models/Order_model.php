@@ -740,7 +740,7 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
     public function getPaymentMethodCredential($payment_opt){
         $data['select'] = ['*'];
         $data['table'] = 'payment_method';
-        $data['where'] = ['payment_opt' =>$payment_opt];
+        $data['where'] = ['payment_opt' =>$payment_opt,'branch_id'=>$this->session->userdata('id')];
         return $this->selectRecords($data);
          
     }
