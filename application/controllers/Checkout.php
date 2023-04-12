@@ -38,7 +38,6 @@ class Checkout extends User_Controller
 
   public function index()
   {
-    echo '1';die;
     $this->load->model('api_v3/common_model', 'co_model');
     $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
     // dd($isShow);
