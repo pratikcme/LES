@@ -1284,6 +1284,7 @@ class Product_model extends My_model
 		);
 		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
 		$data['insert'] = $insertData;
-		return $this->insertRecord($data);
+		/* return */ $this->insertRecord($data);
+		lq();
 	}
 }
