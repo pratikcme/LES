@@ -606,7 +606,6 @@ public  $order_column_order = array("o.order_no","o.dt_added","u.fname","u.lname
      public function refundPaymentPaytm($order_id){
 
         $config = $this->getPaymentCredential($order_id);
-        print_r($config);die;
         $this->load->model('api_v3/api_model','api_v3_model');
         $response = $this->api_v3_model->refundPaytm($config);
         $response = json_decode($response);
