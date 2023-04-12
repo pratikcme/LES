@@ -193,7 +193,6 @@ class Checkout extends User_Controller
         'currency'        => $currency_code,
         'payment_capture' => 1 // auto capture
       ));
-      dd($razorpayOrder); die;
       $amount = $razorpayOrder['amount'];
       $razorpayOrderId = $razorpayOrder['id'];
       $_SESSION['razorpay_order_id'] = $razorpayOrderId;
