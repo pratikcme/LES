@@ -135,7 +135,7 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
                 <div>
                     <h6>Cart Amount Based Discount</h6>
                     <h6> -
-                        (<?= (fmod($shoppingDiscount, 1) !== 0.00) ? numberFormat($shoppingDiscount) : (int)$shoppingDiscount ?>%)
+                        (<?= (fmod(numberFormat($shoppingDiscount), 1) !== 0.00) ? numberFormat($shoppingDiscount) : (int)$shoppingDiscount ?>%)
                         <?= $currency . '' . numberFormat($orderInfo->shopping_amount_based_discount) ?> </h6>
                 </div>
             </li>
@@ -144,6 +144,7 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
             ?>
             <?php
             if (isset($removedDiscountPercentage) && $removedDiscountPercentage > 0) {
+
             ?>
             <li>
                 <div>
