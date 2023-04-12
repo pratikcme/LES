@@ -639,7 +639,7 @@ class Checkout extends User_Controller
     }
 
     if ($calc_shiping == 'notInRange') {
-        $calc_shiping = 0;
+        $calc_shiping = '0';
     }
 
     if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type == 1) { // razor payment
