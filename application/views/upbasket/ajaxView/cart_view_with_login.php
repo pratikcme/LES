@@ -1,5 +1,5 @@
 <div class="supportive-dropdown">
-    <li> <?=$this->cartCount?></li>
+    <li> <?= $this->cartCount ?></li>
 <?php 
  foreach ($my_cart as $key => $value) {
     $product_image = $this->product_model->GetUsersProductInCart($value->product_weight_id);
