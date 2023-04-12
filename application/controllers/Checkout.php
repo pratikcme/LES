@@ -587,7 +587,6 @@ class Checkout extends User_Controller
     $getMycartSubtotal = getMycartSubtotal();
     if ($this->input->post('promocode') && $this->input->post('promocode') != '') {
       $promo = $this->this_model->validate_promocode($this->input->post());
-      dd($promo);
       if ($promo['success'] == '1') {
         $promoDiscount = $promo['data'];
         $getMycartSubtotal = $promo['orderAmount'] - $promoDiscount;
@@ -596,7 +595,7 @@ class Checkout extends User_Controller
         die;
       }
     }
-    dd($getMycartSubtotal);die;
+
     $data['response'] = '1';
     $getActivePaymentMethod = $this->this_model->ActivePaymentMethod();
     $data['payment_option'] = $getActivePaymentMethod[0]->type;
@@ -611,6 +610,7 @@ class Checkout extends User_Controller
 
 
     $data['getMycartSubtotal'] = $getMycartSubtotal;
+    dd($data['getMycartSubtotal']);
     $data['array'] = [];
     $data['data'] = json_encode([]);
 
