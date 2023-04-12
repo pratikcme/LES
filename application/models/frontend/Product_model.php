@@ -262,7 +262,7 @@ class Product_model extends My_model
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
-		// print_r($postdata);die;
+
 		if (isset($postdata['slider'])) {
 			$postdata['getCatByURL'] = $this->utility->safe_b64encode($postdata['getCatByURL']);
 		}
@@ -391,7 +391,7 @@ class Product_model extends My_model
 		$data['where']['pw.status !='] = '9';
 		$data['where']['p.status'] = '1';
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'p.*', "IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*', "IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
@@ -456,10 +456,12 @@ class Product_model extends My_model
 				$this->load->model('frontend/home_model', 'home_model');
 				// $product[$key]->rating  = $this->home_model->selectStarRatting($value->id);
 				$varientQuantity = $this->checkVarientQuantity($value->id);
+
 				// $checkMycart = $this->checkMycartProduct($this->session->userdata('user_id'));
 				$p_outofstock = '';
 				if ($varientQuantity == '0') {
-					$p_outofstock .= '<div class="out-stock"><span class="out-heading">' . $this->lang->line('out of stock') . '</span></div>';
+
+					$p_outofstock .=  '<span>' . $this->lang->line('out of stock') . '</span>';
 				}
 				$data['p_outofstock'] = $p_outofstock;
 				$class = '';
@@ -486,100 +488,26 @@ class Product_model extends My_model
 				$data['image'] = $image;
 				$value->name = character_limiter($value->name, 30);
 				$data['value'] = $value;
-				$product_html .= $this->load->view('upbasket/ajaxView/product', $data, true);
-
-				// $product_html .= '<div class="col-lg-3 col-md-6 col-sm-6">
-				// 	        <div class="product-wrapper">
-				// 	        ' . $p_outofstock . '
-				// 	          <div class="wishlist-wrapper">';
-				// if ($value->discount_per > '0') {
-				// 	$product_html .= '<div class="offer-wrap">
-				// 	              <p>' . $value->discount_per . ' % off</p>
-				// 	            </div>';
-				// } else {
-				// 	$product_html .= '<div class="">
-				// 	            </div>';
-				// }
-				// $product_html .= '<div class="wishlist-icon" style="display:none" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-product_weight_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>
-				// 	              <i class="far fa-heart ' . $class . '"></i>
-				// 	            </div>
-				// 	          </div>
-				// 	          <a href=' . base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) . '>
-				// 	          <div class="feat-img">
-				// 	            <img src=' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $image . '>
-				// 	          </div>
-				// 	          </a>
-				// 	          <div class="feature-detail">
-				// 	             <a href=' . base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) . '><h5	>' . $value->name . '</h5></a>
-				// 	            <h6><span class="notranslate">' . $this->siteCurrency . '</span> ' . number_format((float)$value->discount_price, 2, '.', '') . '</h6>
-				// 	            <p>';
-				// if ($value->quantity > 25) {
-				// 	$product_html .= $this->lang->line('Available(Instock)');
-				// } else {
-				// 	$product_html .= $this->lang->line('Limited Stock');
-				// }
-				// $product_html .= '</p></div>
-				// 	          <div class="feature-bottom-wrap">
-				// 	            <div class="cart addcartbutton d-none" data-product_id=' . $this->utility->safe_b64encode($value->id) . '>
-				// 	               <i class="fas fa-shopping-basket"></i>
-				// 	            </div>
-				// 	            <div class="new_add_to_cart ' . $d_none . '" >
-				// 	            <button class="btn addcartbutton" data-product_id=' . $this->utility->safe_b64encode($value->id) . ' data-varient_id=' . $this->utility->safe_b64encode($value->product_weight_id) . '>'.$this->lang->line('add to cart').'</button>
-				// 	            </div>
-				// 	            <div class="quantity-wrap ' . $d_show . '">
-				// 					<button class="dec cart-qty-minus" data-product_weight_id=' . $value->product_weight_id . '><span class="minus"><i class="fa fa-minus"></i></span></button>
-				// 					<input class="qty" type="text" name="" value=' . $addQuantity . ' data-product_id=' . $value->id . ' data-weight_id=' . $value->weight_id . ' readonly>
-				// 					<button class="inc cart-qty-plus" data-product_weight_id=' . $value->product_weight_id . ' ><span><i class="fa fa-plus"></i></span></button>
-				// 				</div>
-				// 	          </div>
-				// 	        </div>
-				// 		</div>';
+				$data['value']->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
+				// dd($data['value']->varientQuantity);
+				$product_html .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product', $data, true);
 			}
-			$product_html .= '<div class="col-md-12" style="display:' . $display . '">
+			$product_html .= '<div class="col-md-12 text-center mt-5" style="display:' . $display . '">
         						<button type="button" class="btn show-more" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>' . $this->lang->line('Show More') . '</button>
       						</div>';
 		} else {
 			$product_html = '<h3>No Product Found  </h3>';
 		}
 
-		$long_li = '';
-		$short_li = '';
-		$i = 0;
-		$j = 0;
-		// print_r($subcategory);die;
 		if (!empty($subcategory)) {
 
-			foreach ($subcategory as $key => $value) {
-				$count = $this->countProduct('', $value->id);
-				if ($count == 0) {
-					unset($subcategory[$key]);
-					$j++;
-					// continue;
-				}
-				$i++;
-				$count_sub = count($subcategory);
-				// echo $k ;
-				$sub_class = '';
-				if ($count_sub == 1) {
-					$sub_class = 'active_sub';
-				}
 
-				$long_li .= '<li><a href="javascript:" class="sucategory_id sub_cat_link ' . $sub_class . '" data-sub_id=' . $value->id . '>' . $value->name . '</a></li>';
 
-				if ($key >= 6) {
-					continue;
-				}
-				$short_li .= '<li><a href="javascript:" class="sucategory_id sub_cat_link  ' . $sub_class . '" data-sub_id=' . $value->id . '>' . $value->name . '</a></li>';
-			}
-			$class = "";
-			if ($i < 6) {
-				$class = "none";
-			} else
-
-				$short_li .= '<div class="dropdown-subcategories" style="display:' . $class . '"  ><div class="dropdown"><button id="drp-btn" onclick="myFunction()" class="dropbtn">All</button></div></div>';
+			$subcatData['subcategory'] = $subcategory;
+			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);
 		}
 
-		$responseArray = ['result' => $product_html, 'page' => $page - 1, 'long_li' => $long_li, 'short_li' => $short_li,];
+		$responseArray = ['result' => $product_html, 'page' => $page - 1, 'long_li' => $sub_category, 'short_li' => $sub_category,];
 
 		return  json_encode($responseArray);
 	}
@@ -642,7 +570,7 @@ class Product_model extends My_model
 
 
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pw.discount_per as discount_percentage', 'pw.price', 'pw.discount_price', 'pw.id as variant_id', 'pw.quantity', 'GROUP_CONCAT(pw.id) as product_variant_id', 'GROUP_CONCAT(w.name) as wight_name', 'GROUP_CONCAT(pw.discount_per) as discount_per', 'GROUP_CONCAT(pw.weight_no) as wight_no'];
+		$data['select'] = ['p.*', 'pw.price', 'pw.discount_price', 'pw.id as variant_id', 'pw.quantity', 'GROUP_CONCAT(pw.id) as product_variant_id', 'GROUP_CONCAT(w.name) as wight_name', 'GROUP_CONCAT(pw.discount_per) as discount_per', 'GROUP_CONCAT(pw.weight_no) as wight_no', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			// TABLE_PRODUCT_IMAGE .' as pi'=>['pw.id = pi.product_variant_id','LEFT'],
@@ -844,7 +772,7 @@ class Product_model extends My_model
 		// $proId = $this->utility->safe_b64decode($postdata['pro_id']);
 
 		$data['table'] = TABLE_PRODUCT_WEIGHT;
-		$data['select'] = ['id', 'price', 'quantity', 'weight_no', 'discount_per', 'discount_price', 'product_id', 'without_gst_price'];
+		$data['select'] = ['id', 'price', 'quantity', 'weight_no', 'discount_per', 'discount_price', 'product_id', 'without_gst_price', 'limited_stock'];
 		$data['where'] = [
 			'status!=' => '9',
 			'id' => $this->utility->safe_b64decode($postdata['product_varient_id']),
@@ -1013,16 +941,18 @@ class Product_model extends My_model
 
 		$vender_id = $this->branch_id;
 		$user_id = $this->session->userdata('user_id');
-		$data['table'] = TABLE_ORDER_DETAILS;
-		$data['select'] = ['*'];
+		$data['table'] = TABLE_ORDER_DETAILS . ' od';
+		$data['join'] = [TABLE_ORDER . ' as o' => ['o.id=od.order_id', 'LEFT']];
+		$data['select'] = ['od.*'];
 		$data['where'] =  [
-			'product_id' => $product_id,
-			'product_weight_id' => $varient_id,
-			'user_id' => $user_id,
-			'branch_id' => $vender_id
+			'od.product_id' => $product_id,
+			'od.product_weight_id' => $varient_id,
+			'o.user_id' => $user_id,
+			'o.branch_id' => $vender_id,
+			'o.order_status' => '8',
 		];
-		$data['groupBy'] = 'product_id';
-		return $this->selectRecords($data);
+		$data['groupBy'] = 'od.product_id';
+		return $this->selectFromJoin($data);
 	}
 
 	public function checkProductExist($postdata)
@@ -1048,7 +978,6 @@ class Product_model extends My_model
 			'product_id' => $product_id,
 			'product_varient_id' => $varient_id,
 		];
-		$data['order'] = 'upr.id desc';
 		return $this->selectFromJoin($data);
 	}
 	public function countParticularUserReview($product_id, $varient_id)
@@ -1114,12 +1043,13 @@ class Product_model extends My_model
 	}
 
 
+
+
 	public function getRelatedProduct($cat_id, $varient_ids)
 	{
 
-
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pi.image as product_image', 'pw.id as pw_id', 'pw.price', 'pw.discount_price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*', 'pi.image as product_image', 'pw.id as pw_id', 'pw.price', 'pw.discount_price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT'],
@@ -1194,11 +1124,9 @@ class Product_model extends My_model
 		$data['table'] = TABLE_MY_CART . ' as mc';
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=mc.product_weight_id', 'LEFT'],
-			TABLE_PRODUCT . ' as p' => ['pw.product_id=p.id', 'LEFT'],
-			TABLE_WEIGHT . ' as w' => ['pw.weight_id=w.id', 'LEFT'],
-			TABLE_PACKAGE . ' as pkg' => ['pw.weight_id=pkg.id', 'LEFT'],
+			TABLE_PRODUCT . ' as p' => ['pw.product_id=p.id', 'LEFT']
 		];
-		$data['select'] = ['pkg.package as package_name', 'w.name as weight_name', 'pw.weight_no', 'p.food_type', 'mc.*', 'pw.discount_price', 'pw.product_id', 'pw.price', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.food_type', 'mc.*', 'pw.discount_price', 'pw.product_id', 'pw.price', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
 		$data['where']['mc.user_id'] = $user_id;
 		$data['where']['mc.branch_id'] = $this->branch_id;
 		$return = $this->selectFromJoin($data);
@@ -1275,13 +1203,11 @@ class Product_model extends My_model
 			'branch_id' => $this->session->userdata('branch_id'),
 			'product_id' => $this->utility->safe_b64decode($postData['product_id']),
 			'product_varient_id' => $this->utility->safe_b64decode($postData['varient_id']),
-			'review_title' => (isset($postData['review_title'])) ? $postData['review_title'] : NULL,
 			'review' => $postData['comment'],
 			'ratting' => $postData['ratetIndex'],
 			'dt_created' => date('Y-m-d h:i:s'),
 			'dt_updated' => date('Y-m-d h:i:s')
 		);
-		// dd($insertData);
 		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
 		$data['insert'] = $insertData;
 		return $this->insertRecord($data);

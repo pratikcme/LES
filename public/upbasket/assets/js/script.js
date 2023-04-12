@@ -81,8 +81,8 @@ $(".vendor-chk").click(function () {
   }
 });
 
-var st_price = "";
-var en_price = "";
+st_price = "";
+en_price = "";
 
 // var incrementPlus;
 // var incrementMinus;
@@ -288,7 +288,7 @@ $(".accordion")
 
 var siteCurrency = $("#siteCurrency").val();
 $(function () {
-  $("#slider-distance").slider({
+  $("#slider-range").slider({
     range: true,
     min: 0,
     max: 10000,
@@ -307,11 +307,35 @@ $(function () {
   });
 
   $("#amount").val(
-    $("#slider-distance").slider("values", 0) +
+    $("#slider-range").slider("values", 0) +
       "-" +
-      $("#slider-distance").slider("values", 1)
+      $("#slider-range").slider("values", 1)
   );
 });
+
+$("#slider-range2").slider({
+  range: true,
+  min: 0,
+  max: 10000,
+  values: [0, 0],
+  slide: function (event, ui) {
+    $("#siteCurr2").remove();
+    $("#amount2").val(
+      siteCurrency + " " + ui.values[0] + "-" + siteCurrency + ui.values[1]
+    );
+    var cat_id = $("#cat_id").val();
+    var sub_id = $("#sub_cat_id").val();
+    st_price = ui.values[0];
+    en_price = ui.values[1];
+    onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
+  },
+});
+
+$("#amount2").val(
+  $("#slider-range2").slider("values", 0) +
+    "-" +
+    $("#slider-range2").slider("values", 1)
+);
 
 function onload(
   page,

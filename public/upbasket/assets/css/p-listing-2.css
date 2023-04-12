@@ -364,7 +364,10 @@ div[slider]>input[type=range]::-ms-tooltip {
 .sidepanel .filter-part {
   display: block;
   width: 100% !important;
+  padding: 0;
 }
+
+
 
 .sidepanel {
   width: 0;
@@ -608,7 +611,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .mycustom-row {
@@ -627,6 +630,8 @@ div[slider]>input[type=range]::-ms-tooltip {
 .product-listing-wrapper {
   flex-basis: 24%;
   transition: 0.3s;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .my-filter-wrapper {
@@ -649,6 +654,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 .hide.show-div-wrapper .product-listing-wrapper {
   flex-basis: 32%;
   transition: 0.3s;
+  
 }
 
 
@@ -678,7 +684,80 @@ div[slider]>input[type=range]::-ms-tooltip {
   overflow-y: scroll;
 }
 
+.show-more{
+  background-color: var(--primary-color) !important;
+  padding: 10px 12px !important;
+  color: var(--common-white) !important;
+  box-shadow: none !important;
+}
 
+.price-range-slider .range-bar .ui-slider-range{
+  background: var(--primary-color) !important;
+}
+
+.price-range-slider .range-bar .ui-slider-handle{
+  border: 2px solid var(--primary-color)!important;
+  background: #fff !important;
+}
+
+.price-range-slider .range-bar{
+  background: #fff !important;
+  border: 2px solid var(--primary-color)!important;
+}
+
+.price-range-slider .range-value input{
+  font-family: 'popins' !important;
+}
+
+.price-range-slider .range-value input:focus{
+  border: none !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+.price-range-slider{
+  background-color: transparent !important;
+}
+
+.ctg-left input:checked {
+  background-color: red !important;
+  border: 1px solid red !important;
+}
+
+.product-categires-part.brands-part .form-check,
+.sidepanel .brands-part .ctg-left
+{
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* .product-categires-part.brands-part input{
+  margin-left: -3px !important;
+} */
+
+.sidepanel .brands-part .ctg-left{
+  padding: 5px 0;
+}
+
+.sidepanel .brands-part .ctg-left:last-child,
+.sidepanel .discoutn-part .row .ctg-left:last-child
+{
+  border-bottom: 0 !important;
+}
+
+.sidepanel .brands-part .row{
+  padding: 10px 0 0;
+}
+
+.product-categires-part.brands-part .ctg-left{
+  padding-left: 0 !important;
+}
+
+.sidepanel .brands-part .ctg-left a{
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  padding-top: 7px !important;
+}
 
 /* ======================================================  */
 /* ======================================================  */
@@ -966,7 +1045,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   .product-listing-2 .card {
     width: 100%;
-    min-height: 490px;
+    min-height: 100%;
     background: var(--card-bg-color);
     border: 1px solid var(--card-border-color);
     border-radius: 20px !important;
@@ -1154,7 +1233,10 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 /* ======================================================  */
 /* ======================================================  */
-@media screen and (min-width: 913px) and (max-width:1023px) {
+
+
+
+@media screen and (min-width: 991px) and (max-width:1023px) {
   .product-listing-2 .col-md-6 {
     flex: 0 0 auto;
     width: 50%;
@@ -1163,7 +1245,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   .product-listing-2 .card {
     width: 100%;
-    min-height: 470px;
+    min-height: 100%;
     background: var(--card-bg-color);
     border: 1px solid var(--card-border-color);
     border-radius: 20px !important;
@@ -1210,7 +1292,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   }
 
   .product-listing-2 .add-cart-btn {
-    padding: 10px 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
     background: var(--card-btn-bg) !important;
     border: 1px solid var(--card-btn-bg);
     font-family: Poppins;
@@ -1320,7 +1402,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   .product-listing-2 .card {
     width: 100%;
-    min-height: 470px;
+    min-height: 100%;
     background: var(--card-bg-color);
     border: 1px solid var(--card-border-color);
     border-radius: 20px !important;
@@ -1441,7 +1523,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   /* -------new-fliter-css--- */
   .product-listing-wrapper {
-    flex-basis: 32%;
+    flex-basis: 34%;
     transition: 0.3s;
   }
 
@@ -1477,7 +1559,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   .product-listing-2 .card {
     width: 100%;
-    min-height: 470px;
+    min-height: 100%;
     background: var(--card-bg-color);
     border: 1px solid var(--card-border-color);
     border-radius: 20px !important;

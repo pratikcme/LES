@@ -1,4 +1,67 @@
 <!-- ----hero-section--- -->
+<style>
+  /*PRICE RANGE SLIDER */
+  .price-range-slider {
+    width: 100%;
+    padding: 10px 20px 15px;
+    background-color: #f7f7f7;
+  }
+
+  .price-range-slider .range-value {
+    margin: 0;
+    display: flex;
+  }
+
+  .price-range-slider .range-value .fa-rupee-sign {
+    color: var(--secondary-color);
+    position: relative;
+    font-size: 16px;
+    top: 3px;
+    position: relative;
+    font-weight: 900;
+    margin-right: 5px;
+    top: 1px;
+  }
+
+  .price-range-slider .range-value input {
+    width: 100%;
+    background: none;
+    color: var(--secondary-color);
+    font-family: 'OpenSans-SemiBold';
+    font-size: 16px;
+    font-weight: initial;
+    box-shadow: none;
+    border: none;
+    margin: 00px 0 20px 0;
+  }
+
+  .price-range-slider .range-bar {
+    border: none;
+    background: #000;
+    height: 3px;
+    width: 96%;
+    margin-left: 8px;
+  }
+
+  .price-range-slider .range-bar .ui-slider-range {
+    background: #1ebcb7;
+  }
+
+  .price-range-slider .range-bar .ui-slider-handle {
+    border: none;
+    border-radius: 25px;
+    background: #fff;
+    border: 2px solid #1ebcb7;
+    height: 17px;
+    width: 17px;
+    top: -0.52em;
+    cursor: pointer;
+  }
+
+  .price-range-slider .range-bar .ui-slider-handle+span {
+    background: #1ebcb7;
+  }
+</style>
 <section class="hero-section listing-hero-sec">
   <div class="container">
     <!-- <h2>Home /<span>Product Listing</span></h2> -->
@@ -24,7 +87,7 @@
     <!-- --------owl-1 owl-slider--------->
     <div class="owl-1 owl-carousel owl-theme">
       <?php foreach ($category as $key => $value) : ?>
-        <a href="javascript:;" class="categorie-wrapper" data-cat_id="<?= $value->id ?>">
+        <a href="javascript:;" class="categorie-wrapper cate_id" data="<?= $value->id ?>">
           <div class="categorie-img">
             <img src="<?= $this->theme_base_url ?>/assets/images/categorie-img-1.png" alt="">
           </div>
@@ -40,21 +103,9 @@
     <!-- --------owl-5-slider--------->
     <div class="sub-categories-product">
 
-      <div class="owl-5 owl-carousel owl-theme">
+      <div class="owl-5 owl-carousel owl-theme sdfsdfd" id="short">
 
-        <div class="techno-check">
-          <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-          <a href="#" class="sub-categories-wrapper">
-            <h3>All</h3>
-          </a>
-        </div>
 
-        <div class="techno-check">
-          <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-          <a href="#" class="sub-categories-wrapper">
-            <h3>Saffron</h3>
-          </a>
-        </div>
 
 
 
@@ -76,11 +127,13 @@
 
         <div class="short-by-dropdown">
           <label for="list">Sort By: </label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Best Match</option>
-            <option value="1">By Price</option>
-            <option value="2">By Name</option>
-            <option value="3">By Quality</option>
+          <select class="form-select sorting" aria-label="Default select example">
+            <option value="All">All</option>
+            <option value="alphabetically">Alphabetical</option>
+            <option value="high_low">Price-High to Low</option>
+            <option value="low_high">Price-Low to High</option>
+            <option value="discount_high_low">`%` off - High to Low</option>
+            <option value="discount_low_high">`%` off - low to high</option>
           </select>
 
           <!-- ---filter-icon--- -->
@@ -121,7 +174,7 @@
           <div class="categire-header">
             <h3>Price Range</h3>
           </div>
-          <div slider id="slider-distance">
+          <!-- <div slider id="slider-distance">
             <div>
               <div inverse-left style="width:70%;"></div>
               <div inverse-right style="width:70%;"></div>
@@ -129,13 +182,13 @@
               <span thumb style="left:0%;"></span>
               <span thumb style="left:100%;"></span>
               <div sign style="left:0%;">
-                <span id="value">₹0</span>
+                <span id="value1">₹0</span>
               </div>
               <div sign style="left:100%;">
-                <span id="value">₹100</span>
+                <span id="value2">₹100</span>
               </div>
             </div>
-            <input type="range" value="0" max="100" min="0" step="1" oninput="
+            <input type="range" value="0" id="min" max="100" min="0" step="1" oninput="
                               this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
                               let value = (this.value/parseInt(this.max))*100
                               var children = this.parentNode.childNodes[1].childNodes;
@@ -144,7 +197,7 @@
                               children[7].style.left=value+'%';children[11].style.left=value+'%';
                               children[11].childNodes[1].innerHTML=this.value;" />
 
-            <input type="range" value="100" max="100" min="0" step="1" oninput="
+            <input type="range" value="100" id="max" max="100" min="0" step="1" oninput="
                               this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
                               let value = (this.value/parseInt(this.max))*100
                               var children = this.parentNode.childNodes[1].childNodes;
@@ -152,6 +205,16 @@
                               children[5].style.right=(100-value)+'%';
                               children[9].style.left=value+'%';children[13].style.left=value+'%';
                               children[13].childNodes[1].innerHTML=this.value;" />
+          </div> -->
+          <div class="price-range-slider">
+            <p class="range-value">
+              <span id="siteCurr"><?= $this->siteCurrency ?></span>
+              <input type="text" class="range" id="amount" readonly>
+              <!-- <input type="hidden"  id="start_range" value="0" readonly>
+                      <input type="hidden"  id="end_range" value="150" readonly> -->
+            </p>
+            <div id="slider-range" class="range-bar"></div>
+
           </div>
         </div>
 
@@ -160,16 +223,22 @@
           <div class="categire-header">
             <h3>Brands</h3>
           </div>
-          <div class="row">
-            <?php foreach ($brand as $key => $brandRecord) : ?>
-              <div class="ctg-left col-xl-8 col-md-8 col-8 d-flex align-items-center">
-                <input type="checkbox" class="brand" name="brand" value="<?= $brandRecord->id ?>">
-                <h4><?= $brandRecord->name ?></h4>
+
+          <?php foreach ($brand as $key => $brandRecord) : ?>
+            <div class="ctg-left col-xl-8 col-md-8 col-8">
+              <div class="form-check">
+                <input class="form-check-input brand" name="brand" type="checkbox" value="<?= $brandRecord->id ?>">
+                <label class="form-check-label" for="id1">
+                  <h4><?= $brandRecord->name ?></h4>
+                </label>
               </div>
-            <?php endforeach ?>
+
+            </div>
+
+          <?php endforeach ?>
 
 
-          </div>
+
         </div>
 
         <!-- ------------- -->
@@ -283,425 +352,9 @@
       <!-- ---left-product-list--- -->
       <div class="show-div-wrapper">
         <div class="main-listing-wrapper" id="ajaxProduct">
-
-
-          <!-- <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="2" value="2" />
-              <div href="#" class="product-wrapper card card-1">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-2.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Saffron (Kesar)</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="3" value="3" />
-              <div href="#" class="product-wrapper card card-2">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-3.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Pistachio (Pista)</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="4" value="4" />
-              <div href="#" class="product-wrapper card card-3">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-4.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Cashew Splits</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="6" value="6" />
-              <div href="#" class="product-wrapper card card-4">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-6.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Walnuts (Akhrot)</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="7" value="7" />
-              <div href="#" class="product-wrapper card card-5">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-7.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Raisins (Kishmish)</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="8" value="8" />
-              <div href="#" class="product-wrapper card card-6">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-8.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Dried Berries</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="8" value="8" />
-              <div href="#" class="product-wrapper card card-7">
-
-                <div class="card-header">
-                  <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-10.png" alt="">
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Saffron (Kesar)</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="8" value="8" />
-              <div href="#" class="product-wrapper card card-8">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-11.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Pistachio (Pista)</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="8" value="8" />
-              <div href="#" class="product-wrapper card card-9">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-12.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Cashew Splits</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="2" value="2" />
-              <div href="#" class="product-wrapper card card-10">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-2.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Saffron (Kesar)</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="3" value="3" />
-              <div href="#" class="product-wrapper card card-11">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-3.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Pistachio (Pista)</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="techno-check">
-              <input class="techno_checkbox" type="checkbox" id="4" value="4" />
-              <div href="#" class="product-wrapper card card-12">
-
-                <div class="card-header">
-                  <a href="./product-details.php">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-4.png" alt="">
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h3><a href="./product-details.php">Cashew Splits</a></h3>
-                  <h4>Limited Stock</h4>
-
-                  <div class="rate-dropdown">
-                    <select class="form-select card-dropdown" aria-label="Default select example">
-                      <option selected>500 Gms</option>
-                      <option value="1">300 Gms</option>
-                      <option value="2">200 Gms</option>
-                      <option value="3">1Kg</option>
-                    </select>
-
-                    <div class="card-rating">
-                      <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt="">4.5</p>
-                    </div>
-                  </div>
-                  <h6 class="rating">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                  <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
         </div>
       </div>
 
-    </div>
-
-    <!-- ---pagination-part--- -->
-    <div class="pagination-part">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
-      </ul>
     </div>
 
   </div>
@@ -719,12 +372,12 @@
           <h3>Product Categories</h3>
         </div>
         <div class="row">
-          <div class="ctg-left col-xl-8 col-md-8 col-8 category_id" data-cat_id="All">
+          <div class="ctg-left col-xl-12 col-md-12 col-12 category_id" data-cat_id="All">
             <h4><a href="javascript:;">All Categories</a></h4>
           </div>
 
           <?php foreach ($category as $key => $value) : ?>
-            <div class="ctg-left col-xl-8 col-md-8 col-8 category_id" data-cat_id="<?= $value->id ?>">
+            <div class="ctg-left col-xl-12 col-md-12 col-12 category_id" data-cat_id="<?= $value->id ?>">
               <h4><a href="javascript:;"><?= $value->name ?></a></h4>
             </div>
 
@@ -740,37 +393,15 @@
         <div class="categire-header">
           <h3>Price Range</h3>
         </div>
-        <div slider id="slider-distance">
-          <div>
-            <div inverse-left style="width:70%;"></div>
-            <div inverse-right style="width:70%;"></div>
-            <div range style="left:0%;right:0%;"></div>
-            <span thumb style="left:0%;"></span>
-            <span thumb style="left:100%;"></span>
-            <div sign style="left:0%;">
-              <span id="value">₹0</span>
-            </div>
-            <div sign style="left:100%;">
-              <span id="value">₹100</span>
-            </div>
-          </div>
-          <input type="range" value="0" max="100" min="0" step="1" oninput="
-                                          this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
-                                          let value = (this.value/parseInt(this.max))*100
-                                          var children = this.parentNode.childNodes[1].childNodes;
-                                          children[1].style.width=value+'%';
-                                          children[5].style.left=value+'%';
-                                          children[7].style.left=value+'%';children[11].style.left=value+'%';
-                                          children[11].childNodes[1].innerHTML=this.value;" />
+        <div class="price-range-slider">
+          <p class="range-value">
+            <span id="siteCurr2"><?= $this->siteCurrency ?></span>
+            <input type="text" class="range" id="amount2" readonly>
+            <!-- <input type="hidden"  id="start_range" value="0" readonly>
+                      <input type="hidden"  id="end_range" value="150" readonly> -->
+          </p>
+          <div id="slider-range2" class="range-bar"></div>
 
-          <input type="range" value="100" max="100" min="0" step="1" oninput="
-                                          this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
-                                          let value = (this.value/parseInt(this.max))*100
-                                          var children = this.parentNode.childNodes[1].childNodes;
-                                          children[3].style.width=(100-value)+'%';
-                                          children[5].style.right=(100-value)+'%';
-                                          children[9].style.left=value+'%';children[13].style.left=value+'%';
-                                          children[13].childNodes[1].innerHTML=this.value;" />
         </div>
       </div>
 
@@ -782,9 +413,15 @@
         <div class="row">
           <?php foreach ($brand as $key => $brandRecord) : ?>
             <div class="ctg-left col-xl-8 col-md-8 col-8">
-              <input type="checkbox" name="">
-              <h4><a href="javascript" class="brand" name="brand" value="<?= $brandRecord->id ?>"><?= $brandRecord->name ?></a></h4>
+              <div class="form-check">
+                <input class="form-check-input brand" name="brand" type="checkbox" value="<?= $brandRecord->id ?>">
+                <label class="form-check-label" for="id1">
+                  <h4><?= $brandRecord->name ?></h4>
+                </label>
+              </div>
+
             </div>
+
           <?php endforeach ?>
 
 
@@ -792,23 +429,110 @@
       </div>
       <!-- ------------- -->
       <div class="product-categires-part discoutn-part">
-        <div class="categire-header">
-          <h3>Product Categories</h3>
-        </div>
-        <div class="row">
-          <div class="ctg-left col-xl-8 col-md-8 col-8 category_id" data-cat_id="All">
-            <h4><a href="javascript:;">All Categories</a></h4>
+        <div class="product-categires-part discoutn-part">
+          <div class="categire-header">
+            <h3>Discount</h3>
           </div>
+          <div class="row">
+            <div class="ctg-left col-xl-8 col-md-8 col-8">
+              <div class="form-check">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="0" id="id1">
+                <label class="form-check-label" for="id1">
+                  <h4>0-5%</h4>
+                </label>
+              </div>
 
-          <?php foreach ($category as $key => $value) : ?>
-            <div class="ctg-left col-xl-8 col-md-8 col-8 category_id" data-cat_id="<?= $value->id ?>">
-              <h4><a href="javascript:;"><?= $value->name ?></a></h4>
+            </div>
+            <div class="ctg-right col-xl-4 col-md-4 col-4">
+              <h5><?= $countDiscoutWise[0] ?></h5>
             </div>
 
-          <?php endforeach ?>
+            <div class="ctg-left col-xl-8 col-md-8 col-8">
+              <div class="form-check">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="1" id="id2">
+                <label class="form-check-label" for="id2">
+                  <h4>5-10%</h4>
+                </label>
+              </div>
+            </div>
+            <div class="ctg-right col-xl-4 col-md-4 col-4">
+              <h5><?= $countDiscoutWise[1] ?></h5>
+            </div>
+
+            <div class="ctg-left col-xl-8 col-md-8 col-8">
+              <div class="form-check">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="2" id="id3">
+                <label class="form-check-label" for="id3">
+                  <h4>10-15%</h4>
+                </label>
+              </div>
+            </div>
+            <div class="ctg-right col-xl-4 col-md-4 col-4">
+              <h5><?= $countDiscoutWise[2] ?></h5>
+            </div>
+
+            <div class="ctg-left col-xl-8 col-md-8 col-8">
+              <div class="form-check">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="3" id="id4">
+                <label class="form-check-label" for="id4">
+                  <h4>15-20%</h4>
+                </label>
+              </div>
+            </div>
+            <div class="ctg-right col-xl-4 col-md-4 col-4">
+              <h5><?= $countDiscoutWise[3] ?></h5>
+            </div>
+
+            <div class="ctg-left col-xl-8 col-md-8 col-8">
+              <div class="form-check">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="4" id="id5">
+                <label class="form-check-label" for="id5">
+                  <h4>20-25%</h4>
+                </label>
+              </div>
+            </div>
+            <div class="ctg-right col-xl-4 col-md-4 col-4">
+              <h5><?= $countDiscoutWise[4] ?></h5>
+            </div>
+
+            <div class="ctg-left col-xl-8 col-md-8 col-8">
+              <div class="form-check">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="5" id="id6">
+                <label class="form-check-label" for="id6">
+                  <h4>25-30%</h4>
+                </label>
+              </div>
+            </div>
+            <div class="ctg-right col-xl-4 col-md-4 col-4">
+              <h5><?= $countDiscoutWise[5] ?></h5>
+            </div>
+
+            <div class="ctg-left col-xl-8 col-md-8 col-8">
+              <div class="form-check">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="6" id="id7">
+                <label class="form-check-label" for="id7">
+                  <h4>30-35%</h4>
+                </label>
+              </div>
+            </div>
+            <div class="ctg-right col-xl-4 col-md-4 col-4">
+              <h5><?= $countDiscoutWise[6] ?></h5>
+            </div>
+
+            <div class="ctg-left col-xl-8 col-md-9 col-8">
+              <div class="form-check">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="7" id="id8">
+                <label class="form-check-label" for="id8">
+                  <h4>More than 35%</h4>
+                </label>
+              </div>
+            </div>
+            <div class="ctg-right col-xl-4 col-md-3 col-4">
+              <h5 class="end-text"><?= $countDiscoutWise[7] ?></h5>
+            </div>
 
 
-
+          </div>
         </div>
       </div>
     </div>
