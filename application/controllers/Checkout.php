@@ -587,6 +587,7 @@ class Checkout extends User_Controller
     $getMycartSubtotal = getMycartSubtotal();
     if ($this->input->post('promocode') && $this->input->post('promocode') != '') {
       $promo = $this->this_model->validate_promocode($this->input->post());
+      dd($promo);
       if ($promo['success'] == '1') {
         $promoDiscount = $promo['data'];
         $getMycartSubtotal = $promo['orderAmount'] - $promoDiscount;
