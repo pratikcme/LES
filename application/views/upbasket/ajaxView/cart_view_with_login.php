@@ -44,7 +44,7 @@
         <hr>
         <?php } ?>
     </div>
-    <?php if($this->cartCount != 0){ ?>
+    <?php if($this->cartCount > 0){ ?>
         <li>
             <div class="total-amount p-0 notranslate">
             <p>Total</p>
