@@ -227,7 +227,6 @@ class Checkout extends User_Controller
       $on = "PYTM_ORDR_" . $on;
       $MID = trim($publish_key);
       $MKY = trim($scret_key);
-      echo $MID .'/'.$MKY;die;
       $amt =  $getMycartSubtotal + $calc_shiping + $total_gst - $discountValue;
       $amt = number_format($amt, 2, '.', '');
       $custId = "CUST_" . time();
