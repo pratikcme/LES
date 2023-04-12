@@ -700,6 +700,7 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
           "custId" => $custId,
         ),
       );
+      dd($paytmParams);
       /*
 * Generate checksum by parameters we have in body
 * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
