@@ -270,7 +270,7 @@ class Checkout extends User_Controller
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
       // dd($data['Host']);
-
+      echo $url;die;
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
