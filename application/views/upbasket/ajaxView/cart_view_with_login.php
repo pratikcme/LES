@@ -1,5 +1,4 @@
 <div class="supportive-dropdown">
-    <li> <?= $this->cartCount ?></li>
 <?php 
  foreach ($my_cart as $key => $value) {
     $product_image = $this->product_model->GetUsersProductInCart($value->product_weight_id);
@@ -44,7 +43,6 @@
         <hr>
         <?php } ?>
     </div>
-    <?php if($this->cartCount > 0){ ?>
         <li>
             <div class="total-amount p-0 notranslate">
             <p>Total</p>
@@ -57,4 +55,3 @@
                     <?=base_url().'checkout'?>" class="checkout "> <?=$this->lang->line('checkout')?> </a>
             </div>
         </li>
-    <?php } ?>
