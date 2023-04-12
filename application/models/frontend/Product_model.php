@@ -1271,7 +1271,6 @@ class Product_model extends My_model
 
 	public function insertReview($postData)
 	{
-		// dd($postData);
 		$insertData = array(
 			'user_id' => $this->session->userdata('user_id'),
 			'branch_id' => $this->session->userdata('branch_id'),
@@ -1284,7 +1283,6 @@ class Product_model extends My_model
 		);
 		$data['table'] = TABLE_USER_PRODUCT_REVIEW;
 		$data['insert'] = $insertData;
-		/* return */ $this->insertRecord($data);
-		lq();
+		return $this->insertRecord($data);
 	}
 }
