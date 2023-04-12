@@ -4,13 +4,13 @@
         <span>Sell</span>
     </a>
     <ul class="sub">
-        <!-- <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?> > <a href="<?php echo base_url() . 'sell/index/'; ?>">Sell</a></li> -->
+        <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url() . 'sell/index/'; ?>">Sell</a></li> -->
         <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url() . 'sell_development/index/'; ?>">Sell development</a></li>
         <li <?php echo ($this->uri->segment(2) == 'history') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url() . 'sell_development/history/'; ?>">Sell History</a></li>
         <li <?php echo ($this->uri->segment(2) == 'parked_sell_list') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url() . 'sell_development/parked_sell_list/'; ?>">Parked Sell</a></li>
         <li <?php echo ($this->uri->segment(2) == 'return_sell') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url() . 'sell_development/return_sell/'; ?>">Return Sell</a></li>
         <!-- new end -->
-        <!-- <?php print_r($register_result); ?> -->
+
         <?php if (!empty($register_result)) { ?>
             <?php if ($register_result[0]->type == '1') { ?>
                 <li <?php if (
@@ -240,12 +240,10 @@
         </li>
     </ul>
 </li>
-<!-- <li>
-    <a class="<?php if ($this->uri->segment(1) == 'promocode_manage') { ?> active <?php } ?>"
-        href="<?php echo base_url() . 'promocode_manage'; ?>">
-        <i class="fa fa-code" aria-hidden="true"></i>
-        <span>Manage Promocode</span>
-    </a>
+<a class="<?php if ($this->uri->segment(1) == 'promocode_manage') { ?> active <?php } ?>" href="<?php echo base_url() . 'promocode_manage'; ?>">
+    <i class="fa fa-code" aria-hidden="true"></i>
+    <span>Manage Promocode</span>
+</a>
 </li> -->
 <!-- <li>
     <a class="<?php if ($this->uri->segment(1) == 'cart_amount_based_discount') { ?> active <?php } ?>"
