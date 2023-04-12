@@ -268,16 +268,15 @@ class Checkout extends User_Controller
         $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
-      // dd($data['Host']);
-
+      
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
       $response = curl_exec($ch);
+      dd($response);
       $res = json_decode($response);
-      dd($res);
       $array = ['txnToken' => $res->body->txnToken, 'amount' => $amt, 'orderId' => $on];
       $data['paytm'] = json_encode($array);
       $data['MID'] = $publish_key;
