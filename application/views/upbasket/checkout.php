@@ -267,7 +267,7 @@
                 <?php if($payment_option != '' && $isOnlinePayment == '1' ){ ?> 
                   <div class="form-check radio-outer-line">
                    <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?=$payment_option?>" 
-                   <?=($isOnlinePayment == '1') ? 'checked' : ''?>>
+                   <?=($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : ''?>>
                    <label class="form-check-label" for="Credit/Debit Card"> <?=$this->lang->line('Credit/Debit Card')?> </label>
                  </div> <?php } ?> 
                  <?php if($isCOD == '1'){ ?> 
