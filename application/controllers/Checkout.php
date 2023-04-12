@@ -149,6 +149,7 @@ class Checkout extends User_Controller
     $scret_key = $getActivePaymentMethod[0]->secret_key;
 
     if ($getActivePaymentMethod[0]->IsTestOrLive == '0') {
+      echo '1';die;
       $publish_key = $getActivePaymentMethod[0]->test_publish_key;
       $scret_key = $getActivePaymentMethod[0]->test_secret_key;
     }
@@ -275,7 +276,6 @@ class Checkout extends User_Controller
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
       $response = curl_exec($ch);
-      dd($response);
       $res = json_decode($response);
       $array = ['txnToken' => $res->body->txnToken, 'amount' => $amt, 'orderId' => $on];
       $data['paytm'] = json_encode($array);
