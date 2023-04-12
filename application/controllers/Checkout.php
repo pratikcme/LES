@@ -323,18 +323,18 @@ class Checkout extends User_Controller
         $this->session->unset_userdata('time_slot_id');
         $this->session->unset_userdata('user_gst_number');
         $this->session->unset_userdata('My_cart');
-        $data['page'] = 'frontend/order_success';
+        $data['page'] = $_SESSION['template_name'].'/order_success';
         $data['js'] = array('sccess_screen.js');
         $data['status'] = '1';
         $data['order_number'] =  $message->responsedata->order_number;
-        $this->load->view(USER_LAYOUT, $data);
+        $this->load->view($this->user_layout, $data);
         // redirect(base_url().'users_account/users/account?name=my_address');
         // redirect(base_url().'success?orderno='$message->responsedata->order_number););
       } else {
         $data['page'] = $_SESSION['template_name'].'/order_success';
         $data['js'] = array('payment_failed.js');
         $data['status'] = '0';
-        $this->load->view(USER_LAYOUT, $data);
+        $this->load->view($this->user_layout, $data);
         $this->utility->setFlashMessage('danger', 'Somthing went Wrong');
         redirect(base_url() . 'checkout');
       }
@@ -343,13 +343,13 @@ class Checkout extends User_Controller
       $data['js'] = array('payment_failed.js');
       $data['message'] =  $_POST['RESPMSG'];
       $data['status'] = '0';
-      $this->load->view(USER_LAYOUT, $data);
+      $this->load->view($this->user_layout, $data);
     } else {
       $data['page'] = $_SESSION['template_name'].'/order_success';
       $data['js'] = array('payment_failed.js');
       $data['message'] =  $_POST['RESPMSG'];
       $data['status'] = '0';
-      $this->load->view(USER_LAYOUT, $data);
+      $this->load->view($this->user_layout, $data);
     }
   }
 
