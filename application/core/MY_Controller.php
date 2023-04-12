@@ -137,7 +137,6 @@ class User_Controller extends MY_Controller
             // echo 'sdw00' ; die;
 
         }
-        echo $this->cartCount;die;
         $this->load->model($this->myvalues->vendorFrontEnd['model'], 'vendor_model');
         $response = $this->vendor_model->ApprovedVendor();
 
