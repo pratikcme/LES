@@ -73,9 +73,8 @@ class Home extends User_Controller
 		}
 
 
-		// $data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); call this for no reapeated product in new arrivals
+	// $data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); call this for no reapeated product in new arrivals
 		$data['top_sell_core'] = $this->this_model->selectTopSelling();
-		dd($data['top_sell_core']);
 		$top_selling_core = array();
 		foreach ($data['top_sell_core'] as $key => $value) {
 			$selling_core = $this->this_model->top_selling_product($value->product_id);
