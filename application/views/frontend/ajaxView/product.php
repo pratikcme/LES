@@ -1,6 +1,5 @@
 <div class="col-lg-3 col-md-6 col-sm-6">
 	<div class="product-wrapper">
-		<?=$p_outofstock?>
 			<div class="wishlist-wrapper">
 				<?php 
 				if ($value->discount_per > '0') { ?>
