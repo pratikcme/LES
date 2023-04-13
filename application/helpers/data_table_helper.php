@@ -861,18 +861,23 @@ function getSalesHistory($TableData)
   $library = $CI->load->library('utility');
   $fetch_data = $CI->this_model->make_datatables_sell($TableData);
 
+  // dd($fetch_data);
+  $currency = $CI->this_model->getCurrency();
+  $currencySign = $currency[0]->value;
+
   $data = array();
   $sno = $TableData['start'] + 1;
   foreach ($fetch_data as $row) {
     $name = str_replace(' ', '_', $row->customer_name);
     $sub_array = array();
     $sub_array[] = '<div><div><h5>' . $sno++ . '</h5></div></div>';
-    $sub_array[] = '<a target="_blank" href=' . base_url() . '/order/order_detail?id=' . $CI->utility->safe_b64encode($row->id) . '>' . $row->order_no . '</a>';
+    $sub_array[] = '<a target="_blank" href=' . base_url() . 'order/order_detail?id=' . $CI->utility->safe_b64encode($row->id) . '>' . $row->order_no . '</a>';
     $sub_array[] = '<div>
                      <div>
                         <h5>' . date('d F Y h:i:s A', $row->dt_added) . '</h5>
                      </div>
                   </div>';
+
     $sub_array[] = '<ul>
                      <li class="popover-list-item">
                         <a href="#">
@@ -887,7 +892,8 @@ function getSalesHistory($TableData)
                            </div>
                         </a>
                      </li>
-                  </ul> ';
+                  </ul>';
+
     $sub_array[] = ' <ul>
                      <li class="popover-list-item">
                         <a href="#">
@@ -902,7 +908,8 @@ function getSalesHistory($TableData)
                         </a>
                      </li>
                   </ul>';
-    $sub_array[] =  isset($row->new_total)  ? numberFormat($row->new_total) : numberFormat($row->payable_amount);
+
+    $sub_array[] =   isset($row->new_total)  ? $currencySign . ' ' . numberFormat($row->new_total) : $currencySign . ' ' . numberFormat($row->payable_amount);
     $sub_array[] = '<span data-toggle="modal" class="orderDetails" data-target="#view" data-order_id=' . $CI->utility->safe_b64encode($row->id) . ' ><i class="fa fa-eye" aria-hidden="true"></i></span>
                   <span class="remove" data-order_id=' . $CI->utility->safe_b64encode($row->id) . '><i class="fa fa-trash" aria-hidden="true"></i></span>';
     $data[] = $sub_array;
