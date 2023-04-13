@@ -333,7 +333,6 @@ class Dashboard_model extends My_model
 			$data['where']['b.vendor_id'] = $this->session->userdata('vendor_admin_id');
 			$data['where']['o.dt_added >='] = $today;
 			$data['where']['o.order_status!='] = '9';
-			$data['where']['o.user_id!='] = '0';
 			$data['groupBy'] = 'o.id';
 			$daily_order_Status =  $this->selectFromJoin($data);
 			return $daily_order_Status;
@@ -343,7 +342,6 @@ class Dashboard_model extends My_model
 			$data['select'] = ['*'];
 			$data['where']['dt_added >='] = $today;
 			$data['where']['order_status!='] = '9';
-			$data['where']['user_id!='] = '0';
 			$data['where']['branch_id'] = $this->branch_id;
 			$daily_order_Status = $this->selectRecords($data);
 			return $daily_order_Status;

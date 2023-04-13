@@ -277,7 +277,7 @@ $vendor_id = $this->session->userdata['id'];
                                         // echo $this->db->last_query();die;
                                     ?>
                                     <tr>
-                                        <td><?php echo $daily_order_Status_user_name[0]->name; ?></td>
+                                        <td><?=(!empty($daily_order_Status_user_name))? $daily_order_Status_user_name[0]->name : 'POS'?></td>
                                         <td><?php echo $result->order_no; ?> </td>
 
                                         <!-- change -->
