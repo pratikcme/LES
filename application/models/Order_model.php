@@ -760,7 +760,7 @@ class Order_model extends My_model
     {
         $data['select'] = ['*'];
         $data['table'] = 'payment_method';
-        $data['where'] = ['payment_opt' => $payment_opt];
+        $data['where'] = ['payment_opt' =>$payment_opt,'branch_id'=>$this->session->userdata('id')];
         return $this->selectRecords($data);
     }
 
