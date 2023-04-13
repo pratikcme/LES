@@ -1,6 +1,6 @@
 <section class="p-100 bg-cream">
   <div class="container">
-  <?php if($status == 1){ ?>
+
   <!-- The Modal -->
     <div class="modal" id="order_success">
       <div class="modal-dialog">
@@ -34,8 +34,8 @@
         </div>
       </div>
     </div>
-  <?php } ?>
-  <?php if($status == '0'){ ?>
+
+  <?php if($status == '1'){ ?>
     <!-- The Modal -->
     <div class="modal" id="payment_fail">
       <div class="modal-dialog">
