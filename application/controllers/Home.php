@@ -73,7 +73,7 @@ class Home extends User_Controller
 		}
 
 
-		$data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids);
+		$data['top_sell_core'] = $this->this_model->selectTopSelling();
 		lq();
 		$top_selling_core = array();
 		foreach ($data['top_sell_core'] as $key => $value) {
