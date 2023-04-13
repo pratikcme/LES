@@ -103,11 +103,7 @@
     <!-- --------owl-5-slider--------->
     <div class="sub-categories-product">
 
-      <div class="owl-5 owl-carousel owl-theme sdfsdfd" id="short">
-
-
-
-
+      <div class="owl-5 owl-carousel owl-theme" id="subcatOwl">
 
       </div>
     </div>
@@ -121,7 +117,7 @@
   <img src="<?= $this->theme_base_url ?>/assets/images/product-bottom-right-img.png" alt="" class="product-bottom-right-img">
   <div class="container">
     <div class="lisitng-1">
-      <h4>Showing 1-15 of 31 products</h4>
+      <!-- <h4>Showing 1-15 of 31 products</h4> -->
 
       <div class="right-list">
 

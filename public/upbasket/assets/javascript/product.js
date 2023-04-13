@@ -102,11 +102,10 @@ $(document).ready(function () {
         $("#ajaxProduct").html(output.result);
 
         if (cat_id != "") {
-          $("#sd").css("display", "block");
-          $("#short").html(output.short_li);
-          $("#long").html(output.long_li);
+          // $(".subcatOwl").css("display", "block");
+          $("#subcatOwl").html(output.subCategory);
         } else {
-          $("#sd").css("display", "none");
+          // $(".subcatOwl").css("display", "none");
         }
         $(".cate_id").each(function () {
           var value = $(this).data("cate_id");

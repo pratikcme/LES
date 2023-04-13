@@ -731,9 +731,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   align-items: center !important;
 }
 
-/* .product-categires-part.brands-part input{
-  margin-left: -3px !important;
-} */
+
 
 .sidepanel .brands-part .ctg-left{
   padding: 5px 0;
@@ -757,6 +755,10 @@ div[slider]>input[type=range]::-ms-tooltip {
   margin-left: 0 !important;
   padding-left: 0 !important;
   padding-top: 7px !important;
+}
+
+.lisitng-1{
+  justify-content: end;
 }
 
 /* ======================================================  */
