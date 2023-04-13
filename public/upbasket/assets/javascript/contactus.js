@@ -42,6 +42,7 @@ var CONTACT = function () {
         }
     });
     var handleContactForm = function () {
+
         $('#form').validate({
             rules: {
                 fname: { required: true, maxlength: 15 },
