@@ -29,10 +29,11 @@
             <div class="d-flex drp-grp">
 
               <form class="lng-drp">
-                <select name="language" id="Language">
+                <!-- <select name="language" id="Language">
                   <option value="volvo">English</option>
                   <option value="saab">Arebic</option>
-                </select>
+                </select> -->
+                <div id="google_translate_element" style="display:none"></div>
               </form>
               <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
               <?php if($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1'){ ?>
