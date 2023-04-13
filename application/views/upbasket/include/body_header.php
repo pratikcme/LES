@@ -26,6 +26,23 @@
               
               </div>
             </div>
+            <div class="d-flex drp-grp">
+
+              <form class="lng-drp">
+                <select name="language" id="Language">
+                  <option value="volvo">English</option>
+                  <option value="saab">Arebic</option>
+                </select>
+              </form>
+
+              <form class="branch-drp">
+                <select name="Branch" id="Branch">
+                  <option value="volvo">Branch-1</option>
+                  <option value="saab">Branch-2</option>
+                </select>
+              </form>
+
+            </div>
             <div class="social-icons">
                 <div class="user-btn btn-group">
                   <button class="dropdown-toggle user-login-icon border-0" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
