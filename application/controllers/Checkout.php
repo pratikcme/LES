@@ -209,7 +209,7 @@ class Checkout extends User_Controller
       $data['publishableKey'] = $publish_key;
       $data['payment_type'] = $getActivePaymentMethod[0]->type;
     } else if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type == 3) { /*paytm*/
-      echo '1';die;
+      // echo '1';die;
       function clean($string)
       {
         $string = str_replace('-', '', $string); // Replaces all spaces with hyphens.
@@ -292,6 +292,7 @@ class Checkout extends User_Controller
       curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
       $response = curl_exec($ch);
       $res = json_decode($response);
+      dd($res);
       $array = ['txnToken' => $res->body->txnToken, 'amount' => $amt, 'orderId' => $on];
       $data['paytm'] = json_encode($array);
       $data['MID'] = $publish_key;
