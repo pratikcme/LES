@@ -516,17 +516,22 @@ var PRIVACY = (function () {
     // let isShow = $("#isShow").val();
 
     $("#refund_amount").val(
-      parseFloat(
-        parseFloat(subtotal).toFixed(2) - parseFloat(discAmt).toFixed(2)
-      ).toFixed(2)
+      parseFloat(parseFloat(subtotal) - parseFloat(discAmt)).toFixed(2)
     );
-    // if (isShow == 1) {
+
+    // console.log(
+    //   "check",
+    //   parseFloat(parseFloat(subtotal) - parseFloat(discAmt)).toFixed(2)
+    // );
+
+    // // if (isShow == 1) {
     $("#refund_amount").val(
       parseFloat(
-        parseFloat($("#refund_amount").val()).toFixed(2) +
-          parseFloat($("#total_gst").html()).toFixed(2)
+        parseFloat($("#refund_amount").val()) +
+          parseFloat($("#total_gst").html())
       ).toFixed(2)
     );
+
     $("#total_pay").html(
       parseFloat(parseFloat($("#refund_amount").val()).toFixed(2)).toFixed(2)
     );
