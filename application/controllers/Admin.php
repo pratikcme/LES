@@ -159,6 +159,7 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
         // print_r($data['total_return_order']);die;
         $data['total_return_payment'] = $this->this_model->total_return_payment_query();
         $data['daily_order_Status'] = $this->this_model->daily_order_Status_query();
+        dd($data['daily_order_Status']);
         $data['daily_order_Status_user_name'] = $this->this_model->daily_order_Status_user_name_query();
 
 
