@@ -58,8 +58,8 @@ top: 0px !important;
 .goog-te-banner-frame.skiptranslate {
 display: none !important;
 } 
-.VIpgJd-ZVi9od-ORHb-OEVmcd{
-display:none !important
+.VIpgJd-ZVi9od-l4eHX-hSRGPd{
+  display:none !important 
 }
 .goog-te-gadget .goog-te-combo {
     margin: 4px 0;
