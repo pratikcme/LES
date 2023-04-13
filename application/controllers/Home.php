@@ -111,7 +111,7 @@ class Home extends User_Controller
 		}
 		
 		$data['top_sell'] = $top_selling_core;
-		// dd($data['top_sell']);
+		dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
 		// dd($data['banner']);die;
 
