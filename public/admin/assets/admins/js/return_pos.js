@@ -395,26 +395,21 @@ var PRIVACY = (function () {
     });
 
     $("#total_gst").html(
-      parseFloat(
-        parseFloat(gst).toFixed(2) - parseFloat(uncount_gst).toFixed(2)
-      ).toFixed(2)
+      parseFloat(parseFloat(gst) - parseFloat(uncount_gst)).toFixed(2)
     );
     $("#counted_total_gst").val(
-      parseFloat(
-        parseFloat(gst).toFixed(2) - parseFloat(uncount_gst).toFixed(2)
-      ).toFixed(2)
+      parseFloat(parseFloat(gst) - parseFloat(uncount_gst)).toFixed(2)
     );
 
     var final_subtotal = parseFloat(
-      parseFloat(sub_total).toFixed(2) - parseFloat(uncount_total).toFixed(2)
+      parseFloat(sub_total) - parseFloat(uncount_total)
     ).toFixed(2);
 
     let isShow = $("#isShow").val();
 
     if (isShow != "1") {
       final_subtotal = parseFloat(
-        parseFloat(final_subtotal).toFixed(2) -
-          parseFloat($("#total_gst").html()).toFixed(2)
+        parseFloat(final_subtotal) - parseFloat($("#total_gst").html())
       ).toFixed(2);
 
       // if ($("#front_cartBased").val() != "") {
@@ -533,7 +528,7 @@ var PRIVACY = (function () {
     );
 
     $("#total_pay").html(
-      parseFloat(parseFloat($("#refund_amount").val()).toFixed(2)).toFixed(2)
+      parseFloat(parseFloat($("#refund_amount").val())).toFixed(2)
     );
     // } else {
     // $("#refund_amount").val(parseFloat($("#refund_amount").val()).toFixed(2));

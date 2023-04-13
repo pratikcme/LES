@@ -336,10 +336,8 @@ class Sell_development extends Vendor_Controller
                         $abc['value']->single_gst_discounted_amount = 0;
                     }
                     // else {
-                    $abc['value']->single_gst_amount = ($abc['value']->discount_price * $abc['value']->gst) / 100;
+                    $abc['value']->single_gst_amount = numberFormat(($abc['value']->discount_price * $abc['value']->gst) / 100);
                     // }
-
-
 
                     $abc['value']->gst_amount = numberFormat($abc['value']->single_gst_amount) * $abc['value']->returned_quantity;
 
@@ -408,7 +406,7 @@ class Sell_development extends Vendor_Controller
                 $data['value']->price = numberFormat($data['value']->discount_price * $data['value']->quantity);
             }
 
-            $data['value']->single_gst_amount = ($data['value']->discount_price * $data['value']->gst) / 100;
+            $data['value']->single_gst_amount = numberFormat(($data['value']->discount_price * $data['value']->gst) / 100);
 
             $data['value']->gst_amount = numberFormat($data['value']->single_gst_amount) * $data['value']->quantity;
 
