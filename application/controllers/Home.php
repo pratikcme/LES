@@ -74,6 +74,7 @@ class Home extends User_Controller
 
 
 		$data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids);
+		lq();
 		$top_selling_core = array();
 		foreach ($data['top_sell_core'] as $key => $value) {
 			$selling_core = $this->this_model->top_selling_product($value->product_id);
@@ -111,7 +112,7 @@ class Home extends User_Controller
 		}
 		
 		$data['top_sell'] = $top_selling_core;
-		dd($data['top_sell']);
+		// dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
 		// dd($data['banner']);die;
 
