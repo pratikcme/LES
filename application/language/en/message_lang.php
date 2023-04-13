@@ -1,4 +1,10 @@
 <?php
+
+$lang['Thanks for shopping'] = 'Thanks for shopping';
+$lang['order placed successfully'] = 'order placed successfully';
+$lang['Your Order No'] = 'Your Order No';
+$lang['payment failed'] = 'payment failed';
+
 // template 2 up basket
 $lang['js_add_address'] =  'Add New Address';
 $lang['js_update_address'] =  'Update Address';
