@@ -209,7 +209,7 @@ class Checkout extends User_Controller
       $data['publishableKey'] = $publish_key;
       $data['payment_type'] = $getActivePaymentMethod[0]->type;
     } else if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type == 3) { /*paytm*/
-      // echo '1';die;
+
       function clean($string)
       {
         $string = str_replace('-', '', $string); // Replaces all spaces with hyphens.
@@ -232,38 +232,23 @@ class Checkout extends User_Controller
       $custId = "CUST_" . time();
       $callbackUrl = base_url() . "checkout/paytm_checkout";
       $currency = $currency_code;
-
-      $paytmParams = array();
       
+      $paytmParams = array();
+
       $paytmParams["body"] = array(
-        "requestType"   => "Payment",
-        "mid"           => $MID,
-        "websiteName"   => "WEBSTAGING",
-        "orderId"       => $on,
-        "callbackUrl"   => $callbackUrl,
-        "txnAmount"     => array(
-            "value"     => intval(1.00),
-            "currency"  => "INR",
+        "requestType"  => "Payment",
+        "mid"      => $MID,
+        "websiteName"  => clean($this->siteTitle),
+        "orderId"    => $on,
+        "callbackUrl"  => $callbackUrl,
+        "txnAmount"   => array(
+          "value"   => $amt,
+          "currency" => trim($currency),
         ),
-        "userInfo"      => array(
-            "custId"    => "CUST_0011",
+        "userInfo"   => array(
+          "custId"  => $custId,
         ),
       );
-
-      // $paytmParams["body"] = array(
-      //   "requestType"  => "Payment",
-      //   "mid"      => $MID,
-      //   "websiteName"  => clean($this->siteTitle),
-      //   "orderId"    => $on,
-      //   "callbackUrl"  => $callbackUrl,
-      //   "txnAmount"   => array(
-      //     "value"   => $amt,
-      //     "currency" => trim($currency),
-      //   ),
-      //   "userInfo"   => array(
-      //     "custId"  => $custId,
-      //   ),
-      // );
       /*
         * Generate checksum by parameters we have in body
         * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
@@ -276,16 +261,17 @@ class Checkout extends User_Controller
       );
 
       $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
+
       /* for Production */
       $url = 'https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
       $data['Host'] = 'https://securegw.paytm.in'; // production
-      
+
       if ($getActivePaymentMethod[0]->IsTestOrLive == 0) {
         /* for Staging */
         $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
-      
+
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
@@ -293,7 +279,6 @@ class Checkout extends User_Controller
       curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
       $response = curl_exec($ch);
       $res = json_decode($response);
-      dd($res);
       $array = ['txnToken' => $res->body->txnToken, 'amount' => $amt, 'orderId' => $on];
       $data['paytm'] = json_encode($array);
       $data['MID'] = $publish_key;
@@ -708,36 +693,20 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
       $currency = $currency_code;
       $paytmParams = array();
 
-
       $paytmParams["body"] = array(
-        "requestType"   => "Payment",
-        "mid"           => $MID,
-        "websiteName"   => "WEBSTAGING",
-        "orderId"       => "ORDERID_98765",
-        "callbackUrl"   => $callbackUrl,
-        "txnAmount"     => array(
-            "value"     => "1.00",
-            "currency"  => "INR",
+        "requestType" => "Payment",
+        "mid" => $MID,
+        "websiteName" => clean($this->siteTitle),
+        "orderId" => $on,
+        "callbackUrl" => $callbackUrl,
+        "txnAmount" => array(
+          "value" => $amt,
+          "currency" => trim($currency),
         ),
-        "userInfo"      => array(
-            "custId"    => "CUST_001",
+        "userInfo" => array(
+          "custId" => $custId,
         ),
       );
-
-      // $paytmParams["body"] = array(
-      //   "requestType" => "Payment",
-      //   "mid" => $MID,
-      //   "websiteName" => clean($this->siteTitle),
-      //   "orderId" => $on,
-      //   "callbackUrl" => $callbackUrl,
-      //   "txnAmount" => array(
-      //     "value" => $amt,
-      //     "currency" => trim($currency),
-      //   ),
-      //   "userInfo" => array(
-      //     "custId" => $custId,
-      //   ),
-      // );
       /*
 * Generate checksum by parameters we have in body
 * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
