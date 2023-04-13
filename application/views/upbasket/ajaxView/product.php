@@ -18,8 +18,8 @@
                     <?php } ?></h4>
 
 
-                <h6 class="rating"> 
-                    <span class="notranslate"><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?></span>
+                <h6 class="rating notranslate"> 
+                    <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
                     <span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>">
                     <strike><?= $this->siteCurrency . ' ' . $value->price ?></strike>
                 </span>
