@@ -33,7 +33,7 @@
                   <option value="volvo">English</option>
                   <option value="saab">Arebic</option>
                 </select> -->
-                <div id="google_translate_element" style="display:none"></div>
+                <div id="google_translate_element"></div>
               </form>
               <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
               <?php if($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1'){ ?>
