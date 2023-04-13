@@ -276,17 +276,15 @@ class Checkout extends User_Controller
       );
 
       $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
-      dd($post_data);
       /* for Production */
       $url = 'https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
       $data['Host'] = 'https://securegw.paytm.in'; // production
-
+      
       if ($getActivePaymentMethod[0]->IsTestOrLive == 0) {
         /* for Staging */
         $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
-
       
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
@@ -295,6 +293,7 @@ class Checkout extends User_Controller
       curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
       $response = curl_exec($ch);
       $res = json_decode($response);
+      dd($res);
       $array = ['txnToken' => $res->body->txnToken, 'amount' => $amt, 'orderId' => $on];
       $data['paytm'] = json_encode($array);
       $data['MID'] = $publish_key;
