@@ -209,7 +209,7 @@ class Checkout extends User_Controller
       $data['publishableKey'] = $publish_key;
       $data['payment_type'] = $getActivePaymentMethod[0]->type;
     } else if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type == 3) { /*paytm*/
-
+      echo '1';die;
       function clean($string)
       {
         $string = str_replace('-', '', $string); // Replaces all spaces with hyphens.
@@ -247,7 +247,7 @@ class Checkout extends User_Controller
             "custId"    => "CUST_001",
         ),
       );
-      
+
       // $paytmParams["body"] = array(
       //   "requestType"  => "Payment",
       //   "mid"      => $MID,
