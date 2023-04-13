@@ -42,6 +42,11 @@
 </script>
 <style>
 
+/* google traslater*/
+body {
+top: 0px !important; 
+}
+
 .goog-logo-link {
     display:none !important;
 } 
