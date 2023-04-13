@@ -321,8 +321,7 @@
                     $total_gst_amount += numberFormat($v->discounted_price * $v->gst / 100) * $v->updated_quantity;
                   }
                   if ($other_disc > 0) {
-                    $val = $v->discounted_price - ($v->discounted_price * $other_disc / 100);
-
+                    $val = numberFormat($v->discounted_price - ($v->discounted_price * $other_disc / 100));
                     $total_discounted_gst += numberFormat(($val * $v->gst / 100) * $v->updated_quantity);
                   }
                   ?>

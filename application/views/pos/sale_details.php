@@ -52,7 +52,8 @@ $shoppingDiscount = numberFormat($orderInfo->shopping_amount_based_discount) * 1
                         $total_gst_amount += numberFormat(numberFormat($v->discounted_price * $v->gst / 100) * $v->quantity);
                     }
                     if ($other_disc > 0) {
-                        $val = $v->discounted_price - ($v->discounted_price * $other_disc / 100);
+                        $val = numberFormat($v->discounted_price - numberFormat($v->discounted_price * $other_disc / 100));
+
                         $total_discounted_gst += numberFormat((numberFormat($val) * $v->gst / 100) * $v->quantity); //add num format
                     }
                     ?>
