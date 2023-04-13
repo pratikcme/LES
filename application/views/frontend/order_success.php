@@ -1,6 +1,6 @@
 <section class="p-100 bg-cream">
   <div class="container">
-
+  <?php if($status == '0'){ ?>
   <!-- The Modal -->
     <div class="modal" id="order_success">
       <div class="modal-dialog">
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-
+  <?php } ?>
   <?php if($status == '1'){ ?>
     <!-- The Modal -->
     <div class="modal" id="payment_fail">
@@ -53,7 +53,7 @@
                   <p><?=$message?></p>
               </div>
               <div>
-                  <a href="<?=base_url().'home'?>" class="retry_btn">continue shopping</a>
+                  <a href="<?=base_url().'home'?>" class="btn btn-primary">continue shopping</a>
               </div>
           </div>
           
