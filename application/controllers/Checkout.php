@@ -331,7 +331,7 @@ class Checkout extends User_Controller
         // redirect(base_url().'users_account/users/account?name=my_address');
         // redirect(base_url().'success?orderno='$message->responsedata->order_number););
       } else {
-        $data['page'] = $_SESSION['template_name'].'/order_success';
+        $data['page'] = $_SESSION['template_name'].'/order_success1';
         $data['js'] = array('payment_failed.js');
         $data['status'] = '0';
         $this->load->view($this->user_layout, $data);
@@ -339,14 +339,14 @@ class Checkout extends User_Controller
         redirect(base_url() . 'checkout');
       }
     } elseif ($_POST['RESPCODE'] == '227') {
-      $data['page'] = $_SESSION['template_name'].'/order_success';
+      $data['page'] = $_SESSION['template_name'].'/order_success1';
       // $data['js'] = array('payment_failed.js');
       $data['js'] = array('sccess_screen.js');
       $data['message'] =  $_POST['RESPMSG'];
       $data['status'] = '1';
       $this->load->view($this->user_layout, $data);
     } else {
-      $data['page'] = $_SESSION['template_name'].'/order_success';
+      $data['page'] = $_SESSION['template_name'].'/order_success1';
       // $data['js'] = array('payment_failed.js');
       $data['js'] = array('sccess_screen.js');
       $data['message'] =  $_POST['RESPMSG'];
