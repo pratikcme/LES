@@ -1,7 +1,7 @@
 <?php
 
 $lang['Thanks for shopping'] = 'Thanks for shopping';
-$lang['order placed successfully'] = 'order placed successfully';
+$lang['Order placed successfully'] = 'order placed successfully';
 $lang['Your Order No'] = 'Your Order No';
 $lang['payment failed'] = 'payment failed';
 
@@ -32,6 +32,10 @@ $lang['Please enter Otp'] = 'Please enter Otp';
 $lang['continue shopping'] = 'Continue Shopping';
 $lang['thanks for shopping'] = 'thanks for shopping';
 $lang['order placed successfully'] = 'order placed successfully';
+$lang['Latest'] = 'Latest';
+$lang['Products'] = 'Products';
+$lang['Shop By'] = 'Shop By';
+$lang['Top Featured'] = 'Top Featured';
 
 
 // end template 2

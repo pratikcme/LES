@@ -96,10 +96,10 @@
 <section class="Categories-section section">
   <img src="<?=$this->theme_base_url?>/assets/images/category-top-right-img.png" alt="" class="category-top-right-img">
   <div class="container">
-    <h1 class="title">Shop By <span>Categories</span></h1>
-    <p class="pera">Top Categories Of The Week</p>
-    <h5>View All Categories</h5>
-    <h5 class="mobile-cate-text"><a href="#">View All</a></h5>
+    <h1 class="title"><?=$this->lang->line('Shop By')?> <span><?=$this->lang->line('Categories')?> </span></h1>
+    <!-- <p class="pera">Top Categories Of The Week</p> -->
+    <h5><?=$this->lang->line('See All')?> <?=$this->lang->line('Categories')?></h5>
+    <h5 class="mobile-cate-text"><a href="#"><?=$this->lang->line('See All')?></a></h5>
 
     <!-- --------owl-slider--------->
     <div class="owl-1 owl-carousel owl-theme">
@@ -126,8 +126,8 @@
   <img src="<?=$this->theme_base_url?>/assets/images/product-bottom-right-img.png" alt=""
     class="product-bottom-right-img">
   <div class="container">
-    <h2 class="title">Top Featured <span>Products</span></h2>
-    <p class="pera">Do not miss the current offers until the end of month.</p>
+    <h2 class="title"><?=$this->lang->line('Top Featured')?> <span><?=$this->lang->line('Products')?></span></h2>
+    <!-- <p class="pera">Do not miss the current offers until the end of month.</p> -->
 
     <div class="row">
       <!-- -----product-card----- -->
@@ -192,7 +192,7 @@
               <a href="javascript:" class="add-cart-btn addcartbutton <?=$d_none?>"
                 data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
                 data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>"><span><i
-                    class="fa-solid fa-cart-shopping"></i></span> Add to Cart
+                    class="fa-solid fa-cart-shopping"></i></span> <?=$this->lang->line('add to cart')?>
               </a>
               <div class="product-detail-quentity <?=$d_show?>">
                   <div class="qty-container">
@@ -214,9 +214,9 @@
 <section class="Latest-Products Categories-section section">
   <img src="<?=$this->theme_base_url?>/assets/images/latest-product-top-img.png" alt="" class="latest-product-top-img">
   <div class="container">
-    <h1 class="title">Latest <span>Products</span></h1>
-    <p class="pera">Do not miss the current offers until the end of month.</p>
-    <h5>View All Categories</h5>
+    <h1 class="title"><?=$this->lang->line('Latest')?> <span><?=$this->lang->line('Products')?></span></h1>
+    <!-- <p class="pera">Do not miss the current offers until the end of month.</p> -->
+    <h5><?=$this->lang->line('See All')?> <?=$this->lang->line('Categories')?></h5>
 
     <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0"
       data-wow-offset="0">
@@ -263,7 +263,7 @@
             ?>
             <a href="javascript:" class="add-cart-btn addcartbutton <?=$d_none?>" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
                 data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
-                <span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart
+                <span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to Cart')?>
             </a>
             <div class="product-detail-quentity <?=$d_show?>">
                       <div class="qty-container">

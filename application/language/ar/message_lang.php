@@ -32,6 +32,10 @@ $lang['Please enter Otp'] = 'الرجاء إدخال Otp';
 $lang['continue shopping'] = 'مواصلة التسوق';
 $lang['thanks for shopping'] = 'شكرا للتسوق';
 $lang['order placed successfully'] = 'تم وضع الطلب بنجاح';
+$lang['Latest'] = 'أحدث';
+$lang['Products'] = 'منتجات';;
+$lang['Shop By'] = 'تسوق حسب';
+$lang['Top Featured'] = 'الأعلى المميز';
 
 // end template 2
 
