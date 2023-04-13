@@ -86,7 +86,7 @@ class Home_model extends My_model{
 				$result_count1 = $this->db->query('SELECT  product_id, SUM(quantity) AS TotalQuantity
 								FROM order_details WHERE branch_id ="'.$branch_id.'" AND product_id NOT IN ("'.$product_ids.'")
 								GROUP BY product_id 
-								ORDER BY TotalQuantity DESC ');		
+								ORDER BY TotalQuantity DESC limit 12');		
 			
 			return  $result_count1->result();
 	}
