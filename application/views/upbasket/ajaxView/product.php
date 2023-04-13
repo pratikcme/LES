@@ -18,7 +18,12 @@
                     <?php } ?></h4>
 
 
-                <h6 class="rating"> <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span></h6>
+                <h6 class="rating"> 
+                    <span class="notranslate"><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?></span>
+                    <span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>">
+                    <strike><?= $this->siteCurrency . ' ' . $value->price ?></strike>
+                </span>
+                </h6>
 
                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->prod_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>">
                     <span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart') ?>
