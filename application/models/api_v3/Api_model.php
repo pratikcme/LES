@@ -1664,7 +1664,7 @@ class Api_model extends My_model
             $response["actual_price_total"] = $getactual;
             $response["shopping_based_discount"] = $discountValue;
             $response["discount_price_total"] = number_format((float)$getactual - $my_cal, '2', '.', '');
-            $response["total_price"] = number_format((float)($my_cal - $discountValue), '2', '.', '');
+            $response["total_price"] = number_format((float)($my_cal), '2', '.', '');
 
             $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
             $response["amountWithoutGst"] = number_format((float)($my_cal - $total_gst - $discountValue), '2', '.', '');
