@@ -39,7 +39,6 @@ class Home extends User_Controller
 
 		$data['new_arrival'] = $this->this_model->selectNewArrivel();
 		$data['folder'] = $this->folder . 'category/';
-
 		if ($this->countCategory == 1 && count($subcategory) > 1) {
 			$data['category'] = $this->this_model->subcategory_list();
 			$data['folder'] = $this->folder . 'product_image/';
