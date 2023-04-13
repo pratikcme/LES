@@ -40,4 +40,26 @@
 <script type="text/javascript">
     var language = <?=$lang; ?>;
 </script>
+<style>
+
+.goog-logo-link {
+    display:none !important;
+} 
+    
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+.goog-te-banner-frame.skiptranslate {
+display: none !important;
+} 
+.VIpgJd-ZVi9od-ORHb-OEVmcd{
+display:none !important
+}
+.goog-te-gadget .goog-te-combo {
+    margin: 4px 0;
+    width: 209px !important;
+}
+</style>
+</style>
 <input type="hidden" id="siteCurrency" value="<?=$this->siteCurrency?>">
