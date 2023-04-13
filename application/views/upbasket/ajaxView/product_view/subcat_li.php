@@ -26,6 +26,7 @@ if (!empty($subcategory)) {
         }
 
 ?>
+
         <div class="owl-item">
             <div class="techno-check">
                 <a href="javascript:" class="sub-categories-wrapper sucategory_id sub_cat_link <?= $sub_class ?>" data-sub_id=<?= $value->id ?>>
@@ -35,19 +36,7 @@ if (!empty($subcategory)) {
         </div>
 
 
-        <?php if ($key >= 6) {
-            continue;
-        } ?>
-
-
-    <?php }
-    $class = "";
-    if ($i < 6) {
-        $class = "none";
-    } else ?>
-
-
-
 
 <?php }
+}
 ?>

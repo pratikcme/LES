@@ -248,7 +248,6 @@ $(".owl-4").owlCarousel({
 $(".owl-5").owlCarousel({
   loop: true,
   items: 6,
-  // rtl: true,
   margin: 5,
   nav: false,
   // center:true,
@@ -356,15 +355,14 @@ if ($("body").hasClass("rtl")) {
 //   $("#table-two-axis").basictable();
 // });
 
-
 //   -----checkout-image-choose---
 var loadFile = function (event) {
-  var output = document.getElementById('output');
+  var output = document.getElementById("output");
   output.src = URL.createObjectURL(event.target.files[0]);
 };
 
 $(document).ready(function () {
   $(".choose-btn").click(function () {
-    $("input[type='file']").trigger('click');
+    $("input[type='file']").trigger("click");
   });
 });
