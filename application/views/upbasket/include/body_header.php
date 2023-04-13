@@ -34,13 +34,18 @@
                   <option value="saab">Arebic</option>
                 </select>
               </form>
-
+              <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
+              <?php if($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1'){ ?>
               <form class="branch-drp">
                 <select name="Branch" id="Branch">
-                  <option value="volvo">Branch-1</option>
-                  <option value="saab">Branch-2</option>
+                    <option value=""> <?=$this->lang->line('All store')?></option>
+                  <?php foreach ($branch_nav as $key => $v): ?>
+                    <option value="<?=$v->id?>" <?=(isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>><?=$v->name?></option>
+                  <?php endforeach ?>
                 </select>
               </form>
+              <?php } ?>
+              <?php } ?>
 
             </div>
             <div class="social-icons">
