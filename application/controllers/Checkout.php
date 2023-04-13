@@ -237,7 +237,7 @@ class Checkout extends User_Controller
         "requestType"   => "Payment",
         "mid"           => $MID,
         "websiteName"   => "WEBSTAGING",
-        "orderId"       => "ORDERID_98765",
+        "orderId"       => $on,
         "callbackUrl"   => $callbackUrl,
         "txnAmount"     => array(
             "value"     => "1.00",
