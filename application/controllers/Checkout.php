@@ -342,13 +342,13 @@ class Checkout extends User_Controller
       $data['page'] = $_SESSION['template_name'].'/order_success';
       $data['js'] = array('payment_failed.js');
       $data['message'] =  $_POST['RESPMSG'];
-      $data['status'] = '0';
+      $data['status'] = '1';
       $this->load->view($this->user_layout, $data);
     } else {
       $data['page'] = $_SESSION['template_name'].'/order_success';
       $data['js'] = array('payment_failed.js');
       $data['message'] =  $_POST['RESPMSG'];
-      $data['status'] = '0';
+      $data['status'] = '1';
       $this->load->view($this->user_layout, $data);
     }
   }
