@@ -3,7 +3,8 @@
     <h5> <span>Date : </span> <?= date('d - m - Y', $orderInfo->dt_added) ?></h5>
 </div>
 <?php
-$shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderInfo->total;
+$shoppingDiscount = numberFormat($orderInfo->shopping_amount_based_discount) * 100 /  $orderInfo->total;
+// dd($orderInfo->payable_amount);
 ?>
 <div class="supportive-div">
     <table class="table sale-detail">
@@ -24,6 +25,7 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
             $other_disc = 0;
             $total_gst_amount = 0;
             $total_discounted_gst = 0;
+
 
             if (isset($return_details) && $return_details == true) {
                 $other_disc = isset($removedDiscountPercentage) && $removedDiscountPercentage > 0 ? $removedDiscountPercentage  : 0;
@@ -96,7 +98,7 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
 
             if ($total_discounted_gst > 0) {
                 // if ($return_details == true) :
-
+                $basedDiscount = 0;
                 // endif;
             ?>
             <li>
@@ -120,6 +122,7 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
             <!--  -->
             <?php
             if (isset($amount) && $amount->percentage > 0 && $return_details == false) {
+                $basedDiscount = numberFormat($amount->amount);
             ?>
             <li>
                 <div>
@@ -130,6 +133,7 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
             <?php
             }
             if (isset($orderInfo->shopping_amount_based_discount) && $orderInfo->shopping_amount_based_discount > 0) {
+                $basedDiscount = numberFormat($orderInfo->shopping_amount_based_discount);
             ?>
             <li>
                 <div>
@@ -144,7 +148,7 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
             ?>
             <?php
             if (isset($removedDiscountPercentage) && $removedDiscountPercentage > 0) {
-
+                $basedDiscount = numberFormat($removedDiscountAmount);
             ?>
             <li>
                 <div>
@@ -160,7 +164,8 @@ $shoppingDiscount = $orderInfo->shopping_amount_based_discount * 100 /  $orderIn
             <li>
                 <div>
                     <h6>Total </h6>
-                    <h6><?= $currency . ' ' . numberFormat($orderInfo->payable_amount) ?></h6>
+                    <h6><?= $currency . ' ' . ($total_discounted_gst > 0) ? numberFormat((numberFormat($orderInfo->total) + numberFormat($total_discounted_gst)) - $basedDiscount)  :  numberFormat($orderInfo->total + $total_gst_amount) ?>
+                    </h6>
                 </div>
             </li>
         </ul>
