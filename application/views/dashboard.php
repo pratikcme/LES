@@ -274,7 +274,7 @@ $vendor_id = $this->session->userdata['id'];
                                         $user_id = $result->user_id;
                                         $daily_order_Status_user_name_query = $this->db->query("SELECT CONCAT(fname,lname) as name FROM user WHERE id = '$user_id'");
                                         $daily_order_Status_user_name = $daily_order_Status_user_name_query->result();
-                                        // echo $this->db->last_query();die;
+                                        echo $this->db->last_query();die;
                                     ?>
                                     <tr>
                                         <td><?php echo @$daily_order_Status_user_name[0]->name; ?></td>
