@@ -340,7 +340,8 @@ class Checkout extends User_Controller
       }
     } elseif ($_POST['RESPCODE'] == '227') {
       $data['page'] = $_SESSION['template_name'].'/order_success';
-      $data['js'] = array('payment_failed.js');
+      // $data['js'] = array('payment_failed.js');
+      $data['js'] = array('sccess_screen.js');
       $data['message'] =  $_POST['RESPMSG'];
       $data['status'] = '1';
       $this->load->view($this->user_layout, $data);
@@ -348,7 +349,7 @@ class Checkout extends User_Controller
       $data['page'] = $_SESSION['template_name'].'/order_success';
       $data['js'] = array('payment_failed.js');
       $data['message'] =  $_POST['RESPMSG'];
-      $data['status'] = '1';
+      $data['status'] = '0';
       $this->load->view($this->user_layout, $data);
     }
   }
