@@ -233,6 +233,8 @@ class Checkout extends User_Controller
       $callbackUrl = base_url() . "checkout/paytm_checkout";
       $currency = $currency_code;
 
+      $paytmParams = array();
+      
       $paytmParams["body"] = array(
         "requestType"   => "Payment",
         "mid"           => $MID,
@@ -244,7 +246,7 @@ class Checkout extends User_Controller
             "currency"  => "INR",
         ),
         "userInfo"      => array(
-            "custId"    => "CUST_001",
+            "custId"    => "CUST_0011",
         ),
       );
 
@@ -274,7 +276,7 @@ class Checkout extends User_Controller
       );
 
       $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
-
+      dd($post_data);
       /* for Production */
       $url = 'https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
       $data['Host'] = 'https://securegw.paytm.in'; // production
@@ -285,7 +287,7 @@ class Checkout extends User_Controller
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
 
-      dd($url);
+      
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
