@@ -1,7 +1,7 @@
 <?php
 
 $lang['Thanks for shopping'] = 'شكرا للتسوق';
-$lang['order placed successfully'] = 'تم وضع الطلب بنجاح';
+$lang['Order placed successfully'] = 'تم وضع الطلب بنجاح';
 $lang['Your Order No'] = 'طلبك لا';
 $lang['payment failed'] = 'عملية الدفع فشلت';
 

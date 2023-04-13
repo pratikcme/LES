@@ -12,10 +12,10 @@
                   <div class="center-img">
                       <img src="<?=$this->theme_base_url?>/assets/images/login-center-img.png" alt="">
                   </div>
-                  <h2>Thank you.</h2>
-                  <h3>Your order has been received</h3>
+                  <h2><?=$this->lang->line('Thanks for shopping')?>.</h2>
+                  <h3><?=$this->lang->line('Order placed successfully')?></h3>
                   <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
-                  <h5 id="orderId"></h5>
+                  <h5 id="orderId"><?=$this->lang->line('Your Order No')?> : <?=$order_number?></h5>
                   <div class="continue-btn">
                     <a href="<?=base_url().'home'?>"><?=$this->lang->line('continue shopping')?></a>
                   </div>
