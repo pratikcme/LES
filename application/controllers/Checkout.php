@@ -240,7 +240,7 @@ class Checkout extends User_Controller
         "orderId"       => $on,
         "callbackUrl"   => $callbackUrl,
         "txnAmount"     => array(
-            "value"     => "1.00",
+            "value"     => intval(1.00),
             "currency"  => "INR",
         ),
         "userInfo"      => array(
@@ -285,6 +285,7 @@ class Checkout extends User_Controller
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
 
+      dd($url);
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_POST, 1);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
@@ -292,7 +293,6 @@ class Checkout extends User_Controller
       curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
       $response = curl_exec($ch);
       $res = json_decode($response);
-      dd($res);
       $array = ['txnToken' => $res->body->txnToken, 'amount' => $amt, 'orderId' => $on];
       $data['paytm'] = json_encode($array);
       $data['MID'] = $publish_key;
