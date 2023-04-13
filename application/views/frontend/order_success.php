@@ -14,7 +14,7 @@
           <!-- Modal body -->
           <div class="modal-body text-center">
               <div>
-                  <h3>thanks for shopping</h3>
+                  <h3><?=$this->lang->line('Thanks for shopping')?></h3>
               </div>
               <div class="my-3">
                   <i class="fa fa-shopping-bag" aria-hidden="true"></i>
@@ -23,11 +23,11 @@
                   <img src="assets/images/bag.png" class="bag" alt="">
               </div> -->
               <div>
-                  <h5>order placed successfully</h5>
-                  <p id="orderId">Your Order No : <?=$order_number?></p>
+                  <h5><?=$this->lang->line('order placed successfully')?></h5>
+                  <p id="orderId"><?=$this->lang->line('Your Order No')?> : <?=$order_number?></p>
               </div>
               <div>
-                  <a href="<?=base_url().'home'?>" class="shopping_btn">continue shopping</a>
+                  <a href="<?=base_url().'home'?>" class="shopping_btn"><?=$this->lang->line('continue shopping')?></a>
               </div>
           </div>
           
@@ -44,7 +44,7 @@
           <!-- Modal body -->
           <div class="modal-body text-center">
               <div>
-                  <h3>payment failed</h3>
+                  <h3><?=$this->lang->line('payment failed')?></h3>
               </div>
               <div class="my-3">
                   <i class="fas fa-ban"></i>
@@ -53,7 +53,7 @@
                   <p><?=$message?></p>
               </div>
               <div>
-                  <a href="<?=base_url().'home'?>" class="btn btn-primary">continue shopping</a>
+                  <a href="<?=base_url().'home'?>" class="btn btn-primary"><?=$this->lang->line('continue shopping')?></a>
               </div>
           </div>
           
