@@ -965,12 +965,16 @@ var PRIVACY = (function () {
     $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   }
 
-  function showExtraGst() {
-    let oldGst = parseFloat(parseFloat($("#total_gst").text()).toFixed(2));
-    $(".dis_subtotal")
-      .find(".dis_sub_val")
-      .text(parseFloat(parseFloat($("#subtotal").text()) + oldGst).toFixed(2));
-    $(".dis_subtotal").find(".dis_gst").text(parseFloat(oldGst).toFixed(2));
+  function showExtraGst(check) {
+    if (!check) {
+      let oldGst = parseFloat(parseFloat($("#total_gst").text()).toFixed(2));
+      $(".dis_subtotal")
+        .find(".dis_sub_val")
+        .text(
+          parseFloat(parseFloat($("#subtotal").text()) + oldGst).toFixed(2)
+        );
+      $(".dis_subtotal").find(".dis_gst").text(parseFloat(oldGst).toFixed(2));
+    }
     $(".dis_subtotal").parent().find(".gstName").text("Updated GST");
 
     $(".dis_subtotal").show();
@@ -985,6 +989,7 @@ var PRIVACY = (function () {
 
   async function getCartBasedDiscount(val) {
     $("#promocode_discount_item").hide();
+
     let cur = $("#currency").val();
     await $.ajax({
       type: "GET",
@@ -1070,6 +1075,7 @@ var PRIVACY = (function () {
     });
 
     $("#promocode").val("");
+    $("#applied").val("false");
     $("#promo_err").html("");
     $("#hidden_subtotal").val(
       parseFloat(parseFloat($("#subtotal").html()).toFixed(2)).toFixed(2)
@@ -1124,7 +1130,12 @@ var PRIVACY = (function () {
             $("#applied").val("true");
           } else {
             $("#promo_err").html("Promocode already applied!");
+
+            showExtraGst(true);
+            setNewGSt(per);
           }
+
+          //
 
           $("#promocode_discount").html(
             parseFloat(parseFloat(response.data.toFixed(2))).toFixed(2)
@@ -1239,6 +1250,7 @@ var PRIVACY = (function () {
 
     if (sub_total == 0) {
       $(".total-payment-wrap").addClass("hide");
+
       // $("#promocode_item").hide();
       document.getElementById("promocode_item").style.display = "none";
       // $("#promocode_item").addClass("hide");
@@ -1299,6 +1311,7 @@ var PRIVACY = (function () {
     $("#hidden_subtotal").val(
       parseFloat(parseFloat($("#subtotal").html()).toFixed(2)).toFixed(2)
     );
+
     // $("#total_pay").html(pay_amount.toFixed(2));
     return final_subtotal;
   }

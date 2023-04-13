@@ -649,7 +649,11 @@ class Sell_development_model extends My_model
         $gst_amount = ($discounted_price * $result[0]->gst) / 100;
         $without_gst_price = $discounted_price - $gst_amount;
 
-        $newPrice = $discounted_price  * $quantity;
+        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+            $newPrice = numberFormat(numberFormat($without_gst_price)  * $quantity);
+        } else {
+            $newPrice = numberFormat(numberFormat($discounted_price)  * $quantity);
+        }
 
         $updateData = array(
             'quantity' => $quantity,

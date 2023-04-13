@@ -52,6 +52,10 @@ var HISTORY = (function () {
 
         $("#order_subtotal").html(parseFloat(sub_total).toFixed(2));
 
+        $(".sub_total_main").text(
+          parseFloat(parseFloat(sub_total) + parseFloat(gstAmt)).toFixed(2)
+        );
+
         $("#return_details").hide();
 
         if (out.returnOrder_details_Html !== null) {
