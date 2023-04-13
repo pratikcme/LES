@@ -23,126 +23,126 @@ $vendor_id = $this->session->userdata['id'];
 
 ?>
 <style>
-.panel-heading {
-    background: #5b6e84;
-    font-size: 16px;
-    font-weight: 300;
-    color: white;
-}
+    .panel-heading {
+        background: #5b6e84;
+        font-size: 16px;
+        font-weight: 300;
+        color: white;
+    }
 
-.clouser_register h2 {
-    float: left;
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: 0;
-    width: 100%;
-    margin-bottom: 30px;
-}
+    .clouser_register h2 {
+        float: left;
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 0;
+        width: 100%;
+        margin-bottom: 30px;
+    }
 
-.sumry_main h5 {
-    float: left;
-    width: 100%;
-    font-weight: bold;
-    margin-top: 0;
-}
+    .sumry_main h5 {
+        float: left;
+        width: 100%;
+        font-weight: bold;
+        margin-top: 0;
+    }
 
-.registerd_summary {
-    float: left;
-    width: 100%;
-    padding: 15px 0 0;
-    border-bottom: 2px dotted #ccc;
-    margin-bottom: 20px;
-}
+    .registerd_summary {
+        float: left;
+        width: 100%;
+        padding: 15px 0 0;
+        border-bottom: 2px dotted #ccc;
+        margin-bottom: 20px;
+    }
 
-.cash_summary h3 {
-    float: left;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    width: 100%;
-}
+    .cash_summary h3 {
+        float: left;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        width: 100%;
+    }
 
-.closer_cash {
-    background: #FFF1E8 none repeat scroll 0 0;
-    float: left;
-    padding: 5px;
-    width: 100%;
-}
+    .closer_cash {
+        background: #FFF1E8 none repeat scroll 0 0;
+        float: left;
+        padding: 5px;
+        width: 100%;
+    }
 
-.summary_cash h4 {
-    float: left;
-    font-size: 14px;
-    text-transform: uppercase;
-    width: 100%;
-    color: #777777;
-}
+    .summary_cash h4 {
+        float: left;
+        font-size: 14px;
+        text-transform: uppercase;
+        width: 100%;
+        color: #777777;
+    }
 
-.payemnt_summry_detl .closer_cash_part2 {
-    padding: 0;
-}
+    .payemnt_summry_detl .closer_cash_part2 {
+        padding: 0;
+    }
 
-.closer_cash_part2 {
-    float: left;
-    padding: 5px !important;
+    .closer_cash_part2 {
+        float: left;
+        padding: 5px !important;
 
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-}
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+    }
 
-.part_2_deatils {
-    float: left;
-    margin-bottom: 9px;
-    margin-top: 9px;
-    width: 100%;
-}
+    .part_2_deatils {
+        float: left;
+        margin-bottom: 9px;
+        margin-top: 9px;
+        width: 100%;
+    }
 
-.summary_cash p {
-    float: left;
-    margin-top: 8px;
-    width: 100%;
-    word-wrap: break-word;
-}
+    .summary_cash p {
+        float: left;
+        margin-top: 8px;
+        width: 100%;
+        word-wrap: break-word;
+    }
 
-.payemnt_summry_detl .closer_cash_part3 {
-    border-top: none;
-    padding: 0;
-}
+    .payemnt_summry_detl .closer_cash_part3 {
+        border-top: none;
+        padding: 0;
+    }
 
-.closer_cash_part3 {
-    float: left;
-    padding: 5px !important;
-    width: 100%;
-    background: #eee;
-}
+    .closer_cash_part3 {
+        float: left;
+        padding: 5px !important;
+        width: 100%;
+        background: #eee;
+    }
 
-.site-min-height {
-    min-height: 900px;
-}
+    .site-min-height {
+        min-height: 900px;
+    }
 
-.wrapper {
-    display: inline-block;
-    margin-top: 60px;
-    padding: 15px;
-    width: 100%;
-}
+    .wrapper {
+        display: inline-block;
+        margin-top: 60px;
+        padding: 15px;
+        width: 100%;
+    }
 
-.payemnt_summry_detl .closer_cash_part2 {
-    padding: 0;
-}
+    .payemnt_summry_detl .closer_cash_part2 {
+        padding: 0;
+    }
 
-.closer_cash_part2 {
-    float: left;
-    padding: 5px;
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-}
+    .closer_cash_part2 {
+        float: left;
+        padding: 5px;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+    }
 
-.cash_movements_smry {
-    float: left;
-    width: 100%;
-}
+    .cash_movements_smry {
+        float: left;
+        width: 100%;
+    }
 </style>
 
 
@@ -410,9 +410,8 @@ $vendor_id = $this->session->userdata['id'];
 
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <p
-                                                                    style="<?php if ($register_result[0]->difference >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
-                                                                    <?php if (!empty($register_result)) {
+                                                                <p style="<?php if ($register_result[0]->difference >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
+                                                                    <?php if (!empty($register_result[0]->difference)) {
                                                                         echo $register_result[0]->difference;
                                                                     } else {
                                                                         echo '0.00';
@@ -475,8 +474,7 @@ $vendor_id = $this->session->userdata['id'];
 
                                                             <div class="summary_cash">
 
-                                                                <p
-                                                                    style="<?php if ($register_result[0]->credit_card_differences >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
+                                                                <p style="<?php if ($register_result[0]->credit_card_differences >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
                                                                     <?php if (isset($register_result[0]->credit_card_differences)) {
                                                                         echo $register_result[0]->credit_card_differences;
                                                                     } else {
@@ -542,8 +540,7 @@ $vendor_id = $this->session->userdata['id'];
 
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <p
-                                                                    style="<?php if (numberFormat($register_result[0]->credit_card_differences + $register_result[0]->difference) >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
+                                                                <p style="<?php if (numberFormat($register_result[0]->credit_card_differences + $register_result[0]->difference) >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
                                                                     <?php if (!empty($register_result)) {
                                                                         echo numberFormat($register_result[0]->credit_card_differences + $register_result[0]->difference);
                                                                     } else {
@@ -830,8 +827,7 @@ $vendor_id = $this->session->userdata['id'];
                                                     <div class="col-lg-4 col-md-2 col-sm-3 col-xs-12">
 
                                                         <div class="summary_cash">
-                                                            <p
-                                                                style="<?php if (number_format((float)$register_result[0]->counted - $register_result[0]->transaction, 2, '.', '') >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
+                                                            <p style="<?php if (number_format((float)$register_result[0]->counted - $register_result[0]->transaction, 2, '.', '') >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
                                                                 <?php echo number_format((float)$register_result[0]->counted - $register_result[0]->transaction, 2, '.', '') ?>
                                                             </p>
                                                         </div>

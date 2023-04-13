@@ -226,7 +226,6 @@ class Register extends Vendor_Controller
         $id = $_REQUEST['id'];
         $closure_note = $_REQUEST['closure_note'];
 
-
         $array = array(
             'type' => '0',
             'closure_note' => $closure_note,

@@ -1612,9 +1612,10 @@ class Sell_development_model extends My_model
 
         $html = '';
         foreach ($res as $type) { ?>
-            <div class="catg_list" id="catg_list" onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-            </div>
+<div class="catg_list" id="catg_list"
+    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+</div>
 <?php }
         echo $html;
 
@@ -2486,14 +2487,13 @@ class Sell_development_model extends My_model
         if (!empty($register_result)) {
             $register_id = $register_result[0]->id;
 
-            $data['select'] = ['sum(total) as total'];
+            $data['select'] = ['sum(payable_amount) as total'];
             $data['table'] = TABLE_ORDER;
             $data['where'] = [
                 'register_id' => $register_id,
                 'payment_type' => '0'
             ];
             $res = $this->selectRecords($data, true);
-
 
             $total = '0.00';
 
@@ -2513,7 +2513,7 @@ class Sell_development_model extends My_model
         if (!empty($register_result)) {
             $register_id = $register_result[0]->id;
 
-            $data['select'] = ['sum(total) as total'];
+            $data['select'] = ['sum(payable_amount) as total'];
             $data['table'] = TABLE_ORDER;
             $data['where'] = [
                 'register_id' => $register_id,
