@@ -234,19 +234,34 @@ class Checkout extends User_Controller
       $currency = $currency_code;
 
       $paytmParams["body"] = array(
-        "requestType"  => "Payment",
-        "mid"      => $MID,
-        "websiteName"  => clean($this->siteTitle),
-        "orderId"    => $on,
-        "callbackUrl"  => $callbackUrl,
-        "txnAmount"   => array(
-          "value"   => $amt,
-          "currency" => trim($currency),
+        "requestType"   => "Payment",
+        "mid"           => $MID,
+        "websiteName"   => "WEBSTAGING",
+        "orderId"       => "ORDERID_98765",
+        "callbackUrl"   => $callbackUrl,
+        "txnAmount"     => array(
+            "value"     => "1.00",
+            "currency"  => "INR",
         ),
-        "userInfo"   => array(
-          "custId"  => $custId,
+        "userInfo"      => array(
+            "custId"    => "CUST_001",
         ),
       );
+      
+      // $paytmParams["body"] = array(
+      //   "requestType"  => "Payment",
+      //   "mid"      => $MID,
+      //   "websiteName"  => clean($this->siteTitle),
+      //   "orderId"    => $on,
+      //   "callbackUrl"  => $callbackUrl,
+      //   "txnAmount"   => array(
+      //     "value"   => $amt,
+      //     "currency" => trim($currency),
+      //   ),
+      //   "userInfo"   => array(
+      //     "custId"  => $custId,
+      //   ),
+      // );
       /*
         * Generate checksum by parameters we have in body
         * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
@@ -435,14 +450,14 @@ class Checkout extends User_Controller
         if ($message->responsedata->success) {
           $this->utility->setFlashMessage('success', $message->responsedata->message);
           $this->session->unset_userdata('My_cart');
-          $d['page'] = 'frontend/order_success';
+          $d['page'] = $_SESSION['template_name'].'/order_success';
           $d['js'] = array('sccess_screen.js?v=' . js_version);
           $d['status'] = '1';
           $d['order_number'] = $message->responsedata->order_number;
 
           // redirect(base_url().'users_account/users/account?name=order');
         } else {
-          $d['page'] = 'frontend/order_success';
+          $d['page'] = $_SESSION['template_name'].'/order_success';
           $d['js'] = array('payment_failed.js?v=' . js_version);
           $d['status'] = '0';
           $d['message'] = $message->responsedata->message;
@@ -452,7 +467,7 @@ class Checkout extends User_Controller
         redirect(base_url() . 'home');
         exit();
       }
-      $this->load->view(USER_LAYOUT, $d);
+      $this->load->view($this->user_layout, $d);
     } else {
       $this->utility->setFlashMessage('danger', 'Somthing Went Wrong');
       redirect(base_url() . 'home');
@@ -689,21 +704,38 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
       $custId = "CUST_" . time();
       $callbackUrl = base_url() . "checkout/paytm_checkout";
       $currency = $currency_code;
+      $paytmParams = array();
+
 
       $paytmParams["body"] = array(
-        "requestType" => "Payment",
-        "mid" => $MID,
-        "websiteName" => clean($this->siteTitle),
-        "orderId" => $on,
-        "callbackUrl" => $callbackUrl,
-        "txnAmount" => array(
-          "value" => $amt,
-          "currency" => trim($currency),
+        "requestType"   => "Payment",
+        "mid"           => $MID,
+        "websiteName"   => "WEBSTAGING",
+        "orderId"       => "ORDERID_98765",
+        "callbackUrl"   => $callbackUrl,
+        "txnAmount"     => array(
+            "value"     => "1.00",
+            "currency"  => "INR",
         ),
-        "userInfo" => array(
-          "custId" => $custId,
+        "userInfo"      => array(
+            "custId"    => "CUST_001",
         ),
       );
+
+      // $paytmParams["body"] = array(
+      //   "requestType" => "Payment",
+      //   "mid" => $MID,
+      //   "websiteName" => clean($this->siteTitle),
+      //   "orderId" => $on,
+      //   "callbackUrl" => $callbackUrl,
+      //   "txnAmount" => array(
+      //     "value" => $amt,
+      //     "currency" => trim($currency),
+      //   ),
+      //   "userInfo" => array(
+      //     "custId" => $custId,
+      //   ),
+      // );
       /*
 * Generate checksum by parameters we have in body
 * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
