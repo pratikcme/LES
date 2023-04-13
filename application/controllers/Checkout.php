@@ -351,8 +351,8 @@ class Checkout extends User_Controller
       $data['js'] = array('sccess_screen.js');
       $data['message'] =  $_POST['RESPMSG'];
       $data['status'] = '1';
-      $re = $this->load->view($this->user_layout, $data,true);
-      dd($re);
+      $re = $this->load->view($this->user_layout, $data);
+      
     }
   }
 
