@@ -421,7 +421,6 @@ var ADDPRODUCT = (function () {
   $(document).on("click", "#btnSubmit", function (event) {
     event.preventDefault();
     var that = $(this);
-    that.attr('disabled', 'disabled');
     var session_user_id = $(this).data("user_session_id");
     var ratting = $("#selectRetting").data("index");
     if (typeof ratting == "undefined") {
@@ -441,6 +440,7 @@ var ADDPRODUCT = (function () {
     // console.log(review_user_id);
     // return false;
     if (review != "") {
+      that.attr('disabled', 'disabled');
       $.each(review_user_id, function (key, value) {
         if (value == session_user_id) {
           var base_url = $("#url").val();
@@ -457,6 +457,7 @@ var ADDPRODUCT = (function () {
         data: { product_id: product_id, review: review, ratting: ratting },
         dataType: "json",
         success: function (output) {
+          that.removeAttr('disabled', 'disabled');
           $(".append_review").append(output.html);
           $("#reviewForm").trigger("reset");
           var j = 0;
