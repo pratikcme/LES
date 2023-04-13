@@ -287,14 +287,14 @@ var ADDPRODUCT = (function () {
 
           $(".product-price").html(
             '<p class="notranslate">' +
-              siteCurrency +
-              " " +
-              output.discount_price +
-              '<span class="orginal-price notranslate">' +
-              siteCurrency +
-              " " +
-              output.product_price +
-              "</span></p>"
+            siteCurrency +
+            " " +
+            output.discount_price +
+            '<span class="orginal-price notranslate">' +
+            siteCurrency +
+            " " +
+            output.product_price +
+            "</span></p>"
           );
           // $('.slider-for').html(output.image_div);
 
@@ -311,25 +311,25 @@ var ADDPRODUCT = (function () {
           if (output.discount_per == "0") {
             $("#is_discounted").html(
               '<div class=""><p></p></div> <div class="wishlist-icon" data-product_id =' +
-                output.product_id +
-                " data-product_weight_id =" +
-                output.product_variant_id +
-                ' > <i class="far fa-heart ' +
-                output.isInWishList +
-                '"></i> </div>'
+              output.product_id +
+              " data-product_weight_id =" +
+              output.product_variant_id +
+              ' > <i class="far fa-heart ' +
+              output.isInWishList +
+              '"></i> </div>'
             );
             $(".orginal-price").css("display", "none");
           } else {
             $("#is_discounted").html(
               '<div class="offer-wrap"><p>' +
-                output.discount_per +
-                ' % off</p></div> <div class="wishlist-icon" data-product_id =' +
-                output.product_id +
-                " data-product_weight_id =" +
-                output.product_variant_id +
-                ' > <i class="far fa-heart ' +
-                output.isInWishList +
-                '"></i> </div>'
+              output.discount_per +
+              ' % off</p></div> <div class="wishlist-icon" data-product_id =' +
+              output.product_id +
+              " data-product_weight_id =" +
+              output.product_variant_id +
+              ' > <i class="far fa-heart ' +
+              output.isInWishList +
+              '"></i> </div>'
             );
             $(".orginal-price").css("display", "");
           }
@@ -421,6 +421,7 @@ var ADDPRODUCT = (function () {
   $(document).on("click", "#btnSubmit", function (event) {
     event.preventDefault();
     var that = $(this);
+    that.attr('disabled', 'disabled');
     var session_user_id = $(this).data("user_session_id");
     var ratting = $("#selectRetting").data("index");
     if (typeof ratting == "undefined") {
