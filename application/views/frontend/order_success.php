@@ -3,37 +3,37 @@
   <?php if($status == 1){ ?>
   <!-- The Modal -->
     <div class="modal" id="order_success">
-      <div class="modal-dialog">
+    <div class="modal-dialog">
         <div class="modal-content">
-        
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          
-          <!-- Modal body -->
-          <div class="modal-body text-center">
-              <div>
-                  <h3><?=$this->lang->line('Thanks for shopping')?></h3>
-              </div>
-              <div class="my-3">
-                  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-              </div>
-              <!-- <div class="my-3">
-                  <img src="assets/images/bag.png" class="bag" alt="">
-              </div> -->
-              <div>
-                  <h5><?=$this->lang->line('order placed successfully')?></h5>
-                  <p id="orderId"><?=$this->lang->line('Your Order No')?> : <?=$order_number?></p>
-              </div>
-              <div>
-                  <a href="<?=base_url().'home'?>" class="shopping_btn"><?=$this->lang->line('continue shopping')?></a>
-              </div>
-          </div>
-          
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body text-center">
+                <div>
+                    <h3><?=$this->lang->line('thanks for shopping')?></h3>
+                </div>
+                <div class="my-3">
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                </div>
+                <!-- <div class="my-3">
+                <img src="assets/images/bag.png" class="bag" alt="">
+            </div> -->
+                <div>
+                    <h5><?=$this->lang->line('order placed successfully')?></h5>
+                    <p id="orderId"><?=$this->lang->line('Your Order No')?> : <?=$order_number?></p>
+                </div>
+                <div>
+                    <a href="<?=base_url().'home'?>" class="shopping_btn"><?=$this->lang->line('continue shopping')?></a>
+                </div>
+            </div>
+
         </div>
-      </div>
     </div>
+</div>
   <?php } ?>
   <?php if($status == '0'){ ?>
     <!-- The Modal -->
