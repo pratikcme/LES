@@ -1,3 +1,4 @@
+<?php dd($status); ?>
 <section class="p-100 bg-cream">
   <div class="container">
   <?php if($status == 1){ ?>
