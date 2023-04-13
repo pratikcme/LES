@@ -248,7 +248,7 @@
                 <p><img src="<?=$this->theme_base_url?>/assets/images/card-star-img.png" alt=""><?=$value->ratting['rating']?></p>
               </div>
             </div>
-            <h6 class="rating">
+            <h6 class="rating notranslate">
                 <?=$this->siteCurrency .' '. number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?=($value->discount_per > 0 ) ? '' : ' d-none' ?>"><strike><?=$this->siteCurrency .' '.$value->price?></strike></span>
             </h6>
             <?php 
