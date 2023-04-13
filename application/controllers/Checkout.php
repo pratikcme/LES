@@ -339,6 +339,7 @@ class Checkout extends User_Controller
         redirect(base_url() . 'checkout');
       }
     } elseif ($_POST['RESPCODE'] == '227') {
+      echo '2';die;
       $data['page'] = $_SESSION['template_name'].'/order_success';
       // $data['js'] = array('payment_failed.js');
       $data['js'] = array('sccess_screen.js');
@@ -346,6 +347,7 @@ class Checkout extends User_Controller
       $data['status'] = '1';
       $this->load->view($this->user_layout, $data);
     } else {
+      echo '1';die;
       $data['page'] = $_SESSION['template_name'].'/order_success';
       // $data['js'] = array('payment_failed.js');
       $data['js'] = array('sccess_screen.js');
