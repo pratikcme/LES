@@ -58,7 +58,7 @@
                     <span class="right-contact"><i class="fa-solid fa-location-dot"></i></span>
 
                     <div class="right-contact-text">
-                        <h3><a href="javascript:">Location</a></h3>
+                        <h3><a href="javascript:"><?=$this->lang->line('Location')?></a></h3>
                         <h4><a href="javascript:"><?=$appLinks[0]->contact_us_address?></a></h4>
                     </div>
                    </div>
@@ -67,7 +67,7 @@
                     <span class="right-contact"><i class="fa-regular fa-envelope"></i></span>
 
                     <div class="right-contact-text">
-                        <h3><a href="javascript:">Email</a></h3>
+                        <h3><a href="javascript:"><?=$this->lang->line('Email')?></a></h3>
                         <h4><a href="javascript:"><?=$appLinks[0]->contact_email?></a></h4>
                     </div>
                    </div>
@@ -76,7 +76,7 @@
                     <span class="right-contact"><i class="fa-solid fa-mobile"></i></span>
 
                     <div class="right-contact-text">
-                        <h3><a href="javascript:">Phone</a></h3>
+                        <h3><a href="javascript:"><?=$this->lang->line('Phone')?></a></h3>
                         <h4><a href="javascript:"><?=$appLinks[0]->contact_number?></a></h4>
                     </div>
                    </div>
