@@ -265,9 +265,8 @@ var ADDPRODUCT = function () {
 
           $('#review_section').html(output.reviewSection);
           $('#starRatting').html(output.upbasket_starHtml);
-          var product_price = "<span><strike>" + (output.discount_per > 0) ? siteCurrency + " " + output.product_price : + "" + "</strike></span>";
-          alert(product_price);
-          $('#dynamic_price').html(siteCurrency + ' ' + output.discount_price + '<span><strike>15</strike></span>');
+          var product_price = (output.discount_per > 0) ? siteCurrency + " " + output.product_price : + "";
+          $('#dynamic_price').html(siteCurrency + ' ' + output.discount_price + '<span><strike>' + product_price + '</strike></span>');
 
           // $('#dynamic_price').html(siteCurrency + ' ' + output.discount_price + '<span><strike>' + (output.discount_per > 0) ? siteCurrency + ' ' + output.product_price : + '' + '</strike></span>');
           var imageFolder = $('#imageFolder').val();
