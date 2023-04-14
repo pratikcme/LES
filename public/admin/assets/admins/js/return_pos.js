@@ -345,7 +345,12 @@ var PRIVACY = (function () {
       let cartBased =
         amtDisc - (amtDisc * parseFloat(discPer).toFixed(2)) / 100;
       let gstPer = parseFloat($(this).data("gst")).toFixed(2);
-      newGst += ((cartBased * gstPer) / 100) * quantity;
+      newGst += parseFloat(
+        parseFloat(
+          parseFloat(parseFloat((cartBased * gstPer) / 100).toFixed(2)) *
+            quantity
+        ).toFixed(2)
+      );
     });
 
     let uncount_gst_discounted_amount = 0;
