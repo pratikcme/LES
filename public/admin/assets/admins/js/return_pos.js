@@ -9,7 +9,7 @@ var PRIVACY = (function () {
   $("#cart_based_item").hide();
   $("#removed_cartbased_item").hide();
 
-  $(document).on("keyup", "#search_order", function () {
+  $(document).on("keyup focus", "#search_order", function () {
     var keyValue = $(this).val();
     var currency = $("#currency").val();
 
@@ -32,6 +32,18 @@ var PRIVACY = (function () {
           }
         },
       });
+    }
+  });
+
+  $(document).click(function (e) {
+    var target = $(e.target);
+    if (
+      !target.closest("#search_order").length &&
+      $("#search_order").is(":visible") &&
+      !target.closest("#prod-list").length &&
+      $("#prod-list").is(":visible")
+    ) {
+      $("#prod-list").css("display", "none");
     }
   });
 

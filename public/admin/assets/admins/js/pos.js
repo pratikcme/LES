@@ -24,9 +24,8 @@ var PRIVACY = (function () {
   });
   var url = $("#url").val();
 
-  $(document).on("keyup", "#search_prod", function () {
+  $(document).on("keyup focus", "#search_prod", function () {
     var keyValue = $(this).val();
-
     if (
       !$.isNumeric(keyValue) ||
       ($.isNumeric(keyValue) && keyValue.length == 13)
@@ -46,11 +45,20 @@ var PRIVACY = (function () {
             $("#prod-list").css("display", "block");
             $("#prod-list").html(output.res);
           }
-          // if($.isNumeric(keyValue) && keyValue.length == 13){
-          //    $( ".add_product" ).click();
-          // }
         },
       });
+    }
+  });
+
+  $(document).click(function (e) {
+    var target = $(e.target);
+    if (
+      !target.closest("#prod-list").length &&
+      $("#prod-list").is(":visible") &&
+      !target.closest("#search_prod").length &&
+      $("#search_prod").is(":visible")
+    ) {
+      $("#prod-list").css("display", "none");
     }
   });
 
@@ -196,7 +204,7 @@ var PRIVACY = (function () {
   //   $("#discard_sell").parent().css("display", css);
   // }
 
-  $(document).on("keyup", "#add_customer", function () {
+  $(document).on("keyup focus", "#add_customer", function () {
     var customber = $(this).val();
 
     if (customber == "") {
@@ -221,6 +229,22 @@ var PRIVACY = (function () {
       },
     });
     // },1000);
+  });
+
+  // $(document).on("blur", "#add_customer", function () {
+  //   $("#message").hide();
+  // });
+
+  $(document).click(function (e) {
+    var target = $(e.target);
+    if (
+      !target.closest("#message").length &&
+      $("#message").is(":visible") &&
+      !target.closest("#add_customer").length &&
+      $("#add_customer").is(":visible")
+    ) {
+      $("#message").hide();
+    }
   });
 
   $(document).on("click", ".select_customer", function () {
