@@ -681,13 +681,14 @@
     left: 10px;
     background-color: var(--primary-color) !important;
     color: var(--white);
-    padding: 5px 10px;
+    padding: 5px 10px !important;
     border-radius: 5px;
     font-family: ('popins');
     z-index: 3;
-    font-size: 11px;
+    font-size: 11px !important;
     color: var(--common-white);
     display: block !important;
+    border-radius: 5px !important;
 }
 
 .product-wrapper .discnt {
