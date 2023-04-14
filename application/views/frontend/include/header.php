@@ -171,7 +171,7 @@ display: none !important;
   width: 209px !important;
 }
 .VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate{
-  display:none
+  display:none !important;
 }
 </style>
 <?php $lang = json_encode($this->lang->language);
