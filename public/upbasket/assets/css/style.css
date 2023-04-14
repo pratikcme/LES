@@ -679,7 +679,7 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color) !important;
     color: var(--white);
     padding: 5px 10px;
     border-radius: 5px;
@@ -693,4 +693,6 @@
 .product-wrapper .discnt {
     left: 50% !important;
     transform: translateX(-50%) !important;
+    top: 0 !important;
+    color: var(--common-white) !important;
 }
