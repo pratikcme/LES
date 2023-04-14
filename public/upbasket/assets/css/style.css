@@ -687,6 +687,7 @@
     z-index: 3;
     font-size: 11px;
     color: var(--common-white);
+    display: block !important;
 }
 
 .product-wrapper .discnt {
