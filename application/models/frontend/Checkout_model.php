@@ -528,7 +528,7 @@ class Checkout_model extends My_model
         $response["success"] = 1;
         $response["message"] = "Promocode applied";
         $response["data"] = $calculate;
-        $response["orderAmount"] = floatval($total_price);
+        $response["orderAmount"] = $total_price;
         $response["withoutPromo"] = totalSaving() + $discountValue;
         return $response;
     }
