@@ -688,3 +688,8 @@
     font-size: 11px;
     color: var(--common-white);
 }
+
+.product-wrapper .discnt {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
