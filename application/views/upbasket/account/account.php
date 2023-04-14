@@ -461,10 +461,9 @@
                     <tr>
                       <td class="mywishlist-part-img">
                       <span class="bt-content">
-                        <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a> -->
+                      <a href="javascript:" class="removeWishlistItem" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-regular fa-circle-xmark"></i></a>
                         <div class="cart-detail-img"><img src="<?=$value->image?>" alt=""></div>
                       </span>
-                        <a href="javascript:" class="removeWishlistItem" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-regular fa-circle-xmark"></i></a>
                       </td>
                       <td>
                         <div class="cart-detail-text">
