@@ -551,11 +551,12 @@ class Delivery_api_model extends My_model
 
     function token_validate()
     {
-        print_r($_SERVER);
-        die;
+
         if ((!isset($_SERVER['HTTP_X_API_TOKEN'])) || (empty($_SERVER['HTTP_X_API_TOKEN']))) {
             return false;
         } else {
+            echo "hi";
+            exit;
             $data['select'] = ['count(0) as count'];
             $data['where'] = ['token' => $_SERVER['HTTP_X_API_TOKEN'], 'status' => '1'];
             $data['table'] = 'delivery_user';
