@@ -2,6 +2,7 @@
     <div class="techno-check">
         <input class="techno_checkbox" type="checkbox" id="2" value="2">
         <div href="javascript:" class="product-wrapper card card-1 <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+            <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
             <span> <?= $this->lang->line('out of stock') ?></span>
             <div class="card-header">
                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">

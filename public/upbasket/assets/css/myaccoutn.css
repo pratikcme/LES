@@ -356,6 +356,8 @@
     line-height: 20px;
     color: var(--login-wrapper-label);
     margin-bottom: 20px;
+    max-width: 700px;
+    word-wrap: break-word;
 }
 
 .my-order-text h3 span {
