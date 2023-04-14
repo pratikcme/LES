@@ -145,6 +145,7 @@
         <div class="techno-check">
           <!-- <input class="techno_checkbox" type="checkbox" id="1" value="1" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" <?=$attr?> /> -->
           <div class="product-wrapper card  <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+          <span> <?= $this->lang->line('out of stock') ?></span>  
             <div class="card-header">
               <a
                 href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">

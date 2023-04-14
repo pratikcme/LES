@@ -1,7 +1,7 @@
 <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-name: fadeInDown;">
     <div class="techno-check">
         <input class="techno_checkbox" type="checkbox" id="2" value="2">
-        <div href="#" class="product-wrapper card card-1 <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+        <div href="javascript:" class="product-wrapper card card-1 <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
             <span> <?= $this->lang->line('out of stock') ?></span>
             <div class="card-header">
                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
