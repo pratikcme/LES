@@ -281,7 +281,7 @@ var ADDPRODUCT = function () {
           }
           var isDiscount = (output.discount_per > 0) ? '' : 'd-none';
           var disNwislist = '<span class="discnt ' + isDiscount + '">' + output.discount_per + '% off</span>';
-          alert(disNwislist + '< div class="pro-hearticon wishlist-icon" data-product_id="' + output.product_id + '" data-product_weight_id="' + output.product_variant_id + '">< i class="fa-regular fa-heart ' + output.isInWishList + '"></i ></div >');
+          disNwislist = disNwislist + '< div class="pro-hearticon wishlist-icon" data-product_id="' + output.product_id + '" data-product_weight_id="' + output.product_variant_id + '">< i class="fa-regular fa-heart ' + output.isInWishList + '"></i ></div >';
           $("").insertBefore('#zoom_image');
           $(disNwislist).insertBefore('#zoom_image');
           // $('#zoom_image').insertBefore(disNwislist);
