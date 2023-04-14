@@ -38,7 +38,7 @@
             </select>
             </div>
             <?php } ?>
-        <?php } ?>
+            <?php } ?>
               <?php 
               if($this->uri->segment(1) != ''){ 
                 $placeholder = $this->lang->line('Search product..');

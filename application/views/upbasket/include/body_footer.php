@@ -9,22 +9,22 @@
             <h4>Download App</h4>
             <p>From App Store or Google Play</p>
             <div class="foot-btn">
-              <a href="<?=(!empty($appLinks)  && $appLinks[0]->ios_app_link != '') ? $appLinks[0]->ios_app_link : "#" ?>"><img src="<?=$this->theme_base_url.'/assets/images/app-store.png"'?> alt=""></a>
-              <a href="<?=(!empty($appLinks) && $appLinks[0]->android_app_link != '' ) ? $appLinks[0]->android_app_link : "#" ?>"><img src="<?=$this->theme_base_url.'/assets/images/google-play.png"'?> alt=""></a>
+              <a href="<?=(!empty($appLinks)  && $appLinks[0]->ios_app_link != '') ? $appLinks[0]->ios_app_link : '#' ?>"><img src="<?=$this->theme_base_url.'/assets/images/app-store.png"'?>" alt=""></a>
+              <a href="<?=(!empty($appLinks) && $appLinks[0]->android_app_link != '' ) ? $appLinks[0]->android_app_link : '#' ?>"><img src="<?=$this->theme_base_url.'/assets/images/google-play.png"'?>" alt=""></a>
             </div>
             <div class="foot-payment-icons">
               <ul>
-                <li><a href=""><img src="<?=$this->theme_base_url.'/assets/images/foot-icon-1.png'?>" alt=""></a></li>
-                <li><a href=""><img src="<?=$this->theme_base_url.'/assets/images/foot-icon-2.png'?>" alt=""></a></li>
-                <li><a href=""><img src="<?=$this->theme_base_url.'/assets/images/foot-icon-3.png'?>" alt=""></a></li>
-                <li><a href=""><img src="<?=$this->theme_base_url.'/assets/images/foot-icon-4.png'?>" alt=""></a></li>
+                <li><a href="javascript:"><img src="<?=$this->theme_base_url.'/assets/images/foot-icon-1.png'?>" alt=""></a></li>
+                <li><a href="javascript:"><img src="<?=$this->theme_base_url.'/assets/images/foot-icon-2.png'?>" alt=""></a></li>
+                <li><a href="javascript:"><img src="<?=$this->theme_base_url.'/assets/images/foot-icon-3.png'?>" alt=""></a></li>
+                <li><a href="javascript:"><img src="<?=$this->theme_base_url.'/assets/images/foot-icon-4.png'?>" alt=""></a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
           <div class="foot-2 common-links">
-            <h3>Categories</h3>
+            <h3><?=$this->lang->line('Categories')?></h3>
             <ul>
             <?php foreach ($CategoryHighrstProduct as $key => $value) { ?>
               <li><a href="<?=base_url().'products?cat_id='.$this->utility->safe_b64encode($value->id)?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$value->name?></a></li>
@@ -41,12 +41,12 @@
           <div class="foot-3 common-links">
             <h3>Useful Links</h3>
             <ul>
-              <li><a href="<?=base_url().'about'?>"><span><i class="fa-solid fa-arrow-right"></i></span>About Us</a></li>
-              <li><a href="<?=base_url().'privacy_policy'?>"><span><i class="fa-solid fa-arrow-right"></i></span>Privacy Policy</a></li>
-              <li><a href="<?=base_url().'terms_condition'?>"><span><i class="fa-solid fa-arrow-right"></i></span>Term & Conditions</a></li>
-              <li><a href="<?=base_url().'return_refund'?>"><span><i class="fa-solid fa-arrow-right"></i></span>Refund & Return </a></li>
+              <li><a href="<?=base_url().'about'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('About Us')?></a></li>
+              <li><a href="<?=base_url().'privacy_policy'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Privacy Policy')?></a></li>
+              <li><a href="<?=base_url().'terms_condition'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Term & Conditions')?></a></li>
+              <li><a href="<?=base_url().'return_refund'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Refund & Return')?></a></li>
               <!-- <li><a href="#"><span><i class="fa-solid fa-arrow-right"></i></span>Shipping policy</a></li> -->
-              <li><a href="<?=base_url().'contact'?>"><span><i class="fa-solid fa-arrow-right"></i></span>Contact Us</a></li>
+              <li><a href="<?=base_url().'contact'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Contact Us')?></a></li>
             </ul>
           </div>
         </div>
