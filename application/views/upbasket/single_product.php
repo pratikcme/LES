@@ -29,6 +29,7 @@
 
             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
               class="swiper mySwiper2 gallery-top">
+              <span class="discnt <?=($varientDetails[0]->discount_per > 0) ? '' : 'd-none' ?>"><?=$varientDetails[0]->discount_per?> % off</span>
               <div class="swiper-wrapper" id="zoom_image">
               <?php foreach ($product_image as $key => $value){ ?>
                 <div class="swiper-slide">
@@ -36,22 +37,6 @@
                       data-zoom="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>" /></a>
                 </div>
               <?php } ?>
-                <!-- <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png"
-                      data-zoom="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png"
-                      data-zoom="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png"
-                      data-zoom="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=$this->theme_base_url?>/assets/images/feature-prodct-5.png"
-                      data-zoom="<?=$this->theme_base_url?>/assets/images/feature-prodct-5.png" /></a>
-                </div> -->
               </div>
             </div>
 
@@ -62,18 +47,6 @@
                   <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>">
                 </div>
                 <?php } ?>
-                <!-- <div class="swiper-slide">
-                  <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png" />
-                </div>
-                <div class="swiper-slide">
-                  <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png" />
-                </div>
-                <div class="swiper-slide">
-                  <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png" />
-                </div>
-                <div class="swiper-slide">
-                  <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-5.png" />
-                </div> -->
               </div>
             </div>
 
