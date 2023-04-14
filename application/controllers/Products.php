@@ -312,8 +312,10 @@ class Products extends User_Controller
 		$wish_pid = $this->this_model->getUsersWishlist(); // wishlist product varient id
 
 		$class = '';
+		$theme2class = '';
 		if (in_array($result[0]->id, $wish_pid)) {
 			$class = 'fas .fa-heart';
+			$theme2class = 'fa-solid';
 		}
 		$div_nav = '';
 		$div_for = '';
@@ -387,6 +389,7 @@ class Products extends User_Controller
 			'image_div' => $div_nav,
 			'image_div_for' => $div_for,
 			'isInWishList' => $class,
+			'isInWishListUpbasket' => $theme2class,
 			'cartProductQuantity' => $quantity,
 			'product_variant_id' => $this->utility->safe_b64encode($result[0]->id),
 			'product_id' => $this->utility->safe_b64encode($result[0]->product_id),
