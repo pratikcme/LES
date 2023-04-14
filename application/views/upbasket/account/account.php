@@ -464,8 +464,8 @@
                         <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a> -->
                         <div class="cart-detail-img"><img src="<?=$value->image?>" alt=""></div>
                       </span>
-                        <a href="javascript:"  ><i class="fa-regular fa-circle-xmark"></i></a>
-                        <div class="cart-detail-img removeWishlistItem" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-1.png" alt=""></div>
+                        <a href="javascript:" class="removeWishlistItem" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-regular fa-circle-xmark"></i></a>
+                        <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-1.png" alt=""></div>
                       </td>
                       <td>
                         <div class="cart-detail-text">
