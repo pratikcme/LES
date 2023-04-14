@@ -1366,7 +1366,7 @@ var PRIVACY = (function () {
       // total_gst += parseFloat(parseFloat(disc_price * qnt).toFixed(2));
     });
 
-    $("#park_gst_amt").val(parseFloat(parseFloat(total_gst).toFixed(2)));
+    $("#park_gst_amt").val(parseFloat(total_gst).toFixed(2));
     // $("#discount_amt").val(total_savings);
 
     // $("#total_pay").html(pay_amount.toFixed(2));
