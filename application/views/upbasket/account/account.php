@@ -464,7 +464,7 @@
                         <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a> -->
                         <div class="cart-detail-img"><img src="<?=$value->image?>" alt=""></div>
                       </span>
-                        <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                        <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
                         <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-1.png" alt=""></div>
                       </td>
                       <td>
