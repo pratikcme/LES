@@ -198,7 +198,7 @@
                 </div>
                 <div class="icon-tex">
                   <p><?=$this->lang->line('your cart')?></p>
-                  <h3 class="notransalte" id="display_subtotal"><?=$this->siteCurrency.''.getMycartSubtotal()?></h3>
+                  <h3 class="notranslate" id="display_subtotal"><?=$this->siteCurrency.''.getMycartSubtotal()?></h3>
                 </div>
             </div>
           </div>
