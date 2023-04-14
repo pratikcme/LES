@@ -211,14 +211,14 @@
                         <h3><strong id='avg'><?=($avgr) ? $avgr : 0?></strong><span>/5</span></h3>
                     </div>
                     <div>
-                        <h4>Overall Rating</h4>
-                        <p id="verified_ratting"><?=count($product_review)?> verified ratings</p>
+                        <h4><?=$this->lang->line('Overall Rating')?></h4>
+                        <p id="verified_ratting"><?=count($product_review)?> <?=$this->lang->line('verified ratings')?></p>
                     </div>
                 </div>
                 <div id="writeReviewSection" class="right-content <?=(empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>">
-                    <h6>Write your review !</h6>
+                    <h6><?=$this->lang->line('Write your review')?> !</h6>
                     <div class="enter-review-btn">
-                        <a href="#"  data-toggle="modal" id="reviewModel" data-target="#exampleModal">Write Review</a>
+                        <a href="#"  data-toggle="modal" id="reviewModel" data-target="#exampleModal"><?=$this->lang->line('Write Review')?></a>
                     </div>
                 </div>
             </div> 
@@ -280,14 +280,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Reviews</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><?=$this->lang->line('Add a review')?></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
         <div class="rating-box">
-            <h2>Rating</h2>
+            <h2><?=$this->lang->line('rating')?></h2>
               <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -298,7 +298,7 @@
             </div>
 
           <div class="review-text-box">
-            <h2>Comments</h2>
+            <h2><?=$this->lang->line('Submit')?><?=$this->lang->line('Comments')?></h2>
                 <textarea name="Comments" id="Comments"  placeholder="Your Comments"></textarea>
                 <!-- <input type="text" name="Comments" id="Comments" placeholder="Your Comments"/> -->
                 <label for="error" id="error" style="color:red" ></label>
@@ -307,7 +307,7 @@
           <input type="hidden" name="varient_id" id="ratting_product_varient_id" value="<?=$varient_id?>">
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn" id="btnSubmit"  >Submit</button>
+            <button type="button" class="btn" id="btnSubmit"  ><?=$this->lang->line('Submit')?></button>
           </div>
       </div>
     </div>

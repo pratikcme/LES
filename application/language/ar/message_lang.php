@@ -6,27 +6,28 @@ $lang['Your Order No'] = 'طلبك لا';
 $lang['payment failed'] = 'عملية الدفع فشلت';
 
 // template 2 up basket
-$lang['js_add_address'] =  'Add New Address';
-$lang['js_update_address'] =  'Update Address';
+$lang['js_add_address'] =  'أضف عنوان جديد';
+$lang['js_update_address'] =  'تحديث العنوان';
 
-$lang['Sign up'] = 'Sign up';
-$lang['Shop Cart'] = 'Shop Cart';
-$lang['Product Detail'] = 'Product Detail';
-$lang['Your rating'] = 'Your rating';
-$lang['Submit'] = 'Submit';
-$lang['Add a review'] = 'Add a review';
-$lang['Your review'] = 'Your review';
-$lang['Description'] = 'Description';
-$lang['Information'] = 'Information';
-$lang['Reviews'] = 'Reviews';
-$lang['Customer Reviews'] = 'Customer Reviews';
-$lang['Login Account'] = 'Login Account';
-$lang['New Customer'] = 'New Customer';
-$lang['your cart'] = 'your cart';
-$lang['Shop'] = 'Shop';
-$lang['Process'] = 'Process';
-$lang['send_otp'] = 'Send OTP';
-$lang['Pick up'] = 'Pick up';
+$lang['Sign up'] = 'اشتراك';
+$lang['Shop Cart'] = 'عربة التسوق';
+$lang['Product Detail'] = 'تفاصيل المنتج';
+$lang['Your rating'] = 'تقييمك';
+$lang['rating'] = 'تقييم';
+$lang['Submit'] = 'يُقدِّم';
+$lang['Add a review'] = 'إضافة إلى استعراض';
+$lang['Your review'] = 'مراجعتك';
+$lang['Description'] = 'وصف';
+$lang['Information'] = 'معلومة';
+$lang['Reviews'] = 'المراجعات';
+$lang['Customer Reviews'] = 'آراء العملاء';
+$lang['Login Account'] = 'تسجيل الدخول';
+$lang['New Customer'] = 'عميل جديد';
+$lang['your cart'] = 'عربتك';
+$lang['Shop'] = 'محل';
+$lang['Process'] = 'عملية';
+$lang['send_otp'] = 'أرسل OTP';
+$lang['Pick up'] = 'يلتقط';
 $lang['Please Enter Mobile Number'] = 'الرجاء إدخال رقم الهاتف المحمول';
 $lang['Please enter Otp'] = 'الرجاء إدخال Otp';
 $lang['continue shopping'] = 'مواصلة التسوق';
@@ -36,6 +37,13 @@ $lang['Latest'] = 'أحدث';
 $lang['Products'] = 'منتجات';;
 $lang['Shop By'] = 'تسوق حسب';
 $lang['Top Featured'] = 'الأعلى المميز';
+$lang['Comments'] = 'تعليقات';
+$lang['Write your review'] = 'اكتب مراجعتك';
+$lang['Write Review'] = 'أكتب مراجعة';
+$lang['verified ratings'] = 'تقييمات التحقق';
+$lang['Overall Rating'] = 'تقييم عام';
+$lang['Ratings'] = 'التقييمات';
+
 
 // end template 2
 

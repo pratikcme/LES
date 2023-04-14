@@ -13,6 +13,7 @@ $lang['Sign up'] = 'Sign up';
 $lang['Shop Cart'] = 'Shop Cart';
 $lang['Product Detail'] = 'Product Detail';
 $lang['Your rating'] = 'Your rating';
+$lang['rating'] = 'rating';
 $lang['Submit'] = 'Submit';
 $lang['Add a review'] = 'Add a review';
 $lang['Your review'] = 'Your review';
@@ -36,6 +37,12 @@ $lang['Latest'] = 'Latest';
 $lang['Products'] = 'Products';
 $lang['Shop By'] = 'Shop By';
 $lang['Top Featured'] = 'Top Featured';
+$lang['Comments'] = 'Comments';
+$lang['Write your review'] = 'Write your review';
+$lang['Write Review'] = 'Write Review';
+$lang['verified ratings'] = 'verified ratings';
+$lang['Overall Rating'] = 'Overall Rating';
+$lang['Ratings'] = 'Ratings';
 
 
 // end template 2
