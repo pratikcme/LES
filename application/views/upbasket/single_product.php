@@ -396,7 +396,7 @@
   <div class="container">
     <h1 class="title"><?=$this->lang->line('Related')?> <span><?=$this->lang->line('Products')?></span></h1>
     <!-- <p class="pera">Do not miss the current offers until the end of month.</p> -->
-    <h5><?=$this->lang->line('See All')?> <?=$this->lang->line('Categories')?></h5>
+    <h5>View All Categories</h5>
 
     <div class="owl-2 owl-carousel owl-theme">
     <?php foreach ($related_product as $key => $value) { ?>
