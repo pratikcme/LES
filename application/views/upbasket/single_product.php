@@ -30,6 +30,9 @@
             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
               class="swiper mySwiper2 gallery-top">
               <span class="discnt <?=($varientDetails[0]->discount_per > 0) ? '' : 'd-none' ?>"><?=$varientDetails[0]->discount_per?> % off</span>
+              <div class="pro-hearticon">
+                <i class="fa-regular fa-heart" onclick="myFunction(this)"></i>
+              </div>
               <div class="swiper-wrapper" id="zoom_image">
               <?php foreach ($product_image as $key => $value){ ?>
                 <div class="swiper-slide">

@@ -1113,7 +1113,16 @@ body {
     }
 }
 
+.pro-hearticon {
+    position: absolute;
+    z-index: 5;
+    right: 10px;
+    top: 10px;
+}
 
+.pro-hearticon i {
+    color: var(--card-btn-bg);
+}
 
 
 
