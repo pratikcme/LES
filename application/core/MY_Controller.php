@@ -217,6 +217,7 @@ class User_Controller extends MY_Controller
             $this->lang->load('message', $language_support);
         }else{
             $this->session->set_userdata('site_lang', $language_support);
+            $this->lang->load('message', $language_support);
         }
         // dd($this->session->userdata('site_lang'));die;
 
