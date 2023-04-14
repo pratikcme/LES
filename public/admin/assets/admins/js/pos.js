@@ -1051,12 +1051,12 @@ var PRIVACY = (function () {
           );
 
           $("#shopping_based_discount").val(res.shopping_based_discount);
-          $("#discount_amt").val(res.shopping_based_discount);
+          // $("#discount_amt").val(res.shopping_based_discount);
           $("#total_pay").html(
             parseFloat(val - res.shopping_based_discount).toFixed(2)
           );
 
-          $("#discount").val(res.shopping_based_discountPercentage);
+          // $("#discount").val(res.shopping_based_discountPercentage);
 
           $("#hidden_total_pay").val(
             parseFloat(val - res.shopping_based_discount).toFixed(2)
@@ -1078,8 +1078,8 @@ var PRIVACY = (function () {
           $("#cart_based_item").show();
         } else {
           $("#shopping_based_discount").val(0);
-          $("#discount").val(0);
-          $("#discount_amt").val(0);
+          // $("#discount").val(0);
+          // $("#discount_amt").val(0);
 
           hideExtraGst();
           // $(".dis_subtotal").hide();
@@ -1170,11 +1170,11 @@ var PRIVACY = (function () {
           $("#promocode_discount").html(
             parseFloat(parseFloat(response.data.toFixed(2))).toFixed(2)
           );
-          $("#discount_amt").val(
-            parseFloat(parseFloat(response.data.toFixed(2))).toFixed(2)
-          );
+          // $("#discount_amt").val(
+          //   parseFloat(parseFloat(response.data.toFixed(2))).toFixed(2)
+          // );
 
-          $("#discount").val(parseFloat(per).toFixed(2));
+          // $("#discount").val(parseFloat(per).toFixed(2));
 
           isFloat(per)
             ? $("#promocode_per").html(parseFloat(per).toFixed(2))
@@ -1208,8 +1208,8 @@ var PRIVACY = (function () {
           );
 
           // $("#hidden_subtotal").val(Math.round(total_price));
-          $("#discount").val(0);
-          $("#discount_amt").val(0);
+          // $("#discount").val(0);
+          // $("#discount_amt").val(0);
 
           // $("#applied_promo").val("");
           // $("#checkout_final").html(
@@ -1341,6 +1341,33 @@ var PRIVACY = (function () {
     $("#hidden_subtotal").val(
       parseFloat(parseFloat($("#subtotal").html()).toFixed(2)).toFixed(2)
     );
+
+    // alredy have the savings
+    let total_gst = 0;
+    $(".this_price").each(function () {
+      let act = parseFloat(parseFloat($(this).data("actual_price")).toFixed(2));
+      let gst = parseFloat(parseFloat($(this).data("gst")).toFixed(2));
+      let disc = parseFloat(
+        parseFloat(
+          $(this).parent().parent().parent().parent().find(".disc").val()
+        ).toFixed(2)
+      );
+
+      let qnt = parseInt($(this).parent().find(".this_quantity").text());
+      // console.log("check", parseFloat((act * disc) / 100).toFixed(2));
+
+      let disc_price = parseFloat(
+        act - parseFloat(parseFloat((act * disc) / 100).toFixed(2))
+      );
+
+      total_gst +=
+        parseFloat(parseFloat((disc_price * gst) / 100).toFixed(2)) * qnt;
+
+      // total_gst += parseFloat(parseFloat(disc_price * qnt).toFixed(2));
+    });
+
+    $("#park_gst_amt").val(parseFloat(parseFloat(total_gst).toFixed(2)));
+    // $("#discount_amt").val(total_savings);
 
     // $("#total_pay").html(pay_amount.toFixed(2));
     return final_subtotal;

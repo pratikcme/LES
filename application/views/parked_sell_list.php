@@ -57,12 +57,11 @@ $order_row = $order_query->result();
                                 <table class="display table table-bordered table-striped dataTable" id="example_parked" aria-describedby="example_info">
                                     <thead>
                                         <tr role="row">
-
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Sold By</th>
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Customer</th>
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Sub-Total</th>
-                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Discount(%)</th>
-                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Discount Price</th>
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">GST Amount</th>
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Total Savings</th>
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Total</th>
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Date</th>
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 305px;">Action</th>
@@ -79,7 +78,7 @@ $order_row = $order_query->result();
                                                         <?php echo isset($order->customer_name) ?  $order->customer_name : ' - ' ?>
                                                     </td>
                                                     <td class=""><?php echo $order->total; ?></td>
-                                                    <td class=""><?php echo $order->order_discount; ?></td>
+                                                    <td class=""><?php echo $order->gst_amt; ?></td>
                                                     <td class=""><?php echo $order->total_saving; ?></td>
                                                     <td class=""><?php echo $order->payable_amount; ?></td>
                                                     <td class=""><?php echo date('Y-m-d H:i:s', $order->dt_added); ?></td>

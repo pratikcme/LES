@@ -451,28 +451,31 @@ class Sell_development_model extends My_model
     public function getUpdatedParkedOrder($parked_id)
     {
         $data['table'] = 'parked_order as po';
-        $data['select'] = ['po.order_discount'];
+        $data['select'] = ['*'];
         $data['join'] = ['parked_order_details as pow' => ['po.id = pow.parked_order_id', 'LEFT']];
         $data['where'] = [
             'po.branch_id' => $this->branch_id, 'pow.parked_order_id' => $parked_id, 'po.status' => '1'
         ];
         $ParkOrder = $this->selectFromJoin($data);
-        // dd($ParkOrder);
+
+        $total_gst = 0;
+        $total_saving = 0;
         $total = 0;
         foreach ($ParkOrder as $key => $value) {
-            $total += $value->price;
+            $gstOne = numberFormat(numberFormat($value->discount_price) * $value->gst / 100);
+            $total_gst += numberFormat($gstOne * $value->quantity);
+            $total_saving += numberFormat(numberFormat($value->actual_price * $value->discount / 100) * $value->quantity);
+            $total += numberFormat($value->discount_price * $value->quantity);
         }
-        $total_saving =  ($total * $ParkOrder[0]->order_discount) / 100;
-
-        $payable_amount =  $total - $total_saving;
 
         unset($data);
         $data['table'] = 'parked_order';
         $data['where'] = ['id' => $parked_id];
         $data['update'] = [
-            'total_saving' => number_format((float)$total_saving, 2, '.', ''),
-            'payable_amount' => number_format((float)$payable_amount, 2, '.', ''),
-            'total' => number_format((float)$total, 2, '.', '')
+            'total_saving' => numberFormat($total_saving),
+            'payable_amount' => numberFormat($total),
+            'total' => numberFormat($total - $total_gst),
+            'gst_amt' => numberFormat($total_gst)
         ];
         $this->updateRecords($data);
         return true;
@@ -1003,9 +1006,11 @@ class Sell_development_model extends My_model
         $this->branch_id = $postdata['vendor_id'];
         // $user_id = $postdata['vendor_id']; //Dipesh vendor_id from branch_id
 
+        // dd($postdata);
         $sub_total = $postdata['hidden_subtotal'];
 
         // $disc_percentage = $postdata['disc_percentage'];
+        $park_gst_amt = $postdata['park_gst_amt'];
         $discount_total = $postdata['hidden_discount_total'];
         $total = $postdata['hidden_total'];
         $register_id = $postdata['register_id'];
@@ -1043,9 +1048,10 @@ class Sell_development_model extends My_model
                 'register_id' => $register_id,
                 // 
                 'payable_amount' => $hidden_total_pay,
-                'total_saving' => $postdata['discount_amt'],
-                'total' => $total,
-                'order_discount' => $postdata['discount'], //removed by Dipesh 
+                'total_saving' => numberFormat($discount_total),
+                'total' => $sub_total,
+                'order_discount' => 0, //removed by Dipesh 
+                'gst_amt' => $park_gst_amt,
                 // 
                 'status' => '1',
                 'dt_added' => strtotime(DATE_TIME),
@@ -1612,10 +1618,9 @@ class Sell_development_model extends My_model
 
         $html = '';
         foreach ($res as $type) { ?>
-<div class="catg_list" id="catg_list"
-    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-</div>
+            <div class="catg_list" id="catg_list" onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+            </div>
 <?php }
         echo $html;
 
