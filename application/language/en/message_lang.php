@@ -43,6 +43,7 @@ $lang['Write Review'] = 'Write Review';
 $lang['verified ratings'] = 'verified ratings';
 $lang['Overall Rating'] = 'Overall Rating';
 $lang['Ratings'] = 'Ratings';
+$lang['Related'] = 'Related';
 
 
 // end template 2

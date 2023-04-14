@@ -43,6 +43,8 @@ $lang['Write Review'] = 'أكتب مراجعة';
 $lang['verified ratings'] = 'تقييمات التحقق';
 $lang['Overall Rating'] = 'تقييم عام';
 $lang['Ratings'] = 'التقييمات';
+$lang['Related'] = 'متعلق ب';
+
 
 
 // end template 2

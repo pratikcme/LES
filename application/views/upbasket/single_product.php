@@ -394,8 +394,8 @@
   <img src="<?=$this->theme_base_url?>/assets/images/related-product-bottm-left.png" alt="" class="latest-product-top-img">
   <img src="<?=$this->theme_base_url?>/assets/images/related-product-top-right.png" alt="" class="related-product-top-right">
   <div class="container">
-    <h1 class="title">Related <span>Products</span></h1>
-    <p class="pera">Do not miss the current offers until the end of month.</p>
+    <h1 class="title"><?=$this->lang->line('Related')?> <span><?=$this->lang->line('Products')?></span></h1>
+    <!-- <p class="pera">Do not miss the current offers until the end of month.</p> -->
     <!-- <h5>View All Categories</h5> -->
 
     <div class="owl-2 owl-carousel owl-theme">
