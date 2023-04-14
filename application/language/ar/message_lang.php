@@ -46,6 +46,7 @@ $lang['Ratings'] = 'التقييمات';
 $lang['Related'] = 'متعلق ب';
 $lang['Get In'] = 'أدخل';
 $lang['Touch'] = 'يلمس';
+$lang['Call Us'] = 'اتصل بنا';
 
 // end template 2
 

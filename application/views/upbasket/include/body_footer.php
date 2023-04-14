@@ -58,21 +58,21 @@
                 <a href="#"><i class="fa-solid fa-location-dot"></i></a>
               </div>
               <div class="col-xl-11 col-lg-11 col-md-11">
-                <h4><span>address: </span> <?=$appLinks[0]->contact_us_address?></h4>
+                <h4><span><?=$this->lang->line('Address')?>:</span> <?=$appLinks[0]->contact_us_address?></h4>
               </div>
 
               <div class="col-xl-1 col-lg-1 col-md-1">
                 <a href="#"><i class="fa fa-mobile" aria-hidden="true"></i></a>
               </div>
               <div class="col-xl-11 col-lg-11 col-md-11">
-                <h4><span>Call Us: </span><a href="#"><?=$appLinks[0]->contact_number?></a></h4>
+                <h4><span><?=$this->lang->line('Call Us')?>: </span><a href="#"><?=$appLinks[0]->contact_number?></a></h4>
               </div>
 
               <div class="col-xl-1 col-lg-1 col-md-1">
                 <a href="#"><i class="fa-regular fa-envelope"></i></a>
               </div>
               <div class="col-xl-11 col-lg-11 col-md-11">
-                <h4><span>Email: </span><a href="#"> <?=$appLinks[0]->contact_email?></a></h4>
+                <h4><span><?=$this->lang->line('Email')?>: </span><a href="#"> <?=$appLinks[0]->contact_email?></a></h4>
               </div>
             </div>
           </div>

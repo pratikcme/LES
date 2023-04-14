@@ -44,6 +44,9 @@ $lang['verified ratings'] = 'verified ratings';
 $lang['Overall Rating'] = 'Overall Rating';
 $lang['Ratings'] = 'Ratings';
 $lang['Related'] = 'Related';
+$lang['Get In'] = 'Get In';
+$lang['Touch'] = 'Touch';
+$lang['Call Us'] = 'Call Us';
 
 
 // end template 2
