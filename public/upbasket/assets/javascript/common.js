@@ -366,9 +366,9 @@ $(document).on('click', '.wishlist-icon', function () {
 			if (output.status == '0') {
 				window.location.href = base_url + 'login';
 			} else if (output.status == 'inserted') {
-				heart.toggleClass("fas .fa-heart");
+				heart.toggleClass("fa-solid");
 			} else if (output.status == 'deleted') {
-				heart.toggleClass("fas .fa-heart");
+				heart.toggleClass("fa-solid");
 			}
 		}
 	})
