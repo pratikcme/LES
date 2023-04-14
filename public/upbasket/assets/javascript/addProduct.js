@@ -279,6 +279,9 @@ var ADDPRODUCT = function () {
             // $('#is_discounted').html('<div class="offer-wrap"><p>' + output.discount_per + ' % off</p></div> <div class="wishlist-icon" data-product_id =' + output.product_id + ' data-product_weight_id =' + output.product_variant_id + ' > <i class="far fa-heart ' + output.isInWishList + '"></i> </div>');
             // $('.orginal-price').css('display', '');
           }
+          var disNwislist = '<span class="discnt ' + (output.discount_per > 0) ? '' : 'd-none' + '">' + output.discount_per + '% off</span>< div class="pro-hearticon wishlist-icon" data-product_id="' + output.product_id + '" data-product_weight_id ="' + output.product_variant_id + '">< i class="fa-regular fa-heart ' + output.isInWishList + '"></i ></div >';
+          $('#zoom_image').before(disNwislist);
+
           if (output.varient_quantity > 25) {
             $('#is_aval_stock').html(stockMessage1);
           } else {
