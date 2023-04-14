@@ -212,6 +212,7 @@ class User_Controller extends MY_Controller
         if ($data['ApprovedBranch'][0]->language_support == 1) {
             $language_support = 'ar';
         }
+         dd($_SESSION['site_lang']);
         if ($this->session->userdata('site_lang') == '') {
             $this->session->set_userdata('site_lang', $language_support);
             echo '1';die;
