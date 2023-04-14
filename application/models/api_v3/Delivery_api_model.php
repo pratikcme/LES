@@ -553,8 +553,6 @@ class Delivery_api_model extends My_model
     {
 
         if ((!isset($_SERVER['HTTP_X_API_TOKEN'])) || (empty($_SERVER['HTTP_X_API_TOKEN']))) {
-            echo "hi";
-            exit;
             return false;
         } else {
             $data['select'] = ['count(0) as count'];
