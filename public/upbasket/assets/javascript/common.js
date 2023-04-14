@@ -365,11 +365,16 @@ $(document).on('click', '.wishlist-icon', function () {
 		success: function (output) {
 			if (output.status == '0') {
 				window.location.href = base_url + 'login';
-			} else if (output.status == 'inserted') {
-				heart.toggleClass("fa-solid");
-			} else if (output.status == 'deleted') {
+			} else {
 				heart.toggleClass("fa-solid");
 			}
+
+
+			// if (output.status == 'inserted') {
+			// 	heart.toggleClass("fa-solid");
+			// } else if (output.status == 'deleted') {
+			// 	heart.toggleClass("fa-solid");
+			// }
 		}
 	})
 })
