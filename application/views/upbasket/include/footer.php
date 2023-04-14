@@ -279,7 +279,6 @@ function googleTranslateElementInit() {
 // },5000)
 $(document).on('change','.goog-te-combo',function (){
     var value = $(this).val(); 
-    alert(value);
     if(value != ''){
       // $.ajax({
       //     url : base_url+'LanguageSwitcher/switchLang/'+value,

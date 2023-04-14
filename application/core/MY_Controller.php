@@ -208,6 +208,7 @@ class User_Controller extends MY_Controller
         $data['branch_nav'] = $this->vendor_model->branchList();
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
         $data['language_support'] = ($data['ApprovedBranch'][0]->language_support == '1') ? 'ar' : 'en';
+        dd($data['language_support']);
         $language_support = 'en';
         if ($data['ApprovedBranch'][0]->language_support == 1) {
             $language_support = 'ar';
