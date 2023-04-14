@@ -32,6 +32,7 @@
               <div class="pro-hearticon wishlist-icon" data-product_id ="<?=$product_id?>" data-product_weight_id ="<?=$product_weight_id?>">
                 <i class="fa-regular fa-heart <?=(in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>"></i>
               </div>
+              
               <div class="swiper-wrapper" id="zoom_image">
                 <?php foreach ($product_image as $key => $value){ ?>
                   <div class="swiper-slide">
@@ -365,6 +366,7 @@
 
 
 <!-- ----------related-product---------- -->
+<?php if(!empty($related_product )){ ?>
 <section class="Latest-Products Categories-section related-product-section section">
   <img src="<?=$this->theme_base_url?>/assets/images/related-product-bottm-left.png" alt="" class="latest-product-top-img">
   <img src="<?=$this->theme_base_url?>/assets/images/related-product-top-right.png" alt="" class="related-product-top-right">
@@ -426,5 +428,6 @@
     </div>
   </div>
 </section>
+<?php } >
 <input type="hidden" name="product_id" id="product_id" value='<?=$product_id?>'>
 <input type="hidden" name="product_varient_id" id="product_varient_id" value='<?=(isset($varientDetails[0]->id) && $varientDetails[0]->id != '' ) ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
