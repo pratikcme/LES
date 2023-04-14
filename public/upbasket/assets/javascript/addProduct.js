@@ -265,7 +265,7 @@ var ADDPRODUCT = function () {
 
           $('#review_section').html(output.reviewSection);
           $('#starRatting').html(output.upbasket_starHtml);
-          $('#dynamic_price').html(siteCurrency + ' ' + output.discount_price + '<span><strike>' + (output.discount_per > 0) ? siteCurrency + ' ' + output.product_price : + '' + '</strike></span>')
+          // $('#dynamic_price').html(siteCurrency + ' ' + output.discount_price + '<span><strike>' + (output.discount_per > 0) ? siteCurrency + ' ' + output.product_price : + '' + '</strike></span>')
 
           var imageFolder = $('#imageFolder').val();
           var images = output.images;
