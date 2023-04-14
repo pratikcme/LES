@@ -60,14 +60,14 @@ class Sell_development extends Vendor_Controller
         $total_savings = 0; //test Dipesh
         foreach ($data['order_temp_result'] as $key => $value) :
             // dd($value->discount_price);
-            $gst_amount = (numberFormat($value->discount_price) * $value->gst) / 100;
-            $total_savings += ($value->actual_price - numberFormat($value->discount_price)) * $value->quantity;
-            $gst += numberFormat($gst_amount) * numberFormat($value->quantity);
+            $gst_amount = numberFormat((numberFormat($value->discount_price) * $value->gst) / 100);
+            $total_savings += numberFormat(($value->actual_price - numberFormat($value->discount_price)) * $value->quantity);
+            $gst += numberFormat(numberFormat($gst_amount) * numberFormat($value->quantity));
 
             if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                $data['order_temp_result'][$key]->price = $value->without_gst_price * $value->quantity;
+                $data['order_temp_result'][$key]->price = numberFormat($value->without_gst_price * $value->quantity);
             } else {
-                $data['order_temp_result'][$key]->price = numberFormat($value->discount_price) * $value->quantity;
+                $data['order_temp_result'][$key]->price = numberFormat(numberFormat($value->discount_price) * $value->quantity);
             }
             $sub_total += $data['order_temp_result'][$key]->price;
         endforeach;
@@ -609,14 +609,19 @@ class Sell_development extends Vendor_Controller
 
             if ($res) {
                 $status = 1;
-                $result = $this->this_model->OrderTempWithoutPark();
+                if ($this->input->post('isParked') > 0) {
+                    $result = $this->this_model->OrderTemp($this->input->post('isParked'));
+                } else {
+                    $result = $this->this_model->OrderTempWithoutPark();
+                }
+
                 $sub_total = 0;
                 $total_discount = 0;
                 $total_gst = 0;
                 $total_savings = 0;
 
                 foreach ($result as $key => $value) {
-                    $gst_amount = ($value->discount_price * $value->gst) / 100;
+                    $gst_amount = numberFormat(($value->discount_price * $value->gst) / 100);
                     $total_gst += numberFormat($gst_amount) * $value->quantity;
                     $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
                     $sub_total += $value->price;

@@ -955,10 +955,16 @@ var PRIVACY = (function () {
       let amtDisc = amt - (amt * disc) / 100;
 
       let cartBased =
-        amtDisc - (amtDisc * parseFloat(discPer).toFixed(2)) / 100;
+        amtDisc - (amtDisc * parseFloat(parseFloat(discPer).toFixed(2))) / 100;
 
       let gstPer = parseFloat($(this).data("gst")).toFixed(2);
-      newGst += ((cartBased * gstPer) / 100) * quantity;
+
+      newGst += parseFloat(
+        parseFloat(
+          parseFloat(parseFloat((cartBased * gstPer) / 100).toFixed(2)) *
+            quantity
+        ).toFixed(2)
+      );
     });
 
     $("#total_gst").text(parseFloat(newGst).toFixed(2));
