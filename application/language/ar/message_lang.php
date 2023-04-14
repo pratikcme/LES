@@ -47,6 +47,7 @@ $lang['Related'] = 'متعلق ب';
 $lang['Get In'] = 'أدخل';
 $lang['Touch'] = 'يلمس';
 $lang['Call Us'] = 'اتصل بنا';
+$lang['Shop infomation'] = 'معلومات المتجر';
 
 // end template 2
 

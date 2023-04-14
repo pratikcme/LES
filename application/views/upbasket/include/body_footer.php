@@ -6,7 +6,7 @@
               <img src="<?=$this->theme_base_url.'/assets/images/header-logo.png'?>" alt="" class="logo-foot-img">
             </a>
             
-            <h4>Download App</h4>
+            <h4><?=$this->lang->line('Download App')?></h4>
             <p>From App Store or Google Play</p>
             <div class="foot-btn">
               <a href="<?=(!empty($appLinks)  && $appLinks[0]->ios_app_link != '') ? $appLinks[0]->ios_app_link : '#' ?>"><img src="<?=$this->theme_base_url.'/assets/images/app-store.png"'?>" alt=""></a>
@@ -39,7 +39,7 @@
         </div>
         <div class="col-xl-2 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
           <div class="foot-3 common-links">
-            <h3>Useful Links</h3>
+            <h3><?=$this->lang->line('Useful Links')?></h3>
             <ul>
               <li><a href="<?=base_url().'about'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('About Us')?></a></li>
               <li><a href="<?=base_url().'privacy_policy'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Privacy Policy')?></a></li>
@@ -52,7 +52,7 @@
         </div>
         <div class="col-xl-4 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
           <div class="foot-4 common-links">
-            <h3>Shop infomation</h3>
+            <h3><?=$this->lang->line('Shop infomation')?></h3>
             <div class="row">
               <div class="col-xl-1 col-lg-1 col-md-1">
                 <a href="#"><i class="fa-solid fa-location-dot"></i></a>
@@ -83,7 +83,7 @@
       <div class="container">
         <div class="copy-right-content">
           <div>
-            <h3>© Copyright 2022 upbasket . All rights reserved</h3>
+            <h3>© Copyright <?=date('Y')?> <?=$this->siteTitle?> . All rights reserved</h3>
           </div>
           <div class="foot-social-icons">
             <ul>
