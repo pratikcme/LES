@@ -44,8 +44,8 @@ $lang['verified ratings'] = 'تقييمات التحقق';
 $lang['Overall Rating'] = 'تقييم عام';
 $lang['Ratings'] = 'التقييمات';
 $lang['Related'] = 'متعلق ب';
-
-
+$lang['Get In'] = 'أدخل';
+$lang['Touch'] = 'يلمس';
 
 // end template 2
 
