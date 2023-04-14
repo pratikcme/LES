@@ -24,7 +24,7 @@
                 <form id="form" method="post" action="<?=base_url().'contact'?>">
                   <div class="left-contact-wrapper">
                     <div class="mb-3">
-                      <label for="fname" class="form-label"><?=$this->lang->line('Full Name')?></label>
+                      <label for="fname" class="form-label"><?=$this->lang->line('First Name')?></label>
                       <input type="text" name="fname" class="form-control" id="fname" aria-describedby="fname" placeholder="<?=$this->lang->line('First Name')?>">
                       <label for="fname" class="error"><?=form_error('fname')?></label>
                     </div>
