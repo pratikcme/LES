@@ -24,22 +24,22 @@
                 <form id="form" method="post" action="<?=base_url().'contact'?>">
                   <div class="left-contact-wrapper">
                     <div class="mb-3">
-                      <label for="fname" class="form-label">Full Name</label>
+                      <label for="fname" class="form-label"><?=$this->lang->line('Full Name')?></label>
                       <input type="text" name="fname" class="form-control" id="fname" aria-describedby="fname" placeholder="Enter Your FullName">
                       <label for="fname" class="error"><?=form_error('fname')?></label>
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email</label>
+                      <label for="exampleInputEmail1" class="form-label"><?=$this->lang->line('Email')?> </label>
                       <input type="email" name="email"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your E-mail">
                       <label for="email" class="error"><?=form_error('email')?></label>
                     </div>
                     <div class="mb-3">
-                      <label for="phone-num" class="form-label">Phone</label>
+                      <label for="phone-num" class="form-label"><?=$this->lang->line('Phone')?></label>
                       <input type="tel" name="mobile_no" class="form-control" id="phone-num" aria-describedby="phone-num" placeholder="Enter Your Number">
                       <label for="mobile_no" class="error"><?=form_error('mobile_no')?></label>
                     </div>
                     <div class="mb-3">
-                      <label for="message"  class="form-label">Message</label>
+                      <label for="message"  class="form-label"><?=$this->lang->line('Message')?></label>
                       <textarea name="message" cols="0" rows="0" placeholder="Enter Your Message"></textarea>
                       <label for="message" class="error"><?=form_error('message')?></label>
                     </div>
