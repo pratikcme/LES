@@ -1,6 +1,6 @@
 <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-name: fadeInDown;">
     <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="2" value="2">
+        <input class="techno_checkbox d-none" type="checkbox" id="2" value="2">
         <div href="javascript:" class="product-wrapper card card-1 <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
             <span> <?= $this->lang->line('out of stock') ?></span>
             <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
