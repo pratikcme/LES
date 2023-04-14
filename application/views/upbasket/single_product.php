@@ -80,7 +80,7 @@
             <h3 class="notranslate" id="dynamic_price">
               <?=$this->siteCurrency.' '. number_format((float)$productDetail[0]->discount_price, 2, '.', '')?>  
               <span>
-                <strike><?=($productDetail[0]->discount_percentage != 0) ? $this->siteCurrency.' '. number_format((float)$productDetail[0]->price, 2, '.', '') : ''?></strike>
+                <strike><?=($productDetail[0]->discount_percentage > 0) ? $this->siteCurrency.' '. number_format((float)$productDetail[0]->price, 2, '.', '') : ''?></strike>
             </span>
             </h3>
             <!-- <h4>Hurry up! only 10 products left in stock!</h4> -->

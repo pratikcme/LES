@@ -368,8 +368,6 @@ $(document).on('click', '.wishlist-icon', function () {
 			} else {
 				heart.toggleClass("fa-solid");
 			}
-
-
 			// if (output.status == 'inserted') {
 			// 	heart.toggleClass("fa-solid");
 			// } else if (output.status == 'deleted') {
