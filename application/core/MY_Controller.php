@@ -208,11 +208,11 @@ class User_Controller extends MY_Controller
         $data['branch_nav'] = $this->vendor_model->branchList();
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
         $data['language_support'] = ($data['ApprovedBranch'][0]->language_support == '1') ? 'ar' : 'en';
-        dd($data['ApprovedBranch']);
         $language_support = 'en';
         if ($data['ApprovedBranch'][0]->language_support == 1) {
             $language_support = 'ar';
         }
+        dd($language_support);
         // $_SESSION['site_lang'] = '';
         if ($this->session->userdata('site_lang') == '') {
             $this->session->set_userdata('site_lang', $language_support);
