@@ -145,6 +145,7 @@
         <div class="techno-check">
           <!-- <input class="techno_checkbox" type="checkbox" id="1" value="1" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" <?=$attr?> /> -->
           <div class="product-wrapper card  <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+          <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
           <span> <?= $this->lang->line('out of stock') ?></span>  
             <div class="card-header">
               <a
@@ -225,6 +226,7 @@
       <div class="techno-check">
         <input class="techno_checkbox" type="checkbox" id="8" value="8" />
         <div class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+        <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
         <span> <?= $this->lang->line('out of stock') ?></span>
           <div class="card-header">
             <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
@@ -265,7 +267,7 @@
             ?>
             <a href="javascript:" class="add-cart-btn addcartbutton <?=$d_none?>" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
                 data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
-                <span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to cart')?>
+                <span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to art')?>
             </a>
             <div class="product-detail-quentity <?=$d_show?>">
                       <div class="qty-container">
