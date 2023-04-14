@@ -170,10 +170,7 @@ display: none !important;
   margin: 4px 0;
   width: 209px !important;
 }
-.VIpgJd-ZVi9od-ORHb-OEVmcd{
-  display:none
-}
-.skiptranslate{
+.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate{
   display:none
 }
 </style>
