@@ -173,6 +173,9 @@ display: none !important;
 .VIpgJd-ZVi9od-ORHb-OEVmcd{
   display:none
 }
+.skiptranslate{
+  display:none
+}
 </style>
 <?php $lang = json_encode($this->lang->language);
   // dd($lang);
