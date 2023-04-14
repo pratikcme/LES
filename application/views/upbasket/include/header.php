@@ -66,6 +66,9 @@ display: none !important;
 .VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate{
   display:none !important;
 }
+.VIpgJd-ZVi9od-l4eHX-hSRGPd{
+  display :none !important;
+}
 </style>
 </style>
 <input type="hidden" id="siteCurrency" value="<?=$this->siteCurrency?>">
