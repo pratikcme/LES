@@ -299,7 +299,6 @@ $(document).on('change','.goog-te-combo',function (){
             // window.location.reload();        
       //     }
       // })
-
     }
     // else{
     //   new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'en,ar'}, 'google_translate_element');
