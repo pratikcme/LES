@@ -1321,10 +1321,12 @@ var PRIVACY = (function () {
       sub_total += parseFloat($(this).text());
     });
 
+    console.log("1324");
+
     var final_subtotal = parseFloat(sub_total).toFixed(2);
 
     $("#subtotal").html(final_subtotal);
-
+    console.log("1329");
     let isShow = $("#isShow").val();
     if (isShow !== "1") {
       let gst = parseFloat($("#total_gst").text()).toFixed(2); //check
@@ -1338,6 +1340,7 @@ var PRIVACY = (function () {
       return parseFloat(final_subtotal - gst).toFixed(2);
     }
 
+    console.log("1343");
     $("#hidden_subtotal").val(
       parseFloat(parseFloat($("#subtotal").html()).toFixed(2)).toFixed(2)
     );
@@ -1345,6 +1348,7 @@ var PRIVACY = (function () {
     // alredy have the savings
     let total_gst = 0;
     $(".this_price").each(function () {
+      console.log("1351");
       let act = parseFloat(parseFloat($(this).data("actual_price")).toFixed(2));
       let gst = parseFloat(parseFloat($(this).data("gst")).toFixed(2));
       let disc = parseFloat(
@@ -1370,6 +1374,7 @@ var PRIVACY = (function () {
     // for (let index = 0; index < 10000000000000; index++) {}
 
     $("#park_gst_amt").val(parseFloat(total_gst).toFixed(2));
+    console.log("1377");
     // $("#discount_amt").val(total_savings);
 
     // $("#total_pay").html(pay_amount.toFixed(2));
