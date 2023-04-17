@@ -62,7 +62,7 @@
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" name="term_policy" id="flexCheckDefault">
                   <label class="form-check-label" for="flexCheckDefault">
-                    By creating an account, you agree to our <a href="#">Terms Of Conditions</a> and <a href="<?=base_url().'privacy_policy'?>">Privacy Policy.</a>   
+                    By creating an account, you agree to our <a href="<?=base_url().'terms_condition'?>">Terms Of Conditions</a> and <a href="<?=base_url().'privacy_policy'?>">Privacy Policy.</a>   
                   </label>
                 </div>
 
