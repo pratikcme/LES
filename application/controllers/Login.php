@@ -540,5 +540,3 @@ class Login extends User_Controller {
 
 
 }
-  
- ?>
