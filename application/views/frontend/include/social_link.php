@@ -3,7 +3,7 @@
       <div class="col-md-6">
         <ul class="toll-free-num">
           <li><a href="tel:"><span><i class="fas fa-phone-alt"></i></span><?=(!empty($appLinks) && $appLinks[0]->contact_number != '' ) ? @$appLinks[0]->contact_number : "1800-121-000" ?></a></li>
-          <li><a href="mailto:info@grocermart.com" >  <span><i class="fas fa-envelope"></i></span><?=(!empty($appLinks) && @$appLinks[0]->contact_email != '' ) ? @$appLinks[0]->contact_email : "info@grocermart.com" ?></a></li>
+          <li><a href="mailto:<?=(!empty($appLinks) && @$appLinks[0]->contact_email != '' ) ? @$appLinks[0]->contact_email : "" ?>" >  <span><i class="fas fa-envelope"></i></span><?=(!empty($appLinks) && @$appLinks[0]->contact_email != '' ) ? @$appLinks[0]->contact_email : "" ?></a></li>
         </ul>
       </div>
       <div class="col-md-6">

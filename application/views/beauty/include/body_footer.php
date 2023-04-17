@@ -28,20 +28,20 @@
                 <a href="#"><i class="fa-solid fa-mobile-screen-button"></i></a>
               </div>
               <div class="col-xxl-11 col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11">
-                <h4><a href="tel:">+1 412-450-3173</a></h4>
+                <h4><a href="tel:"><?=(!empty($appLinks) && $appLinks[0]->contact_number != '' ) ? @$appLinks[0]->contact_number : "1800-121-000" ?></a></h4>
               </div>
 
               <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                 <a href="#"><i class="fa-regular fa-envelope"></i></a>
               </div>
               <div class="col-xxl-11 col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11">
-                <h4><a href="mailto:">butterfly@gmail.com</a></h4>
+                <h4><a href="mailto:"><?=(!empty($appLinks) && @$appLinks[0]->contact_email != '' ) ? @$appLinks[0]->contact_email : "" ?></a></h4>
               </div>
               <div class="foot-social-icons">
             <ul>
-              <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
-              <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-              <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+              <li><a href="<?=(@$appLinks[0]->facebook_link != '') ? @$appLinks[0]->facebook_link : 'javascript:' ?>"><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="<?=(@$appLinks[0]->twitter_link != '') ? @$appLinks[0]->twitter_link : 'javascript:' ?>"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="<?=(@$appLinks[0]->instagram_link != '') ? @$appLinks[0]->instagram_link : 'javascript:' ?>"><i class="fa-brands fa-twitter"></i></a></li>
             </ul>
           </div>
             </div>
@@ -65,7 +65,7 @@
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
           <div class="foot-3 common-links">
-            <h3>Useful Links</h3>
+            <h3><?=$this->lang->line('Useful Links')?></h3>
             <ul>
               <li><a href="<?=base_url().'about'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('About Us')?></a></li>
               <li><a href="<?=base_url().'privacy_policy'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Privacy Policy')?></a></li>
@@ -78,11 +78,11 @@
         <div class="col-xl-3 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
           <div class="foot-1">
             <a href="../index.php"><img src="<?=$this->theme_base_url?>/assets/images/header-logo.png" alt="" class="logo-foot-img"></a>
-            <h4>Download App</h4>
-            <p>From App Store or Google Play</p>
+            <h4><?=$this->lang->line('Download App')?></h4>
+            <!-- <p>From App Store or Google Play</p> -->
             <div class="foot-btn">
-              <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home-page/app-store.png" alt=""></a>
-              <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home-page/google-play.png" alt=""></a>
+              <a href="javascript:"><img src="<?=$this->theme_base_url?>/assets/images/home-page/app-store.png" alt=""></a>
+              <a href="javascript:"><img src="<?=$this->theme_base_url?>/assets/images/home-page/google-play.png" alt=""></a>
             </div>
             <div class="foot-payment-icons">
               <ul>
