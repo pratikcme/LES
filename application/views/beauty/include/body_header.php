@@ -85,12 +85,12 @@
                 <div class="user-data-wrapper">
                   <a href="./myaccount-page.php"><span><i class="fa-sharp fa-solid fa-user"></i></span><?=$this->lang->line('My account')?></a>
                 </div>
-                <!-- <div class="user-data-wrapper">
-                  <a href="./shop-cart.php"><span><i class="fa-solid fa-folder-plus"></i></span>My Orders</a>
-                </div> -->
+                <div class="user-data-wrapper">
+                  <a href="javascript:" id="logout"><span><i class="fa-solid fa-folder-plus"></i></span><?=$this->lang->line('logout')?></a>
+                </div>
               <?php } ?>
             </div>
-            <a href="#" class="user-login-icon header-icon"><span><i class="fa-regular fa-user"></i></span></a>
+            <a href="javascript:" class="user-login-icon header-icon"><span><i class="fa-regular fa-user"></i></span></a>
 
 
             <a href="#" class="cart-icons header-icon" >
