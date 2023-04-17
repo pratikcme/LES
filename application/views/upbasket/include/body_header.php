@@ -183,8 +183,8 @@
                       </div>
                         <li>
                         <div class="total-amount p-0 notranslate">
-                          <p>Total</p>
-                          <h3 id="nav_subtotal"><?=$this->siteCurrency .' '. getMycartSubtotal()?></h3>
+                          <p><?=$this->lang->line('Total')?></p>
+                          <h3 id="nav_subtotal" class="notranslate"><?=$this->siteCurrency .' '. getMycartSubtotal()?></h3>
                         </div>
                         <div class="drop-btns p-0">
                           <a href="<?=base_url().'products/cart_item'?>" class="view-cart"><?=$this->lang->line('view cart')?></a>

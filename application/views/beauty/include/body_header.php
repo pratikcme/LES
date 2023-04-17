@@ -137,7 +137,6 @@
                   </div>
                   <?php } ?>
                   <?php }else{ ?>
-                    <?php echo "1";?>
                     <?php if(isset($this->cartCount)){ ?>
                     <?php foreach ($mycart as $key => $value) { ?>
                     <div class="cart-drop-menu cart-drop-menu-1">
@@ -161,17 +160,17 @@
               </div>
 
               <div class="total-amount">
-                <p>Total</p>
-                <h3>₹1134.00</h3>
+                <p><?=$this->lang->line('Total')?></p>
+                <h3 id="nav_subtotal" class="notranslate"><?=$this->siteCurrency .' '. getMycartSubtotal()?></h3>
               </div>
               <div class="drop-btns">
-                <a href="./shop-cart.php" class="view-cart">view cart</a>
-                <a href="./checkout-page.php" class="checkout ">checkout</a>
+                <a href="./shop-cart.php" class="view-cart"><?=$this->lang->line('view cart')?></a>
+                <a href="./checkout-page.php" class="checkout "><?=$this->lang->line('checkout')?></a>
                </div>
               </div>
               <div class="icon-tex">
-                <p>your cart</p>
-                <h3>₹1290.00</h3>
+                <p><?=$this->lang->line('your cart')?></p>
+                <h3 class="notranslate" id="display_subtotal"><?=$this->siteCurrency.''.getMycartSubtotal()?></h3>
               </div>
           </div>
       </div>
