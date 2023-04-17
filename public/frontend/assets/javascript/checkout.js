@@ -457,7 +457,7 @@ var CHECKOUT = (function () {
             orderAmount +
             (shipping_charge === "" ? 0 : parseFloat(shipping_charge)) -
             parseFloat(response.data)
-          ).toFixed(2);
+          ).toFixed(1);
           // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
           if ($("#totalSaving").length) {
             var amount = response.data;
