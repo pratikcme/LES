@@ -477,7 +477,7 @@ var CHECKOUT = (function () {
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
-            response.orderAmount + shipping_charge
+            response.orderAmount
 
             // (
             //   parseFloat(response.orderAmount) + parseFloat(shipping_charge)
