@@ -67,8 +67,8 @@
     <!-- <h2>Home /<span>Product Listing</span></h2> -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Product Listing</li>
+        <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?= $this->lang->line('home') ?></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('Product Listing') ?></li>
       </ol>
     </nav>
   </div>
@@ -86,10 +86,12 @@
 
     <!-- --------owl-1 owl-slider--------->
     <div class="owl-1 owl-carousel owl-theme">
-      <?php foreach ($category as $key => $value) : ?>
+      <?php foreach ($category as $key => $value) :
+
+      ?>
         <a href="javascript:;" class="categorie-wrapper cate_id" data="<?= $value->id ?>">
           <div class="categorie-img">
-            <img src="<?= $this->theme_base_url ?>/assets/images/categorie-img-1.png" alt="">
+            <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="">
           </div>
           <div class="categorie-text category_id">
             <h4><?= $value->name ?></h4>
@@ -170,38 +172,7 @@
           <div class="categire-header">
             <h3>Price Range</h3>
           </div>
-          <!-- <div slider id="slider-distance">
-            <div>
-              <div inverse-left style="width:70%;"></div>
-              <div inverse-right style="width:70%;"></div>
-              <div range style="left:0%;right:0%;"></div>
-              <span thumb style="left:0%;"></span>
-              <span thumb style="left:100%;"></span>
-              <div sign style="left:0%;">
-                <span id="value1">₹0</span>
-              </div>
-              <div sign style="left:100%;">
-                <span id="value2">₹100</span>
-              </div>
-            </div>
-            <input type="range" value="0" id="min" max="100" min="0" step="1" oninput="
-                              this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
-                              let value = (this.value/parseInt(this.max))*100
-                              var children = this.parentNode.childNodes[1].childNodes;
-                              children[1].style.width=value+'%';
-                              children[5].style.left=value+'%';
-                              children[7].style.left=value+'%';children[11].style.left=value+'%';
-                              children[11].childNodes[1].innerHTML=this.value;" />
 
-            <input type="range" value="100" id="max" max="100" min="0" step="1" oninput="
-                              this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
-                              let value = (this.value/parseInt(this.max))*100
-                              var children = this.parentNode.childNodes[1].childNodes;
-                              children[3].style.width=(100-value)+'%';
-                              children[5].style.right=(100-value)+'%';
-                              children[9].style.left=value+'%';children[13].style.left=value+'%';
-                              children[13].childNodes[1].innerHTML=this.value;" />
-          </div> -->
           <div class="price-range-slider">
             <p class="range-value">
               <span id="siteCurr"><?= $this->siteCurrency ?></span>
