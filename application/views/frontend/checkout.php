@@ -601,7 +601,7 @@
                                                     $to = $getMycartSubtotal + $calc_shiping;
                                                 }
                                                 $f_amount = $to - $shopping_based_discount;
-                                                echo number_format($f_amount, 2, '.', '');
+                                                echo number_format((float)$f_amount, 2, '.', '');
                                             } else {
                                                 if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                                                     $tot = $getMycartSubtotal + $TotalGstAmount;

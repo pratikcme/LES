@@ -447,7 +447,7 @@ class Checkout_model extends My_model
         $promocode = $postData['promocode'];
         $branch_id = $this->session->userdata('branch_id');
         $date = date('Y-m-d');
-        $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode,'status' => '1'];
+        $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode, 'status' => '1'];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
         $getMycartSubtotal = getMycartSubtotal();
@@ -461,8 +461,8 @@ class Checkout_model extends My_model
             }
         }
         $sub_total = number_format((float)($getMycartSubtotal - $discountValue), 2, '.', '');
-        $total_price = number_format((float)$sub_total, 2, '.', '');
-
+        // $total_price = number_format((float)$sub_total, 2, '.', '');
+        $total_price = $sub_total;
 
         if (empty($promocode)) {
             $response["success"] = 0;
