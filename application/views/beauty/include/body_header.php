@@ -14,8 +14,8 @@
               <ul>
                 <!-- <li><a href="./index.php">Home</a></li>
                 <li><a href="./product-list-page.php">Shop</a></li> -->
-                <li><a href="./about-us.php">About us</a></li>
-                <li><a href="./contact-us.php">Contact us</a></li>
+                <li><a href="<?=base_url().'about'?>"><?=$this->lang->line('About us');?></a></li>
+                <li><a href="<?=base_url().'contact'?>"><?=$this->lang->line('Contact Us');?></a></li>
               </ul>
             </div>
 
