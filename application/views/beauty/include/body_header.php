@@ -73,19 +73,22 @@
             </div>
 
             <div class="user-login-dropdow">
-              <div class="user-login-header">
-                <h4>New Customer?</h4>
-                <h3><a href="./sign-up-page.php">sign up</a></h3>
-              </div>
-              <div class="user-data-wrapper">
-                <a href="./sign-in-page.php"><span><i class="fa-solid fa-right-to-bracket"></i></span>Login Account</a>
-              </div>
-              <div class="user-data-wrapper">
-                <a href="./myaccount-page.php"><span><i class="fa-sharp fa-solid fa-user"></i></span>My Account</a>
-              </div>
-              <div class="user-data-wrapper">
-                <a href="./shop-cart.php"><span><i class="fa-solid fa-folder-plus"></i></span>My Orders</a>
-              </div>
+              <?php if($this->session->userdata('user_id') == ''){ ?> 
+                <div class="user-login-header">
+                  <h4><?=$this->lang->line('New Customer')?>?</h4>
+                  <h3><a href="<?=base_url().'register'?>"><?=$this->lang->line('Sign up')?></a></h3>
+                </div>
+                <div class="user-data-wrapper">
+                  <a href="./sign-in-page.php"><span><i class="fa-solid fa-right-to-bracket"></i></span><?=$this->lang->line('Login Account')?></a>
+                </div>
+              <?php }else{ ?>
+                <div class="user-data-wrapper">
+                  <a href="./myaccount-page.php"><span><i class="fa-sharp fa-solid fa-user"></i></span><?=$this->lang->line('My account')?></a>
+                </div>
+                <!-- <div class="user-data-wrapper">
+                  <a href="./shop-cart.php"><span><i class="fa-solid fa-folder-plus"></i></span>My Orders</a>
+                </div> -->
+              <?php } ?>
             </div>
             <a href="#" class="user-login-icon header-icon"><span><i class="fa-regular fa-user"></i></span></a>
 
