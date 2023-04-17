@@ -85,7 +85,7 @@ class Home extends User_Controller
 		}
 		$quantity = array_column($top_selling_core, 'quantity');
 		array_multisort($quantity, SORT_DESC, $top_selling_core);
-
+		dd($top_selling_core);
 		foreach ($top_selling_core as $key => $value) {
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
@@ -111,8 +111,8 @@ class Home extends User_Controller
 			$value->ratting = $this->this_model->selectStarRatting($value->id,$value->pw_id);
 		}
 		
-		dd($top_selling_core);
 		$data['top_sell'] = $top_selling_core;
+		// dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
 		// dd($data['banner']);die;
 
