@@ -137,6 +137,7 @@
                   </div>
                   <?php } ?>
                   <?php }else{ ?>
+                    <?php echo "1";?>
                     <?php if(isset($this->cartCount)){ ?>
                     <?php foreach ($mycart as $key => $value) { ?>
                     <div class="cart-drop-menu cart-drop-menu-1">
