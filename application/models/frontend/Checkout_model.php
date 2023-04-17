@@ -523,10 +523,11 @@ class Checkout_model extends My_model
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
-        echo $total_price;
-        exit;
-        $calculate = ($total_price / 100) * $promocode[0]->percentage;
 
+
+        $calculate = ($total_price / 100) * $promocode[0]->percentage;
+        echo $calculate;
+        exit;
         $response["success"] = 1;
         $response["message"] = "Promocode applied";
         $response["data"] = $calculate;
