@@ -129,6 +129,7 @@ $lang['Create Account'] = 'Create Account';
 $lang['Forgot Your Password'] = 'Forgot Your Password';
 $lang['continue with facebook'] = 'continue with facebook';
 $lang['continue with google'] = 'continue with google';
+$lang['Forgot password'] = 'Forgot password';
 
 // placeHolder
 $lang['Gst number'] = 'Gst number';

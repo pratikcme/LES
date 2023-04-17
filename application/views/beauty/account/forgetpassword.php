@@ -25,20 +25,21 @@
 
                     <!-- ---------signin-deails-wrappper----- -->
                     <div class="login-deatils-wrapper signin-deatils-wrapper">
-                    <h2 class="title">Forgot password?</h2>
-                        <p class="pera">No worries, we’well send you reset intructions.</p>
-                        <form action="">
+                    <h2 class="title"><?=$this->lang->line('Forgot password')?>?</h2>
+                        <!-- <p class="pera">No worries, we’well send you reset intructions.</p> -->
+                        <form id="ForgetForm" method="post" action="<?=base_url().'login/forget_password'?>">
 
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="mikehussy@gmail.com">
+                                <label for="exampleInputEmail1" class="form-label"><?=$this->lang->line('Email')?></label>
+                                <input type="text" name="email" class="form-control"  placeholder="<?=$this->lang->line('Enter Email*')?>">
                             </div>
 
-                            <div class="sign-in-btn reset-password-btn tab-save-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <button type="button">Reset Password</button>
+                            <div class="sign-in-btn reset-password-btn tab-save-btn" >
+                                <!-- <button type="button">Reset Password</button> -->
+                                <button type="submit" id="btnSubmit" class="btn create-btn"><?=$this->lang->line('Reset Password')?></button>
                             </div>
 
-                            <h3><span><i class="fa-solid fa-arrow-left"></i></span> Back to <a href="./sign-up-page.php">Sign up</a></h3>
+                            <h3><span><i class="fa-solid fa-arrow-left"></i></span> Back to <a href="<?=base_url().'register'?>"><?=$this->lang->line('Sign up')?></a></h3>
                         </form>
                     </div>
                 </div>

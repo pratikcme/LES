@@ -130,6 +130,7 @@ $lang['Create Account'] = 'إنشاء حساب';
 $lang['Forgot Your Password'] = 'نسيت كلمة السر';
 $lang['continue with facebook'] = 'تواصل مع الفيسبوك';
 $lang['continue with google'] = 'تواصل مع جوجل';
+$lang['Forgot password'] = 'هل نسيت كلمة السر';
 
 // placeHolder
 $lang['Gst number'] = 'رقم Gst';
