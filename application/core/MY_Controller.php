@@ -157,13 +157,13 @@ class User_Controller extends MY_Controller
 
             $this->load->model($this->myvalues->vendorFrontEnd['model'], 'vendor_model');
             $data['branch'] = $this->vendor_model->branchList();
-
+            dd($data['branch']);
             $branch_id = count($data['branch']);
             foreach ($data['branch'] as $key => $value) {
                 $data['branch'][$key]->product_count = $this->vendor_model->branchProductCount($value->id);
             };
             $Approved = $this->vendor_model->ApprovedVendor();
-
+            
             if ($Approved[0]->approved_branch == '1') {
                 $branch_id = $data['branch'][0]->id;
                 $branch_name = $data['branch'][0]->name;
