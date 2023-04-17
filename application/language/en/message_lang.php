@@ -1,5 +1,5 @@
 <?php
-
+$lang['Back to'] = 'Back to';
 $lang['Thanks for shopping'] = 'Thanks for shopping';
 $lang['Order placed successfully'] = 'order placed successfully';
 $lang['Your Order No'] = 'Your Order No';

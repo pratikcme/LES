@@ -1,5 +1,6 @@
 <?php
 
+$lang['Back to'] = 'ارجع الى';
 $lang['Thanks for shopping'] = 'شكرا للتسوق';
 $lang['Order placed successfully'] = 'تم وضع الطلب بنجاح';
 $lang['Your Order No'] = 'طلبك لا';
