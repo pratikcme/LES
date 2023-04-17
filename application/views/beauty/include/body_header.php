@@ -90,25 +90,72 @@
             <a href="#" class="user-login-icon header-icon"><span><i class="fa-regular fa-user"></i></span></a>
 
 
-            <a href="#" class="cart-icons header-icon"><i class="fa-solid fa-cart-shopping"></i><span class="g-badge">22</span></a>
+            <a href="#" class="cart-icons header-icon" >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="g-badge" id="itemCount" <?=(isset($this->cartCount) && $this->cartCount != 0 ) ? 'style="display:block"' : 'style="display:none"' ?>><?=(isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
             <!-- ----cart-dropdown--- -->
             <div class="cart-dropdwon">
               <div class="cart-drop-wrapper">
-                <div class="cart-drop-menu cart-drop-menu-1">
-                  <div class="drop-img">
-                    <a href="./product-details.php"><img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt=""></a>
-                  </div>
-                  <div class="drop-text">
-                    <h4><a href="./product-details.php">Lakme Absolute Skin Natural Mousse Foundation</a></h4>
-                    <p>Qty : 1</p>
-                    <h3>₹1150.00</h3>
-                  </div>
-                  <div class="cancel-btn">
-                    <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                  </div>
-                </div>
+              <?php if ($this->session->userdata('user_id') == '') { ?>
+                <?php if(isset($this->cartCount)){ 
+                    $CI = &get_instance();
+                    $CI->load->model('common_model');
+                    $default_product_image =$CI->common_model->default_product_image(); 
+                } ?> 
+                  <?php foreach ($this->session->userdata('My_cart') as $key => $value) { 
 
-                <div class="cart-drop-menu cart-drop-menu-2">
+                    $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+                    // dd($product);
+                    $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
+
+                    $CI->load->model('api_v3/common_model','co_model');
+                    $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                      $product[0]->discount_price = $product[0]->without_gst_price;
+                    }
+                    if(!file_exists('public/images/'.$CI->folder.'product_image/'.$product[0]->image) || $product[0]->image == '' ){
+                      if(strpos($product[0]->image, '%20') === true || $product[0]->image == ''){
+                        $product[0]->image = $default_product_image;
+                      }else{
+                        $product[0]->image = $default_product_image;
+                      }
+                    }  
+                    ?>
+                  <div class="cart-drop-menu cart-drop-menu-1">
+                    <div class="drop-img">
+                      <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>">
+                        <img src="<?=base_url()?>public/images/<?=$this->folder?>product_image/<?=$product[0]->image?>" alt=""></a>
+                    </div>
+                    <div class="drop-text">
+                      <h4><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>"><?=$value['product_name']?></a></h4>
+                      <p>Qty : 1</p>
+                      <h3 class="notranslate"><?=$this->siteCurrency.' '.number_format((float)$product[0]->discount_price, 2, '.', '')?></h3>
+                    </div>
+                    <div class="cancel-btn remove_item" data-product_id="<?=$value['product_id']?>" data-product_weight_id="<?=$value['product_weight_id']?>">
+                      <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
+                    </div>
+                  </div>
+                  <?php } ?>
+                 <?php }else{ ?>
+                  <?php if(isset($this->cartCount)){ ?>
+                    <?php foreach ($mycart as $key => $value) { ?>
+                    <div class="cart-drop-menu cart-drop-menu-1">
+                    <div class="drop-img">
+                      <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
+                        <img src="<?=base_url()?>public/images/<?=$this->folder?>product_image/<?=$value->image?>" alt=""></a>
+                    </div>
+                    <div class="drop-text">
+                      <h4><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>"><?=$value->product_name?></a></h4>
+                      <p>Qty : 1</p>
+                      <h3 class="notranslate"><?=$this->siteCurrency.' '.number_format((float)$value->discount_price, 2, '.', '')?></h3>
+                    </div>
+                    <div class="cancel-btn remove_item" data-product_id="<?=$value->product_id?>" data-product_weight_id="<?=$value->product_weight_id?>">
+                      <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
+                    </div>
+                  </div>
+                 <?php } ?>
+                
+                <!-- <div class="cart-drop-menu cart-drop-menu-2">
                   <div class="drop-img">
                     <a href="./product-details.php"><img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-6.png" alt=""></a>
                   </div>
@@ -149,25 +196,24 @@
                   <div class="cancel-btn">
                     <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
                   </div>
-                </div>
+                </div> -->
 
               </div>
 
               <div class="total-amount">
-                <p>Total</p>
-                <h3>₹1134.00</h3>
+                <p><?=$this->lang->line('Total')?></p>
+                <h3 id="nav_subtotal" class="notranslate"><?=$this->siteCurrency .' '. getMycartSubtotal()?></h3>
               </div>
 
               <div class="drop-btns">
-                <a href="./shop-cart.php" class="view-cart">view cart</a>
-                <a href="./checkout-page.php" class="checkout ">checkout</a>
+                <a href="./shop-cart.php" class="view-cart"><?=$this->lang->line('view cart')?></a>
+                <a href="./checkout-page.php" class="checkout "><?=$this->lang->line('checkout')?></a>
               </div>
+              <?php } }?>
             </div>
-
-
             <div class="icon-tex">
-              <p>your cart</p>
-              <h3>₹1290.00</h3>
+              <p><?=$this->lang->line('your cart')?></p>
+              <h3><?=$this->siteCurrency.''.getMycartSubtotal()?></h3>
             </div>
           </div>
       </div>
