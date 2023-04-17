@@ -41,7 +41,7 @@
               <a class="nav-link dashboard-tabs certificates-active-img <?=($action_name == 'my_address') ? 'active' : ''?>" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link dashboard-tabs certificates-active-img <?=($action_name == 'change') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-7" aria-selected="true" role="tab">Change Password</a>
+              <a class="nav-link dashboard-tabs certificates-active-img <?=($action_name == 'change') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-7" aria-selected="true" role="tab"><?=$this->lang->line('Change Password')?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link dashboard-tabs languge-active-img" id="logout" data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('logout')?></a>
@@ -461,11 +461,9 @@
                     <tr>
                       <td class="mywishlist-part-img">
                       <span class="bt-content">
-                        <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a> -->
+                      <a href="javascript:" class="removeWishlistItem" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-regular fa-circle-xmark"></i></a>
                         <div class="cart-detail-img"><img src="<?=$value->image?>" alt=""></div>
                       </span>
-                        <!-- <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                        <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-1.png" alt=""></div> -->
                       </td>
                       <td>
                         <div class="cart-detail-text">

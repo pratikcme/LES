@@ -107,7 +107,7 @@
       ?>
 
 
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+        <<<<<<< HEAD <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
           <div class="techno-check">
             <!-- <input class="techno_checkbox" type="checkbox" id="1" value="1" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= $attr ?> /> -->
             <div class="product-wrapper card  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
@@ -117,58 +117,93 @@
                   <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
                   <!-- <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-1.png" alt=""> -->
                 </a>
-              </div>
+                =======
+                <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                  <div class="techno-check">
+                    <!-- <input class="techno_checkbox" type="checkbox" id="1" value="1" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= $attr ?> /> -->
+                    <div class="product-wrapper card  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                      <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> % off</span>
+                      <span> <?= $this->lang->line('out of stock') ?></span>
+                      <div class="card-header">
+                        <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                          <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
+                          <!-- <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-1.png" alt=""> -->
+                        </a>
+                      </div>
 
-              <div class="card-body">
-                <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
-                </h3>
-                <h4>
-                  <?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
-                </h4>
+                      <div class="card-body">
+                        <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
+                        </h3>
+                        <h4>
+                          <?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                        </h4>
 
-                <div class="rate-dropdown">
-                  <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
-                  <select class="form-select card-dropdown d-none" aria-label="Default select example">
-                    <option selected>500 Gms</option>
-                    <option value="1">300 Gms</option>
-                    <option value="2">200 Gms</option>
-                    <option value="3">1Kg</option>
-                  </select>
+                        <div class="rate-dropdown">
+                          <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
+                          <select class="form-select card-dropdown d-none" aria-label="Default select example">
+                            <option selected>500 Gms</option>
+                            <option value="1">300 Gms</option>
+                            <option value="2">200 Gms</option>
+                            <option value="3">1Kg</option>
+                          </select>
 
 
-                  <div class="card-rating">
-                    <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt=""><?= $value->ratting['rating'] ?></p>
+                          <div class="card-rating">
+                            <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt=""><?= $value->ratting['rating'] ?></p>
+                          </div>
+                          >>>>>>> db52cd0e641b9b339892a8ede9486430da3df7b2
+                        </div>
+
+                        <div class="card-body">
+                          <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
+                          </h3>
+                          <h4>
+                            <?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                          </h4>
+
+                          <div class="rate-dropdown">
+                            <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
+                            <select class="form-select card-dropdown d-none" aria-label="Default select example">
+                              <option selected>500 Gms</option>
+                              <option value="1">300 Gms</option>
+                              <option value="2">200 Gms</option>
+                              <option value="3">1Kg</option>
+                            </select>
+
+
+                            <div class="card-rating">
+                              <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt=""><?= $value->ratting['rating'] ?></p>
+                            </div>
+                          </div>
+                          <h6 class="rating notranslate">
+                            <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
+                          </h6>
+                          <?php
+                          $d_none = '';
+                          $d_show = 'd-none';
+                          if (!empty($item_weight_id)) {
+                            if (in_array($value->pw_id, $item_weight_id)) {
+                              $d_show = '';
+                              $d_none = 'd-none';
+                            }
+                          }
+                          ?>
+                          <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart') ?>
+                          </a>
+                          <div class="product-detail-quentity <?= $d_show ?>">
+                            <div class="qty-container">
+                              <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                              <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                              <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <h6 class="rating notranslate">
-                  <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
-                </h6>
-                <?php
-                $d_none = '';
-                $d_show = 'd-none';
-                if (!empty($item_weight_id)) {
-                  if (in_array($value->pw_id, $item_weight_id)) {
-                    $d_show = '';
-                    $d_none = 'd-none';
-                  }
-                }
-                ?>
-                <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart') ?>
-                </a>
-                <div class="product-detail-quentity <?= $d_show ?>">
-                  <div class="qty-container">
-                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                    <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
-                    <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      <?php } ?>
-    </div>
-  </div>
 </section>
 
 <!-- -----Latest Products----- -->
@@ -184,6 +219,7 @@
         <div class="techno-check">
           <input class="techno_checkbox" type="checkbox" id="8" value="8" />
           <div class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+            <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> % off</span>
             <span> <?= $this->lang->line('out of stock') ?></span>
             <div class="card-header">
               <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
@@ -223,16 +259,20 @@
               }
             }
             ?>
-            <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
+            <<<<<<< HEAD <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
               <span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
-            </a>
-            <div class="product-detail-quentity <?= $d_show ?>">
-              <div class="qty-container">
-                <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
-                <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
+              =======
+              <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
+                <span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to art') ?>
+                >>>>>>> db52cd0e641b9b339892a8ede9486430da3df7b2
+              </a>
+              <div class="product-detail-quentity <?= $d_show ?>">
+                <div class="qty-container">
+                  <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                  <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                  <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                </div>
               </div>
-            </div>
           </div>
         </div>
       <?php }  ?>

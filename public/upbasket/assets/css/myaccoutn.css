@@ -1,7 +1,3 @@
-/* .my-account-section{
-    background: #F5F5F5;
-} */
-
 .my-account-section .title {
     text-align: center;
     margin-top: 80px;
@@ -63,6 +59,14 @@
     padding-bottom: 20px;
 }
 
+.account-details-tabs .sub-tabs .nav-link {
+    width: 215.67px !important;
+}
+
+.account-details-tabs .sub-tabs .nav {
+    margin: 0 auto;
+}
+
 .account-details-tabs .details-tabs .nav-link.active {
     background: var(--myaccoutn-tab-active-bg) !important;
     color: var(--common-white) !important;
@@ -83,37 +87,6 @@
 .myaccout-detail-tab label span {
     color: #FF1D1D !important;
 }
-
-/* .myaccout-detail-tab .choose-img{
-    width: 190px;
-    height: 190px;
-    border-radius: 50%;
-    background: #F2F5F3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px auto;
-    position: relative;
-    margin-bottom: 75px !important;
-    cursor: pointer;
-}
-.myaccout-detail-tab .choose-img::before {
-    content: "\f083";
-    position: absolute;
-    font-family: "FontAwesome";
-    background: var(--myaccoutn-tab-active-bg);
-    color: var(--common-white);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 122px;
-    left: 142px;
-    font-size: 20px;
-    cursor: pointer;
-} */
 
 .myaccout-detail-tab .choose-btn {
     content: "\f083";
@@ -205,11 +178,11 @@
     line-height: 16px;
     height: 45px;
     appearance: none;
-    background-image: url(../images/selectarrow.png);
+    /* background-image: url(../images/selectarrow.png);
     background-repeat: no-repeat;
     background-size: 12px;
     background-position-y: 19px;
-    background-position-x: 410px;
+    background-position-x: 410px; */
     margin-bottom: 30px;
 }
 
@@ -383,6 +356,8 @@
     line-height: 20px;
     color: var(--login-wrapper-label);
     margin-bottom: 20px;
+    max-width: 700px;
+    word-wrap: break-word;
 }
 
 .my-order-text h3 span {
@@ -600,6 +575,31 @@
     margin: 0px auto;
 }
 
+.all-detalis-left .cancel-btn {
+    background: var(--common-btn-color);
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    color: var(--common-white) !important;
+    padding: 12px 30px 12px 30px;
+    border-radius: 90px;
+    text-transform: capitalize;
+    margin-top: 45px;
+    transition: 0.5s;
+    border: 1px solid var(--common-btn-color);
+}
+
+.my-order-details .fade:not(.show) {
+    opacity: 0;
+    display: none;
+}
+
+.my-order-details {
+    height: 450px;
+    overflow-y: scroll;
+}
 
 
 /* ========================================================== */
@@ -659,11 +659,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
-        background-repeat: no-repeat;
-        background-size: 12px;
-        background-position-y: 19px;
-        background-position-x: 410px;
+        /* background-image: url(../images/selectarrow.png); */
+        /* background-repeat: no-repeat;
+        background-size: 12px; */
+        /* background-position-y: 19px;
+        background-position-x: 410px; */
         margin-bottom: 30px;
     }
 
@@ -871,11 +871,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 410px;
+        background-position-x: 410px; */
         margin-bottom: 30px;
     }
 
@@ -1078,11 +1078,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 320px;
+        background-position-x: 320px; */
         margin-bottom: 30px;
     }
 
@@ -1284,11 +1284,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 210px;
+        background-position-x: 210px; */
         margin-bottom: 30px;
     }
 
@@ -1483,11 +1483,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 205px;
+        background-position-x: 205px; */
         margin-bottom: 30px;
     }
 
@@ -1682,11 +1682,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 205px;
+        background-position-x: 205px; */
         margin-bottom: 30px;
     }
 
@@ -2283,16 +2283,24 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 380px;
-        margin-bottom: 30px;
+        margin-bottom: 30px; */
         width: 100%;
     }
 
 }
+
+@media only sceen and (max-width:575px) {
+    .account-details-tabs .sub-tabs .nav-link {
+        width: 124.67px !important;
+    }
+
+}
+
 
 /* ========================================================== */
 /* ========================================================== */
@@ -2376,7 +2384,7 @@
         width: 150px !important;
         border-right: 1px solid var(--myaccoutn-tab-border) !important;
         font-family: Poppins;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
         line-height: 20px;
         color: var(--myaccoutn-tab-text) !important;
@@ -2711,12 +2719,12 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 380px;
-        margin-bottom: 30px;
+        margin-bottom: 30px; */
         width: 100%;
     }
 
@@ -2803,7 +2811,7 @@
         width: 150px !important;
         border-right: 1px solid var(--myaccoutn-tab-border) !important;
         font-family: Poppins;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
         line-height: 20px;
         color: var(--myaccoutn-tab-text) !important;
@@ -3138,12 +3146,12 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 260px;
-        margin-bottom: 30px;
+        margin-bottom: 30px; */
         width: 100%;
     }
 
@@ -3233,7 +3241,7 @@
         width: 150px !important;
         border-right: 1px solid var(--myaccoutn-tab-border) !important;
         font-family: Poppins;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
         line-height: 20px;
         color: var(--myaccoutn-tab-text) !important;
@@ -3568,11 +3576,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 240px;
+        background-position-x: 240px; */
         margin-bottom: 30px;
         width: 100%;
     }
@@ -3668,7 +3676,7 @@
         width: 150px !important;
         border-right: 1px solid var(--myaccoutn-tab-border) !important;
         font-family: Poppins;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
         line-height: 20px;
         color: var(--myaccoutn-tab-text) !important;
@@ -4003,11 +4011,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 240px;
+        background-position-x: 240px; */
         margin-bottom: 30px;
         width: 100%;
     }
@@ -4101,7 +4109,7 @@
         width: 150px !important;
         border-right: 1px solid var(--myaccoutn-tab-border) !important;
         font-family: Poppins;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
         line-height: 20px;
         color: var(--myaccoutn-tab-text) !important;
@@ -4437,11 +4445,11 @@
         line-height: 16px;
         height: 45px;
         appearance: none;
-        background-image: url(../images/selectarrow.png);
+        /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 225px;
+        background-position-x: 225px; */
         margin-bottom: 30px;
         width: 100%;
     }
