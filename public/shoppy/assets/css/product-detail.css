@@ -439,6 +439,14 @@ body {
 }
 
 
+.rating-rev{
+    font-size: 20px;
+}
+
+.stars3_5 span:last-child{
+   font-size: 18px;
+   padding-left: 10px;
+}
 
 /* ==========responsive=================== */
 @media (max-width: 768px) {

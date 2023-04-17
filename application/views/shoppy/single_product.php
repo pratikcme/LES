@@ -1,454 +1,1009 @@
-  <style>
-    #starRatting{
-      display: flex;
-      align-items:center;
-      gap:3px;
-    }
-  </style>
-  <!-- ----hero-section--- -->
-  <section class="hero-section listing-hero-sec">
-    <div class="container">
-      <!-- <h2>Home /<span>Product Detail</span></h2> -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?=base_url().'home'?>"><?=$this->lang->line('home')?></a></li>
-          <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('Product Detail')?></li>
-        </ol>
-      </nav>
-    </div>
-  </section>
+<?php include './include/header.php'; ?>
+<?php include './include/bodyHeader.php'; ?>
 
-
-  <section class="product-detalis-section">
-    <img src="<?=$this->theme_base_url?>/assets/images/product-detail-top-left-img.png" alt="" class="product-detail-top-left-img">
-    <img src="<?=$this->theme_base_url?>/assets/images/product-detail-top-right-img.png" alt="" class="product-detail-top-right-img">
-    <div class="container">
-      <div class="row">
-        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-          <div class="product-image-part">
-
-            <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-              class="swiper mySwiper2 gallery-top">
-              <div class="swiper-wrapper" id="zoom_image">
-              <?php foreach ($product_image as $key => $value){ ?>
-                <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>"
-                      data-zoom="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>" /></a>
-                </div>
-              <?php } ?>
-                <!-- <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png"
-                      data-zoom="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png"
-                      data-zoom="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png"
-                      data-zoom="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?=$this->theme_base_url?>/assets/images/feature-prodct-5.png"
-                      data-zoom="<?=$this->theme_base_url?>/assets/images/feature-prodct-5.png" /></a>
-                </div> -->
-              </div>
-            </div>
-
-            <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
-              <div class="swiper-wrapper" id="image_thumb">
-                <?php foreach ($product_image as $key => $value){ ?>
-                <div class="swiper-slide">
-                  <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image?>">
-                </div>
-                <?php } ?>
-                <!-- <div class="swiper-slide">
-                  <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-2.png" />
-                </div>
-                <div class="swiper-slide">
-                  <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-3.png" />
-                </div>
-                <div class="swiper-slide">
-                  <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-4.png" />
-                </div>
-                <div class="swiper-slide">
-                  <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-5.png" />
-                </div> -->
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-
-        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-          <div class="product-content-part zoom">
-            <div class=""></div>
-            <h2><?=$productDetail[0]->name?></h2>
-            <h5 id="starRatting">
-              <!-- <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half-stroke"></i> -->
-              <?php for ($j=1;$j<=$productDetail[0]->rating['rating'];$j++) {?>
-                <i class="fa-solid fa-star"></i>
-              <?php } ?>
-              <?php for ($i=1; $i <= 5-$productDetail[0]->rating['rating']; $i++) { ?> 
-                <i class="fa-solid fa-star"></i>  <!--  blank star appear hear -->
-                <!-- <i class="fas fa-star blank-ratting"></i> -->
-              <?php } ?>
-              <?=$productDetail[0]->rating['rating']?> <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
-            </h5>
-            <h6 id="is_aval_stock"><?=($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h6>
-            <h3 class="notranslate" id="dynamic_price">
-              <?=$this->siteCurrency.' '. number_format((float)$productDetail[0]->discount_price, 2, '.', '')?>  
-              <span>
-                <strike><?=($productDetail[0]->discount_percentage != 0) ? $this->siteCurrency.' '. number_format((float)$productDetail[0]->price, 2, '.', '') : ''?></strike>
-            </span>
-            </h3>
-            <!-- <h4>Hurry up! only 10 products left in stock!</h4> -->
-            <p><?=$productDetail[0]->about?></p>
-
-            <select class="form-select card-dropdown product_varient_id"  aria-label="Default select example">
-             <?php foreach ($varient as $key => $value) { ?>
-               <option value="<?=$this->utility->safe_b64encode($value)?>" <?=($varientDetails[0]->id == $value) ? 'selected' : '' ?> ><?=$weight_no[$key].' '.$weight_name[$key]?></option>
-             <?php } ?>
-              <!-- <option value="1">300 Gms</option>
-              <option value="2">200 Gms</option>
-              <option value="3">1Kg</option> -->
-            </select>
-            <?php 
-            $d_none = '';
-            $d_show = 'd-none';
-              if(!empty($item_weight_id)){
-                if(in_array($varientDetails[0]->id,$item_weight_id)){
-                  $d_show = '';
-                  $d_none = 'd-none';
-                }
-              }
-            ?>
-            <div class="product-detalis-btn">
-            <?php if($isAvailable != '0'){ ?>
-              <a href="javascript:" class="add-cart-btn <?=$d_none?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping"></i></span>Add To Cart</a>
-            <?php } ?>
-              <div class="product-detail-quentity <?=$d_show?>">
-                  <div class="qty-container">
-                    <button class="dec qty-btn-minus cart-qty-minus decqnt" type="button" data-product_weight_id="<?=$varientDetails[0]->id?>"><i class="fa-solid fa-minus"></i></button>
-                    <input type="text" name="qty" id="qnt" value="<?=($cartQuantityForVarient != '') ? $cartQuantityForVarient : 1 ?>" data-product_id = "<?= $this->utility->safe_b64decode($product_id)?>" class="input-qty">
-                    <button class="inc qty-btn-plus cart-qty-plus incqnt" type="button" data-product_weight_id="<?=$varientDetails[0]->id?>"><i class="fa-solid fa-plus"></i></button>
-                  </div>
-              </div>
-              <?php if($isAvailable != '0'){ ?>
-              <a href="javascript:" id="order_now" class="add-cart-btn order-now"><span><i class="fa fa-arrow-circle-right"
-                    aria-hidden="true"></i></span><?=$this->lang->line('order now')?></a>
-              <?php } ?>
-              <?php 
-                $product_id = $this->uri->segment(3);
-                $varient_id = $this->uri->segment(4);
-                $url = base_url().'products/productDetails/'.$product_id.'/'.$varient_id;
-              ?>
-             <?php if(!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != ''){
-                  $mobile = '91'.$BranchDetails[0]->phone_no; ?>
-              <a  target="_black" id='whatsapp_link' href="https://wa.me/<?=$mobile?>/?text=<?=$url?>" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
-            <?php } ?>
-            </div>
-            <h3><?=$this->lang->line('Category')?>: <span> <span><?=$productDetail[0]->category_name?></span></h3>
-            <h4><?=$this->lang->line('Brand')?>: <span> <span><?=$productDetail[0]->brand_name?></span></h4>
-
-          </div>
-        </div>
-
-      </div>
-
-      <div class="col-xxl-12">
-        <div class="review-desc">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><?=$this->lang->line('Description')?></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false"><?=$this->lang->line('Information')?></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="review_count" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><?=$this->lang->line('Reviews')?> (<?=count($product_review)?>)</button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <div class="Description-wrapper">
-                    <p><?=$productDetail[0]->about?></p>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
-                  <div class="Description-wrapper">
-                    <p><?=$productDetail[0]->content?></p>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                     <!-- -------review-tab------ -->
-                    <div class="my-review-wrapper">
-                        <!-- ----review-content--- -->
-                       
-
-                        <!-- ----review-comment-part--- -->
-                        <div class="row ">
-                          <div class="col-xxl-8 col-xl-8 col-lg-8">
-                            <div class="review-comment-wrapper <?=(count($product_review) == 0) ? 'd-none' : '' ?>" id="review_section" >
-                              <div class="review-content">
-                                  <div class="review-left-content">
-                                    <?php
-                                      $sumOfRatting = 0;
-                                      foreach ($product_review as $key => $value) { 
-                                          $sumOfRatting += $value->ratting; } ?>
-                                        <div>
-                                            <h3>Customer Reviews</h3>
-                                            <h5>
-                                              <span>
-                                              <?php for ($j=1;$j<=$productDetail[0]->rating['rating'];$j++) {?>
-                                                <i class="fa-solid fa-star"></i>
-                                              <?php } ?>
-                                              <?php for ($i=1; $i <= 5-$productDetail[0]->rating['rating']; $i++) { ?> 
-                                                <i class="fa-solid fa-star"></i>  <!--  blank star appear hear -->
-                                              <?php } ?>
-                                                <?=round($sumOfRatting/count($product_review))?></span>  <span><!--  174 Ratings &amp; --> <?=count($product_review)?> Reviews</span>
-                                            </h5>
-                                        </div>
-                                  </div>
-                              </div>                          
-                              <div class="supportive-div">  
-                                <?php foreach ($product_review as $key => $value) { ?>
-                                  <div class="rewiew-wrapper">
-                                      <div class="review-right">
-                                        <div class="review-right-top">
-                                            <span class="number-star"> <span><i class="fa-solid fa-star"></i></span><?=$value->ratting?></span>
-                                            <h4><?=$value->review_title?></h4>
-                                        </div>
-                                        <h6><?=$value->fname?> on <?=date('M d, Y')?> </h6>
-                                        <p><?=$value->review?></p>
-                                      </div>
-                                  </div>
-                                <?php } ?>
-                              </div>
-                            </div>  
-                          </div>
-                          <?php if($this->session->userdata('user_id') != ''){ ?> 
-                          <div class="col-xxl-4 col-xl-4 col-lg-4 <?=(empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : ''?>" id="writeReviewSection">
-                              <div class="add_review_wrapper">
-                                  <h3><?=$this->lang->line('Add a review')?></h3>
-
-                                <form id="reviewForm" class="rating" method="POST" action="<?=base_url().'products/productReview'?>">  
-                                  <!-- <div class="mb-3">
-                                    <label for="full-name" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" id="full-name" placeholder="Enter Your name">
-                                  </div> -->
-
-                                  <div class="rating-box">
-                                      <label for=""><?=$this->lang->line('Your rating')?></label>
-                                        <div class="rating__stars">
-                                            <input id="rating-1" class="rating__input rating__input-1" type="radio" name="ratetIndex" value="1">
-                                            <input id="rating-2" class="rating__input rating__input-2" type="radio" name="ratetIndex" value="2">
-                                            <input id="rating-3" class="rating__input rating__input-3" type="radio" name="ratetIndex" value="3">
-                                            <input id="rating-4" class="rating__input rating__input-4" type="radio" name="ratetIndex" value="4">
-                                            <input id="rating-5" class="rating__input rating__input-5" type="radio" name="ratetIndex" value="5">
-                                            <label class="rating__label" for="rating-1">
-                                                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                                                    <g transform="translate(16,16)">
-                                                        <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                                                    </g>
-                                                    <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                        <g transform="translate(16,16) rotate(180)">
-                                                            <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                                            <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
-                                                        </g>
-                                                        <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                                            <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                                <span class="rating__sr">1 star—Terrible</span>
-                                            </label>
-                                            <label class="rating__label" for="rating-2">
-                                                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                                                    <g transform="translate(16,16)">
-                                                        <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                                                    </g>
-                                                    <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                        <g transform="translate(16,16) rotate(180)">
-                                                            <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                                            <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
-                                                        </g>
-                                                        <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                                            <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                                <span class="rating__sr">2 stars—Bad</span>
-                                            </label>
-                                            <label class="rating__label" for="rating-3">
-                                                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                                                    <g transform="translate(16,16)">
-                                                        <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                                                    </g>
-                                                    <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                        <g transform="translate(16,16) rotate(180)">
-                                                            <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                                            <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
-                                                        </g>
-                                                        <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                                            <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                                <span class="rating__sr">3 stars—OK</span>
-                                            </label>
-                                            <label class="rating__label" for="rating-4">
-                                                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                                                    <g transform="translate(16,16)">
-                                                        <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                                                    </g>
-                                                    <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                        <g transform="translate(16,16) rotate(180)">
-                                                            <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                                            <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
-                                                        </g>
-                                                        <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                                            <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                                <span class="rating__sr">4 stars—Good</span>
-                                            </label>
-                                            <label class="rating__label" for="rating-5">
-                                                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                                                    <g transform="translate(16,16)">
-                                                        <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                                                    </g>
-                                                    <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                        <g transform="translate(16,16) rotate(180)">
-                                                            <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                                            <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
-                                                        </g>
-                                                        <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                                            <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                                            <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                                <span class="rating__sr">5 stars—Excellent</span>
-                                            </label>
-                                            <p class="rating__display" data-rating="1" hidden>Terrible</p>
-                                            <p class="rating__display" data-rating="2" hidden>Bad</p>
-                                            <p class="rating__display" data-rating="3" hidden>OK</p>
-                                            <p class="rating__display" data-rating="4" hidden>Good</p>
-                                            <p class="rating__display" data-rating="5" hidden>Excellent</p>
-                                        </div>
-                                      </div>
-                                    <input type="hidden" name="product_id" id="product_id" value="<?=$this->uri->segment(3)?>">
-                                    <input type="hidden" name="varient_id" id="varient_id" value="<?=$this->uri->segment(4)?>">
-                                  <div class="mb-3">
-                                    <label for="review-title" class="form-label">Review Title</label>
-                                    <input type="text" class="form-control" name="review_title" id="review-title"  placeholder="Give your review a title">
-                                  </div>
-                                  <div class="review-text-box">
-                                      <label for="Your-review"><?=$this->lang->line('Your review')?></label>
-                                      <textarea name="comment" id="Your-review" cols="30" rows="10" placeholder="enter your message"></textarea>
-                                  </div>
-                                  <button type="submit" id="btnSubmit1" class="add-cart-btn"><?=$this->lang->line('Submit')?></button>
-                                </form>
-                              </div>
-                            </div>
-                          </div>
-                          <?php } ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div> 
-    </div>
-  </section>
-
-
-<!-- ----------related-product---------- -->
-<section class="Latest-Products Categories-section related-product-section section">
-  <img src="<?=$this->theme_base_url?>/assets/images/related-product-bottm-left.png" alt="" class="latest-product-top-img">
-  <img src="<?=$this->theme_base_url?>/assets/images/related-product-top-right.png" alt="" class="related-product-top-right">
+<!-- ----hero-section-- -->
+<section class="hero-section common-banner-bg login-section">
+  <img src="<?= $this->theme_base_url . '/assets/img/home/banner-left-bg.png' ?>" alt="" class="left-bg">
+  <img src="<?= $this->theme_base_url . '/assets/img/home/banner-right-bg.png' ?>" alt="" class="right-bg">
   <div class="container">
-    <h1 class="title">Related <span>Products</span></h1>
-    <p class="pera">Do not miss the current offers until the end of month.</p>
-    <!-- <h5>View All Categories</h5> -->
-
-    <div class="owl-2 owl-carousel owl-theme">
-    <?php foreach ($related_product as $key => $value) { ?>
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="8" value="8" />
-        <div class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
-          <div class="card-header">
-            <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>">
-              <!-- <img src="<?=$this->theme_base_url?>/assets/images/feature-prodct-1.png" alt=""> -->
-              <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>" alt="">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->id).'/'.$this->utility->safe_b64encode($value->pw_id)?>"><?=$value->name?></a></h3>
-            <h4><?=($value->quantity >= 25 ) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h4>
-
-            <div class="rate-dropdown">
-              <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
-              <div class="card-rating">
-                <p><img src="<?=$this->theme_base_url?>/assets/images/card-star-img.png" alt=""><?=$value->ratting['rating']?></p>
-              </div>
-            </div>
-            <h6 class="rating">
-                <?=$this->siteCurrency .' '. number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?=($value->discount_per > 0 ) ? '' : ' d-none' ?>"><strike><?=$this->siteCurrency .' '.$value->price?></strike></span>
-            </h6>
-            <?php 
-            $d_none = '';
-            $d_show = 'd-none';
-            if(!empty($item_weight_id)){
-              if(in_array($value->pw_id,$item_weight_id)){
-                $d_show = '';
-                $d_none = 'd-none';
-              }
-            }
-            ?>
-            <a href="javascript:" class="add-cart-btn addcartbutton <?=$d_none?>" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
-                data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
-                <span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to cart')?> 
-            </a>
-            <div class="product-detail-quentity <?=$d_show?>">
-                <div class="qty-container">
-                  <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                  <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->id?>" data-weight_id="<?=$value->weight_id?>">
-                  <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                </div>
-            </div>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
+        <h1>Shop</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="./product-list-page.php">Shop</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Black Dress For Women</li>
+          </ol>
+        </nav>
       </div>
-    <?php } ?>
     </div>
   </div>
 </section>
-<input type="hidden" name="product_id" id="product_id" value='<?=$product_id?>'>
-<input type="hidden" name="product_varient_id" id="product_varient_id" value='<?=(isset($varientDetails[0]->id) && $varientDetails[0]->id != '' ) ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
+
+
+<!-- product-detalis-section -->
+<section class="product-detalis-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+        <div class="product-image-part">
+          <!-- -------swipr-slider-----  -->
+          <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 gallery-top">
+            <span class="discnt">1% off</span>
+            <div class="pro-hearticon">
+              <i class="fa-regular fa-heart" onclick="myFunction(this)"></i>
+            </div>
+            <div class="swiper-wrapper ">
+              <div class="swiper-slide">
+                <a href="#"><img data-enlargable class="drift-demo-trigger" src="./assets/img/1.png" data-zoom="./assets/img/1.png" /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#"><img data-enlargable class="drift-demo-trigger" src="./assets/img/2.png" data-zoom="./assets/img/2.png" /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#"><img data-enlargable class="drift-demo-trigger" src="./assets/img/3.png" data-zoom="./assets/img/3.png" /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#"><img data-enlargable class="drift-demo-trigger" src="./assets/img/4.png" data-zoom="./assets/img/4.png" /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#"><img data-enlargable class="drift-demo-trigger" src="./assets/img/about-us/about-us-img.png" data-zoom="./assets/img/about-us/about-us-img.png" /></a>
+              </div>
+            </div>
+          </div>
+
+          <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
+            <div class="swiper-wrapper ">
+              <div class="swiper-slide">
+                <img src="./assets/img/1.png">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="./assets/img/2.png" />
+              </div>
+
+              <div class="swiper-slide">
+                <img src="./assets/img/3.png" />
+              </div>
+
+              <div class="swiper-slide">
+                <img src="./assets/img/4.png" />
+              </div>
+
+              <div class="swiper-slide">
+                <img src="./assets/img/about-us/about-us-img.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+        <div class="product-content-part zoom">
+          <div class=""></div>
+          <h6 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">Featured Products: T-shirt</h6>
+          <h2 class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">Grown Cotton T-shirt with print</h2>
+          <h5 class="wow fadeInRight" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            4.5 <span> <a href=""> 174 Ratings & 22 Reviews</a></span>
+          </h5>
+
+          <h3 class="wow fadeInRight" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0">₹800.00 <span><strike>₹840.00</strike></span></h3>
+          <div class="d-flex mt-3 mb-3 wow fadeInRight" data-wow-duration="5s" data-wow-delay="0" data-wow-offset="0">
+            <div class="flex-basis">
+              <h4 class="d-flex align-items-center">Color:<span> Pink</span></h4>
+            </div>
+            <div class="preview">
+              <input class='red' name='color' type='radio' />
+              <input class='green' name='color' type='radio' />
+              <input checked class='yellow' name='color' type='radio' />
+              <input class='purple' name='color' type='radio' />
+            </div>
+          </div>
+
+          <div class="mt-3 mb-3 wow fadeInRight" data-wow-duration="6s" data-wow-delay="0" data-wow-offset="0">
+            <div class="size-wrapper d-flex align-items-center mb-4">
+              <div class="flex-bas">
+                <h4 class="d-flex align-items-center mb-0">Size:<span>XS-S</span></h4>
+              </div>
+              <!-- ----color-picker--- -->
+              <div class="previewsd">
+                <span class="active">XS-S</span>
+                <span>XS</span>
+                <span>S</span>
+                <span>M</span>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <h4>SKU: <span>LDKFWVD</span></h4>
+              </div>
+              <div>
+                <h4>Brands:<span>Studio Design</span></h4>
+              </div>
+              <div>
+                <h4>Tags: <span>fashion, jeans, summer</span></h4>
+              </div>
+              <div>
+                <h4>Categories: <span>Coats, T-Shirts, Woman</span></h4>
+              </div>
+            </div>
+
+            <form action="">
+              <select name="cars" id="cars">
+                <option value="volvo">Shoes</option>
+                <option value="saab">Shirt</option>
+                <option value="mercedes">Jeans</option>
+                <option value="audi">T-shirt</option>
+              </select>
+            </form>
+
+            <!-- -----counter-product-- -->
+            <div class="product-detail-quentity">
+              <div class="qty-container">
+                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                <input type="text" name="qty" value="1" class="input-qty" />
+                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+              </div>
+            </div>
+
+            <!-- -----product-details-btn----- -->
+            <div class="product-detalis-btn">
+              <a href="" class="add-cart-btn lg-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add To Cart</a>
+              <a href="./shop-cart.php" class="order-now"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>Order Now</a>
+              <a href="" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xxl-12">
+      <div class="review-desc">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">DESCRIPTION</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">REVIEWS (0)</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane mt-4 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Vivamus bibendum magna Lorem ipsum dolor sit amet, consectetur adipiscing elit.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <!-- -------review-tab------ -->
+            <div class="my-review-wrapper">
+              <!-- ----review-content--- -->
+              <div class="review-content">
+                <div class="left-content">
+                  <div>
+                    <h3><strong>4.3</strong><span>/5</span></h3>
+                  </div>
+                  <div>
+                    <h4>Overall Rating</h4>
+                    <p>6k verified ratings</p>
+                  </div>
+                </div>
+                <div class="right-content">
+                  <h6>Write a review and win 100 reward points !</h6>
+                  <div class="enter-review-btn">
+                    <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ----review-comment-part--- -->
+              <div class="review-comment-wrapper">
+                <h3>Most Useful Review</h3>
+
+                <div class="supportive-div">
+                  <div class="rewiew-wrapper">
+                    <div class="review-left">
+                      <div class="review-img">
+                        <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                          <defs>
+                            <style>
+                              .cls-1 {
+                                fill: #cc833d;
+                              }
+                            </style>
+                          </defs>
+                          <path class="cls-1" d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z" transform="translate(-0.81 -0.81)" />
+                        </svg>
+                      </div>
+                      <div class="review-text">
+                        <h6>Ashrita Jaiswal</h6>
+                        <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+                      </div>
+                    </div>
+                    <div class="review-right">
+                      <div class="review-right-top">
+                        <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
+                        <h4>"I loved it"</h4>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut consequat. </p>
+                    </div>
+                  </div>
+
+                  <div class="rewiew-wrapper">
+                    <div class="review-left">
+                      <div class="review-img">
+                        <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                          <defs>
+                            <style>
+                              .cls-1 {
+                                fill: #cc833d;
+                              }
+                            </style>
+                          </defs>
+                          <path class="cls-1" d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z" transform="translate(-0.81 -0.81)" />
+                        </svg>
+                      </div>
+                      <div class="review-text">
+                        <h6>Ashrita Jaiswal</h6>
+                        <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+                      </div>
+                    </div>
+                    <div class="review-right">
+                      <div class="review-right-top">
+                        <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
+                        <h4>"I loved it"</h4>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut consequat. </p>
+                    </div>
+                  </div>
+
+                  <div class="rewiew-wrapper">
+                    <div class="review-left">
+                      <div class="review-img">
+                        <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                          <defs>
+                            <style>
+                              .cls-1 {
+                                fill: #cc833d;
+                              }
+                            </style>
+                          </defs>
+                          <path class="cls-1" d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z" transform="translate(-0.81 -0.81)" />
+                        </svg>
+                      </div>
+                      <div class="review-text">
+                        <h6>Ashrita Jaiswal</h6>
+                        <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+                      </div>
+                    </div>
+                    <div class="review-right">
+                      <div class="review-right-top">
+                        <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
+                        <h4>"I loved it"</h4>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut consequat. </p>
+                    </div>
+                  </div>
+
+                  <div class="rewiew-wrapper">
+                    <div class="review-left">
+                      <div class="review-img">
+                        <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                          <defs>
+                            <style>
+                              .cls-1 {
+                                fill: #cc833d;
+                              }
+                            </style>
+                          </defs>
+                          <path class="cls-1" d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z" transform="translate(-0.81 -0.81)" />
+                        </svg>
+                      </div>
+                      <div class="review-text">
+                        <h6>Ashrita Jaiswal</h6>
+                        <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+                      </div>
+                    </div>
+                    <div class="review-right">
+                      <div class="review-right-top">
+                        <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
+                        <h4>"I loved it"</h4>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut consequat. </p>
+                    </div>
+                  </div>
+
+                  <div class="rewiew-wrapper">
+                    <div class="review-left">
+                      <div class="review-img">
+                        <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                          <defs>
+                            <style>
+                              .cls-1 {
+                                fill: #cc833d;
+                              }
+                            </style>
+                          </defs>
+                          <path class="cls-1" d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z" transform="translate(-0.81 -0.81)" />
+                        </svg>
+                      </div>
+                      <div class="review-text">
+                        <h6>Ashrita Jaiswal</h6>
+                        <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+                      </div>
+                    </div>
+                    <div class="review-right">
+                      <div class="review-right-top">
+                        <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
+                        <h4>"I loved it"</h4>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut consequat. </p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="load-btn">
+                <a href="#" class="cmn-btn lg-btn">Load More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+
+
+<!--========= new-arrivals ===========-->
+<section class="new-arrival products-wrap related-products">
+  <div class="container">
+    <div class="row">
+      <div class="col-xxl-12">
+        <div class="title text-center wow fadeIn">
+          <h2>Related <span>Products</span></h2>
+          <p>Choose top trending items</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="owl-carousel owl-theme simple">
+    <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+      <div class="product-card out-of-stock">
+        <div class="product-img-wrap">
+          <div class="product-im ">
+            <a href="./product-detail.php">
+              <img src="./assets/img/home/new-product-img-1.png" alt="">
+            </a>
+          </div>
+          <p>In Stock</p>
+          <div class="stock-icons">
+            <a href="#">
+              <div class="stocks">
+                <a href="#">
+                  <!-- <img src="./assets/img/home/Handbag.png" alt=""> -->
+                  <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/Handbag.svg" viewBox="0 0 19.74 19.25">
+                    <defs>
+                      <style>
+                        .stock-icon-svg {
+                          fill: none;
+                          stroke: #f5512b;
+                          stroke-linecap: round;
+                          stroke-linejoin: round;
+                          stroke-width: 2px;
+                        }
+                      </style>
+                    </defs>
+                    <path class="stock-icon-svg" d="M19.75,8H5.84a.71.71,0,0,0-.46.17.68.68,0,0,0-.23.43L3.93,19.49a.65.65,0,0,0,0,.28A.62.62,0,0,0,4.1,20a.66.66,0,0,0,.23.17.67.67,0,0,0,.28.06H21a.71.71,0,0,0,.28-.06.91.91,0,0,0,.23-.17.77.77,0,0,0,.14-.25.65.65,0,0,0,0-.28L20.43,8.57a.72.72,0,0,0-.22-.43A.71.71,0,0,0,19.75,8ZM8.25,9.75v-3a3.75,3.75,0,0,1,7.5,0v3" transform="translate(-2.92 -2)" />
+                  </svg>
+                </a>
+              </div>
+            </a>
+            <a href="./product-detail.php">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/MagnifyingGlassPlus.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/MagnifyingGlassPlus.svg" viewBox="0 0 20 20">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M7.88,10.88h6m-3-3v6m0,4.87A7.88,7.88,0,1,0,3,10.88,7.88,7.88,0,0,0,10.88,18.75Zm5.56-2.31L21,21" transform="translate(-2 -2)" />
+                </svg>
+              </div>
+            </a>
+            <div class="techno-check">
+              <input class="techno_checkbox" type="checkbox" id="1" value="1">
+              <div class="stocks heart">
+                <!-- <img src="./assets/img/home/HeartStraight.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.44 18.34">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M12.53,19.87l7.6-7.6a5.07,5.07,0,0,0,.37-6.9A4.93,4.93,0,0,0,18.92,4.2a4.89,4.89,0,0,0-3.85-.11,4.81,4.81,0,0,0-1.64,1.09L12,6.61,10.77,5.37A5.07,5.07,0,0,0,3.87,5,4.93,4.93,0,0,0,2.7,6.58a4.89,4.89,0,0,0-.11,3.85,5,5,0,0,0,1.09,1.65l7.79,7.79a.75.75,0,0,0,1.06,0Z" transform="translate(-1.25 -2.75)" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-content">
+          <a href="./product-detail.php">
+            <h5>Blue Dress For Woman</h5>
+            <div class="product-discount">
+              <h4>₹1150.00</h4>
+              <p>₹1230.00</p>
+            </div>
+          </a>
+          <div class="rating-starts">
+            <div class="rating stars3_5">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star star-active"></span>
+              <span class="star star-active-half"></span>
+            </div>
+            <div><span>(122)</span></div>
+          </div>
+          <div class="product-detail-quentity add-cart-btns">
+            <div class="qty-container">
+              <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+              <input type="text" name="qty" value="1" class="input-qty">
+              <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <div class="product-im ">
+            <a href="./product-detail.php">
+              <img src="./assets/img/home/new-product-img-2.png" alt="">
+            </a>
+          </div>
+          <p>In Stock</p>
+          <span class="discnt">1% off</span>
+          <div class="stock-icons">
+            <a href="#">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/Handbag.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/Handbag.svg" viewBox="0 0 19.74 19.25">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M19.75,8H5.84a.71.71,0,0,0-.46.17.68.68,0,0,0-.23.43L3.93,19.49a.65.65,0,0,0,0,.28A.62.62,0,0,0,4.1,20a.66.66,0,0,0,.23.17.67.67,0,0,0,.28.06H21a.71.71,0,0,0,.28-.06.91.91,0,0,0,.23-.17.77.77,0,0,0,.14-.25.65.65,0,0,0,0-.28L20.43,8.57a.72.72,0,0,0-.22-.43A.71.71,0,0,0,19.75,8ZM8.25,9.75v-3a3.75,3.75,0,0,1,7.5,0v3" transform="translate(-2.92 -2)" />
+                </svg>
+              </div>
+            </a>
+            <a href="./product-detail.php">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/MagnifyingGlassPlus.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/MagnifyingGlassPlus.svg" viewBox="0 0 20 20">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M7.88,10.88h6m-3-3v6m0,4.87A7.88,7.88,0,1,0,3,10.88,7.88,7.88,0,0,0,10.88,18.75Zm5.56-2.31L21,21" transform="translate(-2 -2)" />
+                </svg>
+              </div>
+            </a>
+            <div class="techno-check">
+              <input class="techno_checkbox" type="checkbox" id="1" value="1">
+              <div class="stocks heart">
+                <!-- <img src="./assets/img/home/HeartStraight.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.44 18.34">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M12.53,19.87l7.6-7.6a5.07,5.07,0,0,0,.37-6.9A4.93,4.93,0,0,0,18.92,4.2a4.89,4.89,0,0,0-3.85-.11,4.81,4.81,0,0,0-1.64,1.09L12,6.61,10.77,5.37A5.07,5.07,0,0,0,3.87,5,4.93,4.93,0,0,0,2.7,6.58a4.89,4.89,0,0,0-.11,3.85,5,5,0,0,0,1.09,1.65l7.79,7.79a.75.75,0,0,0,1.06,0Z" transform="translate(-1.25 -2.75)" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-content">
+          <a href="./product-detail.php">
+            <h5>Blue Dress For Woman</h5>
+            <div class="product-discount">
+              <h4>₹1150.00</h4>
+              <p>₹1230.00</p>
+            </div>
+          </a>
+          <div class="rating-starts">
+            <div class="rating stars3_5">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star star-active"></span>
+              <span class="star star-active-half"></span>
+            </div>
+            <div><span>(122)</span></div>
+          </div>
+          <div>
+            <button type="button" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+              Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <div class="product-im ">
+            <a href="./product-detail.php"><img src="./assets/img/home/new-product-img-3.png" alt=""></a>
+          </div>
+          <p>In Stock</p>
+          <div class="stock-icons">
+            <a href="#">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/Handbag.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/Handbag.svg" viewBox="0 0 19.74 19.25">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M19.75,8H5.84a.71.71,0,0,0-.46.17.68.68,0,0,0-.23.43L3.93,19.49a.65.65,0,0,0,0,.28A.62.62,0,0,0,4.1,20a.66.66,0,0,0,.23.17.67.67,0,0,0,.28.06H21a.71.71,0,0,0,.28-.06.91.91,0,0,0,.23-.17.77.77,0,0,0,.14-.25.65.65,0,0,0,0-.28L20.43,8.57a.72.72,0,0,0-.22-.43A.71.71,0,0,0,19.75,8ZM8.25,9.75v-3a3.75,3.75,0,0,1,7.5,0v3" transform="translate(-2.92 -2)" />
+                </svg>
+              </div>
+            </a>
+            <a href="./product-detail.php">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/MagnifyingGlassPlus.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/MagnifyingGlassPlus.svg" viewBox="0 0 20 20">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M7.88,10.88h6m-3-3v6m0,4.87A7.88,7.88,0,1,0,3,10.88,7.88,7.88,0,0,0,10.88,18.75Zm5.56-2.31L21,21" transform="translate(-2 -2)" />
+                </svg>
+              </div>
+            </a>
+            <div class="techno-check">
+              <input class="techno_checkbox" type="checkbox" id="1" value="1">
+              <div class="stocks heart">
+                <!-- <img src="./assets/img/home/HeartStraight.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.44 18.34">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M12.53,19.87l7.6-7.6a5.07,5.07,0,0,0,.37-6.9A4.93,4.93,0,0,0,18.92,4.2a4.89,4.89,0,0,0-3.85-.11,4.81,4.81,0,0,0-1.64,1.09L12,6.61,10.77,5.37A5.07,5.07,0,0,0,3.87,5,4.93,4.93,0,0,0,2.7,6.58a4.89,4.89,0,0,0-.11,3.85,5,5,0,0,0,1.09,1.65l7.79,7.79a.75.75,0,0,0,1.06,0Z" transform="translate(-1.25 -2.75)" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-content">
+          <a href="./product-detail.php">
+            <h5>Blue Dress For Woman</h5>
+            <div class="product-discount">
+              <h4>₹1150.00</h4>
+              <p>₹1230.00</p>
+            </div>
+          </a>
+          <div class="rating-starts">
+            <div class="rating stars3_5">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star star-active"></span>
+              <span class="star star-active-half"></span>
+            </div>
+            <div><span>(122)</span></div>
+          </div>
+          <div>
+            <button type="button" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+              Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <div class="product-im ">
+            <a href="./product-detail.php"><img src="./assets/img/home/new-product-img-4.png" alt=""></a>
+          </div>
+          <p>In Stock</p>
+          <div class="stock-icons">
+            <a href="#">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/Handbag.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/Handbag.svg" viewBox="0 0 19.74 19.25">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M19.75,8H5.84a.71.71,0,0,0-.46.17.68.68,0,0,0-.23.43L3.93,19.49a.65.65,0,0,0,0,.28A.62.62,0,0,0,4.1,20a.66.66,0,0,0,.23.17.67.67,0,0,0,.28.06H21a.71.71,0,0,0,.28-.06.91.91,0,0,0,.23-.17.77.77,0,0,0,.14-.25.65.65,0,0,0,0-.28L20.43,8.57a.72.72,0,0,0-.22-.43A.71.71,0,0,0,19.75,8ZM8.25,9.75v-3a3.75,3.75,0,0,1,7.5,0v3" transform="translate(-2.92 -2)" />
+                </svg>
+              </div>
+            </a>
+            <a href="./product-detail.php">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/MagnifyingGlassPlus.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/MagnifyingGlassPlus.svg" viewBox="0 0 20 20">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M7.88,10.88h6m-3-3v6m0,4.87A7.88,7.88,0,1,0,3,10.88,7.88,7.88,0,0,0,10.88,18.75Zm5.56-2.31L21,21" transform="translate(-2 -2)" />
+                </svg>
+              </div>
+            </a>
+            <div class="techno-check">
+              <input class="techno_checkbox" type="checkbox" id="1" value="1">
+              <div class="stocks heart">
+                <!-- <img src="./assets/img/home/HeartStraight.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.44 18.34">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M12.53,19.87l7.6-7.6a5.07,5.07,0,0,0,.37-6.9A4.93,4.93,0,0,0,18.92,4.2a4.89,4.89,0,0,0-3.85-.11,4.81,4.81,0,0,0-1.64,1.09L12,6.61,10.77,5.37A5.07,5.07,0,0,0,3.87,5,4.93,4.93,0,0,0,2.7,6.58a4.89,4.89,0,0,0-.11,3.85,5,5,0,0,0,1.09,1.65l7.79,7.79a.75.75,0,0,0,1.06,0Z" transform="translate(-1.25 -2.75)" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-content">
+          <a href="./product-detail.php">
+            <h5>Blue Dress For Woman</h5>
+            <div class="product-discount">
+              <h4>₹1150.00</h4>
+              <p>₹1230.00</p>
+            </div>
+          </a>
+          <div class="rating-starts">
+            <div class="rating stars3_5">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star star-active"></span>
+              <span class="star star-active-half"></span>
+            </div>
+            <div><span>(122)</span></div>
+          </div>
+          <div>
+            <button type="button" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+              Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <div class="product-im ">
+            <a href="./product-detail.php"><img src="./assets/img/home/new-product-img-5.png" alt=""></a>
+          </div>
+          <p>In Stock</p>
+          <div class="stock-icons">
+            <a href="#">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/Handbag.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/Handbag.svg" viewBox="0 0 19.74 19.25">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M19.75,8H5.84a.71.71,0,0,0-.46.17.68.68,0,0,0-.23.43L3.93,19.49a.65.65,0,0,0,0,.28A.62.62,0,0,0,4.1,20a.66.66,0,0,0,.23.17.67.67,0,0,0,.28.06H21a.71.71,0,0,0,.28-.06.91.91,0,0,0,.23-.17.77.77,0,0,0,.14-.25.65.65,0,0,0,0-.28L20.43,8.57a.72.72,0,0,0-.22-.43A.71.71,0,0,0,19.75,8ZM8.25,9.75v-3a3.75,3.75,0,0,1,7.5,0v3" transform="translate(-2.92 -2)" />
+                </svg>
+              </div>
+            </a>
+            <a href="./product-detail.php">
+              <div class="stocks">
+                <!-- <img src="./assets/img/home/MagnifyingGlassPlus.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/home/MagnifyingGlassPlus.svg" viewBox="0 0 20 20">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M7.88,10.88h6m-3-3v6m0,4.87A7.88,7.88,0,1,0,3,10.88,7.88,7.88,0,0,0,10.88,18.75Zm5.56-2.31L21,21" transform="translate(-2 -2)" />
+                </svg>
+              </div>
+            </a>
+            <div class="techno-check">
+              <input class="techno_checkbox" type="checkbox" id="1" value="1">
+              <div class="stocks heart">
+                <!-- <img src="./assets/img/home/HeartStraight.png" alt=""> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.44 18.34">
+                  <defs>
+                    <style>
+                      .stock-icon-svg {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="stock-icon-svg" d="M12.53,19.87l7.6-7.6a5.07,5.07,0,0,0,.37-6.9A4.93,4.93,0,0,0,18.92,4.2a4.89,4.89,0,0,0-3.85-.11,4.81,4.81,0,0,0-1.64,1.09L12,6.61,10.77,5.37A5.07,5.07,0,0,0,3.87,5,4.93,4.93,0,0,0,2.7,6.58a4.89,4.89,0,0,0-.11,3.85,5,5,0,0,0,1.09,1.65l7.79,7.79a.75.75,0,0,0,1.06,0Z" transform="translate(-1.25 -2.75)" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-content">
+          <a href="./product-detail.php">
+            <h5>Blue Dress For Woman</h5>
+            <div class="product-discount">
+              <h4>₹1150.00</h4>
+              <p>₹1230.00</p>
+            </div>
+          </a>
+          <div class="rating-starts">
+            <div class="rating stars3_5">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star star-active"></span>
+              <span class="star star-active-half"></span>
+            </div>
+            <div><span>(122)</span></div>
+          </div>
+          <div>
+            <button type="button" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+              Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- -------review-popup-- -->
+<div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Write Review</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-circle-xmark"></i></button>
+      </div>
+      <form class="modal-body">
+        <div class="rating-box">
+          <div class="rating">
+            <div class="rating__stars">
+              <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
+              <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
+              <input id="rating-3" class="rating__input rating__input-3" type="radio" name="rating" value="3">
+              <input id="rating-4" class="rating__input rating__input-4" type="radio" name="rating" value="4">
+              <input id="rating-5" class="rating__input rating__input-5" type="radio" name="rating" value="5">
+              <label class="rating__label" for="rating-1">
+                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                  <g transform="translate(16,16)">
+                    <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
+                  </g>
+                  <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <g transform="translate(16,16) rotate(180)">
+                      <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                      <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                    </g>
+                    <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                      <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                    </g>
+                  </g>
+                </svg>
+                <span class="rating__sr">1 star—Terrible</span>
+              </label>
+              <label class="rating__label" for="rating-2">
+                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                  <g transform="translate(16,16)">
+                    <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
+                  </g>
+                  <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <g transform="translate(16,16) rotate(180)">
+                      <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                      <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                    </g>
+                    <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                      <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                    </g>
+                  </g>
+                </svg>
+                <span class="rating__sr">2 stars—Bad</span>
+              </label>
+              <label class="rating__label" for="rating-3">
+                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                  <g transform="translate(16,16)">
+                    <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
+                  </g>
+                  <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <g transform="translate(16,16) rotate(180)">
+                      <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                      <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                    </g>
+                    <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                      <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                    </g>
+                  </g>
+                </svg>
+                <span class="rating__sr">3 stars—OK</span>
+              </label>
+              <label class="rating__label" for="rating-4">
+                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                  <g transform="translate(16,16)">
+                    <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
+                  </g>
+                  <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <g transform="translate(16,16) rotate(180)">
+                      <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                      <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                    </g>
+                    <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                      <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                    </g>
+                  </g>
+                </svg>
+                <span class="rating__sr">4 stars—Good</span>
+              </label>
+              <label class="rating__label" for="rating-5">
+                <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                  <g transform="translate(16,16)">
+                    <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
+                  </g>
+                  <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <g transform="translate(16,16) rotate(180)">
+                      <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                      <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                    </g>
+                    <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                      <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                      <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                    </g>
+                  </g>
+                </svg>
+                <span class="rating__sr">5 stars—Excellent</span>
+              </label>
+              <p class="rating__display" data-rating="1" hidden>Terrible</p>
+              <p class="rating__display" data-rating="2" hidden>Bad</p>
+              <p class="rating__display" data-rating="3" hidden>OK</p>
+              <p class="rating__display" data-rating="4" hidden>Good</p>
+              <p class="rating__display" data-rating="5" hidden>Excellent</p>
+            </div>
+          </div>
+
+          <div class="review-text-box">
+            <textarea name="" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn cmn-btn lg-btn" data-bs-dismiss="modal">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
