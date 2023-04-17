@@ -524,7 +524,7 @@ class Checkout_model extends My_model
             return $response;
         }
 
-        echo $totalSaving . '-' . $discountValue;
+        dd($totalSaving());
         exit;
         $calculate = ($total_price / 100) * $promocode[0]->percentage;
 
