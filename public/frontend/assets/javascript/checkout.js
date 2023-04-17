@@ -482,9 +482,7 @@ var CHECKOUT = (function () {
             ).toFixed(2)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);
-          $("#totalSaving").html(
-            siteCurrency + " " + promocodeDiscount.toFixed(2)
-          );
+          $("#totalSaving").html(siteCurrency + " " + promocodeDiscount);
         }
       },
     });
