@@ -16,7 +16,7 @@
 </section>
 
 <div class="login-section p-100">
-    <img src="./assets/images/login-imges/login-wave-img.png" alt="" class="login-wave-img">
+    <img src="<?=$this->theme_base_url?>/assets/images/login-imges/login-wave-img.png" alt="" class="login-wave-img">
     <div class="container">
         <div class="row">
             <div class="col-xxl-6 col-lg-6 col-md-6">
@@ -55,10 +55,10 @@
 
             <!-- ------login-right-image-- -->
             <div class="login-images col-xxl-6 col-lg-6 col-md-6">
-                <img src="./assets/images/login-imges/login-sub-img-1.png" alt="" class="login-sub-img-1">
-                <img src="./assets/images/login-imges/login-sub-img-2.png" alt="" class="login-sub-img-2">
+                <img src="<?=$this->theme_base_url?>/assets/images/login-imges/login-sub-img-1.png" alt="" class="login-sub-img-1">
+                <img src="<?=$this->theme_base_url?>/assets/images/login-imges/login-sub-img-2.png" alt="" class="login-sub-img-2">
                 <div class="login-img-part">
-                    <img src="./assets/images/login-imges/login-main-img.png" alt="">
+                    <img src="<?=$this->theme_base_url?>/assets/images/login-imges/login-main-img.png" alt="">
                 </div>
             </div>
         </div>
