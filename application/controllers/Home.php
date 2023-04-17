@@ -111,8 +111,8 @@ class Home extends User_Controller
 			$value->ratting = $this->this_model->selectStarRatting($value->id,$value->pw_id);
 		}
 		
+		dd($top_selling_core);
 		$data['top_sell'] = $top_selling_core;
-		dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
 		// dd($data['banner']);die;
 
