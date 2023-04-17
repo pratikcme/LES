@@ -72,8 +72,8 @@
                 <p>Or</p>
 
                 <div class="log-in-btn">
-                  <a href="<?=$googleUrl?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span>Login with Google</a>
-                  <a href="<?=base_url().'login/fb_login'?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span>Login with Facebook</a>
+                  <a href="<?=$googleUrl?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span><?=$this->lang->line('continue with google')?></a>
+                  <a href="<?=base_url().'login/fb_login'?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?=$this->lang->line('continue with facebook')?></a>
                 </div>
 
                 <h3>Already have an account? <a href="<?=base_url().'login'?>">Sign in</a></h3>
