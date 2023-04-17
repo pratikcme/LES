@@ -61,7 +61,7 @@
             <span id="ceye"><i class="far fa-eye-slash"></i></span>
           </div>
           <label for="confirm_password" class="error"></label> 
-          <label class="main">By creating an account, you agree to our <a href="<?=base_url().'terms_condition'?>"> Terms Of Conditions </a> and <a href="<?=base_url().'privacy_policy'?>"> privacy policy.</a>
+          <label class="main">By creating an account, you agree to our <a href="<?=base_url().'terms_condition'?>"> Terms Of Conditions </a> and <a href="<?=base_url().'privacy_policy'?>"><?=$this->lang->line('Privacy Policy')?> .</a>
           <input type="checkbox" name="term_policy">
           <span class="geekmark"></span>
         </label>
