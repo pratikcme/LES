@@ -90,18 +90,16 @@ class Home extends User_Controller
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
 			}
-			if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image) || !empty($value->image) || $value->image != '') {
-				$image = $value->image;
-				$image = $default_product_image;
-				// if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
-				// 	// $image = 'defualt.png';	
-				// } else {
-				// 	$image = $value->image;
-				// }
+			if (!empty($value->image) || $value->image != '') {
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $value->image)) {
+					// $image = 'defualt.png';	
+					$value->image = $default_product_image;
+				} else {
+					$value->image = $value->image;
+				}
+			} else {
+				$value->image = $default_product_image;
 			}
-			//  else {
-			// 	$image = $default_product_image;
-			// }
 			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
 			$value->addQuantity = $addQuantity;
 
@@ -113,7 +111,7 @@ class Home extends User_Controller
 		}
 		
 		$data['top_sell'] = $top_selling_core;
-		dd($data['top_sell']);
+		// dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
 		// dd($data['banner']);die;
 
