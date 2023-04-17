@@ -460,10 +460,9 @@ class Checkout_model extends My_model
                 $discountValue = number_format((float)$discountValue, 2, '.', '');
             }
         }
-        // $sub_total = number_format((float)($getMycartSubtotal - $discountValue), 2, '.', '');
-        $sub_total = $getMycartSubtotal - $discountValue;
-        // $total_price = number_format((float)$sub_total, 2, '.', '');
-        $total_price = $sub_total;
+        $sub_total = number_format((float)($getMycartSubtotal - $discountValue), 2, '.', '');
+        $total_price = number_format((float)$sub_total, 2, '.', '');
+
 
         if (empty($promocode)) {
             $response["success"] = 0;
