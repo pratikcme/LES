@@ -15,24 +15,24 @@
       <div class="row">
         <div class="col-xl-3 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
           <div class="foot-4 common-links">
-            <h3>Contact</h3>
+            <h3><?=$this->lang->line('Contact Us')?></h3>
             <div class="row">
               <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
-                <a href="#"><i class="fa-solid fa-location-dot"></i></a>
+                <a href="javascript:"><i class="fa-solid fa-location-dot"></i></a>
               </div>
               <div class="col-xxl-11 col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11">
                 <h4>103 South Pleasant DriveTuscaloosa, AL 35405</h4>
               </div>
 
               <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
-                <a href="#"><i class="fa-solid fa-mobile-screen-button"></i></a>
+                <a href="javascript:"><i class="fa-solid fa-mobile-screen-button"></i></a>
               </div>
               <div class="col-xxl-11 col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11">
-                <h4><a href="tel:"><?=(!empty($appLinks) && $appLinks[0]->contact_number != '' ) ? @$appLinks[0]->contact_number : "1800-121-000" ?></a></h4>
+                <h4><a href="tel: <?=(!empty($appLinks) && $appLinks[0]->contact_number != '' ) ? @$appLinks[0]->contact_number : "" ?>"><?=(!empty($appLinks) && $appLinks[0]->contact_number != '' ) ? @$appLinks[0]->contact_number : "1800-121-000" ?></a></h4>
               </div>
 
               <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
-                <a href="#"><i class="fa-regular fa-envelope"></i></a>
+                <a href="javascript:"><i class="fa-regular fa-envelope"></i></a>
               </div>
               <div class="col-xxl-11 col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11">
                 <h4><a href="mailto:"><?=(!empty($appLinks) && @$appLinks[0]->contact_email != '' ) ? @$appLinks[0]->contact_email : "" ?></a></h4>
@@ -77,7 +77,7 @@
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
           <div class="foot-1">
-            <a href="../index.php"><img src="<?=$this->theme_base_url?>/assets/images/header-logo.png" alt="" class="logo-foot-img"></a>
+            <a href="<?=base_url()?>"><img src="<?=$this->theme_base_url?>/assets/images/header-logo.png" alt="" class="logo-foot-img"></a>
             <h4><?=$this->lang->line('Download App')?></h4>
             <!-- <p>From App Store or Google Play</p> -->
             <div class="foot-btn">
@@ -86,10 +86,10 @@
             </div>
             <div class="foot-payment-icons">
               <ul>
-                <li><a href=""><img src="<?=$this->theme_base_url?>/assets/images/home-page/foot-icon-1.png" alt=""></a></li>
-                <li><a href=""><img src="<?=$this->theme_base_url?>/assets/images/home-page/foot-icon-2.png" alt=""></a></li>
-                <li><a href=""><img src="<?=$this->theme_base_url?>/assets/images/home-page/foot-icon-3.png" alt=""></a></li>
-                <li><a href=""><img src="<?=$this->theme_base_url?>/assets/images/home-page/foot-icon-4.png" alt=""></a></li>
+                <li><a href="javascript:"><img src="<?=$this->theme_base_url?>/assets/images/home-page/foot-icon-1.png" alt=""></a></li>
+                <li><a href="javascript:"><img src="<?=$this->theme_base_url?>/assets/images/home-page/foot-icon-2.png" alt=""></a></li>
+                <li><a href="javascript:"><img src="<?=$this->theme_base_url?>/assets/images/home-page/foot-icon-3.png" alt=""></a></li>
+                <li><a href="javascript:"><img src="<?=$this->theme_base_url?>/assets/images/home-page/foot-icon-4.png" alt=""></a></li>
               </ul>
             </div>
           </div>
