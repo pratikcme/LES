@@ -94,8 +94,7 @@ class Home extends User_Controller
 				$image = $value->image;
 				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
 					// $image = 'defualt.png';	
-					echo $image = $default_product_image;
-					die;
+					$image = $default_product_image;
 				} else {
 					$image = $value->image;
 				}
@@ -113,7 +112,7 @@ class Home extends User_Controller
 		}
 		
 		$data['top_sell'] = $top_selling_core;
-		// dd($data['top_sell']);
+		dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
 		// dd($data['banner']);die;
 
