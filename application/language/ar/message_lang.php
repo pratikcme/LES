@@ -135,6 +135,7 @@ $lang['continue with google'] = 'تواصل مع جوجل';
 $lang['Gst number'] = 'رقم Gst';
 $lang['Email*'] = 'بريد إلكتروني*';
 $lang['password*'] = 'كلمة المرور*';
+$lang['password'] = 'كلمة المرور';
 
 // register
 $lang['Register'] = 'يسجل';

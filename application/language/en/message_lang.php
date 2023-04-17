@@ -135,6 +135,7 @@ $lang['Gst number'] = 'Gst number';
 
 $lang['Email*'] = 'Email*';
 $lang['password*'] = 'password*';
+$lang['password'] = 'password';
 
 // register
 $lang['Register'] = 'Register';
