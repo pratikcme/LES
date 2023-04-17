@@ -1,0 +1,48 @@
+.privacy-banner{
+    padding-bottom: 50px;
+}
+
+.privay-policy{
+    padding-bottom: 70px;
+}
+
+.privay-policy p{
+    line-height: 28px;
+    margin-bottom: 28px;
+}
+
+.privay-policy h2{
+    margin-bottom: 20px;
+}
+
+.privay-policy h5{
+    border-bottom: 1px solid;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.privay-policy ul{
+    margin-bottom: 35px;
+}
+
+.privay-policy li{
+    list-style-type: disc !important;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+
+@media only screen and (max-width:991px){
+    .privay-policy.p-100{
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+
+    .privay-policy h2{
+        line-height: 30px !important;
+    }
+
+    .privay-policy li{
+        font-size: 15px;
+    }
+}
