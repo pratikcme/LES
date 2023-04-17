@@ -16,7 +16,7 @@
 </section>
 
 <div class="login-section forgot-section p-100">
-    <img src="./assets/images/login-imges/login-wave-img.png" alt="" class="login-wave-img">
+    <img src="<?=$this->theme_base_url?>/assets/images/login-imges/login-wave-img.png" alt="" class="login-wave-img">
     <div class="container">
         <div class="row">
             <div class="col-xxl-6 col-lg-6 col-md-6">
