@@ -67,7 +67,7 @@
                 </div>
 
 
-                <button type="submit" class="sign-in-btn signin-btn-green"><?=$this->lang->line('Sign Up')?></button> 
+                <button type="submit" class="sign-in-btn signin-btn-green"><?=$this->lang->line('Sign up')?></button> 
                 
                 <p>Or</p>
 
