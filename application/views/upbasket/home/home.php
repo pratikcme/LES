@@ -267,7 +267,7 @@
             ?>
             <a href="javascript:" class="add-cart-btn addcartbutton <?=$d_none?>" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
                 data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
-                <span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to art')?>
+                <span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to cart')?>
             </a>
             <div class="product-detail-quentity <?=$d_show?>">
                       <div class="qty-container">
