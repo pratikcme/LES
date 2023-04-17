@@ -1,44 +1,48 @@
-a{
+a {
     text-decoration: none !important;
 }
-li{
+
+li {
     list-style: none !important;
 }
 
-h1{
+h1 {
     font-size: 45px !important;
 }
-h2{
+
+h2 {
     font-size: 40px !important;
     font-family: var(--BeVietnamPro-ExtraBold);
     line-height: 40px !important;
 }
-p{
+
+p {
     font-family: var(--BeVietnamPro-Regular);
     font-size: 16px;
     line-height: 20px;
 }
 
-.p-100{
+.p-100 {
     padding: 100px 0px;
 }
 
-.pt-0{
-    padding-top:0px !important;
+.pt-0 {
+    padding-top: 0px !important;
 }
 
-.pb-0{
-    padding-bottom:0px !important;
+.pb-0 {
+    padding-bottom: 0px !important;
 }
 
 
 /* ---title-csss---- */
-.title h2{
+.title h2 {
     color: var(--title-first-color);
     text-align: center;
     position: relative;
     margin-bottom: 15px;
 }
+
 .title h2::before {
     content: url(../images/home-page/title-common-img.png);
     position: absolute;
@@ -48,14 +52,14 @@ p{
     max-width: 60px;
 }
 
-.title p{
+.title p {
     color: var(--common-pera-color);
     text-align: center;
 }
 
 
 /* ------common-cardd-css---- */
-.card{
+.card {
     width: 100%;
     min-height: 427px;
     padding-left: 15px;
@@ -68,6 +72,7 @@ p{
     overflow: hidden;
     /* box-shadow: 0px 0px rgba(0,0,0,0.6); */
 }
+
 /* .card:hover, .add-cart-btn{
     border: 1px solid var(--secondary-color) !important;
     box-shadow: 0px 10px 50px rgba(249, 38, 114, 0.12) !important;
@@ -75,7 +80,7 @@ p{
 /* .card:hover .add-cart-btn{
     bottom: 0px !important;
 } */
-.card-header{
+.card-header {
     background: var(--card-img-bg) !important;
     border: none !important;
     width: 100% !important;
@@ -89,6 +94,7 @@ p{
     margin-bottom: 10px !important;
     position: relative;
 }
+
 /* .card-header::before{
    content: "\f08a";
    font-family: "FontAwesome";
@@ -104,12 +110,13 @@ p{
    right: 7px;
   
 } */
-.card-header img{
+.card-header img {
     width: 100%;
     max-width: 220px;
     height: 200px;
 }
-.card-header h5{
+
+.card-header h5 {
     font-family: var(--BeVietnamPro-Regular);
     font-size: 16px;
     line-height: 20px;
@@ -139,33 +146,34 @@ p{
 
 }
 
-.add-cart-btn input[type=text]{
+.add-cart-btn input[type=text] {
     color: #000 !important;
     height: 100%;
     outline: 0 !important;
 }
 
-.add-cart-btn .input-qty{
+.add-cart-btn .input-qty {
     border-bottom: 2px solid var(--card-btn-bg) !important;
 }
 
-.add-cart-btn.product-detail-quentity .qty-container{
+.add-cart-btn.product-detail-quentity .qty-container {
     border: none;
 }
 
-.add-cart-btn.product-detail-quentity .qty-container i{
+.add-cart-btn.product-detail-quentity .qty-container i {
     color: var(--common-white);
 }
 
-.add-cart-btn span{
+.add-cart-btn span {
     margin-right: 10px;
 }
-.card-btn{
-    text-align: center;     
+
+.card-btn {
+    text-align: center;
 }
 
 /* -----checkbox-css----- */
-.techno-check{
+.techno-check {
     position: relative;
 }
 
@@ -180,7 +188,8 @@ p{
     cursor: pointer;
     border-radius: 50% !important;
 }
-.techno_checkbox:checked~.card::before{
+
+.techno_checkbox:checked~.card::before {
     content: "\f004";
     font-family: "FontAwesome";
     position: absolute;
@@ -199,21 +208,23 @@ p{
 
 
 /* ------common-bg and commom-h2-title--- */
-.common-banner-bg{
+.common-banner-bg {
     background: url(../images/common-title-bg.png) !important;
     width: 100%;
-    height: 100%;
+    height: auto !important;
     padding-top: 200px !important;
     padding-bottom: 80px !important;
     background-size: cover;
 }
-.common-banner-bg h1{
+
+.common-banner-bg h1 {
     font-family: var(--BeVietnamPro-Medium);
     font-size: 48px;
     font-weight: 500;
     line-height: 48px;
     color: var(--title-first-color);
 }
+
 .breadcrumb-item+.breadcrumb-item::before {
     float: left;
     padding-right: var(--bs-breadcrumb-item-padding-x);
@@ -221,6 +232,7 @@ p{
     content: "\f105" !important;
     font-family: "FONTAWESOME";
 }
+
 .breadcrumb-item {
     font-family: var(--BeVietnamPro-Regular);
     font-size: 16px;
@@ -228,23 +240,26 @@ p{
     letter-spacing: 0.05em;
 }
 
-.breadcrumb-item a{
+.breadcrumb-item a {
     color: var(--common-pera-color) !important;
 }
-.breadcrumb{
+
+.breadcrumb {
     margin-top: 25px;
     display: flex;
     justify-content: center !important;
     align-items: center;
 }
-.breadcrumb > .active{
+
+.breadcrumb>.active {
     font-family: var(--BeVietnamPro-Regular);
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.05em;
     color: var(--secondary-color) !important;
 }
-.common-banner-bg nav{
+
+.common-banner-bg nav {
     justify-content: center;
 }
 
@@ -252,12 +267,13 @@ p{
 
 
 /* -------user-login-dropdown-- */
-.user-login-icon{
+.user-login-icon {
     position: relative;
 }
+
 .user-login-dropdow {
     background: var(--common-white);
-    border: 1px solid var( --card-border-color);
+    border: 1px solid var(--card-border-color);
     box-shadow: 0px 10px 25px rgb(34 37 40 / 5%);
     width: 190px;
     border-radius: 10px 10px 10px 10px;
@@ -274,6 +290,7 @@ p{
     visibility: hidden;
     transition: 0.3s;
 }
+
 .user-login-dropdow::before {
     content: "";
     position: absolute;
@@ -285,26 +302,30 @@ p{
     top: -21px;
     left: 80px;
 }
-.active.user-login-dropdow{
-    opacity:1;
+
+.active.user-login-dropdow {
+    opacity: 1;
     visibility: visible;
 }
-.user-login-header{
+
+.user-login-header {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     padding-right: 15px;
     padding-top: 10px;
     padding-left: 15px;
 }
-.user-login-header h4{
+
+.user-login-header h4 {
     font-family: var(--BeVietnamPro-Medium);
     font-size: 12px;
     line-height: 20px;
     text-transform: capitalize;
     color: #0F053F;
 }
-.user-login-header h3 a{ 
+
+.user-login-header h3 a {
     font-family: var(--BeVietnamPro-ExtraBold);
     font-size: 12px;
     line-height: 20px;
@@ -313,12 +334,14 @@ p{
     background: none !important;
     width: 100%;
 }
-.user-data-wrapper{
+
+.user-data-wrapper {
     border-top: 1px solid rgba(34, 37, 40, 0.3);
     padding-left: 15px;
     padding-right: 15px;
 }
-.user-data-wrapper a{
+
+.user-data-wrapper a {
     background: none !important;
     font-family: var(--BeVietnamPro-Medium);
     font-size: 12px;
@@ -333,30 +356,32 @@ p{
     transition: 0.3s;
 
 }
+
 .user-data-wrapper a span {
     color: var(--secondary-color) !important;
     margin-right: 10px;
     font-size: 15px;
-    
+
 }
+
 .user-data-wrapper a:hover,
-.user-data-wrapper a:active{
-   transform: translateX(5px);
-   color: var(--secondary-color) !important;
+.user-data-wrapper a:active {
+    transform: translateX(5px);
+    color: var(--secondary-color) !important;
 }
 
 
 
 
 /* --------- cart-dropdown-css--------- */
-.cart-icons{
+.cart-icons {
     position: relative;
 }
 
-.cart-dropdwon{
+.cart-dropdwon {
     background: var(--common-white);
-    border: 1px solid var( --card-border-color);
-    box-shadow: 0px 10px 25px rgba(34, 37, 40, 0.05); 
+    border: 1px solid var(--card-border-color);
+    box-shadow: 0px 10px 25px rgba(34, 37, 40, 0.05);
     width: 300px;
     border-radius: 20px;
     position: absolute;
@@ -371,22 +396,26 @@ p{
     transition: 0.3s;
     transform: translateY(20px);
 }
-.cart-drop-wrapper{
+
+.cart-drop-wrapper {
     height: 100%;
     max-height: 290px !important;
     overflow: hidden;
     overflow-y: scroll;
 }
+
 ::-webkit-scrollbar {
     display: none;
 }
-.active.cart-dropdwon{
+
+.active.cart-dropdwon {
     opacity: 1;
     visibility: visible;
     transition: 0.3s;
     transform: translateY(0px);
     z-index: 999;
 }
+
 .cart-dropdwon::before {
     content: "";
     position: absolute;
@@ -409,20 +438,24 @@ p{
     margin-bottom: -5px;
     border-bottom: 0.5px solid #FFB9CE;
 }
+
 .cart-drop-wrapper .cart-drop-menu:last-child {
     border-bottom: none !important;
 }
-.cart-dropdwon > .cart-drop-menu-2{
+
+.cart-dropdwon>.cart-drop-menu-2 {
     margin-top: -15px !important;
     padding-top: 5px;
 }
-.cart-dropdwon > .cart-drop-menu-3{
+
+.cart-dropdwon>.cart-drop-menu-3 {
     margin-top: -15px !important;
     padding-top: 5px;
 }
-.drop-img{
+
+.drop-img {
     background: var(--common-white);
-    border: 1px solid var( --card-border-color);
+    border: 1px solid var(--card-border-color);
     box-shadow: 0px 10px 25px rgba(34, 37, 40, 0.05);
     width: 60px;
     height: 60px;
@@ -431,14 +464,17 @@ p{
     justify-content: center;
     align-items: center;
 }
-.drop-img img{
-  width: 100%;
-  max-width: 40px !important;
+
+.drop-img img {
+    width: 100%;
+    max-width: 40px !important;
 }
-.drop-img a{
+
+.drop-img a {
     background: none !important;
 }
-.drop-text h4{
+
+.drop-text h4 {
     max-width: 130px;
     font-family: var(--BeVietnamPro-Medium);
     font-size: 13px;
@@ -454,6 +490,7 @@ p{
     height: 100%;
     max-height: 35px !important;
 }
+
 .drop-text h4 a {
     width: 100%;
     font-family: var(--BeVietnamPro-Medium);
@@ -461,26 +498,30 @@ p{
     background: none !important;
     height: 100%;
 }
-.drop-text p{
+
+.drop-text p {
     font-family: var(--BeVietnamPro-Regular);
     font-size: 12px;
     line-height: 15px;
-    letter-spacing: 0.02em;  
+    letter-spacing: 0.02em;
     color: var(--drop-cart-text-2);
     margin-bottom: 0px;
 }
+
 .drop-text h3 {
     font-family: var(--BeVietnamPro-ExtraBold);
     font-size: 15px;
     line-height: 30px;
     color: var(--drop-cart-number);
 }
+
 .cancel-btn a {
     background: none !important;
     font-size: 18px;
     margin-left: 0px;
     color: var(--secondary-color) !important;
 }
+
 .cart-dropdwon hr {
     background: var(--drop-cart-bottom-border) !important;
     height: 1px !important;
@@ -489,6 +530,7 @@ p{
     top: 0px;
     width: 100%;
 }
+
 .total-amount {
     display: flex;
     align-items: center;
@@ -497,20 +539,23 @@ p{
     padding-left: 20px;
     margin-top: 20px;
 }
-.total-amount p{
+
+.total-amount p {
     font-family: var(--BeVietnamPro-Medium);
     font-size: 16px;
     line-height: 20px;
     color: var(--drop-cart-text-1);
     margin-bottom: 0px;
 }
-.total-amount h3{
+
+.total-amount h3 {
     font-family: var(--BeVietnamPro-ExtraBold);
     font-size: 16px;
     line-height: 30px;
     color: var(--drop-cart-number);
 }
-.drop-btns{
+
+.drop-btns {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -519,7 +564,8 @@ p{
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.drop-btns .view-cart{
+
+.drop-btns .view-cart {
     background: var(--secondary-color) !important;
     padding: 10px 20px 10px 20px !important;
     font-family: var(--BeVietnamPro-ExtraBold) !important;
@@ -536,11 +582,11 @@ p{
 }
 
 
-.drop-btns .view-cart:hover{
+.drop-btns .view-cart:hover {
     transform: translateY(-10px);
 }
 
-.drop-btns .checkout{
+.drop-btns .checkout {
     background: var(--primary-color) !important;
     padding: 10px 20px 10px 20px !important;
     font-family: var(--BeVietnamPro-ExtraBold);
@@ -554,18 +600,17 @@ p{
     transition: 0.5s;
 }
 
-.drop-btns .checkout:hover{
+.drop-btns .checkout:hover {
     transform: translateY(-10px);
 }
 
-.cancel-btn a{
+.cancel-btn a {
     position: relative;
     left: 10px;
 }
 
-@media only screen and (max-width:1200px){
-    .p-100{
+@media only screen and (max-width:1200px) {
+    .p-100 {
         padding: 80px 0;
     }
 }
-
