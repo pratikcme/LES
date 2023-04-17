@@ -91,15 +91,14 @@ class Home extends User_Controller
 				$value->discount_price = $value->without_gst_price;
 			}
 			if (!empty($value->image) || $value->image != '') {
-				$image = $value->image;
-				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $value->image)) {
 					// $image = 'defualt.png';	
-					$image = $default_product_image;
+					$value->image = $default_product_image;
 				} else {
-					$image = $value->image;
+					$value->image = $value->image;
 				}
 			} else {
-				$image = $default_product_image;
+				$value->image = $default_product_image;
 			}
 			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
 			$value->addQuantity = $addQuantity;
