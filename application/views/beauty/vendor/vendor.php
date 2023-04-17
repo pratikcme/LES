@@ -17,7 +17,7 @@
             <div class="col-xl-12 text-center">
                 <div class="title">
                     <h2>Vendor</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                 </div>
             </div>
 

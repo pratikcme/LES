@@ -27,7 +27,7 @@
   <div class="mobile-navbar">
     <?php $this->load->view($_SESSION['template_name'] . '/include/mobile_navbar'); ?>
     <div class="floting-cart-btn">
-    <a href="./shop-cart.php" class="mobile-cart-btn"><img src="<?=$this->theme_base_url?>/assets/images/header-cart-icon.svg" alt="cart"></a>
+    <a href="./shop-cart.php" class="mobile-cart-btn"><img src="<?=$this->theme_base_url.'/assets/images/header-cart-icon.svg'?>" alt="cart"></a>
 </div>
   </div>
   <?php
