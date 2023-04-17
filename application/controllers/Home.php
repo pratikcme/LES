@@ -93,9 +93,9 @@ class Home extends User_Controller
 			if (!empty($value->image) || $value->image != '') {
 				$image = $value->image;
 				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
-					echo '2';die;
 					// $image = 'defualt.png';	
-					$image = $default_product_image;
+					echo $image = $default_product_image;
+					die;
 				} else {
 					$image = $value->image;
 				}
