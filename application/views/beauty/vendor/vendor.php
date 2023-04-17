@@ -4,7 +4,7 @@
       <!-- <h2>Home /<span>My Account</span></h2> -->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="./index.php"><?=$this->lang->line('home')?></a></li>
+          <li class="breadcrumb-item"><a href=""><?=$this->lang->line('home')?></a></li>
           <li class="breadcrumb-item check-show active" aria-current="page"><?=$this->lang->line('vendor')?></li>
         </ol>
       </nav>
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-xl-12 text-center">
                 <div class="title">
-                    <h2>Vendor</h2>
+                    <h2><?=$this->lang->line('vendor')?></h2>
                     <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                 </div>
             </div>
