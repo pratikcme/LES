@@ -477,7 +477,11 @@ var CHECKOUT = (function () {
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
-            parseFloat(response.orderAmount) + parseFloat(shipping_charge)
+            response.orderAmount + shipping_charge
+
+            // (
+            //   parseFloat(response.orderAmount) + parseFloat(shipping_charge)
+            // ).toFixed(2)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);
           $("#totalSaving").html(
