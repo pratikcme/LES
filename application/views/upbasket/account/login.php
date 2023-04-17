@@ -12,12 +12,12 @@
               <div class="login-deatils-wrapper">
                   <form id="LoginForm" action="<?=base_url().'login'?>" method="post">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input type="text" name="email" class="form-control"  placeholder="Email*">
+                      <label for="exampleInputEmail1" class="form-label"><?=$this->lang->line('Email')?></label>
+                      <input type="text" name="email" class="form-control"  placeholder="<?=$this->lang->line('Email*')?>">
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="password" placeholder="password*">
+                      <label for="exampleInputPassword1" class="form-label"><?=$this->lang->line('password')?></label>
+                      <input type="password" name="password" class="form-control" id="password" placeholder="<?=$this->lang->line('password*')?>">
                     </div>
                     <a href="<?=base_url().'login/forget_password'?>" class="forgot-password-text"><?=$this->lang->line('Forgot Your Password')?>?</a>
 

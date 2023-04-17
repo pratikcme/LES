@@ -37,16 +37,16 @@
                             </div>
                             <a href="<?=base_url().'login/forget_password'?>" class="forgot-password-text"><?=$this->lang->line('Forgot Your Password')?>?</a>
                             <div class="sign-in-btn tab-save-btn">
-                                <input type="submit" value="submit">
+                                <input type="submit"  id="btnSubmit" value="<?=$this->lang->line('Submit')?>">
                             </div>
-                            <p>Or, log in with your socials</p>
+                            <p>Or</p>
 
                             <div class="log-in-btn">
                                 <a href="<?=$googleUrl?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span><?=$this->lang->line('continue with google')?></a>
                                 <a href="<?=base_url().'login/fb_login'?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?=$this->lang->line('continue with facebook')?></a>
                             </div>
 
-                            <h3>Dont’ hvae an account? <a href="./sign-up-page.php">Sign up</a></h3>
+                            <h3>Dont’ hvae an account? <a href="<?=base_url().'register'?>"><?=$this->lang->line('Sign up')?></a></h3>
                         </form>
                         
                     </div>
