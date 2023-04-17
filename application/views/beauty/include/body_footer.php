@@ -49,15 +49,17 @@
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
           <div class="foot-2 common-links">
-            <h3>Categories</h3>
+            <h3><?=$this->lang->line('Categories')?></h3>
             <ul>
-              <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Skincare</a></li>
-              <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Lips</a></li>
+            <?php foreach ($CategoryHighrstProduct as $key => $value) { ?>
+              <li><a href="<?=base_url().'products?cat_id='.$this->utility->safe_b64encode($value->id)?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$value->name?></a></li>
+            <?php } ?>
+              <!-- <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Lips</a></li>
               <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Hair</a></li>
               <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Eye</a></li>
               <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Makeup</a></li>
               <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Natural</a></li>
-              <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Fragrance</a></li>
+              <li><a href="<?=$this->theme_base_url?>/p-listing-2.html"><span><i class="fa-solid fa-arrow-right"></i></span>Fragrance</a></li> -->
             </ul>
           </div>
         </div>
