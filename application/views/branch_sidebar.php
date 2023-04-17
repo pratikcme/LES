@@ -1,9 +1,8 @@
 <li class="sub-menu" style="display: 'none'">
-    <!-- <a href="javascript:;"
-        class="dcjq-parent <?php if ($this->uri->segment(1) == 'sell' || $this->uri->segment(1) == 'register' ||  $this->uri->segment(1) == "sell_development") { ?> active <?php } ?>">
+    <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'sell' || $this->uri->segment(1) == 'register' ||  $this->uri->segment(1) == "sell_development") { ?> active <?php } ?>">
         <i class="fa fa-tags"></i>
         <span>Sell</span>
-    </a> -->
+    </a>
     <ul class="sub">
         <!-- <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?> > <a href="<?php echo base_url() . 'sell/index/'; ?>">Sell</a></li> -->
         <li <?php echo ($this->uri->segment(2) == 'index') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url() . 'sell_development/index/'; ?>">Sell development</a></li>
