@@ -69,8 +69,6 @@
               <li><a href="<?=base_url().'privacy_policy'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Privacy Policy')?></a></li>
               <li><a href="<?=base_url().'terms_condition'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Term & Conditions')?></a></li>
               <li><a href="<?=base_url().'return_refund'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Refund & Return / Shipping policy')?></a></li>
-              <li><a href="#"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Return policy')?></a></li>
-              <!-- <li><a href="<?=$this->theme_base_url?>/contact-us.php"><span><i class="fa-solid fa-arrow-right"></i></span>Shipping policy</a></li> -->
               <li><a href="<?=base_url().'contact'?>"><span><i class="fa-solid fa-arrow-right"></i></span><?=$this->lang->line('Contact Us')?></a></li>
             </ul>
           </div>
