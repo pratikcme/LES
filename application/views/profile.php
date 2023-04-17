@@ -135,80 +135,56 @@ $vendor_id = $this->session->userdata['id'];
                                         </span></label>
                                     <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number" value="<?php echo $app_result['phone_no']; ?>" maxlength="15" onkeypress="validate(event)">
                                 </div>
+
                                 <?php
-
-                                if ($vendor_id == 0) { ?>
-                                    <!-- <div class="form-group">
-                                    <label for="">Folder Name<span class="required" aria-required="true"> *
-                                        </span></label>
-                                    <input type="text" name="folder_name" class="form-control" id="folder_name"
-                                        placeholder="Folder name" value="<?php echo $app_result['img_folder']; ?>"
-                                        maxlength="25" <?= ($app_result['img_folder'] != '') ? "readonly" : "" ?>>
-                                </div> -->
-                                    <!-- <div class="form-group">
-                                        <label class="margin_top_label">Favicon Image:<span class="required" aria-required="true"> * </span></label>
-                                        <input type="hidden" id="old_favicon" name="old_favicon" value="<?php echo $app_result['favicon_image']; ?>">
-                                        <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control img margin_top_input" id="favicon_image" name="favicon_image" placeholder="Select webLogo"> <span id="favicon_image" style="color: red;"></span>
-                                        <div class="favicon_img_preview" style="display: none;"> <img src="" id="favicon_img_preview" width="200" height="150"> </div>
-                                        <div class="All_images"></div>
-                                    </div> -->
-                                    <!-- <?php $favicon = $app_result['favicon_image']; ?>
-                                    <div class="img favicon" style="margin-right: 10px; margin-bottom: 20px;">
-                                        <?php if ($favicon != '' && file_exists('public/client_logo/' . $favicon)) { ?> <img src="<?php echo base_url() . 'public/client_logo/' . $favicon; ?>" style="height: 180px; width: 200px;">
-                                        <?php } ?>
-                                    </div>
-
-                                <?php  } ?> -->
-
-                                    <?php
-                                    if ($vendor_id != 0) { ?>
-                                        <div class="form-group row ">
-                                            <div class="col-md-11">
-                                                <label class="margin_top_label">Enter Location :<span class="required" aria-required="true"> * </span> </label>
-                                                <input type="text" id="departure_address" onFocus="initAutocomplete('departure_address')" class="dis form-control" name="location" maxlength="255" value="<?php if (isset($app_result['location'])) {
-                                                                                                                                                                                                                echo $app_result['location'];
-                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                echo set_value('location');
-                                                                                                                                                                                                            } ?>" placeholder="Location"> <span style="color: red;"><?php echo form_error('location'); ?></span>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <a class="display_map" href="javascript:;" onclick="initialize('departure');" title="Pick from Map"><img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></a>
-                                            </div>
-                                            <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="<?php if (isset($app_result['latitude'])) {
-                                                                                                                                            echo $app_result['latitude'];
+                                if ($vendor_id != 0) { ?>
+                                    <div class="form-group row ">
+                                        <div class="col-md-11">
+                                            <label class="margin_top_label">Enter Location :<span class="required" aria-required="true"> * </span> </label>
+                                            <input type="text" id="departure_address" onFocus="initAutocomplete('departure_address')" class="dis form-control" name="location" maxlength="255" value="<?php if (isset($app_result['location'])) {
+                                                                                                                                                                                                            echo $app_result['location'];
+                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                            echo set_value('location');
+                                                                                                                                                                                                        } ?>" placeholder="Location"> <span style="color: red;"><?php echo form_error('location'); ?></span>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a class="display_map" href="javascript:;" onclick="initialize('departure');" title="Pick from Map"><img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></a>
+                                        </div>
+                                        <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="<?php if (isset($app_result['latitude'])) {
+                                                                                                                                        echo $app_result['latitude'];
+                                                                                                                                    } else {
+                                                                                                                                        echo set_value('latitude');
+                                                                                                                                    } ?>" />
+                                        <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="<?php if (isset($app_result['longitude'])) {
+                                                                                                                                            echo $app_result['longitude'];
                                                                                                                                         } else {
-                                                                                                                                            echo set_value('latitude');
+                                                                                                                                            echo set_value('longitude');
                                                                                                                                         } ?>" />
-                                            <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="<?php if (isset($app_result['longitude'])) {
-                                                                                                                                                echo $app_result['longitude'];
-                                                                                                                                            } else {
-                                                                                                                                                echo set_value('longitude');
-                                                                                                                                            } ?>" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Gst Number<span class="required" aria-required="true"> *
-                                                </span></label>
-                                            <input type="gst_number" name="gst_number" class="form-control" id="gst_number" placeholder="Gst number" value="<?php echo $app_result['gst_number']; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Self pickup<span class="required" aria-required="true"> *
-                                                </span></label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <input type="radio" name="selfPickUp" class="" id="selfPickUp" value="0" <?= ($app_result['selfPickUp'] == '0') ? 'checked' : '' ?>> Disabled
-                                                    <input type="radio" name="selfPickUp" class="" id="selfPickUp" value="1" <?= ($app_result['selfPickUp'] == 1) ? 'checked' : '' ?>>Enabled
-                                                </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Gst Number<span class="required" aria-required="true"> *
+                                            </span></label>
+                                        <input type="gst_number" name="gst_number" class="form-control" id="gst_number" placeholder="Gst number" value="<?php echo $app_result['gst_number']; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Self pickup<span class="required" aria-required="true"> *
+                                            </span></label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="radio" name="selfPickUp" class="" id="selfPickUp" value="0" <?= ($app_result['selfPickUp'] == '0') ? 'checked' : '' ?>> Disabled
+                                                <input type="radio" name="selfPickUp" class="" id="selfPickUp" value="1" <?= ($app_result['selfPickUp'] == 1) ? 'checked' : '' ?>>Enabled
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="selfPickupOpenClosingTiming">Self pickup open & closing Day &
-                                                time</label>
-                                            <textarea type="text" id="selfPickupOpenClosingTiming" name="selfPickupOpenClosingTiming" class="form-control"><?php echo @$app_result['selfPickupOpenClosingTiming'] != '' ? $app_result['selfPickupOpenClosingTiming'] : @set_value('selfPickupOpenClosingTiming'); ?></textarea>
-                                            <label for="selfPickupOpenClosingTiming" class="error">
-                                                <?php echo @form_error('selfPickupOpenClosingTiming'); ?>
-                                            </label>
-                                        </div>
-                                        <!-- <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="selfPickupOpenClosingTiming">Self pickup open & closing Day &
+                                            time</label>
+                                        <textarea type="text" id="selfPickupOpenClosingTiming" name="selfPickupOpenClosingTiming" class="form-control"><?php echo @$app_result['selfPickupOpenClosingTiming'] != '' ? $app_result['selfPickupOpenClosingTiming'] : @set_value('selfPickupOpenClosingTiming'); ?></textarea>
+                                        <label for="selfPickupOpenClosingTiming" class="error">
+                                            <?php echo @form_error('selfPickupOpenClosingTiming'); ?>
+                                        </label>
+                                    </div>
+                                    <!-- <div class="form-group">
                                     <label for="">Online Payment<span class="required" aria-required="true"> *
                                         </span></label>
                                     <div class="row">
@@ -274,8 +250,8 @@ $vendor_id = $this->session->userdata['id'];
                                         <?php echo @form_error('selfPickupOpenClosingTiming'); ?>
                                     </label>
                                 </div> -->
-                                    <?php
-                                    }  ?>
+                                <?php
+                                }  ?>
                             </div>
                             <div id="myMap" class="myMap"> </div>
                         </div>
