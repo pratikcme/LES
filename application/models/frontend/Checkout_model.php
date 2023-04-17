@@ -451,6 +451,7 @@ class Checkout_model extends My_model
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
         $getMycartSubtotal = getMycartSubtotal();
+        dd($getMycartSubtotal);
         $discountValue = 0;
         $shoppingDiscount = $this->checkShoppingBasedDiscount();
         if (!empty($shoppingDiscount)) {
