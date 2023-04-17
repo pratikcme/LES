@@ -98,7 +98,7 @@
                                     <a href="<?=base_url().'login/fb_login'?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?=$this->lang->line('continue with facebook')?></a>
                                 </div>
 
-                                <h3>Already have an account? <a href="<?=base_url().'login'?>"><?=$this->lang->line('Sign in')?></a></h3>
+                                <h3>Already have an account? <a href="<?=base_url().'login'?>"><?=$this->lang->line('Sign In')?></a></h3>
 
                             </div>
                         </form>
