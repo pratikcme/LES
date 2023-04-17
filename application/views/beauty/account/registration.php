@@ -27,7 +27,7 @@
                     <div class="login-deatils-wrapper signin-deatils-wrapper">
                         <h2 class="title"><?=$this->lang->line('Sign up')?></h2>
                         <p class="pera">Let’s create your account</p>
-                        <form action="">
+                        <form id="RegisterForm" method="post" action="<?=base_url().'register'?>">
                             <div class="row">
                                 <div class="col-xxl-6">
                                     <div class="mb-3">
