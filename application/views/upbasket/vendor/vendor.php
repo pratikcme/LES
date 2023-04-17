@@ -4,8 +4,8 @@
       <!-- <h2>Home /<span>My Account</span></h2> -->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?=$this->theme_base_url?>/index.php">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Vendor</li>
+          <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
+          <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('vendor')?></li>
         </ol>
       </nav>
     </div>
@@ -24,7 +24,7 @@
             <div class="vendor-main">
                  <!-- <h2>New York, USA</h2> -->
 
-                 <div class="row" id=vendorByajax>
+                 <div class="row" id="vendorByajax">
                    <!-- dd($branch);  -->
                  <?php foreach ($branch as $key => $value) { ?>
                     <div class="col-xl-6 col-lg-6 col-md-6">
@@ -51,7 +51,7 @@
                                             <path d="M7.00003 3.93706C7.36248 3.93706 7.6563 3.64324 7.6563 3.28079C7.6563 2.91834 7.36248 2.62451 7.00003 2.62451C6.63757 2.62451 6.34375 2.91834 6.34375 3.28079C6.34375 3.64324 6.63757 3.93706 7.00003 3.93706Z" fill="white"/>
                                             </svg>
                                         </span>
-                                        <h6>+1 212-253-8400</h6>
+                                        <h6>+91-<?=$value->phone_no?></h6>
                                     </div>
                                 </div>
                             </div>

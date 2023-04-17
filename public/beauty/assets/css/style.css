@@ -1,0 +1,92 @@
+@import url('./var.css');
+@import url('./header.css');
+@import url('./common.css');
+@import url('./home.css');
+@import url('./footer.css');
+@import url('./login.css');
+@import url('./product-list.css');
+@import url('./product.details.css');
+@import url('./shop-cart.css');
+@import url('./checkout-page.css');
+@import url('./myaccount.css');
+@import url('./contact-us.css');
+@import url('./about-us.css');
+@import url('./vendor.css');
+@import url('./privacy-policy.css');
+@import url('./rtl.css');
+
+
+/* -----fonts------ */
+@font-face {
+    font-family: 'BeVietnamPro-Black';
+    src: url('../fonts/BeVietnamPro-Black.woff2') format('woff2'),
+        url('BeVietnamPro-Black.woff') format('woff');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'BeVietnamPro-Bold';
+    src: url('../fonts/BeVietnamPro-Bold.woff2') format('woff2'),
+        url('BeVietnamPro-Bold.woff') format('woff');
+    font-weight: bold;
+}
+
+
+
+@font-face {
+    font-family: 'BeVietnamPro-ExtraBold';
+    src: url('../fonts/BeVietnamPro-ExtraBold.woff2') format('woff2'),
+        url('BeVietnamPro-ExtraBold.woff') format('woff');
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: 'BeVietnamPro-Regular';
+    src: url('../fonts/BeVietnamPro-Regular.woff2') format('woff2'),
+        url('BeVietnamPro-Regular.woff') format('woff');
+    font-weight: normal;
+
+}
+
+@font-face {
+    font-family: 'BeVietnamPro-SemiBold';
+    src: url('../fonts/BeVietnamPro-SemiBold.woff2') format('woff2'),
+        url('BeVietnamPro-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+
+}
+
+
+@font-face {
+    font-family: 'BeVietnamPro-Medium';
+    src: url('../fonts/BeVietnamPro-Medium.woff2') format('woff2'),
+        url('BeVietnamPro-Medium.woff') format('woff');
+    font-weight: 500;
+
+}
+
+@font-face {
+    font-family: 'PinyonScript-Regular';
+    src: url('../fonts/PinyonScript-Regular.woff2') format('woff2'),
+        url('PinyonScript-Regular.woff') format('woff');
+    font-weight: normal;
+
+}
+
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('../fonts/Poppins-SemiBold.woff2') format('woff2'),
+        url('Poppins-SemiBold.woff') format('woff');
+    font-weight: 600;
+
+}
+@font-face {
+    font-family: 'Poppins-regular';
+    src: url('../fonts/Poppins-Regular.woff2') format('woff2'),
+        url('Poppins-SemiBold.woff') format('woff');
+    font-weight: 600;
+
+}
+
+

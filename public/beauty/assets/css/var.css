@@ -1,0 +1,227 @@
+:root{
+
+  /* ------fonts--- */
+  --BeVietnamPro-Black: 'BeVietnamPro-Black';
+  --BeVietnamPro-Bold: 'BeVietnamPro-Bold';
+  --BeVietnamPro-ExtraBold:'BeVietnamPro-ExtraBold';
+  --BeVietnamPro-Regular: 'BeVietnamPro-Regular';
+  --BeVietnamPro-SemiBold: 'BeVietnamPro-SemiBold';
+  --BeVietnamPro-Medium:'BeVietnamPro-Medium';
+
+  --PinyonScript-Regular: 'PinyonScript-Regular';
+
+  --Poppins-SemiBold:'Poppins-SemiBold';
+  --Poppins-regular:'Poppins-regular';
+
+
+  /* -----colors--- */
+
+    --light-green-bg:rgba(234, 247, 237, 0.5);
+    --light-white-bg: #F5F5F5;
+    --common-pera-color: #555261;
+
+    --primary-color: #0F053F;
+    --secondary-color: #F92672;
+
+    ---primary-pink: #F92672;
+    --secondary-black: #0F053F;
+    --light-black:#868390;
+
+    --primary-box-shadow:0px 20px 50px rgba(43, 174, 74, 0.15);
+
+    --title-first-color:#0F053F;
+    --common-pera-color: #868390;
+    --common-btn-color: #11405A;
+    --common-btn-shadow: 0px 7px 20px rgba(17, 64, 90, 0.2);
+    --common-white: #fff;
+    --btn-hover-text: #11405A;
+    --btn-hover-shadow: 0px 3px 10px 1px rgba(17, 64, 90, 0.9);
+    --select-border-color:#C5CCD5;
+   
+    --common-border:#FFB9CE;
+     
+    /* -----breadcrumb-color--- */
+    --breadcrumb-link-color:#222528;
+    --breadcrumb-active-link-color:#2BAE4A;
+  
+    /* -----header-color---- */
+
+    --header-icon-color-first: #222528;
+    --header-icon-color-second: #FFFFFF;
+    --header-icon-round-color: #FFE5EF;
+    --header-text-white: #FFFFFF;
+    --header-btn-bg:#0F053F;
+    --header-btn-text:#FFFFFF;
+
+
+    /* -----navigation-bar-color---- */
+    --nav-text-color: #0F053F;
+    --nav-hover-color: #F92672;
+
+
+    /* ------categorie-sec-color------ */
+    --categorie-wrapper-border:#CCD3DB;
+    --categorie-wrapper-bg:linear-gradient(66.89deg, #FFE9F1 19.01%, rgba(255, 233, 241, 0.28) 100.66%);;
+    --categorie-wrapper-bg-hover:#2BAE4A;
+    --categorie-wrapper-round:linear-gradient(66.89deg, #FFE9F1 19.01%, rgba(255, 233, 241, 0.28) 100.66%);;
+    --categorie-wrapper-text: #0F053F;
+
+    /* -------card-color------ */
+    --card-bg-color:#fff;
+    --card-border-color:#FFE8EF;
+    --card-text-primary:#0F053F;
+    --card-text-secondary:#555261;
+    --card-number-primary:#F92672;
+    --card-number-secondary:#555261;
+    --card-btn-bg:#F92672;
+    --card-img-bg:#FFEEF4;
+
+   /* ----our-offer-color--- */
+   --offer-1-primary-text:#F92672;
+   --offer-1-secondary-text:#0F053F;
+   --offer-1-btn:#0F053F;
+   
+   --offer-2-primary-text:#7749BE;
+   --offer-2-secondary-text:#7C0580;
+   --offer-2-btn:#7749BE;
+
+   /* Three-banner-color */
+   --card-text-color:#031B61;
+   --modern-card-color:#A05500;
+   --practical-card-color:#035B3E;
+   --card-color: #3E8DC5;
+
+
+    /* ----------footer-color------ */
+      --footer-text-primary:#0F053F;
+      --footer-text-secondary:#555261;
+      --footer-bg-color:linear-gradient(72.81deg, #FFE9F1 30.13%, rgba(255, 233, 241, 0.28) 82.74%);
+      --footer-link-hover: #F92672;
+      --copy-right-bg:#F92672;
+
+
+    /* ------------lisiting-colors---------   */
+    --lising-banner-title-1:#222528;
+    --lising-banner-title-2:#2BAE4A;
+    --listing-text-1:#555261;
+    --filter-icon-color-1: #2BAE4A;
+    --list-icon-color-2: #222528;
+    --listing-sub-ctg-bg:#F2F5F3;
+    --listing-sub-ctg-border:#D9E2ED;
+    --listing-sub-ctg-text:#414549;
+    --listing-sub-ctg-hover:#2BAE4A;
+    --listing-filter-icon-bg: #0F053F;
+
+     /* ------------lisiting-2-colors---------   */
+    --listing-2-ctg-bg: #FFFFFF;
+    --listing-2-ctg-border: #FFE8EF;
+    --listing-2-header-bg: #FFEEF4;
+    --listing-2-header-text: #0F053F;
+    --listing-2-normal-text: #555261;
+
+    /* --------dropdown-cart------ */
+    --drop-cart-text-1:#0F053F;
+    --drop-cart-text-2:#0F053F;
+    --drop-cart-number:#F92672;
+    --drop-cart-bottom-border: #FFEEF4;
+    
+    /* -----product-detalis-color---- */
+    --product-details-text-1:#0F053F;
+    --product-details-text-2:#555261;
+    --product-details-text-3:#F92672;
+    --product-details-text-4:#F92672;
+    --product-details-image-bg:#FFEEF4;
+    --product-details-btn-1:#0F053F;
+    --product-details-btn-2:#2BAE4A;
+
+
+    /* -------- shop-cart-color------- */
+
+    --cart-thead-bg:linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%);
+    --cart-thead-text:#0F053F;
+    --cart-td-text-1:#0F053F;
+    --cart-td-text-2:#414549;
+    --cart-td-text-3:#F92672;
+    --cart-image-bg:#FFEEF4;
+    --cart-counter-border:#FFB9CE;
+    --cart-counter-bg:#fff;
+    --cart-icon:#F92672;
+    --proceed-checkout-btn-bg:#F92672;
+    --proceed-checkout-btn-text:#fff;
+
+
+    /* ----------------checkout-process-color----- */
+    --accordian-head-bg:linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%);
+    --accordian-bg:#fff;
+    --accordian-border:#FFB9CE;
+    --accordian-head-text:#030235;
+    --accordian-icon:#FFB9CE;
+    --accordian-icon-bg:#FFEEF4;
+    --accordian-content-text-1:#030235;
+    --accordian-content-text-2:#4D4C61;
+    --accordian-star:#FFB9CE;
+    --checkout-secure-icon:rgba(255, 185, 206, 0.4);
+
+
+
+    /* -------modal-popup-color---- */
+    --modal-bg:rgba(17, 64, 90, 0.9);
+    --modal-text-1:#F92672;
+    --modal-text-2:#0F053F;
+    --modal-text-3:#555261;
+    --continue-btn-bg:#F92672;
+    --continue-btn-text:#fff;
+    --close-btn:#F92672;
+    
+    
+    /* -----------about-us-css-------- */
+    --peragraph-color: #414549;
+    --client-wrapper-text-2: #222528;
+    --client-wrapper-text-3: #2BAE4A;
+    --client-wrapper-bg: #FFFFFF;
+    --client-wrapper-border: #D9E2ED;
+    --client-wrapper-icon: #D9E2ED;
+
+
+
+    /* ------myaccount-css--- */
+   --myaccoutn-tab-bg:linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%);;
+   --myaccoutn-tab-border:#FFB9CE;
+   --myaccoutn-tab-text:#0F053F;
+   --myaccoutn-tab-active-bg:#F92672;
+   --myaccoutn-tab-label-text:#0F053F;
+   --myaccoutn-tab-input-bg:#FFFFFF;
+   --myaccoutn-tab-input-border:#D0C9F1;
+
+
+   /* login-page-color--- */
+   --login-title-color:#0F053F;
+   --login-pera-color:#4E447D;
+   --login-wrapper-bg:#FFFFFF;
+   --login-wrapper-border:#FFB9CE;
+   --login-wrapper-label:#0F053F;
+   --login-wrapper-placholder:#555261;
+   --login-wrapper-input-bg:#FFFFFF;
+   --login-wrapper-input-border:#D0C9F1;
+   --login-btn-bg:#F92672;
+   --login-btn-text:#FFF;
+   --forgot-text:#F92672;
+
+
+   /* -----contact-us-css------- */
+   --left-contact-wrapper-bg:#FFFFFF;
+   --left-contact-wrapper-border:#FFB9CE;
+   --left-contact-wrapper-label:#0F053F;
+   --left-contact-wrapper-input-bg:#FFFFFF;
+   --left-contact-wrapper-input-border:#D0C9F1;
+   --left-contact-submit-btn-bg:#F92672;
+   --left-contact-submit-btn-text:#FFF;
+
+   --right-contact-wrapper-bg:#11405A;
+   --right-contact-wrapper-border:#D9E2ED;
+   --right-contact-icon-round:#FFEEF4;
+   --right-contact-wrapper-text:#0F053F;
+
+
+
+}

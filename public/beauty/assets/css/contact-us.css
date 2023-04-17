@@ -1,0 +1,279 @@
+.contact-us-section{
+    position: relative;
+}
+
+.contact-us-section .title{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-us-section .pera{
+    text-align: center;
+    margin-bottom: 90px;
+}
+.left-contact-wrapper{
+    background: var(--left-contact-wrapper-bg);
+    border: 1px solid var(--left-contact-wrapper-border);
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 20px 50px rgba(34, 37, 40, 0.1);
+    border-radius: 20px;
+    padding: 50px 80px;
+    position: relative;
+    margin-top: 50px;
+}
+.left-contact-wrapper label{
+    font-family: var(--BeVietnamPro-Medium);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--left-contact-wrapper-label);
+    margin-bottom: 15px !important;
+}
+.left-contact-wrapper input{
+    background: var(--left-contact-wrapper-input-bg);
+    border: 1px solid var(--left-contact-wrapper-input-border);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding-left: 25px;
+    height: 60px;
+    font-family: var(--BeVietnamPro-Regular);
+    font-size: 14px;
+    line-height: 16px;
+    color: #555261 !important;
+}
+.left-contact-wrapper input:focus{
+    box-shadow: none;
+    border: 1px solid var(--left-contact-wrapper-input-border) !important;
+    box-shadow: 0px 4px 7px rgba(34, 37, 40, 0.05) !important;
+}
+.left-contact-wrapper input::placeholder{
+    font-family: var(--BeVietnamPro-Regular);
+    font-size: 14px;
+    line-height: 16px;
+    color: #555261;
+}
+.left-contact-wrapper textarea:focus-visible{
+    box-shadow: none;
+    border: 1px solid var(--left-contact-wrapper-input-border) !important;
+    outline: none !important;
+    box-shadow: 0px 4px 7px rgba(34, 37, 40, 0.05);
+}
+.left-contact-wrapper textarea{
+    background: var(--left-contact-wrapper-input-bg);
+    border: 1px solid var(--left-contact-wrapper-input-border);
+    border-radius: 10px;
+    
+    padding-left: 25px;
+    width: 100%;
+    height: 186px;
+    padding-top: 15px;
+    font-family: var(--BeVietnamPro-Regular);
+    font-size: 14px;
+    line-height: 16px;
+    color: #555261;
+}
+.left-contact-wrapper textarea::placeholder{
+    font-family: var(--BeVietnamPro-Regular);
+    font-size: 14px;
+    line-height: 16px;
+    color: #555261;
+}
+.left-contact-wrapper .submit-btn button
+{
+    padding: 15px 50px 15px 50px;
+    background: var(--left-contact-submit-btn-bg);
+    border: 1px solid var(--left-contact-submit-btn-bg);
+    border-radius: 10px;
+    font-family: var(--BeVietnamPro-SemiBold);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--left-contact-submit-btn-text);
+    text-transform: capitalize;
+    transition: 0.3s;
+}
+.left-contact-wrapper .submit-btn button:hover{
+    background: transparent;
+    border: 1px solid var(--left-contact-submit-btn-bg);
+    box-shadow: 0px 4px 10px rgba(43, 174, 74, 0.2);
+    color: var(--left-contact-submit-btn-bg);
+}
+.left-contact-wrapper .submit-btn {
+    margin-top: 65px !important;
+    margin-bottom: 40px !important;
+}
+.right-contact-main{
+    background: #FFFFFF;
+    border: 1px solid var(--common-border);
+    border-radius: 30px;
+}
+
+
+.contact-right-content{
+    align-self: center;
+}
+.right-contact-wrapper{
+    background: var(--right-contact-wrapper-bg);
+    border: 1px solid var(--right-contact-wrapper-border);
+    box-shadow: 0px 20px 50px rgba(34, 37, 40, 0.1);
+    border-radius: 20px;
+    width: 600px;
+    height: 460px;
+    padding: 60px 50px 10px 50px;
+    margin-left: -70px;
+    position: relative;  
+}
+.right-contact-main{
+    width: 100%;
+    max-width: 310px;
+    min-height: 240px;
+    margin: 0px auto;
+    display: flex;
+    padding: 30px;
+    gap: 27px;
+    margin-bottom: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.right-contact{
+    background: var(--right-contact-icon-round);
+    width: 100%;
+    max-width: 78px;
+    height: 78px !important;
+    color: var(--secondary-color) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 90px;
+    font-size: 30px;
+
+}   
+.right-contact-text h3 a{
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--right-contact-wrapper-text);
+}
+
+.right-contact-text h4 a{
+    font-family: var(--BeVietnamPro-SemiBold);
+    font-size: 14px;
+    line-height: 25px;
+    color: var(--right-contact-wrapper-text);
+}
+
+
+/* ============responsive========== */
+
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .left-contact-wrapper{
+        padding-bottom: 0px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .left-contact-wrapper{
+        padding-bottom: 0px;
+        margin-top: 30px;
+    }
+    .right-contact-main{
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .left-contact-wrapper .submit-btn {
+        margin-top: 50px !important;
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .left-contact-wrapper{
+        padding-bottom: 0px;
+        margin-top: 30px;
+    }
+    .right-contact-main{
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .left-contact-wrapper .submit-btn {
+        margin-top: 50px !important;
+    }
+}
+
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .contact-us-section .title p br{
+          display: none;
+    }
+    .left-contact-wrapper{
+        padding-bottom: 0px !important;
+        margin-top: 30px;
+        padding: 50px 50px;
+    }
+    .right-contact-main{
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .left-contact-wrapper .submit-btn {
+        margin-top: 50px !important;
+    }
+}
+
+@media only screen and (min-width: 424px) and (max-width: 575px) {
+    .contact-us-section .title p br{
+          display: none;
+    }
+    .left-contact-wrapper{
+        padding-bottom: 0px !important;
+        margin-top: 30px;
+        padding: 50px 40px;
+    }
+    .right-contact-main{
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .left-contact-wrapper .submit-btn {
+        margin-top: 50px !important;
+    }
+    .left-contact-wrapper .submit-btn a{
+        font-size: 16px;
+        padding: 15px 30px 15px 30px;
+    }
+    .left-contact-wrapper input{
+        height: 50px;
+    }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 424px) {
+    .contact-us-section .title p br{
+          display: none;
+    }
+    .left-contact-wrapper{
+        padding-bottom: 0px !important;
+        margin-top: 30px;
+        padding: 30px 20px;
+    }
+    .right-contact-main{
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .left-contact-wrapper .submit-btn {
+        margin-top: 50px !important;
+    }
+    .left-contact-wrapper .submit-btn a{
+        font-size: 16px;
+        padding: 15px 30px 15px 30px;
+    }
+    .left-contact-wrapper input{
+        height: 50px;
+    }
+}

@@ -1,0 +1,855 @@
+.login-section nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.login-section{
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: relative;
+}
+
+.login-left-content .title{
+    margin-left: 0px;
+    position: relative;
+    margin-top: 50px;
+    font-family: var(--BeVietnamPro-ExtraBold);
+    font-size: 40px;
+    line-height: 40px;
+    color: var(--login-title-color);
+
+
+}
+.login-left-content .title::before{
+    content: url(../images/home-page/title-common-img.png);
+    position: absolute;
+    top: -55px;
+    left: 30.5%;
+    width: 100%;
+    max-width: 60px;
+}
+
+.login-left-content .pera{
+    margin-bottom: 50px;
+    margin-left: 0px;
+    font-family: var(--BeVietnamPro-Regular);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--login-pera-color);
+
+
+}
+.login-left-content{
+    position: relative;
+}
+.login-deatils-wrapper{
+    background: var( --login-wrapper-bg);
+    border: 1px solid var( --login-wrapper-border);
+    width: 636px;
+    height: 663px;
+    box-shadow: 0px 20px 50px rgba(34, 37, 40, 0.1);
+    border-radius: 20px;
+    padding: 50px 40px 0px 40px;
+    /* margin-left: 50px; */
+    overflow: hidden;
+    overflow-y: scroll;
+   overscroll-behavior: none;
+}
+.login-deatils-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  
+.login-deatils-wrapper label{
+    font-family: var(--BeVietnamPro-Medium);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--login-wrapper-label);
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+.login-deatils-wrapper label span{
+    color: #FF1D1D;
+}
+.login-deatils-wrapper input
+{
+    background: var(--login-wrapper-input-bg);
+    border: 1px solid var(--login-wrapper-input-border) !important;
+    box-shadow: 0px 4px 7px rgba(34, 37, 40, 0.05);
+    border-radius: 10px;
+    width: 100%;
+    height: 60px;
+    padding-left: 25px;
+    margin-bottom: 40px;
+    outline: 0;
+}
+
+.login-deatils-wrapper select{
+    border: 1px solid var(--login-wrapper-input-border) !important;
+    box-shadow: 0px 4px 7px rgba(34, 37, 40, 0.05);
+    border-radius: 10px;
+    width: 100%;
+    height: 60px;
+    padding-left: 25px;
+    margin-bottom: 40px;
+    outline: 0;
+}
+
+.login-deatils-wrapper input:focus,
+.login-deatils-wrapper select:focus
+{
+    box-shadow: none;
+    border: 1px solid var(--login-wrapper-input-border);
+}
+.login-deatils-wrapper input ::placeholder,
+.login-deatils-wrapper select::placeholder
+{
+    font-family:var(--BeVietnamPro-Regular);
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--login-wrapper-placholder);
+}
+.forgot-password-text{
+    font-family: var(--BeVietnamPro-Medium) !important;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--forgot-text) !important;
+    float: right;
+    text-transform: capitalize;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+.sign-in-btn{
+    margin-top: 90px;
+    margin-bottom: 60px;
+}
+
+.tab-save-btn.sign-in-btn button{
+    max-width: 300px !important;
+    /* margin-top: 15px; */
+    text-align: center;
+    cursor: pointer;
+}
+
+.sign-in-btn a{
+    padding: 10px 50px 10px 50px;
+    background: var(--login-btn-bg);
+    border: 1px solid var(--login-btn-bg);
+    color: var(--login-btn-text);
+    font-family: var(--BeVietnamPro-SemiBold);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--login-btn-text) !important; 
+    text-transform: capitalize;
+    
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.sign-in-btn a:hover{
+    background: transparent;
+    border: 1px solid var(--login-btn-bg);
+    color: var(--login-btn-bg) !important;
+    box-shadow: 0px 4px 10px rgba(43, 174, 74, 0.2);
+}
+.login-deatils-wrapper p{
+    font-family: var(--BeVietnamPro-Medium);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #0F053F;
+}
+.google-btn span{
+    margin-right: 15px;
+}
+.google-btn{
+    background: var(--login-wrapper-bg) !important;
+    border: 1px solid var(--login-wrapper-border);
+    padding: 15px 40px 15px 40px;
+    font-family: var(--Poppins-regular);
+    font-size: 16px;
+    line-height: 16px;
+    color: #414549 !important; 
+    border-radius: 90px;
+    text-transform: capitalize;
+}
+.facebook-btn{
+    background: #1877F2;
+    border: 1px solid var(--login-wrapper-border);
+    padding: 15px 40px 15px 40px;
+    font-family: var(--Poppins-regular);
+    font-size: 16px;
+    line-height: 16px;
+    color: #fff !important; 
+    border-radius: 90px;
+    text-transform: capitalize;
+}
+.facebook-btn span{
+    margin-right: 15px;
+    font-size: 20px;
+}
+.log-in-btn{
+    margin-top: 43px;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+.login-deatils-wrapper h3{
+    font-family: var(--BeVietnamPro-Medium);
+    font-size: 18px;
+    line-height: 20px;
+    color: #0F053F;
+    margin-bottom: 50px;
+}
+.login-deatils-wrapper h3 a{
+    font-family: var(--BeVietnamPro-Bold);
+    font-size: 18px;
+    line-height: 20px;
+    color: #F92672 !important;
+}
+.login-images {
+    position: relative;
+}
+.login-img-part {
+    position: relative;
+}
+.login-img-part img{
+    width: 100%;
+    max-width: 300px;
+    height: 500px;
+    margin-top: 100px !important;
+    display: block;
+    position: relative;
+    /* position: sticky; */
+    top: 0;
+    left: 70px !important;
+}
+
+
+.login-sub-img-1 {
+    position: absolute;
+    top: 35px;
+    left: 20px;
+    width: 100%;
+    max-width: 100px;
+}
+.login-sub-img-2 {
+    position: absolute;
+    bottom: 0;
+    right: 90px;
+    width: 100%;
+    max-width: 150px;
+}
+.login-wave-img{
+    position: absolute;
+    top: 55%;
+    left: 0;
+    width: 100%;
+    /* max-width: px; */
+}
+
+
+/* -------sign-up-css------- */
+.login-deatils-wrapper .form-check{
+    display: flex;
+    gap: 15px;
+    padding-left: 40px;
+}
+.login-deatils-wrapper .form-check label{
+    font-family: var(--BeVietnamPro-Regular);
+    font-size: 16px;
+    line-height: 25px;
+    color: #555261;
+
+}
+.login-deatils-wrapper .form-check-input:checked[type=checkbox] {
+   background-color: #F92672 !important;
+}
+.login-deatils-wrapper .form-check label a{
+    font-family: var(--BeVietnamPro-SemiBold);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+    color: #F92672 !important;
+}
+.login-deatils-wrapper .form-check-input {
+      width: 25px !important;
+      height: 25px !important;
+}
+.signin-deatils-wrapper .sign-in-btn{
+    margin-top: 10px !important;
+}
+.signin-deatils-wrapper .title::before {
+    left: 15.5%;
+}
+
+.form-in .form-select{
+    background: var(--common-white);
+    border: 1px solid var(--myaccoutn-tab-input-border) !important;
+    box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+    border-radius: 10px;
+    padding-left: 25px;
+    font-family: var(--BeVietnamPro-Regular);
+    font-size: 14px;
+    line-height: 16px;
+    height: 60px;
+    appearance: none;
+    background-image: url(../images/selectarrow.png);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    margin-bottom: 30px;
+    outline: 0;
+    background-position-y: 25px;
+    background-position-x: 520px;
+}
+
+.form-in .form-select:focus{
+    box-shadow: none  !important;
+}
+
+
+/* ---forgot-page-css--- */
+.forgot-section .pera{
+    margin-bottom: 50px !important;
+}
+.forgot-left{
+    align-self: center;
+}
+.reset-password-btn a{
+    padding: 15px 30px 15px 30px !important;
+}
+.login-deatils-wrapper h3 span{
+    margin-right: 15px;
+    color: var(--forgot-text);
+}
+.forgot-section .login-deatils-wrapper{
+    height: 100% !important;
+}
+.forgot-section .title::before {
+    left: 33.5%;
+}
+
+
+/* ====RESPONSIVE===== */
+@media screen and (min-width: 1200px) and (max-width: 1399px){
+
+    /* -----login-page-cs--- */
+    .login-left-content .title{
+        font-size: 35px !important;
+    }
+    .login-left-content .title::before {
+        left: 25.5%;
+    }
+    .login-img-part img {
+        left: 80px !important;
+    }
+    .login-sub-img-1 {
+        left: 70px;
+    }
+    .login-sub-img-2 {
+        right: 10px;
+    }   
+    .login-deatils-wrapper{
+        width: 100%;
+        max-width: 100%;
+    }
+    .login-deatils-wrapper{
+        padding: 50px 30px 0px 30px;
+        margin-left: 0px !important;
+    }
+    .google-btn {
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .facebook-btn{
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+
+    /* -----sign-up-page--- */
+    .signin-deatils-wrapper .title::before {
+        left: 15.5% !important;
+    }
+
+    .form-in .form-select{
+        background-position-x: 450px;
+    }
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1199px){
+
+    /* -----login-page-cs--- */
+    .common-banner-bg{
+        padding-top: 170px;
+    }
+    .login-left-content .title{
+        font-size: 30px !important;
+    }
+    .login-left-content .title::before {
+        left: 29.5%;
+    }
+    .login-img-part img {
+        left: 50px !important;
+    }
+    
+    .login-sub-img-1 {
+        left: 40px;
+    }
+    .login-sub-img-2 {
+        right: 0px;
+    }
+    .login-deatils-wrapper{
+        width: 100%;
+        max-width: 100%;
+    }
+    .login-deatils-wrapper{
+        padding: 50px 30px 0px 30px;
+        margin-left: 0px !important;
+    }
+    .google-btn {
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .facebook-btn{
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .log-in-btn{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+
+     /* -----sign-up-page--- */
+     .signin-deatils-wrapper .title::before {
+        left: 15.5% !important;
+    }
+    .signin-deatils-wrapper .sign-in-btn {
+        margin-top: 40px !important;
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper h3{
+        padding-top: 15px !important;
+    }
+    .reset-password-btn a {
+        padding: 10px 20px 10px 20px !important;
+        font-size: 17px !important;
+    }
+
+    .form-in .form-select{
+        background-position-x: 360px;
+    }
+    
+}
+
+
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+
+    /* -----login-page-cs--- */
+    .common-banner-bg{
+        padding-top: 150px !important;
+    }
+    .breadcrumb{
+        margin-top: 10px !important;
+    }
+    .login-left-content .title{
+        font-size: 28px !important;
+    }
+    .login-left-content .title::before {
+        left: 38.5%;
+    }
+    .login-img-part img {
+        left: 10px !important;
+        max-width: 250px !important;
+        margin-top: 70px !important;
+    }
+    
+    .login-sub-img-1 {
+        left: 10px;
+        max-width: 80px;
+    }
+    
+    .login-sub-img-2 {
+        right: 0px;
+        z-index: 1;
+    }
+    .login-deatils-wrapper{
+        width: 100%;
+        max-width: 100%;
+    }
+    .login-deatils-wrapper{
+        padding: 50px 30px 0px 30px;
+        margin-left: 0px !important;
+    }
+    .google-btn {
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .facebook-btn{
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .log-in-btn{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 40px !important;
+    }
+    .login-left-content .pera{
+        font-size: 15px !important;
+    }
+    .sign-in-btn {
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper h3{
+        font-size: 16px;
+    }
+
+
+
+
+      /* -----sign-up-page--- */
+      .signin-deatils-wrapper .title::before {
+        left: 15.5% !important;
+    }
+    .signin-deatils-wrapper .sign-in-btn {
+        margin-top: 40px !important;
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper .form-check label{
+        font-size: 15px !important;
+    }
+    .login-deatils-wrapper .form-check label a{
+        font-size: 15px !important;
+    }
+    .login-deatils-wrapper h3{
+        padding-top: 15px !important;
+    }
+    .reset-password-btn a {
+    padding: 10px 20px 10px 20px !important;
+}
+.reset-password-btn a {
+    padding: 10px 20px 10px 20px !important;
+    font-size: 16px !important;
+}
+
+.form-in .form-select{
+    background-position-x: 240px;
+}
+
+    
+}
+
+@media only screen and (max-width:768px){
+    .login-deatils-wrapper{
+        height: 100%;
+    }
+
+    .form-in .form-select{
+        background-position-x: 240px;
+    }
+}
+
+
+@media screen and (min-width: 576px) and (max-width: 767px){
+
+    /* -----login-page-cs--- */
+    .login-section{
+        padding: 50px 0px;
+    }
+    .common-banner-bg{
+        padding-top: 150px !important;
+    }
+    .breadcrumb{
+        margin-top: 10px !important;
+    }
+    .login-left-content .title{
+        font-size: 28px !important;
+    }
+    .login-left-content .title::before {
+        left: 23.5%;
+    }
+    .login-img-part img {
+      display: none;
+    }
+    
+    .login-sub-img-1 {
+      display: none;
+    }
+    
+    .login-sub-img-2 {
+       display: none;
+    }
+    .login-deatils-wrapper{
+        width: 100%;
+        max-width: 100%;
+    }
+    .login-deatils-wrapper{
+        padding: 50px 30px 0px 30px;
+        margin-left: 0px !important;
+    }
+    .google-btn {
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .facebook-btn{
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .log-in-btn{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 40px !important;
+    }
+    .login-left-content .pera{
+        font-size: 15px !important;
+    }
+    .sign-in-btn {
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper h3{
+        font-size: 16px;
+    }
+    .sign-in-btn a{
+        font-size: 16px;
+    }
+    .login-wave-img{
+        display: none;
+    }
+    
+
+
+     /* -----sign-up-page--- */
+     .signin-deatils-wrapper .title::before {
+        left: 10.5% !important;
+    }
+    .signin-deatils-wrapper .sign-in-btn {
+        margin-top: 40px !important;
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper .form-check label{
+        font-size: 15px !important;
+    }
+    .login-deatils-wrapper .form-check label a{
+        font-size: 15px !important;
+    }
+    .login-deatils-wrapper h3{
+        padding-top: 15px !important;
+    }
+    .reset-password-btn a {
+        padding: 10px 20px 10px 20px !important;
+        font-size: 16px !important;
+    }
+    
+}
+
+
+@media screen and (min-width: 425px) and (max-width: 575px){
+
+    /* -----login-page-cs--- */
+    .login-section{
+        padding: 50px 0px;
+    }
+    .common-banner-bg{
+        padding-top: 130px !important;
+        padding-bottom: 60px !important;
+    }
+    .breadcrumb{
+        margin-top: 0px !important;
+    }
+    .login-left-content .title{
+        font-size: 28px !important;
+    }
+    .login-left-content .title::before {
+        left: 23.5%;
+    }
+    .login-img-part img {
+      display: none;
+    }
+    
+    .login-sub-img-1 {
+      display: none;
+    }
+    
+    .login-sub-img-2 {
+       display: none;
+    }
+    .login-deatils-wrapper{
+        width: 100%;
+        max-width: 100%;
+    }
+    .login-deatils-wrapper{
+        padding: 50px 30px 0px 30px;
+        margin-left: 0px !important;
+    }
+    .google-btn {
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .facebook-btn{
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .log-in-btn{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 40px !important;
+    }
+    .login-left-content .pera{
+        font-size: 15px !important;
+    }
+    .sign-in-btn {
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper h3{
+        font-size: 16px;
+    }
+    .sign-in-btn a{
+        font-size: 16px;
+    }
+    .login-wave-img{
+        display: none;
+    }
+
+
+
+    /* -----sign-up-page--- */
+    .signin-deatils-wrapper .title::before {
+        left: 10.5% !important;
+    }
+    .signin-deatils-wrapper .sign-in-btn {
+        margin-top: 40px !important;
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper .form-check label{
+        font-size: 15px !important;
+    }
+    .login-deatils-wrapper .form-check label a{
+        font-size: 15px !important;
+    }
+    .login-deatils-wrapper h3{
+        padding-top: 15px !important;
+    }
+    .reset-password-btn a {
+        padding: 10px 20px 10px 20px !important;
+        font-size: 15px !important;
+    }
+    
+    
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 424px){
+
+    /* -----login-page-cs--- */
+    .common-banner-bg h1{
+        line-height: 30px;
+    }
+    .login-section{
+        padding: 50px 0px;
+    }
+    .common-banner-bg{
+        padding-top: 130px !important;
+        padding-bottom: 60px !important;
+    }
+    .breadcrumb{
+        margin-top: 0px !important;
+    }
+    .login-left-content .title{
+        font-size: 26px !important;
+    }
+    .login-left-content .title::before {
+        left: 44.5%;
+    }
+    .login-img-part img {
+      display: none;
+    }
+    
+    .login-sub-img-1 {
+      display: none;
+    }
+    
+    .login-sub-img-2 {
+       display: none;
+    }
+    .login-deatils-wrapper{
+        width: 100%;
+        max-width: 100%;
+    }
+    .login-deatils-wrapper {
+        padding: 50px 20px 0px 20px;
+        margin-left: 0px !important;
+    }
+    .google-btn {
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .facebook-btn{
+        padding: 15px 30px 15px 30px;
+        font-size: 14px;
+    }
+    .log-in-btn{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 40px !important;
+    }
+    .login-left-content .pera{
+        font-size: 15px !important;
+    }
+    .sign-in-btn {
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper h3 {
+        font-size: 14px;
+    }
+    .sign-in-btn a{
+        font-size: 16px;
+    }
+    .login-wave-img{
+        display: none;
+    }
+    .login-deatils-wrapper h3 a{
+        font-size: 17px !important;
+    }
+    
+
+    /* -----sign-up-page--- */
+    .signin-deatils-wrapper .title::before {
+    left: 10.5% !important;
+    }
+    .signin-deatils-wrapper .sign-in-btn {
+        margin-top: 40px !important;
+        margin-bottom: 30px !important;
+    }
+    .login-deatils-wrapper .form-check label{
+        font-size: 14px !important;
+    }
+    .login-deatils-wrapper .form-check label a{
+        font-size: 14px !important;
+    }
+    .login-deatils-wrapper .form-check {
+        gap: 10px;
+    }
+    .login-deatils-wrapper h3{
+        padding-top: 15px !important;
+    }
+    .reset-password-btn a {
+        padding: 10px 20px 10px 20px !important;
+        font-size: 14px !important;
+    }
+    
+}
