@@ -451,7 +451,7 @@ class Checkout_model extends My_model
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
         $getMycartSubtotal = getMycartSubtotal();
-        dd($getMycartSubtotal);
+
         $discountValue = 0;
         $shoppingDiscount = $this->checkShoppingBasedDiscount();
         if (!empty($shoppingDiscount)) {
@@ -523,7 +523,8 @@ class Checkout_model extends My_model
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
-
+        echo $total_price;
+        exit;
         $calculate = ($total_price / 100) * $promocode[0]->percentage;
 
         $response["success"] = 1;
