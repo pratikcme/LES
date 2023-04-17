@@ -477,12 +477,12 @@ var CHECKOUT = (function () {
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
-            (
-              parseFloat(response.orderAmount) + parseFloat(shipping_charge)
-            ).toFixed(2)
+            parseFloat(response.orderAmount) + parseFloat(shipping_charge)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);
-          $("#totalSaving").html(siteCurrency + " " + promocodeDiscount);
+          $("#totalSaving").html(
+            siteCurrency + " " + promocodeDiscount.toFixed(2)
+          );
         }
       },
     });
