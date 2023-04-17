@@ -33,7 +33,7 @@
                                     <div class="mb-3">
                                         <label for="fname" class="form-label">First Name</label>
                                         <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="<?=$this->lang->line('First Name*')?>">
-                                        <label for="fname" class="error">Please enter first name</label>
+                                        <!-- <label for="fname" class="error">Please enter first name</label> -->
                                       </div>
                                 </div>
 
@@ -41,7 +41,7 @@
                                     <div class="mb-3">
                                         <label for="lname" class="form-label">Last Name</label>
                                         <input type="text" class="form-control" id="lname" aria-describedby="lname" placeholder="<?=$this->lang->line('Last Name*')?>">
-                                        <label for="lname" class="error">Please enter last name</label>
+                                        <!-- <label for="lname" class="error">Please enter last name</label> -->
                                       </div>
                                 </div>
 
