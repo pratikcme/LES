@@ -453,11 +453,10 @@ var CHECKOUT = (function () {
         if (response.success == "1") {
           var orderAmount = parseFloat(response.orderAmount);
           // finalAmount = (orderAmount + parseFloat(shipping_charge) - parseFloat(response.data)).toFixed(2)
-          finalAmount = (
+          finalAmount =
             orderAmount +
             (shipping_charge === "" ? 0 : parseFloat(shipping_charge)) -
-            parseFloat(response.data)
-          ).toFixed(2);
+            parseFloat(response.data);
           // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
           if ($("#totalSaving").length) {
             var amount = response.data;
@@ -477,11 +476,9 @@ var CHECKOUT = (function () {
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
-            response.orderAmount
-
-            // (
-            //   parseFloat(response.orderAmount) + parseFloat(shipping_charge)
-            // ).toFixed(2)
+            (
+              parseFloat(response.orderAmount) + parseFloat(shipping_charge)
+            ).toFixed(2)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);
           $("#totalSaving").html(
