@@ -157,6 +157,7 @@ class User_Controller extends MY_Controller
 
             $this->load->model($this->myvalues->vendorFrontEnd['model'], 'vendor_model');
             $data['branch'] = $this->vendor_model->branchList();
+            lq();
             dd($data['branch']);
             $branch_id = count($data['branch']);
             foreach ($data['branch'] as $key => $value) {
