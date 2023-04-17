@@ -136,6 +136,25 @@
                     </div>
                   </div>
                   <?php } ?>
+                  <?php }else{ ?>
+                    <?php if(isset($this->cartCount)){ ?>
+                    <?php foreach ($mycart as $key => $value) { ?>
+                    <div class="cart-drop-menu cart-drop-menu-1">
+                    <div class="drop-img">
+                      <a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>">
+                        <img src="<?=base_url()?>public/images/<?=$this->folder?>product_image/<?=$product[0]->image?>" alt=""></a>
+                    </div>
+                    <div class="drop-text">
+                      <h4><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>"><?=$value['product_name']?></a></h4>
+                      <p>Qty : 1</p>
+                      <h3 class="notranslate"><?=$this->siteCurrency.' '.number_format((float)$product[0]->discount_price, 2, '.', '')?></h3>
+                    </div>
+                    <div class="cancel-btn remove_item" data-product_id="<?=$value['product_id']?>" data-product_weight_id="<?=$value['product_weight_id']?>">
+                      <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
+                    </div>
+                  </div>
+                  <?php } ?>
+                  <?php } ?>
                   <?php } ?>
 
               </div>
