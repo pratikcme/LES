@@ -39,6 +39,7 @@
                 <div id="google_translate_element"></div>
               </form>
             <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
+              <?php if($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1'){ ?>
               <form class="branch-drp" >
                 <select class="vendor_nav" name="Branch" id="Branch">
                   <option value=""> <?=$this->lang->line('All store')?></option>
@@ -48,6 +49,7 @@
                 </select>
               </form>
             </div>
+          <?php } ?>
           <?php } ?>
 
 
