@@ -513,8 +513,7 @@ class Offer_model extends My_model
         $data['select'] = ['of.id as offer_id', 'ofd.*'];
         $data['join'] = ['offer_detail' . ' ofd' => ['of.id=ofd.offer_id', 'LEFT']];
         $return =  $this->selectFromJoin($data);
-        echo $this->db->last_query();
-        dd($return);
+
         return $return;
     }
 
@@ -534,8 +533,8 @@ class Offer_model extends My_model
         $data['update']['discount_price'] = $discount_price;
         $data['where'] = ['id' => $v_id];
 
-        return $this->updateRecords($data);
-
+        $this->updateRecords($data);
+        lq();
         // $this->db->query("UPDATE product_weight SET discount_per='$discount',discount_price='$discount_price' WHERE id='$v_id'");
 
         // $this->db->set('discount_per', $discount);
