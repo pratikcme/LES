@@ -5,7 +5,6 @@ class Offer_model extends My_model
 
     function __construct()
     {
-
         $this->vendor_id = $this->session->userdata('vendor_admin_id');
         $request_schema = $_SERVER['REQUEST_SCHEME'];
         $server_name = $_SERVER['SERVER_NAME'];
@@ -94,6 +93,7 @@ class Offer_model extends My_model
         $st_hr = $st[0];
         $st_min = $st[1];
 
+        // $utc_time =  gmdate("H:i", strtotime($st_array));
         $utc_time =  date("H:i", strtotime($st_array));
         $srvTime = date("H:i", strtotime($utc_time));
         $sts = explode(':', $srvTime);
@@ -181,7 +181,9 @@ class Offer_model extends My_model
         $end_hr = $st[0];
         $end_min = $st[1];
 
-        $utc_time =  gmdate("H:i", strtotime($end_array));
+        // $utc_time =  gmdate("H:i", strtotime($end_array));
+        $utc_time =  date("H:i", strtotime($end_array));
+
         $srvTime = date("H:i", strtotime($utc_time));
         $sts = explode(':', $srvTime);
         $st_hr = $sts[0];
