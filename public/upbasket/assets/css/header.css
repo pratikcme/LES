@@ -442,7 +442,7 @@ nav a:active::before {
 }
 
 .no-itm.cart-btn .g-badge {
-    display: none;
+    display: none !important;
 }
 
 @media only screen and (max-width:991px) {
