@@ -34,38 +34,7 @@
             </div>
         </section>
         <?php } ?>
-        <!-- <section class="hero-section banner-section carousel-item" style="background-image: url('./assets/images/home-page/banner-slider.png');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-                        <div class="hero-content">
-                            <h4>Discover</h4>
-                            <h1>The Secrets Of Beauty</h1>
-                            <p>Get them together (for less!) for dewy, natural-looking <br> coverage that still looks like skin
-                            </p>
-                            <a href="./product-list-page.php" class="hero-btn">shop now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="hero-section banner-section carousel-item" style="background-image: url('./assets/images/home-page/banner-slider.png');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-                        <div class="hero-content">
-                            <h4>Discover</h4>
-                            <h1>The Secrets Of Beauty</h1>
-                            <p>Get them together (for less!) for dewy, natural-looking <br> coverage that still looks like skin
-                            </p>
-                            <a href="./product-list-page.php" class="hero-btn">shop now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
     </div>
-</div>
 
 <!-- -----Categories-section----- -->
 <section class="Categories-section p-100">
