@@ -23,26 +23,21 @@
             <div class="col-xxl-6 col-xl-6 col-lg-6 d-flex align-items-center justify-content-center">
                 <div class="about-content">
                     <div class="about-text">
-                        <h4>welcome to our </h4>
-                        <h2>Butterfly Beauty Shop</h2>
+                        <!-- <h4>welcome to our </h4> -->
+                        <h2><?=$about_section_one[0]->main_title ?></h2>
                     </div>
                     <div>
-                        <p>Complexion-perfecting natural foundation enriched with antioxidant-packed superfruits,
-                            vitamins, and other skin-nourishing nutrients. Creamy liquid formula sets with a pristine
-                            matte finish for soft, velvety smooth skin. Made using clean, non-toxic ingredients, our
-                            products are designed for everyone…
-                            If I fell in love with a woman for an artistic reason, or from the point of view of my work,
-                        </p>
-                        <p>I think it would rob her of something. We live in an era of globalization and the era of the
+                        <p><?=$about_section_one[0]->content ?></p>
+                        <!-- <p>I think it would rob her of something. We live in an era of globalization and the era of the
                             woman. Never in the history of the world have women been more in control of their destiny.
-                        </p>
+                        </p> -->
                     </div>
                     <div class="about-author-name d-flex align-items-center">
                         <h4 class="me-2 mb-0">Alex Marlay</h4>
                         <span>(CEO)</span>
                     </div>
                     <div class="author-sign">
-                        <img src="<?=$this->theme_base_url?>/assets/images/about-us/author-sign.png" alt="">
+                        <img src="<?= base_url() . 'public/uploads/about/' . $about_section_one[0]->image ?>" alt="">
                     </div>
                 </div>
             </div>
