@@ -499,7 +499,6 @@ class Offer_model extends My_model
 
     public function getOfferForApplied($for = '')
     {
-
         if ($for != '') {
             $time =  date("H:i:00", strtotime("-1 minutes"));
             $date = date('Y-m-d');
@@ -514,6 +513,8 @@ class Offer_model extends My_model
         $data['select'] = ['of.id as offer_id', 'ofd.*'];
         $data['join'] = ['offer_detail' . ' ofd' => ['of.id=ofd.offer_id', 'LEFT']];
         $return =  $this->selectFromJoin($data);
+        echo $this->db->last_query();
+        dd($return);
         return $return;
     }
 
