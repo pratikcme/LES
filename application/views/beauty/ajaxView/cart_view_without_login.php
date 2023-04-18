@@ -1,4 +1,4 @@
-<div class="supportive-dropdown">
+<div class="cart-drop-wrapper">
 <?php
    foreach ($_SESSION['My_cart'] as $key => $value) {
     $encode_id=  $this->utility->safe_b64encode($value['product_id']);
@@ -46,10 +46,6 @@
 			<?=base_url().'products/cart_item'?>" class="view-cart"> <?=$this->lang->line('view cart')?> </a>
       <a href="
 			<?=base_url().'checkout'?>" class="checkout "> <?=$this->lang->line('checkout')?> </a>
-    </div>
-    <div class="icon-tex">
-      <p><?=$this->lang->line('your cart')?></p>
-      <h3 class="notranslate" id="display_subtotal"><?=$this->siteCurrency.''.getMycartSubtotal()?></h3>
     </div>
 
     
