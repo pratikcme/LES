@@ -1,3 +1,4 @@
+<?php dd($about_section_two);?>
 <!-- ----hero-section--- -->
 <section class="hero-section listing-hero-sec">
     <div class="container">
