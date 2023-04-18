@@ -5,7 +5,7 @@
 
   .stars3_5 span:last-child {
     font-size: 18px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
   }
 </style>
 
@@ -28,7 +28,9 @@
   </div>
 </section>
 
+<?php
 
+?>
 
 <!-- product-detalis-section -->
 <section class="product-detalis-section">
@@ -38,9 +40,9 @@
         <div class="product-image-part">
           <!-- -------swipr-slider-----  -->
           <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 gallery-top">
-            <span class="discnt">1% off</span>
-            <div class="pro-hearticon">
-              <i class="fa-regular fa-heart" onclick="myFunction(this)"></i>
+            <span class="discnt <?= ($varientDetails[0]->discount_per != 0) ? '' : 'd-none' ?>"><?= $varientDetails[0]->discount_per ?>% off</span>
+            <div class="pro-hearticon " data-product_id="<?= $product_id ?>" data-product_weight_id="<?= $product_weight_id ?>">
+              <i class="fa-regular fa-heart <?= (in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>"" onclick=" myFunction(this)"></i>
             </div>
             <div class="swiper-wrapper ">
               <?php foreach ($product_image as $key => $value) { ?>
@@ -69,22 +71,25 @@
 
           <h2 class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?= $productDetail[0]->name ?></h2>
           <h5 class="wow fadeInRight" id="starRatting" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
-            <?php
 
-            ?>
-            <span class="star"></span>
-            <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
-              <span class="star"></span>
-            <?php } ?>
-            <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
-              <span class="star star-active"></span>
-            <?php } ?>
-            <?= $productDetail[0]->rating['rating'] ?> <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
-
+            <div class="rating-starts justify-content-start">
+              <div class="rating stars3_5 align-items-center star-in">
+                <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
+                  <span class="star"></span>
+                <?php } ?>
+                <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+                  <span class="star star-active"></span>
+                <?php } ?>
+                <?= $productDetail[0]->rating['rating'] ?> <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
+              </div>
+            </div>
 
           </h5>
           <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h6>
-          <h3 class="wow fadeInRight notranslate" id="dynamic_price" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"> <?= $this->siteCurrency . ' ' . number_format((float)$productDetail[0]->discount_price, 2, '.', '') ?> <span><strike><?= ($productDetail[0]->discount_per != 0) ? $this->siteCurrency . ' ' . number_format((float)$productDetail[0]->price, 2, '.', '') : '' ?></strike></span></h3>
+          <h3 class="wow fadeInRight notranslate" id="dynamic_price" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->siteCurrency ?> <?= number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
+            <span style="<?= ($varientDetails[0]->discount_per == 0) ? 'display:none' : '' ?>"><strike> <?= $this->siteCurrency ?>
+                <?= number_format((float)$varientDetails[0]->price, 2, '.', '') ?></strike></span>
+          </h3>
 
 
           <div class="mt-3 mb-3 wow fadeInRight" data-wow-duration="6s" data-wow-delay="0" data-wow-offset="0">
@@ -100,7 +105,7 @@
             </div>
 
 
-            <select name="cars product_varient_id" aria-label="Default select example" id="cars">
+            <select name="cars product_varient_id" aria-label="Default select example" id="cars" class="product_varient_id">
               <?php foreach ($varient as $key => $value) { ?>
                 <option value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>><?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
               <?php } ?>
@@ -176,7 +181,7 @@
                 } ?>
                 <div class="left-content">
                   <div>
-                    <h3> <strong><?= round($sumOfRatting / count($product_review)) ?></strong><span>/5</span></h3>
+                    <h3> <strong><?= (!empty($sumOfRatting) && $sumOfRatting != 0) ? round($sumOfRatting / count($product_review)) : "0" ?></strong><span>/5</span></h3>
                   </div>
 
                 </div>
@@ -241,7 +246,9 @@
   </div>
 </section>
 
-<?php if (!empty($related_product)) { ?>
+<?php
+
+if (!empty($related_product)) { ?>
   <section class="new-arrival products-wrap related-products">
     <div class="container">
       <div class="row">
@@ -278,21 +285,41 @@
               </a>
               <div class="rating-starts">
                 <div class="rating stars3_5">
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star star-active"></span>
-                  <span class="star star-active-half"></span>
+                  <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                    <span class="star"></span>
+                  <?php } ?>
+
+                  <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                    <span class="star star-active"></span>
+                  <?php } ?>
+
                 </div>
-                <div><span>(122)</span></div>
+                <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
               </div>
-              <div class="product-detail-quentity add-cart-btns">
+              <?php
+              $d_none = '';
+              $d_show = 'd-none';
+              if (!empty($item_weight_id)) {
+                if (in_array($value->pw_id, $item_weight_id)) {
+                  $d_show = '';
+                  $d_none = 'd-none';
+                }
+              }
+              ?>
+              <div>
+                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+                  Cart
+                </button>
+              </div>
+              <div class="product-detail-quentity <?= $d_show ?>">
                 <div class="qty-container">
-                  <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                  <input type="text" name="qty" value="1" class="input-qty">
-                  <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                  <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                  <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                  <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
+
+
             </div>
           </div>
         </div>
