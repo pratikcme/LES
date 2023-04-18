@@ -5,6 +5,8 @@ class Offer_model extends My_model
 
     function __construct()
     {
+        echo date('Y-m-d H:i:sa');
+        die;
         $this->vendor_id = $this->session->userdata('vendor_admin_id');
         $request_schema = $_SERVER['REQUEST_SCHEME'];
         $server_name = $_SERVER['SERVER_NAME'];
