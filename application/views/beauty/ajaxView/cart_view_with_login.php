@@ -1,4 +1,4 @@
-<div class="supportive-dropdown">
+<div class="cart-drop-wrapper">
 <?php 
  foreach ($my_cart as $key => $value) {
     $product_image = $this->product_model->GetUsersProductInCart($value->product_weight_id);
