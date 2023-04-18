@@ -32,8 +32,31 @@
   </div>
     
   <!-- The slideshow/carousel -->
+
     <div class="carousel-inner">
-        <section class="hero-section banner-section carousel-item active" style="background-image: url('./assets/images/home-page/banner-slider.png');">
+    <?php foreach ($banner as $key => $value) { ?>
+        <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> <?= $calss[$key] ?>" style="background-image: url(<?=base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                        <div class="hero-content">
+                            <!-- <h4>Discover</h4> -->
+                            <h1><?= $value->main_title ?></h1>
+                            <p><?= $value->sub_title ?></p>
+                            <?php if($value->type == '1'){?>
+                              <a href="<?= base_url() . 'products' ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
+                              <?php }elseif($value->type == '2'){ ?>
+                              <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
+                              <?php }else{ ?>
+                                <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
+                             <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
+        <!-- <section class="hero-section banner-section carousel-item" style="background-image: url('./assets/images/home-page/banner-slider.png');">
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
@@ -62,22 +85,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="hero-section banner-section carousel-item" style="background-image: url('./assets/images/home-page/banner-slider.png');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-                        <div class="hero-content">
-                            <h4>Discover</h4>
-                            <h1>The Secrets Of Beauty</h1>
-                            <p>Get them together (for less!) for dewy, natural-looking <br> coverage that still looks like skin
-                            </p>
-                            <a href="./product-list-page.php" class="hero-btn">shop now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </section> -->
     </div>
 </div>
 
