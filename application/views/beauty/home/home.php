@@ -35,6 +35,7 @@
         </section>
         <?php } ?>
     </div>
+</div>
 
 <!-- -----Categories-section----- -->
 <section class="Categories-section p-100">
