@@ -60,20 +60,20 @@
                   <input type="password" name="confirm_password" placeholder="<?=$this->lang->line('Confirm password*')?>"  id="confirm_password" >
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <input class="form-check-input" type="checkbox" value="" name="term_policy" id="flexCheckDefault">
                   <label class="form-check-label" for="flexCheckDefault">
-                    By creating an account, you agree to our <a href="#">Terms Of Conditions</a> and <a href="#">Privacy Policy.</a>   
+                    By creating an account, you agree to our <a href="<?=base_url().'terms_condition'?>">Terms Of Conditions</a> and <a href="<?=base_url().'privacy_policy'?>">Privacy Policy.</a>   
                   </label>
                 </div>
 
 
-                <button type="submit" class="sign-in-btn signin-btn-green">Sign Up</button> 
+                <button type="submit" class="sign-in-btn signin-btn-green"><?=$this->lang->line('Sign up')?></button> 
                 
-                <p>Or, log in with your socials</p>
+                <p>Or</p>
 
                 <div class="log-in-btn">
-                  <a href="<?=$googleUrl?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span>Login with Google</a>
-                  <a href="<?=base_url().'login/fb_login'?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span>Login with Facebook</a>
+                  <a href="<?=$googleUrl?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span><?=$this->lang->line('continue with google')?></a>
+                  <a href="<?=base_url().'login/fb_login'?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?=$this->lang->line('continue with facebook')?></a>
                 </div>
 
                 <h3>Already have an account? <a href="<?=base_url().'login'?>">Sign in</a></h3>

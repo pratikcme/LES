@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>public/frontend/assets/css/bootstrap.min.css">
   <!-- stle-css -->
   <link rel="stylesheet" href="<?=$this->theme_base_url?>/assets/css/style.css">
 

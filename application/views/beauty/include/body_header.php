@@ -79,7 +79,7 @@
                   <h3><a href="<?=base_url().'register'?>"><?=$this->lang->line('Sign up')?></a></h3>
                 </div>
                 <div class="user-data-wrapper">
-                  <a href="./sign-in-page.php"><span><i class="fa-solid fa-right-to-bracket"></i></span><?=$this->lang->line('Login Account')?></a>
+                  <a href="<?=base_url().'login'?>"><span><i class="fa-solid fa-right-to-bracket"></i></span><?=$this->lang->line('Login Account')?></a>
                 </div>
               <?php }else{ ?>
                 <div class="user-data-wrapper">
