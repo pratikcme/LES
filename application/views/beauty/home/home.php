@@ -196,7 +196,7 @@
                 data-wow-delay="0" data-wow-offset="0">
                 <div class="techno-check">
                     <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-                    <div href="#" class="product-wrapper card ">
+                    <div href="#" class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                         <div class="card-header">
                             <h5>In Stock</h5>
                             
