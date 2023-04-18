@@ -353,32 +353,46 @@
             <?php foreach ($new_arrival as $key => $value) { ?>
               <div class="techno-check">
                   <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-                  <div href="#" class="product-wrapper card">
+                  <div href="#" class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                       <div class="card-header">
-                          <h5>In Stock</h5>
-                          <a href="./product-list-page.php">
-                              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
+                          <h5><?=($value->quantity >= 25 ) ? $this->lang->line('Available(Instock)') : ""?></h5>
+                          <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                            <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>" alt="">
                           </a>
                       </div>
 
                       <div class="card-body">
-                          <h3><a href="./product-list-page.php">Mamaearth Ubtan Body Wash With Turmeric & Saffron For</a>
-                          </h3>
-                          <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
+                          <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a></h3>
+                          <h6 class="rating-cnt notranslate"><?= $this->siteCurrency .' '. number_format((float)$value->discount_price, 2, '.', '')?> <span class="<?=($value->discount_per > 0 ) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency .' '. number_format((float)$value->price, 2, '.', '')?></strike></span></h6>
                           <div class="rating-starts">
                           <div class="rating stars3_5">
-                              <span class="star"></span>
+                          <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                                <span class="star"></span>
+                                <?php } ?>
+                                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                                  <span class="star star-active"></span>
+                              <?php } ?>
+                              <!-- <span class="star"></span>
                               <span class="star"></span>
                               <span class="star"></span>
                               <span class="star star-active"></span>
-                              <span class="star star-active-half"></span>
+                              <span class="star star-active-half"></span> -->
                           </div>
-                          <div><span>(122)</span></div>
+                          <div><span>(<?=$value->ratting['rating']?>)</span></div>
                           </div>
-                          <div class="card-btn">
-                              <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                                  Add to Cart</a>
-                          </div>
+                          <div class="card-btn addcartbutton <?=$d_none?>" 
+                            data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
+                            data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
+                            <a href="javascript:" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
+                            <?=$this->lang->line('add to cart')?></a>
+                            </div>
+                            <div class="product-detail-quentity add-cart-btn <?=$d_show?>">
+                              <div class="qty-container">
+                                <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->id?>" data-weight_id="<?=$value->weight_id?>" readonly>
+                                <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                              </div>
+                            </div>
                       </div>
                   </div>
               </div>
