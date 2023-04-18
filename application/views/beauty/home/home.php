@@ -1,26 +1,3 @@
-<!-- =====hero-section=== -->
-<!-- <section class="hero-section banner-section" onmousemove="moveMouse()">
-    <div class="banner-extra-img">
-        <img src="<?=$this->theme_base_url?>/assets/images/home-page/hero-flver-img.png" alt="" id="Image" class="hero-flver-img">
-        <img src="<?=$this->theme_base_url?>/assets/images/home-page/banner-left-img.png" alt="banner-left-img" class="banner-left-img">
-        <img src="<?=$this->theme_base_url?>/assets/images/home-page/banner-right-img.png" alt="banner-right-img" class="banner-right-img">
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-                <div class="hero-content">
-
-                    <h4>Discover</h4>
-                    <h1>The Secrets Of Beauty</h1>
-                    <p>Get them together (for less!) for dewy, natural-looking <br> coverage that still looks like skin
-                    </p>
-                    <a href="./product-list-page.php" class="hero-btn">shop now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
 <!--============== Carousel ==================-->
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
@@ -32,24 +9,8 @@
   </div>
     
   <!-- The slideshow/carousel -->
-  
     <div class="carousel-inner">
         <section class="hero-section banner-section carousel-item active" style="background-image: url('./assets/images/home-page/banner-slider.png');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-                        <div class="hero-content">
-                            <h4>Discover</h4>
-                            <h1>The Secrets Of Beauty</h1>
-                            <p>Get them together (for less!) for dewy, natural-looking <br> coverage that still looks like skin
-                            </p>
-                            <a href="./product-list-page.php" class="hero-btn">shop now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- <section class="hero-section banner-section carousel-item" style="background-image: url('./assets/images/home-page/banner-slider.png');">
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
@@ -78,7 +39,22 @@
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
+        <section class="hero-section banner-section carousel-item" style="background-image: url('./assets/images/home-page/banner-slider.png');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                        <div class="hero-content">
+                            <h4>Discover</h4>
+                            <h1>The Secrets Of Beauty</h1>
+                            <p>Get them together (for less!) for dewy, natural-looking <br> coverage that still looks like skin
+                            </p>
+                            <a href="./product-list-page.php" class="hero-btn">shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 
@@ -96,7 +72,7 @@
         <div class="owl-1 owl-carousel owl-theme">
             <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-1.png" alt="">
+                    <img src="./assets/images/home-page/categorie-img-1.png" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4>SKINCARE</h4>
@@ -105,7 +81,7 @@
 
             <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-2.png" alt="">
+                    <img src="./assets/images/home-page/categorie-img-2.png" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4>LIPS</h4>
@@ -114,7 +90,7 @@
 
             <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-3.png" alt="">
+                    <img src="./assets/images/home-page/categorie-img-3.png" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4>HAIR</h4>
@@ -123,7 +99,7 @@
 
             <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-4.png" alt="">
+                    <img src="./assets/images/home-page/categorie-img-4.png" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4>EYE</h4>
@@ -132,7 +108,7 @@
 
             <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-5.png" alt="">
+                    <img src="./assets/images/home-page/categorie-img-5.png" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4>MAKEUP</h4>
@@ -141,7 +117,7 @@
 
             <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-6.png" alt="">
+                    <img src="./assets/images/home-page/categorie-img-6.png" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4>Natural</h4>
@@ -150,7 +126,7 @@
 
             <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-7.png" alt="">
+                    <img src="./assets/images/home-page/categorie-img-7.png" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4>FRAGRANCE</h4>
@@ -184,7 +160,7 @@
                             <h5>In Stock</h5>
                             
                             <a href="./product-list-page.php">
-                                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
+                                <img src="./assets/images/home-page/feature-prodct-1.png" alt="">
                             </a>
                         </div>
 
@@ -227,7 +203,7 @@
                             <h5>In Stock</h5>
                             <span class="discnt">1% off</span>
                             <a href="./product-list-page.php">
-                                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
+                                <img src="./assets/images/home-page/feature-prodct-2.png" alt="">
                             </a>
                         </div>
 
@@ -262,7 +238,7 @@
                         <div class="card-header">
                             <h5>In Stock</h5>
                             <a href="./product-list-page.php">
-                                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-3.png" alt="">
+                                <img src="./assets/images/home-page/feature-prodct-3.png" alt="">
                             </a>
                         </div>
 
@@ -297,7 +273,7 @@
                         <div class="card-header">
                             <h5>In Stock</h5>
                             <a href="./product-list-page.php">
-                                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-4.png" alt="">
+                                <img src="./assets/images/home-page/feature-prodct-4.png" alt="">
                             </a>
                         </div>
 
@@ -331,7 +307,7 @@
                         <div class="card-header">
                             <h5>In Stock</h5>
                             <a href="./product-list-page.php">
-                                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
+                                <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
                             </a>
                         </div>
 
@@ -365,7 +341,7 @@
                         <div class="card-header">
                             <h5>In Stock</h5>
                             <a href="./product-list-page.php">
-                                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-6.png" alt="">
+                                <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
                             </a>
                         </div>
 
@@ -401,7 +377,7 @@
                         <div class="card-header">
                             <h5>In Stock</h5>
                             <a href="./product-list-page.php">
-                                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-7.png" alt="">
+                                <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
                             </a>
                         </div>
 
@@ -436,7 +412,7 @@
                         <div class="card-header">
                             <h5>In Stock</h5>
                             <a href="./product-list-page.php">
-                                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-8.png" alt="">
+                                <img src="./assets/images/home-page/feature-prodct-8.png" alt="">
                             </a>
                         </div>
 
@@ -475,7 +451,7 @@
             <!--=========== Single-Banner ========-->
             <div class="col-lg-12 col-md-12 mb-4">
                 <div class="sale-banner-wrap position-relative">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/sale-banner.png" class="sale-banner-img position-absolute" alt="sale-banner" />
+                    <img src="./assets/images/home-page/sale-banner.png" class="sale-banner-img position-absolute" alt="sale-banner" />
                     <div class="sale-banner-inner text-center">
                         <span>FROM LOVESEATS TO SECTIONALS.</span>
                         <h2>Comfy Lounging</h2>
@@ -488,7 +464,7 @@
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
                 <a href="#">
                     <div class="offer-wrapper offer-wrapper-1">
-                        <img src="<?=$this->theme_base_url?>/assets/images/home-page/offer-extra-left.png" alt="" class="offer-extra-left">
+                        <img src="./assets/images/home-page/offer-extra-left.png" alt="" class="offer-extra-left">
                         <h4>CHRISTMAS DAYS</h4>
                         <h3>60% <span>OFF</span></h3>
                         <p>All Beauty Products</p>
@@ -499,7 +475,7 @@
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
                 <a href="#">
                     <div class="offer-wrapper offer-wrapper-2">
-                        <img src="<?=$this->theme_base_url?>/assets/images/home-page/offer-extra-right.png" alt="" class="offer-extra-right">
+                        <img src="./assets/images/home-page/offer-extra-right.png" alt="" class="offer-extra-right">
                         <h4>Natural Items</h4>
                         <h3>50% <span>OFF</span></h3>
                         <a href="#" class="explor-btn">Explore More</a>
@@ -512,7 +488,7 @@
                 <div>
                     <div class="home-clothes mb-4">
                         <div class="cloth-card">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/home-clothes-card.png" alt="">
+                            <img src="./assets/images/home-page/home-clothes-card.png" alt="">
                         </div>
                         <div class="cloth-content">
                             <h5>CLOTHES THAT YOU LIKE</h5>
@@ -522,7 +498,7 @@
                     </div>
                     <div class="women-cloth home-clothes">
                         <div class="cloth-card">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/women-fashion-card.png" alt="">
+                            <img src="./assets/images/home-page/women-fashion-card.png" alt="">
                         </div>
                         <div class="cloth-content">
                             <h5>MODERN AND STYLISH OUTFIT</h5>
@@ -535,7 +511,7 @@
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                 <div class="practical-cloth home-clothes">
                     <div class="cloth-card">
-                        <img src="<?=$this->theme_base_url?>/assets/images/home-page/practical-cloth.png" alt="">
+                        <img src="./assets/images/home-page/practical-cloth.png" alt="">
                     </div>
                     <div class="cloth-content">
                         <h5>СOMFORTABLE CLOTHES</h5>
@@ -567,7 +543,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-1.png" alt="">
                         </a>
                     </div>
 
@@ -599,7 +575,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-2.png" alt="">
                         </a>
                     </div>
 
@@ -631,7 +607,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-4.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-4.png" alt="">
                         </a>
                     </div>
 
@@ -662,7 +638,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
                         </a>
                     </div>
 
@@ -693,7 +669,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
                         </a>
                     </div>
 
@@ -725,7 +701,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
                         </a>
                     </div>
 
@@ -757,7 +733,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-2.png" alt="">
                         </a>
                     </div>
 
@@ -789,7 +765,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
                         </a>
                     </div>
 
@@ -827,7 +803,7 @@
                     <div class="card-header">
                         <h5>In Stock</h5>
                         <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
+                            <img src="./assets/images/home-page/feature-prodct-2.png" alt="">
                         </a>
                     </div>
 
