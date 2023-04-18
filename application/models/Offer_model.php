@@ -5,8 +5,7 @@ class Offer_model extends My_model
 
     function __construct()
     {
-        echo date('Y-m-d H:i:sa');
-        die;
+
         $this->vendor_id = $this->session->userdata('vendor_admin_id');
         $request_schema = $_SERVER['REQUEST_SCHEME'];
         $server_name = $_SERVER['SERVER_NAME'];
@@ -272,7 +271,9 @@ class Offer_model extends My_model
             exec('crontab /var/www/html/stagging/crontab_final.txt 2>&1', $ext);
         } else {
 
-            $utc_time =  gmdate("H:i", strtotime($st_array));
+            // $utc_time =  gmdate("H:i", strtotime($st_array));
+            $utc_time =  date("H:i", strtotime($st_array));
+
             $srvTime = date("H:i", strtotime($utc_time));
             $sts = explode(':', $srvTime);
             // dd($sts);
