@@ -26,18 +26,16 @@
 
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
-    <?php foreach ($banner as $key => $value) { ?>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="<?=$key?>" class="<?=($key==0) ? 'active' : '' ?>"></button>
-    <?php } ?>
-    <!-- <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> -->
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
   </div>
     
   <!-- The slideshow/carousel -->
 
     <div class="carousel-inner">
     <?php foreach ($banner as $key => $value) { ?>
-        <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?>" style="background-image: url(<?=base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
+        <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> <?= $calss[$key] ?>" style="background-image: url(<?=base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
@@ -105,14 +103,14 @@
         
         <div class="owl-1 owl-carousel owl-theme">
           <?php foreach ($category as $key => $value) { ?>
-            <!-- <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wapper">
+            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wapper">
                 <div class="categorie-img">
                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4><?= $value->name ?></h4>
                 </div>
-            </a> -->
+            </a>
             <?php } ?>
             <!-- <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
@@ -357,9 +355,9 @@
                   <input class="techno_checkbox" type="checkbox" id="1" value="1" />
                   <div href="#" class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                       <div class="card-header">
-                          <h5><?=($value->quantity >= 25 ) ? $this->lang->line('Available(Instock)') : ""?></h5>
-                          <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                            <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>" alt="">
+                          <h5>In Stock</h5>
+                          <a href="./product-list-page.php">
+                              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
                           </a>
                       </div>
 
@@ -382,16 +380,6 @@
                           </div>
                           <div><span>(<?=$value->ratting['rating']?>)</span></div>
                           </div>
-                          <?php 
-                              $d_none = '';
-                              $d_show = 'd-none';
-                              if(!empty($item_weight_id)){
-                                if(in_array($value->pw_id,$item_weight_id)){
-                                  $d_show = '';
-                                  $d_none = 'd-none';
-                                }
-                              }
-                            ?>
                           <div class="card-btn addcartbutton <?=$d_none?>" 
                             data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
                             data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
