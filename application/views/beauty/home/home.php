@@ -103,14 +103,14 @@
         
         <div class="owl-1 owl-carousel owl-theme">
           <?php foreach ($category as $key => $value) { ?>
-            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wapper">
+            <!-- <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wapper">
                 <div class="categorie-img">
                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="">
                 </div>
                 <div class="categorie-text">
                     <h4><?= $value->name ?></h4>
                 </div>
-            </a>
+            </a> -->
             <?php } ?>
             <!-- <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
