@@ -49,12 +49,12 @@
                 <?php if ($value->type == '1') { ?>
                   <a class="btn animated fadeInUp" href="<?= base_url() . 'products' ?>"><?= $this->lang->line('Shop Now') ?></a>
               </div>
-            <?php } else if ($value->type == '2') { ?>
+              <?php } else if ($value->type == '2') { ?>
               <a class="btn animated fadeInUp" href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>"><?= $this->lang->line('Shop Now') ?></a>
             </div>
-          <?php } else { ?>
-            <a class="btn animated fadeInUp" href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>"><?= $this->lang->line('Shop Now') ?></a>
-          </div>
+            <?php } else { ?>
+              <a class="btn animated fadeInUp" href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>"><?= $this->lang->line('Shop Now') ?></a>
+            </div>
         <?php } ?>
         </div>
       </div>

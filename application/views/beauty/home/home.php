@@ -210,13 +210,19 @@
                             <h6 class="rating-cnt notranslate"><?= $this->siteCurrency .' '. number_format((float)$value->discount_price, 2, '.', '')?> <span class="<?=($value->discount_per > 0 ) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency .' '. number_format((float)$value->price, 2, '.', '')?></strike></span></h6>
                             <div class="rating-starts">
                               <div class="rating stars3_5">
-                                <span class="star"></span>
+                              <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                                <i class="star star-active"></i>
+                              <?php } ?>
+                              <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                                  <i class="star"></i>
+                              <?php } ?>
+                                <!-- <span class="star"></span>
                                 <span class="star"></span>
                                 <span class="star"></span>
                                 <span class="star star-active"></span>
-                                <span class="star star-active-half"></span>
+                                <span class="star star-active-half"></span> -->
                               </div>
-                              <div><span>(122)</span></div>
+                              <div><span>(<?=$value->ratting['rating']?>)</span></div>
                             </div>
                             <?php 
                               $d_none = '';
