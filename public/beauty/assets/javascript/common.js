@@ -480,8 +480,8 @@ $(document).on('click', '.dec', function () {
 									that.parent().addClass('d-none');
 									that.parent().next('div.order-btn').find('a:first').removeClass('d-none');
 								} else {
-									that.parent().parent('div').addClass('d-none');
-									that.parent().parent().prev('a').removeClass('d-none');
+									that.parent().parent().addClass('d-none');
+									that.parent().parent().prev().removeClass('d-none');
 								}
 
 								$('#itemCount').html(output.count);
