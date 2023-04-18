@@ -173,7 +173,7 @@
 
 
 <!-- -----Featured Products-section------------ -->
-<section class="Featured-Products p-100">
+<section class="Featured-Products p-100 <?=(empty($top_sell) ? 'd-none': '')?>">
     <div class="container">
         <div class="col-xxl-12 col-lg-12 ">
             <div class="title">
@@ -252,7 +252,7 @@
                 </div>
             </div>
             <?php } ?>
-            
+
         </div>
     </div>
 </section>
@@ -343,47 +343,47 @@
     <div class="container">
         <div class="col-xxl-12 col-lg-12 ">
             <div class="title">
-                <h2>Latest Products</h2>
-                <p>Do not miss the current offers until the end of month.</p>
+                <h2><?=$this->lang->line('Latest')?> <?=$this->lang->line('Products')?></h2>
+                <!-- <p>Do not miss the current offers until the end of month.</p> -->
             </div>
         </div>
 
         <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0"
             data-wow-offset="0">
+            <?php foreach ($new_arrival as $key => $value) { ?>
+              <div class="techno-check">
+                  <input class="techno_checkbox" type="checkbox" id="1" value="1" />
+                  <div href="#" class="product-wrapper card">
+                      <div class="card-header">
+                          <h5>In Stock</h5>
+                          <a href="./product-list-page.php">
+                              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
+                          </a>
+                      </div>
 
-            <div class="techno-check">
-                <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-                <div href="#" class="product-wrapper card">
-                    <div class="card-header">
-                        <h5>In Stock</h5>
-                        <a href="./product-list-page.php">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
-                        </a>
-                    </div>
-
-                    <div class="card-body">
-                        <h3><a href="./product-list-page.php">Mamaearth Ubtan Body Wash With Turmeric & Saffron For</a>
-                        </h3>
-                        <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-                        <div class="rating-starts">
-                        <div class="rating stars3_5">
-                            <span class="star"></span>
-                            <span class="star"></span>
-                            <span class="star"></span>
-                            <span class="star star-active"></span>
-                            <span class="star star-active-half"></span>
-                        </div>
-                        <div><span>(122)</span></div>
-                        </div>
-                        <div class="card-btn">
-                            <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                                Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="techno-check">
+                      <div class="card-body">
+                          <h3><a href="./product-list-page.php">Mamaearth Ubtan Body Wash With Turmeric & Saffron For</a>
+                          </h3>
+                          <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
+                          <div class="rating-starts">
+                          <div class="rating stars3_5">
+                              <span class="star"></span>
+                              <span class="star"></span>
+                              <span class="star"></span>
+                              <span class="star star-active"></span>
+                              <span class="star star-active-half"></span>
+                          </div>
+                          <div><span>(122)</span></div>
+                          </div>
+                          <div class="card-btn">
+                              <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
+                                  Add to Cart</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <?php } ?>
+            <!-- <div class="techno-check">
                 <input class="techno_checkbox" type="checkbox" id="1" value="1" />
                 <div href="#" class="product-wrapper card">
                     <div class="card-header">
@@ -640,7 +640,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
