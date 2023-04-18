@@ -94,23 +94,25 @@
     <div class="container">
         <div class="col-xxl-12 col-lg-12 ">
             <div class="title">
-                <h2>Shop By Categories</h2>
-                <p>Top Categories Of The Week</p>
+                <h2><?= $this->lang->line('SHOP BY CATEGORIES') ?></h2>
+                <!-- <p>Top Categories Of The Week</p> -->
             </div>
         </div>
 
         <!-- --------owl-slider--------->
+        
         <div class="owl-1 owl-carousel owl-theme">
-            <a href="./product-list-page.php" class="categorie-wapper">
+          <?php foreach ($variable as $key => $value) { ?>
+            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wapper">
                 <div class="categorie-img">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-1.png" alt="">
+                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="">
                 </div>
                 <div class="categorie-text">
-                    <h4>SKINCARE</h4>
+                    <h4><?= $value->name ?></h4>
                 </div>
             </a>
-
-            <a href="./product-list-page.php" class="categorie-wapper">
+            <?php } ?>
+            <!-- <a href="./product-list-page.php" class="categorie-wapper">
                 <div class="categorie-img">
                     <img src="<?=$this->theme_base_url?>/assets/images/home-page/categorie-img-2.png" alt="">
                 </div>
@@ -162,7 +164,7 @@
                 <div class="categorie-text">
                     <h4>FRAGRANCE</h4>
                 </div>
-            </a>
+            </a> -->
 
         </div>
 
