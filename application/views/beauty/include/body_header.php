@@ -93,7 +93,7 @@
             <a href="javascript:" class="user-login-icon header-icon"><span><i class="fa-regular fa-user"></i></span></a>
 
 
-            <a href="#" class="cart-icons header-icon" >
+            <a href="javascript:" class="cart-icons header-icon" >
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="g-badge" id="itemCount" <?=(isset($this->cartCount) && $this->cartCount != 0 ) ? 'style="display:block"' : 'style="display:none"' ?>><?=(isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
             <!-- ----cart-dropdown--- -->
