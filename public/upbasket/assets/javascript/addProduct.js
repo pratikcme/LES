@@ -296,10 +296,10 @@ var ADDPRODUCT = (function () {
           } else {
 
           }
-          var isDiscount = (output.discount_per > "0") ? "" : "d-none";
+          var isDiscount = (output.discount_per > 0) ? "" : "d-none";
           var disNwislist = '<span class= discnt ' + isDiscount + '>' + output.discount_per + '% off</span>';
-          disNwislist = '<span class= discnt ' + isDiscount + '>' + output.discount_per + '% off</span> <div class="pro-hearticon wishlist-icon" data-product_id="' + output.product_id + '" data-product_weight_id="' + output.product_variant_id + '"><i class="fa-regular fa-heart ' + output.isInWishListUpbasket + '"></i></div>';
-          // $(".discnt").remove();
+          disNwislist = disNwislist + '<div class="pro-hearticon wishlist-icon" data-product_id="' + output.product_id + '" data-product_weight_id="' + output.product_variant_id + '"><i class="fa-regular fa-heart ' + output.isInWishListUpbasket + '"></i></div>';
+          $(".discnt").remove();
           $(".pro-hearticon").remove();
           $("#zoom_image").before(disNwislist);
           // $(disNwislist).insertBefore('#zoom_image');
