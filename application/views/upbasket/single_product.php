@@ -28,10 +28,10 @@
           <div class="product-image-part">
 
             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 gallery-top">  
-              <span class="discnt <?=($varientDetails[0]->discount_per > 0) ? '' : 'd-none' ?>"><?=$varientDetails[0]->discount_per?> % off</span>
+              <!-- <span class="discnt <?=($varientDetails[0]->discount_per > 0) ? '' : 'd-none' ?>"><?=$varientDetails[0]->discount_per?> % off</span>
               <div class="pro-hearticon wishlist-icon" data-product_id ="<?=$product_id?>" data-product_weight_id ="<?=$product_weight_id?>">
                 <i class="fa-regular fa-heart <?=(in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>"></i>
-              </div>
+              </div> -->
               
               <div class="swiper-wrapper" id="zoom_image">
                 <?php foreach ($product_image as $key => $value){ ?>
