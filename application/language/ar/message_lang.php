@@ -1,5 +1,6 @@
 <?php
 
+$lang['Back to'] = 'ارجع الى';
 $lang['Thanks for shopping'] = 'شكرا للتسوق';
 $lang['Order placed successfully'] = 'تم وضع الطلب بنجاح';
 $lang['Your Order No'] = 'طلبك لا';
@@ -130,11 +131,13 @@ $lang['Create Account'] = 'إنشاء حساب';
 $lang['Forgot Your Password'] = 'نسيت كلمة السر';
 $lang['continue with facebook'] = 'تواصل مع الفيسبوك';
 $lang['continue with google'] = 'تواصل مع جوجل';
+$lang['Forgot password'] = 'هل نسيت كلمة السر';
 
 // placeHolder
 $lang['Gst number'] = 'رقم Gst';
 $lang['Email*'] = 'بريد إلكتروني*';
 $lang['password*'] = 'كلمة المرور*';
+$lang['password'] = 'كلمة المرور';
 
 // register
 $lang['Register'] = 'يسجل';

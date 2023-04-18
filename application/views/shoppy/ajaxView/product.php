@@ -20,11 +20,13 @@
             <?php } ?>
         </div>
         <div class="product-content">
-            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                 <h5><?= $value->name ?></h5>
+
+
                 <div class="product-discount notranslate">
-                    <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                    <p><?= $this->siteCurrency . ' ' . $value->price ?></p>
+                    <h4> <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?></h4>
+                    <p class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
                 </div>
             </a>
             <div class="rating-starts">
@@ -40,7 +42,7 @@
                 <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
             </div>
             <div>
-                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
                     Cart
                 </button>
             </div>

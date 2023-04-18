@@ -1,5 +1,5 @@
 <?php
-
+$lang['Back to'] = 'Back to';
 $lang['Thanks for shopping'] = 'Thanks for shopping';
 $lang['Order placed successfully'] = 'order placed successfully';
 $lang['Your Order No'] = 'Your Order No';
@@ -129,12 +129,14 @@ $lang['Create Account'] = 'Create Account';
 $lang['Forgot Your Password'] = 'Forgot Your Password';
 $lang['continue with facebook'] = 'continue with facebook';
 $lang['continue with google'] = 'continue with google';
+$lang['Forgot password'] = 'Forgot password';
 
 // placeHolder
 $lang['Gst number'] = 'Gst number';
 
 $lang['Email*'] = 'Email*';
 $lang['password*'] = 'password*';
+$lang['password'] = 'password';
 
 // register
 $lang['Register'] = 'Register';
