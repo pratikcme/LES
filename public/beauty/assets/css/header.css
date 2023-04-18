@@ -408,14 +408,15 @@ nav .left-content a:hover {
   position: absolute;
   background: var(--secondary-color);
   font-family: Open Sans;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
-  line-height: 12px;
+  /* line-height: 12px; */
   letter-spacing: 0.02em;
   color: var(--common-white);
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 
