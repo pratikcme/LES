@@ -476,10 +476,12 @@ $(document).on('click', '.dec', function () {
 									$('#itemCount').css('display', 'none');
 								}
 								// segments[4] when live
+								alert('1');
 								if (segments[3] == 'productDetails' && !that.hasClass('related_cat')) {
 									that.parent().addClass('d-none');
 									that.parent().next('div.order-btn').find('a:first').removeClass('d-none');
 								} else {
+									alert(2)
 									that.parent().parent().addClass('d-none');
 									that.parent().parent().prev('a').removeClass('d-none');
 								}
