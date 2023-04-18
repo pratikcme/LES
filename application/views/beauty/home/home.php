@@ -177,13 +177,21 @@
     <div class="container">
         <div class="col-xxl-12 col-lg-12 ">
             <div class="title">
-                <h2>Top Featured Products</h2>
-                <p>Do not miss the current offers until the end of month.</p>
+                <h2><?= $this->lang->line('TOP FEATURED PRODUCTS') ?></h2>
+                <!-- <p>Do not miss the current offers until the end of month.</p> -->
             </div>
         </div>
 
         <div class="row justify-content-center">
             <!-- -----product-card----- -->
+            <?php foreach ($top_sell as $key => $value) { 
+              // $class = '';
+              // if (in_array($value->id, $wish_pid)) {
+              //   $class = 'fas .fa-heart';
+              // }
+              $value->name = character_limiter($value->name, 30);  
+            ?>
+
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 wow fadeInDown" data-wow-duration="1s"
                 data-wow-delay="0" data-wow-offset="0">
                 <div class="techno-check">
@@ -192,15 +200,14 @@
                         <div class="card-header">
                             <h5>In Stock</h5>
                             
-                            <a href="./product-list-page.php">
+                            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                                 <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
                             </a>
                         </div>
 
                         <div class="card-body">
-                            <h3><a href="./product-list-page.php">Mamaearth Ubtan Body Wash With Turmeric & Saffron
-                                    For</a></h3>
-                            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
+                            <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">><?= $value->name ?></a></h3>
+                            <h6 class="rating-cnt notranslate"><?= $this->siteCurrency .' '. number_format((float)$value->discount_price, 2, '.', '')?> <span class="<?=($value->discount_per > 0 ) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency .' '. number_format((float)$value->price, 2, '.', '')?></strike></span></h6>
                             <div class="rating-starts">
                               <div class="rating stars3_5">
                                 <span class="star"></span>
@@ -211,22 +218,35 @@
                               </div>
                               <div><span>(122)</span></div>
                             </div>
-                            <!-- <div class="card-btn">
-                                <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                                    Add to Cart</a>
-                            </div> -->
-                            <div class="product-detail-quentity add-cart-btn">
+                            <?php 
+                              $d_none = '';
+                              $d_show = 'd-none';
+                              if(!empty($item_weight_id)){
+                                if(in_array($value->pw_id,$item_weight_id)){
+                                  $d_show = '';
+                                  $d_none = 'd-none';
+                                }
+                              }
+                            ?>
+                            <div class="card-btn addcartbutton <?=$d_none?>" 
+                            data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
+                            data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
+                            <a href="javascript:" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
+                            <?=$this->lang->line('add to cart')?></a>
+                            </div>
+                            <div class="product-detail-quentity add-cart-btn <?=$d_show?>">
                               <div class="qty-container">
-                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                                <input type="text" name="qty" value="1" class="input-qty">
-                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->id?>" data-weight_id="<?=$value->weight_id?>" readonly>
+                                <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
                               </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <?php } ?>
+<!-- 
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 wow fadeInDown" data-wow-duration="1s"
                 data-wow-delay="0" data-wow-offset="0">
                 <div class="techno-check">
@@ -470,7 +490,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
