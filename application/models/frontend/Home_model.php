@@ -305,7 +305,7 @@ class Home_model extends My_model
 			TABLE_WEIGHT . ' as w' => ['w.id = pw.weight_id', 'LEFT'],
 			'package as pkg' => ['pkg.id = pw.package', 'LEFT'],
 		];
-		$data['select'] = ['od.*', 'pw.id as product_varient_id', 'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.price as actual_price', 'w.id as weight_id'];
+		$data['select'] = ['od.*', 'pw.id as product_varient_id', 'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.limited_stock as limited_stock', 'pw.price as actual_price', 'w.id as weight_id', 'od.new_percentage as new_percentage'];
 		$data['where'] = ['od.offer_id' => $postData['offer_id']];
 		$return =  $this->selectFromJoin($data);
 		unset($data);

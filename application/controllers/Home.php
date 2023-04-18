@@ -144,12 +144,12 @@ class Home extends User_Controller
 		}
 		$data['item_weight_id'] = $item_weight_id;
 
-
 		$offer_id = $this->utility->safe_b64decode($offer_id);
 		$data['page'] = 'frontend/offer_product_list';
 		$data['js'] = array('add_to_cart.js');
 		$postData = ['offer_id' => $offer_id, 'user_id' => $this->session->userdata('user_id')];
 		$data['offer_varient_list'] = $this->this_model->get_offer_varient_listing($postData);
+
 		$this->load->model('frontend/product_model');
 		foreach ($data['offer_varient_list'] as $key => $value) {
 			$addQuantity = $this->product_model->findProductAddQuantity($value->product_id, $value->product_varient_id);
