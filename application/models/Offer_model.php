@@ -535,7 +535,8 @@ class Offer_model extends My_model
 
         $this->db->query("UPDATE product_weight SET discount_per='$discount',discount_price='$discount_price' WHERE id='$v_id'");
 
-        return $this->updateRecords($data);
+        /* return */
+        $this->updateRecords($data);
     }
     public function test()
     {
