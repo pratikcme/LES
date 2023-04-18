@@ -17,8 +17,6 @@ class Cron extends CI_Controller
 
 	public function applied_offer_bycron($crone_id = '')
 	{
-
-
 		$res = $this->this_model->getOfferForApplied();
 
 		foreach ($res as $key => $value) {

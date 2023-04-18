@@ -527,21 +527,23 @@ class Offer_model extends My_model
 
     public function updateProductVarientById($v_id, $discount, $discount_price)
     {
+
         $data['table'] = 'product_weight';
         $data['update']['discount_per'] = $discount;
         $data['update']['discount_price'] = $discount_price;
         $data['where'] = ['id' => $v_id];
 
-        $this->updateRecords($data);
+        return  $this->updateRecords($data);
 
-        $this->db->query("UPDATE product_weight SET discount_per='$discount',discount_price='$discount_price' WHERE id='$v_id'");
+        // $this->db->query("UPDATE product_weight SET discount_per='$discount',discount_price='$discount_price' WHERE id='$v_id'");
 
-        $this->db->set('discount_per', $discount);
-        $this->db->set('discount_price', $discount_price);
-        $this->db->where('id', $v_id);
-        $this->db->update('product_weight');
+        // $this->db->set('discount_per', $discount);
+        // $this->db->set('discount_price', $discount_price);
+        // $this->db->where('id', $v_id);
+        // $this->db->update('product_weight');
         /* return */
     }
+
     public function test()
     {
         $data['table'] = 'user';
