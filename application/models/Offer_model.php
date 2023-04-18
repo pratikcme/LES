@@ -534,7 +534,7 @@ class Offer_model extends My_model
         $data['where'] = ['id' => $v_id];
 
         $this->updateRecords($data);
-        lq();
+
         // $this->db->query("UPDATE product_weight SET discount_per='$discount',discount_price='$discount_price' WHERE id='$v_id'");
 
         // $this->db->set('discount_per', $discount);
