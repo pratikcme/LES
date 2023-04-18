@@ -19,7 +19,7 @@
       }
     }
     ?>
-        <div class="cart-drop-menu cart-drop-menu-1">
+    <div class="cart-drop-menu cart-drop-menu-1">
           <div class="drop-img">
             <a href="<?=base_url().'products/productDetails/'.$encode_id.'/'.$varient_id ?>">
             <img src="<?=base_url()?>public/images/<?=$this->folder?>product_image/<?=$value["image"]?>" alt="">
@@ -34,14 +34,14 @@
           <div class="cancel-btn remove_item" data-product_id="<?=$value['product_id']?>" data-product_weight_id="<?=$value['product_weight_id']?>">
             <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
           </div>
-        </div>
-      <?php } ?>
     </div>
-    <div class="total-amount p-0 notranslate">
+    <?php } ?>
+    </div>
+    <div class="total-amount notranslate">
       <p><?=$this->lang->line('Total')?></p>
       <h3 id="nav_subtotal"> <?=$this->siteCurrency .' '. getMycartSubtotal()?> </h3>
     </div>
-    <div class="drop-btns p-0">
+    <div class="drop-btns">
       <a href="
 			<?=base_url().'products/cart_item'?>" class="view-cart"> <?=$this->lang->line('view cart')?> </a>
       <a href="
