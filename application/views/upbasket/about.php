@@ -58,7 +58,7 @@
             </div>
             <p><?=$value->content?></p>
             <h3><?=$value->name?></h3>
-            <h5>Customer</h5>
+            <h5><?=$value->designation?></h5>
         </div>
         <?php } ?>
         <!-- <div class="clinet-review-wrapper wow flipInX" data-wow-duration="1.5s" data-wow-delay="0.2s" data-wow-offset="0">
