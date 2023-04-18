@@ -177,19 +177,19 @@
 
               <div class="mb-3">
                 <label for="confirm_password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" name="confirm_password" placeholder="<?= $this->lang->line('Confirm password*') ?>" id="confirm_password">
+                <input type="password" class="form-control" name="confirm_password" placeholder="<?= $this->lang->line('Confirm password*') ?>" id="confirm_password" autocomplete="off">
               </div>
 
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name="term_policy" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                  By creating an account, you agree to our <a href="#">Terms Of Conditions</a> and <a href="#">Privacy Policy.</a>
+                  By creating an account, you agree to our <a href="<?= base_url() ?>terms_condition">Terms Of Conditions</a> and <a href="<?= base_url() ?>privacy_policy">Privacy Policy.</a>
                 </label>
               </div>
+              <label for="term_policy" class="error"></label>
 
               <div class="sign-in-btn">
                 <button class="lg-btn" type="submit">Submit</button>
-
               </div>
             </div>
 
