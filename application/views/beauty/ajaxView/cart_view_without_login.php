@@ -38,7 +38,7 @@
       <?php } ?>
     </div>
     <div class="total-amount p-0 notranslate">
-      <p>Total</p>
+      <p><?=$this->lang->line('Total')?></p>
       <h3 id="nav_subtotal"> <?=$this->siteCurrency .' '. getMycartSubtotal()?> </h3>
     </div>
     <div class="drop-btns p-0">
@@ -46,6 +46,10 @@
 			<?=base_url().'products/cart_item'?>" class="view-cart"> <?=$this->lang->line('view cart')?> </a>
       <a href="
 			<?=base_url().'checkout'?>" class="checkout "> <?=$this->lang->line('checkout')?> </a>
+    </div>
+    <div class="icon-tex">
+      <p><?=$this->lang->line('your cart')?></p>
+      <h3 class="notranslate" id="display_subtotal"><?=$this->siteCurrency.''.getMycartSubtotal()?></h3>
     </div>
 
     
