@@ -86,8 +86,8 @@ $lang['send'] = 'إرسال';
 // vendor/vendor page
 $lang['vendor'] = 'بائع';
 $lang['home'] = 'الصفحة الرئيسية';
- 
- 
+
+
 //product page frontend
 $lang['product listing'] = 'قائمة المنتجات';
 $lang['Your Wishlist'] = 'قائمة امنياتك';
@@ -110,7 +110,7 @@ $lang['Help!'] = 'يساعد!';
 
 // view cart page
 $lang['cart'] = "كارة";
-$lang['Cart Total'] = "إجمالي سلة التسوق"; 
+$lang['Cart Total'] = "إجمالي سلة التسوق";
 $lang['Sub Total'] = "المجموع الفرعي";
 $lang['Delivery Charges'] = "رسوم التوصيل";
 $lang['Total'] = "مجموع";
@@ -202,42 +202,42 @@ $lang['Credit/Debit Card'] = 'بطاقة الائتمان / الخصم';
 $lang['Add new address'] = 'أضف عنوان جديد';
 $lang['Inc'] = 'يشمل';
 $lang['Use GST Number'] = 'استخدم رقم gst';
-$lang['Enter Promocode']= 'أدخل الرمز الترويجي';
+$lang['Enter Promocode'] = 'أدخل الرمز الترويجي';
 
-$lang['You will save']= 'سوف تحفظ';
-$lang['on this order']= 'على هذا الطلب';
+$lang['You will save'] = 'سوف تحفظ';
+$lang['on this order'] = 'على هذا الطلب';
 $lang['Verify Mobile'] = 'تحقق من الهاتف المحمول';
 // my account
 $lang['All store'] = 'كل متجر';
-$lang['My account']='حسابي';
-$lang['My order']='طلبي';
-$lang['My orders']='طلباتي';
-$lang['My Wishlist']='قائمة امنياتي';
-$lang['My address']='عنواني';
-$lang['Change Password']='غير كلمة السر';
-$lang['logout']='تسجيل خروج';
-$lang['Delete Account']='حذف الحساب';
-$lang['Account Details']='تفاصيل الحساب';
-$lang['Save']='حفظ';
-$lang['Add New Address']='أضف عنوان جديد';
-$lang['My address']='عنواني';
-$lang['Default']='تقصير';
-$lang['Address']='تبوك';
-$lang['No Orders Available']='لا توجد أوامر متاحة';
+$lang['My account'] = 'حسابي';
+$lang['My order'] = 'طلبي';
+$lang['My orders'] = 'طلباتي';
+$lang['My Wishlist'] = 'قائمة امنياتي';
+$lang['My address'] = 'عنواني';
+$lang['Change Password'] = 'غير كلمة السر';
+$lang['logout'] = 'تسجيل خروج';
+$lang['Delete Account'] = 'حذف الحساب';
+$lang['Account Details'] = 'تفاصيل الحساب';
+$lang['Save'] = 'حفظ';
+$lang['Add New Address'] = 'أضف عنوان جديد';
+$lang['My address'] = 'عنواني';
+$lang['Default'] = 'تقصير';
+$lang['Address'] = 'تبوك';
+$lang['No Orders Available'] = 'لا توجد أوامر متاحة';
 
 
 //order 
 
-$lang['Details']='تفاصيل';
-$lang['Total Amount']='المبلغ الإجمالي';
-$lang['Product Discount']='خصم المنتج';
-$lang['Total Amount Before Tax']='المبلغ الإجمالي قبل الضريبة';
-$lang['Total Tax Amount']='إجمالي مبلغ الضريبة';
-$lang['Total Item']='إجمالي البند';
-$lang['Promocode Discount']='خصم بروموكود';
-$lang['Final Total']='المجموع النهائي';
-$lang['Cancel Order']='الغاء الطلب';
-$lang['self pickup otp']='التقاط النفس otp';
+$lang['Details'] = 'تفاصيل';
+$lang['Total Amount'] = 'المبلغ الإجمالي';
+$lang['Product Discount'] = 'خصم المنتج';
+$lang['Total Amount Before Tax'] = 'المبلغ الإجمالي قبل الضريبة';
+$lang['Total Tax Amount'] = 'إجمالي مبلغ الضريبة';
+$lang['Total Item'] = 'إجمالي البند';
+$lang['Promocode Discount'] = 'خصم بروموكود';
+$lang['Final Total'] = 'المجموع النهائي';
+$lang['Cancel Order'] = 'الغاء الطلب';
+$lang['self pickup otp'] = 'التقاط النفس otp';
 
 
 //contact us
@@ -247,7 +247,7 @@ $lang['Email'] = 'بريد إلكتروني';
 $lang['Phone'] = 'هاتف';
 
 //contact us palceholder
-$lang['First Name'] ='الاسم الأول'; 
+$lang['First Name'] = 'الاسم الأول';
 $lang['Message'] = 'رسالة';
 
 // about us
@@ -340,18 +340,18 @@ $lang['image_validation'] = 'يُسمح فقط بنوع الصورة jpg / png /
 
 
 //change password placeholder
-$lang['current password']= 'كلمة السر الحالية';
-$lang['new password']= 'كلمة المرور الجديدة';
-$lang['Confirm password']= 'تأكيد كلمة المرور';
+$lang['current password'] = 'كلمة السر الحالية';
+$lang['new password'] = 'كلمة المرور الجديدة';
+$lang['Confirm password'] = 'تأكيد كلمة المرور';
 
 //change password js validation
-$lang['Please_enter_your_old_password']= 'الرجاء إدخال كلمة المرور القديمة الخاصة بك';
-$lang['Please_enter_your_new_password']= 'الرجاء إدخال كلمة المرور الجديدة الخاصة بك';
-$lang['Please_enter_confirm_password']= 'الرجاء إدخال تأكيد كلمة المرور';
-$lang['Your_password_does_not_match']= 'كلمة السر لا تتطابق';
+$lang['Please_enter_your_old_password'] = 'الرجاء إدخال كلمة المرور القديمة الخاصة بك';
+$lang['Please_enter_your_new_password'] = 'الرجاء إدخال كلمة المرور الجديدة الخاصة بك';
+$lang['Please_enter_confirm_password'] = 'الرجاء إدخال تأكيد كلمة المرور';
+$lang['Your_password_does_not_match'] = 'كلمة السر لا تتطابق';
 
-$lang['Please_enter_at_least_6_charecter']= 'الرجاء إدخال 6 رموز على الأقل';
-$lang['Please_select_less_then_20_charecter']= 'الرجاء تحديد أقل من 20 حرفًا';
+$lang['Please_enter_at_least_6_charecter'] = 'الرجاء إدخال 6 رموز على الأقل';
+$lang['Please_select_less_then_20_charecter'] = 'الرجاء تحديد أقل من 20 حرفًا';
 
 $lang['please_select_Payment_method'] = 'الرجاء تحديد طريقة الدفع';
 $lang['Please_enter_your_Address'] = 'الرجاء إدخال عنوانك';
@@ -385,4 +385,10 @@ $lang['please_enter_your_phone_number'] = 'يرجى إدخال رقم الهات
 $lang['please_enter_no_more_than_15_characters'] = 'الرجاء إدخال ما لا يزيد عن 15 حرفًا';
 $lang['please_enter_only_digits'] = 'الرجاء إدخال أرقام فقط.';
 
-?>
+
+/* Shoppy  */
+
+// Home //
+
+$lang['Best Sellers'] = 'أفضل البائعين';
+$lang['New Arrival'] = 'قادم جديد';

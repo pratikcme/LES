@@ -15,12 +15,13 @@ class Home extends User_Controller
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
-	public function index(){
+	public function index()
+	{
 		// dd($_SESSION);
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
-		$data['page'] = $_SESSION['template_name'].'/home/home';
+		$data['page'] = $_SESSION['template_name'] . '/home/home';
 		$subcategory = $this->this_model->countSubcategory();
 		$data['subcategory'] = count($subcategory);
 
@@ -31,7 +32,7 @@ class Home extends User_Controller
 			$data['home_section_one'] = $this->home_content_model->getHomeSection_one();
 			$data['background_image'] = $this->home_content_model->getSectionOneBackground();
 		}
-		
+
 		$data['js'] = array('add_to_cart.js');
 
 		$data['category'] = $this->this_model->selectCategory();
@@ -69,11 +70,11 @@ class Home extends User_Controller
 			$value->addQuantity = $addQuantity;
 
 			$data['new_arrival'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
-			$value->ratting = $this->this_model->selectStarRatting($value->id,$value->pw_id);
+			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
 		}
 
 
-	// $data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); call this for no reapeated product in new arrivals
+		// $data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); call this for no reapeated product in new arrivals
 		$data['top_sell_core'] = $this->this_model->selectTopSelling();
 		$top_selling_core = array();
 		foreach ($data['top_sell_core'] as $key => $value) {
@@ -106,12 +107,12 @@ class Home extends User_Controller
 			$varientQuantity = $this->this_model->checkVarientQuantity($value->id);
 
 			$top_selling_core[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
-			
-			$value->ratting = $this->this_model->selectStarRatting($value->id,$value->pw_id);
+
+			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
 		}
-		
+
 		$data['top_sell'] = $top_selling_core;
-		// dd($data['top_sell']);
+		//dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
 		// dd($data['banner']);die;
 

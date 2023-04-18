@@ -276,11 +276,11 @@ if (!empty($related_product)) { ?>
             </div>
 
             <div class="product-content">
-              <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                <h5><?= $value->name ?></h5>
+              <a href="./product-detail.php">
+                <h5>Blue Dress For Woman</h5>
                 <div class="product-discount">
-                  <h4> <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                  <p <?= ($value->discount_per > 0) ? '' : ' d-none' ?>><?= $this->siteCurrency . ' ' . $value->price ?></p>
+                  <h4>₹1150.00</h4>
+                  <p>₹1230.00</p>
                 </div>
               </a>
               <div class="rating-starts">
