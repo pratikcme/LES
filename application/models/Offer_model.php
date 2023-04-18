@@ -94,7 +94,7 @@ class Offer_model extends My_model
         $st_hr = $st[0];
         $st_min = $st[1];
 
-        $utc_time =  gmdate("H:i", strtotime($st_array));
+        $utc_time =  date("H:i", strtotime($st_array));
         $srvTime = date("H:i", strtotime($utc_time));
         $sts = explode(':', $srvTime);
         $st_hr = $sts[0];
