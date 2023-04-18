@@ -380,6 +380,16 @@
                           </div>
                           <div><span>(<?=$value->ratting['rating']?>)</span></div>
                           </div>
+                          <?php 
+                              $d_none = '';
+                              $d_show = 'd-none';
+                              if(!empty($item_weight_id)){
+                                if(in_array($value->pw_id,$item_weight_id)){
+                                  $d_show = '';
+                                  $d_none = 'd-none';
+                                }
+                              }
+                            ?>
                           <div class="card-btn addcartbutton <?=$d_none?>" 
                             data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
                             data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
