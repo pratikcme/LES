@@ -3,7 +3,7 @@
         <input class="techno_checkbox" type="checkbox" id="2" value="2">
         <div href="javascript:" class="product-wrapper card card-1 <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
             <span> <?= $this->lang->line('out of stock') ?></span>
-            <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
+            <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> % off</span>
             <div class="card-header">
                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
@@ -19,11 +19,11 @@
                     <?php } ?></h4>
 
 
-                <h6 class="rating notranslate"> 
+                <h6 class="rating notranslate">
                     <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
                     <span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>">
-                    <strike><?= $this->siteCurrency . ' ' . $value->price ?></strike>
-                </span>
+                        <strike><?= $this->siteCurrency . ' ' . $value->price ?></strike>
+                    </span>
                 </h6>
 
                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->prod_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>">

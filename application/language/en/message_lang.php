@@ -106,7 +106,7 @@ $lang['Help!'] = 'Help!';
 
 // view cart page
 $lang['cart'] = "cart";
-$lang['Cart Total'] = "Cart Total"; 
+$lang['Cart Total'] = "Cart Total";
 $lang['Sub Total'] = "Sub Total";
 $lang['Delivery Charges'] = "Delivery Charges";
 $lang['Total'] = "Total";
@@ -198,43 +198,43 @@ $lang['checkout'] = 'checkout';
 $lang['Credit/Debit Card'] = 'Credit/Debit Card';
 $lang['Add new address'] = 'Add new address';
 $lang['Use GST Number'] = 'Use GST Number';
-$lang['Enter Promocode']= 'Enter Promocode';
+$lang['Enter Promocode'] = 'Enter Promocode';
 
-$lang['You will save']= 'You will save';
-$lang['on this order']= 'on this order';
+$lang['You will save'] = 'You will save';
+$lang['on this order'] = 'on this order';
 
 $lang['Verify Mobile'] = 'Verify Mobile';
 
 
 // my account
 $lang['All store'] = 'All store';
-$lang['My account']='My account';
-$lang['My order']='My order';
-$lang['My orders']='My orders';
-$lang['My Wishlist']='My Wishlist';
-$lang['My address']='My Address';
-$lang['Change Password']='Change Password';
-$lang['logout']='logout';
-$lang['Delete Account']='Delete Account';
-$lang['Account Details']='Account Details';
-$lang['Save']='Save';
-$lang['Add New Address']='Add New Address';
-$lang['My address']='My Address';
-$lang['Default']='Default';
-$lang['Address']='Address';
-$lang['No Orders Available']='No Orders Available';
+$lang['My account'] = 'My account';
+$lang['My order'] = 'My order';
+$lang['My orders'] = 'My orders';
+$lang['My Wishlist'] = 'My Wishlist';
+$lang['My address'] = 'My Address';
+$lang['Change Password'] = 'Change Password';
+$lang['logout'] = 'logout';
+$lang['Delete Account'] = 'Delete Account';
+$lang['Account Details'] = 'Account Details';
+$lang['Save'] = 'Save';
+$lang['Add New Address'] = 'Add New Address';
+$lang['My address'] = 'My Address';
+$lang['Default'] = 'Default';
+$lang['Address'] = 'Address';
+$lang['No Orders Available'] = 'No Orders Available';
 
 //order 
-$lang['Details']='Details';
-$lang['Total Amount']='Total Amount';
-$lang['Product Discount']='Product Discount';
-$lang['Total Amount Before Tax']='Total Amount Before Tax';
-$lang['Total Tax Amount']='Total Tax Amount';
-$lang['Total Item']='Total Item';
-$lang['Promocode Discount']='Promocode Discount';
-$lang['Final Total']='Final Total';
-$lang['Cancel Order']='Cancel Order';
-$lang['self pickup otp']='SelfPickUp OTP';
+$lang['Details'] = 'Details';
+$lang['Total Amount'] = 'Total Amount';
+$lang['Product Discount'] = 'Product Discount';
+$lang['Total Amount Before Tax'] = 'Total Amount Before Tax';
+$lang['Total Tax Amount'] = 'Total Tax Amount';
+$lang['Total Item'] = 'Total Item';
+$lang['Promocode Discount'] = 'Promocode Discount';
+$lang['Final Total'] = 'Final Total';
+$lang['Cancel Order'] = 'Cancel Order';
+$lang['self pickup otp'] = 'SelfPickUp OTP';
 
 //contact us
 $lang['Contact us'] = 'Contact us';
@@ -243,7 +243,7 @@ $lang['Email'] = 'Email';
 $lang['Phone'] = 'Phone';
 
 //contact us palceholder
-$lang['First Name'] ='First Name'; 
+$lang['First Name'] = 'First Name';
 $lang['Message'] = 'Message';
 
 // about us
@@ -338,18 +338,18 @@ $lang['Please_enter_first_name'] = 'Please enter first name';
 $lang['image_validation'] = 'Only image type jpg/png/jpeg/gif is allowed';
 
 //change password placeholder
-$lang['current password']= 'current password';
-$lang['new password']= 'new password';
-$lang['Confirm password']= 'Confirm password';
+$lang['current password'] = 'current password';
+$lang['new password'] = 'new password';
+$lang['Confirm password'] = 'Confirm password';
 
 //change password js validation
-$lang['Please_enter_your_old_password']= 'Please enter your old password';
-$lang['Please_enter_your_new_password']= 'Please enter your new password';
-$lang['Please_enter_confirm_password']= 'Please enter confirm password';
-$lang['Your_password_does_not_match']= 'Your password does not match';
+$lang['Please_enter_your_old_password'] = 'Please enter your old password';
+$lang['Please_enter_your_new_password'] = 'Please enter your new password';
+$lang['Please_enter_confirm_password'] = 'Please enter confirm password';
+$lang['Your_password_does_not_match'] = 'Your password does not match';
 
-$lang['Please_enter_at_least_6_charecter']= 'Please enter at least 6 charecter';
-$lang['Please_select_less_then_20_charecter']= 'Please select less then 20 charecter';
+$lang['Please_enter_at_least_6_charecter'] = 'Please enter at least 6 charecter';
+$lang['Please_select_less_then_20_charecter'] = 'Please select less then 20 charecter';
 $lang['please_select_Payment_method'] = 'please select Payment method';
 $lang['Please_enter_your_Address'] = 'Please enter your Address';
 $lang['We_do_not_deliver_to_your_selected_Address'] = 'We do not deliver to your selected address';
@@ -373,7 +373,7 @@ $lang['please_enter_at_least_6_character'] = 'Please enter at least 6 character'
 $lang['please_select_less_than_or_equal_to_10_character'] = 'Please select less than or equal to 10 character';
 $lang['password_does_not_match'] = 'Password does not match';
 $lang['select country code'] = 'Select country code';
-$lang['what our clients say']='What Our Clients Say';
+$lang['what our clients say'] = 'What Our Clients Say';
 
 // contact us page js validation 
 $lang['please_enter_15_digits_mobile_number'] = 'Please enter 15 digits mobile number';
@@ -382,4 +382,10 @@ $lang['please_enter_your_message'] = 'Please enter your message';
 $lang['please_enter_your_phone_number'] = 'Please enter your phone number';
 $lang['please_enter_no_more_than_15_characters'] = 'Please enter no more than 15 characters';
 $lang['please_enter_only_digits'] = 'Please enter only digits';
-?>
+
+
+/* Shoppy  */
+
+// Home //
+$lang['Best Sellers'] = 'Best Sellers';
+$lang['New Arrival'] = 'New Arrival';
