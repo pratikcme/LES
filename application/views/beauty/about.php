@@ -1,3 +1,4 @@
+<?php dd($about_section_one); ?>
 <!-- ----hero-section-- -->
 <section class="hero-section common-banner-bg">
     <div class="container">
