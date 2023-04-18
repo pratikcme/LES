@@ -32,19 +32,23 @@
           
           <div class="d-flex drp-grp">
               <form class="lng-drp">
-                <select name="language" id="Language">
+                <!-- <select name="language" id="Language">
                   <option value="volvo">English</option>
                   <option value="saab">Arebic</option>
-                </select>
+                </select> -->
+                <div id="google_translate_element"></div>
               </form>
-
-              <form class="branch-drp">
-                <select name="Branch" id="Branch">
-                  <option value="volvo">Branch-1</option>
-                  <option value="saab">Branch-2</option>
+            <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
+              <form class="branch-drp" >
+                <select class="vendor_nav" name="Branch" id="Branch">
+                  <option value=""> <?=$this->lang->line('All store')?></option>
+                  <?php foreach ($branch_nav as $key => $v): ?>
+                    <option value="<?=$v->id?>" <?=(isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>><?=$v->name?></option>
+                  <?php endforeach ?>
                 </select>
               </form>
             </div>
+          <?php } ?>
 
 
           <div class="social-icons">
