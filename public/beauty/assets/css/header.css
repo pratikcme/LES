@@ -452,6 +452,14 @@ nav .left-content a:hover {
   margin-left: 15px;
 }
 
+.no-itm.cart-btn .dropdown-menu {
+  display: none;
+}
+
+.no-itm.cart-btn .g-badge {
+  display: none;
+}
+
 
 /* ====menu-responsive-css======= */
 
