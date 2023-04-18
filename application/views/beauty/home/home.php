@@ -211,10 +211,10 @@
                             <div class="rating-starts">
                               <div class="rating stars3_5">
                               <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
-                                <span class="star star-active"></span>
-                              <?php } ?>
-                              <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
                                 <span class="star"></span>
+                                <?php } ?>
+                                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                                  <span class="star star-active"></span>
                               <?php } ?>
                                 <!-- <span class="star"></span>
                                 <span class="star"></span>
