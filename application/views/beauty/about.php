@@ -37,7 +37,7 @@
                         <span>(CEO)</span>
                     </div>
                     <div class="author-sign">
-                        <img src="<?= base_url() . 'public/uploads/about/' . $about_section_one[0]->image ?>" alt="">
+                        <img src="<?=$this->theme_base_url?>/assets/images/about-us/author-sign.png" alt="">
                     </div>
                 </div>
             </div>
