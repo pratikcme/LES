@@ -98,7 +98,7 @@
               <span class="g-badge" id="itemCount" <?=(isset($this->cartCount) && $this->cartCount != 0 ) ? 'style="display:block"' : 'style="display:none"' ?>><?=(isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
             <!-- ----cart-dropdown--- -->
             <div class="cart-dropdwon">
-              <div class="cart-drop-wrapper">
+              <div class="cart-drop-wrapper" id="updated_list">
               <?php if ($this->session->userdata('user_id') == '') { ?>
                 <?php if(isset($this->cartCount)){ 
                     $CI = &get_instance();
