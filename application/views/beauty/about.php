@@ -33,11 +33,11 @@
                             woman. Never in the history of the world have women been more in control of their destiny.
                         </p> -->
                     </div>
-                    <div class="about-author-name d-flex align-items-center d-none">
+                    <div class="about-author-name d-flex align-items-center d-none  ">
                         <h4 class="me-2 mb-0">Alex Marlay</h4>
                         <span>(CEO)</span>
                     </div>
-                    <div class="author-sign">
+                    <div class="author-sign d-none">
                         <img src="<?=$this->theme_base_url?>/assets/images/about-us/author-sign.png" alt="">
                     </div>
                 </div>
