@@ -4,49 +4,49 @@ function myFunction(x) {
 
 
 // calender
-$(document).ready(function(){
+$(document).ready(function () {
   $('#calendar').datepicker({
-    inline:true,
+    inline: true,
     firstDay: 1,
-    showOtherMonths:true,
-    dayNamesMin:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    showOtherMonths: true,
+    dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   })
 });
 
 // chnage-password-form
-$(document).ready(function(){
-  $(".new-add").click(function(){
+$(document).ready(function () {
+  $(".new-add").click(function () {
     $(".ship-address").show();
   });
 
-  $(".ship-close").click(function(){
+  $(".ship-close").click(function () {
     $(".ship-address").hide();
   })
 });
 
 // -----counter-js---
-var buttonPlus  = $(".qty-btn-plus");
-var buttonMinus = $(".qty-btn-minus");
+// var buttonPlus  = $(".qty-btn-plus");
+// var buttonMinus = $(".qty-btn-minus");
 
-var buttonPlus  = $(".qty-btn-plus");
-            var buttonMinus = $(".qty-btn-minus");
+// var buttonPlus  = $(".qty-btn-plus");
+//             var buttonMinus = $(".qty-btn-minus");
 
-            var incrementPlus = buttonPlus.click(function() {
-            var $n = $(this)
-            .parent(".qty-container")
-            .find(".input-qty");
-            $n.val(Number($n.val())+1 );
-            });
+//             var incrementPlus = buttonPlus.click(function() {
+//             var $n = $(this)
+//             .parent(".qty-container")
+//             .find(".input-qty");
+//             $n.val(Number($n.val())+1 );
+//             });
 
-            var incrementMinus = buttonMinus.click(function() {
-            var $n = $(this)
-            .parent(".qty-container")
-            .find(".input-qty");
-            var amount = Number($n.val());
-            if (amount > 0) {
-                $n.val(amount-1);
-            }
-});
+//             var incrementMinus = buttonMinus.click(function() {
+//             var $n = $(this)
+//             .parent(".qty-container")
+//             .find(".input-qty");
+//             var amount = Number($n.val());
+//             if (amount > 0) {
+//                 $n.val(amount-1);
+//             }
+// });
 
 // ---------my-acoount-table-js--
 $(document).ready(function () {
@@ -54,19 +54,19 @@ $(document).ready(function () {
 });
 
 // <!-- --responisive-table-js--- -->
-$(document).ready(function() {
+$(document).ready(function () {
   $('#table-two-axis').basictable();
 })
 
 // -----checkout-page-accordion----
 $(document).ready(function () {
-	$(".accordion-items").on("click", ".accordion-heading", function () {
+  $(".accordion-items").on("click", ".accordion-heading", function () {
     $(".accordion-heading").removeClass("active");
-		$(this).toggleClass("active").next().slideToggle();
+    $(this).toggleClass("active").next().slideToggle();
 
-		$(".accordion-content").not($(this).next()).slideUp(300);
-		$(this).siblings().removeClass("active");
-	});
+    $(".accordion-content").not($(this).next()).slideUp(300);
+    $(this).siblings().removeClass("active");
+  });
 });
 
 
@@ -108,15 +108,15 @@ function removeOpen(index1) {
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
 }
-span.onclick = function(event) {
+span.onclick = function (event) {
   modal.style.display = "none";
 }
 
-window.onclick = function(event){
-  if (event.target == modal){
+window.onclick = function (event) {
+  if (event.target == modal) {
     modal.style.display = "none";
   }
 }
