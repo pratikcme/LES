@@ -196,7 +196,7 @@
                 data-wow-delay="0" data-wow-offset="0">
                 <div class="techno-check">
                     <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-                    <div href="#" class="product-wrapper card out-of-stock">
+                    <div href="#" class="product-wrapper card ">
                         <div class="card-header">
                             <h5>In Stock</h5>
                             
@@ -206,7 +206,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">><?= $value->name ?></a></h3>
+                            <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a></h3>
                             <h6 class="rating-cnt notranslate"><?= $this->siteCurrency .' '. number_format((float)$value->discount_price, 2, '.', '')?> <span class="<?=($value->discount_per > 0 ) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency .' '. number_format((float)$value->price, 2, '.', '')?></strike></span></h6>
                             <div class="rating-starts">
                               <div class="rating stars3_5">
