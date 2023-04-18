@@ -214,7 +214,7 @@
                                 <span class="star star-active"></span>
                               <?php } ?>
                               <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
-                                  <span class="star"></span>
+                                <span class="star"></span>
                               <?php } ?>
                                 <!-- <span class="star"></span>
                                 <span class="star"></span>
