@@ -151,7 +151,7 @@
 
 
 <!-- -----Featured Products-section------------ -->
-<section class="Featured-Products p-100">
+<section class="Featured-Products p-100 <?=(!empty($top_sell) ? 'd-none':'' )?>">
     <div class="container">
         <div class="col-xxl-12 col-lg-12 ">
             <div class="title">
