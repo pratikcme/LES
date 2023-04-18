@@ -527,10 +527,7 @@ class Offer_model extends My_model
 
     public function updateProductVarientById($v_id, $discount, $discount_price)
     {
-        echo $v_id . "<br>";
-        echo $discount . "<br>";
-        echo $discount_price;
-        exit;
+
         $data['table'] = 'product_weight';
         $data['update']['discount_per'] = $discount;
         $data['update']['discount_price'] = $discount_price;
