@@ -274,28 +274,14 @@ var ADDPRODUCT = (function () {
 
           $("#review_section").html(output.reviewSection);
           $("#starRatting").html(output.upbasket_starHtml);
-          var product_price =
-            output.discount_per > 0
-              ? siteCurrency + " " + output.product_price
-              : +"";
-          $("#dynamic_price").html(
-            siteCurrency +
-            " " +
-            output.discount_price +
-            " <span><strike>" +
-            product_price +
-            "</strike></span>"
-          );
+          var product_price = (output.discount_per > "0") ? siteCurrency + " " + output.product_price : " ";
+          $("#dynamic_price").html(siteCurrency + " " + output.discount_price + " <span><strike>" + product_price + "</strike></span>");
 
           // $('#dynamic_price').html(siteCurrency + ' ' + output.discount_price + '<span><strike>' + (output.discount_per > 0) ? siteCurrency + ' ' + output.product_price : + '' + '</strike></span>');
           var imageFolder = $("#imageFolder").val();
           var images = output.images;
 
-          if (output.discount_per == "0") {
 
-          } else {
-
-          }
           var isDiscount = (output.discount_per > 0) ? "" : "d-none";
           var disNwislist = '<span class= "discnt ' + isDiscount + '">' + output.discount_per + '% off</span>';
           disNwislist = disNwislist + '<div class="pro-hearticon wishlist-icon" data-product_id="' + output.product_id + '" data-product_weight_id="' + output.product_variant_id + '"><i class="fa-regular fa-heart ' + output.isInWishListUpbasket + '"></i></div>';
