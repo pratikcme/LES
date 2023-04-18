@@ -45,7 +45,7 @@
                 <div class="about-frame">
                     <img src="<?=$this->theme_base_url?>/assets/images/about-us/about-frame.png" alt="" class="about-left-im">
                     <div class="about-img">
-                        <img src="<?=$this->theme_base_url?>/assets/images/about-us/about-img.png" alt="">
+                        <img src="<?= base_url() . 'public/uploads/about/' . $about_section_one[0]->image ?>" alt="">
                     </div>
                 </div>
 
