@@ -576,12 +576,13 @@
                             <div class="address-wrapper">
                                 <div class="ship-check text-end">
                                     <div class="form-check">
-                                        <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox">
-                                        <label class="form-check-label">
+                                        <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox"  id="id1">
+                                        <label class="form-check-label" for="id1">
                                         <?=$this->lang->line('Default')?>
                                         </label>
                                     </div>
                                 </div>
+
                                 <div class="address-text">
                                     <h3><?=$value->name?></h3>
                                     <p><?=$value->address?></p>
