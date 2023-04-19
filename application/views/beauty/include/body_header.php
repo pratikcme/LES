@@ -101,7 +101,7 @@
                 </div>
               <?php }else{ ?>
                 <div class="user-data-wrapper">
-                  <a href="./myaccount-page.php"><span><i class="fa-sharp fa-solid fa-user"></i></span><?=$this->lang->line('My account')?></a>
+                  <a href="<?=base_url().'/users_account/users/account'?>"><span><i class="fa-sharp fa-solid fa-user"></i></span><?=$this->lang->line('My account')?></a>
                 </div>
                 <div class="user-data-wrapper">
                   <a href="javascript:" id="logout"><span><i class="fa-solid fa-folder-plus"></i></span><?=$this->lang->line('logout')?></a>
