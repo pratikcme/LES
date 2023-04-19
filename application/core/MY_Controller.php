@@ -44,7 +44,6 @@ class MY_Controller extends CI_Controller
             $this->load->model('api_v3/common_model', 'common_model');
 
             $siteDetail = $this->common_model->getLogo();
-            lq();
             // dd($siteDetail);
             // echo 'sw00' ; die;
 
@@ -120,9 +119,7 @@ class User_Controller extends MY_Controller
 
     function __construct()
     {
-
         parent::__construct();
-        echo $this->folder ;die;
         if (isset($_SESSION['My_cart']) && count($_SESSION['My_cart']) == 0) {
             $this->session->unset_userdata('My_cart');
         }
