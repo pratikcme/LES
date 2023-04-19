@@ -237,82 +237,94 @@
 </section>
 
 <!-- --our-offers--- -->
-<section class="our-offer-section p-100 pb-0">
+<section class="our-offer-section p-100 pb-0 <?=(empty($offer_list)) ? 'd-none' : '' ?>">
     <div class="container">
         <div class="row">
-            
+        <?php if(count($offer_list) == '1'){ ?>  
             <!--=========== Single-Banner ========-->
             <div class="col-lg-12 col-md-12 mb-4">
                 <div class="sale-banner-wrap position-relative">
-                    <img src="<?=$this->theme_base_url?>/assets/images/home-page/sale-banner.png" class="sale-banner-img position-absolute" alt="sale-banner" />
+                    <img src="<?=$offer_list[0]->image?>" class="sale-banner-img position-absolute" alt="sale-banner" />
                     <div class="sale-banner-inner text-center">
-                        <span>FROM LOVESEATS TO SECTIONALS.</span>
-                        <h2>Comfy Lounging</h2>
-                        <a href="./product-list-page.php" class="lg-btn">shop now</a>
+                        <span><?=$offer_list[0]->offer_title?></span>
+                        <!-- <h2>Comfy Lounging</h2> -->
+                        <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>" class="lg-btn">shop now</a>
                     </div>
                 </div>
             </div>
-            
+        <?php } ?>
             <!--=========== Two-Banners ==========-->
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
-                <a href="#">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+            <?php if(count($offer_list) == '2' || count($offer_list) >= '4' ){ ?> 
+            <?php foreach ($offer_list as $key => $value) { ?>   
+                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
                     <div class="offer-wrapper offer-wrapper-1">
-                        <img src="<?=$this->theme_base_url?>/assets/images/home-page/offer-extra-left.png" alt="" class="offer-extra-left">
-                        <h4>CHRISTMAS DAYS</h4>
-                        <h3>60% <span>OFF</span></h3>
-                        <p>All Beauty Products</p>
-                        <a href="#" class="explor-btn">Explore More</a>
+                        <img src="<?=$value->image?>" alt="" class="offer-extra-left">
+                        <h4><?=$value->offer_title?></h4>
+                        <h3><?=$value->offer_percent?>% <span>OFF</span></h3>
+                        <p><?=$value->category_name?></p>
+                        <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="explor-btn"><?=$this->lang->line('Explore More')?></a>
                     </div>
                 </a>
             </div>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+            <?php } ?>
+            <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
                 <a href="#">
                     <div class="offer-wrapper offer-wrapper-2">
                         <img src="<?=$this->theme_base_url?>/assets/images/home-page/offer-extra-right.png" alt="" class="offer-extra-right">
                         <h4>Natural Items</h4>
                         <h3>50% <span>OFF</span></h3>
-                        <a href="#" class="explor-btn">Explore More</a>
+                        <a href="#" class="explor-btn"><?=$this->lang->line('Explore More')?></a>
                     </div>
                 </a>
-            </div>
-
+            </div> -->
+        <?php } ?>
             <!--=============== three-banners ==================-->
+            <?php if(count($offer_list) == '3'){ ?> 
+            <?php foreach ($offer_list as $key => $value) { 
+                if($key == 2){
+                    goto a;
+                }    
+            ?>
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                 <div>
                     <div class="home-clothes mb-4">
                         <div class="cloth-card">
-                            <img src="<?=$this->theme_base_url?>/assets/images/home-page/home-clothes-card.png" alt="">
+                            <img src="<?=$value->image?>" alt="">
                         </div>
                         <div class="cloth-content">
-                            <h5>CLOTHES THAT YOU LIKE</h5>
-                            <h3>Home Clothes And Accessories</h3>
-                            <a href="./product-list-page.php">Explore More</a>
+                            <h5><?=$value->offer_title?></h5>
+                            <h3><?=$value->category_name?></h3>
+                            <a href="<?=base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id)?>"><?=$this->lang->line('Explore More')?></a>
                         </div>
                     </div>
-                    <div class="women-cloth home-clothes">
+                    <!-- <div class="women-cloth home-clothes">
                         <div class="cloth-card">
                             <img src="<?=$this->theme_base_url?>/assets/images/home-page/women-fashion-card.png" alt="">
                         </div>
                         <div class="cloth-content">
                             <h5>MODERN AND STYLISH OUTFIT</h5>
                             <h3>The Best Women Fashion Outfits For Date</h3>
-                            <a href="./product-list-page.php">Explore More</a>
+                            <a href="./product-list-page.php"><?=$this->lang->line('Explore More')?></a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
+           <?php a: ?>
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                 <div class="practical-cloth home-clothes">
                     <div class="cloth-card">
-                        <img src="<?=$this->theme_base_url?>/assets/images/home-page/practical-cloth.png" alt="">
+                        <img src="<?=$value->image?>" alt="">
                     </div>
                     <div class="cloth-content">
-                        <h5>СOMFORTABLE CLOTHES</h5>
-                        <h3>Practical Clothes For Your Kids</h3>
-                        <a href="./product-list-page.php">Explore More</a>
+                        <h5><?=$value->offer_title?></h5>
+                        <h3><?=$value->category_name?></h3>
+                        <a href="<?=base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id)?>"><?=$this->lang->line('Explore More')?></a>
                     </div>
                 </div>
             </div>
+            <?php } ?> 
+        <?php } ?>
         </div>
     </div>
 </section>

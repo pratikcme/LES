@@ -50,6 +50,7 @@ $lang['Call Us'] = 'Call Us';
 $lang['Shop infomation'] = 'Shop infomation';
 $lang['Product Listing'] = 'Product Listing';
 $lang['Reach Out To Us'] = 'Reach Out To Us';
+$lang['Explore More'] = 'Explore More';
 
 
 // end other template 

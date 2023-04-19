@@ -51,6 +51,7 @@ $lang['Call Us'] = 'اتصل بنا';
 $lang['Shop infomation'] = 'معلومات المتجر';
 $lang['Product Listing'] = 'قائمة المنتجات';
 $lang['Reach Out To Us'] = 'تواصل معنا';
+$lang['Explore More'] = 'استكشاف المزيد';
 
 // end other template 
 
