@@ -41,7 +41,7 @@ function checkNumber() {
     var exiting_phone = $('#exiting_phone').val();
     var country_code = $('#country_code').val();
 
-    var phone = $('#phone').val()
+    var phone = $('#phone').val();
     if (phone == '') {
         $('#mobileErr').html(language.Please_enter_mobile_number);
         return false;
