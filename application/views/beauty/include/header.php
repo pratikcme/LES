@@ -39,7 +39,7 @@
   
   <!-- Bootstrap datepicker CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
-    
+  <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
   <?php $lang = json_encode($this->lang->language);
   // dd($lang);
   ?>
