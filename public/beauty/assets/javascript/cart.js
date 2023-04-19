@@ -180,9 +180,10 @@ $(document).ready(function () {
             that.removeAttr("disabled");
           }, 1000);
           if (output.errormsg == "") {
-            that.closest('td').addClass('ffffffff');
-            that.parent().parent().parent().next("td").find('h3').html(siteCurrency + "" + output.new_total);
-            that.parent().parent().parent().next("td").find('input').val(output.new_total);
+            that.closest('td').next('td').closest('h3').html(siteCurrency + "" + output.new_total);
+            that.closest('td').next('td').closest('input').val(output.new_total);
+            // that.parent().parent().parent().next("td").find('h3').html(siteCurrency + "" + output.new_total);
+            // that.parent().parent().parent().next("td").find('input').val(output.new_total);
             var subtot = subtotal();
             if (output.new_quan == "") {
               that.next("input").val(output.max_qun);
