@@ -94,7 +94,7 @@
                   </ul>
                 </div>
 
-                <div class="cart-btn btn-group <?=(isset($this->cartCount) && $this->cartCount == 0) ? 'no-itm' : '' ?>">
+                <div class="cart-btn btn-group <?=(isset($this->cartCount) && $this->cartCount == '0') ? 'no-itm' : '' ?>">
                   <button class="cart-icons dropdown-toggle border-0" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                     <!-- <img src="<?=$this->theme_base_url?>//assets/images/header-cart-icon.svg" alt="cart"> -->
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
