@@ -474,7 +474,7 @@ $(document).on('click', '.dec', function () {
 								var segments = currntPath.split('/');
 								if (output.count == 0) {
 									$('#itemCount').css('display', 'none');
-									$('#updated_list').parent().addClass('no-itm');
+									$('#updated_list').parent('div').addClass('no-itm');
 								}
 								// segments[4] when live
 								if (segments[3] == 'productDetails' && !that.hasClass('related_cat')) {
