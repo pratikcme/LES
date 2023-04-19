@@ -5,7 +5,7 @@ $lang['Order placed successfully'] = 'order placed successfully';
 $lang['Your Order No'] = 'Your Order No';
 $lang['payment failed'] = 'payment failed';
 
-// template 2 up basket
+// other template 
 $lang['js_add_address'] =  'Add New Address';
 $lang['js_update_address'] =  'Update Address';
 
@@ -49,9 +49,10 @@ $lang['Touch'] = 'Touch';
 $lang['Call Us'] = 'Call Us';
 $lang['Shop infomation'] = 'Shop infomation';
 $lang['Product Listing'] = 'Product Listing';
+$lang['Reach Out To Us'] = 'Reach Out To Us';
 
 
-// end template 2
+// end other template 
 
 $lang['Cart Discount'] = 'Cart Discount';
 $lang['Cancel'] = 'Cancel';

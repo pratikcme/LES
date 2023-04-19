@@ -6,7 +6,7 @@ $lang['Order placed successfully'] = 'تم وضع الطلب بنجاح';
 $lang['Your Order No'] = 'طلبك لا';
 $lang['payment failed'] = 'عملية الدفع فشلت';
 
-// template 2 up basket
+// other template 
 $lang['js_add_address'] =  'أضف عنوان جديد';
 $lang['js_update_address'] =  'تحديث العنوان';
 
@@ -50,8 +50,9 @@ $lang['Touch'] = 'يلمس';
 $lang['Call Us'] = 'اتصل بنا';
 $lang['Shop infomation'] = 'معلومات المتجر';
 $lang['Product Listing'] = 'قائمة المنتجات';
+$lang['Reach Out To Us'] = 'تواصل معنا';
 
-// end template 2
+// end other template 
 
 
 $lang['Cart Discount'] = 'سلة الخصم';
