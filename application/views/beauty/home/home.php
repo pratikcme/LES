@@ -256,7 +256,7 @@
             <!--=========== Two-Banners ==========-->
             <?php if(count($offer_list) == '2' || count($offer_list) >= '4' ){ ?> 
             <?php foreach ($offer_list as $key => $value) { ?>   
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4" style="background:url(<?=$value->image?>)">
                     <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
                         <div class="offer-wrapper offer-wrapper-1">
                             <img src="<?=$value->image?>" alt="" class="offer-extra-left">
