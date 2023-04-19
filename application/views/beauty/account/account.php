@@ -112,7 +112,7 @@
                                         <div class="mb-3">
                                             <label for="m-number" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
                                             <input type="tel" class="form-control" name="phone" id="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" value="<?=$userDetails[0]->phone?>">
-                                            <label for="phone" class="error">Please enter last name</label>
+                                            <label id="phone_error" class="error">Please enter last name</label>
                                           </div>
                                     </div>
                                     <div class="col-xxl-6 col-md-6 varification" style="display: none;">
