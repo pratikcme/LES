@@ -41,11 +41,7 @@ function checkNumber() {
     var exiting_phone = $('#exiting_phone').val();
     var country_code = $('#country_code').val();
 
-    var phone = $('#phone').val();
-    if (phone == '') {
-        $('#mobileErr').html(language.Please_enter_mobile_number);
-        return false;
-    }
+    var phone = $('#phone').val()
     if ((country_code != exiting_country) || (exiting_phone != phone)) {
         $("#btnAccSubmit").val(language.send_otp);
         $("#btnAccSubmit").addClass('otp');
@@ -73,6 +69,7 @@ $(document).on('click', '#btnAccSubmit', function () {
             dataType: 'json',
             success: function (res) {
                 if (res.success == 1) {
+                    alert(res.data);
                     $('.varification').show();
 
                     $("#frmBtn").html('varify otp');
