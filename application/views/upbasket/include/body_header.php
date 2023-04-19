@@ -5,7 +5,7 @@
           <!-- -----header-top---- -->
           <div class="header-top">
             <div class="logo">
-              <a href="<?=base_url()?>"><img src="<?=base_url().'/client_logo/'.$this->siteLogo?>" alt=""></a>
+              <a href="<?=base_url()?>"><img src="<?=base_url().'/public/client_logo/'.$this->siteLogo?>" alt=""></a>
             </div>
             <div class="search-btn">
               <div class="input-group">
