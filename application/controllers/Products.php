@@ -226,6 +226,19 @@ class Products extends User_Controller
 				$value->discount_price = $value->without_gst_price;
 			}
 
+			if (!empty($value->image) || $value->image != '') {
+				$image = $value->image;
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
+					// $image = 'defualt.png';	
+					$image = $default_product_image;
+				} else {
+					$image = $value->image;
+				}
+			} else {
+				$image = $default_product_image;
+			}
+			$value->image = str_replace(' ', '%20', $image);
+
 			// $v_image = $this->this_model->getVarientImage($value->pw_id);
 			// $related_product[$key]->product_image = $v_image[0]->image;
 			$varientQuantity = $this->home_model->checkVarientQuantity($value->id);
@@ -653,7 +666,10 @@ class Products extends User_Controller
 
 	public function productReview()
 	{
+
+
 		if ($this->input->post()) {
+
 			$res = $this->this_model->insertReview($this->input->post());
 			if ($res) {
 				$this->utility->setFlashMessage('success', 'Thanks for Review');
