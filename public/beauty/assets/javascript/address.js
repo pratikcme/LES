@@ -62,6 +62,7 @@ $(document).on('click', '#btnAccSubmit', function () {
         var country_code = $('#country_code').val();
         var phone = $('#phone').val();
         if (phone == '') {
+            $('#mobileErr').css('display', 'block');
             $('#mobileErr').html(language.Please_enter_mobile_number);
             return false;
         }
