@@ -247,7 +247,7 @@
                     <img src="<?=$offer_list[0]->image?>" class="sale-banner-img position-absolute" alt="sale-banner" />
                     <div class="sale-banner-inner text-center">
                         <span><?=$offer_list[0]->offer_title?></span>
-                        <!-- <h2>Comfy Lounging</h2> -->
+                        <h2><?=$offer_list[0]->offer_title?></h2>
                         <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>" class="lg-btn">shop now</a>
                     </div>
                 </div>
