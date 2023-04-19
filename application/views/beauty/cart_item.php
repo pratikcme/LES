@@ -156,7 +156,7 @@
             </tbody>
           </table>
           <div>
-            <button type="button" class="lg-btn clear-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Clear Cart</button>
+            <button type="button" id="ClearCart" class="lg-btn clear-btn" data-bs-toggle="modal_" data-bs-target="#exampleModal_"><?=$this->lang->line('clear cart')?></button>
           </div>
         </div>
       </div>
@@ -165,26 +165,26 @@
               <table >
                 <thead class="head-title">
                   <tr>
-                    <th colspan="2">Cart totals</th>
+                    <th colspan="2"><?=$this->lang->line('Cart Total')?></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="cart-total-text-1">Subtotal</td>
-                    <td class="cart-total-text-2">₹398.00</td>
+                    <td class="cart-total-text-1"><?=$this->lang->line('Sub Total')?></td>
+                    <td class="cart-total-text-2 notranslate" id="final_subtotal"><?= $this->siteCurrency ?> <?=getMycartSubtotal() ?></td>
                   </tr>
                   <tr>
-                    <td class="cart-total-text-1">Delivery Charges</td>
-                    <td class="cart-total-text-2">₹50.00</td>
+                    <td class="cart-total-text-1"><?=$this->lang->line('Delivery Charges')?></td>
+                    <td class="cart-total-text-2 notranslate" id="delivery_charge"><?= $this->siteCurrency ?> <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ? $calc_shiping : '0.00' ?></td>
                   </tr>
                   <tr>
-                    <td class="cart-total-text-1">Delivery Charges</td>
-                    <td class="cart-total-text-2">₹1134.00</td>
+                    <td class="cart-total-text-1"><?=$this->lang->line('Total')?></td>
+                    <td class="cart-total-text-2 notranslate" id="total"><span><?= $this->siteCurrency ?> </span><?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ?  number_format(getMycartSubtotal() + $calc_shiping, 2, '.', '') : getMycartSubtotal(); ?></td>
                   </tr>
                 </tbody>
               </table>
           </div>
-          <a href="<?=base_url().'checkout'?>" class="proceed-checkout-btn">Proceed to checkout</a>
+          <a href="<?=base_url().'checkout'?>" class="proceed-checkout-btn"><?=$this->lang->line('Proceed to checkout')?></a>
       </div>
     </div>
   </div>
