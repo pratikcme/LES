@@ -34,7 +34,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 <script src="<?=$this->theme_base_url?>/assets/js/jquery.basictable.min.js"></script>
 <script src="<?=$this->theme_base_url?>/assets/js/basictable.min.js"></script>
 
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/164071/Drift.min.js'></script>
 
 
