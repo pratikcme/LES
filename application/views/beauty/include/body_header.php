@@ -5,7 +5,7 @@
         <!-- -----header-top---- -->
         <div class="header-top">
           <div class="logo">
-            <a href="<?=base_url()?>"><img src="<?=$this->theme_base_url?>/assets/images/header-logo.png" alt=""></a>
+            <a href="<?=base_url()?>"><img src="<?=$this->siteLogo?>" alt=""></a>
           </div>
 
           <!-- -------navigation-bar---- -->
@@ -32,19 +32,25 @@
           
           <div class="d-flex drp-grp">
               <form class="lng-drp">
-                <select name="language" id="Language">
+                <!-- <select name="language" id="Language">
                   <option value="volvo">English</option>
                   <option value="saab">Arebic</option>
-                </select>
+                </select> -->
+                <div id="google_translate_element"></div>
               </form>
-
-              <form class="branch-drp">
-                <select name="Branch" id="Branch">
-                  <option value="volvo">Branch-1</option>
-                  <option value="saab">Branch-2</option>
+            <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
+              <?php if($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1'){ ?>
+              <form class="branch-drp" >
+                <select class="vendor_nav" name="Branch" id="Branch">
+                  <option value=""> <?=$this->lang->line('All store')?></option>
+                  <?php foreach ($branch_nav as $key => $v): ?>
+                    <option value="<?=$v->id?>" <?=(isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>><?=$v->name?></option>
+                  <?php endforeach ?>
                 </select>
               </form>
             </div>
+          <?php } ?>
+          <?php } ?>
 
 
           <div class="social-icons">
@@ -53,11 +59,23 @@
              <!-- -----search-btn---- -->
              <div class="search-block search-list-blcok">
               <form class="search-form">
-                <input type="search" name="search" class="search-input" placeholder="Search here...">
+              <?php if($this->uri->segment(1) == ''){ ?>
+                <input type="search" name="search" id='search' data-search_val= ""  class="search-input" placeholder="Search vendor..">
                 <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
-
+              <?php } ?>
+              <?php 
+                if($this->uri->segment(1) != ''){ 
+                  $placeholder = $this->lang->line('Search product..');
+                }
+                $segment1 = $this->uri->segment(1);
+          
+                if($segment1 != ''){ ?> 
+                
+                   <input type="search" name="search" id='myInput' data-search_val= "" class="search-input" placeholder="<?=$placeholder?>">
+                  <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
+                <?php } ?>
                   <!-- ---search-list--- -->
-                <div class="search-list-wrapper">
+                <!-- <div class="search-list-wrapper">
                   <ul class="search-list">
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>SkinCare</li>
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Lips</li>
@@ -67,7 +85,7 @@
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Natural</li>
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Fregrance</li>
                   </ul>
-                </div>
+                </div> -->
               </form>
               <i class="fa-solid fa-xmark main-div-cancel"></i>
             </div>
@@ -93,11 +111,11 @@
             <a href="javascript:" class="user-login-icon header-icon"><span><i class="fa-regular fa-user"></i></span></a>
 
 
-            <a href="#" class="cart-icons header-icon" >
+            <a href="javascript:" class="cart-icons header-icon" >
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="g-badge" id="itemCount" <?=(isset($this->cartCount) && $this->cartCount != 0 ) ? 'style="display:block"' : 'style="display:none"' ?>><?=(isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
             <!-- ----cart-dropdown--- -->
-            <div class="cart-dropdwon">
+            <div class="cart-dropdwon <?=($this->cartCount==0) ? 'd-none' : '' ?>" id="updated_list">
               <div class="cart-drop-wrapper">
               <?php if ($this->session->userdata('user_id') == '') { ?>
                 <?php if(isset($this->cartCount)){ 
@@ -131,7 +149,7 @@
                     </div>
                     <div class="drop-text">
                       <h4><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>"><?=$value['product_name']?></a></h4>
-                      <p>Qty : 1</p>
+                      <p>Qty : <?=$value['quantity']?></p>
                       <h3 class="notranslate"><?=$this->siteCurrency.' '.number_format((float)$product[0]->discount_price, 2, '.', '')?></h3>
                     </div>
                     <div class="cancel-btn remove_item" data-product_id="<?=$value['product_id']?>" data-product_weight_id="<?=$value['product_weight_id']?>">
@@ -149,7 +167,7 @@
                     </div>
                     <div class="drop-text">
                       <h4><a href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"><?=$value->product_name?></a></h4>
-                      <p>Qty : 1</p>
+                      <p>Qty : <?=$value->quantity?></p>
                       <h3 class="notranslate"><?=$this->siteCurrency.' '.number_format((float)$value->discount_price, 2, '.', '')?></h3>
                     </div>
                     <div class="cancel-btn remove_item" data-product_id="<?=$value->product_id?>" data-product_weight_id="<?=$value->product_weight_id?>">
@@ -167,8 +185,8 @@
                 <h3 id="nav_subtotal" class="notranslate"><?=$this->siteCurrency .' '. getMycartSubtotal()?></h3>
               </div>
               <div class="drop-btns">
-                <a href="./shop-cart.php" class="view-cart"><?=$this->lang->line('view cart')?></a>
-                <a href="./checkout-page.php" class="checkout "><?=$this->lang->line('checkout')?></a>
+                <a href="<?=base_url().'products/cart_item'?>" class="view-cart"><?=$this->lang->line('view cart')?></a>
+                <a href="<?=base_url().'checkout'?>" class="checkout "><?=$this->lang->line('checkout')?></a>
                </div>
               </div>
               <div class="icon-tex">

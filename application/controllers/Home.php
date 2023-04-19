@@ -17,7 +17,6 @@ class Home extends User_Controller
 
 	public function index()
 	{
-		// dd($_SESSION);
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
@@ -133,8 +132,6 @@ class Home extends User_Controller
 
 		$data['item_weight_id'] = $item_weight_id;
 		$data['offer_list'] = $this->this_model->get_offer($this->session->userdata('branch_id'));
-
-		// dd($data['top_sell']);
 		$this->loadView($this->user_layout, $data);
 	}
 

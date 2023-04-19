@@ -474,6 +474,7 @@ $(document).on('click', '.dec', function () {
 								var segments = currntPath.split('/');
 								if (output.count == 0) {
 									$('#itemCount').css('display', 'none');
+									$('#updated_list').parent('div').addClass('no-itm');
 								}
 								// segments[4] when live
 								if (segments[3] == 'productDetails' && !that.hasClass('related_cat')) {
@@ -559,7 +560,7 @@ $(document).on('click', '.inc', function () {
 				}, 1000);
 				that.parent().removeClass('transparent-wrap');
 				if (output.errormsg == '') {
-					$('#nav_subtotal').html(output.final_total);
+					$('#display_subtotal').html(siteCurrency + output.final_total);
 				} else {
 					// that.prev('input').val(quantity - 1);
 					that.prev('input').val(output.max_qun);

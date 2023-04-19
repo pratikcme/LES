@@ -119,8 +119,6 @@ class User_Controller extends MY_Controller
 
     function __construct()
     {
-
-
         parent::__construct();
         if (isset($_SESSION['My_cart']) && count($_SESSION['My_cart']) == 0) {
             $this->session->unset_userdata('My_cart');
@@ -239,7 +237,7 @@ class User_Controller extends MY_Controller
 
 
         $my_cart = $this->product_model->getMyCart();
-        // lq();
+        
         $default_product_image = $this->common_model->default_product_image();
 
         $this->load->model('api_v3/common_model', 'co_model');

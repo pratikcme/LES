@@ -475,7 +475,8 @@ p {
 }
 
 .drop-text h4 {
-    max-width: 130px;
+    max-width: 100%;
+    width: 130px;
     font-family: var(--BeVietnamPro-Medium);
     font-size: 13px;
     line-height: 18px;
@@ -606,7 +607,7 @@ p {
 
 .cancel-btn a {
     position: relative;
-    left: 10px;
+    /* left: 10px; */
 }
 
 @media only screen and (max-width:1200px) {

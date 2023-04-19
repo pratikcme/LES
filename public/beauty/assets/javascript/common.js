@@ -473,6 +473,7 @@ $(document).on('click', '.dec', function () {
 								var currntPath = window.location.href;
 								var segments = currntPath.split('/');
 								if (output.count == 0) {
+									$('#updated_list').addClass('d-none'); // stop cart dropdown
 									$('#itemCount').css('display', 'none');
 								}
 								// segments[4] when live
@@ -481,7 +482,7 @@ $(document).on('click', '.dec', function () {
 									that.parent().next('div.order-btn').find('a:first').removeClass('d-none');
 								} else {
 									that.parent().parent().addClass('d-none');
-									that.parent().parent().prev('a').removeClass('d-none');
+									that.parent().parent().prev().removeClass('d-none');
 								}
 
 								$('#itemCount').html(output.count);
@@ -524,7 +525,6 @@ $(document).on('click', '.dec', function () {
 
 $(document).on('click', '.inc', function () {
 	$(this).prop('disabled', true);
-	// $(this).parent().addClass('transparent-wrap');
 	var that = $(this);
 	var product_weight_id = $(this).attr('data-product_weight_id');
 	var quantity = $(this).prev('input').val();
@@ -557,9 +557,8 @@ $(document).on('click', '.inc', function () {
 				setTimeout(function () {
 					that.removeAttr('disabled');
 				}, 1000);
-				that.parent().removeClass('transparent-wrap');
 				if (output.errormsg == '') {
-					$('#nav_subtotal').html(output.final_total);
+					$('#display_subtotal').html(siteCurrency + output.final_total);
 				} else {
 					// that.prev('input').val(quantity - 1);
 					that.prev('input').val(output.max_qun);

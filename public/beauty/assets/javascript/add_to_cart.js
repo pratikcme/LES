@@ -30,6 +30,7 @@ $(document).on('click', '.addcartbutton', function () {
         that.next('div').removeClass('d-none');
         that.addClass('d-none');
         $('#itemCount').css('display', 'block');
+        $('#updated_list').removeClass('d-none');
       }
       $('#nav_cart_dropdown').removeClass("d-none");
       $('#itemCount').html(output.count);

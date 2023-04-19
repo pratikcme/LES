@@ -1,89 +1,146 @@
-<!-- ----hero-section--- -->
-<section class="hero-section listing-hero-sec">
+
+<!-- ----hero-section-- -->
+<section class="hero-section common-banner-bg">
     <div class="container">
-      <!-- <h2>Home /<span>About Us</span></h2> -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?=base_url().'home'?>"><?=$this->lang->line('home')?></a></li>
-          <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('About us')?></li>
-        </ol>
-      </nav>
-    </div>
-  </section>
-
-  <!-- ---------about-us-section------------ -->
-  <section class="about-us-section section">
-  <img src="<?=$this->theme_base_url?>/assets/images/product-detail-top-left-img.png" alt="" class="product-detail-top-left-img">
-  <img src="<?=$this->theme_base_url?>/assets/images/product-detail-top-right-img.png" alt="" class="product-detail-top-right-img">
-  <img src="<?=$this->theme_base_url?>/assets/images/product-bottom-right-img.png" alt="" class="product-bottom-right-img">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="0" data-wow-offset="0">
-          <div class="about-content">
-              <!-- <h2 class="title">Laxmiraj <span>Dryfruits</span></h2> -->
-              <h2 class="title"><?=$about_section_one[0]->main_title ?></h2>
-              <p><?=$about_section_one[0]->content ?></p>
-              <!-- <p >Turpis massa tincidunt dui ut. Commodo ullamcorper a lacus vestibulum sed arcu. Mi tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Quis viverra nibh cras pulvinar mattis. Orci a scelerisque purus semper eget duis. Justo laoreet sit amet cursus. Lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis.</p> -->
-          </div>
-        </div>
-        <div class=" col-xxl-6 col-xl-6 col-lg-6 col-md-6 wow fadeInRightBig" data-wow-duration="1.5s" data-wow-delay="0" data-wow-offset="0">
-          <div class="about-image-parts">
-          <img src="<?=$this->theme_base_url?>/assets/images/about-rectangl-1.svg" alt="" class="about-rectangl-1">
-          <img src="<?=$this->theme_base_url?>/assets/images/about-rectangl-2.svg" alt="" class="about-rectangl-2">
-          <div class="about-image">
-            <!-- <img src="<?=$this->theme_base_url?>/assets/images/about-main-img.png" alt=""> -->
-            <img src="<?= base_url() . 'public/uploads/about/' . $about_section_one[0]->image ?>" alt="">
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- -------- our-trusted-clients--------- -->
-  <section class="our-clinets-section section">
-      <div class="container">
-      <h2 class="title text-center">The Trust From <span>Clients</span></h2>
-      <!-- <p class="pera text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
-        
-      <div class="owl-4 owl-carousel owl-theme">
-        <?php foreach ($about_section_two as $key => $value) { ?>
-        <div class="clinet-review-wrapper wow flipInX" data-wow-duration="1.5s" data-wow-delay="0s" data-wow-offset="0">
-            <div class="review-icon">
-                <!-- <img src="./assets/images/double-quotes-img.svg" alt=""> -->
-                <svg width="77" height="68" viewBox="0 0 77 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.504 67.5C13.7462 67.5 9.13997 65.4167 5.68527 61.25C2.39509 56.9167 0.75 51.3333 0.75 44.5C0.75 35.1667 3.21764 26.75 8.15291 19.25C13.2527 11.5833 20.9846 5.16666 31.3487 0L34.0631 3.99999C29.1278 6.99999 24.6038 11.25 20.4911 16.75C16.5429 22.0833 14.5688 27.5 14.5688 33C14.5688 34.5 14.98 35.75 15.8026 36.75C16.6251 37.5833 17.859 38 19.504 38C23.6168 38 27.0715 39.5 29.8681 42.5C32.8293 45.3333 34.3099 48.8333 34.3099 53C34.3099 57.1667 32.8293 60.6667 29.8681 63.5C27.0715 66.1667 23.6168 67.5 19.504 67.5ZM62.1942 67.5C56.4364 67.5 51.8301 65.4167 48.3754 61.25C45.0852 56.9167 43.4401 51.3333 43.4401 44.5C43.4401 35.1667 45.9078 26.75 50.843 19.25C55.9428 11.5833 63.6748 5.16666 74.0388 0L76.7532 3.99999C71.818 6.99999 67.294 11.25 63.1812 16.75C59.233 22.0833 57.2589 27.5 57.2589 33C57.2589 34.5 57.6702 35.75 58.4927 36.75C59.3153 37.5833 60.5491 38 62.1942 38C66.3069 38 69.7616 39.5 72.5583 42.5C75.5194 45.3333 77 48.8333 77 53C77 57.1667 75.5194 60.6667 72.5583 63.5C69.7616 66.1667 66.3069 67.5 62.1942 67.5Z" fill="#CC833D"/>
-                </svg>
+        <div class="row">
+            <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
+                <h1><?=$this->lang->line('About Us')?></h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="./index.php"><?=$this->lang->line('home')?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('About Us')?></li>
+                    </ol>
+                </nav>
             </div>
-            <p><?=$value->content?></p>
-            <h3><?=$value->name?></h3>
-            <h5>Customer</h5>
+        </div>
+    </div>
+</section>
+
+
+<!--========= about-us =============-->
+<section class="about-us p-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 d-flex align-items-center justify-content-center">
+                <div class="about-content">
+                    <div class="about-text">
+                        <!-- <h4>welcome to our </h4> -->
+                        <h2><?=$about_section_one[0]->main_title ?></h2>
+                    </div>
+                    <div>
+                        <p><?=$about_section_one[0]->content ?></p>
+                        <!-- <p>I think it would rob her of something. We live in an era of globalization and the era of the
+                            woman. Never in the history of the world have women been more in control of their destiny.
+                        </p> -->
+                    </div>
+                    <div class="about-author-name d-flex align-items-center d-none  ">
+                        <h4 class="me-2 mb-0">Alex Marlay</h4>
+                        <span>(CEO)</span>
+                    </div>
+                    <div class="author-sign d-none">
+                        <img src="<?=$this->theme_base_url?>/assets/images/about-us/author-sign.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                <div class="about-frame">
+                    <img src="<?=$this->theme_base_url?>/assets/images/about-us/about-frame.png" alt="" class="about-left-im">
+                    <div class="about-img">
+                        <img src="<?= base_url() . 'public/uploads/about/' . $about_section_one[0]->image ?>" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--============ why-butterfly ================-->
+<section class="why-butterfly-wrap wow fadeInDownBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0"    >
+    <div class="container">
+        <div class="why-butterfly-data">
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12 col-lg-12">
+                    <div class="title text-center">
+                        <h2>Why Butterfly</h2>
+                        <p>Do not miss the current offers until the end of month.</p>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 mb-lg-3">
+                    <div class="why-beautic-data text-center">
+                        <div class="why-icon">
+                            <img src="<?=$this->theme_base_url?>/assets/images/about-us/no-artificial.svg" alt="">
+                        </div>
+                        <div class="why-beautic-content">
+                            <h5>No Artificial Fragrances</h5>
+                            <p>Decorate your nails with various Beaux. We have products like nail hardener, polish,
+                                extensions, artificial nails.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 mb-lg-3">
+                    <div class="why-beautic-data natural-data text-center">
+                        <img src="<?=$this->theme_base_url?>/assets/images/about-us/why-line-left-im.png" alt="" class="natural-left-line">
+                        <img src="<?=$this->theme_base_url?>/assets/images/about-us/why-line-right-img.png" alt="" class="natural-right-line">
+                        <div class="why-icon">
+                            <img src="<?=$this->theme_base_url?>/assets/images/about-us/natural-vegen.svg" alt="">
+                        </div>
+                        <div class="why-beautic-content">
+                            <h5>100% Natural & Vegan</h5>
+                            <p>Decorate your nails with various Beaux. We have products like nail hardener, polish,
+                                extensions, artificial nails.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 mb-lg-3">
+                    <div class="why-beautic-data text-center">
+                        <div class="why-icon">
+                            <img src="<?=$this->theme_base_url?>/assets/images/about-us/harsh-chemical.svg" alt="">
+                        </div>
+                        <div class="why-beautic-content">
+                            <h5>No Harsh Chemicals</h5>
+                            <p>Decorate your nails with various Beaux. We have products like nail hardener, polish,
+                                extensions, artificial nails.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--============ client-wrap ==================-->
+<section class="client-wrap p-100 offering">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-12 col-xl-12 col-lg-12">
+                <div class="title text-center">
+                    <h2>The Trust From Clients</h2>
+                    <p>Do not miss the current offers until the end of month.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- slider -->
+    <div class="owl-carousel owl-theme" id="client-slide">
+      <?php foreach ($about_section_two as $key => $value) { ?>
+
+        <div class="item">
+            <div class="clients-card text-center">
+                <div class="clients-quote-img">
+                    <!-- <img src="<?=$this->theme_base_url?>/assets/images/about-us/client-quote-img.png" alt=""> -->
+                    <svg id="Layer-1" data-name="Layer-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61 54"><defs></defs><path class="client-quote-img" d="M15,54A13.64,13.64,0,0,1,4,49Q0,43.8,0,35.6A35.92,35.92,0,0,1,5.92,15.4Q12,6.21,24.48,0l2.17,3.2A39,39,0,0,0,15.79,13.4q-4.74,6.41-4.73,13a4.55,4.55,0,0,0,1,3,4,4,0,0,0,3,1A10.87,10.87,0,0,1,23.29,34a11.18,11.18,0,0,1,3.56,8.4,11.18,11.18,0,0,1-3.56,8.4A11.55,11.55,0,0,1,15,54Zm34.16,0A13.64,13.64,0,0,1,38.1,49q-3.94-5.2-4-13.4a36,36,0,0,1,5.92-20.2Q46.19,6.21,58.63,0L60.8,3.2A39.17,39.17,0,0,0,49.94,13.4q-4.72,6.41-4.73,13a4.61,4.61,0,0,0,1,3,4,4,0,0,0,3,1A10.89,10.89,0,0,1,57.45,34,11.17,11.17,0,0,1,61,42.4a11.17,11.17,0,0,1-3.55,8.4A11.57,11.57,0,0,1,49.16,54Z"/></svg>
+                </div>
+                <div class="clients-con">
+                    <p><?=$value->content?></p>
+                </div>
+                <div class="client-name">
+                    <h4><?=$value->name?></h4>
+                    <p><?=$value->designation?></p>
+                </div>
+            </div>
         </div>
         <?php } ?>
-        <!-- <div class="clinet-review-wrapper wow flipInX" data-wow-duration="1.5s" data-wow-delay="0.2s" data-wow-offset="0">
-            <div class="review-icon"> -->
-                <!-- <img src="./assets/images/double-quotes-img.svg" alt=""> -->
-                <!-- <svg width="77" height="68" viewBox="0 0 77 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.504 67.5C13.7462 67.5 9.13997 65.4167 5.68527 61.25C2.39509 56.9167 0.75 51.3333 0.75 44.5C0.75 35.1667 3.21764 26.75 8.15291 19.25C13.2527 11.5833 20.9846 5.16666 31.3487 0L34.0631 3.99999C29.1278 6.99999 24.6038 11.25 20.4911 16.75C16.5429 22.0833 14.5688 27.5 14.5688 33C14.5688 34.5 14.98 35.75 15.8026 36.75C16.6251 37.5833 17.859 38 19.504 38C23.6168 38 27.0715 39.5 29.8681 42.5C32.8293 45.3333 34.3099 48.8333 34.3099 53C34.3099 57.1667 32.8293 60.6667 29.8681 63.5C27.0715 66.1667 23.6168 67.5 19.504 67.5ZM62.1942 67.5C56.4364 67.5 51.8301 65.4167 48.3754 61.25C45.0852 56.9167 43.4401 51.3333 43.4401 44.5C43.4401 35.1667 45.9078 26.75 50.843 19.25C55.9428 11.5833 63.6748 5.16666 74.0388 0L76.7532 3.99999C71.818 6.99999 67.294 11.25 63.1812 16.75C59.233 22.0833 57.2589 27.5 57.2589 33C57.2589 34.5 57.6702 35.75 58.4927 36.75C59.3153 37.5833 60.5491 38 62.1942 38C66.3069 38 69.7616 39.5 72.5583 42.5C75.5194 45.3333 77 48.8333 77 53C77 57.1667 75.5194 60.6667 72.5583 63.5C69.7616 66.1667 66.3069 67.5 62.1942 67.5Z" fill="#CC833D"/>
-                </svg>
-            </div>
-            <p>Fringilla est ullamcorper eget nulla facilisi etiam. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Metus dictum at tempor commodo ullamcorper a. Tristique senectus et netus et malesuada. Suspendisse potenti nullam ac tortor vitae purus faucibus.</p>
-            <h3>Rajive Khanna</h3>
-            <h5>Customer</h5>
-        </div> -->
-        <!-- <div class="clinet-review-wrapper wow flipInX" data-wow-duration="1.5s" data-wow-delay="0.4s" data-wow-offset="0">
-            <div class="review-icon"> -->
-                <!-- <img src="./assets/images/double-quotes-img.svg" alt=""> -->
-                <!-- <svg width="77" height="68" viewBox="0 0 77 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.504 67.5C13.7462 67.5 9.13997 65.4167 5.68527 61.25C2.39509 56.9167 0.75 51.3333 0.75 44.5C0.75 35.1667 3.21764 26.75 8.15291 19.25C13.2527 11.5833 20.9846 5.16666 31.3487 0L34.0631 3.99999C29.1278 6.99999 24.6038 11.25 20.4911 16.75C16.5429 22.0833 14.5688 27.5 14.5688 33C14.5688 34.5 14.98 35.75 15.8026 36.75C16.6251 37.5833 17.859 38 19.504 38C23.6168 38 27.0715 39.5 29.8681 42.5C32.8293 45.3333 34.3099 48.8333 34.3099 53C34.3099 57.1667 32.8293 60.6667 29.8681 63.5C27.0715 66.1667 23.6168 67.5 19.504 67.5ZM62.1942 67.5C56.4364 67.5 51.8301 65.4167 48.3754 61.25C45.0852 56.9167 43.4401 51.3333 43.4401 44.5C43.4401 35.1667 45.9078 26.75 50.843 19.25C55.9428 11.5833 63.6748 5.16666 74.0388 0L76.7532 3.99999C71.818 6.99999 67.294 11.25 63.1812 16.75C59.233 22.0833 57.2589 27.5 57.2589 33C57.2589 34.5 57.6702 35.75 58.4927 36.75C59.3153 37.5833 60.5491 38 62.1942 38C66.3069 38 69.7616 39.5 72.5583 42.5C75.5194 45.3333 77 48.8333 77 53C77 57.1667 75.5194 60.6667 72.5583 63.5C69.7616 66.1667 66.3069 67.5 62.1942 67.5Z" fill="#CC833D"/>
-                </svg>
-            </div>
-            <p>Fringilla est ullamcorper eget nulla facilisi etiam. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Metus dictum at tempor commodo ullamcorper a. Tristique senectus et netus et malesuada. Suspendisse potenti nullam ac tortor vitae purus faucibus.</p>
-            <h3>Rajive Khanna</h3>
-            <h5>Customer</h5>
-        </div> -->
-      </div> 
-
-      </div>
-  </section>
+    </div>
+</section>

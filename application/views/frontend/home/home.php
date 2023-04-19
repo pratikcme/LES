@@ -341,10 +341,10 @@ if (count($top_sell) > 4) { ?>
                       <i class="fas fa-star blank-ratting"></i>
                     <?php } ?>
                     <!-- <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i> -->
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i> -->
                   </div>
                   <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                     <h5><?= $value->name ?></h5>
