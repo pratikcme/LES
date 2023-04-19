@@ -25,11 +25,10 @@
           <table id="table-two-axis" class="two-axis">
             <thead class="head-title">
               <tr >
-                <th colspan="2">product</th>
-              
-                <th>price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
+                <th colspan="2"><?=$this->lang->line('Product')?></th>
+                <th><?=$this->lang->line('price')?></th>
+                <th><?=$this->lang->line('Quantity')?></th>
+                <th><?=$this->lang->line('Total')?></th>
               </tr>
             </thead>
             <tbody>
