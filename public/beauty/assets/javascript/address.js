@@ -43,7 +43,7 @@ function checkNumber() {
 
     var phone = $('#phone').val()
     if (phone == '') {
-        $('#phone_error').html(language.Please_enter_mobile_number);
+        $('#mobileErr').html(language.Please_enter_mobile_number);
         return false;
     }
     if ((country_code != exiting_country) || (exiting_phone != phone)) {
@@ -73,7 +73,6 @@ $(document).on('click', '#btnAccSubmit', function () {
             dataType: 'json',
             success: function (res) {
                 if (res.success == 1) {
-                    alert(res.data);
                     $('.varification').show();
 
                     $("#frmBtn").html('varify otp');

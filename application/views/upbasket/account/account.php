@@ -114,6 +114,7 @@
                         <div class="mb-3">
                           <label for="m-number" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
                           <input type="tel" class="form-control phone" id="phone" name="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" value="<?=$userDetails[0]->phone?>" >
+                          <label for="phone" id="mobileErr" class="error"><?=form_error('phone')?></label>
                         </div>
                       </div>
                       <div class="col-xxl-12 col-md-12 varification" style="display: none;">
