@@ -75,7 +75,7 @@
                   <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
                 <?php } ?>
                   <!-- ---search-list--- -->
-                <div class="search-list-wrapper">
+                <!-- <div class="search-list-wrapper">
                   <ul class="search-list">
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>SkinCare</li>
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Lips</li>
@@ -85,7 +85,7 @@
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Natural</li>
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Fregrance</li>
                   </ul>
-                </div>
+                </div> -->
               </form>
               <i class="fa-solid fa-xmark main-div-cancel"></i>
             </div>
