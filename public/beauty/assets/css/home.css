@@ -423,7 +423,7 @@
 
 
 .offer-wrapper-1 {
-    background: url(../images/home-page/our-offer-img-1.png);
+    /* background: url(../images/home-page/our-offer-img-1.png); */
     width: 100% !important;
     height: 100% !important;
     background-size: cover;
