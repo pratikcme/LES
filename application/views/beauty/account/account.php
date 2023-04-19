@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="col-xxl-12">
                                         <div class="mb-3">
-                                            <label for="text" class="form-label"><?=$this->lang->line('GST Number')?><span>*</span></label>
+                                            <label for="text" class="form-label"><?=$this->lang->line('Gst number')?><span>*</span></label>
                                             <input type="text" class="form-control" name="user_gst_number" value="<?=$userDetails[0]->user_gst_number?>" placeholder="22AAAAA0000A1Z5">
                                         </div>
                                     </div>
