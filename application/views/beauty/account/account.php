@@ -564,58 +564,38 @@
                     <div id="tab-4" class="container tab-pane fade">
                       <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
-                                <h2>My Address</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                                <h2><?=$this->lang->line('My address')?></h2>
+                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                             </div>
                         </div>
                        
                         <div class="main-add-div">
+                        <?php foreach ($get_address as $key => $value) { 
+                              $status = ($value->status == '0') ? 'is_default ' : '';
+                            ?>
                             <div class="address-wrapper">
                                 <div class="ship-check text-end">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"  id="id1">
-                                        <label class="form-check-label" for="id1">
-                                            default
+                                        <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox">
+                                        <label class="form-check-label">
+                                        <?=$this->lang->line('Default')?>
                                         </label>
                                     </div>
                                 </div>
-
                                 <div class="address-text">
-                                    <h3>Office</h3>
-                                    <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
-                                        America</p>
+                                    <h3><?=$value->name?></h3>
+                                    <p><?=$value->address?></p>
                                 </div>
                                 <div class="address-icons">
                                     <a href="" class="add-address-btn" class="place-order-btn"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
                                 </div>
                             </div>
-
-                            <div class="address-wrapper">
-                                
-                                <div class="ship-check text-end">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"  id="id2">
-                                        <label class="form-check-label" for="id2">
-                                            default
-                                        </label>
-                                    </div>
-                                </div>
-                             
-                                <div class="address-text">
-                                    <h3>Home</h3>
-                                    <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
-                                        America</p>
-                                </div>
-                                <div class="address-icons">
-                                    <a href="" class="add-address-btn" class="place-order-btn" ><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
-                                </div>
-                            </div>
+                          <?php } ?>
                         </div>
 
                         <div class="edit-address-btn text-center ">
-                            <button type="button" id="myBtn" data-toggle="modal">Add Address</button>
+                            <button type="button" id="myBtn" data-toggle="modal"><?=$this->lang->line('Add New Address')?></button>
                         </div>
 
                     </div>
