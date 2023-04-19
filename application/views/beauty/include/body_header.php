@@ -185,8 +185,8 @@
                 <h3 id="nav_subtotal" class="notranslate"><?=$this->siteCurrency .' '. getMycartSubtotal()?></h3>
               </div>
               <div class="drop-btns">
-                <a href="./shop-cart.php" class="view-cart"><?=$this->lang->line('view cart')?></a>
-                <a href="./checkout-page.php" class="checkout "><?=$this->lang->line('checkout')?></a>
+                <a href="<?=base_url().'products/cart_item'?>" class="view-cart"><?=$this->lang->line('view cart')?></a>
+                <a href="<?=base_url().'checkout'?>" class="checkout "><?=$this->lang->line('checkout')?></a>
                </div>
               </div>
               <div class="icon-tex">
