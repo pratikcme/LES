@@ -498,6 +498,10 @@ button:focus{
     justify-content: center;
 }
 
+.fade:not(.show) {
+    opacity: 0;
+    display: none !important;
+}
 
 /*=============== responsive =================*/
 @media only screen and (max-width:1200px){

@@ -64,6 +64,23 @@ window.onclick = function (event) {
   }
 };
 
+// ============= place order modal js ===========
+var modal = document.getElementById("myModals");
+var btn = document.getElementById("myBtns");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+span.onclick = function (event) {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
 // let openbtn = document.querySelector(".openbtn");
 // let mobileopenbtn = document.querySelector(".mobile-filter-btn");
 // let closebtn = document.querySelector(".closebtn");
