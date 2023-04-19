@@ -341,11 +341,11 @@ if (!empty($related_product)) { ?>
           <div class="rating-box">
             <div class="rating">
               <div class="rating__stars">
-                <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
-                <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
-                <input id="rating-3" class="rating__input rating__input-3" type="radio" name="rating" value="3">
-                <input id="rating-4" class="rating__input rating__input-4" type="radio" name="rating" value="4">
-                <input id="rating-5" class="rating__input rating__input-5" type="radio" name="rating" value="5">
+                <input id="rating-1" class="rating__input rating__input-1" type="radio" name="ratetIndex" value="1">
+                <input id="rating-2" class="rating__input rating__input-2" type="radio" name="ratetIndex" value="2">
+                <input id="rating-3" class="rating__input rating__input-3" type="radio" name="ratetIndex" value="3">
+                <input id="rating-4" class="rating__input rating__input-4" type="radio" name="ratetIndex" value="4">
+                <input id="rating-5" class="rating__input rating__input-5" type="radio" name="ratetIndex" value="5">
                 <label class="rating__label" for="rating-1">
                   <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
                     <g transform="translate(16,16)">
@@ -458,9 +458,11 @@ if (!empty($related_product)) { ?>
                 <p class="rating__display" data-rating="5" hidden>Excellent</p>
               </div>
             </div>
+            <input type="hidden" name="product_id" id="product_id" value="<?= $this->uri->segment(3) ?>">
+            <input type="hidden" name="varient_id" id="varient_id" value="<?= $this->uri->segment(4) ?>">
 
             <div class="review-text-box">
-              <textarea name="" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
+              <textarea name="comment" id="Your-review" cols="30" rows="10" placeholder="enter your message"></textarea>
             </div>
           </div>
           <div class="modal-footer">
