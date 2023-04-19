@@ -1,4 +1,8 @@
-
+<style>
+#phone_error{
+  color:red;
+}
+</style>
 <!-- ----hero-section-- -->
 <section class="hero-section common-banner-bg">
     <div class="container">
@@ -18,9 +22,9 @@
 
 <!-- ------------myaccoutn-section------------ -->
 <section class="my-account-section p-100">
-    <img src="<?=$this->theme_base_url?>/assets/images/checkout-top-right-img.svg" alt="" class="checkout-top-right-img">
+    <!-- <img src="<?=$this->theme_base_url?>/assets/images/checkout-top-right-img.svg" alt="" class="checkout-top-right-img">
     <img src="<?=$this->theme_base_url?>/assets/images/checkout-mid-left-img.svg" alt="" class="checkout-mid-left-img">
-    <img src="<?=$this->theme_base_url?>/assets/images/checkout-bottom-right-img.svg" alt="" class="checkout-bottom-right-img">
+    <img src="<?=$this->theme_base_url?>/assets/images/checkout-bottom-right-img.svg" alt="" class="checkout-bottom-right-img"> -->
     <div class="container">
 
         <!-- ------tabs-part--- -->
@@ -29,28 +33,25 @@
                 <!-- Nav pills -->
                 <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#tab-1">My Account</a>
+                        <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#tab-1"><?=$this->lang->line('My account')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#tab-2">My Orders</a>
+                        <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#tab-2"><?=$this->lang->line('My orders')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#tab-3">My Wishlist</a>
+                        <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#tab-3"><?=$this->lang->line('My Wishlist')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-4">My
-                            Address</a>
+                        <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-7">Change
-                            Password</a>
+                        <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-7"><?=$this->lang->line('Change Password')?></a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link dashboard-tabs languge-active-img" id="logout"  data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('logout')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-5">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-6">Delete
-                            Account</a>
+                        <a class="nav-link dashboard-tabs languge-active-img" id="delete_account" data-bs-toggle="pill" href="#tab-6"><?=$this->lang->line('Delete Account')?></a>
                     </li>
                 </ul>
             </div>
@@ -63,61 +64,69 @@
                     <div id="tab-1" class="container tab-pane active">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
-                                <h2>Account Details</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                                <h2><?=$this->lang->line('Account')?> <?=$this->lang->line('Details')?></h2>
+                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                             </div>
                         </div>
                         <div class="myaccout-detail-tab">
-                            <div class="choose-img">
-                                <input type="file" class="choose-input" accept="image/*" onchange="loadFile(event)">
-                                <img src="./assets/images/myaccount-choose-img.png" alt="" id="output" class="button">
-                                <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
-                            </div>
-                            <form class="get-detials-account" action>
+                          <form id='ChangePass' action="<?=base_url().'users_account/users/account'?>" method="post" class="get-detials-account" enctype="multipart/form-data">
+                                <div class="choose-img">
+                                    <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
+                                    <img src="<?=($userDetails[0]->profileimage !='' ) ? base_url().'public/images/'.$this->folder.'user_profile/'.$userDetails[0]->profileimage : $this->theme_base_url.'/assets/images/myaccount-choose-img.png'?>" alt="" id="output" class="button">
+                                    <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
+                                </div>
                                 <div class="row">
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="mb-3">
-                                            <label for="fname" class="form-label">First Name<span>*</span></label>
-                                            <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Mike">
+                                            <label for="fname" class="form-label"><?=$this->lang->line('First Name')?><span>*</span></label>
+                                            <input type="text" class="form-control" id="fname" name="fname" placeholder="<?=$this->lang->line('First Name*')?>" value="<?=$userDetails[0]->fname?>" >
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="mb-3">
-                                            <label for="lname" class="form-label">Last Name<span>*</span></label>
-                                            <input type="text" class="form-control" id="lname" aria-describedby="lname" placeholder="Hussy">
+                                            <label for="lname" class="form-label"><?=$this->lang->line('Last Name')?><span>*</span></label>
+                                            <input type="text" class="form-control" name="lname" id="lname" value="<?=$userDetails[0]->lname?>" placeholder="<?=$this->lang->line('Last Name*')?>">
                                         </div>
                                     </div>
                                     <div class="col-xxl-12">
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Email Address<span>*</span></label>
-                                            <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="mikehussy@gmail.com">
+                                            <label for="email" class="form-label"><?=$this->lang->line('Enter Email')?><span>*</span></label>
+                                            <input type="email" name="email" class="form-control" id="email" placeholder="<?=$this->lang->line('Email*')?>" value="<?=$userDetails[0]->email?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-xxl-12">
                                         <div class="mb-3">
-                                            <label for="text" class="form-label">GST Number<span>*</span></label>
-                                            <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="22AAAAA0000A1Z5">
+                                            <label for="text" class="form-label"><?=$this->lang->line('Gst number')?><span>*</span></label>
+                                            <input type="text" class="form-control" name="user_gst_number" value="<?=$userDetails[0]->user_gst_number?>" placeholder="22AAAAA0000A1Z5">
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="tab-select-box">
-                                            <label for="Country-code" class="form-label">Country Code<span>*</span></label>
-                                            <select class="form-select" aria-label="Country-code">
-                                                <option selected>(+91) Inadia </option>
-                                                <option value="1">Surt</option>
-                                                <option value="2">Baroda</option>
-                                                <option value="3">Ohter</option>
+                                            <label for="Country-code" class="form-label"><?=$this->lang->line('Select country code')?><span>*</span></label>
+                                            <select class="form-select" name="country_code" id="country_code">
+                                            <?php foreach(GetDialcodelist() as $key => $value){ ?>
+                                              <option <?=($key==$userDetails[0]->country_code)?'selected':'';?> value="<?=$key;?>"><?=$value;?></option>
+                                            <?php } ?>
                                             </select>
                                         </div>
                                     </div>
+                                    <input type="hidden" id="exiting_country" value="<?=$userDetails[0]->country_code?>">
+                                    <input type="hidden" id="exiting_phone" value="<?=$userDetails[0]->phone?>">
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="mb-3">
-                                            <label for="m-number" class="form-label">Mobile Number<span>*</span></label>
-                                            <input type="tel" class="form-control" id="text" aria-describedby="text" placeholder="99999 99999">
-                                        </div>
+                                            <label for="m-number" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
+                                            <input type="tel" class="form-control" name="phone" id="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" value="<?=$userDetails[0]->phone?>">
+                                            <label for="phone" id="mobileErr" class="error"><?=form_error('phone')?></label>
+                                          </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6 varification" style="display: none;">
+                                      <div class="mb-3">
+                                        <label for="otp" class="form-label">Otp<span>*</span></label>
+                                        <input type="text" id="otp" name="otp" placeholder="<?=$this->lang->line('otp')?>" >
+                                      </div>
                                     </div>
                                     <div class="tab-save-btn">
-                                        <input type="Submit" value="Save"/>
+                                        <input type="Submit" id="btnAccSubmit" value="<?=$this->lang->line('Save')?>"/>
                                     </div>
                                 </div>
                             </form>
@@ -128,8 +137,8 @@
                     <div id="tab-2" class="container tab-pane fade">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
-                                <h2>My Orders</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                                <h2><?=$this->lang->line('My Orders')?></h2>
+                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                             </div>
                         </div>
                       <div class="main-sub-tabs">
@@ -150,1091 +159,285 @@
                         <div class="my-order-details">
                             <div class="tab-content">
                                 <div class="accordion-items">
-
                                     <!-- ------sub-tab-1----- -->
                                     <div id="subtab-1" class="container tab-pane fade show active">
+                                      <?php foreach ($order as $key => $value) {
+                                        if($value->order_status != '8'){
+                                          continue;
+                                        }
+                                      date_default_timezone_set('Asia/Kolkata');
+                                      $date =  date('d M Y, h:i A', $value->dt_updated); 
+                                      if($value->order_status == '1'){
+                                          $status = 'Processing';
+                                        }elseif($value->order_status == '2'){
+                                          $status = 'Pending';
+                                       }elseif($value->order_status == '3'){
+                                          $status = 'Ready';
+                                       }elseif($value->order_status == '4'){
+                                          $status = 'Pickup';
+                                       }elseif ($value->order_status == '5') {
+                                          $status = 'on the way';
+                                       }elseif ($value->order_status == '8') {
+                                          $status = 'Delivered';
+                                       }else{
+                                          $status = 'Cancel';
+                                       }  
+                                      ?>
                                         <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="#" class="delivered-btn">Delivered</a>
+                                          <div class="accordion-heading">
+                                            <a href="#" class="delivered-btn"><?=$status?></a>
 
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
+                                            <div class="my-order-text">
+                                              <h3>Order Number: <span><?=str_replace('Order','', $value->order_no);?></span></h3>
+                                              <h3>Delivered to: <span> <?=$value->delivered_address?></span>
+                                              </h3>
+                                              <p><span><i class="fa-regular fa-clock"></i></span><?= $date?></p>
                                             </div>
-                                            <div class="accordion-content">
-                                                   <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
+                                          </div>
+                                          <div class="accordion-content">
+                                          <?php foreach ($value->orderDetails as $k => $v) { ?>
+                                          
+                                            <div class="my-order-details-content">
+                                              <div class="order-details-img">
+                                                <div class="accordion-img-wrapper">
+                                                  <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$v->product_image?>" alt="">
                                                 </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
+                                                <div class="img-about-text">
+                                                  <h3><?=$v->product_name?></h3>
+                                                  <h5><?=$v->weight_number .' '.$v->weight_name ?></h5>
+                                                  <p>Qty: <span><?=$v->quantity?></span></p>
                                                 </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                                </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                        <button type="button" class="cancel-btn lg-btn">Cancel</button>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
+                                              </div>
+                                          
+                                              <div class="accordion-price-text">
+                                                <h4><?=$this->siteCurrency .' '. numberFormat($v->discount_price)?></h4>
+                                              </div>
                                             </div>
-                                        </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="#" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
+                                          <?php } ?>
+                                          
+                                            <div class="all-detalis-wrapper">
+                                              <div class="all-detalis-left">
+                                                <h4><?=$this->lang->line('Total Amount')?></h4>
+                                                <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?> 
+                                                  <h4><?=$this->lang->line('Cart Discount')?></h4>
+                                                <?php } ?>
+                                                <h4><?=$this->lang->line('Product Discount')?></h4>
+                                                <h4><?=$this->lang->line('Total Amount Before Tax')?></h4>
+                                                <h4><?=$this->lang->line('Total Tax Amount')?></h4>
+                                                <h4><?=$this->lang->line('Delivery Charges')?></h4>
+                                                <h4><?=$this->lang->line('Total Item')?></h4>
+                                                <h4><?=$this->lang->line('Promocode Discount')?></h4>
+                                                <h4><?=$this->lang->line('Final Total')?></h4>
+                                                <h4><?=($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP"?></h4>
+                                              </div>
+                                              <div class="all-detalis-right">
+                                                <h3 class="notranslate"><?=$this->siteCurrency .' '. number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
+                                                
+                                                <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?>
+                                                  <h3 class="notranslate">-<?=$this->siteCurrency .' '.number_format((float)$value->shopping_amount_based_discount,2,'.','')?></h3>
+                                                <?php } ?>
+                                                <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$value->total_saving,2,'.','')?></h3>
+                                                
+                                                <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$value->sub_total - $value->TotalGstAmount,2,'.','')?></h3>
+                                                <h3 class="notranslate"><?=$this->siteCurrency .' '.$order[$key]->TotalGstAmount?></h3>
+                                                <h3 class="notranslate"><?=($value->delivery_charge != '0') ? $this->siteCurrency.' '.number_format($value->delivery_charge,2,'.','') : 'FREE'?></h3>
+                                                <h3 class="notranslate"><?=$value->total_item?></h3>
+                                                <h3 class="notranslate"><?=$this->siteCurrency.' '.$value->promocode_discount?></h3>
+                                                <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
+                                                <h3><?=$value->isSelfPickup_details[0]->otp?></h3>
+                                              </div>
                                             </div>
-                                            <div class="accordion-content">
-                                                   <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                                </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                        <button type="button" class="cancel-btn lg-btn">Cancel</button>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="#" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                   <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                                </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                        <button type="button" class="cancel-btn lg-btn">Cancel</button>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="#" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                   <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                                </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                        <button type="button" class="cancel-btn lg-btn">Cancel</button>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                                
+                                          </div>
+                                       </div>
+                                      <?php } ?>
                                     </div>
 
                                     <!-- ------sub-tab-2----- -->
                                     <div id="subtab-2" class="container tab-pane fade">
-                                        <div class="main-accordion">
+                                    <?php foreach ($order as $key => $value) {
+                                            if($value->order_status == '8' || $value->order_status == '9'){
+                                              continue;
+                                            }
+                                            date_default_timezone_set('Asia/Kolkata');
+                                            $date =  date('d M Y, h:i A', $value->dt_updated); 
+                                            if($value->order_status == '1'){
+                                                $status = 'Processing';
+                                              }elseif($value->order_status == '2'){
+                                                $status = 'Pending';
+                                            }elseif($value->order_status == '3'){
+                                                $status = 'Ready';
+                                            }elseif($value->order_status == '4'){
+                                                $status = 'Pickup';
+                                            }elseif ($value->order_status == '5') {
+                                                $status = 'on the way';
+                                            }elseif ($value->order_status == '8') {
+                                                $status = 'Delivered';
+                                            }else{
+                                                $status = 'Cancel';
+                                            }  
+                                          ?>
+                                          <div class="main-accordion">
                                             <div class="accordion-heading">
-                                                <a href="" class="delivered-btn">Delivered</a>
+                                              <a href="#" class="delivered-btn"><?=$status?></a>
 
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
+                                              <div class="my-order-text">
+                                                <h3>Order Number: <span><?=str_replace('Order','', $value->order_no);?></span></h3>
+                                                <h3>Delivered to: <span> <?=$value->delivered_address?></span>
+                                                </h3>
+                                                <p><span><i class="fa-regular fa-clock"></i></span><?= $date?></p>
+                                              </div>
                                             </div>
                                             <div class="accordion-content">
-                                                <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
+                                            <?php foreach ($value->orderDetails as $k => $v) { ?>
 
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
+                                              <div class="my-order-details-content">
+                                                <div class="order-details-img">
+                                                  <div class="accordion-img-wrapper">
+                                                    <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$v->product_image?>" alt="">
+                                                  </div>
+                                                  <div class="img-about-text">
+                                                    <h3><?=$v->product_name?></h3>
+                                                    <h5><?=$v->weight_number .' '.$v->weight_name ?></h5>
+                                                    <p>Qty: <span><?=$v->quantity?></span></p>
+                                                  </div>
                                                 </div>
 
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
+                                                <div class="accordion-price-text">
+                                                  <h4><?=$this->siteCurrency .' '. numberFormat($v->discount_price)?></h4>
                                                 </div>
+                                              </div>
+                                            <?php } ?>
 
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
+                                              <div class="all-detalis-wrapper">
+                                                <div class="all-detalis-left">
+                                                  <h4><?=$this->lang->line('Total Amount')?></h4>
+                                                  <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?> 
+                                                    <h4><?=$this->lang->line('Cart Discount')?></h4>
+                                                  <?php } ?>
+                                                  <h4><?=$this->lang->line('Product Discount')?></h4>
+                                                  <h4><?=$this->lang->line('Total Amount Before Tax')?></h4>
+                                                  <h4><?=$this->lang->line('Total Tax Amount')?></h4>
+                                                  <h4><?=$this->lang->line('Delivery Charges')?></h4>
+                                                  <h4><?=$this->lang->line('Total Item')?></h4>
+                                                  <h4><?=$this->lang->line('Promocode Discount')?></h4>
+                                                  <h4><?=$this->lang->line('Final Total')?></h4>
+                                                  <h4><?=($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP"?></h4>
                                                 </div>
-                                            </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
+                                                <div class="all-detalis-right">
+                                                  <h3 class="notranslate"><?=$this->siteCurrency .' '. number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
+                                                  
+                                                  <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?>
+                                                    <h3 class="notranslate">-<?=$this->siteCurrency .' '.number_format((float)$value->shopping_amount_based_discount,2,'.','')?></h3>
+                                                  <?php } ?>
+                                                  <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$value->total_saving,2,'.','')?></h3>
+                                                  
+                                                  <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$value->sub_total - $value->TotalGstAmount,2,'.','')?></h3>
+                                                  <h3 class="notranslate"><?=$this->siteCurrency .' '.$order[$key]->TotalGstAmount?></h3>
+                                                  <h3 class="notranslate"><?=($value->delivery_charge != '0') ? $this->siteCurrency.' '.number_format($value->delivery_charge,2,'.','') : 'FREE'?></h3>
+                                                  <h3 class="notranslate"><?=$value->total_item?></h3>
+                                                  <h3 class="notranslate"><?=$this->siteCurrency.' '.$value->promocode_discount?></h3>
+                                                  <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
+                                                  <h3><?=$value->isSelfPickup_details[0]->otp?></h3>
                                                 </div>
+                                              </div>
 
                                             </div>
-                                        </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                          </div>
+                                         <?php } ?>
+                                       </div>
 
                                     <!-- ------sub-tab-2----- -->
                                     <div id="subtab-3" class="container tab-pane fade">
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="" class="delivered-btn">Delivered</a>
+                                                <?php foreach ($order as $key => $value) {
+                                                      if($value->order_status != '9'){
+                                                        continue;
+                                                      }
+                                                    date_default_timezone_set('Asia/Kolkata');
+                                                    $date =  date('d M Y, h:i A', $value->dt_updated); 
+                                                    if($value->order_status == '1'){
+                                                        $status = 'Processing';
+                                                      }elseif($value->order_status == '2'){
+                                                        $status = 'Pending';
+                                                    }elseif($value->order_status == '3'){
+                                                        $status = 'Ready';
+                                                    }elseif($value->order_status == '4'){
+                                                        $status = 'Pickup';
+                                                    }elseif ($value->order_status == '5') {
+                                                        $status = 'on the way';
+                                                    }elseif ($value->order_status == '8') {
+                                                        $status = 'Delivered';
+                                                    }else{
+                                                        $status = 'Cancel';
+                                                    }  
+                                                    ?>
+                                                    <div class="main-accordion">
+                                        <div class="accordion-heading">
+                                          <a href="javascript:" class="delivered-btn"><?=$status?></a>
 
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                 <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                          <div class="my-order-text">
+                                            <h3>Order Number: <span><?=str_replace('Order','', $value->order_no);?></span></h3>
+                                            <h3>Delivered to: <span> <?=$value->delivered_address?></span>
+                                            </h3>
+                                            <p><span><i class="fa-regular fa-clock"></i></span><?= $date?></p>
+                                          </div>
                                         </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                 <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
+                                        <div class="accordion-content">
+                                        <?php foreach ($value->orderDetails as $k => $v) { ?>
+                                          <div class="my-order-details-content">
+                                            <div class="order-details-img">
+                                              <div class="accordion-img-wrapper">
+                                                <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$v->product_image?>" alt="">
+                                              </div>
+                                              <div class="img-about-text">
+                                                <h3><?=$v->product_name?></h3>
+                                                <h5><?=$v->weight_number .' '.$v->weight_name ?></h5>
+                                                <p>Qty: <span><?=$v->quantity?></span></p>
+                                              </div>
                                             </div>
 
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
+                                            <div class="accordion-price-text">
+                                              <h4><?=$this->siteCurrency .' '. numberFormat($v->discount_price)?></h4>
                                             </div>
+                                          </div>
+                                        <?php } ?>
+
+                                          <div class="all-detalis-wrapper">
+                                            <div class="all-detalis-left">
+                                              <h4><?=$this->lang->line('Total Amount')?></h4>
+                                              <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?> 
+                                                <h4><?=$this->lang->line('Cart Discount')?></h4>
+                                              <?php } ?>
+                                              <h4><?=$this->lang->line('Product Discount')?></h4>
+                                              <h4><?=$this->lang->line('Total Amount Before Tax')?></h4>
+                                              <h4><?=$this->lang->line('Total Tax Amount')?></h4>
+                                              <h4><?=$this->lang->line('Delivery Charges')?></h4>
+                                              <h4><?=$this->lang->line('Total Item')?></h4>
+                                              <h4><?=$this->lang->line('Promocode Discount')?></h4>
+                                              <h4><?=$this->lang->line('Final Total')?></h4>
+                                              <h4><?=($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP"?></h4>
+                                            </div>
+                                            <div class="all-detalis-right">
+                                              <h3 class="notranslate"><?=$this->siteCurrency .' '. number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
+                                              
+                                              <?php if($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL){ ?>
+                                                <h3 class="notranslate">-<?=$this->siteCurrency .' '.number_format((float)$value->shopping_amount_based_discount,2,'.','')?></h3>
+                                              <?php } ?>
+                                              <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$value->total_saving,2,'.','')?></h3>
+                                              
+                                              <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$value->sub_total - $value->TotalGstAmount,2,'.','')?></h3>
+                                              <h3 class="notranslate"><?=$this->siteCurrency .' '.$order[$key]->TotalGstAmount?></h3>
+                                              <h3 class="notranslate"><?=($value->delivery_charge != '0') ? $this->siteCurrency.' '.number_format($value->delivery_charge,2,'.','') : 'FREE'?></h3>
+                                              <h3 class="notranslate"><?=$value->total_item?></h3>
+                                              <h3 class="notranslate"><?=$this->siteCurrency.' '.$value->promocode_discount?></h3>
+                                              <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
+                                              <h3><?=$value->isSelfPickup_details[0]->otp?></h3>
+                                            </div>
+                                          </div>
                                         </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                 <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="main-accordion">
-                                            <div class="accordion-heading">
-                                                <a href="" class="delivered-btn">Delivered</a>
-
-                                                <div class="my-order-text">
-                                                    <h3>Orders: <span> #3,345,512</span></h3>
-                                                    <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug Road, Ahmedabad-380004</span>
-                                                    </h3>
-                                                    <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022, 10:49 AM</p>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-content">
-                                                 <div class="my-order-wrapper">
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-5.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Blur Perfect Makeup Primer</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-6.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Matte Ultimate Lip Color</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-order-details-content">
-                                                    <div class="order-details-img">
-                                                        <div class="accordion-img-wrapper">
-                                                            <img src="./assets/images/home-page/feature-prodct-7.png" alt="">
-                                                        </div>
-                                                        <div class="img-about-text">
-                                                            <h3>Lakme Absolute Skin Natural Mousse Foundation</h3>
-                                                            <p>Qty: <span>1</span></p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-price-text">
-                                                        <h4>₹1150.00</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                                <div class="all-detalis-wrapper">
-                                                    <div class="all-detalis-left">
-                                                        <h4>Total Amount</h4>
-                                                        <h4>Product Discount</h4>
-                                                        <h4>Total Amount Before Tax</h4>
-                                                        <h4>Total Tax Amount</h4>
-                                                        <h4>Delivery Charges</h4>
-                                                        <h4>Total Item</h4>
-                                                        <h4>Promocode Discount</h4>
-                                                        <h4>Final Total</h4>
-                                                        <h4>Self Pick Up OTP</h4>
-                                                    </div>
-                                                    <div class="all-detalis-right">
-                                                        <h3>₹398.00</h3>
-                                                        <h3>-₹20.00</h3>
-                                                        <h3>₹18.00</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>Free</h3>
-                                                        <h3>1</h3>
-                                                        <h3>₹0.00</h3>
-                                                        <h3>₹18.00 </h3>
-                                                        <h3>0565</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                      </div>
+                                      <?php } ?>
                                     </div>
-
                                 </div>
                             </div>
 
@@ -1361,58 +564,39 @@
                     <div id="tab-4" class="container tab-pane fade">
                       <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
-                                <h2>My Address</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                                <h2><?=$this->lang->line('My address')?></h2>
+                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                             </div>
                         </div>
                        
                         <div class="main-add-div">
+                        <?php foreach ($get_address as $key => $value) { 
+                              $status = ($value->status == '0') ? 'is_default ' : '';
+                            ?>
                             <div class="address-wrapper">
                                 <div class="ship-check text-end">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"  id="id1">
+                                        <input class="form-check-input <?=$status?>" data-id="<?=$this->utility->safe_b64encode($value->id)?>" type="checkbox"  id="id1"  <?=($value->status == '1') ? 'checked' : '' ?>>
                                         <label class="form-check-label" for="id1">
-                                            default
+                                        <?=$this->lang->line('Default')?>
                                         </label>
                                     </div>
                                 </div>
 
                                 <div class="address-text">
-                                    <h3>Office</h3>
-                                    <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
-                                        America</p>
+                                    <h3><?=$value->name?></h3>
+                                    <p><?=$value->address?></p>
                                 </div>
                                 <div class="address-icons">
                                     <a href="" class="add-address-btn" class="place-order-btn"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
                                 </div>
                             </div>
-
-                            <div class="address-wrapper">
-                                
-                                <div class="ship-check text-end">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"  id="id2">
-                                        <label class="form-check-label" for="id2">
-                                            default
-                                        </label>
-                                    </div>
-                                </div>
-                             
-                                <div class="address-text">
-                                    <h3>Home</h3>
-                                    <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
-                                        America</p>
-                                </div>
-                                <div class="address-icons">
-                                    <a href="" class="add-address-btn" class="place-order-btn" ><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
-                                </div>
-                            </div>
+                          <?php } ?>
                         </div>
 
                         <div class="edit-address-btn text-center ">
-                            <button type="button" id="myBtn" data-toggle="modal">Add Address</button>
+                            <button type="button" id="myBtn" data-toggle="modal"><?=$this->lang->line('Add New Address')?></button>
                         </div>
 
                     </div>

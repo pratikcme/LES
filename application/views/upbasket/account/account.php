@@ -58,14 +58,14 @@
           <div class="tab-content account-details-content">
             <!-- ---tab-1-- -->
             <div id="tab-1" class="container tab-pane fade active show">
-              <h2 class="title">Account <span>Details</span></h2>
+              <h2 class="title"><?=$this->lang->line('Account')?> <span><?=$this->lang->line('Details')?></span></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <div class="myaccout-detail-tab">
                 <!-- <div class="choose-img">
                   <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="">
                 </div> -->
                 <div class="get-detials-account">
-                  <form id='ChangePass' enctype="multipart/form-data" action="<?=base_url().'users_account/users/account'?>" method="post">
+                  <form id='  ' enctype="multipart/form-data" action="<?=base_url().'users_account/users/account'?>" method="post">
                   <input type="hidden" name="hidden_image" value="<?=$userDetails[0]->profileimage?>">
                     <div class="choose-img">
                         <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
@@ -75,26 +75,26 @@
                     <div class="row">
                       <div class="col-xxl-6 col-md-6">
                         <div class="mb-3">
-                          <label for="fname" class="form-label">First Name<span>*</span></label>
+                          <label for="fname" class="form-label"><?=$this->lang->line('First Name')?><span>*</span></label>
                           <input type="text" class="form-control" name="fname" placeholder="<?=$this->lang->line('First Name*')?>" value="<?=$userDetails[0]->fname?>" id="fname" aria-describedby="fname">
                         </div>
                       </div>
                       <div class="col-xxl-6 col-md-6">
                         <div class="mb-3">
-                          <label for="lname" class="form-label">Last Name<span>*</span></label>
-                          <input type="text" class="form-control" name="lname" placeholder="<?=$this->lang->line('Last Name*')?>" value="<?=$userDetails[0]->lname?>" id="lname" aria-describedby="lname">
+                          <label for="lname" class="form-label"><?=$this->lang->line('Last Name')?><span>*</span></label>
+                          <input type="text" class="form-control" name="lname" placeholder="<?=$this->lang->line('Last Name*')?>" value="<?=$userDetails[0]->lname?>" id="lname">
                         </div>
                       </div>
                       <div class="col-xxl-12">
                         <div class="mb-3">
-                          <label for="email" class="form-label">Email Address<span>*</span></label>
+                          <label for="email" class="form-label"><?=$this->lang->line('Enter Email')?><span>*</span></label>
                           <input type="email" class="form-control" id="email" name="email" placeholder="<?=$this->lang->line('Email*')?>" value="<?=$userDetails[0]->email?>" readonly aria-describedby="Enter Your E-mail" >
                         </div>
                       </div>
                       <div class="col-xxl-12">
                         <div class="mb-3">
-                          <label for="text" class="form-label">GST Number<span>*</span></label>
-                          <input type="text" class="form-control" name="user_gst_number" placeholder="<?=$this->lang->line('Gst number')?>" value="<?=$userDetails[0]->user_gst_number?>" aria-describedby="text"
+                          <label for="text" class="form-label"><?=$this->lang->line('GST Number')?><span>*</span></label>
+                          <input type="text" class="form-control" name="user_gst_number" placeholder="<?=$this->lang->line('Gst number')?>" value="<?=$userDetails[0]->user_gst_number?>"
                             placeholder="22AAAAA0000A1Z5">
                         </div>
                       </div>
@@ -112,8 +112,9 @@
                       <input type="hidden" id="exiting_phone" value="<?=$userDetails[0]->phone?>">
                       <div class="col-xxl-6 col-md-6">
                         <div class="mb-3">
-                          <label for="m-number" class="form-label">Mobile Number<span>*</span></label>
-                          <input type="tel" class="form-control phone" id="phone" name="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" value="<?=$userDetails[0]->phone?>"  aria-describedby="text">
+                          <label for="m-number" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
+                          <input type="tel" class="form-control phone" id="phone" name="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" value="<?=$userDetails[0]->phone?>" >
+                          <label for="phone" id="mobileErr" class="error"><?=form_error('phone')?></label>
                         </div>
                       </div>
                       <div class="col-xxl-12 col-md-12 varification" style="display: none;">
@@ -140,13 +141,13 @@
               <div class="sub-tabs container">
                   <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1">Completed</a>
+                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1"><?=$this->lang>line('Completed')?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2">Process</a>
+                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2"><?=$this->lang>line('Process')?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3">Cancel</a>
+                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3"><?=$this->lang>line('Cancel')?></a>
                     </li>
                   </ul>
                </div>            
