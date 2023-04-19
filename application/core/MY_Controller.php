@@ -69,7 +69,7 @@ class MY_Controller extends CI_Controller
     function loadView($layout, $data)
     {
 
-        echo $this->folder ;die;
+
         $this->load->model('frontend/vendor_model', 'vendor_model');
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
         $this->load->model($this->myvalues->contactFrontEnd['model'], 'contact');
@@ -120,8 +120,8 @@ class User_Controller extends MY_Controller
     function __construct()
     {
 
-
         parent::__construct();
+        echo $this->folder ;die;
         if (isset($_SESSION['My_cart']) && count($_SESSION['My_cart']) == 0) {
             $this->session->unset_userdata('My_cart');
         }
