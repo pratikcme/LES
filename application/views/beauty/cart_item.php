@@ -93,8 +93,13 @@
                     </td>
                     <td>
                       <div class="cart-price-text">
-                        <h3>₹1150.00</h3>
-                        <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                        <h3 class="notranslate"><?=$this->siteCurrency .''.number_format((float)$calculation_price, 2, '.', '')?></h3>
+                        <input type="hidden" class="total" value="<?=number_format((float)$calculation_price, 2, '.', '')?>">
+                        <a href="javascript:" class="removeCartItem"  
+                            data-product_id="<?= $value['product_id'] ?>"
+                            data-product_weight_id="<?= $value['product_weight_id'] ?>"
+                            data-weight_id="<?= $value['weight_id'] ?>"><i class="fa-regular fa-circle-xmark"></i>
+                        </a>
                       </div>
                     </td>
                   </tr>
@@ -137,8 +142,12 @@
                     </td>
                     <td>
                       <div class="cart-price-text">
-                        <h3>₹1150.00</h3>
-                        <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                        <h3 class="notranslate"><?=$this->siteCurrency .''.number_format((float)$calculation_price, 2, '.', '')?></h3>
+                        <input type="hidden" class="total" value="<?=number_format((float)$calculation_price, 2, '.', '')?>">
+                        <a href="javascript:" class="removeCartItem"  
+                            data-product_id="<?= $value->product_id ?>"
+                            data-product_weight_id="<?= $value->product_weight_id ?>"
+                            data-weight_id="<?= $value->weight_id ?>"><i class="fa-regular fa-circle-xmark"></i></a>
                       </div>
                     </td>
                 </tr>
@@ -175,7 +184,7 @@
                 </tbody>
               </table>
           </div>
-          <a href="./checkout-page.php" class="proceed-checkout-btn">Proceed to checkout</a>
+          <a href="<?=base_url().'checkout'?>" class="proceed-checkout-btn">Proceed to checkout</a>
       </div>
     </div>
   </div>
@@ -197,3 +206,4 @@
   </div>
 </div>
 <input type="hidden" name="" id="shipingCharge" value="<?= ($calc_shiping != 'NotInRange') ? $calc_shiping : '0.00' ?>">
+                          
