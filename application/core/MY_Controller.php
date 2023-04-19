@@ -30,6 +30,7 @@ class MY_Controller extends CI_Controller
             $this->siteTitle = $siteDetail['webTitle'];
             $this->siteFevicon = $siteDetail['favicon_image'];
             $this->folder = $siteDetail['folder'];
+            echo $this->folder ;die;
             $this->siteCurrency = $this->common_model->getDefaultCurrency();
 
             $this->countCategory = $this->common_model->CountCategory();
