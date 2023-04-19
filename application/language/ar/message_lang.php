@@ -49,6 +49,7 @@ $lang['Get In'] = 'أدخل';
 $lang['Touch'] = 'يلمس';
 $lang['Call Us'] = 'اتصل بنا';
 $lang['Shop infomation'] = 'معلومات المتجر';
+$lang['Product Listing'] = 'قائمة المنتجات';
 
 // end template 2
 

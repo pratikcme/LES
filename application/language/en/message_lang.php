@@ -48,6 +48,7 @@ $lang['Get In'] = 'Get In';
 $lang['Touch'] = 'Touch';
 $lang['Call Us'] = 'Call Us';
 $lang['Shop infomation'] = 'Shop infomation';
+$lang['Product Listing'] = 'Product Listing';
 
 
 // end template 2
