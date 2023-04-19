@@ -33,7 +33,7 @@ class Home extends User_Controller
 			$data['background_image'] = $this->home_content_model->getSectionOneBackground();
 		}
 
-		$data['js'] = array('home.js','add_to_cart.js');
+		$data['js'] = array('home.js', 'add_to_cart.js');
 
 		$data['category'] = $this->this_model->selectCategory();
 
@@ -140,6 +140,7 @@ class Home extends User_Controller
 
 	public function get_offer_product_listing($offer_id)
 	{
+
 		$item_weight_id = [];
 		if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 			$this->load->model('frontend/product_model');
@@ -157,7 +158,8 @@ class Home extends User_Controller
 
 
 		$offer_id = $this->utility->safe_b64decode($offer_id);
-		$data['page'] = 'frontend/offer_product_list';
+		$data['page'] = $_SESSION['template_name'] . '/offer_product_list';
+
 		$data['js'] = array('add_to_cart.js');
 		$postData = ['offer_id' => $offer_id, 'user_id' => $this->session->userdata('user_id')];
 		$data['offer_varient_list'] = $this->this_model->get_offer_varient_listing($postData);

@@ -169,6 +169,7 @@ class Products extends User_Controller
 			$data['isAvailable'] = '0';
 		}
 		$varient_id = $this->utility->safe_b64decode($this->uri->segment(4));
+
 		$this->load->model('frontend/home_model', 'home_model');
 		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id, $varient_id);
 		// dd($data['productDetail']);
@@ -236,6 +237,7 @@ class Products extends User_Controller
 
 		$var_id = $this->utility->safe_b64decode($var_id);
 		$data['varientDetails'] = $this->this_model->getVarientDetails($var_id);
+
 		foreach ($data['varientDetails'] as $key => $value) {
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
@@ -378,6 +380,7 @@ class Products extends User_Controller
 			$starHtml .= '<i class="fas fa-star blank-ratting"></i>';
 			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
 		}
+
 		$response = [
 			'product_weight_id' => $result[0]->id,
 			'product_price' => number_format((float)$result[0]->price, 2, '.', ''),

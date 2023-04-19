@@ -525,7 +525,7 @@
 
 
 .offer-wrapper-1 {
-    background: url(../img/home/our-offer-img-1.png);
+    /* background: url(../img/home/our-offer-img-1.png); */
     width: 100% !important;
     height: 100% !important;
     background-size: cover;
@@ -607,7 +607,9 @@
     padding-bottom: 130px;
 }
 
-
+bg-white{
+    color:#fff;
+}
 .new-arrival .owl-carousel {
     padding: 30px 0 0 calc((101vw - 1320px) / 2);
 }

@@ -240,6 +240,7 @@ var ADDPRODUCT = (function () {
 
   $(document).on("change", ".product_varient_id", function () {
     var product_varient_id = $(this).val();
+
     var url = $("#url").val();
     var that = $(this);
     var stockMessage = language.js_limited_stock;
@@ -255,7 +256,7 @@ var ADDPRODUCT = (function () {
         dataType: "json",
         success: function (output) {
           // alert(siteCurrency);
-
+          console.log(output);
           $("#review_count").html(
             language.Reviews + "(" + output.productReviewCount + ")"
           );
@@ -275,14 +276,18 @@ var ADDPRODUCT = (function () {
 
           $("#review_section").html(output.reviewSection);
           $("#starRatting").html(output.upbasket_starHtml);
-          $("#dynamic_price").html(
-            siteCurrency +
-              " " +
-              output.discount_price +
+
+          var strike_price = "";
+          if (output.discount_per != 0) {
+            strike_price =
               "<span><strike>" +
-              (output.discount_per != 0)
-              ? siteCurrency + " " + output.product_price
-              : +"" + "</strike></span>"
+              siteCurrency +
+              " " +
+              output.product_price +
+              "</strike></span>";
+          }
+          $("#dynamic_price").html(
+            siteCurrency + " " + output.discount_price + strike_price
           );
 
           var imageFolder = $("#imageFolder").val();

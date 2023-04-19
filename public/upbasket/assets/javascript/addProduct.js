@@ -241,6 +241,7 @@ var ADDPRODUCT = (function () {
   $(document).on("change", ".product_varient_id", function () {
     // var product_varient_id = $(this).data('varient_id');
     var product_varient_id = $(this).val();
+
     var url = $("#url").val();
     var that = $(this);
     var stockMessage = language.js_limited_stock;
