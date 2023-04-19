@@ -5,7 +5,7 @@
         <!-- -----header-top---- -->
         <div class="header-top">
           <div class="logo">
-            <a href="<?=base_url()?>"><img src="<?=$this->theme_base_url?>/assets/images/header-logo.png" alt=""></a>
+            <a href="<?=base_url()?>"><img src="<?=$this->siteLogo?>" alt=""></a>
           </div>
 
           <!-- -------navigation-bar---- -->
