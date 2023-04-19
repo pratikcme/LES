@@ -117,7 +117,7 @@
                                     <div class="col-xxl-6 col-md-6 varification" style="display: none;">
                                       <div class="mb-3">
                                         <label for="otp" class="form-label">Otp<span>*</span></label>
-                                        <input type="text" id="otp" name="otp" placeholder="<?=$this->lang->line('otp')?>"  >
+                                        <input type="text" id="otp" name="otp" placeholder="<?=$this->lang->line('otp')?>" >
                                       </div>
                                     </div>
                                     <div class="tab-save-btn">
