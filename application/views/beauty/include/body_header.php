@@ -115,7 +115,7 @@
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="g-badge" id="itemCount" <?=(isset($this->cartCount) && $this->cartCount != 0 ) ? 'style="display:block"' : 'style="display:none"' ?>><?=(isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
             <!-- ----cart-dropdown--- -->
-            <div class="cart-dropdwon" id="updated_list">
+            <div class="cart-dropdwon <?=($this->cartCount==0) ? 'd-none' : '' ?>" id="updated_list">
               <div class="cart-drop-wrapper">
               <?php if ($this->session->userdata('user_id') == '') { ?>
                 <?php if(isset($this->cartCount)){ 
