@@ -54,6 +54,10 @@ $lang['Explore More'] = 'Explore More';
 $lang['Account'] = 'Account';
 $lang['Details'] = 'Details';
 
+$lang['Completed'] = 'Completed';
+$lang['Process'] = 'Process';
+$lang['Cancel'] = 'Cancel';
+
 
 // end other template 
 

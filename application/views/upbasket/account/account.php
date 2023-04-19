@@ -65,7 +65,7 @@
                   <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="">
                 </div> -->
                 <div class="get-detials-account">
-                  <form id='ChangePass' enctype="multipart/form-data" action="<?=base_url().'users_account/users/account'?>" method="post">
+                  <form id='  ' enctype="multipart/form-data" action="<?=base_url().'users_account/users/account'?>" method="post">
                   <input type="hidden" name="hidden_image" value="<?=$userDetails[0]->profileimage?>">
                     <div class="choose-img">
                         <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
@@ -141,13 +141,13 @@
               <div class="sub-tabs container">
                   <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1">Completed</a>
+                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1"><?=$this->lang>line('Completed')?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2">Process</a>
+                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2"><?=$this->lang>line('Process')?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3">Cancel</a>
+                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3"><?=$this->lang>line('Cancel')?></a>
                     </li>
                   </ul>
                </div>            
