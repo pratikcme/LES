@@ -22,11 +22,11 @@
             <table id="table-two-axis" class="two-axis">
               <thead class="head-title">
                 <tr >
-                  <th colspan="2">product</th>
+                  <th colspan="2"><?=$this->lang->line('Product')?></th>
                 
-                  <th>price</th>
-                  <th>Quantity</th>
-                  <th>Subtotal</th>
+                  <th><?=$this->lang->line('price')?></th>
+                  <th><?=$this->lang->line('Quantity')?></th>
+                  <th><?=$this->lang->line('Total')?></th>
                 </tr>
               </thead>
             <?php $CI = &get_instance(); 
@@ -95,8 +95,7 @@
                     <div class="cart-price-text">
                       <h3 class="notranslate"><?=$this->siteCurrency .''.number_format((float)$calculation_price, 2, '.', '')?></h3>
                       <input type="hidden" class="total" value="<?=number_format((float)$calculation_price, 2, '.', '')?>">
-                      <a href="#" 
-                            class="removeCartItem"  
+                      <a href="#" class="removeCartItem"  
                             data-product_id="<?= $value['product_id'] ?>"
                             data-product_weight_id="<?= $value['product_weight_id'] ?>"
                             data-weight_id="<?= $value['weight_id'] ?>" ><i class="fa-regular fa-circle-xmark"></i></a>
@@ -168,13 +167,13 @@
                 <table >
                   <thead class="head-title">
                     <tr>
-                      <th colspan="2">Cart totals</th>
+                      <th colspan="2"><?=$this->lang->line('Cart Total')?></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td class="cart-total-text-1"><?=$this->lang->line('Sub Total')?></td>
-                      <td  id="final_subtotal"class="cart-total-text-2 notranslate"><?= $this->siteCurrency ?> <?=getMycartSubtotal() ?></td>
+                      <td  id="final_subtotal" class="cart-total-text-2 notranslate"><?= $this->siteCurrency ?> <?=getMycartSubtotal() ?></td>
                     </tr>
                     <tr>
                       <td class="cart-total-text-1"><?=$this->lang->line('Delivery Charges')?></td>

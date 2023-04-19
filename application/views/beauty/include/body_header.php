@@ -5,7 +5,7 @@
         <!-- -----header-top---- -->
         <div class="header-top">
           <div class="logo">
-            <a href="<?=base_url()?>"><img src="<?=$this->theme_base_url?>/assets/images/header-logo.png" alt=""></a>
+            <a href="<?=base_url()?>"><img src="<?=$this->siteLogo?>" alt=""></a>
           </div>
 
           <!-- -------navigation-bar---- -->
@@ -75,7 +75,7 @@
                   <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
                 <?php } ?>
                   <!-- ---search-list--- -->
-                <div class="search-list-wrapper">
+                <!-- <div class="search-list-wrapper">
                   <ul class="search-list">
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>SkinCare</li>
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Lips</li>
@@ -85,7 +85,7 @@
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Natural</li>
                     <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Fregrance</li>
                   </ul>
-                </div>
+                </div> -->
               </form>
               <i class="fa-solid fa-xmark main-div-cancel"></i>
             </div>
@@ -101,7 +101,7 @@
                 </div>
               <?php }else{ ?>
                 <div class="user-data-wrapper">
-                  <a href="./myaccount-page.php"><span><i class="fa-sharp fa-solid fa-user"></i></span><?=$this->lang->line('My account')?></a>
+                  <a href="<?=base_url().'users_account/users/account'?>"><span><i class="fa-sharp fa-solid fa-user"></i></span><?=$this->lang->line('My account')?></a>
                 </div>
                 <div class="user-data-wrapper">
                   <a href="javascript:" id="logout"><span><i class="fa-solid fa-folder-plus"></i></span><?=$this->lang->line('logout')?></a>
@@ -115,7 +115,7 @@
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="g-badge" id="itemCount" <?=(isset($this->cartCount) && $this->cartCount != 0 ) ? 'style="display:block"' : 'style="display:none"' ?>><?=(isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
             <!-- ----cart-dropdown--- -->
-            <div class="cart-dropdwon" id="updated_list">
+            <div class="cart-dropdwon <?=($this->cartCount==0) ? 'd-none' : '' ?>" id="updated_list">
               <div class="cart-drop-wrapper">
               <?php if ($this->session->userdata('user_id') == '') { ?>
                 <?php if(isset($this->cartCount)){ 
@@ -185,8 +185,8 @@
                 <h3 id="nav_subtotal" class="notranslate"><?=$this->siteCurrency .' '. getMycartSubtotal()?></h3>
               </div>
               <div class="drop-btns">
-                <a href="./shop-cart.php" class="view-cart"><?=$this->lang->line('view cart')?></a>
-                <a href="./checkout-page.php" class="checkout "><?=$this->lang->line('checkout')?></a>
+                <a href="<?=base_url().'products/cart_item'?>" class="view-cart"><?=$this->lang->line('view cart')?></a>
+                <a href="<?=base_url().'checkout'?>" class="checkout "><?=$this->lang->line('checkout')?></a>
                </div>
               </div>
               <div class="icon-tex">

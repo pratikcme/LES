@@ -119,8 +119,6 @@ class User_Controller extends MY_Controller
 
     function __construct()
     {
-
-
         parent::__construct();
         if (isset($_SESSION['My_cart']) && count($_SESSION['My_cart']) == 0) {
             $this->session->unset_userdata('My_cart');

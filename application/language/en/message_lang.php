@@ -5,7 +5,7 @@ $lang['Order placed successfully'] = 'order placed successfully';
 $lang['Your Order No'] = 'Your Order No';
 $lang['payment failed'] = 'payment failed';
 
-// template 2 up basket
+// other template 
 $lang['js_add_address'] =  'Add New Address';
 $lang['js_update_address'] =  'Update Address';
 
@@ -48,9 +48,18 @@ $lang['Get In'] = 'Get In';
 $lang['Touch'] = 'Touch';
 $lang['Call Us'] = 'Call Us';
 $lang['Shop infomation'] = 'Shop infomation';
+$lang['Product Listing'] = 'Product Listing';
+$lang['Reach Out To Us'] = 'Reach Out To Us';
+$lang['Explore More'] = 'Explore More';
+$lang['Account'] = 'Account';
+$lang['Details'] = 'Details';
+
+$lang['Completed'] = 'Completed';
+$lang['Process'] = 'Process';
+$lang['Cancel'] = 'Cancel';
 
 
-// end template 2
+// end other template 
 
 $lang['Cart Discount'] = 'Cart Discount';
 $lang['Cancel'] = 'Cancel';
@@ -357,6 +366,7 @@ $lang['We_do_not_deliver_to_your_selected_Address'] = 'We do not deliver to your
 //login page js validation message
 $lang['please_enter_email'] = 'Please enter email';
 $lang['please_enter_valid_email'] = 'Please enter valid email';
+$lang['this_email_is_already_exist'] = 'This email is already exist';
 $lang['please_enter_password'] = 'Please enter password';
 
 //register page js validation message
@@ -370,6 +380,8 @@ $lang['Please_accept_Terms_of_conditions_and_Privacy_Policy'] = 'Please accept T
 $lang['please_enter_valid_mobile_number'] = 'Please enter valid mobile number';
 $lang['this_mobile_number_is_already_exist'] = 'This mobile number is already exist';
 $lang['please_enter_at_least_6_character'] = 'Please enter at least 6 character';
+
+
 $lang['please_select_less_than_or_equal_to_10_character'] = 'Please select less than or equal to 10 character';
 $lang['password_does_not_match'] = 'Password does not match';
 $lang['select country code'] = 'Select country code';

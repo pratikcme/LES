@@ -128,34 +128,36 @@
                 <div class="login-left-content">
 
                     <!-- ---------login-deails-wrappper----- -->
-                    <form class="login-deatils-wrapper" id="Register_Form" method="post"
-                        action="<?= base_url() . 'register' ?>">
+                    <form class="login-deatils-wrapper" id="Register_Form" method="post" action="<?= base_url() . 'register' ?>">
                         <input type="hidden" id="user_id">
                         <h2 class="title">Welcome <span>back!</span></h2>
                         <p class="pera">Welcome back! Enter your Mobile Number to acess your account.</p>
 
                         <div class="mb-3">
-                            <label for="Country-code"
-                                class="form-label"><?= $this->lang->line('Select country code') ?></label>
+                            <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?></label>
                             <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
                                 <?php foreach ($country_code as $key => $value) { ?>
-                                <option value="<?= $key; ?>"><?= $value; ?></option>
+                                    <option value="<?= $key; ?>"><?= $value; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="text" name="phone" id="phone" class="form-control mob_no"
-                                placeholder="<?= $this->lang->line('Mobile Number*') ?>">
+                            <input type="text" name="phone" id="phone" class="form-control mob_no" placeholder="<?= $this->lang->line('Mobile Number*') ?>">
                         </div>
 
                         <!-- check -->
 
                         <div id="completeOTP">
                             <div class="mb-3">
-                                <label for="otp-text" class="form-label">Otp<span>*</span></label>
-                                <input type="text" name="otp" id="otp" class="form-control OTP" placeholder="OTP">
-                                <label for="otp" class="varify-error error"></label>
+                                <div class="tab-select-box">
+                                    <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?><span>*</span></label>
+                                    <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
+                                        <?php foreach ($country_code as $key => $value) { ?>
+                                            <option value="<?= $key; ?>"><?= $value; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
                             <h3 class="mt-4">
                                 <span id="resetcounter">Didn't get the code? </span>
@@ -165,24 +167,19 @@
 
                         <div id="completeProfile" style="display:none">
                             <div class="mb-3">
-                                <label for="fname-text"
-                                    class="form-label"><?= $this->lang->line('First Name') ?><span>*</span></label>
-                                <input type="text" name="fname" id="fname" class="form-control"
-                                    placeholder="First Name*" required>
+                                <label for="fname-text" class="form-label"><?= $this->lang->line('First Name') ?><span>*</span></label>
+                                <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name*" required>
                                 <label for="fname" class="error"></label>
                             </div>
                             <div class="mb-3">
-                                <label for="fname-text"
-                                    class="form-label"><?= $this->lang->line('Last Name') ?><span>*</span></label>
-                                <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name*"
-                                    required>
+                                <label for="fname-text" class="form-label"><?= $this->lang->line('Last Name') ?><span>*</span></label>
+                                <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name*" required>
                                 <label for="lname" class="error"></label>
                             </div>
                             <div class="mb-3">
                                 <label for="fname-text" class="form-label">
                                     <?= $this->lang->line('Enter Email') ?><span>*</span></label>
-                                <input type="text" name="email" id="email" class="form-control"
-                                    placeholder="<?= $this->lang->line('Enter Email*') ?>">
+                                <input type="text" name="email" id="email" class="form-control" placeholder="<?= $this->lang->line('Enter Email*') ?>">
                                 <label for="email" class="error"></label>
                             </div>
                         </div>
@@ -190,12 +187,10 @@
                         <!-- end -->
 
                         <div class="sign-in-btn">
-                            <button type="button" class="lg-btn send"
-                                id="frmBtn"><?= $this->lang->line('Send Code') ?></button>
+                            <button type="button" class="lg-btn send" id="frmBtn"><?= $this->lang->line('Send Code') ?></button>
                         </div>
 
-                        <h3 id="resetcounter">Didn't get the code? <span type="button"
-                                id="resend"><?= $this->lang->line('Resend') ?>
+                        <h3 id="resetcounter">Didn't get the code? <span type="button" id="resend"><?= $this->lang->line('Resend') ?>
                                 OTP</span></h3>
 
                     </form>

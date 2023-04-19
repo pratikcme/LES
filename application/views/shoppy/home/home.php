@@ -237,9 +237,9 @@
 
                       <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                         <div class="qty-container">
-                          <button class="qty-btn-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                          <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
                           <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" class="input-qty">
-                          <button class="qty-btn-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                          <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                         </div>
                       </div>
                     </div>
@@ -318,7 +318,7 @@
 
                       <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                         <div class="qty-container">
-                          <button class="qty-btn-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                          <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
                           <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" class="input-qty">
                           <button class="qty-btn-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                         </div>
@@ -441,49 +441,108 @@
 </section>
 
 
-<!--================ products-banner ===============-->
-<section class="products-banner p-100">
-  <div class="container">
-    <div class="row">
-      <!--======== single-banner ==============-->
-      <div class="col-lg-12 col-md-12 mb-4">
-        <div class="sale-banner-wrap position-relative">
-          <img src="./assets/img/home/sale-banner.png" class="sale-banner-img position-absolute" alt="sale-banner" />
-          <div class="sale-banner-inner text-center">
-            <span>FROM LOVESEATS TO SECTIONALS.</span>
-            <h2>Comfy Lounging</h2>
-            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" class="lg-btn"><?= $this->lang->line('Shop Now') ?></a>
-          </div>
-        </div>
-      </div>
 
-      <!--============== two-banner ===================-->
+<!--================ products-banner ===============-->
+<?php
+
+if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
+  <section class="products-banner p-100">
+    <div class="container">
+      <div class="row">
+
+
+        <?php
+
+        if (count($offer_list) == 1) {
+
+
+          foreach ($offer_list as $key => $value) : ?>
+
+            <!--======== single-banner ==============-->
+            <div class="col-lg-12 col-md-12 mb-4">
+              <div class="sale-banner-wrap position-relative">
+                <img src="<?= $value->image ?>" class="sale-banner-img position-absolute" alt="sale-banner" />
+                <div class="sale-banner-inner text-center">
+                  <span><?= $value->offer_percent ?> OFF</span>
+                  <h2><?= $value->offer_title ?></h2>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="lg-btn">shop now</a>
+                </div>
+              </div>
+            </div>
+          <?php endforeach;
+        }
+        if (count($offer_list) == 2 or count($offer_list) > 3) { ?>
+
+
+          <!--============== two-banner ===================-->
+          <?php foreach ($offer_list as $key => $value) : ?>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+              <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
+                <div class="offer-wrapper offer-wrapper-1" style="background:url(<?= $value->image ?>)">
+                  <h4><?= $value->offer_title ?></h4>
+                  <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="explor-btn">Explore More</a>
+                </div>
+              </a>
+            </div>
+          <?php
+          endforeach;
+          ?>
+
+        <?php }
+        ?>
+
+        <!--=============== three-banners ==================-->
+        <?php if (count($offer_list) == 3) { ?>
+
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+            <div>
+              <?php foreach ($offer_list as $key => $value) :
+                if ($key == 2) {
+                  goto a;
+                }
+              ?>
+                <div class="home-clothes mb-4">
+                  <div class="cloth-card">
+                    <img src="<?= $value->image ?>" alt="">
+                  </div>
+                  <div class="cloth-content">
+                    <h5><?= $value->offer_title ?></h5>
+                    <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                    <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore More</a>
+                  </div>
+                </div>
+
+
+            </div>
+          </div>
+
+          <?php
+                a:
+          ?>
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+            <div class="practical-cloth home-clothes">
+              <div class="cloth-card">
+                <img src="<?= $value->image ?>" alt="">
+              </div>
+              <div class="cloth-content">
+                <h5><?= $value->offer_title ?></h5>
+                <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore More</a>
+              </div>
+            </div>
+          </div>
 
       <?php
-
-      foreach ($offer_list as $key => $value) : ?>
-        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
-          <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
-            <div class="offer-wrapper offer-wrapper-1">
-              <h4><?= $value->offer_title ?></h4>
-              <h3><?= $value->offer_percent ?> <span>OFF</span></h3>
-              <!-- <p>All Beauty Products</p> -->
-              <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="explor-btn">Explore More</a>
-            </div>
-          </a>
-        </div>
-      <?php endforeach  ?>
-
-
-      <!--=============== three-banners ==================-->
-
+              endforeach;
+            } ?>
+      </div>
     </div>
-  </div>
-</section>
-
+  </section>
+<?php } ?>
 
 <!--========= new-arrivals ===========-->
-<section class="new-arrival products-wrap p-100">
+<section class="new-arrival products-wrap p-100 <?= (count($offer_list) == 0) ? 'bg-white' : '' ?>">
   <div class="container">
     <div class="row">
       <div class="col-xxl-12">
@@ -551,7 +610,7 @@
                 </button>
                 <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                   <div class="qty-container">
-                    <button class="qty-btn-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
                     <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" class="input-qty">
                     <button class="qty-btn-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                   </div>
