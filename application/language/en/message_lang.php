@@ -51,6 +51,8 @@ $lang['Shop infomation'] = 'Shop infomation';
 $lang['Product Listing'] = 'Product Listing';
 $lang['Reach Out To Us'] = 'Reach Out To Us';
 $lang['Explore More'] = 'Explore More';
+$lang['Account'] = 'Account';
+$lang['Details'] = 'Details';
 
 
 // end other template 

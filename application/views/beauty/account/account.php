@@ -29,28 +29,25 @@
                 <!-- Nav pills -->
                 <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#tab-1">My Account</a>
+                        <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#tab-1"><?=$this->lang->line('My account')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#tab-2">My Orders</a>
+                        <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#tab-2"><?=$this->lang->line('My orders')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#tab-3">My Wishlist</a>
+                        <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#tab-3"><?=$this->lang->line('My Wishlist')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-4">My
-                            Address</a>
+                        <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-4"><?=$this->lang->line('My address')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-7">Change
-                            Password</a>
+                        <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-7"><?=$this->lang->line('Change Password')?></a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link dashboard-tabs languge-active-img" id="logout"  data-bs-toggle="pill" href="#tab-5"><?=$this->lang->line('Logout')?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-5">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link dashboard-tabs languge-active-img" data-bs-toggle="pill" href="#tab-6">Delete
-                            Account</a>
+                        <a class="nav-link dashboard-tabs languge-active-img" id="delete_account" data-bs-toggle="pill" href="#tab-6"><?=$this->lang->line('Delete Account')?></a>
                     </li>
                 </ul>
             </div>
@@ -63,61 +60,68 @@
                     <div id="tab-1" class="container tab-pane active">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
-                                <h2>Account Details</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                                <h2><?=$this->lang->line('Account')?> <?=$this->lang->line('Details')?></h2>
+                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                             </div>
                         </div>
                         <div class="myaccout-detail-tab">
-                            <div class="choose-img">
-                                <input type="file" class="choose-input" accept="image/*" onchange="loadFile(event)">
-                                <img src="./assets/images/myaccount-choose-img.png" alt="" id="output" class="button">
-                                <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
-                            </div>
-                            <form class="get-detials-account" action>
+                          <form id='ChangePass' action="<?=base_url().'users_account/users/account'?>" method="post" class="get-detials-account" enctype="multipart/form-data">
+                                <div class="choose-img">
+                                    <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
+                                    <img src="<?=($userDetails[0]->profileimage !='' ) ? base_url().'public/images/'.$this->folder.'user_profile/'.$userDetails[0]->profileimage : $this->theme_base_url.'/assets/images/myaccount-choose-img.png'?>" alt="" id="output" class="button">
+                                    <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
+                                </div>
                                 <div class="row">
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="mb-3">
-                                            <label for="fname" class="form-label">First Name<span>*</span></label>
-                                            <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Mike">
+                                            <label for="fname" class="form-label"><?=$this->lang->line('First Name')?><span>*</span></label>
+                                            <input type="text" class="form-control" id="fname" name="fname" placeholder="<?=$this->lang->line('First Name*')?>" value="<?=$userDetails[0]->fname?>" >
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="mb-3">
-                                            <label for="lname" class="form-label">Last Name<span>*</span></label>
-                                            <input type="text" class="form-control" id="lname" aria-describedby="lname" placeholder="Hussy">
+                                            <label for="lname" class="form-label"><?=$this->lang->line('Last Name')?><span>*</span></label>
+                                            <input type="text" class="form-control" name="lname" id="lname" value="<?=$userDetails[0]->lname?>" placeholder="<?=$this->lang->line('Last Name*')?>">
                                         </div>
                                     </div>
                                     <div class="col-xxl-12">
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Email Address<span>*</span></label>
-                                            <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="mikehussy@gmail.com">
+                                            <label for="email" class="form-label"><?=$this->lang->line('Enter Email')?><span>*</span></label>
+                                            <input type="email" name="email" class="form-control" id="email" placeholder="<?=$this->lang->line('Email*')?>" value="<?=$userDetails[0]->email?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-xxl-12">
                                         <div class="mb-3">
-                                            <label for="text" class="form-label">GST Number<span>*</span></label>
-                                            <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="22AAAAA0000A1Z5">
+                                            <label for="text" class="form-label"><?=$this->lang->line('GST Number')?><span>*</span></label>
+                                            <input type="text" class="form-control" name="user_gst_number" value="<?=$userDetails[0]->user_gst_number?>" placeholder="22AAAAA0000A1Z5">
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="tab-select-box">
-                                            <label for="Country-code" class="form-label">Country Code<span>*</span></label>
-                                            <select class="form-select" aria-label="Country-code">
-                                                <option selected>(+91) Inadia </option>
-                                                <option value="1">Surt</option>
-                                                <option value="2">Baroda</option>
-                                                <option value="3">Ohter</option>
+                                            <label for="Country-code" class="form-label"><?=$this->lang->line('Select country code')?><span>*</span></label>
+                                            <select class="form-select" name="country_code" id="country_code">
+                                            <?php foreach(GetDialcodelist() as $key => $value){ ?>
+                                              <option <?=($key==$userDetails[0]->country_code)?'selected':'';?> value="<?=$key;?>"><?=$value;?></option>
+                                            <?php } ?>
                                             </select>
                                         </div>
                                     </div>
+                                    <input type="hidden" id="exiting_country" value="<?=$userDetails[0]->country_code?>">
+                                    <input type="hidden" id="exiting_phone" value="<?=$userDetails[0]->phone?>">
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="mb-3">
-                                            <label for="m-number" class="form-label">Mobile Number<span>*</span></label>
-                                            <input type="tel" class="form-control" id="text" aria-describedby="text" placeholder="99999 99999">
+                                            <label for="m-number" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
+                                            <input type="tel" class="form-control" name="phone" id="phone" placeholder="<?=$this->lang->line('Mobile Number*')?>" value="<?=$userDetails[0]->phone?>">
                                         </div>
                                     </div>
+                                    <div class="col-xxl-6 col-md-6 varification" style="display: none;">
+                                      <div class="mb-3">
+                                        <label for="otp" class="form-label">Otp<span>*</span></label>
+                                        <input type="text" class="form-control" id="otp" name="otp" placeholder="<?=$this->lang->line('otp')?>"  >
+                                      </div>
+                                    </div>
                                     <div class="tab-save-btn">
-                                        <input type="Submit" value="Save"/>
+                                        <input type="Submit" id="btnAccSubmit" value="<?=$this->lang->line('Save')?>"/>
                                     </div>
                                 </div>
                             </form>

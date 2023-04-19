@@ -52,6 +52,8 @@ $lang['Shop infomation'] = 'معلومات المتجر';
 $lang['Product Listing'] = 'قائمة المنتجات';
 $lang['Reach Out To Us'] = 'تواصل معنا';
 $lang['Explore More'] = 'استكشاف المزيد';
+$lang['Account'] = 'حساب';
+$lang['Details'] = 'تفاصيل';
 
 // end other template 
 
