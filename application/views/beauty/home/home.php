@@ -286,7 +286,7 @@
                     goto a;
                 }    
             ?>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6" style="background:url(<?=$value->image?>)">
                 <div>
                     <div class="home-clothes mb-4">
                         <div class="cloth-card">
@@ -311,7 +311,7 @@
                 </div>
             </div>
            <?php a: ?>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6" style="background:url(<?=$value->image?>)">
                 <div class="practical-cloth home-clothes">
                     <div class="cloth-card">
                         <img src="<?=$value->image?>" alt="">
