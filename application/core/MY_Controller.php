@@ -40,11 +40,11 @@ class MY_Controller extends CI_Controller
             }
             $this->adminNotification = $this->common_model->getAdminNotification();
         } else {
-            echo '1';die;
             require_once APPPATH . 'config/tablenames_constants.php';
             $this->load->model('api_v3/common_model', 'common_model');
 
             $siteDetail = $this->common_model->getLogo();
+            lq();
             // dd($siteDetail);
             // echo 'sw00' ; die;
 
