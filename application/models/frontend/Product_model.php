@@ -485,7 +485,9 @@ class Product_model extends My_model
 					$image = $this->v2_common_model->default_product_image();
 				}
 				$image = str_replace(' ', '%20', $image);
+
 				$data['image'] = $image;
+
 				$value->name = character_limiter($value->name, 30);
 				$data['value'] = $value;
 				$data['value']->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
@@ -1198,6 +1200,7 @@ class Product_model extends My_model
 
 	public function insertReview($postData)
 	{
+		dd($postData);
 		$insertData = array(
 			'user_id' => $this->session->userdata('user_id'),
 			'branch_id' => $this->session->userdata('branch_id'),
