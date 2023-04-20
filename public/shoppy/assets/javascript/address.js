@@ -96,6 +96,7 @@ var ADDRESS = (function () {
   $(document).on("click", ".remove_address", function () {
     var id = $(this).attr("data-id");
     var that = $(this);
+
     // var x = confirm('Do you really wants to delete this address');
     swal({
       title: "Are you sure ?",
@@ -111,15 +112,14 @@ var ADDRESS = (function () {
           data: { id: id },
           dataType: "json",
           success: function (output) {
-            console.log(output);
+            that.parent().parent().parent().remove();
+            $("#RegisterForm")[0].reset();
             $(".is_default").each(function () {
               var add_id = $(this).attr("data-id");
               if (add_id == output.result[0].id) {
                 $(this).find("input").prop("checked", true);
               }
             });
-            that.parent().parent().parent().remove();
-            $("#RegisterForm")[0].reset();
           },
         });
       }

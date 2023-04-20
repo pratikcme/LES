@@ -871,6 +871,7 @@ to {top: 0px; opacity: 1}
     color: var(--listing-2-normal-text) !important;
     margin-bottom: 0px;
     margin-top: 3px;
+    width: 90px;
 }
 
 .address-wrp{

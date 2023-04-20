@@ -38,13 +38,12 @@ $(document).ready(function () {
 
 // -----checkout-page-accordion----
 $(document).ready(function () {
-  $(".accordion-items").on("click", ".accordion-heading", function () {
-    // $(".accordion-heading").removeClass("active");
-    $(this).toggleClass("active").next().slideToggle();
-
-    $(".accordion-content").not($(this).next()).slideUp(300);
-    $(this).siblings().removeClass("active");
-  });
+  // $(".accordion-items").on("click", ".accordion-heading", function () {
+  //   // $(".accordion-heading").removeClass("active");
+  //   $(this).toggleClass("active").next().slideToggle();
+  //   $(".accordion-content").not($(this).next()).slideUp(300);
+  //   $(this).siblings().removeClass("active");
+  // });
 });
 
 // ============= place order modal js ===========

@@ -201,7 +201,9 @@
 
         <div class="reset-btn">
           <button type="submit" id="ClearCart" class="yes-btn">Yes</button>
-          <button type="submit" class="no-btn">No</button>
+          <button type="button" class="no-btn" data-dismiss="modal">No</button>
+
+
         </div>
       </div>
     </div>
