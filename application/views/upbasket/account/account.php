@@ -65,7 +65,7 @@
                   <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="">
                 </div> -->
                 <div class="get-detials-account">
-                  <form id='  ' enctype="multipart/form-data" action="<?=base_url().'users_account/users/account'?>" method="post">
+                  <form id="ChangePass" enctype="multipart/form-data" action="<?=base_url().'users_account/users/account'?>" method="post">
                   <input type="hidden" name="hidden_image" value="<?=$userDetails[0]->profileimage?>">
                     <div class="choose-img">
                         <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
