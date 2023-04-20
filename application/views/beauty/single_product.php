@@ -64,9 +64,8 @@
              <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
                <span class="star star-active"></span>
               <?php } ?>
-              <?= $productDetail[0]->rating['rating'] ?>
+              <div><span>(<?= $productDetail[0]->rating['rating'] ?> )</span></div>
             </div>
-            <div><span>(<?= $productDetail[0]->rating['rating'] ?> )</span></div>
           </div>
           <h3 class="notranslate" id="dynamic_price">
             <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
