@@ -349,7 +349,7 @@ $lang['image_validation'] = 'Only image type jpg/png/jpeg/gif is allowed';
 //change password placeholder
 $lang['current password'] = 'Current Password';
 $lang['new password'] = 'New Password';
-$lang['Confirm password'] = 'Confirm password';
+$lang['Confirm password'] = 'Confirm Password';
 
 //change password js validation
 $lang['Please_enter_your_old_password'] = 'Please enter your old password';
