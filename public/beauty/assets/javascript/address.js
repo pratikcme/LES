@@ -188,6 +188,7 @@ var ADDRESS = function () {
     }
 
     $(document).on('click', '.edit_address', function () {
+        $('lable.error').css('display', 'none');
         $('#hidden_update_id').remove();
         $('#RegisterForm')[0].reset();
         var id = $(this).attr('data-id');
