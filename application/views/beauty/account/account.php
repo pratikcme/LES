@@ -609,32 +609,32 @@
                     <!-- ---tab-7-- -->
                     <div id="tab-7" class="container tab-pane fade">
                         <div class="title text-center">
-                            <h2>Change  <span>Password</span></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h2><?=$this->lang->line('Change Password')?></h2>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
                         </div>
                         <div class="myaccout-detail-tab">
-                            <form action="">
+                            <form id='ChangeUserPass' action="<?=base_url().'users_account/users/update_password'?>" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                     <div class="mb-3">
-                                        <label for="text" class="form-label">Current Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                        <label for="text" class="form-label"><?=$this->lang->line('current password')?></label>
+                                        <input type="password" class="form-control" name="old_pass" placeholder="<?=$this->lang->line('current password')?>">
                                     </div>
                                     </div>
                                     <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="text" class="form-label">New Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                        <label for="text" class="form-label"><?=$this->lang->line('new password')?></label>
+                                        <input type="password" class="form-control" name="new_pass" id="password_new"  placeholder="<?=$this->lang->line('new password')?>">
                                     </div>
                                     </div>
                                     <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="text" class="form-label">Confirm Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                        <label for="text" class="form-label"><?=$this->lang->line('Confirm password')?></label>
+                                        <input  type="password" class="form-control" name="confirm_pass" placeholder="<?=$this->lang->line('Confirm password')?>">
                                     </div>
                                     </div>
                                     <div class="tab-save-btn">
-                                        <button class="common-input-btn" type="submit">Submit</button>
+                                        <button type="submit" class="common-input-btn" id="btnChangeUserPass"><?=$this->lang->line('Submit')?></button>
                                     </div>
                                 </div>
                             </form>

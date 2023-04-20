@@ -347,8 +347,8 @@ $lang['Please_enter_first_name'] = 'Please enter first name';
 $lang['image_validation'] = 'Only image type jpg/png/jpeg/gif is allowed';
 
 //change password placeholder
-$lang['current password'] = 'current password';
-$lang['new password'] = 'new password';
+$lang['current password'] = 'Current Password';
+$lang['new password'] = 'New Password';
 $lang['Confirm password'] = 'Confirm password';
 
 //change password js validation
