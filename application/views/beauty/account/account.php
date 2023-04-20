@@ -646,7 +646,7 @@
 
         </div>
 </section>
-
+<input type="hidden" id="get_parameter" value="<?=(isset($_GET['name']) ? $_GET['name'] : '' )?>">
 
 <!-- =============place order popup=========== -->
 <div id="myModal" class="modal">
@@ -654,27 +654,25 @@
         <div class="modal-content ">
             <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
             <div class="login-page myaccout-detail-tab">
-                <form class="get-detials-account" action="">
+                <form method="post" id="RegisterForm" action="<?=base_url().'users_account/users/add_address'?>" class="get-detials-account" autocomplete="off">
                     <div class="row">
 
-                        <div class="col-lg-6">
-                            <label for="fname" class="form-label">First Name<span>*</span></label>
-                            <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Enter Your FristName">
+                        <div class="col-lg-12">
+                            <label for="fname" class="form-label"><?=$this->lang->line('Full Name')?><span>*</span></label>
+                            <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="<?=$this->lang->line('Full Name')?>">
                         </div>
-
-                        <div class="col-lg-6">
-                            <label for="lname" class="form-label">Last Name<span>*</span></label>
-                            <input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Enter Your LastName">
+                        
+                        <div class="col-lg-12">
+                            <label for="text" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
+                            <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?=$this->lang->line('Mobile number')?>">
                         </div>
 
                         <div class="col-lg-12">
-                            <label for="text" class="form-label">Country / Region<span>*</span></label>
-                            <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="Enter Your Number">
-                        </div>
-
-                        <div class="col-lg-12">
-                            <label for="add" class="form-label">Street address<span>*</span></label>
-                            <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Enter Your Address">
+                            <label for="add" class="form-label"><?=$this->lang->line('Enter Location')?><span>*</span></label>
+                            <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location"  aria-describedby="add"  placeholder="<?=$this->lang->line('Enter Location')?>">
+                            <label for="departure_address" class="error" style="display: none;"></label>
+                            <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
+                            <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">
                         </div>
 
                         <div class="col-lg-12">
