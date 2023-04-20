@@ -36,7 +36,10 @@
               <div class="swiper-wrapper" id="zoom_image">
                 <?php foreach ($product_image as $key => $value) { ?>
                   <div class="swiper-slide">
-                    <a href="javascript:"><img data-enlargable class="drift-demo-trigger" src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" /></a>
+                    <a href="javascript:"><img data-enlargable class="drift-demo-trigger"
+                       src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" 
+                      data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" />
+                    </a>
                   </div>
                 <?php } ?>
               </div>
