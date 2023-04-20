@@ -383,31 +383,34 @@
 </section>
 
 <!-- -----related-product----- -->
+<?php if (!empty($related_product)) { ?>
 <section class="Latest-Products Categories-section">
   <div class="container">
     <div class="col-xxl-12 col-lg-12 ">
       <div class="title">
-        <h2>Related Products</h2>
-        <p>Do not miss the current offers until the end of month.</p>
+        <h2><?=$this->lang->line('related products')?></h2>
+        <!-- <p>Do not miss the current offers until the end of month.</p> -->
       </div>
     </div>
 
     <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0"
       data-wow-offset="0">
-
+      <?php foreach ($related_product as $key => $value) { ?>
       <div class="techno-check">
         <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div class="product-wrapper card out-of-stock">
+        <div class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
           <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
+            <h5><?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h5>
+            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+              <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
             </a>
           </div>
 
           <div class="card-body">
-            <h3><a href="./product-details.php">Mamaearth Ubtan Body Wash With Turmeric & Saffron For</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
+            <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a></h3>
+            <h6 class="rating">
+                <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
+            </h6>
             <div class="rating-starts">
               <div class="rating stars3_5">
                 <span class="star"></span>
@@ -418,315 +421,40 @@
               </div>
               <div><span>(122)</span></div>
             </div>
+            <?php
+                  $d_none = '';
+                  $d_show = 'd-none';
+                  if (!empty($item_weight_id)) {
+                    if (in_array($value->pw_id, $item_weight_id)) {
+                      $d_show = '';
+                      $d_none = 'd-none';
+                    }
+                  }
+                  ?>
             <!-- <div class="card-btn">
                     <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
                         Add to Cart</a>
                 </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3><a href="./product-details.php">Too Faced Lip Injection Maximum Plump Travel Size</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
+              <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
+                  <span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
+              </a>
+              <div class="product-detail-quentity <?= $d_show ?>">
+                <div class="qty-container">
+                  <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                  <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                  <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                 </div>
-           
+              </div>
           </div>
         </div>
       </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-4.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Kay Beauty Quick Dry Liquid Eyeliner</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <div class="card-btn">
-              <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                  Add to Cart</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Too Faced Lip Injection Maximum Plump Travel Size</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div class="product-wrapper card ">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Too Faced Lip Injection Maximum Plump Travel Size</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+        <?php } ?>
     </div>
   </div>
 </section>
-
+<?php } ?>
+<input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
+<input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
 <!-- -------review-popup-- -->
 <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -894,3 +622,4 @@
       </div>
     </div>
   </div>
+  
