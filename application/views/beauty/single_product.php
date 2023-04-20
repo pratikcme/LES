@@ -74,7 +74,7 @@
             </span>
           </h3>
 
-          <h4><?=$this->lang->line('Categories')?> : <span><?= $productDetail[0]->category_name ?></span></h4>
+          <h4><?=$this->lang->line('Categories')?>: <span><?= $productDetail[0]->category_name ?></span></h4>
           <!-- <h4>Tags: <span> Fresh, Oragnic</span></h4> -->
 
           <!-- <form action="" class="pro-sl"> -->
