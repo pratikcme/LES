@@ -1,6 +1,10 @@
 $(document).ready(function () {
   var siteCurrency = $("#siteCurrency").val();
 
+  $(document).on('click', '.no-btn', function () {
+    $('#exampleModal').toggle();
+  })
+
   $(document).on("click", "#ClearCart", function () {
     var url = $("#url").val();
     // swal({
