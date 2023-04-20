@@ -5,8 +5,7 @@
                 <h1><?= $this->lang->line('Term & Conditions') ?></h1>
                 <nav aria-label="breadcrumb" class="justify-content-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a
-                                href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page">
                             <?= $this->lang->line('Term & Conditions') ?></li>
                     </ol>
