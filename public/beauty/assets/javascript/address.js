@@ -188,6 +188,7 @@ var ADDRESS = function () {
     }
 
     $(document).on('click', '.edit_address', function () {
+        $('#RegisterForm')[0].reset();
         var id = $(this).attr('data-id');
         var that = $(this);
         if ($('#RegisterForm').hasClass('ship-address')) {
