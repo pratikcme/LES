@@ -158,11 +158,11 @@
                     </div>
                     <div>
                       <h4>Overall Rating</h4>
-                      <!-- <p>6k verified ratings</p> -->
+                      <!-- <p> 6k verified ratings </p> -->
                     </div>
                   </div>
                   <div class="right-content">
-                    <!-- <h6>Write a review and win 100 reward points !</h6> -->
+                    <h6><!-- Write a review and win 100 reward points ! --></h6>
                     <div class="enter-review-btn">
                       <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
                     </div>
