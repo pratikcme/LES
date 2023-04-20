@@ -452,6 +452,7 @@ class Product_model extends My_model
 				$data['d_none'] = $d_none;
 
 				$addQuantity = $this->findProductAddQuantity($value->id, $value->product_weight_id);
+
 				$data['addQuantity'] = $addQuantity;
 				$this->load->model('frontend/home_model', 'home_model');
 				// $product[$key]->rating  = $this->home_model->selectStarRatting($value->id);
