@@ -419,15 +419,15 @@
               </div>
               <div><span>(122)</span></div>
             </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
+            <div class="card-btn">
+              <a href="javascript:" class="add-cart-btn <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>
+              <?= $this->lang->line('add to cart') ?></a>
+            </div>
+            <div class="product-detail-quentity add-cart-btn <?= $d_show ?>">
               <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
               </div>
             </div>
           </div>
