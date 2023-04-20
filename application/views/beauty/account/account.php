@@ -676,50 +676,43 @@
                         </div>
 
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Apartment, suite, etc.">
+                            <input type="text" class="form-control landmark" name="landmark" id="landmark" aria-describedby="add" placeholder="<?=$this->lang->line('Landmark')?>">
                         </div>
 
                         <div class="col-lg-6">
                             <div class="select-box">
-                                <label for="city" class="form-label">Town / City<span>*</span></label>
-                                <select class="form-select" aria-label="city">
-                                    <option selected>Ahmedabad</option>
-                                    <option value="1">Surt</option>
-                                    <option value="2">Baroda</option>
-                                    <option value="3">Ohter</option>
-                                </select>
+                                <label for="city" class="form-label"><?=$this->lang->line('city')?><span>*</span></label>
+                                <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="<?=$this->lang->line('city')?>" autocomplete="off">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="select-box">
-                                <label for="state" class="form-label">State<span>*</span></label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Gujarat</option>
-                                    <option value="1">Surt</option>
-                                    <option value="2">Baroda</option>
-                                    <option value="3">Ohter</option>
-                                </select>
+                            <label for="state" class="form-label"><?=$this->lang->line('State')?><span>*</span></label>
+                            <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="<?=$this->lang->line('State')?>" autocomplete="off">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="select-box">
-                                <label for="state" class="form-label">State<span>*</span></label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Gujarat</option>
-                                    <option value="1">Surt</option>
-                                    <option value="2">Baroda</option>
-                                    <option value="3">Ohter</option>
-                                </select>
+                            <label for="country" class="form-label"><?=$this->lang->line('country')?><span>*</span></label>
+                            <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="<?=$this->lang->line('country')?>" autocomplete="off">
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
-                            <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="Enter Your ZIPCode">
+                            <div class="select-box">
+                                <label for="pincode" class="form-label"><?=$this->lang->line('pincode')?><span>*</span></label>
+                                <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?=$this->lang->line('pincode')?>" autocomplete="off">
+                            </div>
                         </div>
-                        <div class="save-btn">
-                            <a href="#">save</a>
+                        <div class="col-lg-12">
+                            <div class="select-box">
+                                <label for="address" class="form-label"><?=$this->lang->line('Enter Address')?><span>*</span></label>
+                                <textarea type="text" name="address" class="form-control pincode" id="address" placeholder="<?=$this->lang->line('Enter Address')?>" autocomplete="off"></textarea>
+                            </div>
+                        </div>
+                        <div class="save-btn text-center">
+                            <button type="submit" id="addAddress" class=" signin-btn-green"><?=$this->lang->line('Save')?></button>
                         </div>
                     </div>
                 </form>
