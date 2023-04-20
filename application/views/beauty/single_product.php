@@ -75,6 +75,7 @@
           </h3>
 
           <h4><?=$this->lang->line('Categories')?>: <span><?= $productDetail[0]->category_name ?></span></h4>
+          <h4><?=$this->lang->line('Brand')?>: <span><?= $productDetail[0]->brand_name ?></span></h4>
           <!-- <h4>Tags: <span> Fresh, Oragnic</span></h4> -->
 
           <div class="pro-sl">
@@ -101,30 +102,8 @@
                   aria-hidden="true"></i></span>Order Now</a>
             <a href="" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
           </div>
-
-          <!-- ------product-detils-accordian--- -->
-          <!-- <div class="product-accordion">
-            <div class="product-accordion-content">
-              <div class="header">
-                <span class="title">DETAILS</span>
-                <i class="fa-solid fa-plus"></i>
-              </div>
-              <p class="description">
-                Lakmé Absolute introduces a new Matte Ultimate Lip colour with Argan oil - a glamorous matte lipstick
-                range suited for every occasion. From deep plum to fierce red, the collection comprises of 12 trendy
-                shades with a lightweight formula enriched with luxe argan oil that nourishes your lips and keeps it
-                from drying. Every bullet has a soft velvety matte texture that comfortably sits on your lips and
-                provides a bold, intense color payoff.
-                MRP inclusive of all taxes on all products
-                Net Quantity: 3.4 g, Expiry date: 7-31-2024
-              </p>
-            </div>
-          </div> -->
         </div>
       </div>
-
-      
-      
     </div>
   </div>
 </section>
