@@ -109,6 +109,7 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 btn.onclick = function () {
+  $('#RegisterForm').attr('action', base_url() + 'users_account/users/add_address');
   $('#RegisterForm')[0].reset();
   modal.style.display = "block";
 }
