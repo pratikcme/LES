@@ -141,7 +141,7 @@
               <div class="sub-tabs container">
                   <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1"><?=$this->lang>line('Completed')?></a>
+                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1"><?=$this->lang->line('Completed')?></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2"><?=$this->lang>line('Process')?></a>
