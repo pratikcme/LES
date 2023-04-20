@@ -449,8 +449,8 @@
                     <div id="tab-3" class="container tab-pane fade">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
-                                <h2>My Wishlist</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                                <h2><?=$this->lang->line('My Wishlist')?></h2>
+                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                             </div>
                         </div>
 
@@ -460,101 +460,63 @@
                                     <tr>
                                         <th colspan="2">product</th>
                                         <th>price</th>
-                                        <th>Stock Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($wishlist as $key => $value) { ?>
                                     <tr>
                                         <td class="mywishlist-part-img">
-                                            <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                                            <a href="javascript:" class="removeWishlistItem" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-regular fa-circle-xmark"></i></a>
                                             <div class="cart-detail-img">
                                                 <div class="cart-detail-img">
-                                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-5.png" alt=""></a>
+                                                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                    <img src="<?= $value->image ?>" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="cart-detail-text">
-                                                <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
+                                                <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                <?=$value->name?></a>
+                                                </h4>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="cart-price-text">
-                                                <h3>₹1150.00</h3>
+                                            <h3 class="notranslate"><?=$this->siteCurrency .' '.numberFormat($value->discount_price) ?></h3>
                                             </div>
                                         </td>
                                         <td>
-                                            In Stock
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                    Cart</a>
+                                        <?php
+                                            $d_none = '';
+                                            $d_show = 'd-none';
+                                            if (!empty($item_weight_id)) {
+                                                if (in_array($value->product_weight_id, $item_weight_id)) {
+                                                    $d_show = '';
+                                                    $d_none = 'd-none';
+                                                }
+                                            }
+                                        ?>
+                                        <div>
+                                            <div class="card-btn addcartbutton <?=$d_none?>" 
+                                                data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
+                                                data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
+                                                <a href="javascript:" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
+                                                <?=$this->lang->line('add to cart')?></a>
                                             </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="mywishlist-part-img">
-                                            <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                                            <div class="cart-detail-img">
-                                                <div class="cart-detail-img">
-                                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-6.png" alt=""></a>
+                                            <div class="product-detail-quentity add-cart-btn <?=$d_show?>">
+                                                <div class="qty-container">
+                                                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                    <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->id?>" data-weight_id="<?=$value->weight_id?>" readonly>
+                                                    <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-detail-text">
-                                                <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-price-text">
-                                                <h3>₹1150.00</h3>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            In Stock
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                    Cart</a>
-                                            </div>
+                                        </div>
                                         </td>
                                     </tr>
-
-                                    <tr>
-                                        <td class="mywishlist-part-img">
-                                            <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                                            <div class="cart-detail-img">
-                                                <div class="cart-detail-img">
-                                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-7.png" alt=""></a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-detail-text">
-                                                <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-price-text">
-                                                <h3>₹1150.00</h3>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            In Stock
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                    Cart</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>

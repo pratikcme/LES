@@ -445,7 +445,7 @@
 
             <!-- ---tab-3-- -->
             <div id="tab-3" class="container tab-pane fade <?=($action_name == 'wishlist') ? 'active show' : '' ?>">
-              <h2 class="title">My <span>Wishlist </span></h2>
+              <h2 class="title"><?=$this->lang->line('My Wishlist')?></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
 
               <div class="cart-product-detail mywishlist-part">
@@ -503,67 +503,6 @@
                       </td>
                     </tr>
                     <?php } ?>
-                    <!-- <tr>
-                      <td class="mywishlist-part-img">
-                        <span class="bt-content">
-                          <div>
-                            <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                          </div>
-                          <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-2.png" alt=""></div>
-                        </span>
-                      </td>
-                      <td>
-                        <div class="cart-detail-text">
-                          <h4>Saffron (Kesar)</h4>
-                          <h5>500 Gms</h5>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="cart-price-text">
-                          <h3>₹398.00</h3>
-                        </div>
-                      </td>
-                      <td>
-                        In Stock
-                      </td>
-                      <td>
-                        <div>
-                          <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                            Cart</a>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="mywishlist-part-img">
-                        <span class="bt-content">
-                          <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                          <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-3.png" alt=""></div>
-                        </span>
-                      </td>
-                      <td>
-                        <div class="cart-detail-text">
-                          <h4>Pistachio (Pista)</h4>
-                          <h5>500 Gms</h5>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="cart-price-text">
-                          <h3>₹398.00</h3>
-                        </div>
-                      </td>
-                      <td>
-                        In Stock
-                      </td>
-                      <td>
-                        <div>
-                          <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                            Cart</a>
-                        </div>
-                      </td>
-                    </tr> -->
-
-
                   </tbody>
                 </table>
               </div>
@@ -571,7 +510,7 @@
 
             <!-- ---tab-4-- -->
             <div id="tab-4" class="container tab-pane fade <?=($action_name == 'my_address') ? 'active show' : '' ?>">
-              <h2 class="title">My <span>Address</span></h2>
+              <h2 class="title"><?=$this->lang->line('My address')?></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <?php foreach ($get_address as $key => $value) { 
                 $status = ($value->status == '0') ? 'is_default ' : '';
