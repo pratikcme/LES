@@ -65,7 +65,7 @@
                   <img src="<?=$this->theme_base_url?>/assets/images/myaccount-choose-img.png" alt="">
                 </div> -->
                 <div class="get-detials-account">
-                  <form id='  ' enctype="multipart/form-data" action="<?=base_url().'users_account/users/account'?>" method="post">
+                  <form id="ChangePass" enctype="multipart/form-data" action="<?=base_url().'users_account/users/account'?>" method="post">
                   <input type="hidden" name="hidden_image" value="<?=$userDetails[0]->profileimage?>">
                     <div class="choose-img">
                         <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
@@ -141,13 +141,13 @@
               <div class="sub-tabs container">
                   <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1"><?=$this->lang>line('Completed')?></a>
+                      <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1"><?=$this->lang->line('Completed')?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2"><?=$this->lang>line('Process')?></a>
+                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2"><?=$this->lang->line('Process')?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3"><?=$this->lang>line('Cancel')?></a>
+                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3"><?=$this->lang->line('Cancel')?></a>
                     </li>
                   </ul>
                </div>            
@@ -445,7 +445,7 @@
 
             <!-- ---tab-3-- -->
             <div id="tab-3" class="container tab-pane fade <?=($action_name == 'wishlist') ? 'active show' : '' ?>">
-              <h2 class="title">My <span>Wishlist </span></h2>
+              <h2 class="title"><?=$this->lang->line('My Wishlist')?></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
 
               <div class="cart-product-detail mywishlist-part">
@@ -503,67 +503,6 @@
                       </td>
                     </tr>
                     <?php } ?>
-                    <!-- <tr>
-                      <td class="mywishlist-part-img">
-                        <span class="bt-content">
-                          <div>
-                            <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                          </div>
-                          <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-2.png" alt=""></div>
-                        </span>
-                      </td>
-                      <td>
-                        <div class="cart-detail-text">
-                          <h4>Saffron (Kesar)</h4>
-                          <h5>500 Gms</h5>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="cart-price-text">
-                          <h3>₹398.00</h3>
-                        </div>
-                      </td>
-                      <td>
-                        In Stock
-                      </td>
-                      <td>
-                        <div>
-                          <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                            Cart</a>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="mywishlist-part-img">
-                        <span class="bt-content">
-                          <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                          <div class="cart-detail-img"><img src="<?=$this->theme_base_url?>/assets/images/cart-drop-img-3.png" alt=""></div>
-                        </span>
-                      </td>
-                      <td>
-                        <div class="cart-detail-text">
-                          <h4>Pistachio (Pista)</h4>
-                          <h5>500 Gms</h5>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="cart-price-text">
-                          <h3>₹398.00</h3>
-                        </div>
-                      </td>
-                      <td>
-                        In Stock
-                      </td>
-                      <td>
-                        <div>
-                          <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                            Cart</a>
-                        </div>
-                      </td>
-                    </tr> -->
-
-
                   </tbody>
                 </table>
               </div>
@@ -571,7 +510,7 @@
 
             <!-- ---tab-4-- -->
             <div id="tab-4" class="container tab-pane fade <?=($action_name == 'my_address') ? 'active show' : '' ?>">
-              <h2 class="title">My <span>Address</span></h2>
+              <h2 class="title"><?=$this->lang->line('My address')?></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <?php foreach ($get_address as $key => $value) { 
                 $status = ($value->status == '0') ? 'is_default ' : '';
@@ -597,31 +536,31 @@
               <?php } ?>
    
               <div class="adrress-btn">
-                 <a href="" class="signin-btn-green cancel-btn" data-bs-toggle="modal" data-bs-target="#addres-popup ">Add New Address</a>
+                 <a href="" class="signin-btn-green cancel-btn" data-bs-toggle="modal" data-bs-target="#addres-popup">Add New Address</a>
               </div>
             </div>
 
             <div id="tab-7" class="container tab-pane fade <?=($action_name == 'change') ? 'active show' : '' ?> ">
-              <h2 class="title">Change<span>  Password</span></h2>
+              <h2 class="title"><?=$this->lang->line('Change Password')?></h2>
               <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
               <div class="myaccout-detail-tab">
                 <form id='ChangeUserPass' action="<?=base_url().'users_account/users/update_password'?>" method="post">
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="mb-3">
-                        <label for="text" class="form-label">Current Password</label>
+                        <label for="text" class="form-label"><?=$this->lang->line('current password')?></label>
                         <input type="password" class="form-control"  name="old_pass" placeholder="<?=$this->lang->line('current password')?>" required="">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="mb-3">
-                        <label for="text" class="form-label">New Password</label>
+                        <label for="text" class="form-label"><?=$this->lang->line('new password')?></label>
                         <input type="password" class="form-control" name="new_pass" id="password_new" placeholder="<?=$this->lang->line('new password')?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="mb-3">
-                        <label for="text" class="form-label">Confirm Password</label>
+                        <label for="text" class="form-label"><?=$this->lang->line('Confirm password')?></label>
                         <input type="password" class="form-control" name="confirm_pass" placeholder="<?=$this->lang->line('Confirm password')?>">
                       </div>
                     </div>
@@ -656,7 +595,7 @@
               <form method="post" id="RegisterForm" action="<?=base_url().'users_account/users/add_address'?>" class="address-form" autocomplete="off">
                 <div class="row">
                   <div class="col-lg-12">
-                    <label for="fname" class="form-label">Full Name<span>*</span></label>
+                    <label for="fname" class="form-label"><?=$this->lang->line('Full Name')?><span>*</span></label>
                     <input type="text" name="fname" class="form-control fname" id="fname" aria-describedby="fname" placeholder="<?=$this->lang->line('Full Name')?>">
                   </div>
 
@@ -666,12 +605,12 @@
                   </div> -->
 
                   <div class="col-lg-12">
-                    <label for="text" class="form-label">Mobile Number<span>*</span></label>
+                    <label for="text" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
                     <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?=$this->lang->line('Mobile number')?>">
                   </div>
 
                   <div class="col-lg-12">
-                    <label for="add" class="form-label">Location<span>*</span></label>
+                    <label for="add" class="form-label"><?=$this->lang->line('Enter Location')?><span>*</span></label>
                     <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location"  aria-describedby="add"  placeholder="<?=$this->lang->line('Enter Location')?>">
                     <label for="departure_address" class="error" style="display: none;"></label>
                     <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
@@ -684,65 +623,37 @@
 
                   <div class="col-lg-6">
                     <div class="select-box">
-                      <label for="city" class="form-label">Town / City<span>*</span></label>
+                      <label for="city" class="form-label"><?=$this->lang->line('city')?><span>*</span></label>
                       <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="<?=$this->lang->line('city')?>" autocomplete="off">
                     </div>
                   </div>
 
                   <div class="col-lg-6">
                     <div class="select-box">
-                      <label for="state" class="form-label">State<span>*</span></label>
+                      <label for="state" class="form-label"><?=$this->lang->line('State')?><span>*</span></label>
                       <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="<?=$this->lang->line('State')?>" autocomplete="off">
                     </div>
                   </div>
 
                   <div class="col-lg-6">
                     <div class="select-box">
-                      <label for="country" class="form-label">Country<span>*</span></label>
+                      <label for="country" class="form-label"><?=$this->lang->line('country')?><span>*</span></label>
                       <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="<?=$this->lang->line('country')?>" autocomplete="off">
                     </div>
                   </div>
 
                   <div class="col-lg-6">
                     <div class="select-box">
-                      <label for="pincode" class="form-label">Pincode<span>*</span></label>
+                      <label for="pincode" class="form-label"><?=$this->lang->line('pincode')?><span>*</span></label>
                       <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?=$this->lang->line('pincode')?>" autocomplete="off">
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="select-box">
-                      <label for="address" class="form-label">Address<span>*</span></label>
+                      <label for="address" class="form-label"><?=$this->lang->line('Enter Address')?><span>*</span></label>
                       <textarea type="text" name="address" class="form-control pincode" id="address" placeholder="<?=$this->lang->line('Enter Address')?>" autocomplete="off"></textarea>
                     </div>
                   </div>
-                  <!-- <div class="col-lg-6">
-                    <div class="select-box">
-                      <label for="state" class="form-label">State<span>*</span></label>
-                      <select class="form-select" aria-label="Default select example">
-                        <option selected>Gujarat</option>
-                        <option value="1">Surt</option>
-                        <option value="2">Baroda</option>
-                        <option value="3">Ohter</option>
-                      </select>
-                    </div>
-                  </div> -->
-
-                  <!-- <div class="col-lg-6">
-                    <div class="select-box">
-                      <label for="state" class="form-label">State<span>*</span></label>
-                      <select class="form-select" aria-label="Default select example">
-                        <option selected>Gujarat</option>
-                        <option value="1">Surt</option>
-                        <option value="2">Baroda</option>
-                        <option value="3">Ohter</option>
-                      </select>
-                    </div>
-                  </div> -->
-
-                  <!-- <div class="col-lg-6">
-                    <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
-                    <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="380050">
-                  </div> -->
                   <div class="save-btn text-center">
                     <button type="submit" id="addAddress" class=" signin-btn-green"><?=$this->lang->line('Save')?></button>
                   </div>

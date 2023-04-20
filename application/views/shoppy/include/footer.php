@@ -49,8 +49,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW43KgTNs_Kusuvbian6KYGi_QzXOLS4w&v=3.exp&libraries=places">
 </script>
+
 <script type="text/javascript">
     function initAutocomplete(id) {
+
         var res = id.split("_");
         geo = res[0];
         console.log(res);
@@ -70,6 +72,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
     }
 
     function fillInAddress() {
+
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
         console.log(place);

@@ -228,22 +228,6 @@
 
               <div class="rate-dropdown">
                 <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
-
-                <<<<<<< Updated upstream <!-- <select class="form-select card-dropdown d-none" aria-label="Default select example">
-                  <option selected>500 Gms</option>
-                  <option value="1">300 Gms</option>
-                  <option value="2">200 Gms</option>
-                  <option value="3">1Kg</option>
-                  </select> -->
-                  =======
-                  <select class="form-select card-dropdown d-none" aria-label="Default select example">
-                    <option selected>500 Gms</option>
-                    <option value="1">300 Gms</option>
-                    <option value="2">200 Gms</option>
-                    <option value="3">1Kg</option>
-                  </select>
-                  >>>>>>> Stashed changes
-
                   <div class="card-rating">
                     <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt=""><?= $value->ratting['rating'] ?></p>
                   </div>

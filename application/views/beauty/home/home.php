@@ -4,9 +4,11 @@
 
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    <?php foreach ($banner as $key => $value) { ?>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="<?=$key?>" class="<?=($key=='0')?'active':''?>active"></button>
+    <?php } ?>
+    <!-- <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> -->
   </div>
     
   <!-- The slideshow/carousel -->
