@@ -49,7 +49,7 @@
             <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                 <div class="qty-container">
                     <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                    <input type="text" name="qty" value="1" class="input-qty qty" value="<?= $addQuantity ?>" data-product_id="<?= $value->prod_id ?>" data-weight_id="<?= $value->product_weight_id ?>">
+                    <input type="text" name="qty" class="input-qty qty" value="<?= $addQuantity ?>" data-product_id="<?= $value->prod_id ?>" data-weight_id="<?= $value->product_weight_id ?>">
                     <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
