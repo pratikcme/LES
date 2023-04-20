@@ -1,26 +1,41 @@
 $(document).ready(function () {
   var siteCurrency = $("#siteCurrency").val();
+  // $(document).on("click", "#ClearCart", function () {
+  //   var url = $("#url").val();
+  //   swal({
+  //     title: "Do you want to clear cart?",
+  //     text: "",
+  //     icon: "warning",
+  //     buttons: true,
+  //     dangerMode: true,
+  //   }).then((willDelete) => {
+  //     if (willDelete) {
+  //       $.ajax({
+  //         url: url + "products/clear_cart",
+  //         method: "post",
+  //         success: function (output) {
+  //           var obj = $.parseJSON(output);
+  //           if (obj.status == 1) {
+  //             window.location.href = url + "home";
+  //           }
+  //         },
+  //       });
+  //     }
+  //   });
+  // });
+
   $(document).on("click", "#ClearCart", function () {
     var url = $("#url").val();
-    swal({
-      title: "Do you want to clear cart?",
-      text: "",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        $.ajax({
-          url: url + "products/clear_cart",
-          method: "post",
-          success: function (output) {
-            var obj = $.parseJSON(output);
-            if (obj.status == 1) {
-              window.location.href = url + "home";
-            }
-          },
-        });
-      }
+
+    $.ajax({
+      url: url + "products/clear_cart",
+      method: "post",
+      success: function (output) {
+        var obj = $.parseJSON(output);
+        if (obj.status == 1) {
+          window.location.href = url + "home";
+        }
+      },
     });
   });
 
@@ -67,7 +82,9 @@ $(document).ready(function () {
             $("#final_subtotal").html(siteCurrency + " " + subtot);
             $("#nav_subtotal").html(siteCurrency + " " + subtot);
             $("#shipingCharge").val(output.delivery_charge);
-            $("#delivery_charge").html(siteCurrency + " " + output.delivery_charge);
+            $("#delivery_charge").html(
+              siteCurrency + " " + output.delivery_charge
+            );
             var final = parseFloat(subtot) + parseFloat(output.delivery_charge);
             $("#total").html(siteCurrency + " " + final.toFixed(2));
           },
@@ -149,7 +166,9 @@ $(document).ready(function () {
                 $("#final_subtotal").html(siteCurrency + subtot);
                 // $("#nav_subtotal").html(siteCurrency + " " + subtot);
                 var final = parseFloat(subtot) + shipping_charge;
-                $("#total").html(siteCurrency + " " + parseFloat(final).toFixed(2));
+                $("#total").html(
+                  siteCurrency + " " + parseFloat(final).toFixed(2)
+                );
               }
             },
           });
@@ -180,22 +199,28 @@ $(document).ready(function () {
             that.removeAttr("disabled");
           }, 1000);
           if (output.errormsg == "") {
-
-            that.parent().parent().parent().next("td").find('h3').html(siteCurrency + "" + output.new_total);
-            that.parent().parent().parent().next("td").find('input').val(output.new_total);
+            that
+              .closest("td")
+              .next("td")
+              .find("h3")
+              .html(siteCurrency + output.new_total);
+            that.closest("td").next("td").find("input").val(output.new_total);
             var subtot = subtotal();
+
             if (output.new_quan == "") {
               that.next("input").val(output.max_qun);
             }
             $("#display_subtotal").html(subtot);
-            $("#final_subtotal").html(siteCurrency + " " + subtot);
+            $("#finalSubtotal").html(siteCurrency + " " + subtot);
             // $("#nav_subtotal").html(siteCurrency + " " + subtot);
             // new
             if ($("#shipping_charge").val() !== output.delivery_charge) {
               $("#shipping_charge").val(output.delivery_charge);
             }
             // check
-            $("#delivery_charge").html(siteCurrency + " " + output.delivery_charge);
+            $("#delivery_charge").html(
+              siteCurrency + " " + output.delivery_charge
+            );
             var final = parseFloat(subtot) + parseFloat(output.delivery_charge);
             $("#total").html(siteCurrency + " " + parseFloat(final).toFixed(2));
           } else {
@@ -248,19 +273,25 @@ $(document).ready(function () {
           // window.location.reload();
           $("#updated_list").html(output.updated_list);
           if (output.errormsg == "") {
-            that.parent().parent().parent().next("td").find('h3').html(siteCurrency + output.new_total);
-            that.parent().parent().parent().next("td").find('input').val(output.new_total);
+            that
+              .closest("td")
+              .next("td")
+              .find("h3")
+              .html(siteCurrency + output.new_total);
+            that.closest("td").next("td").find("input").val(output.new_total);
             var subtot = subtotal();
 
             $("#display_subtotal").html(subtot);
-            $("#final_subtotal").html(siteCurrency + " " + subtot);
+            $("#finalSubtotal").html(siteCurrency + " " + subtot);
             // $("#shipping_charge").val(output.delivery_charge);
             //   if ($("#shipping_charge").val() !== output.delivery_charge) {
             //     $("#shipping_charge").val(output.delivery_charge);
             //   }
             //   //
             var final = parseFloat(subtot) + parseFloat(output.delivery_charge);
-            $("#delivery_charge").html(siteCurrency + " " + output.delivery_charge);
+            $("#delivery_charge").html(
+              siteCurrency + " " + output.delivery_charge
+            );
             $("#total").html(siteCurrency + " " + parseFloat(final).toFixed(2));
           } else {
             swal(output.errormsg);
@@ -276,7 +307,7 @@ $(document).ready(function () {
     $(".total").each(function () {
       var total = $(this).val();
       if (total.match(/\<font.+\>/)) {
-        total = $(this).find('font').html();
+        total = $(this).find("font").html();
       }
       // var  total = total.substring(3, total.length);
       subtot += parseFloat(total);
