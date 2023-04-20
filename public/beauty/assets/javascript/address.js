@@ -188,6 +188,7 @@ var ADDRESS = function () {
     }
 
     $(document).on('click', '.edit_address', function () {
+        $('#hidden_update_id').remove();
         $('#RegisterForm')[0].reset();
         var id = $(this).attr('data-id');
         var that = $(this);
@@ -211,7 +212,7 @@ var ADDRESS = function () {
                 $('#pincode').val(output.result[0].pincode);
                 $('#address').val(output.result[0].address);
                 $('#RegisterForm').attr('action', url + 'users_account/users/update_address');
-                $('#RegisterForm').append('<input type="hidden" name="update_id" value="' + output.result[0].id + '">');
+                $('#RegisterForm').append('<input type="hidden" id="hidden_update_id" name="update_id" value="' + output.result[0].id + '">');
 
                 $('#departure_address').val(output.result[0].google_location);
                 $('#departure_latitude').val(output.result[0].latitude);
