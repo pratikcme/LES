@@ -401,13 +401,13 @@
         <div class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
           <div class="card-header">
             <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
+            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+              <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
             </a>
           </div>
 
           <div class="card-body">
-            <h3><a href="./product-details.php">Mamaearth Ubtan Body Wash With Turmeric & Saffron For</a></h3>
+            <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?=$value->name?></a></h3>
             <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
             <div class="rating-starts">
               <div class="rating stars3_5">
