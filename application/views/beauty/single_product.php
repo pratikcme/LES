@@ -85,22 +85,38 @@
               <?php } ?>
             </select>
           </div>
-
+          <?php
+            $d_none = '';
+            $d_show = 'd-none';
+            if (!empty($item_weight_id)) {
+              if (in_array($varientDetails[0]->id, $item_weight_id)) {
+                $d_show = '';
+                $d_none = 'd-none';
+              }
+            }
+            ?>     
           <!-- -----counter-product-- -->
-          <div class="product-detail-quentity">
-            <div class="qty-container">
-              <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-              <input type="text" name="qty" value="1" class="input-qty" />
-              <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-            </div>
-          </div>
+          
 
           <!-- -----product-details-btn----- -->
-          <div class="product-detalis-btn">
-            <a href="" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add To Cart</a>
-            <a href="./shop-cart.php" class="add-cart-btn order-now"><span><i class="fa fa-arrow-circle-right"
-                  aria-hidden="true"></i></span>Order Now</a>
-            <a href="" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
+          <div class="product-detalis-btn ">
+          <?php if ($isAvailable != '0') { ?>
+            <a href="javascript:" class="add-cart-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to cart')?></a>
+          <?php } ?>
+            <div class="product-detail-quentity <?= $d_show ?>">
+              <div class="qty-container">
+                <button class="dec qty-btn-minus cart-qty-minus decqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-minus"></i></button>
+                <input type="text" name="qty" id="qnt" value="<?= ($cartQuantityForVarient != '') ? $cartQuantityForVarient : 1 ?>" data-product_id="<?= $this->utility->safe_b64decode($product_id) ?>" class="input-qty">
+                <button class="inc qty-btn-plus cart-qty-plus incqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-plus"></i></button>
+              </div>
+            </div>
+            <?php if ($isAvailable != '0') { ?>
+              <a href="javascript:" id="order_now" class="add-cart-btn order-now"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span><?= $this->lang->line('order now') ?></a>
+            <?php } ?>
+            <?php if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
+                $mobile = '91' . $BranchDetails[0]->phone_no; ?>
+            <a href="https://wa.me/<?= $mobile ?>/?text=<?= $url ?>" id='whatsapp_link' target="_black"  class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
+            <?php } ?>
           </div>
         </div>
       </div>

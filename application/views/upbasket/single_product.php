@@ -108,7 +108,7 @@
             ?>
             <div class="product-detalis-btn">
               <?php if ($isAvailable != '0') { ?>
-                <a href="javascript:" class="add-cart-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping"></i></span>Add To Cart</a>
+                <a href="javascript:" class="add-cart-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to cart')?></a>
               <?php } ?>
               <div class="product-detail-quentity <?= $d_show ?>">
                 <div class="qty-container">
