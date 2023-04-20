@@ -154,15 +154,15 @@
                       $sumOfRatting += $value->ratting;
                     } ?>
                     <div>
-                      <h3><strong><?=$sumOfRatting / count($product_review)?></strong><span>/5</span></h3>
+                      <h3><strong><?=round($sumOfRatting / count($product_review))?></strong><span>/5</span></h3>
                     </div>
                     <div>
                       <h4>Overall Rating</h4>
-                      <p>6k verified ratings</p>
+                      <!-- <p>6k verified ratings</p> -->
                     </div>
                   </div>
                   <div class="right-content">
-                    <h6>Write a review and win 100 reward points !</h6>
+                    <!-- <h6>Write a review and win 100 reward points !</h6> -->
                     <div class="enter-review-btn">
                       <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
                     </div>
