@@ -408,7 +408,7 @@
 
           <div class="card-body">
             <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?=$value->name?></a></h3>
-            <h6 class="rating-cnt">
+            <h6 class="rating-cnt notranslate">
               <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
             </h6>
             <div class="rating-starts">
