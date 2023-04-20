@@ -58,12 +58,13 @@
           <h2><?= $productDetail[0]->name ?></h2>
           <div class="rating-starts justify-content-start">
             <div class="rating stars3_5" id="starRatting">
-            <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
-              <span class="star"></span>
-            <?php } ?>
-            <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
-              <span class="star star-active"></span>
-            <?php } ?>
+              <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
+                <span class="star"></span>
+              <?php } ?>
+             <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+               <span class="star star-active"></span>
+              <?php } ?>
+              <?= $productDetail[0]->rating['rating'] ?>
             </div>
             <div><span>(<?= $productDetail[0]->rating['rating'] ?> )</span></div>
           </div>
