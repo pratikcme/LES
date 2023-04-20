@@ -199,6 +199,7 @@ var ADDRESS = function () {
             data: { id: id },
             dataType: 'json',
             success: function (output) {
+                $('#addres-popup').modal('show');
                 $('#address_title').html(language.js_update_address);
                 $("#departure_address").rules("remove", "required");
                 $('.fname').val(output.result[0].name);

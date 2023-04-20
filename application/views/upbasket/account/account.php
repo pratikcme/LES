@@ -597,7 +597,7 @@
               <?php } ?>
    
               <div class="adrress-btn">
-                 <a href="" class="signin-btn-green cancel-btn" data-bs-toggle="modal" data-bs-target="#addres-popup ">Add New Address</a>
+                 <a href="" class="signin-btn-green cancel-btn" data-bs-toggle="modal" data-bs-target="#addres-popup">Add New Address</a>
               </div>
             </div>
 
