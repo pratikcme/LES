@@ -29,27 +29,15 @@
             <div class="pro-hearticon">
                 <i class="fa-regular fa-heart" onclick="myFunction(this)"></i>
             </div>
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="zoom_image">
+            <?php foreach ($product_image as $key => $value) { ?>
               <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-6.png"
-                    data-zoom="./assets/images/home-page/feature-prodct-6.png" /></a>
+                <a href="javascript:">
+                  <img data-enlargable class="drift-demo-trigger"
+                    src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
+                    data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" /></a>
               </div>
-              <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-1.png"
-                    data-zoom="./assets/images/product-details/product-sub-img-1.png" /></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-2.png"
-                    data-zoom="./assets/images/product-details/product-sub-img-2.png" /></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-3.png"
-                    data-zoom="./assets/images/product-details/product-sub-img-3.png" /></a>
-              </div>
+              <?php } ?>
             </div>
           </div>
           <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
