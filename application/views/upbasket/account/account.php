@@ -144,10 +144,10 @@
                       <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1"><?=$this->lang->line('Completed')?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2"><?=$this->lang>line('Process')?></a>
+                      <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2"><?=$this->lang->line('Process')?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3"><?=$this->lang>line('Cancel')?></a>
+                      <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3"><?=$this->lang->line('Cancel')?></a>
                     </li>
                   </ul>
                </div>            
