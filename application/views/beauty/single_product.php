@@ -421,30 +421,18 @@
               </div>
               <div><span>(122)</span></div>
             </div>
-            <?php
-                  $d_none = '';
-                  $d_show = 'd-none';
-                  if (!empty($item_weight_id)) {
-                    if (in_array($value->pw_id, $item_weight_id)) {
-                      $d_show = '';
-                      $d_none = 'd-none';
-                    }
-                  }
-                  ?>
+            
             <!-- <div class="card-btn">
                     <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
                         Add to Cart</a>
                 </div> -->
-              <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
-                  <span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
-              </a>
-              <div class="product-detail-quentity <?= $d_show ?>">
-                <div class="qty-container">
-                  <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                  <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
-                  <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                </div>
+            <div class="product-detail-quentity add-cart-btn">
+              <div class="qty-container">
+                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                <input type="text" name="qty" value="1" class="input-qty">
+                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
               </div>
+            </div>
           </div>
         </div>
       </div>
