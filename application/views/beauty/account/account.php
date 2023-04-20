@@ -659,7 +659,7 @@
 
                         <div class="col-lg-12">
                             <label for="fname" class="form-label"><?=$this->lang->line('Full Name')?><span>*</span></label>
-                            <input type="text" name="fname" class="form-control" id="fname" placeholder="<?=$this->lang->line('Full Name')?>">
+                            <input type="text" name="fname" class="form-control fname" id="fname" placeholder="<?=$this->lang->line('Full Name')?>">
                         </div>
                         
                         <div class="col-lg-12">
