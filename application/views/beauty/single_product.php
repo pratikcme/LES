@@ -58,7 +58,7 @@
           <h2><?= $productDetail[0]->name ?></h2>
           <h5 id="starRatting">
             <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
-                <i class="fa-solid fa-star"></i>
+                <i class="fa-star"></i>
             <?php } ?>
             <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
                 <i class="fa-solid fa-star"></i> <!--  blank star appear hear -->
