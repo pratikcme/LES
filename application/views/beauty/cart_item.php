@@ -155,7 +155,7 @@
             </tbody>
           </table>
           <div>
-            <button type="button" id="ClearCart" class="lg-btn clear-btn" data-bs-toggle="modal_" data-bs-target="#exampleModal_"><?=$this->lang->line('clear cart')?></button>
+            <button type="button" class="lg-btn clear-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><?=$this->lang->line('clear cart')?></button>
           </div>
         </div>
       </div>
@@ -197,7 +197,7 @@
           <h3>Do you Want to Clear Cart?</h3>
 
           <div class="reset-btn">
-              <button type="submit" class="yes-btn">Yes</button>
+              <button type="submit"  id="ClearCart" class="yes-btn">Yes</button>
               <button type="submit" class="no-btn">No</button>
           </div>
       </div>
