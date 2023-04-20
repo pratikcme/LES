@@ -56,8 +56,8 @@
           <div class=""></div>
           <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h6>
           <h2><?= $productDetail[0]->name ?></h2>
-          <div class="rating-starts justify-content-start">
-            <div class="rating stars3_5">
+          <div class="rating-starts">
+            <div class="rating stars3_5" id="starRatting">
             <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
               <span class="star"></span>
             <?php } ?>
@@ -67,7 +67,16 @@
             </div>
             <div><span>(<?= $productDetail[0]->rating['rating'] ?> )</span></div>
           </div>
-        
+          <!-- <h5 id="starRatting">
+            <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
+                <i class="fa-solid fa-star"></i>
+            <?php } ?>
+            <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+                <i class="fa-solid fa-star"></i> <!--  blank star appear hear -->
+                <!-- <i class="fas fa-star blank-ratting"></i> -->
+            <?php } ?>
+            <?= $productDetail[0]->rating['rating'] ?>  <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
+          </h5> -->
 
           <h3 class="notranslate" id="dynamic_price">
             <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
