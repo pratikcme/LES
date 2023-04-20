@@ -41,7 +41,7 @@
             </div>
           </div>
           <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="image_thumb">
             <?php foreach ($product_image as $key => $value) { ?>
               <div class="swiper-slide">
                 <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" />
