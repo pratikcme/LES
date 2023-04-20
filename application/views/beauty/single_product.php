@@ -419,6 +419,16 @@
               </div>
               <div><span>(122)</span></div>
             </div>
+            <?php
+              $d_none = '';
+              $d_show = 'd-none';
+              if (!empty($item_weight_id)) {
+                if (in_array($value->pw_id, $item_weight_id)) {
+                  $d_show = '';
+                  $d_none = 'd-none';
+                }
+              }
+            ?>
             <div class="card-btn">
               <a href="javascript:" class="add-cart-btn <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>
               <?= $this->lang->line('add to cart') ?></a>
