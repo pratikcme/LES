@@ -75,6 +75,8 @@ display: none !important;
 .VIpgJd-ZVi9od-l4eHX-hSRGPd{
   display :none !important;
 }
-</style>
+.pac-container, .pac-item{
+    z-index: 999999 !important;
+ }
 </style>
 <input type="hidden" id="siteCurrency" value="<?=$this->siteCurrency?>">
