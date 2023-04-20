@@ -88,22 +88,22 @@
           </h5>
 
           <h3>₹800.00 <span><strike>₹840.00</strike></span></h3>
-          <h4>Color: <span> Red Extreme</span></h4>
-          <h4>Pick a Shade<span></h4>
+          <!-- <h4>Color: <span> Red Extreme</span></h4> -->
+          <!-- <h4>Pick a Shade<span></h4> -->
 
           <!-- ----color-picker--- -->
-          <div class="preview">
+          <!-- <div class="preview">
             <input class='color-1' name='color' type='radio' />
             <input class='color-2' name='color' type='radio' />
             <input checked class='color-3' name='color' type='radio' />
             <input class='color-4' name='color' type='radio' />
             <input class='color-5' name='color' type='radio' />
             <input class='color-6' name='color' type='radio' />
-          </div>
+          </div> -->
 
-          <h4>SKU: <span> LDKFWVD</span></h4>
+          <!-- <h4>SKU: <span> LDKFWVD</span></h4> -->
           <h4>Categories: <span> BB Creams, Skin care, Spa </span></h4>
-          <h4>Tags: <span> Fresh, Oragnic</span></h4>
+          <!-- <h4>Tags: <span> Fresh, Oragnic</span></h4> -->
 
           <form action="" class="pro-sl">
             <select name="cars" id="cars">
