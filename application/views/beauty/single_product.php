@@ -42,19 +42,11 @@
           </div>
           <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
             <div class="swiper-wrapper">
+            <?php foreach ($product_image as $key => $value) { ?>
               <div class="swiper-slide">
-                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-6.png" />
+                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" />
               </div>
-              <div class="swiper-slide">
-                <img src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-1.png" />
-              </div>
-              <div class="swiper-slide">
-                <img src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-2.png" />
-              </div>
-              <div class="swiper-slide">
-                <img src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-3.png" />
-              </div>
-
+            <?php } ?>
             </div>
           </div>
         </div>
