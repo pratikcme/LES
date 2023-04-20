@@ -1,27 +1,28 @@
 $(document).ready(function () {
   var siteCurrency = $("#siteCurrency").val();
+
   $(document).on("click", "#ClearCart", function () {
     var url = $("#url").val();
-    swal({
-      title: "Do you want to clear cart?",
-      text: "",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        $.ajax({
-          url: url + "products/clear_cart",
-          method: "post",
-          success: function (output) {
-            var obj = $.parseJSON(output);
-            if (obj.status == 1) {
-              window.location.href = url + "home";
-            }
-          },
-        });
-      }
+    // swal({
+    //   title: "Do you want to clear cart?",
+    //   text: "",
+    //   icon: "warning",
+    //   buttons: true,
+    //   dangerMode: true,
+    // }).then((willDelete) => {
+    //   if (willDelete) {
+    $.ajax({
+      url: url + "products/clear_cart",
+      method: "post",
+      success: function (output) {
+        var obj = $.parseJSON(output);
+        if (obj.status == 1) {
+          window.location.href = url + "home";
+        }
+      },
     });
+    //   }
+    // });
   });
 
   $(document).on("click", ".removeCartItem", function () {

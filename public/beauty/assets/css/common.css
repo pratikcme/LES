@@ -599,6 +599,7 @@ p {
     height: 40px !important;
     text-transform: capitalize;
     transition: 0.5s;
+    text-align: center;
 }
 
 .drop-btns .checkout:hover {

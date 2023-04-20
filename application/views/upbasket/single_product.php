@@ -36,7 +36,10 @@
               <div class="swiper-wrapper" id="zoom_image">
                 <?php foreach ($product_image as $key => $value) { ?>
                   <div class="swiper-slide">
-                    <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" /></a>
+                    <a href="javascript:"><img data-enlargable class="drift-demo-trigger"
+                       src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" 
+                      data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" />
+                    </a>
                   </div>
                 <?php } ?>
               </div>
@@ -105,7 +108,7 @@
             ?>
             <div class="product-detalis-btn">
               <?php if ($isAvailable != '0') { ?>
-                <a href="javascript:" class="add-cart-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping"></i></span>Add To Cart</a>
+                <a href="javascript:" class="add-cart-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to cart')?></a>
               <?php } ?>
               <div class="product-detail-quentity <?= $d_show ?>">
                 <div class="qty-container">
@@ -399,7 +402,7 @@
                       <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt=""><?= $value->ratting['rating'] ?></p>
                     </div>
                   </div>
-                  <h6 class="rating">
+                  <h6 class="rating notranslate">
                     <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
                   </h6>
                   <?php

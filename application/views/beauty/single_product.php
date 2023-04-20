@@ -4,13 +4,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
-        <h1>SHOP</h1>
+        <h1><?=$this->lang->line('SHOP')?></h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-            <li class="breadcrumb-item"><a href="./product-list-page.php">SHOP</a></li>
-            <li class="breadcrumb-item"><a href="./product-list-page.php">LIPS</a></li>
-            <li class="breadcrumb-item active" aria-current="page">LAKMÉ ABSOLUTE MATTE</li>
+            <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('Product Detail') ?></li>
           </ol>
         </nav>
       </div>
@@ -27,48 +25,28 @@
           <!-- -------swipr-slider-----  -->
           <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
             class="swiper mySwiper2 gallery-top">
-            <span class="discnt">1% off</span>
-            <div class="pro-hearticon">
-                <i class="fa-regular fa-heart" onclick="myFunction(this)"></i>
+            <span class="discnt <?= ($varientDetails[0]->discount_per > 0) ? '' : 'd-none' ?>"><?= $varientDetails[0]->discount_per ?>% off</span>
+            <div class="pro-hearticon wishlist-icon" data-product_id="<?= $product_id ?>" data-product_weight_id="<?= $product_weight_id ?>">
+                <i class="fa-regular fa-heart <?= (in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>" ></i>
             </div>
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="zoom_image">
+            <?php foreach ($product_image as $key => $value) { ?>
               <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-6.png"
-                    data-zoom="./assets/images/home-page/feature-prodct-6.png" /></a>
+                <a href="javascript:">
+                  <img data-enlargable class="drift-demo-trigger"
+                    src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
+                    data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" /></a>
               </div>
-              <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-1.png"
-                    data-zoom="./assets/images/product-details/product-sub-img-1.png" /></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-2.png"
-                    data-zoom="./assets/images/product-details/product-sub-img-2.png" /></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-3.png"
-                    data-zoom="./assets/images/product-details/product-sub-img-3.png" /></a>
-              </div>
+              <?php } ?>
             </div>
           </div>
           <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="image_thumb">
+            <?php foreach ($product_image as $key => $value) { ?>
               <div class="swiper-slide">
-                <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-6.png" />
+                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" />
               </div>
-              <div class="swiper-slide">
-                <img src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-1.png" />
-              </div>
-              <div class="swiper-slide">
-                <img src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-2.png" />
-              </div>
-              <div class="swiper-slide">
-                <img src="<?=$this->theme_base_url?>/assets/images/product-details/product-sub-img-3.png" />
-              </div>
-
+            <?php } ?>
             </div>
           </div>
         </div>
@@ -76,101 +54,93 @@
       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
         <div class="product-content-part zoom">
           <div class=""></div>
-          <h6>Limited Stock</h6>
-          <h2>Lakme Absolute Matte Ultimate Lip Color with Argan Oil</h2>
-          <h5>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-            4.5 <span> <a href=""> 174 Ratings & 22 Reviews</a></span>
+          <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h6>
+          <h2><?= $productDetail[0]->name ?></h2>
+          <h5 id="starRatting">
+            <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
+                <i class="fa-solid fa-star"></i>
+            <?php } ?>
+            <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+                <i class="fa-solid fa-star"></i> <!--  blank star appear hear -->
+                <!-- <i class="fas fa-star blank-ratting"></i> -->
+            <?php } ?>
+            <?= $productDetail[0]->rating['rating'] ?>  <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
           </h5>
 
-          <h3>₹800.00 <span><strike>₹840.00</strike></span></h3>
-          <!-- <h4>Color: <span> Red Extreme</span></h4> -->
-          <!-- <h4>Pick a Shade<span></h4> -->
+          <h3 class="notranslate" id="dynamic_price">
+            <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
+            <span>
+              <strike><?= ($varientDetails[0]->discount_per > 0) ? $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->price, 2, '.', '') : '' ?></strike>
+            </span>
+          </h3>
 
-          <!-- ----color-picker--- -->
-          <!-- <div class="preview">
-            <input class='color-1' name='color' type='radio' />
-            <input class='color-2' name='color' type='radio' />
-            <input checked class='color-3' name='color' type='radio' />
-            <input class='color-4' name='color' type='radio' />
-            <input class='color-5' name='color' type='radio' />
-            <input class='color-6' name='color' type='radio' />
-          </div> -->
-
-          <!-- <h4>SKU: <span> LDKFWVD</span></h4> -->
-          <h4>Categories: <span> BB Creams, Skin care, Spa </span></h4>
+          <h4><?=$this->lang->line('Categories')?>: <span><?= $productDetail[0]->category_name ?></span></h4>
+          <h4><?=$this->lang->line('Brand')?>: <span><?= $productDetail[0]->brand_name ?></span></h4>
           <!-- <h4>Tags: <span> Fresh, Oragnic</span></h4> -->
 
-          <form action="" class="pro-sl">
-            <select name="cars" id="cars">
-                <option value="volvo">lipstick</option>
-                <option value="saab">Pencil</option>
+          <div class="pro-sl">
+            <select class="product_varient_id" id="cars">
+              <?php foreach ($varient as $key => $value) { ?>
+                <option value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>><?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
+              <?php } ?>
             </select>
-          </form>
-
-          <!-- -----counter-product-- -->
-          <div class="product-detail-quentity">
-            <div class="qty-container">
-              <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-              <input type="text" name="qty" value="1" class="input-qty" />
-              <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-            </div>
           </div>
+          <?php
+            $d_none = '';
+            $d_show = 'd-none';
+            if (!empty($item_weight_id)) {
+              if (in_array($varientDetails[0]->id, $item_weight_id)) {
+                $d_show = '';
+                $d_none = 'd-none';
+              }
+            }
+            ?>     
+          <!-- -----counter-product-- -->
+          
 
           <!-- -----product-details-btn----- -->
-          <div class="product-detalis-btn">
-            <a href="" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add To Cart</a>
-            <a href="./shop-cart.php" class="add-cart-btn order-now"><span><i class="fa fa-arrow-circle-right"
-                  aria-hidden="true"></i></span>Order Now</a>
-            <a href="" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
-          </div>
-
-          <!-- ------product-detils-accordian--- -->
-          <!-- <div class="product-accordion">
-            <div class="product-accordion-content">
-              <div class="header">
-                <span class="title">DETAILS</span>
-                <i class="fa-solid fa-plus"></i>
+          <div class="product-detalis-btn ">
+          <?php if ($isAvailable != '0') { ?>
+            <a href="javascript:" class="add-cart-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping"></i></span><?=$this->lang->line('add to cart')?></a>
+          <?php } ?>
+            <div class="product-detail-quentity <?= $d_show ?>">
+              <div class="qty-container">
+                <button class="dec qty-btn-minus cart-qty-minus decqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-minus"></i></button>
+                <input type="text" name="qty" id="qnt" value="<?= ($cartQuantityForVarient != '') ? $cartQuantityForVarient : 1 ?>" data-product_id="<?= $this->utility->safe_b64decode($product_id) ?>" class="input-qty">
+                <button class="inc qty-btn-plus cart-qty-plus incqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-plus"></i></button>
               </div>
-              <p class="description">
-                Lakmé Absolute introduces a new Matte Ultimate Lip colour with Argan oil - a glamorous matte lipstick
-                range suited for every occasion. From deep plum to fierce red, the collection comprises of 12 trendy
-                shades with a lightweight formula enriched with luxe argan oil that nourishes your lips and keeps it
-                from drying. Every bullet has a soft velvety matte texture that comfortably sits on your lips and
-                provides a bold, intense color payoff.
-                MRP inclusive of all taxes on all products
-                Net Quantity: 3.4 g, Expiry date: 7-31-2024
-              </p>
             </div>
-          </div> -->
+            <?php if ($isAvailable != '0') { ?>
+              <a href="javascript:" id="order_now" class="add-cart-btn order-now"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span><?= $this->lang->line('order now') ?></a>
+            <?php } ?>
+            <?php if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
+                $mobile = '91' . $BranchDetails[0]->phone_no; ?>
+            <a href="https://wa.me/<?= $mobile ?>/?text=<?= $url ?>" id='whatsapp_link' target="_black"  class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
+            <?php } ?>
+          </div>
         </div>
       </div>
-      <div class="col-xxl-12">
+    </div>
+  </div>
+</section>
+
+<section class="p-100">
+  <div class="container">
+    <div class="col-xxl-12">
         <div class="review-desc">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-                role="tab" aria-controls="home" aria-selected="true">DESCRIPTION</button>
+                role="tab" aria-controls="home" aria-selected="true"><?=$this->lang->line('Description')?></button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-                role="tab" aria-controls="profile" aria-selected="false">REVIEWS (0)</button>
+                role="tab" aria-controls="profile" aria-selected="false"><?= $this->lang->line('Reviews')?> (<?= count($product_review) ?>)</button>
             </li>
           </ul>
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane mt-4 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-                Latin literature from 45 BC, making it over 2000 years old. Vivamus bibendum magna Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit.Contrary to popular belief, Lorem Ipsum is not simply random text. It
-                has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
-                provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
-                Et harum quidem rerum facilis est et expedita distinctio.</p>
+              <p><?= $productDetail[0]->about ?></p>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
               <!-- -------review-tab------ -->
@@ -369,356 +339,85 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- -----related-product----- -->
+<?php if (!empty($related_product)) { ?>
 <section class="Latest-Products Categories-section">
   <div class="container">
     <div class="col-xxl-12 col-lg-12 ">
       <div class="title">
-        <h2>Related Products</h2>
-        <p>Do not miss the current offers until the end of month.</p>
+        <h2><?=$this->lang->line('related products')?></h2>
+        <!-- <p>Do not miss the current offers until the end of month.</p> -->
       </div>
     </div>
 
     <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0"
       data-wow-offset="0">
+        <?php foreach ($related_product as $key => $value) { ?>
+                <div class="techno-check">
+                  <input class="techno_checkbox" type="checkbox" id="1" value="1" />
+                  <div href="#" class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                  <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
+                      <div class="card-header">
+                          <h5><?=($value->quantity >= 25 ) ? $this->lang->line('Available(Instock)') : ""?></h5>
+                          <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                                <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>" alt="">
+                            </a>
+                      </div>
 
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div class="product-wrapper card out-of-stock">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-1.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Mamaearth Ubtan Body Wash With Turmeric & Saffron For</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
+                      <div class="card-body">
+                        <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a></h3>
+                        <h6 class="rating-cnt notranslate"><?= $this->siteCurrency .' '. number_format((float)$value->discount_price, 2, '.', '')?> <span class="<?=($value->discount_per > 0 ) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency .' '. number_format((float)$value->price, 2, '.', '')?></strike></span></h6>
+                          <div class="rating-starts">
+                          <div class="rating stars3_5">
+                            <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                                <span class="star"></span>
+                                <?php } ?>
+                                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                                  <span class="star star-active"></span>
+                            <?php } ?>
+                              <!-- <span class="star"></span>
+                              <span class="star"></span>
+                              <span class="star"></span>
+                              <span class="star star-active"></span>
+                              <span class="star star-active-half"></span> -->
+                          </div>
+                          <div><span>(<?=$value->ratting['rating']?>)</span></div>
+                          </div>
+                          <?php 
+                            $d_none = '';
+                            $d_show = 'd-none';
+                            if(!empty($item_weight_id)){
+                              if(in_array($value->pw_id,$item_weight_id)){
+                                $d_show = '';
+                                $d_none = 'd-none';
+                              }
+                            }
+                          ?>
+                        <div class="card-btn addcartbutton <?=$d_none?>" data-product_id="<?=$this->utility->safe_b64encode($value->id)?>" data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
+                          <a href="javascript:" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
+                          <?=$this->lang->line('add to cart')?></a>
+                        </div>
+                        <div class="product-detail-quentity add-cart-btn <?=$d_show?>">
+                          <div class="qty-container">
+                            <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                            <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->id?>" data-weight_id="<?=$value->weight_id?>" readonly>
+                            <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
               </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3><a href="./product-details.php">Too Faced Lip Injection Maximum Plump Travel Size</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div>
-           
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-4.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Kay Beauty Quick Dry Liquid Eyeliner</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <div class="card-btn">
-              <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                  Add to Cart</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Too Faced Lip Injection Maximum Plump Travel Size</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div class="product-wrapper card ">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-5.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="techno-check">
-        <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card">
-          <div class="card-header">
-            <h5>In Stock</h5>
-            <a href="./product-details.php">
-              <img src="<?=$this->theme_base_url?>/assets/images/home-page/feature-prodct-2.png" alt="">
-            </a>
-          </div>
-
-          <div class="card-body">
-            <h3><a href="./product-details.php">Too Faced Lip Injection Maximum Plump Travel Size</a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star star-active"></span>
-                <span class="star star-active-half"></span>
-              </div>
-              <div><span>(122)</span></div>
-            </div>
-            <!-- <div class="card-btn">
-                    <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                        Add to Cart</a>
-                </div> -->
-            <div class="product-detail-quentity add-cart-btn">
-              <div class="qty-container">
-                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                <input type="text" name="qty" value="1" class="input-qty">
-                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+        <?php } ?>
     </div>
   </div>
 </section>
-
+<?php } ?>
+<input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
+<input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
 <!-- -------review-popup-- -->
 <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -886,3 +585,4 @@
       </div>
     </div>
   </div>
+  

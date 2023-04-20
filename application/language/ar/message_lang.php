@@ -54,6 +54,11 @@ $lang['Reach Out To Us'] = 'تواصل معنا';
 $lang['Explore More'] = 'استكشاف المزيد';
 $lang['Account'] = 'حساب';
 $lang['Details'] = 'تفاصيل';
+$lang['SHOP'] = 'محل';
+
+$lang['Completed'] = 'Completed';
+$lang['Process'] = 'Process';
+$lang['Cancel'] = 'Cancel';
 
 // end other template 
 
