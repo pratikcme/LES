@@ -408,7 +408,9 @@
 
           <div class="card-body">
             <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?=$value->name?></a></h3>
-            <h6 class="rating-cnt">₹398.00 <span><strike>₹425.00</strike></span></h6>
+            <h6 class="rating-cnt">
+              <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
+            </h6>
             <div class="rating-starts">
               <div class="rating stars3_5">
                 <span class="star"></span>
@@ -430,7 +432,7 @@
               }
             ?>
             <div class="card-btn">
-              <a href="javascript:" class="add-cart-btn <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>
+              <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>
               <?= $this->lang->line('add to cart') ?></a>
             </div>
             <div class="product-detail-quentity add-cart-btn <?= $d_show ?>">
