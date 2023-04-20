@@ -54,41 +54,36 @@
       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
         <div class="product-content-part zoom">
           <div class=""></div>
-          <h6>Limited Stock</h6>
+          <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h6>
           <h2><?= $productDetail[0]->name ?></h2>
-          <h5>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-            4.5 <span> <a href=""> 174 Ratings & 22 Reviews</a></span>
+          <h5 id="starRatting">
+            <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
+                <i class="fa-solid fa-star"></i>
+            <?php } ?>
+            <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+                <i class="fa-solid fa-star"></i> <!--  blank star appear hear -->
+                <!-- <i class="fas fa-star blank-ratting"></i> -->
+            <?php } ?>
+            <?= $productDetail[0]->rating['rating'] ?>  <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
           </h5>
 
-          <h3>₹800.00 <span><strike>₹840.00</strike></span></h3>
-          <!-- <h4>Color: <span> Red Extreme</span></h4> -->
-          <!-- <h4>Pick a Shade<span></h4> -->
+          <h3 class="notranslate" id="dynamic_price">
+            <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
+            <span>
+              <strike><?= ($varientDetails[0]->discount_per > 0) ? $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->price, 2, '.', '') : '' ?></strike>
+            </span>
+          </h3>
 
-          <!-- ----color-picker--- -->
-          <!-- <div class="preview">
-            <input class='color-1' name='color' type='radio' />
-            <input class='color-2' name='color' type='radio' />
-            <input checked class='color-3' name='color' type='radio' />
-            <input class='color-4' name='color' type='radio' />
-            <input class='color-5' name='color' type='radio' />
-            <input class='color-6' name='color' type='radio' />
-          </div> -->
-
-          <!-- <h4>SKU: <span> LDKFWVD</span></h4> -->
           <h4>Categories: <span> BB Creams, Skin care, Spa </span></h4>
           <!-- <h4>Tags: <span> Fresh, Oragnic</span></h4> -->
 
-          <form action="" class="pro-sl">
-            <select name="cars" id="cars">
-                <option value="volvo">lipstick</option>
-                <option value="saab">Pencil</option>
+          <!-- <form action="" class="pro-sl"> -->
+            <select class="product_varient_id" >
+              <?php foreach ($varient as $key => $value) { ?>
+                <option value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>><?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
+              <?php } ?>
             </select>
-          </form>
+          <!-- </form> -->
 
           <!-- -----counter-product-- -->
           <div class="product-detail-quentity">
@@ -141,7 +136,7 @@
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-                role="tab" aria-controls="home" aria-selected="true">DESCRIPTION</button>
+                role="tab" aria-controls="home" aria-selected="true"><?=$this->lang->line('Description')?></button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
@@ -150,14 +145,7 @@
           </ul>
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane mt-4 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-                Latin literature from 45 BC, making it over 2000 years old. Vivamus bibendum magna Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit.Contrary to popular belief, Lorem Ipsum is not simply random text. It
-                has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
-                provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
-                Et harum quidem rerum facilis est et expedita distinctio.</p>
+              <p><?= $productDetail[0]->about ?></p>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
               <!-- -------review-tab------ -->
