@@ -526,6 +526,8 @@ body {
     border-radius: 20px;
     padding: 28px 40px;
     margin-top: 70px;
+    position: relative;
+    z-index: 3;
 }
 
 
@@ -1047,7 +1049,7 @@ body {
     height: 1px;
 }
 
-.Latest-Products{
+.Latest-Products {
     padding-top: 70px !important;
 }
 
@@ -1164,12 +1166,12 @@ body {
 }
 
 
-.pro-sl select{
+.pro-sl select {
     padding: 5px 5px;
     border-radius: 5px;
 }
 
-.pro-sl select:focus{
+.pro-sl select:focus {
     outline: 0;
     box-shadow: none;
 }
@@ -1327,23 +1329,28 @@ body {
     }
 
     /* ---review-box-css---- */
-    .review-left{
+    .review-left {
         flex-basis: 28%;
     }
-    .review-right{
+
+    .review-right {
         flex-basis: 70%;
     }
-    .review-content .left-content{
+
+    .review-content .left-content {
         padding-right: 20px !important;
         gap: 20px;
     }
-    .review-content h3{
+
+    .review-content h3 {
         font-size: 30px !important;
     }
-    .review-content h3 span{
+
+    .review-content h3 span {
         font-size: 30px;
     }
-    .review-content .right-content h6{
+
+    .review-content .right-content h6 {
         margin: 0px 30px;
     }
 
@@ -1351,8 +1358,8 @@ body {
 }
 
 
-@media only screen and (max-width:768px){
-    .review-desc{
+@media only screen and (max-width:768px) {
+    .review-desc {
         margin-top: 50px;
     }
 }
@@ -1457,14 +1464,16 @@ body {
     }
 
     /* ---review-box-css---- */
-    .review-left{
+    .review-left {
         flex-basis: 24%;
         flex-direction: column;
         align-items: flex-start;
     }
-    .review-right{
+
+    .review-right {
         flex-basis: 75%;
     }
+
     .review-content .left-content {
         padding-right: 20px !important;
         gap: 10px;
@@ -1472,6 +1481,7 @@ body {
         flex-basis: 35%;
         align-items: flex-start;
     }
+
     .review-content .right-content {
         padding: 25px 0px;
         display: flex;
@@ -1479,21 +1489,26 @@ body {
         flex-direction: column;
         padding-left: 30px;
     }
-    .review-content h3{
+
+    .review-content h3 {
         font-size: 30px !important;
     }
-    .review-content h3 span{
+
+    .review-content h3 span {
         font-size: 30px !important;
     }
-    .review-content .right-content h6{
+
+    .review-content .right-content h6 {
         margin: 0px 0px;
         margin-bottom: 20px;
     }
-    .right-content .enter-review-btn a{
+
+    .right-content .enter-review-btn a {
         padding: 8px 15px;
         font-size: 15px;
     }
-    .review-right p{
+
+    .review-right p {
         font-size: 15px;
         line-height: 22px;
     }
@@ -1597,20 +1612,23 @@ body {
     }
 
     /* ---review-box-css---- */
-    .rewiew-wrapper{
+    .rewiew-wrapper {
         flex-direction: column;
     }
-    .review-left{
+
+    .review-left {
         flex-basis: 24%;
         flex-direction: column;
         align-items: flex-start;
         border-right: none !important;
     }
-    .review-right{
+
+    .review-right {
         flex-basis: 75%;
         padding-left: 0px;
         margin-top: 30px;
     }
+
     .review-content .left-content {
         padding-right: 20px !important;
         gap: 10px;
@@ -1618,6 +1636,7 @@ body {
         flex-basis: 40%;
         align-items: flex-start;
     }
+
     .review-content .right-content {
         padding: 25px 0px;
         display: flex;
@@ -1625,43 +1644,55 @@ body {
         flex-direction: column;
         padding-left: 30px;
     }
-    .review-content h3{
+
+    .review-content h3 {
         font-size: 30px !important;
     }
-    .review-content h3 span{
+
+    .review-content h3 span {
         font-size: 30px !important;
     }
-    .review-content .right-content h6{
+
+    .review-content .right-content h6 {
         margin: 0px 0px;
         margin-bottom: 20px;
     }
-    .right-content .enter-review-btn a{
+
+    .right-content .enter-review-btn a {
         padding: 8px 15px;
         font-size: 15px;
     }
-    .review-right p{
+
+    .review-right p {
         font-size: 15px;
         line-height: 22px;
     }
-    .review-desc{
+
+    .review-desc {
         padding: 28px 20px;
     }
-    .number-star{
+
+    .number-star {
         font-size: 18px;
     }
-    .number-star span{
+
+    .number-star span {
         font-size: 12px;
     }
-    .review-right > div h4{
+
+    .review-right>div h4 {
         font-size: 18px;
     }
-    .load-btn .lg-btn{
+
+    .load-btn .lg-btn {
         padding: 10px 20px;
         font-size: 16px !important;
     }
-    .load-btn{
+
+    .load-btn {
         margin-bottom: 20px !important;
     }
+
     .modal-header .btn-close {
         top: 20px;
         right: 20px;
@@ -1781,20 +1812,23 @@ body {
     }
 
     /* ---review-box-css---- */
-    .rewiew-wrapper{
+    .rewiew-wrapper {
         flex-direction: column;
     }
-    .review-left{
+
+    .review-left {
         flex-basis: 24%;
         flex-direction: column;
         align-items: flex-start;
         border-right: none !important;
     }
-    .review-right{
+
+    .review-right {
         flex-basis: 75%;
         padding-left: 0px;
         margin-top: 30px;
     }
+
     .review-content .left-content {
         padding-right: 20px !important;
         gap: 10px;
@@ -1804,7 +1838,7 @@ body {
         border-right: none !important;
         padding-left: 15px !important;
     }
-     
+
     .review-content .right-content {
         padding: 25px 0px;
         display: flex;
@@ -1813,60 +1847,75 @@ body {
         padding-top: 0px;
         padding-left: 15px !important;
     }
-    .review-content h3{
+
+    .review-content h3 {
         font-size: 26px !important;
     }
-    .review-content h3 span{
+
+    .review-content h3 span {
         font-size: 26px !important;
     }
-    .review-content .right-content h6{
+
+    .review-content .right-content h6 {
         margin: 0px 0px;
         margin-bottom: 20px;
     }
-    .right-content .enter-review-btn a{
+
+    .right-content .enter-review-btn a {
         padding: 8px 15px;
         font-size: 15px;
     }
-    .review-right p{
+
+    .review-right p {
         font-size: 15px;
         line-height: 22px;
     }
-    .review-desc{
+
+    .review-desc {
         padding: 28px 15px;
     }
-    .number-star{
+
+    .number-star {
         font-size: 18px;
     }
-    .number-star span{
+
+    .number-star span {
         font-size: 12px;
     }
-    .review-right > div h4{
+
+    .review-right>div h4 {
         font-size: 18px;
     }
-    .my-review-modal .modal-dialog{
+
+    .my-review-modal .modal-dialog {
         width: auto;
     }
-    .review-content{
+
+    .review-content {
         flex-direction: column;
     }
+
     .rating__label {
         cursor: pointer;
         padding-right: 10px;
     }
-    .load-btn .lg-btn{
+
+    .load-btn .lg-btn {
         padding: 10px 20px;
         font-size: 16px !important;
     }
-    .load-btn{
+
+    .load-btn {
         margin-bottom: 20px !important;
     }
+
     .modal-header .btn-close {
         top: 20px;
         right: 20px;
         font-size: 20px !important;
     }
 
-    .review-desc .nav-tabs .nav-link{
+    .review-desc .nav-tabs .nav-link {
         font-size: 14px;
     }
 }
@@ -1988,20 +2037,23 @@ body {
     }
 
     /* ---review-box-css---- */
-    .rewiew-wrapper{
+    .rewiew-wrapper {
         flex-direction: column;
     }
-    .review-left{
+
+    .review-left {
         flex-basis: 24%;
         flex-direction: column;
         align-items: flex-start;
         border-right: none !important;
     }
-    .review-right{
+
+    .review-right {
         flex-basis: 75%;
         padding-left: 0px;
         margin-top: 30px;
     }
+
     .review-content .left-content {
         padding-right: 20px !important;
         gap: 10px;
@@ -2011,7 +2063,7 @@ body {
         border-right: none !important;
         padding-left: 15px !important;
     }
-     
+
     .review-content .right-content {
         padding: 25px 0px;
         display: flex;
@@ -2020,54 +2072,69 @@ body {
         padding-top: 0px;
         padding-left: 15px !important;
     }
-    .review-content h3{
+
+    .review-content h3 {
         font-size: 26px !important;
     }
-    .review-content h3 span{
+
+    .review-content h3 span {
         font-size: 26px !important;
     }
-    .review-content .right-content h6{
+
+    .review-content .right-content h6 {
         margin: 0px 0px;
         margin-bottom: 20px;
     }
-    .right-content .enter-review-btn a{
+
+    .right-content .enter-review-btn a {
         padding: 8px 15px;
         font-size: 15px;
     }
-    .review-right p{
+
+    .review-right p {
         font-size: 15px;
         line-height: 22px;
     }
-    .review-desc{
+
+    .review-desc {
         padding: 28px 15px;
     }
-    .number-star{
+
+    .number-star {
         font-size: 18px;
     }
-    .number-star span{
+
+    .number-star span {
         font-size: 12px;
     }
-    .review-right > div h4{
+
+    .review-right>div h4 {
         font-size: 18px;
     }
-    .my-review-modal .modal-dialog{
+
+    .my-review-modal .modal-dialog {
         width: auto;
     }
-    .review-content{
+
+    .review-content {
         flex-direction: column;
     }
-    .my-review-modal .modal-content{
+
+    .my-review-modal .modal-content {
         padding: 20px !important;
     }
+
     .rating__label {
         cursor: pointer;
         padding-right: 10px;
     }
-    .load-btn .lg-btn{
+
+    .load-btn .lg-btn {
         padding: 10px 20px;
         font-size: 16px !important;
     }
-    .load-btn{
+
+    .load-btn {
         margin-bottom: 20px !important;
     }
 
@@ -2077,7 +2144,7 @@ body {
         font-size: 20px !important;
     }
 
-    .review-desc .nav-tabs .nav-link{
+    .review-desc .nav-tabs .nav-link {
         font-size: 14px;
     }
 }
