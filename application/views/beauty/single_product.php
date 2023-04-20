@@ -56,7 +56,7 @@
           <div class=""></div>
           <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h6>
           <h2><?= $productDetail[0]->name ?></h2>
-          <div class="rating-starts">
+          <div class="rating-starts justify-content-start">
             <div class="rating stars3_5" id="starRatting">
             <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
               <span class="star"></span>
