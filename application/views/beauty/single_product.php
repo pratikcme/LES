@@ -55,7 +55,7 @@
         <div class="product-content-part zoom">
           <div class=""></div>
           <h6>Limited Stock</h6>
-          <h2>Lakme Absolute Matte Ultimate Lip Color with Argan Oil</h2>
+          <h2><?= $productDetail[0]->name ?></h2>
           <h5>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
