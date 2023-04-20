@@ -148,8 +148,13 @@
                 <!-- ----review-content--- -->
                 <div class="review-content">
                   <div class="left-content">
+                  <?php
+                    $sumOfRatting = 0;
+                    foreach ($product_review as $key => $value) {
+                      $sumOfRatting += $value->ratting;
+                    } ?>
                     <div>
-                      <h3><strong>4.3</strong><span>/5</span></h3>
+                      <h3><strong><?=$sumOfRatting / count($product_review)?></strong><span>/5</span></h3>
                     </div>
                     <div>
                       <h4>Overall Rating</h4>
