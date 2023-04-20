@@ -419,7 +419,7 @@ class Products extends User_Controller
 			'avgRatting' => round($avgr),
 			'varientWishStarRatting' => $starHtml,
 			'upbasket_starHtml' => $upbasket_starHtml . '  ' . round($avgr),
-			'beauty_starHtml' => $beauty_starHtml . '<div><span>(' .round($avgr). ')</span></div>',
+			'beauty_starHtml' => '<div class="rating stars3_5" >'.$beauty_starHtml . '</div><div><span>(' .round($avgr). ')</span></div>',
 			'upbasket_thumb' => $upbasket_thumb,
 			'upbasket_zoom_image' => $upbasket_zoom_image,
 
