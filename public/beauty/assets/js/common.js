@@ -109,6 +109,9 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 btn.onclick = function () {
+  var url = $('#url').val();
+  $('#RegisterForm').attr('action', url + 'users_account/users/add_address');
+  $('#RegisterForm')[0].reset();
   modal.style.display = "block";
 }
 span.onclick = function (event) {

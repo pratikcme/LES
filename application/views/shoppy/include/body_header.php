@@ -56,7 +56,7 @@
           </div>
 
           <!-- ----cart-dropdown--- -->
-          <div class="cart-dropdwon">
+          <div class="cart-dropdwon" id="updated_list">
             <div class="drop-cart-title">
               <h3 class="cart-title">My shopping cart</h3>
               <a href="#" class="close-btn"><i class="fa-solid fa-xmark"></i></a>
@@ -100,8 +100,8 @@
                     </div>
                     <div class="drop-text">
                       <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><?= $value['product_name'] ?></a></h4>
-                      <p><?= $value['weight_no'] . ' ' . $value['weight_name'] ?></p>
-                      <p>Qty : 1</p>
+
+                      <p>Qty : <?= $value['quantity'] ?></p>
                       <h3><?= $this->siteCurrency . ' ' . number_format((float)$product[0]->discount_price, 2, '.', '') ?></h3>
 
                     </div>
@@ -121,9 +121,12 @@
                 <a href="<?= base_url() . 'products/cart_item' ?>" class="view-cart"><?= $this->lang->line('view cart') ?></a>
                 <a href="<?= base_url() . 'checkout' ?>" class="checkout "><?= $this->lang->line('checkout') ?></a>
               </div>
-            <?php } else { ?>
+            <?php } else {
+            ?>
               <?php if (isset($this->cartCount)) { ?>
-                <?php foreach ($mycart as $key => $value) { ?>
+                <?php
+
+                foreach ($mycart as $key => $value) { ?>
 
                   <div class="cart-drop-wrapper">
 
@@ -134,8 +137,8 @@
                       </div>
                       <div class="drop-text">
                         <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a></h4>
-                        <p><?= $value->weight_no . ' ' . $value->weight_name ?></p>
-                        <p>Qty : 1</p>
+
+                        <p>Qty : <?= $value->quantity ?></p>
                         <h3><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?> </h3>
 
                       </div>

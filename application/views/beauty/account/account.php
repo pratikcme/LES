@@ -449,8 +449,8 @@
                     <div id="tab-3" class="container tab-pane fade">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
-                                <h2>My Wishlist</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                                <h2><?=$this->lang->line('My Wishlist')?></h2>
+                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                             </div>
                         </div>
 
@@ -460,101 +460,63 @@
                                     <tr>
                                         <th colspan="2">product</th>
                                         <th>price</th>
-                                        <th>Stock Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($wishlist as $key => $value) { ?>
                                     <tr>
                                         <td class="mywishlist-part-img">
-                                            <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                                            <a href="javascript:" class="removeWishlistItem" data-id="<?=$this->utility->safe_b64encode($value->id)?>"><i class="fa-regular fa-circle-xmark"></i></a>
                                             <div class="cart-detail-img">
                                                 <div class="cart-detail-img">
-                                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-5.png" alt=""></a>
+                                                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                    <img src="<?= $value->image ?>" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="cart-detail-text">
-                                                <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
+                                                <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                <?=$value->name?></a>
+                                                </h4>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="cart-price-text">
-                                                <h3>₹1150.00</h3>
+                                            <h3 class="notranslate"><?=$this->siteCurrency .' '.numberFormat($value->discount_price) ?></h3>
                                             </div>
                                         </td>
                                         <td>
-                                            In Stock
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                    Cart</a>
+                                        <?php
+                                            $d_none = '';
+                                            $d_show = 'd-none';
+                                            if (!empty($item_weight_id)) {
+                                                if (in_array($value->product_weight_id, $item_weight_id)) {
+                                                    $d_show = '';
+                                                    $d_none = 'd-none';
+                                                }
+                                            }
+                                        ?>
+                                        <div>
+                                            <div class="card-btn addcartbutton <?=$d_none?>" 
+                                                data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
+                                                data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
+                                                <a href="javascript:" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
+                                                <?=$this->lang->line('add to cart')?></a>
                                             </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="mywishlist-part-img">
-                                            <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                                            <div class="cart-detail-img">
-                                                <div class="cart-detail-img">
-                                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-6.png" alt=""></a>
+                                            <div class="product-detail-quentity add-cart-btn <?=$d_show?>">
+                                                <div class="qty-container">
+                                                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                    <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->id?>" data-weight_id="<?=$value->weight_id?>" readonly>
+                                                    <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-detail-text">
-                                                <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-price-text">
-                                                <h3>₹1150.00</h3>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            In Stock
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                    Cart</a>
-                                            </div>
+                                        </div>
                                         </td>
                                     </tr>
-
-                                    <tr>
-                                        <td class="mywishlist-part-img">
-                                            <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                                            <div class="cart-detail-img">
-                                                <div class="cart-detail-img">
-                                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-7.png" alt=""></a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-detail-text">
-                                                <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-price-text">
-                                                <h3>₹1150.00</h3>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            In Stock
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                    Cart</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -609,32 +571,32 @@
                     <!-- ---tab-7-- -->
                     <div id="tab-7" class="container tab-pane fade">
                         <div class="title text-center">
-                            <h2>Change  <span>Password</span></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h2><?=$this->lang->line('Change Password')?></h2>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
                         </div>
                         <div class="myaccout-detail-tab">
-                            <form action="">
+                            <form id='ChangeUserPass' action="<?=base_url().'users_account/users/update_password'?>" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                     <div class="mb-3">
-                                        <label for="text" class="form-label">Current Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                        <label for="text" class="form-label"><?=$this->lang->line('current password')?></label>
+                                        <input type="password" class="form-control" name="old_pass" placeholder="<?=$this->lang->line('current password')?>">
                                     </div>
                                     </div>
                                     <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="text" class="form-label">New Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                        <label for="text" class="form-label"><?=$this->lang->line('new password')?></label>
+                                        <input type="password" class="form-control" name="new_pass" id="password_new"  placeholder="<?=$this->lang->line('new password')?>">
                                     </div>
                                     </div>
                                     <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="text" class="form-label">Confirm Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                        <label for="text" class="form-label"><?=$this->lang->line('Confirm password')?></label>
+                                        <input  type="password" class="form-control" name="confirm_pass" placeholder="<?=$this->lang->line('Confirm password')?>">
                                     </div>
                                     </div>
                                     <div class="tab-save-btn">
-                                        <button class="common-input-btn" type="submit">Submit</button>
+                                        <button type="submit" class="common-input-btn" id="btnChangeUserPass"><?=$this->lang->line('Submit')?></button>
                                     </div>
                                 </div>
                             </form>
@@ -646,7 +608,7 @@
 
         </div>
 </section>
-
+<input type="hidden" id="get_parameter" value="<?=(isset($_GET['name']) ? $_GET['name'] : '' )?>">
 
 <!-- =============place order popup=========== -->
 <div id="myModal" class="modal">
@@ -654,74 +616,65 @@
         <div class="modal-content ">
             <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
             <div class="login-page myaccout-detail-tab">
-                <form class="get-detials-account" action="">
+                <form method="post" id="RegisterForm" action="<?=base_url().'users_account/users/add_address'?>" class="get-detials-account" autocomplete="off">
                     <div class="row">
 
-                        <div class="col-lg-6">
-                            <label for="fname" class="form-label">First Name<span>*</span></label>
-                            <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Enter Your FristName">
+                        <div class="col-lg-12">
+                            <label for="fname" class="form-label"><?=$this->lang->line('Full Name')?><span>*</span></label>
+                            <input type="text" name="fname" class="form-control fname" id="fname" placeholder="<?=$this->lang->line('Full Name')?>">
                         </div>
-
-                        <div class="col-lg-6">
-                            <label for="lname" class="form-label">Last Name<span>*</span></label>
-                            <input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Enter Your LastName">
+                        
+                        <div class="col-lg-12">
+                            <label for="text" class="form-label"><?=$this->lang->line('Mobile Number')?><span>*</span></label>
+                            <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?=$this->lang->line('Mobile number')?>">
                         </div>
 
                         <div class="col-lg-12">
-                            <label for="text" class="form-label">Country / Region<span>*</span></label>
-                            <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="Enter Your Number">
+                            <label for="add" class="form-label"><?=$this->lang->line('Enter Location')?><span>*</span></label>
+                            <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location"  aria-describedby="add"  placeholder="<?=$this->lang->line('Enter Location')?>">
+                            <label for="departure_address" class="error" style="display: none;"></label>
+                            <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
+                            <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">
                         </div>
 
                         <div class="col-lg-12">
-                            <label for="add" class="form-label">Street address<span>*</span></label>
-                            <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Enter Your Address">
-                        </div>
-
-                        <div class="col-lg-12">
-                            <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Apartment, suite, etc.">
+                            <input type="text" class="form-control landmark" name="landmark" id="landmark" aria-describedby="add" placeholder="<?=$this->lang->line('Landmark')?>">
                         </div>
 
                         <div class="col-lg-6">
                             <div class="select-box">
-                                <label for="city" class="form-label">Town / City<span>*</span></label>
-                                <select class="form-select" aria-label="city">
-                                    <option selected>Ahmedabad</option>
-                                    <option value="1">Surt</option>
-                                    <option value="2">Baroda</option>
-                                    <option value="3">Ohter</option>
-                                </select>
+                                <label for="city" class="form-label"><?=$this->lang->line('city')?><span>*</span></label>
+                                <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="<?=$this->lang->line('city')?>" autocomplete="off">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="select-box">
-                                <label for="state" class="form-label">State<span>*</span></label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Gujarat</option>
-                                    <option value="1">Surt</option>
-                                    <option value="2">Baroda</option>
-                                    <option value="3">Ohter</option>
-                                </select>
+                            <label for="state" class="form-label"><?=$this->lang->line('State')?><span>*</span></label>
+                            <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="<?=$this->lang->line('State')?>" autocomplete="off">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="select-box">
-                                <label for="state" class="form-label">State<span>*</span></label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Gujarat</option>
-                                    <option value="1">Surt</option>
-                                    <option value="2">Baroda</option>
-                                    <option value="3">Ohter</option>
-                                </select>
+                            <label for="country" class="form-label"><?=$this->lang->line('country')?><span>*</span></label>
+                            <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="<?=$this->lang->line('country')?>" autocomplete="off">
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
-                            <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="Enter Your ZIPCode">
+                            <div class="select-box">
+                                <label for="pincode" class="form-label"><?=$this->lang->line('pincode')?><span>*</span></label>
+                                <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?=$this->lang->line('pincode')?>" autocomplete="off">
+                            </div>
                         </div>
-                        <div class="save-btn">
-                            <a href="#">save</a>
+                        <div class="col-lg-12">
+                            <div class="select-box">
+                                <label for="address" class="form-label"><?=$this->lang->line('Enter Address')?><span>*</span></label>
+                                <textarea type="text" name="address" class="form-control pincode" id="address" placeholder="<?=$this->lang->line('Enter Address')?>" autocomplete="off"></textarea>
+                            </div>
+                        </div>
+                        <div class="save-btn text-center">
+                            <button type="submit" id="addAddress" class=" signin-btn-green"><?=$this->lang->line('Save')?></button>
                         </div>
                     </div>
                 </form>

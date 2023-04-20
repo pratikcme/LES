@@ -262,7 +262,9 @@ if (!empty($related_product)) { ?>
     </div>
 
     <div class="owl-carousel owl-theme simple">
-      <?php foreach ($related_product as $key => $value) { ?>
+      <?php
+
+      foreach ($related_product as $key => $value) { ?>
         <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
           <div class="product-card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
             <div class="product-img-wrap">
