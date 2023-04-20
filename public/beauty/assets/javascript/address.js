@@ -215,7 +215,7 @@ var ADDRESS = function () {
                 $('#departure_address').val(output.result[0].google_location);
                 $('#departure_latitude').val(output.result[0].latitude);
                 $('#departure_longitude').val(output.result[0].longitude);
-                $('#addres-popup').modal('show');
+                $('#addres-popup').css('display', 'block');
             }
         })
     });
