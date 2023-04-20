@@ -56,17 +56,17 @@
           <div class=""></div>
           <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h6>
           <h2><?= $productDetail[0]->name ?></h2>
-          <h5 id="starRatting">
-            <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
-                <i class="fa-solid fa-star"></i>
-            <?php } ?>
-            <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
-                <i class="fa-solid fa-star"></i> <!--  blank star appear hear -->
-                <!-- <i class="fas fa-star blank-ratting"></i> -->
-            <?php } ?>
-            <?= $productDetail[0]->rating['rating'] ?>  <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
-          </h5>
-
+          <div class="rating-starts justify-content-start" id="starRatting">
+            <div class="rating stars3_5" >
+              <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
+                <span class="star"></span>
+              <?php } ?>
+             <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+               <span class="star star-active"></span>
+              <?php } ?>
+            </div>
+            <div><span>(<?= $productDetail[0]->rating['rating'] ?>)</span></div>
+          </div>
           <h3 class="notranslate" id="dynamic_price">
             <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
             <span>
@@ -148,16 +148,21 @@
                 <!-- ----review-content--- -->
                 <div class="review-content">
                   <div class="left-content">
+                  <?php
+                    $sumOfRatting = 0;
+                    foreach ($product_review as $key => $value) {
+                      $sumOfRatting += $value->ratting;
+                    } ?>
                     <div>
-                      <h3><strong>4.3</strong><span>/5</span></h3>
+                      <h3><strong><?=round($sumOfRatting / count($product_review))?></strong><span>/5</span></h3>
                     </div>
                     <div>
                       <h4>Overall Rating</h4>
-                      <p>6k verified ratings</p>
+                      <!-- <p> 6k verified ratings </p> -->
                     </div>
                   </div>
                   <div class="right-content">
-                    <h6>Write a review and win 100 reward points !</h6>
+                    <h6><!-- Write a review and win 100 reward points ! --></h6>
                     <div class="enter-review-btn">
                       <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
                     </div>
@@ -169,16 +174,13 @@
                   <h3>Most Useful Review</h3>
 
                   <div class="supportive-div">
+                  <?php foreach ($product_review as $key => $value) { ?>
                     <div class="rewiew-wrapper">
                       <div class="review-left">
                         <div class="review-img">
                           <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
                             <defs>
-                              <style>
-                                .cls-1 {
-                                  fill: #cc833d;
-                                }
-                              </style>
+                              <style>.cls-1 {fill: #cc833d; }</style>
                             </defs>
                             <path class="cls-1"
                               d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z"
@@ -186,153 +188,22 @@
                           </svg>
                         </div>
                         <div class="review-text">
-                          <h6>Ashrita Jaiswal</h6>
+                          <h6><?=$value->fname.' '.$value->lname?></h6>
                           <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
                         </div>
                       </div>
                       <div class="review-right">
                         <div class="review-right-top">
                           <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
-                          <h4>"I loved it"</h4>
+                          <!-- <h4>"I loved it"</h4> -->
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut consequat. </p>
+                        <p><?=$value->review?></p>
                       </div>
                     </div>
-
-                    <div class="rewiew-wrapper">
-                      <div class="review-left">
-                        <div class="review-img">
-                          <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
-                            <defs>
-                              <style>
-                                .cls-1 {
-                                  fill: #cc833d;
-                                }
-                              </style>
-                            </defs>
-                            <path class="cls-1"
-                              d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z"
-                              transform="translate(-0.81 -0.81)" />
-                          </svg>
-                        </div>
-                        <div class="review-text">
-                          <h6>Ashrita Jaiswal</h6>
-                          <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
-                        </div>
-                      </div>
-                      <div class="review-right">
-                        <div class="review-right-top">
-                          <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
-                          <h4>"I loved it"</h4>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut consequat. </p>
-                      </div>
-                    </div>
-
-                    <div class="rewiew-wrapper">
-                      <div class="review-left">
-                        <div class="review-img">
-                          <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
-                            <defs>
-                              <style>
-                                .cls-1 {
-                                  fill: #cc833d;
-                                }
-                              </style>
-                            </defs>
-                            <path class="cls-1"
-                              d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z"
-                              transform="translate(-0.81 -0.81)" />
-                          </svg>
-                        </div>
-                        <div class="review-text">
-                          <h6>Ashrita Jaiswal</h6>
-                          <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
-                        </div>
-                      </div>
-                      <div class="review-right">
-                        <div class="review-right-top">
-                          <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
-                          <h4>"I loved it"</h4>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut consequat. </p>
-                      </div>
-                    </div>
-
-                    <div class="rewiew-wrapper">
-                      <div class="review-left">
-                        <div class="review-img">
-                          <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
-                            <defs>
-                              <style>
-                                .cls-1 {
-                                  fill: #cc833d;
-                                }
-                              </style>
-                            </defs>
-                            <path class="cls-1"
-                              d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z"
-                              transform="translate(-0.81 -0.81)" />
-                          </svg>
-                        </div>
-                        <div class="review-text">
-                          <h6>Ashrita Jaiswal</h6>
-                          <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
-                        </div>
-                      </div>
-                      <div class="review-right">
-                        <div class="review-right-top">
-                          <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
-                          <h4>"I loved it"</h4>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut consequat. </p>
-                      </div>
-                    </div>
-
-                    <div class="rewiew-wrapper">
-                      <div class="review-left">
-                        <div class="review-img">
-                          <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
-                            <defs>
-                              <style>
-                                .cls-1 {
-                                  fill: #cc833d;
-                                }
-                              </style>
-                            </defs>
-                            <path class="cls-1"
-                              d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z"
-                              transform="translate(-0.81 -0.81)" />
-                          </svg>
-                        </div>
-                        <div class="review-text">
-                          <h6>Ashrita Jaiswal</h6>
-                          <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
-                        </div>
-                      </div>
-                      <div class="review-right">
-                        <div class="review-right-top">
-                          <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
-                          <h4>"I loved it"</h4>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut consequat. </p>
-                      </div>
-                    </div>
-
                   </div>
-
+                  <?php } ?>
                 </div>
-                <div class="load-btn">
+                <div class="load-btn d-none">
                   <a href="#" class="cmn-btn lg-btn">Load More</a>
                 </div>
               </div>

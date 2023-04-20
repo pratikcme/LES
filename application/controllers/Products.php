@@ -294,6 +294,7 @@ class Products extends User_Controller
 		$data['item_weight_id'] = $item_weight_id;
 		$data['BranchDetails'] = $this->this_model->getBranchDtails();
 		$data['product_weight_id'] = $this->uri->segment(4);
+		
 		$this->loadView($this->user_layout, $data);
 	}
 
@@ -383,15 +384,18 @@ class Products extends User_Controller
 		}
 		$starHtml = '';
 		$upbasket_starHtml = '';
+		$beauty_starHtml = '';
 		$ratting = $data['product_review'][0]->ratting;
 
 		for ($j = 1; $j <= $ratting; $j++) {
 			$starHtml .= '<i class="fas fa-star"></i>';
 			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
+			$beauty_starHtml .= '<span class="star"></span>';
 		}
 		for ($i = 1; $i <= 5 - $ratting; $i++) {
 			$starHtml .= '<i class="fas fa-star blank-ratting"></i>';
 			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
+			$beauty_starHtml .= '<span class="star star-active"></span>';
 		}
 
 		$response = [
@@ -416,6 +420,7 @@ class Products extends User_Controller
 			'avgRatting' => round($avgr),
 			'varientWishStarRatting' => $starHtml,
 			'upbasket_starHtml' => $upbasket_starHtml . '  ' . round($avgr),
+			'beauty_starHtml' => '<div class="rating stars3_5" >'.$beauty_starHtml . '</div><div><span>(' .round($avgr).')</span></div>',
 			'upbasket_thumb' => $upbasket_thumb,
 			'upbasket_zoom_image' => $upbasket_zoom_image,
 

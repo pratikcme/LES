@@ -264,7 +264,7 @@ var ADDPRODUCT = function () {
           }
 
           $('#review_section').html(output.reviewSection);
-          $('#starRatting').html(output.upbasket_starHtml);
+          $('#starRatting').html(output.beauty_starHtml);
           var product_price = (output.discount_per > 0) ? siteCurrency + " " + output.product_price : " ";
           $('#dynamic_price').html(siteCurrency + ' ' + output.discount_price + ' <span><strike>' + product_price + '</strike></span>');
 
