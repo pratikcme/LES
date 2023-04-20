@@ -65,7 +65,7 @@
                <span class="star star-active"></span>
               <?php } ?>
             </div>
-            <div><span>(<?= $productDetail[0]->rating['rating'] ?> )</span></div>
+            <div><span>(<?= $productDetail[0]->rating['rating'] ?>)</span></div>
           </div>
           <h3 class="notranslate" id="dynamic_price">
             <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
