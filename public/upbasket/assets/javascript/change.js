@@ -68,9 +68,8 @@ var CHANGE = function () {
         return /^-?\d*$/.test(value) && (value.length <= "15");
     });
 
-    alert(1);
+
     var handleChangePass = function () {
-        alert(2);
         $('#ChangePass').validate({
             rules: {
                 profileimage: {
