@@ -2,7 +2,7 @@ $(document).ready(function () {
   var siteCurrency = $("#siteCurrency").val();
 
   $(document).on('click', '.no-btn', function () {
-    $('body').click();
+    $(".modal").hide();
   })
 
   $(document).on("click", "#ClearCart", function () {
