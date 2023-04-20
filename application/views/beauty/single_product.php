@@ -156,9 +156,9 @@
   </div>
 </section>
 
-<section>
+<section class="p-100">
   <div class="container">
-  <div class="col-xxl-12">
+    <div class="col-xxl-12">
         <div class="review-desc">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -378,7 +378,7 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
   </div>
 </section>
 
