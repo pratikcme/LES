@@ -53,6 +53,7 @@ $lang['Reach Out To Us'] = 'Reach Out To Us';
 $lang['Explore More'] = 'Explore More';
 $lang['Account'] = 'Account';
 $lang['Details'] = 'Details';
+$lang['SHOP'] = 'SHOP';
 
 $lang['Completed'] = 'Completed';
 $lang['Process'] = 'Process';

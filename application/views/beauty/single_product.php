@@ -4,13 +4,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
-        <h1>SHOP</h1>
+        <h1><?=$this->lang->line('SHOP')?></h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-            <li class="breadcrumb-item"><a href="./product-list-page.php">SHOP</a></li>
-            <li class="breadcrumb-item"><a href="./product-list-page.php">LIPS</a></li>
-            <li class="breadcrumb-item active" aria-current="page">LAKMÉ ABSOLUTE MATTE</li>
+            <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('Product Detail') ?></li>
           </ol>
         </nav>
       </div>
