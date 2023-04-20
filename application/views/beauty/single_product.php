@@ -78,7 +78,7 @@
           <!-- <h4>Tags: <span> Fresh, Oragnic</span></h4> -->
 
           <!-- <form action="" class="pro-sl"> -->
-            <select class="product_varient_id" >
+            <select class="product_varient_id" id="cars">
               <?php foreach ($varient as $key => $value) { ?>
                 <option value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>><?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
               <?php } ?>
