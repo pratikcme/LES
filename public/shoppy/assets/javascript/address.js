@@ -151,6 +151,9 @@ var ADDRESS = (function () {
     var that = $(this);
     // var x = confirm('would you like to change address');
     // if(x){
+    // console.log("id", id);
+    // console.log("that", that);
+    // return;
     $.ajax({
       url: url + "/users_account/users/set_default",
       method: "post",
@@ -161,6 +164,7 @@ var ADDRESS = (function () {
             url + "users_account/users/account?name=my_address";
           return false;
         }
+
         window.location.reload();
       },
     });
@@ -217,7 +221,7 @@ var ADDRESS = (function () {
         $("#departure_address").val(output.result[0].google_location);
         $("#departure_latitude").val(output.result[0].latitude);
         $("#departure_longitude").val(output.result[0].longitude);
-        $("#addres-popup").modal("show");
+        $("#myModal").show(); //Dk changed modal id and direct show using jquery
       },
     });
   });
