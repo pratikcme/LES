@@ -195,8 +195,8 @@ $(document).ready(function () {
   $(document).on("change", ".range", function () {
     onload(1);
   });
-  var st_price = '0';
-  var end_price = '1000';
+  var st_price = '';
+  var end_price = '';
   $(document).on("change", ".discount", function () {
     var cat_id = $("#cat_id").val();
     var sub_id = $("#sub_cat_id").val();
