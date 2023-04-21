@@ -26,11 +26,13 @@
           <h4></h4>
             <div class="right-list">
                 <div class="short-by-dropdown">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Default Sorting</option>
-                        <option value="1">By Price</option>
-                        <option value="2">By Name</option>
-                        <option value="3">By Quality</option>
+                    <select class="form-select sorting" aria-label="Default select example">
+                        <option value="all"><?= $this->lang->line('All') ?></option>
+                        <option value="alphabetically"><?= $this->lang->line('alphabetical') ?></option>
+                        <option value="high_low"><?= $this->lang->line('Price-High to Low') ?></option>
+                        <option value="low_high"><?= $this->lang->line('Price-Low to High') ?></option>
+                        <option value="discount_high_low"><?= $this->lang->line('`%` off - High to Low') ?></option>
+                        <option value="discount_low_high"><?= $this->lang->line('`%` off - low to high') ?></option>
                     </select>
 
                     <!-- ---filter-icon--- -->
