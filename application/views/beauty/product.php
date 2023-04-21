@@ -262,122 +262,25 @@
                 <!-- ------------- -->
                 <div class="product-categires-part discoutn-part">
                     <div class="categire-header">
-                        <h3>Discount</h3>
+                        <h3><?=$this->lang->line('Discount')?></h3>
                     </div>
 
                     <ul class="cate-wrp">
-                        <li>
-                            <div class="discount-wrapper">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox"  id="id21">
-                                    <label class="form-check-label" for="id21">
-                                        <h4>0-5%</h4>
-                                    </label>
-                                </div>
-
-                                <div class="discount-text">
-                                    <h5>35</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox"  id="id22">
-                                    <label class="form-check-label" for="id22">
-                                        <h4>5-10%</h4>
-                                    </label>
-                                </div>
-
-                                <div class="discount-text">
-                                    <h5>35</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="id23">
-                                    <label class="form-check-label" for="id23">
-                                        <h4>10-15%</h4>
-                                    </label>
-                                </div>
-
-                                <div class="discount-text">
-                                    <h5>35</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="id24">
-                                    <label class="form-check-label" for="id24">
-                                        <h4>15-20%</h4>
-                                    </label>
-                                </div>
-
-                                <div class="discount-text">
-                                    <h5>35</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="id25">
-                                    <label class="form-check-label" for="id25">
-                                        <h4>20-25%</h4>
-                                    </label>
-                                </div>
-
-                                <div class="discount-text">
-                                    <h5>35</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="id26">
-                                    <label class="form-check-label" for="id26">
-                                        <h4>25-30%</h4>
-                                    </label>
-                                </div>
-
-                                <div class="discount-text">
-                                    <h5>35</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="id27">
-                                    <label class="form-check-label" for="id27">
-                                        <h4>30-35%</h4>
-                                    </label>
-                                </div>
-
-                                <div class="discount-text">
-                                    <h5>35</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="id28">
-                                    <label class="form-check-label" for="id28">
-                                        <h4>More than 35%</h4>
-                                    </label>
-                                </div>
-
-                                <div class="discount-text">
-                                    <h5>35</h5>
-                                </div>
-                            </div>
-                        </li>
+                    <?php foreach ($discountDiv as $key => $value) {?>
+                      <li>
+                          <div class="discount-wrapper">
+                              <div class="form-check">
+                                  <input class="form-check-input discount" name="filter_discount" value="<?=$key?>" type="checkbox" id="id11">
+                                  <label class="form-check-label" for="id11">
+                                      <h4><?=$value?></h4>
+                                  </label>
+                          
+                              <div class="discount-text">
+                                  <h5><?=$countDiscoutWise[$key]?></h5>
+                              </div>
+                          </div>
+                      </li>
+                    <?php } ?>
                     </ul>
                 </div>
             </div>
