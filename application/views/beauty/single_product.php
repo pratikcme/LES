@@ -306,7 +306,7 @@
       </div>
       <form class="modal-body">
         <div class="rating-box">
-          <div class="rating">
+          <div class="rating flex-column">
             <div class="rating__stars">
               <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
               <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
