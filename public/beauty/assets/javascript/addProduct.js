@@ -263,6 +263,7 @@ var ADDPRODUCT = function () {
             $('#writeReviewSection').removeClass('d-none');
           }
 
+          $('#avgRating').html(output.avgRatting);
           $('#review_section').html(output.reviewSection);
           $('#starRatting').html(output.beauty_starHtml);
           var product_price = (output.discount_per > 0) ? siteCurrency + " " + output.product_price : " ";

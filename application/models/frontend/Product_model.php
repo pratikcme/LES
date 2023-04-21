@@ -475,19 +475,19 @@ class Product_model extends My_model
 
 				if (!empty($value->image) || $value->image != '') {
 					$image = $value->image;
-					if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
+					if (!file_exists('public/images/' . $this->folder . 'product_image/' . $value->image)) {
 						// $image = 'defualt.png';	
-						$image = $this->v2_common_model->default_product_image();
+						$value->image = $this->v2_common_model->default_product_image();
 					} else {
-						$image = $value->image;
+						$value->image = $value->image;
 					}
 				} else {
 					// $image = 'defualt.png'; 
-					$image = $this->v2_common_model->default_product_image();
+					$value->image = $this->v2_common_model->default_product_image();
 				}
 				$image = str_replace(' ', '%20', $image);
 
-				$data['image'] = $image;
+				$data['image'] = $value->image;
 
 				$value->name = character_limiter($value->name, 30);
 				$data['value'] = $value;
@@ -1201,12 +1201,12 @@ class Product_model extends My_model
 
 	public function insertReview($postData)
 	{
-
 		$insertData = array(
 			'user_id' => $this->session->userdata('user_id'),
 			'branch_id' => $this->session->userdata('branch_id'),
 			'product_id' => $this->utility->safe_b64decode($postData['product_id']),
 			'product_varient_id' => $this->utility->safe_b64decode($postData['varient_id']),
+			'title' => (isset($postData['title'])) ? $postData['title'] : NULL,
 			'review' => $postData['comment'],
 			'ratting' => $postData['ratetIndex'],
 			'dt_created' => date('Y-m-d h:i:s'),

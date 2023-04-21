@@ -59,6 +59,12 @@ $lang['Completed'] = 'Completed';
 $lang['Process'] = 'Process';
 $lang['Cancel'] = 'Cancel';
 
+$lang['Most Useful Review'] = 'Most Useful Review';
+$lang['Product Categories'] = 'Product Categories';
+$lang['All Categories'] = 'All Categories';
+
+
+
 
 // end other template 
 
@@ -104,7 +110,7 @@ $lang['Description'] = 'Description';
 $lang['Content'] = 'Content';
 $lang['Category'] = 'Category';
 $lang['Brand'] = 'Brand';
-$lang['related products'] = 'related products';
+$lang['related products'] = 'Related Products';
 $lang['Limited Stock'] = 'Limited Stock';
 $lang['Available(Instock)'] = 'Available (Instock)';
 

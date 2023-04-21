@@ -113,6 +113,11 @@
             <?php if ($isAvailable != '0') { ?>
               <a href="javascript:" id="order_now" class="add-cart-btn order-now"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span><?= $this->lang->line('order now') ?></a>
             <?php } ?>
+            <?php
+              $product_id = $this->uri->segment(3);
+              $varient_id = $this->uri->segment(4);
+              $url = base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id;
+            ?>
             <?php if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
                 $mobile = '91' . $BranchDetails[0]->phone_no; ?>
             <a href="https://wa.me/<?= $mobile ?>/?text=<?= $url ?>" id='whatsapp_link' target="_black"  class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
@@ -152,60 +157,66 @@
                     $sumOfRatting = 0;
                     foreach ($product_review as $key => $value) {
                       $sumOfRatting += $value->ratting;
-                    } ?>
+                    } 
+                      $rat = round($sumOfRatting / count($product_review));
+                    ?>
+                    
                     <div>
-                      <h3><strong><?=round($sumOfRatting / count($product_review))?></strong><span>/5</span></h3>
+                      <h3><strong id="avgRating"><?=(is_nan($rat))?0:$rat?></strong><span>/5</span></h3>
                     </div>
                     <div>
-                      <h4>Overall Rating</h4>
+                      <h4><?=$this->lang->line('Overall Rating')?></h4>
                       <!-- <p> 6k verified ratings </p> -->
                     </div>
                   </div>
+                  <?php 
+                  if($this->session->userdata('user_id') == '') { ?>
                   <div class="right-content">
                     <h6><!-- Write a review and win 100 reward points ! --></h6>
-                    <div class="enter-review-btn">
-                      <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- ----review-comment-part--- -->
-                <div class="review-comment-wrapper">
-                  <h3>Most Useful Review</h3>
-
-                  <div class="supportive-div">
-                  <?php foreach ($product_review as $key => $value) { ?>
-                    <div class="rewiew-wrapper">
-                      <div class="review-left">
-                        <div class="review-img">
-                          <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
-                            <defs>
-                              <style>.cls-1 {fill: #cc833d; }</style>
-                            </defs>
-                            <path class="cls-1"
-                              d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z"
-                              transform="translate(-0.81 -0.81)" />
-                          </svg>
-                        </div>
-                        <div class="review-text">
-                          <h6><?=$value->fname.' '.$value->lname?></h6>
-                          <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
-                        </div>
-                      </div>
-                      <div class="review-right">
-                        <div class="review-right-top">
-                          <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
-                          <!-- <h4>"I loved it"</h4> -->
-                        </div>
-                        <p><?=$value->review?></p>
-                      </div>
+                    <div class="enter-review-btn <?= (!empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
+                      <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><?=$this->lang->line('Write Review')?></a>
                     </div>
                   </div>
                   <?php } ?>
                 </div>
-                <div class="load-btn d-none">
-                  <a href="#" class="cmn-btn lg-btn">Load More</a>
+
+                <!-- ----review-comment-part--- -->
+                <div class="review-comment-wrapper <?= (count($product_review) == 0) ? 'd-none' : '' ?>" id="review_section">
+                  <h3><?=$this->lang->line('Most Useful Review')?></h3>
+
+                  <div class="supportive-div">
+                    <?php foreach ($product_review as $key => $value) { ?>
+                        <div class="rewiew-wrapper">
+                          <div class="review-left">
+                            <div class="review-img">
+                              <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                                <defs>
+                                  <style>.cls-1 {fill: #cc833d; }</style>
+                                </defs>
+                                <path class="cls-1"
+                                  d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z"
+                                  transform="translate(-0.81 -0.81)" />
+                              </svg>
+                            </div>
+                            <div class="review-text">
+                              <h6><?=$value->fname.' '.$value->lname?></h6>
+                              <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+                            </div>
+                          </div>
+                          <div class="review-right">
+                            <div class="review-right-top">
+                              <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
+                              <!-- <h4>"I loved it"</h4> -->
+                            </div>
+                            <p><?=$value->review?></p>
+                          </div>
+                        </div>
+                      <?php } ?>
+                  </div>
                 </div>
+                <!-- <div class="load-btn d-none">
+                  <a href="#" class="cmn-btn lg-btn">Load More</a>
+                </div> -->
               </div>
             </div>
           </div>
@@ -287,11 +298,9 @@
   </div>
 </section>
 <?php } ?>
-<input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
-<input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
 <!-- -------review-popup-- -->
-<div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<?php if ($this->session->userdata('user_id') != '') { ?>
+<div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -299,15 +308,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
             class="fa-regular fa-circle-xmark"></i></button>
       </div>
-      <form class="modal-body">
+      <form  id="reviewForm" class="modal-body" method="POST" action="<?= base_url() . 'products/productReview' ?>">
         <div class="rating-box">
-          <div class="rating">
+          <div class="rating flex-column">
             <div class="rating__stars">
-              <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
-              <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
-              <input id="rating-3" class="rating__input rating__input-3" type="radio" name="rating" value="3">
-              <input id="rating-4" class="rating__input rating__input-4" type="radio" name="rating" value="4">
-              <input id="rating-5" class="rating__input rating__input-5" type="radio" name="rating" value="5">
+              <input id="rating-1" class="rating__input rating__input-1" type="radio" name="ratetIndex" value="1">
+              <input id="rating-2" class="rating__input rating__input-2" type="radio" name="ratetIndex" value="2">
+              <input id="rating-3" class="rating__input rating__input-3" type="radio" name="ratetIndex" value="3">
+              <input id="rating-4" class="rating__input rating__input-4" type="radio" name="ratetIndex" value="4">
+              <input id="rating-5" class="rating__input rating__input-5" type="radio" name="ratetIndex" value="5">
               <label class="rating__label" for="rating-1">
                 <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
                   <g transform="translate(16,16)">
@@ -445,15 +454,19 @@
               <p class="rating__display" data-rating="5" hidden>Excellent</p>
             </div>
           </d>
-
+          <input type="hidden" name="product_id" id="product_id" value="<?= $this->uri->segment(3) ?>">
+          <input type="hidden" name="varient_id" id="varient_id" value="<?= $this->uri->segment(4) ?>">
           <div class="review-text-box">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
+            <textarea name="comment" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn cmn-btn lg-btn" data-bs-dismiss="modal">Submit</button>
+          <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" ><?= $this->lang->line('Submit') ?></button>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+<?php } ?>
+<input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
+<input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>

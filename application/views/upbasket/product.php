@@ -362,7 +362,7 @@
         </div>
         <div class="price-range-slider">
           <p class="range-value">
-            <span id="siteCurr2"><?= $this->siteCurrency ?></span>
+            <span id="siteCurr2 notranslate"><?= $this->siteCurrency ?></span>
             <input type="text" class="range" id="amount2" readonly>
             <!-- <input type="hidden"  id="start_range" value="0" readonly>
                       <input type="hidden"  id="end_range" value="150" readonly> -->
@@ -398,106 +398,24 @@
       <div class="product-categires-part discoutn-part">
         <div class="product-categires-part discoutn-part">
           <div class="categire-header">
-            <h3>Discount</h3>
+            <h3><?=$this->lang->line('Discount')?></h3>
           </div>
+          <?php $discountDiv = ['0-5%','5-10%','10-15%','15-20%','20-25%','25-30%','30-35%','More than 35%']; ?>
           <div class="row">
+          <?php foreach ($discountDiv as $key => $value) { ?>
             <div class="ctg-left col-xl-8 col-md-8 col-8">
               <div class="form-check">
-                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="0" id="id1">
+                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="<?=$key?>" id="id1">
                 <label class="form-check-label" for="id1">
-                  <h4>0-5%</h4>
+                  <h4><?=$value?></h4>
                 </label>
               </div>
 
             </div>
             <div class="ctg-right col-xl-4 col-md-4 col-4">
-              <h5><?= $countDiscoutWise[0] ?></h5>
+              <h5><?= $countDiscoutWise[$key] ?></h5>
             </div>
-
-            <div class="ctg-left col-xl-8 col-md-8 col-8">
-              <div class="form-check">
-                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="1" id="id2">
-                <label class="form-check-label" for="id2">
-                  <h4>5-10%</h4>
-                </label>
-              </div>
-            </div>
-            <div class="ctg-right col-xl-4 col-md-4 col-4">
-              <h5><?= $countDiscoutWise[1] ?></h5>
-            </div>
-
-            <div class="ctg-left col-xl-8 col-md-8 col-8">
-              <div class="form-check">
-                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="2" id="id3">
-                <label class="form-check-label" for="id3">
-                  <h4>10-15%</h4>
-                </label>
-              </div>
-            </div>
-            <div class="ctg-right col-xl-4 col-md-4 col-4">
-              <h5><?= $countDiscoutWise[2] ?></h5>
-            </div>
-
-            <div class="ctg-left col-xl-8 col-md-8 col-8">
-              <div class="form-check">
-                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="3" id="id4">
-                <label class="form-check-label" for="id4">
-                  <h4>15-20%</h4>
-                </label>
-              </div>
-            </div>
-            <div class="ctg-right col-xl-4 col-md-4 col-4">
-              <h5><?= $countDiscoutWise[3] ?></h5>
-            </div>
-
-            <div class="ctg-left col-xl-8 col-md-8 col-8">
-              <div class="form-check">
-                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="4" id="id5">
-                <label class="form-check-label" for="id5">
-                  <h4>20-25%</h4>
-                </label>
-              </div>
-            </div>
-            <div class="ctg-right col-xl-4 col-md-4 col-4">
-              <h5><?= $countDiscoutWise[4] ?></h5>
-            </div>
-
-            <div class="ctg-left col-xl-8 col-md-8 col-8">
-              <div class="form-check">
-                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="5" id="id6">
-                <label class="form-check-label" for="id6">
-                  <h4>25-30%</h4>
-                </label>
-              </div>
-            </div>
-            <div class="ctg-right col-xl-4 col-md-4 col-4">
-              <h5><?= $countDiscoutWise[5] ?></h5>
-            </div>
-
-            <div class="ctg-left col-xl-8 col-md-8 col-8">
-              <div class="form-check">
-                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="6" id="id7">
-                <label class="form-check-label" for="id7">
-                  <h4>30-35%</h4>
-                </label>
-              </div>
-            </div>
-            <div class="ctg-right col-xl-4 col-md-4 col-4">
-              <h5><?= $countDiscoutWise[6] ?></h5>
-            </div>
-
-            <div class="ctg-left col-xl-8 col-md-9 col-8">
-              <div class="form-check">
-                <input class="form-check-input discount" name="filter_discount" type="checkbox" value="7" id="id8">
-                <label class="form-check-label" for="id8">
-                  <h4>More than 35%</h4>
-                </label>
-              </div>
-            </div>
-            <div class="ctg-right col-xl-4 col-md-3 col-4">
-              <h5 class="end-text"><?= $countDiscoutWise[7] ?></h5>
-            </div>
-
+            <?php } ?>
 
           </div>
         </div>

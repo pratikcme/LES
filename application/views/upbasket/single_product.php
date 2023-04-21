@@ -196,9 +196,9 @@
                             <div class="review-right">
                               <div class="review-right-top">
                                 <span class="number-star"> <span><i class="fa-solid fa-star"></i></span><?= $value->ratting ?></span>
-                                <h4><?= $value->review_title ?></h4>
+                                <h4><?=$value->title?></h4>
                               </div>
-                              <h6><?= $value->fname ?> on <?= date('M d, Y') ?> </h6>
+                              <h6><?= $value->fname ?> on <?= date('M d, Y',strtotime($value->dt_created)) ?> </h6>
                               <p><?= $value->review ?></p>
                             </div>
                           </div>
@@ -207,7 +207,7 @@
                     </div>
                   </div>
                   <?php if ($this->session->userdata('user_id') != '') { ?>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 <?= (empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
+                    <div class="col-xxl-4 col-xl-4 col-lg-4 <?= (!empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
                       <div class="add_review_wrapper">
                         <h3><?= $this->lang->line('Add a review') ?></h3>
 
