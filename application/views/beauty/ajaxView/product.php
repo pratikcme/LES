@@ -29,12 +29,10 @@
                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->prod_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>">
                     <span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart') ?>
                 </a>
-                <div class="product-detail-quentity <?= $d_show ?>">
-                    <div class="qty-container">
-                        <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" name="qty" class="input-qty qty" value="<?= $addQuantity ?>" data-product_id="<?= $value->prod_id ?>" data-weight_id="<?= $value->product_weight_id ?>">
-                        <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                    </div>
+                <div class="qty-container <?= $d_show ?>">
+                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" name="qty" class="input-qty qty" value="<?= $addQuantity ?>" data-product_id="<?= $value->prod_id ?>" data-weight_id="<?= $value->product_weight_id ?>">
+                    <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
         </div>
