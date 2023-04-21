@@ -59,6 +59,9 @@ $lang['Completed'] = 'Completed';
 $lang['Process'] = 'Process';
 $lang['Cancel'] = 'Cancel';
 
+$lang['Most Useful Review'] = 'Most Useful Review';
+
+
 
 // end other template 
 

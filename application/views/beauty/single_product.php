@@ -165,7 +165,7 @@
                       <h3><strong id="avgRating"><?=(is_nan($rat))?0:$rat?></strong><span>/5</span></h3>
                     </div>
                     <div>
-                      <h4>Overall Rating</h4>
+                      <h4><?=$this->lang->line('Overall Rating')?></h4>
                       <!-- <p> 6k verified ratings </p> -->
                     </div>
                   </div>
@@ -174,7 +174,7 @@
                   <div class="right-content">
                     <h6><!-- Write a review and win 100 reward points ! --></h6>
                     <div class="enter-review-btn <?= (!empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
-                      <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
+                      <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><?=$this->lang->line('Write Review')?></a>
                     </div>
                   </div>
                   <?php } ?>
@@ -182,7 +182,7 @@
 
                 <!-- ----review-comment-part--- -->
                 <div class="review-comment-wrapper <?= (count($product_review) == 0) ? 'd-none' : '' ?>" id="review_section">
-                  <h3>Most Useful Review</h3>
+                  <h3><?=$this->lang->line('Most Useful Review')?></h3>
 
                   <div class="supportive-div">
                     <?php foreach ($product_review as $key => $value) { ?>
