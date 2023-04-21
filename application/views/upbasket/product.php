@@ -404,7 +404,7 @@
             $discountDiv = range(0,7);
             $disBetween = ['0-5%','5-10%','10-15%','15-20%','20-25%','25-30%','30-35%','More than 35%'];
             $discountDiv = array_combine($discountDiv,$disBetween);
-            dd($discountDiv);
+            // dd($discountDiv);
           ?>
           <div class="row">
             <div class="ctg-left col-xl-8 col-md-8 col-8">
