@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->name ?></a></h3>
                 <h6 class="rating-cnt notranslate"><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?=($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span></h6>
-                <!-- <div class="rating-starts">
+                <div class="rating-starts">
                     <div class="rating stars3_5">
                         <span class="star"></span>
                         <span class="star"></span>
@@ -25,7 +25,7 @@
                         <span class="star star-active-half"></span>
                     </div>
                     <div><span>(122)</span></div>
-                </div> -->
+                </div>
                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->prod_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>">
                     <span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart') ?>
                 </a>
