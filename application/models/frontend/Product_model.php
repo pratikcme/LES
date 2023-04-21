@@ -475,19 +475,19 @@ class Product_model extends My_model
 
 				if (!empty($value->image) || $value->image != '') {
 					$image = $value->image;
-					if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
+					if (!file_exists('public/images/' . $this->folder . 'product_image/' . $value->image)) {
 						// $image = 'defualt.png';	
-						$image = $this->v2_common_model->default_product_image();
+						$value->image = $this->v2_common_model->default_product_image();
 					} else {
-						$image = $value->image;
+						$value->image = $value->image;
 					}
 				} else {
 					// $image = 'defualt.png'; 
-					$image = $this->v2_common_model->default_product_image();
+					$value->image = $this->v2_common_model->default_product_image();
 				}
 				$image = str_replace(' ', '%20', $image);
 
-				$data['image'] = $image;
+				$data['image'] = $value->image;
 
 				$value->name = character_limiter($value->name, 30);
 				$data['value'] = $value;
