@@ -211,6 +211,7 @@ class Products extends User_Controller
 
 
 		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id, $varient_id);
+		dd($data['isVarientExist']);
 		$product_review = $this->this_model->getProductReview($product_id, $varient_id);
 		$countParticularUserReview = $this->this_model->countParticularUserReview($product_id, $varient_id);
 		$data['countParticularUserReview'] = $countParticularUserReview;
@@ -372,7 +373,6 @@ class Products extends User_Controller
 			$result[0]->discount_price =  $result[0]->without_gst_price;
 		}
 		$isVarientExist = $this->this_model->checkOrderItemExist($result[0]->product_id, $result[0]->id);
-		dd($isVarientExist);
 		$data['product_review'] = $this->this_model->getProductReview($result[0]->product_id, $result[0]->id);
 
 		$userSection = $this->load->view($_SESSION['template_name'] . '/ajaxView/product_review_section', $data, true);
