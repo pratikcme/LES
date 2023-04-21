@@ -104,7 +104,7 @@ $lang['Description'] = 'Description';
 $lang['Content'] = 'Content';
 $lang['Category'] = 'Category';
 $lang['Brand'] = 'Brand';
-$lang['related products'] = 'related products';
+$lang['related products'] = 'Related Products';
 $lang['Limited Stock'] = 'Limited Stock';
 $lang['Available(Instock)'] = 'Available (Instock)';
 
