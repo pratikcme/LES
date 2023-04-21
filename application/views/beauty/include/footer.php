@@ -44,7 +44,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 
 <script src="<?=$this->theme_base_url?>/assets/js/slider.js"></script>
 
-<script src="<?=$this->theme_base_url?>/assets/js/common.js"></script>
+<!-- <script src="<?=$this->theme_base_url?>/assets/js/common.js"></script> -->
 
 <script src="<?=$this->theme_base_url?>/assets/js/dropdown.js"></script>
 
