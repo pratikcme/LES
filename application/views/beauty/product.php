@@ -25,7 +25,7 @@
             <!-- <h4>SHOWING 1–12 OF 21 RESULTS</h4> -->
             <div class="right-list">
                 <div class="short-by-dropdown">
-                    <select class="form-select sorting" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example">
                         <option value="all"><?= $this->lang->line('All') ?></option>
                         <option value="alphabetically"><?= $this->lang->line('alphabetical') ?></option>
                         <option value="high_low"><?= $this->lang->line('Price-High to Low') ?></option>
