@@ -296,6 +296,7 @@
 </section>
 <?php } ?>
 <!-- -------review-popup-- -->
+<?php if ($this->session->userdata('user_id') != '') { ?>
 <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -304,15 +305,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
             class="fa-regular fa-circle-xmark"></i></button>
       </div>
-      <form class="modal-body">
+      <form  id="reviewForm" class="modal-body" method="POST" action="<?= base_url() . 'products/productReview' ?>">
         <div class="rating-box">
           <div class="rating flex-column">
             <div class="rating__stars">
-              <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
-              <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
-              <input id="rating-3" class="rating__input rating__input-3" type="radio" name="rating" value="3">
-              <input id="rating-4" class="rating__input rating__input-4" type="radio" name="rating" value="4">
-              <input id="rating-5" class="rating__input rating__input-5" type="radio" name="rating" value="5">
+              <input id="rating-1" class="rating__input rating__input-1" type="radio" name="ratetIndex" value="1">
+              <input id="rating-2" class="rating__input rating__input-2" type="radio" name="ratetIndex" value="2">
+              <input id="rating-3" class="rating__input rating__input-3" type="radio" name="ratetIndex" value="3">
+              <input id="rating-4" class="rating__input rating__input-4" type="radio" name="ratetIndex" value="4">
+              <input id="rating-5" class="rating__input rating__input-5" type="radio" name="ratetIndex" value="5">
               <label class="rating__label" for="rating-1">
                 <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
                   <g transform="translate(16,16)">
@@ -456,11 +457,12 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn cmn-btn lg-btn" data-bs-dismiss="modal">Submit</button>
+          <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" data-bs-dismiss="modal"><?= $this->lang->line('Submit') ?></button>
         </div>
       </div>
     </div>
   </div>
 </div>
+<?php } ?>
 <input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
 <input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
