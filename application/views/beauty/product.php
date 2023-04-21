@@ -268,27 +268,10 @@
                         <h3>Product Categories</h3>
                     </div>
                     <ul class="cate-wrp">
-                        <li class="active">
-                            All Categories <span>35</span>
-                        </li>
-                        <li>
-                            Bread <span>35</span>
-                        </li>
-                        <li>
-                           Fruits <span>35</span>
-                        </li>
-                        <li>
-                            Meat <span>35</span>
-                        </li>
-                        <li>
-                            Uncategorized <span>35</span>
-                        </li>
-                        <li>
-                           Vegetables <span>35</span>
-                        </li>
-                        <li>
-                            DryFruits <span>35</span>
-                        </li>
+                    <li class="active"><?=$this->lang->line('Categories') ?></li>
+                      <?php foreach ($category as $key => $value) { ?>
+                        <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?></li>
+                      <?php } ?>
                     </ul>
                 </div>
                 <!-- --------------- -->
