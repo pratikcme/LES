@@ -56,7 +56,7 @@
                                     <ul>
                                         <li class="active"> <?=$this->lang->line('Categories') ?></li>
                                         <?php foreach ($category as $key => $value) { ?>
-                                        <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $val->name ?></li>
+                                        <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?></li>
                                         <?php } ?>
                                     </ul>
                                 </div>
