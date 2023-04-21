@@ -158,7 +158,7 @@
                     foreach ($product_review as $key => $value) {
                       $sumOfRatting += $value->ratting;
                     } 
-                      $rat = round($sumOfRatting / count($product_review))
+                      $rat = round($sumOfRatting / count($product_review));
                     ?>
                     
                     <div>
