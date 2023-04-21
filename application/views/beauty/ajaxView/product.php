@@ -20,13 +20,14 @@
                 <h6 class="rating-cnt notranslate"><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?=($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span></h6>
                 <div class="rating-starts">
                     <div class="rating stars3_5">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star star-active"></span>
-                        <span class="star star-active-half"></span>
+                        <?php for ($j=1;$j<=$value->ratting['rating'];$j++) {?>
+                            <span class="star"></span>
+                        <?php } ?>
+                        <?php for ($i=1; $i <= 5-$value->ratting['rating']; $i++) { ?> 
+                            <span class="star star-active"></span>
+                        <?php } ?>
                     </div>
-                    <div><span>(122)</span></div>
+                    <div><span>(<?=$value->ratting['rating']?>)</span></div>
                 </div>
                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->prod_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>">
                     <span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart') ?>
