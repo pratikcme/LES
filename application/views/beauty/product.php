@@ -271,7 +271,6 @@
             <!-- ---left-product-list--- -->
             <div class="show-div-wrapper">
                 <div class="main-listing-wrapper" id="ajaxProduct">
-                    
                 </div>
             </div>
 
