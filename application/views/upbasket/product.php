@@ -398,13 +398,9 @@
       <div class="product-categires-part discoutn-part">
         <div class="product-categires-part discoutn-part">
           <div class="categire-header">
-            <h3>Discount</h3>
+            <h3><?=$this->lang->line('Discount')?></h3>
           </div>
-          <?php 
-            $discountDiv = range(0,7);
-            $disBetween = ['0-5%','5-10%','10-15%','15-20%','20-25%','25-30%','30-35%','More than 35%'];
-            $discountDiv = array_combine($discountDiv,$disBetween);
-          ?>
+          <?php $discountDiv = ['0-5%','5-10%','10-15%','15-20%','20-25%','25-30%','30-35%','More than 35%']; ?>
           <div class="row">
           <?php foreach ($discountDiv as $key => $value) { ?>
             <div class="ctg-left col-xl-8 col-md-8 col-8">
@@ -420,6 +416,7 @@
               <h5><?= $countDiscoutWise[$key] ?></h5>
             </div>
             <?php } ?>
+
           </div>
         </div>
       </div>

@@ -125,9 +125,7 @@
                                 </div>
                                 <!-- ------------- -->
                                 <?php 
-                                  $discountDiv = range(0,7);
-                                  $disBetween = ['0-5%','5-10%','10-15%','15-20%','20-25%','25-30%','30-35%','More than 35%'];
-                                  $discountDiv = array_combine($discountDiv,$disBetween);
+                                  $discountDiv = ['0-5%','5-10%','10-15%','15-20%','20-25%','25-30%','30-35%','More than 35%'];
                                  ?>
                                 <div class="product-categires-part discoutn-part">
                                     <div class="categire-header">
