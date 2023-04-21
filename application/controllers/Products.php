@@ -294,7 +294,7 @@ class Products extends User_Controller
 		$data['item_weight_id'] = $item_weight_id;
 		$data['BranchDetails'] = $this->this_model->getBranchDtails();
 		$data['product_weight_id'] = $this->uri->segment(4);
-		
+
 		$this->loadView($this->user_layout, $data);
 	}
 
@@ -375,6 +375,7 @@ class Products extends User_Controller
 		$data['product_review'] = $this->this_model->getProductReview($result[0]->product_id, $result[0]->id);
 
 		$userSection = $this->load->view($_SESSION['template_name'] . '/ajaxView/product_review_section', $data, true);
+		$shoppyUserSection = $this->load->view($_SESSION['template_name'] . '/ajaxView/product_review_section', $data, true);
 		$countParticularUserReview = $this->this_model->countParticularUserReview($result[0]->product_id, $result[0]->id);
 		$avgr = 0;
 		$count = 0;
@@ -385,17 +386,20 @@ class Products extends User_Controller
 		$starHtml = '';
 		$upbasket_starHtml = '';
 		$beauty_starHtml = '';
+		$shoppy_starHtml = '';
 		$ratting = $data['product_review'][0]->ratting;
 
 		for ($j = 1; $j <= $ratting; $j++) {
 			$starHtml .= '<i class="fas fa-star"></i>';
 			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
 			$beauty_starHtml .= '<span class="star"></span>';
+			$shoppy_starHtml .= '<span class="star"></span>';
 		}
 		for ($i = 1; $i <= 5 - $ratting; $i++) {
 			$starHtml .= '<i class="fas fa-star blank-ratting"></i>';
 			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
 			$beauty_starHtml .= '<span class="star star-active"></span>';
+			$shoppy_starHtml .= '<span class="star star-active"></span>';
 		}
 
 		$response = [
@@ -414,14 +418,16 @@ class Products extends User_Controller
 			'product_variant_id' => $this->utility->safe_b64encode($result[0]->id),
 			'product_id' => $this->utility->safe_b64encode($result[0]->product_id),
 			'reviewSection' => $userSection,
+			'shoppyUserSection' => $shoppyUserSection,
 			'isVarientExist' => (empty($isVarientExist)) ? 0 : count($isVarientExist),
 			'countParticularUserReview' => $countParticularUserReview,
 			'productReviewCount' => count($data['product_review']),
 			'avgRatting' => round($avgr),
 			'varientWishStarRatting' => $starHtml,
 			'upbasket_starHtml' => $upbasket_starHtml . '  ' . round($avgr),
-			'beauty_starHtml' => '<div class="rating stars3_5" >'.$beauty_starHtml . '</div><div><span>(' .round($avgr).')</span></div>',
+			'beauty_starHtml' => '<div class="rating stars3_5" >' . $beauty_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',
 			'upbasket_thumb' => $upbasket_thumb,
+			'shoppy_starHtml' => $shoppy_starHtml,
 			'upbasket_zoom_image' => $upbasket_zoom_image,
 
 

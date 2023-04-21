@@ -123,9 +123,12 @@ class Category_model extends My_model
                     $image = '';
                 }
                 $upload_path = "./public/images/" . $this->folder . "category";
-                imagepalettetotruecolor($image);
+
+                // imagepalettetotruecolor($image);
+
                 $uploadResponse = upload_single_image($_FILES, 'image', $upload_path);
                 $uploadResponse['data']['file_name'];
+
                 $this->image_resize_category($uploadResponse['data']['full_path'], $uploadResponse['data']['file_name']);
 
 

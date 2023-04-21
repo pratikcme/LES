@@ -15,14 +15,14 @@
     --Damion-regular:'Damion, cursive ';
 
     /*=== colors ==*/
-    --primary-color:#C41E49;
+    --primary-color:#F5512B;
     --secondry-color:#FFE9E4;  
     --footer-bg:#294695;
     --footer-extra-bg: rgba(196, 30, 73, 0.2);  
     --white:#FFFFFF;
 
     /*========== heading-text-color ==========*/
-    --heading-black:#294695;
+    --heading-black:#030235;
     
     /*=========== paregraph-text-color ==========*/
     --light-gray:#4D4C61;
@@ -60,18 +60,18 @@
     --cart-thead-text:#030235;
     --cart-td-text-1:#030235;
     --cart-td-text-2:#414549;
-    --cart-td-text-3:#C41E49;
+    --cart-td-text-3:#F5512B;
     --cart-counter-border:#FFCEC2;
     --cart-counter-bg:#fff;
-    --cart-icon:#C41E49;
-    --proceed-checkout-btn-bg:#C41E49;
+    --cart-icon:#F5512B;
+    --proceed-checkout-btn-bg:#F5512B;
     --proceed-checkout-btn-text:#fff;
 
 
         /* ----------------checkout-process-color----- */
     --accordian-head-bg:rgba(196, 30, 73, 0.1);
     --accordian-bg:#fff;
-    --accordian-border:#C41E49;
+    --accordian-border: rgba(196, 30, 73, 0.2);
     --accordian-head-text:#0F053F;
     --accordian-icon:#F92672;
     --accordian-content-text-1:#0F053F;
@@ -84,9 +84,9 @@
     --modal-text-1:#294695;
     --modal-text-2:#030235;
     --modal-text-3:#4D4C61;
-    --continue-btn-bg:#C41E49;
+    --continue-btn-bg:#F5512B;
     --continue-btn-text:#fff;
-    --close-btn:#C41E49;
+    --close-btn:#F5512B;
 
 
         /* ------myaccount-css--- */
@@ -94,10 +94,10 @@
     --myaccoutn-tab-border:rgba(196, 30, 73, 0.1);
     --myaccoutn-tab-text:#4D4C61;
     --myaccoutn-tab-active-bg:#F5512B;
-    --myaccoutn-tab-active-border:#C41E49;
+    --myaccoutn-tab-active-border:#F5512B;
     --myaccoutn-tab-label-text:#030235;
     --myaccoutn-tab-input-bg:#FFFFFF;
-    --myaccoutn-tab-input-border:#C41E49;
+    --myaccoutn-tab-input-border:#F5512B;
      
     --category-header:rgba(196, 30, 73, 0.1);
 

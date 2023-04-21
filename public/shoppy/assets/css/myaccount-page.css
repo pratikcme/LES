@@ -288,7 +288,7 @@
     line-height: 25px;
     letter-spacing: 0.03em;
     color: var( --myaccoutn-tab-text);
-    margin-bottom: 0px;
+    margin-bottom: 0px !important;
     max-width: 500px;
     margin-bottom: 40px;
     text-align: left;

@@ -44,8 +44,12 @@
             <div class="pro-hearticon wishlist-icon" data-product_id="<?= $product_id ?>" data-product_weight_id="<?= $product_weight_id ?>">
               <i class="fa-regular fa-heart <?= (in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>"" onclick=" myFunction(this)"></i>
             </div>
-            <div class="swiper-wrapper ">
-              <?php foreach ($product_image as $key => $value) { ?>
+            <div class="swiper-wrapper " id="zoom_image">
+              <?php
+
+              foreach ($product_image as $key => $value) {
+
+              ?>
                 <div class="swiper-slide">
                   <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" /></a>
                 </div>
@@ -54,7 +58,7 @@
           </div>
 
           <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
-            <div class="swiper-wrapper ">
+            <div class="swiper-wrapper " id="image_thumb">
               <?php foreach ($product_image as $key => $value) { ?>
                 <div class="swiper-slide">
                   <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>">
@@ -171,7 +175,7 @@
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <!-- -------review-tab------ -->
-            <div class="my-review-wrapper <?= (count($product_review) == 0) ? 'd-none' : '' ?>" id="review_section">
+            <div class="my-review-wrapper">
               <!-- ----review-content--- -->
               <div class=" review-content">
                 <?php
@@ -187,14 +191,14 @@
                 </div>
                 <div class="right-content">
 
-                  <div class="enter-review-btn">
-                    <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
+                  <div class="enter-review-btn <?= (empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
+                    <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><?= $this->lang->line('Write your review') ?></a>
                   </div>
                 </div>
               </div>
 
               <!-- ----review-comment-part--- -->
-              <div class="review-comment-wrapper">
+              <div class="review-comment-wrapper <?= (count($product_review) == 0) ? 'd-none' : '' ?>" id="review_section">
                 <h3>Most Useful Review</h3>
 
                 <div class="supportive-div">
@@ -203,7 +207,7 @@
                     <div class="rewiew-wrapper">
                       <div class="review-left">
                         <div class="review-img">
-                          <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                          <svg xmlns="<?= $this->theme_base_url . '/assets/images/review-icon.svg' ?>" viewBox="0 0 24.37 23.44">
                             <defs>
                               <style>
                                 .cls-1 {
@@ -234,9 +238,7 @@
                 </div>
 
               </div>
-              <div class="load-btn">
-                <a href="#" class="cmn-btn lg-btn">Load More</a>
-              </div>
+
             </div>
           </div>
         </div>
@@ -334,9 +336,9 @@ if (!empty($related_product)) { ?>
   <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header <?= (empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
-          <h3 class="modal-title" id="exampleModalLabel"><?= $this->lang->line('Your rating') ?><<< /h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-circle-xmark"></i></button>
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel"><?= $this->lang->line('Your rating') ?></h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-circle-xmark"></i></button>
         </div>
         <form id="reviewForm" class="modal-body rating" method="POST" action="<?= base_url() . 'products/productReview' ?>">
 

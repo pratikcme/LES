@@ -274,8 +274,8 @@ var ADDPRODUCT = (function () {
             $("#writeReviewSection").removeClass("d-none");
           }
 
-          $("#review_section").html(output.reviewSection);
-          $("#starRatting").html(output.upbasket_starHtml);
+          $("#review_section").html(output.shoppyUserSection);
+          $("#starRatting").html(output.shoppy_starHtml);
 
           var strike_price = "";
           if (output.discount_per != 0) {

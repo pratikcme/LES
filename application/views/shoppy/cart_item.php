@@ -108,7 +108,10 @@
                   <?php } ?>
                 <?php } ?>
               <?php } else { ?>
-                <?php foreach ($my_cart as $key => $value) {
+                <?php
+
+
+                foreach ($my_cart as $key => $value) {
                   $calculation_price = $value->discount_price * $value->quantity;
                 ?>
                   <tbody class="product-tables">
@@ -126,7 +129,7 @@
                       </td>
                       <td>
                         <div class="cart-price-text cart-price">
-                          <span class="disc-throw <?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->product_price ?></span>
+                          <span class="disc-throw <?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></span>
                           <h3><?= $this->siteCurrency . '' . number_format((float)$value->discount_price, 2, '.', '') ?></h3>
                         </div>
                       </td>
@@ -201,7 +204,7 @@
 
         <div class="reset-btn">
           <button type="submit" id="ClearCart" class="yes-btn">Yes</button>
-          <button type="button" class="no-btn" data-dismiss="modal">No</button>
+          <button type="button" class="no-btn" data-bs-dismiss="modal" aria-label="Close">No</button>
 
 
         </div>

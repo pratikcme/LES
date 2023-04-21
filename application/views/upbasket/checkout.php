@@ -288,7 +288,9 @@
            <div class="mydiv-wrapper">
              <div class="mydiv-header">
                <h3>Your Orders</h3>
-             </div> <?php foreach ($mycart as $key => $value) { ?> <div class="order-wrapper">
+             </div> <?php foreach ($mycart as $key => $value) { ?>
+
+               <div class="order-wrapper">
                  <div class="order-wrapper-img">
                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                      <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
@@ -344,13 +346,16 @@
                      <span class='notranslate'> <?= $this->siteCurrency ?> </span>
                      <span> <?= (isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping, 2, '.', '') : '0.00' ?> </span>
                    </td>
-                 </tr> <?php if ($shopping_based_discount > 0) { ?> <tr>
+                 </tr>
+                 <?php if ($shopping_based_discount > 0) { ?>
+                   <tr>
                      <td class="cart-total-text-1"> <?= $this->lang->line('Cart Discount') ?> </td>
                      <td class="cart-total-text-2">
                        <span class='notranslate'> <?= $this->siteCurrency ?> </span>
                        <span id="shoppingBasedDiscount"> <?= $shopping_based_discount ?> </span>
                      </td>
-                   </tr> <?php } ?> <tr class="promocode-applied" style="display:none;">
+                   </tr> <?php } ?>
+                 <tr class="promocode-applied" style="display:none;">
                    <td class="cart-total-text-1"> <?= $this->lang->line('Promocode Discount') ?> </td>
                    <td class="cart-total-text-2">
                      <span class='notranslate'> <?= $this->siteCurrency ?> </span>

@@ -191,7 +191,7 @@
 
                               <?php
 
-                              $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35$', 'More than 35%'];
+                              $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35%', 'More than 35%'];
                               foreach ($discountArray as $key => $value) {
 
                               ?>

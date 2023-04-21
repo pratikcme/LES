@@ -57,7 +57,7 @@
 
   .goog-te-gadget .goog-te-combo {
     margin: 4px 0;
-    width: 150px !important;
+    width: 150px;
   }
 
   .VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate {

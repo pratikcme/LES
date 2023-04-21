@@ -1,4 +1,4 @@
-var is_self_pickup = $('#CheckisSelfPickup').val();
+var is_self_pickup = $("#CheckisSelfPickup").val();
 // if (is_self_pickup == 0) {
 //   var minDate = new Date();
 //   minDate.setDate(minDate.getDate() + 2)
@@ -28,13 +28,11 @@ if (is_self_pickup == 0) {
 
 $(function () {
   if ($("#datepicker").length) {
-    $("#datepicker").datepicker(
-      {
-        minDate: minDate,
-        maxDate: maxDate,
-        dateFormat: 'D,dd-mm-yy'
-      }
-    );
+    $("#datepicker").datepicker({
+      minDate: minDate,
+      maxDate: maxDate,
+      dateFormat: "D,dd-mm-yy",
+    });
   }
 });
 
@@ -55,8 +53,6 @@ var CHECKOUT = (function () {
         }
       });
     }
-
-
   });
 
   // if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
@@ -128,7 +124,6 @@ var CHECKOUT = (function () {
   });
   var paymentOption = "-1";
   $(document).on("click", "#payBtn", function () {
-
     if (($("#credit").checked = true)) {
       $("#paytm-checkoutjs").addClass("test");
       $(".ptm-own-element").css("display", "block !important");
@@ -171,7 +166,9 @@ var CHECKOUT = (function () {
     if (AddressNotInRange == "0") {
       // alert("We are not deliver to your selected Address");
       swal(language.We_do_not_deliver_to_your_selected_Address);
-      $("#payBtn_error").html(language.We_do_not_deliver_to_your_selected_Address);
+      $("#payBtn_error").html(
+        language.We_do_not_deliver_to_your_selected_Address
+      );
       return false;
     }
 
@@ -301,18 +298,18 @@ var CHECKOUT = (function () {
       $(".loader-main").removeClass("d-none");
       $("#stipeForm").append(
         '<input type="hidden" name="delivery_date" value="' +
-        delivery_date +
-        '" />'
+          delivery_date +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="time_slot_id" value="' +
-        time_slot_id +
-        '" />'
+          time_slot_id +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="user_gst_number" value="' +
-        user_gst_number +
-        '" />'
+          user_gst_number +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="promocode" value="' + promocode + '" />'
@@ -338,7 +335,7 @@ var CHECKOUT = (function () {
               delivery_date: delivery_date,
               user_gst_number: user_gst_number,
             },
-            success: function (output) { },
+            success: function (output) {},
           });
           onScriptLoad(details.txnToken, details.orderId, details.amount);
         }, 1000);
@@ -484,7 +481,8 @@ var CHECKOUT = (function () {
           // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
           if ($("#totalSaving").length) {
             var amount = response.data;
-            var promocodeDiscount = parseFloat(response.withoutPromo) + parseFloat(amount);
+            var promocodeDiscount =
+              parseFloat(response.withoutPromo) + parseFloat(amount);
             $("#totalSaving").html(
               siteCurrency + " " + promocodeDiscount.toFixed(2)
             );

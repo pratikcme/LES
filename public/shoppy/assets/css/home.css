@@ -701,7 +701,8 @@ bg-white{
     color: var(--white) !important;
     transition: 0.3s;
 }
-.no-btn{
+.no-btn
+{
     background: var(--secondary-color);
     border: 1px solid var(--secondary-color);
     box-shadow: 0px 4px 10px rgba(17, 64, 90, 0.2);
@@ -899,9 +900,9 @@ bg-white{
         display: flex;
     }
 
-    .products-wrap .product-card .product-im{
+    /* .products-wrap .product-card .product-im{
         height: auto;
-    }
+    } */
 
     .products-wrap .product-img-wrap p{
         left: 20px;

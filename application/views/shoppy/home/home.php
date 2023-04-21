@@ -198,7 +198,7 @@
                         <h5><?= $value->name ?></h5>
                         <div class="product-discount notranslate">
                           <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                          <p><?= $this->siteCurrency . ' ' . $value->price ?></p>
+                          <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
                         </div>
                       </a>
                       <div class="rating-starts">
@@ -279,7 +279,7 @@
                         <h5><?= $value->name ?></h5>
                         <div class="product-discount notranslate">
                           <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                          <p><?= $this->siteCurrency . ' ' . $value->price ?></p>
+                          <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
                         </div>
                       </a>
                       <div class="rating-starts">
@@ -577,7 +577,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
               <h5><?= $value->name ?></h5>
               <div class="product-discount notranslate">
                 <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                <p><?= $this->siteCurrency . ' ' . $value->price ?></p>
+                <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
               </div>
             </a>
             <div class="rating-starts">

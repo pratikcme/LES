@@ -237,7 +237,7 @@ class User_Controller extends MY_Controller
 
 
         $my_cart = $this->product_model->getMyCart();
-        
+
         $default_product_image = $this->common_model->default_product_image();
 
         $this->load->model('api_v3/common_model', 'co_model');
@@ -430,9 +430,9 @@ class Super_Admin_Controller extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata['validSuperAdmin'] == '') {
-            redirect(base_url() . 'admin');
-        }
+        // if ($this->session->userdata['validSuperAdmin'] == '') {
+        //     redirect(base_url() . 'admin');
+        // }
         $this->title = 'LaunchEstore';
     }
 }
