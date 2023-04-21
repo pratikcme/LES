@@ -63,6 +63,7 @@ $lang['Cancel'] = 'Cancel';
 $lang['Most Useful Review'] = 'المراجعة الأكثر فائدة';
 
 $lang['Product Categories'] = 'فئات المنتجات';
+$lang['All Categories'] = 'جميع الفئات';
 // end other template 
 
 

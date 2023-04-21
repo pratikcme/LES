@@ -54,7 +54,7 @@
                                         <h3><?=$this->lang->line('Product Categories') ?></h3>
                                     </div>
                                     <ul>
-                                        <li class="active"> <?=$this->lang->line('Categories') ?></li>
+                                        <li class="active"> <?=$this->lang->line('All Categories') ?></li>
                                         <?php foreach ($category as $key => $value) { ?>
                                         <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?></li>
                                         <?php } ?>
@@ -268,7 +268,7 @@
                         <h3>Product Categories</h3>
                     </div>
                     <ul class="cate-wrp">
-                    <li class="active"><?=$this->lang->line('Categories') ?></li>
+                    <li class="active"><?=$this->lang->line('All Categories') ?></li>
                       <?php foreach ($category as $key => $value) { ?>
                         <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?></li>
                       <?php } ?>
