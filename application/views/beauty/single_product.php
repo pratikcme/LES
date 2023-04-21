@@ -113,11 +113,6 @@
             <?php if ($isAvailable != '0') { ?>
               <a href="javascript:" id="order_now" class="add-cart-btn order-now"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span><?= $this->lang->line('order now') ?></a>
             <?php } ?>
-            <?php
-              $product_id = $this->uri->segment(3);
-              $varient_id = $this->uri->segment(4);
-              $url = base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id;
-            ?>
             <?php if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
                 $mobile = '91' . $BranchDetails[0]->phone_no; ?>
             <a href="https://wa.me/<?= $mobile ?>/?text=<?= $url ?>" id='whatsapp_link' target="_black"  class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
@@ -157,12 +152,9 @@
                     $sumOfRatting = 0;
                     foreach ($product_review as $key => $value) {
                       $sumOfRatting += $value->ratting;
-                    } 
-                      $rat = round($sumOfRatting / count($product_review));
-                    ?>
-                    
+                    } ?>
                     <div>
-                      <h3><strong><?=(is_nan($rat))?0:$rat?></strong><span>/5</span></h3>
+                      <h3><strong><?=round($sumOfRatting / count($product_review))?></strong><span>/5</span></h3>
                     </div>
                     <div>
                       <h4>Overall Rating</h4>
