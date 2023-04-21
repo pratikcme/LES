@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
-                <h1>SHOP</h1>
+                <h1><?=$this->lang->line('product listing')?></h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">SHOP</li>
+                        <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('product listing')?><</li>
                     </ol>
                 </nav>
             </div>
@@ -54,9 +54,9 @@
                                         <h3><?=$this->lang->line('Product Categories') ?></h3>
                                     </div>
                                     <ul>
-                                        <li class="active"> <?=$this->lang->line('Categories') ?><!-- <span>35</span> --></li>
+                                        <li class="active"> <?=$this->lang->line('Categories') ?></li>
                                         <?php foreach ($category as $key => $value) { ?>
-                                        <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $val->name ?> <!-- <span>35</span> --></li>
+                                        <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $val->name ?></li>
                                         <?php } ?>
                                     </ul>
                                 </div>
