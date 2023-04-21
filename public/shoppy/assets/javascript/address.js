@@ -112,14 +112,15 @@ var ADDRESS = (function () {
           data: { id: id },
           dataType: "json",
           success: function (output) {
-            that.parent().parent().parent().remove();
-            $("#RegisterForm")[0].reset();
+            console.log(output);
             $(".is_default").each(function () {
               var add_id = $(this).attr("data-id");
               if (add_id == output.result[0].id) {
                 $(this).find("input").prop("checked", true);
               }
             });
+            that.parent().parent().parent().remove();
+            $("#RegisterForm")[0].reset();
           },
         });
       }
