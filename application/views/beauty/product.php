@@ -51,10 +51,10 @@
 
                                 <div class="product-categires-part">
                                     <div class="categire-header">
-                                        <h3><?=$this->lang->line('Product Categories')?></h3>
+                                        <h3><?=$this->lang->line('Product Categories') ?></h3>
                                     </div>
                                     <ul>
-                                        <li class="active"> <?=$this->lang->line('Categories')?><!-- <span>35</span> --></li>
+                                        <li class="active"> <?=$this->lang->line('Categories') ?><!-- <span>35</span> --></li>
                                         <?php foreach ($category as $key => $value) { ?>
                                         <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $val->name ?> <!-- <span>35</span> --></li>
                                         <?php } ?>
