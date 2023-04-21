@@ -84,6 +84,8 @@ class product_model extends My_model
                     $this->db->where('id', $id);
                     $this->db->update('product', $data);
 
+                    $this->updateWithoutGstPrice($gst, $id);
+
 
                     $this->session->set_flashdata('msg', 'Product has been updated successfully');
                 }
@@ -107,6 +109,9 @@ class product_model extends My_model
                     $this->db->where('id', $id);
                     $this->db->where('branch_id', $branch_id);
                     $this->db->update('product', $data);
+
+                    $this->updateWithoutGstPrice($gst, $id);
+
                     $this->session->set_flashdata('msg', 'Product has been updated successfully');
                 }
                 $data['where']['product_id'] = $id;
@@ -154,13 +159,14 @@ class product_model extends My_model
                     'about' => $about,
                     'content' => $content,
                     'status' => '1',
-                    'gst'    => $gst,
+                    'gst' => $gst,
                     'display_priority'    => ($_POST['display_priority'] != '') ? $_POST['display_priority'] : NULL,
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                 );
                 $this->db->insert('product', $data);
                 $id = $this->db->insert_id();
+
                 $tags = explode(',', $tags);
                 $data['table'] = 'product_search';
                 foreach ($tags as $val) {
@@ -182,6 +188,23 @@ class product_model extends My_model
             $this->session->set_flashdata('msg_error', 'Product can not be added.');
             redirect(base_url() . 'product/product_list');
         }
+    }
+
+    public function updateWithoutGstPrice($gst, $id)
+    {
+        $data['select'] = ['*'];
+        $data['table'] = TABLE_PRODUCT_WEIGHT;
+        $data['where'] = ['product_id' => $id];
+        $res = $this->selectRecords($data);
+
+        foreach ($res as $val) :
+            unset($data);
+            $newWithoutGstPrice = $val->discount_price - ($val->discount_price * $gst / 100);
+            $data['update'] = ['without_gst_price' => $newWithoutGstPrice];
+            $data['table'] = TABLE_PRODUCT_WEIGHT;
+            $data['where'] = ['id' => $val->id];
+            $this->updateRecords($data);
+        endforeach;
     }
 
     public function getProductName($product_id)

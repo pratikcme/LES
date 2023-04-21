@@ -672,7 +672,7 @@ function getOrderListAjax($TableData)
     $sub_array[] = '<a target="_blank" href=' . base_url() . 'order/order_detail?id=' . $CI->utility->encode($row->id) . '>' . $row->order_no . '</a>';
     $sub_array[] = date('d/m/Y  h:i A', $row->dt_added);
     $sub_array[] = $row->fname . ' ' . $row->lname;
-    $sub_array[] = $row->payable_amount;
+    $sub_array[] = numberFormat($row->payable_amount);
     $sub_array[] = $payment_type;
     $sub_array[] = $order_status;
     $sub_array[] = '<input type="button" class="otp btn btn-info btn-xs" ' . $otpAttr . ' data-is_self_pickup=' . $row->isSelfPickup . ' data-id=' . $row->id . ' value=' . $otpValue . ' >';
@@ -996,7 +996,7 @@ function getOrderSummaryListAjax($TableData)
     $sub_array[] = '<a target="_blank" href=' . base_url() . 'order/order_detail?id=' . $CI->utility->encode($row->id) . '>' . $row->order_no . '</a>';
     $sub_array[] = date('d/m/Y h:i A', $row->dt_added);
     $sub_array[] = $row->fname . ' ' . $row->lname;
-    $sub_array[] = $row->payable_amount;
+    $sub_array[] = numberFormat($row->payable_amount);
     $sub_array[] = $payment_type;
     $sub_array[] = '<span class="badge badge-warning">' . $order_status . '</span>';
     $data[] = $sub_array;

@@ -19,11 +19,10 @@
               <div class="out-stock"><span class="out-heading">out of stock</span></div>
             <?php } ?>
             <div class="wishlist-wrapper">
-              <?php if ($value->new_percentage > '0') {
-                $new_discount_price = numberFormat($value->actual_price - ($value->actual_price * $value->new_percentage / 100));
+              <?php if ($value->discount_per > '0') {
               ?>
                 <div class="offer-wrap">
-                  <p><?= $value->new_percentage . ' % off' ?></p>
+                  <p><?= $value->discount_per . ' % off' ?></p>
                 </div>
               <?php } else { ?>
                 <div class="">
@@ -39,7 +38,7 @@
                 <h5><?= $value->name ?></h5>
               </a>
               <h6><span><?= $this->siteCurrency ?></span>
-                <?= number_format((float)$new_discount_price, 2, '.', '') ?></h6>
+                <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
               <p><?= ($value->available_quantity >= $value->limited_stock) ? 'Available (in stock)' : 'limited stock' ?>
               </p>
             </div>
@@ -52,7 +51,6 @@
                 $d_none = 'd-none';
               }
             }
-
             ?>
             <div class="feature-bottom-wrap ">
               <div class="cart addcartbutton d-none" data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>"> <i class="fas fa-shopping-basket"></i>

@@ -12,7 +12,6 @@ class Offer extends Admin_Controller
 
 	public function index()
 	{
-
 		$data['page'] = 'offer/list';
 		$data['js'] = array('offer.js');
 		$data['init'] = array('OFFER.table()', 'OFFER.delete()');
@@ -119,7 +118,6 @@ class Offer extends Admin_Controller
 
 	public function edit_old($id = '')
 	{
-
 		$id = $this->utility->safe_b64decode($id);
 		$data['page'] = 'banners/edit';
 		$data['js'] = array('banners.js');
@@ -147,7 +145,6 @@ class Offer extends Admin_Controller
 
 	public function removeRecord()
 	{
-
 		if ($this->input->post()) {
 			$response = $this->this_model->removeRecord($this->input->post('id'));
 			if ($response) {
@@ -191,9 +188,9 @@ class Offer extends Admin_Controller
 				}
 			}
 
-			$html .= '<tr ><td colspan="4" class="last-td"><button type="submit" id="btnSubmit" class="btn btn-danger">Add</button></td></tr>';
+			$footer_html = '<tr ><td colspan="4" class="last-td"><button type="submit" id="btnSubmit" class="btn btn-danger">Add</button></td></tr>';
 		}
-		echo json_encode(['html' => $html]);
+		echo json_encode(['html' => $html, 'footer_html' => $footer_html]);
 	}
 
 	public function test()

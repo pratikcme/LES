@@ -364,6 +364,17 @@ class Offer_model extends My_model
         $data['where']['id'] = $id;
         $img = $this->selectRecords($data);
 
+        $cur_dateTime = date('Y-m-d H:i');
+
+        $res = $this->db->query("SELECT CONCAT(DATE_FORMAT(`start_date`, '%Y-%m-%d'), ' ', TIME_FORMAT(`start_time`, '%H:%i')) AS `start_datetime`, CONCAT(DATE_FORMAT(`end_date`, '%Y-%m-%d'), ' ', TIME_FORMAT(`end_time`, '%H:%i')) AS `end_datetime` FROM `offer` WHERE id='$id'");
+        $vals = $res->result_array();
+
+        foreach ($vals as $cur) :
+            if ($cur['start_datetime'] <= $cur_dateTime && $cur['end_datetime'] >= $cur_dateTime) :
+                $this->updateOfferDiscounts($id);
+            endif;
+        endforeach;
+
         unset($data);
         if (!empty($img)) {
             $offer_image = $img[0]->image;
@@ -375,6 +386,27 @@ class Offer_model extends My_model
                 return true;
             }
         }
+    }
+
+    function updateOfferDiscounts($id)
+    {
+        $data['select'] = ['*'];
+        $data['table'] = TABLE_OFFER_DETAIL;
+        $data['where'] = ['offer_id' => $id];
+
+        $res = $this->selectRecords($data);
+
+        foreach ($res as $value) :
+            $product_varient_id = $value->product_varient_id;
+            $old_discount = $value->old_percentage;
+            $product_varient = $this->this_model->getProductVarientById($product_varient_id);
+            $price = $product_varient[0]->price;
+            $discount = ($price / 100) * $old_discount;
+            $discount_price = $price - $discount;
+            $gst = $this->this_model->getGst($product_varient[0]->product_id);
+            $without_gst_price = $discount_price - ($discount_price * $gst / 100);
+            $this->this_model->updateProductVarientById($product_varient_id, $old_discount, $discount_price, $without_gst_price);
+        endforeach;
     }
 
 
@@ -530,12 +562,24 @@ class Offer_model extends My_model
         return $this->selectRecords($data);
     }
 
-    public function updateProductVarientById($v_id, $discount, $discount_price)
+    public function getGst($p_id)
+    {
+        $data['table'] = 'product';
+        $data['select'] = ['gst'];
+        $data['where'] = ['id' => $p_id];
+
+        $res = $this->selectRecords($data);
+
+        return $res[0]->gst;
+    }
+
+    public function updateProductVarientById($v_id, $discount, $discount_price, $without_gst_price)
     {
 
         $data['table'] = 'product_weight';
         $data['update']['discount_per'] = $discount;
         $data['update']['discount_price'] = $discount_price;
+        $data['update']['without_gst_price'] = $without_gst_price;
         $data['where'] = ['id' => $v_id];
 
         $this->updateRecords($data);

@@ -24,9 +24,13 @@ class Cron extends CI_Controller
 			$new_discount = $value->new_percentage;
 			$product_varient = $this->this_model->getProductVarientById($product_varient_id);
 			$price = $product_varient[0]->price;
+
+			$gst = $this->this_model->getGst($product_varient[0]->product_id);
 			$discount = ($price / 100) * $new_discount;
 			$discount_price = $price - $discount;
-			$this->this_model->updateProductVarientById($product_varient_id, $new_discount, $discount_price);
+			$without_gst_price = $discount_price - ($discount_price * $gst / 100);
+
+			$this->this_model->updateProductVarientById($product_varient_id, $new_discount, $discount_price, $without_gst_price);
 
 			echo 'applied';
 		}
@@ -44,9 +48,11 @@ class Cron extends CI_Controller
 			$old_discount = $value->old_percentage;
 			$product_varient = $this->this_model->getProductVarientById($product_varient_id);
 			$price = $product_varient[0]->price;
+			$gst = $this->this_model->getGst($product_varient[0]->product_id);
 			$discount = ($price / 100) * $old_discount;
 			$discount_price = $price - $discount;
-			$this->this_model->updateProductVarientById($product_varient_id, $old_discount, $discount_price);
+			$without_gst_price = $discount_price - ($discount_price * $gst / 100);
+			$this->this_model->updateProductVarientById($product_varient_id, $old_discount, $discount_price, $without_gst_price);
 			echo 'rollback';
 		}
 		if (!empty($rollback)) {
