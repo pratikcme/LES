@@ -113,6 +113,11 @@
             <?php if ($isAvailable != '0') { ?>
               <a href="javascript:" id="order_now" class="add-cart-btn order-now"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span><?= $this->lang->line('order now') ?></a>
             <?php } ?>
+            <?php
+              $product_id = $this->uri->segment(3);
+              $varient_id = $this->uri->segment(4);
+              $url = base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id;
+            ?>
             <?php if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
                 $mobile = '91' . $BranchDetails[0]->phone_no; ?>
             <a href="https://wa.me/<?= $mobile ?>/?text=<?= $url ?>" id='whatsapp_link' target="_black"  class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
@@ -152,9 +157,12 @@
                     $sumOfRatting = 0;
                     foreach ($product_review as $key => $value) {
                       $sumOfRatting += $value->ratting;
-                    } ?>
+                    } 
+                      $rat = round($sumOfRatting / count($product_review));
+                    ?>
+                    
                     <div>
-                      <h3><strong><?=round($sumOfRatting / count($product_review))?></strong><span>/5</span></h3>
+                      <h3><strong><?=(is_nan($rat))?0:$rat?></strong><span>/5</span></h3>
                     </div>
                     <div>
                       <h4>Overall Rating</h4>
@@ -287,11 +295,8 @@
   </div>
 </section>
 <?php } ?>
-<input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
-<input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
 <!-- -------review-popup-- -->
-<div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -456,4 +461,6 @@
       </div>
     </div>
   </div>
-  
+</div>
+<input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
+<input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
