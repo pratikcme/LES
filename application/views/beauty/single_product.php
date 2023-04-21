@@ -451,7 +451,8 @@
               <p class="rating__display" data-rating="5" hidden>Excellent</p>
             </div>
           </d>
-
+          <input type="hidden" name="product_id" id="product_id" value="<?= $this->uri->segment(3) ?>">
+          <input type="hidden" name="varient_id" id="varient_id" value="<?= $this->uri->segment(4) ?>">
           <div class="review-text-box">
             <textarea name="comment" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
           </div>
