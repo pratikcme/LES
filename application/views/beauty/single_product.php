@@ -453,7 +453,7 @@
           </d>
 
           <div class="review-text-box">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
+            <textarea name="comment" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
           </div>
         </div>
         <div class="modal-footer">
