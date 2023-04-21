@@ -162,7 +162,7 @@
                     ?>
                     
                     <div>
-                      <h3><strong><?= $rat?></strong><span>/5</span></h3>
+                      <h3><strong><?= (is_nan($rat)) ? 0 : $rat ?></strong><span>/5</span></h3>
                     </div>
                     <div>
                       <h4>Overall Rating</h4>
