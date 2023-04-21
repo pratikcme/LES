@@ -169,16 +169,19 @@
                       <!-- <p> 6k verified ratings </p> -->
                     </div>
                   </div>
+                  <?php 
+                  if($this->session->userdata('user_id') == '') { ?>
                   <div class="right-content">
                     <h6><!-- Write a review and win 100 reward points ! --></h6>
-                    <div class="enter-review-btn">
+                    <div class="enter-review-btn <?= (!empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
                       <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
                     </div>
                   </div>
+                  <?php } ?>
                 </div>
 
                 <!-- ----review-comment-part--- -->
-                <div class="review-comment-wrapper">
+                <div class="review-comment-wrapper <?= (count($product_review) == 0) ? 'd-none' : '' ?>" id="review_section">
                   <h3>Most Useful Review</h3>
 
                   <div class="supportive-div">
