@@ -214,9 +214,9 @@
                       <?php } ?>
                     </div>
                 </div>
-                <div class="load-btn d-none">
+                <!-- <div class="load-btn d-none">
                   <a href="#" class="cmn-btn lg-btn">Load More</a>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

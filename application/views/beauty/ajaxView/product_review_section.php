@@ -1,36 +1,30 @@
-    <div class="review-content ">
-        <div class="review-left-content">
-            <?php
-            $sumOfRatting = 0;
-            foreach ($product_review as $key => $value) { 
-                $sumOfRatting += $value->ratting; 
-            } ?>
-                <div>
-                    <h3><?=$this->lang->line('Customer Reviews')?></h3>
-                    <h5>
-                    <span>
-                    <?php for ($j=1;$j<=round($sumOfRatting/count($product_review));$j++) {?>
-                        <i class="fa-solid fa-star"></i>
-                    <?php } ?>
-                    <?php for ($i=1; $i <= 5-round($sumOfRatting/count($product_review)); $i++) { ?> 
-                        <i class="fa-solid fa-star"></i>  <!--  blank star appear hear -->
-                    <?php } ?>
-                        <?=round($sumOfRatting/count($product_review))?></span>  <span><!--  174 Ratings &amp; --> <?=count($product_review)?> Reviews</span>
-                    </h5>
-                </div>
-        </div>
-    </div>                          
-    <div class="supportive-div">  
-        <?php foreach ($product_review as $key => $value) { ?>
-        <div class="rewiew-wrapper">
-            <div class="review-right">
-                <div class="review-right-top">
-                    <span class="number-star"> <span><i class="fa-solid fa-star"></i></span><?=$value->ratting?></span>
-                    <h4><?=$value->title?></h4>
-                </div>
-                <h6><?=$value->fname?> on <?=date('M d, Y',strtotime($value->dt_created))?></h6>
-                <p><?=$value->review?></p>
+    <h3>Most Useful Review</h3>
+    <div class="supportive-div">
+      <?php foreach ($product_review as $key => $value) { ?>
+          <div class="rewiew-wrapper">
+            <div class="review-left">
+              <div class="review-img">
+                <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                  <defs>
+                    <style>.cls-1 {fill: #cc833d; }</style>
+                  </defs>
+                  <path class="cls-1"
+                    d="M25.06,23.78a.92.92,0,0,1-.34.34.88.88,0,0,1-.47.13H1.75a.88.88,0,0,1-.47-.13.92.92,0,0,1-.34-.34,1,1,0,0,1-.13-.47,1,1,0,0,1,.13-.47A13.94,13.94,0,0,1,8.68,16.5a8.43,8.43,0,0,1-.79-14A8.44,8.44,0,0,1,20.83,12.4a8.52,8.52,0,0,1-3.51,4.1,13.94,13.94,0,0,1,7.74,6.34,1,1,0,0,1,.13.47A1,1,0,0,1,25.06,23.78Z"
+                    transform="translate(-0.81 -0.81)" />
+                </svg>
+              </div>
+              <div class="review-text">
+                <h6><?=$value->fname.' '.$value->lname?></h6>
+                <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+              </div>
             </div>
-        </div>
+            <div class="review-right">
+              <div class="review-right-top">
+                <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
+                <!-- <h4>"I loved it"</h4> -->
+              </div>
+              <p><?=$value->review?></p>
+            </div>
+          </div>
         <?php } ?>
     </div>
