@@ -266,20 +266,22 @@
                     </div>
 
                     <ul class="cate-wrp">
+                    <?php foreach ($discountDiv as $key => $value) {?>
                         <li>
                             <div class="discount-wrapper">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox"  id="id21">
+                                    <input class="form-check-input discount" name="filter_discount"  type="checkbox"  value="<?=$key?>" id="id21">
                                     <label class="form-check-label" for="id21">
-                                        <h4>0-5%</h4>
+                                        <h4><?=$value?></h4>
                                     </label>
                                 </div>
 
                                 <div class="discount-text">
-                                    <h5>35</h5>
+                                    <h5><?=$countDiscoutWise[$key]?></h5>
                                 </div>
                             </div>
                         </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
