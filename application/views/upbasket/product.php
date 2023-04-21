@@ -362,7 +362,7 @@
         </div>
         <div class="price-range-slider">
           <p class="range-value">
-            <span id="siteCurr2"><?= $this->siteCurrency ?></span>
+            <span id="siteCurr2 notranslate"><?= $this->siteCurrency ?></span>
             <input type="text" class="range" id="amount2" readonly>
             <!-- <input type="hidden"  id="start_range" value="0" readonly>
                       <input type="hidden"  id="end_range" value="150" readonly> -->

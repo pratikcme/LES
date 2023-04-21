@@ -60,6 +60,7 @@ $lang['Process'] = 'Process';
 $lang['Cancel'] = 'Cancel';
 
 $lang['Most Useful Review'] = 'Most Useful Review';
+$lang['Product Categories'] = 'Product Categories';
 
 
 

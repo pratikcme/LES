@@ -51,30 +51,13 @@
 
                                 <div class="product-categires-part">
                                     <div class="categire-header">
-                                        <h3>Product Categories</h3>
+                                        <h3><?=$this->lang->line('Product Categories')?></h3>
                                     </div>
                                     <ul>
-                                        <li class="active">
-                                            All Categories <span>35</span>
-                                        </li>
-                                        <li>
-                                            Bread <span>35</span>
-                                        </li>
-                                        <li>
-                                            Fruits <span>35</span>
-                                        </li>
-                                        <li>
-                                            Meat <span>35</span>
-                                        </li>
-                                        <li>
-                                            Uncategorized <span>35</span>
-                                        </li>
-                                        <li>
-                                            Vegetables <span>35</span>
-                                        </li>
-                                        <li>
-                                            DryFruits <span>35</span>
-                                        </li>
+                                        <li class="active"> <?=$this->lang->line('Categories')?><!-- <span>35</span> --></li>
+                                        <?php foreach ($category as $key => $value) { ?>
+                                        <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $val->name ?> <!-- <span>35</span> --></li>
+                                        <?php } ?>
                                     </ul>
                                 </div>
 
