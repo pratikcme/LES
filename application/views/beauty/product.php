@@ -262,25 +262,24 @@
                 <!-- ------------- -->
                 <div class="product-categires-part discoutn-part">
                     <div class="categire-header">
-                        <h3><?=$this->lang->line('Discount')?></h3>
+                        <h3>Discount</h3>
                     </div>
 
                     <ul class="cate-wrp">
-                    <?php foreach ($discountDiv as $key => $value) {?>
-                      <li>
-                          <div class="discount-wrapper">
-                              <div class="form-check">
-                                  <input class="form-check-input discount" name="filter_discount" value="<?=$key?>" type="checkbox" id="id11">
-                                  <label class="form-check-label" for="id11">
-                                      <h4><?=$value?></h4>
-                                  </label>
-                          
-                              <div class="discount-text">
-                                  <h5><?=$countDiscoutWise[$key]?></h5>
-                              </div>
-                          </div>
-                      </li>
-                    <?php } ?>
+                        <li>
+                            <div class="discount-wrapper">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"  id="id21">
+                                    <label class="form-check-label" for="id21">
+                                        <h4>0-5%</h4>
+                                    </label>
+                                </div>
+
+                                <div class="discount-text">
+                                    <h5>35</h5>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
