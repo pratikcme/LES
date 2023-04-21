@@ -196,7 +196,7 @@
                             <div class="review-right">
                               <div class="review-right-top">
                                 <span class="number-star"> <span><i class="fa-solid fa-star"></i></span><?= $value->ratting ?></span>
-                                <h4><?= $value->review_title ?></h4>
+                                <h4><?=$value->title?></h4>
                               </div>
                               <h6><?= $value->fname ?> on <?= date('M d, Y',strtotime($value->dt_created)) ?> </h6>
                               <p><?= $value->review ?></p>
