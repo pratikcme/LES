@@ -4,11 +4,13 @@
         <div href="#" class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
         <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
             <div class="card-header">
+                <h5>
                 <?php if ($value->quantity > 25) { ?>
-                    <?= $this->lang->line('Available(Instock)') ?>
+                <?= $this->lang->line('Available(Instock)') ?>
                 <?php } else { ?>
-                    <?= $this->lang->line('Limited Stock') ?>
+                <?= $this->lang->line('Limited Stock') ?>
                 <?php } ?>
+                </h5>
                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
                 </a>
