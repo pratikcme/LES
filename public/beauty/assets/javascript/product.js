@@ -196,7 +196,7 @@ $(document).ready(function () {
     onload(1);
   });
   var st_price = '';
-  var end_price = '';
+  var en_price = '';
   $(document).on("change", ".discount", function () {
     var cat_id = $("#cat_id").val();
     var sub_id = $("#sub_cat_id").val();
