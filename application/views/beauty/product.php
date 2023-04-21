@@ -22,7 +22,8 @@
 
         <!-- ----listing-title-and-filter----- -->
         <div class="lisitng-1">
-            <!-- <h4>SHOWING 1–12 OF 21 RESULTS</h4> -->
+          <!-- <h4>SHOWING 1–12 OF 21 RESULTS</h4> -->
+          <h4></h4>
             <div class="right-list">
                 <div class="short-by-dropdown">
                     <select class="form-select" aria-label="Default select example">
