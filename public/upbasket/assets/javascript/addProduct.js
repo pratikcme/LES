@@ -275,17 +275,39 @@ var ADDPRODUCT = (function () {
 
           $("#review_section").html(output.reviewSection);
           $("#starRatting").html(output.upbasket_starHtml);
-          var product_price = (output.discount_per > "0") ? siteCurrency + " " + output.product_price : " ";
-          $("#dynamic_price").html(siteCurrency + " " + output.discount_price + " <span><strike>" + product_price + "</strike></span>");
+          var product_price =
+            output.discount_per > "0"
+              ? siteCurrency + " " + output.product_price
+              : " ";
+          $("#dynamic_price").html(
+            siteCurrency +
+              " " +
+              output.discount_price +
+              " <span><strike>" +
+              product_price +
+              "</strike></span>"
+          );
 
           // $('#dynamic_price').html(siteCurrency + ' ' + output.discount_price + '<span><strike>' + (output.discount_per > 0) ? siteCurrency + ' ' + output.product_price : + '' + '</strike></span>');
           var imageFolder = $("#imageFolder").val();
           var images = output.images;
 
-
-          var isDiscount = (output.discount_per > 0) ? "" : "d-none";
-          var disNwislist = '<span class= "discnt ' + isDiscount + '">' + output.discount_per + '% off</span>';
-          disNwislist = disNwislist + '<div class="pro-hearticon wishlist-icon" data-product_id="' + output.product_id + '" data-product_weight_id="' + output.product_variant_id + '"><i class="fa-regular fa-heart ' + output.isInWishListUpbasket + '"></i></div>';
+          var isDiscount = output.discount_per > 0 ? "" : "d-none";
+          var disNwislist =
+            '<span class= "discnt ' +
+            isDiscount +
+            '">' +
+            output.discount_per +
+            "% off</span>";
+          disNwislist =
+            disNwislist +
+            '<div class="pro-hearticon wishlist-icon" data-product_id="' +
+            output.product_id +
+            '" data-product_weight_id="' +
+            output.product_variant_id +
+            '"><i class="fa-regular fa-heart ' +
+            output.isInWishListUpbasket +
+            '"></i></div>';
           $(".discnt").remove();
           $(".pro-hearticon").remove();
           $("#zoom_image").before(disNwislist);
@@ -468,16 +490,28 @@ var ADDPRODUCT = (function () {
 
   $("#reviewForm").validate({
     rules: {
-      review_title: { required: true },
-      comment: { required: true },
+      comment: {
+        required: true,
+      },
+      ratetIndex: {
+        required: true,
+      },
     },
     messages: {
-      review_title: { required: "Please enter product title" },
       comment: {
         required: "Please enter product review",
       },
+      ratetIndex: {
+        min: "Error",
+      },
     },
     submitHandler: function (form) {
+      let stars = $("input[name='ratetIndex']:checked").val();
+      if (stars === undefined) {
+        swal("Please Provide Star Ratting");
+        return false;
+      }
+
       $("#btnSubmit").attr("disabled", "disabled");
       form.submit();
     },

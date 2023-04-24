@@ -25,7 +25,7 @@ $(document).ready(function () {
 
 // ---- slider-js------
 $(".owl-1").owlCarousel({
-  loop: true,
+  loop: false,
   margin: 5,
   // rtl: true,
   nav: true,
