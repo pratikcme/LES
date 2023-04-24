@@ -60,36 +60,16 @@
                                 </label>
                             </div>
 
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email<span>*</span></label>
-                            <input type="text" name="email" placeholder="<?= $this->lang->line('Email*') ?>" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password<span>*</span></label>
-                            <input type="password" name="password" placeholder="<?= $this->lang->line('password*') ?>" id="password" autocomplete=off>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Confirm
-                                Password<span>*</span></label>
-                            <input type="password" name="confirm_password" placeholder="<?= $this->lang->line('Confirm password*') ?>" id="confirm_password">
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                By creating an account, you agree to our <a href="#">Terms Of Conditions</a> and <a href="#">Privacy Policy.</a>
-                            </label>
-                        </div>
+                            <button type="submit" class="sign-in-btn signin-btn-green"><?= $this->lang->line('Sign up') ?></button>
 
-                        <button type="submit" class="sign-in-btn signin-btn-green"><?= $this->lang->line('Sign up') ?></button>
+                            <p>Or</p>
 
-                        <p>Or</p>
+                            <div class="log-in-btn">
+                                <a href="<?= $googleUrl ?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span><?= $this->lang->line('continue with google') ?></a>
+                                <a href="<?= base_url() . 'login/fb_login' ?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?= $this->lang->line('continue with facebook') ?></a>
+                            </div>
 
-                        <div class="log-in-btn">
-                            <a href="<?= $googleUrl ?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span><?= $this->lang->line('continue with google') ?></a>
-                            <a href="<?= base_url() . 'login/fb_login' ?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?= $this->lang->line('continue with facebook') ?></a>
                         </div>
-
                 </div>
             </div>
 

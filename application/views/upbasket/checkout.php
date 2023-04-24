@@ -39,7 +39,7 @@
 
    .ui-datepicker {
      background-color: #fff;
-     box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2 !important);
+     box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2) !important;
      border-radius: 0.5rem !important;
      padding: 0.5rem !important;
      border: 1px solid #999 !important;
@@ -66,7 +66,8 @@
      <!-- <h2>Home /<span>Checkout</span></h2> -->
      <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
+         <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a>
+         </li>
          <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('checkout') ?></li>
        </ol>
      </nav>
@@ -132,7 +133,8 @@
                            <input class="form-check-input 
 													<?= $status ?>" data-id="
 													<?= $this->utility->safe_b64encode($value->id) ?>" type="checkbox" <?= ($value->status == '1') ? 'checked' : '' ?>>
-                           <label class="form-check-label" for="id1"> <?= $this->lang->line('Default') ?>
+                           <label class="form-check-label" for="id1">
+                             <?= $this->lang->line('Default') ?>
                          </div>
                        </div>
                        <div class="address-text mt-3">
@@ -150,7 +152,8 @@
                          </a>
                        </div>
                      </div> <?php } ?> <div class="new-address text-end">
-                     <button type="button" id="checkout-add-address" class="new-add">New Address</button>
+                     <button type="button" id="checkout-add-address" class="new-add">New
+                       Address</button>
                    </div>
                    <form method="post" id="RegisterForm" action="
 												<?= base_url() . 'users_account/users/add_address' ?>" class="ship-address" autocomplete="off">
@@ -231,7 +234,8 @@
                        <!-- <div class="col-lg-6"><div class="select-box"><label for="state" class="form-label">State<span>*</span></label><select class="form-select" aria-label="Default select example"><option selected>Gujarat</option><option value="1">Surt</option><option value="2">Baroda</option><option value="3">Ohter</option></select></div></div> -->
                        <!-- <div class="col-lg-6"><label for="zipcode" class="form-label">ZIP Code<span>*</span></label><input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="380050"></div> -->
                        <div class="save-btn text-center">
-                         <button type="submit" id="addAddress" class=" signin-btn-green"> <?= $this->lang->line('Save') ?> </button>
+                         <button type="submit" id="addAddress" class=" signin-btn-green">
+                           <?= $this->lang->line('Save') ?> </button>
                        </div>
                      </div>
                    </form>
@@ -242,7 +246,8 @@
                <div class="accordion-heading">Delivery Schedule</div>
                <div class="accordion-content  accordion-content-4">
                  <div class="dates-day-wrapper">
-                   <?php if ($isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?> <?php } ?>
+                   <?php if ($isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
+                   <?php } ?>
                    <div id="datepicker"></div>
                  </div>
                  <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
@@ -255,7 +260,8 @@
                      <?php foreach ($time_slot as $key => $value) { ?>
                        <div class="form-check">
                          <input class="time_slot_checked" type="radio" id="Default-1" name="time_slot" value=" <?= $value->id ?>" <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
-                         <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> - <?= $value->end_time ?> </label>
+                         <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> -
+                           <?= $value->end_time ?> </label>
                        </div>
                      <?php } ?>
                    </div>
@@ -269,12 +275,14 @@
                    <?php if ($payment_option != '' && $isOnlinePayment == '1') { ?>
                      <div class="form-check radio-outer-line">
                        <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?= $payment_option ?>" <?= ($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : '' ?>>
-                       <label class="form-check-label" for="Credit/Debit Card"> <?= $this->lang->line('Credit/Debit Card') ?> </label>
+                       <label class="form-check-label" for="Credit/Debit Card">
+                         <?= $this->lang->line('Credit/Debit Card') ?> </label>
                      </div> <?php } ?>
                    <?php if ($isCOD == '1') { ?>
                      <div class="form-check radio-outer-line">
                        <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="Cash On Delivery" value="0" <?= ($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : '' ?>>
-                       <label class="form-check-label" for="Cash On Delivery"> <?= $this->lang->line('Cash On Delivery') ?> </label>
+                       <label class="form-check-label" for="Cash On Delivery">
+                         <?= $this->lang->line('Cash On Delivery') ?> </label>
                      </div>
                    <?php } ?>
                  </div>
@@ -298,10 +306,12 @@
                  </div>
                  <div class="order-wrapper-text">
                    <h4>
-                     <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"> <?= $value->product_name ?> </a>
+                     <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                       <?= $value->product_name ?> </a>
                    </h4>
                    <h5> <?= $value->weight_no . ' ' . $value->weight_name ?> </h5>
-                   <h3> <?= $this->siteCurrency . number_format((float)$value->discount_price, '2', '.', '') ?> </h3>
+                   <h3> <?= $this->siteCurrency . number_format((float)$value->discount_price, '2', '.', '') ?>
+                   </h3>
                  </div>
                </div> <?php } ?>
            </div>
@@ -327,7 +337,9 @@
                </thead>
                <tbody>
                  <tr>
-                   <td class="cart-total-text-1"> <?= $this->lang->line('Sub Total') ?> <br> ( <?= ($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax) </td>
+                   <td class="cart-total-text-1"> <?= $this->lang->line('Sub Total') ?> <br> (
+                     <?= ($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)
+                   </td>
                    <td class="cart-total-text-2">
                      <span class='notranslate'> <?= $this->siteCurrency ?> </span>
                      <span id="checkout_subtotal"> <?= $getMycartSubtotal ?> </span>
@@ -344,7 +356,9 @@
                    <td class="cart-total-text-1"> <?= $this->lang->line('Delivery Charges') ?> </td>
                    <td class="cart-total-text-2">
                      <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                     <span> <?= (isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping, 2, '.', '') : '0.00' ?> </span>
+                     <span>
+                       <?= (isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping, 2, '.', '') : '0.00' ?>
+                     </span>
                    </td>
                  </tr>
                  <?php if ($shopping_based_discount > 0) { ?>
@@ -554,7 +568,7 @@
            </div>
            <h2>Thank you.</h2>
            <h3>Your order has been received</h3>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+           <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
            <h5 id="orderId"></h5>
 
            <div class="continue-btn">
