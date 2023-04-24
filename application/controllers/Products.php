@@ -389,6 +389,7 @@ class Products extends User_Controller
 		$shoppy_starHtml = '';
 		$ratting = $data['product_review'][0]->ratting;
 
+
 		for ($j = 1; $j <= $ratting; $j++) {
 			$starHtml .= '<i class="fas fa-star"></i>';
 			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
@@ -677,7 +678,6 @@ class Products extends User_Controller
 
 	public function productReview()
 	{
-
 
 		if ($this->input->post()) {
 

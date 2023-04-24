@@ -1206,7 +1206,6 @@ class Product_model extends My_model
 			'branch_id' => $this->session->userdata('branch_id'),
 			'product_id' => $this->utility->safe_b64decode($postData['product_id']),
 			'product_varient_id' => $this->utility->safe_b64decode($postData['varient_id']),
-			'title' => (isset($postData['title'])) ? $postData['title'] : NULL,
 			'review' => $postData['comment'],
 			'ratting' => $postData['ratetIndex'],
 			'dt_created' => date('Y-m-d h:i:s'),
