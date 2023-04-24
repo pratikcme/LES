@@ -151,19 +151,15 @@
       <div>
         <div>
           <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <?php
-            if (count($top_sell) != 0) {
-            ?>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="seller-tab" data-bs-toggle="tab" data-bs-target="#sellers" type="button" role="tab" aria-controls="sellers" aria-selected="true"><?= $this->lang->line('Best Sellers') ?></button>
-              </li>
-            <?php }
-            if ((count($new_arrival) != 0)) {
-            ?>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="arrival-tab" data-bs-toggle="tab" data-bs-target="#New" type="button" role="tab" aria-controls="New" aria-selected="false"><?= $this->lang->line('New Arrival') ?></button>
-              </li>
-            <?php }  ?>
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="seller-tab" data-bs-toggle="tab" data-bs-target="#sellers" type="button" role="tab" aria-controls="sellers" aria-selected="true"><?= $this->lang->line('Best Sellers') ?></button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="arrival-tab" data-bs-toggle="tab" data-bs-target="#New" type="button" role="tab" aria-controls="New" aria-selected="false"><?= $this->lang->line('New Arrival') ?></button>
+            </li>
+
           </ul>
         </div>
         <div class="tab-content" id="myTabContent">
