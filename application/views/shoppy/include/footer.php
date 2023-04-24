@@ -19,7 +19,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 
 <!-- jquery-cdn -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <!-- bootstrap-datepicker-js -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> -->
 
@@ -35,10 +36,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 <script src="<?= $this->theme_base_url . '/assets/js/jquery.basictable.min.js' ?>"></script>
 <script src="<?= $this->theme_base_url . '/assets/js/basictable.min.js' ?>"></script>
 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- SLICK JS -->
+<script src="<?= $this->theme_base_url . '/assets/js/slick.min.js' ?>"></script>
+
 <!-- custom-js -->
 <script src="<?= $this->theme_base_url . '/assets/js/swiper.js' ?>"></script>
 <script src="<?= $this->theme_base_url . '/assets/js/dropdowns.js' ?>"></script>
 <script src="<?= $this->theme_base_url . '/assets/js/slider.js' ?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/priceslider.js' ?>"></script>
 <script src="<?= $this->theme_base_url . '/assets/js/script.js' ?>"></script>
 
 
@@ -241,7 +247,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
         $('#registered').hide();
     }, 6000);
 </script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script src="<?= base_url(); ?>public/<?= $_SESSION['template_name'] ?>/assets/js/common.js?v=<?= js_version ?>">
 </script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>

@@ -18,7 +18,7 @@
 
 <!-- wow css -->
 <link rel="stylesheet" href="<?= $this->theme_base_url . '/assets/css/animate.css' ?>">
-
+<link rel="stylesheet" href="<?= $this->theme_base_url . '/assets/css/slick.css' ?>">
 <!-- owl-carousel -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>

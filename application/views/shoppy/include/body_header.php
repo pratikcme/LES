@@ -2,7 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-
+        <section class="loader-main d-none">
+          <div class="loader-wrapper">
+            <div class="dots dot2">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+        </section>
         <!-- -----header-top---- -->
         <div class="header-top">
 
@@ -246,7 +254,7 @@
 
             <div class="icon-tex">
               <p><?= $this->lang->line('your cart') ?></p>
-              <h3 class="mb-0"><?= $this->siteCurrency . '' . getMycartSubtotal() ?></h3>
+              <h3 class="mb-0" id="display_subtotal"><?= $this->siteCurrency . '' . getMycartSubtotal() ?></h3>
             </div>
 
           </div>

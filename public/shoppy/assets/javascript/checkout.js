@@ -192,6 +192,7 @@ var CHECKOUT = (function () {
     if (paymentOption == 0) {
       $(".loader-main").removeClass("d-none");
       CheckSelfPickUpEnable();
+
       $.ajax({
         url: url + "orders/makeorder",
         data: {
@@ -206,7 +207,9 @@ var CHECKOUT = (function () {
         success: function (output) {
           if (output.status == 1) {
             $(".loader-main").addClass("d-none");
-            $("#orderId").html("Your Order No : " + output.order_number);
+            $("#orderId").html(
+              "Your order number is <span>" + output.order_number + "</span>"
+            );
             $("#order_success").modal("show");
             $("#order_success").modal({ backdrop: "static", keyboard: false }); //make outside not clickable
             // setTimeout(function(){
@@ -256,7 +259,9 @@ var CHECKOUT = (function () {
           },
           success: function (output) {
             if (output.status == 1) {
-              $("#orderId").html("Your Order No : " + output.order_number);
+              $("#orderId").html(
+                "Your order number is <span>" + output.order_number + "</span>"
+              );
               $("#order_success").modal("show");
               // setTimeout(function(){
               //     window.location.href = url+'home';
