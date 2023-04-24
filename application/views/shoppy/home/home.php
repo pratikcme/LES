@@ -151,19 +151,19 @@
       <div>
         <div>
           <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="seller-tab" data-bs-toggle="tab" data-bs-target="#sellers" type="button" role="tab" aria-controls="sellers" aria-selected="true"><?= $this->lang->line('Best Sellers') ?></button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <!-- <button class="nav-link" id="featured-tab" data-bs-toggle="tab" data-bs-target="#Featured" type="button" role="tab" aria-controls="Featured" aria-selected="false">Featured</button> -->
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="arrival-tab" data-bs-toggle="tab" data-bs-target="#New" type="button" role="tab" aria-controls="New" aria-selected="false"><?= $this->lang->line('New Arrival') ?></button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="offer-tab" data-bs-toggle="tab" data-bs-target="#Offer" type="button" role="tab" aria-controls="Offer" aria-selected="false">Special
-                Offer</button>
-            </li>
+            <?php
+            if (count($top_sell) != 0) {
+            ?>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="seller-tab" data-bs-toggle="tab" data-bs-target="#sellers" type="button" role="tab" aria-controls="sellers" aria-selected="true"><?= $this->lang->line('Best Sellers') ?></button>
+              </li>
+            <?php }
+            if ((count($new_arrival) != 0)) {
+            ?>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="arrival-tab" data-bs-toggle="tab" data-bs-target="#New" type="button" role="tab" aria-controls="New" aria-selected="false"><?= $this->lang->line('New Arrival') ?></button>
+              </li>
+            <?php }  ?>
           </ul>
         </div>
         <div class="tab-content" id="myTabContent">
