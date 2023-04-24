@@ -34,6 +34,17 @@
               <div class="feat-img"> <img class="lazy" data-src="<?= $value->image ?>"> </div>
             </a>
             <div class="feature-detail">
+              <!-- Dk added -->
+              <div class="card-icon">
+                <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                  <i class="fas fa-star"></i>
+                <?php } ?>
+
+                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                  <i class="fas fa-star blank-ratting"></i>
+                <?php } ?>
+              </div>
+              <!--  -->
               <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>">
                 <h5><?= $value->name ?></h5>
               </a>
