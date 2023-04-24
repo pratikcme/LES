@@ -122,7 +122,7 @@ var ADDRESS = (function () {
                 $(this).find("input").prop("checked", true);
               }
             });
-            that.parent().parent().parent().remove();
+            that.parent().parent().remove();
             $("#RegisterForm")[0].reset();
           },
         });
