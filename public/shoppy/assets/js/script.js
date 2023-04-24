@@ -2,16 +2,14 @@ $(document).ready(function () {
   var siteCurrency = $("#siteCurrency").val();
 
   $(function () {
-    $("#slider-range").slider({
+    $("#price-range").slider({
+      step: 500,
       range: true,
       min: 0,
-      max: 10000,
-      values: [0, 0],
+      max: 20000,
+      values: [0, 20000],
       slide: function (event, ui) {
-        $("#siteCurr").remove();
-        $("#amount").val(
-          siteCurrency + " " + ui.values[0] + "-" + siteCurrency + ui.values[1]
-        );
+        $("#priceRange").val(ui.values[0] + " - " + ui.values[1]);
         var cat_id = $("#cat_id").val();
         var sub_id = $("#sub_cat_id").val();
         st_price = ui.values[0];
@@ -27,15 +25,79 @@ $(document).ready(function () {
         );
       },
     });
-
-    $("#amount").val(
-      $("#slider-range").slider("values", 0) +
-        "-" +
-        $("#slider-range").slider("values", 1)
+    $("#priceRange").val(
+      $("#price-range").slider("values", 0) +
+        " - " +
+        $("#price-range").slider("values", 1)
     );
   });
 });
 
+function onload(
+  page,
+  sub_id = "",
+  cat_id = "",
+  sort = "",
+  search = "",
+  start_price,
+  end_price
+) {
+  var search = $("#search_product").val();
+  var url = $("#url").val();
+  var rangeArray = [];
+  var getCatByURL = $("#getBycatID").val();
+  // var rangeArray = get_filter('range');
+  // var rangeArray = $('#start_range').val();
+  // alert(rangeArray);
+  var discountArray = get_filter("discount");
+  var brandArray = get_filter("brand");
+  var slider = "1";
+  $.ajax({
+    url: url + "products/subcategory/" + page,
+    data: {
+      search: search,
+      sort: sort,
+      sub_id: sub_id,
+      cat_id: cat_id,
+      brandArray: brandArray,
+      start_price: start_price,
+      end_price: end_price,
+      discountArray: discountArray,
+      page: page,
+      getCatByURL: getCatByURL,
+      slider: slider,
+    },
+    method: "post",
+    dataType: "json",
+    success: function (output) {
+      // console.log(output);
+      $("#ajaxProduct").html(output.result);
+
+      if (cat_id != "") {
+        $("#sd").css("display", "block");
+        $("#short").html(output.short_li);
+        $("#long").html(output.long_li);
+      } else {
+        $("#sd").css("display", "none");
+      }
+      $(".cate_id").each(function () {
+        var value = $(this).data("cate_id");
+        if (cat_id == value) {
+          $(this).addClass("active");
+        } else {
+          $(this).removeClass("active");
+        }
+      });
+      $(".sub_cat_link").removeClass("active_sub");
+      $(".sub_cat_link").each(function () {
+        var val = $(this).data("sub_id");
+        if (sub_id == val) {
+          $(this).addClass("active_sub");
+        }
+      });
+    },
+  });
+}
 // calender
 $(document).ready(function () {
   $("#calendar").datepicker({

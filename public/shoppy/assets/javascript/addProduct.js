@@ -256,7 +256,7 @@ var ADDPRODUCT = (function () {
         dataType: "json",
         success: function (output) {
           // alert(siteCurrency);
-          console.log(output);
+
           $("#review_count").html(
             language.Reviews + "(" + output.productReviewCount + ")"
           );
@@ -294,12 +294,19 @@ var ADDPRODUCT = (function () {
           var images = output.images;
 
           if (output.discount_per == "0") {
-            // $('#is_discounted').html('<div class=""><p></p></div> <div class="wishlist-icon" data-product_id =' + output.product_id + ' data-product_weight_id =' + output.product_variant_id + ' > <i class="far fa-heart ' + output.isInWishList + '"></i> </div>');
-            // $('.orginal-price').css('display', 'none');
+            $("#is_discounted").addClass("d-none");
           } else {
-            // $('#is_discounted').html('<div class="offer-wrap"><p>' + output.discount_per + ' % off</p></div> <div class="wishlist-icon" data-product_id =' + output.product_id + ' data-product_weight_id =' + output.product_variant_id + ' > <i class="far fa-heart ' + output.isInWishList + '"></i> </div>');
-            // $('.orginal-price').css('display', '');
+            $("#is_discounted").removeClass("d-none");
           }
+
+          if (output.isInWishListUpbasket != "") {
+            $("#wishlist").addClass(output.isInWishListUpbasket);
+          } else {
+            if ($("#wishlist").hasClass("fa-solid")) {
+              $("#wishlist").removeClass("fa-solid");
+            }
+          }
+
           if (output.varient_quantity > 25) {
             $("#is_aval_stock").html(stockMessage1);
           } else {

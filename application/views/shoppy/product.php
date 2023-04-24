@@ -243,15 +243,15 @@
                     Price Range
                   </button>
                 </h2>
-                <div class="price-range-slider">
-                  <p class="range-value">
-                    <span id="siteCurr"><?= $this->siteCurrency ?></span>
-                    <input type="text" class="range" id="amount" readonly>
 
-                  </p>
-                  <div id="slider-range" class="range-bar"></div>
 
+                <div class="slider-box">
+                  <label for="priceRange">Price Range:</label>
+                  <input type="text" id="priceRange" readonly>
+                  <div id="price-range" class="slider"></div>
                 </div>
+
+
               </div>
 
               <div class="accordion-item">

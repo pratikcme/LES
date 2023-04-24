@@ -3,6 +3,20 @@
     color: red;
   }
 
+  .loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    position: 0.3;
+    z-index: 2222;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
   .dates-day-wrapper {
     display: flex;
     gap: 20px;
@@ -61,6 +75,56 @@
   .ui-widget-content .ui-state-active {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
+  }
+
+  .dots {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .dot {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+  }
+
+  .dot2 .dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .dot2 .dot:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .dot2 .dot:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  .dot2 .dot {
+    border-radius: 50%;
+    animation: topDown2 1.2s linear forwards infinite;
+  }
+
+  @keyframes topDown2 {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    25% {
+      transform: translateY(20px);
+      background-color: #fec641;
+    }
+
+    75% {
+      transform: translateY(-20px);
+      background-color: #22bdb6;
+    }
   }
 </style>
 <!-- ----hero-section-- -->
@@ -270,8 +334,13 @@
               <div class="accordion-content">
                 <form class="accordion-content-2 accordion-5">
                   <?php
-                  if ($payment_option != '' && $isOnlinePayment == '1') { ?>
+
+                  if ($payment_option != '' && $isOnlinePayment == '1') {
+
+                    exit; ?>
+
                     <div class="form-check radio-outer-line">
+
                       <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?= $payment_option ?>" <?= ($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : '' ?>>
                       <label class="form-check-label" for="Credit/Debit Card">
                         <?= $this->lang->line('Credit/Debit Card') ?>
@@ -326,24 +395,27 @@
           </div>
         </div>
 
-        <div class="coupon-code-wrapper">
-          <img src="<?= $this->theme_base_url . '/assets/img/check-out-tag-img.png' ?>" alt="" class="check-out-tag-img">
-          <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
-        </div>
-
-        <div class="have-code-part">
-          <div class="input-group mb-3">
-            <label for="text">If you have a coupon code, please apply it below.</label><br>
-            <input type="text" class="form-control" id="promocode" placeholder="Enter Promocode" aria-label="Recipient's username" aria-describedby="basic-addon2">
-
-
-            <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
-            <div>
-              <span class="error" id="promo_err"></span>
-            </div>
+        <?php if ($shopping_based_discount == 0) { ?>
+          <div class="coupon-code-wrapper">
+            <img src="<?= $this->theme_base_url . '/assets/img/check-out-tag-img.png' ?>" alt="" class="check-out-tag-img">
+            <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
           </div>
 
-        </div>
+          <div class="have-code-part">
+            <div class="input-group mb-3">
+              <label for="text">If you have a coupon code, please apply it below.</label><br>
+              <input type="text" class="form-control" id="promocode" placeholder="Enter Promocode" aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+
+              <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
+              <div>
+                <span class="error" id="promo_err"></span>
+              </div>
+            </div>
+
+          </div>
+        <?php } ?>
+
 
         <div class="cart-totals-part">
           <table>
@@ -417,7 +489,7 @@
           </table>
         </div>
         <?php if ($phone == '1' && $is_verify == '1') { ?>
-          <a href="#" class="place-order-btn" id="payBtn" data-toggle="modal"><?= $this->lang->line('Place order') ?>
+          <a href="javascript:;" class="place-order-btn" id="payBtn" data-toggle="modal"><?= $this->lang->line('Place order') ?>
           </a>
         <?php } ?>
         <div class="our-secure-product">
@@ -548,21 +620,20 @@
   }
 </script>
 <!-- =============place order popup=========== -->
-<div id="myModal" class="modal">
+<div id="order_success" class="modal">
   <div class="container">
     <div class="modal-content">
       <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
       <div class="login-page">
         <div class="container">
           <div class="center-img">
-            <img src="./assets/img/checkout-modal-img.png" alt="">
+            <img src="<?= $this->theme_base_url . '/assets/img/checkout-modal-img.png' ?>" alt="">
           </div>
           <h2>Thank you.</h2>
           <h3>Your order has been received</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <h5>Your order number is <span>3598767</span></h5>
+          <h5 id="orderId"></h5>
           <div class="continue-btn">
-            <a href="<?= base_url() . 'home' ?>">Continue Shopping</a>
+            <a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('continue shopping') ?></a>
           </div>
         </div>
       </div>
