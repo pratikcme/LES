@@ -498,9 +498,7 @@ class Checkout_model extends My_model
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
-        echo $total_price . "<br>";
-        echo $promocode[0]->max_cart;
-        exit;
+
         if ($total_price > $promocode[0]->max_cart) {
             $response["success"] = 0;
             $response["message"] = "Maximum " . $promocode[0]->max_cart . ' Cart amount is required';
