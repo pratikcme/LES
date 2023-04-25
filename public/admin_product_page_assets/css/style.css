@@ -40,9 +40,10 @@ a {
     display: flex;
     align-items: center;
     /* padding-left: 20px; */
-    padding: 14px 0px 14px 20px;
+    padding: 14px 20px 14px 20px;
     margin-bottom: 20px;
     box-shadow: 0 0 2px #000;
+    justify-content: space-between;
 }
 
 .breadcrumb {
@@ -50,6 +51,7 @@ a {
     justify-content: left;
     align-items: flex-start;
     gap: 5px;
+    margin-bottom: 0px;
 }
 
 .breadcrumb li {
@@ -81,7 +83,7 @@ a {
 .product-details-wrapper {
     background: #FFFFFF;
     border-radius: 7px;
-    padding: 20px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     box-shadow: 0 0 2px #000;
 }
 
@@ -107,7 +109,7 @@ a {
 }
 
 .table-wrapper {
-    padding: 20px 60px 44px 20px;
+    padding: 0px 60px 44px 20px;
 }
 
 .btns-wrapper {
@@ -442,6 +444,26 @@ table.dataTable thead th {
     .dataTables_wrapper {
         width: 1120px !important;
     }
+    .add-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .delete-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .disable-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .activate {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .btns-wrapper {
+        gap: 5px;
+    
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -460,9 +482,28 @@ table.dataTable thead th {
         transition: all .3s ease;
     }
 
-    .dataTables_wrapper {
-        width: 1120px !important;
+    .add-btn {
+        padding: 8px 10px;
+        font-size: 12px;
     }
+    .delete-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .disable-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .activate {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .btns-wrapper {
+        gap: 5px;
+    
+    }
+    
+
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -491,8 +532,37 @@ table.dataTable thead th {
 
     .main-content {
         padding: 10px;
+        padding-top: 100px;
     }
-}
+    .top-div{
+        flex-direction: column;
+        align-items: flex-start;
+        gap:10px;
+    }
+    .breadcrumb{
+        padding-left: 0px !important;
+    }
+    .add-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .delete-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .disable-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .activate {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .btns-wrapper {
+        gap: 5px;
+    
+    }
+}   
 
 @media only screen and (min-width: 425px) and (max-width: 575px) {
     .my-table {
@@ -520,6 +590,35 @@ table.dataTable thead th {
 
     .main-content {
         padding: 10px;
+        padding-top: 100px;
+    }
+    .top-div{
+        flex-direction: column;
+        align-items: flex-start;
+        gap:10px;
+    }
+    .breadcrumb{
+        padding-left: 0px !important;
+    }
+    .add-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .delete-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .disable-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .activate {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .btns-wrapper {
+        gap: 5px;
+    
     }
 }
 
@@ -549,5 +648,34 @@ table.dataTable thead th {
 
     .main-content {
         padding: 10px;
+        padding-top: 100px;
+    }
+    .top-div{
+        flex-direction: column;
+        align-items: flex-start;
+        gap:10px;
+    }
+    .breadcrumb{
+        padding-left: 0px !important;
+    }
+    .add-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .delete-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .disable-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .activate {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .btns-wrapper {
+        gap: 5px;
+    
     }
 }
