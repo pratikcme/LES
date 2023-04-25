@@ -293,6 +293,7 @@ var ADDPRODUCT = (function () {
           var imageFolder = $("#imageFolder").val();
           var images = output.images;
 
+          alert(output.discount_per);
           if (output.discount_per == "0") {
             $("#is_discounted").addClass("d-none");
           } else {
