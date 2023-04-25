@@ -1069,9 +1069,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 
-------for-price-range------
-
-slider-box{
+.slider-box{
     padding-top: 50px !important;
     padding: 10px;
 }

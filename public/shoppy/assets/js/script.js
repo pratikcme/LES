@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   $(function () {
     $("#price-range").slider({
-      step: 500,
+      step: 1,
       range: true,
       min: 0,
       max: 20000,
@@ -29,6 +29,41 @@ $(document).ready(function () {
       $("#price-range").slider("values", 0) +
         " - " +
         $("#price-range").slider("values", 1)
+    );
+  });
+});
+
+$(document).ready(function () {
+  var siteCurrency = $("#siteCurrency").val();
+
+  $(function () {
+    $("#price-range_mob").slider({
+      step: 1,
+      range: true,
+      min: 0,
+      max: 20000,
+      values: [0, 20000],
+      slide: function (event, ui) {
+        $("#priceRange_mob").val(ui.values[0] + " - " + ui.values[1]);
+        var cat_id = $("#cat_id").val();
+        var sub_id = $("#sub_cat_id").val();
+        st_price = ui.values[0];
+        en_price = ui.values[1];
+        onload(
+          1,
+          sub_id,
+          cat_id,
+          (sort = ""),
+          (search = ""),
+          st_price,
+          en_price
+        );
+      },
+    });
+    $("#priceRange_mob").val(
+      $("#price-range_mob").slider("values", 0) +
+        " - " +
+        $("#price-range_mob").slider("values", 1)
     );
   });
 });
