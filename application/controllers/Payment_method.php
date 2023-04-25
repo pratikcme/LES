@@ -55,8 +55,6 @@ class Payment_method extends Vendor_Controller
 	public function status_change()
 	{
 		$id = $_GET['id'];
-		echo $id;
-		exit;
 		$this->this_model->payment_method_change_status($id);
 	}
 
