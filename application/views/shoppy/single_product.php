@@ -42,7 +42,7 @@
           <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 gallery-top">
             <span id="is_discounted" class="discnt <?= ($varientDetails[0]->discount_per != 0) ? '' : 'd-none' ?>"><?= $varientDetails[0]->discount_per ?>% off</span>
             <div class="pro-hearticon wishlist-icon" data-product_id="<?= $product_id ?>" data-product_weight_id="<?= $product_weight_id ?>">
-              <i id="wishlist" class="fa-regular fa-heart <?= (in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>" onclick=" myFunction(this)"></i>
+              <i id="wishlist" class="fa-regular fa-heart <?= (in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>"></i>
             </div>
             <div class="swiper-wrapper " id="zoom_image">
               <?php
@@ -74,9 +74,9 @@
           <div class=""></div>
 
           <h2 class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?= $productDetail[0]->name ?></h2>
-          <h5 class="wow fadeInRight" id="starRatting" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
+          <h5 class="wow fadeInRight" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
 
-            <div class="rating-starts justify-content-start">
+            <div class="rating-starts justify-content-start" id="starRatting">
               <div class="rating stars3_5 align-items-center star-in">
                 <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
                   <span class="star"></span>
@@ -84,8 +84,9 @@
                 <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
                   <span class="star star-active"></span>
                 <?php } ?>
-                <?= $productDetail[0]->rating['rating'] ?> <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
+
               </div>
+              <div> <span><?= "(" . $productDetail[0]->rating['rating'] . ")" ?> </span></div>
             </div>
 
           </h5>

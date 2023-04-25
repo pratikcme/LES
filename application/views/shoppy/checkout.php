@@ -337,7 +337,7 @@
 
                   if ($payment_option != '' && $isOnlinePayment == '1') {
 
-                    exit; ?>
+                  ?>
 
                     <div class="form-check radio-outer-line">
 
@@ -346,202 +346,202 @@
                         <?= $this->lang->line('Credit/Debit Card') ?>
                       </label>
                     </div>
-              </div> <?php } ?>
-            <?php if ($isCOD == '1') { ?>
+                  <?php } ?>
+                  <?php if ($isCOD == '1') { ?>
 
-              <div class="form-check radio-outer-line">
-                <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="Cash On Delivery" value="0" <?= ($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : '' ?>>
-                <label class="form-check-label" for="Cash">
-                  <?= $this->lang->line('Cash On Delivery') ?>
-                </label>
+                    <div class="form-check radio-outer-line">
+                      <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="Cash On Delivery" value="0" <?= ($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="Cash">
+                        <?= $this->lang->line('Cash On Delivery') ?>
+                      </label>
+                    </div>
+                  <?php } ?>
+                </form>
               </div>
-            <?php } ?>
-            </form>
             </div>
           </div>
-        </div>
-        <?php
+          <?php
 
-        if ($phone == '0' || $is_verify == '0') { ?>
-          <button type="button" id="verify" class="btn verify-btn lg-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Verify Mobile
-          </button>
-        <?php } ?>
+          if ($phone == '0' || $is_verify == '0') { ?>
+            <button type="button" id="verify" class="btn verify-btn lg-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Verify Mobile
+            </button>
+          <?php } ?>
+        </div>
       </div>
-    </div>
 
 
-    <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
-      <div class="checkout-order-detils">
-        <div class="mydiv-wrapper">
-          <div class="mydiv-header">
-            <h3>Your Orders</h3>
-          </div>
-          <div class="order-wrapper-in">
-            <?php
-            foreach ($mycart as $key => $value) { ?>
-              <div class="order-wrapper">
-                <div class="order-wrapper-img">
-                  <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
-                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt=""></a>
+      <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
+        <div class="checkout-order-detils">
+          <div class="mydiv-wrapper">
+            <div class="mydiv-header">
+              <h3>Your Orders</h3>
+            </div>
+            <div class="order-wrapper-in">
+              <?php
+              foreach ($mycart as $key => $value) { ?>
+                <div class="order-wrapper">
+                  <div class="order-wrapper-img">
+                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                      <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt=""></a>
+                  </div>
+                  <div class="order-wrapper-text">
+                    <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name . ' ' . $value->weight_no . ' ' . $value->weight_name ?></a></h4>
+                    <h5>Qty:<?= $value->quantity ?></h5>
+                    <h3><?= $this->siteCurrency . number_format((float)$value->discount_price, '2', '.', '') ?></h3>
+                  </div>
                 </div>
-                <div class="order-wrapper-text">
-                  <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name . ' ' . $value->weight_no . ' ' . $value->weight_name ?></a></h4>
-                  <h5>Qty:<?= $value->quantity ?></h5>
-                  <h3><?= $this->siteCurrency . number_format((float)$value->discount_price, '2', '.', '') ?></h3>
-                </div>
-              </div>
-            <?php } ?>
-          </div>
-        </div>
-
-        <?php if ($shopping_based_discount == 0) { ?>
-          <div class="coupon-code-wrapper">
-            <img src="<?= $this->theme_base_url . '/assets/img/check-out-tag-img.png' ?>" alt="" class="check-out-tag-img">
-            <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
+              <?php } ?>
+            </div>
           </div>
 
-          <div class="have-code-part">
-            <div class="input-group mb-3">
-              <label for="text">If you have a coupon code, please apply it below.</label><br>
-              <input type="text" class="form-control" id="promocode" placeholder="Enter Promocode" aria-label="Recipient's username" aria-describedby="basic-addon2">
-
-
-              <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
-              <div>
-                <span class="error" id="promo_err"></span>
-              </div>
+          <?php if ($shopping_based_discount == 0) { ?>
+            <div class="coupon-code-wrapper">
+              <img src="<?= $this->theme_base_url . '/assets/img/check-out-tag-img.png' ?>" alt="" class="check-out-tag-img">
+              <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
             </div>
 
-          </div>
-        <?php } ?>
+            <div class="have-code-part">
+              <div class="input-group mb-3">
+                <label for="text">If you have a coupon code, please apply it below.</label><br>
+                <input type="text" class="form-control" id="promocode" placeholder="Enter Promocode" aria-label="Recipient's username" aria-describedby="basic-addon2">
 
 
-        <div class="cart-totals-part">
-          <table>
-            <thead class="head-title">
-              <tr>
-                <th colspan="2">Cart totals</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="cart-total-text-1"><?= $this->lang->line('Sub Total') ?> <br> ( <?= ($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)</td>
-                <td class="cart-total-text-2">
-                  <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                  <span id="checkout_subtotal"> <?= $getMycartSubtotal ?> </span>
-                </td>
-              </tr>
-              <tr>
-                <td class="cart-total-text-1"><?= $this->lang->line('Tax (Gst)') ?></td>
-                <td class="cart-total-text-2">
-                  <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                  <span> <?= $TotalGstAmount ?> </span>
-                </td>
-              </tr>
-              <tr>
-                <td class="cart-total-text-1"><?= $this->lang->line('Delivery Charges') ?></td>
-                <td class="cart-total-text-2">
-                  <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                  <span> <?= (isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping, 2, '.', '') : '0.00' ?> </span>
-                </td>
-              </tr>
-              <?php if ($shopping_based_discount > 0) { ?>
+                <button type="text" class="input-group-text" id="checkPromocode">Apply</button>
+                <div>
+                  <span class="error" id="promo_err"></span>
+                </div>
+              </div>
+
+            </div>
+          <?php } ?>
+
+
+          <div class="cart-totals-part">
+            <table>
+              <thead class="head-title">
                 <tr>
-                  <td class="cart-total-text-1"> <?= $this->lang->line('Cart Discount') ?> </td>
+                  <th colspan="2">Cart totals</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cart-total-text-1"><?= $this->lang->line('Sub Total') ?> <br> ( <?= ($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)</td>
                   <td class="cart-total-text-2">
                     <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                    <span id="shoppingBasedDiscount"> <?= $shopping_based_discount ?> </span>
+                    <span id="checkout_subtotal"> <?= $getMycartSubtotal ?> </span>
                   </td>
-                </tr> <?php } ?>
-              <tr class="promocode-applied" style="display:none;">
-                <td class="cart-total-text-1"> <?= $this->lang->line('Promocode Discount') ?> </td>
-                <td class="cart-total-text-2">
-                  <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                  <span id="promoAmount"></span>
-                </td>
-              </tr>
-              <tr>
-                <td class="cart-total-text-1"> <?= $this->lang->line('Total') ?> </td>
-                <td class="cart-total-text-2">
-                  <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                  <span id="checkout_final"> <?php
-                                              if (isset($calc_shiping) && is_numeric($calc_shiping)) {
-                                                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                  $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                </tr>
+                <tr>
+                  <td class="cart-total-text-1"><?= $this->lang->line('Tax (Gst)') ?></td>
+                  <td class="cart-total-text-2">
+                    <span class='notranslate'> <?= $this->siteCurrency ?> </span>
+                    <span> <?= $TotalGstAmount ?> </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cart-total-text-1"><?= $this->lang->line('Delivery Charges') ?></td>
+                  <td class="cart-total-text-2">
+                    <span class='notranslate'> <?= $this->siteCurrency ?> </span>
+                    <span> <?= (isset($calc_shiping) && is_numeric($calc_shiping)) ? number_format((float)$calc_shiping, 2, '.', '') : '0.00' ?> </span>
+                  </td>
+                </tr>
+                <?php if ($shopping_based_discount > 0) { ?>
+                  <tr>
+                    <td class="cart-total-text-1"> <?= $this->lang->line('Cart Discount') ?> </td>
+                    <td class="cart-total-text-2">
+                      <span class='notranslate'> <?= $this->siteCurrency ?> </span>
+                      <span id="shoppingBasedDiscount"> <?= $shopping_based_discount ?> </span>
+                    </td>
+                  </tr> <?php } ?>
+                <tr class="promocode-applied" style="display:none;">
+                  <td class="cart-total-text-1"> <?= $this->lang->line('Promocode Discount') ?> </td>
+                  <td class="cart-total-text-2">
+                    <span class='notranslate'> <?= $this->siteCurrency ?> </span>
+                    <span id="promoAmount"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cart-total-text-1"> <?= $this->lang->line('Total') ?> </td>
+                  <td class="cart-total-text-2">
+                    <span class='notranslate'> <?= $this->siteCurrency ?> </span>
+                    <span id="checkout_final"> <?php
+                                                if (isset($calc_shiping) && is_numeric($calc_shiping)) {
+                                                  if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                    $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                  } else {
+                                                    $to = $getMycartSubtotal + $calc_shiping;
+                                                  }
+                                                  $f_amount = $to - $shopping_based_discount;
+                                                  echo number_format((float)$f_amount, 2, '.', '');
                                                 } else {
-                                                  $to = $getMycartSubtotal + $calc_shiping;
-                                                }
-                                                $f_amount = $to - $shopping_based_discount;
-                                                echo number_format((float)$f_amount, 2, '.', '');
-                                              } else {
-                                                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                  $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                } else {
-                                                  $tot = $getMycartSubtotal;
-                                                }
-                                                $f_amount = $tot - $shopping_based_discount;
-                                                echo number_format((float)$f_amount, 2);
-                                              } ?> </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <?php if ($phone == '1' && $is_verify == '1') { ?>
-          <a href="javascript:;" class="place-order-btn" id="payBtn" data-toggle="modal"><?= $this->lang->line('Place order') ?>
-          </a>
-        <?php } ?>
-        <div class="our-secure-product">
-          <div class="secure-product-wrapper">
-            <div class="icon">
-              <!-- <a href="#"><img src="./assets/img/ShieldCheck.png" alt=""></a> -->
-              <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/ShieldCheck.svg' ?>" viewBox="0 0 26.75 27.83">
-                <defs>
-                  <style>
-                    .ShieldCheck-icon {
-                      fill: none;
-                      stroke: #f5512b;
-                      stroke-linecap: round;
-                      stroke-linejoin: round;
-                      stroke: width 1.5em;
-                      stroke-width: 1.5px;
-                    }
-                  </style>
-                </defs>
-                <path class="ShieldCheck-icon" d="M5.62,16.13V7.88A1.14,1.14,0,0,1,6,7.08a1.15,1.15,0,0,1,.8-.33h22.5a1.15,1.15,0,0,1,.8.33,1.14,1.14,0,0,1,.33.8v8.25c0,11.81-10,15.72-12,16.38a.94.94,0,0,1-.7,0C15.65,31.85,5.62,27.94,5.62,16.13Zm18.57-1.51L15.93,22.5l-4.12-3.94" transform="translate(-4.63 -5.75)" />
-              </svg>
-            </div>
-            <div class="text">
-              <h3>100% Genuine Products</h3>
-            </div>
+                                                  if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                    $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                  } else {
+                                                    $tot = $getMycartSubtotal;
+                                                  }
+                                                  $f_amount = $tot - $shopping_based_discount;
+                                                  echo number_format((float)$f_amount, 2);
+                                                } ?> </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="secure-product-wrapper">
-            <div class="icon">
-              <!-- <a href="#"><img src="./assets/img/Medal.png" alt=""></a> -->
-              <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/Medal.svg' ?>'" viewBox="0 0 24.5 33.5">
-                <defs>
-                  <style>
-                    .medal-icon {
-                      fill: none;
-                      stroke: #f5512b;
-                      stroke-linecap: round;
-                      stroke-linejoin: round;
-                      stroke-width: 1.5px;
-                    }
-                  </style>
-                </defs>
-                <path class="medal-icon" d="M18,24.75A11.25,11.25,0,1,0,6.75,13.5,11.25,11.25,0,0,0,18,24.75Zm0-4.5a6.75,6.75,0,1,0-6.75-6.75A6.75,6.75,0,0,0,18,20.25Zm6.75,2.25V33.75L18,30.38l-6.75,3.37V22.5" transform="translate(-5.75 -1.25)" />
-              </svg>
+          <?php if ($phone == '1' && $is_verify == '1') { ?>
+            <a href="javascript:;" class="place-order-btn" id="payBtn" data-toggle="modal"><?= $this->lang->line('Place order') ?>
+            </a>
+          <?php } ?>
+          <div class="our-secure-product">
+            <div class="secure-product-wrapper">
+              <div class="icon">
+                <!-- <a href="#"><img src="./assets/img/ShieldCheck.png" alt=""></a> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/ShieldCheck.svg' ?>" viewBox="0 0 26.75 27.83">
+                  <defs>
+                    <style>
+                      .ShieldCheck-icon {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke: width 1.5em;
+                        stroke-width: 1.5px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="ShieldCheck-icon" d="M5.62,16.13V7.88A1.14,1.14,0,0,1,6,7.08a1.15,1.15,0,0,1,.8-.33h22.5a1.15,1.15,0,0,1,.8.33,1.14,1.14,0,0,1,.33.8v8.25c0,11.81-10,15.72-12,16.38a.94.94,0,0,1-.7,0C15.65,31.85,5.62,27.94,5.62,16.13Zm18.57-1.51L15.93,22.5l-4.12-3.94" transform="translate(-4.63 -5.75)" />
+                </svg>
+              </div>
+              <div class="text">
+                <h3>100% Genuine Products</h3>
+              </div>
             </div>
-            <div class="text">
-              <h3>Secure Payments</h3>
+            <div class="secure-product-wrapper">
+              <div class="icon">
+                <!-- <a href="#"><img src="./assets/img/Medal.png" alt=""></a> -->
+                <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/Medal.svg' ?>'" viewBox="0 0 24.5 33.5">
+                  <defs>
+                    <style>
+                      .medal-icon {
+                        fill: none;
+                        stroke: #f5512b;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 1.5px;
+                      }
+                    </style>
+                  </defs>
+                  <path class="medal-icon" d="M18,24.75A11.25,11.25,0,1,0,6.75,13.5,11.25,11.25,0,0,0,18,24.75Zm0-4.5a6.75,6.75,0,1,0-6.75-6.75A6.75,6.75,0,0,0,18,20.25Zm6.75,2.25V33.75L18,30.38l-6.75,3.37V22.5" transform="translate(-5.75 -1.25)" />
+                </svg>
+              </div>
+              <div class="text">
+                <h3>Secure Payments</h3>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </section>
 

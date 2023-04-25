@@ -81,7 +81,7 @@ class Checkout extends User_Controller
       exit();
     }
 
-    $data['page'] = $_SESSION['template_name'].'/checkout';
+    $data['page'] = $_SESSION['template_name'] . '/checkout';
     $data['js'] = array('checkout.js', 'address.js', 'payment_stripe.js');
     $data['init'] = array('CHECKOUT.init()', 'ADDRESS.init()');
     $data['userAddress'] = $this->this_model->getUserdetail();
@@ -107,24 +107,25 @@ class Checkout extends User_Controller
 
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
       $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      if($calc_shiping =='0.00'){
+      if ($calc_shiping == '0.00') {
         $data['calc_shiping'] = 'notInRange';
-      }else{
+      } else {
         $data['calc_shiping'] = $calc_shiping;
       }
       // dd($data['calc_shiping']);
     }
-    if ($data['calc_shiping'] == 'notInRange'){
+    if ($data['calc_shiping'] == 'notInRange') {
       $calc_shiping = 0;
       $data['AddressNotInRange'] = '0';
     } else {
       $data['AddressNotInRange'] = '1';
     }
- 
+
     $this->load->model($this->myvalues->usersAccount['model'], 'that_model');
     $data['get_address'] = $this->that_model->getUserAddress();
     $data['time_slot'] = $this->this_model->getTimeSlot();
     $getActivePaymentMethod = $this->this_model->ActivePaymentMethod();
+
     $data['payment_option'] = $getActivePaymentMethod[0]->type;
     $data['phone'] = '0';
     $data['is_verify'] = '0';
@@ -196,7 +197,8 @@ class Checkout extends User_Controller
         'payment_capture' => 1 // auto capture
       ));
       $amount = $razorpayOrder['amount'];
-      $razorpayOrderId = $razorpayOrder['id'];
+
+      $razorpayOrderId = $razorpayOrder['id'];;
       $_SESSION['razorpay_order_id'] = $razorpayOrderId;
       $d = $this->prepareData($amount, $razorpayOrderId, $publish_key);
       $data['data'] = json_encode($d);
@@ -232,7 +234,7 @@ class Checkout extends User_Controller
       $custId = "CUST_" . time();
       $callbackUrl = base_url() . "checkout/paytm_checkout";
       $currency = $currency_code;
-      
+
       $paytmParams = array();
 
       $paytmParams["body"] = array(
@@ -267,7 +269,9 @@ class Checkout extends User_Controller
       $data['Host'] = 'https://securegw.paytm.in'; // production
 
       if ($getActivePaymentMethod[0]->IsTestOrLive == 0) {
+
         /* for Staging */
+
         $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=' . $MID . '&orderId=' . $on . '';
         $data['Host'] = 'https://securegw-stage.paytm.in'; // staging
       }
@@ -323,7 +327,7 @@ class Checkout extends User_Controller
         $this->session->unset_userdata('time_slot_id');
         $this->session->unset_userdata('user_gst_number');
         $this->session->unset_userdata('My_cart');
-        $data['page'] = $_SESSION['template_name'].'/order_success';
+        $data['page'] = $_SESSION['template_name'] . '/order_success';
         $data['js'] = array('sccess_screen.js');
         $data['status'] = '1';
         $data['order_number'] =  $message->responsedata->order_number;
@@ -331,7 +335,7 @@ class Checkout extends User_Controller
         // redirect(base_url().'users_account/users/account?name=my_address');
         // redirect(base_url().'success?orderno='$message->responsedata->order_number););
       } else {
-        $data['page'] = $_SESSION['template_name'].'/order_success';
+        $data['page'] = $_SESSION['template_name'] . '/order_success';
         $data['js'] = array('payment_failed.js');
         $data['status'] = '0';
         $this->load->view($this->user_layout, $data);
@@ -339,14 +343,14 @@ class Checkout extends User_Controller
         redirect(base_url() . 'checkout');
       }
     } elseif ($_POST['RESPCODE'] == '227') {
-      $data['page'] = $_SESSION['template_name'].'/order_success';
+      $data['page'] = $_SESSION['template_name'] . '/order_success';
       // $data['js'] = array('payment_failed.js');
       $data['js'] = array('sccess_screen.js');
       $data['message'] =  $_POST['RESPMSG'];
       $data['status'] = '0';
       $this->load->view($this->user_layout, $data);
     } else {
-      $data['page'] = $_SESSION['template_name'].'/order_success';
+      $data['page'] = $_SESSION['template_name'] . '/order_success';
       $data['js'] = array('payment_failed.js');
       $data['message'] =  $_POST['RESPMSG'];
       $data['status'] = '0';
@@ -400,7 +404,6 @@ class Checkout extends User_Controller
       $calc_shiping = 0;
       if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
         $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      
       }
       // this call for currency code
       $currency = $this->this_model->checkCurrencyCode();
@@ -438,14 +441,14 @@ class Checkout extends User_Controller
         if ($message->responsedata->success) {
           $this->utility->setFlashMessage('success', $message->responsedata->message);
           $this->session->unset_userdata('My_cart');
-          $d['page'] = $_SESSION['template_name'].'/order_success';
+          $d['page'] = $_SESSION['template_name'] . '/order_success';
           $d['js'] = array('sccess_screen.js?v=' . js_version);
           $d['status'] = '1';
           $d['order_number'] = $message->responsedata->order_number;
 
           // redirect(base_url().'users_account/users/account?name=order');
         } else {
-          $d['page'] = $_SESSION['template_name'].'/order_success';
+          $d['page'] = $_SESSION['template_name'] . '/order_success';
           $d['js'] = array('payment_failed.js?v=' . js_version);
           $d['status'] = '0';
           $d['message'] = $message->responsedata->message;
@@ -634,13 +637,13 @@ class Checkout extends User_Controller
     $calc_shiping = 0;
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
       $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      if($calc_shiping =='0.00'){
+      if ($calc_shiping == '0.00') {
         $calc_shiping = 'notInRange';
       }
     }
 
     if ($calc_shiping == 'notInRange') {
-        $calc_shiping = 0;
+      $calc_shiping = 0;
     }
 
     if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type == 1) { // razor payment
@@ -747,11 +750,11 @@ if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type 
   }
 
   public function setSelfPick()
-	{
-		if ($this->input->post()) {
-			$val = $this->input->post('isSelfPickup');
-			$_SESSION['isSelfPickup'] = $val;
-			echo '1';
-		}
-	}
+  {
+    if ($this->input->post()) {
+      $val = $this->input->post('isSelfPickup');
+      $_SESSION['isSelfPickup'] = $val;
+      echo '1';
+    }
+  }
 }
