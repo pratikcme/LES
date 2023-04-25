@@ -1069,6 +1069,33 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 
+------for-price-range------
+
+slider-box{
+    padding-top: 50px !important;
+    padding: 10px;
+}
+.ui-slider .ui-state-default, .ui-widget-content .ui-state-default{
+    border-radius: 50%;
+    background: white;
+}
+.ui-slider-horizontal .ui-slider-range{
+   background: var(--primary-color);
+}
+.ui-widget.ui-widget-content {
+    border: 1px solid var(--primary-color);
+}
+.slider-box input{
+    width: 120px;
+    border: 1px solid var(--primary-color);
+    padding-left: 5px;
+}
+
+.ui-widget-content{
+    margin-top: 20px;
+}
+
+
 
 /* =====responisve=== */
 
