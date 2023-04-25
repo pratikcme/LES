@@ -76,16 +76,17 @@
           <h2 class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?= $productDetail[0]->name ?></h2>
           <h5 class="wow fadeInRight" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
 
-            <div class="rating-starts justify-content-start">
-              <div class="rating stars3_5 align-items-center star-in" id="starRatting">
+            <div class="rating-starts justify-content-start" id="starRatting">
+              <div class="rating stars3_5 align-items-center star-in">
                 <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
                   <span class="star"></span>
                 <?php } ?>
                 <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
                   <span class="star star-active"></span>
                 <?php } ?>
-                <span><?= "(" . $productDetail[0]->rating['rating'] . ")" ?> </span>
+
               </div>
+              <div> <span><?= "(" . $productDetail[0]->rating['rating'] . ")" ?> </span></div>
             </div>
 
           </h5>
