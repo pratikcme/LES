@@ -56,6 +56,101 @@
   </div>
 </section>
 
+<!-- why-choose-us -->
+<section class="why-choose-us p-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-xxl-12 col-xl-12 col-lg-12">
+        <div class="title text-center">
+          <h2>Why <span>Choose Us?</span></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+      <div class="col-xxl-4 col-xxl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="0">
+        <div class="choose-card text-center">
+          <div class="choose-card-icon">
+            <!-- <img src="./assets/img/about-us/Lifebuoy.svg" alt=""> -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/about-us/Lifebuoy.svg" viewBox="0 0 62 62">
+              <defs>
+                <style>
+                  .about-why-choose-icon {
+                    fill: none;
+                    stroke: #f5512b;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-width: 5px;
+                  }
+                </style>
+              </defs>
+              <path class="about-why-choose-icon" d="M38,66.5A28.5,28.5,0,1,0,9.5,38,28.5,28.5,0,0,0,38,66.5Zm0-16.62A11.88,11.88,0,1,0,26.12,38,11.88,11.88,0,0,0,38,49.88ZM29.6,29.6,17.84,17.84M46.4,29.6,58.16,17.84M46.4,46.4,58.16,58.16M29.6,46.4,17.84,58.16" transform="translate(-7 -7)" />
+            </svg>
+          </div>
+          <div class="choose-title">
+            <h4>Support 24/7</h4>
+          </div>
+          <div class="choose-text">
+            <p>Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-4 col-xxl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+        <div class="choose-card text-center">
+          <div class="choose-card-icon">
+            <!-- <img src="./assets/img/about-us/ArrowUUpLeft.svg" alt=""> -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/about-us/ArrowUUpLeft.svg" viewBox="0 0 62 52.5">
+              <defs>
+                <style>
+                  .about-why-choose-icon {
+                    fill: none;
+                    stroke: #f5512b;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-width: 5px;
+                  }
+                </style>
+              </defs>
+              <path class="about-why-choose-icon" d="M23.75,40.38,9.5,26.12,23.75,11.88m0,47.5H49.88a16.63,16.63,0,0,0,0-33.26H9.5" transform="translate(-7 -9.38)" />
+            </svg>
+          </div>
+          <div class="choose-title">
+            <h4>Support 24/7</h4>
+          </div>
+          <div class="choose-text">
+            <p>Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-4 col-xxl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+        <div class="choose-card text-center">
+          <div class="choose-card-icon">
+            <!-- <img src="./assets/img/about-us/Cards.svg" alt=""> -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/img/about-us/Cards.svg" viewBox="0 0 62 52.5">
+              <defs>
+                <style>
+                  .about-why-choose-icon {
+                    fill: none;
+                    stroke: #f5512b;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-width: 5px;
+                  }
+                </style>
+              </defs>
+              <path class="about-why-choose-icon" d="M54.62,23.75H11.88A2.37,2.37,0,0,0,9.5,26.12V59.38a2.37,2.37,0,0,0,2.38,2.37H54.62A2.37,2.37,0,0,0,57,59.38V26.12A2.37,2.37,0,0,0,54.62,23.75ZM19,14.25H64.12a2.39,2.39,0,0,1,2.38,2.37V52.25" transform="translate(-7 -11.75)" />
+            </svg>
+          </div>
+          <div class="choose-title">
+            <h4>Support 24/7</h4>
+          </div>
+          <div class="choose-text">
+            <p>Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!--============ client-wrap ==================-->
 <section class="client-wrap p-100 offering">
   <div class="container">
