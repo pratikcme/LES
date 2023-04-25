@@ -337,7 +337,7 @@
 
                   if ($payment_option != '' && $isOnlinePayment == '1') {
 
-                    exit; ?>
+                  ?>
 
                     <div class="form-check radio-outer-line">
 
