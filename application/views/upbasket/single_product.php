@@ -74,8 +74,8 @@
                       <h2><?= $productDetail[0]->name ?></h2>
                       <h5 id="starRatting">
                           <?php
-              for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) {
-              ?>
+                            for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) {
+                            ?>
 
                           <i class="fa-solid fa-star"></i>
                           <?php } ?>
@@ -111,15 +111,15 @@
               <option value="3">1Kg</option> -->
                       </select>
                       <?php
-            $d_none = '';
-            $d_show = 'd-none';
-            if (!empty($item_weight_id)) {
-              if (in_array($varientDetails[0]->id, $item_weight_id)) {
-                $d_show = '';
-                $d_none = 'd-none';
-              }
-            }
-            ?>
+                        $d_none = '';
+                        $d_show = 'd-none';
+                        if (!empty($item_weight_id)) {
+                            if (in_array($varientDetails[0]->id, $item_weight_id)) {
+                                $d_show = '';
+                                $d_none = 'd-none';
+                            }
+                        }
+                        ?>
                       <div class="product-detalis-btn">
                           <?php if ($isAvailable != '0') { ?>
                           <a href="javascript:" class="add-cart-btn <?= $d_none ?>" id="addtocart"><span><i
@@ -145,19 +145,19 @@
                                       aria-hidden="true"></i></span><?= $this->lang->line('order now') ?></a>
                           <?php } ?>
                           <?php
-              $product_id = $this->uri->segment(3);
-              $varient_id = $this->uri->segment(4);
-              $url = base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id;
-              ?>
+                            $product_id = $this->uri->segment(3);
+                            $varient_id = $this->uri->segment(4);
+                            $url = base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id;
+                            ?>
                           <?php if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
-                $mobile = '91' . $BranchDetails[0]->phone_no; ?>
+                                $mobile = '91' . $BranchDetails[0]->phone_no; ?>
                           <a target="_black" id='whatsapp_link' href="https://wa.me/<?= $mobile ?>/?text=<?= $url ?>"
                               class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
                           <?php } ?>
                       </div>
-                      <h3><?= $this->lang->line('Category') ?>: <span>
+                      <h3><?= $this->lang->line('Category') ?> : <span>
                               <span><?= $productDetail[0]->category_name ?></span></h3>
-                      <h4><?= $this->lang->line('Brand') ?>: <span> <span><?= $productDetail[0]->brand_name ?></span>
+                      <h4><?= $this->lang->line('Brand') ?> : <span> <span><?= $productDetail[0]->brand_name ?></span>
                       </h4>
 
                   </div>
@@ -210,10 +210,10 @@
                                           <div class="review-content">
                                               <div class="review-left-content">
                                                   <?php
-                          $sumOfRatting = 0;
-                          foreach ($product_review as $key => $value) {
-                            $sumOfRatting += $value->ratting;
-                          } ?>
+                                                    $sumOfRatting = 0;
+                                                    foreach ($product_review as $key => $value) {
+                                                        $sumOfRatting += $value->ratting;
+                                                    } ?>
                                                   <div>
                                                       <h3>Customer Reviews</h3>
                                                       <h5>
@@ -493,7 +493,7 @@
   <?php
 
 
-  if (!empty($related_product)) { ?>
+    if (!empty($related_product)) { ?>
   <section class="Latest-Products Categories-section related-product-section section">
       <img src="<?= $this->theme_base_url ?>/assets/images/related-product-bottm-left.png" alt=""
           class="latest-product-top-img">
@@ -537,15 +537,15 @@
                                   class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
                           </h6>
                           <?php
-                  $d_none = '';
-                  $d_show = 'd-none';
-                  if (!empty($item_weight_id)) {
-                    if (in_array($value->pw_id, $item_weight_id)) {
-                      $d_show = '';
-                      $d_none = 'd-none';
-                    }
-                  }
-                  ?>
+                                    $d_none = '';
+                                    $d_show = 'd-none';
+                                    if (!empty($item_weight_id)) {
+                                        if (in_array($value->pw_id, $item_weight_id)) {
+                                            $d_show = '';
+                                            $d_none = 'd-none';
+                                        }
+                                    }
+                                    ?>
                           <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>"
                               data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
                               data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
