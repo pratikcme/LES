@@ -340,6 +340,8 @@ $(document).on("change", ".vendor_nav", function () {
 
 $(document).on("click", ".wishlist-icon", function () {
   let heart = $(this).children();
+  console.log(heart);
+
   // heart.toggleClass("fas .fa-heart");
   var product_id = $(this).data("product_id");
   var product_weight_id = $(this).data("product_weight_id");
@@ -357,9 +359,9 @@ $(document).on("click", ".wishlist-icon", function () {
       if (output.status == "0") {
         window.location.href = base_url + "login";
       } else if (output.status == "inserted") {
-        heart.toggleClass("fas .fa-heart");
+        heart.toggleClass("fa-solid");
       } else if (output.status == "deleted") {
-        heart.toggleClass("fas .fa-heart");
+        heart.toggleClass("fa-solid");
       }
     },
   });
