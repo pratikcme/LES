@@ -118,8 +118,7 @@ class Payment_method_model extends My_model
 		$data = array('status' => '1', 'dt_updated' => date('Y-m-d H:i:s'));
 		$this->db->where('id', $id);
 		$res = $this->db->update('payment_method', $data);
-		echo $this->db->last_query();
-		die;
+
 		ob_get_clean();
 		header('Access-Control-Allow-Origin: *');
 		header('Content-Type: application/json');
