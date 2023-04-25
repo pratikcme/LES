@@ -303,6 +303,7 @@ var ADDPRODUCT = (function () {
           if (output.isInWishListUpbasket != "") {
             $("#wishlist").addClass(output.isInWishListUpbasket);
           } else {
+            alert();
             if ($("#wishlist").hasClass("fa-solid")) {
               $("#wishlist").removeClass("fa-solid");
             }
