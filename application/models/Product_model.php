@@ -368,7 +368,11 @@ class product_model extends My_model
     private function set_upload_options_product_image()
     {
         $config = array();
-        $config['upload_path'] = './public/images/' . $this->folder . 'product_image/';
+        $path = './public/images/' . $this->folder . 'product_image/';
+        if (!file_exists($path)) {
+            mkdir($path);
+        }
+        $config['upload_path'] = $path; //Dk added
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size']      = '0';
         $config['overwrite']     = TRUE;

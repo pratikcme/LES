@@ -1,5 +1,6 @@
 <!-- -----hero-section--- -->
-<section class="hero-section d-none" style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $banner[0]->web_banner_image ?>')">
+<section class="hero-section d-none"
+    style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $banner[0]->web_banner_image ?>')">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6"></div>
@@ -22,7 +23,8 @@
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
         <?php foreach ($banner as $key => $value) { ?>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key == 0) ? 'active' : '' ?>"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>"
+            class="<?= ($key == 0) ? 'active' : '' ?>"></button>
         <?php } ?>
         <!-- <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
   <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> -->
@@ -31,30 +33,34 @@
     <!-- The slideshow/carousel -->
     <div class="carousel-inner">
         <?php foreach ($banner as $key => $value) { ?>
-            <section class="hero-section carousel-item <?= ($key == 0) ? "active" : "" ?>" style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>)">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12"></div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="hero-content">
-                                <!-- <h5>PROVIDING <span>QUALITY</span> PRODUCTS</h5>
+        <section class="hero-section carousel-item <?= ($key == 0) ? "active" : "" ?>"
+            style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="hero-content">
+                            <!-- <h5>PROVIDING <span>QUALITY</span> PRODUCTS</h5>
               <h1>ORGANIC <span>DRY FRUITS</span></h1>
               <h3><span>100%</span> HEALTHY & AFFORDABLE</h3> -->
-                                <h1><?= $value->main_title ?></h1>
-                                <h3><?= $value->sub_title ?></h3>
-                                <?php if ($value->type == '1') { ?>
-                                    <a href="<?= base_url() . 'products' ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } else if ($value->type == '2') { ?>
-                                    <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } else { ?>
-                                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } ?>
-                                <!-- <a href="./product-listing-2.php" class="hero-btn">shop now</a> -->
-                            </div>
+                            <h1><?= $value->main_title ?></h1>
+                            <h3><?= $value->sub_title ?></h3>
+                            <?php if ($value->type == '1') { ?>
+                            <a href="<?= base_url() . 'products' ?>"
+                                class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
+                            <?php } else if ($value->type == '2') { ?>
+                            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>"
+                                class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
+                            <?php } else { ?>
+                            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>"
+                                class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
+                            <?php } ?>
+                            <!-- <a href="./product-listing-2.php" class="hero-btn">shop now</a> -->
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
         <?php } ?>
         <!-- <section class="hero-section carousel-item ">
   <div class="container">
@@ -92,7 +98,8 @@
 
 <!-- -----Categories-section----- -->
 <section class="Categories-section section">
-    <img src="<?= $this->theme_base_url ?>/assets/images/category-top-right-img.png" alt="" class="category-top-right-img">
+    <img src="<?= $this->theme_base_url ?>/assets/images/category-top-right-img.png" alt=""
+        class="category-top-right-img">
     <div class="container">
         <h1 class="title"><?= $this->lang->line('Shop By') ?> <span><?= $this->lang->line('Categories') ?> </span></h1>
         <!-- <p class="pera">Top Categories Of The Week</p> -->
@@ -103,15 +110,17 @@
         <div class="owl-1 owl-carousel owl-theme">
             <?php foreach ($category as $key => $value) {
             ?>
-                <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wrapper categorie-1">
-                    <div class="categorie-img ">
+            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>"
+                class="categorie-wrapper categorie-1">
+                <div class="categorie-img ">
 
-                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="">
-                    </div>
-                    <div class="categorie-text">
-                        <h4><?= $value->name ?></h4>
-                    </div>
-                </a>
+                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>"
+                        alt="">
+                </div>
+                <div class="categorie-text">
+                    <h4><?= $value->name ?></h4>
+                </div>
+            </a>
             <?php } ?>
 
         </div>
@@ -121,7 +130,8 @@
 <!-- -----Featured Products-section------------ -->
 <section class="Featured-Products  section">
     <img src="<?= $this->theme_base_url ?>/assets/images/product-top-left-img.png" alt="" class="product-top-left-img">
-    <img src="<?= $this->theme_base_url ?>/assets/images/product-bottom-right-img.png" alt="" class="product-bottom-right-img">
+    <img src="<?= $this->theme_base_url ?>/assets/images/product-bottom-right-img.png" alt=""
+        class="product-bottom-right-img">
     <div class="container">
         <h2 class="title"><?= $this->lang->line('Top Featured') ?> <span><?= $this->lang->line('Products') ?></span>
         </h2>
@@ -136,47 +146,52 @@
                 }
                 $value->name = character_limiter($value->name, 30);
             ?>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s"
+                data-wow-delay="0" data-wow-offset="0">
+                <div class="techno-check">
+                    <!-- <input class="techno_checkbox" type="checkbox" id="1" value="1" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= $attr ?> /> -->
+                    <div class="product-wrapper card  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                        <span
+                            class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?>
+                            % off</span>
+                        <span> <?= $this->lang->line('out of stock') ?></span>
+                        <div class="card-header">
+                            <a
+                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
+                                    alt="">
+                                <!-- <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-1.png" alt=""> -->
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <h3><a
+                                    href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
+                            </h3>
+                            <h4>
+                                <?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                            </h4>
+
+                            <div class="rate-dropdown">
+                                <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
+                                <select class="form-select card-dropdown d-none" aria-label="Default select example">
+                                    <option selected>500 Gms</option>
+                                    <option value="1">300 Gms</option>
+                                    <option value="2">200 Gms</option>
+                                    <option value="3">1Kg</option>
+                                </select>
 
 
-                <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-                    <div class="techno-check">
-                        <!-- <input class="techno_checkbox" type="checkbox" id="1" value="1" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= $attr ?> /> -->
-                        <div class="product-wrapper card  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
-                            <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?>
-                                % off</span>
-                            <span> <?= $this->lang->line('out of stock') ?></span>
-                            <div class="card-header">
-                                <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
-                                    <!-- <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-1.png" alt=""> -->
-                                </a>
-                            </div>
-
-                            <div class="card-body">
-                                <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
-                                </h3>
-                                <h4>
-                                    <?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
-                                </h4>
-
-                                <div class="rate-dropdown">
-                                    <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
-                                    <select class="form-select card-dropdown d-none" aria-label="Default select example">
-                                        <option selected>500 Gms</option>
-                                        <option value="1">300 Gms</option>
-                                        <option value="2">200 Gms</option>
-                                        <option value="3">1Kg</option>
-                                    </select>
-
-
-                                    <div class="card-rating">
-                                        <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt=""><?= $value->ratting['rating'] ?></p>
-                                    </div>
+                                <div class="card-rating">
+                                    <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png"
+                                            alt=""><?= $value->ratting['rating'] ?></p>
                                 </div>
-                                <h6 class="rating notranslate">
-                                    <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
-                                </h6>
-                                <?php
+                            </div>
+                            <h6 class="rating notranslate">
+                                <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span
+                                    class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
+                            </h6>
+                            <?php
                                 $d_none = '';
                                 $d_show = 'd-none';
                                 if (!empty($item_weight_id)) {
@@ -186,64 +201,182 @@
                                     }
                                 }
                                 ?>
-                                <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>
-                                    <?= $this->lang->line('add to cart') ?>
-                                </a>
-                                <div class="product-detail-quentity <?= $d_show ?>">
-                                    <div class="qty-container">
-                                        <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                                        <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
-                                        <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                                    </div>
+                            <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>"
+                                data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
+                                data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
+                                        class="fa-solid fa-cart-shopping"></i></span>
+                                <?= $this->lang->line('add to cart') ?>
+                            </a>
+                            <div class="product-detail-quentity <?= $d_show ?>">
+                                <div class="qty-container">
+                                    <button class="qty-btn-minus dec cart-qty-minus"
+                                        data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                            class="fa-solid fa-minus"></i></button>
+                                    <input type="text" name="qty" class="input-qty qty"
+                                        value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
+                                        data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                                    <button class="qty-btn-plus inc cart-qty-plus"
+                                        data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                            class="fa-solid fa-plus"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             <?php } ?>
         </div>
     </div>
 </section>
 
+<!-- Dk added -->
+<?php
+if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
+<section class="products-banner p-100">
+    <div class="container">
+        <div class="row">
+            <?php
+                if (count($offer_list) == 1) {
+
+
+                    foreach ($offer_list as $key => $value) : ?>
+
+            <!--======== single-banner ==============-->
+            <div class="col-lg-12 col-md-12 mb-4">
+                <div class="sale-banner-wrap position-relative">
+                    <img src="<?= $value->image ?>" class="sale-banner-img position-absolute" alt="sale-banner" />
+                    <div class="sale-banner-inner text-center">
+                        <span><?= $value->offer_percent ?> OFF</span>
+                        <h2><?= $value->offer_title ?></h2>
+                        <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>"
+                            class="lg-btn">shop now</a>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach;
+                }
+                if (count($offer_list) == 2 or count($offer_list) > 3) { ?>
+
+
+            <!--============== two-banner ===================-->
+            <?php foreach ($offer_list as $key => $value) : ?>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+                <a
+                    href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
+                    <div class="offer-wrapper offer-wrapper-1" style="background:url(<?= $value->image ?>)">
+                        <h4><?= $value->offer_title ?></h4>
+                        <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                        <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>"
+                            class="explor-btn">Explore More</a>
+                    </div>
+                </a>
+            </div>
+            <?php
+                    endforeach;
+                    ?>
+
+            <?php }
+                ?>
+
+            <!--=============== three-banners ==================-->
+            <?php if (count($offer_list) == 3) { ?>
+
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                <div>
+                    <?php foreach ($offer_list as $key => $value) :
+                                if ($key == 2) {
+                                    goto a;
+                                }
+                            ?>
+                    <div class="home-clothes mb-4">
+                        <div class="cloth-card">
+                            <img src="<?= $value->image ?>" alt="">
+                        </div>
+                        <div class="cloth-content">
+                            <h5><?= $value->offer_title ?></h5>
+                            <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                            <a
+                                href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore
+                                More</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <?php
+                                a:
+                    ?>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                <div class="practical-cloth home-clothes">
+                    <div class="cloth-card">
+                        <img src="<?= $value->image ?>" alt="">
+                    </div>
+                    <div class="cloth-content">
+                        <h5><?= $value->offer_title ?></h5>
+                        <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                        <a
+                            href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore
+                            More</a>
+                    </div>
+                </div>
+            </div>
+
+            <?php
+                            endforeach;
+                        } ?>
+        </div>
+    </div>
+</section>
+<?php } ?>
+<!-- end -->
 <!-- -----Latest Products----- -->
 <section class="Latest-Products Categories-section section">
-    <img src="<?= $this->theme_base_url ?>/assets/images/latest-product-top-img.png" alt="" class="latest-product-top-img">
+    <img src="<?= $this->theme_base_url ?>/assets/images/latest-product-top-img.png" alt=""
+        class="latest-product-top-img">
     <div class="container">
         <h1 class="title"><?= $this->lang->line('Latest') ?> <span><?= $this->lang->line('Products') ?></span></h1>
         <!-- <p class="pera">Do not miss the current offers until the end of month.</p> -->
         <h5><?= $this->lang->line('See All') ?> <?= $this->lang->line('Categories') ?></h5>
 
-        <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+        <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0"
+            data-wow-offset="0">
             <?php foreach ($new_arrival as $key => $value) {
             ?>
-                <div class="techno-check">
-                    <input class="techno_checkbox" type="checkbox" id="8" value="8" />
-                    <div class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
-                        <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
-                            off</span>
-                        <span> <?= $this->lang->line('out of stock') ?></span>
-                        <div class="card-header">
-                            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                                <!-- <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-1.png" alt=""> -->
-                                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
-                            </h3>
-                            <h4><?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
-                            </h4>
+            <div class="techno-check">
+                <input class="techno_checkbox" type="checkbox" id="8" value="8" />
+                <div class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                    <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
+                        off</span>
+                    <span> <?= $this->lang->line('out of stock') ?></span>
+                    <div class="card-header">
+                        <a
+                            href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                            <!-- <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-1.png" alt=""> -->
+                            <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h3><a
+                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
+                        </h3>
+                        <h4><?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                        </h4>
 
-                            <div class="rate-dropdown">
-                                <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
-                                <div class="card-rating">
-                                    <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png" alt=""><?= $value->ratting['rating'] ?></p>
-                                </div>
+                        <div class="rate-dropdown">
+                            <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
+                            <div class="card-rating">
+                                <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png"
+                                        alt=""><?= $value->ratting['rating'] ?></p>
                             </div>
-                            <h6 class="rating notranslate">
-                                <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
-                            </h6>
-                            <?php
+                        </div>
+                        <h6 class="rating notranslate">
+                            <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?><span
+                                class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . $value->price ?></strike></span>
+                        </h6>
+                        <?php
                             $d_none = '';
                             $d_show = 'd-none';
                             if (!empty($item_weight_id)) {
@@ -253,19 +386,28 @@
                                 }
                             }
                             ?>
-                            <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
-                                <span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
-                            </a>
-                            <div class="product-detail-quentity <?= $d_show ?>">
-                                <div class="qty-container">
-                                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                                    <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
-                                    <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                                </div>
+                        <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>"
+                            data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
+                            data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
+                            <span><i
+                                    class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
+                        </a>
+                        <div class="product-detail-quentity <?= $d_show ?>">
+                            <div class="qty-container">
+                                <button class="qty-btn-minus dec cart-qty-minus"
+                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                        class="fa-solid fa-minus"></i></button>
+                                <input type="text" name="qty" class="input-qty qty"
+                                    value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
+                                    data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                                <button class="qty-btn-plus inc cart-qty-plus"
+                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                        class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             <?php }  ?>
         </div>
     </div>

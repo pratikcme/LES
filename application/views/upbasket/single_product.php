@@ -81,10 +81,10 @@
                           <?php } ?>
 
                           <!-- <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
-                <i class="fa-solid fa-star"></i>
-                 blank star appear hear
-                <i class="fas fa-star blank-ratting"></i>
-              <?php } ?> -->
+                        <i class="fa-solid fa-star"></i>
+                        blank star appear hear
+                        <i class="fas fa-star blank-ratting"></i>
+                    <?php } ?> -->
                           <?= $productDetail[0]->rating['rating'] ?> <span class="d-none"> <a href=""> 174 Ratings & 22
                                   Reviews</a></span>
                       </h5>
@@ -107,8 +107,8 @@
                               <?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
                           <?php } ?>
                           <!-- <option value="1">300 Gms</option>
-              <option value="2">200 Gms</option>
-              <option value="3">1Kg</option> -->
+                            <option value="2">200 Gms</option>
+                            <option value="3">1Kg</option> -->
                       </select>
                       <?php
                         $d_none = '';
@@ -506,7 +506,9 @@
           <h5><?= $this->lang->line('See All') ?> <?= $this->lang->line('Categories') ?></h5>
 
           <div class="owl-2 owl-carousel owl-theme">
-              <?php foreach ($related_product as $key => $value) { ?>
+              <?php foreach ($related_product as $key => $value) {
+
+                    ?>
               <div class="techno-check">
                   <input class="techno_checkbox" type="checkbox" id="8" value="8" />
                   <div class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
@@ -514,8 +516,20 @@
                           <a
                               href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                               <!-- <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-1.png" alt=""> -->
+                              <!-- Dipesh Change the Image Later -->
+                              <?php
+                                        if (file_exists('public/images/' . $this->folder . 'product_image/' . $value->product_image)) {
+                                        ?>
+                              <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->product_image ?>"
+                                  alt="">
+                              <?php
+                                        } else {
+                                        ?>
                               <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                   alt="">
+                              <?php
+                                        }
+                                        ?>
                           </a>
                       </div>
                       <div class="card-body">
