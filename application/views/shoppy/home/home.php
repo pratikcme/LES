@@ -2,11 +2,11 @@
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
-    <?php $k = 0;
+    <?php
     foreach ($banner as $key => $value) {
 
     ?>
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key == $k) ? 'active' : '' ?>"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key) ? 'active' : '' ?>"></button>
     <?php $k++;
     } ?>
   </div>
@@ -15,9 +15,9 @@
   <div class="carousel-inner">
     <?php
 
-    $i = 0;
+
     foreach ($banner as $key => $value) { ?>
-      <section class="hero-sections carousel-item <?= ($key == $i) ? "active" : "" ?>" style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>');">
+      <section class="hero-sections carousel-item <?= ($key) ? "active" : "" ?>" style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>');">
         <svg id="Layer_1" class="left-bg" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/home/banner-left-bg.svg' ?>" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150.6 125.24">
           <defs>
             <style>
