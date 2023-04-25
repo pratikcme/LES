@@ -183,29 +183,31 @@
             </a>
 
             <!-- -----search-btn---- -->
+
+            <!-- -----search-btn---- -->
             <div class="search-block search-list-blcok">
               <form class="search-form">
                 <?php if ($this->uri->segment(1) == '') { ?>
-                  <input type="search" id='search' data-search_val="" name="search" class="search-input" placeholder="Search vendor..">
+                  <input type="search" name="search" class="search-input" placeholder="Search here...">
                   <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
                 <?php }
-
                 if ($this->uri->segment(1) != '') {
                   $placeholder = $this->lang->line('Search product..');
                 }
                 $segment1 = $this->uri->segment(1);
 
                 if ($segment1 != '') { ?>
-
+                  <input type="text" class="form-control" id='myInput' data-search_val="" placeholder="<?= $placeholder ?>">
                   <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
+
                 <?php } ?>
-                <!-- ---search-list--- -->
-                <div class="search-list-wrapper">
-                  <input type="search" id='myInput' data-search_val="" name="search" class="search-input" placeholder="<?= $placeholder ?>">
-                </div>
+
               </form>
               <i class="fa-solid fa-xmark main-div-cancel"></i>
             </div>
+
+
+
 
 
             <div class="dropdown">
