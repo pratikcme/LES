@@ -1,7 +1,7 @@
 <!-- ----hero-section--- -->
 <style>
   /*PRICE RANGE SLIDER */
-  .price-range-slider {
+  /* .price-range-slider {
     width: 100%;
     padding: 10px 20px 15px;
     background-color: #f7f7f7;
@@ -60,7 +60,7 @@
 
   .price-range-slider .range-bar .ui-slider-handle+span {
     background: #1ebcb7;
-  }
+  } */
 </style>
 
 <section class="hero-section common-banner-bg login-section">
