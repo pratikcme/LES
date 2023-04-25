@@ -74,10 +74,10 @@
           <div class=""></div>
 
           <h2 class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?= $productDetail[0]->name ?></h2>
-          <h5 class="wow fadeInRight" id="starRatting" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
+          <h5 class="wow fadeInRight" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
 
             <div class="rating-starts justify-content-start">
-              <div class="rating stars3_5 align-items-center star-in">
+              <div class="rating stars3_5 align-items-center star-in" id="starRatting">
                 <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
                   <span class="star"></span>
                 <?php } ?>
