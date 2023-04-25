@@ -80,7 +80,7 @@ $(".owl-1").owlCarousel({
 
 // --------latest-productd-slider--------
 $(".owl-2").owlCarousel({
-  loop: true,
+  loop: false,
   margin: 25,
   // rtl: true,
   nav: true,
