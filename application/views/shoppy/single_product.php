@@ -84,7 +84,7 @@
                 <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
                   <span class="star star-active"></span>
                 <?php } ?>
-                <?= $productDetail[0]->rating['rating'] ?> <span class="d-none"> <a href=""> 174 Ratings & 22 Reviews</a></span>
+                <span><?= "(" . $productDetail[0]->rating['rating'] . ")" ?> </span>
               </div>
             </div>
 
