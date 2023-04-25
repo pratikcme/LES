@@ -298,7 +298,7 @@ var ADDPRODUCT = (function () {
             $("#is_discounted").addClass("d-none");
           } else {
             $("#is_discounted").removeClass("d-none");
-            $("#is_discounted").html(output.discount_per + " off");
+            $("#is_discounted").html(output.discount_per + "% off");
           }
 
           if (output.isInWishListUpbasket != "") {
