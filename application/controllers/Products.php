@@ -327,6 +327,7 @@ class Products extends User_Controller
 		}
 		$wish_pid = $this->this_model->getUsersWishlist(); // wishlist product varient id
 
+
 		$class = '';
 		$theme2class = '';
 		if (in_array($result[0]->id, $wish_pid)) {
@@ -428,7 +429,7 @@ class Products extends User_Controller
 			'upbasket_starHtml' => $upbasket_starHtml . '  ' . round($avgr),
 			'beauty_starHtml' => '<div class="rating stars3_5" >' . $beauty_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',
 			'upbasket_thumb' => $upbasket_thumb,
-			'shoppy_starHtml' => $shoppy_starHtml,
+			'shoppy_starHtml' => '<div class="rating stars3_5" >' . $shoppy_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',
 			'upbasket_zoom_image' => $upbasket_zoom_image,
 
 
