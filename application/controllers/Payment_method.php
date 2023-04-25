@@ -1,23 +1,26 @@
-<?php 
+<?php
 class Payment_method extends Vendor_Controller
 {
-	
-	function __construct(){
+
+	function __construct()
+	{
 		parent::__construct();
 		$vendor_id = $this->session->userdata['id'];
-		$this->load->model('payment_method_model','this_model');
+		$this->load->model('payment_method_model', 'this_model');
 	}
 
-	public function index(){
+	public function index()
+	{
 
 		$data['paymentMethods'] = $this->this_model->get_payment_method();
-		$this->load->view('payment_method',$data);
+		$this->load->view('payment_method', $data);
 	}
 
-	public function add_payment_method(){
-		
+	public function add_payment_method()
+	{
+
 		$data['paymentGetwayData'] = $this->this_model->getPaymentGetway();
-		$this->load->view('add_payment_method',$data);
+		$this->load->view('add_payment_method', $data);
 	}
 
 	public function add_update_payment_method()
@@ -25,23 +28,25 @@ class Payment_method extends Vendor_Controller
 		$this->this_model->add_update_payment_method($this->input->post());
 	}
 
-	public function check_publish_key(){
-		if($this->input->post()){
+	public function check_publish_key()
+	{
+		if ($this->input->post()) {
 			$result = $this->this_model->check_publish_key($this->input->post());
-			if(count($result) > 0){
+			if (count($result) > 0) {
 				echo "false";
-			}else{
+			} else {
 				echo "true";
 			}
 		}
 	}
 
-	public function check_secret_key(){
-		if($this->input->post()){
+	public function check_secret_key()
+	{
+		if ($this->input->post()) {
 			$result = $this->this_model->check_secret_key($this->input->post());
-			if(count($result) > 0){
+			if (count($result) > 0) {
 				echo "false";
-			}else{
+			} else {
 				echo "true";
 			}
 		}
@@ -58,11 +63,11 @@ class Payment_method extends Vendor_Controller
 		$this->this_model->delete_payment_method();
 	}
 
-	public function IsTestOrLive(){
-		if($this->input->post()){
+	public function IsTestOrLive()
+	{
+		if ($this->input->post()) {
 			$result = $this->this_model->changeTestOrLive($this->input->post());
-			echo json_encode(['status'=>$result]);
+			echo json_encode(['status' => $result]);
 		}
 	}
 }
-?>

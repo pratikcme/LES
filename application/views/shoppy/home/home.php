@@ -2,15 +2,22 @@
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
-    <?php foreach ($banner as $key => $value) { ?>
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key == 0) ? 'active' : '' ?>"></button>
-    <?php } ?>
+    <?php $k = 0;
+    foreach ($banner as $key => $value) {
+
+    ?>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key == $k) ? 'active' : '' ?>"></button>
+    <?php $k++;
+    } ?>
   </div>
 
   <!-- The slideshow/carousel -->
   <div class="carousel-inner">
-    <?php foreach ($banner as $key => $value) { ?>
-      <section class="hero-sections carousel-item <?= ($key == 0) ? "active" : "" ?>" style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $banner[0]->web_banner_image ?>');">
+    <?php
+
+    $i = 0;
+    foreach ($banner as $key => $value) { ?>
+      <section class="hero-sections carousel-item <?= ($key == $i) ? "active" : "" ?>" style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>');">
         <svg id="Layer_1" class="left-bg" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/home/banner-left-bg.svg' ?>" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150.6 125.24">
           <defs>
             <style>
@@ -48,8 +55,8 @@
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 d-flex align-items-center">
               <div class="title">
                 <h2 class="sub-heading wow bounceInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">Colored Fashion Year</h2>
-                <h1 class="wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?= $banner[0]->main_title ?></h1>
-                <p class="wow bounceInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0"><?= $banner[0]->sub_title ?></p>
+                <h1 class="wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?= $value->main_title ?></h1>
+                <p class="wow bounceInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0"><?= $value->sub_title ?></p>
                 <?php if ($value->type == '1') { ?>
                   <a href="<?= base_url() . 'products' ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
 
@@ -67,7 +74,8 @@
           </div>
         </div>
       </section>
-    <?php } ?>
+    <?php $i++;
+    } ?>
   </div>
 </div>
 
