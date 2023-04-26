@@ -62,6 +62,8 @@ $lang['Cancel'] = 'Cancel';
 $lang['Most Useful Review'] = 'Most Useful Review';
 $lang['Product Categories'] = 'Product Categories';
 $lang['All Categories'] = 'All Categories';
+$lang['Checkout Process'] = 'Checkout Process';
+$lang['Delivery Method'] = 'Delivery Method';
 
 
 

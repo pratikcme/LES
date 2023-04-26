@@ -64,6 +64,10 @@ $lang['Most Useful Review'] = 'المراجعة الأكثر فائدة';
 
 $lang['Product Categories'] = 'فئات المنتجات';
 $lang['All Categories'] = 'جميع الفئات';
+
+$lang['Checkout Process'] = 'عملية الخروج';
+$lang['Delivery Method'] = 'طريقة التوصيل';
+
 // end other template 
 
 
