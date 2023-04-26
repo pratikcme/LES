@@ -8,7 +8,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
-                        <li class="breadcrumb-item active" style="text-transform:capitalize" aria-current="page"><?=$this->lang->line('product listing')?><</li>
+                        <li class="breadcrumb-item active" style="text-transform:capitalize" aria-current="page"><?=$this->lang->line('product listing')?></li>
                     </ol>
                 </nav>
             </div>
@@ -105,23 +105,98 @@
                                     <div class="categire-header">
                                         <h3>Brands</h3>
                                     </div>
-                                    <ul>
-                                        <li class="active">
-                                            Aerin
-                                        </li>
-                                        <li>
-                                            Fable&Mane
-                                        </li>
-                                        <li>
-                                            Loreal
-                                        </li>
-                                        <li>
-                                           Mac
-                                        </li>
-                                        <li>
-                                            Schwarzkopf
-                                        </li>
-                                    </ul>
+                                    <ul class="cate-wrp">
+                        <li class="active">
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Aerin">
+                                    <label class="form-check-label" for="Aerin">
+                                        <h4>Aerin</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Fable">
+                                    <label class="form-check-label" for="Fable">
+                                        <h4>Fable&Mane</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Loreal">
+                                    <label class="form-check-label" for="Loreal">
+                                        <h4>Loreal</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Mac">
+                                    <label class="form-check-label" for="Mac">
+                                        <h4>Mac</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Schwa">
+                                    <label class="form-check-label" for="Schwa">
+                                        <h4>Schwarzkopf</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Loreals">
+                                    <label class="form-check-label" for="Loreals">
+                                        <h4>Loreal</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="macs">
+                                    <label class="form-check-label" for="macs">
+                                        <h4>Mac</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="smart">
+                                    <label class="form-check-label" for="smart">
+                                        <h4>Schwarzkopf</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="squa">
+                                    <label class="form-check-label" for="squa">
+                                        <h4>Schwarzkopf</h4>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                                 </div>
                                 <!-- ------------- -->
                                 <?php 
@@ -230,31 +305,94 @@
                     </div>
                     <ul class="cate-wrp">
                         <li class="active">
-                            Aerin
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Aerin">
+                                    <label class="form-check-label" for="Aerin">
+                                        <h4>Aerin</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            Fable&Mane
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Fable">
+                                    <label class="form-check-label" for="Fable">
+                                        <h4>Fable&Mane</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            Loreal
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Loreal">
+                                    <label class="form-check-label" for="Loreal">
+                                        <h4>Loreal</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            Mac
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Mac">
+                                    <label class="form-check-label" for="Mac">
+                                        <h4>Mac</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            Schwarzkopf
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Schwa">
+                                    <label class="form-check-label" for="Schwa">
+                                        <h4>Schwarzkopf</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            Loreal
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="Loreals">
+                                    <label class="form-check-label" for="Loreals">
+                                        <h4>Loreal</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            Mac
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="macs">
+                                    <label class="form-check-label" for="macs">
+                                        <h4>Mac</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            Schwarzkopf
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="smart">
+                                    <label class="form-check-label" for="smart">
+                                        <h4>Schwarzkopf</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            Schwarzkopf
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox"  id="squa">
+                                    <label class="form-check-label" for="squa">
+                                        <h4>Schwarzkopf</h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
