@@ -91,7 +91,7 @@ span.error {
                  <div class="fill-detali-part">
                      <div class="accordion-items">
                          <div class="main-accordion">
-                             <div class="accordion-heading">Delivery Method</div>
+                             <div class="accordion-heading"><?=$this->lang->line('Delivery Method')?></div>
                              <div class="accordion-content ">
                                  <div class="accordion-content-2">
                                      <div class="form-check radio-outer-line">
@@ -106,7 +106,7 @@ span.error {
                                          <input class="form-check-input" id="isSelfPickup" type="checkbox"
                                              name="flexRadioDefault"
                                              <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
-                                         <label class="form-check-label" for="flexRadioDefault2">
+                                         <label class="form-check-label" for="isSelfPickup">
                                              <span>
                                                  <i class="fa-solid fa-store"></i>
                                              </span><?= $this->lang->line('Pick up') ?></label>
@@ -133,38 +133,38 @@ span.error {
                              <div class="accordion-heading"><?= $this->lang->line('Delivery Address') ?></div>
                              <div class="accordion-content accordion-content-3">
                                  <?php foreach ($get_address as $key => $value) {
-                                            $status = ($value->status == '0') ? 'is_default ' : ''; ?> <div
-                                     class="address-wrapper">
-                                     <div class="ship-check text-end">
-                                         <div class="form-check">
-                                             <input class="form-check-input 
-													<?= $status ?>" data-id="
-													<?= $this->utility->safe_b64encode($value->id) ?>" type="checkbox"
-                                                 <?= ($value->status == '1') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="id1">
-                                                 <?= $this->lang->line('Default') ?>
-                                         </div>
-                                     </div>
-                                     <div class="address-text mt-3">
-                                         <h3> <?= $value->name ?> </h3>
-                                         <p> <?= $value->address ?> </p>
-                                     </div>
-                                     <div class="address-icons mt-3">
-                                         <a href="javascript:" class="add-address-btn edit_address" data-id='
-														<?= $this->utility->safe_b64encode($value->id) ?>'>
-                                             <i class="fa-solid fa-pen-to-square"></i>
-                                         </a>
-                                         <a href="javascript:" class="delet-address-btn remove_address" data-id="
-														<?= $this->utility->safe_b64encode($value->id) ?>">
-                                             <i class="fa-solid fa-trash-can"></i>
-                                         </a>
-                                     </div>
-                                 </div> <?php } ?> <div class="new-address text-end">
-                                     <button type="button" id="checkout-add-address" class="new-add">New
-                                         Address</button>
+                                            $status = ($value->status == '0') ? 'is_default ' : ''; ?> 
+                                    <div class="address-wrapper">
+                                        <div class="ship-check text-end">
+                                            <div class="form-check">
+                                                <input class="form-check-input 
+                                                        <?= $status ?>" data-id="
+                                                        <?= $this->utility->safe_b64encode($value->id) ?>" type="checkbox"
+                                                    <?= ($value->status == '1') ? 'checked' : '' ?>>
+                                                <label class="form-check-label" for="id1">
+                                                    <?= $this->lang->line('Default') ?>
+                                            </div>
+                                        </div>
+                                        <div class="address-text mt-3">
+                                            <h3> <?= $value->name ?> </h3>
+                                            <p> <?= $value->address ?> </p>
+                                        </div>
+                                        <div class="address-icons mt-3">
+                                            <a href="javascript:" class="add-address-btn edit_address" data-id='
+                                                            <?= $this->utility->safe_b64encode($value->id) ?>'>
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                            <a href="javascript:" class="delet-address-btn remove_address" data-id="
+                                                            <?= $this->utility->safe_b64encode($value->id) ?>">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                        </div>
+                                    </div> 
+                                 <?php } ?> 
+                                 <div class="new-address text-end">
+                                     <button type="button" id="checkout-add-address" class="new-add">New Address</button>
                                  </div>
-                                 <form method="post" id="RegisterForm" action="
-												<?= base_url() . 'users_account/users/add_address' ?>" class="ship-address" autocomplete="off">
+                                 <form method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" class="ship-address" autocomplete="off">
                                      <div class="text-end">
                                          <button type="button" class="ship-close cancel-btn" data-bs-dismiss="modal"
                                              aria-label="Close">
@@ -173,7 +173,7 @@ span.error {
                                      </div>
                                      <div class="row">
                                          <div class="col-lg-12">
-                                             <label for="fname" class="form-label">Full Name <span>*</span>
+                                             <label for="fname" class="form-label"><?=$this->lang->line('Full Name')?><span>*</span>
                                              </label>
                                              <input type="text" name="fname" class="form-control fname" id="fname"
                                                  aria-describedby="fname"
@@ -181,7 +181,7 @@ span.error {
                                          </div>
                                          <!-- <div class="col-lg-6"><label for="lname" class="form-label">Last Name<span>*</span></label><input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Hussy"></div> -->
                                          <div class="col-lg-12">
-                                             <label for="text" class="form-label">Mobile Number <span>*</span>
+                                             <label for="text" class="form-label"><?=$this->lang->line('Mobile number')?><span>*</span>
                                              </label>
                                              <input type="text" name="phone" class="form-control mob_no" id="text"
                                                  aria-describedby="text"
@@ -264,7 +264,7 @@ span.error {
                                          </div>
                                      </div>
                                  </form>
-                             </div>
+                                </div>
                          </div>
                          <?php } ?>
                          <div class="main-accordion">
@@ -374,8 +374,9 @@ span.error {
                              </thead>
                              <tbody>
                                  <tr>
-                                     <td class="cart-total-text-1"> <?= $this->lang->line('Sub Total') ?> <br> (
-                                         <?= ($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)
+                                     <td class="cart-total-text-1"> 
+                                        <?= $this->lang->line('Sub Total') ?> <br> 
+                                        (<?=($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)
                                      </td>
                                      <td class="cart-total-text-2">
                                          <span class='notranslate'> <?= $this->siteCurrency ?> </span>
@@ -418,25 +419,23 @@ span.error {
                                      <td class="cart-total-text-2">
                                          <span class='notranslate'> <?= $this->siteCurrency ?> </span>
                                          <span id="checkout_final"> <?php
-                                                                    if (isset($calc_shiping) && is_numeric($calc_shiping)) {
-
-                                                                        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                                            $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
-                                                                        } else {
-                                                                            $to = $getMycartSubtotal + $calc_shiping;
-                                                                        }
-                                                                        $f_amount = $to - $shopping_based_discount;
-                                                                        echo number_format((float)$f_amount, 2, '.', '');
-                                                                    } else {
-
-                                                                        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                                            $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                                        } else {
-                                                                            $tot = $getMycartSubtotal;
-                                                                        }
-                                                                        $f_amount = $tot - $shopping_based_discount;
-                                                                        echo number_format((float)$f_amount, 2);
-                                                                    } ?> </span>
+                                            if (isset($calc_shiping) && is_numeric($calc_shiping)) {
+                                                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                    $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                } else {
+                                                    $to = $getMycartSubtotal + $calc_shiping;
+                                                }
+                                                $f_amount = $to - $shopping_based_discount;
+                                                echo number_format((float)$f_amount, 2, '.', '');
+                                            } else {
+                                                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                    $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                } else {
+                                                    $tot = $getMycartSubtotal;
+                                                }
+                                                $f_amount = $tot - $shopping_based_discount;
+                                                echo number_format((float)$f_amount, 2);
+                                            } ?> </span>
                                      </td>
                                  </tr>
                              </tbody>

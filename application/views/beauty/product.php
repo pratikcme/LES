@@ -8,7 +8,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
-                        <li class="breadcrumb-item active" style="text-transform:capitalize" aria-current="page"><?=$this->lang->line('product listing')?><</li>
+                        <li class="breadcrumb-item active" style="text-transform:capitalize" aria-current="page"><?=$this->lang->line('product listing')?></li>
                     </ol>
                 </nav>
             </div>
@@ -103,24 +103,21 @@
                                 <!-- ------------- -->
                                 <div class="product-categires-part brands-part">
                                     <div class="categire-header">
-                                        <h3>Brands</h3>
+                                        <h3><?=$this->lang->line('Brands')?></h3>
                                     </div>
-                                    <ul>
-                                        <li class="active">
-                                            Aerin
+                                    <ul class="cate-wrp">
+                                        <?php foreach ($brand as $key => $brandRecord){ ?>
+                                        <li class="">
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input brand" type="checkbox" value="<?= $brandRecord->id ?>" id="<?=$value->name?>">
+                                                    <label class="form-check-label" for="Aerin">
+                                                        <h4><?=$value->name?></h4>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </li>
-                                        <li>
-                                            Fable&Mane
-                                        </li>
-                                        <li>
-                                            Loreal
-                                        </li>
-                                        <li>
-                                           Mac
-                                        </li>
-                                        <li>
-                                            Schwarzkopf
-                                        </li>
+                                        <?php } ?>
                                     </ul>
                                 </div>
                                 <!-- ------------- -->
@@ -226,36 +223,21 @@
                 <!-- ------------- -->
                 <div class="product-categires-part brands-part">
                     <div class="categire-header">
-                        <h3>Brands</h3>
+                        <h3><?=$this->lang->line('Brands')?></h3>
                     </div>
                     <ul class="cate-wrp">
+                    <?php foreach ($brand as $key => $brandRecord){ ?>
                         <li class="active">
-                            Aerin
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input brand" type="checkbox" value="<?= $brandRecord->id ?>" id="<?=$value->name?>">
+                                    <label class="form-check-label" for="Aerin">
+                                        <h4><?=$value->name?></h4>
+                                    </label>
+                                </div>
+                            </div>
                         </li>
-                        <li>
-                            Fable&Mane
-                        </li>
-                        <li>
-                            Loreal
-                        </li>
-                        <li>
-                            Mac
-                        </li>
-                        <li>
-                            Schwarzkopf
-                        </li>
-                        <li>
-                            Loreal
-                        </li>
-                        <li>
-                            Mac
-                        </li>
-                        <li>
-                            Schwarzkopf
-                        </li>
-                        <li>
-                            Schwarzkopf
-                        </li>
+                    <?php } ?>
                     </ul>
                 </div>
 

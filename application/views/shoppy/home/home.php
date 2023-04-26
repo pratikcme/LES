@@ -1,13 +1,13 @@
 <!--============== Carousel ==================-->
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
-  <!-- Indicators/dots -->
+  <!-- Indicators/dotsd -->
   <div class="carousel-indicators">
     <?php
     foreach ($banner as $key => $value) {
 
     ?>
       <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key) ? 'active' : '' ?>"></button>
-    <?php $k++;
+    <?php
     } ?>
   </div>
 
@@ -74,7 +74,7 @@
           </div>
         </div>
       </section>
-    <?php $i++;
+    <?php
     } ?>
   </div>
 </div>

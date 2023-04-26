@@ -170,7 +170,7 @@
                     </div>
                   </div>
                   <?php 
-                  if($this->session->userdata('user_id') == '') { ?>
+                  if($this->session->userdata('user_id') != '') { ?>
                   <div class="right-content">
                     <h6><!-- Write a review and win 100 reward points ! --></h6>
                     <div class="enter-review-btn <?= (!empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
