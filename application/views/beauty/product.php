@@ -103,100 +103,103 @@
                                 <!-- ------------- -->
                                 <div class="product-categires-part brands-part">
                                     <div class="categire-header">
-                                        <h3>Brands</h3>
+                                        <h3><?=$this->lang->line('Brands')?></h3>
                                     </div>
                                     <ul class="cate-wrp">
-                        <li class="active">
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="Aerin">
-                                    <label class="form-check-label" for="Aerin">
-                                        <h4>Aerin</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="Fable">
-                                    <label class="form-check-label" for="Fable">
-                                        <h4>Fable&Mane</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="Loreal">
-                                    <label class="form-check-label" for="Loreal">
-                                        <h4>Loreal</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="Mac">
-                                    <label class="form-check-label" for="Mac">
-                                        <h4>Mac</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="Schwa">
-                                    <label class="form-check-label" for="Schwa">
-                                        <h4>Schwarzkopf</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="Loreals">
-                                    <label class="form-check-label" for="Loreals">
-                                        <h4>Loreal</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="macs">
-                                    <label class="form-check-label" for="macs">
-                                        <h4>Mac</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="smart">
-                                    <label class="form-check-label" for="smart">
-                                        <h4>Schwarzkopf</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="discount-wrapper brands-wrp">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox"  id="squa">
-                                    <label class="form-check-label" for="squa">
-                                        <h4>Schwarzkopf</h4>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                                        <?php foreach ($brand as $key => $brandRecord){ ?>
+                                        <li class="active">
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                <input type="checkbox" class="brand" name="brand" value="<?= $brandRecord->id ?>">
+                                                    <input class="form-check-input" type="checkbox" id="Aerin">
+                                                    <label class="form-check-label" for="Aerin">
+                                                        <h4><?=$value->name?></h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <?php } ?>
+                                        <!-- <li>
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox"  id="Fable">
+                                                    <label class="form-check-label" for="Fable">
+                                                        <h4>Fable&Mane</h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox"  id="Loreal">
+                                                    <label class="form-check-label" for="Loreal">
+                                                        <h4>Loreal</h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox"  id="Mac">
+                                                    <label class="form-check-label" for="Mac">
+                                                        <h4>Mac</h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox"  id="Schwa">
+                                                    <label class="form-check-label" for="Schwa">
+                                                        <h4>Schwarzkopf</h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox"  id="Loreals">
+                                                    <label class="form-check-label" for="Loreals">
+                                                        <h4>Loreal</h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox"  id="macs">
+                                                    <label class="form-check-label" for="macs">
+                                                        <h4>Mac</h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox"  id="smart">
+                                                    <label class="form-check-label" for="smart">
+                                                        <h4>Schwarzkopf</h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox"  id="squa">
+                                                    <label class="form-check-label" for="squa">
+                                                        <h4>Schwarzkopf</h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li> -->
+                                    </ul>
                                 </div>
                                 <!-- ------------- -->
                                 <?php 
