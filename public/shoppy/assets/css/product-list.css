@@ -904,7 +904,9 @@ div[slider]>input[type=range]::-ms-tooltip {
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    /* justify-content: center; */
+    gap: 15px;
 }
 .mycustom-row{
     overflow: hidden !important;
