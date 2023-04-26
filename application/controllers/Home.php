@@ -137,8 +137,7 @@ class Home extends User_Controller
 
 	public function get_offer_product_listing($offer_id)
 	{
-		echo "hi";
-		exit;
+
 		$item_weight_id = [];
 		if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 			$this->load->model('frontend/product_model');
