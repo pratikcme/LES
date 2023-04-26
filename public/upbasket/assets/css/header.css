@@ -36,6 +36,7 @@ header {
     background: var(--header-icon-round-color);
     border-color: var(--header-icon-round-color);
     z-index: 1;
+    align-items: center;
 }
 
 .search-btn .input-group input {
@@ -349,6 +350,7 @@ nav a:active::before {
 .drp-grp {
     display: flex;
     gap: 10px;
+    margin-right: 10px;
 }
 
 .lng-drp select,
@@ -374,6 +376,10 @@ nav a:active::before {
 
 .lng-drp select {
     margin-left: 15px;
+}
+
+#google_translate_element{
+    height: 45px !important;
 }
 
 .header-cart-in {

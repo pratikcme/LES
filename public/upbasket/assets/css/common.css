@@ -161,13 +161,14 @@ a {
 .card-header {
     background: var(--card-img-bg) !important;
     border: none !important;
-    min-height: 220px !important;
+    min-height: 240px !important;
     border-radius: 20px !important;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px !important;
     position: relative;
+    height: 200px;
 }
 
 .card-header img {
@@ -206,6 +207,8 @@ a {
     transition: 0.3s;
     position: relative;
     /* top: 23px; */
+    display: inline-block;
+    margin-top:10px;
 
 }
 
@@ -454,10 +457,13 @@ a {
     border-radius: 90px !important;
     display: inline;
     width: 150px !important;
-    height: 40px !important;
+    height: 60px !important;
     text-transform: capitalize;
     text-align: center;
     transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .drop-btns .view-cart:hover {
@@ -476,9 +482,12 @@ a {
     color: var(--common-white) !important;
     border-radius: 90px !important;
     width: 150px !important;
-    height: 40px !important;
+    height: 60px !important;
     text-transform: capitalize;
     transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .drop-btns .checkout:hover {
@@ -746,7 +755,43 @@ a {
     color: var(--common-white) !important;
     transition: 0.3s;
 }
+/*  No working rating css */
+.rating-starts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
+.rating-starts .rating{
+    margin: 0 !important;
+}
+
+.rating span.star {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 0px;
+    margin-left: 0 !important;
+    line-height: 0;
+}
+.rating span.star:before {
+    content:"\f005";
+    color: goldenrod;
+}
+
+.stars3_5 .star-active:before {
+    content: "\f005"; 
+    color: gray !important; 
+}
+.stars3_5 .star-active-half:before {
+    content: "\f123" !important;
+    color: gray !important;
+}
+
+/* ends  */
 
 @media only screen and (max-width: 991px) {
     .signin-btn-green {

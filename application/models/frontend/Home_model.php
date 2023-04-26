@@ -38,7 +38,7 @@ class Home_model extends My_model
 	{
 		$branch_id = $this->session->userdata('branch_id');
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.discount_price', 'pi.image', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.discount_price', 'pi.image', 'pw.weight_id', 'pw.without_gst_price', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
@@ -311,20 +311,20 @@ class Home_model extends My_model
 		$branch_id = $return[0]->branch_id;
 		foreach ($return as $k => $v) {
 			$product_variant_id = $v->product_varient_id;
-			$data['select'] = ['quantity'];
-			$data['where']['product_weight_id'] = $product_variant_id;
-			$data['where']['status !='] = 9;
-			$data['where']['branch_id'] = $branch_id;
+			$cartdata['select'] = ['quantity'];
+			$cartdata['where']['product_weight_id'] = $product_variant_id;
+			$cartdata['where']['status !='] = 9;
+			$cartdata['where']['branch_id'] = $branch_id;
 			if (isset($postData['user_id']) && $postData['user_id'] != '') {
-				$data['where']['user_id'] = $postData['user_id'];
+				$cartdata['where']['user_id'] = $postData['user_id'];
 			} else {
 				if (isset($postData['device_id'])) {
-					$data['where']['device_id'] = $postData['device_id'];
-					$data['where']['user_id'] = 0;
+					$cartdata['where']['device_id'] = $postData['device_id'];
+					$cartdata['where']['user_id'] = 0;
 				}
 			}
-			$data['table'] = 'my_cart';
-			$result_cart = $this->selectRecords($data);
+			$cartdata['table'] = 'my_cart';
+			$result_cart = $this->selectRecords($cartdata);
 			if (count($result_cart) > 0) {
 				$my_cart_quantity = $result_cart[0]->quantity;
 			} else {
