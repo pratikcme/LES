@@ -89,12 +89,12 @@
                                                 children[7].style.left=value+'%';children[11].style.left=value+'%';
                                                 children[11].childNodes[1].innerHTML=this.value;" />
 
-                                        <input type="range" value="10000" max="10000" min="0" step="1" oninput="
+                                        <input type="range" value="100" max="100" min="0" step="1" oninput="
                                                 this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
                                                 let value = (this.value/parseInt(this.max))*100
                                                 var children = this.parentNode.childNodes[1].childNodes;
-                                                children[3].style.width=(10000-value)+'%';
-                                                children[5].style.right=(10000-value)+'%';
+                                                children[3].style.width=(100-value)+'%';
+                                                children[5].style.right=(100-value)+'%';
                                                 children[9].style.left=value+'%';children[13].style.left=value+'%';
                                                 children[13].childNodes[1].innerHTML=this.value;" />
                                     </div>
@@ -212,12 +212,12 @@
                                 children[7].style.left=value+'%';children[11].style.left=value+'%';
                                 children[11].childNodes[1].innerHTML=this.value;" />
 
-                        <input type="range" value="10000" max="10000" min="0" step="1" oninput="
+                        <input type="range" value="100" max="100" min="0" step="1" oninput="
                                 this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
                                 let value = (this.value/parseInt(this.max))*100
                                 var children = this.parentNode.childNodes[1].childNodes;
-                                children[3].style.width=(10000-value)+'%';
-                                children[5].style.right=(10000-value)+'%';
+                                children[3].style.width=(100-value)+'%';
+                                children[5].style.right=(100-value)+'%';
                                 children[9].style.left=value+'%';children[13].style.left=value+'%';
                                 children[13].childNodes[1].innerHTML=this.value;" />
                     </div>
