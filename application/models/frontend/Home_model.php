@@ -325,7 +325,7 @@ class Home_model extends My_model
 				}
 			}
 			$data['table'] = 'my_cart';
-
+			DD($data);
 			$result_cart = $this->selectRecords($data);
 
 			if (count($result_cart) > 0) {
