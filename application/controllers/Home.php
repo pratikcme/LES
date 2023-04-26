@@ -163,7 +163,7 @@ class Home extends User_Controller
 		$postData = ['offer_id' => $offer_id, 'user_id' => $this->session->userdata('user_id')];
 
 		$data['offer_varient_list'] = $this->this_model->get_offer_varient_listing($postData);
-		dd($data['offer_varient_list']);
+
 		$this->load->model('frontend/product_model');
 		foreach ($data['offer_varient_list'] as $key => $value) {
 			$addQuantity = $this->product_model->findProductAddQuantity($value->product_id, $value->product_varient_id);
