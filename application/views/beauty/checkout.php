@@ -131,7 +131,7 @@
                                         <button type="button" class="ship-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-sharp fa-regular fa-circle-xmark"></i></button>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label for="fname" class="form-label"><?=$this->lang->line('Full Name')?><span>*</span></label>
                                             <input type="text" name="fname" class="form-control fname" id="fname" aria-describedby="fname"  placeholder="<?= $this->lang->line('Full Name') ?>">
                                         </div>
@@ -143,7 +143,7 @@
                                                  placeholder="<?= $this->lang->line('Mobile number') ?>">
                                          </div>
                                          <div class="col-lg-12">
-                                             <label for="add" class="form-label">Location <span>*</span>
+                                             <label for="add" class="form-label"><?=$this->lang->line('Location')?><span>*</span>
                                              </label>
                                              <input type="text" id="departure_address"
                                                  onfocus="initAutocomplete('departure_address')"
@@ -173,7 +173,7 @@
                                          </div>
                                          <div class="col-lg-6">
                                              <div class="select-box">
-                                                 <label for="state" class="form-label">State <span>*</span>
+                                                 <label for="state" class="form-label"><?=$this->lang->line('State')?> <span>*</span>
                                                  </label>
                                                  <input type="text" name="state" class="form-control" id="state"
                                                      aria-describedby="add"
@@ -182,7 +182,7 @@
                                          </div>
                                          <div class="col-lg-6">
                                              <div class="select-box">
-                                                 <label for="country" class="form-label">Country <span>*</span>
+                                                 <label for="country" class="form-label"><?=$this->lang->line('Country')?> <span>*</span>
                                                  </label>
                                                  <input type="text" name="country" class="form-control" id="country"
                                                      aria-describedby="add"
@@ -192,7 +192,7 @@
                                          </div>
                                          <div class="col-lg-6">
                                              <div class="select-box">
-                                                 <label for="pincode" class="form-label">Pincode <span>*</span>
+                                                 <label for="pincode" class="form-label"><?=$this->lang->line('pincode')?><span>*</span>
                                                  </label>
                                                  <input type="text" name="pincode" class="form-control pincode"
                                                      id="pincode" aria-describedby="add"
@@ -202,10 +202,9 @@
                                          </div>
                                          <div class="col-lg-12">
                                              <div class="select-box">
-                                                 <label for="address" class="form-label">Address <span>*</span>
+                                                 <label for="address" class="form-label"><?=$this->lang->line('Address')?><span>*</span>
                                                  </label>
-                                                 <textarea type="text" name="address" class="form-control pincode"
-                                                     id="address"
+                                                 <textarea type="text" name="address" class="form-control pincode" id="address"
                                                      placeholder="<?= $this->lang->line('Enter Address') ?>"
                                                      autocomplete="off"></textarea>
                                              </div>
