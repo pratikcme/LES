@@ -396,22 +396,22 @@ nav a:hover {
 }
 
 .search-input {
-    display: block;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    width: 100%;
-    height: auto;
-    padding: 0.65rem 0rem;
-    padding-left: 15px;
-    padding-right: 55px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    color: #000 !important;
-    background-color: #FFF;
-    border: 1px solid #000;
+    display: block  !important;
+    font-family: inherit !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0.65rem 0rem !important;
+    padding-left: 15px !important;
+    padding-right: 55px !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 5px !important;
+    color: #000  !important;
+    background-color: #FFF !important;
+    border: 1px solid #000 !important;
 }
 
 .search-input::placeholder {
