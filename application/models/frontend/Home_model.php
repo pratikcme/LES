@@ -307,7 +307,7 @@ class Home_model extends My_model
 		$data['select'] = ['od.*', 'pw.id as product_varient_id', 'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.price as actual_price', 'w.id as weight_id'];
 		$data['where'] = ['od.offer_id' => $postData['offer_id']];
 		$return =  $this->selectFromJoin($data);
-		dd($return);
+
 		unset($data);
 		$branch_id = $return[0]->branch_id;
 		foreach ($return as $k => $v) {
@@ -325,7 +325,7 @@ class Home_model extends My_model
 				}
 			}
 			$data['table'] = 'my_cart';
-
+			dd($data);
 			$result_cart = $this->selectRecords($data);
 			if (count($result_cart) > 0) {
 				$my_cart_quantity = $result_cart[0]->quantity;
