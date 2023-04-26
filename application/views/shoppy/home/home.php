@@ -1,6 +1,6 @@
 <!--============== Carousel ==================-->
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
-  <!-- Indicators/dots -->
+  <!-- Indicators/dotsd -->
   <div class="carousel-indicators">
     <?php
     foreach ($banner as $key => $value) {
