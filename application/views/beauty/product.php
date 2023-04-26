@@ -8,7 +8,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
-                        <li class="breadcrumb-item active" style="text-transform:capitalize" aria-current="page"><?=$this->lang->line('product listing')?><</li>
+                        <li class="breadcrumb-item active" style="text-transform:capitalize" aria-current="page"><?=$this->lang->line('product listing')?></li>
                     </ol>
                 </nav>
             </div>
