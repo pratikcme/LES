@@ -312,27 +312,27 @@ class Home_model extends My_model
 		$branch_id = $return[0]->branch_id;
 		foreach ($return as $k => $v) {
 			$product_variant_id = $v->product_varient_id;
-			$data['select'] = ['quantity'];
-			$data['where']['product_weight_id'] = $product_variant_id;
-			$data['where']['status !='] = 9;
-			$data['where']['branch_id'] = $branch_id;
-			if (isset($postData['user_id']) && $postData['user_id'] != '') {
-				$data['where']['user_id'] = $postData['user_id'];
-			} else {
-				if (isset($postData['device_id'])) {
-					$data['where']['device_id'] = $postData['device_id'];
-					$data['where']['user_id'] = 0;
-				}
-			}
-			$data['table'] = 'my_cart';
+			// $data['select'] = ['quantity'];
+			// $data['where']['product_weight_id'] = $product_variant_id;
+			// $data['where']['status !='] = 9;
+			// $data['where']['branch_id'] = $branch_id;
+			// if (isset($postData['user_id']) && $postData['user_id'] != '') {
+			// 	$data['where']['user_id'] = $postData['user_id'];
+			// } else {
+			// 	if (isset($postData['device_id'])) {
+			// 		$data['where']['device_id'] = $postData['device_id'];
+			// 		$data['where']['user_id'] = 0;
+			// 	}
+			// }
+			// $data['table'] = 'my_cart';
 
-			$result_cart = $this->selectRecords($data);
+			// $result_cart = $this->selectRecords($data);
 
-			if (!empty($result_cart)) {
-				$my_cart_quantity = $result_cart[0]->quantity;
-			} else {
-				$my_cart_quantity = '0';
-			}
+			// if (!empty($result_cart)) {
+			// 	$my_cart_quantity = $result_cart[0]->quantity;
+			// } else {
+			// 	$my_cart_quantity = '0';
+			// }
 
 			unset($data);
 			unset($data);
@@ -341,7 +341,7 @@ class Home_model extends My_model
 			$data['where']['product_varient_id'] = $product_variant_id;
 			$rating = $this->selectRecords($data);
 			$v->rating = (!empty($rating)) ? $rating[0]->ratting : " 0";
-			$v->my_cart_quantity = $my_cart_quantity;
+			// $v->my_cart_quantity = $my_cart_quantity;
 			$image = $this->getVarient_image($v->product_varient_id);
 			$v->image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $image[0]->image;
 			$v->image = str_replace(' ', '%20', $v->image);
