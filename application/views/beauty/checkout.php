@@ -86,9 +86,10 @@
                                          <?php } ?>
                                      </div>
                                  </div>
+                                 <?php } ?>
                              </div>
                          </div>
-                        <?php }else{ ?>
+                        <?php } else { ?>
                           <div class="main-accordion">
                             <div class="accordion-heading"><?= $this->lang->line('Delivery Address') ?></div>
                             <div class="accordion-content accordion-content-3">
@@ -216,7 +217,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>  
+                          </div>  
                         <?php } ?> 
                         <div class="main-accordion">
                             <div class="accordion-heading">Delivery Schedule</div>
