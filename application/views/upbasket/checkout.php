@@ -374,8 +374,9 @@ span.error {
                              </thead>
                              <tbody>
                                  <tr>
-                                     <td class="cart-total-text-1"> <?= $this->lang->line('Sub Total') ?> <br> (
-                                         <?= ($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)
+                                     <td class="cart-total-text-1"> 
+                                        <?= $this->lang->line('Sub Total') ?> <br> 
+                                        (<?=($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>Tax)
                                      </td>
                                      <td class="cart-total-text-2">
                                          <span class='notranslate'> <?= $this->siteCurrency ?> </span>
