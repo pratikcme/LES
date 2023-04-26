@@ -111,7 +111,7 @@
                                       <p> <?= $value->address ?> </p>
                                     </div>
                                     <div class="address-icons">
-                                      <a href="javascript:" class="add-address-btn" class="place-order-btn edit_address" 
+                                      <a href="javascript:" class="add-address-btn edit_address" 
                                         data-id='<?= $this->utility->safe_b64encode($value->id) ?>' >
                                         <i class="fa-solid fa-pen-to-square"></i>
                                       </a>
