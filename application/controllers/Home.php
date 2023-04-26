@@ -137,6 +137,8 @@ class Home extends User_Controller
 
 	public function get_offer_product_listing($offer_id)
 	{
+		error_reporting(E_ALL);
+		ini_set('display_errors', 1);
 
 		$item_weight_id = [];
 		if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
