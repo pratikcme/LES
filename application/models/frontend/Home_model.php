@@ -312,7 +312,7 @@ class Home_model extends My_model
 		$branch_id = $return[0]->branch_id;
 		foreach ($return as $k => $v) {
 			$product_variant_id = $v->product_varient_id;
-			$data['select'] = ['quantity'];
+			$data['select'] = 'quantity';
 			$data['where']['product_weight_id'] = $product_variant_id;
 			$data['where']['status !='] = 9;
 			$data['where']['branch_id'] = $branch_id;
