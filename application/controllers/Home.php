@@ -137,8 +137,8 @@ class Home extends User_Controller
 
 	public function get_offer_product_listing($offer_id)
 	{
-		error_reporting(E_ALL);
-		ini_set('display_errors', 1);
+		// error_reporting(E_ALL);
+		// ini_set('display_errors', 1);
 
 		$item_weight_id = [];
 		if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
@@ -161,6 +161,7 @@ class Home extends User_Controller
 
 		$data['js'] = array('add_to_cart.js');
 		$postData = ['offer_id' => $offer_id, 'user_id' => $this->session->userdata('user_id')];
+		lq();
 		$data['offer_varient_list'] = $this->this_model->get_offer_varient_listing($postData);
 		$this->load->model('frontend/product_model');
 		foreach ($data['offer_varient_list'] as $key => $value) {
