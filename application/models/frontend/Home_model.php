@@ -312,21 +312,21 @@ class Home_model extends My_model
 		$branch_id = $return[0]->branch_id;
 		foreach ($return as $k => $v) {
 			$product_variant_id = $v->product_varient_id;
-			$qtydata['select'] = ['quantity'];
-			$qtydata['where']['product_weight_id'] = $product_variant_id;
-			$qtydata['where']['status !='] = 9;
-			$qtydata['where']['branch_id'] = $branch_id;
+			$cartdata['select'] = ['quantity'];
+			$cartdata['where']['product_weight_id'] = $product_variant_id;
+			$cartdata['where']['status !='] = 9;
+			$cartdata['where']['branch_id'] = $branch_id;
 			if (isset($postData['user_id']) && $postData['user_id'] != '') {
-				$qtydata['where']['user_id'] = $postData['user_id'];
+				$cartdata['where']['user_id'] = $postData['user_id'];
 			} else {
 				if (isset($postData['device_id'])) {
-					$qtydata['where']['device_id'] = $postData['device_id'];
-					$qtydata['where']['user_id'] = 0;
+					$cartdata['where']['device_id'] = $postData['device_id'];
+					$cartdata['where']['user_id'] = 0;
 				}
 			}
-			$qtydata['table'] = 'my_cart';
+			$cartdata['table'] = 'my_cart';
 
-			$result_cart = $this->selectRecords($qtydata);
+			$result_cart = $this->selectRecords($cartdata);
 
 			if (!empty($result_cart)) {
 				$my_cart_quantity = $result_cart[0]->quantity;
