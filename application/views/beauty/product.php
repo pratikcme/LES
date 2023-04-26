@@ -248,35 +248,38 @@
                     <div class="categire-header">
                         <h3>Brands</h3>
                     </div>
-                    <ul class="cate-wrp">
-                        <li class="active">
-                            Aerin
-                        </li>
-                        <li>
-                            Fable&Mane
-                        </li>
-                        <li>
-                            Loreal
-                        </li>
-                        <li>
-                            Mac
-                        </li>
-                        <li>
-                            Schwarzkopf
-                        </li>
-                        <li>
-                            Loreal
-                        </li>
-                        <li>
-                            Mac
-                        </li>
-                        <li>
-                            Schwarzkopf
-                        </li>
-                        <li>
-                            Schwarzkopf
-                        </li>
-                    </ul>
+                    <div class="row">
+                        <div class="ctg-left col-xl-8 col-md-8 col-8">
+                            <h4><a href="#">Aerin</a></h4>
+                        </div>
+                        <div class="ctg-right col-xl-4 col-md-4 col-4">
+                            <h5></h5>
+                        </div>
+                        <div class="ctg-left col-xl-8 col-md-8 col-8">
+                            <h4><a href="#"> Fable&Mane</a></h4>
+                        </div>
+                        <div class="ctg-right col-xl-4 col-md-4 col-4">
+                            <h5></h5>
+                        </div>
+                        <div class="ctg-left col-xl-8 col-md-8 col-8">
+                            <h4><a href="#"> Loreal</a></h4>
+                        </div>
+                        <div class="ctg-right col-xl-4 col-md-4 col-4">
+                            <h5></h5>
+                        </div>
+                        <div class="ctg-left col-xl-8 col-md-8 col-8">
+                            <h4><a href="#"> Mac</a></h4>
+                        </div>
+                        <div class="ctg-right col-xl-4 col-md-4 col-4">
+                            <h5></h5>
+                        </div>
+                        <div class="ctg-left col-xl-8 col-md-8 col-8">
+                            <h4><a href="#">Schwarzkopf</a></h4>
+                        </div>
+                        <div class="ctg-right col-xl-4 col-md-4 col-4">
+                            <h5></h5>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- ------------- -->
