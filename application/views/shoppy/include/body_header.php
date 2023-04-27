@@ -175,7 +175,7 @@
           </div>
 
           <div class="social-icons">
-            <!-- <div class="overlay"></div> -->
+            <div class="overlay"></div>
 
             <a href="#" class="">
               <div class="search-icon icons search-toggle">
