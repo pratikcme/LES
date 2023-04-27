@@ -158,7 +158,10 @@
                     foreach ($product_review as $key => $value) {
                       $sumOfRatting += $value->ratting;
                     } 
-                      $rat = round($sumOfRatting / count($product_review));
+                      $rat = 0;
+                      if($sumOfRatting !=  0 && count($product_review) != 0){
+                        $rat = round($sumOfRatting / count($product_review));
+                      }
                     ?>
                     
                     <div>
@@ -189,7 +192,7 @@
                         <div class="rewiew-wrapper">
                           <div class="review-left">
                             <div class="review-img">
-                              <svg xmlns="./assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
+                              <svg xmlns="<?=$this->theme_base_url?>/assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
                                 <defs>
                                   <style>.cls-1 {fill: #cc833d; }</style>
                                 </defs>
