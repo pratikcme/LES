@@ -227,9 +227,9 @@ button.btn-close {
     font-family: Poppins;
     font-size: 16px;
     font-weight: 500;
-    line-height: 20px;
+    line-height: 28px;
     color: var(--accordian-content-text-1);
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 input:focus {
@@ -309,7 +309,7 @@ input:focus {
     font-family: Poppins;
     font-size: 14px;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 25px;
     color: var(--accordian-content-text-2);
 }
 
@@ -438,8 +438,19 @@ input:focus {
 
 .time-wrapper {
     display: flex;
-    gap: 40px;
+    gap: 10px;
     margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.time-wrapper .form-check{
+    width: 40%;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 15px 35px;
 }
 
 .dates-day-wrapper .owl-theme .owl-nav [class*=owl-] {
@@ -2312,6 +2323,18 @@ input:focus {
         top: -22px;
         z-index: 99;
         font-size: 30px;
+    }
+}
+
+@media only screen and (max-width:1200px){
+    .time-wrapper .form-check{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .time-wrapper{
+        gap: 10px !important;
     }
 }
 

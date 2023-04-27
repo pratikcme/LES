@@ -206,6 +206,12 @@
     --offer-1-primary-text: #F92672;
     --offer-1-secondary-text: #0F053F;
 
+    /* -------three-offer--------- */
+    --practical-card-color: #035B3E;
+    --modern-card-color: #A05500;
+    --card-text-color: #031B61;
+    --card-color: #3E8DC5;
+
 }
 
 @font-face {
@@ -431,6 +437,7 @@
     margin-top: -13px;
     height: 100%;
     max-height: 50px !important;
+    height: 50px;
 }
 
 .card-body h3 a {
@@ -609,7 +616,7 @@
 
 .qty-container button {
     width: 50px;
-    height: 40px;
+    height: 39px;
 }
 
 .product-detail-quentity-icon i {
@@ -662,7 +669,16 @@
     color: var(--dark-gray);
 }
 
+.card .product-detail-quentity{
+    margin-top: 35px !important;
+}
+
 /* carousel */
+.carousel-item{
+    height: 500px !important;
+}
+
+
 .carousel-caption {
     position: relative !important;
 }
@@ -725,6 +741,8 @@
     border-radius: 20px;
     object-fit: cover;
     transition: 0.5s;
+    width: 100%;
+    height: 100%;
 }
 
 .cloth-card img:hover{
@@ -746,6 +764,7 @@
     margin-bottom: 25px;
     font-size: 20px !important;
     font-family: Poppins;
+    font-weight: bold;
     color: var(--card-color);
     letter-spacing: 2px;
 }
@@ -756,6 +775,7 @@
     margin-bottom: 23px;
     font-size: 40px !important;
     font-family: Poppins;
+    font-weight: 800;
     color: var(--card-text-color);
 }
 
@@ -892,19 +912,20 @@
 
 .offer-wrapper h3 {
     font-family: Poppins;
-    font-size: 48px;
+    font-size: 36px;
     line-height: 40px;
-    margin-bottom: 26px;
+    margin-bottom: 45px;
 }
 
 .offer-wrapper h3 span {
-    font-family: var(--PublicSans-regular);
-    font-size: 32px;
+    font-family: Poppins;
+    font-size: 34px;
     line-height: 40px;
+    margin-left: 10px;
 }
 
 .offer-wrapper p {
-    font-family: var(--PublicSans-Medium);
+    font-family: Poppins;
     font-size: 18px;
     line-height: 20px;
     letter-spacing: 0.1em;
@@ -971,7 +992,7 @@
 
 .offer-wrapper-2 h3 {
     color: var(--offer-2-secondary-text);
-    margin-bottom: 45px !important;
+    /* margin-bottom: 45px !important; */
 }
 
 .offer-wrapper-2 .explor-btn{

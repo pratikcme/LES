@@ -400,13 +400,6 @@ class Product_model extends My_model
 		$data['limit'] = $page * $limit;
 		$product = $this->selectFromJoin($data);
 
-		// dd($product);
-		// Dk check
-		// if ($page == 2) {
-		// 	lq();
-		// 	// dd($product);
-		// }
-		// 
 		$total_result = $this->countRecords($data);
 		$pages = ceil($total_result / 20);
 		if ($page < $pages) {
@@ -511,8 +504,6 @@ class Product_model extends My_model
 		}
 
 		if (!empty($subcategory)) {
-
-
 
 			$subcatData['subcategory'] = $subcategory;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);

@@ -72,23 +72,38 @@
                   <div class="product-content-part zoom">
                       <div class=""></div>
                       <h2><?= $productDetail[0]->name ?></h2>
-                      <h5 id="starRatting">
+                      <!-- <h5 id="starRatting">
                           <?php
                             for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) {
                             ?>
                           <span class="star"></span>
-                          <!-- <i class="fa-solid fa-star"></i> -->
+                          
                           <?php } ?>
 
                           <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
                           <span class="star star-active"></span>
-                          <!-- <i class="fas fa-star blank-ratting"></i> -->
+                          
 
                           <?php } ?>
 
                           <?= $productDetail[0]->rating['rating'] ?> <span class="d-none"> <a href=""> 174 Ratings & 22
                                   Reviews</a></span>
-                      </h5>
+                      </h5> -->
+
+                      <!--  -->
+                      <div class="rating-starts justify-content-start" id="starRatting">
+                          <div class="rating stars3_5">
+                              <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
+                              <span class="star"></span>
+                              <?php } ?>
+                              <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+                              <span class="star star-active"></span>
+                              <?php } ?>
+                          </div>
+                          <div><span>(<?= $productDetail[0]->rating['rating'] ?>)</span></div>
+                      </div>
+
+                      <!--  -->
                       <h6 id="is_aval_stock">
                           <?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                       </h6>
@@ -217,22 +232,18 @@
                                                     } ?>
                                                   <div>
                                                       <h3>Customer Reviews</h3>
-                                                      <h5>
-                                                          <span>
+
+                                                      <div class="rating-starts justify-content-start">
+                                                          <div class="rating stars3_5">
                                                               <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
-                                                              <i class="fa-solid fa-star"></i>
+                                                              <span class="star"></span>
                                                               <?php } ?>
-                                                              <!-- <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
-                                                              <i class="fa-solid fa-star"></i>
-                                                               blank star appear hear
-                                                              <?php } ?> -->
-                                                              <?= round($sumOfRatting / count($product_review)) ?>
-                                                          </span>
-                                                          <span>
-                                                              <!--  174 Ratings &amp; --> <?= count($product_review) ?>
-                                                              Reviews
-                                                          </span>
-                                                      </h5>
+                                                              <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+                                                              <span class="star star-active"></span>
+                                                              <?php } ?>
+                                                          </div>
+                                                          <span>(<?= count($product_review) ?>)</span>
+                                                      </div>
                                                   </div>
                                               </div>
                                           </div>
@@ -537,7 +548,7 @@
                           <h3><a
                                   href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
                           </h3>
-                          <h4><?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                          <h4><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                           </h4>
 
                           <div class="rate-dropdown">

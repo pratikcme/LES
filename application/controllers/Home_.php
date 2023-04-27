@@ -29,7 +29,7 @@ class Home extends User_Controller {
 				$data['new_arrival'][$key]->image = 'defualt.png';
 			}
 		}
-		$this->load->model('banner_promotion_model','banner')
+		$this->load->model('banner_promotion_model','banner');
 		$data['banner'] = $this->banner->getBannerImage();
 		// echo "<pre>";
 		// print_r($data['banner']);die;
@@ -38,4 +38,3 @@ class Home extends User_Controller {
 
 	
 }
-?>
