@@ -226,13 +226,13 @@ class Products extends User_Controller
 				$value->discount_price = $value->without_gst_price;
 			}
 
-			if (!empty($value->image) || $value->image != '') {
-				$image = $value->image;
+			if (!empty($value->product_image) || $value->product_image != '') {
+				$image = $value->product_image;
 				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
 					// $image = 'defualt.png';	
 					$image = $default_product_image;
 				} else {
-					$image = $value->image;
+					$image = $value->product_image;
 				}
 			} else {
 				$image = $default_product_image;
