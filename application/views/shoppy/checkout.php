@@ -360,13 +360,6 @@
               </div>
             </div>
           </div>
-          <?php
-
-          if ($phone == '0' || $is_verify == '0') { ?>
-            <button type="button" id="verify" class="btn verify-btn lg-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Verify Mobile
-            </button>
-          <?php } ?>
         </div>
       </div>
 
@@ -488,7 +481,14 @@
               </tbody>
             </table>
           </div>
-          <?php if ($phone == '1' && $is_verify == '1') { ?>
+
+          <?php
+
+          if ($phone == '0' || $is_verify == '0') { ?>
+            <button type="button" id="verify" class="btn verify-btn lg-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Verify Mobile
+            </button>
+          <?php } else { ?>
             <a href="javascript:;" class="place-order-btn" id="payBtn" data-toggle="modal"><?= $this->lang->line('Place order') ?>
             </a>
           <?php } ?>
