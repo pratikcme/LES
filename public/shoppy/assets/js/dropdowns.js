@@ -51,10 +51,10 @@ if (searchToggle && searchCancel) {
   });
 }
 
-// Open and Close Search Bar Toggle
-const searchBlock = document.querySelector(".search-block");
-const searchToggle = document.querySelector(".search-toggle");
-const searchCancel = document.querySelector(".main-div-cancel");
+// // Open and Close Search Bar Toggle
+// const searchBlock = document.querySelector(".search-block");
+// const searchToggle = document.querySelector(".search-toggle");
+// const searchCancel = document.querySelector(".main-div-cancel");
 
 if (searchToggle && searchCancel) {
   searchToggle.addEventListener("click", () => {
