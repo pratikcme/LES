@@ -135,6 +135,7 @@ span.error {
                                                 <?= $this->lang->line('Use Gst Number') ?>
                                             </label>
                                         </div>
+                                        <?php if(isset($selfPickEnable) && $selfPickEnable == '1'){ ?>
                                         <div class="form-check radio-outer-line">
                                             <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="isSelfPickup"
                                             <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
@@ -142,6 +143,7 @@ span.error {
                                                 <span><i class="fa-solid fa-store"></i></span><?=$this->lang->line('Pick up')?>
                                             </label>
                                         </div>
+                                        <?php } ?>
                                     </div>
                                 </form>
                             </div>
@@ -283,7 +285,7 @@ span.error {
                                                      autocomplete="off"></textarea>
                                              </div>
                                          </div>
-                                         <div class="save-btn text-center">
+                                         <div class="save-btn">
                                              <button type="submit" id="addAddress" class="signin-btn-green">
                                                  <?= $this->lang->line('Save') ?> </button>
                                          </div>
@@ -302,7 +304,7 @@ span.error {
                                 <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
                                     <div class="time-wrapper">
                                         <h3><?= $this->lang->line('Pickup Timing') ?></h3>
-                                        <p><?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?></p>
+                                        <pre><?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?></pre>
                                     </div>
                                  <?php } else { ?>
                                     <div class="time-wrapper">
@@ -472,7 +474,7 @@ span.error {
                     <?php if ($phone == '0' || $is_verify == '0') { ?> 
                         <button type="button" class="place-order-btn" id="verify"><?= $this->lang->line('Verify Mobile') ?></button>
                     <?php }else{?>
-                        <button class="place-order-btn" id="payBtn"> <?= $this->lang->line('Place order') ?> </button>
+                        <button type="button" class="place-order-btn" id="payBtn"> <?= $this->lang->line('Place order') ?> </button>
                     <?php } ?>
                     <!-- <a href="javascript:" class="place-order-btn" id="myBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></a> -->
 

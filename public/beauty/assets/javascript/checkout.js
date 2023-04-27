@@ -168,7 +168,8 @@ var CHECKOUT = (function () {
       $("#payBtn_error").html(language.Please_enter_your_Address);
       return false;
     }
-    if (AddressNotInRange == "0") {
+    
+    if (AddressNotInRange == "0" && isSelfPickup =='0') {
       // alert("We are not deliver to your selected Address");
       swal(language.We_do_not_deliver_to_your_selected_Address);
       $("#payBtn_error").html(language.We_do_not_deliver_to_your_selected_Address);
@@ -189,7 +190,7 @@ var CHECKOUT = (function () {
         var user_gst_number = $("#user_gst_number").val();
       }
     }
-
+    alert()
     var promocode = $("#applied_promo").val();
 
     if (paymentOption == 0) {
