@@ -399,8 +399,10 @@ class Checkout extends User_Controller
 
       $calc_shiping = 0;
       if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
-        $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
+        $shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
+        $calc_shiping = $shiping['delivery_charge']; 
       }
+      
       // this call for currency code
       $currency = $this->this_model->checkCurrencyCode();
       $currency_code = $currency[0]->currency_code;
@@ -547,7 +549,6 @@ class Checkout extends User_Controller
     } else {
       $status = '1';
     }
-
     echo json_encode(['response' => $status]);
   }
 
@@ -631,16 +632,12 @@ class Checkout extends User_Controller
 
     $otpForSelfPickup = '';
     $calc_shiping = 0;
+    $shiping = array();
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
-      $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      if ($calc_shiping == '0.00') {
-        $calc_shiping = 'notInRange';
-      }
+      $shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
+      $calc_shiping = $shiping['delivery_charge']; 
     }
 
-    if ($calc_shiping == 'notInRange') {
-      $calc_shiping = 0;
-    }
 
     if (isset($getActivePaymentMethod[0]->type) && $getActivePaymentMethod[0]->type == 1) { // razor payment
 
