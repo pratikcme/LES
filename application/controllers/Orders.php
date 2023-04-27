@@ -63,7 +63,6 @@ class Orders extends User_Controller {
 			$payment = $this->input->post('paymentOption');
 			if($payment == 0 ){
 				// print_r($this->input->post());die;
-				dd($_SESSION);
 				$this->load->model('frontend/checkout_model','checkout_model');
 				$re = $this->checkout_model->unreserve_product_userwise($user_id);
 				$result = $this->this_model->makeOrder();
