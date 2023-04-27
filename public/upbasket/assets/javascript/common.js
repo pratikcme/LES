@@ -440,8 +440,7 @@ $(document).on("click", ".dec", function () {
   var shipping_charge = $("#shipingCharge").val();
   shipping_charge = parseFloat(shipping_charge);
   var that = $(this);
-
-  if (quantity == 1) {
+  if (quantity == 0) {
     $(this).next("input").val(1);
 
     swal({
@@ -519,7 +518,8 @@ $(document).on("click", ".dec", function () {
         // window.location.reload();
         if (output.errormsg == "") {
           $("#display_subtotal").html(siteCurrency + output.final_total);
-          that.next("input").val(output.new_quan);
+
+          //   that.next("input").val(output.new_quan); //DK added
         } else {
           that.next("input").val(output.max_qun);
           swal(output.errormsg);
@@ -575,7 +575,7 @@ $(document).on("click", ".inc", function () {
         that.parent().removeClass("transparent-wrap");
         if (output.errormsg == "") {
           $("#display_subtotal").html(siteCurrency + output.final_total);
-          that.prev("input").val(output.new_quan);
+          //   that.prev("input").val(output.new_quan); //Dk added
         } else {
           // that.prev('input').val(quantity - 1);
           that.prev("input").val(output.max_qun);

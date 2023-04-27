@@ -53,7 +53,7 @@
 
                             <?php if ($value->available_quantity != '0') : ?>
 
-                            <h4><?= ($value->available_quantity >= 25) ? 'Available (in stock)' : 'limited stock' ?>
+                            <h4><?= ($value->available_quantity > $value->limited_stock) ? 'Available (in stock)' : 'limited stock' ?>
                             </h4>
 
                             <?php
@@ -99,7 +99,7 @@
 
                             <div class="product-detail-quentity <?= $d_show ?>">
                                 <div class="qty-container">
-                                    <button class="qty-btn-minus dec"
+                                    <button class="qty-btn-minus dec cart-qty-minus"
                                         data-product_weight_id="<?= $value->product_varient_id ?>" type="button"><i
                                             class="fa-solid fa-minus"></i></button>
                                     <input type="text" name="qty"
@@ -107,7 +107,7 @@
                                         data-product_id="<?= $value->product_id ?>"
                                         data-weight_id="<?= $value->weight_id ?>" class="input-qty qty" readonly />
 
-                                    <button class="qty-btn-plus inc"
+                                    <button class="qty-btn-plus inc cart-qty-plus"
                                         data-product_weight_id="<?= $value->product_varient_id ?>" type="button"><i
                                             class="fa-solid fa-plus"></i></button>
                                 </div>

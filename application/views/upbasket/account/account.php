@@ -593,8 +593,8 @@
                <div class="address-wrapper">
                  <div class="ship-check text-end">
                    <div class="form-check">
-                     <input class="from_account form-check-input <?= $status ?>" data-id="<?= $this->utility->safe_b64encode($value->id) ?>" type="checkbox" <?= ($value->status == '1') ? 'checked' : '' ?>>
-                     <label class="form-check-label" for="id1">
+                     <input class="from_account form-check-input <?= $status ?>" id="<?= 'add' . $key ?>" data-id="<?= $this->utility->safe_b64encode($value->id) ?>" type="checkbox" <?= ($value->status == '1') ? 'checked' : '' ?>>
+                     <label class="form-check-label" for="<?= 'add' . $key ?>">
                        <?= $this->lang->line('Default') ?>
                    </div>
                  </div>

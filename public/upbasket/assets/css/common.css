@@ -760,7 +760,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 10px !important;
 }
 
 .rating-starts .rating{
@@ -790,6 +790,9 @@ a {
     content: "\f123" !important;
     color: gray !important;
 }
+
+
+
 
 /* ends  */
 

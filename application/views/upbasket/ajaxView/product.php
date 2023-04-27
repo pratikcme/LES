@@ -19,7 +19,7 @@
                 <h3><a
                         href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->name ?></a>
                 </h3>
-                <h4><?php if ($value->quantity > 25) { ?>
+                <h4><?php if ($value->quantity > $value->limited_stock) { ?>
                     <?= $this->lang->line('Available(Instock)') ?>
                     <?php } else { ?>
                     <?= $this->lang->line('Limited Stock') ?>
@@ -27,7 +27,6 @@
 
                 <!-- Dk added -->
                 <div class="rate-dropdown">
-
                     <div class="card-rating">
                         <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png"
                                 alt=""><?= $value->ratting['rating'] ?></p>
