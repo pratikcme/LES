@@ -296,20 +296,21 @@ span.error {
                              </div>
                          </div>
                          <div class="main-accordion">
-                             <div class="accordion-heading">Payment Option</div>
+                             <div class="accordion-heading"><?=$this->lang->line('Payment Option')?></div>
                              <div class="accordion-content">
                                  <div class="accordion-content-2 accordion-5">
                                      <?php if ($payment_option != '' && $isOnlinePayment == '1') { ?>
                                      <div class="form-check radio-outer-line">
-                                         <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2"
+                                         <input class="form-check-input pay-chk" type="radio" 
                                              id="credit" value="<?= $payment_option ?>"
                                              <?= ($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : '' ?>>
                                          <label class="form-check-label" for="Credit/Debit Card">
                                              <?= $this->lang->line('Credit/Debit Card') ?> </label>
-                                     </div> <?php } ?>
+                                     </div> 
+                                     <?php } ?>
                                      <?php if ($isCOD == '1') { ?>
                                      <div class="form-check radio-outer-line">
-                                         <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2"
+                                         <input class="form-check-input pay-chk" type="radio" 
                                              id="Cash On Delivery" value="0"
                                              <?= ($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : '' ?>>
                                          <label class="form-check-label" for="Cash On Delivery">
@@ -326,13 +327,12 @@ span.error {
                  <div class="checkout-order-detils">
                      <div class="mydiv-wrapper">
                          <div class="mydiv-header">
-                             <h3>Your Orders</h3>
+                             <h3><?=$this->lang->line('Your Orders')?></h3>
                          </div> <?php foreach ($mycart as $key => $value) { ?>
 
                          <div class="order-wrapper">
                              <div class="order-wrapper-img">
-                                 <a
-                                     href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                                      <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                          alt="">
                                  </a>
@@ -369,7 +369,7 @@ span.error {
                          <table>
                              <thead class="head-title">
                                  <tr>
-                                     <th colspan="2">Cart totals</th>
+                                     <th colspan="2"><?=$this->lang->line('Cart Totals')?></th>
                                  </tr>
                              </thead>
                              <tbody>
@@ -443,28 +443,27 @@ span.error {
                      </div>
                      <input type="hidden" id="applied_promo">
                      <?php if ($phone == '0' || $is_verify == '0') { ?>
-                     <button type="button" class="place-order-btn"
-                         id="verify"><?= $this->lang->line('Verify Mobile') ?></button>
+                     <button type="button" class="place-order-btn" id="verify"><?= $this->lang->line('Verify Mobile') ?></button>
                      <?php } else { ?>
                      <button class="place-order-btn" id="payBtn"> <?= $this->lang->line('Place order') ?> </button>
                      <?php } ?>
                      <div class="our-secure-product">
                          <div class="secure-product-wrapper">
                              <div class="icon">
-                                 <a href="#"><img src="<?= $this->theme_base_url ?>/assets/images/ShieldCheck.svg"
+                                 <a href="javascript:"><img src="<?= $this->theme_base_url ?>/assets/images/ShieldCheck.svg"
                                          alt=""></a>
                              </div>
                              <div class="text">
-                                 <h3>100% Genuine Products</h3>
+                                 <h3><?=$this->lang->line('100 Genuine Products')?></h3>
                              </div>
                          </div>
                          <div class="secure-product-wrapper">
                              <div class="icon">
-                                 <a href="#">
+                                 <a href="javascript:">
                                      <img src="<?= $this->theme_base_url ?>/assets/images/Medal.svg" alt=""></a>
                              </div>
                              <div class="text">
-                                 <h3>Secure Payments</h3>
+                                 <h3><?=$this->lang->line('Secure Payments')?></h3>
                              </div>
                          </div>
                      </div>
