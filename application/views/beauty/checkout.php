@@ -23,6 +23,19 @@ span.error {
     padding-left: 0px !important;
 }
 
+.ui-datepicker-calendar td:nth-child(3) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(4) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(5) {
+    padding-left: 0px !important;
+}
+
+
 .ui-datepicker-calendar th:nth-child(3) {
     padding-left: 0px !important;
 }
@@ -58,6 +71,9 @@ span.error {
 }
  </style>
 <!-- ----hero-section--- -->
+<?php if (isset($Host)) { ?>
+ <script type="application/javascript" src="<?= $Host . '/merchantpgpui/checkoutjs/merchants/' . $MID ?>.js"></script>
+ <?php } ?>
 <section class="hero-section login-section common-banner-bg">
     <div class="container">
         <div class="row">
@@ -310,7 +326,7 @@ span.error {
                                 <div class="accordion-content-2 accordion-5">
                                 <?php if ($payment_option != '' && $isOnlinePayment == '1') { ?>
                                     <div class="form-check radio-outer-line">
-                                        <input class="form-check-input pay-chk" type="radio" id="credit" value="<?= $payment_option ?>" 
+                                        <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?= $payment_option ?>" 
                                         <?= ($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : '' ?>>
                                         <label class="form-check-label" for="Credit/Debit Card">
                                             <?= $this->lang->line('Credit/Debit Card') ?> </label>
@@ -319,7 +335,7 @@ span.error {
                                 <?php } ?>
                                 <?php if ($isCOD == '1') { ?>
                                     <div class="form-check radio-outer-line">
-                                        <input class="form-check-input pay-chk" type="radio"  id="Cash On Delivery" value="0" 
+                                        <input class="form-check-input pay-chk" type="radio"  name="flexRadioDefault2" id="Cash On Delivery" value="0" 
                                         <?= ($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : '' ?>>
                                         <label class="form-check-label" for="Cash On Delivery">
                                             <?= $this->lang->line('Cash On Delivery') ?> </label>
@@ -331,7 +347,7 @@ span.error {
                         </div>
                     </div>
 
-                    <button type="button" class="btn verify-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn verify-btn d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Verify Mobile
                     </button>
                 </div>

@@ -103,24 +103,20 @@ class Checkout extends User_Controller
 
     $otpForSelfPickup = '';
     $data['calc_shiping'] = '0';
+    $shiping = array();
     $calc_shiping = 0;
 
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
-      $calc_shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      if ($calc_shiping == '0.00') {
-        $data['calc_shiping'] = 'notInRange';
-      } else {
-        $data['calc_shiping'] = $calc_shiping;
-      }
+      $shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
+      $calc_shiping = $shiping['delivery_charge']; 
       // dd($data['calc_shiping']);
     }
-    if ($data['calc_shiping'] == 'notInRange') {
-      $calc_shiping = 0;
-      $data['AddressNotInRange'] = '0';
+    if (!empty($shiping)) {
+      $data['AddressNotInRange'] = $shiping['isInRange'];
     } else {
-      $data['AddressNotInRange'] = '1';
+      $data['AddressNotInRange'] = '0';
     }
-
+    $data['calc_shiping'] = $calc_shiping;
     $this->load->model($this->myvalues->usersAccount['model'], 'that_model');
     $data['get_address'] = $this->that_model->getUserAddress();
     $data['time_slot'] = $this->this_model->getTimeSlot();
