@@ -175,7 +175,7 @@
           </div>
 
           <div class="social-icons">
-            <!-- <div class="overlay"></div> -->
+            <div class="overlay"></div>
 
             <a href="#" class="">
               <div class="search-icon icons search-toggle">
@@ -246,7 +246,7 @@
               </ul>
             </div>
 
-            <a href="#" class="cart-in">
+            <a href="javascript:;" class="cart-in">
               <div class="cart-icons icons">
 
                 <span class="g-badge" id="itemCount" <?= (isset($this->cartCount) && $this->cartCount != 0) ? 'style="display:block"' : 'style="display:none"' ?>><?= (isset($this->cartCount)) ? $this->cartCount : '' ?></span>
@@ -269,7 +269,7 @@
 
 
 <div class="header-cart-in">
-  <a href="#">
+  <a href="javascript:;">
     <div class=" header-cart-respo">
       <i class="fa-solid fa-cart-shopping"></i>
       <span class="g-badge" id="itemCount" <?= (isset($this->cartCount) && $this->cartCount != 0) ? 'style="display:block"' : 'style="display:none"' ?>><?= (isset($this->cartCount)) ? $this->cartCount : '' ?></span>
