@@ -83,19 +83,26 @@ class Checkout_model extends My_model
         $range_id = $this->selectRecords($data, true);
 
         unset($data);
-        $data['select'] = ['delivery_charge'];
-        $data['where'] = ['start_price <=' => $cart_price, 'end_price >=' => $cart_price, 'delivery_range_id' => $range_id[0]['id']];
-        $data['table'] = 'delivery_charge_price_range';
-        $res = $this->selectRecords($data);
-
-        if (count($res)) {
-            return $res[0]->delivery_charge;
-        } else {
-            $res = '0.00';
-            return $res;
+        $inRange = '1';
+        if(!empty($range_id)){
+            $data['select'] = ['delivery_charge'];
+            $data['where'] = ['start_price <=' => $cart_price, 'end_price >=' => $cart_price, 'delivery_range_id' => $range_id[0]['id']];
+            $data['table'] = 'delivery_charge_price_range';
+            $res = $this->selectRecords($data);
+            if (count($res)) {
+                $delivery_charge = $res[0]->delivery_charge;
+                // return $res[0]->delivery_charge;
+            } else {
+                $delivery_charge = 0;
+                // $res = '0.00';
+                // return $res;
+            }
+        }else{
+            $delivery_charge = 0;
+            $inRange = '0'; // not in range
         }
 
-
+        return ['delivery_charge'=>$delivery_charge,'isInRange'=> $inRange];
 
         //backpup
         // $get_range = $this->selectRecords($data);

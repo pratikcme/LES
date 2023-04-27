@@ -1,5 +1,79 @@
+<style>
+span.error {
+    color: red;
+}
 
+.dates-day-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ui-datepicker-calendar th:nth-child(1) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(1) {
+    padding-left: 0 !important;
+}
+
+.ui-datepicker-calendar td:nth-child(2) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(3) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(4) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(5) {
+    padding-left: 0px !important;
+}
+
+
+.ui-datepicker-calendar th:nth-child(3) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar th:nth-child(4) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-title {
+    font-size: 18px !important;
+    color: var(--primary-color);
+    font-family: Poppins !important;
+}
+
+.ui-datepicker {
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.5rem !important;
+    border: 1px solid #999 !important;
+}
+
+.ui-datepicker-calendar thead th {
+    color: var(--primary-color) !important;
+    font-size: 16px !important;
+    font-weight: 400px !important;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+ </style>
 <!-- ----hero-section--- -->
+<?php if (isset($Host)) { ?>
+ <script type="application/javascript" src="<?= $Host . '/merchantpgpui/checkoutjs/merchants/' . $MID ?>.js"></script>
+ <?php } ?>
 <section class="hero-section login-section common-banner-bg">
     <div class="container">
         <div class="row">
@@ -222,62 +296,58 @@
                             <div class="accordion-heading">Delivery Schedule</div>
                             <div class="accordion-content  accordion-content-4">
                                 <div class="dates-day-wrapper">
-                                    <div id="calendar" class="hasDatepicker"></div>
+                                    <!-- <div id="calendar" class="hasDatepicker"></div> -->
+                                    <div id="datepicker"></div>
                                 </div>
-
-                                <div class="time-wrapper">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Default-1" id="Default-1" checked>
-                                        <label class="form-check-label" for="Default-1">
-                                            9am to 10am
-                                        </label>
+                                <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
+                                    <div class="time-wrapper">
+                                        <h3><?= $this->lang->line('Pickup Timing') ?></h3>
+                                        <p><?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?></p>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Default-1" id="Default-2">
-                                        <label class="form-check-label" for="Default-2">
-                                            11am to 2pm
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Default-1" id="Default-3">
-                                        <label class="form-check-label" for="Default-3">
-                                            3pm to 5pm
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Default-1" id="Default-4">
-                                        <label class="form-check-label" for="Default-4">
-                                            6pm to 8pm
-                                        </label>
-                                    </div>
-                                </div>
-
-
+                                 <?php } else { ?>
+                                    <div class="time-wrapper">
+                                     <?php foreach ($time_slot as $key => $value) { ?>
+                                        <div class="form-check">
+                                            <input class="time_slot_checked" type="radio" id="Default-1" name="time_slot"
+                                                value=" <?= $value->id ?>"
+                                                <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+                                            <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> -
+                                                <?= $value->end_time ?> </label>
+                                        </div>
+                                     <?php } ?>
+                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
 
                         <div class="main-accordion">
-                            <div class="accordion-heading">Payment Option</div>
+                            <div class="accordion-heading"><?=$this->lang->line('Payment Option')?></div>
                             <div class="accordion-content">
                                 <div class="accordion-content-2 accordion-5">
+                                <?php if ($payment_option != '' && $isOnlinePayment == '1') { ?>
                                     <div class="form-check radio-outer-line">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="Credit/Debit Card" checked>
+                                        <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?= $payment_option ?>" 
+                                        <?= ($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : '' ?>>
                                         <label class="form-check-label" for="Credit/Debit Card">
-                                            Credit/Debit Card
+                                            <?= $this->lang->line('Credit/Debit Card') ?> </label>
                                         </label>
                                     </div>
+                                <?php } ?>
+                                <?php if ($isCOD == '1') { ?>
                                     <div class="form-check radio-outer-line">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="Cash On Delivery">
+                                        <input class="form-check-input pay-chk" type="radio"  name="flexRadioDefault2" id="Cash On Delivery" value="0" 
+                                        <?= ($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : '' ?>>
                                         <label class="form-check-label" for="Cash On Delivery">
-                                            Cash On Delivery
+                                            <?= $this->lang->line('Cash On Delivery') ?> </label>
                                         </label>
                                     </div>
+                                <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <button type="button" class="btn verify-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn verify-btn d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Verify Mobile
                     </button>
                 </div>
@@ -288,70 +358,28 @@
                 <div class="checkout-order-detils">
                     <div class="mydiv-wrapper">
                         <div class="mydiv-header">
-                            <h3>Your Orders</h3>
+                            <h3><?=$this->lang->line('Your Orders')?></h3>
                         </div>
-
-                        <div class="supportive-div">  
+                        <div class="supportive-div"> 
+                        <?php foreach ($mycart as $key => $value) { ?> 
                             <div class="order-wrapper">
                                 <div class="order-wrapper-img">
-                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-5.png" alt=""></a>
+                                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt=""></a>
                                 </div>
                                 <div class="order-wrapper-text">
-                                    <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                    <h5>Qty : 1</h5>
-                                    <h3>₹1150.00</h3>
+                                    <h4><a href="./product-details.php"><?= $value->product_name ?></a></h4>
+                                    <h5>Qty : <?=$value->quantity?></h5>
+                                    <h3 class='notranslate'><?= $this->siteCurrency . number_format((float)$value->discount_price, '2', '.', '') ?></h3>
                                 </div>
                             </div>
-
-                            <div class="order-wrapper">
-                                <div class="order-wrapper-img">
-                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-6.png" alt=""></a>
-                                </div>
-                                <div class="order-wrapper-text">
-                                    <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                    <h5>Qty : 1</h5>
-                                    <h3>₹1150.00</h3>
-                                </div>
-                            </div>
-
-                            <div class="order-wrapper">
-                                <div class="order-wrapper-img">
-                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-7.png" alt=""></a>
-                                </div>
-                                <div class="order-wrapper-text">
-                                    <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                    <h5>Qty : 1</h5>
-                                    <h3>₹1150.00</h3>
-                                </div>
-                            </div>
-
-                            <div class="order-wrapper">
-                                <div class="order-wrapper-img">
-                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-8.png" alt=""></a>
-                                </div>
-                                <div class="order-wrapper-text">
-                                    <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                    <h5>Qty : 1</h5>
-                                    <h3>₹1150.00</h3>
-                                </div>
-                            </div>
-
-                            <div class="order-wrapper">
-                                <div class="order-wrapper-img">
-                                    <a href="./product-details.php"><img src="./assets/images/home-page/feature-prodct-5.png" alt=""></a>
-                                </div>
-                                <div class="order-wrapper-text">
-                                    <h4><a href="./product-details.php">Lakme Absolute Blur Perfect Makeup Primer</a></h4>
-                                    <h5>Qty : 1</h5>
-                                    <h3>₹1150.00</h3>
-                                </div>
-                            </div>
+                        <?php } ?>
                         </div>  
 
                     </div>
 
-                    <div class="coupon-code-wrapper">
-                        <img src="./assets/images/check-out-tag-img.png" alt="" class="check-out-tag-img">
+                    <div class="coupon-code-wrapper d-none">
+                        <img src="<?=$this->theme_base_url?>/assets/images/check-out-tag-img.png" alt="" class="check-out-tag-img">
                         <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
                     </div>
 
@@ -359,9 +387,9 @@
                         <div class="input-group mb-3">
                             <label for="text">If you have a coupon code, please apply it below.</label><br>
                             <input type="text" class="form-control" id="promocode" placeholder="<?=$this->lang->line('Enter Promocode')?>" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text" id="checkPromocode"><?=$this->lang->line('Apply')?></span>
                             <br>
                             <span class="error" id="promo_err"></span>
-                            <span class="input-group-text" id="checkPromocode"><?=$this->lang->line('Apply')?></span>
                         </div>
                     </div>
 
@@ -369,7 +397,7 @@
                         <table>
                             <thead class="head-title">
                                 <tr>
-                                    <th colspan="2">Cart totals</th>
+                                    <th colspan="2"><?=$this->lang->line('Cart Totals')?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -440,25 +468,41 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="#" class="place-order-btn" id="myBtn" data-toggle="modal">Place order</a>
+                    <input type="hidden" id="applied_promo">
+                    <?php if ($phone == '0' || $is_verify == '0') { ?> 
+                        <button type="button" class="place-order-btn" id="verify"><?= $this->lang->line('Verify Mobile') ?></button>
+                    <?php }else{?>
+                        <button class="place-order-btn" id="payBtn"> <?= $this->lang->line('Place order') ?> </button>
+                    <?php } ?>
+                    <!-- <a href="javascript:" class="place-order-btn" id="myBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></a> -->
 
                     <div class="our-secure-product">
                         <div class="secure-product-wrapper">
                             <div class="icon">
                                 <!-- <a href="#"><img src="./assets/images/ShieldCheck.png" alt=""></a> -->
-                                <svg id="Layer-2" data-name="Layer-2" xmlns="./assets/images/ShieldCheck.svg" viewBox="0 0 26.75 27.83"><defs><style>.ShieldCheck-icon{fill:none;stroke:#f5512b;stroke-linecap:round;stroke-linejoin:round;stroke: width 1.5em;px;}</style></defs><path class="ShieldCheck-icon" d="M5.62,16.13V7.88A1.14,1.14,0,0,1,6,7.08a1.15,1.15,0,0,1,.8-.33h22.5a1.15,1.15,0,0,1,.8.33,1.14,1.14,0,0,1,.33.8v8.25c0,11.81-10,15.72-12,16.38a.94.94,0,0,1-.7,0C15.65,31.85,5.62,27.94,5.62,16.13Zm18.57-1.51L15.93,22.5l-4.12-3.94" transform="translate(-4.63 -5.75)"/></svg>
+                                <svg id="Layer-2" data-name="Layer-2" xmlns="./assets/images/ShieldCheck.svg" viewBox="0 0 26.75 27.83">
+                                    <defs>
+                                        <style>.ShieldCheck-icon{fill:none;stroke:#f5512b;stroke-linecap:round;stroke-linejoin:round;stroke: width 1.5em;px;}</style>
+                                    </defs>
+                                    <path class="ShieldCheck-icon" d="M5.62,16.13V7.88A1.14,1.14,0,0,1,6,7.08a1.15,1.15,0,0,1,.8-.33h22.5a1.15,1.15,0,0,1,.8.33,1.14,1.14,0,0,1,.33.8v8.25c0,11.81-10,15.72-12,16.38a.94.94,0,0,1-.7,0C15.65,31.85,5.62,27.94,5.62,16.13Zm18.57-1.51L15.93,22.5l-4.12-3.94" transform="translate(-4.63 -5.75)"/>
+                                </svg>
                             </div>
                             <div class="text">
-                                <h3>100% Genuine Products</h3>
+                                <h3><?=$this->lang->line('100 Genuine Products')?></h3>
                             </div>
                         </div>
                         <div class="secure-product-wrapper">
                             <div class="icon">
                                 <!-- <a href="#"><img src="./assets/images/Medal.png" alt=""></a> -->
-                                <svg id="Layer-2" data-name="Layer-2" xmlns="./assets/images/Medal.svg" viewBox="0 0 24.5 33.5"><defs><style>.medal-icon{fill:none;stroke:#f5512b;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><path class="medal-icon" d="M18,24.75A11.25,11.25,0,1,0,6.75,13.5,11.25,11.25,0,0,0,18,24.75Zm0-4.5a6.75,6.75,0,1,0-6.75-6.75A6.75,6.75,0,0,0,18,20.25Zm6.75,2.25V33.75L18,30.38l-6.75,3.37V22.5" transform="translate(-5.75 -1.25)"/></svg>
+                                <svg id="Layer-2" data-name="Layer-2" xmlns="./assets/images/Medal.svg" viewBox="0 0 24.5 33.5">
+                                    <defs>
+                                        <style>.medal-icon{fill:none;stroke:#f5512b;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style>
+                                    </defs>
+                                    <path class="medal-icon" d="M18,24.75A11.25,11.25,0,1,0,6.75,13.5,11.25,11.25,0,0,0,18,24.75Zm0-4.5a6.75,6.75,0,1,0-6.75-6.75A6.75,6.75,0,0,0,18,20.25Zm6.75,2.25V33.75L18,30.38l-6.75,3.37V22.5" transform="translate(-5.75 -1.25)"/>
+                                </svg>
                             </div>
                             <div class="text">
-                                <h3>Secure Payments</h3>
+                                <h3><?=$this->lang->line('Secure Payments')?></h3>
                             </div>
                         </div>
                     </div>

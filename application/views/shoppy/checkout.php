@@ -164,27 +164,31 @@
 
           <!-- ----------accordian-part------ -->
           <div class="accordion-items">
-
-
             <div class="main-accordion">
-              <div class="accordion-heading">Delivery Method</div>
-              <div class="accordion-content ">
+              <div class="delivery-method-wrap">
                 <form class="accordion-content-2" action="">
-                  <div class="form-check radio-outer-line">
-                    <input class="form-check-input" id="user_gst_number" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      <span><i class="fa-solid fa-truck"></i></span><?= $this->lang->line('Use Gst Number') ?>
-                    </label>
-                  </div>
-                  <div class="form-check radio-outer-line">
-                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="isSelfPickup" <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      <span><i class="fa-solid fa-store"></i></span><?= $this->lang->line('Pick up') ?>
-                    </label>
-                  </div>
+                  <?php if (isset($selfPickEnable) && $selfPickEnable == '1') { ?>
+                    <div class="form-check radio-outer-line">
+                      <input class="form-check-input" type="checkbox" id="isSelfPickup" class="default_check" <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        <?= $this->lang->line('self pickup') ?>
+                      </label>
+                    </div>
+                  <?php }
+                  if (!empty($userAddress) && $userAddress[0]->user_gst_number != '') {
+                  ?>
+                    <div class="form-check radio-outer-line">
+                      <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number" class="default_check" value="<?= ($userAddress[0]->user_gst_number != '') ? $userAddress[0]->user_gst_number : "" ?>">
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        <?= $this->lang->line('Use Gst Number') ?>
+                      </label>
+                    </div>
+                  <?php } ?>
                 </form>
               </div>
             </div>
+
+
             <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
               <div class="main-accordion">
                 <div class="accordion-heading"><?= $this->lang->line('Pickup Address') ?></div>
@@ -214,14 +218,14 @@
                         <div class="address-icons">
                           <div class="ship-check text-end">
                             <div class="form-check">
-                              <input class="form-check-input <?= $status ?>" type="checkbox" data-id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= ($value->status == '1') ? 'checked' : '' ?> id="id1">
+                              <input class="form-check-input default_check chek <?= $status ?>" type="checkbox" data-id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= ($value->status == '1') ? 'checked' : '' ?> id="id1">
                               <label class="form-check-label" for="id1">
                                 <?= $this->lang->line('Default') ?>
                               </label>
                             </div>
                           </div>
                           <a href="javascript:" class="add-address-btn edit_address" data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i class="fa-solid fa-pen-to-square"></i></a>
-                          <a href="javascript:" class="delet-address-btn remove_address" data-id="<?= $this->utility->safe_b64encode($value->id) ?>"><i class="fa-solid fa-trash-can"></i></a>
+
                         </div>
                       </div>
                       <p><?= $value->address ?></p>
@@ -360,13 +364,6 @@
               </div>
             </div>
           </div>
-          <?php
-
-          if ($phone == '0' || $is_verify == '0') { ?>
-            <button type="button" id="verify" class="btn verify-btn lg-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Verify Mobile
-            </button>
-          <?php } ?>
         </div>
       </div>
 
@@ -488,7 +485,14 @@
               </tbody>
             </table>
           </div>
-          <?php if ($phone == '1' && $is_verify == '1') { ?>
+
+          <?php
+
+          if ($phone == '0' || $is_verify == '0') { ?>
+            <button type="button" id="verify" class="btn verify-btn lg-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Verify Mobile
+            </button>
+          <?php } else { ?>
             <a href="javascript:;" class="place-order-btn" id="payBtn" data-toggle="modal"><?= $this->lang->line('Place order') ?>
             </a>
           <?php } ?>
