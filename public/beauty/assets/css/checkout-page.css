@@ -148,7 +148,7 @@ input:focus{
 .accordion-content-2 label{
     font-family: var(--BeVietnamPro-Regular);
     font-size: 14px;
-    line-height: 16px;
+    line-height: 25px;
     color: var(--accordian-content-text-2);
 }
 
