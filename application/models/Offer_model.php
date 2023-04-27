@@ -59,13 +59,15 @@ class Offer_model extends My_model
         $varient_ids = explode(',', $postData['hidden_varient_id']);
         if ($_FILES['offer_image']['error'] == 0) {
             ## Image Upload ##
-            dd($postData);
+
             if (!file_exists('public/images/' . $this->folder . 'offer_image')) {
                 mkdir('public/images/' . $this->folder . 'offer_image', 0777, true);
             }
+
             $this->load->library('upload');
             $uploadpath = 'public/images/' . $this->folder . 'offer_image/';
             $uploadResult = upload_single_image($_FILES, 'offer', $uploadpath);
+            dd($uploadResult);
             $offer_image = $uploadResult['data']['file_name'];
         }
 
