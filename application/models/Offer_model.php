@@ -55,11 +55,11 @@ class Offer_model extends My_model
     ## Add Update ##
     public function addRecord($postData)
     {
-        dd($postData);
+
         $varient_ids = explode(',', $postData['hidden_varient_id']);
         if ($_FILES['offer_image']['error'] == 0) {
             ## Image Upload ##
-
+            dd($postData);
             if (!file_exists('public/images/' . $this->folder . 'offer_image')) {
                 mkdir('public/images/' . $this->folder . 'offer_image', 0777, true);
             }
