@@ -505,8 +505,6 @@ class Product_model extends My_model
 
 		if (!empty($subcategory)) {
 
-
-
 			$subcatData['subcategory'] = $subcategory;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);
 		}

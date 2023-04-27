@@ -85,7 +85,7 @@
   <div class="container">
     <div class="row">
       <div class="product-select-in">
-        <!-- <h4>SHOWING 1–12 OF 21 RESULTS</h4> -->
+
         <div class="d-flex w-100 justify-content-end">
           <select class="form-select sorting" aria-label="Default select example">
             <option value="All">All</option>
