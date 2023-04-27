@@ -615,7 +615,37 @@ input:focus{
     z-index: -1;
 }
 
-
+ /* ---new-csss--- */ 
+.delivery-method-wrap {
+    border-radius: 20px 20px 0px 0px;
+    width: 100%;
+    background: var(--accordian-head-bg);
+    font-family: var(--BeVietnamPro-SemiBold);
+    font-size: 20px !important;
+    line-height: 20px;
+    color: var(--accordian-head-text);
+    padding: 25px 30px;
+    border-radius: 20px 20px 20px 20px;
+    position: relative;
+}
+.delivery-method-wrap .form-check{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.delivery-method-wrap .form-check input{
+    position: relative;
+    top: -2px;
+}
+.delivery-method-wrap label {
+    font-family: var(--BeVietnamPro-Medium);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--accordian-content-text-1);
+}
+.delivery-method-wrap .accordion-content-2{
+    justify-content: space-around !important;
+}
 
 
 

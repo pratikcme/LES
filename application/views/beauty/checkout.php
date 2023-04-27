@@ -123,7 +123,7 @@ span.error {
                             </div>
                         </div> -->
 
-                        <div class="main-accordion">
+                        <!-- <div class="main-accordion">
                             <div class="accordion-heading"><?=$this->lang->line('Delivery Method')?></div>
                             <div class="accordion-content ">
                                 <form action="">
@@ -147,7 +147,32 @@ span.error {
                                     </div>
                                 </form>
                             </div>
+                        </div> -->
+                        <?php if(isset($selfPickEnable) && $selfPickEnable == '1' || !empty($userAddress) && $userAddress[0]->user_gst_number != ''){ ?>
+                        <div class="main-accordion">
+                            <div class="delivery-method-wrap">
+                                <form class="accordion-content-2" action="">
+                                    <?php if(isset($selfPickEnable) && $selfPickEnable == '1'){ ?>    
+                                    <div class="form-check radio-outer-line">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="isSelfPickup" 
+                                        <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
+                                        <label class="form-check-label" for="isSelfPickup" style="text-transform:capitalize">
+                                            <?=$this->lang->line('self pickup')?>
+                                        </label>
+                                    </div>
+                                    <?php } ?>
+                                    <?php if(!empty($userAddress) && $userAddress[0]->user_gst_number != ''){ ?>
+                                    <div class="form-check radio-outer-line">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number">
+                                        <label class="form-check-label" for="user_gst_number" style="text-transform:capitalize">
+                                        <?=$this->lang->line('Use GST Number')?>
+                                        </label>
+                                    </div>
+                                    <?php } ?>
+                                </form>
+                            </div>
                         </div>
+                        <?php } ?>
                         <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
                           <div class="main-accordion">
                              <div class="accordion-heading"><?= $this->lang->line('Pickup Address') ?></div>
@@ -650,7 +675,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             </div>
             <h2>Thank you.</h2>
             <h3>Your order has been received</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
             <h5 id="orderId"></h5>
 
             <div class="continue-btn">
