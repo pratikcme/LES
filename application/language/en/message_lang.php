@@ -64,6 +64,9 @@ $lang['Product Categories'] = 'Product Categories';
 $lang['All Categories'] = 'All Categories';
 $lang['Checkout Process'] = 'Checkout Process';
 $lang['Delivery Method'] = 'Delivery Method';
+$lang['Your Orders'] = 'Your Orders';
+$lang['Cart Totals'] = 'Cart Totals';
+
 
 
 
