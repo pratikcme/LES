@@ -30,8 +30,8 @@
             <h4>Useful Links</h4>
             <ul class="ps-0">
               <li><a href="">Blog</a></li>
-              <li><a href="./myaccount-page.php">My Account</a></li>
-              <li><a href="./myaccount-page.php">Wishlist</a></li>
+              <li><a href="<?= base_url() . 'users_account/users/account' ?>">My Account</a></li>
+              <li><a href="<?= base_url() . 'users_account/users/account?name=wishlist' ?>">Wishlist</a></li>
               <li><a href="<?= base_url() . 'terms_condition' ?>">Terms of Service</a></li>
               <li><a href="#">Order History</a></li>
             </ul>
