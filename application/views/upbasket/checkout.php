@@ -92,7 +92,7 @@
                             <div class="delivery-method-wrap">
                                 <form class="accordion-content-2" action="">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" id="isSelfPickup" 
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="isSelfPickup" 
                                         <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
                                         <label class="form-check-label" for="isSelfPickup">
                                         <?=$this->lang->line('self pickup')?>
