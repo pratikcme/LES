@@ -12,46 +12,44 @@ hidedivebtn.addEventListener("click", (event) => {
 // ----search-icon-dropdown---
 // Open and Close Search Bar Toggle
 
-// const searchBlock = document.querySelector(".search-block");
-// const searchToggle = document.querySelector(".search-toggle");
-// const searchCancel = document.querySelector(".search-cancel");
-// const mobilesearchCancel = document.querySelector(".mobile-search-cancel");
-// const mobilesearchblock = document.querySelector(".mobile-search-block");
-// const searchbgoverlay = document.querySelector(".search-bg-overlay");
+const searchBlock = document.querySelector(".search-block");
+const searchToggle = document.querySelector(".search-toggle");
+const searchCancel = document.querySelector(".search-cancel");
+const mobilesearchCancel = document.querySelector(".mobile-search-cancel");
+const mobilesearchblock = document.querySelector(".mobile-search-block");
+const searchbgoverlay = document.querySelector(".search-bg-overlay");
 
-// if (searchToggle && searchCancel) {
-//    searchToggle.addEventListener("click", () => {
-//       searchBlock.classList.add("is-active");
-//       mobilesearchblock.classList.add("is-active");
+if (searchToggle && searchCancel) {
+  searchToggle.addEventListener("click", () => {
+    searchBlock.classList.add("is-active");
+    mobilesearchblock.classList.add("is-active");
+  });
 
-//    });
+  searchCancel.addEventListener("click", () => {
+    searchBlock.classList.remove("is-active");
+    mobilesearchblock.classList.remove("is-active");
+  });
 
-//    searchCancel.addEventListener("click", () => {
-//       searchBlock.classList.remove("is-active");
-//       mobilesearchblock.classList.remove("is-active");
-//    });
+  mobilesearchCancel.addEventListener("click", () => {
+    mobilesearchblock.classList.remove("is-active");
+  });
 
-//    mobilesearchCancel.addEventListener("click", () => {
-//       mobilesearchblock.classList.remove("is-active");
-//    });
+  searchBlock.addEventListener("focusin", () => {
+    searchBlock.classList.add("is-active");
+  });
 
-//    searchBlock.addEventListener("focusin", () => {
-//     searchBlock.classList.add('is-active');
-//  });
+  mobilesearchblock.addEventListener("focusin", () => {
+    mobilesearchblock.classList.add("is-active");
+  });
 
-//   mobilesearchblock.addEventListener("focusin", () => {
-//     mobilesearchblock.classList.add('is-active');
-//  });
+  document.addEventListener("focusout", () => {
+    searchBlock.classList.remove("is-active");
+  });
 
-//    document.addEventListener("focusout", () => {
-//     searchBlock.classList.remove('is-active');
-//  });
-
-//  document.addEventListener("focusout", () => {
-//     mobilesearchblock.classList.remove('is-active');
-//  });
-
-// }
+  document.addEventListener("focusout", () => {
+    mobilesearchblock.classList.remove("is-active");
+  });
+}
 
 // Open and Close Search Bar Toggle
 const searchBlock = document.querySelector(".search-block");
