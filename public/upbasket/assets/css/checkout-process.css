@@ -1200,6 +1200,40 @@ input:focus {
     background-color: var(--primary-color) !important;
 }
 
+
+/* ---new-csss--- */
+.delivery-method-wrap {
+    width: 100%;
+    background: var(--accordian-head-bg);
+    font-family: 'Poppins';
+    font-size: 20px !important;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--accordian-head-text);
+    padding: 15px 30px;
+    border-radius: 5px 5px 5px 5px;
+    position: relative;
+}
+.delivery-method-wrap .form-check{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.delivery-method-wrap .form-check input{
+    position: relative;
+    top: -2px;
+}
+.delivery-method-wrap label {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--accordian-content-text-1);
+}
+.delivery-method-wrap .accordion-content-2{
+    justify-content: space-around !important;
+}
+
 /* =================================================== */
 /* =================================================== */
 @media screen and (min-width:1280px) and (max-width:1399px) {
