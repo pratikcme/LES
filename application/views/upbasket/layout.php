@@ -12,7 +12,7 @@
 <!-- <body class="rtl" dir="rtl"> -->
 
 <body>
-  <section class="loader-main d-none">
+  <section class="loader-main ">
     <div class="loader-wrapper">
         <span class="dot"></span>
         <span class="dot"></span>
