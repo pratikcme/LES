@@ -164,27 +164,31 @@
 
           <!-- ----------accordian-part------ -->
           <div class="accordion-items">
-
-
             <div class="main-accordion">
-              <div class="accordion-heading">Delivery Method</div>
-              <div class="accordion-content ">
+              <div class="delivery-method-wrap">
                 <form class="accordion-content-2" action="">
-                  <div class="form-check radio-outer-line">
-                    <input class="form-check-input" id="user_gst_number" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      <span><i class="fa-solid fa-truck"></i></span><?= $this->lang->line('Use Gst Number') ?>
-                    </label>
-                  </div>
-                  <div class="form-check radio-outer-line">
-                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="isSelfPickup" <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      <span><i class="fa-solid fa-store"></i></span><?= $this->lang->line('Pick up') ?>
-                    </label>
-                  </div>
+                  <?php if (isset($selfPickEnable) && $selfPickEnable == '1') { ?>
+                    <div class="form-check radio-outer-line">
+                      <input class="form-check-input" type="checkbox" id="isSelfPickup" class="default_check" <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        <?= $this->lang->line('self pickup') ?>
+                      </label>
+                    </div>
+                  <?php }
+                  if (!empty($userAddress) && $userAddress[0]->user_gst_number != '') {
+                  ?>
+                    <div class="form-check radio-outer-line">
+                      <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number" class="default_check" value="<?= ($userAddress[0]->user_gst_number != '') ? $userAddress[0]->user_gst_number : "" ?>">
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        <?= $this->lang->line('Use Gst Number') ?>
+                      </label>
+                    </div>
+                  <?php } ?>
                 </form>
               </div>
             </div>
+
+
             <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
               <div class="main-accordion">
                 <div class="accordion-heading"><?= $this->lang->line('Pickup Address') ?></div>
