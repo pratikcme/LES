@@ -56,7 +56,8 @@
 
                         <div class="product-content">
                             <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>">
-                                <h5><?= $value->name . "(" . $value->weight_no . ")" ?></h5>
+                                <h5><?= $value->name ?></h5>
+                                <p><?= $value->weight_no ?></p>
                                 <div class="product-discount notranslate">
                                     <h4> <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
                                     </h4>
