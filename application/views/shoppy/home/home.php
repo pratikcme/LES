@@ -612,14 +612,15 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                 <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
                   Cart
                 </button>
-                <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
-                  <div class="qty-container">
-                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                    <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" class="input-qty">
-                    <button class="qty-btn-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                  </div>
+              </div>
+              <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
+                <div class="qty-container">
+                  <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                  <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" class="input-qty">
+                  <button class="qty-btn-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
