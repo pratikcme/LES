@@ -93,7 +93,7 @@ class Home_model extends My_model
 								GROUP BY product_id 
 								ORDER BY TotalQuantity DESC limit 12');
 
-		return  $result_count1->result();
+		return $result_count1->result();
 	}
 
 	public function top_selling_product($id)

@@ -80,7 +80,9 @@ $(document).ready(function () {
     // var rangeArray = get_filter('range');
     // var rangeArray = $('#start_range').val();
     var discountArray = get_filter("discount");
+
     var brandArray = get_filter("brand");
+
     $.ajax({
       url: url + "products/subcategory/" + page,
       data: {
