@@ -1,60 +1,51 @@
-// -----cart-sidenav-dropdown-js---
-
-let filterdiv = document.querySelector(".my-filter-wrapper");
-let leftdiv = document.querySelector(".show-div-wrapper");
-let hidedivebtn = document.querySelector(".filter-hide-btn");
-
-hidedivebtn.addEventListener("click", (event) => {
-  filterdiv.classList.toggle("hide");
-  leftdiv.classList.toggle("hide");
-});
-
 // ----search-icon-dropdown---
 // Open and Close Search Bar Toggle
 
-const searchBlock = document.querySelector(".search-block");
-const searchToggle = document.querySelector(".search-toggle");
-const searchCancel = document.querySelector(".search-cancel");
-const mobilesearchCancel = document.querySelector(".mobile-search-cancel");
-const mobilesearchblock = document.querySelector(".mobile-search-block");
-const searchbgoverlay = document.querySelector(".search-bg-overlay");
-
-if (searchToggle && searchCancel) {
-  searchToggle.addEventListener("click", () => {
-    searchBlock.classList.add("is-active");
-    mobilesearchblock.classList.add("is-active");
-  });
-
-  searchCancel.addEventListener("click", () => {
-    searchBlock.classList.remove("is-active");
-    mobilesearchblock.classList.remove("is-active");
-  });
-
-  mobilesearchCancel.addEventListener("click", () => {
-    mobilesearchblock.classList.remove("is-active");
-  });
-
-  searchBlock.addEventListener("focusin", () => {
-    searchBlock.classList.add("is-active");
-  });
-
-  mobilesearchblock.addEventListener("focusin", () => {
-    mobilesearchblock.classList.add("is-active");
-  });
-
-  document.addEventListener("focusout", () => {
-    searchBlock.classList.remove("is-active");
-  });
-
-  document.addEventListener("focusout", () => {
-    mobilesearchblock.classList.remove("is-active");
-  });
-}
-
-// // Open and Close Search Bar Toggle
 // const searchBlock = document.querySelector(".search-block");
 // const searchToggle = document.querySelector(".search-toggle");
-// const searchCancel = document.querySelector(".main-div-cancel");
+// const searchCancel = document.querySelector(".search-cancel");
+// const mobilesearchCancel = document.querySelector(".mobile-search-cancel");
+// const mobilesearchblock = document.querySelector(".mobile-search-block");
+// const searchbgoverlay = document.querySelector(".search-bg-overlay");
+
+// if (searchToggle && searchCancel) {
+//    searchToggle.addEventListener("click", () => {
+//       searchBlock.classList.add("is-active");
+//       mobilesearchblock.classList.add("is-active");
+
+//    });
+
+//    searchCancel.addEventListener("click", () => {
+//       searchBlock.classList.remove("is-active");
+//       mobilesearchblock.classList.remove("is-active");
+//    });
+
+//    mobilesearchCancel.addEventListener("click", () => {
+//       mobilesearchblock.classList.remove("is-active");
+//    });
+
+//    searchBlock.addEventListener("focusin", () => {
+//     searchBlock.classList.add('is-active');
+//  });
+
+//   mobilesearchblock.addEventListener("focusin", () => {
+//     mobilesearchblock.classList.add('is-active');
+//  });
+
+//    document.addEventListener("focusout", () => {
+//     searchBlock.classList.remove('is-active');
+//  });
+
+//  document.addEventListener("focusout", () => {
+//     mobilesearchblock.classList.remove('is-active');
+//  });
+
+// }
+
+// Open and Close Search Bar Toggle
+const searchBlock = document.querySelector(".search-block");
+const searchToggle = document.querySelector(".search-toggle");
+const searchCancel = document.querySelector(".main-div-cancel");
 
 if (searchToggle && searchCancel) {
   searchToggle.addEventListener("click", () => {
@@ -136,4 +127,15 @@ mobileopenbtn.addEventListener("blur", (event) => {
 ovelaybg.addEventListener("click", (event) => {
   mysidebar.classList.remove("active");
   ovelaybg.classList.remove("active");
+});
+
+// -----cart-sidenav-dropdown-js---
+
+let filterdiv = document.querySelector(".my-filter-wrapper");
+let leftdiv = document.querySelector(".show-div-wrapper");
+let hidedivebtn = document.querySelector(".filter-hide-btn");
+
+hidedivebtn.addEventListener("click", (event) => {
+  filterdiv.classList.toggle("hide");
+  leftdiv.classList.toggle("hide");
 });
