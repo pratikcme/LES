@@ -174,7 +174,7 @@
           <div class="tab-pane fade show active" id="sellers" role="tabpanel" aria-labelledby="seller-tab">
             <div class="row">
               <?php
-
+              dd($top_sell);
               foreach ($top_sell as $key => $value) :
 
               ?>
