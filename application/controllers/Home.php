@@ -36,46 +36,21 @@ class Home extends User_Controller
 
 		$data['category'] = $this->this_model->selectCategory();
 
-		$data['new_arrival'] = $this->this_model->selectNewArrivel();
+
 		$data['folder'] = $this->folder . 'category/';
 		if ($this->countCategory == 1 && count($subcategory) > 1) {
 			$data['category'] = $this->this_model->subcategory_list();
 			$data['folder'] = $this->folder . 'product_image/';
 		}
+		// start
 
 		$product_ids = [];
-		$default_product_image = $this->common_model->default_product_image();
-		foreach ($data['new_arrival'] as $key => $value) {
-			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-				$value->discount_price = $value->without_gst_price;
-			}
+		// $data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); //call this for no reapeated product in new arrivals
+		$data['top_sell_core'] = $this->this_model->selectTopSelling();
 
-			$varientQuantity = $this->this_model->checkVarientQuantity($value->id);
-			$product_ids[] = $value->id;
-			$this->load->model('frontend/product_model');
-			if (!empty($value->image) || $value->image != '') {
-				$image = $value->image;
-				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
-					// $image = 'defualt.png';	
-					$image = $default_product_image;
-				} else {
-					$image = $value->image;
-				}
-			} else {
-				$image = $default_product_image;
-			}
-			$value->image = str_replace(' ', '%20', $image);
-			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
-			$value->addQuantity = $addQuantity;
-
-			$data['new_arrival'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
-			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
-		}
-
-
-		$data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); //call this for no reapeated product in new arrivals
-		// $data['top_sell_core'] = $this->this_model->selectTopSelling();
+		$this->load->model('frontend/product_model');
 		$top_selling_core = array();
+
 		foreach ($data['top_sell_core'] as $key => $value) {
 			$selling_core = $this->this_model->top_selling_product($value->product_id);
 
@@ -100,8 +75,11 @@ class Home extends User_Controller
 			} else {
 				$value->image = $default_product_image;
 			}
+			// dd($value->id);
 			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
 			$value->addQuantity = $addQuantity;
+
+			$product_ids[] = $value->id;
 
 			$varientQuantity = $this->this_model->checkVarientQuantity($value->id);
 
@@ -109,6 +87,38 @@ class Home extends User_Controller
 
 			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
 		}
+
+		// mid
+		$data['new_arrival'] = $this->this_model->selectNewArrivel($product_ids);
+		$default_product_image = $this->common_model->default_product_image();
+		foreach ($data['new_arrival'] as $key => $value) {
+			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+				$value->discount_price = $value->without_gst_price;
+			}
+
+			$varientQuantity = $this->this_model->checkVarientQuantity($value->id);
+
+
+			if (!empty($value->image) || $value->image != '') {
+				$image = $value->image;
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
+					// $image = 'defualt.png';	
+					$image = $default_product_image;
+				} else {
+					$image = $value->image;
+				}
+			} else {
+				$image = $default_product_image;
+			}
+			$value->image = str_replace(' ', '%20', $image);
+			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
+			$value->addQuantity = $addQuantity;
+
+			$data['new_arrival'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
+			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
+		}
+
+		// end
 
 		$data['top_sell'] = $top_selling_core;
 		//dd($data['top_sell']);

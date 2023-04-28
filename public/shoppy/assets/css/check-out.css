@@ -187,6 +187,7 @@ input:focus{
     text-transform: capitalize;
     font-family: var(--PublicSans-Regular) !important;
     color: var(--light-gray);
+    text-align: left !important;
 }
 
 .main-accordion .form-check-input:checked[type=radio]{
@@ -211,6 +212,7 @@ input:focus{
     background-position-y: 19px;
     background-position-x: 285px;
     margin-bottom: 30px;
+    text-align: left !important;
 }
 
 .select-box select:focus{
