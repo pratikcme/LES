@@ -66,6 +66,7 @@ $lang['Checkout Process'] = 'Checkout Process';
 $lang['Delivery Method'] = 'Delivery Method';
 $lang['Your Orders'] = 'Your Orders';
 $lang['Cart Totals'] = 'Cart Totals';
+$lang['Do you Want to Clear Cart'] = 'Do you Want to Clear Cart?';
 
 
 
