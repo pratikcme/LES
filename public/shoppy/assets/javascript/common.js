@@ -483,7 +483,14 @@ $(document).on("click", ".dec", function () {
                   .removeClass("d-none");
               } else {
                 that.parent().parent().addClass("d-none");
-
+                // single product //
+                that
+                  .parent()
+                  .parent()
+                  .next("div")
+                  .find(".add-cart-btn")
+                  .removeClass("d-none");
+                // single product //
                 that
                   .parent()
                   .parent()
