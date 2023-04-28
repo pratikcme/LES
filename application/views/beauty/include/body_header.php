@@ -71,7 +71,7 @@
           
                 if($segment1 != ''){ ?> 
                 
-                   <input type="search" name="search" id='myInput' data-search_val= "" class="search-input" placeholder="<?=$placeholder?>">
+                   <input type="search" name="search" id='myInput' data-search_val= "" class="search-input search" placeholder="<?=$placeholder?>">
                   <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
                 <?php } ?>
                   <!-- ---search-list--- -->
