@@ -69,6 +69,7 @@ $lang['Checkout Process'] = 'عملية الخروج';
 $lang['Delivery Method'] = 'طريقة التوصيل';
 $lang['Your Orders'] = 'طلباتك';
 $lang['Cart Totals'] = 'إجماليات سلة التسوق';
+$lang['Do you Want to Clear Cart'] = 'هل تريد مسح سلة التسوق؟';
 
 // end other template 
 
