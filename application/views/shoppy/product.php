@@ -194,7 +194,7 @@
                                 <li>
                                   <div class="discount-wrapper">
                                     <div class="form-check">
-                                      <input class="form-check-input discount" type="checkbox" name="filter_discount" id="sub-10-15%">
+                                      <input class="form-check-input discount" type="checkbox" value="<?= $key ?>" name="filter_discount" id="sub-10-15%">
                                       <label class="form-check-label" for="sub-10-15%"><?= $value ?></label>
                                     </div>
 
@@ -317,7 +317,7 @@
                           <li>
                             <div class="discount-wrapper">
                               <div class="form-check">
-                                <input class="form-check-input discount" type="checkbox" name="filter_discount" id="sub-10-15%">
+                                <input class="form-check-input discount" type="checkbox" value="<?= $key ?>" name="filter_discount" id="sub-10-15%">
                                 <label class="form-check-label" for="sub-10-15%"><?= $value ?></label>
                               </div>
 

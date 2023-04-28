@@ -669,9 +669,8 @@ function onScriptLoad(txnToken, orderId, amount) {
       <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
       <div class="login-page">
         <div class="container">
-          <img src="<?=$this->theme_base_url?>/assets/images/login-center-border-img.png" alt="" class="login-center-border-img">
             <div class="center-img">
-                <img src="<?=$this->theme_base_url?>/assets/images/login-center-img.png" alt="">
+                <img src="<?=$this->theme_base_url?>/assets/images/checkout-modal-img.png" alt="">
             </div>
             <h2>Thank you.</h2>
             <h3>Your order has been received</h3>
