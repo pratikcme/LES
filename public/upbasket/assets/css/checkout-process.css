@@ -675,7 +675,8 @@ input:focus {
 }
 
 .checkout-order-detils .cart-totals-part {
-    margin-bottom: 40px;
+    margin-top: 40px;
+    /* Dk changed */
 }
 
 .secure-product-wrapper {

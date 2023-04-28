@@ -34,28 +34,46 @@ class Home_model extends My_model
 		$data['where'] = ['branch_id' => $branch_id];
 		return $this->selectRecords($data);
 	}
-	public function selectNewArrivel()
+	public function selectNewArrivel($product_ids = [])
 	{
 		$branch_id = $this->session->userdata('branch_id');
-		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.discount_price', 'pi.image', 'pw.weight_id', 'pw.without_gst_price'];
-		$data['join'] = [
-			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
-			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
-		];
-		$data['where'] = [
-			'p.status !=' => '9',
-			'pw.status!=' => '9',
-			'p.branch_id' => $branch_id,
-			// 'pw.quantity !=' => '' 
-		];
-		$data['order'] = 'id DESC, quantity DESC';
-		$data['groupBy'] = 'p.id';
-		$data['limit'] = 50;
+		// $data['table'] = TABLE_PRODUCT . " as p";
+		// $data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.discount_price', 'pi.image', 'pw.weight_id', 'pw.without_gst_price'];
+		// $data['join'] = [
+		// 	TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
+		// 	TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
+		// ];
 
-		$return = $this->selectFromJoin($data);
+		// Dk 
+		// $product_ids =  '(' . implode(',', $product_ids) . ')';
+		// $product_ids = implode(",", $product_ids);
+		// $product_ids =  implode(',', $product_ids);
+		$product_ids = implode('","', $product_ids);
+		// $ids = array($product_ids);
+		// $id_list = "(" . implode('","', $product_ids) . ")";
+		// dd($id_list);
+		$res = $this->db->query("SELECT `p`.*, `pw`.`price`, `pw`.`id` as `pw_id`, `pw`.`quantity`, `pw`.`discount_per`, `pw`.`discount_price`, `pi`.`image`, `pw`.`weight_id`, `pw`.`without_gst_price` FROM `product` as `p` LEFT JOIN `product_weight` as `pw` ON `p`.`id` = `pw`.`product_id` LEFT JOIN `product_image` as `pi` ON `pw`.`id` = `pi`.`product_variant_id` WHERE `p`.`status` != '9' AND `pw`.`status` != '9' AND `p`.`branch_id` = '10' AND p.id NOT IN (" . '"' . $product_ids . '" ' . ") GROUP BY `p`.`id` ORDER BY `id` DESC, `quantity` DESC LIMIT 50");
+		return $res->result();
+
+		// end
+
+		// $data['where'] = [
+		// 	'p.status !=' => '9',
+		// 	'pw.status!=' => '9',
+		// 	'p.branch_id' => $branch_id,
+		// 	// 'p.id NOT IN' =>  $product_ids
+		// ];
+		// $data['where']['p.id NOT IN ("' . $product_ids . '")'];
+		// $data['where_not_in'] = $product_ids;
+		// $data['order'] = 'id DESC, quantity DESC';
+		// $data['groupBy'] = 'p.id';
+		// $data['limit'] = 50;
+
+		// $return = $this->selectFromJoin($data);
+		// dd($return);
+		// lq();
 		// echo $this->db->last_query();die;
-		return $return;
+		// return $return;
 	}
 
 	public function selectStarRatting($id, $varient_id)
@@ -93,7 +111,8 @@ class Home_model extends My_model
 								GROUP BY product_id 
 								ORDER BY TotalQuantity DESC limit 12');
 
-		return $result_count1->result();
+		return	$result_count1->result();
+		// lq();
 	}
 
 	public function top_selling_product($id)

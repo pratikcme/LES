@@ -521,6 +521,7 @@ class Product_model extends My_model
 	// }
 	public function findProductAddQuantity($p_id = '', $p_v_id)
 	{
+
 		$qnt = 1;
 		if ($this->session->userdata('user_id') == '') {
 
