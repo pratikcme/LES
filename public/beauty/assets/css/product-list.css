@@ -219,7 +219,7 @@
 }
 
 .price-range-part {
-    height: 180px !important;
+    /* height: 180px !important; */
     margin-top: 0px;
 
 }
@@ -677,7 +677,8 @@ div[slider]>input[type=range]::-ms-tooltip {
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 13px;
+    /* justify-content: space-between; */
 }
 
 .mycustom-row {
@@ -806,6 +807,29 @@ div[slider]>input[type=range]::-ms-tooltip {
     padding: 0px 0px !important;
 }
 
+.slider-box{
+    padding-top: 50px !important;
+    padding: 10px;
+}
+.ui-slider .ui-state-default, .ui-widget-content .ui-state-default{
+    border-radius: 50%;
+    background: white;
+}
+.ui-slider-horizontal .ui-slider-range{
+   background: var(--primary-color);
+}
+.ui-widget.ui-widget-content {
+    border: 1px solid var(--primary-color);
+}
+.slider-box input{
+    width: 120px;
+    border: 1px solid var(--primary-color);
+    padding-left: 5px;
+}
+
+.ui-widget-content{
+    margin-top: 20px;
+}
 
 
 
