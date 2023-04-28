@@ -149,7 +149,7 @@
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
               <!-- -------review-tab------ -->
-              <div class="my-review-wrapper">
+              <div class="my-review-wrapper" style="height :<?=(count($product_review) == 0) ? 'auto' : '100%' ?>">
                 <!-- ----review-content--- -->
                 <div class="review-content">
                   <div class="left-content">
