@@ -123,6 +123,7 @@ $lang['Brand'] = 'ماركة';
 $lang['related products'] = 'منتجات ذات صله';
 $lang['Limited Stock'] = 'كمية محدودة';
 $lang['Available(Instock)'] = 'موجود في المستودع';
+$lang['In Stock'] = 'في الأوراق المالية';
 
 $lang['add to cart'] = 'أضف إلى السلة';
 $lang['order now'] = 'اطلب الان';
