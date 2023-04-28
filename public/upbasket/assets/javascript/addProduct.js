@@ -14,7 +14,6 @@ function ReinitSlider() {
   var swiper = new Swiper(".mySwiper", {
     spaceBetween: 20,
     slidesPerView: 3,
-
     loop: true,
     autoplay: false,
     //   autoplay: {
@@ -38,6 +37,9 @@ function ReinitSlider() {
     slidesPerView: 1,
     loop: true,
     autoplay: false,
+    // observer: true,
+    // observeParents: true,
+
     //   autoplay: {
     //     delay: 2500,
     //     disableOnInteraction: true,

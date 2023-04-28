@@ -442,6 +442,7 @@ class Products extends User_Controller
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 		$my_cart = $this->this_model->getMyCart();
+
 		if (empty($_SESSION['My_cart']) && empty($my_cart)) {
 			redirect(base_url() . 'home');
 		}
@@ -492,8 +493,6 @@ class Products extends User_Controller
 				$data['calc_shiping'] = number_format((float)$data['calc_shiping'], 2, '.', '');
 			}
 		}
-
-
 
 		$data['wish_pid'] = [];
 		if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
@@ -565,7 +564,6 @@ class Products extends User_Controller
 
 	public function setWishlist()
 	{
-
 		if ($this->session->userdata('user_id') == '') {
 			$this->utility->setFlashMessage('danger', '
 					Please login for wishlisting a product');
@@ -648,11 +646,14 @@ class Products extends User_Controller
 	{
 		$status = '0';
 		$messages = 'Your Cart Is Cleared';
+
+		// dd($this->session->unset_userdata('My_cart'));
 		if ($this->session->userdata('user_id') == '') {
 			$this->session->unset_userdata('My_cart');
 			$status = '1';
 			$success = 'success';
 		} else {
+			$this->session->unset_userdata('My_cart');
 			$res = $this->this_model->clear_cart();
 			if ($res) {
 				$status = '1';
