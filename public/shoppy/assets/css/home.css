@@ -139,6 +139,7 @@
     position: relative;
     border: 2px solid #EFE8E6;
     height: 100%;
+    z-index: 0;
 }
 
 .products-wrap .product-card.out-of-stock{
