@@ -242,21 +242,18 @@
                     <div class="row">
                       <div class="col-lg-12">
                         <label for="fname" class="form-label">Full Name<span>*</span></label>
-                        <input type="text" name="fname" class="form-control fname" id="fname" aria-describedby="fname" aria-describedby="fname" placeholder="
-                                                           <?= $this->lang->line('Full Name') ?>">
+                        <input type="text" name="fname" class="form-control fname" id="fname" aria-describedby="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name') ?>">
                       </div>
 
 
                       <div class="col-lg-12">
                         <label for="text" class="form-label">Mobile Number<span>*</span></label>
-                        <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="
-                                                               <?= $this->lang->line('Mobile number') ?>">
+                        <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile number') ?>">
                       </div>
 
                       <div class="col-lg-12">
                         <label for="add" class="form-label">Location<span>*</span></label>
-                        <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location" aria-describedby="add" placeholder="
-                                                                   <?= $this->lang->line('Enter Location') ?>">
+                        <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location" aria-describedby="add" placeholder="<?= $this->lang->line('Enter Location') ?>">
                         <label for="departure_address" class="error" style="display: none;"></label>
                         <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
                         <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">
