@@ -52,7 +52,7 @@ class Home_model extends My_model
 		// $ids = array($product_ids);
 		// $id_list = "(" . implode('","', $product_ids) . ")";
 		// dd($id_list);
-		$res = $this->db->query("SELECT `p`.*, `pw`.`price`, `pw`.`id` as `pw_id`, `pw`.`quantity`, `pw`.`discount_per`, `pw`.`discount_price`, `pi`.`image`, `pw`.`weight_id`, `pw`.`without_gst_price` FROM `product` as `p` LEFT JOIN `product_weight` as `pw` ON `p`.`id` = `pw`.`product_id` LEFT JOIN `product_image` as `pi` ON `pw`.`id` = `pi`.`product_variant_id` WHERE `p`.`status` != '9' AND `pw`.`status` != '9' AND `p`.`branch_id` = '10' AND p.id NOT IN (" . '"' . $product_ids . '" ' . ") GROUP BY `p`.`id` ORDER BY `id` DESC, `quantity` DESC LIMIT 50");
+		$res = $this->db->query("SELECT `p`.*, `pw`.`price`, `pw`.`id` as `pw_id`, `pw`.`quantity`, `pw`.`discount_per`, `pw`.`discount_price`, `pi`.`image`, `pw`.`weight_id`, `pw`.`without_gst_price` FROM `product` as `p` LEFT JOIN `product_weight` as `pw` ON `p`.`id` = `pw`.`product_id` LEFT JOIN `product_image` as `pi` ON `pw`.`id` = `pi`.`product_variant_id` WHERE `p`.`status` != '9' AND `pw`.`status` != '9' AND `p`.`branch_id` = '$branch_id' AND p.id NOT IN (" . '"' . $product_ids . '" ' . ") GROUP BY `p`.`id` ORDER BY `id` DESC, `quantity` DESC LIMIT 50");
 		return $res->result();
 
 		// end
