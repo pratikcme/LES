@@ -80,28 +80,28 @@
                 $CI->load->model('common_model');
                 $default_product_image = $CI->common_model->default_product_image();
               } ?>
-              <?php
+              <div class="cart-drop-wrapper">
+                <?php
 
-              foreach ($this->session->userdata('My_cart') as $key => $value) {
+                foreach ($this->session->userdata('My_cart') as $key => $value) {
 
-                $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
-                // dd($product);
-                $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
+                  $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+                  // dd($product);
+                  $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
 
-                $CI->load->model('api_v3/common_model', 'co_model');
-                $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
-                if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                  $product[0]->discount_price = $product[0]->without_gst_price;
-                }
-                if (!file_exists('public/images/' . $CI->folder . 'product_image/' . $product[0]->image) || $product[0]->image == '') {
-                  if (strpos($product[0]->image, '%20') === true || $product[0]->image == '') {
-                    $product[0]->image = $default_product_image;
-                  } else {
-                    $product[0]->image = $default_product_image;
+                  $CI->load->model('api_v3/common_model', 'co_model');
+                  $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+                  if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                    $product[0]->discount_price = $product[0]->without_gst_price;
                   }
-                }
-              ?>
-                <div class="cart-drop-wrapper">
+                  if (!file_exists('public/images/' . $CI->folder . 'product_image/' . $product[0]->image) || $product[0]->image == '') {
+                    if (strpos($product[0]->image, '%20') === true || $product[0]->image == '') {
+                      $product[0]->image = $default_product_image;
+                    } else {
+                      $product[0]->image = $default_product_image;
+                    }
+                  }
+                ?>
 
 
                   <div class="cart-drop-menu cart-drop-menu-1">
@@ -120,8 +120,8 @@
                     </div>
                   </div>
 
-                </div>
-              <?php } ?>
+                <?php } ?>
+              </div>
               <div class="total-amount">
                 <p><?= $this->lang->line('Total') ?></p>
                 <h3><?= $this->siteCurrency . ' ' . getMycartSubtotal() ?></h3>
@@ -134,11 +134,11 @@
             <?php } else {
             ?>
               <?php if (isset($this->cartCount)) { ?>
-                <?php
+                <div class="cart-drop-wrapper">
+                  <?php
 
-                foreach ($mycart as $key => $value) { ?>
+                  foreach ($mycart as $key => $value) { ?>
 
-                  <div class="cart-drop-wrapper">
 
 
                     <div class="cart-drop-menu cart-drop-menu-1">
@@ -157,8 +157,8 @@
                       </div>
                     </div>
 
-                  </div>
-                <?php } ?>
+                  <?php } ?>
+                </div>
 
                 <div class="total-amount">
                   <p><?= $this->lang->line('Total') ?></p>
