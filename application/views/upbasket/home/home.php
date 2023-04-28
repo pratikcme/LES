@@ -25,7 +25,7 @@
             <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key == 0) ? 'active' : '' ?>"></button>
         <?php } ?>
         <!-- <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-  <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> -->
+             <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> -->
     </div>
 
     <!-- The slideshow/carousel -->
@@ -38,8 +38,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="hero-content">
                                 <!-- <h5>PROVIDING <span>QUALITY</span> PRODUCTS</h5>
-              <h1>ORGANIC <span>DRY FRUITS</span></h1>
-              <h3><span>100%</span> HEALTHY & AFFORDABLE</h3> -->
+                            <h1>ORGANIC <span>DRY FRUITS</span></h1>
+                            <h3><span>100%</span> HEALTHY & AFFORDABLE</h3> -->
                                 <h1><?= $value->main_title ?></h1>
                                 <h3><?= $value->sub_title ?></h3>
                                 <?php if ($value->type == '1') { ?>
@@ -56,36 +56,7 @@
                 </div>
             </section>
         <?php } ?>
-        <!-- <section class="hero-section carousel-item ">
-  <div class="container">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12"></div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="hero-content">
-            <h5>PROVIDING <span>QUALITY</span> PRODUCTS</h5>
-            <h1>ORGANIC <span>DRY FRUITS</span></h1>
-            <h3><span>100%</span> HEALTHY & AFFORDABLE</h3>
-            <a href="./product-listing-2.php" class="hero-btn">shop now</a>
-          </div>
-        </div>
-    </div>
-  </div>
-</section>
-<section class="hero-section carousel-item">
-  <div class="container">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12"></div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="hero-content">
-            <h5>PROVIDING <span>QUALITY</span> PRODUCTS</h5>
-            <h1>ORGANIC <span>DRY FRUITS</span></h1>
-            <h3><span>100%</span> HEALTHY & AFFORDABLE</h3>
-            <a href="./product-listing-2.php" class="hero-btn">shop now</a>
-          </div>
-        </div>
-    </div>
-  </div>
-</section> -->
+
     </div>
 </div>
 
@@ -211,8 +182,6 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
             <div class="row">
                 <?php
                 if (count($offer_list) == 1) {
-
-
                     foreach ($offer_list as $key => $value) : ?>
                         <!--======== single-banner ==============-->
                         <div class="col-lg-12 col-md-12 mb-4">
@@ -229,8 +198,6 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                 }
 
                 if (count($offer_list) == 2 or count($offer_list) > 3) { ?>
-
-
                     <!--============== two-banner ===================-->
                     <?php foreach ($offer_list as $key => $value) : ?>
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
@@ -252,10 +219,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                 <!--=============== three-banners ==================-->
                 <?php if (count($offer_list) == 3) {
                 ?>
-
                     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-
-
                         <div>
                             <div class="home-clothes mb-4 ">
                                 <div class="cloth-card">
@@ -281,13 +245,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                             </div>
                         </div>
                         <!--  -->
-
-
-
-
                         <!-- new upper -->
-
-
                     </div>
                     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                         <div class="practical-cloth home-clothes">
