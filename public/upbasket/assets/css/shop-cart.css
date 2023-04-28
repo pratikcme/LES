@@ -177,7 +177,7 @@ table td:nth-child(2) {
     border: 1px solid var(--cart-counter-border);
     background: var(--commn-white);
     overflow: hidden;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 .cart-totals-part th {
@@ -230,6 +230,7 @@ table td:nth-child(2) {
     border: 1px solid var(--proceed-checkout-btn-bg);
     color: var(--proceed-checkout-btn-bg) !important;
 }
+
 
 
 @media only screen and (max-width: 568px) {

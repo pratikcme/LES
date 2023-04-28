@@ -349,13 +349,13 @@
                                <button type="button" class="cancel-btn cncOrder" data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"><?= $this->lang->line('Cancel Order') ?></button>
                                <!-- check -->
                                <!-- <div class="order-cancle-btn">
-                                    <?php if ($value->order_status <= '5') { ?>
-                                    <a href="javescript:;"
-                                        data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"
-                                        class="cncOrder btn btn-orange"><?= $this->lang->line('Cancel Order') ?></a>
-                                    <?php } ?>
-                                    
-                                </div> -->
+                                                            <?php if ($value->order_status <= '5') { ?>
+                                                            <a href="javescript:;"
+                                                                data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"
+                                                                class="cncOrder btn btn-orange"><?= $this->lang->line('Cancel Order') ?></a>
+                                                            <?php } ?>
+                                                            
+                                                        </div> -->
                                <!-- emd -->
                              </div>
                              <div class="all-detalis-right">
@@ -624,19 +624,19 @@
                    <div class="col-lg-12">
                      <div class="mb-3">
                        <label for="text" class="form-label"><?= $this->lang->line('current password') ?></label>
-                       <input type="password" class="form-control" name="old_pass" placeholder="<?= $this->lang->line('current password') ?>" required="">
+                       <input type="password" class="form-control" name="old_pass" placeholder="<?= $this->lang->line('current password') ?>" autocomplete="off" required="">
                      </div>
                    </div>
                    <div class="col-lg-6">
                      <div class="mb-3">
                        <label for="text" class="form-label"><?= $this->lang->line('new password') ?></label>
-                       <input type="password" class="form-control" name="new_pass" id="password_new" placeholder="<?= $this->lang->line('new password') ?>">
+                       <input type="password" class="form-control" name="new_pass" id="password_new" autocomplete="off" placeholder="<?= $this->lang->line('new password') ?>">
                      </div>
                    </div>
                    <div class="col-lg-6">
                      <div class="mb-3">
                        <label for="text" class="form-label"><?= $this->lang->line('Confirm password') ?></label>
-                       <input type="password" class="form-control" name="confirm_pass" placeholder="<?= $this->lang->line('Confirm password') ?>">
+                       <input type="password" class="form-control" name="confirm_pass" autocomplete="off" placeholder="<?= $this->lang->line('Confirm password') ?>">
                      </div>
                    </div>
                    <div class="tab-save-btn">
@@ -670,8 +670,8 @@
            <form method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" class="address-form" autocomplete="off">
              <div class="row">
                <div class="col-lg-12">
-                 <label for="fname" class="form-label"><?= $this->lang->line('Full Name') ?><span>*</span></label>
-                 <input type="text" name="fname" class="form-control fname" id="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name') ?>">
+                 <label for="fnameModal" class="form-label"><?= $this->lang->line('Full Name') ?><span>*</span></label>
+                 <input type="text" name="fname" class="form-control fname" id="fnameModal" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name') ?>">
                </div>
 
                <!-- <div class="col-lg-6">
