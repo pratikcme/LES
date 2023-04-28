@@ -180,7 +180,7 @@
                     <div class="form-check radio-outer-line">
                       <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number" class="default_check" value="<?= ($userAddress[0]->user_gst_number != '') ? $userAddress[0]->user_gst_number : "" ?>">
                       <label class="form-check-label" for="flexRadioDefault2">
-                        <?= $this->lang->line('Use Gst Number') ?>
+                        <?= $this->lang->line('Use GST Number') ?>
                       </label>
                     </div>
                   <?php } ?>
