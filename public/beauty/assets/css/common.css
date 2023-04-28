@@ -218,6 +218,7 @@ p {
 }
 
 .common-banner-bg h1 {
+    text-transform: capitalize;
     font-family: var(--BeVietnamPro-Medium);
     font-size: 48px;
     font-weight: 500;
