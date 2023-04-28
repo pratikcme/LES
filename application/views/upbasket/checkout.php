@@ -99,7 +99,7 @@
                                         </label>
                                         </div>
                                         <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" id="user_gst_number">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number">
                                         <label class="form-check-label" for="user_gst_number">
                                         <?=$this->lang->line('Use GST Number')?>
                                         </label>
