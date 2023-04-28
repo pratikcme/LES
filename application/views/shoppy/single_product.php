@@ -341,7 +341,7 @@ if (!empty($related_product)) { ?>
           <h3 class="modal-title" id="exampleModalLabel"><?= $this->lang->line('Your rating') ?></h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-circle-xmark"></i></button>
         </div>
-        <form id="reviewForm" class="modal-body rating" method="POST" action="<?= base_url() . 'products/productReview' ?>">
+        <form id="reviewForm" class="modal-body rating flex-column" method="POST" action="<?= base_url() . 'products/productReview' ?>">
 
           <div class="rating-box">
             <div class="rating">
