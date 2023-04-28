@@ -1160,6 +1160,24 @@ button.btn-close{
 }
 
 
+.time-picker{
+    display: flex;
+    align-items:start;
+    gap: 30px;
+    justify-content: center;
+}
+
+.time-wrapper{
+    padding: 30px 50px;
+    border-radius: 10px;
+    border: 1px solid #c5c5c5;
+    height: 180px;
+    overflow-y: scroll;
+}
+
+.time-wrapper .form-check{
+    margin-bottom: 8px;
+}
 /* =============resonsive======== */
 /* =================================================== */
 /* =================================================== */
@@ -1889,6 +1907,17 @@ button.btn-close{
 }
 /* =================================================== */
 /* =================================================== */
+@media only screen and (max-width:1200px){
+    .time-wrapper{
+        padding: 30px 38px;
+        gap: 15px;
+    }
+
+    .time-picker{
+        flex-direction: column;
+
+    }
+}
 @media screen and (min-width:320px) and (max-width:424px){
     .checkout-process-section{
         padding-bottom: 50px;

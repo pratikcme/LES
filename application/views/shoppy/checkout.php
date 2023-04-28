@@ -304,31 +304,44 @@
                 </div>
               </div>
             <?php } ?>
+
             <div class="main-accordion">
               <div class="accordion-heading">Delivery Schedule</div>
               <div class="accordion-content  accordion-content-4">
-                <div class="dates-day-wrapper">
-                  <?php if ($isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?> <?php } ?>
-                  <div id="datepicker"></div>
-                </div>
+
                 <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
-                  <div class="time-wrapper">
-                    <h3><?= $this->lang->line('Pickup Timing') ?></h3>
-                    <p><?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?></p>
+                  <div class="time-picker">
+                    <div class="dates-day-wrapper">
+                      <div id="datepicker"></div>
+                    </div>
+
+                    <form class="time-wrapper">
+                      <h3><?= $this->lang->line('Pickup Timing') ?></h3>
+                      <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
+                    </form>
                   </div>
                 <?php } else { ?>
-                  <div class="time-wrapper">
-                    <?php foreach ($time_slot as $key => $value) { ?>
-                      <div class="form-check">
-                        <input class="form-check-input time_slot_checked" type="radio" id="Default-1" name="time_slot" value=" <?= $value->id ?>" <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
-                        <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> - <?= $value->end_time ?> </label>
-                      </div>
-                    <?php } ?>
+                  <div class="time-picker">
+                    <div class="dates-day-wrapper">
+                      <div id="datepicker"></div>
+                    </div>
+
+                    <form class="time-wrapper">
+                      <?php foreach ($time_slot as $key => $value) { ?>
+                        <div class="form-check">
+                          <input class="time_slot_checked" type="radio" id="Default-1" name="time_slot" value=" <?= $value->id ?>" <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+                          <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> -
+                            <?= $value->end_time ?> </label>
+                        </div>
+                      <?php } ?>
+                    </form>
                   </div>
                 <?php } ?>
-
               </div>
+
             </div>
+
+
 
             <div class="main-accordion">
               <div class="accordion-heading">Payment Option</div>
