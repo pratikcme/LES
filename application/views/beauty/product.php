@@ -1,4 +1,65 @@
+<style>
+ .price-range-slider {
+    width: 100%;
+    padding: 10px 20px 15px;
+    background-color: #f7f7f7;
+  }
 
+  .price-range-slider .range-value {
+    margin: 0;
+    display: flex;
+  }
+
+  .price-range-slider .range-value .fa-rupee-sign {
+    color: var(--secondary-color);
+    position: relative;
+    font-size: 16px;
+    top: 3px;
+    position: relative;
+    font-weight: 900;
+    margin-right: 5px;
+    top: 1px;
+  }
+
+  .price-range-slider .range-value input {
+    width: 100%;
+    background: none;
+    color: var(--secondary-color);
+    font-family: 'OpenSans-SemiBold';
+    font-size: 16px;
+    font-weight: initial;
+    box-shadow: none;
+    border: none;
+    margin: 00px 0 20px 0;
+  }
+
+  .price-range-slider .range-bar {
+    border: none;
+    background: #000;
+    height: 3px;
+    width: 96%;
+    margin-left: 8px;
+  }
+
+  .price-range-slider .range-bar .ui-slider-range {
+    background: #1ebcb7;
+  }
+
+  .price-range-slider .range-bar .ui-slider-handle {
+    border: none;
+    border-radius: 25px;
+    background: #fff;
+    border: 2px solid #1ebcb7;
+    height: 17px;
+    width: 17px;
+    top: -0.52em;
+    cursor: pointer;
+  }
+
+  .price-range-slider .range-bar .ui-slider-handle+span {
+    background: #1ebcb7;
+  }
+</style>
 <!-- ----hero-section-- -->
 <section class="hero-section common-banner-bg">
     <div class="container">
@@ -66,37 +127,10 @@
                                     <div class="categire-header">
                                         <h3>Price Range</h3>
                                     </div>
-                                    <div slider id="slider-distance">
-                                        <div>
-                                            <div inverse-left style="width:70%;"></div>
-                                            <div inverse-right style="width:70%;"></div>
-                                            <div range style="left:0%;right:0%;"></div>
-                                            <span thumb style="left:0%;"></span>
-                                            <span thumb style="left:100%;"></span>
-                                            <div sign style="left:0%;">
-                                                <span id="value">₹0</span>
-                                            </div>
-                                            <div sign style="left:100%;">
-                                                <span id="value">₹100</span>
-                                            </div>
-                                        </div>
-                                        <input type="range" value="0" max="100" min="0" step="1" oninput="
-                                                this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
-                                                let value = (this.value/parseInt(this.max))*100
-                                                var children = this.parentNode.childNodes[1].childNodes;
-                                                children[1].style.width=value+'%';
-                                                children[5].style.left=value+'%';
-                                                children[7].style.left=value+'%';children[11].style.left=value+'%';
-                                                children[11].childNodes[1].innerHTML=this.value;" />
-
-                                        <input type="range" value="100" max="100" min="0" step="1" oninput="
-                                                this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
-                                                let value = (this.value/parseInt(this.max))*100
-                                                var children = this.parentNode.childNodes[1].childNodes;
-                                                children[3].style.width=(100-value)+'%';
-                                                children[5].style.right=(100-value)+'%';
-                                                children[9].style.left=value+'%';children[13].style.left=value+'%';
-                                                children[13].childNodes[1].innerHTML=this.value;" />
+                                    <div class="slider-box">
+                                        <label for="priceRange">Price Range:</label>
+                                        <input type="text" id="priceRange_mob" readonly>
+                                        <div id="price-range_mob" class="slider"></div>
                                     </div>
                                 </div>
 
@@ -175,7 +209,7 @@
                         <h3>Product Categories</h3>
                     </div>
                     <ul class="cate-wrp">
-                    <li class="active"><?=$this->lang->line('All Categories') ?></li>
+                    <li class="active category_id" data-cat_id=""><?=$this->lang->line('All Categories') ?></li>
                       <?php foreach ($category as $key => $value) { ?>
                         <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?></li>
                       <?php } ?>
@@ -186,37 +220,10 @@
                     <div class="categire-header">
                         <h3>Price Range</h3>
                     </div>
-                    <div slider id="slider-distance">
-                        <div>
-                            <div inverse-left style="width:70%;"></div>
-                            <div inverse-right style="width:70%;"></div>
-                            <div range style="left:0%;right:0%;"></div>
-                            <span thumb style="left:0%;"></span>
-                            <span thumb style="left:100%;"></span>
-                            <div sign style="left:0%;">
-                                <span id="value">₹0</span>
-                            </div>
-                            <div sign style="left:100%;">
-                                <span id="value">₹100</span>
-                            </div>
-                        </div>
-                        <input type="range" value="0" max="100" min="0" step="1" oninput="
-                                this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
-                                let value = (this.value/parseInt(this.max))*100
-                                var children = this.parentNode.childNodes[1].childNodes;
-                                children[1].style.width=value+'%';
-                                children[5].style.left=value+'%';
-                                children[7].style.left=value+'%';children[11].style.left=value+'%';
-                                children[11].childNodes[1].innerHTML=this.value;" />
-
-                        <input type="range" value="100" max="100" min="0" step="1" oninput="
-                                this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
-                                let value = (this.value/parseInt(this.max))*100
-                                var children = this.parentNode.childNodes[1].childNodes;
-                                children[3].style.width=(100-value)+'%';
-                                children[5].style.right=(100-value)+'%';
-                                children[9].style.left=value+'%';children[13].style.left=value+'%';
-                                children[13].childNodes[1].innerHTML=this.value;" />
+                    <div class="slider-box">
+                        <label for="priceRange">Price Range:</label>
+                        <input type="text" id="priceRange" readonly>
+                        <div id="price-range" class="slider"></div>
                     </div>
                 </div>
 
@@ -270,7 +277,7 @@
         </div>
 
         <!-- ---pagination-part--- -->
-        <div class="pagination-part">
+        <div class="pagination-part d-none">
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>

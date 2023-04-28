@@ -114,6 +114,7 @@ p {
     width: 100%;
     max-width: 220px;
     height: 200px;
+    object-fit: contain !important;
 }
 
 .card-header h5 {
@@ -218,6 +219,7 @@ p {
 }
 
 .common-banner-bg h1 {
+    text-transform: capitalize;
     font-family: var(--BeVietnamPro-Medium);
     font-size: 48px;
     font-weight: 500;

@@ -65,23 +65,22 @@
           </div>
 
           <!-- ----cart-dropdown--- -->
-          <?php
-          if ($this->cartCount != 0) {
-          ?>
-            <div class="cart-dropdwon" id="updated_list">
-              <div class="drop-cart-title">
-                <h3 class="cart-title">My shopping cart</h3>
-                <a href="#" class="close-btn"><i class="fa-solid fa-xmark"></i></a>
-              </div>
 
-              <?php if ($this->session->userdata('user_id') == '') {
+          <div class="cart-dropdwon" id="updated_list">
+            <div class="drop-cart-title">
+              <h3 class="cart-title">My shopping cart</h3>
+              <a href="#" class="close-btn"><i class="fa-solid fa-xmark"></i></a>
+            </div>
 
-              ?>
-                <?php if (isset($this->cartCount)) {
-                  $CI = &get_instance();
-                  $CI->load->model('common_model');
-                  $default_product_image = $CI->common_model->default_product_image();
-                } ?>
+            <?php if ($this->session->userdata('user_id') == '') {
+
+            ?>
+              <?php if (isset($this->cartCount)) {
+                $CI = &get_instance();
+                $CI->load->model('common_model');
+                $default_product_image = $CI->common_model->default_product_image();
+              } ?>
+              <div class="cart-drop-wrapper">
                 <?php
 
                 foreach ($this->session->userdata('My_cart') as $key => $value) {
@@ -103,27 +102,64 @@
                     }
                   }
                 ?>
-                  <div class="cart-drop-wrapper">
+
+
+                  <div class="cart-drop-menu cart-drop-menu-1">
+                    <div class="drop-img">
+                      <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $product[0]->image ?>" alt=""></a>
+                    </div>
+                    <div class="drop-text">
+                      <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><?= $value['product_name'] ?></a></h4>
+
+                      <p>Qty : <?= $value['quantity'] ?></p>
+                      <h3><?= $this->siteCurrency . ' ' . number_format((float)$product[0]->discount_price, 2, '.', '') ?></h3>
+
+                    </div>
+                    <div class="cancel-btn remove_item" data-product_id="<?= $value['product_id'] ?>" data-product_weight_id="<?= $value['product_weight_id'] ?>">
+                      <a href="#"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                  </div>
+
+                <?php } ?>
+              </div>
+              <div class="total-amount">
+                <p><?= $this->lang->line('Total') ?></p>
+                <h3><?= $this->siteCurrency . ' ' . getMycartSubtotal() ?></h3>
+              </div>
+
+              <div class="drop-btns">
+                <a href="<?= base_url() . 'products/cart_item' ?>" class="view-cart"><?= $this->lang->line('view cart') ?></a>
+                <a href="<?= base_url() . 'checkout' ?>" class="checkout "><?= $this->lang->line('checkout') ?></a>
+              </div>
+            <?php } else {
+            ?>
+              <?php if (isset($this->cartCount)) { ?>
+                <div class="cart-drop-wrapper">
+                  <?php
+
+                  foreach ($mycart as $key => $value) { ?>
+
 
 
                     <div class="cart-drop-menu cart-drop-menu-1">
                       <div class="drop-img">
-                        <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $product[0]->image ?>" alt=""></a>
+                        <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $value->image ?>" alt=""></a>
                       </div>
                       <div class="drop-text">
-                        <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><?= $value['product_name'] ?></a></h4>
+                        <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a></h4>
 
-                        <p>Qty : <?= $value['quantity'] ?></p>
-                        <h3><?= $this->siteCurrency . ' ' . number_format((float)$product[0]->discount_price, 2, '.', '') ?></h3>
+                        <p>Qty : <?= $value->quantity ?></p>
+                        <h3><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?> </h3>
 
                       </div>
-                      <div class="cancel-btn remove_item" data-product_id="<?= $value['product_id'] ?>" data-product_weight_id="<?= $value['product_weight_id'] ?>">
+                      <div class="cancel-btn remove_item" data-product_id="<?= $value->product_id ?>" data-product_weight_id="<?= $value->product_weight_id ?>">
                         <a href="#"><i class="fa-solid fa-xmark"></i></a>
                       </div>
                     </div>
 
-                  </div>
-                <?php } ?>
+                  <?php } ?>
+                </div>
+
                 <div class="total-amount">
                   <p><?= $this->lang->line('Total') ?></p>
                   <h3><?= $this->siteCurrency . ' ' . getMycartSubtotal() ?></h3>
@@ -133,51 +169,13 @@
                   <a href="<?= base_url() . 'products/cart_item' ?>" class="view-cart"><?= $this->lang->line('view cart') ?></a>
                   <a href="<?= base_url() . 'checkout' ?>" class="checkout "><?= $this->lang->line('checkout') ?></a>
                 </div>
-              <?php } else {
-              ?>
-                <?php if (isset($this->cartCount)) { ?>
-                  <?php
 
-                  foreach ($mycart as $key => $value) { ?>
-
-                    <div class="cart-drop-wrapper">
-
-
-                      <div class="cart-drop-menu cart-drop-menu-1">
-                        <div class="drop-img">
-                          <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $value->image ?>" alt=""></a>
-                        </div>
-                        <div class="drop-text">
-                          <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a></h4>
-
-                          <p>Qty : <?= $value->quantity ?></p>
-                          <h3><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?> </h3>
-
-                        </div>
-                        <div class="cancel-btn remove_item" data-product_id="<?= $value->product_id ?>" data-product_weight_id="<?= $value->product_weight_id ?>">
-                          <a href="#"><i class="fa-solid fa-xmark"></i></a>
-                        </div>
-                      </div>
-
-                    </div>
-                  <?php } ?>
-
-                  <div class="total-amount">
-                    <p><?= $this->lang->line('Total') ?></p>
-                    <h3><?= $this->siteCurrency . ' ' . getMycartSubtotal() ?></h3>
-                  </div>
-
-                  <div class="drop-btns">
-                    <a href="<?= base_url() . 'products/cart_item' ?>" class="view-cart"><?= $this->lang->line('view cart') ?></a>
-                    <a href="<?= base_url() . 'checkout' ?>" class="checkout "><?= $this->lang->line('checkout') ?></a>
-                  </div>
-
-                <?php } ?>
               <?php } ?>
-            </div>
-          <?php } ?>
+            <?php } ?>
+          </div>
+
           <div class="social-icons">
-            <!-- <div class="overlay"></div> -->
+            <div class="overlay"></div>
 
             <a href="#" class="">
               <div class="search-icon icons search-toggle">

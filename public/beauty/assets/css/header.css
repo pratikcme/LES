@@ -421,6 +421,11 @@ nav .left-content a:hover {
 
 
 /* language-dropdown */
+.lng-drp{
+  margin-bottom: 0;
+  height: 50px;
+}
+
 .drp-grp {
   display: flex;
   gap: 10px;
@@ -436,6 +441,7 @@ nav .left-content a:hover {
   padding: 10px 11px;
   border-radius: 5px;
   width: 100px;
+  color: var(--nav-text-color) !important;
 }
 
 .lng-drp select:focus,
@@ -510,8 +516,12 @@ nav .left-content a:hover {
 
   .lng-drp select,
   .branch-drp select {
-    width: 60px;
+    width: 60px !important;
     padding: 10px 0;
+  }
+
+  #google_translate_element{
+    width: 60px !important;
   }
 }
 

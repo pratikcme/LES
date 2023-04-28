@@ -16,8 +16,6 @@ class Products extends User_Controller
 		// 	$this->utility->setFlashMessage('danger','Please select branch');
 		// 	redirect(base_url());
 		// }
-
-
 		$this->session->unset_userdata('isSelfPickup');
 	}
 

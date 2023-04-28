@@ -210,14 +210,17 @@ input:focus{
 
 }
 .save-btn{
-    margin-top: 10px !important;
+    margin-top: 25px !important;
     margin-bottom: 20px;
 }
-.save-btn a {
-    background: var(--secondary-color);
-    border: 1px solid var(--secondary-color);
+
+.save-btn a,
+.save-btn button
+{
+    background: var(--secondary-color) !important;
+    border: 1px solid var(--secondary-color) !important;
     border-radius: 10px;
-    padding: 10px 50px 10px 50px;
+    padding: 12px 50px 12px 50px;
     font-family: var(--BeVietnamPro-SemiBold);
     font-size: 18px;
     line-height: 20px;
@@ -225,8 +228,10 @@ input:focus{
     transition: 0.3s;
 }
 
-.save-btn a:hover{
-   background: transparent;
+.save-btn a:hover,
+.save-btn button:hover
+{
+   background: transparent !important;
    border: 1px solid var(--secondary-color);
    color: var(--secondary-color) !important;
 }
@@ -610,7 +615,37 @@ input:focus{
     z-index: -1;
 }
 
-
+ /* ---new-csss--- */ 
+.delivery-method-wrap {
+    border-radius: 20px 20px 0px 0px;
+    width: 100%;
+    background: var(--accordian-head-bg);
+    font-family: var(--BeVietnamPro-SemiBold);
+    font-size: 20px !important;
+    line-height: 20px;
+    color: var(--accordian-head-text);
+    padding: 25px 30px;
+    border-radius: 20px 20px 20px 20px;
+    position: relative;
+}
+.delivery-method-wrap .form-check{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.delivery-method-wrap .form-check input{
+    position: relative;
+    top: -2px;
+}
+.delivery-method-wrap label {
+    font-family: var(--BeVietnamPro-Medium);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--accordian-content-text-1);
+}
+.delivery-method-wrap .accordion-content-2{
+    justify-content: space-around !important;
+}
 
 
 
@@ -954,6 +989,7 @@ to {top: 0px; opacity: 1}
     color: var(--listing-2-normal-text) !important;
     margin-bottom: 0px;
     margin-top: 3px;
+    width: 75px;
 }
 
 .address-wrp{

@@ -807,6 +807,7 @@ body {
     padding:25px 0px;
     display: flex;
     align-items: center;
+    padding-left: 20px;
 }
 .review-content .right-content h6{
     font-family: var(--PublicSans-Regular);

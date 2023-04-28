@@ -50,30 +50,6 @@
         </div>
       </div>
     </div>
-<!-- 
-    <div class="modal" id="payment_fail">
-      <div class="modal-dialog">
-        <div class="modal-content">
-        
-        Modal body 
-          <div class="modal-body text-center">
-              <div>
-                  <h3>payment failed</h3>
-              </div>
-              <div class="my-3">
-                  <i class="fas fa-ban"></i>
-              </div>
-              <div>
-                  <p><?=$message?></p>
-              </div>
-              <div>
-                  <a href="<?=base_url().'home'?>" class="retry_btn">continue shopping</a>
-              </div>
-          </div>
-          
-        </div>
-      </div>
-    </div>     -->
    <?php } ?>
     
     </div>

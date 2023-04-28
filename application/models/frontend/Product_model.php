@@ -497,15 +497,13 @@ class Product_model extends My_model
 			}
 			// dd($product_html);
 			$product_html .= '<div class="col-md-12 text-center mt-5" style="display:' . $display . '">
-        						<button type="button" class="btn show-more" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>' . $this->lang->line('Show More') . '</button>
+        						<button type="button" class="btn show-more lg-btn add-cart-btn" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>' . $this->lang->line('Show More') . '</button>
       						</div>';
 		} else {
 			$product_html = '<h3>No Product Found  </h3>';
 		}
 
 		if (!empty($subcategory)) {
-
-
 
 			$subcatData['subcategory'] = $subcategory;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);

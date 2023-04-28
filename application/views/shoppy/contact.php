@@ -31,7 +31,7 @@
         <div class="col-xxl-12">
           <div class="title text-center">
             <h2>Reach <span>Out To Us</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+
           </div>
         </div>
       </div>

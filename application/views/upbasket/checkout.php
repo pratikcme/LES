@@ -90,30 +90,29 @@ span.error {
              <div class="col-xxl-7 col-xl-7 col-lg-6 col-md-6">
                  <div class="fill-detali-part">
                      <div class="accordion-items">
+                         <?php if(isset($selfPickEnable) && $selfPickEnable == '1' || !empty($userAddress) && $userAddress[0]->user_gst_number != ''){ ?>
                          <div class="main-accordion">
-                             <div class="accordion-heading"><?= $this->lang->line('Delivery Method') ?></div>
-                             <div class="accordion-content ">
-                                 <div class="accordion-content-2">
-                                     <div class="form-check radio-outer-line">
-                                         <input class="form-check-input" id="user_gst_number" type="checkbox"
-                                             name="flexRadioDefault">
-                                         <label class="form-check-label" for="flexRadioDefault1">
-                                             <span>
-                                                 <i class="fa-solid fa-truck"></i>
-                                             </span><?= $this->lang->line('Use Gst Number') ?></label>
-                                     </div>
-                                     <div class="form-check radio-outer-line">
-                                         <input class="form-check-input" id="isSelfPickup" type="checkbox"
-                                             name="flexRadioDefault"
+                             <div class="delivery-method-wrap">
+                                 <form class="accordion-content-2" action="">
+                                     <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                             id="isSelfPickup"
                                              <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
                                          <label class="form-check-label" for="isSelfPickup">
-                                             <span>
-                                                 <i class="fa-solid fa-store"></i>
-                                             </span><?= $this->lang->line('Pick up') ?></label>
+                                             <?=$this->lang->line('self pickup')?>
+                                         </label>
                                      </div>
-                                 </div>
+                                     <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                             id="user_gst_number">
+                                         <label class="form-check-label" for="user_gst_number">
+                                             <?=$this->lang->line('Use GST Number')?>
+                                         </label>
+                                     </div>
+                                 </form>
                              </div>
                          </div>
+                         <?php } ?>
                          <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
                          <div class="main-accordion">
                              <div class="accordion-heading"><?= $this->lang->line('Pickup Address') ?></div>

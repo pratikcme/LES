@@ -130,9 +130,9 @@
 
             <div class="product-detail-quentity <?= $d_show ?>">
               <div class="qty-container">
-                <button class="qty-btn-minus cart-qty-minus decqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-minus"></i></button>
+                <button class="dec qty-btn-minus cart-qty-minus decqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-minus"></i></button>
                 <input type="text" name="qty" id="qnt" value="<?= ($cartQuantityForVarient != '') ? $cartQuantityForVarient : 1 ?>" data-product_id="<?= $this->utility->safe_b64decode($product_id) ?>" class="input-qty" />
-                <button class="qty-btn-plus cart-qty-plus incqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-plus"></i></button>
+                <button class="inc qty-btn-plus cart-qty-plus incqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-plus"></i></button>
               </div>
             </div>
 
@@ -341,7 +341,7 @@ if (!empty($related_product)) { ?>
           <h3 class="modal-title" id="exampleModalLabel"><?= $this->lang->line('Your rating') ?></h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-circle-xmark"></i></button>
         </div>
-        <form id="reviewForm" class="modal-body rating" method="POST" action="<?= base_url() . 'products/productReview' ?>">
+        <form id="reviewForm" class="modal-body rating flex-column" method="POST" action="<?= base_url() . 'products/productReview' ?>">
 
           <div class="rating-box">
             <div class="rating">

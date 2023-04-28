@@ -226,34 +226,37 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".category_id", function () {
+    $('.category_id').removeClass('active');
+    $(this).addClass('active');
+
     var cat_id = $(this).attr("data-cat_id");
-    var url = $("#url").val();
-
-    sub_id = "";
-    $("#cat_id").val(cat_id);
-    if (cat_id == "All") {
-      $("#cat_id").val("");
-      $("#sub_cat_id").val("");
-      $("#getBycatID").val("");
-      cat_id = "";
-      $("#dropDownBtn").html("All Categories");
-    } else {
-      $.ajax({
-        url: url + "products/getCategoryName",
-        data: { cat_id: cat_id },
-        method: "post",
-        dataType: "json",
-        async: false,
-        success: function (res) {
-          $("#dropDownBtn").html(res.name);
-        },
-      });
-    }
-
-    $("#search").attr("data-search_val", "");
-    $(".search").val("");
-    page = 1;
-    onload(page, sub_id, cat_id);
+      var url = $("#url").val();
+      
+      sub_id = "";
+      $("#cat_id").val(cat_id);
+      if (cat_id == "All") {
+        $("#cat_id").val("");
+        $("#sub_cat_id").val("");
+        $("#getBycatID").val("");
+        cat_id = "";
+        $("#dropDownBtn").html("All Categories");
+      } else {
+        $.ajax({
+          url: url + "products/getCategoryName",
+          data: { cat_id: cat_id },
+          method: "post",
+          dataType: "json",
+          async: false,
+          success: function (res) {
+            $("#dropDownBtn").html(res.name);
+          },
+        });
+      }
+    
+      $("#search").attr("data-search_val", "");
+      $(".search").val("");
+      page = 1;
+      onload(page, sub_id, cat_id);
   });
 
   $(document).on("keyup", ".search", function () {

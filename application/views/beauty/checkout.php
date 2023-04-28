@@ -123,7 +123,7 @@ span.error {
                             </div>
                         </div> -->
 
-                        <div class="main-accordion">
+                        <!-- <div class="main-accordion">
                             <div class="accordion-heading"><?=$this->lang->line('Delivery Method')?></div>
                             <div class="accordion-content ">
                                 <form action="">
@@ -135,6 +135,7 @@ span.error {
                                                 <?= $this->lang->line('Use Gst Number') ?>
                                             </label>
                                         </div>
+                                        <?php if(isset($selfPickEnable) && $selfPickEnable == '1'){ ?>
                                         <div class="form-check radio-outer-line">
                                             <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="isSelfPickup"
                                             <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
@@ -142,10 +143,36 @@ span.error {
                                                 <span><i class="fa-solid fa-store"></i></span><?=$this->lang->line('Pick up')?>
                                             </label>
                                         </div>
+                                        <?php } ?>
                                     </div>
                                 </form>
                             </div>
+                        </div> -->
+                        <?php if(isset($selfPickEnable) && $selfPickEnable == '1' || !empty($userAddress) && $userAddress[0]->user_gst_number != ''){ ?>
+                        <div class="main-accordion">
+                            <div class="delivery-method-wrap">
+                                <form class="accordion-content-2" action="">
+                                    <?php if(isset($selfPickEnable) && $selfPickEnable == '1'){ ?>    
+                                    <div class="form-check radio-outer-line">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="isSelfPickup" 
+                                        <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
+                                        <label class="form-check-label" for="isSelfPickup" style="text-transform:capitalize">
+                                            <?=$this->lang->line('self pickup')?>
+                                        </label>
+                                    </div>
+                                    <?php } ?>
+                                    <?php if(!empty($userAddress) && $userAddress[0]->user_gst_number != ''){ ?>
+                                    <div class="form-check radio-outer-line">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number">
+                                        <label class="form-check-label" for="user_gst_number" style="text-transform:capitalize">
+                                        <?=$this->lang->line('Use GST Number')?>
+                                        </label>
+                                    </div>
+                                    <?php } ?>
+                                </form>
+                            </div>
                         </div>
+                        <?php } ?>
                         <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
                           <div class="main-accordion">
                              <div class="accordion-heading"><?= $this->lang->line('Pickup Address') ?></div>
@@ -283,7 +310,7 @@ span.error {
                                                      autocomplete="off"></textarea>
                                              </div>
                                          </div>
-                                         <div class="save-btn text-center">
+                                         <div class="save-btn">
                                              <button type="submit" id="addAddress" class="signin-btn-green">
                                                  <?= $this->lang->line('Save') ?> </button>
                                          </div>
@@ -302,7 +329,7 @@ span.error {
                                 <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
                                     <div class="time-wrapper">
                                         <h3><?= $this->lang->line('Pickup Timing') ?></h3>
-                                        <p><?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?></p>
+                                        <pre><?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?></pre>
                                     </div>
                                  <?php } else { ?>
                                     <div class="time-wrapper">
@@ -472,7 +499,7 @@ span.error {
                     <?php if ($phone == '0' || $is_verify == '0') { ?> 
                         <button type="button" class="place-order-btn" id="verify"><?= $this->lang->line('Verify Mobile') ?></button>
                     <?php }else{?>
-                        <button class="place-order-btn" id="payBtn"> <?= $this->lang->line('Place order') ?> </button>
+                        <button type="button" class="place-order-btn" id="payBtn"> <?= $this->lang->line('Place order') ?> </button>
                     <?php } ?>
                     <!-- <a href="javascript:" class="place-order-btn" id="myBtn" data-toggle="modal"><?=$this->lang->line('Place order')?></a> -->
 
@@ -648,7 +675,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             </div>
             <h2>Thank you.</h2>
             <h3>Your order has been received</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
             <h5 id="orderId"></h5>
 
             <div class="continue-btn">
