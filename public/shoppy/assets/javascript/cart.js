@@ -211,7 +211,7 @@ $(document).ready(function () {
               that.next("input").val(output.max_qun);
             }
             $("#display_subtotal").html(subtot);
-            $("#finalSubtotal").html(siteCurrency + " " + subtot);
+            $("#final_subtotal").html(siteCurrency + " " + subtot);
             // $("#nav_subtotal").html(siteCurrency + " " + subtot);
             // new
             if ($("#shipping_charge").val() !== output.delivery_charge) {
@@ -282,7 +282,7 @@ $(document).ready(function () {
             var subtot = subtotal();
 
             $("#display_subtotal").html(subtot);
-            $("#finalSubtotal").html(siteCurrency + " " + subtot);
+            $("#final_subtotal").html(siteCurrency + " " + subtot);
             // $("#shipping_charge").val(output.delivery_charge);
             //   if ($("#shipping_charge").val() !== output.delivery_charge) {
             //     $("#shipping_charge").val(output.delivery_charge);

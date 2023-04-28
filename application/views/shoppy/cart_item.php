@@ -173,7 +173,7 @@
             <tbody>
               <tr>
                 <td class="cart-total-text-1"><?= $this->lang->line('Sub Total') ?></td>
-                <td id="finalSubtotal" class="cart-total-text-2 notranslate"><?= $this->siteCurrency ?> <?= getMycartSubtotal() ?></td>
+                <td id="final_subtotal" class="cart-total-text-2 notranslate"><?= $this->siteCurrency ?> <?= getMycartSubtotal() ?></td>
               </tr>
               <tr>
                 <td class="cart-total-text-1"><?= $this->lang->line('Delivery Charges') ?></td>
