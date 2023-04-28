@@ -76,7 +76,7 @@ class Home extends User_Controller
 			}
 			// dd($value->id);
 			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
-			// $value->addQuantity = $addQuantity;
+			$value->addQuantity = $addQuantity;
 
 			$product_ids[] = $value->id;
 
