@@ -521,7 +521,6 @@ class Products extends User_Controller
 					}
 				}
 			}
-
 			// new test
 
 			$result = $this->this_model->getUserAddressLatLong();
