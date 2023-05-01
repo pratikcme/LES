@@ -94,7 +94,7 @@
 
 
       foreach ($category as $key => $value) {
-        if ($key == 2) {
+        if ($key > 2) {
           break;
         }
       ?>
