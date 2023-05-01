@@ -1,13 +1,13 @@
-.vendor {
+.vendors {
     position: relative;
     z-index: 2;
 }
 
-.vendor .title {
+.vendors .title {
     text-align: center;
 }
 
-.vendor .pera {
+.vendors .pera {
     text-align: center;
 }
 
