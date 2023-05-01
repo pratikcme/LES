@@ -11,7 +11,7 @@
     </div>
   </section>
 
-  <section class="vendor1 contact-us-section section">
+  <section class="vendors contact-us-section section">
     <img src="<?=$this->theme_base_url?>/assets/images/checkout-top-right-img.svg" alt="" class="checkout-top-right-img">
     <img src="<?=$this->theme_base_url?>/assets/images/checkout-mid-left-img.svg" alt="" class="checkout-mid-left-img ">
     <div class="container">
