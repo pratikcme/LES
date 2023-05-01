@@ -280,15 +280,7 @@ input:focus{
     margin-bottom: 0px;
     text-transform: capitalize;
 }
-.time-wrapper{
-    display: flex;
-    justify-content:center;
-    gap: 40px;
-    margin-top: 40px;
-    background: var(--accordian-head-bg);
-    padding: 20px;
-    border-radius: 10px;
-}
+
 .time-wrapper label {
     margin-bottom: 0px;
 }
@@ -1178,6 +1170,145 @@ button.btn-close{
 .time-wrapper .form-check{
     margin-bottom: 8px;
 }
+
+/* checkout-date */
+span.error {
+    color: red;
+  }
+
+  .loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    position: 0.3;
+    z-index: 2222;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .dates-day-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .ui-datepicker-calendar th:nth-child(1) {
+    padding-left: 0px !important;
+  }
+
+  .ui-datepicker-calendar td:nth-child(1) {
+    padding-left: 0 !important;
+  }
+
+  .ui-datepicker-calendar td:nth-child(2) {
+    padding-left: 0px !important;
+  }
+
+  .ui-datepicker-calendar td:nth-child(3),
+  .ui-datepicker-calendar td:nth-child(4),
+  .ui-datepicker-calendar td:nth-child(5) {
+    padding-left: 0px !important;
+  }
+
+  .ui-datepicker-calendar th:nth-child(3) {
+    padding-left: 0px !important;
+  }
+
+  .ui-datepicker-calendar th:nth-child(4) {
+    padding-left: 0px !important;
+  }
+
+  .ui-datepicker-title {
+    font-size: 18px !important;
+    color: var(--primary-color);
+    font-family: Poppins !important;
+  }
+
+  .ui-datepicker {
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.5rem !important;
+    border: 1px solid #999 !important;
+    margin-top: 0 !important;
+  }
+
+  .ui-datepicker-calendar thead th {
+    color: var(--primary-color) !important;
+    font-size: 16px !important;
+    font-weight: 400px !important;
+  }
+
+  .ui-state-active,
+  .ui-widget-content .ui-state-active {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+  }
+
+  .dots {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .dot {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+  }
+
+  .dot2 .dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .dot2 .dot:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .dot2 .dot:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  .dot2 .dot {
+    border-radius: 50%;
+    animation: topDown2 1.2s linear forwards infinite;
+  }
+
+  .ui-slider .ui-state-default, .ui-widget-content .ui-state-default{
+    border-radius: inherit !important;
+  }
+
+  .time-wrapper h3{
+    font-size: 18px !important;
+  }
+
+  @keyframes topDown2 {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    25% {
+      transform: translateY(20px);
+      background-color: #fec641;
+    }
+
+    75% {
+      transform: translateY(-20px);
+      background-color: #22bdb6;
+    }
+  }
+
 /* =============resonsive======== */
 /* =================================================== */
 /* =================================================== */
@@ -1193,10 +1324,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        gap: 15px;
-        margin-top: 40px;
-    }
+    
     .accordion-heading{
         font-size: 18px !important;
     }
@@ -1277,15 +1405,6 @@ button.btn-close{
         background-position-y: 19px;
         background-position-x: 235px;
         margin-bottom: 30px;
-    }
-    .time-wrapper {
-        gap: 0px;
-        margin-top: 40px;
-        flex-wrap: wrap;
-    }
-
-    .time-wrapper .form-check{
-        width: calc(100% - 50%);
     }
 
     .accordion-heading{
@@ -1391,11 +1510,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        gap: 0px;
-        margin-top: 40px;
-        flex-direction: column;
-    }
+    
     .accordion-heading {
         font-size: 18px !important;
         padding: 20px 0px 20px 20px;
@@ -1554,17 +1669,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        display: flex;
-        gap: 0px;
-        margin-top: 40px;
-        flex-wrap: wrap;
-    }
-
-    .time-wrapper .form-check{
-        width: calc(100% - 50%);
-    }
-
+    
     .accordion-heading {
         font-size: 18px !important;
         padding: 20px 0px 20px 20px;
@@ -1744,15 +1849,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        gap: 0px;
-        margin-top: 40px;
-        flex-wrap: wrap;
-    }
-
-    .time-wrapper .form-check{
-        width: calc(100% - 50%);
-    }
+    
 
     .accordion-heading {
         font-size: 18px !important;
@@ -1908,11 +2005,8 @@ button.btn-close{
 /* =================================================== */
 /* =================================================== */
 @media only screen and (max-width:1200px){
-    .time-wrapper{
-        padding: 30px 38px;
-        gap: 15px;
-    }
-
+ 
+     
     .time-picker{
         flex-direction: column;
 
@@ -1933,11 +2027,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        gap: 0px;
-        margin-top: 40px;
-        flex-direction: column;
-    }
+    
     .accordion-heading {
         font-size: 16px !important;
         padding: 20px 0px 20px 20px;
