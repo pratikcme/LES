@@ -398,13 +398,14 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
         <!--=============== three-banners ==================-->
         <?php if (count($offer_list) == 3) { ?>
 
-          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-            <div>
-              <?php foreach ($offer_list as $key => $value) :
-                if ($key == 2) {
-                  goto a;
-                }
-              ?>
+
+          <?php foreach ($offer_list as $key => $value) :
+            if ($key == 2) {
+              goto a;
+            }
+          ?>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+              <div>
                 <div class="home-clothes mb-4">
                   <div class="cloth-card">
                     <img src="<?= $value->image ?>" alt="">
@@ -417,28 +418,28 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                 </div>
 
 
-            </div>
-          </div>
-
-          <?php
-                a:
-          ?>
-          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-            <div class="practical-cloth home-clothes">
-              <div class="cloth-card">
-                <img src="<?= $value->image ?>" alt="">
-              </div>
-              <div class="cloth-content">
-                <h5><?= $value->offer_title ?></h5>
-                <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
-                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore More</a>
               </div>
             </div>
-          </div>
 
-      <?php
-              endforeach;
-            } ?>
+            <?php
+            a:
+            ?>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+              <div class="practical-cloth home-clothes">
+                <div class="cloth-card">
+                  <img src="<?= $value->image ?>" alt="">
+                </div>
+                <div class="cloth-content">
+                  <h5><?= $value->offer_title ?></h5>
+                  <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore More</a>
+                </div>
+              </div>
+            </div>
+
+        <?php
+          endforeach;
+        } ?>
       </div>
     </div>
   </section>
