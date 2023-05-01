@@ -699,8 +699,9 @@
 
 .owl-theme .owl-nav.disabled+.owl-dots {
     position: absolute;
-    bottom: -50px;
-    left: 47%;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* ----new-css--- */
