@@ -176,7 +176,7 @@
                   if($this->session->userdata('user_id') != '') { ?>
                   <div class="right-content">
                     <h6><!-- Write a review and win 100 reward points ! --></h6>
-                    <div class="enter-review-btn <?= (!empty($isVarientExist) || $countParticularUserReview >= 1) ? 'd-none' : '' ?>" id="writeReviewSection">
+                    <div class="enter-review-btn <?= (!empty($isVarientExist) && $countParticularUserReview == 0) ? '' : 'd-none' ?>" id="writeReviewSection">
                       <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><?=$this->lang->line('Write Review')?></a>
                     </div>
                   </div>
