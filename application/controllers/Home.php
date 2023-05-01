@@ -60,7 +60,7 @@ class Home extends User_Controller
 		}
 		$quantity = array_column($top_selling_core, 'quantity');
 		array_multisort($quantity, SORT_DESC, $top_selling_core);
-
+		$default_product_image = $this->common_model->default_product_image();
 		foreach ($top_selling_core as $key => $value) {
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
@@ -90,7 +90,6 @@ class Home extends User_Controller
 
 		// mid
 		$data['new_arrival'] = $this->this_model->selectNewArrivel($product_ids);
-		$default_product_image = $this->common_model->default_product_image();
 		foreach ($data['new_arrival'] as $key => $value) {
 			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
 				$value->discount_price = $value->without_gst_price;
@@ -98,19 +97,17 @@ class Home extends User_Controller
 
 			$varientQuantity = $this->this_model->checkVarientQuantity($value->id);
 
-
 			if (!empty($value->image) || $value->image != '') {
-				$image = $value->image;
-				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image)) {
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $value->image)) {
 					// $image = 'defualt.png';	
-					$image = $default_product_image;
+					$value->image = $default_product_image;
 				} else {
-					$image = $value->image;
+					$value->image = $value->image;
 				}
 			} else {
-				$image = $default_product_image;
+				$value->image = $default_product_image;
 			}
-			$value->image = str_replace(' ', '%20', $image);
+			$value->image = str_replace(' ', '%20', $value->image);
 			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
 			$value->addQuantity = $addQuantity;
 
@@ -119,7 +116,6 @@ class Home extends User_Controller
 		}
 
 		// end
-
 		$data['top_sell'] = $top_selling_core;
 		//dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
