@@ -17,7 +17,8 @@ class Add_to_card extends User_Controller
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
-	public function addProducToCart(){
+	public function addProducToCart()
+	{
 		// dd($_SESSION);
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
@@ -104,9 +105,9 @@ class Add_to_card extends User_Controller
 					'image' => $result[0]->image,
 					'total' => $result[0]->discount_price * $quantity,
 					'product_weight_id' => $result[0]->pw_id,
-					'food_type' =>$result[0]->food_type,
-					'weight_no'=>$result[0]->weight_no,
-					'weight_name'=>$getWeight[0]->name
+					'food_type' => $result[0]->food_type,
+					'weight_no' => $result[0]->weight_no,
+					'weight_name' => $getWeight[0]->name
 				);
 
 				// print_r($cart_item);

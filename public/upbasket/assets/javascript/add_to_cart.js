@@ -19,6 +19,7 @@ $(document).on("click", ".addcartbutton", function () {
     method: "post",
     dataType: "json",
     success: function (output) {
+      // console.log("here", output);
       if (output.errormsg != "") {
         swal(output.errormsg);
         $(".cart-plus-minus-box").val("1");

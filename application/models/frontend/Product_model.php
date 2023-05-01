@@ -1127,9 +1127,10 @@ class Product_model extends My_model
 		$data['table'] = TABLE_MY_CART . ' as mc';
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['pw.id=mc.product_weight_id', 'LEFT'],
-			TABLE_PRODUCT . ' as p' => ['pw.product_id=p.id', 'LEFT']
+			TABLE_PRODUCT . ' as p' => ['pw.product_id=p.id', 'LEFT'],
+			TABLE_WEIGHT . ' as w' => ['pw.weight_id=w.id', 'LEFT'] //DK added with two last fields
 		];
-		$data['select'] = ['p.food_type', 'mc.*', 'pw.discount_price', 'pw.product_id', 'pw.price', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price'];
+		$data['select'] = ['p.food_type', 'mc.*', 'pw.discount_price', 'pw.product_id', 'pw.price', 'pw.discount_per', 'pw.weight_id', 'pw.without_gst_price', 'pw.weight_no as weight_no', 'w.name as weight_name'];
 		$data['where']['mc.user_id'] = $user_id;
 		$data['where']['mc.branch_id'] = $this->branch_id;
 		$return = $this->selectFromJoin($data);
