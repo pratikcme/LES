@@ -69,6 +69,7 @@ $lang['Checkout Process'] = 'عملية الخروج';
 $lang['Delivery Method'] = 'طريقة التوصيل';
 $lang['Your Orders'] = 'طلباتك';
 $lang['Cart Totals'] = 'إجماليات سلة التسوق';
+$lang['Do you Want to Clear Cart'] = 'هل تريد مسح سلة التسوق؟';
 
 // end other template 
 
@@ -123,6 +124,7 @@ $lang['Brand'] = 'ماركة';
 $lang['related products'] = 'منتجات ذات صله';
 $lang['Limited Stock'] = 'كمية محدودة';
 $lang['Available(Instock)'] = 'موجود في المستودع';
+$lang['In Stock'] = 'في الأوراق المالية';
 
 $lang['add to cart'] = 'أضف إلى السلة';
 $lang['order now'] = 'اطلب الان';

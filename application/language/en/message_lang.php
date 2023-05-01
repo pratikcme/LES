@@ -66,6 +66,7 @@ $lang['Checkout Process'] = 'Checkout Process';
 $lang['Delivery Method'] = 'Delivery Method';
 $lang['Your Orders'] = 'Your Orders';
 $lang['Cart Totals'] = 'Cart Totals';
+$lang['Do you Want to Clear Cart'] = 'Do you Want to Clear Cart?';
 
 
 
@@ -118,7 +119,7 @@ $lang['Brand'] = 'Brand';
 $lang['related products'] = 'Related Products';
 $lang['Limited Stock'] = 'Limited Stock';
 $lang['Available(Instock)'] = 'Available (Instock)';
-
+$lang['In Stock'] = 'In Stock';
 
 
 $lang['add to cart'] = 'add to cart';

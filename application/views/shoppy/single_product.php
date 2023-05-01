@@ -90,7 +90,7 @@
             </div>
 
           </h5>
-          <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></h6>
+          <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?></h6>
           <h3 class="wow fadeInRight notranslate" id="dynamic_price" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->siteCurrency ?> <?= number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
             <span style="<?= ($varientDetails[0]->discount_per == 0) ? 'display:none' : '' ?>"><strike> <?= $this->siteCurrency ?>
                 <?= number_format((float)$varientDetails[0]->price, 2, '.', '') ?></strike></span>
@@ -276,7 +276,7 @@ if (!empty($related_product)) { ?>
                   <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
                 </a>
               </div>
-              <p><?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?></p>
+              <p><?= ($value->quantity >= 25) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?></p>
 
             </div>
 

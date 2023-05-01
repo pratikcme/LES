@@ -67,5 +67,9 @@
   .VIpgJd-ZVi9od-l4eHX-hSRGPd {
     display: none !important;
   }
+
+  .pac-container {
+    z-index: 10000 !important;
+  }
 </style>
 <input type="hidden" id="siteCurrency" value="<?= $this->siteCurrency ?>">

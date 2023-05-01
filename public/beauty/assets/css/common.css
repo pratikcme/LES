@@ -356,6 +356,7 @@ p {
     align-items: center !important;
     justify-content: left !important;
     transition: 0.3s;
+    padding: 10px 0;
 
 }
 

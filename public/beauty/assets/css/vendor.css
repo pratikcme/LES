@@ -1,12 +1,12 @@
-.vendor{
+.vendors{
     position: relative;
     z-index: 2;
 }
-.vendor .title{
+.vendors .title{
     text-align: center;
     font-family: var(--BeVietnamPro-ExtraBold);
 }
-.vendor .pera{
+.vendors .pera{
     text-align: center;
 }
 .vendor-main h2{

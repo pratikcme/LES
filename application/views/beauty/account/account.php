@@ -458,8 +458,8 @@
                             <table id="table-two-axis" class="two-axis">
                                 <thead class="head-title">
                                     <tr>
-                                        <th colspan="2">product</th>
-                                        <th>price</th>
+                                        <th colspan="2"><?=$this->lang->line('Product')?></th>
+                                        <th><?=$this->lang->line('price')?></th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -501,16 +501,16 @@
                                         ?>
                                         <div>
                                             <div class="card-btn addcartbutton <?=$d_none?>" 
-                                                data-product_id="<?=$this->utility->safe_b64encode($value->id)?>"
-                                                data-varient_id="<?=$this->utility->safe_b64encode($value->pw_id)?>">
+                                                data-product_id="<?=$this->utility->safe_b64encode($value->product_id)?>"
+                                                data-varient_id="<?=$this->utility->safe_b64encode($value->product_weight_id)?>">
                                                 <a href="javascript:" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>
                                                 <?=$this->lang->line('add to cart')?></a>
                                             </div>
                                             <div class="product-detail-quentity add-cart-btn <?=$d_show?>">
                                                 <div class="qty-container">
-                                                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                                                    <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->id?>" data-weight_id="<?=$value->weight_id?>" readonly>
-                                                    <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->pw_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                                                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?=$value->product_weight_id?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                    <input type="text" name="qty" class="input-qty qty" value="<?=(!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?=$value->product_id?>" data-weight_id="<?=$value->weight_id?>" readonly>
+                                                    <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?=$value->product_weight_id?>" type="button"><i class="fa-solid fa-plus"></i></button>
                                                 </div>
                                             </div>
                                         </div>

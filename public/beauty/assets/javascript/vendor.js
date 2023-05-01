@@ -60,42 +60,26 @@ $(document).ready(function () {
 			if (vendor_id != session_vendor_id) {
 				if (sess_my_count == 1) {
 					// var X = confirm('You can only order from one shop.. Are you sure you want to clear cart');
-
 					swal({
 						title: "Are you sure?",
 						text: "'You can only order from one shop.. Are you sure you want to clear cart'",
 						icon: "warning",
 						buttons: true,
 						dangerMode: true,
-					})
-						.then((willDelete) => {
-							if (willDelete) {
-								$.ajax({
-									url: pagelink,
-									data: { vendor_id: vendor_id },
-									method: 'post',
-									success: function (output) {
-										window.location.href = output;
-									}
-								})
-							} else {
-								swal("Your Cart Item is safe!");
-							}
-						});
-
-					// 	 	if(X){
-					// 	 		// pagelink = url+'vendor/set';
-					// 	 		 $.ajax({
-					// 		            url : pagelink,
-					// 		            data:{vendor_id:vendor_id},
-					// 		            method: 'post',
-					// 		            success:function(output){
-					// 		                window.location.href = output;
-					// 		            }
-					//        })			
-					// }
-
-
+					}).then((willDelete) => {
+						if (willDelete) {
+							$.ajax({
+								url: pagelink,
+								data: { vendor_id: vendor_id },
+								method: 'post',
+								success: function (output) {
+									window.location.href = output;
+								}
+							})
+						} else {
+							swal("Your Cart Item is safe!");
+						}
+					});
 
 				} else {
 					$.ajax({

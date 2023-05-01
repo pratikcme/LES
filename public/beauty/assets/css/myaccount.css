@@ -202,7 +202,7 @@
 .mywishlist-part .add-cart-btn {
     font-size: 13px;
     width: 100%;
-    max-width: 100%;
+    /* max-width: 100%; */
     height: 50px;
     top: 0;
     left: 0;
@@ -590,6 +590,10 @@
 .my-order-details {
     height: 450px;
     overflow-y: scroll;
+}
+
+.mywishlist-part .add-cart-btn .input-qty{
+    border-bottom: 1px solid var(--card-btn-bg) !important;
 }
 
 /* ==========responsive========= */

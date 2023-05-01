@@ -98,9 +98,9 @@ class vendor_model extends My_model
                 $data['where'] = ['vendor_id' => $this->session->userdata('vendor_admin_id')];
                 $data['select'] = ['*'];
                 $count = $this->countRecords($data);
-
                 $data = array(
                     'vendor_id' => $this->session->userdata('vendor_admin_id'),
+                    'domain_name'=>base_url(),
                     'image' => $image,
                     'logo_image' => $logo,
                     'location' => $_POST['location'],
@@ -118,9 +118,6 @@ class vendor_model extends My_model
                     'dt_added' => date('Y-m-d H:i:s'),
                     'dt_updated' => date('Y-m-d H:i:s'),
                 );
-                // echo "<pre>";
-                // print_r($_POST);die;
-                // print_r($data);die;
                 $this->db->insert('branch', $data);
                 $lastId = $this->db->insert_id();
                 if ($lastId) {

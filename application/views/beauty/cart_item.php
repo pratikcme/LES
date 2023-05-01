@@ -194,7 +194,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-          <h3>Do you Want to Clear Cart?</h3>
+          <h3><?=$this->lang->line('Do you Want to Clear Cart')?>?</h3>
 
           <div class="reset-btn">
               <button type="submit"  id="ClearCart" class="yes-btn">Yes</button>

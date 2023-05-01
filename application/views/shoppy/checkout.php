@@ -1,132 +1,3 @@
-<style>
-  span.error {
-    color: red;
-  }
-
-  .loader-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    position: 0.3;
-    z-index: 2222;
-    left: 0;
-    right: 0;
-    top: 0;
-  }
-
-  .dates-day-wrapper {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-  }
-
-
-  .ui-datepicker-calendar th:nth-child(1) {
-    padding-left: 0px !important;
-  }
-
-  .ui-datepicker-calendar td:nth-child(1) {
-    padding-left: 0 !important;
-  }
-
-  .ui-datepicker-calendar td:nth-child(2) {
-    padding-left: 0px !important;
-  }
-
-  .ui-datepicker-calendar td:nth-child(3),
-  .ui-datepicker-calendar td:nth-child(4),
-  .ui-datepicker-calendar td:nth-child(5) {
-    padding-left: 0px !important;
-  }
-
-  .ui-datepicker-calendar th:nth-child(3) {
-    padding-left: 0px !important;
-  }
-
-  .ui-datepicker-calendar th:nth-child(4) {
-    padding-left: 0px !important;
-  }
-
-  .ui-datepicker-title {
-    font-size: 18px !important;
-    color: var(--primary-color);
-    font-family: Poppins !important;
-  }
-
-  .ui-datepicker {
-    background-color: #fff;
-    box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2 !important);
-    border-radius: 0.5rem !important;
-    padding: 0.5rem !important;
-    border: 1px solid #999 !important;
-  }
-
-  .ui-datepicker-calendar thead th {
-    color: var(--primary-color) !important;
-    font-size: 16px !important;
-    font-weight: 400px !important;
-  }
-
-  .ui-state-active,
-  .ui-widget-content .ui-state-active {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-  }
-
-  .dots {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .dot {
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-  }
-
-  .dot2 .dot:nth-child(1) {
-    animation-delay: 0s;
-  }
-
-  .dot2 .dot:nth-child(2) {
-    animation-delay: 0.4s;
-  }
-
-  .dot2 .dot:nth-child(3) {
-    animation-delay: 0.8s;
-  }
-
-  .dot2 .dot {
-    border-radius: 50%;
-    animation: topDown2 1.2s linear forwards infinite;
-  }
-
-  @keyframes topDown2 {
-
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-
-    25% {
-      transform: translateY(20px);
-      background-color: #fec641;
-    }
-
-    75% {
-      transform: translateY(-20px);
-      background-color: #22bdb6;
-    }
-  }
-</style>
 <!-- ----hero-section-- -->
 <?php if (isset($Host)) { ?>
   <script type="application/javascript" src="<?= $Host . '/merchantpgpui/checkoutjs/merchants/' . $MID ?>.js"></script>
@@ -180,7 +51,7 @@
                     <div class="form-check radio-outer-line">
                       <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number" class="default_check" value="<?= ($userAddress[0]->user_gst_number != '') ? $userAddress[0]->user_gst_number : "" ?>">
                       <label class="form-check-label" for="flexRadioDefault2">
-                        <?= $this->lang->line('Use Gst Number') ?>
+                        <?= $this->lang->line('Use GST Number') ?>
                       </label>
                     </div>
                   <?php } ?>
@@ -304,31 +175,44 @@
                 </div>
               </div>
             <?php } ?>
+
             <div class="main-accordion">
               <div class="accordion-heading">Delivery Schedule</div>
               <div class="accordion-content  accordion-content-4">
-                <div class="dates-day-wrapper">
-                  <?php if ($isDeliveryTimeDate == '1' || isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?> <?php } ?>
-                  <div id="datepicker"></div>
-                </div>
+
                 <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
-                  <div class="time-wrapper">
-                    <h3><?= $this->lang->line('Pickup Timing') ?></h3>
-                    <p><?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?></p>
+                  <div class="time-picker">
+                    <div class="dates-day-wrapper">
+                      <div id="datepicker"></div>
+                    </div>
+
+                    <form class="time-wrapper">
+                      <h3><?= $this->lang->line('Pickup Timing') ?></h3>
+                      <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
+                    </form>
                   </div>
                 <?php } else { ?>
-                  <div class="time-wrapper">
-                    <?php foreach ($time_slot as $key => $value) { ?>
-                      <div class="form-check">
-                        <input class="form-check-input time_slot_checked" type="radio" id="Default-1" name="time_slot" value=" <?= $value->id ?>" <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
-                        <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> - <?= $value->end_time ?> </label>
-                      </div>
-                    <?php } ?>
+                  <div class="time-picker">
+                    <div class="dates-day-wrapper">
+                      <div id="datepicker"></div>
+                    </div>
+
+                    <form class="time-wrapper">
+                      <?php foreach ($time_slot as $key => $value) { ?>
+                        <div class="form-check">
+                          <input class="time_slot_checked" type="radio" id="Default-1" name="time_slot" value=" <?= $value->id ?>" <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+                          <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> -
+                            <?= $value->end_time ?> </label>
+                        </div>
+                      <?php } ?>
+                    </form>
                   </div>
                 <?php } ?>
-
               </div>
+
             </div>
+
+
 
             <div class="main-accordion">
               <div class="accordion-heading">Payment Option</div>
