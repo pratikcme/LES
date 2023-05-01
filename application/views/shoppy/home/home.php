@@ -396,49 +396,52 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
         ?>
 
         <!--=============== three-banners ==================-->
-        <?php if (count($offer_list) == 3) { ?>
-
+        <?php if (count($offer_list) == 3) {
+        ?>
           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
             <div>
-              <?php foreach ($offer_list as $key => $value) :
-                if ($key == 2) {
-                  goto a;
-                }
-              ?>
-                <div class="home-clothes mb-4">
-                  <div class="cloth-card">
-                    <img src="<?= $value->image ?>" alt="">
-                  </div>
-                  <div class="cloth-content">
-                    <h5><?= $value->offer_title ?></h5>
-                    <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
-                    <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore More</a>
-                  </div>
+              <div class="home-clothes mb-4 ">
+                <div class="cloth-card">
+                  <img src="<?= $offer_list[0]->image ?>" alt="">
                 </div>
-
-
+                <div class="cloth-content">
+                  <h5><?= $offer_list[0]->offer_title ?></h5>
+                  <h3><?= $offer_list[0]->offer_percent ?>%<span>OFF</span></h3>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>">Explore
+                    More</a>
+                </div>
+              </div>
+              <div class="home-clothes women-cloth">
+                <div class="cloth-card">
+                  <img src="<?= $offer_list[1]->image ?>" alt="">
+                </div>
+                <div class="cloth-content">
+                  <h5><?= $offer_list[1]->offer_title ?></h5>
+                  <h3><?= $offer_list[1]->offer_percent ?>%<span>OFF</span></h3>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>">Explore
+                    More</a>
+                </div>
+              </div>
             </div>
+            <!--  -->
+            <!-- new upper -->
           </div>
-
-          <?php
-                a:
-          ?>
           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
             <div class="practical-cloth home-clothes">
               <div class="cloth-card">
-                <img src="<?= $value->image ?>" alt="">
+                <img src="<?= $offer_list[2]->image ?>" alt="">
               </div>
               <div class="cloth-content">
-                <h5><?= $value->offer_title ?></h5>
-                <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
-                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore More</a>
+                <h5><?= $offer_list[2]->offer_title ?></h5>
+                <h3><?= $offer_list[2]->offer_percent ?>%<span>OFF</span></h3>
+                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[2]->id) ?>">Explore
+                  More</a>
               </div>
             </div>
           </div>
+        <?php
 
-      <?php
-              endforeach;
-            } ?>
+        } ?>
       </div>
     </div>
   </section>
