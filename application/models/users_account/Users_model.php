@@ -327,6 +327,8 @@ class Users_model extends My_model
         // }
         $return =  $this->selectFromJoin($data);
         unset($data);
+        $this->load->model('common_model');
+        $default_product_image = $this->common_model->default_product_image();
         foreach ($return as $k => $v) {
             $branch_id = $return[0]->branch_id;
             $product_variant_id = $v->product_varient_id;
@@ -352,8 +354,19 @@ class Users_model extends My_model
 
             $v->my_cart_quantity = $my_cart_quantity;
             $image = $this->getVarient_image($v->product_varient_id);
+            if (!empty($image[0]->image) || $image[0]->image != '') {
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image[0]->image)) {
+					$image[0]->image = $default_product_image;
+				} else {
+					$image[0]->image = $image[0]->image;
+				}
+			} else {
+				$image[0]->image = $default_product_image;
+			}
+			$image[0]->image = str_replace(' ', '%20', $image[0]->image);
+            
             $v->image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $image[0]->image;
-            $v->image = str_replace(' ', '%20', $v->image);
+            // $v->image = str_replace(' ', '%20', $v->image);
         }
 
         foreach ($return as $key => $value) {
