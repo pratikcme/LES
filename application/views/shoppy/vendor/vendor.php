@@ -1,7 +1,6 @@
-<!-- ----hero-section--- -->
 <section class="hero-section listing-hero-sec">
     <div class="container">
-        <!-- <h2>Home /<span>My Account</span></h2> -->
+
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?= $this->lang->line('home') ?></a></li>
@@ -14,16 +13,12 @@
 <section class="vendor1 contact-us-section section p-100">
     <div class="container">
         <div class="row">
-            <!-- <div class="col-xl-12 text-center">
-                <h2 class="title">Vendor</h2>
-                <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-            </div> -->
+
 
             <div class="vendor-main">
-                <!-- <h2>New York, USA</h2> -->
 
                 <div class="row" id="vendorByajax">
-                    <!-- dd($branch);  -->
+
                     <?php foreach ($branch as $key => $value) { ?>
                         <div class="col-xl-6 col-lg-6 col-md-6">
                             <a href="javascript:" data-ven_id="<?= $value->id ?>" class="vendor-wrapper vendor  <?= (isset($_SESSION['branch_id']) && $value->id == $_SESSION['branch_id']) ? 'active' : '' ?>">
