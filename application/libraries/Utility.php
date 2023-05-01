@@ -189,10 +189,8 @@ class Utility
         $description = strip_tags($description);
         $description = urlencode($description);
 ?>
-<a href="https://www.facebook.com/sharer/sharer.php?u=<?= $url ?>&title=<?php echo trim($title); ?>
-        		<?php if ($image != "") { ?>&picture=<?php echo $image; ?> <?php } ?>&description=<?php echo $description; ?>"
-    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-    target="_blank" title="Share on Facebook"><img src="<?php echo EXTERNAL_PATH ?>images/fb_share_s.png" /> </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $url ?>&title=<?php echo trim($title); ?>
+        		<?php if ($image != "") { ?>&picture=<?php echo $image; ?> <?php } ?>&description=<?php echo $description; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook"><img src="<?php echo EXTERNAL_PATH ?>images/fb_share_s.png" /> </a>
 
 <?php
     }
@@ -200,11 +198,15 @@ class Utility
 
     function sendNotification($deviceToken, $type = null, $result, $unread = null, $key = NULL)
     {
+
+
         $jsonData = '';
         $message = array(
             'message' => $deviceToken['message'],
         );
+
         if ($deviceToken['type'] == 'i' || $deviceToken['type'] == 'I') {
+
             $this->notificationForIOS($deviceToken, $message, $type, $unread, $key, $result);
         } else if ($deviceToken['type'] == 'a' || $deviceToken['type'] == 'A') {
             $this->notificationForAndroid($deviceToken, $message, $jsonData, $type, $unread, $key, $result);
@@ -271,10 +273,10 @@ class Utility
         $user_bandle_id = $result[0]->user_bandle_id;
         $staff_bandle_id = $result[0]->staff_bandle_id;
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
-
         $deviceId = $deviceIds['device_id'];
+
         $msg = $msg['message'];
-        
+
 
         if (isset($deviceIds['for_staff'])) {
             $ck = $staff_bandle_id;
@@ -297,11 +299,13 @@ class Utility
             $keyfile = $result[0]->p8_file;               # <- Your AuthKey file  
         }
 
-        $keyid = $key_id;                            # <- Your Key ID
-        $teamid = $team_id;                           # <- Your Team ID (see Developer Portal)
+        $keyid = $key_id;                          # <- Your Key ID
+        $teamid = $team_id;                        # <- Your Team ID (see Developer Portal)
         $bundleid = $ck;                # <- Your Bundle ID
-        
+
         $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        // $url = 'https://api.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
+        // $url = 'http://api.push.apple.com';
         // $token = '5412db72d82307bb3b606eeae2885bd742c2acc9806a7c0f4b76b9b723e11adf';              # <- Device Token
         $token = $deviceId;              # <- Device Token
 
@@ -341,7 +345,7 @@ class Utility
         ));
 
         $result = curl_exec($http2ch);
-        dd( $result);
+
         if ($result === FALSE) {
             throw new Exception("Curl failed: " . curl_error($http2ch));
         }
@@ -374,7 +378,7 @@ class Utility
         $body['notify'] = 'notification';
 
         $url = 'https://fcm.googleapis.com/fcm/send';
-        
+
         $fields = array(
             'to' => $deviceId['device_id'],
             'data' => $body
@@ -486,17 +490,18 @@ class Utility
         return $setResponse;
     }
 
-    public function  PushNotification($deviceIds, $msg, $status, $unread, $key, $result,$postData=[],$vendor_id){
+    public function  PushNotification($deviceIds, $msg, $status, $unread, $key, $result, $postData = [], $vendor_id)
+    {
 
         $key_id = $result[0]->key_id;
         $team_id = $result[0]->team_id;
         $user_bandle_id = $result[0]->user_bandle_id;
         $staff_bandle_id = $result[0]->staff_bandle_id;
         $delivery_bandle_id = $result[0]->delivery_bandle_id;
-
         $deviceId = $deviceIds['device_id'];
+
         $msg = $msg['message'];
-        
+
 
         if (isset($deviceIds['for_staff'])) {
             $ck = $staff_bandle_id;
@@ -523,11 +528,11 @@ class Utility
         $keyid = $key_id;                            # <- Your Key ID
         $teamid = $team_id;                           # <- Your Team ID (see Developer Portal)
         $bundleid = $ck;                # <- Your Bundle ID
-        
+
         $url = 'https://api.development.push.apple.com';  # <- development url, or use http://api.push.apple.com for production environment
         // $token = '754618CF3FB271923EAF0EBB3078C5FE0E75C362D69AC5C9348926FF7E9DEF2F';              # <- Device Token
         $token = $deviceId;              # <- Device Token
-        
+
         $message = array(
             'aps' => array(
                 'alert' => array(
@@ -543,8 +548,8 @@ class Utility
                 'category_id' => $postData['category_id'],
                 'vendor_id' => $vendor_id,
                 'branch_id' => $postData['branch']
-                )
-            );
+            )
+        );
 
         $key = openssl_pkey_get_private('file://' . $keyfile);
 
@@ -588,8 +593,10 @@ class Utility
         return true;
     }
 
-    public function pushNotificationAndroid($androidDeviceToken,$postData,$result,$vendor_id){
+    public function pushNotificationAndroid($androidDeviceToken, $postData, $result, $vendor_id)
+    {
         // Your FCM project API key
+
         $apiKey = $result[0]->user_firebase_key;;
 
         // The device registration token(s) you want to send the notification to
@@ -647,7 +654,6 @@ class Utility
         // }
         return true;
     }
-    
 }
 
 ?>

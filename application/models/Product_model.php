@@ -84,6 +84,8 @@ class product_model extends My_model
                     $this->db->where('id', $id);
                     $this->db->update('product', $data);
 
+                    $this->updateWithoutGstPrice($gst, $id);
+
 
                     $this->session->set_flashdata('msg', 'Product has been updated successfully');
                 }
@@ -107,6 +109,9 @@ class product_model extends My_model
                     $this->db->where('id', $id);
                     $this->db->where('branch_id', $branch_id);
                     $this->db->update('product', $data);
+
+                    $this->updateWithoutGstPrice($gst, $id);
+
                     $this->session->set_flashdata('msg', 'Product has been updated successfully');
                 }
                 $data['where']['product_id'] = $id;
@@ -154,13 +159,14 @@ class product_model extends My_model
                     'about' => $about,
                     'content' => $content,
                     'status' => '1',
-                    'gst'    => $gst,
+                    'gst' => $gst,
                     'display_priority'    => ($_POST['display_priority'] != '') ? $_POST['display_priority'] : NULL,
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s'))
                 );
                 $this->db->insert('product', $data);
                 $id = $this->db->insert_id();
+
                 $tags = explode(',', $tags);
                 $data['table'] = 'product_search';
                 foreach ($tags as $val) {
@@ -182,6 +188,23 @@ class product_model extends My_model
             $this->session->set_flashdata('msg_error', 'Product can not be added.');
             redirect(base_url() . 'product/product_list');
         }
+    }
+
+    public function updateWithoutGstPrice($gst, $id)
+    {
+        $data['select'] = ['*'];
+        $data['table'] = TABLE_PRODUCT_WEIGHT;
+        $data['where'] = ['product_id' => $id];
+        $res = $this->selectRecords($data);
+
+        foreach ($res as $val) :
+            unset($data);
+            $newWithoutGstPrice = $val->discount_price - ($val->discount_price * $gst / 100);
+            $data['update'] = ['without_gst_price' => $newWithoutGstPrice];
+            $data['table'] = TABLE_PRODUCT_WEIGHT;
+            $data['where'] = ['id' => $val->id];
+            $this->updateRecords($data);
+        endforeach;
     }
 
     public function getProductName($product_id)
@@ -566,12 +589,13 @@ class product_model extends My_model
         $discount_per = $_POST['discount_per'];
         $purchase_price = $_POST['purchase_price'];
         $package = $_POST['package'];
-
-
+        $limited_stock = $_POST['limited_stock'];
 
         $discount_price_cal = (($price * $discount_per) / 100);
-        $discount_price = number_format((float)$discount_price_cal, 2, '.', '');
-        $final_discount_price = number_format((float)$price - $discount_price, 2, '.', '');
+        $discount_price = $price - $discount_price_cal;
+        // $discount_price = number_format((float)$discount_price_cal, 2, '.', '');
+        $final_discount_price = number_format((float)$discount_price, 2, '.', '');
+
         // $whole = floor($unit);      
         // $fraction = $unit - $whole;
         // if($fraction == 0){
@@ -588,6 +612,7 @@ class product_model extends My_model
         if ($id != '') {
 
             $data = array(
+                'limited_stock' => $limited_stock, //added Dipesh 
                 'qr_code' => $barcode,
                 'product_id' => $product_id,
                 'weight_id' => $weight_id,
@@ -627,7 +652,6 @@ class product_model extends My_model
                     $_FILES['userfile']['error'] = $files['userfile']['error'][$key];
                     $_FILES['userfile']['size'] = $files['userfile']['size'][$key];
                     $imageData = upload_single_image($_FILES, 'product_image', $path);
-
                     $image = $imageData['data']['file_name'];
                     $data['table'] = TABLE_PRODUCT_IMAGE;
                     $product_image = array(
@@ -653,6 +677,7 @@ class product_model extends My_model
         /* Product Weight Add */ else {
 
             $data = array(
+                'limited_stock' => $limited_stock, //added Dipesh 
                 'qr_code' => $barcode,
                 'branch_id' => $vendor_id,
                 'product_id' => $product_id,
@@ -1197,17 +1222,46 @@ class product_model extends My_model
 
     public function check_display_priority($postData)
     {
+        $branch_id = $this->session->userdata['id'];
+
         if ($postData['product_id'] != '') {
             $data['where']['id !='] = $postData['product_id'];
         }
         $data['table'] = TABLE_PRODUCT;
         $data['where']['display_priority'] = $postData['display_priority'];
+        $data['where']['branch_id'] = $branch_id;
         $data['where']['status !='] = '9';
         $return = $this->countRecords($data);
+
         if ($return > 0) {
             echo "false";
         } else {
             echo "true";
         }
     }
+
+
+    // Dk Added
+    public function get_unique_barcode($postData)
+    {
+        $qr_code = $this->input->post('qr_code');
+        $branch_id = $this->session->userdata['id'];
+
+        $id = $this->input->post('id');
+        if ($id != '') {
+            $data['where']['id != '] = $id;
+        }
+        $data['select'] = ['*'];
+        $data['where']['branch_id'] = $branch_id;
+        $data['where']['qr_code'] = $qr_code;
+        $data['table'] = TABLE_PRODUCT_WEIGHT;
+        $result = $this->selectRecords($data);
+
+        if (count($result) > 0) {
+            return "false";
+        } else {
+            return "true";
+        }
+    }
+    // 
 }

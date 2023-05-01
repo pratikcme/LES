@@ -154,6 +154,7 @@ class Products extends User_Controller
 				die;
 			}
 		}
+
 		$default_product_image = $this->common_model->default_product_image();
 		$data['default_product_image'] = $default_product_image;
 		$product_id = $this->utility->safe_b64decode($id);
@@ -206,7 +207,6 @@ class Products extends User_Controller
 		$data['discount_per'] =  $discount_per;
 		$data['image'] = $image;
 		$data['product_id'] = $id;
-
 
 		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id, $varient_id);
 		$product_review = $this->this_model->getProductReview($product_id, $varient_id);
@@ -410,6 +410,7 @@ class Products extends User_Controller
 			'discount_price' => number_format((float)$result[0]->discount_price, 2, '.', ''),
 			'discount_per' => $result[0]->discount_per,
 			'varient_quantity' => $result[0]->quantity,
+			'limited_stock' => $result[0]->limited_stock,
 			'image_div' => $div_nav,
 			'image_div_for' => $div_for,
 			'isInWishList' => $class,

@@ -1067,7 +1067,7 @@ class Product_model extends My_model
 		$data['where_not_in'] =	['pw.id' => $varient_ids];
 		$data['order'] = 'pw.quantity DESC';
 		$data['groupBy'] = ['p.id'];
-		$data['limit'] = '40';
+		$data['limit'] = '400';
 		return  $this->selectFromJoin($data);
 	}
 

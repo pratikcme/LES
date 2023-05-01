@@ -435,7 +435,7 @@ class vendor_model extends My_model
         $email = $this->input->post('email');
         $data['select'] = ['email'];
         $data['where'] = ['email' => $email];
-        $data['table'] = "vendor";
+        $data['table'] = "branch";
         $result = $this->selectRecords($data);
 
         if ($result) {
@@ -479,7 +479,7 @@ class vendor_model extends My_model
         $country_code = $this->input->post("country_code");
 
         $data['select'] = ['*'];
-        $data['where']['status !='] = '9'   ;
+        $data['where']['status !='] = '9';
         $data['where']['country_code'] = $country_code;
         $data['where']['phone'] =  $phone;
         $data['where']['vendor_id'] = $vendor_id;
@@ -488,7 +488,7 @@ class vendor_model extends My_model
         $result = $this->selectRecords($data);
         $cont = $this->countRecords($data);
         // lq();
-        if( $cont > 0 ){
+        if ($cont > 0) {
             return  'false';
         } else {
             return 'true';
@@ -928,6 +928,7 @@ class vendor_model extends My_model
     }
 
     public $order_column = array("name", "owner_name", "phone_no", "email");
+
     public function make_query($postData)
     {
 
@@ -1209,5 +1210,61 @@ class vendor_model extends My_model
         $data['table'] = 'vendor';
         $result = $this->selectRecords($data);
         return $result;
+    }
+
+
+    public function favicon_image($postData)
+    {
+
+        $app_id = $postData['app_id'];
+
+
+        if ($_FILES['favicon_image']['name'] != '' && $_FILES['favicon_image']['error'] == 0) {
+            $path = 'public/client_logo';
+            $result = upload_single_image_ByName($_FILES, 'favicon_image', $path);
+            $favicon_image = $result['data']['file_name'];
+            if (file_exists($path . '/' . $this->input->post('old_favicon'))); {
+                delete_single_image($path, $this->input->post('old_favicon'));
+            }
+        } else {
+            $favicon_image =  $this->input->post('old_favicon');
+        }
+
+        $data = array(
+            'favicon_image' => $favicon_image,
+            'dt_updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('id', $app_id);
+        $this->db->update('vendor', $data);
+        $this->session->set_flashdata('msg', 'Favicon image  has been updated successfully.');
+        redirect(base_url() . 'web_setting');
+    }
+
+    public function web_logo($postData)
+    {
+
+        $app_id = $postData['app_id'];
+
+
+        if ($_FILES['webLogo']['name'] != '' && $_FILES['webLogo']['error'] == 0) {
+            $path = 'public/client_logo';
+            $files = $_FILES;
+            $result = upload_single_image_ByName($_FILES, 'webLogo', $path);
+            $webLogo = $result['data']['file_name'];
+            if (file_exists($path . '/' . $this->input->post('old_webLogo'))); {
+                delete_single_image($path, $this->input->post('old_webLogo'));
+            }
+        } else {
+            $webLogo =  $this->input->post('old_webLogo');
+        }
+
+        $data = array(
+            'webLogo' => $webLogo,
+            'dt_updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('id', $app_id);
+        $this->db->update('vendor', $data);
+        $this->session->set_flashdata('msg', 'Web logo  has been updated successfully.');
+        redirect(base_url() . 'web_setting');
     }
 }

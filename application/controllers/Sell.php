@@ -58,6 +58,7 @@ class Sell extends Vendor_Controller
     public function parked_sell_list()
     {
         $data['register_result'] = $this->sell_dev_model->getRegister();
+        // dd($data['register_result']);
         $this->load->view('parked_sell_list', $data); //change Dipesh
     }
 

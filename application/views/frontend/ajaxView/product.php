@@ -1,8 +1,9 @@
 <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="product-wrapper">
+        <?= $p_outofstock ?>
         <div class="wishlist-wrapper">
             <?php
-            if ($value->discount_per > '0') { ?>
+			if ($value->discount_per > '0') { ?>
             <div class="offer-wrap">
                 <p>
                     <?= $value->discount_per ?> % off</p>
@@ -53,15 +54,15 @@
             <h6><span
                     class="notranslate"><?= $this->siteCurrency ?></span><?= number_format((float)$value->discount_price, 2, '.', '') ?>
             </h6>
+
             <p>
-                <?php if ($value->quantity > 25) { ?>
-                <?= $this->lang->line('Available(Instock)') ?>
-                <?php } else { ?>
-                <?= $this->lang->line('Limited Stock') ?>
-                <?php } ?>
+
+
+                <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+
+
             </p>
         </div>
-
 
         <div class="feature-bottom-wrap">
             <div class="cart addcartbutton d-none" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>">

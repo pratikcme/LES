@@ -189,7 +189,7 @@ class staff_api_model extends my_model {
                 return $response;
             }
         }
-        // print_r($results);die;
+        
         // echo 1;exit;
         $data['update'] = ['delevery_status' => '0','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
@@ -201,19 +201,20 @@ class staff_api_model extends my_model {
         $data['where_in'] = ['product_weight_id' => $product_weight_id];
         $data['table'] = 'order_details';
         $result = $this->updateRecords($data);
-        // print_r($result);die;
+        // print_r($result);
+        
         unset($data);
         $data['select'] = ['count(order_id) as value','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['order_id' => $order_id];
         $data['table'] = 'order_details';
         $res = $this->selectRecords($data);
-        $res = $res[0]->value;
+       $res = $res[0]->value;
         unset($data);
         $data['select'] = ['count(delevery_status) as value','dt_updated'=>strtotime(DATE_TIME)];
         $data['where'] = ['delevery_status' => '1', 'order_id' => $order_id];
         $data['table'] = 'order_details';
         $res2 = $this->selectRecords($data);
-        $res2 = $res2[0]->value;
+       $res2 = $res2[0]->value;
         unset($data);
         if ($res == $res2) {
             $date = strtotime(DATE_TIME);
@@ -232,6 +233,7 @@ class staff_api_model extends my_model {
             $data['where'] = ['o.id' => $order_id];
             $data['table'] = 'order as o';
             $del = $this->selectFromJoin($data, true);
+           
             $isSelfPickup = $del[0]['isSelfPickup'];
             $del = $del[0]['delivery_by'];
             $this->send_notificaion($order_id);
@@ -260,7 +262,7 @@ class staff_api_model extends my_model {
             $this->load->model('api_v3/api_admin_model');
             $order_log_data = array('order_id' => $order_id ,'status'=>'2');
             $this->api_admin_model->order_logs($order_log_data);
-
+             $this->send_notificaion($order_id);
 
         }
         if ($result) {
@@ -270,6 +272,7 @@ class staff_api_model extends my_model {
         }
         return $response;
     }
+
     function delivery_status($postdata) {
         $order_id = $postdata['order_id'];
         $date = strtotime(DATE_TIME);
@@ -316,6 +319,8 @@ class staff_api_model extends my_model {
         }
         return $response;
     }
+
+
     public function send_notificaion($order_id) {
         $data['select'] = ['o.user_id', 'd.token', 'd.type', 'd.device_id', 'u.notification_status', 'o.order_status', 'o.order_no','o.branch_id'];
         $data['where'] = ['o.id' => $order_id];
@@ -484,7 +489,7 @@ class staff_api_model extends my_model {
             return false;
         } else {
             $data['select'] = ['count(0) as count'];
-            $data['where'] = ['token' => $_SERVER['HTTP_X_API_TOKEN']];
+            $data['where'] = ['token' => $_SERVER['HTTP_X_API_TOKEN'],'status' => '1'];
             $data['table'] = 'staff';
             $response = $this->selectRecords($data);
             if (@$response[0]->count == 0) {

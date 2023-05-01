@@ -113,7 +113,6 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     }
     public function index()
     {
-
         $this->load->model('vendor_model');
         $data['grap'] = json_encode($this->vendor_model->getChartData());
 
@@ -121,16 +120,17 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     }
     public function change_delivery_type()
     {
-
         $this->load->model('vendor_model');
         $this->vendor_model->change_delivery_type();
     }
 
     public function login()
     {
+        // Temp Removed By Dipesh For Work On Super Admin
         if (base_url() == 'https://admin.launchestore.com/') {
             redirect(base_url() . 'super_admin/login');
         }
+        // again added for pos changes
         if (isset($_SESSION['super_admin']) || isset($_SESSION['vendor_admin'])) {
             redirect(base_url() . 'admin/dashboard');
         }
@@ -660,35 +660,10 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
                     }
                 }
 
-                if ($_FILES['webLogo']['name'] != '' && $_FILES['webLogo']['error'] == 0) {
-                    $path = 'public/client_logo';
-                    $files = $_FILES;
-                    $result = upload_single_image_ByName($_FILES, 'webLogo', $path);
-                    $webLogo = $result['data']['file_name'];
-                    if (file_exists($path . '/' . $this->input->post('old_webLogo'))); {
-                        delete_single_image($path, $this->input->post('old_webLogo'));
-                    }
-                } else {
-                    $webLogo =  $this->input->post('old_webLogo');
-                }
-
-                if ($_FILES['favicon_image']['name'] != '' && $_FILES['favicon_image']['error'] == 0) {
-                    $path = 'public/client_logo';
-                    $result = upload_single_image_ByName($_FILES, 'favicon_image', $path);
-                    $favicon_image = $result['data']['file_name'];
-                    if (file_exists($path . '/' . $this->input->post('old_favicon'))); {
-                        delete_single_image($path, $this->input->post('old_favicon'));
-                    }
-                } else {
-                    $favicon_image =  $this->input->post('old_favicon');
-                }
-
                 $data = array(
                     'name' => $name,
                     'phone_no' => $phone,
-                    'webLogo' => $webLogo,
-                    'favicon_image' => $favicon_image,
-                    // 'img_folder' => $this->input->post('folder_name'),
+                    'img_folder' => $this->input->post('folder_name'),
                     // 'android_version' => $this->input->post('android_version'),
                     // 'android_isforce' => $this->input->post('android_isforce'),
                     // 'ios_version' => $this->input->post('ios_version'),

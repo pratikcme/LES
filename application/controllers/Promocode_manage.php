@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Promocode_manage extends Vendor_Controller
+class Promocode_manage extends Admin_Controller
 {
      function __construct(){
         parent::__construct();
@@ -20,6 +20,7 @@ class Promocode_manage extends Vendor_Controller
         $data['page'] = 'promocode/add';
         $data['js'] = array('promocode.js');
         $data['FormAction'] = base_url().'Promocode_manage/add';
+        $data['branchList'] = $this->this_model->getBranch();
             if($this->input->post()){          
                 $result = $this->this_model->addRecord($this->input->post());
                  if($result){
@@ -35,7 +36,7 @@ class Promocode_manage extends Vendor_Controller
         $this->id = $this->utility->decode($d_id);
         $data['js'] = array('promocode.js');
         $data['FormAction'] = base_url().'Promocode_manage/edit/'.$d_id;
-       
+        $data['branchList'] = $this->this_model->getBranch();
         if($this->input->post()){
            
             $result = $this->this_model->updateRecord($this->input->post());
@@ -68,6 +69,12 @@ class Promocode_manage extends Vendor_Controller
         $re = $this->this_model->multi_delete();
         
     }   
+
+    public function status_change()
+    {
+        $id = $_GET['id'];
+        $this->this_model->promocode_change_status($id);
+    }
 
 
    

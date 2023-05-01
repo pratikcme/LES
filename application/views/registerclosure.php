@@ -1,234 +1,232 @@
 <?php
 include('header.php');
 date_default_timezone_set('Asia/Calcutta');
-$user_id = $this->session->userdata['id'];
-$user_query = $this->db->query("SELECT name FROM vendor WHERE id = $user_id");
-$user_result = $user_query->row_array();
+// $user_id = $this->session->userdata['id'];
+// $user_query = $this->db->query("SELECT name FROM vendor WHERE id = $user_id");
+// $user_result = $user_query->row_array();
 
 
-if (!empty($register_result)) {
+// if (!empty($register_result)) {
 
-    $register_id = $register_result[0]->id;
-    $order_row = $this->db->query("SELECT SUM(`total`) as total FROM `order` WHERE register_id = '$register_id' AND payment_type = '0'");
-    $order_result = $order_row->row_array();
-}
+//     $register_id = $register_result[0]->id;
+//     $order_row = $this->db->query("SELECT SUM(`total`) as total FROM `order` WHERE register_id = '$register_id' AND payment_type = '0'");
+//     $order_result = $order_row->row_array();
+// }
 
 if ($register_result[0]->type == '1') {
     redirect(base_url() . 'index.php/register/open_register');
 }
-
-
 ?>
 
 <script type="text/javascript">
-    function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
-        window.print();
-        document.body.innerHTML = originalContents;
-    }
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+}
 </script>
 <style>
-    .cash_payemnt_rcvd {
-        float: left;
-        width: 100%;
-    }
+.cash_payemnt_rcvd {
+    float: left;
+    width: 100%;
+}
 
-    .payment_recived {
-        float: left;
-        padding: 5px 0;
-        width: 100%;
-    }
+.payment_recived {
+    float: left;
+    padding: 5px 0;
+    width: 100%;
+}
 
-    .panel-heading {
-        background: #5b6e84;
-        font-size: 16px;
-        font-weight: 300;
-        color: white;
-    }
+.panel-heading {
+    background: #5b6e84;
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+}
 
-    .add_register_closed h2 {
-        margin-bottom: 5px;
-    }
+.add_register_closed h2 {
+    margin-bottom: 5px;
+}
 
-    .clouser_register h2 {
-        float: left;
-        font-size: 28px;
-        font-weight: bold;
-        margin-top: 0;
-        width: 100%;
-        margin-bottom: 30px;
-    }
+.clouser_register h2 {
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 0;
+    width: 100%;
+    margin-bottom: 30px;
+}
 
-    .register_closed .btn.btn-warning {
-        background: #2a3542;
-        font-size: 16px;
-        font-weight: 600;
-        text-transform: uppercase;
-        border: unset;
-        padding: 10px 20px;
-    }
+.register_closed .btn.btn-warning {
+    background: #2a3542;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: unset;
+    padding: 10px 20px;
+}
 
-    .register_details h3 {
-        border-bottom: 1px solid #ccc;
-        float: left;
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        padding-bottom: 10px;
-        width: 100%;
-    }
+.register_details h3 {
+    border-bottom: 1px solid #ccc;
+    float: left;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
 
-    .outlet_clouser p {
-        color: #000;
-        float: left;
-        font-weight: 600;
-        width: 100%;
-    }
+.outlet_clouser p {
+    color: #000;
+    float: left;
+    font-weight: 600;
+    width: 100%;
+}
 
-    .register_details {
-        float: left;
-        width: 100%;
-    }
+.register_details {
+    float: left;
+    width: 100%;
+}
 
-    .outlet_clouser span {
-        color: #444;
-        float: left;
-        width: 100%;
-    }
+.outlet_clouser span {
+    color: #444;
+    float: left;
+    width: 100%;
+}
 
-    .cash_summary h3 {
-        float: left;
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        width: 100%;
-    }
+.cash_summary h3 {
+    float: left;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    width: 100%;
+}
 
-    .closer_cash {
-        background: #FFF1E8 none repeat scroll 0 0;
-        float: left;
-        padding: 5px;
-        width: 100%;
-    }
+.closer_cash {
+    background: #FFF1E8 none repeat scroll 0 0;
+    float: left;
+    padding: 5px;
+    width: 100%;
+}
 
-    .closer_cash_part2 {
-        float: left;
-        padding: 5px;
-        width: 100%;
-        border-bottom: 1px solid #ccc;
-        border-top: 1px solid #ccc;
-    }
+.closer_cash_part2 {
+    float: left;
+    padding: 5px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
 
-    .part_2_deatils {
-        float: left;
-        margin-top: 9px;
-        width: 100%;
-    }
+.part_2_deatils {
+    float: left;
+    margin-top: 9px;
+    width: 100%;
+}
 
-    .summary_cash p {
-        float: left;
-        margin-top: 8px;
-        width: 100%;
-        word-wrap: break-word;
-    }
+.summary_cash p {
+    float: left;
+    margin-top: 8px;
+    width: 100%;
+    word-wrap: break-word;
+}
 
-    .movement_day h4 {
-        float: left;
-        font-size: 13px;
-        font-weight: bold;
-        margin: 5px 0 15px;
-        width: 100%;
-    }
+.movement_day h4 {
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 5px 0 15px;
+    width: 100%;
+}
 
-    .opt_cash_day {
-        border-bottom: 1px solid #ccc;
-        float: left;
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        width: 100%;
-    }
+.opt_cash_day {
+    border-bottom: 1px solid #ccc;
+    float: left;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    width: 100%;
+}
 
-    .cash_movement span {
-        float: left;
-        font-size: 13px;
-        font-weight: bold;
-        text-align: center;
-        width: 100%;
-    }
+.cash_movement span {
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
 
-    .cash_movement p {
-        float: left;
-        text-align: center;
-        width: 100%;
-    }
+.cash_movement p {
+    float: left;
+    text-align: center;
+    width: 100%;
+}
 
-    .cash_recieved {
-        float: left;
-        width: 100%;
-    }
+.cash_recieved {
+    float: left;
+    width: 100%;
+}
 
-    .cash_recieved p {
-        float: left;
-        font-size: 13px;
-        font-weight: bold;
-        width: 100%;
-    }
+.cash_recieved p {
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    width: 100%;
+}
 
-    .cash_summary {
-        float: left;
-        width: 100%;
-        margin-bottom: 20px;
-    }
+.cash_summary {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
 
-    .cash_summary h3 {
-        float: left;
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        width: 100%;
-    }
+.cash_summary h3 {
+    float: left;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    width: 100%;
+}
 
-    .closer_cash {
-        background: #FFF1E8 none repeat scroll 0 0;
-        float: left;
-        padding: 5px;
-        width: 100%;
-    }
+.closer_cash {
+    background: #FFF1E8 none repeat scroll 0 0;
+    float: left;
+    padding: 5px;
+    width: 100%;
+}
 
-    .summary_cash {
-        float: left;
-        width: 100%;
-    }
+.summary_cash {
+    float: left;
+    width: 100%;
+}
 
-    .summary_cash h4 {
-        float: left;
-        font-size: 14px;
-        text-transform: uppercase;
-        width: 100%;
-        color: #777777;
-    }
+.summary_cash h4 {
+    float: left;
+    font-size: 14px;
+    text-transform: uppercase;
+    width: 100%;
+    color: #777777;
+}
 
-    .clouser_register {
-        float: left;
-        width: 100%;
-    }
+.clouser_register {
+    float: left;
+    width: 100%;
+}
 
-    .close_register {
-        float: right;
-        margin-top: 30px;
-        width: auto;
-    }
+.close_register {
+    float: right;
+    margin-top: 30px;
+    width: auto;
+}
 
-    .close_register .btn.btn-warning {
-        background: #2a3542;
-        font-size: 16px;
-        font-weight: 600;
-        text-transform: uppercase;
-        border: unset;
-        padding: 10px 20px;
-    }
+.close_register .btn.btn-warning {
+    background: #2a3542;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: unset;
+    padding: 10px 20px;
+}
 </style>
 <section id="main-content">
     <section class="wrapper site-min-height">
@@ -246,7 +244,8 @@ if ($register_result[0]->type == '1') {
                                 <p>To make a sale, please open the register</p>
 
                                 <div class="register_closed padd_rght_0">
-                                    <button class="btn btn-warning" type="button" href="#myModal" data-toggle="modal">Open Register</button>
+                                    <button class="btn btn-warning" type="button" href="#myModal"
+                                        data-toggle="modal">Open Register</button>
                                 </div>
 
                                 <div class="register_details">
@@ -319,17 +318,17 @@ if ($register_result[0]->type == '1') {
                                                 <div class="drawer_cash">
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="summary_cash">
-                                                            <h4>Expected ($)</h4>
+                                                            <h4>Expected (<?= $currency ?>)</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="summary_cash">
-                                                            <h4>Counted ($)</h4>
+                                                            <h4>Counted (<?= $currency ?>)</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="summary_cash">
-                                                            <h4>Differences ($) </h4>
+                                                            <h4>Differences (<?= $currency ?>) </h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -365,12 +364,15 @@ if ($register_result[0]->type == '1') {
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="summary_cash">
-                                                            <p style="<?php if ($register_result[0]->difference >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
-                                                                <?php if (!empty($register_result)) {
+                                                            <p
+                                                                style="<?php if ($register_result[0]->difference >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
+                                                                <?php if (!empty($register_result[0]->difference)) {
                                                                     echo $register_result[0]->difference;
                                                                 } else {
                                                                     echo "0.00";
-                                                                }  ?>
+                                                                }
+
+                                                                ?>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -403,7 +405,7 @@ if ($register_result[0]->type == '1') {
 
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                         <div class="cash_movement">
-                                                            <span>Transaction ($)</span>
+                                                            <span>Transaction (<?= $currency ?>)</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -462,8 +464,8 @@ if ($register_result[0]->type == '1') {
 
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
                                                         <div class="cash_recieved">
-                                                            <p><?php if (!empty($order_result)) {
-                                                                    echo number_format((float)$order_result['total'], 2, '.', '');;
+                                                            <p><?php if (!empty($total)) {
+                                                                    echo number_format((float)$total, 2, '.', '');;
                                                                 } else {
                                                                     echo '0.00';
                                                                 }  ?>
@@ -505,17 +507,17 @@ if ($register_result[0]->type == '1') {
                                                     <div class="drawer_cash">
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Expected ($)</h4>
+                                                                <h4>Expected (<?= $currency ?>)</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Counted ($)</h4>
+                                                                <h4>Counted (<?= $currency ?>)</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Differences ($) </h4>
+                                                                <h4>Differences (<?= $currency ?>) </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -552,7 +554,8 @@ if ($register_result[0]->type == '1') {
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <p style="<?php if ($register_result[0]->credit_card_differences >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
+                                                                <p
+                                                                    style="<?php if ($register_result[0]->credit_card_differences >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
                                                                     <?php if (!empty($register_result[0]->credit_card_differences)) {
                                                                         echo $register_result[0]->credit_card_differences;
                                                                     } else {
@@ -611,17 +614,17 @@ if ($register_result[0]->type == '1') {
                                                     <div class="drawer_cash">
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Expected ($)</h4>
+                                                                <h4>Expected (<?= $currency ?>)</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Counted ($)</h4>
+                                                                <h4>Counted (<?= $currency ?>)</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
-                                                                <h4>Differences ($) </h4>
+                                                                <h4>Differences (<?= $currency ?>) </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -654,7 +657,8 @@ if ($register_result[0]->type == '1') {
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
                                                                 <!-- change -->
-                                                                <p id="total_differences" style="<?php if (numberFormat($register_result[0]->credit_card_differences + $register_result[0]->difference) >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
+                                                                <p id="total_differences"
+                                                                    style="<?php if (numberFormat($register_result[0]->credit_card_differences + $register_result[0]->difference) >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
                                                                     <?php if (isset($register_result[0]->difference) && isset($register_result[0]->credit_card_differences)  && $online_result['total'] !== "") {
                                                                         echo numberFormat($register_result[0]->credit_card_differences + $register_result[0]->difference);
                                                                     } else {
@@ -699,13 +703,15 @@ if ($register_result[0]->type == '1') {
                                     <!-- aded -->
 
                                     <div class="close_register pull-right">
-                                        <button class="btn btn-warning" type="button" onclick="printDiv('printableArea')">Print Summary</button>
+                                        <button class="btn btn-warning" type="button"
+                                            onclick="printDiv('printableArea')">Print Summary</button>
                                         <?php if (!empty($register_result)) { ?>
-                                            <!-- Dipesh Change url for page -->
-                                            <a href="<?php echo base_url() . 'register/closure_summary_list' ?>" class="btn btn-warning" type="button">View Register Clouser Sales</a>
+                                        <!-- Dipesh Change url for page -->
+                                        <a href="<?php echo base_url() . 'register/closure_summary_list' ?>"
+                                            class="btn btn-warning" type="button">View Register Clouser Sales</a>
                                         <?php } else { ?>
-                                            <a class="btn btn-warning" type="button" disabled="">View Register Clouser
-                                                Sales</a>
+                                        <a class="btn btn-warning" type="button" disabled="">View Register Clouser
+                                            Sales</a>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -719,14 +725,16 @@ if ($register_result[0]->type == '1') {
 </section>
 
 <!-- Add Type : Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Set opening cash drawer amount</h4>
             </div>
-            <form method="post" action="<?php echo base_url() . 'index.php/register/opening_cash'; ?>" id="cashRegister">
+            <form method="post" action="<?php echo base_url() . 'index.php/register/opening_cash'; ?>"
+                id="cashRegister">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Cash Amount</label>
@@ -749,33 +757,33 @@ if ($register_result[0]->type == '1') {
 <script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
 <script src="<?php echo base_url(); ?>public/js/jquery.validate.min.js"></script>
 <script>
-    $('#cashRegister').validate({
-        rules: {
-            amount: {
+$('#cashRegister').validate({
+    rules: {
+        amount: {
 
-                required: true,
-                number: true,
-                min: 0
-            },
-            note: {
-
-                required: true
-
-            }
+            required: true,
+            number: true,
+            min: 0
         },
-        messages: {
-            amount: {
-                required: "Please enter cash amount",
-                number: "Cash amount must be in number format",
-                min: "Cash amount Can not be negative"
-            },
-            note: {
-                required: "Please enter note"
-            }
-        },
-        error: function(label) {
-            $(this).addClass("error");
+        note: {
+
+            required: true
+
         }
-    });
+    },
+    messages: {
+        amount: {
+            required: "Please enter cash amount",
+            number: "Cash amount must be in number format",
+            min: "Cash amount Can not be negative"
+        },
+        note: {
+            required: "Please enter note"
+        }
+    },
+    error: function(label) {
+        $(this).addClass("error");
+    }
+});
 </script>
 <?php include('footer.php'); ?>

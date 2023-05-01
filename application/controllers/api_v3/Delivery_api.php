@@ -14,8 +14,31 @@ class Delivery_api extends CI_Controller
 
 
         $this->load->model('api_v3/delivery_api_model', 'this_model');
+
+        if (($this->router->fetch_method() != 'login') && ($this->router->fetch_method() != 'send_notification') && ($this->router->fetch_method() != 'check_otp') && ($this->router->fetch_method() != 'logout') && ($this->router->fetch_method() != 'update_userDetail')) {
+
+
+
+            $validate = $this->this_model->token_validate();
+
+            if ($validate == false) {
+
+                $response = array('success' => 5, 'message' => "Invalid Authentication");
+
+                $this->response($response);
+            }
+        }
+
+        
     }
 
+    protected function response($response)
+    {
+        $response = json_encode($response);
+        $response = str_replace('null', "\"\"", $response);
+        echo $response;
+        die;
+    }
     public function login()
     {
        
@@ -25,7 +48,7 @@ class Delivery_api extends CI_Controller
         if (isset($postdata['email']) && isset($postdata['password']) && isset($postdata['device_id']) && isset($postdata['type']) && isset($postdata['token'])) {
 
             $result = $this->this_model->login($postdata);
-            // print_r($result);exit;
+           
             // $result[0]->multiple_lang_type = $result[0]->multiLanguageType; 
             if ($result != 0) {
 

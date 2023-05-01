@@ -42,12 +42,22 @@
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 200px;">Branch
+                                        </th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">Cart Amount 
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">Discount Percentage 
+                                        </th>   
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 200px;">Status 
                                         </th>                                   
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
@@ -60,9 +70,20 @@
                                       <?php foreach ($promocodes as $key => $value) { ?>
                                           <tr>
                                            
-                                            <td><?=$key+1;;?></td>
+                                            <td><?=$key+1;?></td>
+                                            <td><?=$value->branch_name;;?></td>
                                             <td><?=$value->cart_amount;?></td>
                                             <td><?=$value->discount_percentage;?></td>
+                                            <td> 
+                                                <?php if($value->status==1){ ?>
+                                               
+                                                 <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="cart_base_amt_status btn btn-primary btn-xs" value="active"> 
+
+                                                <?php }else{ ?>
+                                                   <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="cart_base_amt_status btn btn-danger btn-xs" value="In-active"> 
+                                                <?php } ?>
+                                                </td>
+                                           
                                             <td>
                                                 <a href="javascript:;" onclick="single_delete(<?php echo $value->id; ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                              
@@ -203,6 +224,35 @@
             readUploadedImage(this);
         });
     }
+    
+</script>
+
+<script>
+      /* active Inactive status Script*/
+      $(document).on('click','.cart_base_amt_status',function(){
+                var id = $(this).attr('data-val');
+                $.ajax({
+                    url: '<?php echo base_url().'cart_amount_based_discount/status_change'; ?>' ,
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+
+                        if (data.status == 1) {
+                            bootbox.alert("Status Changed successfully.", function() {
+                                window.location.reload(true);
+                            });
+                        }
+                        else {
+                            alert('Failed to delete selected user.');
+                        }
+                    },
+                    error: function () {
+                        alert('Failed to delete selected user.');
+                    }
+                });
+            });
+           
     
 </script>
    

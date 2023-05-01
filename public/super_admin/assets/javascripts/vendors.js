@@ -1,53 +1,72 @@
-var VENDORS = function () {
-  $('#profession').DataTable({
-    ordering: false
+var VENDORS = (function () {
+  $("#profession").DataTable({
+    ordering: false,
   });
-  $(document).on('click', '#add', function () {
-    var html = $('#html').html();
-    $('#append').append(html);
-  })
 
-  $(document).on('click', '.remove', function () {
-    $(this).closest('.row').remove();
-  })
+  $(".hideImg").hide();
+  $("#theme_select").change(function () {
+    // let img = $(this);
+    var base_url = $("#base_url").val();
+    let img = $(this).find(":selected").data("img");
 
-  $('.alert').fadeOut(5000);
-
-  $(document).on('click', '.redirect_to', function () {
-    let href = $(this).data('href');
-    window.open('http://' + href);
+    if (img !== undefined) {
+      $("#imgPreview").attr(
+        "src",
+        base_url + "public/images/themes_images/" + img
+      );
+      $(".hideImg").show();
+    } else {
+      $(".hideImg").hide();
+    }
   });
-  var base_url = $('#base_url').val();
+
+  $(document).on("click", "#add", function () {
+    var html = $("#html").html();
+    $("#append").append(html);
+  });
+
+  $(document).on("click", ".remove", function () {
+    $(this).closest(".row").remove();
+  });
+
+  $(".alert").fadeOut(5000);
+
+  $(document).on("click", ".redirect_to", function () {
+    let href = $(this).data("href");
+    window.open("http://" + href);
+  });
+
+  var base_url = $("#base_url").val();
   var HandleAdd = function () {
-    $(document).on('change', '#domain_type', function () {
-      $('#domain_name').val('');
-      $('#database').val('');
+    $(document).on("change", "#domain_type", function () {
+      $("#domain_name").val("");
+      $("#database").val("");
     });
 
-    $('#vendor_form').validate({
+    $("#vendor_form").validate({
       rules: {
         domain_name: {
           required: true,
           maxlength: 50,
           remote: {
-            url: base_url + 'super_admin/vendors/checkDomainExist',
-            type: 'POST',
+            url: base_url + "super_admin/vendors/checkDomainExist",
+            type: "POST",
             data: {
-              'domain_name': function () {
-                return $('#domain_name').val();
+              domain_name: function () {
+                return $("#domain_name").val();
               },
-              'domain_type': function () {
-                return $('#domain_type').val();
+              domain_type: function () {
+                return $("#domain_type").val();
               },
-              'database': function () {
-                return $('#database').val();
+              database: function () {
+                return $("#database").val();
               },
-            }
+            },
           },
         },
         domain_type: {
           required: true,
-          // url : true,                   
+          // url : true,
         },
         name: {
           required: true,
@@ -68,58 +87,56 @@ var VENDORS = function () {
           required: true,
           email: true,
           remote: {
-            url: base_url + 'super_admin/vendors/checkEmailExist',
-            type: 'POST',
+            url: base_url + "super_admin/vendors/checkEmailExist",
+            type: "POST",
             data: {
-              'email': function () {
-                return $('#email').val();
+              email: function () {
+                return $("#email").val();
               },
-              'database': function () {
-                return $('#database').val();
+              database: function () {
+                return $("#database").val();
               },
-            }
+            },
           },
         },
         password: {
           required: true,
           minlength: 6,
-          maxlength: 25
+          maxlength: 25,
         },
         cpassword: {
           required: true,
           minlength: 6,
           maxlength: 25,
-          equalTo: '#password'
+          equalTo: "#password",
         },
         mobile_number: {
           required: true,
           number: true,
           minlength: 7,
           maxlength: 15,
-
         },
         login_type: {
-          required: true
+          required: true,
         },
         address: {
-          required: true
+          required: true,
         },
         location: {
-          required: true
+          required: true,
         },
         language_support: {
-          required: true
+          required: true,
         },
-        // database : {
-        //   required : true
-        // }
-
+        theme_name: {
+          required: true,
+        },
       },
       messages: {
         domain_name: {
           required: "please enter your domain name",
           maxlength: "Domain name must be less than or equal to 50 digit",
-          remote: "Domain name already exist"
+          remote: "Domain name already exist",
         },
         domain_type: {
           required: "please select domain type",
@@ -140,7 +157,7 @@ var VENDORS = function () {
         email: {
           required: "Please enter email",
           email: "Please enter valid email",
-          remote: "This email is already exist"
+          remote: "This email is already exist",
         },
         password: {
           required: "Please enter password",
@@ -158,53 +175,53 @@ var VENDORS = function () {
           digits: "Please enter valid phone number",
           minlength: "Please enter minmum 7 digit mobile number",
           maxlength: "Mobile number must be less than or equal to 15 digit",
-
         },
         login_type: {
-          required: "Please select at least login type"
+          required: "Please select at least login type",
         },
         address: {
-          required: "Please enter address"
+          required: "Please enter address",
         },
         location: {
-          required: "Please select location"
+          required: "Please select location",
         },
         language_support: {
-          required: "Please select primary language"
-        }
-
+          required: "Please select primary language",
+        },
+        theme_name: {
+          required: "Please select theme",
+        },
       },
       submitHandler: function (form) {
         // if(grecaptcha.getResponse().length === 0){
         //  alert('Please tick the box to continue');
         //  return false;
         // }
-        $('#btnSubmit').attr('disabled', 'disabled');
+        $("#btnSubmit").attr("disabled", "disabled");
         form.submit();
-      }
-
+      },
     });
-  }
+  };
 
   var HandleEdit = function () {
-    $('#editForm').validate({
+    $("#editForm").validate({
       rules: {
         email: {
           required: true,
-          email: true
+          email: true,
         },
         approved: {
           required: true,
           digits: true,
           min: 1,
-          max: 9
+          max: 9,
         },
         login_type: {
-          required: true
+          required: true,
         },
         webTitle: {
           required: true,
-          maxlength: 25
+          maxlength: 25,
         },
         android_version: {
           required: true,
@@ -215,19 +232,22 @@ var VENDORS = function () {
         android_isforce: {
           required: true,
           digits: true,
-          max: 1
+          max: 1,
         },
         ios_isforce: {
           required: true,
           digits: true,
-          max: 1
+          max: 1,
         },
         display_price_with_gst: {
-          required: true
+          required: true,
         },
         language_support: {
-          required: true
-        }
+          required: true,
+        },
+        theme_name: {
+          required: true,
+        },
       },
       messages: {
         email: {
@@ -237,16 +257,45 @@ var VENDORS = function () {
           required: "Please enter approved branch",
         },
         language_support: {
-          required: "Please select primary language"
-        }
-
+          required: "Please select primary language",
+        },
+        theme_name: {
+          required: "Please select theme",
+        },
       },
       submitHandler: function (form) {
         form.submit();
+      },
+    });
+
+    // $("#theme_change").change(function () {
+    //   const file = this.files[0];
+
+    //   if (file) {
+    //     let reader = new FileReader();
+    //     reader.onload = function (event) {
+    //       $("#imgPreview").attr("src", event.target.result);
+    //     };
+    //     reader.readAsDataURL(file);
+    //     $(".hideImg").show();
+    //   } else {
+    //     $(".hideImg").hide();
+    //   }
+    // });
+
+    $("#theme_change").change(function () {
+      var base_url = $("#base_url").val();
+      let img = $(this).find(":selected").data("img");
+
+      if (img !== undefined) {
+        $("#imgPreview").attr("src", "");
+        $("#imgPreview").attr("src", img);
+        $(".editTheme").show();
+      } else {
+        $(".editTheme").hide();
       }
     });
-  }
-
+  };
 
   // var Handledelete = function () {
   //      $('.delete').click(function(){
@@ -269,7 +318,7 @@ var VENDORS = function () {
   //                 data: { id : id },
   //                 success:function(response){
   //                      window.location.reload();
-  //                 }   
+  //                 }
   //        			 })
   // 		  }
   // 	});
@@ -289,7 +338,6 @@ var VENDORS = function () {
     },
     add: function () {
       HandleAdd();
-    }
-
+    },
   };
-}();
+})();

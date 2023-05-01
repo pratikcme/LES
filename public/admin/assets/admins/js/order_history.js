@@ -33,9 +33,65 @@ var HISTORY = (function () {
       url: url + "sell_development/viewOrderDetails",
       data: { order_id: order_id, name: name },
       success: function (out) {
-        $("#dynamic_tr").html(out.o_detail);
-        $("#dynamic_li").html(out.o_info);
-        $("#dynamic_date").html(out.date);
+        // $("#dynamic_tr").html(out.o_detail);
+        // $("#dynamic_li").html(out.o_info);
+        // $("#dynamic_date").html(out.date);
+        $("#main_table").html(out.order_details_Html);
+        let sub_total = 0;
+        $(".order_price").each(function () {
+          sub_total += parseFloat($(this).text());
+        });
+
+        let isShow = $("#isShow").val();
+
+        let gstAmt = parseFloat($("#total_gst").text()).toFixed(2);
+
+        if (isShow.trim() == "") {
+          sub_total = sub_total - gstAmt;
+        }
+
+        $("#order_subtotal").html(parseFloat(sub_total).toFixed(2));
+
+        $(".sub_total_main").text(
+          parseFloat(parseFloat(sub_total) + parseFloat(gstAmt)).toFixed(2)
+        );
+
+        $("#return_details").hide();
+
+        if (out.returnOrder_details_Html !== null) {
+          // $("#main_table").addClass("col-md-6");
+          // $("#main_table").removeClass("col-md-12");
+          $("#return_details").show();
+
+          // $("#return_dynamic_tr").html(out.return_detail);
+          // $("#return_date").html(out.return_date);
+          // $("#return_dynamic_li").html(out.return_info);
+          $("#return_details").html(out.returnOrder_details_Html);
+
+          let return_sub_total = 0;
+          $(".return_order_price").each(function () {
+            return_sub_total += parseFloat($(this).text());
+          });
+
+          if (isShow.trim() == "") {
+            $("#return_order_subtotal").html(
+              parseFloat(
+                return_sub_total -
+                  parseFloat($("#return_total_gst").text()).toFixed(2)
+              ).toFixed(2)
+            );
+          } else {
+            $("#return_order_subtotal").html(
+              parseFloat(return_sub_total).toFixed(2)
+            );
+          }
+
+          $(".modal-content").removeClass("one");
+        } else {
+          $(".modal-content").addClass("one");
+          // $("#main_table").removeClass("col-md-6");
+          // $("#main_table").addClass("col-md-12");
+        }
       },
     });
   });

@@ -47,6 +47,11 @@
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 200px;">Branch 
+                                        </th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">Percentage 
                                         </th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
@@ -66,7 +71,14 @@
                                             aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 200px;">
                                             Notes
-                                        </th>                                    
+                                        </th> 
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 200px;">
+                                            Status
+                                        </th> 
+                                                                           
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                             rowspan="1" colspan="1"
                                             aria-label="Rendering engine: activate to sort column ascending"
@@ -80,10 +92,20 @@
                                            
                                             <td><?=$key+1;;?></td>
                                             <td><?=$value->name;?></td>
+                                            <td><?=$value->branch_name;?></td>
                                             <td><?=$value->percentage;?></td>
                                             <td><?=$value->start_date?></td>
                                             <td><?=$value->end_date?></td>
                                             <td><?=$value->notes?></td>
+                                            <td> 
+                                                <?php if($value->status==1){ ?>
+                                               
+                                                 <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="promocode_status btn btn-primary btn-xs" value="active"> 
+
+                                                <?php }else{ ?>
+                                                   <input type="button" data-val="<?php echo $this->utility->encode($value->id); ?>" class="promocode_status btn btn-danger btn-xs" value="In-active"> 
+                                                <?php } ?>
+                                                </td>
                                             <td>
                                                 <a href="javascript:;" onclick="single_delete(<?php echo $value->id; ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                              
@@ -227,3 +249,33 @@
     
 </script>
    
+
+<script>
+      /* active Inactive status Script*/
+      $(document).on('click','.promocode_status',function(){
+                var id = $(this).attr('data-val');
+                $.ajax({
+                    url: '<?php echo base_url().'promocode_manage/status_change'; ?>' ,
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+
+                        if (data.status == 1) {
+                            bootbox.alert("Status Changed successfully.", function() {
+                                window.location.reload(true);
+                            });
+                        }
+                        else {
+                            alert('Failed to delete selected user.');
+                        }
+                    },
+                    error: function () {
+                        alert('Failed to delete selected user.');
+                    }
+                });
+            });
+           
+    
+</script>
+

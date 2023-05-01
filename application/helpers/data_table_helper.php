@@ -498,30 +498,30 @@ function getProductListNewAjax($TableData)
     $checkbox .= '</td>';
     $sub_array = array();
     $sub_array[] = $checkbox;
-    $sub_array[] = '<div>'.$row->name.'</div>';
-    $sub_array[] = '<div>'.$row->category_name.'</div>';
-    $sub_array[] = '<div>'.$row->subcategory_name.'<div>';
-    $sub_array[] = '<div>'.$row->brand_name.'<div>';
+    $sub_array[] = '<div>' . $row->name . '</div>';
+    $sub_array[] = '<div>' . $row->category_name . '</div>';
+    $sub_array[] = '<div>' . $row->subcategory_name . '<div>';
+    $sub_array[] = '<div>' . $row->brand_name . '<div>';
     if ($row->status != '9') {
       $sub_array[] = '<div><a href="javascript:;" onclick="single_delete_check(' . $row->id . ')" ><span class="disable">Disable</span></a><div>';
-    }else{
-      $sub_array[] = '<div><a href="'.base_url().'product/make_product_active?product_id='.$CI->utility->encode($row->id).'" ><span class="active_table">Active</span></a><div>';
+    } else {
+      $sub_array[] = '<div><a href="' . base_url() . 'product/make_product_active?product_id=' . $CI->utility->encode($row->id) . '" ><span class="active_table">Active</span></a><div>';
     }
     $sub_array[] = '<div class="dropdown">
     <span><i class="fa-solid fa-ellipsis-vertical action-dropdown-btn"></i></span>
     <div class="action-dropdown">
         <a  href=' . base_url() . 'product/product_weight_list?product_id=' . $CI->utility->encode($row->id) . '>
         <span>
-        <img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-1.svg" alt="">
+        <img src="' . base_url() . 'public/admin_product_page_assets/images/drodown-icon-1.svg" alt="">
         </span>Manage Variants</a>
-        <a href=' . base_url() . 'product/product_profile?id=' . $CI->utility->encode($row->id).'>
+        <a href=' . base_url() . 'product/product_profile?id=' . $CI->utility->encode($row->id) . '>
         <span>
-        <img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-2.svg" alt="">
+        <img src="' . base_url() . 'public/admin_product_page_assets/images/drodown-icon-2.svg" alt="">
         </span>Edit product</a>
-        <a  href="javascript:;" onclick="single_hard_delete(' . $row->id . ')"><span><img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-3.svg" alt=""></span>Delete Product </a>
-        <a  href=' . base_url() . 'product/product_image_list?product_id=' . $CI->utility->encode($row->id) . '><span><img src="'.base_url().'public/admin_product_page_assets/images/drodown-icon-4.svg" alt=""></span>Product Image</a>
+        <a  href="javascript:;" onclick="single_hard_delete(' . $row->id . ')"><span><img src="' . base_url() . 'public/admin_product_page_assets/images/drodown-icon-3.svg" alt=""></span>Delete Product </a>
+        <a  href=' . base_url() . 'product/product_image_list?product_id=' . $CI->utility->encode($row->id) . '><span><img src="' . base_url() . 'public/admin_product_page_assets/images/drodown-icon-4.svg" alt=""></span>Product Image</a>
     </div>
-</div>';              
+</div>';
     $data[] = $sub_array;
   }
   $output = array(
@@ -672,7 +672,7 @@ function getOrderListAjax($TableData)
     $sub_array[] = '<a target="_blank" href=' . base_url() . 'order/order_detail?id=' . $CI->utility->encode($row->id) . '>' . $row->order_no . '</a>';
     $sub_array[] = date('d/m/Y  h:i A', $row->dt_added);
     $sub_array[] = $row->fname . ' ' . $row->lname;
-    $sub_array[] = $row->payable_amount;
+    $sub_array[] = numberFormat($row->payable_amount);
     $sub_array[] = $payment_type;
     $sub_array[] = $order_status;
     $sub_array[] = '<input type="button" class="otp btn btn-info btn-xs" ' . $otpAttr . ' data-is_self_pickup=' . $row->isSelfPickup . ' data-id=' . $row->id . ' value=' . $otpValue . ' >';
@@ -860,19 +860,24 @@ function getSalesHistory($TableData)
   $CI->load->model('sell_development_model', 'this_model');
   $library = $CI->load->library('utility');
   $fetch_data = $CI->this_model->make_datatables_sell($TableData);
-  // dd($fetch_data);die;
+
+  // dd($fetch_data);
+  $currency = $CI->this_model->getCurrency();
+  $currencySign = $currency[0]->value;
+
   $data = array();
   $sno = $TableData['start'] + 1;
   foreach ($fetch_data as $row) {
     $name = str_replace(' ', '_', $row->customer_name);
     $sub_array = array();
     $sub_array[] = '<div><div><h5>' . $sno++ . '</h5></div></div>';
-    $sub_array[] = '<a target="_blank" href='.base_url().'/order/order_detail?id='.$CI->utility->safe_b64encode($row->id).'>'.$row->order_no.'</a>';
+    $sub_array[] = '<a target="_blank" href=' . base_url() . 'order/order_detail?id=' . $CI->utility->safe_b64encode($row->id) . '>' . $row->order_no . '</a>';
     $sub_array[] = '<div>
                      <div>
                         <h5>' . date('d F Y h:i:s A', $row->dt_added) . '</h5>
                      </div>
                   </div>';
+
     $sub_array[] = '<ul>
                      <li class="popover-list-item">
                         <a href="#">
@@ -887,7 +892,8 @@ function getSalesHistory($TableData)
                            </div>
                         </a>
                      </li>
-                  </ul> ';
+                  </ul>';
+
     $sub_array[] = ' <ul>
                      <li class="popover-list-item">
                         <a href="#">
@@ -902,7 +908,8 @@ function getSalesHistory($TableData)
                         </a>
                      </li>
                   </ul>';
-    $sub_array[] = $row->payable_amount;
+
+    $sub_array[] =   isset($row->new_total)  ? $currencySign . ' ' . numberFormat($row->new_total) : $currencySign . ' ' . numberFormat($row->payable_amount);
     $sub_array[] = '<span data-toggle="modal" class="orderDetails" data-target="#view" data-order_id=' . $CI->utility->safe_b64encode($row->id) . ' ><i class="fa fa-eye" aria-hidden="true"></i></span>
                   <span class="remove" data-order_id=' . $CI->utility->safe_b64encode($row->id) . '><i class="fa fa-trash" aria-hidden="true"></i></span>';
     $data[] = $sub_array;
@@ -989,7 +996,7 @@ function getOrderSummaryListAjax($TableData)
     $sub_array[] = '<a target="_blank" href=' . base_url() . 'order/order_detail?id=' . $CI->utility->encode($row->id) . '>' . $row->order_no . '</a>';
     $sub_array[] = date('d/m/Y h:i A', $row->dt_added);
     $sub_array[] = $row->fname . ' ' . $row->lname;
-    $sub_array[] = $row->payable_amount;
+    $sub_array[] = numberFormat($row->payable_amount);
     $sub_array[] = $payment_type;
     $sub_array[] = '<span class="badge badge-warning">' . $order_status . '</span>';
     $data[] = $sub_array;

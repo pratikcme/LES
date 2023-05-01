@@ -251,6 +251,9 @@ var ADDPRODUCT = (function () {
     var that = $(this);
     var stockMessage = language.js_limited_stock;
     var stockMessage1 = language.js_available_instock;
+
+    var outOfStock = language["out of stock"];
+
     $("#product_varient_id").val(product_varient_id); //update hidden field
     if (product_varient_id != "") {
       $(".weight-error").html("");
@@ -284,14 +287,14 @@ var ADDPRODUCT = (function () {
 
           $(".product-price").html(
             '<p class="notranslate">' +
-              siteCurrency +
-              " " +
-              output.discount_price +
-              '<span class="orginal-price notranslate">' +
-              siteCurrency +
-              " " +
-              output.product_price +
-              "</span></p>"
+            siteCurrency +
+            " " +
+            output.discount_price +
+            '<span class="orginal-price notranslate">' +
+            siteCurrency +
+            " " +
+            output.product_price +
+            "</span></p>"
           );
           // $('.slider-for').html(output.image_div);
 
@@ -308,47 +311,51 @@ var ADDPRODUCT = (function () {
           if (output.discount_per == "0") {
             $("#is_discounted").html(
               '<div class=""><p></p></div> <div class="wishlist-icon" data-product_id =' +
-                output.product_id +
-                " data-product_weight_id =" +
-                output.product_variant_id +
-                ' > <i class="far fa-heart ' +
-                output.isInWishList +
-                '"></i> </div>'
+              output.product_id +
+              " data-product_weight_id =" +
+              output.product_variant_id +
+              ' > <i class="far fa-heart ' +
+              output.isInWishList +
+              '"></i> </div>'
             );
             $(".orginal-price").css("display", "none");
           } else {
             $("#is_discounted").html(
               '<div class="offer-wrap"><p>' +
-                output.discount_per +
-                ' % off</p></div> <div class="wishlist-icon" data-product_id =' +
-                output.product_id +
-                " data-product_weight_id =" +
-                output.product_variant_id +
-                ' > <i class="far fa-heart ' +
-                output.isInWishList +
-                '"></i> </div>'
+              output.discount_per +
+              ' % off</p></div> <div class="wishlist-icon" data-product_id =' +
+              output.product_id +
+              " data-product_weight_id =" +
+              output.product_variant_id +
+              ' > <i class="far fa-heart ' +
+              output.isInWishList +
+              '"></i> </div>'
             );
             $(".orginal-price").css("display", "");
           }
-          if (output.varient_quantity > 25) {
+
+          if (
+            parseInt(output.varient_quantity) > parseInt(output.limited_stock)
+          ) {
             $(".in-stock").remove();
             $(
               '<div class="in-stock"><h6>' + stockMessage1 + "</h6></div>"
             ).insertBefore("#product_detail h1");
           } else {
             $(".in-stock").remove();
-            $style = "";
+
             if (output.varient_quantity <= 0) {
-              $style = "none";
+              stockMessage = outOfStock;
+              // chnaged message insted chaning condition by Dipesh
             }
+
             $(
-              '<div class="in-stock" style="display:' +
-                $style +
-                '" ><h6>' +
-                stockMessage +
-                "</h6></div>"
+              '<div class="in-stock"  ><h6>' + stockMessage + "</h6></div>"
             ).insertBefore("#product_detail h1");
           }
+
+          // end
+
           if (output.cartProductQuantity == 0) {
             var qnt = 1;
             that.parent().next("div").find(".quantity-wrap").addClass("d-none");
@@ -433,6 +440,7 @@ var ADDPRODUCT = (function () {
     // console.log(review_user_id);
     // return false;
     if (review != "") {
+      that.attr('disabled', 'disabled');
       $.each(review_user_id, function (key, value) {
         if (value == session_user_id) {
           var base_url = $("#url").val();
@@ -449,6 +457,7 @@ var ADDPRODUCT = (function () {
         data: { product_id: product_id, review: review, ratting: ratting },
         dataType: "json",
         success: function (output) {
+          that.removeAttr('disabled', 'disabled');
           $(".append_review").append(output.html);
           $("#reviewForm").trigger("reset");
           var j = 0;

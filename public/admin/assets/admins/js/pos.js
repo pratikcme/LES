@@ -24,10 +24,8 @@ var PRIVACY = (function () {
   });
   var url = $("#url").val();
 
-  $(document).on("keyup", "#search_prod", function () {
+  $(document).on("keyup focus", "#search_prod", function () {
     var keyValue = $(this).val();
-    // setTimeout(function () {
-
     if (
       !$.isNumeric(keyValue) ||
       ($.isNumeric(keyValue) && keyValue.length == 13)
@@ -47,13 +45,21 @@ var PRIVACY = (function () {
             $("#prod-list").css("display", "block");
             $("#prod-list").html(output.res);
           }
-          // if($.isNumeric(keyValue) && keyValue.length == 13){
-          //    $( ".add_product" ).click();
-          // }
         },
       });
     }
-    // },1000);
+  });
+
+  $(document).click(function (e) {
+    var target = $(e.target);
+    if (
+      !target.closest("#prod-list").length &&
+      $("#prod-list").is(":visible") &&
+      !target.closest("#search_prod").length &&
+      $("#search_prod").is(":visible")
+    ) {
+      $("#prod-list").css("display", "none");
+    }
   });
 
   $(document).on("change", "#search_prod", function () {
@@ -95,6 +101,7 @@ var PRIVACY = (function () {
       url: url + "sell_development/addProducttoTempOrder",
       type: "POST",
       dataType: "JSON",
+      async: false,
       data: {
         product_id: product_id,
         pw_id: pw_id,
@@ -138,6 +145,7 @@ var PRIVACY = (function () {
       },
     });
     // },1000);
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   $(document).on("click", ".add_quick_product", function (e) {
@@ -152,6 +160,7 @@ var PRIVACY = (function () {
       url: url + "sell_development/addProducttoTempOrder",
       type: "POST",
       dataType: "JSON",
+      async: false,
       data: {
         product_id: product_id,
         pw_id: pw_id,
@@ -182,6 +191,7 @@ var PRIVACY = (function () {
       },
     });
     // },1000);
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   // function displayBlock(parm) {
@@ -194,7 +204,7 @@ var PRIVACY = (function () {
   //   $("#discard_sell").parent().css("display", css);
   // }
 
-  $(document).on("keyup", "#add_customer", function () {
+  $(document).on("keyup focus", "#add_customer", function () {
     var customber = $(this).val();
 
     if (customber == "") {
@@ -219,6 +229,22 @@ var PRIVACY = (function () {
       },
     });
     // },1000);
+  });
+
+  // $(document).on("blur", "#add_customer", function () {
+  //   $("#message").hide();
+  // });
+
+  $(document).click(function (e) {
+    var target = $(e.target);
+    if (
+      !target.closest("#message").length &&
+      $("#message").is(":visible") &&
+      !target.closest("#add_customer").length &&
+      $("#add_customer").is(":visible")
+    ) {
+      $("#message").hide();
+    }
   });
 
   $(document).on("click", ".select_customer", function () {
@@ -252,6 +278,7 @@ var PRIVACY = (function () {
     if (!btn.is(e.target)) {
       $("#myDropdown").hide();
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   function myFunction() {
@@ -290,7 +317,9 @@ var PRIVACY = (function () {
     var order_tempId = $(event.target)
       .find(".revomeRecord")
       .data("order_tempid");
-    var isParked = $(this).data("isparked");
+
+    // console.log("parekd", event.target);
+    var isParked = $(event.target).find(".revomeRecord").data("isparked");
 
     $.ajax({
       url: url + "sell_development/removeRecord",
@@ -312,6 +341,7 @@ var PRIVACY = (function () {
         }
       },
     });
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   }
 
   // function addQuant(val, qnt) {
@@ -464,6 +494,7 @@ var PRIVACY = (function () {
         // }, 400);
       },
     });
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   // $(".qunt").inputFilter(function(value) {
@@ -522,6 +553,7 @@ var PRIVACY = (function () {
         url: url + "sell_development/add_quantity",
         type: "POST",
         dataType: "JSON",
+        async: false,
         data: {
           product_weight_id: product_weight_id,
           temp_id: temp_id,
@@ -534,7 +566,9 @@ var PRIVACY = (function () {
           $("#hidden_discount_total").val(output.total_savings);
           // console.log("output", output);
           if (output.status == 0) {
-            bootbox.alert("Product is not available", function () {});
+            bootbox.alert("Product is not available", function () {
+              return;
+            });
             that
               .parent()
               .parent()
@@ -570,6 +604,7 @@ var PRIVACY = (function () {
         },
       });
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   // new design
@@ -613,6 +648,7 @@ var PRIVACY = (function () {
         url: url + "sell_development/add_quantity",
         type: "POST",
         dataType: "JSON",
+        async: false,
         data: {
           product_weight_id: product_weight_id,
           temp_id: temp_id,
@@ -621,6 +657,7 @@ var PRIVACY = (function () {
           isParked: isParked,
           discount: discount,
         },
+
         success: function (output) {
           $("#hidden_discount_total").val(output.total_savings);
           // console.log("output", output);
@@ -662,6 +699,7 @@ var PRIVACY = (function () {
         },
       });
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   }
 
   // $(document).on("click", ".dec", function () {
@@ -678,6 +716,7 @@ var PRIVACY = (function () {
     if ($(this).val() == "") {
       $(this).val("0.00");
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   //re added by dipesh now discount needed
@@ -768,6 +807,7 @@ var PRIVACY = (function () {
         });
       }
     }
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   $("#disc_percentage").keyup(function () {
@@ -846,6 +886,7 @@ var PRIVACY = (function () {
         $("#add_search_prod").val("");
       },
     });
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
   });
 
   $(".remove_quick_list_item").click(function () {
@@ -905,10 +946,12 @@ var PRIVACY = (function () {
   // changeParkTime
   $("#changeParkTime").on("click", function (e) {
     var id = $("#parked_id").val();
+    var subtotal = calculateSubtotal();
+
     $.ajax({
       type: "post",
       url: url + "sell_development/changeParkTime",
-      data: { id: id },
+      data: { id: id, subtotal: subtotal },
       success: function (res) {
         if (res == 1) {
           location.href = url + "sell_development";
@@ -918,8 +961,66 @@ var PRIVACY = (function () {
   });
   //
 
+  function isFloat(x) {
+    return !!(x % 1);
+  }
+
+  $(".dis_subtotal").hide();
+
+  function setNewGSt(discPer) {
+    let newGst = 0;
+    $(".this_price").each(function () {
+      let quantity = parseInt($(this).parent().find(".this_quantity").text());
+      let amt = parseFloat($(this).data("actual_price")).toFixed(2);
+      let disc = parseFloat(
+        $(this).parent().parent().parent().next().find(".disc").val()
+      ).toFixed(2);
+
+      let amtDisc = amt - (amt * disc) / 100;
+
+      let cartBased =
+        amtDisc - (amtDisc * parseFloat(parseFloat(discPer).toFixed(2))) / 100;
+
+      let gstPer = parseFloat($(this).data("gst")).toFixed(2);
+
+      newGst += parseFloat(
+        parseFloat(
+          parseFloat(parseFloat((cartBased * gstPer) / 100).toFixed(2)) *
+            quantity
+        ).toFixed(2)
+      );
+    });
+
+    $("#total_gst").text(parseFloat(newGst).toFixed(2));
+    $("#hidden_subtotal").val(parseFloat($("#subtotal").html()).toFixed(2));
+  }
+
+  function showExtraGst(check) {
+    if (!check) {
+      let oldGst = parseFloat(parseFloat($("#total_gst").text()).toFixed(2));
+      $(".dis_subtotal")
+        .find(".dis_sub_val")
+        .text(
+          parseFloat(parseFloat($("#subtotal").text()) + oldGst).toFixed(2)
+        );
+      $(".dis_subtotal").find(".dis_gst").text(parseFloat(oldGst).toFixed(2));
+    }
+    $(".dis_subtotal").parent().find(".gstName").text("Updated GST");
+
+    $(".dis_subtotal").show();
+  }
+
+  function hideExtraGst() {
+    $(".dis_subtotal").hide();
+    $(".dis_subtotal").find(".dis_sub_val").text(0);
+    $(".dis_subtotal").find(".dis_gst").text(0);
+    $(".dis_subtotal").parent().find(".gstName").text("Products GST");
+  }
+
   async function getCartBasedDiscount(val) {
     $("#promocode_discount_item").hide();
+
+    let cur = $("#currency").val();
     await $.ajax({
       type: "GET",
       url: url + "sell_development/getShoppingAmountBasedDiscount",
@@ -927,33 +1028,70 @@ var PRIVACY = (function () {
       dataType: "json",
       success: function (res) {
         if (parseFloat(res.shopping_based_discount) > 0) {
-          if ($("#isShow").val() == 1) {
-            val = parseFloat($("#total_gst").text()) + parseFloat(val);
-          }
+          showExtraGst();
+          // let oldGst = parseFloat($("#total_gst").text());
 
-          var pay_total = parseFloat(
-            val - parseFloat(res.shopping_based_discount).toFixed(2)
+          // $(".dis_subtotal")
+          //   .find(".dis_sub_val")
+          //   .text(
+          //     parseFloat(parseFloat($("#subtotal").text()) + oldGst).toFixed(2)
+          //   );
+          // $(".dis_subtotal")
+          //   .find(".dis_gst")
+          //   .text(parseFloat(oldGst).toFixed(2));
+          // $(".dis_subtotal").parent().find(".gstName").text("Updated GST");
+
+          // $(".dis_subtotal").show();
+
+          setNewGSt(res.shopping_based_discountPercentage);
+          val = parseFloat(
+            parseFloat(
+              parseFloat(val) + parseFloat($("#total_gst").text())
+            ).toFixed(2)
           );
 
           $("#shopping_based_discount").val(res.shopping_based_discount);
+          // $("#discount_amt").val(res.shopping_based_discount);
+          $("#total_pay").html(
+            parseFloat(val - res.shopping_based_discount).toFixed(2)
+          );
 
-          $("#total_pay").html(parseFloat(pay_total).toFixed(2));
-          $("#hidden_total_pay").val(parseFloat(pay_total).toFixed(2)); //new for pos
+          // $("#discount").val(res.shopping_based_discountPercentage);
+
+          $("#hidden_total_pay").val(
+            parseFloat(val - res.shopping_based_discount).toFixed(2)
+          );
 
           $("#shopping_based_discount_amount").html(
-            parseFloat(res.shopping_based_discount).toFixed(2)
+            cur + parseFloat(res.shopping_based_discount).toFixed(2)
           );
-          $("#shopping_based_discountPercentage").html(
-            parseFloat(res.shopping_based_discountPercentage).toFixed(2)
-          );
+
+          isFloat(res.shopping_based_discountPercentage)
+            ? $("#shopping_based_discountPercentage").html(
+                parseFloat(res.shopping_based_discountPercentage).toFixed(2)
+              )
+            : $("#shopping_based_discountPercentage").html(
+                parseInt(res.shopping_based_discountPercentage)
+              );
 
           $("#promocode_item").hide();
           $("#cart_based_item").show();
         } else {
           $("#shopping_based_discount").val(0);
-          if ($("#isShow").val() == 1) {
-            val = parseFloat($("#total_gst").text()) + parseFloat(val);
-          }
+          // $("#discount").val(0);
+          // $("#discount_amt").val(0);
+
+          hideExtraGst();
+          // $(".dis_subtotal").hide();
+          // $(".dis_subtotal").find(".dis_sub_val").text(0);
+          // $(".dis_subtotal").find(".dis_gst").text(0);
+          // $(".dis_subtotal").parent().find(".gstName").text("Products GST");
+
+          val = parseFloat(
+            parseFloat(
+              parseFloat(val) + parseFloat($("#total_gst").text())
+            ).toFixed(2)
+          );
 
           $("#total_pay").html(parseFloat(val).toFixed(2));
           $("#hidden_total_pay").val(parseFloat(val).toFixed(2)); //new for pos
@@ -962,17 +1100,16 @@ var PRIVACY = (function () {
           $("#cart_based_item").hide();
         }
 
-        $("#hidden_subtotal").val(val);
-        // $("#hidden_total").val(val);
-
-        // $("#hidden_discount_total").val(
-        //   parseFloat(res.total_savings).toFixed(2)
-        // );
+        // $("#hidden_subtotal").val(parseFloat(Math.round(val)).toFixed(2));
       },
     });
 
     $("#promocode").val("");
+    $("#applied").val("false");
     $("#promo_err").html("");
+    $("#hidden_subtotal").val(
+      parseFloat(parseFloat($("#subtotal").html()).toFixed(2)).toFixed(2)
+    );
   }
 
   // Dipesh
@@ -995,21 +1132,54 @@ var PRIVACY = (function () {
       dataType: "json",
       success: function (response) {
         $("#promo_err").html(response.message);
-        let val = parseFloat($("#total_pay").html());
         if (response.success == "1") {
+          let per =
+            (parseFloat(response.data).toFixed(2) * 100) /
+            parseFloat(response.orderAmount).toFixed(2);
+
           if ($("#applied").val() === "false") {
+            showExtraGst();
+            setNewGSt(per);
+
+            let val = parseFloat(
+              parseFloat(parseFloat(total_price).toFixed(2)) +
+                parseFloat(parseFloat($("#total_gst").text()).toFixed(2))
+            ).toFixed(2);
+
             $("#total_pay").html(
-              parseFloat(val - parseFloat(response.data)).toFixed(2)
+              parseFloat(
+                val - parseFloat(parseFloat(response.data).toFixed(2))
+              ).toFixed(2)
             );
+
             $("#hidden_total_pay").val(
-              parseFloat(val - parseFloat(response.data)).toFixed(2)
+              parseFloat(
+                val - parseFloat(parseFloat(response.data).toFixed(2))
+              ).toFixed(2)
             );
             $("#applied").val("true");
           } else {
             $("#promo_err").html("Promocode already applied!");
+
+            showExtraGst(true);
+            setNewGSt(per);
           }
 
-          $("#promocode_discount").html(parseFloat(response.data).toFixed(2));
+          //
+
+          $("#promocode_discount").html(
+            parseFloat(parseFloat(response.data.toFixed(2))).toFixed(2)
+          );
+          // $("#discount_amt").val(
+          //   parseFloat(parseFloat(response.data.toFixed(2))).toFixed(2)
+          // );
+
+          // $("#discount").val(parseFloat(per).toFixed(2));
+
+          isFloat(per)
+            ? $("#promocode_per").html(parseFloat(per).toFixed(2))
+            : $("#promocode_per").html(parseInt(per));
+
           $("#promocode_discount_item").show();
 
           // // finalAmount = (orderAmount + parseFloat(shipping_charge) - parseFloat(response.data)).toFixed(2)
@@ -1028,10 +1198,19 @@ var PRIVACY = (function () {
           // $(".promocode-applied").show();
           // $("#applied_promo").val(promocode);
         } else {
+          hideExtraGst();
+
           $("#hidden_total_pay").val(
-            parseFloat(val - parseFloat(total_price)).toFixed(2)
+            parseFloat(
+              parseFloat(parseFloat(total_price).toFixed(2)) +
+                parseFloat(parseFloat($("#total_gst").text()).toFixed(2))
+            ).toFixed(2)
           );
-          $("#hidden_subtotal").val(total_price);
+
+          // $("#hidden_subtotal").val(Math.round(total_price));
+          // $("#discount").val(0);
+          // $("#discount_amt").val(0);
+
           // $("#applied_promo").val("");
           // $("#checkout_final").html(
           //   (
@@ -1045,6 +1224,9 @@ var PRIVACY = (function () {
         }
       },
     });
+    $("#hidden_subtotal").val(
+      parseFloat(parseFloat($("#subtotal").html()).toFixed(2)).toFixed(2)
+    );
   });
 
   // promocode
@@ -1098,6 +1280,7 @@ var PRIVACY = (function () {
 
     if (sub_total == 0) {
       $(".total-payment-wrap").addClass("hide");
+
       // $("#promocode_item").hide();
       document.getElementById("promocode_item").style.display = "none";
       // $("#promocode_item").addClass("hide");
@@ -1106,6 +1289,7 @@ var PRIVACY = (function () {
     } else {
       $(".total-payment-wrap").removeClass("hide");
       // $("#promocode_item").show();
+
       document.getElementById("promocode_item").style.display = "flex";
       // $("#promocode_item").removeClass("hide");
       $("#parked_sell").attr("disabled", false);
@@ -1136,9 +1320,56 @@ var PRIVACY = (function () {
     $(".sub_total").each(function () {
       sub_total += parseFloat($(this).text());
     });
-    var final_subtotal = sub_total.toFixed(2);
+
+    var final_subtotal = parseFloat(sub_total).toFixed(2);
 
     $("#subtotal").html(final_subtotal);
+
+    let isShow = $("#isShow").val();
+
+    $("#hidden_subtotal").val(
+      parseFloat(parseFloat($("#subtotal").html()).toFixed(2)).toFixed(2)
+    );
+
+    let total_gst = 0;
+    $(".this_price").each(function () {
+      let act = parseFloat(parseFloat($(this).data("actual_price")).toFixed(2));
+      let gst = parseFloat(parseFloat($(this).data("gst")).toFixed(2));
+      let disc = parseFloat(
+        parseFloat(
+          $(this).parent().parent().parent().parent().find(".disc").val()
+        ).toFixed(2)
+      );
+
+      let qnt = parseInt($(this).parent().find(".this_quantity").text());
+
+      let disc_price = parseFloat(
+        act - parseFloat(parseFloat((act * disc) / 100).toFixed(2))
+      );
+
+      total_gst +=
+        parseFloat(parseFloat((disc_price * gst) / 100).toFixed(2)) * qnt;
+    });
+
+    $("#park_gst_amt").val(parseFloat(total_gst).toFixed(2));
+
+    if (isShow !== "1") {
+      let gst = parseFloat($("#total_gst").text()).toFixed(2); //check
+
+      $("#subtotal").html(
+        parseFloat(
+          parseFloat(parseFloat(final_subtotal).toFixed(2)) -
+            parseFloat(parseFloat(gst).toFixed(2))
+        ).toFixed(2)
+      );
+      $("#hidden_subtotal").val(
+        parseFloat(parseFloat($("#subtotal").html()).toFixed(2)).toFixed(2)
+      );
+      return parseFloat(final_subtotal - gst).toFixed(2);
+    }
+
+    // $("#discount_amt").val(total_savings);
+
     // $("#total_pay").html(pay_amount.toFixed(2));
     return final_subtotal;
   }

@@ -96,7 +96,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name" class="margin_top_label">Quantity :<span class="required" aria-required="true"> * </span></label>
+                                        <label for="quantity" class="margin_top_label">Quantity :<span class="required" aria-required="true"> * </span></label>
                                         <input type="number" class="form-control margin_top_input" id="quantity" name="quantity" placeholder="Quantity" value="<?= (isset($result)) ? $result['quantity'] : ''; ?>" min="1">
                                     </div>
                                     <!-- Dipesh -->
@@ -107,6 +107,13 @@
                                     </div>
 
                                     <!-- end -->
+
+                                    <!-- Dipesh for Limited Stock -->
+                                    <div class="form-group">
+                                        <label for="limited_stock" class="margin_top_label">Limited Stock :<span class="required" aria-required="true"> * </span></label>
+                                        <input type="number" class="form-control margin_top_input" id="limited_stock" name="limited_stock" placeholder="Limited Stock" value="<?= (isset($result)) ? $result['limited_stock'] : ''; ?>" min="1">
+                                    </div>
+                                    <!-- End -->
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
@@ -290,6 +297,22 @@
             },
             discount_per: {
                 number: true
+            },
+            limited_stock: {
+                required: true,
+                number: true,
+            },
+            qr_code: {
+                required: false,
+                remote: {
+                    url: "<?php echo base_url() . 'product/get_unique_barcode' ?>",
+                    type: "post",
+                    data: {
+                        id: function() {
+                            return $("#id").val();
+                        }
+                    }
+                }
             }
         },
         messages: {
@@ -318,6 +341,13 @@
             discount_per: {
                 // required: "Please enter discount",
                 number: "Please enter only digits"
+            },
+            limited_stock: {
+                required: "Please enter limited stock",
+                number: "Please enter only digits"
+            },
+            qr_code: {
+                remote: "Barcode must be unique"
             }
         },
         invalidHandler: function(form) {

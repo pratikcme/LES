@@ -8,14 +8,23 @@ class Promocode_manage_model extends My_model{
 
 
     public function allData($id = ''){
+         
         if($id != ''){
-            $data['where']['id'] = $id;
+            $data['where']['p.id'] = $id;
         }
-        $data['table'] = TABLE_PROMOCODE;
-        $data['select'] = ['*'];
-        $data['where']['branch_id'] = $this->branch_id;
+        $data['table'] = TABLE_PROMOCODE.' as p';
+        $data['select'] = ['p.*','b.name as branch_name'];
+        $data['join'] = ['branch as b'=>['b.id = p.branch_id','LEFT']];
+        $data['where']['b.vendor_id'] = $this->vendor_id;
         $data['order'] = 'id desc';
-        return $this->selectRecords($data);        
+        return $this->selectFromJoin($data); 
+    }
+
+    public function getBranch(){
+        $data['table'] = 'branch';
+        $data['select'] = ['*'];
+        $data['where'] = ['vendor_id'=>$this->vendor_id,'status'=>'1'];
+        return  $this->selectRecords($data);
     }
 
  
@@ -23,9 +32,9 @@ class Promocode_manage_model extends My_model{
 
   ## Add Update ##
     public function addRecord($postData){
-
+   
         $insert = array(
-            'branch_id'=>$this->branch_id,
+            'branch_id'=>$postData['branch'],
             'name' => $postData['name'],
             'percentage' => $postData['percentage'],
             'max_use' => $postData['max_use'],
@@ -34,6 +43,7 @@ class Promocode_manage_model extends My_model{
             'notes' => $postData['notes'],
             'start_date' => date('Y-m-d',strtotime($postData['start_date'])),
             'end_date' => date('Y-m-d',strtotime($postData['end_date'])),
+            'status' => '1',
             'dt_created' => DATE_TIME,
             'dt_updated' => DATE_TIME
         );
@@ -42,6 +52,7 @@ class Promocode_manage_model extends My_model{
         
     
         $res = $this->insertRecord($data); 
+        // echo $this->db->last_query();exit;
         if($res){
             $jsone_response['status'] = 'success';
             $jsone_response['message'] = 'Data added success!!!';
@@ -56,6 +67,7 @@ class Promocode_manage_model extends My_model{
 
     public function updateRecord($postData){
          $update = array(
+            'branch_id'=>$postData['branch'],
             'name' => $postData['name'],
             'percentage' => $postData['percentage'],
             'max_use' => $postData['max_use'],
@@ -114,6 +126,34 @@ class Promocode_manage_model extends My_model{
         echo json_encode(['status'=>1]);
     }
         
+    }
+
+    public function promocode_change_status($id)
+    {
+
+        $id = $this->utility->decode($id);
+
+        $this->db->select('*');
+        $this->db->where('id', $id);
+        $this->db->where('status', '1');
+        $this->db->from('promocode');
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $data = array('status' => '0');
+            $this->db->where('id', $id);
+            $this->db->update('promocode', $data);
+        } else {
+            $data = array('status' => '1');
+            $this->db->where('id', $id);
+            $this->db->update('promocode', $data);
+        }
+
+        ob_get_clean();
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 1]);
+        exit;
     }
  
 }
