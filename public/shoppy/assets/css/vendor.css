@@ -58,6 +58,14 @@
     letter-spacing: 0.03em;
     color: var(--light-gray) !important;
     margin-bottom: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+.vendor-right {
+    width: 60%;
 }
 .contact-vendor .contact-content h6 a{
     color: var(--common-pera-color) !important;
