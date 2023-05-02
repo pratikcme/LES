@@ -119,14 +119,13 @@ var ADDRESS = function () {
                     data: { id: id },
                     dataType: "json",
                     success: function (output) {
-                        console.log(output);
                         $('.is_default').each(function () {
                             var add_id = $(this).attr('data-id');
                             if (add_id == output.result[0].id) {
                                 $(this).find('input').prop('checked', true);
                             }
                         })
-                        that.parent().parent().parent().remove();
+                        that.parent().parent().remove();
                         $('#RegisterForm')[0].reset();
                     }
                 })

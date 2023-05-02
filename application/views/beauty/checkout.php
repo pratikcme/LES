@@ -310,6 +310,7 @@ span.error {
                                                      autocomplete="off"></textarea>
                                              </div>
                                          </div>
+                                         <input type="hidden" name="redirect_url" value="<?= base_url() . 'checkout' ?>">
                                          <div class="save-btn">
                                              <button type="submit" id="addAddress" class="signin-btn-green">
                                                  <?= $this->lang->line('Save') ?> </button>
