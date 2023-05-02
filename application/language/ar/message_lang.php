@@ -53,6 +53,9 @@ $lang['Call Us'] = 'اتصل بنا';
 $lang['Shop infomation'] = 'معلومات المتجر';
 $lang['Product Listing'] = 'قائمة المنتجات';
 $lang['Reach Out To Us'] = 'تواصل معنا';
+$lang['Reach'] = 'يصل';
+$lang['Out To Us'] = 'في الخارج إلينا';
+$lang['Write Us'] = 'اكتب لنا';
 $lang['Explore More'] = 'استكشاف المزيد';
 $lang['Account'] = 'حساب';
 $lang['Details'] = 'تفاصيل';
@@ -106,7 +109,9 @@ $lang['new product'] = 'منتج جديد';
 
 $lang['get in touch'] = 'ابقى على تواصل';
 $lang['send'] = 'إرسال';
-
+$lang['Enter phone Number'] = 'أدخل رقم الهاتف';
+$lang['Enter Message'] = 'أدخل رسالة';
+$lang['Contact Info'] = 'معلومات الاتصال';
 // vendor/vendor page
 $lang['vendor'] = 'بائع';
 $lang['home'] = 'الصفحة الرئيسية';

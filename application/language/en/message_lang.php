@@ -52,6 +52,11 @@ $lang['Call Us'] = 'Call Us';
 $lang['Shop information'] = 'Shop information';
 $lang['Product Listing'] = 'Product Listing';
 $lang['Reach Out To Us'] = 'Reach Out To Us';
+$lang['Reach'] = 'Reach';
+$lang['Out To Us'] = 'Out To Us';
+$lang['Out To Us'] = 'Write Us';
+
+
 $lang['Explore More'] = 'Explore More';
 $lang['Account'] = 'Account';
 $lang['Details'] = 'Details';
@@ -265,10 +270,13 @@ $lang['Contact us'] = 'Contact us';
 $lang['Location'] = 'Location';
 $lang['Email'] = 'Email';
 $lang['Phone'] = 'Phone';
+$lang['Contact Info'] = 'Contact Info';
 
 //contact us palceholder
 $lang['First Name'] = 'First Name';
 $lang['Message'] = 'Message';
+$lang['Enter phone Number'] = 'Enter phone Number';
+$lang['Enter Message'] = 'Enter Message';
 
 // about us
 $lang['About us'] = 'About us';
