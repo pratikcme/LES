@@ -300,6 +300,7 @@ $lang['Price-High to Low'] = 'Price - High to Low';
 $lang['Price-Low to High'] = 'Price - Low to High';
 $lang['`%` off - High to Low'] = '`%` off - High to Low';
 $lang['`%` off - low to high'] = '`%` off - low to high';
+$lang['Discounts'] = 'Discounts';
 
 // Address place holder
 
