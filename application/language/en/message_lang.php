@@ -36,6 +36,8 @@ $lang['order placed successfully'] = 'order placed successfully';
 $lang['Latest'] = 'Latest';
 $lang['Products'] = 'Products';
 $lang['Shop By'] = 'Shop By';
+$lang['Top Categories Of The Week'] = 'Top Categories Of The Week';
+$lang['Exclusive'] = 'Exclusive';
 $lang['Top Featured'] = 'Top Featured';
 $lang['Comments'] = 'Comments';
 $lang['Write your review'] = 'Write your review';
@@ -278,6 +280,7 @@ $lang['Subtotal:'] = 'Subtotal:';
 $lang['view cart'] = 'view cart';
 $lang['Clear All'] = 'Clear All';
 $lang['No Notification'] = 'No Notification';
+$lang['My shopping cart'] = 'My shopping cart';
 
 // products filter
 $lang['Show More'] = 'Show More';
@@ -414,3 +417,5 @@ $lang['please_enter_only_digits'] = 'Please enter only digits';
 // Home //
 $lang['Best Sellers'] = 'Best Sellers';
 $lang['New Arrival'] = 'New Arrival';
+$lang['New'] = 'New';
+$lang['Arrivals'] = 'Arrival';

@@ -25,11 +25,11 @@
           <nav>
             <div class="left-content">
               <ul>
-                <li><a href="<?= base_url() . 'home' ?>">Home</a></li>
+                <li><a href="<?= base_url() . 'home' ?>"> <?= $this->lang->line('Home') ?></a></li>
                 <!--   -->
-                <li><a href="<?= base_url() . 'products' ?>">Shop</a></li>
-                <li><a href="<?= base_url() . 'about' ?>">About us</a></li>
-                <li><a href="<?= base_url() . 'contact' ?>">Contact us</a></li>
+                <li><a href="<?= base_url() . 'products' ?>"> <?= $this->lang->line('Shop') ?></a></li>
+                <li><a href="<?= base_url() . 'about' ?>"> <?= $this->lang->line('About us') ?></a></li>
+                <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact us') ?></a></li>
               </ul>
             </div>
 
@@ -68,7 +68,7 @@
 
           <div class="cart-dropdwon" id="updated_list">
             <div class="drop-cart-title">
-              <h3 class="cart-title">My shopping cart</h3>
+              <h3 class="cart-title"><?= $this->lang->line('My shopping cart') ?></h3>
               <a href="#" class="close-btn"><i class="fa-solid fa-xmark"></i></a>
             </div>
 
