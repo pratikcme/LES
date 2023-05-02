@@ -8,7 +8,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url() ?>/home"><?= $this->lang->line('home') ?></a></li>
-            <li class="breadcrumb-item active" aria-current="page">Forgot Password</li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('Forgot Password'); ?></li>
           </ol>
         </nav>
       </div>
@@ -32,11 +32,11 @@
 
           <!-- ---------signin-deails-wrappper----- -->
           <form class="login-deatils-wrapper signin-deatils-wrapper" id="ForgetForm" method="post" action="<?= base_url() . 'login/forget_password' ?>">
-            <h2 class="title">Forgot <span>password?</span></h2>
-            <p class="pera">No worries, we’well send you reset intructions.</p>
+            <h2 class="title"><?= $this->lang->line('Forgot'); ?> <span><?= $this->lang->line('Password?'); ?></span></h2>
+
 
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <label for="exampleInputEmail1" class="form-label"><?= $this->lang->line('Email'); ?></label>
               <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?= $this->lang->line('Enter Email*') ?>">
               <label for="email" class="error"><?= @form_error('email') ?></label>
             </div>
@@ -46,7 +46,7 @@
               <button type="submit" id="btnSubmit"><?= $this->lang->line('Reset Password') ?></button>
             </div>
 
-            <h3><span><i class="fa-solid fa-arrow-left"></i></span> Back to <a href="<?= base_url() ?>login"><?= $this->lang->line('Sign In') ?></a></h3>
+            <h3><span><i class="fa-solid fa-arrow-left"></i></span> <?= $this->lang->line('Back to'); ?> <a href="<?= base_url() ?>login"><?= $this->lang->line('Sign In') ?></a></h3>
           </form>
         </div>
       </div>

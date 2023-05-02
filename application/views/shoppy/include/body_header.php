@@ -239,7 +239,7 @@
                   </li>
                   <li>
                     <div class="user-data-wrapper">
-                      <a href="javascript:" id="logout"><span><i class="fa-solid fa-folder-plus"></i></span>Logout</a>
+                      <a href="javascript:" id="logout"><span><i class="fa-solid fa-folder-plus"></i></span><?= $this->lang->line('logout'); ?></a>
                     </div>
                   </li>
                 <?php } ?>
