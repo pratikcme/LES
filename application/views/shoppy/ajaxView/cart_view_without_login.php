@@ -1,5 +1,5 @@
 <div class="drop-cart-title">
-  <h3 class="cart-title">My shopping cart</h3>
+  <h3 class="cart-title"><?= $this->lang->line('My shopping cart') ?></h3>
   <a href="#" class="close-btn"><i class="fa-solid fa-xmark"></i></a>
 </div>
 

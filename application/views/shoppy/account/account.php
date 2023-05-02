@@ -9,7 +9,7 @@
                      <ol class="breadcrumb">
                          <li class="breadcrumb-item"><a href="<?= base_url() ?>home"><?= $this->lang->line('home') ?></a>
                          </li>
-                         <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My Account'); ?></li>
                      </ol>
                  </nav>
              </div>
@@ -42,7 +42,7 @@
                              <a class="nav-link dashboard-tabs certificates-active-img <?= ($action_name == 'my_address') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-4"><?= $this->lang->line('My address') ?></a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link dashboard-tabs certificates-active-img <?= ($action_name == 'change') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-7">Change Password</a>
+                             <a class="nav-link dashboard-tabs certificates-active-img <?= ($action_name == 'change') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-7"><?= $this->lang->line('Change Password') ?></a>
                          </li>
                          <li class="nav-item">
                              <a class="nav-link dashboard-tabs languge-active-img" id="logout" data-bs-toggle="pill" href="#tab-5"><?= $this->lang->line('logout') ?></a>
@@ -63,7 +63,7 @@
                      <div id="tab-1" class="container tab-pane fade active show">
                          <div class="col-xxl-12">
                              <div class="title text-center">
-                                 <h2>Account <span>Details</span></h2>
+                                 <h2><?= $this->lang->line('Account') ?> <span><?= $this->lang->line('Details') ?></span></h2>
                              </div>
                          </div>
                          <div class="myaccout-detail-tab">
@@ -82,33 +82,32 @@
                                  <div class="row">
                                      <div class="col-xxl-6 col-md-6">
                                          <div class="mb-3">
-                                             <label for="fname" class="form-label">First Name<span>*</span></label>
+                                             <label for="fname" class="form-label"><?= $this->lang->line('First Name') ?><span>*</span></label>
                                              <input type="text" class="form-control" name="fname" id="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('First Name*') ?>" value="<?= $userDetails[0]->fname ?>">
                                          </div>
                                      </div>
                                      <div class="col-xxl-6 col-md-6">
                                          <div class="mb-3">
-                                             <label for="lname" class="form-label">Last Name<span>*</span></label>
+                                             <label for="lname" class="form-label"><?= $this->lang->line('Last Name') ?><span>*</span></label>
                                              <input type="text" class="form-control" name="lname" placeholder="<?= $this->lang->line('Last Name*') ?>" value="<?= $userDetails[0]->lname ?>" id="lname" aria-describedby="lname">
                                          </div>
                                      </div>
                                      <div class="col-xxl-12">
                                          <div class="mb-3">
-                                             <label for="email" class="form-label">Email Address<span>*</span></label>
+                                             <label for="email" class="form-label"><?= $this->lang->line('Email Address') ?><span>*</span></label>
                                              <input type="email" class="form-control" id="email" name="email" placeholder="<?= $this->lang->line('Email*') ?>" value="<?= $userDetails[0]->email ?>" readonly aria-describedby="email">
                                          </div>
                                      </div>
                                      <div class="col-xxl-12">
                                          <div class="mb-3">
-                                             <label for="text" class="form-label">GST Number<span>*</span></label>
+                                             <label for="text" class="form-label"><?= $this->lang->line('Gst number'); ?><span>*</span></label>
                                              <input type="text" class="form-control" name="user_gst_number" placeholder="<?= $this->lang->line('Gst number') ?>" value="<?= $userDetails[0]->user_gst_number ?>" aria-describedby="text" placeholder="22AAAAA0000A1Z5">
 
                                          </div>
                                      </div>
                                      <div class="col-xxl-6 col-md-6">
                                          <div class="tab-select-box">
-                                             <label for="Country-code" class="form-label">Country
-                                                 Code<span>*</span></label>
+                                             <label for="Country-code" class="form-label"><?= $this->lang->line('Country Code') ?><span>*</span></label>
                                              <select class="form-select" name="country_code" id="country_code" aria-label="Country-code">
                                                  <?php foreach (GetDialcodelist() as $key => $value) { ?>
                                                      <option <?= ($key == $userDetails[0]->country_code) ? 'selected' : ''; ?> value="<?= $key; ?>"><?= $value; ?></option>
@@ -120,16 +119,15 @@
                                      <input type="hidden" id="exiting_country" value="<?= $userDetails[0]->country_code ?>">
                                      <div class="col-xxl-6 col-md-6">
                                          <div class="mb-3">
-                                             <label for="m-number" class="form-label">Mobile
-                                                 Number<span>*</span></label>
+                                             <label for="m-number" class="form-label"><?= $this->lang->line('Mobile Number') ?><span>*</span></label>
                                              <input type="tel" class="form-control phone" id="phone" name="phone" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile Number*') ?>" value="<?= $userDetails[0]->phone ?>">
                                          </div>
                                      </div>
 
                                      <div class="col-xxl-12 col-md-12 varification" style="display: none;">
                                          <div class="mb-3">
-                                             <label for="otp" class="form-label">Otp<span>*</span></label>
-                                             <input type="text" class="form-control" id="otp" name="otp" placeholder="<?= $this->lang->line('otp') ?>">
+                                             <label for="otp" class="form-label"><?= $this->lang->line('Otp') ?><span>*</span></label>
+                                             <input type="text" class="form-control" id="otp" name="otp" placeholder="<?= $this->lang->line('Otp') ?>">
                                          </div>
                                      </div>
                                      <div class="tab-save-btn">
@@ -144,20 +142,20 @@
                      <div id="tab-2" class="container tab-pane fade  <?= ($action_name == 'order') ? 'active show' : '' ?>">
                          <div class="col-xxl-12">
                              <div class="title text-center">
-                                 <h2>My <span>Orders</span></h2>
+                                 <h2><?= $this->lang->line('My'); ?> <span><?= $this->lang->line('Orders'); ?></span></h2>
                              </div>
                          </div>
 
                          <div class="sub-tabs container">
                              <ul class="nav nav-pills" role="tablist">
                                  <li class="nav-item">
-                                     <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1">Completed</a>
+                                     <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1"><?= $this->lang->line('Completed') ?></a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2">Process</a>
+                                     <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2"><?= $this->lang->line('Process'); ?></a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3">Cancel</a>
+                                     <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3"><?= $this->lang->line('Cancel') ?></a>
                                  </li>
                              </ul>
                          </div>
@@ -175,19 +173,19 @@
                                                 date_default_timezone_set('Asia/Kolkata');
                                                 $date =  date('d M Y, h:i A', $value->dt_updated);
                                                 if ($value->order_status == '1') {
-                                                    $status = 'Processing';
+                                                    $status = $this->lang->line('Processing');
                                                 } elseif ($value->order_status == '2') {
-                                                    $status = 'Pending';
+                                                    $status = $this->lang->line('Pending');
                                                 } elseif ($value->order_status == '3') {
-                                                    $status = 'Ready';
+                                                    $status = $this->lang->line('Ready');
                                                 } elseif ($value->order_status == '4') {
-                                                    $status = 'Pickup';
+                                                    $status = $this->lang->line('Pickup');
                                                 } elseif ($value->order_status == '5') {
-                                                    $status = 'on the way';
+                                                    $status = $this->lang->line('on the way');
                                                 } elseif ($value->order_status == '8') {
-                                                    $status = 'Delivered';
+                                                    $status = $this->lang->line('Delivered');
                                                 } else {
-                                                    $status = 'Cancel';
+                                                    $status = $this->lang->line('Cancel');
                                                 }
                                             ?>
                                              <div class="main-accordion">
@@ -286,19 +284,19 @@
                                                 date_default_timezone_set('Asia/Kolkata');
                                                 $date =  date('d M Y, h:i A', $value->dt_updated);
                                                 if ($value->order_status == '1') {
-                                                    $status = 'Processing';
+                                                    $status = $this->lang->line('Processing');
                                                 } elseif ($value->order_status == '2') {
-                                                    $status = 'Pending';
+                                                    $status = $this->lang->line('Pending');
                                                 } elseif ($value->order_status == '3') {
-                                                    $status = 'Ready';
+                                                    $status = $this->lang->line('Ready');
                                                 } elseif ($value->order_status == '4') {
-                                                    $status = 'Pickup';
+                                                    $status = $this->lang->line('Pickup');
                                                 } elseif ($value->order_status == '5') {
-                                                    $status = 'on the way';
+                                                    $status = $this->lang->line('on the way');
                                                 } elseif ($value->order_status == '8') {
-                                                    $status = 'Delivered';
+                                                    $status = $this->lang->line('Delivered');
                                                 } else {
-                                                    $status = 'Cancel';
+                                                    $status = $this->lang->line('Cancel');
                                                 }
                                             ?>
                                              <div class="main-accordion">
@@ -405,19 +403,19 @@
                                                 date_default_timezone_set('Asia/Kolkata');
                                                 $date =  date('d M Y, h:i A', $value->dt_updated);
                                                 if ($value->order_status == '1') {
-                                                    $status = 'Processing';
+                                                    $status = $this->lang->line('Processing');
                                                 } elseif ($value->order_status == '2') {
-                                                    $status = 'Pending';
+                                                    $status = $this->lang->line('Pending');
                                                 } elseif ($value->order_status == '3') {
-                                                    $status = 'Ready';
+                                                    $status = $this->lang->line('Ready');
                                                 } elseif ($value->order_status == '4') {
-                                                    $status = 'Pickup';
+                                                    $status = $this->lang->line('Pickup');
                                                 } elseif ($value->order_status == '5') {
-                                                    $status = 'on the way';
+                                                    $status = $this->lang->line('on the way');
                                                 } elseif ($value->order_status == '8') {
-                                                    $status = 'Delivered';
+                                                    $status = $this->lang->line('Delivered');
                                                 } else {
-                                                    $status = 'Cancel';
+                                                    $status = $this->lang->line('Cancel');
                                                 }
                                             ?>
                                              <div class="main-accordion">
@@ -521,7 +519,7 @@
                  <div id="tab-3" class="container tab-pane fade <?= ($action_name == 'wishlist') ? 'active show' : '' ?>">
                      <div class="col-xxl-12">
                          <div class="title text-center">
-                             <h2>My <span>Wishlist</span></h2>
+                             <h2><?= $this->lang->line('My') ?><span><?= $this->lang->line('Wishlist'); ?></span></h2>
                          </div>
                      </div>
 
@@ -529,8 +527,8 @@
                          <table id="table-two-axis" class="two-axis">
                              <thead class="head-title">
                                  <tr>
-                                     <th colspan="2">product</th>
-                                     <th>price</th>
+                                     <th colspan="2"><?= $this->lang->line('product'); ?></th>
+                                     <th><?= $this->lang->line('price') ?></th>
                                      <th></th>
                                      <th></th>
                                  </tr>
@@ -572,7 +570,7 @@
                                                 }
                                                 ?>
                                              <div>
-                                                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart
+                                                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart') ?>
                                                  </a>
                                                  <div class="product-detail-quentity <?= $d_show ?>">
                                                      <div class="qty-container">
@@ -594,7 +592,7 @@
                  <div id="tab-4" class="container tab-pane fade <?= ($action_name == 'my_address') ? 'active show' : '' ?> ">
                      <div class="col-xxl-12">
                          <div class="title text-center">
-                             <h2>My <span>Address</span></h2>
+                             <h2><?= $this->lang->line('My') ?> <span><?= $this->lang->line('Address') ?></span></h2>
                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
                          </div>
                      </div>
@@ -607,7 +605,7 @@
 
                              <div class="address-wrapper">
                                  <div class="address-text">
-                                     <h3>Home</h3>
+                                     <h3><?= $this->lang->line('home'); ?></h3>
                                      <div class="address-icons">
                                          <div class="ship-check text-end ">
                                              <div class="form-check">
@@ -629,8 +627,7 @@
                      </div>
 
                      <div class="edit-address-btn text-center ">
-                         <button type="button" id="myBtn" class="cancel-btn" data-toggle="modal">Add
-                             Address</button>
+                         <button type="button" id="myBtn" class="cancel-btn" data-toggle="modal"><?= $this->lang->line('Add Address'); ?></button>
                      </div>
                  </div>
 
@@ -642,7 +639,7 @@
                  <!-- ---tab-7-- -->
                  <div id="tab-7" class="container tab-pane fade <?= ($action_name == 'change') ? 'active show' : '' ?>">
                      <div class="title text-center">
-                         <h2>Change <span>Password</span></h2>
+                         <h2><?= $this->lang->line('Change'); ?> <span><?= $this->lang->line('password') ?></span></h2>
                          <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
                      </div>
                      <div class="myaccout-detail-tab">
@@ -650,19 +647,19 @@
                              <div class="row">
                                  <div class="col-lg-12">
                                      <div class="mb-3">
-                                         <label for="text" class="form-label">Current Password</label>
+                                         <label for="text" class="form-label"><?= $this->lang->line('current password') ?></label>
                                          <input type="password" class="form-control" name="old_pass" placeholder="<?= $this->lang->line('current password') ?>" autocomplete="off">
                                      </div>
                                  </div>
                                  <div class="col-lg-6">
                                      <div class="mb-3">
-                                         <label for="text" class="form-label">New Password</label>
+                                         <label for="text" class="form-label"><?= $this->lang->line('new password') ?></label>
                                          <input type="password" class="form-control" name="new_pass" id="password_new" placeholder="<?= $this->lang->line('new password') ?>" autocomplete="off">
                                      </div>
                                  </div>
                                  <div class="col-lg-6">
                                      <div class="mb-3">
-                                         <label for="text" class="form-label">Confirm Password</label>
+                                         <label for="text" class="form-label"><?= $this->lang->line('Confirm password') ?></label>
                                          <input type="password" class="form-control" name="confirm_pass" placeholder="<?= $this->lang->line('Confirm password') ?>" autocomplete="off">
                                      </div>
                                  </div>
@@ -689,17 +686,17 @@
                  <form class="get-detials-account" method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" autocomplete="off">
                      <div class="row">
                          <div class="col-lg-12">
-                             <label for="full_name" class="form-label">Full Name<span>*</span></label>
+                             <label for="full_name" class="form-label"><?= $this->lang->line('Full Name') ?><span>*</span></label>
                              <input type="text" name="fname" class="form-control fname" id="full_name" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name') ?>">
                          </div>
 
                          <div class="col-lg-12">
-                             <label for="text" class="form-label">Mobile Number<span>*</span></label>
+                             <label for="text" class="form-label"><?= $this->lang->line('Mobile Number') ?><span>*</span></label>
                              <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile number') ?>">
                          </div>
 
                          <div class="col-lg-12">
-                             <label for="add" class="form-label">Location<span>*</span></label>
+                             <label for="add" class="form-label"><?= $this->lang->line('Location') ?><span>*</span></label>
                              <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location" aria-describedby="add" placeholder="<?= $this->lang->line('Enter Location') ?>">
                              <label for="departure_address" class="error" style="display: none;"></label>
                              <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
@@ -715,14 +712,14 @@
 
                          <div class="col-lg-6">
                              <div class="select-box">
-                                 <label for="city" class="form-label">Town / City<span>*</span></label>
+                                 <label for="city" class="form-label"><?= $this->lang->line('Town / City') ?><span>*</span></label>
                                  <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="<?= $this->lang->line('city') ?>" autocomplete="off">
                              </div>
                          </div>
 
                          <div class="col-lg-6">
                              <div class="select-box">
-                                 <label for="state" class="form-label">State<span>*</span></label>
+                                 <label for="state" class="form-label"><?= $this->lang->line('State') ?><span>*</span></label>
                                  <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="<?= $this->lang->line('State') ?>" autocomplete="off">
                              </div>
                          </div>
@@ -731,20 +728,20 @@
 
                          <div class="col-lg-6">
                              <div class="select-box">
-                                 <label for="country" class="form-label">Country<span>*</span></label>
+                                 <label for="country" class="form-label"><?= $this->lang->line('country') ?><span>*</span></label>
                                  <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="<?= $this->lang->line('country') ?>" autocomplete="off">
                              </div>
                          </div>
 
                          <div class="col-lg-6">
                              <div class="select-box">
-                                 <label for="pincode" class="form-label">Pincode<span>*</span></label>
+                                 <label for="pincode" class="form-label"><?= $this->lang->line('pincode') ?><span>*</span></label>
                                  <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?= $this->lang->line('pincode') ?>" autocomplete="off">
                              </div>
                          </div>
                          <div class="col-lg-12">
                              <div class="select-box">
-                                 <label for="address" class="form-label">Address<span>*</span></label>
+                                 <label for="address" class="form-label"><?= $this->lang->line('Address') ?><span>*</span></label>
                                  <textarea name="address" placeholder="<?= $this->lang->line('Enter Address') ?>" class="form-control pincode" id="address" autocomplete="off"></textarea>
                              </div>
                          </div>

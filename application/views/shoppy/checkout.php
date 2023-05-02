@@ -8,11 +8,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
-        <h1>Checkout</h1>
+        <h1><?= $this->lang->line('checkout') ?></h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+            <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('checkout') ?></li>
           </ol>
         </nav>
       </div>
@@ -112,18 +112,18 @@
                     </div>
                     <div class="row">
                       <div class="col-lg-12">
-                        <label for="fname" class="form-label">Full Name<span>*</span></label>
+                        <label for="fname" class="form-label"><?= $this->lang->line('Full Name') ?><span>*</span></label>
                         <input type="text" name="fname" class="form-control fname" id="fname" aria-describedby="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name') ?>">
                       </div>
 
 
                       <div class="col-lg-12">
-                        <label for="text" class="form-label">Mobile Number<span>*</span></label>
+                        <label for="text" class="form-label"><?= $this->lang->line('Mobile number') ?><span>*</span></label>
                         <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile number') ?>">
                       </div>
 
                       <div class="col-lg-12">
-                        <label for="add" class="form-label">Location<span>*</span></label>
+                        <label for="add" class="form-label"><?= $this->lang->line('Location') ?><span>*</span></label>
                         <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location" aria-describedby="add" placeholder="<?= $this->lang->line('Enter Location') ?>">
                         <label for="departure_address" class="error" style="display: none;"></label>
                         <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
@@ -136,32 +136,32 @@
 
                       <div class="col-lg-6">
                         <div class="select-box">
-                          <label for="city" class="form-label">Town / City<span>*</span></label>
+                          <label for="city" class="form-label"><?= $this->lang->line('Town / City') ?><span>*</span></label>
                           <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="<?= $this->lang->line('city') ?>" autocomplete="off">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="select-box">
-                          <label for="state" class="form-label">State<span>*</span></label>
+                          <label for="state" class="form-label"><?= $this->lang->line('State') ?><span>*</span></label>
                           <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="<?= $this->lang->line('State') ?>" autocomplete="off">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="select-box">
-                          <label for="state" class="form-label">Country<span>*</span></label>
+                          <label for="state" class="form-label"><?= $this->lang->line('country') ?><span>*</span></label>
                           <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="<?= $this->lang->line('country') ?>" autocomplete="off">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
-                        <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
+                        <label for="zipcode" class="form-label"><?= $this->lang->line('pincode'); ?><span>*</span></label>
                         <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?= $this->lang->line('pincode') ?>" autocomplete="off">
                       </div>
 
                       <div class="col-lg-6">
-                        <label for="address" class="form-label">Address <span>*</span>
+                        <label for="address" class="form-label"><?= $this->lang->line('Address'); ?> <span>*</span>
                         </label>
                         <textarea type="text" name="address" class="form-control pincode" id="address" placeholder="<?= $this->lang->line('Enter Address') ?>" autocomplete="off"></textarea>
                       </div>
@@ -177,7 +177,7 @@
             <?php } ?>
 
             <div class="main-accordion">
-              <div class="accordion-heading">Delivery Schedule</div>
+              <div class="accordion-heading"><?= $this->lang->line('Delivery Schedule'); ?></div>
               <div class="accordion-content  accordion-content-4">
 
                 <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
@@ -215,7 +215,7 @@
 
 
             <div class="main-accordion">
-              <div class="accordion-heading">Payment Option</div>
+              <div class="accordion-heading"><?= $this->lang->line('Payment Option') ?></div>
               <div class="accordion-content">
                 <form class="accordion-content-2 accordion-5">
                   <?php
@@ -253,7 +253,7 @@
         <div class="checkout-order-detils">
           <div class="mydiv-wrapper">
             <div class="mydiv-header">
-              <h3>Your Orders</h3>
+              <h3> <?= $this->lang->line('Your Orders') ?></h3>
             </div>
             <div class="order-wrapper-in">
               <?php
@@ -299,7 +299,7 @@
             <table>
               <thead class="head-title">
                 <tr>
-                  <th colspan="2">Cart totals</th>
+                  <th colspan="2"><?= $this->lang->line('Cart Totals') ?></th>
                 </tr>
               </thead>
               <tbody>
