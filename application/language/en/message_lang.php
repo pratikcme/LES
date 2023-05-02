@@ -273,6 +273,10 @@ $lang['Message'] = 'Message';
 // about us
 $lang['About us'] = 'About us';
 $lang['What Our Clients Say'] = 'What Our Clients Say';
+$lang['The Trust'] = 'The Trust';
+$lang['From Clients'] = 'From Clients';
+$lang['Why'] = 'Why';
+$lang['Choose Us?'] = 'Choose Us?';
 
 
 // card header 

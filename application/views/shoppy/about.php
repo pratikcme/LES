@@ -62,8 +62,7 @@
     <div class="row">
       <div class="col-xxl-12 col-xl-12 col-lg-12">
         <div class="title text-center">
-          <h2>Why <span>Choose Us?</span></h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h2><?= $this->lang->line('Why'); ?> <span><?= $this->lang->line('Choose Us?'); ?></span></h2>
         </div>
       </div>
       <div class="col-xxl-4 col-xxl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="0">
@@ -157,8 +156,9 @@
     <div class="row">
       <div class="col-xxl-12 col-xl-12 col-lg-12">
         <div class="title text-center">
-          <h2>The Trust <span>From Clients</span></h2>
-          <p>Do not miss the current offers until the end of month.</p>
+
+          <h2><?= $this->lang->line('The Trust'); ?> <span><?= $this->lang->line('From Clients'); ?></span></h2>
+
         </div>
       </div>
     </div>
@@ -177,7 +177,7 @@
             </div>
             <div class="client-name">
               <h4><?= $value->name ?></h4>
-              <p>Customer</p>
+              <p><?= $value->designation ?></p>
             </div>
             <div class="clients-con">
               <p><?= $value->content ?></p>

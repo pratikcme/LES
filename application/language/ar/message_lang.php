@@ -278,8 +278,10 @@ $lang['Message'] = 'رسالة';
 // about us
 $lang['About us'] = 'معلومات عنا';
 $lang['What Our Clients Say'] = 'ماذا يقول عملاؤنا';
-
-
+$lang['Why'] = 'لماذا';
+$lang['Choose Us?'] = 'اختر لنا؟';
+$lang['The Trust'] = 'الثقة';
+$lang['From Clients'] = 'من العملاء';
 // card header 
 $lang['Subtotal:'] = 'المجموع الفرعي:';
 $lang['view cart'] = 'عرض عربة التسوق';
