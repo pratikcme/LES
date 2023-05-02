@@ -11,7 +11,7 @@
                 <h1><?=$this->lang->line('My account')?></h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="./index.php"><?=$this->lang->line('home')?></a></li>
+                        <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line('home')?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('My account')?></li>
                     </ol>
                 </nav>
@@ -198,6 +198,7 @@
                                           <?php foreach ($value->orderDetails as $k => $v) { ?>
                                           
                                             <div class="my-order-details-content">
+                                            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($v->product_id) . '/' . $this->utility->safe_b64encode($v->product_weight_id) ?>">
                                               <div class="order-details-img">
                                                 <div class="accordion-img-wrapper">
                                                   <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$v->product_image?>" alt="">
@@ -208,7 +209,7 @@
                                                   <p>Qty: <span><?=$v->quantity?></span></p>
                                                 </div>
                                               </div>
-                                          
+                                            </a>
                                               <div class="accordion-price-text">
                                                 <h4><?=$this->siteCurrency .' '. numberFormat($v->discount_price)?></h4>
                                               </div>
@@ -292,6 +293,7 @@
                                             <?php foreach ($value->orderDetails as $k => $v) { ?>
 
                                               <div class="my-order-details-content">
+                                                <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($v->product_id) . '/' . $this->utility->safe_b64encode($v->product_weight_id) ?>"> 
                                                 <div class="order-details-img">
                                                   <div class="accordion-img-wrapper">
                                                     <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$v->product_image?>" alt="">
@@ -302,7 +304,7 @@
                                                     <p>Qty: <span><?=$v->quantity?></span></p>
                                                   </div>
                                                 </div>
-
+                                                </a>
                                                 <div class="accordion-price-text">
                                                   <h4><?=$this->siteCurrency .' '. numberFormat($v->discount_price)?></h4>
                                                 </div>
@@ -323,6 +325,9 @@
                                                   <h4><?=$this->lang->line('Promocode Discount')?></h4>
                                                   <h4><?=$this->lang->line('Final Total')?></h4>
                                                   <h4><?=($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP"?></h4>
+                                                  <?php if ($value->order_status <= '5') { ?>
+                                                  <a  data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>" class="cancel-btn lg-btn cncOrder"><?=$this->lang->line('Cancel')?></a>
+                                                  <?php } ?>
                                                 </div>
                                                 <div class="all-detalis-right">
                                                   <h3 class="notranslate"><?=$this->siteCurrency .' '. number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
@@ -339,6 +344,7 @@
                                                   <h3 class="notranslate"><?=$this->siteCurrency.' '.$value->promocode_discount?></h3>
                                                   <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
                                                   <h3><?=$value->isSelfPickup_details[0]->otp?></h3>
+                                                
                                                 </div>
                                               </div>
 
@@ -385,6 +391,7 @@
                                         <div class="accordion-content">
                                         <?php foreach ($value->orderDetails as $k => $v) { ?>
                                           <div class="my-order-details-content">
+                                          <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($v->product_id) . '/' . $this->utility->safe_b64encode($v->product_weight_id) ?>">
                                             <div class="order-details-img">
                                               <div class="accordion-img-wrapper">
                                                 <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$v->product_image?>" alt="">
@@ -395,7 +402,7 @@
                                                 <p>Qty: <span><?=$v->quantity?></span></p>
                                               </div>
                                             </div>
-
+                                          </a>
                                             <div class="accordion-price-text">
                                               <h4><?=$this->siteCurrency .' '. numberFormat($v->discount_price)?></h4>
                                             </div>
