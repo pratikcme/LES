@@ -198,7 +198,7 @@
 
           <div class="reset-btn">
               <button type="submit"  id="ClearCart" class="yes-btn">Yes</button>
-              <button type="submit" class="no-btn">No</button>
+              <button type="submit" class="no-btn" data-bs-dismiss="modal" aria-label="Close">No</button>
           </div>
       </div>
     </div>
