@@ -70,6 +70,7 @@ $lang['Delivery Method'] = 'طريقة التوصيل';
 $lang['Your Orders'] = 'طلباتك';
 $lang['Cart Totals'] = 'إجماليات سلة التسوق';
 $lang['Do you Want to Clear Cart'] = 'هل تريد مسح سلة التسوق؟';
+$lang['Or, log in with your socials'] = 'أو قم بتسجيل الدخول باستخدام مواقع التواصل الاجتماعي الخاصة بك';
 
 // end other template 
 
