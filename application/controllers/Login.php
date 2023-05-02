@@ -549,9 +549,8 @@ class Login extends User_Controller
 			} else {
 				$this->utility->setFlashMessage('danger', "Something Went Wrong");
 			}
-
-			$this->loadView($this->user_layout, $data);
 		}
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function verify_email()
