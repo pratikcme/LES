@@ -323,6 +323,9 @@
                                                   <h4><?=$this->lang->line('Promocode Discount')?></h4>
                                                   <h4><?=$this->lang->line('Final Total')?></h4>
                                                   <h4><?=($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP"?></h4>
+                                                  <?php if ($value->order_status <= '5') { ?>
+                                                  <a  data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>" class="cancel-btn lg-btn cncOrder"><?=$this->lang->line('Cancel')?></a>
+                                                  <?php } ?>
                                                 </div>
                                                 <div class="all-detalis-right">
                                                   <h3 class="notranslate"><?=$this->siteCurrency .' '. number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
@@ -339,6 +342,7 @@
                                                   <h3 class="notranslate"><?=$this->siteCurrency.' '.$value->promocode_discount?></h3>
                                                   <h3 class="notranslate"><?=$this->siteCurrency .' '.number_format((float)$order[$key]->sub_total + $order[$key]->total_saving,2,'.','')?></h3>
                                                   <h3><?=$value->isSelfPickup_details[0]->otp?></h3>
+                                                
                                                 </div>
                                               </div>
 
