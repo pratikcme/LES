@@ -76,6 +76,10 @@ $lang['Cart Totals'] = 'Cart Totals';
 $lang['Do you Want to Clear Cart'] = 'Do you Want to Clear Cart?';
 $lang['Or, log in with your socials'] = 'Or, log in with your socials';
 
+// Button //
+$lang['Login with Google'] = 'Login with Google';
+$lang['Login with Facebook'] = 'Login with Facebook';
+$lang['Don’t have an account?'] = 'Don’t have an account?';
 
 
 
@@ -159,13 +163,18 @@ $lang['Forgot Your Password'] = 'Forgot Your Password';
 $lang['continue with facebook'] = 'continue with facebook';
 $lang['continue with google'] = 'continue with google';
 $lang['Forgot password'] = 'Forgot password';
-
+$lang['Welcome'] = 'Welcome';
+$lang['back!'] = 'back!';
+$lang['Welcome back! Enter your credentails to acess your account.'] = 'Welcome back! Enter your credentails to acess your account.';
+$lang['Forgot Password?'] = 'Forgot Password?';
 // placeHolder
 $lang['Gst number'] = 'Gst number';
 
 $lang['Email*'] = 'Email*';
 $lang['password*'] = 'password*';
 $lang['password'] = 'password';
+$lang['Enter Email Address*'] = 'Enter Email Address*';
+$lang['Enter Password*'] = 'Enter Password*';
 
 // register
 $lang['Register'] = 'Register';

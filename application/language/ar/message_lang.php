@@ -77,6 +77,11 @@ $lang['Cart Totals'] = 'إجماليات سلة التسوق';
 $lang['Do you Want to Clear Cart'] = 'هل تريد مسح سلة التسوق؟';
 $lang['Or, log in with your socials'] = 'أو قم بتسجيل الدخول باستخدام مواقع التواصل الاجتماعي الخاصة بك';
 
+
+// Button //
+$lang['Login with Google'] = 'تسجيل الدخول عبر جوجل';
+$lang['Login with Facebook'] = 'تسجيل الدخول باستخدام الفيسبوك';
+$lang['Don’t have an account?'] = 'ليس لديك حساب؟';
 // end other template 
 
 
@@ -162,13 +167,17 @@ $lang['Forgot Your Password'] = 'نسيت كلمة السر';
 $lang['continue with facebook'] = 'تواصل مع الفيسبوك';
 $lang['continue with google'] = 'تواصل مع جوجل';
 $lang['Forgot password'] = 'هل نسيت كلمة السر';
-
+$lang['Welcome'] = 'مرحباً';
+$lang['back!'] = 'خلف!';
+$lang['Welcome back! Enter your credentails to acess your account.'] = 'مرحبًا بعودتك! أدخل بيانات الاعتماد الخاصة بك للوصول إلى حسابك.';
+$lang['Forgot Password?'] = 'هل نسيت كلمة السر؟';
 // placeHolder
 $lang['Gst number'] = 'رقم Gst';
 $lang['Email*'] = 'بريد إلكتروني*';
 $lang['password*'] = 'كلمة المرور*';
 $lang['password'] = 'كلمة المرور';
-
+$lang['Enter Email Address*'] = 'أدخل عنوان البريد الالكتروني*';
+$lang['Enter Password*'] = 'أدخل كلمة المرور *';
 // register
 $lang['Register'] = 'يسجل';
 $lang['Your Account'] = 'الحساب الخاص بك';

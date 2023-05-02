@@ -31,33 +31,31 @@
                 <div class="login-left-content">
                     <!-- ---------login-deails-wrappper----- -->
                     <form class="login-deatils-wrapper" id="LoginForm" action="<?= base_url() . 'login' ?>" method="post">
-                        <h2 class="title">Welcome <span>back!</span></h2>
-                        <p class="pera">Welcome back! Enter your credentails to acess your account.</p>
+                        <h2 class="title"><?= $this->lang->line('Welcome') ?> <span><?= $this->lang->line('back!') ?></span></h2>
+                        <p class="pera"><?= $this->lang->line('Welcome back! Enter your credentails to acess your account.') ?></p>
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Enter Email Address*">
+                            <label for="exampleInputEmail1" class="form-label"><?= $this->lang->line('Email') ?></label>
+                            <input type="email" name="email" class="form-control" placeholder="<?= $this->lang->line('Enter Email Address*') ?>">
                             <!-- <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email Addres"> -->
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password*" autocomplete="off">
+                            <label for="exampleInputPassword1" class="form-label"><?= $this->lang->line('Email') ?></label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="<?= $this->lang->line('Enter Password*') ?>" autocomplete="off">
                         </div>
 
-                        <a href="<?= base_url() . 'login/forget_password' ?>" class="forgot-password-text">Forgot
-                            Password?</a>
+                        <a href="<?= base_url() . 'login/forget_password' ?>" class="forgot-password-text"><?= $this->lang->line('Forgot Password?'); ?></a>
 
                         <div class="sign-in-btn">
                             <button type="submit" class="lg-btn"><?= $this->lang->line('Sign In') ?></button>
                             <!-- <input class="common-input-btn" type="submit" id="btnSubmit" value="<?= $this->lang->line('Sign In') ?>" /> -->
                         </div>
 
-                        <p>Or, log in with your socials</p>
+                        <p><?= $this->lang->line('Or, log in with your socials'); ?></p>
 
                         <div class="log-in-btn">
-                            <a href="<?= $googleUrl ?>" class="google-btn"><span><img src="<?= base_url() . 'public/shoppy/assets/img/' ?>my-account/google-btn.svg" alt="err"></span>Login with
-                                Google</a>
-                            <a href="<?= base_url() . 'login/fb_login' ?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span>Login with Facebook</a>
+                            <a href="<?= $googleUrl ?>" class="google-btn"><span><img src="<?= base_url() . 'public/shoppy/assets/img/' ?>my-account/google-btn.svg" alt="err"></span><?= $this->lang->line('Login with Google') ?></a>
+                            <a href="<?= base_url() . 'login/fb_login' ?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?= $this->lang->line('Login with Facebook') ?></a>
                         </div>
                         <h3>Don’t have an account? <a href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a></h3>
                     </form>
