@@ -37,6 +37,8 @@ $lang['order placed successfully'] = 'تم وضع الطلب بنجاح';
 $lang['Latest'] = 'أحدث';
 $lang['Products'] = 'منتجات';;
 $lang['Shop By'] = 'تسوق حسب';
+$lang['Top Categories Of The Week'] = 'أهم فئات الأسبوع';
+$lang['Exclusive'] = 'حصري';
 $lang['Top Featured'] = 'الأعلى المميز';
 $lang['Comments'] = 'تعليقات';
 $lang['Write your review'] = 'اكتب مراجعتك';
@@ -282,6 +284,7 @@ $lang['Subtotal:'] = 'المجموع الفرعي:';
 $lang['view cart'] = 'عرض عربة التسوق';
 $lang['Clear All'] = 'امسح الكل';
 $lang['No Notification'] = 'لا يوجد إشعارات';
+$lang['My shopping cart'] = 'سلة التسوق الخاصة بي';
 
 // products filter
 $lang['Show More'] = 'أظهر المزيد';
@@ -414,3 +417,5 @@ $lang['please_enter_only_digits'] = 'الرجاء إدخال أرقام فقط.'
 
 $lang['Best Sellers'] = 'أفضل البائعين';
 $lang['New Arrival'] = 'قادم جديد';
+$lang['New'] = 'جديد';
+$lang['Arrivals'] = 'الوصول';

@@ -85,8 +85,8 @@
     <div class="row">
       <div class="col-xxl-12">
         <div class="title text-center wow fadeIn">
-          <h2>Shop By <span>Categories</span></h2>
-          <p>Top Categories Of The Week</p>
+          <h2><?= $this->lang->line('Shop By') ?><span><?= $this->lang->line('Categories') ?></span></h2>
+          <p><?= $this->lang->line('Top Categories Of The Week') ?></p>
         </div>
       </div>
 
@@ -152,8 +152,7 @@
     <div class="row">
       <div class="col-xxl-12">
         <div class="title text-center wow fadeIn">
-          <h2> Exclusive <span>Products</span></h2>
-          <p>Do not miss the current offers until the end of month.</p>
+          <h2> <?= $this->lang->line('Exclusive') ?> <span><?= $this->lang->line('Products') ?></span></h2>
         </div>
       </div>
       <div>
@@ -189,7 +188,7 @@
                       </a>
 
                       <?php if ($value->varientQuantity != '0') : ?>
-                        <p>In Stock</p>
+                        <p><?= $this->lang->line('In Stock'); ?></p>
                       <?php endif ?>
 
                       <?php if ($value->discount_per > '0') { ?>
@@ -232,8 +231,7 @@
                       ?>
 
                       <div>
-                        <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                          Cart
+                        <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
                         </button>
                       </div>
 
@@ -270,7 +268,7 @@
                       </a>
 
                       <?php if ($value->varientQuantity != '0') : ?>
-                        <p>In Stock</p>
+                        <p><?= $this->lang->line('In Stock'); ?></p>
                       <?php endif ?>
 
                       <?php if ($value->discount_per > '0') { ?>
@@ -313,8 +311,7 @@
                       ?>
 
                       <div>
-                        <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                          Cart
+                        <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
                         </button>
                       </div>
 
@@ -368,7 +365,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                 <div class="sale-banner-inner text-center">
                   <span><?= $value->offer_percent ?> OFF</span>
                   <h2><?= $value->offer_title ?></h2>
-                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="lg-btn">shop now</a>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="lg-btn"><?= $this->lang->line('Shop Now'); ?></a>
                 </div>
               </div>
             </div>
@@ -384,7 +381,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                 <div class="offer-wrapper offer-wrapper-1" style="background:url(<?= $value->image ?>)">
                   <h4><?= $value->offer_title ?></h4>
                   <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
-                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="explor-btn">Explore More</a>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="explor-btn"><?= $this->lang->line('Explore More'); ?></a>
                 </div>
               </a>
             </div>
@@ -407,8 +404,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                 <div class="cloth-content">
                   <h5><?= $offer_list[0]->offer_title ?></h5>
                   <h3><?= $offer_list[0]->offer_percent ?>%<span>OFF</span></h3>
-                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>">Explore
-                    More</a>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
                 </div>
               </div>
               <div class="home-clothes women-cloth">
@@ -418,8 +414,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                 <div class="cloth-content">
                   <h5><?= $offer_list[1]->offer_title ?></h5>
                   <h3><?= $offer_list[1]->offer_percent ?>%<span>OFF</span></h3>
-                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>">Explore
-                    More</a>
+                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
                 </div>
               </div>
             </div>
@@ -434,8 +429,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
               <div class="cloth-content">
                 <h5><?= $offer_list[2]->offer_title ?></h5>
                 <h3><?= $offer_list[2]->offer_percent ?>%<span>OFF</span></h3>
-                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[2]->id) ?>">Explore
-                  More</a>
+                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[2]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
               </div>
             </div>
           </div>
@@ -453,8 +447,8 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
     <div class="row">
       <div class="col-xxl-12">
         <div class="title text-center wow fadeIn">
-          <h2>New<span>Arrivals</span></h2>
-          <p>Choose top trending items</p>
+          <h2><?= $this->lang->line('New'); ?><span><?= $this->lang->line('Arrivals'); ?></span></h2>
+
         </div>
       </div>
     </div>
@@ -471,7 +465,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
               </a>
             </div>
             <?php if ($value->varientQuantity != '0') : ?>
-              <p>In Stock</p>
+              <p><?= $this->lang->line('In Stock'); ?></p>
             <?php endif ?>
             <?php if ($value->discount_per > '0') { ?>
               <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
@@ -511,9 +505,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
               ?>
 
               <div>
-                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                  Cart
-                </button>
+                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?></button>
               </div>
               <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                 <div class="qty-container">
