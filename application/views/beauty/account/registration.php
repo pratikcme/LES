@@ -86,12 +86,13 @@
                                         <a href="<?=base_url().'privacy_policy'?>"><?=$this->lang->line('Privacy Policy')?>.</a>
                                     </label>
                                 </div>
+                                <label for="term_policy" class="error"></label>
 
                                 <div class="sign-in-btn tab-save-btn">
-                                    <input type="submit" value="submit">
+                                    <input type="submit" id="btnSubmit" value="submit">
                                 </div>
 
-                                <p>Or</p>
+                                <p><?=$this->lang->line('Or, log in with your socials')?></p>
 
                                 <div class="log-in-btn">
                                     <a href="<?=$googleUrl?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span><?=$this->lang->line('continue with google')?></a>

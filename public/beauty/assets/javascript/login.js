@@ -124,7 +124,15 @@ var LOGIN = function () {
         equalTo: language.password_does_not_match
       },
       term_policy: { required: language.Please_accept_Terms_of_conditions_and_Privacy_Policy }
-    }
+    },submitHandler: function(form) {
+      $('#btnSubmit').attr('disabled','disabled');
+      form.submit();
+  }
+
+
+
+
+
   });
   // }
 
