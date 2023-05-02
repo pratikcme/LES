@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
-        <h1>Shop Cart</h1>
+        <h1><?= $this->lang->line('Shop Cart') ?></h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
@@ -26,10 +26,10 @@
           <table id="table-two-axis" class="two-axis">
             <thead class="head-title">
               <tr>
-                <th colspan="2">product</th>
-                <th>price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
+                <th colspan="2"><?= $this->lang->line('Product') ?></th>
+                <th><?= $this->lang->line('price') ?></th>
+                <th><?= $this->lang->line('Quantity') ?></th>
+                <th><?= $this->lang->line('Subtotal') ?></th>
               </tr>
             </thead>
             <div>
@@ -158,7 +158,7 @@
 
           </table>
           <div>
-            <button type="button" class="lg-btn clear-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Clear Cart</button>
+            <button type="button" class="lg-btn clear-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><?= $this->lang->line('clear cart') ?></button>
           </div>
         </div>
       </div>
@@ -167,7 +167,7 @@
           <table>
             <thead class="head-title">
               <tr>
-                <th colspan="2">Cart totals</th>
+                <th colspan="2"><?= $this->lang->line('Cart Totals') ?></th>
               </tr>
             </thead>
             <tbody>

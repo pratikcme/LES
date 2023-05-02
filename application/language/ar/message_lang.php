@@ -61,9 +61,9 @@ $lang['Account'] = 'حساب';
 $lang['Details'] = 'تفاصيل';
 $lang['SHOP'] = 'محل';
 
-$lang['Completed'] = 'Completed';
-$lang['Process'] = 'Process';
-$lang['Cancel'] = 'Cancel';
+$lang['Completed'] = 'مكتمل';
+$lang['Process'] = 'عملية';
+$lang['Cancel'] = 'يلغي';
 
 $lang['Most Useful Review'] = 'المراجعة الأكثر فائدة';
 
@@ -90,6 +90,15 @@ $lang['Let’s create your account'] = 'دعونا ننشئ حسابك';
 
 // end other template 
 
+
+// Footer //
+$lang['Blog'] = 'مدونة';
+$lang['Terms of Service'] = 'شروط الخدمة';
+$lang['Order History'] = 'تاريخ الطلب';
+$lang['FAQ'] = 'التعليمات';
+$lang['From App Store or Google Play'] = 'من App Store أو Google Play';
+
+// Footer // 
 
 $lang['Cart Discount'] = 'سلة الخصم';
 $lang['Sign up'] = 'اشتراك';
@@ -181,6 +190,7 @@ $lang['Forgot'] = 'نسيت';
 $lang['Password?'] = 'كلمة المرور؟';
 // placeHolder
 $lang['Gst number'] = 'رقم Gst';
+
 $lang['Email*'] = 'بريد إلكتروني*';
 $lang['password*'] = 'كلمة المرور*';
 $lang['password'] = 'كلمة المرور';
@@ -254,12 +264,28 @@ $lang['Enter Promocode'] = 'أدخل الرمز الترويجي';
 $lang['You will save'] = 'سوف تحفظ';
 $lang['on this order'] = 'على هذا الطلب';
 $lang['Verify Mobile'] = 'تحقق من الهاتف المحمول';
+$lang['Delivery Schedule'] = 'جدول التسليم';
+$lang['Contact'] = 'اتصال';
+// my orders //
+
+$lang['Processing'] = 'يعالج';
+$lang['Pending'] = 'قيد الانتظار';
+$lang['Ready'] = 'مستعد';
+$lang['Pickup'] = 'يلتقط';
+$lang['on the way'] = 'علي الطريق';
+$lang['Delivered'] = 'يعالج';
+$lang['Order Number'] = 'رقم الأمر';
+$lang['Delivered to'] = 'سلمت ل';
+
 // my account
 $lang['All store'] = 'كل متجر';
 $lang['My account'] = 'حسابي';
+$lang['My'] = 'لي';
+$lang['Orders'] = 'طلبات';
 $lang['My order'] = 'طلبي';
 $lang['My orders'] = 'طلباتي';
 $lang['My Wishlist'] = 'قائمة امنياتي';
+$lang['Wishlist'] = 'قائمة الرغبات';
 $lang['My address'] = 'عنواني';
 $lang['Change Password'] = 'غير كلمة السر';
 $lang['logout'] = 'تسجيل خروج';
@@ -271,8 +297,16 @@ $lang['My address'] = 'عنواني';
 $lang['Default'] = 'تقصير';
 $lang['Address'] = 'تبوك';
 $lang['No Orders Available'] = 'لا توجد أوامر متاحة';
-
-
+$lang['Account'] = 'حساب';
+$lang['Details'] = 'تفاصيل';
+$lang['Email Address'] = 'عنوان البريد الإلكتروني';
+$lang['Country Code'] = 'الرقم الدولي';
+$lang['Otp'] = 'Otp';
+$lang['product'] = 'منتج';
+$lang['price'] = 'سعر';
+$lang['Add Address'] = 'اضف عنوان';
+$lang['Town / City'] = 'البلدة / المدينة';
+$lang['Change'] = 'يتغير';
 //order 
 
 $lang['Details'] = 'تفاصيل';
@@ -306,6 +340,7 @@ $lang['The Trust'] = 'الثقة';
 $lang['From Clients'] = 'من العملاء';
 // card header 
 $lang['Subtotal:'] = 'المجموع الفرعي:';
+$lang['Subtotal'] = 'المجموع الفرعي';
 $lang['view cart'] = 'عرض عربة التسوق';
 $lang['Clear All'] = 'امسح الكل';
 $lang['No Notification'] = 'لا يوجد إشعارات';

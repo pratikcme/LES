@@ -86,8 +86,7 @@ $lang['Don’t have an account?'] = 'Don’t have an account?';
 // Register form // 
 
 $lang['Let’s create your account'] = 'Let’s create your account';
-$lang['Let’s create your account'] = 'Let’s create your account';
-$lang['Let’s create your account'] = 'Let’s create your account';
+
 
 // end other template 
 
@@ -108,6 +107,14 @@ $lang['Useful Links'] = 'Useful Links';
 $lang['Download App'] = 'Download App';
 $lang['Payment Method'] = 'Payment Method';
 
+// Footer //
+$lang['Blog'] = 'Blog';
+$lang['Terms of Service'] = 'Terms of Service';
+$lang['Order History'] = 'Order History';
+$lang['FAQ'] = 'FAQ';
+$lang['From App Store or Google Play'] = 'From App Store or Google Play';
+
+// Footer // 
 $lang['See All'] = 'See All';
 $lang['Shop Now'] = 'Shop Now';
 $lang['Search product..'] = 'Search product..';
@@ -250,26 +257,52 @@ $lang['You will save'] = 'You will save';
 $lang['on this order'] = 'on this order';
 
 $lang['Verify Mobile'] = 'Verify Mobile';
+$lang['Delivery Schedule'] = 'Delivery Schedule';
+$lang['Contact'] = 'Contact';
+
+// my orders //
+
+$lang['Processing'] = 'Processing';
+$lang['Pending'] = 'Pending';
+$lang['Ready'] = 'Ready';
+$lang['Pickup'] = 'Pickup';
+$lang['on the way'] = 'on the way';
+$lang['Delivered'] = 'Processing';
+$lang['Order Number'] = 'Order Number';
+$lang['Delivered to'] = 'Delivered to';
 
 
 // my account
 $lang['All store'] = 'All store';
 $lang['My account'] = 'My account';
 $lang['My order'] = 'My order';
+$lang['My'] = 'My';
+$lang['Orders'] = 'Orders';
 $lang['My orders'] = 'My orders';
 $lang['My Wishlist'] = 'My Wishlist';
+$lang['Wishlist'] = 'Wishlist';
 $lang['My address'] = 'My Address';
 $lang['Change Password'] = 'Change Password';
+$lang['Change'] = 'Change';
+
 $lang['logout'] = 'logout';
 $lang['Delete Account'] = 'Delete Account';
 $lang['Account Details'] = 'Account Details';
+$lang['Account'] = 'Account';
+$lang['Details'] = 'Details';
+$lang['Email Address'] = 'Email Address';
 $lang['Save'] = 'Save';
 $lang['Add New Address'] = 'Add New Address';
 $lang['My address'] = 'My Address';
 $lang['Default'] = 'Default';
 $lang['Address'] = 'Address';
 $lang['No Orders Available'] = 'No Orders Available';
-
+$lang['Country Code'] = 'Country Code';
+$lang['Otp'] = 'Otp';
+$lang['product'] = 'product';
+$lang['price'] = 'price';
+$lang['Add Address'] = 'Add Address';
+$lang['Town / City'] = 'Town / City';
 //order 
 $lang['Details'] = 'Details';
 $lang['Total Amount'] = 'Total Amount';
@@ -306,6 +339,8 @@ $lang['Choose Us?'] = 'Choose Us?';
 
 // card header 
 $lang['Subtotal:'] = 'Subtotal:';
+$lang['Subtotal'] = 'Subtotal';
+
 $lang['view cart'] = 'view cart';
 $lang['Clear All'] = 'Clear All';
 $lang['No Notification'] = 'No Notification';
