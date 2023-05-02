@@ -178,7 +178,7 @@ class Login extends User_Controller
 		}
 		$data['googleUrl'] = $GoogleUrl;
 		// print_r('1');die;
-		$this->loadView(USER_LAYOUT, $data);
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function loginFromlink($postData)
