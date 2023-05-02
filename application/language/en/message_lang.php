@@ -69,7 +69,7 @@ $lang['Delivery Method'] = 'Delivery Method';
 $lang['Your Orders'] = 'Your Orders';
 $lang['Cart Totals'] = 'Cart Totals';
 $lang['Do you Want to Clear Cart'] = 'Do you Want to Clear Cart?';
-
+$lang['Or, log in with your socials'] = 'Or, log in with your socials';
 
 
 
