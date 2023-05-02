@@ -82,6 +82,12 @@ $lang['Or, log in with your socials'] = 'أو قم بتسجيل الدخول ب�
 $lang['Login with Google'] = 'تسجيل الدخول عبر جوجل';
 $lang['Login with Facebook'] = 'تسجيل الدخول باستخدام الفيسبوك';
 $lang['Don’t have an account?'] = 'ليس لديك حساب؟';
+
+// Register // 
+
+$lang['Let’s create your account'] = 'دعونا ننشئ حسابك';
+
+
 // end other template 
 
 
@@ -109,7 +115,7 @@ $lang['Search product..'] = 'بحث عن منتج ..';
 $lang['Categories'] = 'فئات';
 $lang['new product'] = 'منتج جديد';
 
-
+$lang['Already have an account?'] = 'هل لديك حساب؟';
 //Contact us page
 
 $lang['get in touch'] = 'ابقى على تواصل';
@@ -171,6 +177,8 @@ $lang['Welcome'] = 'مرحباً';
 $lang['back!'] = 'خلف!';
 $lang['Welcome back! Enter your credentails to acess your account.'] = 'مرحبًا بعودتك! أدخل بيانات الاعتماد الخاصة بك للوصول إلى حسابك.';
 $lang['Forgot Password?'] = 'هل نسيت كلمة السر؟';
+$lang['Forgot'] = 'نسيت';
+$lang['Password?'] = 'كلمة المرور؟';
 // placeHolder
 $lang['Gst number'] = 'رقم Gst';
 $lang['Email*'] = 'بريد إلكتروني*';
@@ -195,14 +203,14 @@ $lang['Confirm password*'] = 'تأكيد كلمة المرور*';
 $lang['Enter Email*'] = 'أدخل البريد الإلكتروني *';
 
 /* login with mobile */
-$lang['First Name'] = 'First Name';
-$lang['Last Name'] = 'Last Name';
-$lang['Select country code'] = 'Select country code';
-$lang['Mobile Number'] = 'Mobile Number';
-$lang['Confirm password'] = 'Confirm password';
-$lang['Enter Email'] = 'Enter Email';
-$lang['Send Code'] = 'Send Code';
-$lang['Resend'] = 'Resend';
+$lang['First Name'] = 'الاسم الأول';
+$lang['Last Name'] = 'اسم العائلة';
+$lang['Select country code'] = 'حدد رمز الدولة';
+$lang['Mobile Number'] = 'رقم الهاتف المحمول';
+$lang['Confirm password'] = 'تأكيد كلمة المرور';
+$lang['Enter Email'] = 'أدخل البريد الإلكتروني';
+$lang['Send Code'] = 'أرسل الرمز';
+$lang['Resend'] = 'إعادة إرسال';
 
 // forget password
 $lang['forgotten'] = 'نسي';

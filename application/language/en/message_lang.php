@@ -55,6 +55,7 @@ $lang['Reach Out To Us'] = 'Reach Out To Us';
 $lang['Reach'] = 'Reach';
 $lang['Out To Us'] = 'Out To Us';
 $lang['Out To Us'] = 'Write Us';
+$lang['Already have an account?'] = 'Already have an account?';
 
 
 $lang['Explore More'] = 'Explore More';
@@ -82,6 +83,11 @@ $lang['Login with Facebook'] = 'Login with Facebook';
 $lang['Don’t have an account?'] = 'Don’t have an account?';
 
 
+// Register form // 
+
+$lang['Let’s create your account'] = 'Let’s create your account';
+$lang['Let’s create your account'] = 'Let’s create your account';
+$lang['Let’s create your account'] = 'Let’s create your account';
 
 // end other template 
 
@@ -166,7 +172,9 @@ $lang['Forgot password'] = 'Forgot password';
 $lang['Welcome'] = 'Welcome';
 $lang['back!'] = 'back!';
 $lang['Welcome back! Enter your credentails to acess your account.'] = 'Welcome back! Enter your credentails to acess your account.';
-$lang['Forgot Password?'] = 'Forgot Password?';
+$lang['Forgot'] = 'Forgot';
+$lang['Password?'] = 'Password?';
+
 // placeHolder
 $lang['Gst number'] = 'Gst number';
 
