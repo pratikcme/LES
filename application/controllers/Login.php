@@ -277,7 +277,7 @@ class Login extends User_Controller
 			$GoogleUrl = base_url() . 'register';
 		}
 		$data['googleUrl'] = $GoogleUrl;
-		$this->loadView(USER_LAYOUT, $data);
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function user_register()
