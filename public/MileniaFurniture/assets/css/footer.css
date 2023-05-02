@@ -1,0 +1,250 @@
+
+.subscribe{
+    position: relative;
+    z-index: 3;
+}
+.subscribe-wrap h3 {
+    color: var(--secondary-color);
+    font-family: var(--inter-bold);
+    margin-bottom: 10px;
+}
+
+.subscribe-wrap {
+    border-radius: 10px;
+    background: var(--subscribe-bg);
+    padding: 70px 80px 40px;
+}
+
+.subscribe-wrap form {
+    margin: 45px 0;
+}
+
+
+.subscribe-wrap form input {
+    padding: 15px 30px;
+    background: transparent;
+    font-size: 16px;
+    color: var(--text-color);
+    font-family: var(--inter-regular);
+    border: 1px solid var(--primary-color) !important;
+    transition: 0.5s;
+    outline: 0;
+}
+
+.subscribe-wrap form input::placeholder {
+    font-size: 16px !important;
+    color: var(--text-color) !important;
+    font-family: var(--inter-regular) !important;
+}
+
+.subscribe-wrap form input:focus {
+    background: transparent;
+    border-color: var(--secondary-color);
+}
+
+.copyright-text {
+    background: var(--copyright-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 35px;
+}
+
+footer {
+    /* background: url('../images/home/footer-bg.png') center center no-repeat; */
+    background-size: cover;
+    padding: 275px 0 0;
+    margin-top: -200px;
+    z-index: 2;
+    position: relative;
+}
+#footer-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+ #footer-bg path{
+    fill: var(--footer-bg) !important;
+}
+
+.social-icons {
+    display: flex;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+}
+
+.social-icons a img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.copyright-text p {
+    color: var(--secondary-color);
+}
+
+.copyright-text {
+    margin-top: 50px;
+}
+
+.footer-wrap h4 {
+    font-family: var(--inter-bold);
+}
+
+.footer-wrap li a {
+    text-transform: capitalize;
+    font-size: 16px;
+    color: var(--secondary-color);
+    font-family: var(--inter-regular);
+}
+
+.footer-wrap li {
+    margin-bottom: 20px;
+}
+
+.foot-payment-icons a img {
+    max-width: 35px;
+}
+
+.foot-payment-icons ul {
+    display: flex;
+}
+
+.foot-payment-icons ul li {
+    margin-right: 15px;
+}
+
+.store-wrap {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.store-wrap img {
+    max-width: 130px;
+}
+
+.store-wrap a {
+    margin-right: 15px;
+}
+
+.footer-logo img {
+    max-width: 135px;
+}
+
+.download-app-wrap {
+    margin: 18px 0 22px;
+}
+
+.download-app-wrap p {
+    color: var(--secondary-color);
+}
+
+.footer-wrap ul {
+    margin-top: 45px;
+}
+
+.footer-wrap p {
+    color: var(--secondary-color);
+}
+
+.footer-address-wrap {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.footer-address-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.footer-address-icon svg path {
+    stroke: var(--secondary-color);
+} 
+
+.footer-address-icon img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.footer-address-main-div {
+    margin-top: 45px;
+}
+
+.footer-address-wrap p {
+    flex-basis: 70%;
+}
+
+.footer-address-wrap p {
+    flex-basis: 80%;
+    margin-left: 15px;
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 992px) {
+    .footer-wrap ul {
+        margin-top: 20px;
+    } 
+
+    .footer-address-main-div {
+        margin-top: 20px;
+    }
+
+    .subscribe-wrap form input {
+        font-size: 14px;
+    }
+
+    .footer-wrap li a {
+        font-size: 14px;
+    }
+    .footer-wrap li {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width:575px){
+    footer .footer-bg{
+        display: none;
+    }
+
+    footer{
+        background: var(--footer-bg);
+        padding: 40px 0 0;
+        margin-top: 50px;
+    }
+
+    .lng-drp select, .branch-drp select {
+        background-size: 9px;
+        background-position-y: 15px;
+        font-size: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .subscribe-wrap form input {
+        font-size: 12px;
+    }
+
+    ::placeholder {
+        font-size: 12px;
+    }
+
+    .footer-address-wrap {
+        margin-bottom: 15px;
+    }
+}
+

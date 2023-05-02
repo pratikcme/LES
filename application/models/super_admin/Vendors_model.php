@@ -354,7 +354,7 @@ class Vendors_model extends My_model
 			'discount_per' => 0,
 			'discount_price' => 0,
 			'without_gst_price' => 100,
-			'gst' 		=> 0,
+
 			'status'	=> '1',
 			'dt_added'  => strtotime(DATE_TIME),
 			'dt_updated'  => strtotime(DATE_TIME),

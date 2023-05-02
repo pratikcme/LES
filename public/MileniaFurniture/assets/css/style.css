@@ -1,0 +1,17 @@
+@import url('./font.css');
+@import url('./common.css');
+@import url('./variable.css');
+@import url('./header.css');
+@import url('./home.css');
+@import url('./footer.css');
+@import url('./about.css');
+@import url('./contact.css');
+@import url('./login-page.css');
+@import url('./shop-cart.css');
+@import url('./checkout-page.css');
+@import url('./myaccount.css');
+@import url('./product.details.css');
+@import url('./product-list.css');
+@import url('./vendor.css');
+@import url('./privacy-policy.css');
+@import url('./rtl.css');

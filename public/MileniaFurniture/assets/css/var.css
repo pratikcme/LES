@@ -1,0 +1,123 @@
+:root{
+
+    /* fonts */
+
+    /*====== PublicSans-font ========*/
+    --PublicSans-Black:'PublicSans-Black';
+    --PublicSans-Bold:'PublicSans-Bold';
+    --PublicSans-SemiBold:'PublicSans-SemiBold';
+    --PublicSans-ExtraBold:'PublicSans-ExtraBold';
+    --PublicSans-Regular:'PublicSans-Regular';
+    --PublicSans-Medium:'PublicSans-Medium';
+    --PublicSans-Light:'PublicSans-Light';
+    
+    /*======== Damion-regular-font =======*/
+    --Damion-regular:'Damion, cursive ';
+
+    /*=== colors ==*/
+    --primary-color:#C41E49;
+    --secondry-color:#FFE9E4;  
+    --footer-bg:#294695;
+    --footer-extra-bg: rgba(196, 30, 73, 0.2);  
+    --white:#FFFFFF;
+
+    /*========== heading-text-color ==========*/
+    --heading-black:#294695;
+    
+    /*=========== paregraph-text-color ==========*/
+    --light-gray:#4D4C61;
+    --ofwhite-color:rgba(255, 255, 255, 0.7);
+
+    /*=========== nav-hover-color ==============*/
+    --nav-hover-color:#F5512B;
+
+
+    /*============ banner-color ===========*/
+    --first-bg-color: #FFE9E4;
+    --second-bg-color: rgba(196, 30, 73, 0.1);
+
+    /*============== card-color ============*/
+    --card-color:#3E8DC5;
+    --card-text-color:#031B61;
+
+    /*============== modern-card-color ==============*/
+    --modern-card-color:#A05500;
+
+    /*============== practical-card-color ==============*/
+    --practical-card-color:#035B3E;
+
+    /* border-color */
+    --border-color:#C5CCD4 ;
+
+    /* light-border-color */
+    --light-border-color: rgba(245, 81, 43, 0.4);
+
+    /* card-border */
+    --card-border:#E7DCDA;
+
+    /* ---shop-cart-page-colors--- */
+    --cart-thead-bg:rgba(196, 30, 73, 0.1);
+    --cart-thead-text:#030235;
+    --cart-td-text-1:#030235;
+    --cart-td-text-2:#414549;
+    --cart-td-text-3:#C41E49;
+    --cart-counter-border:#FFCEC2;
+    --cart-counter-bg:#fff;
+    --cart-icon:#C41E49;
+    --proceed-checkout-btn-bg:#C41E49;
+    --proceed-checkout-btn-text:#fff;
+
+
+        /* ----------------checkout-process-color----- */
+    --accordian-head-bg:rgba(196, 30, 73, 0.1);
+    --accordian-bg:#fff;
+    --accordian-border:#C41E49;
+    --accordian-head-text:#0F053F;
+    --accordian-icon:#F92672;
+    --accordian-content-text-1:#0F053F;
+    --accordian-content-text-2:#555261;
+    --accordian-star:#FF1D1D;
+
+
+    /* -------modal-popup-color---- */
+    --modal-bg:rgba(17, 64, 90, 0.9);
+    --modal-text-1:#294695;
+    --modal-text-2:#030235;
+    --modal-text-3:#4D4C61;
+    --continue-btn-bg:#C41E49;
+    --continue-btn-text:#fff;
+    --close-btn:#C41E49;
+
+
+        /* ------myaccount-css--- */
+    --myaccoutn-tab-bg:linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%);;
+    --myaccoutn-tab-border:rgba(196, 30, 73, 0.1);
+    --myaccoutn-tab-text:#4D4C61;
+    --myaccoutn-tab-active-bg:#F5512B;
+    --myaccoutn-tab-active-border:#C41E49;
+    --myaccoutn-tab-label-text:#030235;
+    --myaccoutn-tab-input-bg:#FFFFFF;
+    --myaccoutn-tab-input-border:#C41E49;
+     
+    --category-header:rgba(196, 30, 73, 0.1);
+
+    /*---------- pagination ----------*/
+    --page-border:#E7DCDA;
+    --next-page:#FDDCD5;
+    
+    --common-border: rgba(196, 30, 73, 0.2);
+    --supportive-color:#FFF0ED;
+
+    --banner-bg-extra: #F5512B;
+    --about-box-bg: #F5512B;
+
+
+    /* ----our-offer-color--- */
+   --offer-1-primary-text:#F92672;
+   --offer-1-secondary-text:#0F053F;
+   --offer-1-btn:#0F053F;
+   
+   --offer-2-primary-text:#7749BE;
+   --offer-2-secondary-text:#7C0580;
+   --offer-2-btn:#7749BE;
+}

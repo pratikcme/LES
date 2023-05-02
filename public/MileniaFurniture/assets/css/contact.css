@@ -1,0 +1,162 @@
+.contact-wrap {
+    display: flex;
+    margin-bottom: 35px;
+}
+
+.contact-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    padding: 14px;
+    background: var(--icon-bg);
+    margin-right: 25px;
+    position: relative;
+    top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon-wrap svg path {
+    stroke: var(--primary-color);
+}
+
+.contact-icon-wrap img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.contact-detail-text h6 {
+    font-size: 20px;
+    font-family: var(--inter-semibold);
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    margin-bottom: 9px;
+}
+
+.contact-detail-text p {
+    margin-bottom: 5;
+}
+
+.contact-detail-main-div {
+    margin-top: 65px;
+}
+
+.map {
+    width: 100%;
+    height: 600px;
+    box-shadow: 0px 3px 12px 5px rgba(91, 81, 79, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.contact-form label {
+    font-size: 18px;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    font-family: var(--inter-medium);
+    margin-bottom: 10px;
+}
+
+.contact-form .form-control {
+    background: #FFFFFF;
+    border: 1px solid #E3DBD3;
+    border-radius: 8px;
+    padding: 12px 20px;
+    color: var(--secondary-color);
+    font-size: 16px;
+}
+
+.contact-form .form-control::placeholder {
+    color: var(--text-color);
+    text-transform: capitalize;
+}
+
+.form-group {
+    margin-bottom: 35px;
+}
+
+.contact-detail-text a {
+    padding: 0 25px;
+    position: relative;
+}
+
+.contact-detail-text a:nth-child(2) {
+    padding-left: 0;
+}
+
+.contact-detail-text a::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--text-color);
+}
+
+.contact-detail-wrap p a{
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+.contact-detail-text a:last-child:after {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .map {
+        height: 350px !important;
+        max-width: 400px;
+        margin: 20px auto 0;
+    }
+
+    .contact-wrap {
+        margin-bottom: 20px;
+    }
+
+ 
+    .contact-form label {
+        font-size: 14px;
+    }
+
+    .contact-form .form-control {
+        padding: 9px 10px;
+    }
+    .contact-icon-wrap {
+        width: 44px !important;
+        height: 44px !important;
+        padding: 10px !important;
+    }
+
+    .form-group {
+        margin-bottom: 15px !important;
+    }
+
+    .contact-detail-text h6 {
+        margin-bottom: 2px !important;
+        font-size: 16px !important;
+    }
+
+}
+
+@media only screen and (max-width: 576px) {
+    .mobile-nav ul {
+        gap: 45px;
+    }
+}
+
+@media only screen and (max-width: 366px) {
+    .contact-detail-text a::after {
+        display: none;
+    }
+
+    .contact-detail-text a {
+        padding-left: 0;
+    }
+}

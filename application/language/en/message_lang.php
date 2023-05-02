@@ -115,6 +115,8 @@ $lang['FAQ'] = 'FAQ';
 $lang['From App Store or Google Play'] = 'From App Store or Google Play';
 
 // Footer // 
+
+
 $lang['See All'] = 'See All';
 $lang['Shop Now'] = 'Shop Now';
 $lang['Search product..'] = 'Search product..';
