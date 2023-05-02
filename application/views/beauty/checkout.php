@@ -396,7 +396,7 @@ span.error {
                                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt=""></a>
                                 </div>
                                 <div class="order-wrapper-text">
-                                    <h4><a href="./product-details.php"><?= $value->product_name ?></a></h4>
+                                    <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a></h4>
                                     <h5>Qty : <?=$value->quantity?></h5>
                                     <h3 class='notranslate'><?= $this->siteCurrency . number_format((float)$value->discount_price, '2', '.', '') ?></h3>
                                 </div>
