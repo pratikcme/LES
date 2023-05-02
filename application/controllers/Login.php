@@ -551,8 +551,6 @@ class Login extends User_Controller
 			}
 
 			$this->loadView($this->user_layout, $data);
-
-			$this->loadView(USER_LAYOUT, $data);
 		}
 	}
 
