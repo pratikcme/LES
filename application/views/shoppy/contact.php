@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col-xxl-12">
           <div class="title text-center">
-            <h2>Reach <span>Out To Us</span></h2>
+            <h2><?= $this->lang->line('Reach'); ?> <span><?= $this->lang->line('Out To Us'); ?></span></h2>
 
           </div>
         </div>
@@ -38,52 +38,53 @@
       <div class="contact-data">
 
         <form id="form" method="post" class="contact-form-wrap wow fadeInDown" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="0" action="<?= base_url() . 'contact' ?>">
-          <h3>Write Us</h3>
+          <h3><?= $this->lang->line('Write Us'); ?></h3>
           <div class="contact-form">
             <div class="input-form">
               <div>
-                <label for="">Full Name</label>
+                <label for=""><?= $this->lang->line('Full Name'); ?></label>
               </div>
               <div>
-                <input type="text" name="fname" class="form-control" id="fname" aria-describedby="fname" placeholder="Enter Full Name">
+                <input type="text" name="fname" class="form-control" id="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name'); ?>">
                 <label for="fname" class="error"><?= form_error('fname') ?></label>
               </div>
             </div>
             <div class="input-form">
               <div>
-                <label for="">Email</label>
+                <label for=""><?= $this->lang->line('Email'); ?></label>
               </div>
               <div>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?= $this->lang->line('Enter Email'); ?>">
                 <label for="email" class="error"><?= form_error('email') ?></label>
               </div>
             </div>
             <div class="input-form">
               <div>
-                <label for="">Phone</label>
+                <label for=""><?= $this->lang->line('Phone'); ?></label>
               </div>
               <div>
-                <input type="tel" name="mobile_no" class="form-control" id="phone-num" aria-describedby="phone-num" placeholder="Enter phone Number">
+                <input type="tel" name="mobile_no" class="form-control" id="phone-num" aria-describedby="phone-num" placeholder="<?= $this->lang->line('Enter phone Number'); ?>">
                 <label for="mobile_no" class="error"><?= form_error('mobile_no') ?></label>
               </div>
             </div>
             <div class="input-form">
               <div>
-                <label for="">Message</label>
+                <label for=""><?= $this->lang->line('Message'); ?></label>
               </div>
               <div>
-                <textarea name="message" id="" cols="0" rows="0" placeholder="Enter Message"></textarea>
+                <textarea name="message" id="" cols="0" rows="0" placeholder="<?= $this->lang->line('Enter Message'); ?>"></textarea>
                 <label for="message" class="error"><?= form_error('message') ?></label>
               </div>
             </div>
-            <div>
-              <button class="lg-btn" type="submit" name="submit" id="btnSubmit"><?= $this->lang->line('send') ?></button>
-            </div>
           </div>
+          <div>
+            <button class="lg-btn" type="submit" name="submit" id="btnSubmit"><?= $this->lang->line('send') ?></button>
+          </div>
+
         </form>
         <div class="contact-info wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
           <div class="contact-info-wrap">
-            <h3>Contact Info</h3>
+            <h3><?= $this->lang->line('Contact Info'); ?></h3>
             <div>
               <div class="d-flex align-items-center mb-50">
                 <div class="contact-icon">
@@ -155,6 +156,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 

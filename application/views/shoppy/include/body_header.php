@@ -25,7 +25,7 @@
           <nav>
             <div class="left-content">
               <ul>
-                <li><a href="<?= base_url() . 'home' ?>"> <?= $this->lang->line('Home') ?></a></li>
+                <li><a href="<?= base_url() . 'home' ?>"> <?= $this->lang->line('home') ?></a></li>
                 <!--   -->
                 <li><a href="<?= base_url() . 'products' ?>"> <?= $this->lang->line('Shop') ?></a></li>
                 <li><a href="<?= base_url() . 'about' ?>"> <?= $this->lang->line('About us') ?></a></li>
