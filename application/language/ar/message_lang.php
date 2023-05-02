@@ -305,6 +305,7 @@ $lang['Price-High to Low'] = 'السعر الاعلى الى الادنى';
 $lang['Price-Low to High'] = 'السعر من الارخص للاعلى';
 $lang['`%` off - High to Low'] = '٪ خصم - من الأعلى إلى الأقل';
 $lang['`%` off - low to high'] = '٪ خصم - من الأعلى إلى الأقل';
+$lang['Discounts'] = 'الخصومات';
 
 // Address place holder
 $lang['Full Name'] = 'الاسم الكامل';

@@ -88,16 +88,16 @@
 
         <div class="d-flex w-100 justify-content-end">
           <select class="form-select sorting" aria-label="Default select example">
-            <option value="All">All</option>
-            <option value="alphabetically">Alphabetical</option>
-            <option value="high_low">Price-High to Low</option>
-            <option value="low_high">Price-Low to High</option>
-            <option value="discount_high_low">`%` off - High to Low</option>
-            <option value="discount_low_high">`%` off - low to high</option>
+            <option value="All"><?= $this->lang->line('All'); ?></option>
+            <option value="alphabetically"><?= $this->lang->line('alphabetical'); ?></option>
+            <option value="high_low"><?= $this->lang->line('Price-High to Low'); ?></option>
+            <option value="low_high"><?= $this->lang->line('Price-Low to High'); ?></option>
+            <option value="discount_high_low"><?= $this->lang->line('`%` off - High to Low'); ?></option>
+            <option value="discount_low_high"><?= $this->lang->line('`%` off - low to high'); ?></option>
           </select>
 
           <!-- ---filter-icon--- -->
-          <a class="filter-icon filter-hide-btn lg-btn">FILTER<i class="fa fa-filter" aria-hidden="true"></i></a>
+          <a class="filter-icon filter-hide-btn lg-btn"><?= $this->lang->line('Filter'); ?><i class="fa fa-filter" aria-hidden="true"></i></a>
 
           <!-- ----mobile-filter-btn---- -->
           <a class="mobile-filter-btn"><i class="fa fa-filter" aria-hidden="true"></i></a>
@@ -113,11 +113,11 @@
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Price Range
+                          <?= $this->lang->line('price Range'); ?>
                         </button>
                       </h2>
                       <div class="slider-box">
-                        <label for="priceRange">Price Range:</label>
+                        <label for="priceRange"><?= $this->lang->line('price Range'); ?>:</label>
                         <input type="text" id="priceRange_mob" readonly>
                         <div id="price-range_mob" class="slider"></div>
                       </div>
@@ -127,7 +127,7 @@
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingFour">
                         <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                          Product Categories
+                          <?= $this->lang->line('Product Categories'); ?>
                         </button>
                       </h2>
                       <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
@@ -153,7 +153,7 @@
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingSix">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                          Brands
+                          <?= $this->lang->line('Brands'); ?>
                         </button>
                       </h2>
                       <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
@@ -177,7 +177,7 @@
                     <div class="accordion-item sidnev-dicount-part">
                       <h2 class="accordion-header" id="headingSeven">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                          Discounts
+                          <?= $this->lang->line('Discounts'); ?>
                         </button>
                       </h2>
                       <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
@@ -236,13 +236,13 @@
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Price Range
+                    <?= $this->lang->line('price Range'); ?>
                   </button>
                 </h2>
 
 
                 <div class="slider-box">
-                  <label for="priceRange">Price Range:</label>
+                  <label for="priceRange"> <?= $this->lang->line('price Range'); ?>:</label>
                   <input type="text" id="priceRange" readonly>
                   <div id="price-range" class="slider"></div>
                 </div>
@@ -253,7 +253,7 @@
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFour">
                   <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    Product Categories
+                    <?= $this->lang->line('Product Categories'); ?>
                   </button>
                 </h2>
                 <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
@@ -276,7 +276,7 @@
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingSix">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                    Brands
+                    <?= $this->lang->line('Brands'); ?>
                   </button>
                 </h2>
                 <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
@@ -301,7 +301,7 @@
                 <h2 class="accordion-header" id="headingSeven">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
 
-                    Discounts
+                    <?= $this->lang->line('Discounts'); ?>
                   </button>
                 </h2>
                 <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">

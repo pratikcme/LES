@@ -13,7 +13,7 @@
             </div>
 
             <?php if ($value->quantity != '0') : ?>
-                <p>In Stock</p>
+                <p> <?= $this->lang->line('In Stock'); ?></p>
             <?php endif ?>
             <?php if ($value->discount_per > '0') { ?>
                 <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
@@ -42,8 +42,7 @@
                 <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
             </div>
             <div>
-                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                    Cart
+                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart'); ?>
                 </button>
             </div>
             <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
