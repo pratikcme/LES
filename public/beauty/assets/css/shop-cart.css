@@ -12,7 +12,8 @@
     background: var(--commn-white);
     overflow: hidden;
     padding: 11px;
-    height: 500px;
+    max-height: 500px;
+    min-height: 100px;
     overflow-y: scroll;
 }
 table{
@@ -103,6 +104,19 @@ table th{
     color: var(--cart-thead-text);
 
 }
+
+table tr{
+    border-bottom: 1px solid var(--cart-counter-border);
+}
+
+table tr:last-child{
+    border-bottom: none;
+}
+
+thead tr{
+    border-bottom: none;
+}
+
 table th:nth-child(1) {
     padding-left: 40px;
 
@@ -115,9 +129,9 @@ table th:nth-child(4){
 }
 table td {
     padding-left: 55px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--cart-counter-border);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* border-bottom: 1px solid var(--cart-counter-border); */
 }
 table td:nth-child(1){
     padding-left: 30px;
