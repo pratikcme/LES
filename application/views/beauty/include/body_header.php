@@ -48,7 +48,7 @@
                   <?php endforeach ?>
                 </select>
               </form>
-              </div>
+              <!-- </div> -->
               <?php } ?>
               <?php } ?>
             </div>
