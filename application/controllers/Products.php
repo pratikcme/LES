@@ -642,6 +642,10 @@ class Products extends User_Controller
 			// $hrml = "<a href=".$anchor.">".$value->name."</a>";
 			array_push($tutorialData, $h);
 		}
+		if(empty($res)){
+			$h = ['label' => "No Product Found", 'value' => "javascript:"];
+			array_push($tutorialData, $h);
+		}
 		// print_r($res);
 		echo json_encode($tutorialData);
 	}
