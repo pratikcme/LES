@@ -471,7 +471,11 @@ var CHECKOUT = (function () {
     $.ajax({
       url: base_url + "checkout/validate_promocode",
       type: "post",
-      data: { promocode: promocode },
+      data: {
+        promocode: promocode,
+        isShow: $("#isShow").val() == 0 ? "0" : "1", //Dk Added
+        gstAmt: parseFloat($("#checkout_gst").text()).toFixed(2), //Dk,
+      },
       dataType: "json",
       success: function (response) {
         $("#promo_err").html(response.message);
