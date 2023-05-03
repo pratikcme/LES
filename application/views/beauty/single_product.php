@@ -461,7 +461,7 @@
           <input type="hidden" name="varient_id" id="varient_id" value="<?= $this->uri->segment(4) ?>">
           <textarea name="comment"  cols="30" rows="10" class="w-100 ps-2 pt-2" placeholder="Your Comments" ></textarea>
           <div class="modal-footer">
-          <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" data-bs-dismiss="modal"><?= $this->lang->line('Submit') ?></button>
+          <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" ><?= $this->lang->line('Submit') ?></button>
           </div>
         </div>
       </form>
