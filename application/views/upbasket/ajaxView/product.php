@@ -19,7 +19,8 @@
                 <h3><a
                         href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->name ?></a>
                 </h3>
-                <h4><?php if ($value->quantity > $value->limited_stock) { ?>
+                <h4>
+                    <?php if ($value->quantity > $value->limited_stock) { ?>
                     <?= $this->lang->line('Available(Instock)') ?>
                     <?php } else { ?>
                     <?= $this->lang->line('Limited Stock') ?>

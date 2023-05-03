@@ -569,9 +569,9 @@ class Users_model extends My_model
         $this->session->unset_userdata('user_lname');
         $this->session->unset_userdata('user_email');
         $this->session->unset_userdata('user_phone');
-        $this->utility->setFlashMessage('danger', "User Account is permanant deleted");
+        $this->utility->setFlashMessage('danger', "User Account is permanent deleted");
         $response["success"] = 1;
-        $response["message"] = "User Account is permanant deleted";
+        $response["message"] = "User Account is permanent deleted";
         return $response;
         // return true;
         // redirect(base_url().'home');

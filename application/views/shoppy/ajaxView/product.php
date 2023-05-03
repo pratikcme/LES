@@ -13,7 +13,12 @@
              </div>
 
              <?php if ($value->quantity != '0') : ?>
-                 <p> <?= $this->lang->line('In Stock'); ?></p>
+                 <p><?php if ($value->quantity > $value->limited_stock) { ?>
+                         <?= $this->lang->line('Available(Instock)') ?>
+                     <?php } else { ?>
+                         <?= $this->lang->line('Limited Stock') ?>
+                     <?php } ?></p>
+
              <?php endif ?>
              <?php if ($value->discount_per > '0') { ?>
                  <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
@@ -25,8 +30,10 @@
 
 
                  <div class="product-discount notranslate">
-                     <h4> <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                     <p class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
+                     <h4> <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
+                     </h4>
+                     <p class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>">
+                         <?= $this->siteCurrency . ' ' . $value->price ?></p>
                  </div>
              </a>
              <div class="rating-starts">
@@ -42,7 +49,9 @@
                  <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
              </div>
              <div>
+
                  <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart'); ?>
+
                  </button>
              </div>
              <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">

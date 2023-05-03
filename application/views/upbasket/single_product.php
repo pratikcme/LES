@@ -65,7 +65,6 @@
                   </div>
               </div>
 
-
               <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                   <div class="product-content-part zoom">
                       <div class=""></div>
@@ -86,9 +85,10 @@
 
                       <!--  -->
                       <h6 id="is_aval_stock">
-                          <?= ($varientDetails[0]->quantity > $varientDetails[0]->) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                          <?= ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                       </h6>
                       <h3 class="notranslate" id="dynamic_price">
+
                           <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
                           <span>
                               <strike><?= ($varientDetails[0]->discount_per > 0) ? $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->price, 2, '.', '') : '' ?></strike>
@@ -277,10 +277,9 @@
 
                                   <?php if ($this->session->userdata('user_id') != '') { ?>
                                   <?php
-                                            if ((!empty($isVarientExist) || $countParticularUserReview >= 1)) {
-                                            ?><?php
-                                            } else {
-                                                ?>
+                                            // dd($countParticularUserReview);
+                                            if ((!empty($isVarientExist) && $countParticularUserReview == 0)) {
+                                            ?>
                                   <div class="col-xxl-4 col-xl-4 col-lg-4 " id="writeReviewSection">
                                       <div class="add_review_wrapper">
                                           <h3><?= $this->lang->line('Add a review') ?></h3>
@@ -500,9 +499,11 @@
                                           </form>
                                       </div>
                                   </div>
+
                                   <?php
                                             }
-                                        ?>
+
+                                            ?>
                               </div>
                               <?php } ?>
                               <!-- </div> -->

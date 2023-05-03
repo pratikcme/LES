@@ -74,11 +74,18 @@ class Category_model extends My_model
                     unlink($url_thumb);
 
                     $upload_path_thumb = './public/images/' . $this->folder . 'category_thumb';
+                    if (!file_exists($upload_path_thumb)) {
+                        mkdir($upload_path_thumb);
+                    }
 
                     // imagepalettetotruecolor($image);
                     $uploadResponse_thumb = upload_single_image($_FILES, 'image_edit', $upload_path_thumb);
 
+
                     $upload_path = "./public/images/" . $this->folder . "category";
+                    if (!file_exists($upload_path)) {
+                        mkdir($upload_path);
+                    }
 
                     $uploadResponse = upload_single_image($_FILES, 'image_edit', $upload_path);
 
@@ -123,7 +130,9 @@ class Category_model extends My_model
                     $image = '';
                 }
                 $upload_path = "./public/images/" . $this->folder . "category";
-
+                if (!file_exists($upload_path)) {
+                    mkdir($upload_path);
+                }
                 // imagepalettetotruecolor($image);
 
                 $uploadResponse = upload_single_image($_FILES, 'image', $upload_path);
