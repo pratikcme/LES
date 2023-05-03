@@ -178,54 +178,49 @@
                 $value->name = character_limiter($value->name, 30);
             ?>
 
-            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s"
+            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 wow fadeInDown" data-wow-duration="1s"
                 data-wow-delay="0" data-wow-offset="0">
                 <div class="techno-check">
                     <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-                    <div href="#" class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                    <div href="#" class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+
                         <div class="card-header">
                             <span
-                                class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?>
-                                % off</span>
+                                class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?>
+                                %
+                                off</span>
                             <h5><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                             </h5>
 
                             <a
                                 href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                                <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>"
+                                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                     alt="">
                             </a>
                         </div>
 
-                        <a
-                            href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                            <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
-                                alt="">
-                        </a>
-                    </div>
+                        <div class="card-body">
+                            <h3><a
+                                    href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
+                            </h3>
+                            <h6 class="rating-cnt notranslate">
+                                <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
+                                <span
+                                    class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . number_format((float)$value->price, 2, '.', '') ?></strike></span>
+                            </h6>
+                            <div class="rating-starts">
+                                <div class="rating stars3_5">
+                                    <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                                    <span class="star"></span>
+                                    <?php } ?>
+                                    <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                                    <span class="star star-active"></span>
+                                    <?php } ?>
 
-                    <div class="card-body">
-                        <h3><a
-                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
-                        </h3>
-                        <h6 class="rating-cnt notranslate">
-                            <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
-                            <span
-                                class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . number_format((float)$value->price, 2, '.', '') ?></strike></span>
-                        </h6>
-                        <div class="rating-starts">
-                            <div class="rating stars3_5">
-                                <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
-                                <span class="star"></span>
-                                <?php } ?>
-                                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
-                                <span class="star star-active"></span>
-                                <?php } ?>
-
+                                </div>
+                                <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
                             </div>
-                            <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
-                        </div>
-                        <?php
+                            <?php
                                 $d_none = '';
                                 $d_show = 'd-none';
                                 if (!empty($item_weight_id)) {
@@ -235,34 +230,34 @@
                                     }
                                 }
                                 ?>
-                        <div class="card-btn addcartbutton <?= $d_none ?>"
-                            data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                            data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
-                            <a href="javascript:" class="add-cart-btn"><span><i
-                                        class="fa-solid fa-cart-shopping"></i></span>
-                                <?= $this->lang->line('add to cart') ?></a>
-                        </div>
-                        <div class="product-detail-quentity add-cart-btn <?= $d_show ?>">
-                            <div class="qty-container">
-                                <button class="qty-btn-minus dec cart-qty-minus"
-                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
-                                        class="fa-solid fa-minus"></i></button>
-                                <input type="text" name="qty" class="input-qty qty"
-                                    value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
-                                    data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>"
-                                    readonly>
-                                <button class="qty-btn-plus inc cart-qty-plus"
-                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
-                                        class="fa-solid fa-plus"></i></button>
+                            <div class="card-btn addcartbutton <?= $d_none ?>"
+                                data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
+                                data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
+                                <a href="javascript:" class="add-cart-btn"><span><i
+                                            class="fa-solid fa-cart-shopping"></i></span>
+                                    <?= $this->lang->line('add to cart') ?></a>
+                            </div>
+                            <div class="product-detail-quentity add-cart-btn <?= $d_show ?>">
+                                <div class="qty-container">
+                                    <button class="qty-btn-minus dec cart-qty-minus"
+                                        data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                            class="fa-solid fa-minus"></i></button>
+                                    <input type="text" name="qty" class="input-qty qty"
+                                        value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
+                                        data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>"
+                                        readonly>
+                                    <button class="qty-btn-plus inc cart-qty-plus"
+                                        data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                            class="fa-solid fa-plus"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php } ?>
+            <?php } ?>
 
-    </div>
+        </div>
     </div>
 </section>
 
@@ -380,63 +375,50 @@
         <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0"
             data-wow-offset="0">
             <?php foreach ($new_arrival as $key => $value) { ?>
-            <<<<<<< HEAD <div class="techno-check">
+            <div class="techno-check">
                 <input class="techno_checkbox" type="checkbox" id="1" value="1" />
                 <div href="#" class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
-                    <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
-                        off</span>
+
                     <div class="card-header">
+                        <span
+                            class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?>
+                            %
+                            off</span>
                         <h5><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                         </h5>
                         <a
                             href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                             <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                 alt="">
-                            =======
-                            <div class="techno-check">
-                                <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-                                <div href="#"
-                                    class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
-                                    <div class="card-header">
-                                        <span
-                                            class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?>
-                                            % off</span>
-                                        <h5><?=($value->quantity >= 25 ) ? $this->lang->line('Available(Instock)') : ""?>
-                                        </h5>
-                                        <a
-                                            href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                                            <img src="<?=base_url().'public/images/'.$this->folder.'product_image/'.$value->image ?>"
-                                                alt="">
-                                            >>>>>>> 7bcf1113bd07d0297173158fbba3e2d5dd98bede
-                                        </a>
-                                    </div>
+                        </a>
+                    </div>
 
-                                    <div class="card-body">
-                                        <h3><a
-                                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
-                                        </h3>
-                                        <h6 class="rating-cnt notranslate">
-                                            <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
-                                            <span
-                                                class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . number_format((float)$value->price, 2, '.', '') ?></strike></span>
-                                        </h6>
-                                        <div class="rating-starts">
-                                            <div class="rating stars3_5">
-                                                <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
-                                                <span class="star"></span>
-                                                <?php } ?>
-                                                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
-                                                <span class="star star-active"></span>
-                                                <?php } ?>
-                                                <!-- <span class="star"></span>
+                    <div class="card-body">
+                        <h3><a
+                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
+                        </h3>
+                        <h6 class="rating-cnt notranslate">
+                            <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
+                            <span
+                                class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . number_format((float)$value->price, 2, '.', '') ?></strike></span>
+                        </h6>
+                        <div class="rating-starts">
+                            <div class="rating stars3_5">
+                                <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                                <span class="star"></span>
+                                <?php } ?>
+                                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                                <span class="star star-active"></span>
+                                <?php } ?>
+                                <!-- <span class="star"></span>
                               <span class="star"></span>
                               <span class="star"></span>
                               <span class="star star-active"></span>
                               <span class="star star-active-half"></span> -->
-                                            </div>
-                                            <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
-                                        </div>
-                                        <?php
+                            </div>
+                            <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
+                        </div>
+                        <?php
                             $d_none = '';
                             $d_show = 'd-none';
                             if (!empty($item_weight_id)) {
@@ -446,31 +428,31 @@
                                 }
                             }
                             ?>
-                                        <div class="card-btn addcartbutton <?= $d_none ?>"
-                                            data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                            data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
-                                            <a href="javascript:" class="add-cart-btn"><span><i
-                                                        class="fa-solid fa-cart-shopping"></i></span>
-                                                <?= $this->lang->line('add to cart') ?></a>
-                                        </div>
-                                        <div class="product-detail-quentity add-cart-btn <?= $d_show ?>">
-                                            <div class="qty-container">
-                                                <button class="qty-btn-minus dec cart-qty-minus"
-                                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
-                                                        class="fa-solid fa-minus"></i></button>
-                                                <input type="text" name="qty" class="input-qty qty"
-                                                    value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
-                                                    data-product_id="<?= $value->id ?>"
-                                                    data-weight_id="<?= $value->weight_id ?>" readonly>
-                                                <button class="qty-btn-plus inc cart-qty-plus"
-                                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
-                                                        class="fa-solid fa-plus"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="card-btn addcartbutton <?= $d_none ?>"
+                            data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
+                            data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
+                            <a href="javascript:" class="add-cart-btn"><span><i
+                                        class="fa-solid fa-cart-shopping"></i></span>
+                                <?= $this->lang->line('add to cart') ?></a>
+                        </div>
+                        <div class="product-detail-quentity add-cart-btn <?= $d_show ?>">
+                            <div class="qty-container">
+                                <button class="qty-btn-minus dec cart-qty-minus"
+                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                        class="fa-solid fa-minus"></i></button>
+                                <input type="text" name="qty" class="input-qty qty"
+                                    value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
+                                    data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>"
+                                    readonly>
+                                <button class="qty-btn-plus inc cart-qty-plus"
+                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                        class="fa-solid fa-plus"></i></button>
                             </div>
-                            <?php } ?>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
 </section>
