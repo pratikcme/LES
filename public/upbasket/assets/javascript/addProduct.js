@@ -281,6 +281,7 @@ var ADDPRODUCT = (function () {
             output.discount_per > "0"
               ? siteCurrency + " " + output.product_price
               : " ";
+
           $("#dynamic_price").html(
             siteCurrency +
               " " +
@@ -315,8 +316,9 @@ var ADDPRODUCT = (function () {
           $("#zoom_image").before(disNwislist);
           // $(disNwislist).insertBefore('#zoom_image');
           // $('#zoom_image').insertBefore(disNwislist);
-
-          if (output.varient_quantity > 25) {
+          // alert(output.varient_quantity);
+          // alert(output.limited_stock);
+          if (output.varient_quantity > output.limited_stock) {
             $("#is_aval_stock").html(stockMessage1);
           } else {
             $("#is_aval_stock").html(stockMessage);

@@ -41,6 +41,7 @@ class Login extends User_Controller
 
 	public function index()
 	{
+
 		$login_type = $this->this_model->checkLoginType();
 		if ($login_type == '1') {
 			redirect(base_url() . 'login/user_register');
@@ -128,6 +129,7 @@ class Login extends User_Controller
 					redirect(base_url() . 'login');
 				}
 			}
+
 			$common = $this->common_keys;
 			// dd($common);
 			$google_client_id = '';
@@ -154,6 +156,7 @@ class Login extends User_Controller
 			// print_r('1');die;
 			$this->loadView($this->user_layout, $data);
 		}
+
 		$common = $this->common_keys;
 		// dd($common);
 		$google_client_id = '';
@@ -162,6 +165,7 @@ class Login extends User_Controller
 			$google_client_id = $common[0]->google_client_id;
 			$google_secret_id = $common[0]->google_secret_id;
 		}
+
 		if (!isset($_SESSION['oauth']) && $google_client_id != '' && $google_secret_id != '') {
 
 			include_once APPPATH . "libraries/vendor/autoload.php";
@@ -173,9 +177,12 @@ class Login extends User_Controller
 			$google_client->addScope('profile');
 			$GoogleUrl = $google_client->createAuthUrl();
 			// print_r($GoogleUrl);die;
+
 		} else {
+
 			$GoogleUrl = base_url() . 'login';
 		}
+
 		$data['googleUrl'] = $GoogleUrl;
 		// print_r('1');die;
 		$this->loadView($this->user_layout, $data);

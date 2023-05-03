@@ -83,7 +83,7 @@ class Checkout_model extends My_model
 
         unset($data);
         $inRange = '1';
-        if(!empty($range_id)){
+        if (!empty($range_id)) {
             $data['select'] = ['delivery_charge'];
             $data['where'] = ['start_price <=' => $cart_price, 'end_price >=' => $cart_price, 'delivery_range_id' => $range_id[0]['id']];
             $data['table'] = 'delivery_charge_price_range';
@@ -96,12 +96,12 @@ class Checkout_model extends My_model
                 // $res = '0.00';
                 // return $res;
             }
-        }else{
+        } else {
             $delivery_charge = 0;
             $inRange = '0'; // not in range
         }
 
-        return ['delivery_charge'=>$delivery_charge,'isInRange'=> $inRange];
+        return ['delivery_charge' => $delivery_charge, 'isInRange' => $inRange];
 
         //backpup
         // $get_range = $this->selectRecords($data);
@@ -455,14 +455,28 @@ class Checkout_model extends My_model
         $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode, 'status' => '1'];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
+        $isShow = $postData['isShow'];
+        $gstAmt = $postData['gstAmt'];
+
         $getMycartSubtotal = getMycartSubtotal();
+
+
+        if ($isShow == 0) {
+            $getMycartSubtotal = numberFormat($getMycartSubtotal - numberFormat($gstAmt));
+        }
+
+        // create same function here
+        $res =  $this->calculateGstAndCart($promocode[0]->percentage);
+        // $myCartValue = $res['myCartValue'];
+        $total_gst = $res['total_gst'];
+
 
         $discountValue = 0;
         $shoppingDiscount = $this->checkShoppingBasedDiscount();
         if (!empty($shoppingDiscount)) {
-            if (getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount) {
+            if ($getMycartSubtotal  >= $shoppingDiscount[0]->cart_amount) { //Dk changed
                 $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                $discountValue = getMycartSubtotal() * $discountPercentage / 100;
+                $discountValue =  $getMycartSubtotal  * $discountPercentage / 100;
                 $discountValue = number_format((float)$discountValue, 2, '.', '');
             }
         }
@@ -533,12 +547,50 @@ class Checkout_model extends My_model
 
         $response["success"] = 1;
         $response["message"] = "Promocode applied";
+        $response["new_gst"] = $total_gst;
         $response["data"] = $calculate;
-        $response["orderAmount"] = $total_price;
+        $response["orderAmount"] = numberFormat($total_price + $total_gst);
         $response["withoutPromo"] = totalSaving() + $discountValue;
         return $response;
     }
 
+    // Dk added
+    public function calculateGstAndCart($discount = '')
+    {
+        $myCartValue = 0;
+        $total_gst = 0;
+        if ($this->session->userdata('user_id') == '') {
+            foreach ($_SESSION['My_cart'] as $key => $value) {
+                $myCartValue += $value['total'];
+
+                $gst = $this->api_model->getProductGst($value['product_id']);
+                $gst_amount = ($value['discount_price'] * $gst) / 100;
+                $total_gst += $gst_amount * $value['quantity'];
+            }
+        } else {
+            $this->load->model($this->myvalues->productFrontEnd['model'], 'product_model');
+            $my_cart = $this->product_model->getMyCart(); //return value of mycart and 
+
+            foreach ($my_cart as $key => $value) {
+
+                $myCartValue += numberFormat($value->discount_price) * $value->quantity;
+
+                $this->load->model('api_v3/api_model');
+                $gst = $this->api_model->getProductGst($value->product_id);
+
+                if ($discount != '') {
+                    $value->discount_price = numberFormat(numberFormat($value->discount_price) - ((numberFormat($value->discount_price) * $discount) / 100));
+                }
+
+                $gst_amount = (numberFormat($value->discount_price) * $gst) / 100;
+
+                $total_gst += numberFormat($gst_amount) * $value->quantity;
+            }
+        }
+        return ['myCartValue' => $myCartValue, 'total_gst' => $total_gst];
+    }
+
+    // 
     public function checkShoppingBasedDiscount()
     {
         $cartAmount = getMycartSubtotal();

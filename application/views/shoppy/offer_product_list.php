@@ -45,7 +45,9 @@
                             <?php  } ?>
 
                             <?php if ($value->available_quantity != '0') : ?>
-                                <p>In Stock</p>
+                                <p><?= ($value->available_quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                </p>
+
                             <?php endif ?>
 
                             <?php if ($value->new_percentage > '0') { ?>
