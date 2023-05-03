@@ -38,7 +38,7 @@
                 </select> -->
                 <div id="google_translate_element"></div>
               </form>
-            <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
+              <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
               <?php if($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1'){ ?>
               <form class="branch-drp" >
                 <select class="vendor_nav" name="Branch" id="Branch">
@@ -48,13 +48,14 @@
                   <?php endforeach ?>
                 </select>
               </form>
-            
-          <?php } ?>
-          <?php } ?>
-          </div>
+              <!-- </div> -->
+              <?php } ?>
+              <?php } ?>
+            </div>
+
 
           <div class="social-icons">
-          <a href="javascript:" class="search-toggle header-icon" id="search"><span><i class="fa-solid fa-magnifying-glass"></i></span></a>
+            <a href="javascript:" class="search-toggle header-icon" id="search"><span><i class="fa-solid fa-magnifying-glass"></i></span></a>
 
              <!-- -----search-btn---- -->
              <div class="search-block search-list-blcok">
