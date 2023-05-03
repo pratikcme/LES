@@ -307,7 +307,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Write Review</h3>
+        <h3 class="modal-title" id="exampleModalLabel"><?=$this->lang->line('Write Review')?></h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
             class="fa-regular fa-circle-xmark"></i></button>
       </div>
