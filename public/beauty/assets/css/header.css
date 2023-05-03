@@ -423,13 +423,15 @@ nav .left-content a:hover {
 /* language-dropdown */
 .lng-drp{
   margin-bottom: 0;
-  height: 50px;
+  display: flex;
+  align-items: center;
+  line-height: 0px !important;
 }
 
 .drp-grp {
   display: flex;
   gap: 10px;
-  /* margin-top: 20px; */
+  margin-right: 15px;
 }
 
 .lng-drp select,
@@ -440,7 +442,7 @@ nav .left-content a:hover {
   font-family: 'popins';
   padding: 10px 11px;
   border-radius: 5px;
-  width: 100px;
+  width: 130px;
   color: var(--nav-text-color) !important;
 }
 
@@ -451,7 +453,9 @@ nav .left-content a:hover {
 }
 
 .branch-drp {
-  margin-right: 20px;
+  margin-bottom: 0 !important;
+  display: flex;
+  align-items: center;
 }
 
 .lng-drp select {
@@ -520,7 +524,9 @@ nav .left-content a:hover {
     padding: 10px 0;
   }
 
-  #google_translate_element{
+  #google_translate_element,
+  .goog-te-gadget .goog-te-combo
+  {
     width: 60px !important;
   }
 }

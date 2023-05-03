@@ -1,5 +1,5 @@
   <!-- <div class="exta-foot-img"> -->
-  <svg id="Layer_1" data-name="Layer 1" xmlns="<?=$this->theme_base_url?>/assets/images/Bg.svg" viewBox="400 0 1100 600" fill="url(#g1)">
+  <svg id="Layer_1" data-name="Layer 1" xmlns="<?=$this->theme_base_url?>/assets/images/Bg.svg" viewBox="850 0 200 400" fill="url(#g1)">
       <defs>
         <linearGradient id='g1' gradientUnits='userSpaceOnUse' x1='-9.75%' y1='68.48%' x2='109.75%' y2='31.52%'>
         <stop offset='.301' stop-color='#FFE9F1'/>
