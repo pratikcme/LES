@@ -311,15 +311,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
             class="fa-regular fa-circle-xmark"></i></button>
       </div>
-      <form  id="reviewForm" class="modal-body" method="POST" action="<?= base_url() . 'products/productReview' ?>">
+      <form class="modal-body">
         <div class="rating-box">
-          <div class="rating flex-column">
+          <div class="mb-2">
             <div class="rating__stars">
-              <input id="rating-1" class="rating__input rating__input-1" type="radio" name="ratetIndex" value="1">
-              <input id="rating-2" class="rating__input rating__input-2" type="radio" name="ratetIndex" value="2">
-              <input id="rating-3" class="rating__input rating__input-3" type="radio" name="ratetIndex" value="3">
-              <input id="rating-4" class="rating__input rating__input-4" type="radio" name="ratetIndex" value="4">
-              <input id="rating-5" class="rating__input rating__input-5" type="radio" name="ratetIndex" value="5">
+              <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
+              <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
+              <input id="rating-3" class="rating__input rating__input-3" type="radio" name="rating" value="3">
+              <input id="rating-4" class="rating__input rating__input-4" type="radio" name="rating" value="4">
+              <input id="rating-5" class="rating__input rating__input-5" type="radio" name="rating" value="5">
               <label class="rating__label" for="rating-1">
                 <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
                   <g transform="translate(16,16)">
@@ -456,15 +456,11 @@
               <p class="rating__display" data-rating="4" hidden>Good</p>
               <p class="rating__display" data-rating="5" hidden>Excellent</p>
             </div>
-          </d>
-          <input type="hidden" name="product_id" id="product_id" value="<?= $this->uri->segment(3) ?>">
-          <input type="hidden" name="varient_id" id="varient_id" value="<?= $this->uri->segment(4) ?>">
-          <div class="review-text-box">
-            <textarea name="comment"  cols="30" rows="10" placeholder="Your Comments"></textarea>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" ><?= $this->lang->line('Submit') ?></button>
+          <textarea name="" id="" cols="30" rows="10" placeholder="Your Comments" class="w-100 ps-2 pt-2"></textarea>
+          <div class="modal-footer">
+          <button type="submit" class="btn cmn-btn lg-btn" data-bs-dismiss="modal">Submit</button>
+          </div>
         </div>
       </form>
     </div>
