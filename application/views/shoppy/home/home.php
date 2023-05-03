@@ -7,9 +7,8 @@
 
     ?>
         <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>"
-            class="<?= ($key == 0) ? 'active' : '' ?>"></button>
+            class="<?= ($key) ? 'active' : '' ?>"></button>
         <?php
-        //Dk Fixed Banner
     } ?>
     </div>
 
@@ -17,10 +16,11 @@
     <div class="carousel-inner">
         <?php
 
+
     foreach ($banner as $key => $value) { ?>
-        <section class="hero-sections carousel-item <?= ($key == 0) ? "active" : "" ?>"
+        <section class="hero-sections carousel-item <?= ($key) ? "active" : "" ?>"
             style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>');">
-            <svg class="left-bg" data-name="Layer 1"
+            <svg id="Layer_1" class="left-bg" data-name="Layer 1"
                 xmlns="<?= $this->theme_base_url . '/assets/img/home/banner-left-bg.svg' ?>"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150.6 125.24">
                 <defs>
@@ -40,7 +40,7 @@
                 <path class="left-bg" d="M148.83,106.7l-11.93,6.68A60,60,0,0,1,55.65,91L5,3.28"
                     transform="translate(-0.67 -0.78)" />
             </svg>
-            <svg class="right-bg" data-name="Layer 1"
+            <svg id="Layer_1" class="right-bg" data-name="Layer 1"
                 xmlns="<?= $this->theme_base_url . '/assets/img/home/banner-right-bg.svg' ?>"
                 xmlns:xlink="<?= $this->theme_base_url . '/assets/img/home/banner-right-bg.svg' ?>"
                 viewBox="0 0 353.33 207.47">
@@ -106,8 +106,8 @@
         <div class="row">
             <div class="col-xxl-12">
                 <div class="title text-center wow fadeIn">
-                    <h2><?= $this->lang->line('Shop By') ?><span><?= $this->lang->line('Categories') ?></span></h2>
-                    <p><?= $this->lang->line('Top Categories Of The Week') ?></p>
+                    <h2>Shop By <span>Categories</span></h2>
+                    <p>Top Categories Of The Week</p>
                 </div>
             </div>
 
@@ -176,7 +176,8 @@
         <div class="row">
             <div class="col-xxl-12">
                 <div class="title text-center wow fadeIn">
-                    <h2> <?= $this->lang->line('Exclusive') ?> <span><?= $this->lang->line('Products') ?></span></h2>
+                    <h2> Exclusive <span>Products</span></h2>
+                    <p>Do not miss the current offers until the end of month.</p>
                 </div>
             </div>
             <div>
@@ -220,8 +221,7 @@
                                         </a>
 
                                         <?php if ($value->varientQuantity != '0') : ?>
-                                        <p><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
-                                        </p>
+                                        <p>In Stock</p>
                                         <?php endif ?>
 
                                         <?php if ($value->discount_per > '0') { ?>
@@ -270,7 +270,8 @@
                                             <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>"
                                                 data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
                                                 data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
-                                                        class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
+                                                        class="fa-solid fa-cart-shopping"></i></span>Add to
+                                                Cart
                                             </button>
                                         </div>
 
@@ -290,69 +291,69 @@
                                                         class="fa-solid fa-plus"></i></button>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
 
 
 
-                                        <div class="tab-pane fade" id="New" role="tabpanel"
-                                            aria-labelledby="arrival-tab">
-                                            <div class="row">
-                                                <?php foreach ($new_arrival as $key => $value) : ?>
+                    <div class="tab-pane fade" id="New" role="tabpanel" aria-labelledby="arrival-tab">
+                        <div class="row">
+                            <?php foreach ($new_arrival as $key => $value) : ?>
 
-                                                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-4 wow fadeInDown"
-                                                    data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-4 wow fadeInDown"
+                                data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
 
-                                                    <div
-                                                        class="product-card  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
-                                                        <div class="product-img-wrap">
-                                                            <a
-                                                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                                                                <div class="product-im">
-                                                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
-                                                                        alt="">
-                                                                </div>
-                                                            </a>
+                                <div
+                                    class="product-card  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
+                                    <div class="product-img-wrap">
+                                        <a
+                                            href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                                            <div class="product-im">
+                                                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
+                                                    alt="">
+                                            </div>
+                                        </a>
 
-                                                            <?php if ($value->varientQuantity != '0') : ?>
-                                                            <p><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
-                                                            </p>
-                                                            <?php endif ?>
+                                        <?php if ($value->varientQuantity != '0') : ?>
+                                        <p>In Stock</p>
+                                        <?php endif ?>
 
-                                                            <?php if ($value->discount_per > '0') { ?>
-                                                            <span
-                                                                class="discnt"><?= $value->discount_per . ' % off' ?></span>
-                                                            <?php } ?>
-                                                        </div>
+                                        <?php if ($value->discount_per > '0') { ?>
+                                        <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
+                                        <?php } ?>
+                                    </div>
 
-                                                        <div class="product-content">
-                                                            <a
-                                                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                                                                <h5><?= $value->name ?></h5>
-                                                                <div class="product-discount notranslate">
-                                                                    <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?>
-                                                                    </h4>
-                                                                    <p
-                                                                        class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>">
-                                                                        <?= $this->siteCurrency . ' ' . $value->price ?>
-                                                                    </p>
-                                                                </div>
-                                                            </a>
-                                                            <div class="rating-starts">
-                                                                <div class="rating stars3_5">
+                                    <div class="product-content">
+                                        <a
+                                            href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                                            <h5><?= $value->name ?></h5>
+                                            <div class="product-discount notranslate">
+                                                <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?>
+                                                </h4>
+                                                <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>">
+                                                    <?= $this->siteCurrency . ' ' . $value->price ?></p>
+                                            </div>
+                                        </a>
+                                        <div class="rating-starts">
+                                            <div class="rating stars3_5">
 
-                                                                    <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
-                                                                    <span class="star"></span>
-                                                                    <?php } ?>
+                                                <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                                                <span class="star"></span>
+                                                <?php } ?>
 
-                                                                    <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
-                                                                    <span class="star star-active"></span>
-                                                                    <?php } ?>
+                                                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                                                <span class="star star-active"></span>
+                                                <?php } ?>
 
-                                                                </div>
-                                                                <div><span>(<?= $value->ratting['rating'] ?>)</span>
-                                                                </div>
-                                                            </div>
+                                            </div>
+                                            <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
+                                        </div>
 
-                                                            <?php
+                                        <?php
                       $d_none = '';
                       $d_show = 'd-none';
                       if (!empty($item_weight_id)) {
@@ -363,43 +364,45 @@
                       }
                       ?>
 
-                                                            <div>
-                                                                <button type="button"
-                                                                    class="add-cart-btn addcartbutton <?= $d_none ?>"
-                                                                    data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                                                    data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
-                                                                            class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
-                                                                </button>
-                                                            </div>
+                                        <div>
+                                            <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>"
+                                                data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
+                                                data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
+                                                        class="fa-solid fa-cart-shopping"></i></span>Add to
+                                                Cart
+                                            </button>
+                                        </div>
 
 
 
-                                                            <div
-                                                                class="product-detail-quentity add-cart-btns <?= $d_show ?>">
-                                                                <div class="qty-container">
-                                                                    <button class="qty-btn-minus dec cart-qty-minus"
-                                                                        data-product_weight_id="<?= $value->pw_id ?>"
-                                                                        type="button"><i
-                                                                            class="fa-solid fa-minus"></i></button>
-                                                                    <input type="text" name="qty"
-                                                                        value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
-                                                                        data-product_id="<?= $value->id ?>"
-                                                                        data-weight_id="<?= $value->weight_id ?>"
-                                                                        class="input-qty">
-                                                                    <button class="qty-btn-plus inc cart-qty-plus"
-                                                                        data-product_weight_id="<?= $value->pw_id ?>"
-                                                                        type="button"><i
-                                                                            class="fa-solid fa-plus"></i></button>
-                                                                </div>
-                                                            </div>
-
-
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus dec cart-qty-minus"
+                                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                                        class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty"
+                                                    value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
+                                                    data-product_id="<?= $value->id ?>"
+                                                    data-weight_id="<?= $value->weight_id ?>" class="input-qty">
+                                                <button class="qty-btn-plus inc cart-qty-plus"
+                                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                                        class="fa-solid fa-plus"></i></button>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
@@ -428,83 +431,85 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                         <span><?= $value->offer_percent ?> OFF</span>
                         <h2><?= $value->offer_title ?></h2>
                         <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>"
-                            class="lg-btn"><?= $this->lang->line('Shop Now'); ?></a>
+                            class="lg-btn">shop now</a>
                     </div>
                 </div>
-                <?php endforeach;
+            </div>
+            <?php endforeach;
         }
         if (count($offer_list) == 2 or count($offer_list) > 3) { ?>
 
 
-                <!--============== two-banner ===================-->
-                <?php foreach ($offer_list as $key => $value) : ?>
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
-                    <a
-                        href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
-                        <div class="offer-wrapper offer-wrapper-1" style="background:url(<?= $value->image ?>)">
-                            <h4><?= $value->offer_title ?></h4>
-                            <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
-                            <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>"
-                                class="explor-btn"><?= $this->lang->line('Explore More'); ?></a>
-                        </div>
-                    </a>
-                </div>
-                <?php
+            <!--============== two-banner ===================-->
+            <?php foreach ($offer_list as $key => $value) : ?>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+                <a
+                    href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
+                    <div class="offer-wrapper offer-wrapper-1" style="background:url(<?= $value->image ?>)">
+                        <h4><?= $value->offer_title ?></h4>
+                        <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                        <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>"
+                            class="explor-btn">Explore More</a>
+                    </div>
+                </a>
+            </div>
+            <?php
           endforeach;
           ?>
 
-                <?php }
+            <?php }
         ?>
 
-                <!--=============== three-banners ==================-->
-                <?php if (count($offer_list) == 3) {
-        ?>
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                    <div>
-                        <div class="home-clothes mb-4 ">
-                            <div class="cloth-card">
-                                <img src="<?= $offer_list[0]->image ?>" alt="">
-                            </div>
-                            <div class="cloth-content">
-                                <h5><?= $offer_list[0]->offer_title ?></h5>
-                                <h3><?= $offer_list[0]->offer_percent ?>%<span>OFF</span></h3>
-                                <a
-                                    href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
-                            </div>
+            <!--=============== three-banners ==================-->
+            <?php if (count($offer_list) == 3) { ?>
+
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                <div>
+                    <?php foreach ($offer_list as $key => $value) :
+                if ($key == 2) {
+                  goto a;
+                }
+              ?>
+                    <div class="home-clothes mb-4">
+                        <div class="cloth-card">
+                            <img src="<?= $value->image ?>" alt="">
                         </div>
-                        <div class="home-clothes women-cloth">
-                            <div class="cloth-card">
-                                <img src="<?= $offer_list[1]->image ?>" alt="">
-                            </div>
-                            <div class="cloth-content">
-                                <h5><?= $offer_list[1]->offer_title ?></h5>
-                                <h3><?= $offer_list[1]->offer_percent ?>%<span>OFF</span></h3>
-                                <a
-                                    href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
-                            </div>
-                            <!--  -->
-                            <!-- new upper -->
+                        <div class="cloth-content">
+                            <h5><?= $value->offer_title ?></h5>
+                            <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                            <a
+                                href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore
+                                More</a>
                         </div>
-                        <!--  -->
-                        <!-- new upper -->
                     </div>
-                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                        <div class="practical-cloth home-clothes">
-                            <div class="cloth-card">
-                                <img src="<?= $offer_list[2]->image ?>" alt="">
-                            </div>
-                            <div class="cloth-content">
-                                <h5><?= $offer_list[2]->offer_title ?></h5>
-                                <h3><?= $offer_list[2]->offer_percent ?>%<span>OFF</span></h3>
-                                <a
-                                    href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[2]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
-                            </div>
-                        </div>
-                        <?php
 
-        } ?>
+
+                </div>
+            </div>
+
+            <?php
+                a:
+          ?>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                <div class="practical-cloth home-clothes">
+                    <div class="cloth-card">
+                        <img src="<?= $value->image ?>" alt="">
+                    </div>
+                    <div class="cloth-content">
+                        <h5><?= $value->offer_title ?></h5>
+                        <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                        <a
+                            href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">Explore
+                            More</a>
                     </div>
                 </div>
+            </div>
+
+            <?php
+              endforeach;
+            } ?>
+        </div>
+    </div>
 </section>
 <?php } ?>
 
@@ -514,58 +519,58 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
         <div class="row">
             <div class="col-xxl-12">
                 <div class="title text-center wow fadeIn">
-                    <h2><?= $this->lang->line('New'); ?><span><?= $this->lang->line('Arrivals'); ?></span></h2>
-
+                    <h2>New<span>Arrivals</span></h2>
+                    <p>Choose top trending items</p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="owl-carousel owl-theme simple">
-                <?php foreach ($new_arrival as $key => $value) :  ?>
-                <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-                    <div class="product-card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
-                        <div class="product-img-wrap">
-                            <div class="product-im ">
-                                <a
-                                    href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
-                                        alt="">
-                                </a>
-                            </div>
-                            <?php if ($value->varientQuantity != '0') : ?>
-                            <p>
-                                <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
-                            </p>
-                            <?php endif ?>
-                            <?php if ($value->discount_per > '0') { ?>
-                            <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
+    <div class="owl-carousel owl-theme simple">
+        <?php foreach ($new_arrival as $key => $value) : ?>
+        <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <div class="product-card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
+                <div class="product-img-wrap">
+                    <div class="product-im ">
+                        <a
+                            href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                            <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
+                                alt="">
+                        </a>
+                    </div>
+                    <?php if ($value->varientQuantity != '0') : ?>
+                    <p>In Stock</p>
+                    <?php endif ?>
+                    <?php if ($value->discount_per > '0') { ?>
+                    <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
+                    <?php } ?>
+                </div>
+
+                <div class="product-content">
+                    <a
+                        href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
+                        <h5><?= $value->name ?></h5>
+                        <div class="product-discount notranslate">
+                            <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?>
+                            </h4>
+                            <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>">
+                                <?= $this->siteCurrency . ' ' . $value->price ?></p>
+                        </div>
+                    </a>
+                    <div class="rating-starts">
+                        <div class="rating stars3_5">
+                            <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                            <span class="star"></span>
+                            <?php } ?>
+
+                            <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                            <span class="star star-active"></span>
                             <?php } ?>
                         </div>
-
-                        <div class="product-content">
-                            <a
-                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                                <h5><?= $value->name ?></h5>
-                                <div class="product-discount notranslate">
-                                    <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?>
-                                    </h4>
-                                    <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>">
-                                        <?= $this->siteCurrency . ' ' . $value->price ?></p>
-                                </div>
-                            </a>
-                            <div class="rating-starts">
-                                <div class="rating stars3_5">
-                                    <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
-                                    <span class="star"></span>
-                                    <?php } ?>
-
-                                    <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
-                                    <span class="star star-active"></span>
-                                    <?php } ?>
-                                </div>
-                                <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
-                            </div>
-                            <div>
-                                <?php
+                        <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
+                    </div>
+                    <div>
+                        <?php
               $d_none = '';
               $d_show = 'd-none';
               if (!empty($item_weight_id)) {
@@ -576,32 +581,34 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
               }
               ?>
 
-                                <div>
-                                    <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>"
-                                        data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                        data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
-                                                class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?></button>
-                                </div>
-                                <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
-                                    <div class="qty-container">
-                                        <button class="qty-btn-minus dec cart-qty-minus"
-                                            data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
-                                                class="fa-solid fa-minus"></i></button>
-                                        <input type="text" name="qty"
-                                            value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
-                                            data-product_id="<?= $value->id ?>"
-                                            data-weight_id="<?= $value->weight_id ?>" class="input-qty">
-                                        <button class="qty-btn-plus inc cart-qty-plus"
-                                            data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
-                                                class="fa-solid fa-plus"></i></button>
-                                    </div>
-                                </div>
-
+                        <div>
+                            <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>"
+                                data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
+                                data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
+                                        class="fa-solid fa-cart-shopping"></i></span>Add to
+                                Cart
+                            </button>
+                        </div>
+                        <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
+                            <div class="qty-container">
+                                <button class="qty-btn-minus dec cart-qty-minus"
+                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                        class="fa-solid fa-minus"></i></button>
+                                <input type="text" name="qty"
+                                    value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
+                                    data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>"
+                                    class="input-qty">
+                                <button class="qty-btn-plus inc cart-qty-plus"
+                                    data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
+                                        class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
+
                     </div>
                 </div>
-                <?php endforeach ?>
             </div>
+        </div>
+        <?php endforeach ?>
+    </div>
 
 </section>
