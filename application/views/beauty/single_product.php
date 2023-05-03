@@ -467,6 +467,7 @@
           <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" ><?= $this->lang->line('Submit') ?></button>
         </div>
       </div>
+    </form>
     </div>
   </div>
 </div>
