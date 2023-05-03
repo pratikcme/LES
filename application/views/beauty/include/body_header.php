@@ -54,7 +54,7 @@
 
 
           <div class="social-icons">
-          <a href="#" class="search-toggle header-icon" id="search"><span><i class="fa-solid fa-magnifying-glass"></i></span></a>
+          <a href="javascript:" class="search-toggle header-icon" id="search"><span><i class="fa-solid fa-magnifying-glass"></i></span></a>
 
              <!-- -----search-btn---- -->
              <div class="search-block search-list-blcok">

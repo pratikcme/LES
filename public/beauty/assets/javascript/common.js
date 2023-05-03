@@ -586,3 +586,6 @@ $('.cncOrder').click(function () {
 		})
 
 });
+$(document).on('click','#search',function(){
+	$('#myInput').val("");
+  });
