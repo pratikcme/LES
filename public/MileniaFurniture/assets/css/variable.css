@@ -1,0 +1,118 @@
+/* 
+variables
+*/
+
+:root {
+    /* colors */
+    --primary-color: #CC833D;
+    --secondary-color: #351C05;
+    --text-color: #755C47;
+    --banner-bg: #EAEEF6;
+    --btn-bg: #CC833D;
+    --btn-text: #fff;
+    --border-color: #DFDCDA;
+    --slider-bg: #FBF1E8;
+    --footer-bg: #F1C499;
+    --copyright-bg: #FBF1E8;
+    --btn2-border: #351C05;
+    --btn2-color: #351C05;
+    --banner-line: #E2C2A2;
+    --subscribe-bg: #FBF1E8;
+    --breadcrumb-color: #755C47;
+    --hot-product-slider-bg: #F6F6F6;
+    --light-bg: rgb(53, 28, 5, 0.4);
+    --border: #E3DBD3;
+    --icon-bg: rgba(204, 131, 61, 0.12);
+    --dropdown-bg: #FFF9FB;
+    --border2: #F5E1D5;
+    --white:#fff;
+
+    --light-primary: #F5E6D8;
+    
+    /* Inter fonts */
+    --inter-regular: 'Inter-Regular';
+    --inter-bold: 'Inter-Bold';
+    --inter-semibold: 'Inter-SemiBold';
+    --inter-medium: 'Inter-Medium';
+    --inter-extra: 'Inter-ExtraBold';
+
+    /* MVBoli font2 */
+    --MVBoli: 'MVBoli';
+
+     /* login-page-color--- */
+    --login-title-color:#351C05;
+    --login-pera-color:#755C47;
+    --login-wrapper-bg:#FFFFFF;
+    --login-wrapper-border:#E3DBD3;
+    --login-wrapper-label:#351C05;
+    --login-wrapper-placholder:#755C47;
+    --login-wrapper-input-bg:#FFFFFF;
+    --login-wrapper-input-border:#E3DBD3;
+    --login-btn-bg:#CC833D;
+    --login-btn-text:#FFF;
+    --forgot-text:#CC833D;
+
+    /* Three-banner-color */
+    --card-text-color:#031B61;
+    --modern-card-color:#A05500;
+    --practical-card-color:#035B3E;
+    --card-color: #3E8DC5;
+
+      /* -------- shop-cart-color------- */
+
+      --cart-thead-bg: #FBF1E8;
+      --cart-thead-text:#351C05;
+      --cart-td-text-1:#351C05;
+      --cart-td-text-2:#755C47;
+      --cart-td-text-3:#CC833D;
+      --cart-image-bg:#FFEEF4;
+      --cart-counter-border:#E3DBD3;
+      --cart-counter-bg:#fff;
+      --cart-icon:#CC833D;
+      --proceed-checkout-btn-bg:#CC833D;
+      --proceed-checkout-btn-text:#fff;
+
+
+      /* ----------------checkout-process-color----- */
+      --accordian-head-bg:#FBF1E8;
+      --accordian-bg:#fff;
+      --accordian-border:#E3DBD3;
+      --accordian-head-text:#351C05;
+      --accordian-icon:#CC833D;
+      --accordian-content-text-1:#351C05;
+      --accordian-content-text-2:#755C47;
+      --accordian-star:#FF1D1D;
+
+
+      /* -------modal-popup-color---- */
+      --modal-bg:rgba(17, 64, 90, 0.9);
+      --modal-text-1:#CC833D;
+      --modal-text-2:#351C05;
+      --modal-text-3:#755C47;
+      --continue-btn-bg:#CC833D;
+      --continue-btn-text:#fff;
+      --close-btn:#CC833D;
+
+
+      /* ------myaccount-css--- */
+      --myaccoutn-tab-bg:#FBF1E8;
+      --myaccoutn-tab-border:#FBF1E8;
+      --myaccoutn-tab-text:#755C47;
+      --myaccoutn-tab-active-bg:#CC833D;
+      --myaccoutn-tab-label-text:#351C05;
+      --myaccoutn-tab-input-bg:#FFFFFF;
+      --myaccoutn-tab-input-border:#E3DBD3;
+      --common-white:#fff;
+      --supportive-color:#FBF1E8;
+
+      /* -----product-detalis-color---- */
+      --product-details-text-1:#351C05;
+      --product-details-text-2:#755C47;
+      --product-details-text-3:#CC833D;
+      --product-details-text-4:#CC833D;
+      --product-details-image-bg:#FFEEF4;
+      --product-details-btn-1:#351C05;
+      --product-details-btn-2:#2BAE4A;
+
+      --common-border:#E3DBD3;
+}

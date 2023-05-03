@@ -1,0 +1,1867 @@
+.account-details-tabs .title{
+    margin-top: 100px !important;
+    margin-bottom: 70px !important;
+}
+.account-details-tabs .nav-pills{
+    width: 100%;
+    gap: 20px;
+    background: var(--myaccoutn-tab-bg) !important;
+    border: 1px solid var(--myaccoutn-tab-border) !important;
+}
+
+.account-details-tabs .nav-link{
+    background: transparent;
+    width: 199px !important;
+    font-family: var(--inter-medium);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--myaccoutn-tab-text) !important;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.account-details-tabs .nav-link::after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    background: var(--primary-color);
+    left: 0;
+    bottom: -3px;
+    transition: 0.3s;
+}
+.account-details-tabs .nav-link.active::after{
+    width: 100%;
+}
+.account-details-tabs .details-tabs .nav-link.active{
+    background: transparent !important;
+    color: var(--primary-color) !important;
+}
+
+
+.myaccout-detail-tab{
+    width: 1096px;
+    border: 1px solid #E3DBD3;
+    box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
+    border-radius: 20px;
+    margin: 0px auto;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 50px;
+}
+.myaccout-detail-tab label span{
+    color: #FF1D1D !important;
+}
+
+.myaccout-detail-tab .choose-img{
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #FBF1E8;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0px auto;
+    position: relative;
+    margin-bottom: 75px !important;
+    cursor: pointer;
+    object-fit: cover;
+  
+}
+.myaccout-detail-tab .choose-img img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.myaccout-detail-tab .choose-btn {
+    content: "\f083";
+    position: absolute;
+    font-family: "FontAwesome";
+    background: var(--myaccoutn-tab-active-bg);
+    color: var(--common-white);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 122px;
+    left: 142px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.myaccout-detail-tab label{
+    font-family: var(--inter-medium);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--myaccoutn-tab-label-text);
+}
+.myaccout-detail-tab input{
+    background: var(--myaccoutn-tab-input-bg);
+    border: 1px solid var(--myaccoutn-tab-input-border);
+    border-radius: 5px;
+    padding-left: 25px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.myaccout-detail-tab input:focus{
+    border: 1px solid var(--myaccoutn-tab-input-border) !important;
+    box-shadow: 0px 4px 7px rgba(34, 37, 40, 0.05) !important;
+}
+.myaccout-detail-tab input::placeholder{
+    font-family: var(--inter-regular);
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--text-color);
+}
+.tab-select-box select{
+    background: #FFFFFF;
+    border: 1px solid var(--myaccoutn-tab-input-border);
+    border-radius: 5px;
+    padding-left: 25px;
+    font-family: var(--inter-regular);
+    font-size: 14px;
+    line-height: 16px;
+    height: 50px;
+    appearance: none;
+    background-image: url(../images/selectarrow.png);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position-y: 19px;
+    background-position-x: 410px;
+    margin-bottom: 30px;
+    color: var(--text-color) !important;
+}
+.tab-select-box select:focus{
+    box-shadow: none;
+    border: 1px solid var(--myaccoutn-tab-input-border) !important;
+    box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+}
+.tab-save-btn{
+    margin-top: 30px !important;
+    margin-bottom: 50px !important;
+    text-align: center;
+}
+.tab-save-btn a{
+    padding: 15px 50px 15px 50px;
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-family: var(--inter-semibold);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--common-white) !important;
+    transition: 0.3s;
+}
+.tab-save-btn a:hover{
+    border: 1px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color) !important;
+}
+
+
+
+.mywishlist-part{
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block;
+    margin: auto;
+}
+.mywishlist-part table{
+    width: 100% !important;
+    max-width: 100% !important;
+}
+.mywishlist-part .add-cart-btn{
+  font-size: 13px;
+  width: 100%;
+  max-width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  padding: 15px 25px;
+  background: var(--primary-color);
+  color: #fff !important;
+  font-family: var(--inter-semibold);
+  font-size: 14px;
+  line-height: 20px;
+
+}
+.mywishlist-part .add-cart-btn span{
+    margin-right: 10px;
+}
+.mywishlist-part-img .bt-content{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.mywishlist-part-img a{
+    color: var(--primary-color) !important;
+}
+.mywishlist-part th:nth-child(1){
+   padding-left: 85px !important;
+}
+.mywishlist-part td:nth-child(2){
+   padding-left: 0px !important;
+}
+.mywishlist-part td:nth-child(4){
+   font-family: var(--inter-regular);
+    font-size: 18px;
+    line-height: 23px;
+    color: var(--primary-color);
+}
+
+.main-add-div{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.address-wrapper{
+    background: #fff;
+    border: 1px solid var(--myaccoutn-tab-border);
+    box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
+    border-radius: 5px;
+    padding: 11px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+.address-text{
+    width: 100%;
+    background: #FBF1E8;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.address-text h3{
+    font-family: var(--inter-semibold);
+    font-size: 24px !important;
+    line-height: 40px;
+    color: var(--myaccoutn-tab-label-text);
+    margin-bottom: 0px !important;
+}
+.address-wrapper p{
+    font-family: var(--inter-regular);
+    font-size: 16px !important;
+    line-height: 25px;
+    letter-spacing: 0.03em;
+    color: var(--text-color);
+    margin-bottom: 0px;
+    max-width: 500px;
+    margin-bottom: 40px;
+    text-align: left;
+    margin-left: -50px;
+}
+.address-icons{
+    display: flex;
+    gap: 20px;
+}
+.address-icons .add-address-btn{
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: #fff !important;
+    transition: 0.3s;
+}
+.address-icons .add-address-btn:hover{
+     background: transparent;
+     color: var(--primary-color) !important;
+     border: 1px solid var(--primary-color);
+}
+.address-icons .delet-address-btn{
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color);
+}
+
+.sub-tabs .nav-pills {
+    width: 100%;
+    max-width: 100% !important;
+    border-radius: 20px 0px 0px 20px !important;
+    overflow: hidden;
+    gap: 0px;
+    justify-content: center;
+    margin-bottom: 50px;
+    background:transparent !important;
+    border: transparent !important;
+}
+.sub-tabs .nav-pills .nav-link{
+    border: 1px solid #E3DBD3;
+    border-radius: 0px;
+}
+
+.sub-tabs .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background: var(--primary-color) !important;
+    color: var(--common-white) !important;
+}
+.delivered-btn{
+    padding: 8px 22px 8px 22px;
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: #fff !important;
+    border-radius: 5px;
+    font-family: var(--inter-medium);
+    font-size: 16px;
+    line-height: 20px;
+    transition: 0.3s;
+}
+
+.my-order-text h3{
+    font-family: var(--inter-semibold);
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+.my-order-text h3 span{
+    font-family: var(--inter-regular);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--text-color);
+}
+.my-order-text p{
+    font-family: var(--inter-medium);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--text-color); 
+}
+.my-order-text p span{
+    margin-right: 15px;
+    color: var(--secondary-color) !important;
+}
+.my-order-details .accordion-heading{
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    border-radius: 0px 0px 0px 0px !important;
+    cursor: pointer;
+}
+
+.my-order-details .fade:not(.show) {
+    opacity: 0;
+    display: none;
+}
+
+.main-sub-tabs ul{
+    margin-bottom: 0 !important;
+}
+
+.main-sub-tabs .tab-content{
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.my-order-details {
+    height: 450px;
+    overflow-y: scroll;
+}
+
+.my-account-section .main-accordion{
+    width: 100%;
+    max-width: 760px;
+    background: var(--accordian-bg);
+    border: none;
+    box-shadow: none;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    padding: 0px;
+}
+
+.account-details-tabs .my-order-details .accordion-content {
+    padding: 0px 0px 0px 0px;
+    border: 1px solid #E3DBD3;
+    border-radius: 5px !important;
+}
+.my-order-details .accordion-content:nth-child(4){
+    margin-bottom: 0px;
+}
+.my-order-details .main-accordion{
+    width: 100% !important; 
+    max-width: 100% !important;
+}
+
+.main-accordion .accordion-content-2 .form-check-input:checked[type=checkbox]{
+   background-color: var(--primary-color);
+}
+
+.my-order-details .accordion-heading::before{
+    top: 76px;
+    right: 39px;
+}
+.my-order-details-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 80px 20px 45px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--myaccoutn-tab-border);
+}
+.accordion-img-wrapper{
+    width: 125px;
+    height: 125px;
+    background: #FFFFFF;
+    border: 1px solid #D9E2ED;
+    box-shadow: 0px 5px 12px rgba(34, 37, 40, 0.1);
+    border-radius: 5px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.accordion-img-wrapper img{
+    width: 100%;
+    height: 100%;
+}
+.order-details-img{
+    display: flex;
+    align-items: center;
+    gap: 38px;
+}
+/* .accordion-img-wrapper img{
+    width: 100%;
+    max-width: 80px;
+} */
+.img-about-text h3{
+    font-family: var(--inter-semibold);
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--secondary-color);
+    max-width: 220px;
+    /* margin-bottom: 13px; */
+}
+
+.img-about-text p{
+    font-family: var(--inter-regular);
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.02em;   
+    color: var(--text-color);
+}
+.accordion-price-text h4{
+    font-family: var(--inter-semibold);
+    font-size: 24px;
+    line-height: 36px;
+    color: #555261;
+}
+.all-detalis-left h4{
+    font-family: var(--inter-medium);
+    font-size: 16px;
+    line-height: 48px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+.all-detalis-right h3{
+    font-family: var(--inter-semibold);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 48px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+.all-detalis-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 45px;
+    padding-right: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #FBF1E8;
+
+}
+
+.all-detalis-left .cancel-btn {
+    font-family: var(--inter-semibold);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    padding: 12px 30px 12px 30px;
+    text-transform: capitalize;
+    margin-top: 20px !important;
+    transition: 0.5s;
+}
+
+#subtab-2 .delivered-btn{
+    background: orange !important;
+    color: #fff !important;
+    border: 1px solid orange !important;
+}
+#subtab-3 .delivered-btn{
+    background: red !important;
+    color: #fff !important;
+    border: 1px solid red !important;
+}
+
+/* ----new-css--- */
+.main-sub-tabs{
+    border: 1px solid #E3DBD3;
+    border-radius: 20px;    
+}
+#subtab-1 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#subtab-2 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#subtab-3 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+.mywishlist-part table td:nth-child(1) {
+    padding-left: 20px;
+    width: 17%;
+}
+
+.mywishlist-part table th:nth-child(2) {
+    /* padding-left: 20px; */
+    text-align: center;
+}
+.mywishlist-part table td:nth-child(3) {
+    padding-left: 20px;
+    text-align: center;
+}
+.mywishlist-part .cart-price-text{
+    justify-content: center;
+}
+.mywishlist-part table th:nth-child(3) {
+    padding-left: 40px;
+    text-align: center;
+}
+.mywishlist-part td:nth-child(4){
+    text-align: center;
+}
+.mywishlist-part table td:nth-child(5) {
+    padding-left: 40px;
+    text-align: center;
+}
+.my-account-section .title h2{
+    text-align: center;
+}
+.my-account-section .title h2::after{
+    left: 47%;
+}
+
+
+.choose-input{
+    display: none;
+}
+ 
+.details-tabs .nav-link{
+    width: 166px !important;
+    font-size: 15px !important;
+}
+
+.my-order-wrapper .my-order-details-content:last-child{
+    border-bottom: none !important;
+}
+
+/* ==========responsive========= */
+@media only screen and (min-width:1200px) and (max-width: 1399px) {
+      /* ------tab-1-css---- */
+      .account-details-tabs .nav-pills {
+        width:100%;
+        overflow: hidden;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+    .myaccout-detail-tab .choose-img {
+        width: 190px;
+        height: 190px;
+        margin-bottom: 50px !important;
+    }
+    .my-account-section .title {
+        text-align: center;
+        margin-top: 30px !important;
+    }
+    .myaccout-detail-tab {
+        width: 100%;
+        border-radius: 20px;
+        margin: 0px auto;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 50px;
+    }
+    .tab-select-box select {
+        font-size: 14px;
+        background-size: 12px;
+        background-position-y: 19px;
+        background-position-x: 410px;
+        margin-bottom: 30px;
+    }
+    .my-order-details .accordion-heading::before {
+        top: 76px;
+        right: 39px;
+        font-size: 20px;
+    }
+    .mywishlist-part table td:nth-child(1) {
+        padding-left: 34px !important;
+    }
+
+    
+    /* --tab-2-css--- */
+    .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        padding-left: 50px;
+        width: 100%;
+    }
+    .delivered-btn {
+        padding: 8px 22px 8px 22px;
+        color: #fff !important;
+        font-size: 14px;
+    }
+    .my-order-text h3 {
+        font-size: 16px;
+    }
+    .my-order-text h3 {
+        font-size: 16px;
+        max-width: 450px;
+        margin-bottom: 10px;
+    }
+    .my-order-text p {
+        font-size: 15px;
+    }
+
+
+    /* ------tab-3-css---- */
+    .mywishlist-part .add-cart-btn {
+        font-size: 12px;
+        padding: 10px 20px 10px 20px;
+    }
+    .cart-detail-img {
+        width: 70px;
+        height: 70px;
+        background: var(--commn-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mywishlist-part .cart-detail-text h4{
+        font-size: 14px;
+    }
+    .mywishlist-part .cart-price-text h3{
+        font-size: 16px;
+    }
+    .mywishlist-part table td:nth-child(5) {
+        padding-left: 0px;
+    }
+
+
+    /* ---new-css-- */
+    #subtab-1 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    #subtab-2 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    #subtab-3 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    /* ----new-css--- */
+    .account-details-tabs .nav-link::after {
+        bottom: 0px;
+    }
+    .address-wrapper p{
+         margin-left: 10px !important;
+    }
+    .sub-tabs .nav-pills .nav-link:after{
+        display: none;
+    }
+
+}
+
+
+@media only screen and (min-width:992px) and (max-width: 1199px) {
+    .my-account-section{
+        padding: 70px 0px;
+    }
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-pills {
+      width:100%;
+      overflow: hidden;
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+  }
+  .myaccout-detail-tab .choose-img {
+      width: 190px;
+      height: 190px;
+      margin-bottom: 50px !important;
+  }
+  .my-account-section .title {
+      text-align: center;
+      margin-top: 30px !important;
+  }
+  .myaccout-detail-tab {
+      width: 100%;
+      border-radius: 20px;
+      margin: 0px auto;
+      padding-left: 80px;
+      padding-right: 80px;
+      padding-top: 50px;
+  }
+  .tab-select-box select {
+    font-size: 14px;
+    background-size: 12px;
+    background-position-y: 19px;
+    background-position-x: 320px;
+    margin-bottom: 30px;
+}
+  .my-order-details .accordion-heading::before {
+      top: 76px;
+      right: 39px;
+      font-size: 20px;
+  }
+  .mywishlist-part table td:nth-child(1) {
+    padding-left: 20px !important;
+}
+
+  
+  /* --tab-2-css--- */
+  .my-order-details .accordion-heading {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    width: 100%;
+}
+  .delivered-btn {
+      padding: 8px 22px 8px 22px;
+      color: #fff !important;
+      font-size: 14px;
+  }
+  .my-order-text h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+  }
+  .my-order-text h3 {
+      font-size: 16px;
+      max-width: 450px;
+  }
+  .my-order-text p {
+      font-size: 15px;
+  }
+  .accordion-img-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+  .img-about-text h3{
+    font-size: 18px;
+  }
+  .accordion-price-text h4{
+    font-size: 22px;
+  }
+  .all-detalis-left h4{
+    line-height: 35px;
+  }
+  .all-detalis-right h3{
+    line-height: 35px;
+  }
+
+
+  /* ------tab-3-css---- */
+  .mywishlist-part .add-cart-btn {
+      font-size: 12px;
+      padding: 10px 20px 10px 20px;
+  }
+  .cart-detail-img {
+      width: 70px;
+      height: 70px;
+      box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+      border-radius: 10px;
+      border: 1px solid var(--cart-counter-border);
+      background: var(--commn-white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .mywishlist-part .cart-detail-text h4{
+      font-size: 14px;
+      max-width: 200px;
+  }
+  .mywishlist-part .cart-price-text h3{
+      font-size: 16px;
+  }
+  .mywishlist-part table td:nth-child(5) {
+      padding-left: 0px;
+  }
+  .address-text p{
+    max-width: 400px;
+  }
+
+  /* ---new-css-- */
+    #subtab-1 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    #subtab-2 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    #subtab-3 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .account-details-tabs .nav-link::after {
+        bottom: 0px;
+    }
+    .address-wrapper p{
+         margin-left: 10px !important;
+    }
+    .sub-tabs .nav-pills .nav-link:after{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width:768px) and (max-width: 991px) {
+    .my-account-section{
+        padding: 70px 0px;
+    }
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-link{
+        width: 160px !important;
+    }
+    .account-details-tabs .title {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }   
+    .account-details-tabs .nav-pills {
+      width:100%;
+      overflow: hidden;
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+  }
+  .myaccout-detail-tab .choose-img {
+      width: 190px;
+      height: 190px;
+      margin-bottom: 50px !important;
+  }
+  .my-account-section .title {
+      text-align: center;
+      margin-top: 50px;
+  }
+  .myaccout-detail-tab {
+      width: 100%;
+      border-radius: 20px;
+      margin: 0px auto;
+      padding-left: 80px;
+      padding-right: 80px;
+      padding-top: 50px;
+  }
+  .tab-select-box select {
+    font-size: 14px;
+    background-size: 12px;
+    background-position-y: 19px;
+    background-position-x: 205px;
+    margin-bottom: 30px;
+}
+  .my-order-details .accordion-heading::before {
+    top: 52px;
+    right: 39px;
+    font-size: 20px;
+  }
+  .mywishlist-part table td:nth-child(1) {
+    padding-left: 15px !important;
+    }
+    .mywishlist-part th:nth-child(1) {
+        padding-left: 59px !important;
+    }
+    .mywishlist-part-img .bt-content {
+        gap: 20px;
+    }
+    .mywishlist-part td:nth-child(2) {
+        padding-left: 20px !important;
+    }
+    .mywishlist-part th:nth-child(2) {
+        padding-left: 12px;
+    }
+    .mywishlist-part th:nth-child(3) {
+        padding-left: 18px;
+    }
+    .mywishlist-part td:nth-child(3) {
+        padding-left: 5px;
+    }
+    .mywishlist-part td:nth-child(4){
+        font-size: 16px;
+        padding-left: 20px;
+    }
+    .mywishlist-part{
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+
+  
+  /* --tab-2-css--- */
+  .my-order-details .accordion-heading {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    width: 100%;
+}
+  .delivered-btn {
+      padding: 8px 22px 8px 22px;
+      color: #fff !important;
+      font-size: 14px;
+  }
+  .my-order-text h3 {
+      font-size: 16px;
+  }
+  .my-order-text h3 {
+    font-size: 16px;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+  .my-order-text p {
+      font-size: 15px;
+  }
+  .accordion-img-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+  .accordion-img-wrapper img {
+    width: 100%;
+  }
+  .img-about-text h3{
+    font-size: 16px;
+  }
+  .accordion-price-text h4{
+    font-size: 20px;
+  }
+  .my-order-details-content{
+    margin-bottom: 10px;
+  }
+  .all-detalis-left h4{
+    line-height: 35px;
+  }
+  .all-detalis-right h3{
+    line-height: 35px;
+  }
+
+
+  /* ------tab-3-css---- */
+  .cart-detail-img {
+      width: 70px;
+      height: 70px;
+      box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+      border-radius: 10px;
+      border: 1px solid var(--cart-counter-border);
+      background: var(--commn-white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .mywishlist-part .cart-detail-text h4{
+      font-size: 14px;
+      max-width: 150px;
+  }
+  .mywishlist-part .cart-price-text h3{
+      font-size: 16px;
+  }
+  .mywishlist-part table td:nth-child(5) {
+      padding-left: 0px;
+  }
+  .address-text p{
+    max-width: 400px;
+  }
+
+  /* ---new-css-- */
+    #subtab-1 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    #subtab-2 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    #subtab-3 .my-order-wrapper{
+        max-height: 600px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+
+    .account-details-tabs .nav-link::after {
+        bottom: 0px;
+    }
+    .address-wrapper p{
+         margin-left: 10px !important;
+    }
+    .sub-tabs .nav-pills .nav-link:after{
+        display: none;
+    }
+    .mywishlist-part table th:nth-child(3) {
+        padding-left: 15px;
+        text-align: center;
+    }
+    .mywishlist-part .add-cart-btn {
+        font-size: 12px;
+        padding: 10px 15px 10px 15px;
+    }
+
+}
+
+
+@media only screen and (min-width:576px) and (max-width: 767px) {
+    .my-account-section{
+        padding: 70px 0px;
+    }
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-link{
+        width: 160px !important;
+    }
+    .account-details-tabs .title {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }   
+    .account-details-tabs .nav-pills {
+      width:100%;
+      overflow: hidden;
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+  }
+  .myaccout-detail-tab .choose-img {
+      width: 190px;
+      height: 190px;
+      margin-bottom: 50px !important;
+  }
+  .my-account-section .title {
+      text-align: center;
+      margin-top: 50px;
+  }
+  .myaccout-detail-tab {
+      width: 100%;
+      border-radius: 20px;
+      margin: 0px auto;
+      padding-left: 80px;
+      padding-right: 80px;
+      padding-top: 50px;
+  }
+  .tab-select-box select {
+    font-size: 14px;
+    background-size: 12px;
+    background-position-y: 19px;
+    background-position-x: 295px;
+    margin-bottom: 30px;
+}
+  .my-order-details .accordion-heading::before {
+    top: 52px;
+    right: 39px;
+    font-size: 20px;
+  }
+  .mywishlist-part table td:nth-child(1) {
+    padding-left: 15px !important;
+    }
+    .mywishlist-part th:nth-child(1) {
+        padding-left: 59px !important;
+    }
+    .mywishlist-part-img .bt-content {
+        gap: 20px;
+    }
+    .mywishlist-part td:nth-child(2) {
+        padding-left: 20px !important;
+    }
+    .mywishlist-part th:nth-child(2) {
+        padding-left: 12px;
+    }
+    .mywishlist-part th:nth-child(3) {
+        padding-left: 16px;
+        min-width: 150px;
+    }
+    .mywishlist-part th{
+        font-size: 16px !important;
+    }
+    .mywishlist-part th:nth-child(4) {
+        padding-left: 42px;
+        min-width: 140px;
+    }
+    .mywishlist-part td:nth-child(3) {
+        padding-left: 5px;
+    }
+    .mywishlist-part td:nth-child(4){
+        font-size: 16px;
+        padding-left: 20px;
+    }
+    .mywishlist-part{
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+
+  
+  /* --tab-2-css--- */
+  .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 50px;
+        width: 100%;
+    }
+  .delivered-btn {
+      padding: 8px 22px 8px 22px;
+      color: #fff !important;
+      font-size: 14px;
+  }
+  .my-order-text h3 {
+      font-size: 16px;
+  }
+  .my-order-text h3 {
+    font-size: 16px;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+  .my-order-text p {
+      font-size: 15px;
+  }
+  .accordion-img-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+  .accordion-img-wrapper img {
+    width: 100%;
+  }
+  .img-about-text h3{
+    font-size: 15px;
+  }
+  .accordion-price-text h4{
+    font-size: 18px;
+  }
+  .my-order-details-content{
+    margin-bottom: 10px;
+  }
+  .all-detalis-left h4{
+    line-height: 35px;
+  }
+  .all-detalis-right h3{
+    line-height: 35px;
+  }
+  .sub-tabs .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    font-size: 14px;
+    width: 120px !important;
+  }
+
+
+  /* ------tab-3-css---- */
+  .mywishlist-part .add-cart-btn {
+      font-size: 12px;
+      padding: 10px 20px 10px 20px;
+  }
+  .cart-detail-img {
+      width: 70px;
+      height: 70px;
+      box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+      border-radius: 10px;
+      border: 1px solid var(--cart-counter-border);
+      background: var(--commn-white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .mywishlist-part .cart-detail-text h4{
+      font-size: 14px;
+      max-width: 150px;
+  }
+  .mywishlist-part .cart-price-text h3{
+      font-size: 16px;
+  }
+  .mywishlist-part table td:nth-child(5) {
+      padding-left: 0px;
+  }
+  .address-text p{
+    max-width: 400px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+  .address-text h3{
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .tab-save-btn a{
+    padding: 10px 30px 10px 30px;
+  }
+  .tab-save-btn {
+    margin-top: 10px !important;
+}
+.my-order-details .accordion-heading{
+    flex-direction: column;
+    align-items: flex-start;
+}
+.my-order-details-content {
+    padding: 30px 30px 20px 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--myaccoutn-tab-border);
+}
+.order-details-img {    
+    gap: 20px;
+}
+
+
+ /* ---new-css-- */
+ #subtab-1 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#subtab-2 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#subtab-3 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.all-detalis-wrapper{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+.account-details-tabs .nav-link::after {
+    bottom: 0px;
+}
+.address-wrapper p{
+     margin-left: 10px !important;
+}
+.sub-tabs .nav-pills .nav-link:after{
+    display: none;
+}
+.mywishlist-part table th:nth-child(3) {
+    padding-left: 15px;
+    text-align: center;
+}
+.mywishlist-part .add-cart-btn {
+    font-size: 12px;
+    padding: 10px 15px 10px 15px;
+}
+.sub-tabs .nav-pills .nav-link{
+    width: 120px !important;
+}
+.main-add-div {
+    flex-direction: column;
+    gap: 0px;
+}
+
+}
+
+
+@media only screen and (min-width:425px) and (max-width: 575px) {
+    .my-account-section{
+        padding: 70px 0px;
+    }
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-link{
+        width: 160px !important;
+    }
+    .account-details-tabs .title {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }   
+    .account-details-tabs .nav-pills {
+      width:100%;
+      overflow: hidden;
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+  }
+  .myaccout-detail-tab .choose-img {
+      width: 190px;
+      height: 190px;
+      margin-bottom: 50px !important;
+  }
+  .my-account-section .title {
+      text-align: center;
+      margin-top: 50px;
+  }
+  .myaccout-detail-tab {
+    width: 100%;
+    border-radius: 20px;
+    margin: 0px auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 50px;
+}
+  .tab-select-box select {
+      font-size: 14px;
+      background-size: 12px;
+      background-position-y: 19px;
+      background-position-x: 410px;
+      margin-bottom: 30px;
+  }
+  .my-order-details .accordion-heading::before {
+    top: 52px;
+    right: 39px;
+    font-size: 20px;
+  }
+
+    .mywishlist-part-img .bt-content {
+        gap: 20px;
+        flex-direction: row-reverse;
+    }
+
+    .mywishlist-part{
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+
+  
+  /* --tab-2-css--- */
+  .my-order-details .accordion-heading {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        width: 100%;
+    }
+    .sub-tabs .nav-pills{
+        border-radius: 0px 0px 0px 0px;
+    }
+  .delivered-btn {
+      padding: 8px 22px 8px 22px;
+      color: #fff !important;
+      font-size: 14px;
+  }
+  .my-order-text h3 {
+      font-size: 16px;
+  }
+  .my-order-text h3 {
+    font-size: 16px;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+  .my-order-text p {
+      font-size: 15px;
+  }
+  .accordion-img-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+  .accordion-img-wrapper img {
+    width: 100%;
+  }
+  .img-about-text h3{
+    font-size: 15px;
+  }
+  .accordion-price-text h4{
+    font-size: 18px;
+  }
+  .my-order-details-content{
+    margin-bottom: 10px;
+  }
+  .all-detalis-left h4{
+    line-height: 35px;
+  }
+  .all-detalis-right h3{
+    line-height: 35px;
+  }
+  .sub-tabs .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    font-size: 14px;
+    width: 120px !important;
+  }
+  .main-sub-tabs{
+    border: none !important;
+  }
+
+
+  /* ------tab-3-css---- */
+  .mywishlist-part .add-cart-btn {
+      font-size: 12px;
+      padding: 10px 20px 10px 20px;
+  }
+  .cart-detail-img {
+      width: 70px;
+      height: 70px;
+      box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+      border-radius: 10px;
+      border: 1px solid var(--cart-counter-border);
+      background: var(--commn-white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .mywishlist-part .cart-detail-text h4{
+      font-size: 14px;
+      max-width: 150px;
+  }
+  .mywishlist-part .cart-price-text h3{
+      font-size: 16px;
+  }
+  .mywishlist-part table td:nth-child(5) {
+      padding-left: 0px;
+  }
+  .address-text p{
+    max-width: 400px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+  .address-text h3{
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .tab-save-btn a{
+    padding: 10px 30px 10px 30px;
+  }
+  .tab-save-btn {
+    margin-top: 10px !important;
+}
+.my-order-details .accordion-heading{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+.my-order-details-content {
+    padding: 30px 30px 20px 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--myaccoutn-tab-border);
+}
+.order-details-img {    
+    gap: 20px;
+}
+.mywishlist-part td:nth-child(2) {
+    padding-left: 20px !important;
+}
+
+ /* ---new-css-- */
+ #subtab-1 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#subtab-2 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#subtab-3 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+.account-details-tabs .nav-link::after {
+    bottom: 0px;
+}
+.address-wrapper p{
+     margin-left: 10px !important;
+}
+.sub-tabs .nav-pills .nav-link:after{
+    display: none;
+}
+.mywishlist-part table th:nth-child(3) {
+    padding-left: 15px;
+    text-align: center;
+}
+.sub-tabs .nav-pills .nav-link{
+    width: 120px !important;
+}
+.main-add-div {
+    flex-direction: column;
+    gap: 0px;
+}
+.mywishlist-part table td:nth-child(3) {
+    padding-left: 20px;
+    text-align: left;
+}
+.mywishlist-part td:nth-child(4){
+    text-align: left;
+    padding-left: 20px;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+.mywishlist-part td:nth-child(4)::before {
+    font-size: 16px;
+    color: #000 !important;
+}
+.mywishlist-part td:nth-child(5)::before{
+    content: "" !important;
+}
+.mywishlist-part .add-cart-btn {
+    font-size: 12px;
+    padding: 10px 15px 10px 15px;
+    margin-left: 20px;
+}
+.my-account-section .title h2::after {
+    left: 45%;
+}
+
+}
+
+
+@media only screen and (min-width:320px) and (max-width: 424px) {
+    .my-account-section{
+        padding: 70px 0px;
+    }
+    /* ------tab-1-css---- */
+    .account-details-tabs .nav-link{
+        width: 160px !important;
+    }
+    .account-details-tabs .title {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }   
+    .account-details-tabs .nav-pills {
+      width:100%;
+      overflow: hidden;
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+      gap: 10px;
+  }
+  .myaccout-detail-tab .choose-img {
+      width: 190px;
+      height: 190px;
+      margin-bottom: 50px !important;
+  }
+  .my-account-section .title {
+      text-align: center;
+      margin-top: 50px;
+  }
+  .myaccout-detail-tab {
+    width: 100%;
+    border-radius: 20px;
+    margin: 0px auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 50px;
+}
+.tab-select-box select {
+    font-size: 14px;
+    background-size: 12px;
+    background-position-y: 19px;
+    /* background-position-x: 217px; */
+    margin-bottom: 30px;
+}
+.my-order-details .accordion-heading::before {
+    top: 16px;
+    right: 20px;
+    font-size: 20px;
+}
+
+    .mywishlist-part-img .bt-content {
+        gap: 20px;
+        flex-direction: row-reverse;
+    }
+
+    .mywishlist-part{
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    .all-detalis-wrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+    }
+
+  
+  /* --tab-2-css--- */
+  .my-order-details .accordion-heading {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 20px;
+      width: 100%;
+      border-radius: 0px 0px 0px 0px !important;
+      background: #fff !important;
+      border-bottom: 1px solid var(--myaccoutn-tab-border);
+  }
+  .delivered-btn {
+      padding: 8px 22px 8px 22px;
+      color: #fff !important;
+      font-size: 14px;
+  }
+  .my-order-text h3 {
+      font-size: 14px;
+  }
+  .my-order-text h3 {
+    font-size: 14px;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+  .my-order-text p {
+      font-size: 14px;
+  }
+  .accordion-img-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+  .accordion-img-wrapper img {
+    width: 100%;
+    max-width: 60px;
+  }
+  .img-about-text h3{
+    font-size: 15px;
+  }
+  .my-order-details-content{
+    margin-bottom: 10px;
+
+  }
+  .all-detalis-left h4{
+    line-height: 25px;
+    font-size: 12px;
+  }
+  .all-detalis-right h3{
+    line-height: 35px;
+    line-height: 25px;
+    font-size: 12px;
+  }
+  .sub-tabs .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    font-size: 14px;
+    width: 120px !important;
+  }
+  .sub-tabs .nav-pills{
+    justify-content: flex-start;
+    gap: 0px;
+  }
+  .main-sub-tabs{
+    border: none !important;
+  }
+
+
+  /* ------tab-3-css---- */
+  .mywishlist-part .add-cart-btn {
+      font-size: 12px;
+      padding: 10px 20px 10px 20px;
+  }
+  .cart-detail-img {
+      width: 70px;
+      height: 70px;
+      box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
+      border-radius: 10px;
+      border: 1px solid var(--cart-counter-border);
+      background: var(--commn-white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .mywishlist-part .cart-detail-text h4{
+      font-size: 14px;
+      max-width: 150px;
+  }
+  .mywishlist-part .cart-price-text h3{
+      font-size: 16px;
+  }
+  .mywishlist-part table td:nth-child(5) {
+      padding-left: 0px;
+  }
+  .address-text p{
+    max-width: 400px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+  .address-text h3{
+    font-size: 20px !important;
+    margin-bottom: 20px;
+  }
+  .tab-save-btn a {
+    padding: 10px 30px 10px 30px;
+    font-size: 16px;
+}
+  .tab-save-btn {
+    margin-top: 10px !important;
+}
+.my-order-details .accordion-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    background: #FBF1E8 !important;
+}
+.my-order-details-content {
+    padding: 15px 30px 10px 19px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--myaccoutn-tab-border);
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.accordion-price-text h4{
+    font-size: 18px;
+}
+.order-details-img {
+    gap: 20px;
+    flex-direction: column;
+}
+.mywishlist-part td:nth-child(2) {
+    padding-left: 11px !important;
+}
+.mywishlist-part td:nth-child(4){
+    font-size: 15px !important;
+}
+.main-add-div{
+    flex-direction: column;
+    gap: 20px;
+}
+.address-wrapper{
+    margin-bottom: 20px;
+}
+
+ /* ---new-css-- */
+ #subtab-1 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+#subtab-2 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#subtab-3 .my-order-wrapper{
+    max-height: 600px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+.account-details-tabs .nav-link::after {
+    bottom: 0px;
+}
+.address-wrapper p{
+     margin-left: 10px !important;
+}
+.sub-tabs .nav-pills .nav-link:after{
+    display: none;
+}
+.mywishlist-part table th:nth-child(3) {
+    padding-left: 15px;
+    text-align: center;
+}
+.sub-tabs .nav-pills .nav-link{
+    width: 120px !important;
+}
+.main-add-div {
+    flex-direction: column;
+    gap: 0px;
+}
+.mywishlist-part table td:nth-child(3) {
+    padding-left: 13px;
+    text-align: left;
+}
+.mywishlist-part td:nth-child(4) {
+    text-align: left;
+    padding-left: 14px;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+.mywishlist-part td:nth-child(4)::before {
+    font-size: 16px;
+    color: #000 !important;
+}
+.mywishlist-part td:nth-child(5)::before{
+    content: "" !important;
+}
+.mywishlist-part .add-cart-btn {
+    font-size: 12px;
+    padding: 10px 15px 10px 15px;
+    margin-left: 10px;
+}
+.mywishlist-part table td:nth-child(1) {
+    padding-left: 10px;
+}
+.my-account-section .title h2::after {
+    left: 39%;
+}
+
+}
+
+
+@media  (max-width:414px){
+    .tab-select-box select {
+        background-position-x: 300px;
+    }
+    .main-sub-tabs{
+        border: none !important;
+      }
+}
+
+
+@media (max-width:360px){
+    .tab-select-box select {
+        background-position-x: 260px;
+    }
+    .main-sub-tabs{
+        border: none !important;
+      }
+}
+
+ 
+@media (max-width:320px){
+    .tab-select-box select {
+        background-position-x: 217px;
+    }
+    .main-sub-tabs{
+        border: none !important;
+      }
+      .sub-tabs .nav-pills{
+        border-radius: 0px 0px 0px 0px !important;
+      }
+}
