@@ -1,4 +1,4 @@
-var is_self_pickup = $('#CheckisSelfPickup').val();
+var is_self_pickup = $("#CheckisSelfPickup").val();
 // if (is_self_pickup == 0) {
 //   var minDate = new Date();
 //   minDate.setDate(minDate.getDate() + 2)
@@ -28,13 +28,11 @@ if (is_self_pickup == 0) {
 
 $(function () {
   if ($("#datepicker").length) {
-    $("#datepicker").datepicker(
-      {
-        minDate: minDate,
-        maxDate: maxDate,
-        dateFormat: 'D,dd-mm-yy'
-      }
-    );
+    $("#datepicker").datepicker({
+      minDate: minDate,
+      maxDate: maxDate,
+      dateFormat: "D,dd-mm-yy",
+    });
   }
 });
 
@@ -55,8 +53,6 @@ var CHECKOUT = (function () {
         }
       });
     }
-
-
   });
 
   // if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
@@ -128,7 +124,6 @@ var CHECKOUT = (function () {
   });
   var paymentOption = "-1";
   $(document).on("click", "#payBtn", function () {
-
     if (($("#credit").checked = true)) {
       $("#paytm-checkoutjs").addClass("test");
       $(".ptm-own-element").css("display", "block !important");
@@ -168,11 +163,13 @@ var CHECKOUT = (function () {
       $("#payBtn_error").html(language.Please_enter_your_Address);
       return false;
     }
-    
-    if (AddressNotInRange == "0" && isSelfPickup =='0') {
+
+    if (AddressNotInRange == "0" && isSelfPickup == "0") {
       // alert("We are not deliver to your selected Address");
       swal(language.We_do_not_deliver_to_your_selected_Address);
-      $("#payBtn_error").html(language.We_do_not_deliver_to_your_selected_Address);
+      $("#payBtn_error").html(
+        language.We_do_not_deliver_to_your_selected_Address
+      );
       return false;
     }
 
@@ -301,18 +298,18 @@ var CHECKOUT = (function () {
       $(".loader-main").removeClass("d-none");
       $("#stipeForm").append(
         '<input type="hidden" name="delivery_date" value="' +
-        delivery_date +
-        '" />'
+          delivery_date +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="time_slot_id" value="' +
-        time_slot_id +
-        '" />'
+          time_slot_id +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="user_gst_number" value="' +
-        user_gst_number +
-        '" />'
+          user_gst_number +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="promocode" value="' + promocode + '" />'
@@ -338,7 +335,7 @@ var CHECKOUT = (function () {
               delivery_date: delivery_date,
               user_gst_number: user_gst_number,
             },
-            success: function (output) { },
+            success: function (output) {},
           });
           onScriptLoad(details.txnToken, details.orderId, details.amount);
         }, 1000);
@@ -453,6 +450,13 @@ var CHECKOUT = (function () {
   $("#checkPromocode").click(function () {
     var siteCurrency = $("#siteCurrency").val();
     var promocode = $("#promocode").val();
+
+    //Dk added
+    if ($("#applied_promo").val() !== "") {
+      $("#promo_err").html("Promocode already applied");
+      return;
+    }
+
     $("#applied_promo").val("");
     $("#promoAmount").html("0");
     $(".promocode-applied").hide();
@@ -469,7 +473,11 @@ var CHECKOUT = (function () {
     $.ajax({
       url: base_url + "checkout/validate_promocode",
       type: "post",
-      data: { promocode: promocode },
+      data: {
+        promocode: promocode,
+        isShow: $("#isShow").val() == 0 ? "0" : "1", //Dk Added
+        gstAmt: parseFloat($("#checkout_gst").text()).toFixed(2), //Dk,
+      },
       dataType: "json",
       success: function (response) {
         $("#promo_err").html(response.message);
@@ -484,7 +492,8 @@ var CHECKOUT = (function () {
           // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
           if ($("#totalSaving").length) {
             var amount = response.data;
-            var promocodeDiscount = parseFloat(response.withoutPromo) + parseFloat(amount);
+            var promocodeDiscount =
+              parseFloat(response.withoutPromo) + parseFloat(amount);
             $("#totalSaving").html(
               siteCurrency + " " + promocodeDiscount.toFixed(2)
             );

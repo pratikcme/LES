@@ -163,7 +163,11 @@ var CHECKOUT = (function () {
       $("#payBtn_error").html(language.Please_enter_your_Address);
       return false;
     }
-    if (AddressNotInRange == "0") {
+
+    // console.log("check", AddressNotInRange);
+
+    if (AddressNotInRange == "0" && isSelfPickup == "0") {
+      //Dk added
       // alert("We are not deliver to your selected Address");
       swal(language.We_do_not_deliver_to_your_selected_Address);
       $("#payBtn_error").html(
@@ -503,7 +507,7 @@ var CHECKOUT = (function () {
           }
 
           $("#promoAmount").html(response.data.toFixed(2));
-          $("#applied_promo").val("true");
+          // $("#applied_promo").val("true");
 
           $("#checkout_final").html(finalAmount);
 

@@ -455,6 +455,13 @@ var CHECKOUT = (function () {
   $("#checkPromocode").click(function () {
     var siteCurrency = $("#siteCurrency").val();
     var promocode = $("#promocode").val();
+
+    //Dk added
+    if ($("#applied_promo").val() !== "") {
+      $("#promo_err").html("Promocode already applied");
+      return;
+    }
+
     $("#applied_promo").val("");
     $("#promoAmount").html("0");
     $(".promocode-applied").hide();
@@ -503,6 +510,8 @@ var CHECKOUT = (function () {
           $(".promocode-applied").show();
 
           $("#applied_promo").val(promocode);
+
+          //
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
