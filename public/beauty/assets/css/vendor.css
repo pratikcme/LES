@@ -54,6 +54,11 @@
     letter-spacing: 0.03em;
     color: var(--common-pera-color) !important;
     margin-bottom: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
 }
 
 .vendor-wrapper.active .contact-content h6{
@@ -89,6 +94,9 @@
 .vendor-left{
     position: relative;
     margin-left: -100px;
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
 }
 .circle-img{
     position: absolute;
@@ -143,16 +151,17 @@
 .vendor .checkout-mid-left-img{
     bottom: 0 !important;
 }
-.vendor-left{
-    max-width: 200px;
-    height: 200px;
-}
+
 .vendor-left img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-
+.vendor-right{
+    width: 60%;
+}
 
 
 /* -----checkbox--- */
@@ -456,7 +465,7 @@
         margin-left: 0px;
     }
     .contact-content{
-        margin-bottom: 0px;
+        margin-bottom: 7px;
     }
     .vendor-btns {
         margin-top: 20px !important;
@@ -537,7 +546,7 @@
         margin-left: 0px;
     }
     .contact-content{
-        margin-bottom: 0px;
+        margin-bottom: 7px;
     }
     .vendor-btns {
         margin-top: 20px !important;

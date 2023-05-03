@@ -172,13 +172,14 @@
               $value->name = character_limiter($value->name, 30);  
             ?>
 
-            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 wow fadeInDown" data-wow-duration="1s"
+            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s"
                 data-wow-delay="0" data-wow-offset="0">
                 <div class="techno-check">
                     <input class="techno_checkbox" type="checkbox" id="1" value="1" />
                     <div href="#" class="product-wrapper card <?=($value->quantity == '0') ? 'out-of-stock' : '' ?>">
-                    <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
+                        <span class="discnt <?=($value->discount_per > 0) ? '' : 'd-none'?>"><?=$value->discount_per?> % off</span>
                         <div class="card-header">
+                            
                             <h5><?=($value->quantity >= 25 ) ? $this->lang->line('Available(Instock)') : ""?></h5>
                             
                             <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">

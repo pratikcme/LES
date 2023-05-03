@@ -148,6 +148,7 @@ class User_Controller extends MY_Controller
                 die;
             }
         }
+        
         if ($this->session->userdata('template_name') == '' || $this->session->userdata('template_name') != $response[0]->theme_name) {
             $_SESSION['template_name'] = $response[0]->theme_name;
         }

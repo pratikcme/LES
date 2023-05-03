@@ -48,10 +48,10 @@
                   <?php endforeach ?>
                 </select>
               </form>
-            </div>
+            
           <?php } ?>
           <?php } ?>
-
+          </div>
 
           <div class="social-icons">
           <a href="javascript:" class="search-toggle header-icon" id="search"><span><i class="fa-solid fa-magnifying-glass"></i></span></a>

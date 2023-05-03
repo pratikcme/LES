@@ -234,3 +234,13 @@ footer{
 }
 
 
+@media only screen and (max-width: 768px){
+    footer path {
+        display: none;
+    }
+
+    footer {
+        background: var(--footer-bg-color);
+        padding-top: 70px;
+    }
+}

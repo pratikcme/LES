@@ -60,56 +60,62 @@ $('.owl-1').owlCarousel({
 
 // --------latest-productd-slider--------
 $('.owl-2').owlCarousel({
-    loop:true,
-    margin:20,
-    nav:false,
-    dots:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        300:{
-            items:2,
-            dots:false,
-            margin: 10,
-        },
-        600:{
-            items:2,
-            margin: 20,
-            dots:false,
-        }, 
-         768:{
-            items:2,
-            dots:false,
-            margin: 20,
-        },
-        992:{
-            items:3,
-            dots:false,
-            margin: 20,
-            nav:false,
-        },
-        1000:{
-            items:3,
-            dots:true,
-            margin: 20,
-            nav:false,
-        },
-        1200:{
-            items:3,
-            dots:true,
-            margin: 20,
-            nav:false,
-        },
-        1400:{
-            items:4,
-            dots:true,
-            nav:false,
-            
-        }
-    }
-});
+  loop:true,
+  margin:20,
+  nav:false,
+  dots:true,
+  responsive:{
+      0:{
+          items:1
+      },
+      300:{
+          items:1,
+          dots:false,
+          margin: 10,
+      },
 
+      430:{
+        items:2,
+        dots:false,
+        margin: 10,
+      },
+      
+      600:{
+          items:2,
+          margin: 20,
+          dots:false,
+      }, 
+       768:{
+          items:2,
+          dots:false,
+          margin: 20,
+      },
+      992:{
+          items:3,
+          dots:false,
+          margin: 20,
+          nav:false,
+      },
+      1000:{
+          items:3,
+          dots:true,
+          margin: 20,
+          nav:false,
+      },
+      1200:{
+          items:3,
+          dots:true,
+          margin: 20,
+          nav:false,
+      },
+      1400:{
+          items:4,
+          dots:true,
+          nav:false,
+          
+      }
+  }
+});
 
   // -----check-out-page-slider---
   // -----owl-slider-3---
