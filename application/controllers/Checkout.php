@@ -51,32 +51,17 @@ class Checkout extends User_Controller
     }
     $defaultCartValue = $this->this_model->getCartValue();
 
-    $myCartValue = 0;
-    $total_gst = 0;
-    if ($this->session->userdata('user_id') == '') {
-      foreach ($_SESSION['My_cart'] as $key => $value) {
-        $myCartValue += $value['total'];
 
-        $gst = $this->api_model->getProductGst($value['product_id']);
-        $gst_amount = ($value['discount_price'] * $gst) / 100;
-        $total_gst += $gst_amount * $value['quantity'];
-      }
-    } else {
-      $my_cart = $this->product_model->getMyCart(); //return value of mycart and 
+    // Temp Dk Work
 
-      foreach ($my_cart as $key => $value) {
+    $res = $this->this_model->calculateGstAndCart();
+    $myCartValue = $res['myCartValue'];
+    $total_gst = $res['total_gst'];
 
-        $myCartValue += $value->discount_price * $value->quantity;
+    // end
 
-        $gst = $this->api_model->getProductGst($value->product_id);
-
-        $gst_amount = ($value->discount_price * $gst) / 100;
-
-        $total_gst += $gst_amount * $value->quantity;
-      }
-    }
     $data['TotalGstAmount'] = number_format((float)$total_gst, '2', '.', '');
-    $data['AmountWithoutGst'] = number_format((float)($myCartValue - $gst_amount), '2', '.', '');
+    // $data['AmountWithoutGst'] = number_format((float)($myCartValue - $gst_amount), '2', '.', '');//Removed Dk
 
 
     if ($myCartValue < $defaultCartValue) {
@@ -112,7 +97,7 @@ class Checkout extends User_Controller
 
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
       $shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      $calc_shiping = $shiping['delivery_charge']; 
+      $calc_shiping = $shiping['delivery_charge'];
       // dd($data['calc_shiping']);
     }
     if (!empty($shiping)) {
@@ -155,25 +140,50 @@ class Checkout extends User_Controller
     }
     $discountValue = 0;
     $discountPercentage = 0;
-    $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount();
+
+    // DK
+    $getMycartSubtotal = getMycartSubtotal();
+    $data['getMycartSubtotal'] = ($data['isShow'][0]->display_price_with_gst == '0') ? $getMycartSubtotal  - $data['TotalGstAmount'] : $getMycartSubtotal;
+    $oldGst = $data['TotalGstAmount'];
+    // dd($data['getMycartSubtotal']);
+    // 
+    $getMycartSubtotal = $data['getMycartSubtotal'];
+    $this->load->model("sell_development_model", 'sd_model');
+    // dd($getMycartSubtotal
+
+    $shoppingDiscount = $this->sd_model->checkShoppingBasedDiscount($getMycartSubtotal, $this->session->userdata('branch_id'));
+
+    // $res = $this->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
+    $res = $this->this_model->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
+    $myCartValue = $res['myCartValue'];
+    $total_gst = $res['total_gst'];
+
+
+    $data['TotalGstAmount'] = numberFormat($total_gst);
     if (!empty($shoppingDiscount)) {
-      if (getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount) {
+      if ($getMycartSubtotal >= $shoppingDiscount[0]->cart_amount) {
         $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-        $discountValue = getMycartSubtotal() * $discountPercentage / 100;
+        $discountValue = $getMycartSubtotal * $discountPercentage / 100;
         $discountValue = number_format((float)$discountValue, 2, '.', '');
       }
     }
 
+
+    // $data['getMycartSubtotal'] = $data['getMycartSubtotal'] - $data['TotalGstAmount'];
+
+    // $data['getMycartSubtotal'] = ($data['isShow'][0]->display_price_with_gst == '0') ? $getMycartSubtotal - $data['TotalGstAmount'] : $getMycartSubtotal;
+
+
     $data['shopping_based_discountPercentage'] = $discountPercentage;
     $data['shopping_based_discount'] = $discountValue;
-    $getMycartSubtotal = getMycartSubtotal();
+
     // echo getMycartSubtotal();
     // echo "<br>";
     // echo $discountValue;
     // echo "<br>";
     // echo $getMycartSubtotal;
     // die;
-    $data['getMycartSubtotal'] = $getMycartSubtotal;
+
     $data['array'] = [];
     $data['data'] = json_encode([]);
 
@@ -293,6 +303,40 @@ class Checkout extends User_Controller
     $this->loadView($this->user_layout, $data);
   }
 
+  // Dk removed
+  // public function calculateGstAndCart($discount = '')
+  // {
+  //   $myCartValue = 0;
+  //   $total_gst = 0;
+  //   if ($this->session->userdata('user_id') == '') {
+  //     foreach ($_SESSION['My_cart'] as $key => $value) {
+  //       $myCartValue += $value['total'];
+
+  //       $gst = $this->api_model->getProductGst($value['product_id']);
+  //       $gst_amount = ($value['discount_price'] * $gst) / 100;
+  //       $total_gst += $gst_amount * $value['quantity'];
+  //     }
+  //   } else {
+  //     $my_cart = $this->product_model->getMyCart(); //return value of mycart and 
+
+  //     foreach ($my_cart as $key => $value) {
+
+  //       $myCartValue += numberFormat($value->discount_price) * $value->quantity;
+
+  //       $gst = $this->api_model->getProductGst($value->product_id);
+
+  //       if ($discount != '') {
+  //         $value->discount_price = numberFormat(numberFormat($value->discount_price) - ((numberFormat($value->discount_price) * $discount) / 100));
+  //       }
+
+  //       $gst_amount = (numberFormat($value->discount_price) * $gst) / 100;
+
+  //       $total_gst += numberFormat($gst_amount) * $value->quantity;
+  //     }
+  //   }
+  //   return ['myCartValue' => $myCartValue, 'total_gst' => $total_gst];
+  // }
+  // 
   function validate_promocode()
   {
     $response = $this->this_model->validate_promocode($this->input->post());
@@ -404,9 +448,9 @@ class Checkout extends User_Controller
       $calc_shiping = 0;
       if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
         $shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-        $calc_shiping = $shiping['delivery_charge']; 
+        $calc_shiping = $shiping['delivery_charge'];
       }
-      
+
       // this call for currency code
       $currency = $this->this_model->checkCurrencyCode();
       $currency_code = $currency[0]->currency_code;
@@ -638,8 +682,13 @@ class Checkout extends User_Controller
     $calc_shiping = 0;
     $shiping = array();
     if (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') {
-      $shiping = $this->this_model->getDeliveryCharge($userLat, $userLong, $this->session->userdata('branch_id'), getMycartSubtotal());
-      $calc_shiping = $shiping['delivery_charge']; 
+      $shiping = $this->this_model->getDeliveryCharge(
+        $userLat,
+        $userLong,
+        $this->session->userdata('branch_id'),
+        getMycartSubtotal()
+      );
+      $calc_shiping = $shiping['delivery_charge'];
     }
 
 

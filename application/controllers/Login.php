@@ -41,6 +41,7 @@ class Login extends User_Controller
 
 	public function index()
 	{
+
 		$login_type = $this->this_model->checkLoginType();
 		if ($login_type == '1') {
 			redirect(base_url() . 'login/user_register');
@@ -51,7 +52,7 @@ class Login extends User_Controller
 			redirect(base_url());
 		}
 		$data['appLinks'] = $this->common_keys;
-		$data['page'] =  $_SESSION['template_name'].'/account/login';
+		$data['page'] =  $_SESSION['template_name'] . '/account/login';
 		$data['js'] = array('login.js');
 		$data['init'] = array('LOGIN.login()');
 		$path = $this->uri->segment(1);
@@ -128,32 +129,34 @@ class Login extends User_Controller
 					redirect(base_url() . 'login');
 				}
 			}
+
 			$common = $this->common_keys;
 			// dd($common);
 			$google_client_id = '';
-				$google_secret_id = '';
-			if(!empty($common)){
+			$google_secret_id = '';
+			if (!empty($common)) {
 				$google_client_id = $common[0]->google_client_id;
 				$google_secret_id = $common[0]->google_secret_id;
-				}
-			if(!isset($_SESSION['oauth']) && $google_client_id != '' && $google_secret_id != ''){
-				
+			}
+			if (!isset($_SESSION['oauth']) && $google_client_id != '' && $google_secret_id != '') {
+
 				include_once APPPATH . "libraries/vendor/autoload.php";
-					 $google_client = new Google_Client();
-					 $google_client->setClientId($google_client_id); 
-		          $google_client->setClientSecret($google_secret_id); //Define your Client Secret Key
-		          $google_client->setRedirectUri(base_url().'users_account/google_login'); //Define your Redirect Uri
-		          $google_client->addScope('email');
-		          $google_client->addScope('profile');
-		          $GoogleUrl = $google_client->createAuthUrl();
+				$google_client = new Google_Client();
+				$google_client->setClientId($google_client_id);
+				$google_client->setClientSecret($google_secret_id); //Define your Client Secret Key
+				$google_client->setRedirectUri(base_url() . 'users_account/google_login'); //Define your Redirect Uri
+				$google_client->addScope('email');
+				$google_client->addScope('profile');
+				$GoogleUrl = $google_client->createAuthUrl();
 				// print_r($GoogleUrl);die;
-		      }else{	
-		      	$GoogleUrl = base_url().'login';
-		      }
-		      $data['googleUrl'] = $GoogleUrl;
-		      // print_r('1');die;
-			$this->loadView($this->user_layout,$data);
+			} else {
+				$GoogleUrl = base_url() . 'login';
+			}
+			$data['googleUrl'] = $GoogleUrl;
+			// print_r('1');die;
+			$this->loadView($this->user_layout, $data);
 		}
+
 		$common = $this->common_keys;
 		// dd($common);
 		$google_client_id = '';
@@ -162,6 +165,7 @@ class Login extends User_Controller
 			$google_client_id = $common[0]->google_client_id;
 			$google_secret_id = $common[0]->google_secret_id;
 		}
+
 		if (!isset($_SESSION['oauth']) && $google_client_id != '' && $google_secret_id != '') {
 
 			include_once APPPATH . "libraries/vendor/autoload.php";
@@ -173,12 +177,16 @@ class Login extends User_Controller
 			$google_client->addScope('profile');
 			$GoogleUrl = $google_client->createAuthUrl();
 			// print_r($GoogleUrl);die;
+
 		} else {
+
 			$GoogleUrl = base_url() . 'login';
 		}
+
 		$data['googleUrl'] = $GoogleUrl;
 		// print_r('1');die;
-		$this->loadView(USER_LAYOUT, $data);
+		$this->loadView($this->user_layout, $data); //DK Changed it
+		// $this->loadView(USER_LAYOUT, $data);
 	}
 
 	public function loginFromlink($postData)
@@ -237,7 +245,7 @@ class Login extends User_Controller
 		if (isset($this->user_id) && $this->user_id != '') {
 			redirect(base_url());
 		}
-		$data['page'] = $_SESSION['template_name'].'/account/registration';
+		$data['page'] = $_SESSION['template_name'] . '/account/registration';
 		$data['js'] = array('login.js');
 		$data['init'] = array('LOGIN.init()');
 
@@ -293,7 +301,7 @@ class Login extends User_Controller
 		if (isset($this->user_id) && $this->user_id != '') {
 			redirect(base_url());
 		}
-		$data['page'] = $_SESSION['template_name'].'/account/user_registration';
+		$data['page'] = $_SESSION['template_name'] . '/account/user_registration';
 		$data['js'] = array('user_register.js');
 		$data['country_code'] = GetDialcodelist();
 
@@ -316,7 +324,7 @@ class Login extends User_Controller
 
 		$this->loadView($this->user_layout, $data);
 	}
-	
+
 	public function sendOtpLogin()
 	{
 		$this->load->model('api_v3/api_model', 'api_model');
@@ -535,8 +543,8 @@ class Login extends User_Controller
 		if (isset($this->user_id) && $this->user_id != '') {
 			redirect(base_url());
 		}
-		
-		$data['page'] = $_SESSION['template_name'].'/account/forgetpassword';
+
+		$data['page'] = $_SESSION['template_name'] . '/account/forgetpassword';
 		$data['js'] = array('login.js');
 		$data['init'] = array('LOGIN.forget()');
 		if ($this->input->post()) {
@@ -549,8 +557,9 @@ class Login extends User_Controller
 			} else {
 				$this->utility->setFlashMessage('danger', "Something Went Wrong");
 			}
+		}
 
-		$this->loadView($this->user_layout,$data);
+		// $this->loadView($this->user_layout, $data);
 
 		$this->loadView(USER_LAYOUT, $data);
 	}

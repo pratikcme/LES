@@ -20,7 +20,8 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
-            <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('Product Detail') ?></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <?= $this->lang->line('Product Detail') ?></li>
           </ol>
         </nav>
       </div>
@@ -40,7 +41,8 @@
         <div class="product-image-part">
           <!-- -------swipr-slider-----  -->
           <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 gallery-top">
-            <span id="is_discounted" class="discnt <?= ($varientDetails[0]->discount_per != 0) ? '' : 'd-none' ?>"><?= $varientDetails[0]->discount_per ?>% off</span>
+            <span id="is_discounted" class="discnt <?= ($varientDetails[0]->discount_per != 0) ? '' : 'd-none' ?>"><?= $varientDetails[0]->discount_per ?>%
+              off</span>
             <div class="pro-hearticon wishlist-icon" data-product_id="<?= $product_id ?>" data-product_weight_id="<?= $product_weight_id ?>">
               <i id="wishlist" class="fa-regular fa-heart <?= (in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>"></i>
             </div>
@@ -73,7 +75,8 @@
         <div class="product-content-part zoom">
           <div class=""></div>
 
-          <h2 class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?= $productDetail[0]->name ?></h2>
+          <h2 class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">
+            <?= $productDetail[0]->name ?></h2>
           <h5 class="wow fadeInRight" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
 
             <div class="rating-starts justify-content-start" id="starRatting">
@@ -90,9 +93,13 @@
             </div>
 
           </h5>
-          <h6 id="is_aval_stock"><?= ($varientDetails[0]->quantity > 25) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?></h6>
-          <h3 class="wow fadeInRight notranslate" id="dynamic_price" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->siteCurrency ?> <?= number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
-            <span style="<?= ($varientDetails[0]->discount_per == 0) ? 'display:none' : '' ?>"><strike> <?= $this->siteCurrency ?>
+          <h6 id="is_aval_stock">
+            <?= ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?>
+          </h6>
+          <h3 class="wow fadeInRight notranslate" id="dynamic_price" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->siteCurrency ?>
+            <?= number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
+            <span style="<?= ($varientDetails[0]->discount_per == 0) ? 'display:none' : '' ?>"><strike>
+                <?= $this->siteCurrency ?>
                 <?= number_format((float)$varientDetails[0]->price, 2, '.', '') ?></strike></span>
           </h3>
 
@@ -101,7 +108,8 @@
 
             <div>
               <div>
-                <h4><?= $this->lang->line('Brand') ?>: <span><?= $productDetail[0]->brand_name ?></span></h4>
+                <h4><?= $this->lang->line('Brand') ?>: <span><?= $productDetail[0]->brand_name ?></span>
+                </h4>
               </div>
 
               <div>
@@ -112,7 +120,8 @@
 
             <select class="product_varient_id" name="cars product_varient_id" aria-label="Default select example" id="cars">
               <?php foreach ($varient as $key => $value) { ?>
-                <option value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>><?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
+                <option value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>>
+                  <?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
               <?php } ?>
             </select>
 
@@ -166,7 +175,8 @@
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">DESCRIPTION</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="review_count" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">REVIEWS (<?= count($product_review) ?>)</button>
+            <button class="nav-link" id="review_count" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">REVIEWS
+              (<?= count($product_review) ?>)</button>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -186,7 +196,8 @@
                 } ?>
                 <div class="left-content">
                   <div>
-                    <h3> <strong><?= (!empty($sumOfRatting) && $sumOfRatting != 0) ? round($sumOfRatting / count($product_review)) : "0" ?></strong><span>/5</span></h3>
+                    <h3> <strong><?= (!empty($sumOfRatting) && $sumOfRatting != 0) ? round($sumOfRatting / count($product_review)) : "0" ?></strong><span>/5</span>
+                    </h3>
                   </div>
 
                 </div>
@@ -221,7 +232,8 @@
                         </div>
                         <div class="review-text">
                           <h6><?= $value->fname ?></h6>
-                          <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+                          <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers
+                          </p>
                         </div>
                       </div>
                       <div class="review-right">
@@ -276,7 +288,8 @@ if (!empty($related_product)) { ?>
                   <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
                 </a>
               </div>
-              <p><?= ($value->quantity >= 25) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?></p>
+              <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?>
+              </p>
 
             </div>
 
@@ -285,8 +298,10 @@ if (!empty($related_product)) { ?>
                 <h5><?= $value->name ?></h5>
                 <div class="product-discount">
 
-                  <h4><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                  <p class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
+                  <h4><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
+                  </h4>
+                  <p class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>">
+                    <?= $this->siteCurrency . ' ' . $value->price ?></p>
                 </div>
               </a>
               <div class="rating-starts">

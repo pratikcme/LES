@@ -209,9 +209,11 @@ class Products extends User_Controller
 		$data['product_id'] = $id;
 
 		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id, $varient_id);
+
 		$product_review = $this->this_model->getProductReview($product_id, $varient_id);
 		$countParticularUserReview = $this->this_model->countParticularUserReview($product_id, $varient_id);
 		$data['countParticularUserReview'] = $countParticularUserReview;
+
 		$data['product_review'] = $product_review;
 		$category_name = $this->this_model->getNameCateBrand(TABLE_CATEGORY, $data['productDetail'][0]->category_id);
 		$brand_name = $this->this_model->getNameCateBrand(TABLE_BRAND, $data['productDetail'][0]->brand_id);
@@ -391,13 +393,15 @@ class Products extends User_Controller
 
 		for ($j = 1; $j <= $ratting; $j++) {
 			$starHtml .= '<i class="fas fa-star"></i>';
-			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
+			// $upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
+			$upbasket_starHtml .= '<span class="star"></span>';
 			$beauty_starHtml .= '<span class="star"></span>';
 			$shoppy_starHtml .= '<span class="star"></span>';
 		}
 		for ($i = 1; $i <= 5 - $ratting; $i++) {
 			$starHtml .= '<i class="fas fa-star blank-ratting"></i>';
-			$upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
+			// $upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
+			$upbasket_starHtml .= '<span class="star star-active"></span>';
 			$beauty_starHtml .= '<span class="star star-active"></span>';
 			$shoppy_starHtml .= '<span class="star star-active"></span>';
 		}
@@ -425,7 +429,8 @@ class Products extends User_Controller
 			'productReviewCount' => count($data['product_review']),
 			'avgRatting' => round($avgr),
 			'varientWishStarRatting' => $starHtml,
-			'upbasket_starHtml' => $upbasket_starHtml . '  ' . round($avgr),
+			'upbasket_starHtml' => '<div class="rating stars3_5" >' . $upbasket_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',
+			// $upbasket_starHtml . '  ' . round($avgr),
 			'beauty_starHtml' => '<div class="rating stars3_5" >' . $beauty_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',
 			'upbasket_thumb' => $upbasket_thumb,
 			'shoppy_starHtml' => '<div class="rating stars3_5" >' . $shoppy_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',

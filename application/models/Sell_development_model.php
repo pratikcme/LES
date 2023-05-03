@@ -2370,12 +2370,15 @@ class Sell_development_model extends My_model
     }
 
     // shopping amount based Dipesh
-    public function checkShoppingBasedDiscount($sub_total)
+    public function checkShoppingBasedDiscount($sub_total, $branch_id = '')
     {
         // $cartAmount = getMycartSubtotal();
-        $query = $this->db->query('SELECT *,(' . $sub_total . ' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = ' . $this->branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        if ($branch_id == '') {
+            $branch_id  = $this->branch_id;
+        }
+        $query = $this->db->query('SELECT *,(' . $sub_total . ' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = ' . $branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
-        // lq();
+
         return $re;
         // return
     }

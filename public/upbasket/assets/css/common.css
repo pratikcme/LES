@@ -762,9 +762,17 @@ a {
     justify-content: center;
     gap: 10px !important;
 }
-
+/* 
 .rating-starts .rating{
     margin: 0 !important;
+} */
+
+
+.rating-starts .rating {
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .rating span.star {
