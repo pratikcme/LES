@@ -460,13 +460,12 @@
           <input type="hidden" name="product_id" id="product_id" value="<?= $this->uri->segment(3) ?>">
           <input type="hidden" name="varient_id" id="varient_id" value="<?= $this->uri->segment(4) ?>">
           <div class="review-text-box">
-            <textarea name="comment" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
+            <textarea name="comment" cols="30" rows="10" placeholder="Your Comments"></textarea>
           </div>
         </div>
         <div class="modal-footer">
           <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" ><?= $this->lang->line('Submit') ?></button>
         </div>
-      </div>
     </form>
     </div>
   </div>
