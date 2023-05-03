@@ -307,13 +307,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Write Review</h3>
+        <h3 class="modal-title" id="exampleModalLabel"><?=$this->lang->line('Write Review')?></h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
             class="fa-regular fa-circle-xmark"></i></button>
       </div>
-      <form  id="reviewForm" class="modal-body" method="POST" action="<?= base_url() . 'products/productReview' ?>">
+      <form id="reviewForm" class="modal-body" method="POST" action="<?= base_url() . 'products/productReview' ?>">
         <div class="rating-box">
-          <div class="rating flex-column">
+          <div class="mb-2">
             <div class="rating__stars">
               <input id="rating-1" class="rating__input rating__input-1" type="radio" name="ratetIndex" value="1">
               <input id="rating-2" class="rating__input rating__input-2" type="radio" name="ratetIndex" value="2">
@@ -456,18 +456,15 @@
               <p class="rating__display" data-rating="4" hidden>Good</p>
               <p class="rating__display" data-rating="5" hidden>Excellent</p>
             </div>
-          </d>
+          </div>
           <input type="hidden" name="product_id" id="product_id" value="<?= $this->uri->segment(3) ?>">
           <input type="hidden" name="varient_id" id="varient_id" value="<?= $this->uri->segment(4) ?>">
-          <div class="review-text-box">
-            <textarea name="comment" id="" cols="30" rows="10" placeholder="Your Comments"></textarea>
+          <textarea name="comment"  cols="30" rows="10" class="w-100 ps-2 pt-2" placeholder="Your Comments" ></textarea>
+          <div class="modal-footer">
+          <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" ><?= $this->lang->line('Submit') ?></button>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn" ><?= $this->lang->line('Submit') ?></button>
-        </div>
-      </div>
-    </form>
+      </form>
     </div>
   </div>
 </div>
