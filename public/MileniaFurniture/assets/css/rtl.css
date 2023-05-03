@@ -1,0 +1,225 @@
+/* common */
+.rtl .techno_checkbox:checked~.heart::before,
+.rtl .techno_checkbox
+{
+    left: 33px;
+    right: auto;
+}
+
+/* header-css */
+.rtl .header-search-wrap .dropdown-menu.show{
+    left: 0;
+    right: inherit;
+}
+
+.rtl .navbar-nav .nav-link{
+    margin-right: 0;
+    margin-left: 45px;
+}
+
+.rtl .user-login-drop{
+    transform: translate(0px,6px);
+}
+
+/* shop by category */
+.rtl .categories-detail-img-wrap{
+    margin-right: 0;
+    margin-left: 13px;
+}
+
+.rtl .rightArrowdark{
+    margin-left: 0;
+    margin-right: 5px;
+} 
+
+.rtl h2::after{
+    left: auto;
+}
+
+/* hote-products */
+.rtl .text-end {
+    text-align: right !important;
+}
+
+/* product-list */
+.rtl .accordion-button::after{
+    margin-left: inherit;
+    margin-right: auto;
+}
+
+.rtl .sidepanel{
+    right: inherit;
+    left: 0;
+}
+
+.rtl .breadcrumb-item+.breadcrumb-item::before{
+    float: right;
+    padding-left: 5px;
+}
+
+.rtl .user-data-wrapper a span{
+    margin-right: 0px;
+    margin-left: 10px;
+}
+
+/* contact-us */
+.rtl .contact-icon-wrap{
+    margin-right: 0px;
+    margin-left: 25px;
+}
+
+.rtl  .contact-detail-text a{
+    padding: 0;
+}
+
+/* product-detail */
+.rtl .qty-btn-minus {
+    border-right: 0;
+    border-left: 1px solid #E3DBD3;
+}
+
+.rtl .qty-btn-plus {
+    border-left: 0;
+    border-right: 1px solid #E3DBD3;
+}
+
+.rtl .product-detalis-btn .add-cart-btn span {
+    margin-right: 0 !important;
+    margin-left: 13px !important;
+}
+
+.rtl  .product-content-part h6 span {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.rtl .product-content-part h3 span:nth-child(odd){
+    padding-right: 0;
+    padding-left: 5px;
+}
+
+/* shop-cart */
+.rtl .shop-cart-seciton table th:nth-child(1) {
+    padding-left: 0;
+    border-radius: 0px 10px 10px 0px;
+    padding-right: 40px;
+} 
+
+.rtl table th:nth-child(4) {
+    border-radius: 10px 0px 0px 10px;
+}
+
+/* checkout-page */
+.rtl .main-accordion .accordion-heading{
+    padding: 30px 45px 30px 0px;
+}
+
+.rtl .accordion-content-2 label span{
+    margin-right: 0px;
+    margin-left: 10px;
+}
+
+.rtl .have-code-part .input-group-text{
+    left: -300px;
+    padding-left: 0;
+    padding-right: 45px;
+}
+
+.rtl .mydiv-header{
+    padding-left: 0px;
+    padding-right: 40px;
+}
+
+.rtl .time-wrapper label::after{
+    right: inherit;
+    left: -40px;
+}
+
+/* login-css */
+.rtl .facebook-btn span,
+.rtl .google-btn span
+{
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.rtl .login-deatils-wrapper .form-check-input{
+    margin-left: 0;
+}
+
+
+/* myaccount-page */
+.rtl .mywishlist-part .add-cart-btn span {
+    margin-right: 0px;
+    margin-left: 10px;
+}
+
+.rtl .mywishlist-part th:nth-child(1){
+    padding-left: 0;
+    padding-right: 45px;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.rtl .tab-select-box select{
+    background-position-x: 429px;
+}
+
+
+/* footer */
+.rtl .footer-address-wrap p{
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+/*============== responsive ==============*/
+@media only screen and (max-width: 1200px){
+    .rtl .navbar-nav .nav-link {
+        margin-right: 0;
+        margin-left: 20px;
+    }
+
+    .time-wrapper{
+        padding-right: 10px;
+    }
+
+    /* .radio-outer-line {
+        padding-left: 10px !important;
+    } */
+
+    .main-accordion .accordion-content {
+        padding: 30px 15px;
+    }
+}
+
+
+@media only screen and (max-width:991px){
+    .rtl .have-code-part .input-group-text{
+        left: -218px;
+        padding-right: 32px;
+    }
+
+    .rtl .accordion-heading {
+        font-size: 18px;
+        padding: 20px 20px 20px 0px !important;
+    }
+}
+
+@media only screen and (max-width:768px){
+    .rtl .have-code-part .input-group-text{
+        top: 0;
+        right: 0;
+        margin-top: 10px;   
+    }
+}
+
+@media only screen and (max-width:575px){
+    .rtl .have-code-part .input-group-text{
+        padding-right: 0;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 424px){
+    .rtl .product-detalis-btn .add-cart-btn span {
+        margin-left: 5px !important;
+    }
+}

@@ -39,7 +39,7 @@
                             <div class="sign-in-btn tab-save-btn">
                                 <input type="submit"  id="btnSubmit" value="<?=$this->lang->line('Submit')?>">
                             </div>
-                            <p>Or</p>
+                            <p><?=$this->lang->line('Or, log in with your socials')?></p>
 
                             <div class="log-in-btn">
                                 <a href="<?=$googleUrl?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span><?=$this->lang->line('continue with google')?></a>

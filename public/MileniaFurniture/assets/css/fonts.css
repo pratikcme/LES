@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
+
+@font-face {
+    font-family: 'PublicSans-Black';
+    src: url('../fonts/PublicSans-Black.woff') format('woff2'),
+        url('../fonts/Gordita-Black.woff') format('woff');
+    font-weight: 800;
+}
+
+
+@font-face {
+    font-family: 'PublicSans-SemiBold';
+    src: url('../fonts/PublicSans-SemiBold.woff') format('woff2'),
+        url('../fonts/PublicSans-SemiBold.woff') format('woff');
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'PublicSans-ExtraBold';
+    src: url('../fonts/PublicSans-ExtraBold.woff') format('woff2'),
+        url('../fonts/PublicSans-ExtraBold.woff') format('woff');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'PublicSans-Bold';
+    src: url('../fonts/PublicSans-Bold.woff') format('woff2'),
+    url('../fonts/PublicSans-Bold.woff') format('woff2');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'PublicSans-Medium';
+    src: url('../fonts/PublicSans-Medium.woff') format('woff2'),
+        url('../fonts/PublicSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PublicSans-Light';
+    src: url('../fonts/PublicSans-Light.woff') format('woff2'),
+        url('../fonts/PublicSans-Light.woff') format('woff');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'PublicSans-Regular';
+    src: url('../fonts/PublicSans-Regular.woff') format('woff2'),
+        url('../fonts/PublicSans-Regular.woff') format('woff');
+    font-weight: normal;
+}

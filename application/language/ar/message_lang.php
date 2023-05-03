@@ -37,6 +37,8 @@ $lang['order placed successfully'] = 'تم وضع الطلب بنجاح';
 $lang['Latest'] = 'أحدث';
 $lang['Products'] = 'منتجات';;
 $lang['Shop By'] = 'تسوق حسب';
+$lang['Top Categories Of The Week'] = 'أهم فئات الأسبوع';
+$lang['Exclusive'] = 'حصري';
 $lang['Top Featured'] = 'الأعلى المميز';
 $lang['Comments'] = 'تعليقات';
 $lang['Write your review'] = 'اكتب مراجعتك';
@@ -51,14 +53,17 @@ $lang['Call Us'] = 'اتصل بنا';
 $lang['Shop infomation'] = 'معلومات المتجر';
 $lang['Product Listing'] = 'قائمة المنتجات';
 $lang['Reach Out To Us'] = 'تواصل معنا';
+$lang['Reach'] = 'يصل';
+$lang['Out To Us'] = 'في الخارج إلينا';
+$lang['Write Us'] = 'اكتب لنا';
 $lang['Explore More'] = 'استكشاف المزيد';
 $lang['Account'] = 'حساب';
 $lang['Details'] = 'تفاصيل';
 $lang['SHOP'] = 'محل';
 
-$lang['Completed'] = 'Completed';
-$lang['Process'] = 'Process';
-$lang['Cancel'] = 'Cancel';
+$lang['Completed'] = 'مكتمل';
+$lang['Process'] = 'عملية';
+$lang['Cancel'] = 'يلغي';
 
 $lang['Most Useful Review'] = 'المراجعة الأكثر فائدة';
 
@@ -70,9 +75,30 @@ $lang['Delivery Method'] = 'طريقة التوصيل';
 $lang['Your Orders'] = 'طلباتك';
 $lang['Cart Totals'] = 'إجماليات سلة التسوق';
 $lang['Do you Want to Clear Cart'] = 'هل تريد مسح سلة التسوق؟';
+$lang['Or, log in with your socials'] = 'أو قم بتسجيل الدخول باستخدام مواقع التواصل الاجتماعي الخاصة بك';
+
+
+// Button //
+$lang['Login with Google'] = 'تسجيل الدخول عبر جوجل';
+$lang['Login with Facebook'] = 'تسجيل الدخول باستخدام الفيسبوك';
+$lang['Don’t have an account?'] = 'ليس لديك حساب؟';
+
+// Register // 
+
+$lang['Let’s create your account'] = 'دعونا ننشئ حسابك';
+
 
 // end other template 
 
+
+// Footer //
+$lang['Blog'] = 'مدونة';
+$lang['Terms of Service'] = 'شروط الخدمة';
+$lang['Order History'] = 'تاريخ الطلب';
+$lang['FAQ'] = 'التعليمات';
+$lang['From App Store or Google Play'] = 'من App Store أو Google Play';
+
+// Footer // 
 
 $lang['Cart Discount'] = 'سلة الخصم';
 $lang['Sign up'] = 'اشتراك';
@@ -98,12 +124,14 @@ $lang['Search product..'] = 'بحث عن منتج ..';
 $lang['Categories'] = 'فئات';
 $lang['new product'] = 'منتج جديد';
 
-
+$lang['Already have an account?'] = 'هل لديك حساب؟';
 //Contact us page
 
 $lang['get in touch'] = 'ابقى على تواصل';
 $lang['send'] = 'إرسال';
-
+$lang['Enter phone Number'] = 'أدخل رقم الهاتف';
+$lang['Enter Message'] = 'أدخل رسالة';
+$lang['Contact Info'] = 'معلومات الاتصال';
 // vendor/vendor page
 $lang['vendor'] = 'بائع';
 $lang['home'] = 'الصفحة الرئيسية';
@@ -154,13 +182,20 @@ $lang['Forgot Your Password'] = 'نسيت كلمة السر';
 $lang['continue with facebook'] = 'تواصل مع الفيسبوك';
 $lang['continue with google'] = 'تواصل مع جوجل';
 $lang['Forgot password'] = 'هل نسيت كلمة السر';
-
+$lang['Welcome'] = 'مرحباً';
+$lang['back!'] = 'خلف!';
+$lang['Welcome back! Enter your credentails to acess your account.'] = 'مرحبًا بعودتك! أدخل بيانات الاعتماد الخاصة بك للوصول إلى حسابك.';
+$lang['Forgot Password?'] = 'هل نسيت كلمة السر؟';
+$lang['Forgot'] = 'نسيت';
+$lang['Password?'] = 'كلمة المرور؟';
 // placeHolder
 $lang['Gst number'] = 'رقم Gst';
+
 $lang['Email*'] = 'بريد إلكتروني*';
 $lang['password*'] = 'كلمة المرور*';
 $lang['password'] = 'كلمة المرور';
-
+$lang['Enter Email Address*'] = 'أدخل عنوان البريد الالكتروني*';
+$lang['Enter Password*'] = 'أدخل كلمة المرور *';
 // register
 $lang['Register'] = 'يسجل';
 $lang['Your Account'] = 'الحساب الخاص بك';
@@ -178,14 +213,14 @@ $lang['Confirm password*'] = 'تأكيد كلمة المرور*';
 $lang['Enter Email*'] = 'أدخل البريد الإلكتروني *';
 
 /* login with mobile */
-$lang['First Name'] = 'First Name';
-$lang['Last Name'] = 'Last Name';
-$lang['Select country code'] = 'Select country code';
-$lang['Mobile Number'] = 'Mobile Number';
-$lang['Confirm password'] = 'Confirm password';
-$lang['Enter Email'] = 'Enter Email';
-$lang['Send Code'] = 'Send Code';
-$lang['Resend'] = 'Resend';
+$lang['First Name'] = 'الاسم الأول';
+$lang['Last Name'] = 'اسم العائلة';
+$lang['Select country code'] = 'حدد رمز الدولة';
+$lang['Mobile Number'] = 'رقم الهاتف المحمول';
+$lang['Confirm password'] = 'تأكيد كلمة المرور';
+$lang['Enter Email'] = 'أدخل البريد الإلكتروني';
+$lang['Send Code'] = 'أرسل الرمز';
+$lang['Resend'] = 'إعادة إرسال';
 
 // forget password
 $lang['forgotten'] = 'نسي';
@@ -229,12 +264,28 @@ $lang['Enter Promocode'] = 'أدخل الرمز الترويجي';
 $lang['You will save'] = 'سوف تحفظ';
 $lang['on this order'] = 'على هذا الطلب';
 $lang['Verify Mobile'] = 'تحقق من الهاتف المحمول';
+$lang['Delivery Schedule'] = 'جدول التسليم';
+$lang['Contact'] = 'اتصال';
+// my orders //
+
+$lang['Processing'] = 'يعالج';
+$lang['Pending'] = 'قيد الانتظار';
+$lang['Ready'] = 'مستعد';
+$lang['Pickup'] = 'يلتقط';
+$lang['on the way'] = 'علي الطريق';
+$lang['Delivered'] = 'يعالج';
+$lang['Order Number'] = 'رقم الأمر';
+$lang['Delivered to'] = 'سلمت ل';
+
 // my account
 $lang['All store'] = 'كل متجر';
 $lang['My account'] = 'حسابي';
+$lang['My'] = 'لي';
+$lang['Orders'] = 'طلبات';
 $lang['My order'] = 'طلبي';
 $lang['My orders'] = 'طلباتي';
 $lang['My Wishlist'] = 'قائمة امنياتي';
+$lang['Wishlist'] = 'قائمة الرغبات';
 $lang['My address'] = 'عنواني';
 $lang['Change Password'] = 'غير كلمة السر';
 $lang['logout'] = 'تسجيل خروج';
@@ -246,8 +297,16 @@ $lang['My address'] = 'عنواني';
 $lang['Default'] = 'تقصير';
 $lang['Address'] = 'تبوك';
 $lang['No Orders Available'] = 'لا توجد أوامر متاحة';
-
-
+$lang['Account'] = 'حساب';
+$lang['Details'] = 'تفاصيل';
+$lang['Email Address'] = 'عنوان البريد الإلكتروني';
+$lang['Country Code'] = 'الرقم الدولي';
+$lang['Otp'] = 'Otp';
+$lang['product'] = 'منتج';
+$lang['price'] = 'سعر';
+$lang['Add Address'] = 'اضف عنوان';
+$lang['Town / City'] = 'البلدة / المدينة';
+$lang['Change'] = 'يتغير';
 //order 
 
 $lang['Details'] = 'تفاصيل';
@@ -275,13 +334,17 @@ $lang['Message'] = 'رسالة';
 // about us
 $lang['About us'] = 'معلومات عنا';
 $lang['What Our Clients Say'] = 'ماذا يقول عملاؤنا';
-
-
+$lang['Why'] = 'لماذا';
+$lang['Choose Us?'] = 'اختر لنا؟';
+$lang['The Trust'] = 'الثقة';
+$lang['From Clients'] = 'من العملاء';
 // card header 
 $lang['Subtotal:'] = 'المجموع الفرعي:';
+$lang['Subtotal'] = 'المجموع الفرعي';
 $lang['view cart'] = 'عرض عربة التسوق';
 $lang['Clear All'] = 'امسح الكل';
 $lang['No Notification'] = 'لا يوجد إشعارات';
+$lang['My shopping cart'] = 'سلة التسوق الخاصة بي';
 
 // products filter
 $lang['Show More'] = 'أظهر المزيد';
@@ -301,6 +364,7 @@ $lang['Price-High to Low'] = 'السعر الاعلى الى الادنى';
 $lang['Price-Low to High'] = 'السعر من الارخص للاعلى';
 $lang['`%` off - High to Low'] = '٪ خصم - من الأعلى إلى الأقل';
 $lang['`%` off - low to high'] = '٪ خصم - من الأعلى إلى الأقل';
+$lang['Discounts'] = 'الخصومات';
 
 // Address place holder
 $lang['Full Name'] = 'الاسم الكامل';
@@ -414,3 +478,5 @@ $lang['please_enter_only_digits'] = 'الرجاء إدخال أرقام فقط.'
 
 $lang['Best Sellers'] = 'أفضل البائعين';
 $lang['New Arrival'] = 'قادم جديد';
+$lang['New'] = 'جديد';
+$lang['Arrivals'] = 'الوصول';

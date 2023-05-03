@@ -190,7 +190,6 @@ var CHECKOUT = (function () {
         var user_gst_number = $("#user_gst_number").val();
       }
     }
-    alert()
     var promocode = $("#applied_promo").val();
 
     if (paymentOption == 0) {

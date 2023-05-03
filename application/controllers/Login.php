@@ -185,8 +185,7 @@ class Login extends User_Controller
 
 		$data['googleUrl'] = $GoogleUrl;
 		// print_r('1');die;
-		$this->loadView($this->user_layout, $data); //DK Changed it
-		// $this->loadView(USER_LAYOUT, $data);
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function loginFromlink($postData)
@@ -285,7 +284,7 @@ class Login extends User_Controller
 			$GoogleUrl = base_url() . 'register';
 		}
 		$data['googleUrl'] = $GoogleUrl;
-		$this->loadView(USER_LAYOUT, $data);
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function user_register()
@@ -558,10 +557,7 @@ class Login extends User_Controller
 				$this->utility->setFlashMessage('danger', "Something Went Wrong");
 			}
 		}
-
-		// $this->loadView($this->user_layout, $data);
-
-		$this->loadView(USER_LAYOUT, $data);
+		$this->loadView($this->user_layout, $data);
 	}
 
 	public function verify_email()

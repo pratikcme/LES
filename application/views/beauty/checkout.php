@@ -310,6 +310,7 @@ span.error {
                                                      autocomplete="off"></textarea>
                                              </div>
                                          </div>
+                                         <input type="hidden" name="redirect_url" value="<?= base_url() . 'checkout' ?>">
                                          <div class="save-btn">
                                              <button type="submit" id="addAddress" class="signin-btn-green">
                                                  <?= $this->lang->line('Save') ?> </button>
@@ -395,7 +396,7 @@ span.error {
                                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt=""></a>
                                 </div>
                                 <div class="order-wrapper-text">
-                                    <h4><a href="./product-details.php"><?= $value->product_name ?></a></h4>
+                                    <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a></h4>
                                     <h5>Qty : <?=$value->quantity?></h5>
                                     <h3 class='notranslate'><?= $this->siteCurrency . number_format((float)$value->discount_price, '2', '.', '') ?></h3>
                                 </div>
@@ -409,7 +410,7 @@ span.error {
                         <img src="<?=$this->theme_base_url?>/assets/images/check-out-tag-img.png" alt="" class="check-out-tag-img">
                         <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
                     </div>
-
+                    <?php if ($shopping_based_discount == 0) { ?>
                     <div class="have-code-part">
                         <div class="input-group mb-3">
                             <label for="text">If you have a coupon code, please apply it below.</label><br>
@@ -419,6 +420,7 @@ span.error {
                             <span class="error" id="promo_err"></span>
                         </div>
                     </div>
+                    <?php } ?>
 
                     <div class="cart-totals-part">
                         <table>

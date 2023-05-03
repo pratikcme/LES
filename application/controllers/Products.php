@@ -209,7 +209,6 @@ class Products extends User_Controller
 		$data['product_id'] = $id;
 
 		$data['isVarientExist'] = $this->this_model->checkOrderItemExist($product_id, $varient_id);
-
 		$product_review = $this->this_model->getProductReview($product_id, $varient_id);
 		$countParticularUserReview = $this->this_model->countParticularUserReview($product_id, $varient_id);
 		$data['countParticularUserReview'] = $countParticularUserReview;

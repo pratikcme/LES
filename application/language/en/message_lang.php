@@ -36,6 +36,8 @@ $lang['order placed successfully'] = 'order placed successfully';
 $lang['Latest'] = 'Latest';
 $lang['Products'] = 'Products';
 $lang['Shop By'] = 'Shop By';
+$lang['Top Categories Of The Week'] = 'Top Categories Of The Week';
+$lang['Exclusive'] = 'Exclusive';
 $lang['Top Featured'] = 'Top Featured';
 $lang['Comments'] = 'Comments';
 $lang['Write your review'] = 'Write your review';
@@ -50,6 +52,12 @@ $lang['Call Us'] = 'Call Us';
 $lang['Shop information'] = 'Shop information';
 $lang['Product Listing'] = 'Product Listing';
 $lang['Reach Out To Us'] = 'Reach Out To Us';
+$lang['Reach'] = 'Reach';
+$lang['Out To Us'] = 'Out To Us';
+$lang['Out To Us'] = 'Write Us';
+$lang['Already have an account?'] = 'Already have an account?';
+
+
 $lang['Explore More'] = 'Explore More';
 $lang['Account'] = 'Account';
 $lang['Details'] = 'Details';
@@ -67,9 +75,17 @@ $lang['Delivery Method'] = 'Delivery Method';
 $lang['Your Orders'] = 'Your Orders';
 $lang['Cart Totals'] = 'Cart Totals';
 $lang['Do you Want to Clear Cart'] = 'Do you Want to Clear Cart?';
+$lang['Or, log in with your socials'] = 'Or, log in with your socials';
+
+// Button //
+$lang['Login with Google'] = 'Login with Google';
+$lang['Login with Facebook'] = 'Login with Facebook';
+$lang['Don’t have an account?'] = 'Don’t have an account?';
 
 
+// Register form // 
 
+$lang['Let’s create your account'] = 'Let’s create your account';
 
 
 // end other template 
@@ -90,6 +106,16 @@ $lang['TOP FEATURED PRODUCTS'] = 'TOP FEATURED PRODUCTS';
 $lang['Useful Links'] = 'Useful Links';
 $lang['Download App'] = 'Download App';
 $lang['Payment Method'] = 'Payment Method';
+
+// Footer //
+$lang['Blog'] = 'Blog';
+$lang['Terms of Service'] = 'Terms of Service';
+$lang['Order History'] = 'Order History';
+$lang['FAQ'] = 'FAQ';
+$lang['From App Store or Google Play'] = 'From App Store or Google Play';
+
+// Footer // 
+
 
 $lang['See All'] = 'See All';
 $lang['Shop Now'] = 'Shop Now';
@@ -152,6 +178,11 @@ $lang['Forgot Your Password'] = 'Forgot Your Password';
 $lang['continue with facebook'] = 'continue with facebook';
 $lang['continue with google'] = 'continue with google';
 $lang['Forgot password'] = 'Forgot password';
+$lang['Welcome'] = 'Welcome';
+$lang['back!'] = 'back!';
+$lang['Welcome back! Enter your credentails to acess your account.'] = 'Welcome back! Enter your credentails to acess your account.';
+$lang['Forgot'] = 'Forgot';
+$lang['Password?'] = 'Password?';
 
 // placeHolder
 $lang['Gst number'] = 'Gst number';
@@ -159,6 +190,8 @@ $lang['Gst number'] = 'Gst number';
 $lang['Email*'] = 'Email*';
 $lang['password*'] = 'password*';
 $lang['password'] = 'password';
+$lang['Enter Email Address*'] = 'Enter Email Address*';
+$lang['Enter Password*'] = 'Enter Password*';
 
 // register
 $lang['Register'] = 'Register';
@@ -226,26 +259,52 @@ $lang['You will save'] = 'You will save';
 $lang['on this order'] = 'on this order';
 
 $lang['Verify Mobile'] = 'Verify Mobile';
+$lang['Delivery Schedule'] = 'Delivery Schedule';
+$lang['Contact'] = 'Contact';
+
+// my orders //
+
+$lang['Processing'] = 'Processing';
+$lang['Pending'] = 'Pending';
+$lang['Ready'] = 'Ready';
+$lang['Pickup'] = 'Pickup';
+$lang['on the way'] = 'on the way';
+$lang['Delivered'] = 'Processing';
+$lang['Order Number'] = 'Order Number';
+$lang['Delivered to'] = 'Delivered to';
 
 
 // my account
 $lang['All store'] = 'All store';
 $lang['My account'] = 'My account';
 $lang['My order'] = 'My order';
+$lang['My'] = 'My';
+$lang['Orders'] = 'Orders';
 $lang['My orders'] = 'My orders';
 $lang['My Wishlist'] = 'My Wishlist';
+$lang['Wishlist'] = 'Wishlist';
 $lang['My address'] = 'My Address';
 $lang['Change Password'] = 'Change Password';
+$lang['Change'] = 'Change';
+
 $lang['logout'] = 'logout';
 $lang['Delete Account'] = 'Delete Account';
 $lang['Account Details'] = 'Account Details';
+$lang['Account'] = 'Account';
+$lang['Details'] = 'Details';
+$lang['Email Address'] = 'Email Address';
 $lang['Save'] = 'Save';
 $lang['Add New Address'] = 'Add New Address';
 $lang['My address'] = 'My Address';
 $lang['Default'] = 'Default';
 $lang['Address'] = 'Address';
 $lang['No Orders Available'] = 'No Orders Available';
-
+$lang['Country Code'] = 'Country Code';
+$lang['Otp'] = 'Otp';
+$lang['product'] = 'product';
+$lang['price'] = 'price';
+$lang['Add Address'] = 'Add Address';
+$lang['Town / City'] = 'Town / City';
 //order 
 $lang['Details'] = 'Details';
 $lang['Total Amount'] = 'Total Amount';
@@ -263,21 +322,31 @@ $lang['Contact us'] = 'Contact us';
 $lang['Location'] = 'Location';
 $lang['Email'] = 'Email';
 $lang['Phone'] = 'Phone';
+$lang['Contact Info'] = 'Contact Info';
 
 //contact us palceholder
 $lang['First Name'] = 'First Name';
 $lang['Message'] = 'Message';
+$lang['Enter phone Number'] = 'Enter phone Number';
+$lang['Enter Message'] = 'Enter Message';
 
 // about us
 $lang['About us'] = 'About us';
 $lang['What Our Clients Say'] = 'What Our Clients Say';
+$lang['The Trust'] = 'The Trust';
+$lang['From Clients'] = 'From Clients';
+$lang['Why'] = 'Why';
+$lang['Choose Us?'] = 'Choose Us?';
 
 
 // card header 
 $lang['Subtotal:'] = 'Subtotal:';
+$lang['Subtotal'] = 'Subtotal';
+
 $lang['view cart'] = 'view cart';
 $lang['Clear All'] = 'Clear All';
 $lang['No Notification'] = 'No Notification';
+$lang['My shopping cart'] = 'My shopping cart';
 
 // products filter
 $lang['Show More'] = 'Show More';
@@ -297,6 +366,7 @@ $lang['Price-High to Low'] = 'Price - High to Low';
 $lang['Price-Low to High'] = 'Price - Low to High';
 $lang['`%` off - High to Low'] = '`%` off - High to Low';
 $lang['`%` off - low to high'] = '`%` off - low to high';
+$lang['Discounts'] = 'Discounts';
 
 // Address place holder
 
@@ -414,3 +484,5 @@ $lang['please_enter_only_digits'] = 'Please enter only digits';
 // Home //
 $lang['Best Sellers'] = 'Best Sellers';
 $lang['New Arrival'] = 'New Arrival';
+$lang['New'] = 'New';
+$lang['Arrivals'] = 'Arrival';
