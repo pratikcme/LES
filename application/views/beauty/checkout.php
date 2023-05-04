@@ -1,75 +1,3 @@
-<style>
-    span.error {
-        color: red;
-    }
-
-    .dates-day-wrapper {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-        justify-content: center;
-    }
-
-
-    .ui-datepicker-calendar th:nth-child(1) {
-        padding-left: 0px !important;
-    }
-
-    .ui-datepicker-calendar td:nth-child(1) {
-        padding-left: 0 !important;
-    }
-
-    .ui-datepicker-calendar td:nth-child(2) {
-        padding-left: 0px !important;
-    }
-
-    .ui-datepicker-calendar td:nth-child(3) {
-        padding-left: 0px !important;
-    }
-
-    .ui-datepicker-calendar td:nth-child(4) {
-        padding-left: 0px !important;
-    }
-
-    .ui-datepicker-calendar td:nth-child(5) {
-        padding-left: 0px !important;
-    }
-
-
-    .ui-datepicker-calendar th:nth-child(3) {
-        padding-left: 0px !important;
-    }
-
-    .ui-datepicker-calendar th:nth-child(4) {
-        padding-left: 0px !important;
-    }
-
-    .ui-datepicker-title {
-        font-size: 18px !important;
-        color: var(--primary-color);
-        font-family: Poppins !important;
-    }
-
-    .ui-datepicker {
-        background-color: #fff;
-        box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2) !important;
-        border-radius: 0.5rem !important;
-        padding: 0.5rem !important;
-        border: 1px solid #999 !important;
-    }
-
-    .ui-datepicker-calendar thead th {
-        color: var(--primary-color) !important;
-        font-size: 16px !important;
-        font-weight: 400px !important;
-    }
-
-    .ui-state-active,
-    .ui-widget-content .ui-state-active {
-        background-color: var(--primary-color) !important;
-        border-color: var(--primary-color) !important;
-    }
-</style>
 <!-- ----hero-section--- -->
 <?php if (isset($Host)) { ?>
     <script type="application/javascript" src="<?= $Host . '/merchantpgpui/checkoutjs/merchants/' . $MID ?>.js"></script>
@@ -297,11 +225,10 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <div class="main-accordion">
+                        <!-- <div class="main-accordion">
                             <div class="accordion-heading">Delivery Schedule</div>
                             <div class="accordion-content  accordion-content-4">
                                 <div class="dates-day-wrapper">
-                                    <!-- <div id="calendar" class="hasDatepicker"></div> -->
                                     <div id="datepicker"></div>
                                 </div>
                                 <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
@@ -321,8 +248,43 @@
                                     </div>
                                 <?php } ?>
                             </div>
-                        </div>
+                        </div> -->
+                        <div class="main-accordion">
+                            <div class="accordion-heading"><?= $this->lang->line('Delivery Schedule'); ?></div>
+                            <div class="accordion-content  accordion-content-4">
 
+                                <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
+                                <div class="time-picker">
+                                    <div class="dates-day-wrapper">
+                                        <div id="datepicker"></div>
+                                    </div>
+
+                                    <form class="time-wrapper">
+                                        <h3><?= $this->lang->line('Pickup Timing') ?></h3>
+                                        <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
+                                    </form>
+                                </div>
+                                <?php } else { ?>
+                                <div class="time-picker">
+                                    <div class="dates-day-wrapper">
+                                        <div id="datepicker"></div>
+                                    </div>
+
+                                    <form class="time-wrapper">
+                                        <?php foreach ($time_slot as $key => $value) { ?>
+                                        <div class="form-check">
+                                            <input class="time_slot_checked" type="radio" id="Default-1"
+                                                name="time_slot" value=" <?= $value->id ?>"
+                                                <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+                                            <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> -
+                                                <?= $value->end_time ?> </label>
+                                        </div>
+                                        <?php } ?>
+                                    </form>
+                                </div>
+                                <?php } ?>
+                            </div>
+                        </div>
                         <div class="main-accordion">
                             <div class="accordion-heading"><?= $this->lang->line('Payment Option') ?></div>
                             <div class="accordion-content">
@@ -349,7 +311,7 @@
                     </div>
 
                     <button type="button" class="btn verify-btn d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Verify Mobile
+                        <?=$this->lang->line('Verify Mobile')?>
                     </button>
                 </div>
             </div>
@@ -390,7 +352,7 @@
                     <?php if ($shopping_based_discount == 0) { ?>
                         <div class="have-code-part">
                             <div class="input-group mb-3">
-                                <label for="text">If you have a coupon code, please apply it below.</label><br>
+                                <!-- <label for="text">If you have a coupon code, please apply it below.</label><br> -->
                                 <input type="text" class="form-control" id="promocode" placeholder="<?= $this->lang->line('Enter Promocode') ?>" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="checkPromocode"><?= $this->lang->line('Apply') ?></span>
                                 <br>

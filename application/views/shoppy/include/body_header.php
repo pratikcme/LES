@@ -236,6 +236,11 @@
                   </li>
                 <?php } else { ?>
                   <li>
+                    <div class="user-login-header">
+                      <h4><?=$_SESSION['user_name'].' '.$_SESSION['user_lname']?></h4>
+                    </div>
+                  </li>
+                  <li>
                     <div class="user-data-wrapper">
                       <a href="<?= base_url() . 'users_account/users/account' ?>"><span><i class="fa-sharp fa-solid fa-user"></i></span><?= $this->lang->line('My account') ?></a>
                     </div>
