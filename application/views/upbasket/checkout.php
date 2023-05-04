@@ -433,31 +433,30 @@ span.error {
                                      <td class="cart-total-text-1"> <?= $this->lang->line('Total') ?> </td>
                                      <td class="cart-total-text-2">
                                          <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                                         <span id="checkout_final"> <?php
-
-
-                                                                    if (isset($calc_shiping) && is_numeric($calc_shiping)) {
-
-                                                                        // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                                        //     $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
-                                                                        // } else {
-                                                                        //     $to = $getMycartSubtotal + $calc_shiping;
-                                                                        // }
-                                                                        $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
-                                                                        $f_amount = $to - $shopping_based_discount;
-                                                                        echo number_format((float)$f_amount, 2, '.', '');
-                                                                    } else {
-
-                                                                        // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                                        //     $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                                        // } else {
-                                                                        //     $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                                        // }
-                                                                        $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                                        // $tot = $getMycartSubtotal;
-                                                                        $f_amount = $tot - $shopping_based_discount;
-                                                                        echo number_format((float)$f_amount, 2);
-                                                                    } ?> </span>
+                                         <span id="checkout_final"> 
+                                            <?php
+                                                if (isset($calc_shiping) && is_numeric($calc_shipi
+                                                    // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                    //     $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                    // } else {
+                                                    //     $to = $getMycartSubtotal + $calc_shiping;
+                                                    // }
+                                                    $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                    $f_amount = $to - $shopping_based_discount;
+                                                    echo number_format((float)$f_amount, 2, '.', '');
+                                                } 
+                                                    // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                    //     $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                    // } else {
+                                                    //     $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                    // }
+                                                    $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                    // $tot = $getMycartSubtotal;
+                                                    $f_amount = $tot - $shopping_based_discount;
+                                                    echo number_format((float)$f_amount, 2);
+                                                } 
+                                            ?> 
+                                        </span>
                                      </td>
                                  </tr>
                              </tbody>
