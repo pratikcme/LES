@@ -55,7 +55,7 @@ function getMycartSubtotal()
         if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
           $product[0]->discount_price = $product[0]->without_gst_price;
         }
-        $total += $product[0]->discount_price * $value['quantity'];
+        $total += numberFormat(numberFormat($product[0]->discount_price) * numberFormat($value['quantity']));
       }
     }
   } else {
@@ -66,8 +66,9 @@ function getMycartSubtotal()
       if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
         $value->discount_price = $value->without_gst_price;
       }
-      $total += $value->discount_price * $value->quantity;
+      $total += numberFormat(numberFormat($value->discount_price) * numberFormat($value->quantity));
     }
+    // dd($total);
   }
   $total = number_format($total, 2, '.', '');
   return $total;

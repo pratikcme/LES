@@ -234,7 +234,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                         <h4><?= $value->offer_title ?></h4>
                         <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
                         <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>"
-                            class="explor-btn">Explore More</a>
+                            class="explor-btn"><?= $this->lang->line('Explore More'); ?></a>
                     </div>
                 </a>
             </div>
@@ -258,8 +258,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                             <h5><?= $offer_list[0]->offer_title ?></h5>
                             <h3><?= $offer_list[0]->offer_percent ?>%<span>OFF</span></h3>
                             <a
-                                href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>">Explore
-                                More</a>
+                                href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
                         </div>
                     </div>
                     <div class="home-clothes women-cloth">
@@ -270,8 +269,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                             <h5><?= $offer_list[1]->offer_title ?></h5>
                             <h3><?= $offer_list[1]->offer_percent ?>%<span>OFF</span></h3>
                             <a
-                                href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>">Explore
-                                More</a>
+                                href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
                         </div>
                     </div>
                 </div>
@@ -287,8 +285,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                         <h5><?= $offer_list[2]->offer_title ?></h5>
                         <h3><?= $offer_list[2]->offer_percent ?>%<span>OFF</span></h3>
                         <a
-                            href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[2]->id) ?>">Explore
-                            More</a>
+                            href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[2]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
                     </div>
                 </div>
             </div>
