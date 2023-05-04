@@ -222,7 +222,7 @@ class Order_model extends My_model
                 }
             }
 
-        // if (!empty($my_order_result)) {
+            // if (!empty($my_order_result)) {
 
             if (!empty($my_order_result)) {
                 foreach ($my_order_result as $my_order) {
@@ -264,7 +264,7 @@ class Order_model extends My_model
                     'dt_added' => strtotime(date('Y-m-d H:i:s')),
                     'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                 );
-                
+
                 $this->db->insert('order', $data);
                 $last_insert_id = $this->db->insert_id();
                 $otpForSelfPickup = '';
@@ -358,13 +358,13 @@ class Order_model extends My_model
             $this->session->unset_userdata('isSelfPickup');
             $this->session->unset_userdata('My_cart');
             return $output;
-        // } else {
-        //     $response = array();
-        //     $response["success"] = 0;
-        //     $response["message"] = "Invalid data";
-        //     $output = json_encode(array('responsedata' => $response));
-        //     return $output;
-        // }
+            // } else {
+            //     $response = array();
+            //     $response["success"] = 0;
+            //     $response["message"] = "Invalid data";
+            //     $output = json_encode(array('responsedata' => $response));
+            //     return $output;
+            // }
         }
     }
 

@@ -363,6 +363,6 @@ var loadFile = function (event) {
 
 $(document).ready(function () {
   $(".choose-btn").click(function () {
-    $("input[type='file']").trigger("click");
+    //$("input[type='file']").trigger("click");
   });
 });

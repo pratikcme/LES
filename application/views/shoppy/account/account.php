@@ -51,7 +51,6 @@
                             <a class="nav-link dashboard-tabs languge-active-img" id="delete_account" data-bs-toggle="pill" href="#tab-6"><?= $this->lang->line('Delete Account') ?></a>
                         </li>
                     </ul>
-
                 </div>
             </div>
 
@@ -67,12 +66,11 @@
                             </div>
                         </div>
                         <div class="myaccout-detail-tab">
+                            <input type="hidden" name="hidden_image" value="<?= $userDetails[0]->profileimage ?>">
                             <div class="choose-img">
-                                <input type="file" class="choose-input" name="profileimage" accept="image/*" onchange="loadFile(event)">
-
-                                <img src="<?= ($userDetails[0]->profileimage != '') ? base_url() . 'public/images/' . $this->folder . 'user_profile/' . $userDetails[0]->profileimage : $this->theme_base_url . '/assets/img/my-account/myaccount-profile-img.png' ?>" id="output" class="button" alt="err">
-
-                                <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
+                                <input type="file" name="profileimage" class="choose-input" accept="image/*" onchange="loadFile(event)">
+                                <img src="<?= ($userDetails[0]->profileimage != '') ? base_url() . 'public/images/' . $this->folder . 'user_profile/' . $userDetails[0]->profileimage : $this->theme_base_url . '/assets/images/myaccount-choose-img.png' ?>" alt="" id="output" class="button">
+                                <button type="button" class="choose-btn"><i class="fa-solid fa-camera"></i></button>
                             </div>
                             <form class="get-detials-account" id='ChangePass' enctype="multipart/form-data" action="<?= base_url() . 'users_account/users/account' ?>" method="post">
 
