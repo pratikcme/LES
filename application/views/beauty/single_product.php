@@ -165,7 +165,6 @@
                     $rat = round($sumOfRatting / count($product_review));
                   }
                   ?>
-
                   <div>
                     <h3><strong id="avgRating"><?= (is_nan($rat)) ? 0 : $rat ?></strong><span>/5</span>
                     </h3>

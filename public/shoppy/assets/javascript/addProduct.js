@@ -308,7 +308,7 @@ var ADDPRODUCT = (function () {
             }
           }
 
-          if (output.varient_quantity > 25) {
+          if (output.varient_quantity > output.limited_stock) {
             $("#is_aval_stock").html(stockMessage1);
           } else {
             $("#is_aval_stock").html(stockMessage);

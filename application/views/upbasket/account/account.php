@@ -206,27 +206,28 @@
                                      <!-- ------sub-tab-1----- -->
                                      <div id="subtab-1" class="container tab-pane fade active show">
                                          <?php foreach ($order as $key => $value) {
-                        if ($value->order_status != '8') {
-                          continue;
-                        }
-                        date_default_timezone_set('Asia/Kolkata');
-                        $date =  date('d M Y, h:i A', $value->dt_updated);
-                        if ($value->order_status == '1') {
-                          $status = 'Processing';
-                        } elseif ($value->order_status == '2') {
-                          $status = 'Pending';
-                        } elseif ($value->order_status == '3') {
-                          $status = 'Ready';
-                        } elseif ($value->order_status == '4') {
-                          $status = 'Pickup';
-                        } elseif ($value->order_status == '5') {
-                          $status = 'on the way';
-                        } elseif ($value->order_status == '8') {
-                          $status = 'Delivered';
-                        } else {
-                          $status = 'Cancel';
-                        }
-                      ?>
+                                                if ($value->order_status != '8') {
+                                                    continue;
+                                                }
+                                               
+                                                date_default_timezone_set('Asia/Kolkata');
+                                                $date =  date('d M Y, h:i A', $value->dt_updated);
+                                                if ($value->order_status == '1') {
+                                                    $status = 'Processing';
+                                                } elseif ($value->order_status == '2') {
+                                                    $status = 'Pending';
+                                                } elseif ($value->order_status == '3') {
+                                                    $status = 'Ready';
+                                                } elseif ($value->order_status == '4') {
+                                                    $status = 'Pickup';
+                                                } elseif ($value->order_status == '5') {
+                                                    $status = 'on the way';
+                                                } elseif ($value->order_status == '8') {
+                                                    $status = 'Delivered';
+                                                } else {
+                                                    $status = 'Cancel';
+                                                }
+                                            ?>
                                          <div class="main-accordion">
                                              <div class="accordion-heading">
                                                  <a href="#" class="delivered-btn"><?= $status ?></a>
@@ -308,7 +309,13 @@
                                                              <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
                                                          </h3>
                                                          <h3 class="notranslate">
-                                                             <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?>
+                                                             <?php
+                                                                    if ($value->delivery_charge != '0') {
+                                                                        echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
+                                                                    } else {
+                                                                        echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                    }
+                                                                    ?>
                                                          </h3>
                                                          <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
                                                      </div>
@@ -323,27 +330,27 @@
                                      <div id="subtab-2"
                                          class="container tab-pane fade <?= ($action_name == 'order') ? 'active show' : '' ?>">
                                          <?php foreach ($order as $key => $value) {
-                        if ($value->order_status == '8' || $value->order_status == '9') {
-                          continue;
-                        }
-                        date_default_timezone_set('Asia/Kolkata');
-                        $date =  date('d M Y, h:i A', $value->dt_updated);
-                        if ($value->order_status == '1') {
-                          $status = 'Processing';
-                        } elseif ($value->order_status == '2') {
-                          $status = 'Pending';
-                        } elseif ($value->order_status == '3') {
-                          $status = 'Ready';
-                        } elseif ($value->order_status == '4') {
-                          $status = 'Pickup';
-                        } elseif ($value->order_status == '5') {
-                          $status = 'on the way';
-                        } elseif ($value->order_status == '8') {
-                          $status = 'Delivered';
-                        } else {
-                          $status = 'Cancel';
-                        }
-                      ?>
+                                                if ($value->order_status == '8' || $value->order_status == '9') {
+                                                    continue;
+                                                }
+                                                date_default_timezone_set('Asia/Kolkata');
+                                                $date =  date('d M Y, h:i A', $value->dt_updated);
+                                                if ($value->order_status == '1') {
+                                                    $status = 'Processing';
+                                                } elseif ($value->order_status == '2') {
+                                                    $status = 'Pending';
+                                                } elseif ($value->order_status == '3') {
+                                                    $status = 'Ready';
+                                                } elseif ($value->order_status == '4') {
+                                                    $status = 'Pickup';
+                                                } elseif ($value->order_status == '5') {
+                                                    $status = 'on the way';
+                                                } elseif ($value->order_status == '8') {
+                                                    $status = 'Delivered';
+                                                } else {
+                                                    $status = 'Cancel';
+                                                }
+                                            ?>
                                          <div class="main-accordion">
                                              <div class="accordion-heading">
                                                  <a href="#" class="delivered-btn"><?= $status ?></a>
@@ -436,7 +443,14 @@
                                                              <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
                                                          </h3>
                                                          <h3 class="notranslate">
-                                                             <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?>
+                                                             <!-- <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?> -->
+                                                             <?php
+                                                                    if ($value->delivery_charge != '0') {
+                                                                        echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
+                                                                    } else {
+                                                                        echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                    }
+                                                                    ?>
                                                          </h3>
                                                          <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
                                                      </div>
@@ -450,27 +464,27 @@
                                      <!-- ------sub-tab-3----- -->
                                      <div id="subtab-3" class="container tab-pane fade">
                                          <?php foreach ($order as $key => $value) {
-                        if ($value->order_status != '9') {
-                          continue;
-                        }
-                        date_default_timezone_set('Asia/Kolkata');
-                        $date =  date('d M Y, h:i A', $value->dt_updated);
-                        if ($value->order_status == '1') {
-                          $status = 'Processing';
-                        } elseif ($value->order_status == '2') {
-                          $status = 'Pending';
-                        } elseif ($value->order_status == '3') {
-                          $status = 'Ready';
-                        } elseif ($value->order_status == '4') {
-                          $status = 'Pickup';
-                        } elseif ($value->order_status == '5') {
-                          $status = 'on the way';
-                        } elseif ($value->order_status == '8') {
-                          $status = 'Delivered';
-                        } else {
-                          $status = 'Cancel';
-                        }
-                      ?>
+                                                if ($value->order_status != '9') {
+                                                    continue;
+                                                }
+                                                date_default_timezone_set('Asia/Kolkata');
+                                                $date =  date('d M Y, h:i A', $value->dt_updated);
+                                                if ($value->order_status == '1') {
+                                                    $status = 'Processing';
+                                                } elseif ($value->order_status == '2') {
+                                                    $status = 'Pending';
+                                                } elseif ($value->order_status == '3') {
+                                                    $status = 'Ready';
+                                                } elseif ($value->order_status == '4') {
+                                                    $status = 'Pickup';
+                                                } elseif ($value->order_status == '5') {
+                                                    $status = 'on the way';
+                                                } elseif ($value->order_status == '8') {
+                                                    $status = 'Delivered';
+                                                } else {
+                                                    $status = 'Cancel';
+                                                }
+                                            ?>
                                          <div class="main-accordion">
                                              <div class="accordion-heading">
                                                  <a href="javascript:" class="delivered-btn"><?= $status ?></a>
@@ -550,7 +564,14 @@
                                                              <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
                                                          </h3>
                                                          <h3 class="notranslate">
-                                                             <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?>
+                                                             <?php
+                                                                    if ($value->delivery_charge != '0') {
+                                                                        echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
+                                                                    } else {
+                                                                        echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                    }
+                                                                    ?>
+                                                             <!-- <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?> -->
                                                          </h3>
                                                          <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
                                                      </div>
@@ -609,15 +630,15 @@
                                          </td>
                                          <td>
                                              <?php
-                          $d_none = '';
-                          $d_show = 'd-none';
-                          if (!empty($item_weight_id)) {
-                            if (in_array($value->product_weight_id, $item_weight_id)) {
-                              $d_show = '';
-                              $d_none = 'd-none';
-                            }
-                          }
-                          ?>
+                                                    $d_none = '';
+                                                    $d_show = 'd-none';
+                                                    if (!empty($item_weight_id)) {
+                                                        if (in_array($value->product_weight_id, $item_weight_id)) {
+                                                            $d_show = '';
+                                                            $d_none = 'd-none';
+                                                        }
+                                                    }
+                                                    ?>
                                              <div>
                                                  <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>"
                                                      data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>"
@@ -653,8 +674,8 @@
                          <h2 class="title"><?= $this->lang->line('My address') ?></h2>
                          <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                          <?php foreach ($get_address as $key => $value) {
-                $status = ($value->status == '0') ? 'is_default ' : '';
-              ?>
+                                $status = ($value->status == '0') ? 'is_default ' : '';
+                            ?>
                          <div class="address-wrapper">
                              <div class="ship-check text-end">
                                  <div class="form-check">
