@@ -49,6 +49,11 @@ table{
     font-size: 18px;
     line-height: 20px;
     color: var(--cart-td-text-1);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .cart-detail-text h5{
     font-family: Poppins;
@@ -155,7 +160,7 @@ table tr:nth-child(3) td {
 .cart-totals-part {
     width: 100%;
     max-width: 424px;
-    height: 416px;
+    height: 510px;
     box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
     border-radius: 20px;
     border: 1px solid var(--cart-counter-border);

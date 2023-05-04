@@ -19,7 +19,7 @@
     border-radius: 20px;
     margin-bottom: 40px;
     overflow: hidden;
-    padding: 10px;
+    /* padding: 10px; */
 }
 .main-accordion .accordion-heading{
     width: 100%;
@@ -40,7 +40,7 @@
     content: "\f105";
     font-family: "FontAwesome";
     position: absolute;
-    top: 30px;
+    top: 50%;
     right: 28px;
     transform: rotate(0deg);
     transition: 0.3s;
@@ -54,6 +54,7 @@
     align-items: center;
     color: var(--secondary-color);
     font-size: 15px;
+    transform: translateY(-50%);
 }
 .active.accordion-heading::before {
 	transform: rotate(90deg);
@@ -69,7 +70,7 @@
 .accordion-content label{
     font-family: var(--BeVietnamPro-Medium);
     font-size: 16px;
-    line-height: 20px;
+    line-height: 25px;
     color: var( --accordian-content-text-1);
     margin-bottom: 20px;
 }
@@ -106,19 +107,42 @@ input:focus{
     display: flex;
     gap: 30px;
     align-items: center;
+    margin: 0 !important;
 }
 
 .accordion-content-2 .form-check-input:checked[type=checkbox] {
-    background-color: var(--primary-color) !important;
+    background-color: var(--secondary-color) !important;
 }
 
-.accordion-5 .form-check-input:checked[type=radio],
-.accordion-content-4 .form-check-input:checked[type=radio]
+.accordion-content-4 label{
+    margin-bottom: 3px;
+}
+
+.main-accordion .form-check-input:checked[type=radio],
+.main-accordion .form-check-input:checked[type=radio]
 {
-    background: var(--primary-color) !important;
-    border: var(--primary-color) !important;
+    background: transparent !important;
+    border:1px solid var(--secondary-color) !important;
+    position: relative !important;
 }
 
+.main-accordion .form-check-input:checked[type=radio]::after {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: var(--secondary-color) !important;
+    border-radius: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main-accordion .form-check-input[type=radio]{
+    width: 15px !important;
+    height: 15px !important;
+    border:1px solid var(--secondary-color) !important;
+}
 
 .radio-outer-line{
     border-radius: 90px;
@@ -182,8 +206,8 @@ input:focus{
 }
 
 .accordion-content-3 .ship-check{
-    right: 35px;
-    top: 40px;
+    left: 35px;
+    top: 57px;
 }
 
 .select-box select {
@@ -500,6 +524,10 @@ input:focus{
 }
 .checkout-order-detils .cart-totals-part{
     margin-bottom: 40px;
+    min-height: 150px;
+    max-height: 450px;
+    height: auto;
+    overflow-y: scroll;
 }
 .our-secure-product{
     margin-top: 50px;
@@ -625,6 +653,7 @@ input:focus{
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 0 !important;
 }
 .delivery-method-wrap .form-check input{
     position: relative;
@@ -933,20 +962,22 @@ to {top: 0px; opacity: 1}
 }
 
 .address-wrapper .form-check-input:checked {
-    background-color: var(--primary-color) !important;
-    border: 1px solid var(--primary-color) !important;
-    height: 20px !important;
-    width: 20px !important;
+    background-color: var(--secondary-color) !important;
+    border: 1px solid var(--secondary-color) !important;
+    height: 25px !important;
+    width: 25px !important;
 }
 
 .ship-check{
     margin-bottom: 10px;
     position: absolute;
-    right: 20px;
-    top: 15px;
+    left: 20px;
+    top: 34px;
 }
 
-
+.ship-check label{
+    display: none;
+}
 
 .ship-check .form-check-input:checked[type=checkbox] {
     background-repeat: no-repeat;
@@ -954,19 +985,11 @@ to {top: 0px; opacity: 1}
 }
 
 .ship-check .form-check-input[type=checkbox]{
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     float: inherit !important;
 }
 
-.ship-check .form-check{
-    border: 1px solid var(--myaccoutn-tab-border);
-    /* max-width: 120px; */
-    display: inline-block;
-    margin-left: auto;
-    padding: 8px;
-    border-radius: 10px;
-}
 
 .ship-check .form-check .form-check-input{
     margin-left: 0 !important;
@@ -1164,6 +1187,7 @@ span.error {
 
 .ui-datepicker-calendar th:nth-child(1) {
     padding-left: 0px !important;
+    min-width: auto;
 }
 
 .ui-datepicker-calendar td:nth-child(1) {
@@ -1171,55 +1195,62 @@ span.error {
 }
 
 .ui-datepicker-calendar td:nth-child(2) {
-    padding-left: 0px !important;
+padding-left: 0px !important;
 }
 
-.ui-datepicker-calendar td:nth-child(3) {
-    padding-left: 0px !important;
-}
-
-.ui-datepicker-calendar td:nth-child(4) {
-    padding-left: 0px !important;
-}
-
+.ui-datepicker-calendar td:nth-child(3),
+.ui-datepicker-calendar td:nth-child(4),
 .ui-datepicker-calendar td:nth-child(5) {
-    padding-left: 0px !important;
+padding-left: 0px !important;
 }
-
 
 .ui-datepicker-calendar th:nth-child(3) {
-    padding-left: 0px !important;
+padding-left: 0px !important;
 }
 
 .ui-datepicker-calendar th:nth-child(4) {
-    padding-left: 0px !important;
+padding-left: 0px !important;
 }
 
 .ui-datepicker-title {
-    font-size: 18px !important;
-    color: var(--primary-color);
-    font-family: Poppins !important;
+font-size: 18px !important;
+color: var(--primary-color);
+font-family: Poppins !important;
 }
 
 .ui-datepicker {
-    background-color: #fff;
-    box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2) !important;
-    border-radius: 0.5rem !important;
-    padding: 0.5rem !important;
-    border: 1px solid #999 !important;
+background-color: #fff;
+box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2) !important;
+border-radius: 0.5rem !important;
+padding: 0.5rem !important;
+border: 1px solid #999 !important;
+margin-top: 0 !important;
 }
 
 .ui-datepicker-calendar thead th {
-    color: var(--primary-color) !important;
-    font-size: 16px !important;
-    font-weight: 400px !important;
+color: var(--primary-color) !important;
+font-size: 16px !important;
+font-weight: 400px !important;
+padding-left: 0 !important;
+}
+
+.ui-datepicker-calendar .ui-state-default{
+    border-radius: 0 !important;
 }
 
 .ui-state-active,
 .ui-widget-content .ui-state-active {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
     color: var(--primary-color) !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default{
+    text-align: center;
+}
+
+.ui-datepicker-calendar tr{
+    border-bottom: none !important;
 }
 
 .time-picker{
@@ -1239,6 +1270,13 @@ span.error {
 
 .time-wrapper .form-check{
     margin-bottom: 8px;
+    padding-left: 0;
+}
+
+.time-wrapper h3{
+    font-size: 20px;
+    color: var(--primary-color);
+    font-family: var(--BeVietnamPro-Bold);
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default {
@@ -1249,6 +1287,9 @@ span.error {
     border-bottom: inherit;
 }
 
+.checkout-process-section .title{
+    margin-bottom: 30px;
+}
 
 /* =============resonsive======== */
 /* =================================================== */
@@ -1269,9 +1310,7 @@ span.error {
     .accordion-heading{
         font-size: 18px;
     }
-    .accordion-heading::before{
-        top: 25px;
-    }
+   
     .mydiv-header h3{
         font-size: 22px;
     }
@@ -1328,11 +1367,16 @@ span.error {
     padding: 15px 30px 15px 30px;
     font-size: 15px;
 }
+ 
+.time-wrapper{
+    padding: 30px 30px;
+}
+
 }
 
 @media only screen and (max-width:1200px){
     .time-wrapper{
-        padding: 30px 38px;
+        padding: 30px 30px;
         gap: 15px;
     }
 
@@ -1340,6 +1384,7 @@ span.error {
         flex-direction: column;
 
     }
+
 }
 
 /* =================================================== */
@@ -1361,9 +1406,7 @@ span.error {
     .accordion-heading{
         font-size: 18px;
     }
-    .accordion-heading::before{
-        top: 25px;
-    }
+    
     .mydiv-header h3{
         font-size: 22px;
     }
@@ -1466,9 +1509,7 @@ span.error {
         font-size: 18px;
         padding: 20px 0px 20px 20px !important;
     }    
-    .accordion-heading::before {
-        top: 15px;
-    }
+   
     .accordion-content {
         padding: 20px 20px 20px 20px;
     }
@@ -1596,10 +1637,17 @@ span.error {
 .continue-btn a {
     padding: 15px 30px 15px 30px;
     font-size: 15px;
+}
+.delivery-method-wrap .accordion-content-2{
+    margin-left: 15px !important;
 } 
 }
 
-
+@media only screen and (max-width:991px){
+    .main-accordion .accordion-content{
+        padding: 28px 10px 20px 15px;
+    }
+}
 
 /* =================================================== */
 /* =================================================== */
@@ -1620,9 +1668,7 @@ span.error {
         font-size: 18px;
         padding: 20px 0px 20px 20px;
     }    
-    .accordion-heading::before {
-        top: 26px;
-    }
+    
     .accordion-content {
         padding: 20px 20px 20px 20px !important;
     }
@@ -1670,7 +1716,6 @@ span.error {
     .mydiv-wrapper {
         width: 100%;
         max-width: 100%;
-        height: 500px;
     }
     .order-wrapper{
         gap: 30px;
@@ -1771,6 +1816,14 @@ span.error {
 } */
 
 }
+
+@media only screen and (max-width:768px){
+    .cart-totals-part{
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
 /* =================================================== */
 /* =================================================== */
 @media screen and (min-width:425px) and (max-width:575px){
@@ -1793,9 +1846,7 @@ span.error {
         font-size: 18px;
         padding: 20px 0px 20px 20px !important;
     }    
-    .accordion-heading::before {
-        top: 27px;
-    }
+   
     .accordion-content {
         padding: 20px 20px 20px 20px;
     }
@@ -1843,7 +1894,6 @@ span.error {
     .mydiv-wrapper {
         width: 100%;
         max-width: 100%;
-        height: 500px;
     }
     .order-wrapper{
         gap: 30px;
@@ -1942,9 +1992,7 @@ span.error {
     font-size: 18px !important;
 }
 
-.supportive-div{
-    height: 400px;
-}
+
 
 
 }
@@ -1970,9 +2018,7 @@ span.error {
         font-size: 16px;
         padding: 20px 0px 20px 20px !important;
     }    
-    .accordion-heading::before {
-        top: 15px;
-    }
+    
     .order-wrapper-text h4 a{
         font-size: 15px !important;
     }
@@ -2138,14 +2184,19 @@ span.error {
     padding-left: 10px !important;
 }
 
-/* .supportive-div{
-    height: 400px;
-} */
+.main-accordion .accordion-content {
+    padding: 28px 10px 20px 5px;
+}
+
+.time-wrapper{
+    width: 100%;
+}
+
+.delivery-method-wrap .accordion-content-2{
+    margin-left: 15px !important;
+}
+
 
 }
 /* =================================================== */
 /* =================================================== */
-
-
-
-
