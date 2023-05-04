@@ -312,7 +312,8 @@ input:focus{
     padding: 10px;
 }
 .supportive-div{
-    height: 500px;
+    max-height: 550px;
+    min-height: 100px;
     overflow: hidden;
     overflow-y: scroll;
     appearance: none;
@@ -1240,7 +1241,13 @@ span.error {
     margin-bottom: 8px;
 }
 
+.ui-state-default, .ui-widget-content .ui-state-default {
+    text-align: center;
+}
 
+.ui-datepicker-calendar table tr{
+    border-bottom: inherit;
+}
 
 
 /* =============resonsive======== */
@@ -1759,9 +1766,9 @@ span.error {
     font-size: 15px;
 } 
 
-.supportive-div{
+/* .supportive-div{
     height: 400px;
-}
+} */
 
 }
 /* =================================================== */
@@ -2131,9 +2138,9 @@ span.error {
     padding-left: 10px !important;
 }
 
-.supportive-div{
+/* .supportive-div{
     height: 400px;
-}
+} */
 
 }
 /* =================================================== */
