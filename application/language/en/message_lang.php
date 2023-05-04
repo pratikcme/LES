@@ -148,7 +148,7 @@ $lang['Available(Instock)'] = 'Available (Instock)';
 $lang['In Stock'] = 'In Stock';
 
 
-$lang['add to cart'] = 'add to cart';
+$lang['add to cart'] = 'Add To Cart';
 $lang['order now'] = 'order now';
 $lang['Help!'] = 'Help!';
 

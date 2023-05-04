@@ -24,7 +24,7 @@ class Home extends User_Controller
 		$subcategory = $this->this_model->countSubcategory();
 		$data['subcategory'] = count($subcategory);
 
-		if ($this->countCategory == 1 && count($subcategory) == '1') {
+		if ($this->countCategory == 1 && count($subcategory) == '1' && $_SESSION['template_name'] == 'frontend') {
 			$data['page'] = 'frontend/home/shukan';
 			$this->load->model('home_content_model');
 			$data['home_content'] = $this->home_content_model->getAboutSectionTwo();
