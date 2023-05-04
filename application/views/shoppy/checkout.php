@@ -44,18 +44,18 @@
                                         <input class="form-check-input" type="checkbox" id="isSelfPickup"
                                             class="default_check"
                                             <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
-                                        <label class="form-check-label" for="flexRadioDefault1">
+                                        <label class="form-check-label" for="isSelfPickup">
                                             <?= $this->lang->line('self pickup') ?>
                                         </label>
                                     </div>
                                     <?php }
-                  if (!empty($userAddress) && $userAddress[0]->user_gst_number != '') {
-                  ?>
+                                    if (!empty($userAddress) && $userAddress[0]->user_gst_number != '') {
+                                    ?>
                                     <div class="form-check radio-outer-line">
                                         <input class="form-check-input" type="checkbox" name="flexRadioDefault"
                                             id="user_gst_number" class="default_check"
                                             value="<?= ($userAddress[0]->user_gst_number != '') ? $userAddress[0]->user_gst_number : "" ?>">
-                                        <label class="form-check-label" for="flexRadioDefault2">
+                                        <label class="form-check-label" for="user_gst_number">
                                             <?= $this->lang->line('Use GST Number') ?>
                                         </label>
                                     </div>
@@ -86,8 +86,8 @@
                             <div class="accordion-content accordion-content-3" action="">
 
                                 <?php foreach ($get_address as $key => $value) {
-                    $status = ($value->status == '0') ? 'is_default ' : '';
-                  ?>
+                                        $status = ($value->status == '0') ? 'is_default ' : '';
+                                    ?>
                                 <div class="address-wrapper">
                                     <div class="address-text">
                                         <h3><?= $value->name ?></h3>
@@ -97,8 +97,9 @@
                                                     <input class="form-check-input default_check chek <?= $status ?>"
                                                         type="checkbox"
                                                         data-id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                                        <?= ($value->status == '1') ? 'checked' : '' ?> id="id1">
-                                                    <label class="form-check-label" for="id1">
+                                                        <?= ($value->status == '1') ? 'checked' : '' ?>
+                                                        id="<?= 'add' . $key ?>">
+                                                    <label class="form-check-label" for="<?= 'add' . $key ?>">
                                                         <?= $this->lang->line('Default') ?>
                                                     </label>
                                                 </div>
@@ -245,10 +246,11 @@
                                     <form class="time-wrapper">
                                         <?php foreach ($time_slot as $key => $value) { ?>
                                         <div class="form-check">
-                                            <input class="time_slot_checked" type="radio" id="Default-1"
+                                            <input class="time_slot_checked" type="radio" id="<?= 'time' . $key ?>"
                                                 name="time_slot" value=" <?= $value->id ?>"
                                                 <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
-                                            <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> -
+                                            <label class="form-check-label" for="<?= 'time' . $key ?>">
+                                                <?= $value->start_time ?> -
                                                 <?= $value->end_time ?> </label>
                                         </div>
                                         <?php } ?>
@@ -267,16 +269,16 @@
                                 <form class="accordion-content-2 accordion-5">
                                     <?php
 
-                  if ($payment_option != '' && $isOnlinePayment == '1') {
+                                    if ($payment_option != '' && $isOnlinePayment == '1') {
 
-                  ?>
+                                    ?>
 
                                     <div class="form-check radio-outer-line">
 
                                         <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2"
                                             id="credit" value="<?= $payment_option ?>"
                                             <?= ($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : '' ?>>
-                                        <label class="form-check-label" for="Credit/Debit Card">
+                                        <label class="form-check-label" for="credit">
                                             <?= $this->lang->line('Credit/Debit Card') ?>
                                         </label>
                                     </div>
@@ -287,7 +289,7 @@
                                         <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2"
                                             id="Cash On Delivery" value="0"
                                             <?= ($isCOD == '1' && $isOnlinePayment == '0') ? 'checked' : '' ?>>
-                                        <label class="form-check-label" for="Cash">
+                                        <label class="form-check-label" for="Cash On Delivery">
                                             <?= $this->lang->line('Cash On Delivery') ?>
                                         </label>
                                     </div>
@@ -353,7 +355,7 @@
                     </div>
                     <?php } ?>
 
-
+                    <input type="hidden" id="applied_promo">
                     <div class="cart-totals-part">
                         <table>
                             <thead class="head-title">
@@ -370,7 +372,7 @@
                                         <span class='notranslate'> <?= $this->siteCurrency ?> </span>
                                         <span id="checkout_subtotal">
                                             <?php //$getMycartSubtotal
-                      echo numberFormat($getMycartSubtotal) ?> </span>
+                                            echo numberFormat($getMycartSubtotal) ?> </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -409,25 +411,25 @@
                                     <td class="cart-total-text-2">
                                         <span class='notranslate'> <?= $this->siteCurrency ?> </span>
                                         <span id="checkout_final"> <?php
-                                                if (isset($calc_shiping) && is_numeric($calc_shiping)) {
-                                                  // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                  //   $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
-                                                  // } else {
-                                                  //   $to = $getMycartSubtotal + $calc_shiping;
-                                                  // }
-                                                  $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
-                                                  $f_amount = $to - $shopping_based_discount;
-                                                  echo number_format((float)$f_amount, 2, '.', '');
-                                                } else {
-                                                  // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                  //   $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                  // } else {
-                                                  //   $tot = $getMycartSubtotal;
-                                                  // }
-                                                  $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                  $f_amount = $tot - $shopping_based_discount;
-                                                  echo number_format((float)$f_amount, 2);
-                                                } ?> </span>
+                                                                    if (isset($calc_shiping) && is_numeric($calc_shiping)) {
+                                                                        // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                                        //   $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                                        // } else {
+                                                                        //   $to = $getMycartSubtotal + $calc_shiping;
+                                                                        // }
+                                                                        $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                                        $f_amount = $to - $shopping_based_discount;
+                                                                        echo number_format((float)$f_amount, 2, '.', '');
+                                                                    } else {
+                                                                        // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                                        //   $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                                        // } else {
+                                                                        //   $tot = $getMycartSubtotal;
+                                                                        // }
+                                                                        $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                                        $f_amount = $tot - $shopping_based_discount;
+                                                                        echo number_format((float)$f_amount, 2);
+                                                                    } ?> </span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -436,7 +438,7 @@
 
                     <?php
 
-          if ($phone == '0' || $is_verify == '0') { ?>
+                    if ($phone == '0' || $is_verify == '0') { ?>
                     <button type="button" id="verify" class="btn verify-btn lg-btn mb-2" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
                         Verify Mobile

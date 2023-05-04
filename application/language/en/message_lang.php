@@ -269,7 +269,7 @@ $lang['Pending'] = 'Pending';
 $lang['Ready'] = 'Ready';
 $lang['Pickup'] = 'Pickup';
 $lang['on the way'] = 'on the way';
-$lang['Delivered'] = 'Processing';
+$lang['Delivered'] = 'Delivered';
 $lang['Order Number'] = 'Order Number';
 $lang['Delivered to'] = 'Delivered to';
 

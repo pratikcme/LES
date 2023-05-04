@@ -29,7 +29,8 @@
                 <!--   -->
                 <li><a href="<?= base_url() . 'products' ?>"> <?= $this->lang->line('Shop') ?></a></li>
                 <li><a href="<?= base_url() . 'about' ?>"> <?= $this->lang->line('About us') ?></a></li>
-                <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact us') ?></a></li>
+                <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact us') ?></a>
+                </li>
               </ul>
             </div>
 
@@ -54,7 +55,8 @@
                   <select name="Branch" class="vendor_nav" id="Branch">
                     <option value=""> <?= $this->lang->line('All store') ?></option>
                     <?php foreach ($branch_nav as $key => $v) : ?>
-                      <option value="<?= $v->id ?>" <?= (isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>><?= $v->name ?></option>
+                      <option value="<?= $v->id ?>" <?= (isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>>
+                        <?= $v->name ?></option>
                     <?php endforeach ?>
                   </select>
                 </form>
@@ -109,10 +111,12 @@
                       <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $product[0]->image ?>" alt=""></a>
                     </div>
                     <div class="drop-text">
-                      <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><?= $value['product_name'] ?></a></h4>
+                      <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><?= $value['product_name'] ?></a>
+                      </h4>
 
                       <p>Qty : <?= $value['quantity'] ?></p>
-                      <h3><?= $this->siteCurrency . ' ' . number_format((float)$product[0]->discount_price, 2, '.', '') ?></h3>
+                      <h3><?= $this->siteCurrency . ' ' . number_format((float)$product[0]->discount_price, 2, '.', '') ?>
+                      </h3>
 
                     </div>
                     <div class="cancel-btn remove_item" data-product_id="<?= $value['product_id'] ?>" data-product_weight_id="<?= $value['product_weight_id'] ?>">
@@ -146,10 +150,12 @@
                         <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $value->image ?>" alt=""></a>
                       </div>
                       <div class="drop-text">
-                        <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a></h4>
+                        <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a>
+                        </h4>
 
                         <p>Qty : <?= $value->quantity ?></p>
-                        <h3><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?> </h3>
+                        <h3><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
+                        </h3>
 
                       </div>
                       <div class="cancel-btn remove_item" data-product_id="<?= $value->product_id ?>" data-product_weight_id="<?= $value->product_weight_id ?>">
@@ -189,7 +195,7 @@
             <div class="search-block search-list-blcok">
               <form class="search-form">
                 <?php if ($this->uri->segment(1) == '') { ?>
-                  <input type="search" name="search" class="search-input" placeholder="Search here...">
+                  <input type="search" name="search" class="search-input" id='search' placeholder="Search vendor...">
                   <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
                 <?php }
                 if ($this->uri->segment(1) != '') {
@@ -207,10 +213,6 @@
               <i class="fa-solid fa-xmark main-div-cancel"></i>
             </div>
 
-
-
-
-
             <div class="dropdown">
               <button class="dropdown-toggle user-login-icon icons" type="button" data-bs-toggle="dropdown">
                 <div class="user-login-icon icons">
@@ -223,7 +225,8 @@
                   <li>
                     <div class="user-login-header">
                       <h4><?= $this->lang->line('New Customer') ?>?</h4>
-                      <h3><a href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a></h3>
+                      <h3><a href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a>
+                      </h3>
                     </div>
                   </li>
                   <li>
@@ -232,6 +235,11 @@
                     </div>
                   </li>
                 <?php } else { ?>
+                  <li>
+                    <div class="user-login-header">
+                      <h4><?=$_SESSION['user_name'].' '.$_SESSION['user_lname']?></h4>
+                    </div>
+                  </li>
                   <li>
                     <div class="user-data-wrapper">
                       <a href="<?= base_url() . 'users_account/users/account' ?>"><span><i class="fa-sharp fa-solid fa-user"></i></span><?= $this->lang->line('My account') ?></a>
@@ -257,7 +265,8 @@
 
             <div class="icon-tex">
               <p><?= $this->lang->line('your cart') ?></p>
-              <h3 class="mb-0" id="display_subtotal"><?= $this->siteCurrency . '' . getMycartSubtotal() ?></h3>
+              <h3 class="mb-0" id="display_subtotal"><?= $this->siteCurrency . '' . getMycartSubtotal() ?>
+              </h3>
             </div>
 
           </div>

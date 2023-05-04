@@ -28,6 +28,9 @@ class vendor_model extends My_model
                     $url = './public/images/vendor_shop/' . $old_image;
                     unlink($url);
                     $upload_path = "./public/images/" . $this->folder . "vendor_shop";
+                    if (!file_exists($upload_path)) {
+                        mkdir($upload_path);
+                    }
                     $uploadResponse = upload_single_image_ByName($_FILES, 'image_edit', $upload_path);
                     // print_r($uploadResponse);exit;  
                     $image = $uploadResponse['data']['file_name'];
@@ -47,6 +50,9 @@ class vendor_model extends My_model
                     $url = './public/images/' . $this->folder . 'vendor_logo_image/' . $old_image;
                     unlink($url);
                     $logo_upload_path = "./public/images/vendor_logo_image";
+                    if (!file_exists($logo_upload_path)) {
+                        mkdir($logo_upload_path);
+                    }
                     $uploadLogoResponse = upload_single_image_ByName($_FILES, 'logo_image_edit', $logo_upload_path);
                     // print_r($uploadResponse);exit;  
                     $logo = $uploadLogoResponse['data']['file_name'];
@@ -83,6 +89,9 @@ class vendor_model extends My_model
                 $image = '';
                 if (isset($_FILES['image'])) {
                     $upload_path = "./public/images/" . $this->folder . "vendor_shop";
+                    if (!file_exists($upload_path)) {
+                        mkdir($upload_path);
+                    }
                     $uploadResponse = upload_single_image_ByName($_FILES, 'image', $upload_path);
                     // print_r($uploadResponse);exit;
                     $image = $uploadResponse['data']['file_name'];
@@ -90,6 +99,9 @@ class vendor_model extends My_model
                 $logo = '';
                 if (isset($_FILES['logo_image']) && $_FILES['logo_image']['error'] == 0) {
                     $logo_upload_path = "./public/images/" . $this->folder . "vendor_logo_image";
+                    if (!file_exists($logo_upload_path)) {
+                        mkdir($logo_upload_path);
+                    }
                     $uploadLogoImage = upload_single_image_ByName($_FILES, 'logo_image', $logo_upload_path);
                     $logo = $uploadLogoImage['data']['file_name'];
                 }
@@ -100,7 +112,7 @@ class vendor_model extends My_model
                 $count = $this->countRecords($data);
                 $data = array(
                     'vendor_id' => $this->session->userdata('vendor_admin_id'),
-                    'domain_name'=>base_url(),
+                    'domain_name' => base_url(),
                     'image' => $image,
                     'logo_image' => $logo,
                     'location' => $_POST['location'],

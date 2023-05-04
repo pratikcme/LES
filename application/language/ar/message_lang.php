@@ -273,7 +273,7 @@ $lang['Pending'] = 'قيد الانتظار';
 $lang['Ready'] = 'مستعد';
 $lang['Pickup'] = 'يلتقط';
 $lang['on the way'] = 'علي الطريق';
-$lang['Delivered'] = 'يعالج';
+$lang['Delivered'] = 'تم التوصيل';
 $lang['Order Number'] = 'رقم الأمر';
 $lang['Delivered to'] = 'سلمت ل';
 

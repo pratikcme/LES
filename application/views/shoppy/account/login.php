@@ -31,8 +31,11 @@
                 <div class="login-left-content">
                     <!-- ---------login-deails-wrappper----- -->
                     <form class="login-deatils-wrapper" id="LoginForm" action="<?= base_url() . 'login' ?>" method="post">
-                        <h2 class="title"><?= $this->lang->line('Welcome') ?> <span><?= $this->lang->line('back!') ?></span></h2>
-                        <p class="pera"><?= $this->lang->line('Welcome back! Enter your credentails to acess your account.') ?></p>
+                        <h2 class="title"><?= $this->lang->line('Welcome') ?>
+                            <span><?= $this->lang->line('back!') ?></span>
+                        </h2>
+                        <p class="pera">
+                            <?= $this->lang->line('Welcome back! Enter your credentails to acess your account.') ?></p>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label"><?= $this->lang->line('Email') ?></label>
@@ -40,11 +43,11 @@
                             <!-- <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email Addres"> -->
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><?= $this->lang->line('Email') ?></label>
+                            <label for="exampleInputPassword1" class="form-label"><?= $this->lang->line('password') ?></label>
                             <input type="password" name="password" class="form-control" id="password" placeholder="<?= $this->lang->line('Enter Password*') ?>" autocomplete="off">
                         </div>
 
-                        <a href="<?= base_url() . 'login/forget_password' ?>" class="forgot-password-text"><?= $this->lang->line('Forgot Password?'); ?></a>
+                        <a href="<?= base_url() . 'login/forget_password' ?>" class="forgot-password-text"><?= $this->lang->line('Forgot password'); ?></a>
 
                         <div class="sign-in-btn">
                             <button type="submit" class="lg-btn"><?= $this->lang->line('Sign In') ?></button>

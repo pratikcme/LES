@@ -311,7 +311,7 @@
                     </div>
 
                     <button type="button" class="btn verify-btn d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Verify Mobile
+                        <?=$this->lang->line('Verify Mobile')?>
                     </button>
                 </div>
             </div>
@@ -352,7 +352,7 @@
                     <?php if ($shopping_based_discount == 0) { ?>
                         <div class="have-code-part">
                             <div class="input-group mb-3">
-                                <label for="text">If you have a coupon code, please apply it below.</label><br>
+                                <!-- <label for="text">If you have a coupon code, please apply it below.</label><br> -->
                                 <input type="text" class="form-control" id="promocode" placeholder="<?= $this->lang->line('Enter Promocode') ?>" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="checkPromocode"><?= $this->lang->line('Apply') ?></span>
                                 <br>
