@@ -470,6 +470,17 @@ nav .left-content a:hover {
   display: none;
 }
 
+#ui-id-1{
+  height: 250px;
+  border: 1px solid #000 !important;
+  overflow-y: scroll;
+}
+
+#ui-id-1.ui-menu .ui-menu-item-wrapper{
+  font-family: var(--BeVietnamPro-Medium) !important;
+  font-size: 14px !important;
+}
+
 
 /* ====menu-responsive-css======= */
 
