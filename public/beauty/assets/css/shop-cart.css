@@ -49,6 +49,11 @@ table{
     font-size: 18px;
     line-height: 20px;
     color: var(--cart-td-text-1);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .cart-detail-text h5{
     font-family: Poppins;
