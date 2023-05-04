@@ -272,15 +272,7 @@ input:focus{
     margin-bottom: 0px;
     text-transform: capitalize;
 }
-.time-wrapper{
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 40px;
-    background: var(--accordian-head-bg);
-    padding: 20px;
-    border-radius: 10px;
-}
+
 .dates-day-wrapper .owl-theme .owl-nav [class*=owl-] {
     color: #FFF;
     font-size: 14px;
@@ -1156,6 +1148,101 @@ button.btn-close{
     font-family: var(--BeVietnamPro-Medium) !important;
 }
 
+/* calender-data */
+span.error {
+    color: red;
+}
+
+.dates-day-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ui-datepicker-calendar th:nth-child(1) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(1) {
+    padding-left: 0 !important;
+}
+
+.ui-datepicker-calendar td:nth-child(2) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(3) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(4) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar td:nth-child(5) {
+    padding-left: 0px !important;
+}
+
+
+.ui-datepicker-calendar th:nth-child(3) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-calendar th:nth-child(4) {
+    padding-left: 0px !important;
+}
+
+.ui-datepicker-title {
+    font-size: 18px !important;
+    color: var(--primary-color);
+    font-family: Poppins !important;
+}
+
+.ui-datepicker {
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.5rem !important;
+    border: 1px solid #999 !important;
+}
+
+.ui-datepicker-calendar thead th {
+    color: var(--primary-color) !important;
+    font-size: 16px !important;
+    font-weight: 400px !important;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.time-picker{
+    display: flex;
+    align-items:start;
+    gap: 30px;
+    justify-content: center;
+}
+
+.time-wrapper{
+    padding: 30px 50px;
+    border-radius: 10px;
+    border: 1px solid #c5c5c5;
+    height: 180px;
+    overflow-y: scroll;
+}
+
+.time-wrapper .form-check{
+    margin-bottom: 8px;
+}
+
+
+
+
 /* =============resonsive======== */
 /* =================================================== */
 /* =================================================== */
@@ -1171,11 +1258,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        display: flex;
-        gap: 6px;
-        margin-top: 40px;
-    }
+   
     .accordion-heading{
         font-size: 18px;
     }
@@ -1239,6 +1322,19 @@ button.btn-close{
     font-size: 15px;
 }
 }
+
+@media only screen and (max-width:1200px){
+    .time-wrapper{
+        padding: 30px 38px;
+        gap: 15px;
+    }
+
+    .time-picker{
+        flex-direction: column;
+
+    }
+}
+
 /* =================================================== */
 /* =================================================== */
 @media screen and (min-width:992px) and (max-width:1199px){
@@ -1253,16 +1349,8 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        gap: 0px;
-        margin-top: 40px;
-        flex-wrap: wrap;
-    }
-
-    .time-wrapper .form-check {
-        width: calc(100% - 50%);
-    }
-
+  
+    
     .accordion-heading{
         font-size: 18px;
     }
@@ -1366,12 +1454,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        display: flex;
-        gap: 0px;
-        margin-top: 40px;
-        flex-direction: column;
-    }
+    
     .accordion-heading {
         font-size: 18px;
         padding: 20px 0px 20px 20px !important;
@@ -1525,12 +1608,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        display: flex;
-        gap: 0px;
-        margin-top: 40px;
-        flex-direction: column;
-    }
+    
     .accordion-heading {
         font-size: 18px;
         padding: 20px 0px 20px 20px;
@@ -1703,12 +1781,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        display: flex;
-        gap: 0px;
-        margin-top: 40px;
-        flex-direction: column;
-    }
+    
     .accordion-heading {
         font-size: 18px;
         padding: 20px 0px 20px 20px !important;
@@ -1885,12 +1958,7 @@ button.btn-close{
         background-position-x: 235px;
         margin-bottom: 30px;
     }
-    .time-wrapper {
-        display: flex;
-        gap: 0px;
-        margin-top: 40px;
-        flex-direction: column;
-    }
+    
     .accordion-heading {
         font-size: 16px;
         padding: 20px 0px 20px 20px !important;

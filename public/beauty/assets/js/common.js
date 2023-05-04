@@ -189,7 +189,7 @@ $(document).ready(function () {
 // -----checkout-page-accordion----
 $(document).ready(function () {
   $(".accordion-items").on("click", ".accordion-heading", function () {
-    $(".accordion-heading").removeClass("active");
+    // $(".accordion-heading").removeClass("active");
     $(this).toggleClass("active").next().slideToggle();
 
     $(".accordion-content").not($(this).next()).slideUp(300);
