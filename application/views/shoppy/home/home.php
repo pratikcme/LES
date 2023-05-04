@@ -537,7 +537,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
         <div class="row">
             <div class="col-xxl-12">
                 <div class="title text-center wow fadeIn">
-                    <h2><?= $this->lang->line('New'); ?><span><?= $this->lang->line('Arrivals'); ?></span></h2>
+                    <h2><?= $this->lang->line('New'); ?> <span><?= $this->lang->line('Arrivals'); ?></span></h2>
                 </div>
             </div>
         </div>
