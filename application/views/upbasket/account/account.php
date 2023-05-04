@@ -209,7 +209,7 @@
                                                 if ($value->order_status != '8') {
                                                     continue;
                                                 }
-                                               
+
                                                 date_default_timezone_set('Asia/Kolkata');
                                                 $date =  date('d M Y, h:i A', $value->dt_updated);
                                                 if ($value->order_status == '1') {
@@ -310,11 +310,17 @@
                                                          </h3>
                                                          <h3 class="notranslate">
                                                              <?php
+                                                                    $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
                                                                     if ($value->delivery_charge != '0') {
-                                                                        echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
-                                                                    } else {
-                                                                        echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                        $final_total  += numberFormat($value->delivery_charge);
                                                                     }
+                                                                    if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                        $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                    }
+                                                                    if (numberFormat($value->promocode_discount) > 0) {
+                                                                        $final_total  -= numberFormat($value->promocode_discount);
+                                                                    }
+                                                                    echo $this->siteCurrency . ' ' . numberFormat($final_total);
                                                                     ?>
                                                          </h3>
                                                          <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
@@ -443,13 +449,18 @@
                                                              <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
                                                          </h3>
                                                          <h3 class="notranslate">
-                                                             <!-- <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?> -->
                                                              <?php
+                                                                    $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
                                                                     if ($value->delivery_charge != '0') {
-                                                                        echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
-                                                                    } else {
-                                                                        echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                        $final_total  += numberFormat($value->delivery_charge);
                                                                     }
+                                                                    if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                        $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                    }
+                                                                    if (numberFormat($value->promocode_discount) > 0) {
+                                                                        $final_total  -= numberFormat($value->promocode_discount);
+                                                                    }
+                                                                    echo $this->siteCurrency . ' ' . numberFormat($final_total);
                                                                     ?>
                                                          </h3>
                                                          <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
@@ -565,13 +576,18 @@
                                                          </h3>
                                                          <h3 class="notranslate">
                                                              <?php
+                                                                    $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
                                                                     if ($value->delivery_charge != '0') {
-                                                                        echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
-                                                                    } else {
-                                                                        echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                        $final_total  += numberFormat($value->delivery_charge);
                                                                     }
+                                                                    if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                        $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                    }
+                                                                    if (numberFormat($value->promocode_discount) > 0) {
+                                                                        $final_total  -= numberFormat($value->promocode_discount);
+                                                                    }
+                                                                    echo $this->siteCurrency . ' ' . numberFormat($final_total);
                                                                     ?>
-                                                             <!-- <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?> -->
                                                          </h3>
                                                          <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
                                                      </div>
