@@ -15,8 +15,6 @@
     <!-- The slideshow/carousel -->
     <div class="carousel-inner">
         <?php
-
-
         foreach ($banner as $key => $value) { ?>
         <section class="hero-sections carousel-item <?= ($key == 0) ? "active" : "" ?>"
             style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>');">
@@ -133,9 +131,7 @@
                 </a>
             </div>
             <?php }
-
             ?>
-
             <?php
             if (count($category) == 3) {
             ?>
@@ -182,6 +178,15 @@
                             }
                         } ?>
                 </div>
+            </div>
+            <?php
+            }
+            ?>
+            <?php
+            if (count($category) > 4) {
+            ?>
+            <div class="text-center mt-5">
+                <a class="lg-btn" href="<?= base_url('products') ?>"><?= $this->lang->line('Show More') ?></a>
             </div>
             <?php
             }

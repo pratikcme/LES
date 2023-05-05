@@ -177,6 +177,12 @@ var ADDPRODUCT = (function () {
     });
   });
 
+  // Dk added
+  $("#reviewForm").on("submit", function () {
+    $("#btnSubmit1").attr("disabled", "disabled");
+  });
+  //
+
   $(document).on("click", "#order_now", function () {
     var qnt = checkNotNull("qnt");
     var url = $("#url").val();

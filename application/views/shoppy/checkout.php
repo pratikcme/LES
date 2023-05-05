@@ -90,24 +90,23 @@
                                     ?>
                                 <div class="address-wrapper">
                                     <div class="address-text">
+                                        <div class="ship-check">
+                                            <div class="form-check">
+                                                <input type="checkbox"
+                                                    class="form-check-input default_check chek <?= $status ?>"
+                                                    data-id="<?= $this->utility->safe_b64encode($value->id) ?>"
+                                                    <?= ($value->status == '1') ? 'checked' : '' ?>
+                                                    id="<?= 'add' . $key ?>">
+                                            </div>
+                                        </div>
                                         <h3><?= $value->name ?></h3>
                                         <div class="address-icons">
-                                            <div class="ship-check text-end">
-                                                <div class="form-check">
-                                                    <input class="form-check-input default_check chek <?= $status ?>"
-                                                        type="checkbox"
-                                                        data-id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                                        <?= ($value->status == '1') ? 'checked' : '' ?>
-                                                        id="<?= 'add' . $key ?>">
-                                                    <label class="form-check-label" for="<?= 'add' . $key ?>">
-                                                        <?= $this->lang->line('Default') ?>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <a href="javascript:" class="add-address-btn edit_address"
+                                            <a href="javascript:;" class="add-address-btn edit_address"
                                                 data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
-
+                                            <a href="javascript:;" class="delet-address-btn remove_address"
+                                                data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i
+                                                    class="fa-solid fa-trash-can"></i></a>
                                         </div>
                                     </div>
                                     <p><?= $value->address ?></p>
