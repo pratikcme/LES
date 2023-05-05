@@ -1,3 +1,4 @@
+var base_url = $('#theme_base_url').val();
 // calender
 $(document).ready(function(){
   $('#datepicker').datepicker({
@@ -26,8 +27,8 @@ $(".categories-slider").owlCarousel({
   nav: false,
   dots: true,
   navText: [
-    "<img src='assets/images/home/Arrowleft.svg'>",
-    "<img src='assets/images/home/arrowRight.svg'>",
+    "<img src='"+base_url+"/assets/images/home/Arrowleft.svg'>",
+    "<img src='"+base_url+"/assets/images/home/arrowRight.svg'>",
   ],
   responsive: {
     0: {
@@ -64,8 +65,8 @@ $(".testimonials-slider").owlCarousel({
   autoplay: true,
   autospeed: 1000,
   navText: [
-    "<img src='assets/images/home/Arrowleft.svg'>",
-    "<img src='assets/images/home/arrowRight.svg'>",
+    "<img src='"+base_url+"/assets/images/home/Arrowleft.svg'>",
+    "<img src='"+base_url+"/assets/images/home/arrowRight.svg'>",
   ],
   responsive: {
     0: {
@@ -141,8 +142,8 @@ $(".top-rating-slider").owlCarousel({
   nav: true,
   dots: false,
   navText: [
-    "<img src='assets/images/home/Arrowleft.svg'>",
-    "<img src='assets/images/home/arrowRight.svg'>",
+    "<img src='"+base_url+"/assets/images/home/Arrowleft.svg'>",
+    "<img src='"+base_url+"/assets/images/home/arrowRight.svg'>",
   ],
   responsive: {
     0: {

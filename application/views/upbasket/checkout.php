@@ -90,10 +90,12 @@ span.error {
              <div class="col-xxl-7 col-xl-7 col-lg-6 col-md-6">
                  <div class="fill-detali-part">
                      <div class="accordion-items">
-                         <?php if (isset($selfPickEnable) && $selfPickEnable == '1' || !empty($userAddress) && $userAddress[0]->user_gst_number != '') { ?>
+
+
                          <div class="main-accordion">
                              <div class="delivery-method-wrap">
                                  <form class="accordion-content-2" action="">
+                                     <?php if (isset($selfPickEnable) && $selfPickEnable == '1' || !empty($userAddress) && $userAddress[0]->user_gst_number != '') { ?>
                                      <div class="form-check">
                                          <input class="form-check-input" type="checkbox" name="flexRadioDefault"
                                              id="isSelfPickup"
@@ -102,6 +104,9 @@ span.error {
                                              <?= $this->lang->line('self pickup') ?>
                                          </label>
                                      </div>
+                                     <?php }
+                                        if (!empty($userAddress) && $userAddress[0]->user_gst_number != '') {
+                                        ?>
                                      <div class="form-check">
                                          <input class="form-check-input" type="checkbox" name="flexRadioDefault"
                                              id="user_gst_number">
@@ -109,10 +114,12 @@ span.error {
                                              <?= $this->lang->line('Use GST Number') ?>
                                          </label>
                                      </div>
+                                     <?php } ?>
                                  </form>
                              </div>
                          </div>
-                         <?php } ?>
+
+
                          <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
                          <div class="main-accordion">
                              <div class="accordion-heading"><?= $this->lang->line('Pickup Address') ?></div>
@@ -350,6 +357,7 @@ span.error {
                                          <?= $value->product_name ?> </a>
                                  </h4>
                                  <h5> <?= $value->weight_no . ' ' . $value->weight_name ?> </h5>
+                                 <p>Qnt : <span><?= $value->quantity ?></span> </p>
                                  <h3> <?= $this->siteCurrency . number_format((float)$value->discount_price, '2', '.', '') ?>
                                  </h3>
                              </div>
@@ -433,31 +441,30 @@ span.error {
                                      <td class="cart-total-text-1"> <?= $this->lang->line('Total') ?> </td>
                                      <td class="cart-total-text-2">
                                          <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                                         <span id="checkout_final"> <?php
-
-
-                                                                    if (isset($calc_shiping) && is_numeric($calc_shiping)) {
-
-                                                                        // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                                        //     $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
-                                                                        // } else {
-                                                                        //     $to = $getMycartSubtotal + $calc_shiping;
-                                                                        // }
-                                                                        $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
-                                                                        $f_amount = $to - $shopping_based_discount;
-                                                                        echo number_format((float)$f_amount, 2, '.', '');
-                                                                    } else {
-
-                                                                        // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                                                                        //     $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                                        // } else {
-                                                                        //     $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                                        // }
-                                                                        $tot = $getMycartSubtotal + $TotalGstAmount;
-                                                                        // $tot = $getMycartSubtotal;
-                                                                        $f_amount = $tot - $shopping_based_discount;
-                                                                        echo number_format((float)$f_amount, 2);
-                                                                    } ?> </span>
+                                         <span id="checkout_final">
+                                             <?php
+                                                if (isset($calc_shiping) && is_numeric($calc_shiping)) {
+                                                    // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                    //     $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                    // } else {
+                                                    //     $to = $getMycartSubtotal + $calc_shiping;
+                                                    // }
+                                                    $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                    $f_amount = $to - $shopping_based_discount;
+                                                    echo number_format((float)$f_amount, 2, '.', '');
+                                                } else {
+                                                    // if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                                    //     $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                    // } else {
+                                                    //     $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                    // }
+                                                    $tot = $getMycartSubtotal + $TotalGstAmount;
+                                                    // $tot = $getMycartSubtotal;
+                                                    $f_amount = $tot - $shopping_based_discount;
+                                                    echo number_format((float)$f_amount, 2);
+                                                }
+                                                ?>
+                                         </span>
                                      </td>
                                  </tr>
                              </tbody>

@@ -821,6 +821,10 @@ bg-white{
     height: auto !important;
 }
 
+.kids-im .accesories-img{
+    height: 250px;
+}
+
 /*============ responsive ===============*/
 
 @media only screen and (min-width:2500px){

@@ -460,7 +460,7 @@ class Checkout_model extends My_model
 
         $getMycartSubtotal = getMycartSubtotal();
 
-
+        // dd($isShow);
         if ($isShow == 0) {
             $getMycartSubtotal = numberFormat($getMycartSubtotal - numberFormat($gstAmt));
         }
@@ -471,22 +471,25 @@ class Checkout_model extends My_model
         $total_gst = $res['total_gst'];
 
 
-        $discountValue = 0;
-        $shoppingDiscount = $this->checkShoppingBasedDiscount();
-        if (!empty($shoppingDiscount)) {
-            if ($getMycartSubtotal  >= $shoppingDiscount[0]->cart_amount) { //Dk changed
-                $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                $discountValue =  $getMycartSubtotal  * $discountPercentage / 100;
-                $discountValue = number_format((float)$discountValue, 2, '.', '');
-            }
-        }
+        // $discountValue = 0;
+        // $shoppingDiscount = $this->checkShoppingBasedDiscount();
+        // if (!empty($shoppingDiscount)) {
+        //     if ($getMycartSubtotal  >= $shoppingDiscount[0]->cart_amount) { //Dk changed
+        //         $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+        //         $discountValue =  $getMycartSubtotal  * $discountPercentage / 100;
+        //         $discountValue = number_format((float)$discountValue, 2, '.', '');
+        //     }
+        // }
+
+        $discountValue = numberFormat($getMycartSubtotal * $promocode[0]->percentage / 100);
         $sub_total = number_format((float)($getMycartSubtotal - $discountValue), 2, '.', '');
         $total_price = number_format((float)$sub_total, 2, '.', '');
+
 
         if (empty($promocode)) {
             $response["success"] = 0;
             $response["message"] = "No Promocode Found";
-            $response["orderAmount"] = $total_price;
+            $response["orderAmount"] = $getMycartSubtotal;
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
@@ -494,7 +497,7 @@ class Checkout_model extends My_model
         if ($date < $promocode[0]->start_date) {
             $response["success"] = 0;
             $response["message"] = "Promocode is not started yet";
-            $response["orderAmount"] = $total_price;
+            $response["orderAmount"] = $getMycartSubtotal;
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
@@ -502,28 +505,25 @@ class Checkout_model extends My_model
         if ($date > $promocode[0]->end_date) {
             $response["success"] = 0;
             $response["message"] = "Promocode is expiered";
-            $response["orderAmount"] = $total_price;
+            $response["orderAmount"] = $getMycartSubtotal;
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
         unset($data);
 
-
-
-
-        if ($total_price < $promocode[0]->min_cart) {
+        if ($getMycartSubtotal < $promocode[0]->min_cart) {
             $response["success"] = 0;
             $response["message"] = "Minimum " . $promocode[0]->min_cart . ' amount is required';
-            $response["orderAmount"] = $total_price;
+            $response["orderAmount"] = $getMycartSubtotal;
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
-        if ($total_price > $promocode[0]->max_cart) {
+        if ($getMycartSubtotal > $promocode[0]->max_cart) {
             $response["success"] = 0;
             $response["message"] = "Maximum " . $promocode[0]->max_cart . ' Cart amount is required';
-            $response["orderAmount"] = $total_price;
+            $response["orderAmount"] = $getMycartSubtotal;
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
@@ -537,20 +537,18 @@ class Checkout_model extends My_model
         if ($order_promocode[0]->count >= $promocode[0]->max_use) {
             $response["success"] = 0;
             $response["message"] = "Promocode is reached limit";
-            $response["orderAmount"] = $total_price;
+            $response["orderAmount"] = $getMycartSubtotal;
             $response["withoutPromo"] = totalSaving() + $discountValue;
             return $response;
         }
 
-
-        $calculate = ($total_price / 100) * $promocode[0]->percentage;
-
         $response["success"] = 1;
         $response["message"] = "Promocode applied";
         $response["new_gst"] = $total_gst;
-        $response["data"] = $calculate;
-        $response["orderAmount"] = numberFormat($total_price + $total_gst);
+        $response["data"] = $discountValue;
+        $response["orderAmount"] = numberFormat($getMycartSubtotal  + $total_gst);
         $response["withoutPromo"] = totalSaving() + $discountValue;
+        // dd($response);
         return $response;
     }
 

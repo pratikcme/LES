@@ -18,39 +18,44 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- jquery-cdn -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- -----jquary-min----- -->
+<script src="<?= $this->theme_base_url .'/assets/js/jquery.min.js'?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
 <!-- bootstrap-datepicker-js -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> -->
 
-<!-- owl-carousel-js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<!-- swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-<!-- swiper-js -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
-<!-- parallax animation -->
+<!-- ----owl-min-js----- -->
+<script src="<?=$this->theme_base_url.'/assets/js/owl.carousel.min.js'?>"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- drift -->
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/164071/Drift.min.js'></script>
 
-<script src="<?= $this->theme_base_url . '/assets/js/jquery.basictable.min.js' ?>"></script>
-<script src="<?= $this->theme_base_url . '/assets/js/basictable.min.js' ?>"></script>
+<script src="<?=$this->theme_base_url.'/assets/js/jquery.basictable.min.js'?>"></script>
+<script src="<?=$this->theme_base_url.'/assets/js/basictable.min.js'?>"></script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- SLICK JS -->
-<script src="<?= $this->theme_base_url . '/assets/js/slick.min.js' ?>"></script>
+<!-- my script -->
 
-<!-- custom-js -->
-<script src="<?= $this->theme_base_url . '/assets/js/swiper.js' ?>"></script>
-<script src="<?= $this->theme_base_url . '/assets/js/dropdowns.js' ?>"></script>
-<script src="<?= $this->theme_base_url . '/assets/js/slider.js' ?>"></script>
-<script src="<?= $this->theme_base_url . '/assets/js/priceslider.js' ?>"></script>
-<script src="<?= $this->theme_base_url . '/assets/js/script.js' ?>"></script>
+<script src="<?=$this->theme_base_url.'/assets/js/script.js'?>"></script>
+<script src="<?=$this->theme_base_url.'/assets/js/zoom.js'?>"></script>
+<script src="<?=$this->theme_base_url.'/assets/js/common.js'?>"></script>
+<script src="<?=$this->theme_base_url.'/assets/js/overlay.js'?>"></script>
 
 
+<!--  js animate-link -->
+<script src="<?=$this->theme_base_url.'/assets/js/wow.min.js'?>"></script>
 
-<script src="<?= $this->theme_base_url . '/assets/js/animation.js' ?>"></script>
-<script src="<?= $this->theme_base_url . '/assets/js/wow.min.js' ?>"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW43KgTNs_Kusuvbian6KYGi_QzXOLS4w&v=3.exp&libraries=places">

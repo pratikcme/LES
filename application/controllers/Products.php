@@ -21,7 +21,6 @@ class Products extends User_Controller
 
 	public function index()
 	{
-
 		if (isset($_GET['cat_id']) && $_GET['cat_id'] != '') {
 			$data['getBycatID'] = $_GET['cat_id'];
 		}
@@ -642,7 +641,7 @@ class Products extends User_Controller
 			// $hrml = "<a href=".$anchor.">".$value->name."</a>";
 			array_push($tutorialData, $h);
 		}
-		if(empty($res)){
+		if (empty($res)) {
 			$h = ['label' => "No Product Found", 'value' => "javascript:"];
 			array_push($tutorialData, $h);
 		}

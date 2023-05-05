@@ -379,6 +379,12 @@ var ADDPRODUCT = (function () {
     }
   });
 
+  // Dk added
+  $("#reviewForm").on("submit", function () {
+    $("#btnSubmit1").attr("disabled", "disabled");
+  });
+  //
+
   $(document).on("click", "#btnSubmit", function (event) {
     event.preventDefault();
     var that = $(this);

@@ -163,7 +163,6 @@
                         <div class="my-order-details">
                             <div class="tab-content">
                                 <div class="accordion-items">
-
                                     <!-- ------sub-tab-1----- -->
                                     <div id="subtab-1" class="container tab-pane active show fade">
                                         <?php foreach ($order as $key => $value) {
@@ -203,23 +202,27 @@
                                                 </div>
                                                 <div class="accordion-content">
                                                     <?php foreach ($value->orderDetails as $k => $v) { ?>
-                                                        <div class="my-order-details-content">
-                                                            <div class="order-details-img">
-                                                                <div class="accordion-img-wrapper">
-                                                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $v->product_image ?>" alt="err">
-                                                                </div>
-                                                                <div class="img-about-text">
-                                                                    <h3><?= $v->product_name ?></h3>
-                                                                    <h5><?= $v->weight_number . ' ' . $v->weight_name ?></h5>
-                                                                    <p>Qty: <span><?= $v->quantity ?></span></p>
-                                                                </div>
-                                                            </div>
 
+                                                        <div class="my-order-details-content">
+                                                            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($v->product_id) . '/' . $this->utility->safe_b64encode($v->product_weight_id) ?>">
+                                                                <div class="order-details-img">
+                                                                    <div class="accordion-img-wrapper">
+                                                                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $v->product_image ?>" alt="err">
+                                                                    </div>
+                                                                    <div class="img-about-text">
+                                                                        <h3><?= $v->product_name ?></h3>
+                                                                        <h5><?= $v->weight_number . ' ' . $v->weight_name ?>
+                                                                        </h5>
+                                                                        <p>Qty: <span><?= $v->quantity ?></span></p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
                                                             <div class="accordion-price-text">
                                                                 <h4><?= $this->siteCurrency . ' ' . numberFormat($v->discount_price) ?>
                                                                 </h4>
                                                             </div>
                                                         </div>
+
                                                     <?php } ?>
 
                                                     <div class="all-detalis-wrapper">
@@ -265,13 +268,18 @@
                                                                 <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
                                                             </h3>
                                                             <h3 class="notranslate">
-                                                                <!-- <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?> -->
                                                                 <?php
+                                                                $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
                                                                 if ($value->delivery_charge != '0') {
-                                                                    echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
-                                                                } else {
-                                                                    echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                    $final_total  += numberFormat($value->delivery_charge);
                                                                 }
+                                                                if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                    $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                }
+                                                                if (numberFormat($value->promocode_discount) > 0) {
+                                                                    $final_total  -= numberFormat($value->promocode_discount);
+                                                                }
+                                                                echo $this->siteCurrency . ' ' . numberFormat($final_total);
                                                                 ?>
                                                             </h3>
                                                             <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
@@ -323,23 +331,27 @@
                                                 <div class="accordion-content">
 
                                                     <?php foreach ($value->orderDetails as $k => $v) { ?>
-                                                        <div class="my-order-details-content">
-                                                            <div class="order-details-img">
-                                                                <div class="accordion-img-wrapper">
-                                                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $v->product_image ?>" alt="">
-                                                                </div>
-                                                                <div class="img-about-text">
-                                                                    <h3><?= $v->product_name ?></h3>
-                                                                    <h5><?= $v->weight_number . ' ' . $v->weight_name ?></h5>
-                                                                    <p>Qty: <span><?= $v->quantity ?></span></p>
-                                                                </div>
-                                                            </div>
 
+                                                        <div class="my-order-details-content">
+                                                            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($v->product_id) . '/' . $this->utility->safe_b64encode($v->product_weight_id) ?>">
+                                                                <div class="order-details-img">
+                                                                    <div class="accordion-img-wrapper">
+                                                                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $v->product_image ?>" alt="">
+                                                                    </div>
+                                                                    <div class="img-about-text">
+                                                                        <h3><?= $v->product_name ?></h3>
+                                                                        <h5><?= $v->weight_number . ' ' . $v->weight_name ?>
+                                                                        </h5>
+                                                                        <p>Qty: <span><?= $v->quantity ?></span></p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
                                                             <div class="accordion-price-text">
                                                                 <h4><?= $this->siteCurrency . ' ' . numberFormat($v->discount_price) ?>
                                                                 </h4>
                                                             </div>
                                                         </div>
+
                                                     <?php } ?>
 
 
@@ -389,13 +401,18 @@
                                                                 <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
                                                             </h3>
                                                             <h3 class="notranslate">
-                                                                <!-- <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?> -->
                                                                 <?php
+                                                                $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
                                                                 if ($value->delivery_charge != '0') {
-                                                                    echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
-                                                                } else {
-                                                                    echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                    $final_total  += numberFormat($value->delivery_charge);
                                                                 }
+                                                                if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                    $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                }
+                                                                if (numberFormat($value->promocode_discount) > 0) {
+                                                                    $final_total  -= numberFormat($value->promocode_discount);
+                                                                }
+                                                                echo $this->siteCurrency . ' ' . numberFormat($final_total);
                                                                 ?>
                                                             </h3>
                                                             <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
@@ -450,22 +467,26 @@
                                                     <?php foreach ($value->orderDetails as $k => $v) { ?>
 
                                                         <div class="my-order-details-content">
-                                                            <div class="order-details-img">
-                                                                <div class="accordion-img-wrapper">
-                                                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $v->product_image ?>" alt="err">
+                                                            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($v->product_id) . '/' . $this->utility->safe_b64encode($v->product_weight_id) ?>">
+                                                                <div class="order-details-img">
+                                                                    <div class="accordion-img-wrapper">
+                                                                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $v->product_image ?>" alt="err">
+                                                                    </div>
+                                                                    <div class="img-about-text">
+                                                                        <h3><?= $v->product_name ?></h3>
+                                                                        <h5><?= $v->weight_number . ' ' . $v->weight_name ?>
+                                                                        </h5>
+                                                                        <p>Qty: <span><?= $v->quantity ?></span></p>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="img-about-text">
-                                                                    <h3><?= $v->product_name ?></h3>
-                                                                    <h5><?= $v->weight_number . ' ' . $v->weight_name ?></h5>
-                                                                    <p>Qty: <span><?= $v->quantity ?></span></p>
-                                                                </div>
-                                                            </div>
+                                                            </a>
 
                                                             <div class="accordion-price-text">
                                                                 <h4><?= $this->siteCurrency . ' ' . numberFormat($v->discount_price) ?>
                                                                 </h4>
                                                             </div>
                                                         </div>
+
                                                     <?php } ?>
                                                     <div class="all-detalis-wrapper">
 
@@ -512,13 +533,18 @@
                                                                 <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
                                                             </h3>
                                                             <h3 class="notranslate">
-                                                                <!-- <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?> -->
                                                                 <?php
+                                                                $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
                                                                 if ($value->delivery_charge != '0') {
-                                                                    echo $this->siteCurrency . ' ' . numberFormat((float)$order[$key]->sub_total + $order[$key]->total_saving + numberFormat($value->delivery_charge));
-                                                                } else {
-                                                                    echo $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '');
+                                                                    $final_total  += numberFormat($value->delivery_charge);
                                                                 }
+                                                                if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                    $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                }
+                                                                if (numberFormat($value->promocode_discount) > 0) {
+                                                                    $final_total  -= numberFormat($value->promocode_discount);
+                                                                }
+                                                                echo $this->siteCurrency . ' ' . numberFormat($final_total);
                                                                 ?>
                                                             </h3>
                                                             <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
@@ -626,23 +652,21 @@
                             $status = ($value->status == '0') ? 'is_default ' : '';
                         ?>
 
+
+
                             <div class="address-wrapper">
                                 <div class="address-text">
-                                    <h3>Home</h3>
-                                    <div class="address-icons">
-                                        <div class="ship-check text-end ">
-                                            <div class="form-check">
-                                                <input class="from_account form-check-input is_default <?= $status ?>" id="<?= 'ad' . $key ?>" type="checkbox" data-id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= ($value->status == '1') ? 'checked' : '' ?>>
-                                                <label class="form-check-label" for="<?= 'ad' . $key ?>">
-                                                    <?= $this->lang->line('Default') ?>
-                                                </label>
-                                            </div>
+                                    <div class="ship-check">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input default_check chek <?= $status ?>" data-id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= ($value->status == '1') ? 'checked' : '' ?> id="<?= 'add' . $key ?>">
                                         </div>
-                                        <a href="#" class="add-address-btn edit_address" data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="#" class="delet-address-btn remove_address" data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
+                                    <h3><?= $value->name ?></h3>
+                                    <div class="address-icons">
+                                        <a href="javascript:;" class="add-address-btn edit_address" data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="javascript:;" class="delet-address-btn remove_address" data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i class="fa-solid fa-trash-can"></i></a>
                                     </div>
                                 </div>
-                                <h3><?= $value->name ?></h3>
                                 <p><?= $value->address ?></p>
                             </div>
 

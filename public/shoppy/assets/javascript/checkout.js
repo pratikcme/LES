@@ -494,6 +494,9 @@ var CHECKOUT = (function () {
             (shipping_charge === "" ? 0 : parseFloat(shipping_charge)) -
             parseFloat(response.data)
           ).toFixed(2);
+
+          $("#checkout_gst").html(parseFloat(response.new_gst).toFixed(2));
+
           // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
           if ($("#totalSaving").length) {
             var amount = response.data;
@@ -503,7 +506,7 @@ var CHECKOUT = (function () {
               siteCurrency + " " + promocodeDiscount.toFixed(2)
             );
           }
-          $("#promoAmount").html(response.data.toFixed(2));
+          $("#promoAmount").html(parseFloat(response.data).toFixed(2));
 
           $("#checkout_final").html(finalAmount);
 

@@ -90,24 +90,23 @@
                                     ?>
                                 <div class="address-wrapper">
                                     <div class="address-text">
+                                        <div class="ship-check">
+                                            <div class="form-check">
+                                                <input type="checkbox"
+                                                    class="form-check-input default_check chek <?= $status ?>"
+                                                    data-id="<?= $this->utility->safe_b64encode($value->id) ?>"
+                                                    <?= ($value->status == '1') ? 'checked' : '' ?>
+                                                    id="<?= 'add' . $key ?>">
+                                            </div>
+                                        </div>
                                         <h3><?= $value->name ?></h3>
                                         <div class="address-icons">
-                                            <div class="ship-check text-end">
-                                                <div class="form-check">
-                                                    <input class="form-check-input default_check chek <?= $status ?>"
-                                                        type="checkbox"
-                                                        data-id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                                        <?= ($value->status == '1') ? 'checked' : '' ?>
-                                                        id="<?= 'add' . $key ?>">
-                                                    <label class="form-check-label" for="<?= 'add' . $key ?>">
-                                                        <?= $this->lang->line('Default') ?>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <a href="javascript:" class="add-address-btn edit_address"
+                                            <a href="javascript:;" class="add-address-btn edit_address"
                                                 data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
-
+                                            <a href="javascript:;" class="delet-address-btn remove_address"
+                                                data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i
+                                                    class="fa-solid fa-trash-can"></i></a>
                                         </div>
                                     </div>
                                     <p><?= $value->address ?></p>
@@ -356,6 +355,8 @@
                     <?php } ?>
 
                     <input type="hidden" id="applied_promo">
+                    <input type="hidden" id="isShow"
+                        value="<?= $isShow[0]->display_price_with_gst == '1' ? "1" : "0" ?>">
                     <div class="cart-totals-part">
                         <table>
                             <thead class="head-title">
@@ -379,7 +380,7 @@
                                     <td class="cart-total-text-1"><?= $this->lang->line('Tax (Gst)') ?></td>
                                     <td class="cart-total-text-2">
                                         <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                                        <span> <?= $TotalGstAmount ?> </span>
+                                        <span id="checkout_gst"> <?= $TotalGstAmount ?> </span>
                                     </td>
                                 </tr>
                                 <tr>

@@ -72,7 +72,8 @@
         <h1><?= $this->lang->line('SHOP') ?></h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?= $this->lang->line('home') ?></a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?= $this->lang->line('home') ?></a>
+            </li>
             <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('Shop') ?></li>
           </ol>
         </nav>
@@ -224,8 +225,6 @@
         <!-- ---left-product-list--- -->
         <div class="show-div-wrapper">
           <div class="main-listing-wrapper" id="ajaxProduct">
-
-
           </div>
         </div>
 
@@ -286,8 +285,8 @@
                         <?php foreach ($brand as $key => $brandRecord) : ?>
                           <li>
                             <div class="form-check">
-                              <input class="form-check-input brand" type="checkbox" name="brand" value="<?= $brandRecord->id ?>" id="sub-Nike">
-                              <label class="form-check-label" for="sub-Nike"><?= $brandRecord->name ?></label>
+                              <input class="form-check-input brand" type="checkbox" name="brand" value="<?= $brandRecord->id ?>" id="<?= 'sub-' . $key ?>">
+                              <label class="form-check-label" for="<?= 'sub-' . $key ?>"><?= $brandRecord->name ?></label>
                             </div>
                           </li>
                         <?php endforeach ?>
@@ -297,7 +296,7 @@
                 </div>
               </div>
 
-              <div class="accordion-item">
+              <div class=" accordion-item">
                 <h2 class="accordion-header" id="headingSeven">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
 
@@ -323,7 +322,8 @@
 
                               <div class="discount-text">
                                 <div class="form-check">
-                                  <h4><?= $countDiscoutWise[$key] ?></h4>
+                                  <h4><?= $countDiscoutWise[$key] ?>
+                                  </h4>
                                 </div>
                               </div>
                             </div>
