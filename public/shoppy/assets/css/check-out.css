@@ -72,7 +72,7 @@
     font-size: 16px !important;
     /* line-height: 20px; */
     color: var( --accordian-content-text-1);
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 input:focus{
     box-shadow: none !important;
@@ -152,6 +152,7 @@ input:focus{
     font-size: 14px !important;
     /* line-height: 16px; */
     color: var(--light-gray);
+    font-size: 16px !important;
 }
 
 
@@ -191,8 +192,24 @@ input:focus{
 }
 
 .main-accordion .form-check-input:checked[type=radio]{
-    background: var(--primary-color) !important;
-    border: var(--primary-color) !important;
+    background: transparent !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+.main-accordion .form-check-input[type=radio]{
+    border: 1px solid var(--primary-color) !important;
+}
+
+.main-accordion .form-check-input:checked[type=radio]::after{
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .select-box select {
@@ -358,7 +375,8 @@ input:focus{
 }
 
 .order-wrapper-in{
-   height: 600px;
+   max-height: 600px;
+   min-height: 100px;
    overflow-y: scroll;
 }
 
@@ -837,8 +855,8 @@ to {top: 0px; opacity: 1}
 }
 
 .ship-check .form-check-input[type=checkbox]{
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     float: inherit !important;
 }
 
@@ -1140,15 +1158,18 @@ button.btn-close{
 .delivery-method-wrap label{
     font-family: var(--PublicSans-SemiBold);
     font-size: 20px;
-    line-height: 20px;
+    line-height: 30px;
     color: var(--heading-black);
+    text-transform: capitalize;
 }
 .delivery-method-wrap .accordion-content-2{
     gap: 100px !important;
+    margin: 0 !important;
 }
 .delivery-method-wrap .form-check {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    padding: 0;
 }
 
 
@@ -1249,6 +1270,7 @@ span.error {
   .ui-widget-content .ui-state-active {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
+    color: var(--accordian-head-text) !important;
   }
 
   .dots {
@@ -1283,7 +1305,7 @@ span.error {
     animation: topDown2 1.2s linear forwards infinite;
   }
 
-  .ui-slider .ui-state-default, .ui-widget-content .ui-state-default{
+  .ui-datepicker-calendar .ui-state-default{
     border-radius: inherit !important;
   }
 
@@ -1307,7 +1329,16 @@ span.error {
       transform: translateY(-20px);
       background-color: #22bdb6;
     }
-  }
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+    text-align: center;
+    border: 1px solid var(#000) !important;
+}
+
+.checkout-process-section .cart-totals-part{
+    margin-top: 15px;
+}
 
 /* =============resonsive======== */
 /* =================================================== */
@@ -1391,6 +1422,11 @@ span.error {
     padding: 15px 30px 15px 30px;
     font-size: 15px !important;
 }
+
+.time-wrapper{
+    padding: 30px 30px;
+}
+
 }
 /* =================================================== */
 /* =================================================== */
@@ -1498,6 +1534,16 @@ span.error {
 
 /* =================================================== */
 /* =================================================== */
+@media only screen and (max-width:991px){
+    .time-wrapper{
+        padding: 30px 25px;
+    }
+
+    .ui-datepicker-calendar th:nth-child(2) {
+        padding-left: 0 !important;
+    }
+}
+
 @media screen and (min-width:768px) and (max-width:991px){
     .select-box select {
         font-size: 14px !important;

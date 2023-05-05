@@ -207,6 +207,7 @@
   border-radius: 10px;
   transition: 0.5s;
   background: var(--primary-color);
+  text-transform: capitalize;
 }
 
 .mywishlist-part .add-cart-btn:hover{
@@ -301,7 +302,7 @@
 .address-icons .add-address-btn{
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -311,11 +312,11 @@
 .address-icons .delet-address-btn{
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--second-bg-color);
+    border: 1px solid var(--accordian-border);
     color: var(--primary-color) !important;
 }
 
@@ -500,12 +501,13 @@
     background: var(--primary-color);
     border: 1px solid var(--primary-color);
     box-shadow: 0px 7px 30px rgba(245, 81, 43, 0.15);
-    border-radius: 5px;
+    border-radius: 10px 10px 0 0;
     color: #fff !important;
     font-family: var(--PublicSans-SemiBold);
     font-size: 14px;
     line-height: 20px;
     transition: 0.5s;
+    text-transform: capitalize;
 }
 
 .add-cart-btn:hover{

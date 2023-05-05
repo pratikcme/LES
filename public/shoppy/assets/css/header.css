@@ -1,6 +1,4 @@
 /* -----header-css--- */
-
-
 header {
     position: absolute;
     width: 100%;
@@ -535,15 +533,15 @@ body {
     right: -6px;
     position: absolute;
     background: var(--primary-color);
-    font-family: Open Sans;
-    font-size: 9px;
-    font-weight: 600;
+    font-size: 10px;
     letter-spacing: 0.02em;
     color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    line-height: 20px;
+    font-family: var(--PublicSans-Regular);
 }
 
 /* language-dropdown */

@@ -155,7 +155,7 @@
             <?php
             } else {
             ?>
-            <div class="col-xxl-4 col-xl-4 col-lg-4">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12">
                 <div class="box-gap">
                     <?php
                         foreach ($category as $key => $value) {

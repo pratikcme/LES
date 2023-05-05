@@ -316,10 +316,11 @@
         margin-right: 15px;
     }
 
-    .category-wrap .kids-im {
+    /* .category-wrap .kids-im {
         margin-right: 0;
-        margin-left: 15px;
-    }
+        margin-left: 0px;
+    } */
+
 
     .rtl .contact-us-wrap .contact-form-wrap{
         margin-left: 0;

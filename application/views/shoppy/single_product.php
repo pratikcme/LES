@@ -185,9 +185,9 @@
                         <p><?= $productDetail[0]->content ?></p>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <!-- -------review-tab------ -->
+                        
                         <div class="my-review-wrapper">
-                            <!-- ----review-content--- -->
+                         
                             <div class=" review-content">
                                 <?php
                                 $sumOfRatting = 0;
@@ -208,7 +208,7 @@
                                 </div>
                             </div>
 
-                            <!-- ----review-comment-part--- -->
+                           
                             <div class="review-comment-wrapper <?= (count($product_review) == 0) ? 'd-none' : '' ?>" id="review_section">
                                 <h3>Most Useful Review</h3>
 
@@ -259,6 +259,8 @@
     </div>
     </div>
 </section>
+
+
 
 <?php
 

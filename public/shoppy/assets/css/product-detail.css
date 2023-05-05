@@ -129,13 +129,14 @@ body {
     background: var(--heading-black);
     color: var(--white);
     position: relative;
-    padding: 15px 40px !important;
+    padding: 15px 30px !important;
     border-radius: 20px !important;
     font-size: 18px;
     font-family: var(--PublicSans-SemiBold);
     margin: 0px;
     border: 1px solid transparent;
     transition: 0.5s;
+    text-transform: capitalize;
 }
 
 .order-now:hover {
@@ -188,8 +189,9 @@ body {
 .product-detalis-btn .add-cart-btn {
     margin: 0px !important;
     border-radius: 20px !important;
-    padding: 20px 40px !important;
+    padding: 20px 30px !important;
     border: 1px solid transparent;
+    font-size: 18px;
 }
 
 .product-detalis-btn .add-cart-btn:hover {
@@ -684,6 +686,8 @@ body {
     overflow: hidden;
 }
 
+
+
 .review-desc .nav-tabs .nav-link.active {
     border: none;
     border-bottom: 3px solid var(--primary-color);
@@ -721,7 +725,9 @@ body {
     position: relative;
 }
 
-
+.product-image-part img{
+    height: auto;
+}
 
 .drift-zoom-pane-loader{
     display: none !important;
@@ -758,7 +764,7 @@ body {
     background-color: #ffffff;
     box-shadow:rgba(0,19,37,0.72);
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 
 }
 .review-content{
@@ -838,7 +844,7 @@ body {
 }
 
 .review-comment-wrapper{
-    padding: 30px 0px;
+    padding: 30px 0px 0;
     height: auto;
     overflow: hidden;
     overflow-y: scroll;
@@ -946,8 +952,14 @@ body {
 }
 
 .review-comment-wrapper .supportive-div{
-    height: 450px;
+    max-height: 450px;
+    min-height: 100px;
 }
+
+.review-comment-wrapper .supportive-div .rewiew-wrapper:last-child{
+    border-bottom: none;
+}
+
 .load-btn{
     text-align: center;
     margin-top: 50px;
@@ -1265,7 +1277,8 @@ body {
 }
 
 #home{
-    height: 500px;
+    max-height: 500px;
+    min-height: 100px;
     overflow-y: scroll;
     overflow-x: hidden;
 }

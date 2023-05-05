@@ -80,6 +80,8 @@
     max-width: 424px;
     /* height: 450px; */
     border-radius: 20px;
+    background: rgba(0,0,0,0.2);
+    
 }
 
 
@@ -90,9 +92,9 @@
     transition: 0.5s;
 }
 
-.category-wrap .categories img:hover{
+/* .category-wrap .categories img:hover{
     transform: scale(1.1);
-}
+} */
 
 .category-wrap .kids-img {
    max-width: 424px;
@@ -104,6 +106,7 @@
     max-width: 424px;
     height: 150px;
     border-radius: 20px;
+    background: rgba(0,0,0,0.2);
 }
 
 .category-wrap .categories{
@@ -113,17 +116,22 @@
 
 .category-wrap .category-name{
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     right: 50%;
-    transform: translate(50%, 50%);
+    transform: translateX(50%);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .category-wrap .category-name h3{
     color: var(--white);
-    font-family: var(--PublicSans-SemiBold);
+    font-family: var(--PublicSans-Bold);
+    font-size: 28px !important;
+    text-align: center;
 }
 
-
+.kids-im .accesories-img{
+    height: 255px;
+}
 
 /* products */
 .products-wrap{
@@ -134,11 +142,10 @@
 .products-wrap .product-card{
     background-color: var(--white);
     border-radius: 10px;
-    padding: 20px 20px 20px;
+    padding: 20px 20px 0px;
     transition: 0.5s;
     position: relative;
     border: 2px solid #EFE8E6;
-    height: 100%;
     z-index: 0;
 }
 
@@ -152,6 +159,8 @@
     height: 250px;
     margin: 0 auto;
     position: relative;
+    background: rgba(0,0,0,0.2);
+    z-index: -1;
 }
 
 .products-wrap .product-card .product-im img{
@@ -162,6 +171,8 @@
 
 .products-wrap  .product-img-wrap{
     position: relative;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
 }
 
 .products-wrap  .product-card:hover{
@@ -181,10 +192,13 @@
 
 
 .products-wrap  .product-img-wrap p{
-    color: var(--primary-color);
+    color: var(--white);
     position: absolute;
     left: 10px;
     top: 10px;
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .discnt{
@@ -626,12 +640,10 @@ bg-white{
 
 
 .new-arrival .owl-nav{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: 50px;
-    max-width: 1320px;
-    margin: 0 auto;
+    position: absolute;
+    bottom: -70px;
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .new-arrival .owl-nav button{
@@ -786,13 +798,19 @@ bg-white{
     background-color: var(--primary-color) !important;
 }
 
+.carousel-item{
+    height: 600px !important;
+}
 
+.carousel-indicators{
+    bottom: 10px !important;
+}
 
 /* new-css */
 .box-gap{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .box-gap .accesories-img{
@@ -819,8 +837,6 @@ bg-white{
 
 
 @media only screen and (max-width:1200px){
-
-
     .products-wrap .product-discount h4{
         font-size: 20px !important;
     }
@@ -865,7 +881,7 @@ bg-white{
     }
 
     .new-arrival .owl-nav{
-        top: 30px;
+        bottom: -50px;
     }
 
     .contact-us-wrap{
@@ -879,7 +895,9 @@ bg-white{
         padding-bottom: 0px;
     }
 
-    
+    .category-wrap .category-name h3{
+        font-size: 22px !important;
+    }
 }
 
 @media only screen and (max-width:991px){
@@ -899,11 +917,13 @@ bg-white{
     }
 
     .category-wrap .kids-im{
-        margin-right: 15px;
+        padding-right: 15px;
+        width: 50%;
     }
 
     .category-wrap .acce-im{
-        margin-left: 15px;
+        padding-left: 15px;
+        width: 50%;
     }
 
     .category-wrap .col-xxl-4:last-child{
@@ -912,6 +932,11 @@ bg-white{
 
     .category-wrap .col-xxl-4:last-child > div{
         display: flex;
+        flex-direction: row;
+    }
+
+    .box-gap{
+        gap: 0;
     }
 
     /* .products-wrap .product-card .product-im{
@@ -994,6 +1019,14 @@ bg-white{
         padding-top: 0;
     }
 
+    .carousel-item{
+        height: auto !important;
+    }
+
+    .hero-sections{
+        padding-bottom: 70px !important;
+    }
+
 }
 
 @media only screen and (max-width:767px){
@@ -1038,10 +1071,14 @@ bg-white{
 
     .category-wrap .kids-im {
         margin-right: 0;
+        padding: 0;
+        width: 100%;
     }
 
     .category-wrap .acce-im {
         margin-left: 0;
+        width: 100%;
+        padding: 0;
     }
 
     /* .products-wrap .product-card .product-im{
@@ -1076,6 +1113,10 @@ bg-white{
 
     .offer-wrapper h3{
         margin-bottom: 10PX;
+    }
+
+    .box-gap {
+        gap: 17px;
     }
 }
 

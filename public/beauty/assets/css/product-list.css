@@ -845,6 +845,10 @@ div[slider]>input[type=range]::-ms-tooltip {
     height: 7px !important;
 }
 
+.slider-box span{
+    border-radius: 50% !important;
+}
+
 .slider-box label{
     display: none !important;
 }

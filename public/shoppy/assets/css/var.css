@@ -69,7 +69,7 @@
 
 
         /* ----------------checkout-process-color----- */
-    --accordian-head-bg:rgba(196, 30, 73, 0.1);
+    --accordian-head-bg:#FFF0ED;
     --accordian-bg:#fff;
     --accordian-border: rgba(196, 30, 73, 0.2);
     --accordian-head-text:#0F053F;
@@ -99,7 +99,7 @@
     --myaccoutn-tab-input-bg:#FFFFFF;
     --myaccoutn-tab-input-border:#F5512B;
      
-    --category-header:rgba(196, 30, 73, 0.1);
+    --category-header:#FFF0ED;
 
     /*---------- pagination ----------*/
     --page-border:#E7DCDA;

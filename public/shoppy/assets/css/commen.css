@@ -42,7 +42,7 @@ a{
 }
 
 h1{
-  font-size: 50px !important;
+  font-size: 45px !important;
   color: var(--heading-black);
   text-transform: uppercase;
   font-family: var(--PublicSans-ExtraBold);
@@ -260,7 +260,8 @@ button:focus{
 }
 .cart-drop-wrapper{
     height: 100%;
-    max-height: 290px !important;
+    min-height: 150px;
+    max-height: 500px !important;
     overflow: hidden;
     overflow-y: scroll;
     margin-top: 20px;
@@ -268,11 +269,14 @@ button:focus{
 ::-webkit-scrollbar {
     display: none;
 }
+
 .show.cart-dropdwon{
     transition: 0.3s;
     z-index: 999;
     right: 0px;
-    width: 300px;
+    width: 350px;
+    padding: 10px 18px;
+    border-radius: inherit;
 }
 
 .cart-drop-menu {
@@ -280,7 +284,7 @@ button:focus{
     align-items: center;
     gap: 20px;
     width: 100%;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     margin-bottom: -5px;
 }
 
@@ -312,7 +316,7 @@ button:focus{
     padding-top: 5px;
 }
 .drop-img{
-    width: 60px;
+    width: 20%;
     height: 60px;
     border-radius: 10px;
     display: flex;
@@ -331,8 +335,12 @@ button:focus{
 .drop-img a{
     background: none !important;
 }
+
+.drop-text {
+    width: 80%;
+}
+
 .drop-text h4{
-    max-width: 130px;
     font-family: var(--PublicSans-Medium);
     font-size: 13px !important;
     line-height: 18px;
