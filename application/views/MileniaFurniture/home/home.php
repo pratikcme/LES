@@ -1,525 +1,1320 @@
-<!--============== Carousel ==================-->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
-  <!-- Indicators/dotsd -->
-  <div class="carousel-indicators">
-    <?php
-    foreach ($banner as $key => $value) {
-
-    ?>
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key) ? 'active' : '' ?>"></button>
-    <?php
-    } ?>
-  </div>
-
-  <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
-    <?php
-
-
-    foreach ($banner as $key => $value) { ?>
-      <section class="hero-sections carousel-item <?= ($key) ? "active" : "" ?>" style="background-image: url('<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>');">
-        <svg id="Layer_1" class="left-bg" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/home/banner-left-bg.svg' ?>" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150.6 125.24">
-          <defs>
-            <style>
-              .left-bg {
-                fill: none;
-                stroke-width: 10px;
-                stroke: url(#linear-gradient);
-              }
-            </style>
-            <linearGradient id="linear-gradient" x1="138.77" y1="17.34" x2="33.24" y2="86.38" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#f5512b" />
-              <stop offset="1" stop-color="#f5512b" stop-opacity="0" />
-            </linearGradient>
-          </defs>
-          <path class="left-bg" d="M148.83,106.7l-11.93,6.68A60,60,0,0,1,55.65,91L5,3.28" transform="translate(-0.67 -0.78)" />
-        </svg>
-        <svg id="Layer_1" class="right-bg" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/home/banner-right-bg.svg' ?>" xmlns:xlink="<?= $this->theme_base_url . '/assets/img/home/banner-right-bg.svg' ?>" viewBox="0 0 353.33 207.47">
-          <defs>
-            <style>
-              .right-bg {
-                fill: none;
-                stroke-width: 10px;
-                stroke: url(#linear-gradient);
-              }
-            </style>
-            <linearGradient id="linear-gradient" x1="380.55" y1="432.23" x2="-254.06" y2="-537.86" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#113a8e" />
-              <stop offset="1" stop-color="#113a8e" stop-opacity="0" />
-            </linearGradient>
-          </defs>
-          <path class="right-bg" d="M119,214.88,240,145a60,60,0,0,1,82,22l27.67,47.92M3.16,39.9,19,30.77a60,60,0,0,1,82,22l98.12,170" transform="translate(-0.66 -17.72)" />
-        </svg>
-        <div class="container">
-          <div class="row">
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 d-flex align-items-center">
-              <div class="title">
-                <h2 class="sub-heading wow bounceInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">Colored Fashion Year</h2>
-                <h1 class="wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?= $value->main_title ?></h1>
-                <p class="wow bounceInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0"><?= $value->sub_title ?></p>
-                <?php if ($value->type == '1') { ?>
-                  <a href="<?= base_url() . 'products' ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
-
-                <?php } else if ($value->type == '2') { ?>
-                  <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
-
-                <?php } else { ?>
-                  <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
-
-                <?php } ?>
-
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12"></div>
-          </div>
-        </div>
-      </section>
-    <?php
-    } ?>
-  </div>
-</div>
-
-<!--========== category-section ==========-->
-<section class="category-wrap p-100">
-  <div class="container">
-    <div class="row">
-      <div class="col-xxl-12">
-        <div class="title text-center wow fadeIn">
-          <h2><?= $this->lang->line('Shop By') ?><span><?= $this->lang->line('Categories') ?></span></h2>
-          <p><?= $this->lang->line('Top Categories Of The Week') ?></p>
-        </div>
-      </div>
-
-      <?php
-
-
-      foreach ($category as $key => $value) {
-        if ($key > 2) {
-          break;
-        }
-      ?>
-        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
-          <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>">
-            <div class="categories">
-              <div class="category-img">
-                <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="category-img">
-              </div>
-              <div class="category-name">
-                <h3><?= $value->name ?></h3>
-              </div>
-            </div>
-          </a>
-        </div>
-      <?php } ?>
-
-      <div class="col-xxl-4 col-xl-4 col-lg-4">
-        <div class="box-gap">
-          <?php
-
-          foreach ($category as $key => $value) {
-            if ($key > 2) {
-
-              if ($key == 5) {
-
-                break;
-              }
-
-          ?>
-              <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="kids-im">
-                <div class="categories">
-                  <div class="accesories-img mb-4">
-                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="accesories-img">
-                  </div>
-                  <div class="category-name">
-                    <h3><?= $value->name ?></h3>
-                  </div>
-                </div>
-              </a>
-          <?php
-            }
-          } ?>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!--================ exclusive products =====================-->
-<section class="products-wrap p-100">
-  <div class="container">
-    <div class="row">
-      <div class="col-xxl-12">
-        <div class="title text-center wow fadeIn">
-          <h2> <?= $this->lang->line('Exclusive') ?> <span><?= $this->lang->line('Products') ?></span></h2>
-        </div>
-      </div>
-      <div>
-        <div>
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="seller-tab" data-bs-toggle="tab" data-bs-target="#sellers" type="button" role="tab" aria-controls="sellers" aria-selected="true"><?= $this->lang->line('Best Sellers') ?></button>
-            </li>
-
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="arrival-tab" data-bs-toggle="tab" data-bs-target="#New" type="button" role="tab" aria-controls="New" aria-selected="false"><?= $this->lang->line('New Arrival') ?></button>
-            </li>
-
-          </ul>
-        </div>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="sellers" role="tabpanel" aria-labelledby="seller-tab">
-            <div class="row">
-              <?php
-
-              foreach ($top_sell as $key => $value) :
-
-              ?>
-                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-
-                  <div class="product-card  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
-                    <div class="product-img-wrap">
-                      <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                        <div class="product-im">
-                          <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
-                        </div>
-                      </a>
-
-                      <?php if ($value->varientQuantity != '0') : ?>
-                        <p><?= $this->lang->line('In Stock'); ?></p>
-                      <?php endif ?>
-
-                      <?php if ($value->discount_per > '0') { ?>
-                        <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
-                      <?php } ?>
-                    </div>
-
-                    <div class="product-content">
-                      <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                        <h5><?= $value->name ?></h5>
-                        <div class="product-discount notranslate">
-                          <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                          <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
-                        </div>
-                      </a>
-                      <div class="rating-starts">
-                        <div class="rating stars3_5">
-
-                          <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
-                            <span class="star"></span>
-                          <?php } ?>
-
-                          <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
-                            <span class="star star-active"></span>
-                          <?php } ?>
-
-                        </div>
-                        <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
-                      </div>
-
-                      <?php
-                      $d_none = '';
-                      $d_show = 'd-none';
-                      if (!empty($item_weight_id)) {
-                        if (in_array($value->pw_id, $item_weight_id)) {
-                          $d_show = '';
-                          $d_none = 'd-none';
-                        }
-                      }
-                      ?>
-
-                      <div>
-                        <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
-                        </button>
-                      </div>
-
-
-
-                      <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
-                        <div class="qty-container">
-                          <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                          <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" class="input-qty">
-                          <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <?php endforeach ?>
-            </div>
-          </div>
-
-
-
-          <div class="tab-pane fade" id="New" role="tabpanel" aria-labelledby="arrival-tab">
-            <div class="row">
-              <?php foreach ($new_arrival as $key => $value) : ?>
-
-                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-
-                  <div class="product-card  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
-                    <div class="product-img-wrap">
-                      <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                        <div class="product-im">
-                          <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
-                        </div>
-                      </a>
-
-                      <?php if ($value->varientQuantity != '0') : ?>
-                        <p><?= $this->lang->line('In Stock'); ?></p>
-                      <?php endif ?>
-
-                      <?php if ($value->discount_per > '0') { ?>
-                        <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
-                      <?php } ?>
-                    </div>
-
-                    <div class="product-content">
-                      <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                        <h5><?= $value->name ?></h5>
-                        <div class="product-discount notranslate">
-                          <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                          <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
-                        </div>
-                      </a>
-                      <div class="rating-starts">
-                        <div class="rating stars3_5">
-
-                          <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
-                            <span class="star"></span>
-                          <?php } ?>
-
-                          <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
-                            <span class="star star-active"></span>
-                          <?php } ?>
-
-                        </div>
-                        <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
-                      </div>
-
-                      <?php
-                      $d_none = '';
-                      $d_show = 'd-none';
-                      if (!empty($item_weight_id)) {
-                        if (in_array($value->pw_id, $item_weight_id)) {
-                          $d_show = '';
-                          $d_none = 'd-none';
-                        }
-                      }
-                      ?>
-
-                      <div>
-                        <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
-                        </button>
-                      </div>
-
-
-
-                      <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
-                        <div class="qty-container">
-                          <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                          <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" class="input-qty">
-                          <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <?php endforeach ?>
-            </div>
-          </div>
-
-
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!--================ products-banner ===============-->
-<?php
-
-if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
-  <section class="products-banner p-100">
+<!-- banner -->
+<section class="banner home-banner">
     <div class="container">
-      <div class="row">
-
-
-        <?php
-
-        if (count($offer_list) == 1) {
-
-
-          foreach ($offer_list as $key => $value) : ?>
-
-            <!--======== single-banner ==============-->
-            <div class="col-lg-12 col-md-12 mb-4">
-              <div class="sale-banner-wrap position-relative">
-                <img src="<?= $value->image ?>" class="sale-banner-img position-absolute" alt="sale-banner" />
-                <div class="sale-banner-inner text-center">
-                  <span><?= $value->offer_percent ?> OFF</span>
-                  <h2><?= $value->offer_title ?></h2>
-                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="lg-btn"><?= $this->lang->line('Shop Now'); ?></a>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-wrap">
+                    <div class="owl-carousel owl-theme banner-slider">
+                        <div class="item">
+                            <div class="row align-items-center">
+                                <div class="col-xl-6 col-lg-6 col-mg-6">
+                                    <div class="banner-content">
+                                        <h3 class="sub-heading wow bounceInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">Furniture</h3>
+                                        <h1 class="wow wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">Better interiors</h1>
+                                        <p class="wow wow bounceInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">Pulvinar neque laoreet suspendisse interdum consectetur libero id. Fringilla est ullamcorper eget nulla facilisi etiam dign</p>
+                                        <a href="./product-list-page.php" class="cmn-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0">Shop now</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-mg-6">
+                                    <div class="banner-image">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/banner.png" alt="banner-img" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row align-items-center">
+                                <div class="col-xl-6 col-lg-6 col-mg-6">
+                                    <div class="banner-content">
+                                        <h3>Furniture</h3>
+                                        <h1>Better interiors</h1>
+                                        <p>Pulvinar neque laoreet suspendisse interdum consectetur libero id. Fringilla est ullamcorper eget nulla facilisi etiam dign</p>
+                                        <a href="./product-list-page.php" class="cmn-btn">Shop now</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-mg-6">
+                                    <div class="banner-image">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/banner2.png" alt="banner-img" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row align-items-center">
+                                <div class="col-xl-6 col-lg-6 col-mg-6">
+                                    <div class="banner-content">
+                                        <h3>Furniture</h3>
+                                        <h1>Better interiors</h1>
+                                        <p>Pulvinar neque laoreet suspendisse interdum consectetur libero id. Fringilla est ullamcorper eget nulla facilisi etiam dign</p>
+                                        <a href="./product-list-page.php" class="cmn-btn">Shop now</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-mg-6">
+                                    <div class="banner-image">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/banner.png" alt="banner-img" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          <?php endforeach;
-        }
-        if (count($offer_list) == 2 or count($offer_list) > 3) { ?>
-
-
-          <!--============== two-banner ===================-->
-          <?php foreach ($offer_list as $key => $value) : ?>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
-              <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
-                <div class="offer-wrapper offer-wrapper-1" style="background:url(<?= $value->image ?>)">
-                  <h4><?= $value->offer_title ?></h4>
-                  <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
-                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="explor-btn"><?= $this->lang->line('Explore More'); ?></a>
-                </div>
-              </a>
-            </div>
-          <?php
-          endforeach;
-          ?>
-
-        <?php }
-        ?>
-
-        <!--=============== three-banners ==================-->
-        <?php if (count($offer_list) == 3) {
-        ?>
-          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-            <div>
-              <div class="home-clothes mb-4 ">
-                <div class="cloth-card">
-                  <img src="<?= $offer_list[0]->image ?>" alt="">
-                </div>
-                <div class="cloth-content">
-                  <h5><?= $offer_list[0]->offer_title ?></h5>
-                  <h3><?= $offer_list[0]->offer_percent ?>%<span>OFF</span></h3>
-                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
-                </div>
-              </div>
-              <div class="home-clothes women-cloth">
-                <div class="cloth-card">
-                  <img src="<?= $offer_list[1]->image ?>" alt="">
-                </div>
-                <div class="cloth-content">
-                  <h5><?= $offer_list[1]->offer_title ?></h5>
-                  <h3><?= $offer_list[1]->offer_percent ?>%<span>OFF</span></h3>
-                  <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
-                </div>
-              </div>
-            </div>
-            <!--  -->
-            <!-- new upper -->
-          </div>
-          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-            <div class="practical-cloth home-clothes">
-              <div class="cloth-card">
-                <img src="<?= $offer_list[2]->image ?>" alt="">
-              </div>
-              <div class="cloth-content">
-                <h5><?= $offer_list[2]->offer_title ?></h5>
-                <h3><?= $offer_list[2]->offer_percent ?>%<span>OFF</span></h3>
-                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[2]->id) ?>"><?= $this->lang->line('Explore More'); ?></a>
-              </div>
-            </div>
-          </div>
-        <?php
-
-        } ?>
-      </div>
-    </div>
-  </section>
-<?php } ?>
-
-<!--========= new-arrivals ===========-->
-<section class="new-arrival products-wrap p-100 <?= (count($offer_list) == 0) ? 'bg-white' : '' ?>">
-  <div class="container">
-    <div class="row">
-      <div class="col-xxl-12">
-        <div class="title text-center wow fadeIn">
-          <h2><?= $this->lang->line('New'); ?><span><?= $this->lang->line('Arrivals'); ?></span></h2>
-
         </div>
-      </div>
     </div>
-  </div>
-
-  <div class="owl-carousel owl-theme simple">
-    <?php foreach ($new_arrival as $key => $value) : ?>
-      <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-        <div class="product-card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
-          <div class="product-img-wrap">
-            <div class="product-im ">
-              <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
-              </a>
-            </div>
-            <?php if ($value->varientQuantity != '0') : ?>
-              <p><?= $this->lang->line('In Stock'); ?></p>
-            <?php endif ?>
-            <?php if ($value->discount_per > '0') { ?>
-              <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
-            <?php } ?>
-          </div>
-
-          <div class="product-content">
-            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-              <h5><?= $value->name ?></h5>
-              <div class="product-discount notranslate">
-                <h4><?= $this->siteCurrency ?><?= number_format((float)$value->discount_price, 2, '.', '') ?></h4>
-                <p class="<?= ($value->discount_per > '0') ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></p>
-              </div>
-            </a>
-            <div class="rating-starts">
-              <div class="rating stars3_5">
-                <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
-                  <span class="star"></span>
-                <?php } ?>
-
-                <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
-                  <span class="star star-active"></span>
-                <?php } ?>
-              </div>
-              <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
-            </div>
-            <div>
-              <?php
-              $d_none = '';
-              $d_show = 'd-none';
-              if (!empty($item_weight_id)) {
-                if (in_array($value->pw_id, $item_weight_id)) {
-                  $d_show = '';
-                  $d_none = 'd-none';
-                }
-              }
-              ?>
-
-              <div>
-                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?></button>
-              </div>
-              <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
-                <div class="qty-container">
-                  <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
-                  <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" class="input-qty">
-                  <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php endforeach ?>
-  </div>
-
 </section>
+
+<!-- Shop by categories -->
+<section class="categories p-120">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <div class="categories-content">
+                    <h2 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                        Shop <br>
+                        by categories
+                    </h2>
+                    <div class="categories-detail wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">
+                        <div class="categories-detail-img-wrap">
+                            <img src="<?=$this->theme_base_url?>/assets/images/home/armchair.svg" alt="armchair" />
+                        </div>
+                        <div>
+                            <p>
+                                200 + <br>
+                                Unique products
+                            </p>
+                        </div>
+                    </div>
+                    <h5 class="wow fadeInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">ALL CATEGORIES <svg width="16" height="14" class="rightArrowdark" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.125 7H14.875" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.25 1.375L14.875 7L9.25 12.625" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </h5>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="categories-slider-main">
+                    <div class="owl-carousel owl-theme categories-slider">
+                        <div class="item">
+                            <a href="./product-list-page.php" class="categories-wrap">
+                                <div class="categories-image-wrap">
+                                    <img src="<?=$this->theme_base_url?>/assets/images/home/image.png" alt="" />
+                                </div>
+                                <div class="categories-text">
+                                    <h4>Dining Chair</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="./product-list-page.php" class="categories-wrap">
+                                <div class="categories-image-wrap">
+                                    <img src="<?=$this->theme_base_url?>/assets/images/home/sofa.png" alt="" />
+                                </div>
+                                <div class="categories-text">
+                                    <h4>Sofas</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="./product-list-page.php"  class="categories-wrap">
+                                <div class="categories-image-wrap">
+                                    <img src="<?=$this->theme_base_url?>/assets/images/home/table.png" alt="" />
+                                </div>
+                                <div class="categories-text">
+                                    <h4>Table</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- sale-banner -->
+<section class="sale-banner">
+    <div class="container">
+        <div class="row">
+            <!--======== single-banner ==========-->
+            <div class="col-lg-12 col-md-12 mb-4">
+                <div class="sale-banner-wrap position-relative">
+                    <img src="<?=$this->theme_base_url?>/assets/images/home/sale-banner.png" class="sale-banner-img position-absolute" alt="sale-banner" />
+                    <div class="sale-banner-inner text-center">
+                        <span>FROM LOVESEATS TO SECTIONALS.</span>
+                        <h2>Comfy Lounging</h2>
+                        <a href="./product-list-page.php" class="cmn-btn">shop now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!--========= Two-banner ===========-->
+            <div class="col-lg-6 col-md-6 mb-4">
+                <div class="sale-banner-wrap position-relative">
+                    <img src="<?=$this->theme_base_url?>/assets/images/home/sale-banner.png" class="sale-banner-img position-absolute" alt="sale-banner" />
+                    <div class="sale-banner-inner text-center">
+                        <span>FROM LOVESEATS TO SECTIONALS.</span>
+                        <h2>Comfy Lounging</h2>
+                        <a href="./product-list-page.php" class="cmn-btn">shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4">
+                <div class="sale-banner-wrap position-relative">
+                    <img src="<?=$this->theme_base_url?>/assets/images/home/sale-banner2.png" class="sale-banner-img position-absolute" alt="sale-banner" />
+                    <div class="sale-banner-inner sale-banner-inner2 text-center">
+                        <span>SALE UP TO 20% OFF ALL ITEMS</span>
+                        <h2>Scandinavian Style</h2>
+                        <a href="./product-list-page.php" class="cmn-btn">shop now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--=============== three-banners ==================-->
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+                <div>
+                    <div class="home-clothes mb-4">
+                        <div class="cloth-card">
+                            <img src="<?=$this->theme_base_url?>/assets/images/home/home-clothes-card.png" alt="">
+                        </div>
+                        <div class="cloth-content">
+                            <h5>CLOTHES THAT YOU LIKE</h5>
+                            <h3>Home Clothes And Accessories</h3>
+                            <a href="./product-list-page.php">Explore More</a>
+                        </div>
+                    </div>
+                    <div class="women-cloth home-clothes">
+                        <div class="cloth-card">
+                            <img src="<?=$this->theme_base_url?>/assets/images/home/women-fashion-card.png" alt="">
+                        </div>
+                        <div class="cloth-content">
+                            <h5>MODERN AND STYLISH OUTFIT</h5>
+                            <h3>The Best Women Fashion Outfits For Date</h3>
+                            <a href="./product-list-page.php">Explore More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+                <div class="practical-cloth home-clothes">
+                    <div class="cloth-card">
+                        <img src="<?=$this->theme_base_url?>/assets/images/home/practical-cloth.png" alt="">
+                    </div>
+                    <div class="cloth-content">
+                        <h5>СOMFORTABLE CLOTHES</h5>
+                        <h3>Practical Clothes For Your Kids</h3>
+                        <a href="./product-list-page.php">Explore More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- hot products -->
+<section class="hot-products p-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-12">
+                <div class="title">
+                    <h2 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">Hot Products</h2>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-8">
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs justify-content-center border-0" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#latest-products">Latest Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#top-rating">Top Rating</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#best-seller">Best Seller</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4">
+                <div class="text-end product-btn-wrap">
+                    <a href="./product-list-page.php" class="border-btn wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">All Produts <svg width="16" height="14" class="rightArrowdark" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.125 7H14.875" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.25 1.375L14.875 7L9.25 12.625" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                     </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tab-content">
+                    <div id="latest-products" class="tab-pane active">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="hot-products-wrap out-of-stock">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details ">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product2.png" alt="hot-product-img" />
+                                        <p>In Stock</p>
+                                        <span class="discnt">1% off</span>
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product3.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product4.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product5.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product6.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product7.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product8.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="top-rating" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product5.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product6.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product7.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product8.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="best-seller" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product4.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product5.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+                                <div class="hot-products-wrap">
+                                    <div class="hot-products-img position-relative overflow-hidden">
+                                        <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product6.png" alt="hot-product-img" />
+                                        <div class="hot-products-cart-wrap">
+                                            <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <div class="techno-check">
+                                                <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                                <div class="stocks heart">
+                                                    
+                                                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hot-products-details">
+                                        <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                        <div class="price-wrap d-flex">
+                                            <p><span><strike>₹1230.00</strike></span> </p>
+                                            <h6>₹1150.00</h6>
+                                        </div>
+                                        <div class="rating-starts rating-furni">
+                                            <div class="rating stars3_5">
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star star-active"></span>
+                                                <span class="star star-active-half"></span>
+                                            </div>
+                                            <div><p>( 2 reviews )</p></div>
+                                        </div>
+                                        <div class="product-detail-quentity add-cart-btns">
+                                            <div class="qty-container">
+                                                <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                <input type="text" name="qty" value="1" class="input-qty">
+                                                <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- top rating -->
+<section class="categories top-rating pb-120">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="main-title title text-center center-title">
+                    <h2>Top Rating</h2>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="banner-wrap">
+                    <div class="owl-carousel owl-theme top-rating-slider">
+                        <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                            <div class="hot-products-wrap">
+                                <div class="hot-products-img position-relative overflow-hidden">
+                                    <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product.png" alt="hot-product-img" />
+                                    <div class="hot-products-cart-wrap">
+                                        <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                        <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                        <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                        <div class="techno-check">
+                                            <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                            <div class="stocks heart">
+                                                <img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hot-products-details">
+                                    <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                    <div class="price-wrap d-flex">
+                                        <p><span><strike>₹1230.00</strike></span> </p>
+                                        <h6>₹1150.00</h6>
+                                    </div>
+                                    <div class="rating-starts rating-furni">
+                                        <div class="rating stars3_5">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star star-active"></span>
+                                            <span class="star star-active-half"></span>
+                                        </div>
+                                        <div><p>( 2 reviews )</p></div>
+                                    </div>
+                                    <div class="product-detail-quentity add-cart-btns">
+                                        <div class="qty-container">
+                                            <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                            <input type="text" name="qty" value="1" class="input-qty">
+                                            <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item wow fadeInDown" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">
+                            <div class="hot-products-wrap">
+                                <div class="hot-products-img position-relative overflow-hidden">
+                                    <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product2.png" alt="hot-product-img" />
+                                    <div class="hot-products-cart-wrap">
+                                        <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                        <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                        <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                        <div class="techno-check">
+                                            <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                            <div class="stocks heart">
+                                                <img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hot-products-details">
+                                    <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                    <div class="price-wrap d-flex">
+                                        <p><span><strike>₹1230.00</strike></span> </p>
+                                        <h6>₹1150.00</h6>
+                                    </div>
+                                    <div class="rating-starts rating-furni">
+                                        <div class="rating stars3_5">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star star-active"></span>
+                                            <span class="star star-active-half"></span>
+                                        </div>
+                                        <div><p>( 2 reviews )</p></div>
+                                    </div>
+                                    <div class="product-detail-quentity add-cart-btns">
+                                        <div class="qty-container">
+                                            <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                            <input type="text" name="qty" value="1" class="input-qty">
+                                            <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item wow fadeInDown" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
+                            <div class="hot-products-wrap">
+                                <div class="hot-products-img position-relative overflow-hidden">
+                                    <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product3.png" alt="hot-product-img" />
+                                    <div class="hot-products-cart-wrap">
+                                        <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                        <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                        <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                        <div class="techno-check">
+                                            <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                            <div class="stocks heart">
+                                                <img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hot-products-details">
+                                    <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                    <div class="price-wrap d-flex">
+                                        <p><span><strike>₹1230.00</strike></span> </p>
+                                        <h6>₹1150.00</h6>
+                                    </div>
+                                    <div class="rating-starts rating-furni">
+                                        <div class="rating stars3_5">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star star-active"></span>
+                                            <span class="star star-active-half"></span>
+                                        </div>
+                                        <div><p>( 2 reviews )</p></div>
+                                    </div>
+                                    <div class="product-detail-quentity add-cart-btns">
+                                        <div class="qty-container">
+                                            <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                            <input type="text" name="qty" value="1" class="input-qty">
+                                            <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item wow fadeInDown" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0">
+                            <div class="hot-products-wrap">
+                                <div class="hot-products-img position-relative overflow-hidden">
+                                    <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product4.png" alt="hot-product-img" />
+                                    <div class="hot-products-cart-wrap">
+                                        <a href="#"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                        <a href="./product-details.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </a>
+                                        <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                        <div class="techno-check">
+                                            <input class="techno_checkbox" type="checkbox" id="1" value="1">
+                                            <div class="stocks heart">
+                                                <img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hot-products-details">
+                                    <a href="./product-details.php"><h5>Chair Padded Seat</h5></a>
+                                    <div class="price-wrap d-flex">
+                                        <p><span><strike>₹1230.00</strike></span> </p>
+                                        <h6>₹1150.00</h6>
+                                    </div>
+                                    <div class="rating-starts rating-furni">
+                                        <div class="rating stars3_5">
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star star-active"></span>
+                                            <span class="star star-active-half"></span>
+                                        </div>
+                                        <div><p>( 2 reviews )</p></div>
+                                    </div>
+                                    <div class="product-detail-quentity add-cart-btns">
+                                        <div class="qty-container">
+                                            <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                                            <input type="text" name="qty" value="1" class="input-qty">
+                                            <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

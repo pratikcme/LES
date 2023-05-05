@@ -25,6 +25,7 @@
   <?php $this->load->view($page); ?>
 
   <?php $this->load->view($_SESSION['template_name'] . '/include/body_footer'); ?>
+  <input type="hidden" id="theme_base_url" value="<?=$this->theme_base_url?>">
   <input type="hidden" id="site_lang" value="<?= $_SESSION['site_lang'] ?>">
   <input type="hidden" id="imageFolder" value="<?= $this->folder ?>">
   <?php $this->load->view($_SESSION['template_name'] . '/include/footer'); ?>
