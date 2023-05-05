@@ -33,6 +33,7 @@
                         <?= $value->product_name ?> </a>
                 </h4>
                 <p><?= $value->weight_no . ' ' . $value->weight_name ?></p>
+                <p>Qty : <?= $value->quantity ?></p>
                 <h3> <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?> </h3>
             </div>
             <div class="cancel-btn remove_item" data-product_id="<?= $value->product_id ?>"

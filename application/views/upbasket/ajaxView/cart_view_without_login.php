@@ -33,6 +33,7 @@
                         <?= $value['product_name'] ?> </a>
                 </h4>
                 <p><?= $value['weight_no'] . ' ' . $value['weight_name'] ?></p>
+                <p>Qty : <?= $value['quantity'] ?></p>
                 <!-- <p><?= $value->weight_no . ' ' . $value->weight_name ?></p> -->
                 <h3> <?= $this->siteCurrency . ' ' . number_format((float)$value['discount_price'], 2, '.', '') ?> </h3>
             </div>

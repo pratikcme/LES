@@ -356,6 +356,8 @@
                     <?php } ?>
 
                     <input type="hidden" id="applied_promo">
+                    <input type="hidden" id="isShow"
+                        value="<?= $isShow[0]->display_price_with_gst == '1' ? "1" : "0" ?>">
                     <div class="cart-totals-part">
                         <table>
                             <thead class="head-title">
@@ -379,7 +381,7 @@
                                     <td class="cart-total-text-1"><?= $this->lang->line('Tax (Gst)') ?></td>
                                     <td class="cart-total-text-2">
                                         <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                                        <span> <?= $TotalGstAmount ?> </span>
+                                        <span id="checkout_gst"> <?= $TotalGstAmount ?> </span>
                                     </td>
                                 </tr>
                                 <tr>

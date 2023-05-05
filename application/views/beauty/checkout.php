@@ -254,34 +254,32 @@
                             <div class="accordion-content  accordion-content-4">
 
                                 <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
-                                <div class="time-picker">
-                                    <div class="dates-day-wrapper">
-                                        <div id="datepicker"></div>
-                                    </div>
-
-                                    <form class="time-wrapper">
-                                        <h3><?= $this->lang->line('Pickup Timing') ?></h3>
-                                        <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
-                                    </form>
-                                </div>
-                                <?php } else { ?>
-                                <div class="time-picker">
-                                    <div class="dates-day-wrapper">
-                                        <div id="datepicker"></div>
-                                    </div>
-
-                                    <form class="time-wrapper">
-                                        <?php foreach ($time_slot as $key => $value) { ?>
-                                        <div class="form-check">
-                                            <input class="time_slot_checked form-check-input" type="radio" id="Default-1"
-                                                name="time_slot" value=" <?= $value->id ?>"
-                                                <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
-                                            <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> -
-                                                <?= $value->end_time ?> </label>
+                                    <div class="time-picker">
+                                        <div class="dates-day-wrapper">
+                                            <div id="datepicker"></div>
                                         </div>
-                                        <?php } ?>
-                                    </form>
-                                </div>
+
+                                        <form class="time-wrapper">
+                                            <h3><?= $this->lang->line('Pickup Timing') ?></h3>
+                                            <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
+                                        </form>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="time-picker">
+                                        <div class="dates-day-wrapper">
+                                            <div id="datepicker"></div>
+                                        </div>
+
+                                        <form class="time-wrapper">
+                                            <?php foreach ($time_slot as $key => $value) { ?>
+                                                <div class="form-check">
+                                                    <input class="time_slot_checked form-check-input" type="radio" id="Default-1" name="time_slot" value=" <?= $value->id ?>" <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+                                                    <label class="form-check-label" for="Default-1"> <?= $value->start_time ?> -
+                                                        <?= $value->end_time ?> </label>
+                                                </div>
+                                            <?php } ?>
+                                        </form>
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -292,7 +290,7 @@
                                     <?php if ($payment_option != '' && $isOnlinePayment == '1') { ?>
                                         <div class="form-check radio-outer-line">
                                             <input class="form-check-input pay-chk" type="radio" name="flexRadioDefault2" id="credit" value="<?= $payment_option ?>" <?= ($isCOD == '0' && $isOnlinePayment == '1') ? 'checked' : '' ?>>
-                                            <label class="form-check-label" for="Credit/Debit Card">
+                                            <label class="form-check-label" for="credit">
                                                 <?= $this->lang->line('Credit/Debit Card') ?> </label>
                                             </label>
                                         </div>
@@ -311,7 +309,7 @@
                     </div>
 
                     <button type="button" class="btn verify-btn d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <?=$this->lang->line('Verify Mobile')?>
+                        <?= $this->lang->line('Verify Mobile') ?>
                     </button>
                 </div>
             </div>
@@ -384,7 +382,7 @@
                                     <td class="cart-total-text-1"> <?= $this->lang->line('Tax (Gst)') ?> </td>
                                     <td class="cart-total-text-2">
                                         <span class='notranslate'> <?= $this->siteCurrency ?> </span>
-                                        <span> <?= $TotalGstAmount ?> </span>
+                                        <span id="checkout_gst"> <?= $TotalGstAmount ?> </span>
                                     </td>
                                 </tr>
                                 <tr>

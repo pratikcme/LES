@@ -505,8 +505,7 @@ var CHECKOUT = (function () {
               siteCurrency + " " + promocodeDiscount.toFixed(2)
             );
           }
-
-          $("#promoAmount").html(response.data.toFixed(2));
+          $("#promoAmount").html(parseFloat(response.data).toFixed(2));
           // $("#applied_promo").val("true");
 
           $("#checkout_final").html(finalAmount);
