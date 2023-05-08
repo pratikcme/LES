@@ -103,7 +103,7 @@ define('SUPER_ADMIN_LAYOUT','super_admin/includes/super_admin_layout');
 
 define('TEXT_MESSAGE_API_KEY','NDY2MjYxMzk0ZTQ2NmE2YjY3N2E2NTUxNTI2MjRiMzA=');
 
-define('js_version','0.6');
+define('js_version','0.7');
 
 // testing
 // define('TWILO_ACCOUNT_SID', 'AC7feb595d1a3d1f813b0348c0aec36718'); 

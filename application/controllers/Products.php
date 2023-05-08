@@ -685,9 +685,7 @@ class Products extends User_Controller
 
 	public function productReview()
 	{
-
 		if ($this->input->post()) {
-
 			$res = $this->this_model->insertReview($this->input->post());
 			if ($res) {
 				$this->utility->setFlashMessage('success', 'Thanks for Review');

@@ -178,9 +178,9 @@ var ADDPRODUCT = (function () {
   });
 
   // Dk added
-  $("#reviewForm").on("submit", function () {
-    $("#btnSubmit1").attr("disabled", "disabled");
-  });
+  // $("#reviewForm").on("submit", function () {
+  //   $("#btnSubmit1").attr("disabled", "disabled");
+  // });
   //
 
   $(document).on("click", "#order_now", function () {
@@ -500,7 +500,7 @@ var ADDPRODUCT = (function () {
       },
     },
     submitHandler: function (form) {
-      $("#btnSubmit").attr("disabled", "disabled");
+      $("#btnSubmit1").attr("disabled", "disabled");
       form.submit();
     },
   });
