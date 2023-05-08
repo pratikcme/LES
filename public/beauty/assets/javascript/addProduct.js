@@ -495,6 +495,7 @@ var ADDPRODUCT = (function () {
 
   // var  handleAddToCartForm =  function () {
   $('#writeReviewSection').click(function(){
+    $('label.error').html("");
     $('#reviewForm')[0].reset();
   })
 
