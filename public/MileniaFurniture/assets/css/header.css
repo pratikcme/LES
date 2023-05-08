@@ -688,6 +688,15 @@ li {
     margin-right: 10px;
 }
 
+/* Dk added */
+.no-itm.cart-btn .dropdown-menu {
+    display: none;
+}
+
+.no-itm.cart-btn .g-badge {
+    display: none !important;
+}
+
 
 /* responsive */
 
