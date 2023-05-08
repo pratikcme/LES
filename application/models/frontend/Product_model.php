@@ -1208,7 +1208,7 @@ class Product_model extends My_model
 			'product_id' => $this->utility->safe_b64decode($postData['product_id']),
 			'product_varient_id' => $this->utility->safe_b64decode($postData['varient_id']),
 			'review' => $postData['comment'],
-			'ratting' => $postData['ratetIndex'],
+			'ratting' => isset($postData['ratetIndex']) ? $postData['ratetIndex'] : 0,
 			'dt_created' => date('Y-m-d h:i:s'),
 			'dt_updated' => date('Y-m-d h:i:s')
 		);

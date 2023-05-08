@@ -413,7 +413,7 @@ var ADDPRODUCT = (function () {
           // swal("Sorry you can not review multiple time");
         }
       });
-
+      $(this).attr('disable','disabled');
       $.ajax({
         url: action,
         type: "post",
@@ -434,7 +434,7 @@ var ADDPRODUCT = (function () {
           });
           $(".change_title").html("Update");
           swal("Thanks For Your Review");
-          // window.location.reload();
+          window.location.reload();
         },
       });
     } else {
@@ -507,7 +507,7 @@ var ADDPRODUCT = (function () {
       },
     },
     submitHandler: function (form) {
-      $("#btnSubmit").attr("disabled", "disabled");
+      $("#btnSubmit1").attr("disabled", "disabled");
       form.submit();
     },
   });
