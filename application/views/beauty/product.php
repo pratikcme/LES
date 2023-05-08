@@ -140,7 +140,9 @@
                                         <h3><?=$this->lang->line('Brands')?></h3>
                                     </div>
                                     <ul class="cate-wrp">
-                                        <?php foreach ($brand as $key => $brandRecord){ ?>
+                                        <?php 
+                                        <?php dd($brand); ?>
+                                        foreach ($brand as $key => $brandRecord){ ?>
                                         <li class="">
                                             <div class="discount-wrapper brands-wrp">
                                                 <div class="form-check d-flex align-items-center">
