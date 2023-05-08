@@ -155,7 +155,7 @@
 
                                     <form method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" class="ship-address" autocomplete="off">
                                         <div class="text-end">
-                                            <button type="button" class="ship-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-sharp fa-regular fa-circle-xmark"></i></button>
+                                            <button type="button" class="ship-close cancel-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fa-sharp fa-regular fa-circle-xmark"></i></button>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12">
