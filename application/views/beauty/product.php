@@ -141,7 +141,6 @@
                                     </div>
                                     <ul class="cate-wrp">
                                         <?php 
-                                        <?php dd($brand); ?>
                                         foreach ($brand as $key => $brandRecord){ ?>
                                         <li class="">
                                             <div class="discount-wrapper brands-wrp">
@@ -239,9 +238,9 @@
                         <li class="active">
                             <div class="discount-wrapper brands-wrp">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input brand" type="checkbox" value="<?= $brandRecord->id ?>" id="<?=$brandRecord->name?>">
+                                    <input class="form-check-input brand" type="checkbox" value="<?=$v->id ?>" id="<?=$v->name?>">
                                     <label class="form-check-label" for="Aerin">
-                                        <h4><?=$brandRecord->name?></h4>
+                                        <h4><?=$v->name?></h4>
                                     </label>
                                 </div>
                             </div>
