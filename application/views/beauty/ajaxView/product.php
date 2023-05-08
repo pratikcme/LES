@@ -6,12 +6,13 @@
                 off</span>
             <div class="card-header">
                 <h5>
-                    <?php print_r($value->quantity);
+                <?php 
                     if ($value->quantity > $value->limited_stock) { ?>
                         <?= $this->lang->line('Available(Instock)') ?>
                     <?php } else { ?>
                         <?= $this->lang->line('Limited Stock') ?>
-                    <?php } ?>
+                    <?php } 
+                ?>
                 </h5>
                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">

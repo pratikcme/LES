@@ -78,7 +78,7 @@
             </div>
           </div>
           <div>
-            <button class="lg-btn" type="submit" name="submit" id="btnSubmit"><?= $this->lang->line('send') ?></button>
+            <button class="lg-btn contact-btn" type="submit" name="submit" id="btnSubmit"><?= $this->lang->line('send') ?></button>
           </div>
 
         </form>
@@ -86,7 +86,7 @@
           <div class="contact-info-wrap">
             <h3><?= $this->lang->line('Contact Info'); ?></h3>
             <div>
-              <div class="d-flex align-items-center mb-50">
+              <div class="d-flex  mb-50">
                 <div class="contact-icon">
 
                   <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/conatct-us/DeviceMobileCamera.svg' ?>" viewBox="0 0 19.73 30.5">
@@ -108,7 +108,7 @@
                   <p><?= $appLinks[0]->contact_number ?></p>
                 </div>
               </div>
-              <div class="d-flex align-items-center mb-50">
+              <div class="d-flex  mb-50">
                 <div class="contact-icon">
 
                   <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/conatct-us/EnvelopeSimple.svg' ?>" viewBox="0 0 28.35 21.88">
@@ -130,7 +130,7 @@
                   <a href="javascript:"><?= $appLinks[0]->contact_email ?></a>
                 </div>
               </div>
-              <div class="d-flex align-items-center mb-50">
+              <div class="d-flex  mb-50">
                 <div class="contact-icon">
 
                   <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/conatct-us/MapPin.svg' ?>" viewBox="0 0 24.04 30.5">

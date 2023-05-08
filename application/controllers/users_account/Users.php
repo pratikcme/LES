@@ -256,9 +256,10 @@ class Users extends User_Controller
 	public function view($id)
 	{
 		// error_reporting(0);
+		$this->load->model('common_model');
+		$default_product_image = $this->common_model->default_product_image();
 		$this->load->model($this->myvalues->orderFrontEnd['model'], 'order_model');
 		$view_detail = $this->order_model->selectOrderDetails($id);
-		// dd($view_detail);die;
 		foreach ($view_detail as $key => $value) {
 			$pr = $this->order_model->selectproductname($value->product_id);
 			$w = $this->this_model->getDetails($value->product_weight_id);
@@ -269,9 +270,19 @@ class Users extends User_Controller
 			$view_detail[$key]->package =  $w[0]->package;
 			$pr_img = $this->order_model->select_product_image($value->product_weight_id);
 			$view_detail[$key]->product_name =  $pr[0]->name;
+			if (!empty($pr_img[0]->image) || $pr_img[0]->image != '') {
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $pr_img[0]->image)) {
+					// $image = 'defualt.png';	
+					$pr_img[0]->image = $default_product_image;
+				} else {
+					$pr_img[0]->image = $pr_img[0]->image;
+				}
+			} else {
+				$pr_img[0]->image = $default_product_image;
+			}
+
 			$view_detail[$key]->product_image =  $pr_img[0]->image;
 		}
-		// dd($view_detail);die;
 		return $view_detail;
 	}
 

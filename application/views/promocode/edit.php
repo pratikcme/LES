@@ -1,4 +1,4 @@
-<?php $this->load->view('header.php') ?>
+<?php $this->load->view('header.php');?>
 <section id="main-content">
     <?php if ($this->session->flashdata('myMessage') != '') {
       echo $this->session->flashdata('myMessage');
@@ -48,10 +48,18 @@
                                   <input type="text" id="max_cart" name="max_cart" class="form-control"value="<?php echo @$editData[0]->max_cart; ?>">
                                   <label for="max_cart" style="color: red" class="error"><?php echo @form_error('max_cart'); ?></label>
                                </div>
+                               <div class="form-group">
+                                  <label for="percentage">Percentage</label>
+                                  <input type="number" id="percentage" name="percentage" class="form-control" min='1' value="<?=$editData[0]->percentage?>">
+                                  <label for="percentage" style="color: red" class="error"><?php echo @form_error('percentage'); ?></label>
+                              </div>
+                              <div class="form-group">
+                                  <label for="max_use">Max Allowed</label>
+                                  <input type="text" id="max_use" name="max_use" class="form-control" value="<?=$editData[0]->max_use?>">
+                                  <label for="max_use" style="color: red" class="error"><?php echo @form_error('max_use'); ?></label>
+                              </div>
 
-
-
-                                    </div>
+                                </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12 col-xs-12 padding-zero">
                                     <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
@@ -98,13 +106,6 @@
                             </div>
                          </div>
                      </div>
-                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <!-- <span class="panel-body padding-zero" > -->
-                        <a href="<?=base_url().'promocode_manage'?>" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>
-                        <input type="submit" class="btn btn-info pull-right margin_top_label" value="Update" id="btnSubmit" name="submit">
-                        <!-- </span> -->
-                     </div>
-                  </div>
                   <input type="hidden" name="url" id="base_url" value="<?=base_url()?>">
                </form>
             </section>

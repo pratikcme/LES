@@ -56,7 +56,7 @@
     --card-border:#E7DCDA;
 
     /* ---shop-cart-page-colors--- */
-    --cart-thead-bg:rgba(196, 30, 73, 0.1);
+    --cart-thead-bg:#FFF0ED;
     --cart-thead-text:#030235;
     --cart-td-text-1:#030235;
     --cart-td-text-2:#414549;
@@ -71,7 +71,7 @@
         /* ----------------checkout-process-color----- */
     --accordian-head-bg:#FFF0ED;
     --accordian-bg:#fff;
-    --accordian-border: rgba(196, 30, 73, 0.2);
+    --accordian-border: #FFCEC2;
     --accordian-head-text:#0F053F;
     --accordian-icon:#F92672;
     --accordian-content-text-1:#0F053F;
@@ -89,9 +89,9 @@
     --close-btn:#F5512B;
 
 
-        /* ------myaccount-css--- */
+    /* ------myaccount-css--- */
     --myaccoutn-tab-bg:linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%);;
-    --myaccoutn-tab-border:rgba(196, 30, 73, 0.1);
+    --myaccoutn-tab-border:#FFCEC2;
     --myaccoutn-tab-text:#4D4C61;
     --myaccoutn-tab-active-bg:#F5512B;
     --myaccoutn-tab-active-border:#F5512B;

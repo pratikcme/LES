@@ -801,7 +801,8 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 #collapseSix .discoutn-part,
 #collapseSeven .discoutn-part{
-    height: 190px;
+    max-height: 190px;
+    min-height: 35px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
