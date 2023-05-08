@@ -380,9 +380,9 @@ var ADDPRODUCT = (function () {
   });
 
   // Dk added
-  $("#reviewForm").on("submit", function () {
-    $("#btnSubmit1").attr("disabled", "disabled");
-  });
+  // $("#reviewForm").on("submit", function () {
+  //   $("#btnSubmit1").attr("disabled", "disabled");
+  // });
   //
 
   $(document).on("click", "#btnSubmit", function (event) {
@@ -521,8 +521,7 @@ var ADDPRODUCT = (function () {
         swal("Please Provide Star Ratting");
         return false;
       }
-
-      $("#btnSubmit").attr("disabled", "disabled");
+      $("#btnSubmit1").attr("disabled", "disabled");
       form.submit();
     },
   });
