@@ -163,8 +163,14 @@
 .login-deatils-wrapper input::placeholder{
     font-family: var(--PublicSans-Regular);
     color: var(--light-gray);
+    font-size: 14px !important;
 }
 
+.login-deatils-wrapper select::placeholder{
+    font-family: var(--PublicSans-Regular);
+    color: var(--light-gray);
+    font-size: 14px !important;
+}
 
 .login-section .user-img{
     max-width: 780px;
