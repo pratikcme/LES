@@ -673,7 +673,7 @@
                         <?php } ?>
                     </div>
 
-                    <div class="edit-address-btn text-center ">
+                    <div class="edit-address-btn text-center mt-5">
                         <button type="button" id="myBtn" class="cancel-btn" data-toggle="modal">Add
                             Address</button>
                     </div>
