@@ -210,9 +210,9 @@
                         <p><?= $productDetail[0]->content ?></p>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        
+
                         <div class="my-review-wrapper">
-                         
+
                             <div class=" review-content">
                                 <?php
                                 $sumOfRatting = 0;
@@ -584,8 +584,7 @@ if (!empty($related_product)) { ?>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn"
-                        data-bs-dismiss="modal">Submit</button>
+                    <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn">Submit</button>
                 </div>
 
             </form>
