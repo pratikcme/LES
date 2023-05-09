@@ -104,14 +104,14 @@ body {
     margin-bottom: 14px;
 }
 
-.product-content-part h3:nth-child(even) {
-    font-family: Poppins;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 30px;
-    color: var(--product-details-text-1);
-
-    /* margin-bottom: 24px; */
+.product-content-part h3:nth-child(even),
+.product-detalis-btn + h3
+{
+    font-family: Poppins !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 30px !important;
+    color: var(--product-details-text-1) !important;
 }
 
 .product-content-part h3 span:nth-child(even) {
@@ -128,9 +128,9 @@ body {
 .product-content-part h4:nth-child(even) {
     font-family: Poppins;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 35px;
-    color: var(--product-details-text-1);
+    color: var(--product-details-text-1) !important;
 }
 
 .product-content-part p {
@@ -183,7 +183,7 @@ body {
 
 .product-content-part h3:nth-child(odd) {
     font-family: Poppins;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 30px;
     letter-spacing: 0.02em;
