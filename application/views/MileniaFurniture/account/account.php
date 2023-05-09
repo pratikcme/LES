@@ -1,4 +1,4 @@
- <section class="hero-section login-section common-banner-bg">
+ <!-- <section class="hero-section login-section common-banner-bg">
      <img src="<?= base_url() . 'public/shoppy' ?>/assets/img/home/banner-left-bg.png" alt="err" class="left-bg">
      <img src="<?= base_url() . 'public/shoppy' ?>/assets/img/home/banner-right-bg.png" alt="err" class="right-bg">
      <div class="container">
@@ -9,7 +9,8 @@
                      <ol class="breadcrumb">
                          <li class="breadcrumb-item"><a href="<?= base_url() ?>home"><?= $this->lang->line('home') ?></a>
                          </li>
-                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My Account'); ?></li>
+                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My Account'); ?>
+                         </li>
                      </ol>
                  </nav>
              </div>
@@ -18,15 +19,15 @@
  </section>
 
 
- <!-- check -->
- <!-- ------------myaccoutn-section------------ -->
+
+
  <section class="my-account-section p-100">
      <div class="container">
 
-         <!-- ------tabs-part--- -->
+
          <div class="account-details-tabs">
              <div class="details-tabs">
-                 <!-- Nav pills -->
+
                  <div class="mobile-responsive-tab">
                      <ul class="nav nav-pills" role="tablist">
                          <li class="nav-item">
@@ -56,14 +57,16 @@
              </div>
 
 
-             <!-- Tab panes -->
+
              <div class="tab-details">
                  <div class="tab-content">
-                     <!-- ---tab-1-- -->
+
                      <div id="tab-1" class="container tab-pane fade active show">
                          <div class="col-xxl-12">
                              <div class="title text-center">
-                                 <h2><?= $this->lang->line('Account') ?> <span><?= $this->lang->line('Details') ?></span></h2>
+                                 <h2><?= $this->lang->line('Account') ?>
+                                     <span><?= $this->lang->line('Details') ?></span>
+                                 </h2>
                              </div>
                          </div>
                          <div class="myaccout-detail-tab">
@@ -138,11 +141,12 @@
                          </div>
                      </div>
 
-                     <!-- ---tab-2-- -->
+
                      <div id="tab-2" class="container tab-pane fade  <?= ($action_name == 'order') ? 'active show' : '' ?>">
                          <div class="col-xxl-12">
                              <div class="title text-center">
-                                 <h2><?= $this->lang->line('My'); ?> <span><?= $this->lang->line('Orders'); ?></span></h2>
+                                 <h2><?= $this->lang->line('My'); ?> <span><?= $this->lang->line('Orders'); ?></span>
+                                 </h2>
                              </div>
                          </div>
 
@@ -164,7 +168,7 @@
                              <div class="tab-content">
                                  <div class="accordion-items">
 
-                                     <!-- ------sub-tab-1----- -->
+
                                      <div id="subtab-1" class="container tab-pane active show fade">
                                          <?php foreach ($order as $key => $value) {
                                                 if ($value->order_status != '8') {
@@ -275,7 +279,7 @@
                                          <?php } ?>
                                      </div>
 
-                                     <!-- ------sub-tab-2----- -->
+
                                      <div id="subtab-2" class="container tab-pane fade <?= ($action_name == 'order') ? 'active show' : '' ?>">
                                          <?php foreach ($order as $key => $value) {
                                                 if ($value->order_status == '8' || $value->order_status == '9') {
@@ -393,7 +397,7 @@
                                          <?php } ?>
                                      </div>
 
-                                     <!-- ------sub-tab-2----- -->
+
                                      <div id="subtab-3" class="container tab-pane fade">
 
                                          <?php foreach ($order as $key => $value) {
@@ -515,7 +519,7 @@
                      </div>
                  </div>
 
-                 <!-- ---tab-3-- -->
+
                  <div id="tab-3" class="container tab-pane fade <?= ($action_name == 'wishlist') ? 'active show' : '' ?>">
                      <div class="col-xxl-12">
                          <div class="title text-center">
@@ -570,7 +574,8 @@
                                                 }
                                                 ?>
                                              <div>
-                                                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart') ?>
+                                                 <a href="javascript:" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>
+                                                     <?= $this->lang->line('add to cart') ?>
                                                  </a>
                                                  <div class="product-detail-quentity <?= $d_show ?>">
                                                      <div class="qty-container">
@@ -588,12 +593,12 @@
                      </div>
                  </div>
 
-                 <!-- ---tab-4-- -->
+
                  <div id="tab-4" class="container tab-pane fade <?= ($action_name == 'my_address') ? 'active show' : '' ?> ">
                      <div class="col-xxl-12">
                          <div class="title text-center">
                              <h2><?= $this->lang->line('My') ?> <span><?= $this->lang->line('Address') ?></span></h2>
-                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+
                          </div>
                      </div>
 
@@ -631,16 +636,16 @@
                      </div>
                  </div>
 
-                 <!-- ---tab-5-- -->
+
                  <div id="tab-5" class="container tab-pane fade">
 
                  </div>
 
-                 <!-- ---tab-7-- -->
+
                  <div id="tab-7" class="container tab-pane fade <?= ($action_name == 'change') ? 'active show' : '' ?>">
                      <div class="title text-center">
                          <h2><?= $this->lang->line('Change'); ?> <span><?= $this->lang->line('password') ?></span></h2>
-                         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+
                      </div>
                      <div class="myaccout-detail-tab">
                          <form id='ChangeUserPass' action="<?= base_url() . 'users_account/users/update_password' ?>" method="post">
@@ -749,6 +754,1448 @@
                          <div class="save-btn">
                              <button type="submit" id="addAddress"><?= $this->lang->line('Save') ?></button>
                          </div>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div> -->
+
+
+ <!-- ----hero-section-- -->
+ <section class="hero-section banner common-banner-bg">
+     <div class="container">
+         <div class="row">
+             <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
+                 <h1><?= $this->lang->line('My account') ?></h1>
+                 <nav aria-label="breadcrumb">
+                     <ol class="breadcrumb">
+                         <li class="breadcrumb-item"><a href="<?= base_url() ?>home"><?= $this->lang->line('home') ?></a></li>
+                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My Account'); ?>
+                         </li>
+                     </ol>
+                 </nav>
+             </div>
+         </div>
+     </div>
+ </section>
+
+
+
+ <!-- ------------myaccoutn-section------------ -->
+ <section class="my-account-section p-120">
+
+     <div class="container">
+
+         <!-- ------tabs-part--- -->
+         <div class="account-details-tabs">
+             <div class="details-tabs">
+                 <!-- Nav pills -->
+                 <ul class="nav nav-pills" role="tablist">
+                     <li class="nav-item">
+                         <a class="nav-link dashboard-tabs <?= ($action_name == 'my_account' || $action_name == '') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-1"><?= $this->lang->line('My account') ?></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link dashboard-tabs experience-active-img <?= ($action_name == 'order') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-2"><?= $this->lang->line('My orders') ?></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link dashboard-tabs eduction-active-img <?= ($action_name == 'wishlist') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-3"><?= $this->lang->line('My Wishlist') ?></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link dashboard-tabs certificates-active-img <?= ($action_name == 'my_address') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-4"><?= $this->lang->line('My address') ?></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-7"><?= $this->lang->line('Change Password') ?></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link dashboard-tabs languge-active-img" id="logout" data-bs-toggle="pill" href="#tab-5"><?= $this->lang->line('logout') ?></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link dashboard-tabs languge-active-img" id="delete_account" data-bs-toggle="pill" href="#tab-6"><?= $this->lang->line('Delete Account') ?></a>
+                     </li>
+                 </ul>
+             </div>
+
+             <!-- Tab panes -->
+             <div class="tab-details">
+                 <div class="tab-content">
+                     <!-- ---tab-1-- -->
+                     <div id="tab-1" class="container tab-pane fade active show">
+                         <div class="col-xxl-12 col-lg-12 ">
+                             <div class="title">
+                                 <h2><?= $this->lang->line('Account') ?>
+                                     <span><?= $this->lang->line('Details') ?></span>
+                                 </h2>
+                             </div>
+                         </div>
+                         <div class="myaccout-detail-tab">
+                             <div class="choose-img">
+                                 <input type="file" class="choose-input" name="profileimage" accept="image/*" onchange="loadFile(event)">
+                                 <img src="<?= ($userDetails[0]->profileimage != '') ? base_url() . 'public/images/' . $this->folder . 'user_profile/' . $userDetails[0]->profileimage : $this->theme_base_url . '/assets/img/my-account/myaccount-profile-img.png' ?>" id="output" class="button" alt="err">
+                                 <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
+                             </div>
+                             <div class="get-detials-account">
+                                 <form id='ChangePass' enctype="multipart/form-data" action="<?= base_url() . 'users_account/users/account' ?>" method="post">
+                                     <input type="hidden" name="hidden_image" value="<?= $userDetails[0]->profileimage ?>">
+                                     <div class="row">
+                                         <div class="col-xxl-6 col-md-6">
+                                             <div class="mb-3">
+                                                 <label for="fname" class="form-label"><?= $this->lang->line('First Name') ?><span>*</span></label>
+                                                 <input type="text" class="form-control" id="fname" name="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('First Name*') ?>" value="<?= $userDetails[0]->fname ?>">
+                                             </div>
+                                         </div>
+                                         <div class="col-xxl-6 col-md-6">
+                                             <div class="mb-3">
+                                                 <label for="lname" class="form-label"><?= $this->lang->line('Last Name') ?><span>*</span></label>
+                                                 <input type="text" class="form-control" id="lname" name="lname" aria-describedby="lname" value="<?= $userDetails[0]->lname ?>" placeholder="<?= $this->lang->line('Last Name*') ?>">
+                                             </div>
+                                         </div>
+                                         <div class="col-xxl-12">
+                                             <div class="mb-3">
+                                                 <label for="email" class="form-label"><?= $this->lang->line('Email Address') ?><span>*</span></label>
+                                                 <input type="email" class="form-control" name="email" id="email" aria-describedby="email" placeholder="<?= $this->lang->line('Email*') ?>" value="<?= $userDetails[0]->email ?>" readonly>
+                                             </div>
+                                         </div>
+                                         <div class="col-xxl-12">
+                                             <div class="mb-3">
+                                                 <label for="user_gst_number" class="form-label"><?= $this->lang->line('Gst number'); ?><span>*</span></label>
+                                                 <input type="text" class="form-control" name="user_gst_number" id="user_gst_number" aria-describedby="text" value="<?= $userDetails[0]->user_gst_number ?>" placeholder="<?= $this->lang->line('Gst number') ?>">
+                                             </div>
+                                         </div>
+                                         <div class="col-xxl-6 col-md-6">
+                                             <div class="tab-select-box">
+                                                 <label for="country_code" class="form-label"><?= $this->lang->line('Country Code') ?><span>*</span></label>
+                                                 <select class="form-select" name="country_code" id="country_code" aria-label="Country-code">
+                                                     <?php foreach (GetDialcodelist() as $key => $value) { ?>
+                                                         <option <?= ($key == $userDetails[0]->country_code) ? 'selected' : ''; ?> value="<?= $key; ?>"><?= $value; ?></option>
+                                                     <?php } ?>
+                                                 </select>
+                                             </div>
+                                         </div>
+                                         <input type="hidden" id="exiting_country" value="<?= $userDetails[0]->country_code ?>">
+                                         <div class="col-xxl-6 col-md-6">
+                                             <div class="mb-3">
+                                                 <label for="phone" class="form-label"><?= $this->lang->line('Mobile Number') ?><span>*</span></label>
+                                                 <input type="text" class="form-control phone" id="phone" name="phone" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile Number*') ?>" value="<?= $userDetails[0]->phone ?>">
+                                             </div>
+                                         </div>
+
+                                         <div class="col-xxl-12 col-md-12 varification" style="display: none;">
+                                             <div class="mb-3">
+                                                 <label for="otp" class="form-label"><?= $this->lang->line('Otp') ?><span>*</span></label>
+                                                 <input type="text" class="form-control" id="otp" name="otp" placeholder="<?= $this->lang->line('Otp') ?>">
+                                             </div>
+                                         </div>
+                                         <div class="tab-save-btn">
+                                             <button id="btnAccSubmit" class="cmn-btn" type="submit"><?= $this->lang->line('Save') ?></button>
+                                         </div>
+
+                                     </div>
+                                 </form>
+                             </div>
+                         </div>
+                     </div>
+
+                     <!-- ---tab-2-- -->
+                     <div id="tab-2" class="container tab-pane fade">
+                         <div class="col-xxl-12 col-lg-12 ">
+                             <div class="title">
+                                 <h2>My Orders</h2>
+                             </div>
+                         </div>
+                         <div class="main-sub-tabs">
+                             <div class="sub-tabs container">
+                                 <ul class="nav nav-pills" role="tablist">
+                                     <li class="nav-item">
+                                         <a class="nav-link dashboard-tabs active" data-bs-toggle="pill" href="#subtab-1">Completed</a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill" href="#subtab-2">Process</a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill" href="#subtab-3">Cancel</a>
+                                     </li>
+                                 </ul>
+                             </div>
+
+                             <div class="my-order-details">
+                                 <div class="tab-content">
+                                     <div class="accordion-items">
+
+                                         <!-- ------sub-tab-1----- -->
+                                         <div id="subtab-1" class="container tab-pane active fade show">
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="#" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="#" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="#" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="#" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+
+                                         <!-- ------sub-tab-2----- -->
+                                         <div id="subtab-2" class="container tab-pane fade">
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                             <button type="button" class="cancel-btn cmn-btn">Cancel
+                                                                 Order</button>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                             <button type="button" class="cancel-btn cmn-btn">Cancel
+                                                                 Order</button>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                             <button type="button" class="cancel-btn cmn-btn">Cancel
+                                                                 Order</button>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                         </div>
+
+                                         <!-- ------sub-tab-3----- -->
+                                         <div id="subtab-3" class="container tab-pane fade">
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                             <div class="main-accordion">
+                                                 <div class="accordion-heading">
+                                                     <a href="" class="delivered-btn">Delivered</a>
+
+                                                     <div class="my-order-text">
+                                                         <h3>Orders: <span> #3,345,512</span></h3>
+                                                         <h3>Upbasket: <span> 41-42, Advance Business Park, Shahibaug
+                                                                 Road, Ahmedabad-380004</span>
+                                                         </h3>
+                                                         <p><span><i class="fa-regular fa-clock"></i></span>09 Nov 2022,
+                                                             10:49 AM</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-content">
+                                                     <div class="my-order-wrapper">
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-1.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Della Chair – Navy</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="my-order-details-content">
+                                                             <div class="order-details-img">
+                                                                 <div class="accordion-img-wrapper">
+                                                                     <img src="./assets/images/shop-cart/shop-cart-img-2.png" alt="">
+                                                                 </div>
+                                                                 <div class="img-about-text">
+                                                                     <h3>Wooden Dining Chair</h3>
+                                                                     <p>Qty: <span>1</span></p>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="accordion-price-text">
+                                                                 <h4>₹1150.00</h4>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+
+                                                     <div class="all-detalis-wrapper">
+                                                         <div class="all-detalis-left">
+                                                             <h4>Total Amount</h4>
+                                                             <h4>Product Discount</h4>
+                                                             <h4>Total Amount Before Tax</h4>
+                                                             <h4>Total Tax Amount</h4>
+                                                             <h4>Delivery Charges</h4>
+                                                             <h4>Total Item</h4>
+                                                             <h4>Promocode Discount</h4>
+                                                             <h4>Final Total</h4>
+                                                             <h4>Self Pick Up OTP</h4>
+                                                         </div>
+                                                         <div class="all-detalis-right">
+                                                             <h3>₹398.00</h3>
+                                                             <h3>-₹20.00</h3>
+                                                             <h3>₹18.00</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>Free</h3>
+                                                             <h3>1</h3>
+                                                             <h3>₹0.00</h3>
+                                                             <h3>₹18.00 </h3>
+                                                             <h3>0565</h3>
+                                                         </div>
+                                                     </div>
+
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+
+                             </div>
+                         </div>
+                     </div>
+
+                     <!-- ---tab-3-- -->
+                     <div id="tab-3" class="container tab-pane fade">
+                         <div class="col-xxl-12 col-lg-12 ">
+                             <div class="title">
+                                 <h2>My Wishlist</h2>
+                             </div>
+                         </div>
+
+                         <div class="cart-product-detail mywishlist-part">
+                             <table id="table-two-axis" class="two-axis">
+                                 <thead class="head-title">
+                                     <tr>
+                                         <th colspan="2">product</th>
+                                         <th>price</th>
+                                         <th>Stock Status</th>
+                                         <th></th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <tr>
+                                         <td class="mywishlist-part-img">
+                                             <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                                             <div class="cart-detail-img">
+                                                 <div class="cart-detail-img">
+                                                     <a href="./product-details.php"><img src="./assets/images/shop-cart/shop-cart-img-1.png" alt=""></a>
+                                                 </div>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div class="cart-detail-text">
+                                                 <h4><a href="./product-details.php">Della Chair – Navy</a></h4>
+                                                 <p>Qty: <span>1</span></p>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div class="cart-price-text cart-disc">
+                                                 <span class="disc-throw">₹2300</span>
+                                                 <h3>₹2250.00</h3>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             In Stock
+                                         </td>
+                                         <td>
+                                             <div>
+                                                 <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+                                                     Cart</a>
+                                             </div>
+                                         </td>
+                                     </tr>
+
+                                     <tr>
+                                         <td class="mywishlist-part-img">
+                                             <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                                             <div class="cart-detail-img">
+                                                 <div class="cart-detail-img">
+                                                     <a href="./product-details.php"><img src="./assets/images/shop-cart/shop-cart-img-2.png" alt=""></a>
+                                                 </div>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div class="cart-detail-text">
+                                                 <h4><a href="./product-details.php">Wooden Dining Chair</a></h4>
+                                                 <p>Qty: <span>1</span></p>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div class="cart-price-text cart-disc">
+                                                 <span class="disc-throw">₹2300</span>
+                                                 <h3>₹1150.00</h3>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             In Stock
+                                         </td>
+                                         <td>
+                                             <div>
+                                                 <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+                                                     Cart</a>
+                                             </div>
+                                         </td>
+                                     </tr>
+
+                                     <tr>
+                                         <td class="mywishlist-part-img">
+                                             <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                                             <div class="cart-detail-img">
+                                                 <div class="cart-detail-img">
+                                                     <a href="./product-details.php"><img src="./assets/images/shop-cart/shop-cart-img-3.png" alt=""></a>
+                                                 </div>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div class="cart-detail-text">
+                                                 <h4><a href="./product-details.php">Artemis Lounge Chair</a></h4>
+                                                 <p>Qty: <span>1</span></p>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div class="cart-price-text cart-disc">
+                                                 <span class="disc-throw">₹2300</span>
+                                                 <h3>₹1249.00</h3>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             In Stock
+                                         </td>
+                                         <td>
+                                             <div>
+                                                 <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+                                                     Cart</a>
+                                             </div>
+                                         </td>
+                                     </tr>
+
+                                     <tr>
+                                         <td class="mywishlist-part-img">
+                                             <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
+                                             <div class="cart-detail-img">
+                                                 <div class="cart-detail-img">
+                                                     <a href="./product-details.php"><img src="./assets/images/shop-cart/shop-cart-img-4.png" alt=""></a>
+                                                 </div>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div class="cart-detail-text">
+                                                 <h4><a href="./product-details.php">Dani Pendant Lamp</a></h4>
+                                                 <p>Qty: <span>1</span></p>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div class="cart-price-text cart-disc">
+                                                 <span class="disc-throw">₹2300</span>
+                                                 <h3>₹950.00</h3>
+                                             </div>
+                                         </td>
+                                         <td>
+                                             In Stock
+                                         </td>
+                                         <td>
+                                             <div>
+                                                 <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+                                                     Cart</a>
+                                             </div>
+                                         </td>
+                                     </tr>
+
+                                 </tbody>
+                             </table>
+                         </div>
+                     </div>
+
+                     <!-- ---tab-4-- -->
+                     <div id="tab-4" class="container tab-pane fade">
+                         <div class="col-xxl-12 col-lg-12 ">
+                             <div class="title">
+                                 <h2>My Address</h2>
+                             </div>
+                         </div>
+
+                         <div class="main-add-div">
+                             <div class="address-wrapper">
+                                 <div class="address-text">
+                                     <h3>Office</h3>
+                                     <div class="address-icons">
+                                         <div class="ship-check text-end">
+                                             <div class="form-check">
+                                                 <input class="form-check-input" type="checkbox" value="1" id="id2">
+                                                 <label class="form-check-label" for="id2">
+                                                     default
+                                                 </label>
+                                             </div>
+                                         </div>
+                                         <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                                         <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
+                                     </div>
+                                 </div>
+                                 <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
+                                     America</p>
+                             </div>
+
+                             <div class="address-wrapper">
+                                 <div class="address-text">
+                                     <h3>Home</h3>
+                                     <div class="address-icons">
+                                         <div class="ship-check text-end">
+                                             <div class="form-check">
+                                                 <input class="form-check-input" type="checkbox" value="1" id="id1">
+                                                 <label class="form-check-label" for="id1">
+                                                     default
+                                                 </label>
+                                             </div>
+                                         </div>
+                                         <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                                         <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
+                                     </div>
+                                 </div>
+                                 <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
+                                     America</p>
+                             </div>
+                         </div>
+
+                         <div class="edit-address-btn text-center ">
+                             <button type="button" id="myBtn" class="cmn-btn" data-toggle="modal">Add Address</button>
+                         </div>
+
+
+                     </div>
+
+                     <!-- ---tab-5-- -->
+                     <div id="tab-5" class="container tab-pane fade">
+
+                     </div>
+
+                     <!-- ---tab-7-- -->
+                     <div id="tab-7" class="container tab-pane fade">
+                         <div class="title text-center">
+                             <h2>Change <span>Password</span></h2>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                         </div>
+                         <div class="myaccout-detail-tab">
+                             <form action="">
+                                 <div class="row">
+                                     <div class="col-lg-12">
+                                         <div class="mb-3">
+                                             <label for="text" class="form-label">Current Password</label>
+                                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                         </div>
+                                     </div>
+                                     <div class="col-lg-6">
+                                         <div class="mb-3">
+                                             <label for="text" class="form-label">New Password</label>
+                                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                         </div>
+                                     </div>
+                                     <div class="col-lg-6">
+                                         <div class="mb-3">
+                                             <label for="text" class="form-label">Confirm Password</label>
+                                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                         </div>
+                                     </div>
+                                     <div class="tab-save-btn">
+                                         <button class="cmn-btn" type="submit">Submit</button>
+                                     </div>
+                                 </div>
+                             </form>
+                         </div>
+                     </div>
+
+                 </div>
+             </div>
+
+         </div>
+ </section>
+
+
+ <!-- =============place order popup=========== -->
+ <div id="myModal" class="modal">
+     <div class="container">
+         <div class="modal-content ">
+             <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
+             <div class="login-page myaccout-detail-tab">
+                 <form class="get-detials-account" action="">
+                     <div class="row">
+                         <div class="col-lg-6">
+                             <label for="fname" class="form-label">First Name<span>*</span></label>
+                             <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Your First-Name">
+                         </div>
+
+                         <div class="col-lg-6">
+                             <label for="lname" class="form-label">Last Name<span>*</span></label>
+                             <input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Your Last-Name">
+                         </div>
+
+                         <div class="col-lg-12">
+                             <label for="text" class="form-label">Country / Region<span>*</span></label>
+                             <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="Enter Your Number">
+                         </div>
+
+                         <div class="col-lg-12">
+                             <label for="add" class="form-label">Street address<span>*</span></label>
+                             <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Enter Your Address">
+                         </div>
+
+                         <div class="col-lg-12">
+                             <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Apartment, suite, etc.">
+                         </div>
+
+                         <div class="col-lg-6">
+                             <div class="select-box">
+                                 <label for="city" class="form-label">Town / City<span>*</span></label>
+                                 <select class="form-select" aria-label="city">
+                                     <option selected>Ahmedabad</option>
+                                     <option value="1">Surt</option>
+                                     <option value="2">Baroda</option>
+                                     <option value="3">Ohter</option>
+                                 </select>
+                             </div>
+                         </div>
+
+                         <div class="col-lg-6">
+                             <div class="select-box">
+                                 <label for="state" class="form-label">State<span>*</span></label>
+                                 <select class="form-select" aria-label="Default select example">
+                                     <option selected>Gujarat</option>
+                                     <option value="1">Surt</option>
+                                     <option value="2">Baroda</option>
+                                     <option value="3">Ohter</option>
+                                 </select>
+                             </div>
+                         </div>
+
+                         <div class="col-lg-6">
+                             <div class="select-box">
+                                 <label for="state" class="form-label">State<span>*</span></label>
+                                 <select class="form-select" aria-label="Default select example">
+                                     <option selected>Gujarat</option>
+                                     <option value="1">Surt</option>
+                                     <option value="2">Baroda</option>
+                                     <option value="3">Ohter</option>
+                                 </select>
+                             </div>
+                         </div>
+
+                         <div class="col-lg-6">
+                             <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
+                             <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="380050">
+                         </div>
+                         <div class="save-btn">
+                             <button type="submit">save</button>
+                         </div>
+
                      </div>
                  </form>
              </div>
