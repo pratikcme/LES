@@ -591,10 +591,10 @@
     margin: 0px auto;
 }
 
-.all-detalis-left .cancel-btn {
+.cncOrder {
     background: var(--common-btn-color);
     font-family: Poppins;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.05em;
@@ -602,9 +602,11 @@
     padding: 12px 30px 12px 30px;
     border-radius: 90px;
     text-transform: capitalize;
-    margin-top: 45px;
+    margin-top: 0px;
     transition: 0.5s;
     border: 1px solid var(--common-btn-color);
+    margin-left: 30px;
+    margin-bottom: 20px;
 }
 
 .my-order-details .fade:not(.show) {

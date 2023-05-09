@@ -187,51 +187,108 @@
                                                     href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><?= $value['product_name'] ?></a>
                                             </h4>
 
-                          <p><?= $value['weight_no'] . ' ' . $value['weight_name'] ?></p>
-                          <p>Qty : <?= $value['quantity'] ?></p>
-                          <h3><?= $this->siteCurrency . ' ' . number_format((float)$product[0]->discount_price, 2, '.', '') ?>
-                          </h3>
-                        </div>
-                        <div class="cancel-btn remove_item" data-product_id="<?= $value['product_id'] ?>" data-product_weight_id="<?= $value['product_weight_id'] ?>">
-                          <a href="javascript:" class="ms-0"><i class="fa-regular fa-circle-xmark"></i></a>
-                        </div>
-                      </div>
-                    </li>
-                    <!-- <hr> -->
-                  <?php } ?>
-              </div>
-              <li>
-                <div class="total-amount p-0 notranslate">
-                  <p><?= $this->lang->line('Total') ?></p>
-                  <h3 id="nav_subtotal"><?= $this->siteCurrency . ' ' . getMycartSubtotal() ?></h3>
-                </div>
-                <div class="drop-btns p-0">
-                  <a href="<?= base_url() . 'products/cart_item' ?>" class="view-cart"><?= $this->lang->line('view cart') ?></a>
-                  <a href="<?= base_url() . 'checkout' ?>" class="checkout "><?= $this->lang->line('checkout') ?></a>
-                </div>
-              </li>
-            <?php } else { ?>
-              <?php if (isset($this->cartCount)) { ?>
-                <?php foreach ($mycart as $key => $value) { ?>
-                  <li>
-                    <div class="cart-drop-menu cart-drop-menu-1">
-                      <div class="drop-img">
-                        <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $value->image ?>" alt=""></a>
-                      </div>
-                      <div class="drop-text">
-                        <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a>
-                        </h4>
-                        <p><?= $value->weight_no . ' ' . $value->weight_name ?></p>
-                        <p>Qty : <?= $value->quantity ?></p>
-                        <h3><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
-                        </h3>
-                      </div>
-                      <div class="cancel-btn remove_item" data-product_id="<?= $value->product_id ?>" data-product_weight_id="<?= $value->product_weight_id ?>">
-                        <a href="javascript:" class="ms-0"><i class="fa-regular fa-circle-xmark"></i></a>
-                      </div>
+                                            <p><?= $value['weight_no'] . ' ' . $value['weight_name'] ?></p>
+                                            <p>Qty : <?= $value['quantity'] ?></p>
+                                            <h3><?= $this->siteCurrency . ' ' . number_format((float)$product[0]->discount_price, 2, '.', '') ?>
+                                            </h3>
+                                        </div>
+                                        <div class="cancel-btn remove_item"
+                                            data-product_id="<?= $value['product_id'] ?>"
+                                            data-product_weight_id="<?= $value['product_weight_id'] ?>">
+                                            <a href="javascript:" class="ms-0"><i
+                                                    class="fa-regular fa-circle-xmark"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr>
+                                <?php } ?>
+                            </div>
+                            <li>
+                                <div class="total-amount p-0 notranslate">
+                                    <p><?= $this->lang->line('Total') ?></p>
+                                    <h3 id="nav_subtotal"><?= $this->siteCurrency . ' ' . getMycartSubtotal() ?></h3>
+                                </div>
+                                <div class="drop-btns p-0">
+                                    <a href="<?= base_url() . 'products/cart_item' ?>"
+                                        class="view-cart"><?= $this->lang->line('view cart') ?></a>
+                                    <a href="<?= base_url() . 'checkout' ?>"
+                                        class="checkout "><?= $this->lang->line('checkout') ?></a>
+                                </div>
+                            </li>
+                            <?php } else { ?>
+                            <?php if (isset($this->cartCount)) { ?>
+                            <?php foreach ($mycart as $key => $value) { ?>
+                            <li>
+                                <div class="cart-drop-menu cart-drop-menu-1">
+                                    <div class="drop-img">
+                                        <a
+                                            href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><img
+                                                src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $value->image ?>"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="drop-text">
+                                        <h4><a
+                                                href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a>
+                                        </h4>
+                                        <p><?= $value->weight_no . ' ' . $value->weight_name ?></p>
+                                        <p>Qty : <?= $value->quantity ?></p>
+                                        <h3><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
+                                        </h3>
+                                    </div>
+                                    <div class="cancel-btn remove_item" data-product_id="<?= $value->product_id ?>"
+                                        data-product_weight_id="<?= $value->product_weight_id ?>">
+                                        <a href="javascript:" class="ms-0"><i
+                                                class="fa-regular fa-circle-xmark"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <hr>
+                            <?php } ?>
                     </div>
-                  </li>
-                  <!-- <hr> -->
+                    <li>
+                        <div class="total-amount p-0 notranslate">
+                            <p><?= $this->lang->line('Total') ?></p>
+                            <h3 id="nav_subtotal" class="notranslate">
+                                <?= $this->siteCurrency . ' ' . getMycartSubtotal() ?>
+                            </h3>
+                        </div>
+                        <div class="drop-btns p-0">
+                            <a href="<?= base_url() . 'products/cart_item' ?>"
+                                class="view-cart"><?= $this->lang->line('view cart') ?></a>
+                            <a href="<?= base_url() . 'checkout' ?>"
+                                class="checkout "><?= $this->lang->line('checkout') ?></a>
+                        </div>
+                    </li>
+                    <?php } ?>
+                    <?php } ?>
+                    <hr>
+                    </ul>
+                </div>
+                <div class="icon-tex">
+                    <p><?= $this->lang->line('your cart') ?></p>
+                    <h3 class="notranslate" id="display_subtotal"><?= $this->siteCurrency . '' . getMycartSubtotal() ?>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- -----mobile-search-btn---- -->
+        <div class="mobile-search-btn">
+            <div class="input-group">
+                <?php if ($this->uri->segment(1) == '') { ?>
+                <input type="text" class="form-control" id='search' data-search_val="" placeholder="Search vendor..">
+                <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span></span>
+                <?php } ?>
+                <?php
+                  if ($this->uri->segment(1) != '') {
+                    $placeholder = $this->lang->line('Search product..');
+                  }
+                  $segment1 = $this->uri->segment(1);
+
+                  if ($segment1 != '') { ?>
+                <input type="text" class="form-control search" id='myInputMobile' data-search_val=""
+                    placeholder="<?= $placeholder ?>">
+                <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span></span>
                 <?php } ?>
             </div>
         </div>
@@ -247,18 +304,18 @@
                     <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact Us') ?></a></li>
                 </ul>
             </div>
-          </li>
-        <?php } ?>
-      <?php } ?>
-      <!-- <hr> -->
-      </ul>
-        </div>
-        <div class="icon-tex">
-          <p><?= $this->lang->line('your cart') ?></p>
-          <h3 class="notranslate" id="display_subtotal"><?= $this->siteCurrency . '' . getMycartSubtotal() ?>
-          </h3>
-        </div>
-      </div>
+
+            <div class="right-content">
+                <div class="right-icon">
+                    <a href=""><img src="<?= $this->theme_base_url ?>//assets/images/nav-call-icon.svg" alt=""></a>
+                </div>
+                <div class="right-text">
+                    <h4>Need help? Call Us:</h4>
+                    <h3><a href="javascript:"><?= $appLinks[0]->contact_number ?></a></h3>
+                </div>
+            </div>
+        </nav>
+
     </div>
 </div>
 </div>

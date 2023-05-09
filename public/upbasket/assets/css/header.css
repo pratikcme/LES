@@ -25,7 +25,8 @@ header {
 .search-btn {
     width: 100%;
     padding-left: 50px;
-    max-width: 500px;
+    padding-right: 50px;
+    /* max-width: 500px; */
 }
 
 .search-btn .input-group {
