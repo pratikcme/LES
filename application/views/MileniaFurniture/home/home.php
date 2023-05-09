@@ -5,14 +5,21 @@
             <div class="col-lg-12">
                 <div class="banner-wrap">
                     <div class="owl-carousel owl-theme banner-slider">
+                    <?php foreach ($banner as $key => $value){ ?>
                         <div class="item">
                             <div class="row align-items-center">
                                 <div class="col-xl-6 col-lg-6 col-mg-6">
                                     <div class="banner-content">
                                         <h3 class="sub-heading wow bounceInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">Furniture</h3>
-                                        <h1 class="wow wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">Better interiors</h1>
-                                        <p class="wow wow bounceInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">Pulvinar neque laoreet suspendisse interdum consectetur libero id. Fringilla est ullamcorper eget nulla facilisi etiam dign</p>
-                                        <a href="./product-list-page.php" class="cmn-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0">Shop now</a>
+                                        <h1 class="wow wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><?=$value->main_title?></h1>
+                                        <p class="wow wow bounceInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0"><?=$value->main_title?></p>
+                                        <?php if ($value->type == '1') { ?>
+                                            <a href="<?=base_url().'products'?>" class="cmn-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
+                                        <?php } elseif ($value->type == '2') { ?>
+                                            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" class="cmn-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
+                                        <?php } else { ?>
+                                                <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-mg-6">
@@ -22,40 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="row align-items-center">
-                                <div class="col-xl-6 col-lg-6 col-mg-6">
-                                    <div class="banner-content">
-                                        <h3>Furniture</h3>
-                                        <h1>Better interiors</h1>
-                                        <p>Pulvinar neque laoreet suspendisse interdum consectetur libero id. Fringilla est ullamcorper eget nulla facilisi etiam dign</p>
-                                        <a href="./product-list-page.php" class="cmn-btn">Shop now</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-mg-6">
-                                    <div class="banner-image">
-                                        <img src="<?=$this->theme_base_url?>/assets/images/home/banner2.png" alt="banner-img" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row align-items-center">
-                                <div class="col-xl-6 col-lg-6 col-mg-6">
-                                    <div class="banner-content">
-                                        <h3>Furniture</h3>
-                                        <h1>Better interiors</h1>
-                                        <p>Pulvinar neque laoreet suspendisse interdum consectetur libero id. Fringilla est ullamcorper eget nulla facilisi etiam dign</p>
-                                        <a href="./product-list-page.php" class="cmn-btn">Shop now</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-mg-6">
-                                    <div class="banner-image">
-                                        <img src="<?=$this->theme_base_url?>/assets/images/home/banner.png" alt="banner-img" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -70,8 +44,8 @@
             <div class="col-lg-4">
                 <div class="categories-content">
                     <h2 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-                        Shop <br>
-                        by categories
+                        <?=$this->lang->line('Shop')?> <br>
+                        <?=$this->lang->line('by categories')?>
                     </h2>
                     <div class="categories-detail wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">
                         <div class="categories-detail-img-wrap">
@@ -94,17 +68,20 @@
             <div class="col-lg-8">
                 <div class="categories-slider-main">
                     <div class="owl-carousel owl-theme categories-slider">
+                    <?php foreach ($category as $key => $value) { ?>
                         <div class="item">
-                            <a href="./product-list-page.php" class="categories-wrap">
+                            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categories-wrap">
                                 <div class="categories-image-wrap">
-                                    <img src="<?=$this->theme_base_url?>/assets/images/home/image.png" alt="" />
+                                    <!-- <img src="<?=$this->theme_base_url?>/assets/images/home/image.png" alt="" /> -->
+                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="" />
                                 </div>
                                 <div class="categories-text">
-                                    <h4>Dining Chair</h4>
+                                    <h4><?=$value->name?></h4>
                                 </div>
                             </a>
                         </div>
-                        <div class="item">
+                    <?php } ?>
+                        <!-- <div class="item">
                             <a href="./product-list-page.php" class="categories-wrap">
                                 <div class="categories-image-wrap">
                                     <img src="<?=$this->theme_base_url?>/assets/images/home/sofa.png" alt="" />
@@ -123,7 +100,7 @@
                                     <h4>Table</h4>
                                 </div>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -226,9 +203,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-bs-toggle="tab" href="#latest-products">Latest Products</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#top-rating">Top Rating</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#best-seller">Best Seller</a>
                         </li>
@@ -692,7 +669,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="top-rating" class="tab-pane fade">
+                    <!-- <div id="top-rating" class="tab-pane fade">
                         <div class="row">
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
                                 <div class="hot-products-wrap">
@@ -711,7 +688,7 @@
                                                 <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
                                             <div class="techno-check">
                                                 <input class="techno_checkbox" type="checkbox" id="1" value="1">
                                                 <div class="stocks heart">
@@ -766,7 +743,7 @@
                                                 <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
                                             <div class="techno-check">
                                                 <input class="techno_checkbox" type="checkbox" id="1" value="1">
                                                 <div class="stocks heart">
@@ -821,7 +798,7 @@
                                                 <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
                                             <div class="techno-check">
                                                 <input class="techno_checkbox" type="checkbox" id="1" value="1">
                                                 <div class="stocks heart">
@@ -876,7 +853,7 @@
                                                 <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
                                             <div class="techno-check">
                                                 <input class="techno_checkbox" type="checkbox" id="1" value="1">
                                                 <div class="stocks heart">
@@ -915,7 +892,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div id="best-seller" class="tab-pane fade">
                         <div class="row">
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
@@ -935,7 +912,7 @@
                                                 <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
                                             <div class="techno-check">
                                                 <input class="techno_checkbox" type="checkbox" id="1" value="1">
                                                 <div class="stocks heart">
@@ -990,7 +967,7 @@
                                                 <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
                                             <div class="techno-check">
                                                 <input class="techno_checkbox" type="checkbox" id="1" value="1">
                                                 <div class="stocks heart">
@@ -1045,7 +1022,7 @@
                                                 <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                                            <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
                                             <div class="techno-check">
                                                 <input class="techno_checkbox" type="checkbox" id="1" value="1">
                                                 <div class="stocks heart">

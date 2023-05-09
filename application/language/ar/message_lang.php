@@ -37,6 +37,7 @@ $lang['order placed successfully'] = 'تم وضع الطلب بنجاح';
 $lang['Latest'] = 'أحدث';
 $lang['Products'] = 'منتجات';;
 $lang['Shop By'] = 'تسوق حسب';
+$lang['by categories'] = 'حسب الفئات';
 $lang['Top Categories Of The Week'] = 'أهم فئات الأسبوع';
 $lang['Exclusive'] = 'حصري';
 $lang['Top Featured'] = 'الأعلى المميز';
