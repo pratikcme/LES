@@ -162,7 +162,7 @@
                         </div>
                       </div>
                     </li>
-                    <hr>
+                    <!-- <hr> -->
                   <?php } ?>
               </div>
               <li>
@@ -196,7 +196,7 @@
                       </div>
                     </div>
                   </li>
-                  <hr>
+                  <!-- <hr> -->
                 <?php } ?>
           </div>
           <li>
@@ -213,7 +213,7 @@
           </li>
         <?php } ?>
       <?php } ?>
-      <hr>
+      <!-- <hr> -->
       </ul>
         </div>
         <div class="icon-tex">
@@ -269,4 +269,14 @@
 
   </div>
 </div>
+</div>
+
+
+<div class="header-cart-in">
+  <a href="">
+    <div class=" header-cart-respo">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="g-badge">22</span>
+    </div>
+  </a>
 </div>

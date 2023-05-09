@@ -29,7 +29,7 @@
 }
 
 .vendor-wrapper.active {
-    background-color: lightgray;
+    background-color: rgba(43, 174, 74, 0.5);
 }
 
 .vendor-wrapper.active .circle-img {
@@ -57,7 +57,25 @@
     line-height: 25px;
     letter-spacing: 0.03em;
     color: var(--common-pera-color) !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
 }
+
+.vendor-wrapper.active .circle-img::after {
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50px;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 .contact-vendor .contact-content h6 a {
     color: var(--common-pera-color) !important;
@@ -92,95 +110,23 @@
 .vendor-left {
     position: relative;
     margin-left: -100px;
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
 }
 
 .circle-img {
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: 2px solid rgba(65, 69, 73, 0.5);
     background: transparent !important;
 }
 
-/* .check-show{
-    background: red !important;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-} */
 
-/* .vendor_checkbox:checked~{
-    background: red !important;
-} */
-
-/* .vendor_checkbox:checked~.vendor-check::before{
-    content: "\f058";
-    font-family: "FontAwesome";
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    top: 5px;
-    right: 12px;
-    color: var(--primary-color) !important;
-    z-index: 999999999;
-    font-size: 26px;
-} */
-
-/* .circle-img input[type="radio"]{
-    appearance: none;
-    --webkit-appearance: none;
-    opacity: 0;
-}
-
-.circle-img input[type="radio"]:checked + label,
-.circle-img input[type="radio"]:not(:checked) + label
-{
-    position: relative;
-    padding-left: 28px;
-    cursor: pointer;
-    line-height: 20px;
-    display: inline-block;
-}
-
-.circle-img input[type="radio"]:checked + label:before,
-.circle-img input[type="radio"]:not(:checked) + label:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -12px;
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--common-pera-color);
-    border-radius: 100%;
-}
-.circle-img input[type="radio"]:checked + label:after,
-.circle-img input[type="radio"]:not(:checked) + label:after {
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: var(--primary-color);
-    position: absolute;
-    top: -9px;
-    left: 3px;
-    border-radius: 100%;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-}
-.circle-img input[type="radio"]:not(:checked) + label:after {
-    opacity: 0;
-    -webkit-transform: scale(0);
-    transform: scale(0);
-}
-.circle-img input[type="radio"]:checked + label:after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-} */
 
 .vendor-btns {
     width: 100%;
@@ -219,18 +165,12 @@
     bottom: 0 !important;
 }
 
-.vendor-left {
-    /* width: 100%; */
-    max-width: 200px;
-    height: 200px;
-}
-
 .vendor-left img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
-
-
 
 
 /* -----checkbox--- */
@@ -240,33 +180,7 @@
     height: 100%;
 }
 
-/* .vendor_checkbox:checked ~ .vendor-check::before{
-    content: "\f058";
-    font-family: "FontAwesome";
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    top: -9px;
-    right: -2px;
-    color: var(--primary-color) !important;
-    z-index: 999999999;
-    font-size: 26px;
-} */
 
-/* .vendor_checkbox {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    opacity: 0;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    z-index: 999;
-    cursor: pointer;
-    border-radius: 50% !important;
-} */
 
 [type="radio"]:checked+.vendor-check:before,
 [type="radio"]:not(:checked)+.vendor-check:before {
@@ -293,6 +207,10 @@
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
+}
+
+.vendor-right {
+    width: 60%;
 }
 
 

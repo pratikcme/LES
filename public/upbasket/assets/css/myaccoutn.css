@@ -477,6 +477,22 @@
     color: #11405A;
 }
 
+.all-detalis-left td:nth-child(1) {
+    padding-left: 40px !important;
+    border: none !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.all-detalis-left td:nth-child(2) {
+    padding-left: 0px !important;
+    padding-right: 35px !important;
+    text-align: right;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border: none !important;
+}
+
 .all-detalis-left h4 {
     font-family: Poppins;
     font-size: 16px;
@@ -1428,6 +1444,18 @@
 
 /* ========================================================== */
 /* ========================================================== */
+
+@media only screen and (max-width:991px){
+    .all-detalis-left td:nth-child(1) {
+        padding-left: 20px !important;
+    }
+
+    .all-detalis-left td:nth-child(2) {
+        padding-right: 20px !important;
+    }
+}
+
+
 @media screen and (min-width: 820px) and (max-width: 911px) {
 
     /* ------tab-1-css---- */
@@ -2297,6 +2325,14 @@
 @media only sceen and (max-width:575px) {
     .account-details-tabs .sub-tabs .nav-link {
         width: 124.67px !important;
+    }
+
+    .all-detalis-left td:nth-child(1) {
+        padding-left: 10px !important;
+    }
+
+    .all-detalis-left td:nth-child(2) {
+        padding-right: 10px !important;
     }
 
 }

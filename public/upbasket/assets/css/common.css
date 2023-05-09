@@ -141,9 +141,9 @@ a {
 .product-wrapper.card.out-of-stock>span {
     position: absolute;
     z-index: 3;
-    top: 50%;
+    top: 43%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
     background: #fff;
     padding: 10px;
     border-radius: 10px;
@@ -194,11 +194,11 @@ a {
 } */
 
 .add-cart-btn {
-    padding: 13px 24px 13px 24px;
+    padding: 10px 24px 10px 24px;
     background: var(--card-btn-bg) !important;
     border: 1px solid var(--card-btn-bg);
     font-family: Poppins;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 24px;
     color: var(--common-white) !important;
@@ -206,10 +206,8 @@ a {
     text-transform: capitalize;
     transition: 0.3s;
     position: relative;
-    /* top: 23px; */
     display: inline-block;
-    margin-top:10px;
-
+    margin-top: 15px;
 }
 
 .add-cart-btn span {
@@ -351,8 +349,8 @@ a {
     background: var(--common-white);
     border: 1px solid var(--card-border-color);
     box-shadow: 0px 10px 25px rgba(34, 37, 40, 0.05);
-    width: 80px;
-    height: 80px;
+    width: 125px;
+    height: 90px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -368,14 +366,30 @@ a {
     background: none !important;
 }
 
-.drop-text h4 a {
+.drop-text{
+    width: 80%;
+}
+
+.drop-text h4 {
     font-family: Poppins;
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
-    color: var(--drop-cart-text-1);
-    margin-bottom: -18px;
-    width: 100%;
+    color: var(--title-first-color);
+    margin-bottom: 3px;
+    background: none !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 100%;
+    /* max-height: 35px !important; */
+}
+
+.drop-text h4 a{
+    font-family: Poppins;
+    color: var(--title-first-color) !important;
     background: none !important;
 }
 
@@ -386,7 +400,7 @@ a {
     line-height: 15px;
     letter-spacing: 0.02em;
     color: var(--drop-cart-text-2);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .drop-text h3 {
@@ -448,7 +462,8 @@ a {
 
 .drop-btns .view-cart {
     background: var(--secondary-color) !important;
-    padding: 10px 30px 10px 30px !important;
+    border: 1px solid var(--secondary-color);
+    padding: 15px 30px 15px 30px !important;
     font-family: Poppins !important;
     font-size: 14px !important;
     font-weight: 600;
@@ -457,7 +472,6 @@ a {
     border-radius: 90px !important;
     display: inline;
     width: 150px !important;
-    height: 60px !important;
     text-transform: capitalize;
     text-align: center;
     transition: 0.5s;
@@ -474,7 +488,8 @@ a {
 
 .drop-btns .checkout {
     background: var(--primary-color) !important;
-    padding: 10px 30px 10px 30px !important;
+    border: 1px solid var(--primary-color);
+    padding: 15px 30px 15px 30px !important;
     font-family: Poppins;
     font-size: 14px;
     font-weight: 600;
@@ -482,7 +497,6 @@ a {
     color: var(--common-white) !important;
     border-radius: 90px !important;
     width: 150px !important;
-    height: 60px !important;
     text-transform: capitalize;
     transition: 0.5s;
     display: flex;
@@ -670,7 +684,7 @@ a {
     align-items: center !important;
     justify-content: left !important;
     transition: 0.3s;
-
+    padding: 10px 0;
 }
 
 .user-data-wrapper a span {

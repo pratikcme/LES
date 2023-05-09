@@ -802,6 +802,7 @@ to {top: 0px; opacity: 1}
     border-radius: 90px;
     text-transform: capitalize;
     margin-top: 15px;
+    margin-top: 20px;
     transition: 0.5s;
     border: 1px solid var(--primary-color);
 }

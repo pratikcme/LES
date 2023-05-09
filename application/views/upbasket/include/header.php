@@ -58,10 +58,11 @@ top: 0px !important;
 .goog-te-banner-frame.skiptranslate {
 display: none !important;
 } 
-.goog-te-gadget .goog-te-combo {
+
+/* .goog-te-gadget .goog-te-combo {
     margin: 4px 0;
     width: 150px !important;
-}
+} */
 
 .VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate{
   display:none !important;
