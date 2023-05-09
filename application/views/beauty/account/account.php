@@ -33,9 +33,9 @@
         <div class="account-details-tabs">
             <div class="details-tabs">
                 <!-- Nav pills -->
-                <ul class="nav nav-pills" role="tablist">
+                <ul class="nav nav-pills" role="tablist" >
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs active" data-bs-toggle="pill"
+                        <a class="nav-link dashboard-tabs <?=( $action_name == '' || $action_name=='my_account' ) ? 'active' : ''?>" data-bs-toggle="pill"
                             href="#tab-1"><?= $this->lang->line('My account') ?></a>
                     </li>
                     <li class="nav-item">
@@ -43,7 +43,7 @@
                             href="#tab-2"><?= $this->lang->line('My orders') ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs eduction-active-img" data-bs-toggle="pill"
+                        <a class="nav-link dashboard-tabs eduction-active-img <?=($action_name == 'wishlist') ? 'active' : ''?>" data-bs-toggle="pill"
                             href="#tab-3"><?= $this->lang->line('My Wishlist') ?></a>
                     </li>
                     <li class="nav-item">
@@ -70,7 +70,7 @@
             <div class="tab-details">
                 <div class="tab-content">
                     <!-- ---tab-1-- -->
-                    <div id="tab-1" class="container tab-pane active">
+                    <div id="tab-1" class="container tab-pane <?= ($action_name == '' || $action_name=='my_account') ? 'active show' : ''?>">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('Account') ?> <?= $this->lang->line('Details') ?></h2>
@@ -198,28 +198,30 @@
                                     <div class="accordion-items">
                                         <!-- ------sub-tab-1----- -->
                                         <div id="subtab-1" class="container tab-pane fade show active">
-                                            <?php foreach ($order as $key => $value) {
-                        if ($value->order_status != '8') {
-                          continue;
-                        }
-                        date_default_timezone_set('Asia/Kolkata');
-                        $date =  date('d M Y, h:i A', $value->dt_updated);
-                        if ($value->order_status == '1') {
-                          $status = 'Processing';
-                        } elseif ($value->order_status == '2') {
-                          $status = 'Pending';
-                        } elseif ($value->order_status == '3') {
-                          $status = 'Ready';
-                        } elseif ($value->order_status == '4') {
-                          $status = 'Pickup';
-                        } elseif ($value->order_status == '5') {
-                          $status = 'on the way';
-                        } elseif ($value->order_status == '8') {
-                          $status = 'Delivered';
-                        } else {
-                          $status = 'Cancel';
-                        }
-                      ?>
+
+                                            <?php 
+                                            foreach ($order as $key => $value) {
+                                                if ($value->order_status != '8') {
+                                                    continue;
+                                                }
+                                                date_default_timezone_set('Asia/Kolkata');
+                                                $date =  date('d M Y, h:i A', $value->dt_updated);
+                                                if ($value->order_status == '1') {
+                                                    $status = 'Processing';
+                                                } elseif ($value->order_status == '2') {
+                                                    $status = 'Pending';
+                                                } elseif ($value->order_status == '3') {
+                                                    $status = 'Ready';
+                                                } elseif ($value->order_status == '4') {
+                                                    $status = 'Pickup';
+                                                } elseif ($value->order_status == '5') {
+                                                    $status = 'on the way';
+                                                } elseif ($value->order_status == '8') {
+                                                    $status = 'Delivered';
+                                                } else {
+                                                    $status = 'Cancel';
+                                                }
+                                            ?>
                                             <div class="main-accordion">
                                                 <div class="accordion-heading">
                                                     <a href="#" class="delivered-btn"><?= $status ?></a>
@@ -260,7 +262,7 @@
                                                     </div>
                                                     <?php } ?>
 
-                                                    <div class="all-detalis-wrapper">
+                                                    <!-- <div class="all-detalis-wrapper">
                                                         <div class="all-detalis-left">
                                                             <h4><?= $this->lang->line('Total Amount') ?></h4>
                                                             <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
@@ -305,23 +307,142 @@
                                                             </h3>
                                                             <h3 class="notranslate">
                                                                 <?php
-                                                                    $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
-                                                                    if ($value->delivery_charge != '0') {
-                                                                        $final_total  += numberFormat($value->delivery_charge);
-                                                                    }
-                                                                    if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
-                                                                        $final_total  -= numberFormat($value->shopping_amount_based_discount);
-                                                                    }
-                                                                    if (numberFormat($value->promocode_discount) > 0) {
-                                                                        $final_total  -= numberFormat($value->promocode_discount);
-                                                                    }
-                                                                    echo $this->siteCurrency . ' ' . numberFormat($final_total);
-                                                                    ?>
+                                                                $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
+                                                                if ($value->delivery_charge != '0') {
+                                                                    $final_total  += numberFormat($value->delivery_charge);
+                                                                }
+                                                                if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                    $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                }
+                                                                if (numberFormat($value->promocode_discount) > 0) {
+                                                                    $final_total  -= numberFormat($value->promocode_discount);
+                                                                }
+                                                                echo $this->siteCurrency . ' ' . numberFormat($final_total);
+                                                                ?>
                                                             </h3>
                                                             <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
                                                         </div>
-                                                    </div>
-
+                                                    </div> -->
+                                                    <table class="table all-detalis-left all-detalis-right">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Amount') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Cart Discount') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        -<?= $this->siteCurrency . ' ' . number_format((float)$value->shopping_amount_based_discount, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <?php } ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Product Discount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$value->total_saving, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Amount Before Tax') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$value->sub_total - $value->TotalGstAmount, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Tax Amount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . $order[$key]->TotalGstAmount ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Delivery Charges') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= ($value->delivery_charge != '0') ? $this->siteCurrency . ' ' . number_format($value->delivery_charge, 2, '.', '') : 'FREE' ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Item') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate"><?= $value->total_item ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Promocode Discount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Final Total') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate"><?php
+                                                                                                $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
+                                                                                                if ($value->delivery_charge != '0') {
+                                                                                                    $final_total  += numberFormat($value->delivery_charge);
+                                                                                                }
+                                                                                                if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                                                    $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                                                }
+                                                                                                if (numberFormat($value->promocode_discount) > 0) {
+                                                                                                    $final_total  -= numberFormat($value->promocode_discount);
+                                                                                                }
+                                                                                                echo $this->siteCurrency . ' ' . numberFormat($final_total);
+                                                                                                ?></h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= ($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP" ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $value->isSelfPickup_details[0]->otp ?></h3>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -330,27 +451,27 @@
                                         <!-- ------sub-tab-2----- -->
                                         <div id="subtab-2" class="container tab-pane fade">
                                             <?php foreach ($order as $key => $value) {
-                        if ($value->order_status == '8' || $value->order_status == '9') {
-                          continue;
-                        }
-                        date_default_timezone_set('Asia/Kolkata');
-                        $date =  date('d M Y, h:i A', $value->dt_updated);
-                        if ($value->order_status == '1') {
-                          $status = 'Processing';
-                        } elseif ($value->order_status == '2') {
-                          $status = 'Pending';
-                        } elseif ($value->order_status == '3') {
-                          $status = 'Ready';
-                        } elseif ($value->order_status == '4') {
-                          $status = 'Pickup';
-                        } elseif ($value->order_status == '5') {
-                          $status = 'on the way';
-                        } elseif ($value->order_status == '8') {
-                          $status = 'Delivered';
-                        } else {
-                          $status = 'Cancel';
-                        }
-                      ?>
+                                                if ($value->order_status == '8' || $value->order_status == '9') {
+                                                    continue;
+                                                }
+                                                date_default_timezone_set('Asia/Kolkata');
+                                                $date =  date('d M Y, h:i A', $value->dt_updated);
+                                                if ($value->order_status == '1') {
+                                                    $status = 'Processing';
+                                                } elseif ($value->order_status == '2') {
+                                                    $status = 'Pending';
+                                                } elseif ($value->order_status == '3') {
+                                                    $status = 'Ready';
+                                                } elseif ($value->order_status == '4') {
+                                                    $status = 'Pickup';
+                                                } elseif ($value->order_status == '5') {
+                                                    $status = 'on the way';
+                                                } elseif ($value->order_status == '8') {
+                                                    $status = 'Delivered';
+                                                } else {
+                                                    $status = 'Cancel';
+                                                }
+                                            ?>
                                             <div class="main-accordion">
                                                 <div class="accordion-heading">
                                                     <a href="#" class="delivered-btn"><?= $status ?></a>
@@ -391,55 +512,54 @@
                                                     </div>
                                                     <?php } ?>
 
-                                                    <div class="all-detalis-wrapper">
-                                                        <div class="all-detalis-left">
-                                                            <h4><?= $this->lang->line('Total Amount') ?></h4>
-                                                            <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
-                                                            <h4><?= $this->lang->line('Cart Discount') ?></h4>
-                                                            <?php } ?>
-                                                            <h4><?= $this->lang->line('Product Discount') ?></h4>
-                                                            <h4><?= $this->lang->line('Total Amount Before Tax') ?></h4>
-                                                            <h4><?= $this->lang->line('Total Tax Amount') ?></h4>
-                                                            <h4><?= $this->lang->line('Delivery Charges') ?></h4>
-                                                            <h4><?= $this->lang->line('Total Item') ?></h4>
-                                                            <h4><?= $this->lang->line('Promocode Discount') ?></h4>
-                                                            <h4><?= $this->lang->line('Final Total') ?></h4>
-                                                            <h4><?= ($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP" ?>
-                                                            </h4>
-                                                            <?php if ($value->order_status <= '5') { ?>
-                                                            <a data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"
-                                                                class="cancel-btn lg-btn cncOrder"><?= $this->lang->line('Cancel') ?></a>
-                                                            <?php } ?>
-                                                        </div>
-                                                        <div class="all-detalis-right">
-                                                            <h3 class="notranslate">
-                                                                <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?>
-                                                            </h3>
+                                                    <!-- <div class="all-detalis-wrapper">
+                                                            <div class="all-detalis-left">
+                                                                <h4><?= $this->lang->line('Total Amount') ?></h4>
+                                                                <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
+                                                                    <h4><?= $this->lang->line('Cart Discount') ?></h4>
+                                                                <?php } ?>
+                                                                <h4><?= $this->lang->line('Product Discount') ?></h4>
+                                                                <h4><?= $this->lang->line('Total Amount Before Tax') ?></h4>
+                                                                <h4><?= $this->lang->line('Total Tax Amount') ?></h4>
+                                                                <h4><?= $this->lang->line('Delivery Charges') ?></h4>
+                                                                <h4><?= $this->lang->line('Total Item') ?></h4>
+                                                                <h4><?= $this->lang->line('Promocode Discount') ?></h4>
+                                                                <h4><?= $this->lang->line('Final Total') ?></h4>
+                                                                <h4><?= ($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP" ?>
+                                                                </h4>
+                                                                <?php if ($value->order_status <= '5') { ?>
+                                                                    <a data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>" class="cancel-btn lg-btn cncOrder"><?= $this->lang->line('Cancel') ?></a>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div class="all-detalis-right">
+                                                                <h3 class="notranslate">
+                                                                    <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?>
+                                                                </h3>
 
-                                                            <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
-                                                            <h3 class="notranslate">
-                                                                -<?= $this->siteCurrency . ' ' . number_format((float)$value->shopping_amount_based_discount, 2, '.', '') ?>
-                                                            </h3>
-                                                            <?php } ?>
-                                                            <h3 class="notranslate">
-                                                                <?= $this->siteCurrency . ' ' . number_format((float)$value->total_saving, 2, '.', '') ?>
-                                                            </h3>
+                                                                <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
+                                                                    <h3 class="notranslate">
+                                                                        -<?= $this->siteCurrency . ' ' . number_format((float)$value->shopping_amount_based_discount, 2, '.', '') ?>
+                                                                    </h3>
+                                                                <?php } ?>
+                                                                <h3 class="notranslate">
+                                                                    <?= $this->siteCurrency . ' ' . number_format((float)$value->total_saving, 2, '.', '') ?>
+                                                                </h3>
 
-                                                            <h3 class="notranslate">
-                                                                <?= $this->siteCurrency . ' ' . number_format((float)$value->sub_total - $value->TotalGstAmount, 2, '.', '') ?>
-                                                            </h3>
-                                                            <h3 class="notranslate">
-                                                                <?= $this->siteCurrency . ' ' . $order[$key]->TotalGstAmount ?>
-                                                            </h3>
-                                                            <h3 class="notranslate">
-                                                                <?= ($value->delivery_charge != '0') ? $this->siteCurrency . ' ' . number_format($value->delivery_charge, 2, '.', '') : 'FREE' ?>
-                                                            </h3>
-                                                            <h3 class="notranslate"><?= $value->total_item ?></h3>
-                                                            <h3 class="notranslate">
-                                                                <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
-                                                            </h3>
-                                                            <h3 class="notranslate">
-                                                                <?php
+                                                                <h3 class="notranslate">
+                                                                    <?= $this->siteCurrency . ' ' . number_format((float)$value->sub_total - $value->TotalGstAmount, 2, '.', '') ?>
+                                                                </h3>
+                                                                <h3 class="notranslate">
+                                                                    <?= $this->siteCurrency . ' ' . $order[$key]->TotalGstAmount ?>
+                                                                </h3>
+                                                                <h3 class="notranslate">
+                                                                    <?= ($value->delivery_charge != '0') ? $this->siteCurrency . ' ' . number_format($value->delivery_charge, 2, '.', '') : 'FREE' ?>
+                                                                </h3>
+                                                                <h3 class="notranslate"><?= $value->total_item ?></h3>
+                                                                <h3 class="notranslate">
+                                                                    <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
+                                                                </h3>
+                                                                <h3 class="notranslate">
+                                                                    <?php
                                                                     $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
                                                                     if ($value->delivery_charge != '0') {
                                                                         $final_total  += numberFormat($value->delivery_charge);
@@ -452,12 +572,137 @@
                                                                     }
                                                                     echo $this->siteCurrency . ' ' . numberFormat($final_total);
                                                                     ?>
-                                                            </h3>
-                                                            <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
+                                                                </h3>
+                                                                <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
 
-                                                        </div>
-                                                    </div>
+                                                            </div>
+                                                        </div> -->
 
+                                                    <table class="table all-detalis-left all-detalis-right">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Amount') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Cart Discount') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        -<?= $this->siteCurrency . ' ' . number_format((float)$value->shopping_amount_based_discount, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <?php } ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Product Discount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$value->total_saving, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Amount Before Tax') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$value->sub_total - $value->TotalGstAmount, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Tax Amount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . $order[$key]->TotalGstAmount ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Delivery Charges') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= ($value->delivery_charge != '0') ? $this->siteCurrency . ' ' . number_format($value->delivery_charge, 2, '.', '') : 'FREE' ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Item') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate"><?= $value->total_item ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Promocode Discount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Final Total') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate"><?php
+                                                                                                $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
+                                                                                                if ($value->delivery_charge != '0') {
+                                                                                                    $final_total  += numberFormat($value->delivery_charge);
+                                                                                                }
+                                                                                                if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                                                    $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                                                }
+                                                                                                if (numberFormat($value->promocode_discount) > 0) {
+                                                                                                    $final_total  -= numberFormat($value->promocode_discount);
+                                                                                                }
+                                                                                                echo $this->siteCurrency . ' ' . numberFormat($final_total);
+                                                                                                ?></h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= ($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP" ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= isset($value->isSelfPickup_details[0]->otp) ? $value->isSelfPickup_details[0]->otp : ' - ' ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <?php if ($value->order_status <= '5') { ?>
+                                                    <a data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"
+                                                        class="cancel-btn lg-btn cncOrder"><?= $this->lang->line('Cancel') ?></a>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -466,27 +711,27 @@
                                         <!-- ------sub-tab-2----- -->
                                         <div id="subtab-3" class="container tab-pane fade">
                                             <?php foreach ($order as $key => $value) {
-                        if ($value->order_status != '9') {
-                          continue;
-                        }
-                        date_default_timezone_set('Asia/Kolkata');
-                        $date =  date('d M Y, h:i A', $value->dt_updated);
-                        if ($value->order_status == '1') {
-                          $status = 'Processing';
-                        } elseif ($value->order_status == '2') {
-                          $status = 'Pending';
-                        } elseif ($value->order_status == '3') {
-                          $status = 'Ready';
-                        } elseif ($value->order_status == '4') {
-                          $status = 'Pickup';
-                        } elseif ($value->order_status == '5') {
-                          $status = 'on the way';
-                        } elseif ($value->order_status == '8') {
-                          $status = 'Delivered';
-                        } else {
-                          $status = 'Cancel';
-                        }
-                      ?>
+                                                if ($value->order_status != '9') {
+                                                    continue;
+                                                }
+                                                date_default_timezone_set('Asia/Kolkata');
+                                                $date =  date('d M Y, h:i A', $value->dt_updated);
+                                                if ($value->order_status == '1') {
+                                                    $status = 'Processing';
+                                                } elseif ($value->order_status == '2') {
+                                                    $status = 'Pending';
+                                                } elseif ($value->order_status == '3') {
+                                                    $status = 'Ready';
+                                                } elseif ($value->order_status == '4') {
+                                                    $status = 'Pickup';
+                                                } elseif ($value->order_status == '5') {
+                                                    $status = 'on the way';
+                                                } elseif ($value->order_status == '8') {
+                                                    $status = 'Delivered';
+                                                } else {
+                                                    $status = 'Cancel';
+                                                }
+                                            ?>
                                             <div class="main-accordion">
                                                 <div class="accordion-heading">
                                                     <a href="javascript:" class="delivered-btn"><?= $status ?></a>
@@ -526,7 +771,7 @@
                                                     </div>
                                                     <?php } ?>
 
-                                                    <div class="all-detalis-wrapper">
+                                                    <!-- <div class="all-detalis-wrapper">
                                                         <div class="all-detalis-left">
                                                             <h4><?= $this->lang->line('Total Amount') ?></h4>
                                                             <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
@@ -571,22 +816,143 @@
                                                             </h3>
                                                             <h3 class="notranslate">
                                                                 <?php
-                                                                    $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
-                                                                    if ($value->delivery_charge != '0') {
-                                                                        $final_total  += numberFormat($value->delivery_charge);
-                                                                    }
-                                                                    if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
-                                                                        $final_total  -= numberFormat($value->shopping_amount_based_discount);
-                                                                    }
-                                                                    if (numberFormat($value->promocode_discount) > 0) {
-                                                                        $final_total  -= numberFormat($value->promocode_discount);
-                                                                    }
-                                                                    echo $this->siteCurrency . ' ' . numberFormat($final_total);
-                                                                    ?>
+                                                                $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
+                                                                if ($value->delivery_charge != '0') {
+                                                                    $final_total  += numberFormat($value->delivery_charge);
+                                                                }
+                                                                if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                    $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                }
+                                                                if (numberFormat($value->promocode_discount) > 0) {
+                                                                    $final_total  -= numberFormat($value->promocode_discount);
+                                                                }
+                                                                echo $this->siteCurrency . ' ' . numberFormat($final_total);
+                                                                ?>
                                                             </h3>
                                                             <h3><?= $value->isSelfPickup_details[0]->otp ?></h3>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
+
+                                                    <table class="table all-detalis-left all-detalis-right">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Amount') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$order[$key]->sub_total + $order[$key]->total_saving, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <?php if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) { ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Cart Discount') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        -<?= $this->siteCurrency . ' ' . number_format((float)$value->shopping_amount_based_discount, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <?php } ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Product Discount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$value->total_saving, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Amount Before Tax') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . number_format((float)$value->sub_total - $value->TotalGstAmount, 2, '.', '') ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Tax Amount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . $order[$key]->TotalGstAmount ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Delivery Charges') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= ($value->delivery_charge != '0') ? $this->siteCurrency . ' ' . number_format($value->delivery_charge, 2, '.', '') : 'FREE' ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Total Item') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate"><?= $value->total_item ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Promocode Discount') ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $this->siteCurrency . ' ' . $value->promocode_discount ?>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= $this->lang->line('Final Total') ?></h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate"><?php
+                                                                                                $final_total = numberFormat($order[$key]->sub_total + $order[$key]->total_saving);
+                                                                                                if ($value->delivery_charge != '0') {
+                                                                                                    $final_total  += numberFormat($value->delivery_charge);
+                                                                                                }
+                                                                                                if ($value->shopping_amount_based_discount != '0' && $value->shopping_amount_based_discount != NULL) {
+                                                                                                    $final_total  -= numberFormat($value->shopping_amount_based_discount);
+                                                                                                }
+                                                                                                if (numberFormat($value->promocode_discount) > 0) {
+                                                                                                    $final_total  -= numberFormat($value->promocode_discount);
+                                                                                                }
+                                                                                                echo $this->siteCurrency . ' ' . numberFormat($final_total);
+                                                                                                ?></h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h4><?= ($value->isSelfPickup == '1') ? $this->lang->line('self pickup otp') : "OTP" ?>
+                                                                    </h4>
+                                                                </td>
+                                                                <td>
+                                                                    <h3 class="notranslate">
+                                                                        <?= $value->isSelfPickup_details[0]->otp ?></h3>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -599,7 +965,7 @@
                     </div>
 
                     <!-- ---tab-3-- -->
-                    <div id="tab-3" class="container tab-pane fade">
+                    <div id="tab-3" class="container tab-pane fade <?= ($action_name=='wishlist') ? 'active show' : ''?>">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('My Wishlist') ?></h2>
@@ -649,15 +1015,15 @@
                                         </td>
                                         <td>
                                             <?php
-                        $d_none = '';
-                        $d_show = 'd-none';
-                        if (!empty($item_weight_id)) {
-                          if (in_array($value->product_weight_id, $item_weight_id)) {
-                            $d_show = '';
-                            $d_none = 'd-none';
-                          }
-                        }
-                        ?>
+                                                $d_none = '';
+                                                $d_show = 'd-none';
+                                                if (!empty($item_weight_id)) {
+                                                    if (in_array($value->product_weight_id, $item_weight_id)) {
+                                                        $d_show = '';
+                                                        $d_none = 'd-none';
+                                                    }
+                                                }
+                                                ?>
                                             <div>
                                                 <div class="card-btn addcartbutton <?= $d_none ?>"
                                                     data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>"
@@ -700,8 +1066,8 @@
 
                         <div class="main-add-div">
                             <?php foreach ($get_address as $key => $value) {
-                $status = ($value->status == '0') ? 'is_default ' : '';
-              ?>
+                                $status = ($value->status == '0') ? 'is_default ' : '';
+                            ?>
                             <div class="address-wrapper">
                                 <div class="ship-check text-end">
                                     <div class="form-check">

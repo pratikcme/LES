@@ -453,8 +453,8 @@ var CHECKOUT = (function () {
 
     //Dk added
     if ($("#applied_promo").val() !== "") {
-      $("#promo_err").html("Promocode already applied");
-      return;
+      $("#promo_err").html("Promocode Already Applied");
+      return false;
     }
 
     $("#applied_promo").val("");
@@ -462,7 +462,8 @@ var CHECKOUT = (function () {
     $(".promocode-applied").hide();
     $("#promo_err").html("");
     if (promocode == "") {
-      $("#promo_err").html("Please enter promocode");
+      $("#promo_err").html("Please Enter Promocode");
+      return false;
     }
     var shipping_charge = $("#shipping_charge").val();
     console.log(shipping_charge, shipping_charge);

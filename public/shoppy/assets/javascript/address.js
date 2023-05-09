@@ -193,6 +193,7 @@ var ADDRESS = (function () {
     if ($("#RegisterForm").hasClass("ship-address")) {
       $("#RegisterForm").css("display", "block");
     }
+    errorNone();
     $.ajax({
       url: url + "/users_account/users/edit",
       method: "post",
