@@ -207,7 +207,7 @@ a {
     transition: 0.3s;
     position: relative;
     display: inline-block;
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 
 .add-cart-btn span {
