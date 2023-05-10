@@ -36,6 +36,7 @@ $lang['order placed successfully'] = 'order placed successfully';
 $lang['Latest'] = 'Latest';
 $lang['Products'] = 'Products';
 $lang['Shop By'] = 'Shop By';
+$lang['by categories'] = 'by categories';
 $lang['Top Categories Of The Week'] = 'Top Categories Of The Week';
 $lang['Exclusive'] = 'Exclusive';
 $lang['Top Featured'] = 'Top Featured';
