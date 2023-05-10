@@ -238,7 +238,7 @@ $lang['Delivery'] = 'Delivery';
 $lang['Time & Date'] = 'Time & Date';
 $lang['Payment Option'] = 'Payment Option';
 
-$lang['Place order'] = 'Place order';
+$lang['Place order'] = 'Place Order';
 $lang['Cash On Delivery'] = 'Cash On Delivery';
 
 $lang['exclude'] = 'exclude';
