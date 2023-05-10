@@ -78,7 +78,7 @@
 /*=========== category-section ==================*/
 .category-wrap .category-img{
     max-width: 424px;
-    /* height: 450px; */
+    height: 418px;
     border-radius: 20px;
     background: rgba(0,0,0,0.2);
     
@@ -942,6 +942,8 @@ bg-white{
 
     .box-gap{
         gap: 0;
+        flex-direction: row;
+        margin-top: 15px;
     }
 
     /* .products-wrap .product-card .product-im{
@@ -1055,6 +1057,8 @@ bg-white{
         top: 65px;
     }
 
+    
+
 }
 
 @media only screen and (max-width:575px){
@@ -1122,6 +1126,8 @@ bg-white{
 
     .box-gap {
         gap: 17px;
+        flex-direction: column;
+        margin-top: 0;
     }
 }
 
