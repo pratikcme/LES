@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xl-3 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
       <div class="foot-1">
-        <a href="./index.php">
+        <a href="<?= base_url() ?>home">
           <img src="<?= $this->theme_base_url . '/assets/images/header-logo.png' ?>" alt="" class="logo-foot-img">
         </a>
 
