@@ -598,9 +598,9 @@
     transition: 0.5s;
 }
 
-.all-detalis-right{
+/* .all-detalis-right{
     margin-top: -55px;
-}
+} */
 
 /* ==========responsive========= */
 @media only screen and (min-width:1200px) and (max-width: 1399px) {
