@@ -250,7 +250,7 @@ $lang['Cancel'] = 'Cancel';
 $lang['100 Genuine Products'] = '100% Genuine Products';
 $lang['Secure Payments'] = 'Secure Payments';
 
-$lang['checkout'] = 'checkout';
+$lang['checkout'] = 'Checkout';
 $lang['Credit/Debit Card'] = 'Credit/Debit Card';
 $lang['Add new address'] = 'Add new address';
 $lang['Use GST Number'] = 'Use GST Number';
