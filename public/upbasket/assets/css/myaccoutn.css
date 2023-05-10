@@ -257,17 +257,29 @@
     color: var(--primary-color);
 }
 
+.main-add-div {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
 .address-wrapper {
     background: #fff;
     border: 1px solid var(--myaccoutn-tab-border);
     box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
     border-radius: 20px;
-    padding: 35px 40px 37px 50px;
+    padding: 10px 40px 20px 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .address-text h3 {
@@ -351,11 +363,11 @@
 } */
 .my-order-text h3 {
     font-family: Poppins;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 20px;
     color: var(--login-wrapper-label);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     max-width: 700px;
     word-wrap: break-word;
 }
@@ -374,6 +386,7 @@
     font-weight: 500;
     line-height: 20px;
     color: var(--login-wrapper-placholder);
+    margin-bottom: 0 !important;
 }
 
 .my-order-text p span {
@@ -384,8 +397,8 @@
     display: flex;
     align-items: center;
     gap: 70px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
     border-radius: 0px 0px 0px 0px !important;
     background: #fff !important;
@@ -614,8 +627,9 @@
     display: none;
 }
 
-.my-order-details {
-    height: 450px;
+.my-order-details  .tab-pane{
+    min-height: 300px;
+    max-height: 600px;
     overflow-y: scroll;
 }
 
@@ -751,7 +765,7 @@
         font-weight: 600;
         line-height: 20px;
         color: var(--login-wrapper-label);
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .my-order-text h3 {
@@ -1856,6 +1870,18 @@
 
 /* ========================================================== */
 /* ========================================================== */
+
+@media only screen and (max-width:768px){
+    .ship-check{
+        top: 5px;
+    }
+
+    .ship-check .form-check-input:checked[type=checkbox]{
+        margin: 0;
+    }
+}
+
+
 @media screen and (min-width: 541px) and (max-width: 767px) {
 
     /* ----tab-1-css-- */
@@ -2297,7 +2323,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         flex-direction: column;
     }
 
@@ -2741,7 +2767,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         flex-direction: column;
     }
 
@@ -3168,7 +3194,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         flex-direction: column;
     }
 
@@ -3598,7 +3624,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         flex-direction: column;
     }
 
@@ -4033,7 +4059,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         flex-direction: column;
     }
 
@@ -4467,7 +4493,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         flex-direction: column;
     }
 

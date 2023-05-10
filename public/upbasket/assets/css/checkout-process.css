@@ -183,7 +183,7 @@ button.btn-close {
     border: 1px solid var(--accordian-border);
     box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
     border-radius: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     overflow: hidden;
 }
 
@@ -195,7 +195,7 @@ button.btn-close {
     font-weight: 500;
     line-height: 30px;
     color: var(--accordian-head-text);
-    padding: 15px 0px 15px 45px;
+    padding: 15px 0px 15px 30px;
     border-radius: 20px 20px 0px 0px;
     position: relative;
 }
@@ -321,6 +321,10 @@ input:focus {
     line-height: 20px;
     color: var(--accordian-content-text-1);
     margin-bottom: 10px;
+}
+
+.accordion-content-3 .address-text h3{
+    padding-left: 20px;
 }
 
 .accordion-content-3 input {
@@ -472,7 +476,8 @@ input:focus {
 .mydiv-wrapper {
     width: 100%;
     max-width: 450px;
-    height: 500px;
+    max-height: 500px;
+    min-height: 100px;
     background: var(--common-white);
     border: 1px solid var(--accordian-border);
     border-radius: 20px;
@@ -508,10 +513,10 @@ input:focus {
     padding-top: 25px;
     padding-left: 40px;
     display: flex;
-    gap: 38px;
+    gap: 18px;
     border-bottom: 1px solid var(--accordian-border);
     padding-bottom: 20px;
-
+    
 }
 
 .order-wrapper-img {
@@ -531,9 +536,18 @@ input:focus {
     max-width: 80px;
 }
 
+.order-wrapper-text h4{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
 .order-wrapper-text h4 a {
     font-family: Poppins;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 20px;
     color: var(--accordian-content-text-1);
@@ -546,14 +560,19 @@ input:focus {
     line-height: 21px;
     letter-spacing: 0.02em;
     color: var(--accordian-content-text-2);
+    margin-bottom: 0 !important;
 }
 
 .order-wrapper-text h3 {
     font-family: Poppins;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 36px;
     color: #11405A;
+}
+
+.order-wrapper-text p{
+    margin-bottom: 0 !important;
 }
 
 .coupon-code-wrapper {
@@ -780,7 +799,12 @@ input:focus {
     z-index: -1;
 }
 
-
+.checkout-process-section .cart-totals-part{
+    max-width: 455px;
+    max-height: 4000px;
+    min-height: 100px;
+    overflow-y: scroll;
+}
 
 
 
@@ -1025,6 +1049,7 @@ input:focus {
 .accordion-content-3 .address-wrapper {
     padding: 35px 32px 37px 30px;
     position: relative;
+    max-width: 100%;
 }
 
 .ship-address .text-end {
@@ -1043,13 +1068,13 @@ input:focus {
 .ship-check {
     margin-bottom: 10px;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    left: 12px;
 }
 
 .ship-check .form-check-input:checked[type=checkbox] {
     background-repeat: no-repeat;
     height: 25px;
+    margin-top: -18px;
 }
 
 .ship-check .form-check-input[type=checkbox] {
@@ -1059,7 +1084,7 @@ input:focus {
 }
 
 .ship-check .form-check {
-    border: 1px solid var(--myaccoutn-tab-border);
+    border: none;
     /* max-width: 120px; */
     display: inline-block;
     margin-left: auto;
@@ -1074,14 +1099,7 @@ input:focus {
 }
 
 .ship-check .form-check-label {
-    margin-bottom: 0;
-    font-family: Poppins;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--listing-2-normal-text) !important;
-    margin-bottom: 0px;
-    margin-top: 3px;
-    width: 80px;
+    display: none;
 }
 
 .address-wrp {
@@ -1298,6 +1316,11 @@ span.error {
 
 .time-wrapper .form-check{
     margin-bottom: 8px;
+}
+
+.time-wrapper h3{
+    color: var(--primary-color);
+    font-size: 20px;
 }
 
 
@@ -2746,6 +2769,7 @@ span.error {
     .checkout-order-detils .cart-totals-part {
         margin-bottom: 40px !important;
         margin: auto;
+        margin-top: 20px;
     }
 
     .place-order-btn {
@@ -3207,6 +3231,7 @@ span.error {
     .checkout-order-detils .cart-totals-part {
         margin-bottom: 40px !important;
         margin: auto;
+        margin-top: 15px;
     }
 
     .place-order-btn {
@@ -3672,6 +3697,7 @@ span.error {
     .checkout-order-detils .cart-totals-part {
         margin-bottom: 40px !important;
         margin: auto;
+        margin-top: 15px;
     }
 
     .place-order-btn {
@@ -4193,6 +4219,7 @@ span.error {
     .checkout-order-detils .cart-totals-part {
         margin-bottom: 40px !important;
         margin: auto;
+        margin-top: 15px;
     }
 
     .place-order-btn {

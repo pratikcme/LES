@@ -66,23 +66,27 @@
                          <div class="main-accordion">
                              <div class="accordion-heading"><?= $this->lang->line('Pickup Address') ?></div>
                              <div class="accordion-content accordion-content-3">
-                                 <div class="address-wrapper">
-                                     <div class="address-text mt-3">
-                                         <?php foreach ($get_address as $key => $value) { ?>
-                                         <h3> <?= $value->name ?> </h3>
-                                         <p><?= $value->address ?></p>
-                                         <?php } ?>
-                                     </div>
-                                 </div>
+                                    
+                                        <div class="address-wrapper">
+                                            <div class="address-text mt-3">
+                                                <?php foreach ($get_address as $key => $value) { ?>
+                                                <h3> <?= $value->name ?> </h3>
+                                                <p><?= $value->address ?></p>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    
                              </div>
                          </div>
                          <?php } else { ?>
                          <div class="main-accordion">
                              <div class="accordion-heading"><?= $this->lang->line('Delivery Address') ?></div>
                              <div class="accordion-content accordion-content-3">
+                                
                                  <?php foreach ($get_address as $key => $value) {
                                             $status = ($value->status == '0') ? 'is_default ' : ''; ?>
-                                 <div class="address-wrapper">
+                                
+                                    <div class="address-wrapper">
                                      <div class="ship-check text-end">
                                          <div class="form-check">
                                              <input class="form-check-input 
@@ -107,8 +111,10 @@
                                              <i class="fa-solid fa-trash-can"></i>
                                          </a>
                                      </div>
-                                 </div>
+                                    </div>
+                               
                                  <?php } ?>
+                                
                                  <div class="new-address text-end">
                                      <button type="button" id="checkout-add-address" class="new-add">New
                                          Address</button>
