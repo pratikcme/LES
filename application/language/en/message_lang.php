@@ -164,7 +164,7 @@ $lang['Product'] = "Product";
 $lang['Quantity'] = "Quantity";
 $lang['price'] = "price";
 $lang['Action'] = "Action";
-$lang['Proceed to checkout'] = "proceed to checkout";
+$lang['Proceed to checkout'] = "Proceed to checkout";
 
 $lang['clear cart'] = "Clear Cart";
 
