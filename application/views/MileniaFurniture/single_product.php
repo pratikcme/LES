@@ -41,7 +41,7 @@
             <div class="pro-hearticon wishlist-icon" data-product_id="<?= $product_id ?>" data-product_weight_id="<?= $product_weight_id ?>">
                 <i class="fa-regular fa-heart <?= (in_array($this->utility->safe_b64decode($product_weight_id), $wish_pid)) ? "fa-solid" : "" ?>" ></i>
             </div>
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="zoom_image">
             <?php foreach ($product_image as $key => $value) { ?>
               <div class="swiper-slide">
                   <a href="#"><img data-enlargable class="drift-demo-trigger"
@@ -68,7 +68,7 @@
             </div>
           </div>
           <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="image_thumb">
               <?php foreach ($product_image as $key => $value) { ?>
                 <div class="swiper-slide">
                   <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" />
@@ -90,60 +90,87 @@
       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
         <div class="product-content-part zoom">
           <h2 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0"><?= $productDetail[0]->name ?></h2>
-          <h5>
-            <!-- <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i> -->
-            4.5 <span> <a href=""> 174 Ratings & 22 Reviews</a></span>
-          </h5>
+          <div class="rating-starts justify-content-start" id="starRatting">
+            <div class="rating stars3_5">
+              <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
+                <span class="star"></span>
+              <?php } ?>
+              <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
+                <span class="star star-active"></span>
+              <?php } ?>
+            </div>
+            <div><span>(<?= $productDetail[0]->rating['rating'] ?>)</span></div>
+          </div>
 
-          <h3>₹800.00 <span><strike>₹840.00</strike></span></h3>
+          <h3 class="notranslate" id="dynamic_price">
+            <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
+            <span>
+              <strike><?= ($varientDetails[0]->discount_per > 0) ? $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->price, 2, '.', '') : '' ?></strike>
+            </span>
+          </h3>
           <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. </p>
+          <p><?=$productDetail[0]->about?></p>
 
-          <h6><span><i class="fa-regular fa-clock"></i></span>Hurry up ! Deal ends in :</h6>
+          <!-- <h6><span><i class="fa-regular fa-clock"></i></span>Hurry up ! Deal ends in :</h6> -->
 
           <!-- -----counter-product-- -->
-          <div class="product-detail-quentity wow fadeInRight" data-wow-duration="1s" data-wow-delay="0"
-            data-wow-offset="0">
-            <div class="qty-container">
-              <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-              <input type="text" name="qty" value="1" class="input-qty" />
-              <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-            </div>
-          </div>
+            <?php
+            $d_none = '';
+            $d_show = 'd-none';
+            if (!empty($item_weight_id)) {
+              if (in_array($varientDetails[0]->id, $item_weight_id)) {
+                $d_show = '';
+                $d_none = 'd-none';
+              }
+            }
+            ?>
+         
 
           <!-- -----product-details-btn----- -->
           <div class="product-detalis-btn wow fadeInRight" data-wow-duration="1s" data-wow-delay="0"
             data-wow-offset="0">
-            <a href="" class="add-cart-btn cmn-btn"><span><i class="fa-solid fa-cart-shopping "></i></span>Add To
-              Cart</a>
-            <a href="./shop-cart.php" class="add-cart-btn order-now cmn-btn"><span><i class="fa fa-arrow-circle-right"
-                  aria-hidden="true"></i></span>Order Now</a>
-            <a href="" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
+            <div class="product-detail-quentity wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                <?php if ($isAvailable != '0') { ?>
+                  <a href="javascript:" class="add-cart-btn cmn-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping "></i></span>Add To Cart</a>
+                <?php } ?>
+                <div class="product-detail-quentity add-cart-btns <?=$d_show?>">
+                  <div class="qty-container">
+                      <button class="dec decqnt cart-qty-minus qty-btn-minus productDetailsButton" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-minus"></i></button>
+                      <input type="text" name="qty" id="qnt" value="<?= ($cartQuantityForVarient != '') ? $cartQuantityForVarient : 1 ?>" data-product_id="<?= $this->utility->safe_b64decode($product_id) ?>" class="input-qty">
+                      <button class="inc qty-btn-plus cart-qty-plus incqnt" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+            </div>
+            <?php if ($isAvailable != '0') { ?>
+            <a href="javascript:" id="order_now" class="add-cart-btn order-now cmn-btn"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>Order Now</a>
+            <?php } ?>
+            <?php if (!empty($BranchDetails) && $BranchDetails[0]->whatsappFlag  != '0' && $BranchDetails[0]->phone_no != '') {
+              $mobile = '91' . $BranchDetails[0]->phone_no; 
+              $product_id = $this->uri->segment(3);
+              $varient_id = $this->uri->segment(4);
+              $url = base_url() . 'products/productDetails/' . $product_id . '/' . $varient_id;
+              ?>
+              <a href="https://wa.me/<?= $mobile ?>/?text=<?= $url ?>" id='whatsapp_link' target="_black" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
+            <?php } ?>
           </div>
 
           <hr>
 
           <div class="mb-3">
             <form action="">
-              <select name="cars" id="cars">
-                <option value="volvo">Chair</option>
-                <option value="saab">Table</option>
-                <option value="mercedes">Box</option>
-                <option value="audi">Cupboard</option>
+              <select class="product_varient_id" name="cars" id="cars">
+                <?php foreach ($varient as $key => $value) { ?>
+                  <option value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>>
+                    <?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
+                <?php } ?>
               </select>
             </form>
           </div>
 
-          <h4>SKU: <span> D2300-3-2-2</span></h4>
-          <h4>Brands: <span> Studio Design</span></h4>
-          <h4>Tags: <span> Hot, Trend</span></h4>
-          <h4>Categories: <span> Dining Tables, Living Room, Sofas</span></h4>
+          <!-- <h4>SKU: <span> D2300-3-2-2</span></h4> -->
+          <h4><?= $this->lang->line('Brand') ?>: <span> <?= $productDetail[0]->brand_name ?></span></h4>
+          <!-- <h4>Tags: <span> Hot, Trend</span></h4> -->
+          <h4><?= $this->lang->line('Categories') ?>: <span><?= $productDetail[0]->category_name ?></span></h4>
         </div>
       </div>
     </div>
@@ -376,184 +403,89 @@
 
 
 <!-- -----related-product----- -->
+<?php if (!empty($related_product)) { ?>
 <section class="categories top-rating p-120">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-12">
         <div class="main-title title text-center center-title">
-          <h2>Related Products</h2>
+          <h2><?= $this->lang->line('related products') ?></h2>
         </div>
       </div>
       <div class="col-lg-12">
         <div class="banner-wrap">
           <div class="owl-carousel owl-theme top-rating-slider">
+          <?php foreach ($related_product as $key => $value) { ?>
             <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-              <div class="hot-products-wrap">
+            <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                 <div class="hot-products-img position-relative overflow-hidden">
-                  <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product.png" alt="hot-product-img" />
-                  <div class="hot-products-cart-wrap">
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/cart.svg" alt="cart" /></a>
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/search.svg" alt="search" /></a>
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
-                  </div>
+                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="hot-product-img" />
+                    <p><?= ($value->varientQuantity > $value->limited_stock) ? '' : $this->lang->line('Limited Stock') ?></p>
+                    <div class="hot-products-cart-wrap">
+                        <a href="javascript:" class="addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
+                            <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.875 8.875H11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.875 5.875V11.875" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.4438 14.4437L19.0001 19" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <!-- <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a> -->
+                        <div class="techno-check">
+                            <input class="techno_checkbox wishlist-icon" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-product_weight_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>" type="checkbox" id="1" value="1"  <?=(in_array($value->pw_id, $wish_pid)) ? "checked" : "" ?>>
+                            <div class="stocks heart">
+                                <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.5345 17.8656L19.1283 10.2719C20.9939 8.39687 21.2658 5.33124 19.5033 3.37187C19.0612 2.8781 18.5232 2.47963 17.922 2.20082C17.3208 1.92201 16.669 1.76871 16.0066 1.75028C15.3441 1.73186 14.6848 1.84869 14.0691 2.09365C13.4533 2.33861 12.8939 2.70655 12.4251 3.17499L11.0001 4.60937L9.772 3.37187C7.897 1.50624 4.83138 1.23437 2.872 2.99687C2.37823 3.43888 1.97977 3.97694 1.70096 4.57815C1.42215 5.17936 1.26885 5.83111 1.25042 6.49356C1.23199 7.15602 1.34883 7.81528 1.59379 8.43106C1.83875 9.04684 2.20669 9.60621 2.67513 10.075L10.4658 17.8656C10.6079 18.0065 10.8 18.0855 11.0001 18.0855C11.2003 18.0855 11.3923 18.0065 11.5345 17.8656Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hot-products-details">
-                  <a href="#">
-                    <h5>Chair Padded Seat</h5>
-                  </a>
-                  <div class="price-wrap d-flex">
-                    <p><span><strike>₹1230.00</strike></span> </p>
-                    <h6>₹1150.00</h6>
-                  </div>
-                  <div class="rating-starts rating-furni">
-                    <div class="rating stars3_5">
-                      <span class="star"></span>
-                      <span class="star"></span>
-                      <span class="star"></span>
-                      <span class="star star-active"></span>
-                      <span class="star star-active-half"></span>
+                <div class="hot-products-details ">
+                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><h5><?=$value->name?></h5></a>
+                    <div class="price-wrap notranslate d-flex">
+                        <p><span class="<?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><strike><?= $this->siteCurrency . ' ' . number_format((float)$value->price, 2, '.', '') ?></strike></span> </p>
+                        <h6><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?></h6>
                     </div>
-                    <div>
-                      <p>( 2 reviews )</p>
+                    <div class="rating-starts rating-furni">
+                        <div class="rating stars3_5">
+                        <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
+                            <span class="star"></span>
+                        <?php } ?>
+                        <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
+                            <span class="star star-active"></span>
+                        <?php } ?>
+                            <!-- <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star star-active"></span>
+                            <span class="star star-active-half"></span> -->
+                        </div>
+                        <div><p>( <?= $value->ratting['rating'] .' '.$this->lang->line('Reviews') ?> )</p></div>
                     </div>
-                  </div>
-                  <div class="product-detail-quentity add-cart-btns">
-                    <div class="qty-container">
-                      <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                      <input type="text" name="qty" value="1" class="input-qty">
-                      <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                    <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
+                        <div class="qty-container ">
+                            <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                            <input type="text" name="qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" class="input-qty qty" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" readonly>
+                            <button class="qty-btn-plus inc cart-qty-plus"  data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                        </div>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
-            <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-              <div class="hot-products-wrap">
-                <div class="hot-products-img position-relative overflow-hidden">
-                  <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product2.png" alt="hot-product-img" />
-                  <div class="hot-products-cart-wrap">
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/cart.svg" alt="cart" /></a>
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/search.svg" alt="search" /></a>
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
-                  </div>
-                </div>
-                <div class="hot-products-details">
-                  <a href="#">
-                    <h5>Chair Padded Seat</h5>
-                  </a>
-                  <div class="price-wrap d-flex">
-                    <p><span><strike>₹1230.00</strike></span> </p>
-                    <h6>₹1150.00</h6>
-                  </div>
-                  <div class="rating-starts rating-furni">
-                    <div class="rating stars3_5">
-                      <span class="star"></span>
-                      <span class="star"></span>
-                      <span class="star"></span>
-                      <span class="star star-active"></span>
-                      <span class="star star-active-half"></span>
-                    </div>
-                    <div>
-                      <p>( 2 reviews )</p>
-                    </div>
-                  </div>
-                  <div class="product-detail-quentity add-cart-btns">
-                    <div class="qty-container">
-                      <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                      <input type="text" name="qty" value="1" class="input-qty">
-                      <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-              <div class="hot-products-wrap">
-                <div class="hot-products-img position-relative overflow-hidden">
-                  <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product3.png" alt="hot-product-img" />
-                  <div class="hot-products-cart-wrap">
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/cart.svg" alt="cart" /></a>
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/search.svg" alt="search" /></a>
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
-                  </div>
-                </div>
-                <div class="hot-products-details">
-                  <a href="#">
-                    <h5>Chair Padded Seat</h5>
-                  </a>
-                  <div class="price-wrap d-flex">
-                    <p><span><strike>₹1230.00</strike></span> </p>
-                    <h6>₹1150.00</h6>
-                  </div>
-                  <div class="rating-starts rating-furni">
-                    <div class="rating stars3_5">
-                      <span class="star"></span>
-                      <span class="star"></span>
-                      <span class="star"></span>
-                      <span class="star star-active"></span>
-                      <span class="star star-active-half"></span>
-                    </div>
-                    <div>
-                      <p>( 2 reviews )</p>
-                    </div>
-                  </div>
-                  <div class="product-detail-quentity add-cart-btns">
-                    <div class="qty-container">
-                      <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                      <input type="text" name="qty" value="1" class="input-qty">
-                      <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-              <div class="hot-products-wrap">
-                <div class="hot-products-img position-relative overflow-hidden">
-                  <img src="<?=$this->theme_base_url?>/assets/images/home/hot-product4.png" alt="hot-product-img" />
-                  <div class="hot-products-cart-wrap">
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/cart.svg" alt="cart" /></a>
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/search.svg" alt="search" /></a>
-                    <a href="#"><img src="<?=$this->theme_base_url?>/assets/images/home/like.svg" alt="light" /></a>
-                  </div>
-                </div>
-                <div class="hot-products-details">
-                  <a href="#">
-                    <h5>Chair Padded Seat</h5>
-                  </a>
-                  <div class="price-wrap d-flex">
-                    <p><span><strike>₹1230.00</strike></span> </p>
-                    <h6>₹1150.00</h6>
-                  </div>
-                  <div class="rating-starts rating-furni">
-                    <div class="rating stars3_5">
-                      <span class="star"></span>
-                      <span class="star"></span>
-                      <span class="star"></span>
-                      <span class="star star-active"></span>
-                      <span class="star star-active-half"></span>
-                    </div>
-                    <div>
-                      <p>( 2 reviews )</p>
-                    </div>
-                  </div>
-                  <div class="product-detail-quentity add-cart-btns">
-                    <div class="qty-container">
-                      <button class="qty-btn-minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                      <input type="text" name="qty" value="1" class="input-qty">
-                      <button class="qty-btn-plus" type="button"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <?php } ?>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
+<?php } ?>
 <!-- -------review-popup-- -->
 <div class="modal fade my-review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
   aria-hidden="true">

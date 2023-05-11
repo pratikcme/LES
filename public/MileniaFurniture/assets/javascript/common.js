@@ -425,7 +425,11 @@ $(document).on("click", ".dec", function () {
 								that.parent().parent().prev().removeClass('d-none');
               }else{
                 that.parent().parent().addClass("d-none");
-                that.parent().parent().parent() .prev("div").find(".addcartbutton").removeClass("d-none");
+                if(that.hasClass('productDetailsButton')){
+                  that.parent().parent().prev("a").removeClass("d-none");
+                }else{
+                  that.parent().parent().parent() .prev("div").find(".addcartbutton").removeClass("d-none");
+                }
               }
               $("#itemCount").html(output.count);
               $("#updated_list").html(output.updated_list);
