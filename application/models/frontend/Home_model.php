@@ -115,6 +115,38 @@ class Home_model extends My_model
 		// lq();
 	}
 
+	public function getTopRatted(){
+		$branch_id = $this->session->userdata('branch_id');
+		$data['table'] = 'user_product_review';
+		$data['select'] = ['product_id','product_varient_id','SUM(ratting) as topRatted'];
+		$data['where']['branch_id'] = $branch_id;
+		$data['groupBy'] = 'product_varient_id';
+		$data['order'] = 'topRatted desc';
+		$return =  $this->selectRecords($data);
+		$toprated = [];
+		foreach ($return as $key => $value) {
+			$data['table'] = TABLE_PRODUCT . " as p";
+			$data['select'] = ['p.*', 'pw.price', 'pw.id as pw_id', 'pw.quantity', 'pw.discount_per', 'pw.discount_price', 'pi.image', 'pw.weight_id', 'without_gst_price', 'pw.limited_stock as limited_stock'];
+			$data['join'] = [
+				TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
+				TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
+			];
+			$data['where'] = [
+				'p.status !=' => '9',
+				'pw.status!=' => '9',
+				'p.id' => $value->product_id,
+				'pw.id'=>$value->product_varient_id,
+				'p.branch_id' => $branch_id
+			];
+
+			$data['groupBy'] = ['p.id'];
+			$data['order'] = 'pw.quantity DESC';
+			$res = $this->selectFromJoin($data);
+			array_push($toprated,$res[0]);
+		}
+		return $toprated;
+	}
+
 	public function top_selling_product($id)
 	{
 		$branch_id = $this->session->userdata('branch_id');

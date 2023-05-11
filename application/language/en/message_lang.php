@@ -77,6 +77,11 @@ $lang['Your Orders'] = 'Your Orders';
 $lang['Cart Totals'] = 'Cart Totals';
 $lang['Do you Want to Clear Cart'] = 'Do you Want to Clear Cart?';
 $lang['Or, log in with your socials'] = 'Or, log in with your socials';
+$lang['Hot Products'] = 'Hot Products';
+$lang['Latest Products'] = 'Latest Products';
+$lang['All Produts'] = 'All Produts';
+
+
 
 // Button //
 $lang['Login with Google'] = 'Login with Google';

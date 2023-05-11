@@ -45,8 +45,8 @@ class Home extends User_Controller
 		// start
 
 		$product_ids = [];
-		// $data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); //call this for no reapeated product in new arrivals
-		$data['top_sell_core'] = $this->this_model->selectTopSelling();
+		$data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); //call this for no reapeated product in new arrivals
+		// $data['top_sell_core'] = $this->this_model->selectTopSelling();
 
 		$this->load->model('frontend/product_model');
 		$top_selling_core = array();
@@ -117,24 +117,47 @@ class Home extends User_Controller
 
 		// end
 		$data['top_sell'] = $top_selling_core;
-		//dd($data['top_sell']);
 		@$data['banner'] = $this->this_model->getWebBannerImage();
-		// dd($data['banner']);die;
 
 		$item_weight_id = [];
+		$data['wish_pid'] = [];
 		if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 			$this->load->model('frontend/product_model');
+			$data['wish_pid'] = $this->product_model->getUsersWishlist();
 			$res = $this->product_model->UsersCartData();
 			foreach ($res as $key => $value) {
 				array_push($item_weight_id, $value->product_weight_id);
 			}
-			// print_r($item_weight_id);die;
 		} else {
 			if (isset($_SESSION["My_cart"])) {
 				$item_weight_id = array_column($_SESSION["My_cart"], "product_weight_id");
 			}
 		}
+		$data['top_ratted_product'] = $this->this_model->getTopRatted();
+		foreach ($data['top_ratted_product'] as $key => $value) {
+			if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+				$value->discount_price = $value->without_gst_price;
+			}
 
+			$varientQuantity = $this->this_model->checkVarientQuantity($value->id);
+
+			if (!empty($value->image) || $value->image != '') {
+				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $value->image)) {
+					// $image = 'defualt.png';	
+					$value->image = $default_product_image;
+				} else {
+					$value->image = $value->image;
+				}
+			} else {
+				$value->image = $default_product_image;
+			}
+			$value->image = str_replace(' ', '%20', $value->image);
+			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
+			$value->addQuantity = $addQuantity;
+
+			$data['top_ratted_product'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
+			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
+		}
 
 		$data['item_weight_id'] = $item_weight_id;
 		$data['offer_list'] = $this->this_model->get_offer($this->session->userdata('branch_id'));

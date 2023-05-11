@@ -11,11 +11,11 @@ $(document).ready(function(){
 
 // chnage-password-form
 $(document).ready(function(){
-  $(".new-add").click(function(){
+  $("document").on('click','.new-add',function(){
     $(".ship-address").show();
   });
 
-  $(".ship-close").click(function(){
+  $(document).on('click','.ship-close',function(){
     $(".ship-address").hide();
   })
 });

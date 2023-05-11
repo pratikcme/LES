@@ -157,7 +157,7 @@ p {
 .common-banner-bg {
     background: url(../images/common-banner-bg.png) !important;
     width: 100% !important;
-    height: 100% !important;
+    /* height: 100% !important; */
     padding-top: 200px !important;
     padding-bottom: 75px !important;
     background-size: 100% 100% !important;

@@ -20,6 +20,8 @@
 //        $('.alert').fadeOut(5000);
 //    });
 
+var CHANGE = function () {
+
 $('#ChangeUserPass').validate({
     rules: {
         old_pass: { required: true },
@@ -131,3 +133,11 @@ $('#ChangePass').validate({
         $(form).submit();
     }
 });
+
+return {
+    //main function to initiate the module
+    init: function () {
+        return;
+    },
+  };
+}();

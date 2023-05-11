@@ -645,7 +645,6 @@ class Products extends User_Controller
 			$h = ['label' => "No Product Found", 'value' => "javascript:"];
 			array_push($tutorialData, $h);
 		}
-		// print_r($res);
 		echo json_encode($tutorialData);
 	}
 

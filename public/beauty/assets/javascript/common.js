@@ -192,58 +192,6 @@ $(document).on('click', '.remove_item', function () {
 					success: function (output) {
 						window.location.reload();
 						return false;
-						var currnt = window.location.href;
-						var segments = currnt.split('/');
-						// if(segments[4] == 'checkout'){
-						// 	window.location.href = url+'home';
-						// 	return false;
-						// }
-						var currntPath = window.location.pathname;
-						if (currntPath == '/checkout') {
-							if (output.count == 0) {
-								$('#itemCount').css('display', 'none');
-								window.location.href = url + "home";
-								return false;
-							} else {
-								window.location.reload();
-							}
-						} else {
-							if (output.count == 0) {
-								$('#itemCount').css('display', 'none');
-								window.location.href = url + "home";
-								return false;
-							}
-						}
-						if (output.result == 'true') {
-							swal({
-								title: language.Removed,
-								text: language.Item_removed_successfully,
-								type: "success",
-								timer: 1500
-							});
-							$('#itemCount').html(output.count);
-							$('#updated_list').html(output.updated_list);
-							$('#nav_subtotal').html(output.final_total);
-							if ($('#' + product_id + '_' + product_weight_id).length) {
-								$('#' + product_id + '_' + product_weight_id).remove();
-							}
-						}
-
-						if ($('#final_subtotal').length) {
-							var subtot = subtotal();
-						} else {
-							var subtot = output.cartTotal;
-						}
-						$('#final_subtotal').html(subtot);
-						$('#nav_subtotal').html(siteCurrency + ' ' + output.cartTotal);
-						if ($('#checkout_subtotal').length) {
-							var shipping = $('#shipping_charge').val();
-							$('#checkout_subtotal').html(output.cartTotal);
-							var checkout_final = parseFloat(output.cartTotal) + parseFloat(shipping);
-							$('#checkout_final').html(checkout_final);
-							$('#totalSaving').html('<i class="fas fa-rupee-sign"></i>' + output.totalSaving);
-
-						}
 					}
 				})
 			}

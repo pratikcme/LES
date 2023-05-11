@@ -771,7 +771,7 @@
                  <nav aria-label="breadcrumb">
                      <ol class="breadcrumb">
                          <li class="breadcrumb-item"><a href="<?= base_url() ?>home"><?= $this->lang->line('home') ?></a></li>
-                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My Account'); ?>
+                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My account'); ?>
                          </li>
                      </ol>
                  </nav>
@@ -805,7 +805,7 @@
                          <a class="nav-link dashboard-tabs certificates-active-img <?= ($action_name == 'my_address') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-4"><?= $this->lang->line('My address') ?></a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill" href="#tab-7"><?= $this->lang->line('Change Password') ?></a>
+                         <a class="nav-link dashboard-tabs certificates-active-img <?= ($action_name == 'change') ? 'active' : '' ?>" data-bs-toggle="pill" href="#tab-7"><?= $this->lang->line('Change Password') ?></a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link dashboard-tabs languge-active-img" id="logout" data-bs-toggle="pill" href="#tab-5"><?= $this->lang->line('logout') ?></a>
@@ -820,7 +820,7 @@
              <div class="tab-details">
                  <div class="tab-content">
                      <!-- ---tab-1-- -->
-                     <div id="tab-1" class="container tab-pane fade active show">
+                     <div id="tab-1" class="container tab-pane fade <?= ($action_name == 'my_account' || $action_name == '') ? 'active show' : '' ?>">
                          <div class="col-xxl-12 col-lg-12 ">
                              <div class="title">
                                  <h2><?= $this->lang->line('Account') ?>
@@ -887,7 +887,7 @@
                                              </div>
                                          </div>
                                          <div class="tab-save-btn">
-                                             <button id="btnAccSubmit" class="cmn-btn" type="submit"><?= $this->lang->line('Save') ?></button>
+                                             <button id="btnAccSubmit" class="cmn-btn" type="submit"><?=$this->lang->line('Save') ?></button>
                                          </div>
 
                                      </div>
@@ -897,7 +897,7 @@
                      </div>
 
                      <!-- ---tab-2-- -->
-                     <div id="tab-2" class="container tab-pane fade">
+                     <div id="tab-2" class="container tab-pane fade <?= ($action_name == 'order') ? 'active show' : '' ?>">
                          <div class="col-xxl-12 col-lg-12 ">
                              <div class="title">
                                  <h2>My Orders</h2>
@@ -1865,10 +1865,10 @@
                      </div>
 
                      <!-- ---tab-3-- -->
-                     <div id="tab-3" class="container tab-pane fade">
+                     <div id="tab-3" class="container tab-pane fade <?= ($action_name == 'wishlist') ? 'active show' : '' ?>">
                          <div class="col-xxl-12 col-lg-12 ">
                              <div class="title">
-                                 <h2>My Wishlist</h2>
+                                 <h2><?=$this->lang->line('My Wishlist')?></h2>
                              </div>
                          </div>
 
@@ -1876,141 +1876,64 @@
                              <table id="table-two-axis" class="two-axis">
                                  <thead class="head-title">
                                      <tr>
-                                         <th colspan="2">product</th>
-                                         <th>price</th>
-                                         <th>Stock Status</th>
+                                         <th colspan="2"><?=$this->lang->line('product')?></th>
+                                         <th><?=$this->lang->line('price')?></th>
                                          <th></th>
                                      </tr>
                                  </thead>
                                  <tbody>
-                                     <tr>
-                                         <td class="mywishlist-part-img">
-                                             <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                                             <div class="cart-detail-img">
+                                 <?php
+                                 foreach ($wishlist as $key => $value) { ?> 
+                                    <tr>
+                                        <td class="mywishlist-part-img">
+                                            <a href="javascript:" class="removeWishlistItem" data-id="<?= $this->utility->safe_b64encode($value->id) ?>"><i class="fa-regular fa-circle-xmark"></i></a>
+                                            <div class="cart-detail-img">
                                                  <div class="cart-detail-img">
-                                                     <a href="./product-details.php"><img src="./assets/images/shop-cart/shop-cart-img-1.png" alt=""></a>
+                                                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                    <img src="<?= $value->image ?>" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                         <td>
+                                            <div class="cart-detail-text">
+                                                <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?=$value->name?></a></h4>
+                                                 <!-- <p>Qty: <span>1</span></p> -->
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cart-price-text cart-disc notranslate">
+                                                <span class="disc-throw <?=($value->discount_per == '0') ? 'd-none' : '' ?>"><?= $this->siteCurrency . ' ' . numberFormat($value->price) ?></span>
+                                                <h3 class=""><?= $this->siteCurrency . ' ' . numberFormat($value->discount_price) ?></h3>
+                                            </div>
+                                        </td>
+                                        <?php
+                                            $d_none = '';
+                                            $d_show = 'd-none';
+                                            if (!empty($item_weight_id)) {
+                                                if (in_array($value->product_weight_id, $item_weight_id)) {
+                                                    $d_show = '';
+                                                    $d_none = 'd-none';
+                                                }
+                                            }
+                                        ?>
+                                        <td>
+                                            <div>
+                                                 <!-- <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+                                                Cart</a> -->
+                                                <a href="javascript:" class="add-cart-btn addcartbutton_wishlist <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>
+                                                     <?= $this->lang->line('add to cart') ?>
+                                                 </a>
+                                                 <div class="product-detail-quentity <?= $d_show ?>">
+                                                     <div class="qty-container">
+                                                         <button class="qty-btn-minus dec cart-qty-minus whishlist_area" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                         <input type="text" name="qty" class="input-qty qty " value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->product_id ?>" data-weight_id="<?= $value->weight_id ?>" readonly>
+                                                         <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                                                     </div>
                                                  </div>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="cart-detail-text">
-                                                 <h4><a href="./product-details.php">Della Chair – Navy</a></h4>
-                                                 <p>Qty: <span>1</span></p>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="cart-price-text cart-disc">
-                                                 <span class="disc-throw">₹2300</span>
-                                                 <h3>₹2250.00</h3>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             In Stock
-                                         </td>
-                                         <td>
-                                             <div>
-                                                 <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                     Cart</a>
-                                             </div>
-                                         </td>
-                                     </tr>
-
-                                     <tr>
-                                         <td class="mywishlist-part-img">
-                                             <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                                             <div class="cart-detail-img">
-                                                 <div class="cart-detail-img">
-                                                     <a href="./product-details.php"><img src="./assets/images/shop-cart/shop-cart-img-2.png" alt=""></a>
-                                                 </div>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="cart-detail-text">
-                                                 <h4><a href="./product-details.php">Wooden Dining Chair</a></h4>
-                                                 <p>Qty: <span>1</span></p>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="cart-price-text cart-disc">
-                                                 <span class="disc-throw">₹2300</span>
-                                                 <h3>₹1150.00</h3>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             In Stock
-                                         </td>
-                                         <td>
-                                             <div>
-                                                 <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                     Cart</a>
-                                             </div>
-                                         </td>
-                                     </tr>
-
-                                     <tr>
-                                         <td class="mywishlist-part-img">
-                                             <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                                             <div class="cart-detail-img">
-                                                 <div class="cart-detail-img">
-                                                     <a href="./product-details.php"><img src="./assets/images/shop-cart/shop-cart-img-3.png" alt=""></a>
-                                                 </div>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="cart-detail-text">
-                                                 <h4><a href="./product-details.php">Artemis Lounge Chair</a></h4>
-                                                 <p>Qty: <span>1</span></p>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="cart-price-text cart-disc">
-                                                 <span class="disc-throw">₹2300</span>
-                                                 <h3>₹1249.00</h3>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             In Stock
-                                         </td>
-                                         <td>
-                                             <div>
-                                                 <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                     Cart</a>
-                                             </div>
-                                         </td>
-                                     </tr>
-
-                                     <tr>
-                                         <td class="mywishlist-part-img">
-                                             <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
-                                             <div class="cart-detail-img">
-                                                 <div class="cart-detail-img">
-                                                     <a href="./product-details.php"><img src="./assets/images/shop-cart/shop-cart-img-4.png" alt=""></a>
-                                                 </div>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="cart-detail-text">
-                                                 <h4><a href="./product-details.php">Dani Pendant Lamp</a></h4>
-                                                 <p>Qty: <span>1</span></p>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="cart-price-text cart-disc">
-                                                 <span class="disc-throw">₹2300</span>
-                                                 <h3>₹950.00</h3>
-                                             </div>
-                                         </td>
-                                         <td>
-                                             In Stock
-                                         </td>
-                                         <td>
-                                             <div>
-                                                 <a href="#" class="add-cart-btn"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
-                                                     Cart</a>
-                                             </div>
-                                         </td>
-                                     </tr>
-
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
                                  </tbody>
                              </table>
                          </div>
@@ -2020,32 +1943,33 @@
                      <div id="tab-4" class="container tab-pane fade">
                          <div class="col-xxl-12 col-lg-12 ">
                              <div class="title">
-                                 <h2>My Address</h2>
+                                 <h2><?=$this->lang->line('My Address')?></h2>
                              </div>
                          </div>
 
                          <div class="main-add-div">
+                         <?php foreach ($get_address as $key => $value) {
+                            $status = ($value->status == '0') ? 'is_default ' : ''; ?>
                              <div class="address-wrapper">
                                  <div class="address-text">
-                                     <h3>Office</h3>
+                                     <h3><?=$value->name?></h3>
                                      <div class="address-icons">
                                          <div class="ship-check text-end">
                                              <div class="form-check">
-                                                 <input class="form-check-input" type="checkbox" value="1" id="id2">
-                                                 <label class="form-check-label" for="id2">
-                                                     default
+                                                 <input class="form-check-input <?= $status ?>" type="checkbox" id="<?= 'ad' . $key ?>" data-id="<?= $this->utility->safe_b64encode($value->id) ?>" <?= ($value->status == '1') ? 'checked' : '' ?>>
+                                                 <label class="form-check-label" for="<?= 'ad' . $key ?>">
+                                                    <?= $this->lang->line('Default') ?>
                                                  </label>
                                              </div>
                                          </div>
-                                         <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                                         <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
+                                         <a href="javascript:" class="add-address-btn edit_address" data-id="<?= $this->utility->safe_b64encode($value->id) ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                         <a href="javascript:" class="delet-address-btn remove_address" data-id="<?= $this->utility->safe_b64encode($value->id) ?>"><i class="fa-solid fa-trash-can"></i></a>
                                      </div>
                                  </div>
-                                 <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
-                                     America</p>
+                                 <p><?= $value->address ?></p>
                              </div>
-
-                             <div class="address-wrapper">
+                         <?php } ?>
+                             <!-- <div class="address-wrapper">
                                  <div class="address-text">
                                      <h3>Home</h3>
                                      <div class="address-icons">
@@ -2063,11 +1987,11 @@
                                  </div>
                                  <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
                                      America</p>
-                             </div>
+                             </div> -->
                          </div>
 
                          <div class="edit-address-btn text-center ">
-                             <button type="button" id="myBtn" class="cmn-btn" data-toggle="modal">Add Address</button>
+                             <button type="button" id="myBtn" class="cmn-btn" data-toggle="modal"><?=$this->lang->line('Add Address')?></button>
                          </div>
 
 
@@ -2079,34 +2003,34 @@
                      </div>
 
                      <!-- ---tab-7-- -->
-                     <div id="tab-7" class="container tab-pane fade">
+                     <div id="tab-7" class="container tab-pane fade <?= ($action_name == 'change') ? 'active show' : '' ?>">
                          <div class="title text-center">
-                             <h2>Change <span>Password</span></h2>
-                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                             <h2><?= $this->lang->line('Change'); ?> <span><?= $this->lang->line('password') ?></span></h2>
+                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
                          </div>
                          <div class="myaccout-detail-tab">
-                             <form action="">
+                             <form id='ChangeUserPass' action="<?= base_url() . 'users_account/users/update_password' ?>" method="post">
                                  <div class="row">
                                      <div class="col-lg-12">
                                          <div class="mb-3">
-                                             <label for="text" class="form-label">Current Password</label>
-                                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                             <label for="text" class="form-label"><?= $this->lang->line('current password') ?></label>
+                                             <input type="password" class="form-control" name="old_pass"  placeholder="<?= $this->lang->line('new password') ?>" autocomplete="off">
                                          </div>
                                      </div>
                                      <div class="col-lg-6">
                                          <div class="mb-3">
-                                             <label for="text" class="form-label">New Password</label>
-                                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                             <label for="text" class="form-label"><?= $this->lang->line('new password') ?></label>
+                                             <input type="password" class="form-control" name="new_pass" id="password_new" placeholder="<?= $this->lang->line('new password') ?>" autocomplete="off">
                                          </div>
                                      </div>
                                      <div class="col-lg-6">
                                          <div class="mb-3">
-                                             <label for="text" class="form-label">Confirm Password</label>
-                                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="XXXXXXXXXX">
+                                             <label for="text" class="form-label"><?= $this->lang->line('Confirm password') ?></label>
+                                             <input type="password" class="form-control" name="confirm_pass" placeholder="<?= $this->lang->line('Confirm password') ?>" autocomplete="off">
                                          </div>
                                      </div>
                                      <div class="tab-save-btn">
-                                         <button class="cmn-btn" type="submit">Submit</button>
+                                         <button class="cmn-btn" id="btnChangeUserPass" type="submit"><?= $this->lang->line('Submit') ?></button>
                                      </div>
                                  </div>
                              </form>
@@ -2121,7 +2045,87 @@
 
 
  <!-- =============place order popup=========== -->
+ <input type="hidden" id="get_parameter" value="<?= (isset($_GET['name']) ? $_GET['name'] : '') ?>">
+
  <div id="myModal" class="modal">
+     <div class="container">
+         <div class="modal-content">
+             <span class="close cancel-btn"><i class="fa-regular fa-circle-xmark"></i></span>
+             <div class="login-page myaccout-detail-tab">
+                 <h3 id='address_title'><?= $this->lang->line('Add New Address') ?></h3>
+                 <form class="get-detials-account" method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" autocomplete="off">
+                     <div class="row">
+                         <div class="col-lg-12">
+                             <label for="full_name" class="form-label"><?= $this->lang->line('Full Name') ?><span>*</span></label>
+                             <input type="text" name="fname" class="form-control fname" id="full_name" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name') ?>">
+                         </div>
+
+                         <div class="col-lg-12">
+                             <label for="text" class="form-label"><?= $this->lang->line('Mobile Number') ?><span>*</span></label>
+                             <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile number') ?>">
+                         </div>
+
+                         <div class="col-lg-12">
+                             <label for="add" class="form-label"><?= $this->lang->line('Location') ?><span>*</span></label>
+                             <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location" aria-describedby="add" placeholder="<?= $this->lang->line('Enter Location') ?>">
+                             <label for="departure_address" class="error" style="display: none;"></label>
+                             <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
+                             <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">
+                         </div>
+
+                         <div class="col-lg-12">
+                             <input type="text" class="form-control landmark" name="landmark" id="landmark" aria-describedby="add" placeholder="<?= $this->lang->line('Landmark') ?>">
+                         </div>
+
+
+
+
+                         <div class="col-lg-6">
+                             <div class="select-box">
+                                 <label for="city" class="form-label"><?= $this->lang->line('Town / City') ?><span>*</span></label>
+                                 <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="<?= $this->lang->line('city') ?>" autocomplete="off">
+                             </div>
+                         </div>
+
+                         <div class="col-lg-6">
+                             <div class="select-box">
+                                 <label for="state" class="form-label"><?= $this->lang->line('State') ?><span>*</span></label>
+                                 <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="<?= $this->lang->line('State') ?>" autocomplete="off">
+                             </div>
+                         </div>
+
+
+
+                         <div class="col-lg-6">
+                             <div class="select-box">
+                                 <label for="country" class="form-label"><?= $this->lang->line('country') ?><span>*</span></label>
+                                 <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="<?= $this->lang->line('country') ?>" autocomplete="off">
+                             </div>
+                         </div>
+
+                         <div class="col-lg-6">
+                             <div class="select-box">
+                                 <label for="pincode" class="form-label"><?= $this->lang->line('pincode') ?><span>*</span></label>
+                                 <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?= $this->lang->line('pincode') ?>" autocomplete="off">
+                             </div>
+                         </div>
+                         <div class="col-lg-12">
+                             <div class="select-box">
+                                 <label for="address" class="form-label"><?= $this->lang->line('Address') ?><span>*</span></label>
+                                 <textarea name="address" placeholder="<?= $this->lang->line('Enter Address') ?>" class="form-control pincode" id="address" autocomplete="off"></textarea>
+                             </div>
+                         </div>
+
+                         <div class="save-btn">
+                             <button type="submit" id="addAddress"><?= $this->lang->line('Save') ?></button>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+ <!-- <div id="myModal" class="modal">
      <div class="container">
          <div class="modal-content ">
              <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
@@ -2201,4 +2205,4 @@
              </div>
          </div>
      </div>
- </div>
+ </div> -->

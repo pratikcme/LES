@@ -372,10 +372,10 @@
                                         <span class="star star-active"></span>
                                     <?php } ?>
                                     <!-- <span class="star"></span>
-                              <span class="star"></span>
-                              <span class="star"></span>
-                              <span class="star star-active"></span>
-                              <span class="star star-active-half"></span> -->
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star star-active"></span>
+                                    <span class="star star-active-half"></span> -->
                                 </div>
                                 <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
                             </div>

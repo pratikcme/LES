@@ -87,7 +87,7 @@ $(document).on("click", "#btnAccSubmit", function () {
   }
 });
 
-var ADDRESS = (function () {
+var ADDRESS = function () {
   // $(document).ready(function(){
   //    $('.alert').fadeOut(5000);
   //  });
@@ -244,6 +244,7 @@ var ADDRESS = (function () {
     $("#address_title").html(language.js_add_address);
     $("#RegisterForm")[0].reset();
     $("#departure_latitude").val("");
+    $('#myModal').hide();
     $("#departure_longitude").val("");
     $(".error").each(function () {
       $(this).html("");
@@ -251,7 +252,7 @@ var ADDRESS = (function () {
     errorNone();
   });
 
-  // var handleAddressForm = function () {
+  var handleAddressForm = function () {
   $("#RegisterForm").validate({
     rules: {
       fname: {
@@ -311,7 +312,7 @@ var ADDRESS = (function () {
       }, 1000);
     },
   });
-  // }
+  }
 
   $(document).on("keydown", function (e) {
     // console.log(e.target.tagName);
@@ -412,4 +413,4 @@ var ADDRESS = (function () {
       handleAccountDetail();
     },
   };
-})();
+}();

@@ -76,6 +76,8 @@ $(document).on("click", "#logout", function () {
           window.location.href = url + "home";
         },
       });
+    }else{
+      window.location.reload();
     }
   });
 });
@@ -113,6 +115,8 @@ $(document).on("click", "#delete_account", function () {
           });
         },
       });
+    }else{
+      window.location.reload();
     }
   });
 });
@@ -188,61 +192,7 @@ $(document).on("click", ".remove_item", function () {
         success: function (output) {
           window.location.reload();
           return false;
-          var currnt = window.location.href;
-          var segments = currnt.split("/");
-          // if(segments[4] == 'checkout'){
-          // 	window.location.href = url+'home';
-          // 	return false;
-          // }
-          var currntPath = window.location.pathname;
-          if (currntPath == "/checkout") {
-            if (output.count == 0) {
-              $("#itemCount").css("display", "none");
-              window.location.href = url + "home";
-              return false;
-            } else {
-              window.location.reload();
-            }
-          } else {
-            if (output.count == 0) {
-              $("#itemCount").css("display", "none");
-              window.location.href = url + "home";
-              return false;
-            }
-          }
-          if (output.result == "true") {
-            swal({
-              title: language.Removed,
-              text: language.Item_removed_successfully,
-              type: "success",
-              timer: 1500,
-            });
-            $("#itemCount").html(output.count);
-            $("#updated_list").html(output.updated_list);
-            $("#nav_subtotal").html(output.final_total);
-            if ($("#" + product_id + "_" + product_weight_id).length) {
-              $("#" + product_id + "_" + product_weight_id).remove();
-            }
-          }
-
-          if ($("#final_subtotal").length) {
-            var subtot = subtotal();
-          } else {
-            var subtot = output.cartTotal;
-          }
-          $("#final_subtotal").html(subtot);
-          $("#nav_subtotal").html(siteCurrency + " " + output.cartTotal);
-          if ($("#checkout_subtotal").length) {
-            var shipping = $("#shipping_charge").val();
-            $("#checkout_subtotal").html(output.cartTotal);
-            var checkout_final =
-              parseFloat(output.cartTotal) + parseFloat(shipping);
-            $("#checkout_final").html(checkout_final);
-            $("#totalSaving").html(
-              '<i class="fas fa-rupee-sign"></i>' + output.totalSaving
-            );
-          }
-        },
+        }
       });
     }
   });
@@ -469,36 +419,14 @@ $(document).on("click", ".dec", function () {
               if (output.count == 0) {
                 $("#itemCount").css("display", "none");
               }
-              // segments[4] when live
-              if (
-                segments[3] == "productDetails" &&
-                !that.hasClass("related_cat")
-              ) {
-                that.parent().addClass("d-none");
-                that
-                  .parent()
-                  .parent()
-                  .prev("div")
-                  .child("button")
-                  .removeClass("d-none");
-              } else {
+              if(that.hasClass('whishlist_area')){ 
+                // this code execute only if my_account/wishlist section to remove by 
+                that.parent().parent().addClass('d-none');
+								that.parent().parent().prev().removeClass('d-none');
+              }else{
                 that.parent().parent().addClass("d-none");
-                // single product //
-                that
-                  .parent()
-                  .parent()
-                  .next("div")
-                  .find(".add-cart-btn")
-                  .removeClass("d-none");
-                // single product //
-                that
-                  .parent()
-                  .parent()
-                  .prev("div")
-                  .find("button")
-                  .removeClass("d-none");
+                that.parent().parent().parent() .prev("div").find(".addcartbutton").removeClass("d-none");
               }
-
               $("#itemCount").html(output.count);
               $("#updated_list").html(output.updated_list);
               $("#display_subtotal").html(siteCurrency + output.final_total);
