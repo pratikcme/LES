@@ -91,60 +91,7 @@
                     </div>
                 </a>
             <?php } ?>
-            <!-- <a href="./product-list-page.php" class="categorie-wapper">
-                <div class="categorie-img">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/home-page/categorie-img-2.png" alt="">
-                </div>
-                <div class="categorie-text">
-                    <h4>LIPS</h4>
-                </div>
-            </a>
-
-            <a href="./product-list-page.php" class="categorie-wapper">
-                <div class="categorie-img">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/home-page/categorie-img-3.png" alt="">
-                </div>
-                <div class="categorie-text">
-                    <h4>HAIR</h4>
-                </div>
-            </a>
-
-            <a href="./product-list-page.php" class="categorie-wapper">
-                <div class="categorie-img">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/home-page/categorie-img-4.png" alt="">
-                </div>
-                <div class="categorie-text">
-                    <h4>EYE</h4>
-                </div>
-            </a>
-
-            <a href="./product-list-page.php" class="categorie-wapper">
-                <div class="categorie-img">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/home-page/categorie-img-5.png" alt="">
-                </div>
-                <div class="categorie-text">
-                    <h4>MAKEUP</h4>
-                </div>
-            </a>
-
-            <a href="./product-list-page.php" class="categorie-wapper">
-                <div class="categorie-img">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/home-page/categorie-img-6.png" alt="">
-                </div>
-                <div class="categorie-text">
-                    <h4>Natural</h4>
-                </div>
-            </a>
-
-            <a href="./product-list-page.php" class="categorie-wapper">
-                <div class="categorie-img">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/home-page/categorie-img-7.png" alt="">
-                </div>
-                <div class="categorie-text">
-                    <h4>FRAGRANCE</h4>
-                </div>
-            </a> -->
-
+            
         </div>
 
     </div>
@@ -250,7 +197,7 @@
                         <div class="sale-banner-inner text-center">
                             <h3> <span><?= $offer_list[0]->offer_percent ?>% OFF</span></h3>
                             <h2><?= $offer_list[0]->offer_title ?></h2>
-                            <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>" class="lg-btn">shop now</a>
+                            <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>" class="lg-btn"><?=$this->lang->line('shop now')?></a>
                         </div>
                     </div>
                 </div>
@@ -282,8 +229,7 @@
             </div> -->
             <?php } ?>
             <!--=============== three-banners ==================-->
-            <?php if (count($offer_list) == 3) {
-            ?>
+            <?php if (count($offer_list) == 3) { ?>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                     <div>
                         <div class="home-clothes mb-4 ">
@@ -293,7 +239,7 @@
                             <div class="cloth-content">
                                 <h5><?= $offer_list[0]->offer_title ?></h5>
                                 <h3><?= $offer_list[0]->offer_percent ?>%<span>OFF</span></h3>
-                                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>">Explore<?= $this->lang->line('Explore More') ?></a>
+                                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>"><?= $this->lang->line('Explore More') ?></a>
                             </div>
                         </div>
                         <div class="home-clothes women-cloth">
@@ -303,13 +249,14 @@
                             <div class="cloth-content">
                                 <h5><?= $offer_list[1]->offer_title ?></h5>
                                 <h3><?= $offer_list[1]->offer_percent ?>%<span>OFF</span></h3>
-                                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>">Explore<?= $this->lang->line('Explore More') ?></a>
+                                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[1]->id) ?>"><?= $this->lang->line('Explore More') ?></a>
                             </div>
                         </div>
                     </div>
                     <!--  -->
                     <!-- new upper -->
                 </div>
+
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                     <div class="practical-cloth home-clothes">
                         <div class="cloth-card">

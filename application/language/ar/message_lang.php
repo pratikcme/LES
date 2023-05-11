@@ -80,7 +80,8 @@ $lang['Or, log in with your socials'] = 'أو قم بتسجيل الدخول ب�
 $lang['Hot Products'] = 'منتوجات جديدة';
 $lang['Latest Products'] = 'أحدث المنتجات';
 $lang['All Produts'] = 'جميع المنتجات';
-
+$lang['Top Rating'] = 'أعلى تقييم';
+$lang['shop now'] = 'تسوق الآن';
 
 // Button //
 $lang['Login with Google'] = 'تسجيل الدخول عبر جوجل';

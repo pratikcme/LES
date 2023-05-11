@@ -80,6 +80,8 @@ $lang['Or, log in with your socials'] = 'Or, log in with your socials';
 $lang['Hot Products'] = 'Hot Products';
 $lang['Latest Products'] = 'Latest Products';
 $lang['All Produts'] = 'All Produts';
+$lang['Top Rating'] = 'Top Rating';
+$lang['shop now'] = 'shop now';
 
 
 
