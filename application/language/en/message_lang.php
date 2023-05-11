@@ -169,7 +169,7 @@ $lang['Product'] = "Product";
 $lang['Quantity'] = "Quantity";
 $lang['price'] = "price";
 $lang['Action'] = "Action";
-$lang['Proceed to checkout'] = "proceed to checkout";
+$lang['Proceed to checkout'] = "Proceed To Checkout";
 
 $lang['clear cart'] = "Clear Cart";
 
@@ -243,7 +243,7 @@ $lang['Delivery'] = 'Delivery';
 $lang['Time & Date'] = 'Time & Date';
 $lang['Payment Option'] = 'Payment Option';
 
-$lang['Place order'] = 'Place order';
+$lang['Place order'] = 'Place Order';
 $lang['Cash On Delivery'] = 'Cash On Delivery';
 
 $lang['exclude'] = 'exclude';
@@ -255,7 +255,7 @@ $lang['Cancel'] = 'Cancel';
 $lang['100 Genuine Products'] = '100% Genuine Products';
 $lang['Secure Payments'] = 'Secure Payments';
 
-$lang['checkout'] = 'checkout';
+$lang['checkout'] = 'Checkout';
 $lang['Credit/Debit Card'] = 'Credit/Debit Card';
 $lang['Add new address'] = 'Add new address';
 $lang['Use GST Number'] = 'Use GST Number';
