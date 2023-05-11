@@ -175,7 +175,14 @@
       </div>
     </div>
 
-    <div class="col-xxl-12">
+    
+  </div>
+</section>
+
+<section class="p-120 review-wrp">
+   <div class="container">
+      <div class="row">
+      <div class="col-xxl-12">
       <div class="review-desc">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -396,9 +403,9 @@
         </div>
       </div>
     </div>
-  </div>
+      </div>
+   </div>
 </section>
-
 
 
 

@@ -1085,6 +1085,11 @@ body {
 
 }
 
+.review-wrp{
+    position: relative;
+    z-index: 2;
+}
+
 /* --------rating-css----- */
 .rating {
     margin: auto;
