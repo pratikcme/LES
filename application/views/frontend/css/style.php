@@ -331,7 +331,7 @@
         $secondaryColor = "#615e5d";
         $lightPrimary = "#ff774b";
         $lightColor = "#fff";
-        $borderColor = "#c73d00";
+        $borderColor = "#20aa9c";
         $borderColor2 = "#004846";
         $darkHeaderBackground = "#f3f3f3";
         $navbarColor = "#818181";
