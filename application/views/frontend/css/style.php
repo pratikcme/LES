@@ -328,7 +328,7 @@
         $categoryActiveColor = "#004A99";
     } elseif ($_SERVER['SERVER_NAME'] == 'www.dpdecor.launchestore.com' || $_SERVER['SERVER_NAME'] == 'dphomedecor.com') {
         $primaryColor = "#20aa9c";
-        $secondaryColor = "#000";
+        $secondaryColor = "#615e5d";
         $lightPrimary = "#ff774b";
         $lightColor = "#fff";
         $borderColor = "#c73d00";
