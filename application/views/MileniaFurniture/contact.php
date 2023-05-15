@@ -1,164 +1,132 @@
-  <!-- ----hero-section--- -->
-  <style>
-    label.error {
-      color: red
-    }
-  </style>
-
-  <section class="hero-section common-banner-bg login-section">
-    <img src="<?= $this->theme_base_url . '/assets/img/home/banner-left-bg.png' ?>" alt="" class="left-bg">
-    <img src="<?= $this->theme_base_url . '/assets/img/home/banner-right-bg.png' ?>" alt="" class="right-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
-          <h1> <?= $this->lang->line('Contact us') ?></h1>
+<section class="cmn-banner banner about-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="cmn-banner-wrap text-center">
+          <h3 class="title2 text-uppercase"><?= $this->lang->line('Contact us') ?></h3>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?= $this->lang->line('home') ?></a></li>
-              <li class="breadcrumb-item active" aria-current="page"> <?= $this->lang->line('Contact us') ?></li>
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item"><a href="<?= base_url() ?>home"><?= $this->lang->line('home') ?></a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <?= $this->lang->line('Contact us') ?></li>
             </ol>
           </nav>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- contact-us-wrap -->
-  <section class="contact-us-wrap p-100">
-    <div class="container">
-      <div class="row">
-        <div class="col-xxl-12">
-          <div class="title text-center">
-            <h2><?= $this->lang->line('Reach'); ?> <span><?= $this->lang->line('Out To Us'); ?></span></h2>
-
+<section class="contact-detail p-120">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="contact-detail-wrap">
+          <h3 class="title2 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <?= $this->lang->line('Contact us') ?></h3>
+          <div class="contact-detail-main-div wow fadeInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
+            <div class="contact-wrap">
+              <div class="contact-icon-wrap">
+                <svg width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.9996 17.0768C15.3787 17.0768 17.3073 15.1482 17.3073 12.7691C17.3073 10.39 15.3787 8.46143 12.9996 8.46143C10.6205 8.46143 8.69189 10.39 8.69189 12.7691C8.69189 15.1482 10.6205 17.0768 12.9996 17.0768Z" stroke="#CC833D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M23.7689 12.7692C23.7689 22.4615 12.9997 30 12.9997 30C12.9997 30 2.23047 22.4615 2.23047 12.7692C2.23047 9.91305 3.36508 7.17386 5.3847 5.15423C7.40433 3.13461 10.1435 2 12.9997 2C15.8559 2 18.5951 3.13461 20.6147 5.15423C22.6343 7.17386 23.7689 9.91305 23.7689 12.7692V12.7692Z" stroke="#CC833D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="contact-detail-text">
+                <h6><?= $this->lang->line('Address') ?></h6>
+                <p><?= $appLinks[0]->contact_us_address ?></p>
+              </div>
+            </div>
+            <div class="contact-wrap">
+              <div class="contact-icon-wrap">
+                <svg width="20" height="32" viewBox="0 0 20 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.6157 27.846V4.15372C18.6157 2.96419 17.6514 1.99988 16.4619 1.99988L3.5388 1.99988C2.34926 1.99988 1.38495 2.96419 1.38495 4.15372V27.846C1.38495 29.0356 2.34926 29.9999 3.5388 29.9999H16.4619C17.6514 29.9999 18.6157 29.0356 18.6157 27.846Z" stroke="#CC833D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M10.0011 8.46148C10.8933 8.46148 11.6165 7.73825 11.6165 6.8461C11.6165 5.95395 10.8933 5.23071 10.0011 5.23071C9.10897 5.23071 8.38574 5.95395 8.38574 6.8461C8.38574 7.73825 9.10897 8.46148 10.0011 8.46148Z" fill="#CC833D" />
+                </svg>
+              </div>
+              <div class="contact-detail-text">
+                <h6><?= $this->lang->line('Phone') ?></h6>
+                <a href="tel:<?= $this->lang->line('Phone') ?>">
+                  <p class="d-inline-block"><?= $appLinks[0]->contact_number ?></p>
+                </a>
+              </div>
+            </div>
+            <div class="contact-wrap">
+              <div class="contact-icon-wrap">
+                <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.07715 1.30762H27.9233V19.6153C27.9233 19.9009 27.8098 20.1748 27.6079 20.3768C27.4059 20.5788 27.132 20.6922 26.8464 20.6922H3.15407C2.86845 20.6922 2.59453 20.5788 2.39257 20.3768C2.19061 20.1748 2.07715 19.9009 2.07715 19.6153V1.30762Z" stroke="#CC833D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M27.9233 1.30762L15.0002 13.1538L2.07715 1.30762" stroke="#CC833D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="contact-detail-text">
+                <h6><?= $this->lang->line('Email') ?></h6>
+                <a href="mailto:<?= $appLinks[0]->contact_email ?>">
+                  <p><?= $appLinks[0]->contact_email ?></p>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="contact-data">
+      <div class="col-lg-6">
+        <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.595366386584!2d72.50965841484987!3d23.038624621509506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b279b50bf1b%3A0xa4c68aa0205a0c78!2sPakwan%20Chokdi!5e0!3m2!1sen!2sin!4v1677157937397!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <form id="form" method="post" class="contact-form-wrap wow fadeInDown" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="0" action="<?= base_url() . 'contact' ?>">
-          <h3><?= $this->lang->line('Write Us'); ?></h3>
-          <div class="contact-form">
-            <div class="input-form">
-              <div>
-                <label for=""><?= $this->lang->line('Full Name'); ?></label>
-              </div>
-              <div>
-                <input type="text" name="fname" class="form-control" id="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name'); ?>">
+<section class="contact-form pb-120">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="main-title title text-center center-title">
+          <span class="small-title mb-2"><?= $this->lang->line('Contact Us') ?></span>
+          <h2> <?= $this->lang->line('Send Us An Message') ?></h2>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <form id="form" method="post" action="<?= base_url() ?>contact">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="fname"><?= $this->lang->line('Full Name'); ?></label>
+                <input type="text" name="fname" id="fname" class="form-control" placeholder="<?= $this->lang->line('Full Name'); ?>">
                 <label for="fname" class="error"><?= form_error('fname') ?></label>
               </div>
             </div>
-            <div class="input-form">
-              <div>
-                <label for=""><?= $this->lang->line('Email'); ?></label>
-              </div>
-              <div>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?= $this->lang->line('Enter Email'); ?>">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="email"><?= $this->lang->line('Email'); ?></label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="<?= $this->lang->line('Enter Email'); ?>">
                 <label for="email" class="error"><?= form_error('email') ?></label>
               </div>
             </div>
-            <div class="input-form">
-              <div>
-                <label for=""><?= $this->lang->line('Phone'); ?></label>
-              </div>
-              <div>
-                <input type="tel" name="mobile_no" class="form-control" id="phone-num" aria-describedby="phone-num" placeholder="<?= $this->lang->line('Enter phone Number'); ?>">
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="phone-num"><?= $this->lang->line('Phone'); ?></label>
+                <input type="text" name="mobile_no" id="phone-num" class="form-control" placeholder="<?= $this->lang->line('Enter phone Number'); ?>">
                 <label for="mobile_no" class="error"><?= form_error('mobile_no') ?></label>
               </div>
             </div>
-            <div class="input-form">
-              <div>
-                <label for=""><?= $this->lang->line('Message'); ?></label>
-              </div>
-              <div>
-                <textarea name="message" id="" cols="0" rows="0" placeholder="<?= $this->lang->line('Enter Message'); ?>"></textarea>
+
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="message"><?= $this->lang->line('Message'); ?></label>
+                <textarea name="message" id="message" rows="4" class="form-control" placeholder="<?= $this->lang->line('Enter Message'); ?>"></textarea>
                 <label for="message" class="error"><?= form_error('message') ?></label>
               </div>
             </div>
-          </div>
-          <div>
-            <button class="lg-btn" type="submit" name="submit" id="btnSubmit"><?= $this->lang->line('send') ?></button>
-          </div>
-
-        </form>
-        <div class="contact-info wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
-          <div class="contact-info-wrap">
-            <h3><?= $this->lang->line('Contact Info'); ?></h3>
-            <div>
-              <div class="d-flex align-items-center mb-50">
-                <div class="contact-icon">
-
-                  <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/conatct-us/DeviceMobileCamera.svg' ?>" viewBox="0 0 19.73 30.5">
-                    <defs>
-                      <style>
-                        .contact-us-icon {
-                          fill: none;
-                          stroke: #f5512b;
-                          stroke-linecap: round;
-                          stroke-linejoin: round;
-                          stroke-width: 1.5px;
-                        }
-                      </style>
-                    </defs>
-                    <path class="contact-us-icon" d="M26.62,29.85V6.15A2.16,2.16,0,0,0,24.46,4H11.54A2.15,2.15,0,0,0,9.39,6.15v23.7A2.15,2.15,0,0,0,11.54,32H24.46A2.16,2.16,0,0,0,26.62,29.85ZM18,10.46a1.62,1.62,0,1,0-1.61-1.61A1.62,1.62,0,0,0,18,10.46Z" transform="translate(-8.14 -2.75)" />
-                  </svg>
-                </div>
-                <div>
-                  <p><?= $appLinks[0]->contact_number ?></p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center mb-50">
-                <div class="contact-icon">
-
-                  <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/conatct-us/EnvelopeSimple.svg' ?>" viewBox="0 0 28.35 21.88">
-                    <defs>
-                      <style>
-                        .contact-us-icon {
-                          fill: none;
-                          stroke: #f5512b;
-                          stroke-linecap: round;
-                          stroke-linejoin: round;
-                          stroke-width: 1.5px;
-                        }
-                      </style>
-                    </defs>
-                    <path class="contact-us-icon" d="M5.08,8.31H30.92V26.62a1.1,1.1,0,0,1-.31.76,1.08,1.08,0,0,1-.76.31H6.16a1.06,1.06,0,0,1-1.08-1.07Zm25.84,0L18,20.15,5.08,8.31" transform="translate(-3.83 -7.06)" />
-                  </svg>
-                </div>
-                <div>
-                  <a href="javascript:"><?= $appLinks[0]->contact_email ?></a>
-                </div>
-              </div>
-              <div class="d-flex align-items-center mb-50">
-                <div class="contact-icon">
-
-                  <svg id="Layer_1" data-name="Layer 1" xmlns="<?= $this->theme_base_url . '/assets/img/conatct-us/MapPin.svg' ?>" viewBox="0 0 24.04 30.5">
-                    <defs>
-                      <style>
-                        .contact-us-icon {
-                          fill: none;
-                          stroke: #f5512b;
-                          stroke-linecap: round;
-                          stroke-linejoin: round;
-                          stroke-width: 1.5px;
-                        }
-                      </style>
-                    </defs>
-                    <path class="contact-us-icon" d="M18,19.08a4.31,4.31,0,1,0-4.31-4.31A4.31,4.31,0,0,0,18,19.08Zm10.77-4.31C28.77,24.46,18,32,18,32S7.23,24.46,7.23,14.77a10.77,10.77,0,0,1,21.54,0Z" transform="translate(-5.98 -2.75)" />
-                  </svg>
-                </div>
-                <div>
-                  <p><?= $appLinks[0]->contact_us_address ?></p>
-                </div>
+            <div class="col-lg-3">
+              <div class="text-center">
+                <button type="submit" type="submit" name="submit" id="btnSubmit" class="cmn-btn"><?= $this->lang->line('Submit'); ?></button>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-    </div>
-  </section>
-
-
-  <!-- ------------contact-us-section------------ -->
+  </div>
+</section>

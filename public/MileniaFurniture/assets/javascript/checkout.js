@@ -163,7 +163,7 @@ var CHECKOUT = (function () {
       $("#payBtn_error").html(language.Please_enter_your_Address);
       return false;
     }
-    if (AddressNotInRange == "0") {
+    if (AddressNotInRange == "0" && isSelfPickup == "0") {
       // alert("We are not deliver to your selected Address");
       swal(language.We_do_not_deliver_to_your_selected_Address);
       $("#payBtn_error").html(
@@ -456,6 +456,11 @@ var CHECKOUT = (function () {
     var siteCurrency = $("#siteCurrency").val();
     var promocode = $("#promocode").val();
     $("#applied_promo").val("");
+
+    if ($("#applied_promo").val() !== "") {
+      $("#promo_err").html("Promocode Already Applied");
+      return false;
+    }
     $("#promoAmount").html("0");
     $(".promocode-applied").hide();
     $("#promo_err").html("");
@@ -471,7 +476,11 @@ var CHECKOUT = (function () {
     $.ajax({
       url: base_url + "checkout/validate_promocode",
       type: "post",
-      data: { promocode: promocode },
+      data: {
+        promocode: promocode,
+        isShow: $("#isShow").val() == 0 ? "0" : "1", //Dk Added
+        gstAmt: parseFloat($("#checkout_gst").text()).toFixed(2), //Dk
+      },
       dataType: "json",
       success: function (response) {
         $("#promo_err").html(response.message);

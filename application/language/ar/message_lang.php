@@ -331,6 +331,7 @@ $lang['Contact us'] = 'اتصل بنا';
 $lang['Location'] = 'موقع';
 $lang['Email'] = 'بريد إلكتروني';
 $lang['Phone'] = 'هاتف';
+$lang['Send Us An Message'] = 'أرسل لنا رسالة'; //Dk added
 
 //contact us palceholder
 $lang['First Name'] = 'الاسم الأول';

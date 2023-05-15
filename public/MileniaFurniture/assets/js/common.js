@@ -2,7 +2,6 @@ function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
 
-
 // -----counter-js---
 // var buttonPlus = $(".qty-btn-plus");
 // var buttonMinus = $(".qty-btn-minus");

@@ -331,6 +331,7 @@ $lang['Location'] = 'Location';
 $lang['Email'] = 'Email';
 $lang['Phone'] = 'Phone';
 $lang['Contact Info'] = 'Contact Info';
+$lang['Send Us An Message'] = 'Send Us An Message'; //Dk added
 
 //contact us palceholder
 $lang['First Name'] = 'First Name';
