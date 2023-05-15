@@ -338,8 +338,8 @@
         $cartBtnBackground = "#16aa9c";
         $cartBtnColor = "#fff";
         $loginBtnBackground = "#16aa9c";
-        $loginBtnColor = "#20aa9c";
-        $loginBtnborder = "#ed1c24";
+        $loginBtnColor = "#fff";
+        $loginBtnborder = "#20aa9c";
         $logoWidth = "150px";
         $hvrClr = "#ed1c24";
         $categoryColor = "#fff";
