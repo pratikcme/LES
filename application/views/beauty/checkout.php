@@ -344,8 +344,7 @@
 
                     <div class="coupon-code-wrapper d-none">
                         <img src="<?= $this->theme_base_url ?>/assets/images/check-out-tag-img.png" alt="" class="check-out-tag-img">
-                        <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here
-                                to enter your code</a></h3>
+                        <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
                     </div>
                     <?php if ($shopping_based_discount == 0) { ?>
                         <div class="have-code-part">
