@@ -64,12 +64,12 @@
                 <div class="footer-wrap">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="./myaccount-page">My Account</a></li>
-                        <li><a href="./myaccount-page">Wishlist</a></li>
+                        <!-- <li><a href="#">Blog</a></li> -->
+                        <li><a href="<?=base_url().'users_account/users/account?name=my_account'?>"><?=$this->lang->line('My account')?></a></li>
+                        <li><a href="<?=base_url().'users_account/users/account?name=wishlist'?>"><?=$this->lang->line('Wishlist')?></a></li>
                         <li><a href="<?= base_url() . 'terms_condition' ?>"><?= $this->lang->line('Term & Conditions') ?></a>
                         </li>
-                        <li><a href="#">Order History</a></li>
+                        <!-- <li><a href="#">Order History</a></li> -->
                     </ul>
                 </div>
             </div>
@@ -77,24 +77,26 @@
                 <div class="footer-wrap">
                     <h4>Information</h4>
                     <ul>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="<?=base_url().'products'?>"><?=$this->lang->line('Shop')?></a></li>
                         <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact Us') ?></a></li>
                         <li><a href="<?= base_url() . 'about' ?>"><?= $this->lang->line('About Us') ?></a></li>
                         <li><a href="<?= base_url() . 'privacy_policy' ?>"><?= $this->lang->line('Privacy Policy') ?></a>
                         </li>
-                        <li><a href="#">FAQ</a></li>
+                        <!-- <li><a href="#">FAQ</a></li> -->
                     </ul>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                 <div class="footer-wrap">
-                    <h4>Categories</h4>
+                    <h4><?=$this->lang->line('Categories')?></h4>
                     <ul>
-                        <li><a href="#">Chair</a></li>
-                        <li><a href="#">Sofas</a></li>
+                    <?php foreach ($CategoryHighrstProduct as $key => $value) { ?>
+                        <li><a href="<?=base_url().'products?cat_id='.$this->utility->safe_b64encode($value->id)?>"><?=$value->name?></a></li>
+                    <?php } ?>
+                        <!-- <li><a href="#">Sofas</a></li>
                         <li><a href="#">Table</a></li>
                         <li><a href="#">Watch</a></li>
-                        <li><a href="#">Wall Lamp</a></li>
+                        <li><a href="#">Wall Lamp</a></li> -->
                     </ul>
                 </div>
             </div>
