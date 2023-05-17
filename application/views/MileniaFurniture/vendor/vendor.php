@@ -13,8 +13,6 @@
 <section class="vendor1 contact-us-section section p-100">
     <div class="container">
         <div class="row">
-
-
             <div class="vendor-main">
 
                 <div class="row" id="vendorByajax">

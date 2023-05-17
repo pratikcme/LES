@@ -318,7 +318,7 @@
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?= $this->theme_base_url ?>/assets/images/home/like.svg" alt="light" /></a> -->
+
                                             <div class="techno-check">
                                                 <input class="techno_checkbox wishlist-icon"
                                                     data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
@@ -335,6 +335,7 @@
                                                     </svg>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="hot-products-details ">
@@ -368,10 +369,6 @@
                                                     )</p>
                                             </div>
                                         </div>
-                                        <a href="javascript:;" class="add-cart-btn cmn-btn addcartbutton <?= $d_none ?>"
-                                            data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                            data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
-                                                    class="fa-solid fa-cart-shopping "></i></span><?= $this->lang->line('add to cart') ?></a>
                                         <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                                             <div class="qty-container ">
                                                 <button class="qty-btn-minus dec cart-qty-minus"
@@ -491,10 +488,6 @@
                                             </div>
                                         </div>
 
-                                        <a href="javascript:;" class="add-cart-btn cmn-btn addcartbutton <?= $d_none ?>"
-                                            data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                            data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
-                                                    class="fa-solid fa-cart-shopping "></i></span><?= $this->lang->line('add to cart') ?></a>
                                         <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                                             <div class="qty-container">
                                                 <button class="qty-btn-minus dec cart-qty-minus"
@@ -574,7 +567,7 @@
                                                     stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </a>
-                                        <!-- <a href="#"><img src="<?= $this->theme_base_url ?>/assets/images/home/like.svg" alt="light" /></a> -->
+
                                         <div class="techno-check">
                                             <input class="techno_checkbox wishlist-icon"
                                                 data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
@@ -624,10 +617,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <a href="javascript:;" class="add-cart-btn cmn-btn addcartbutton <?= $d_none ?>"
-                                        data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
-                                        data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
-                                                class="fa-solid fa-cart-shopping "></i></span><?= $this->lang->line('add to cart') ?></a>
+
                                     <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                                         <div class="qty-container ">
                                             <button class="qty-btn-minus dec cart-qty-minus"

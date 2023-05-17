@@ -388,8 +388,6 @@ $(document).on("click", ".dec", function () {
   var shipping_charge = $("#shipingCharge").val();
   shipping_charge = parseFloat(shipping_charge);
   var that = $(this);
-  // console.log(product_weight_id, product_id, weight_id);
-  // return;
   if (quantity <= 0) {
     $(this).next("input").val(1);
 
@@ -429,7 +427,14 @@ $(document).on("click", ".dec", function () {
                 if (that.hasClass("productDetailsButton")) {
                   that.parent().parent().prev("a").removeClass("d-none");
                 } else {
-                  that.parent().parent().prev().removeClass("d-none");
+                  //Dk fixed js
+                  that
+                    .parent()
+                    .parent()
+                    .parent()
+                    .prev("div")
+                    .find(".addcartbutton")
+                    .removeClass("d-none");
                 }
               }
               $("#itemCount").html(output.count);

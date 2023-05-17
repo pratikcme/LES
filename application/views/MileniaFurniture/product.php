@@ -1,65 +1,65 @@
 <style>
-/*PRICE RANGE SLIDER */
-.price-range-slider {
-    width: 100%;
-    padding: 10px 20px 15px;
-    background-color: #f7f7f7;
-}
+    /*PRICE RANGE SLIDER */
+    .price-range-slider {
+        width: 100%;
+        padding: 10px 20px 15px;
+        background-color: #f7f7f7;
+    }
 
-.price-range-slider .range-value {
-    margin: 0;
-    display: flex;
-}
+    .price-range-slider .range-value {
+        margin: 0;
+        display: flex;
+    }
 
-.price-range-slider .range-value .fa-rupee-sign {
-    color: var(--secondary-color);
-    position: relative;
-    font-size: 16px;
-    top: 3px;
-    position: relative;
-    font-weight: 900;
-    margin-right: 5px;
-    top: 1px;
-}
+    .price-range-slider .range-value .fa-rupee-sign {
+        color: var(--secondary-color);
+        position: relative;
+        font-size: 16px;
+        top: 3px;
+        position: relative;
+        font-weight: 900;
+        margin-right: 5px;
+        top: 1px;
+    }
 
-.price-range-slider .range-value input {
-    width: 100%;
-    background: none;
-    color: var(--secondary-color);
-    font-family: 'OpenSans-SemiBold';
-    font-size: 16px;
-    font-weight: initial;
-    box-shadow: none;
-    border: none;
-    margin: 00px 0 20px 0;
-}
+    .price-range-slider .range-value input {
+        width: 100%;
+        background: none;
+        color: var(--secondary-color);
+        font-family: 'OpenSans-SemiBold';
+        font-size: 16px;
+        font-weight: initial;
+        box-shadow: none;
+        border: none;
+        margin: 00px 0 20px 0;
+    }
 
-.price-range-slider .range-bar {
-    border: none;
-    background: #000;
-    height: 3px;
-    width: 96%;
-    margin-left: 8px;
-}
+    .price-range-slider .range-bar {
+        border: none;
+        background: #000;
+        height: 3px;
+        width: 96%;
+        margin-left: 8px;
+    }
 
-.price-range-slider .range-bar .ui-slider-range {
-    background: #1ebcb7;
-}
+    .price-range-slider .range-bar .ui-slider-range {
+        background: #1ebcb7;
+    }
 
-.price-range-slider .range-bar .ui-slider-handle {
-    border: none;
-    border-radius: 25px;
-    background: #fff;
-    border: 2px solid #1ebcb7;
-    height: 17px;
-    width: 17px;
-    top: -0.52em;
-    cursor: pointer;
-}
+    .price-range-slider .range-bar .ui-slider-handle {
+        border: none;
+        border-radius: 25px;
+        background: #fff;
+        border: 2px solid #1ebcb7;
+        height: 17px;
+        width: 17px;
+        top: -0.52em;
+        cursor: pointer;
+    }
 
-.price-range-slider .range-bar .ui-slider-handle+span {
-    background: #1ebcb7;
-}
+    .price-range-slider .range-bar .ui-slider-handle+span {
+        background: #1ebcb7;
+    }
 </style>
 
 
@@ -71,8 +71,7 @@
                 <h1><?= $this->lang->line('SHOP') ?></h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a
-                                href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('SHOP') ?></li>
                     </ol>
                 </nav>
@@ -90,7 +89,7 @@
             <div class="product-select-in">
 
                 <!-- -----mobile-filter-dropdown---- -->
-                <!-- <div class="mobile-filter-icon">
+                <div class="mobile-filter-icon">
                     <div id="mySidepanel" class="sidepanel">
                         <span class="closebtn"><span>×</span></span>
                         <div class="filter-part col-xxl-3 col-xl-4 col-lg-4 col-md-4">
@@ -98,59 +97,24 @@
                                 <div class="accordion" id="accordionExample">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingSix">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseSix"
-                                                aria-expanded="false" aria-controls="collapseSix">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                                 <?= $this->lang->line('Product Categories'); ?>
                                             </button>
                                         </h2>
-                                        <div id="collapseSix" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                        <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <div class=" Categories-part">
                                                     <ul class="categories-wrapper">
 
-                                                        <li class="active">
-                                                            <span><i
-                                                                    class="fa-solid fa-circle-chevron-right"></i></span>
+                                                        <?php foreach ($category as $key => $value) : ?>
+                                                            <!-- <li class="active">
+                                                            <span><i class="fa-solid fa-circle-chevron-right"></i></span>
                                                             Décor (8)
-                                                        </li>
-
-                                                        <li>
-                                                            <span><i
-                                                                    class="fa-solid fa-circle-chevron-right"></i></span>
-                                                            Dining Chair (19)
-                                                        </li>
-
-                                                        <li>
-                                                            <span><i
-                                                                    class="fa-solid fa-circle-chevron-right"></i></span>
-                                                            Dining Room (9)
-                                                        </li>
-
-                                                        <li>
-                                                            <span><i
-                                                                    class="fa-solid fa-circle-chevron-right"></i></span>
-                                                            Living Room (9)
-                                                        </li>
-
-                                                        <li>
-                                                            <span><i
-                                                                    class="fa-solid fa-circle-chevron-right"></i></span>
-                                                            Sofas (7)
-                                                        </li>
-
-                                                        <li>
-                                                            <span><i
-                                                                    class="fa-solid fa-circle-chevron-right"></i></span>
-                                                            Table (8)
-                                                        </li>
-
-                                                        <li>
-                                                            <span><i
-                                                                    class="fa-solid fa-circle-chevron-right"></i></span>
-                                                            Wall Lamp (10)
-                                                        </li>
+                                                        </li> -->
+                                                            <div class="form-check category_id" data-cat_id="<?= $value->id ?>">
+                                                                <label class="form-check-label" for="sub-Kid's"><?= $value->name ?></label>
+                                                            </div>
+                                                        <?php endforeach ?>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -159,14 +123,11 @@
 
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapseOne" aria-expanded="true"
-                                                aria-controls="collapseOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                 Price
                                             </button>
                                         </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <div class="price-range-part product-cat-card">
                                                     <div slider id="slider-distance">
@@ -183,8 +144,7 @@
                                                                 <span id="value">₹3000</span>
                                                             </div>
                                                         </div>
-                                                        <input type="range" value="0" max="3000" min="0" step="10"
-                                                            oninput="
+                                                        <input type="range" value="0" max="3000" min="0" step="10" oninput="
                                                                             this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
                                                                             let value = (this.value/parseInt(this.max))*100
                                                                             var children = this.parentNode.childNodes[1].childNodes;
@@ -193,8 +153,7 @@
                                                                             children[7].style.left=value+'%';children[11].style.left=value+'%';
                                                                             children[11].childNodes[1].innerHTML=this.value;" />
 
-                                                        <input type="range" value="3000" max="3000" min="0" step="10"
-                                                            oninput="
+                                                        <input type="range" value="3000" max="3000" min="0" step="10" oninput="
                                                                             this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
                                                                             let value = (this.value/parseInt(this.max))*100
                                                                             var children = this.parentNode.childNodes[1].childNodes;
@@ -209,221 +168,30 @@
                                     </div>
 
                                     <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingTwo">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                aria-expanded="false" aria-controls="collapseTwo">
-                                                Filter By Color
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTwo" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <div class="preview">
-
-                                                    <ul>
-                                                        <li class="active">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <input class="black" name="color" type="radio">
-                                                                    <label for="">Black</label>
-                                                                </div>
-                                                                <div class="d-flex justify-content-end">
-                                                                    <h4>(8)</h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <input class="red" name="color" type="radio">
-                                                                    <label for="">red</label>
-                                                                </div>
-                                                                <div class="d-flex justify-content-end">
-                                                                    <h4>(19)</h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <input class="yellow" name="color" type="radio">
-                                                                    <label for="">yellow</label>
-                                                                </div>
-                                                                <div class="d-flex justify-content-end">
-                                                                    <h4>(9)</h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <input class="green" name="color" type="radio">
-                                                                    <label for="">green</label>
-                                                                </div>
-                                                                <div class="d-flex justify-content-end">
-                                                                    <h4>(23)</h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <input class="pink" name="color" type="radio">
-                                                                    <label for="">pink</label>
-                                                                </div>
-                                                                <div class="d-flex justify-content-end">
-                                                                    <h4>(9)</h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <input class="purple" name="color" type="radio">
-                                                                    <label for="">purple</label>
-                                                                </div>
-                                                                <div class="d-flex justify-content-end">
-                                                                    <h4>(7)</h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                    </ul>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingThree">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                aria-expanded="false" aria-controls="collapseThree">
-                                                Size
-                                            </button>
-                                        </h2>
-                                        <div id="collapseThree" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <div class="mt-3">
-                                                    <ul class="size-content">
-                                                        <li>
-                                                            <div class="size-wrapper active">
-                                                                <h4>L</h4>
-                                                            </div>
-
-                                                        </li>
-                                                        <li>
-                                                            <div class="size-wrapper">
-                                                                <h4>M</h4>
-                                                            </div>
-
-                                                        </li>
-                                                        <li>
-                                                            <div class="size-wrapper">
-                                                                <h4>S</h4>
-                                                            </div>
-
-                                                        </li>
-                                                        <li>
-                                                            <div class="size-wrapper">
-                                                                <h4>XL</h4>
-                                                            </div>
-
-                                                        </li>
-                                                        <li>
-                                                            <div class="size-wrapper">
-                                                                <h4>XS</h4>
-                                                            </div>
-
-                                                        </li>
-                                                        <li>
-                                                            <div class="size-wrapper">
-                                                                <h4>XXL</h4>
-                                                            </div>
-
-                                                        </li>
-
-                                                        <li>
-                                                            <div class="size-wrapper">
-                                                                <h4>XS-S</h4>
-                                                            </div>
-
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingFour">
-                                            <button class="accordion-button collapsed show" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                                aria-expanded="false" aria-controls="collapseFour">
-                                                Brands
+                                            <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                <?= $this->lang->line('Brands'); ?>
                                             </button>
                                         </h2>
-                                        <div id="collapseFour" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                        <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <div class="mt-4">
                                                     <ul class="brand-content">
-                                                        <li>
+                                                        <!-- <li>
                                                             <div class="brand-wrapper active">
                                                                 <img src="./assets/images/product-list/brand-img-1.png"
                                                                     alt="">
                                                             </div>
-                                                        </li>
+                                                        </li> -->
 
-                                                        <li>
-                                                            <div class="brand-wrapper">
-                                                                <img src="./assets/images/product-list/brand-img-2.png"
-                                                                    alt="">
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div class="brand-wrapper">
-                                                                <img src="./assets/images/product-list/brand-img-3.png"
-                                                                    alt="">
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div class="brand-wrapper">
-                                                                <img src="./assets/images/product-list/brand-img-4.png"
-                                                                    alt="">
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div class="brand-wrapper">
-                                                                <img src="./assets/images/product-list/brand-img-5.png"
-                                                                    alt="">
-                                                            </div>
-                                                        </li>
-
-                                                        <li>
-                                                            <div class="brand-wrapper">
-                                                                <img src="./assets/images/product-list/brand-img-6.png"
-                                                                    alt="">
-                                                            </div>
-                                                        </li>
+                                                        <?php foreach ($brand as $key => $brandRecord) : ?>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input brand" type="checkbox" name="brand" value="<?= $brandRecord->id ?>" id="sub-Nike">
+                                                                    <label class="form-check-label" for="sub-Nike"><?= $brandRecord->name ?></label>
+                                                                </div>
+                                                            </li>
+                                                        <?php endforeach ?>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -432,65 +200,38 @@
 
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingSeven">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseSeven"
-                                                aria-expanded="false" aria-controls="collapseSeven">
-                                                Discounts
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                                <?= $this->lang->line('Discounts'); ?>
                                             </button>
                                         </h2>
-                                        <div id="collapseSeven" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                                        <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <div class="mt-2">
                                                     <ul>
-                                                        <li>
+
+                                                        <?php
+
+                                                        $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35%', 'More than 35%'];
+                                                        foreach ($discountArray as $key => $value) {
+                                                        ?>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input discount" value="<?= $key ?>" type="checkbox" name="filter_discount" id="disc<?= $key ?>">
+                                                                    <label class="form-check-label" for="disc<?= $key ?>"><?= $value ?></label>
+                                                                </div>
+                                                            </li>
+                                                        <?php } ?>
+
+
+                                                        <!-- <li>
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox"
                                                                     name="discount" id="new-10%">
                                                                 <label class="form-check-label" for="new-10%">10-15%
                                                                     (8)</label>
                                                             </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    name="discount" id="new-15%">
-                                                                <label class="form-check-label" for="new-15%">15-20%
-                                                                    (19)</label>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    name="discount" id="new-20%">
-                                                                <label class="form-check-label" for="new-20%">20-25%
-                                                                    (9)</label>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    name="discount" id="new-25%">
-                                                                <label class="form-check-label"
-                                                                    for="new-25%">25-30%</label>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    name="discount" id="new-30%">
-                                                                <label class="form-check-label" for="new-30%"> 30-35%
-                                                                    (9)</label>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    name="discount" id="new-more%">
-                                                                <label class="form-check-label" for="new-more%">More
-                                                                    than 35%(7)</label>
-                                                            </div>
-                                                        </li>
+                                                        </li> -->
+
                                                     </ul>
                                                 </div>
                                             </div>
@@ -500,7 +241,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
 
             <div class="products-wrap pro-list-wrap mycustom-row">
@@ -511,26 +252,23 @@
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingSix">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                         <?= $this->lang->line('Product Categories'); ?>
                                     </button>
                                 </h2>
-                                <div id="collapseSix" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class=" Categories-part">
                                             <ul class="categories-wrapper cate-wrp">
 
                                                 <?php foreach ($category as $key => $value) : ?>
-                                                <li class="active">
-                                                    <!-- <span><i class="fa-solid fa-circle-chevron-right"></i></span> Décor
+                                                    <li class="active">
+                                                        <!-- <span><i class="fa-solid fa-circle-chevron-right"></i></span> Décor
                                                     (8) -->
-                                                    <div class="form-check category_id" data-cat_id="<?= $value->id ?>">
-                                                        <label class="form-check-label"
-                                                            for="sub-Kid's"><?= $value->name ?></label>
-                                                    </div>
-                                                </li>
+                                                        <div class="form-check category_id" data-cat_id="<?= $value->id ?>">
+                                                            <label class="form-check-label" for="sub-Kid's"><?= $value->name ?></label>
+                                                        </div>
+                                                    </li>
                                                 <?php endforeach ?>
 
                                             </ul>
@@ -541,13 +279,11 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         Price
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class="price-range-part product-cat-card">
                                             <div slider id="slider-distance">
@@ -564,8 +300,7 @@
                                                         <span id="value">₹3000</span>
                                                     </div>
                                                 </div>
-                                                <input type="range" value="0" max="3000" min="0" step="10"
-                                                    oninput="
+                                                <input type="range" value="0" max="3000" min="0" step="10" oninput="
                                                                     this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
                                                                     let value = (this.value/parseInt(this.max))*100
                                                                     var children = this.parentNode.childNodes[1].childNodes;
@@ -574,8 +309,7 @@
                                                                     children[7].style.left=value+'%';children[11].style.left=value+'%';
                                                                     children[11].childNodes[1].innerHTML=this.value;" />
 
-                                                <input type="range" value="3000" max="3000" min="0" step="10"
-                                                    oninput="
+                                                <input type="range" value="3000" max="3000" min="0" step="10" oninput="
                                                                     this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
                                                                     let value = (this.value/parseInt(this.max))*100
                                                                     var children = this.parentNode.childNodes[1].childNodes;
@@ -747,28 +481,23 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFour">
-                                    <button class="accordion-button collapsed show" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseFour">
+                                    <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                         <?= $this->lang->line('Brands'); ?>
                                     </button>
                                 </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class="mt-4">
 
                                             <ul class="brand-content">
 
                                                 <?php foreach ($brand as $key => $brandRecord) : ?>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input brand" type="checkbox"
-                                                            name="brand" value="<?= $brandRecord->id ?>" id="sub-Nike">
-                                                        <label class="form-check-label"
-                                                            for="sub-Nike"><?= $brandRecord->name ?></label>
-                                                    </div>
-                                                </li>
+                                                    <li>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input brand" type="checkbox" name="brand" value="<?= $brandRecord->id ?>" id="sub-Nike">
+                                                            <label class="form-check-label" for="sub-Nike"><?= $brandRecord->name ?></label>
+                                                        </div>
+                                                    </li>
                                                 <?php endforeach ?>
                                             </ul>
                                         </div>
@@ -778,14 +507,11 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingSeven">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSeven" aria-expanded="false"
-                                        aria-controls="collapseSeven">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                                         <?= $this->lang->line('Discounts'); ?>
                                     </button>
                                 </h2>
-                                <div id="collapseSeven" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                                <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class="mt-2">
                                             <ul class="cate-wrp">
@@ -796,14 +522,12 @@
                                                 foreach ($discountArray as $key => $value) {
 
                                                 ?>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input discount" value="<?= $key ?>"
-                                                            type="checkbox" name="filter_discount" id="disc<?= $key ?>">
-                                                        <label class="form-check-label"
-                                                            for="disc<?= $key ?>"><?= $value ?></label>
-                                                    </div>
-                                                </li>
+                                                    <li>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input discount" value="<?= $key ?>" type="checkbox" name="filter_discount" id="disc<?= $key ?>">
+                                                            <label class="form-check-label" for="disc<?= $key ?>"><?= $value ?></label>
+                                                        </div>
+                                                    </li>
                                                 <?php } ?>
                                             </ul>
                                         </div>
@@ -820,8 +544,7 @@
                     <div class="product-select-in">
                         <div class="d-flex w-100 justify-content-between">
 
-                            <a class="filter-icon filter-hide-btn lg-btn wow fadeInLeft"><?= $this->lang->line('Filter'); ?><i
-                                    class="fa-solid fa-circle-arrow-right"></i></a>
+                            <a class="filter-icon filter-hide-btn lg-btn wow fadeInLeft"><?= $this->lang->line('Filter'); ?><i class="fa-solid fa-circle-arrow-right"></i></a>
 
                             <!-- ----mobile-filter-btn---- -->
                             <a class="mobile-filter-btn"><i class="fa fa-filter" aria-hidden="true"></i></a>
@@ -912,8 +635,7 @@
                 <li class="page-item"><a class="page-link active" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-right"
-                            aria-hidden="true"></i></a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
             </ul>
         </div>
     </div>
@@ -925,5 +647,4 @@
 <!-- <div class="mobile-btn-overlay"></div> -->
 <input type="hidden" name="" id="cat_id">
 <input type="hidden" name="" id="sub_cat_id">
-<input type="hidden" name="" id="getBycatID"
-    value="<?= (isset($getBycatID) ?  $this->utility->safe_b64decode($getBycatID) : '') ?>">
+<input type="hidden" name="" id="getBycatID" value="<?= (isset($getBycatID) ?  $this->utility->safe_b64decode($getBycatID) : '') ?>">

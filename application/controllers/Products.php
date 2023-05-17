@@ -169,6 +169,7 @@ class Products extends User_Controller
 		$varient_id = $this->utility->safe_b64decode($this->uri->segment(4));
 
 		$this->load->model('frontend/home_model', 'home_model');
+		$this->load->model('frontend/product_model', 'product_model');
 		$data['productDetail'][0]->rating = $this->home_model->selectStarRatting($product_id, $varient_id);
 		// dd($data['productDetail']);
 		$varient_ids = explode(',', $data['productDetail'][0]->product_variant_id);
@@ -242,6 +243,10 @@ class Products extends User_Controller
 			$varientQuantity = $this->home_model->checkVarientQuantity($value->id);
 			$related_product[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 			$value->ratting = $this->home_model->selectStarRatting($value->id, $value->pw_id);
+
+
+			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
+			$value->addQuantity = $addQuantity;
 		}
 		$data['productDetail'][0]->brand_name = $brand_name;
 		$data['related_product'] = $related_product;

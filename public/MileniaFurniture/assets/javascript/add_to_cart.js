@@ -28,15 +28,16 @@ $(document).on("click", ".addcartbutton", function () {
         return false;
       }
 
-      // DK changed js
+      // DK Fixed js
       if (output.count >= 1) {
-        that.next().removeClass("d-none");
-        // .parent()
-        // .parent()
-        // .next("div")
-        // .find("div.product-detail-quentity")
-
+        that
+          .parent()
+          .parent()
+          .next("div")
+          .find("div.product-detail-quentity")
+          .removeClass("d-none");
         that.addClass("d-none");
+
         $("#itemCount").css("display", "block");
       }
       $("#nav_cart_dropdown").removeClass("d-none");
