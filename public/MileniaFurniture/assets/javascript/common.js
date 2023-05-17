@@ -76,7 +76,7 @@ $(document).on("click", "#logout", function () {
           window.location.href = url + "home";
         },
       });
-    }else{
+    } else {
       window.location.reload();
     }
   });
@@ -115,7 +115,7 @@ $(document).on("click", "#delete_account", function () {
           });
         },
       });
-    }else{
+    } else {
       window.location.reload();
     }
   });
@@ -192,7 +192,7 @@ $(document).on("click", ".remove_item", function () {
         success: function (output) {
           window.location.reload();
           return false;
-        }
+        },
       });
     }
   });
@@ -388,7 +388,8 @@ $(document).on("click", ".dec", function () {
   var shipping_charge = $("#shipingCharge").val();
   shipping_charge = parseFloat(shipping_charge);
   var that = $(this);
-
+  // console.log(product_weight_id, product_id, weight_id);
+  // return;
   if (quantity <= 0) {
     $(this).next("input").val(1);
 
@@ -419,16 +420,16 @@ $(document).on("click", ".dec", function () {
               if (output.count == 0) {
                 $("#itemCount").css("display", "none");
               }
-              if(that.hasClass('whishlist_area')){ 
-                // this code execute only if my_account/wishlist section to remove by 
-                that.parent().parent().addClass('d-none');
-								that.parent().parent().prev().removeClass('d-none');
-              }else{
+              if (that.hasClass("whishlist_area")) {
+                // this code execute only if my_account/wishlist section to remove by
                 that.parent().parent().addClass("d-none");
-                if(that.hasClass('productDetailsButton')){
+                that.parent().parent().prev().removeClass("d-none");
+              } else {
+                that.parent().parent().addClass("d-none");
+                if (that.hasClass("productDetailsButton")) {
                   that.parent().parent().prev("a").removeClass("d-none");
-                }else{
-                  that.parent().parent().parent() .prev("div").find(".addcartbutton").removeClass("d-none");
+                } else {
+                  that.parent().parent().prev().removeClass("d-none");
                 }
               }
               $("#itemCount").html(output.count);

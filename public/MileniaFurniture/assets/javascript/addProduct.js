@@ -300,43 +300,75 @@ var ADDPRODUCT = (function () {
             $("#is_discounted").html(output.discount_per + "% off");
           }
 
-            var isDiscount = output.discount_per > 0 ? "" : "d-none";
-            var disNwislist =
-              '<span class="discnt ' +
-              isDiscount +
-              '">' +
-              output.discount_per +
-              "% off</span>";
-            disNwislist =
-              disNwislist +
-              '<div class="pro-hearticon wishlist-icon" data-product_id="' +
-              output.product_id +
-              '" data-product_weight_id="' +
-              output.product_variant_id +
-              '"><i class="fa-regular fa-heart ' +
-              output.isInWishListUpbasket +
-              '"></i></div>';
-            $(".discnt").remove();
-            $(".pro-hearticon").remove();
-            $("#zoom_image").before(disNwislist);
+          var isDiscount = output.discount_per > 0 ? "" : "d-none";
+          var disNwislist =
+            '<span class="discnt ' +
+            isDiscount +
+            '">' +
+            output.discount_per +
+            "% off</span>";
+          disNwislist =
+            disNwislist +
+            '<div class="pro-hearticon wishlist-icon" data-product_id="' +
+            output.product_id +
+            '" data-product_weight_id="' +
+            output.product_variant_id +
+            '"><i class="fa-regular fa-heart ' +
+            output.isInWishListUpbasket +
+            '"></i></div>';
+          $(".discnt").remove();
+          $(".pro-hearticon").remove();
+          $("#zoom_image").before(disNwislist);
 
-            if (output.varient_quantity > output.limited_stock) {
-              $("#is_aval_stock").html(stockMessage1);
-            } else {
-              $("#is_aval_stock").html(stockMessage);
-            }
+          if (output.varient_quantity > output.limited_stock) {
+            $("#is_aval_stock").html(stockMessage1);
+          } else {
+            $("#is_aval_stock").html(stockMessage);
+          }
 
           if (output.cartProductQuantity == 0) {
             var qnt = 1;
-            that.closest("div").prev().prev('div.product-detalis-btn').find("a:first").removeClass("d-none");
-            that.closest("div").prev().prev('div.product-detalis-btn').find('a:first').next("div").addClass("d-none");
+            that
+              .closest("div")
+              .prev()
+              .prev("div.product-detalis-btn")
+              .find("a:first")
+              .removeClass("d-none");
+            that
+              .closest("div")
+              .prev()
+              .prev("div.product-detalis-btn")
+              .find("a:first")
+              .next("div")
+              .addClass("d-none");
           } else {
-            that.closest("div").prev().prev('div.product-detalis-btn').find("a:first").addClass("d-none");
-            that.closest("div").prev().prev('div.product-detalis-btn').find('a:first').next("div").removeClass("d-none");
+            that
+              .closest("div")
+              .prev()
+              .prev("div.product-detalis-btn")
+              .find("a:first")
+              .addClass("d-none");
+            that
+              .closest("div")
+              .prev()
+              .prev("div.product-detalis-btn")
+              .find("a:first")
+              .next("div")
+              .removeClass("d-none");
             var qnt = output.cartProductQuantity;
           }
-          that.closest("div").prev().prev('div.product-detalis-btn').find(".product-detail-quentity .qty-container .qty-btn-minus").attr("data-product_weight_id", output.product_weight_id);
-          that.closest("div").prev().prev('div.product-detalis-btn').find(".product-detail-quentity .qty-container .qty-btn-plus").attr("data-product_weight_id", output.product_weight_id);
+          that
+            .closest("div")
+            .prev()
+            .prev("div.product-detalis-btn")
+            .find(".product-detail-quentity .qty-container .qty-btn-minus")
+            .attr("data-product_weight_id", output.product_weight_id);
+          that
+            .closest("div")
+            .prev()
+            .prev("div.product-detalis-btn")
+            .find(".product-detail-quentity .qty-container .qty-btn-plus")
+            .attr("data-product_weight_id", output.product_weight_id);
           $("#qnt").val(qnt);
           $("#product_weight_id").val(output.product_weight_id);
           $("#varient_id").val(output.product_variant_id);
