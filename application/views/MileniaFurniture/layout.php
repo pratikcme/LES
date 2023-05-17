@@ -12,6 +12,14 @@
 <!-- <body class="rtl" dir="rtl"> -->
 
 <body>
+<section class="loader-main d-none">
+    <div class="loader-wrapper">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+  </section>
   <?php $this->load->view($_SESSION['template_name'] . '/include/body_header'); ?>
   <!-- -------mobile-device-navbar--- -->
 
