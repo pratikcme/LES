@@ -69,8 +69,6 @@ class Products extends User_Controller
 		$data['brand'] = $this->this_model->selectBrand();
 		$data['subCategory'] = $this->this_model->getAllSubCategory();
 		$data['available_subcat'] = $available_subcat;
-		// echo '<pre>';
-		// print_r($data['subCategory']);die;
 
 
 		foreach ($data['brand'] as $key => $value) {
