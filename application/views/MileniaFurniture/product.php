@@ -211,9 +211,9 @@
                                                             <div class="form-check">
                                                                 <input class="form-check-input brand" type="checkbox"
                                                                     name="brand" value="<?= $brandRecord->id ?>"
-                                                                    id="sub-Nike">
+                                                                    id="<?= 'brand'.$key ?>">
                                                                 <label class="form-check-label"
-                                                                    for="sub-Nike"><?= $brandRecord->name ?></label>
+                                                                    for="<?= 'brand'.$key ?>"><?= $brandRecord->name ?></label>
                                                             </div>
                                                         </li>
                                                         <?php endforeach ?>
@@ -246,9 +246,9 @@
                                                             <div class="form-check">
                                                                 <input class="form-check-input discount"
                                                                     value="<?= $key ?>" type="checkbox"
-                                                                    name="filter_discount" id="disc<?= $key ?>">
+                                                                    name="filter_discount" id="<?= $key ?>">
                                                                 <label class="form-check-label"
-                                                                    for="disc<?= $key ?>"><?= $value ?></label>
+                                                                    for="<?= $key ?>"><?= $value ?></label>
                                                             </div>
                                                         </li>
                                                         <?php } ?>
