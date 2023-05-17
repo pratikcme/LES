@@ -254,7 +254,7 @@
                                     <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                                         <div class="hot-products-img position-relative overflow-hidden">
                                             <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="hot-product-img" />
-                                            <p><?= ($value->varientQuantity > $value->limited_stock) ? '' : $this->lang->line('Limited Stock') ?>
+                                            <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                             </p>
                                             <div class="hot-products-cart-wrap">
                                                 <a href="javascript:" class="addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
@@ -339,8 +339,10 @@
                                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
                                     <div class="hot-products-wrap">
                                         <div class="hot-products-img position-relative overflow-hidden">
+
                                             <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="hot-product-img" />
-                                            <?= ($value->varientQuantity > $value->limited_stock) ? '' : $this->lang->line('Limited Stock') ?>
+                                            <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                            </p>
                                             <div class="hot-products-cart-wrap">
                                                 <a href="javascript:" class="addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
                                                     <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -433,7 +435,7 @@
                                 <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                                     <div class="hot-products-img position-relative overflow-hidden">
                                         <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="hot-product-img" />
-                                        <p><?= ($value->varientQuantity > $value->limited_stock) ? '' : $this->lang->line('Limited Stock') ?>
+                                        <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
                                         <div class="hot-products-cart-wrap">
                                             <a href="javascript:" class="addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">

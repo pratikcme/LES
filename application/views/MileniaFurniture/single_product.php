@@ -24,10 +24,10 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?= $this->lang->line('home') ?></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="<?= base_url() . 'products' ?>"><?= $this->lang->line('Product Detail') ?></a>
-                        </li>
-                        <!-- <li class="breadcrumb-item"><a href="./product-list-page.php">Dining</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Artemis Lounge Chair</li> -->
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <?= $this->lang->line('Product Detail') ?></li>
+
+
                     </ol>
                 </nav>
             </div>
@@ -79,15 +79,7 @@
                                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" />
                                 </div>
                             <?php } ?>
-                            <!-- <div class="swiper-slide">
-                  <img src="<?= $this->theme_base_url ?>/assets/images/product-details/product-details-img-2.png" />
-                </div>
-              <div class="swiper-slide">
-                <img src="<?= $this->theme_base_url ?>/assets/images/product-details/product-details-img-3.png" />
-              </div>
-              <div class="swiper-slide">
-                <img src="<?= $this->theme_base_url ?>/assets/images/product-details/product-details-img-4.png" />
-              </div> -->
+
                         </div>
                     </div>
                 </div>
@@ -107,6 +99,10 @@
                         </div>
                         <div><span>(<?= $productDetail[0]->rating['rating'] ?>)</span></div>
                     </div>
+
+                    <h6 id="is_aval_stock">
+                        <?= ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                    </h6>
 
                     <h3 class="notranslate" id="dynamic_price">
                         <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
@@ -311,7 +307,8 @@
                                     <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                                         <div class="hot-products-img position-relative overflow-hidden">
                                             <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="hot-product-img" />
-                                            <p><?= ($value->varientQuantity > $value->limited_stock) ? '' : $this->lang->line('Limited Stock') ?>
+
+                                            <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                             </p>
                                             <div class="hot-products-cart-wrap">
                                                 <a href="javascript:" class="addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">

@@ -199,21 +199,14 @@
                                             <div class="accordion-body">
                                                 <div class="mt-4">
                                                     <ul class="brand-content">
-                                                        <!-- <li>
-                                                            <div class="brand-wrapper active">
-                                                                <img src="./assets/images/product-list/brand-img-1.png"
-                                                                    alt="">
-                                                            </div>
-                                                        </li> -->
-
                                                         <?php foreach ($brand as $key => $brandRecord) : ?>
                                                         <li>
                                                             <div class="form-check">
                                                                 <input class="form-check-input brand" type="checkbox"
                                                                     name="brand" value="<?= $brandRecord->id ?>"
-                                                                    id="<?= 'brand'.$key ?>">
+                                                                    id="<?= 'brand' . $key ?>">
                                                                 <label class="form-check-label"
-                                                                    for="<?= 'brand'.$key ?>"><?= $brandRecord->name ?></label>
+                                                                    for="<?= 'brand' . $key ?>"><?= $brandRecord->name ?></label>
                                                             </div>
                                                         </li>
                                                         <?php endforeach ?>
@@ -236,9 +229,7 @@
                                             <div class="accordion-body">
                                                 <div class="mt-2">
                                                     <ul>
-
                                                         <?php
-
                                                         $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35%', 'More than 35%'];
                                                         foreach ($discountArray as $key => $value) {
                                                         ?>
@@ -252,17 +243,6 @@
                                                             </div>
                                                         </li>
                                                         <?php } ?>
-
-
-                                                        <!-- <li>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    name="discount" id="new-10%">
-                                                                <label class="form-check-label" for="new-10%">10-15%
-                                                                    (8)</label>
-                                                            </div>
-                                                        </li> -->
-
                                                     </ul>
                                                 </div>
                                             </div>
@@ -293,7 +273,6 @@
                                     <div class="accordion-body">
                                         <div class=" Categories-part">
                                             <ul class="categories-wrapper cate-wrp">
-
                                                 <li class="active">
                                                     <div class="form-check category_id" data-cat_id="">
                                                         <label class="form-check-label"
@@ -302,15 +281,12 @@
                                                 </li>
                                                 <?php foreach ($category as $key => $value) : ?>
                                                 <li class="active">
-                                                    <!-- <span><i class="fa-solid fa-circle-chevron-right"></i></span> Décor
-                                                    (8) -->
                                                     <div class="form-check category_id" data-cat_id="<?= $value->id ?>">
                                                         <label class="form-check-label"
                                                             for="sub-Kid's"><?= $value->name ?></label>
                                                     </div>
                                                 </li>
                                                 <?php endforeach ?>
-
                                             </ul>
                                         </div>
                                     </div>
@@ -327,12 +303,15 @@
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <label for="priceRange"> <?= $this->lang->line('price Range'); ?>:</label>
-                                        <input type="text" id="priceRange" readonly>
-                                        <div id="price-range" class="slider"></div>
+                                        <div class="price-range-part product-cat-card">
+                                            <label for="priceRange"> <?= $this->lang->line('price Range'); ?>:</label>
+                                            <input type="text" id="priceRange" readonly>
+                                            <div id="price-range" class="slider"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFour">
@@ -346,9 +325,7 @@
                                     aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class="mt-4">
-
                                             <ul class="brand-content">
-
                                                 <?php foreach ($brand as $key => $brandRecord) : ?>
                                                 <li>
                                                     <div class="form-check">
@@ -378,12 +355,9 @@
                                     <div class="accordion-body">
                                         <div class="mt-2">
                                             <ul class="cate-wrp">
-
                                                 <?php
-
                                                 $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35%', 'More than 35%'];
                                                 foreach ($discountArray as $key => $value) {
-
                                                 ?>
                                                 <li>
                                                     <div class="form-check">
@@ -432,7 +406,7 @@
                     </div>
 
                     <div class="main-listing-wrapper" id="ajaxProduct">
-                        
+
                     </div>
                 </div>
             </div>
