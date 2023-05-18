@@ -455,10 +455,10 @@ class Product_model extends My_model
 
 				$data['addQuantity'] = $addQuantity;
 				$this->load->model('frontend/home_model', 'home_model');
-				// $product[$key]->rating  = $this->home_model->selectStarRatting($value->id);
+
 				$varientQuantity = $this->checkVarientQuantity($value->id);
 
-				// $checkMycart = $this->checkMycartProduct($this->session->userdata('user_id'));
+
 				$p_outofstock = '';
 				if ($varientQuantity == '0') {
 
