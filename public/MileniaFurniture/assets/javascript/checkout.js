@@ -553,6 +553,7 @@ var CHECKOUT = (function () {
         data: $(form).serialize(),
         dataType: "json",
         success: function (response) {
+            console.log(response);
           if (response.success == "1") {
             $("#mobileModal").modal("hide");
             $("#Otp").modal("show");
