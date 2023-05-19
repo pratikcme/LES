@@ -17,8 +17,6 @@
     </div>
 </section>
 
-
-
 <!-- ------------myaccoutn-section------------ -->
 <section class="my-account-section p-120">
 
@@ -74,18 +72,21 @@
                             </div>
                         </div>
                         <div class="myaccout-detail-tab">
-                            <div class="choose-img">
-                                <input type="file" class="choose-input" name="profileimage" accept="image/*"
-                                    onchange="loadFile(event)">
-                                <img src="<?= ($userDetails[0]->profileimage != '') ? base_url() . 'public/images/' . $this->folder . 'user_profile/' . $userDetails[0]->profileimage : $this->theme_base_url . '/assets/img/my-account/myaccount-profile-img.png' ?>"
-                                    id="output" class="button" alt="err">
-                                <button class="choose-btn"><i class="fa-solid fa-camera"></i></button>
-                            </div>
+
                             <div class="get-detials-account">
                                 <form id='ChangePass' enctype="multipart/form-data"
                                     action="<?= base_url() . 'users_account/users/account' ?>" method="post">
                                     <input type="hidden" name="hidden_image"
                                         value="<?= $userDetails[0]->profileimage ?>">
+                                    <div class="choose-img">
+                                        <input type="file" class="choose-input" name="profileimage" accept="image/*"
+                                            onchange="loadFile(event)">
+                                        <img src="<?= ($userDetails[0]->profileimage != '') ? base_url() . 'public/images/' . $this->folder . 'user_profile/' . $userDetails[0]->profileimage : $this->theme_base_url . '/assets/img/my-account/myaccount-profile-img.png' ?>"
+                                            id="output" class="button" alt="err">
+                                        <button type="button" class="choose-btn"><i
+                                                class="fa-solid fa-camera"></i></button>
+                                    </div>
+
                                     <div class="row">
                                         <div class="col-xxl-6 col-md-6">
                                             <div class="mb-3">
@@ -652,7 +653,6 @@
                                                     </div>
                                                     <?php } ?>
 
-
                                                     <table class="table all-detalis-left all-detalis-right">
                                                         <tbody>
                                                             <tr>
@@ -881,7 +881,8 @@
                     </div>
 
                     <!-- ---tab-4-- -->
-                    <div id="tab-4" class="container tab-pane fade">
+                    <div id="tab-4"
+                        class="container tab-pane fade <?= ($action_name == 'my_address') ? 'active show' : '' ?>">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('My Address') ?></h2>
@@ -917,25 +918,6 @@
                                 <p><?= $value->address ?></p>
                             </div>
                             <?php } ?>
-                            <!-- <div class="address-wrapper">
-                                 <div class="address-text">
-                                     <h3>Home</h3>
-                                     <div class="address-icons">
-                                         <div class="ship-check text-end">
-                                             <div class="form-check">
-                                                 <input class="form-check-input" type="checkbox" value="1" id="id1">
-                                                 <label class="form-check-label" for="id1">
-                                                     default
-                                                 </label>
-                                             </div>
-                                         </div>
-                                         <a href="" class="add-address-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                                         <a href="" class="delet-address-btn"><i class="fa-solid fa-trash-can"></i></a>
-                                     </div>
-                                 </div>
-                                 <p>2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America
-                                     America</p>
-                             </div> -->
                         </div>
 
                         <div class="edit-address-btn text-center ">
@@ -1050,9 +1032,6 @@
                                 aria-describedby="add" placeholder="<?= $this->lang->line('Landmark') ?>">
                         </div>
 
-
-
-
                         <div class="col-lg-6">
                             <div class="select-box">
                                 <label for="city"
@@ -1110,84 +1089,3 @@
         </div>
     </div>
 </div>
-<!-- <div id="myModal" class="modal">
-     <div class="container">
-         <div class="modal-content ">
-             <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
-             <div class="login-page myaccout-detail-tab">
-                 <form class="get-detials-account" action="">
-                     <div class="row">
-                         <div class="col-lg-6">
-                             <label for="fname" class="form-label">First Name<span>*</span></label>
-                             <input type="text" class="form-control" id="fname" aria-describedby="fname" placeholder="Your First-Name">
-                         </div>
-
-                         <div class="col-lg-6">
-                             <label for="lname" class="form-label">Last Name<span>*</span></label>
-                             <input type="email" class="form-control" id="lname" aria-describedby="lname" placeholder="Your Last-Name">
-                         </div>
-
-                         <div class="col-lg-12">
-                             <label for="text" class="form-label">Country / Region<span>*</span></label>
-                             <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="Enter Your Number">
-                         </div>
-
-                         <div class="col-lg-12">
-                             <label for="add" class="form-label">Street address<span>*</span></label>
-                             <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Enter Your Address">
-                         </div>
-
-                         <div class="col-lg-12">
-                             <input type="text" class="form-control" id="add" aria-describedby="add" placeholder="Apartment, suite, etc.">
-                         </div>
-
-                         <div class="col-lg-6">
-                             <div class="select-box">
-                                 <label for="city" class="form-label">Town / City<span>*</span></label>
-                                 <select class="form-select" aria-label="city">
-                                     <option selected>Ahmedabad</option>
-                                     <option value="1">Surt</option>
-                                     <option value="2">Baroda</option>
-                                     <option value="3">Ohter</option>
-                                 </select>
-                             </div>
-                         </div>
-
-                         <div class="col-lg-6">
-                             <div class="select-box">
-                                 <label for="state" class="form-label">State<span>*</span></label>
-                                 <select class="form-select" aria-label="Default select example">
-                                     <option selected>Gujarat</option>
-                                     <option value="1">Surt</option>
-                                     <option value="2">Baroda</option>
-                                     <option value="3">Ohter</option>
-                                 </select>
-                             </div>
-                         </div>
-
-                         <div class="col-lg-6">
-                             <div class="select-box">
-                                 <label for="state" class="form-label">State<span>*</span></label>
-                                 <select class="form-select" aria-label="Default select example">
-                                     <option selected>Gujarat</option>
-                                     <option value="1">Surt</option>
-                                     <option value="2">Baroda</option>
-                                     <option value="3">Ohter</option>
-                                 </select>
-                             </div>
-                         </div>
-
-                         <div class="col-lg-6">
-                             <label for="zipcode" class="form-label">ZIP Code<span>*</span></label>
-                             <input type="text" class="form-control" id="add" aria-describedby="zipcode" placeholder="380050">
-                         </div>
-                         <div class="save-btn">
-                             <button type="submit">save</button>
-                         </div>
-
-                     </div>
-                 </form>
-             </div>
-         </div>
-     </div>
- </div> -->
