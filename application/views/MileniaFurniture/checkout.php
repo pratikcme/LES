@@ -500,6 +500,7 @@
                 <form id="OtpVerification" method="post" action="<?= base_url() . 'checkout/OtpVerification' ?>">
                     <label for="mobilenumber" class="form-label"><?= $this->lang->line('Please enter Otp') ?></label>
                     <input type="text" class="form-control" style="border:1px solid gray" name="otp" id="otp" placeholder="Please enter 4 digit otp*" maxlength="4" required="">
+                    <label id="invalid" style="display: none; color: red">Invalid Otp</label>
                     <br>
                     <button type="submit" id="btnSubmit"><?= $this->lang->line('Submit') ?></button>
                 </form>
@@ -534,13 +535,13 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade otp-popup" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade otp-popup" id="mobileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="container">
         <div class="modal-dialog">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                 <div class="modal-body">
-                    <form id="mobileNumber" class="mobileNum-form" method="post">
+                    <form id="mobileNumber" action="<?= base_url() . 'checkout/updateMobileNumber' ?>" class="mobileNum-form" method="post">
                         <!-- <h3>Verify Mobile Number</h3> -->
                         <label for=""><?= $this->lang->line('Please Enter Mobile Number') ?></label>
                         <div class="input-wrapper ">
@@ -554,6 +555,7 @@
                             <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Mobile Number*" required="">
                         </div>
                         <label for="phoneNumber" class="error mobile_verfication" style="display: none;"></label>
+                        <br>
                         <button type="submit" id="btnSubmit" class="s-btn">submit</button>
                     </form>
                 </div>

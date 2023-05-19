@@ -352,13 +352,13 @@ class Checkout_model extends My_model
         // dd($userDetail);
         if ($userDetail[0]->is_verify != '1') {
 
-            if ($_SERVER['SERVER_NAME'] == 'ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com') {
-                $this->load->model('api_v3/api_model');
-                $this->api_model->send_otp_int($mobile_number, $otp);
-            } else {
-                // echo '1';die;
-                $this->sendOtp($mobile_number, $otp);
-            }
+            // if ($_SERVER['SERVER_NAME'] == 'ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com') {
+            //     $this->load->model('api_v3/api_model');
+            //     $this->api_model->send_otp_int($mobile_number, $otp);
+            // } else {
+            //     // echo '1';die;
+            // }
+            $this->sendOtp($mobile_number, $otp);
 
             $data['table'] = 'user';
             $data['update'] = ['phone' => $mobile, 'otp' => $otp, 'country_code' => $country_code];
