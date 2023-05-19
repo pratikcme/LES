@@ -1191,7 +1191,7 @@ function onScriptLoad(txnToken, orderId, amount) {
 </div>
 
 <!-- Modal -->
-<div class="modal fade otp-popup" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade otp-popup" id="mobileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="container">
         <div class="modal-dialog">
             <div class="modal-content">
