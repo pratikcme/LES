@@ -413,7 +413,7 @@ class Product_model extends My_model
 
 		$wish_pid = $this->getUsersWishlist();
 		if (!empty($product)) {
-			
+
 			// foreach ($product as $key => $value) {
 			// 	$this->load->model('frontend/home_model','home_model');
 			// 	$product[$key]->rating  = $this->home_model->selectStarRatting($value->id);
@@ -433,7 +433,7 @@ class Product_model extends My_model
 			}
 			$product_html = '';
 			$this->load->model('frontend/home_model', 'home_model');
-			
+
 			foreach ($product as $key => $value) {
 				$value->ratting = $this->home_model->selectStarRatting($value->id, $value->product_weight_id);
 				if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
@@ -494,11 +494,10 @@ class Product_model extends My_model
 				$data['value'] = $value;
 				$data['value']->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 				// dd($data['value']->varientQuantity);
-				
-				$product_html .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product', $data, true);
 
+				$product_html .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product', $data, true);
 			}
-			
+
 			// Dk added class of cmn-btn
 			$product_html .= '<div class="col-md-12 text-center mt-5" style="display:' . $display . '">
         						<button type="button" class="btn show-more cmn-btn lg-btn add-cart-btn" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>' . $this->lang->line('Show More') . '</button>
@@ -506,11 +505,11 @@ class Product_model extends My_model
 		} else {
 			$product_html = '<h3>No Product Found  </h3>';
 		}
-		$sub_category='';
+		$sub_category = '';
 		if (!empty($subcategory)) {
 
 			$subcatData['subcategory'] = $subcategory;
-			$subcatData['wish_pid'] = $wish_pid ;
+			$subcatData['wish_pid'] = $wish_pid;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);
 		}
 

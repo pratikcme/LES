@@ -23,10 +23,7 @@
 
                             <div class="drp-grp">
                                 <form class="lng-drp">
-                                    <!-- <select name="language" id="Language">
-                                        <option value="volvo">English</option>
-                                        <option value="saab">Arebic</option>
-                                    </select> -->
+
                                     <div id="google_translate_element"></div>
                                 </form>
                                 <?php if ($this->uri->segment(1) != 'login' && $this->uri->segment(1) != '') { ?>
@@ -56,7 +53,6 @@
                                                 <span class="input-group-text"><i class="fa fa-search"></i></span>
                                             </button>
                                             <?php } ?>
-
 
                                             <?php
                                             if ($this->uri->segment(1) != '') {
@@ -100,7 +96,7 @@
 
                                             if ($segment1 != '') { ?>
 
-                                            <input type="text" class="form-control search" id='myInputMobile'
+                                            <input type="text" class="form-control search" name="search" id='myInput'
                                                 data-search_val="" placeholder="<?= $placeholder ?>"
                                                 aria-label="Recipient's username">
 
@@ -111,26 +107,7 @@
                                             <?php } ?>
 
                                             <!-- ---search-list--- -->
-                                            <div class="search-list-wrapper">
-                                                <ul class="search-list">
-                                                    <li><span><i
-                                                                class="fa-solid fa-magnifying-glass"></i></span>SkinCare
-                                                    </li>
-                                                    <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Lips
-                                                    </li>
-                                                    <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Hair
-                                                    </li>
-                                                    <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Eye
-                                                    </li>
-                                                    <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Makeup
-                                                    </li>
-                                                    <li><span><i class="fa-solid fa-magnifying-glass"></i></span>Natural
-                                                    </li>
-                                                    <li><span><i
-                                                                class="fa-solid fa-magnifying-glass"></i></span>Fregrance
-                                                    </li>
-                                                </ul>
-                                            </div>
+
                                         </form>
                                         <i class="fa-solid fa-xmark main-div-cancel"></i>
                                     </div>

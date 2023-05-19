@@ -138,7 +138,7 @@ $(".banner-slider").owlCarousel({
 
 // home top-rating-slider
 $(".top-rating-slider").owlCarousel({
-  loop: true,
+  loop: false,
   margin: 25,
   nav: true,
   dots: false,

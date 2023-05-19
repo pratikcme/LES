@@ -55,21 +55,7 @@
                                     </a>
                                 </div>
                             <?php } ?>
-                            <!-- <div class="swiper-slide">
-                  <a href="#"><img data-enlargable class="drift-demo-trigger"
-                  src="<?= $this->theme_base_url ?>/assets/images/product-details/product-details-img-2.png"
-                  data-zoom="./assets/images/product-details/product-details-img-2.png" /></a>
-                </div>
-              <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                    src="<?= $this->theme_base_url ?>/assets/images/product-details/product-details-img-3.png"
-                    data-zoom="./assets/images/product-details/product-details-img-3.png" /></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#"><img data-enlargable class="drift-demo-trigger"
-                src="<?= $this->theme_base_url ?>/assets/images/product-details/product-details-img-4.png"
-                data-zoom="./assets/images/product-details/product-details-img-4.png" /></a>
-              </div> -->
+
                         </div>
                     </div>
                     <div thumbsSlider="" class="swiper mySwiper gallery-thumbs">
@@ -79,7 +65,6 @@
                                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" />
                                 </div>
                             <?php } ?>
-
                         </div>
                     </div>
                 </div>
@@ -168,15 +153,14 @@
                         </form>
                     </div>
 
-                    <!-- <h4>SKU: <span> D2300-3-2-2</span></h4> -->
+
                     <h4><?= $this->lang->line('Brand') ?>: <span> <?= $productDetail[0]->brand_name ?></span></h4>
-                    <!-- <h4>Tags: <span> Hot, Trend</span></h4> -->
+
                     <h4><?= $this->lang->line('Categories') ?>: <span><?= $productDetail[0]->category_name ?></span>
                     </h4>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 
@@ -191,43 +175,43 @@
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><?= $this->lang->line('Description') ?></button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><?= $this->lang->line('Reviews') ?>
-                                    (<?= count($product_review) ?>)</button>
+                                <button class="nav-link" id="review_count" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><?= $this->lang->line('Reviews') ?>
+                                    (<span><?= count($product_review) ?></span>)</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane mt-4 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <p><?= $productDetail[0]->about ?></p>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="review_count">
                                 <!-- -------review-tab------ -->
                                 <div class="my-review-wrapper">
                                     <!-- ----review-content--- -->
                                     <div class="review-content">
                                         <div class="left-content">
                                             <div>
-                                                <h3><strong><?= $productDetail[0]->rating['rating'] ?></strong><span>/5</span>
+                                                <h3><strong id="avgRating"><?= $productDetail[0]->rating['rating'] ?></strong><span>/5</span>
                                                 </h3>
                                             </div>
                                             <div>
-                                                <h4>Overall Rating</h4>
+                                                <h4><?= $this->lang->line("Overall Rating") ?></h4>
                                             </div>
                                         </div>
                                         <?php
                                         if ((!empty($isVarientExist) && $countParticularUserReview == 0)) {
                                         ?>
-                                            <div class="right-content">
+                                            <div class="right-content" id="writeReviewSection">
                                                 <h6 class="invisible">review!</h6>
                                                 <div class="enter-review-btn">
-                                                    <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Write Review</a>
+                                                    <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><?= $this->lang->line('Write Review') ?></a>
                                                 </div>
                                             </div>
                                         <?php } ?>
                                     </div>
 
                                     <!-- ----review-comment-part--- -->
-                                    <div class="review-comment-wrapper">
-                                        <h3>Most Useful Review</h3>
+                                    <div class="review-comment-wrapper" id="review_section">
+                                        <h3><?= $this->lang->line('Most Useful Review') ?></h3>
                                         <?php foreach ($product_review as $key => $value) { ?>
                                             <div class="supportive-div">
                                                 <div class="rewiew-wrapper">
@@ -261,9 +245,7 @@
                                             </div>
                                         <?php } ?>
                                     </div>
-                                    <!-- <div class="load-btn">
-                                    <a href="#" class="cmn-btn lg-btn">Load More</a>
-                                </div> -->
+
                                 </div>
                             </div>
                         </div>
@@ -353,11 +335,6 @@
                                                     <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
                                                         <span class="star star-active"></span>
                                                     <?php } ?>
-                                                    <!-- <span class="star"></span>
-                                                    <span class="star"></span>
-                                                    <span class="star"></span>
-                                                    <span class="star star-active"></span>
-                                                    <span class="star star-active-half"></span> -->
                                                 </div>
                                                 <div>
                                                     <p>( <?= $value->ratting['rating'] . ' ' . $this->lang->line('Reviews') ?> )
@@ -406,11 +383,11 @@
                     <div class="rating-box">
                         <div class="rating">
                             <div class="rating__stars">
-                                <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
-                                <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
-                                <input id="rating-3" class="rating__input rating__input-3" type="radio" name="rating" value="3">
-                                <input id="rating-4" class="rating__input rating__input-4" type="radio" name="rating" value="4">
-                                <input id="rating-5" class="rating__input rating__input-5" type="radio" name="rating" value="5">
+                                <input id="rating-1" class="rating__input rating__input-1" type="radio" name="ratetIndex" value="1">
+                                <input id="rating-2" class="rating__input rating__input-2" type="radio" name="ratetIndex" value="2">
+                                <input id="rating-3" class="rating__input rating__input-3" type="radio" name="ratetIndex" value="3">
+                                <input id="rating-4" class="rating__input rating__input-4" type="radio" name="ratetIndex" value="4">
+                                <input id="rating-5" class="rating__input rating__input-5" type="radio" name="ratetIndex" value="5">
                                 <label class="rating__label" for="rating-1">
                                     <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
                                         <g transform="translate(16,16)">
@@ -539,5 +516,3 @@
         </div>
     </div>
 <?php } ?>
-<input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
-<input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>

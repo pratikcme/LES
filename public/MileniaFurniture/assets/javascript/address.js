@@ -87,7 +87,7 @@ $(document).on("click", "#btnAccSubmit", function () {
   }
 });
 
-var ADDRESS = function () {
+var ADDRESS = (function () {
   // $(document).ready(function(){
   //    $('.alert').fadeOut(5000);
   //  });
@@ -244,7 +244,7 @@ var ADDRESS = function () {
     $("#address_title").html(language.js_add_address);
     $("#RegisterForm")[0].reset();
     $("#departure_latitude").val("");
-    $('#myModal').hide();
+    $("#myModal").hide();
     $("#departure_longitude").val("");
     $(".error").each(function () {
       $(this).html("");
@@ -253,66 +253,66 @@ var ADDRESS = function () {
   });
 
   var handleAddressForm = function () {
-  $("#RegisterForm").validate({
-    rules: {
-      fname: {
-        required: true,
-        minlength: 3,
-        maxlength: 25,
+    $("#RegisterForm").validate({
+      rules: {
+        fname: {
+          required: true,
+          minlength: 3,
+          maxlength: 25,
+        },
+        phone: {
+          required: true,
+          digits: true,
+          minlength: 7,
+          maxlength: 15,
+        },
+        country: { required: true },
+        state: { required: true },
+        city: { required: true },
+        pincode: {
+          required: true,
+          digits: true,
+          minlength: 5,
+          maxlength: 6,
+        },
+        address: { required: true },
+        location: { required: true },
       },
-      phone: {
-        required: true,
-        digits: true,
-        minlength: 7,
-        maxlength: 15,
+      messages: {
+        fname: { required: language.Please_enter_full_name },
+        phone: {
+          required: language.Please_enter_mobile_number,
+          digits: language.Please_enter_number_only,
+          minlength: language.Please_enter_6_digit_mobile_number,
+          maxlength: language.Please_enter_15_digit_mobile_number,
+        },
+        country: { required: language.Please_enter_country },
+        state: { required: language.Please_enter_state },
+        city: { required: language.Please_enter_city },
+        pincode: {
+          required: language.Please_enter_pincode,
+          // digits : "Please enter digits only",
+        },
+        address: { required: language.Please_enter_your_address },
+        location: { required: language.Please_select_your_location },
       },
-      country: { required: true },
-      state: { required: true },
-      city: { required: true },
-      pincode: {
-        required: true,
-        digits: true,
-        minlength: 5,
-        maxlength: 6,
-      },
-      address: { required: true },
-      location: { required: true },
-    },
-    messages: {
-      fname: { required: language.Please_enter_full_name },
-      phone: {
-        required: language.Please_enter_mobile_number,
-        digits: language.Please_enter_number_only,
-        minlength: language.Please_enter_6_digit_mobile_number,
-        maxlength: language.Please_enter_15_digit_mobile_number,
-      },
-      country: { required: language.Please_enter_country },
-      state: { required: language.Please_enter_state },
-      city: { required: language.Please_enter_city },
-      pincode: {
-        required: language.Please_enter_pincode,
-        // digits : "Please enter digits only",
-      },
-      address: { required: language.Please_enter_your_address },
-      location: { required: language.Please_select_your_location },
-    },
-    submitHandler: function (form) {
-      var latitude = $("#departure_latitude").val();
-      var longitude = $("#departure_latitude").val();
-      if (latitude == "" && longitude == "") {
-        swal("Please choose location");
-        return false;
-      }
+      submitHandler: function (form) {
+        var latitude = $("#departure_latitude").val();
+        var longitude = $("#departure_latitude").val();
+        if (latitude == "" && longitude == "") {
+          swal("Please choose location");
+          return false;
+        }
 
-      setTimeout(function () {
-        form.submit();
-        $("body").attr("disabled", "disabled");
-        $("#addAddress").attr("disabled", "disabled");
-        $("#addAddress").value("please wait");
-      }, 1000);
-    },
-  });
-  }
+        setTimeout(function () {
+          form.submit();
+          $("body").attr("disabled", "disabled");
+          $("#addAddress").attr("disabled", "disabled");
+          $("#addAddress").value("please wait");
+        }, 1000);
+      },
+    });
+  };
 
   $(document).on("keydown", function (e) {
     // console.log(e.target.tagName);
@@ -413,4 +413,4 @@ var ADDRESS = function () {
       handleAccountDetail();
     },
   };
-}();
+})();

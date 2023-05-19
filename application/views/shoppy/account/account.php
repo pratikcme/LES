@@ -116,6 +116,7 @@
                                         </div>
                                     </div>
                                     <input type="hidden" id="exiting_country" value="<?= $userDetails[0]->country_code ?>">
+                                    <input type="hidden" id="exiting_phone" value="<?= $userDetails[0]->phone ?>">
                                     <div class="col-xxl-6 col-md-6">
                                         <div class="mb-3">
                                             <label for="m-number" class="form-label">Mobile
@@ -131,7 +132,8 @@
                                         </div>
                                     </div>
                                     <div class="tab-save-btn">
-                                        <button id="btnAccSubmit" type="submit"><?= $this->lang->line('Save') ?></button>
+
+                                        <input type="submit" class="common-input-btn" id="btnAccSubmit" value="<?= $this->lang->line('Save') ?>" />
                                     </div>
                                 </div>
                             </form>

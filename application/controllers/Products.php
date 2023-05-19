@@ -389,22 +389,25 @@ class Products extends User_Controller
 		$upbasket_starHtml = '';
 		$beauty_starHtml = '';
 		$shoppy_starHtml = '';
+		$furniture_starHtml = '';
 		$ratting = $data['product_review'][0]->ratting;
 
 
 		for ($j = 1; $j <= $ratting; $j++) {
 			$starHtml .= '<i class="fas fa-star"></i>';
-			// $upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
+
 			$upbasket_starHtml .= '<span class="star"></span>';
 			$beauty_starHtml .= '<span class="star"></span>';
 			$shoppy_starHtml .= '<span class="star"></span>';
+			$furniture_starHtml .= '<span class="star"></span>';
 		}
 		for ($i = 1; $i <= 5 - $ratting; $i++) {
 			$starHtml .= '<i class="fas fa-star blank-ratting"></i>';
-			// $upbasket_starHtml .= '<i class="fa-solid fa-star"></i>';
+
 			$upbasket_starHtml .= '<span class="star star-active"></span>';
 			$beauty_starHtml .= '<span class="star star-active"></span>';
 			$shoppy_starHtml .= '<span class="star star-active"></span>';
+			$furniture_starHtml .= '<span class="star star-active"></span>';
 		}
 
 		$response = [
@@ -435,9 +438,8 @@ class Products extends User_Controller
 			'beauty_starHtml' => '<div class="rating stars3_5" >' . $beauty_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',
 			'upbasket_thumb' => $upbasket_thumb,
 			'shoppy_starHtml' => '<div class="rating stars3_5" >' . $shoppy_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',
+			'furniture_starHtml' => '<div class="rating stars3_5">' . $shoppy_starHtml . '</div><div><span>(' . round($avgr) . ')</span></div>',
 			'upbasket_zoom_image' => $upbasket_zoom_image,
-
-
 		];
 		echo json_encode($response);
 	}
@@ -688,6 +690,7 @@ class Products extends User_Controller
 	public function productReview()
 	{
 		if ($this->input->post()) {
+
 			$res = $this->this_model->insertReview($this->input->post());
 			if ($res) {
 				$this->utility->setFlashMessage('success', 'Thanks for Review');
