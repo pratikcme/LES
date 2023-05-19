@@ -308,7 +308,6 @@ class Checkout_model extends My_model
 
     public function getSelfPickupTimeChart()
     {
-
         $data['table'] = TABLE_BRANCH;
         $data['select'] = ['selfPickUp', 'selfPickupOpenClosingTiming', 'currency_code'];
         $data['where'] = ['id' => $this->branch_id, 'status' => '1'];

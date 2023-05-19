@@ -175,7 +175,11 @@
                         <div class="main-accordion">
                             <div class="accordion-heading"><?= $this->lang->line('Delivery Schedule'); ?></div>
                             <div class="accordion-content  accordion-content-4">
-                                <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
+
+                                <?php
+
+                                if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
+
                                     <div class="time-picker">
                                         <div class="dates-day-wrapper">
                                             <div id="datepicker"></div>
@@ -185,6 +189,7 @@
                                             <h3><?= $this->lang->line('Pickup Timing') ?></h3>
                                             <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
                                         </form>
+
                                     </div>
                                 <?php } else { ?>
                                     <div class="time-picker">
@@ -195,14 +200,17 @@
                                         <form class="time-wrapper">
                                             <?php foreach ($time_slot as $key => $value) { ?>
                                                 <div class="form-check">
-                                                    <input class="form-check-input time_slot_checked" type="radio" name="time_slot" id="<?= 'slot' . $key ?>" value="<?= $value->id ?>">
-                                                    <label class="form-check-label" for="<?= 'slot' . $key ?>">
-                                                        <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
+                                                    <input class="form-check-input time_slot_checked" type="radio" name="time_slot" id="<?= 'time' . $key ?>" value=" <?= $value->id ?>" <?= ($value->id == $time_slot[0]->id) ? 'checked' : '' ?>>
+                                                    <label class="form-check-label" for="<?= 'time' . $key ?>">
+                                                        <?= $value->start_time ?> -
+                                                        <?= $value->end_time ?>
                                                     </label>
                                                 </div>
                                             <?php } ?>
                                         </form>
                                     </div>
+
+
                                 <?php } ?>
                             </div>
                         </div>
