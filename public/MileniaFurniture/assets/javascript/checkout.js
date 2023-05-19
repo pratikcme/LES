@@ -468,7 +468,7 @@ var CHECKOUT = (function () {
       $("#promo_err").html("Please enter promocode");
     }
     var shipping_charge = $("#shipping_charge").val();
-    console.log(shipping_charge, shipping_charge);
+
     if (shipping_charge == "notInRange" || shipping_charge == "") {
       shipping_charge = 0;
     }
@@ -476,6 +476,7 @@ var CHECKOUT = (function () {
     $.ajax({
       url: base_url + "checkout/validate_promocode",
       type: "post",
+      async: false,
       data: {
         promocode: promocode,
         isShow: $("#isShow").val() == 0 ? "0" : "1", //Dk Added
@@ -553,7 +554,7 @@ var CHECKOUT = (function () {
         data: $(form).serialize(),
         dataType: "json",
         success: function (response) {
-            console.log(response);
+          console.log(response);
           if (response.success == "1") {
             $("#mobileModal").modal("hide");
             $("#Otp").modal("show");
