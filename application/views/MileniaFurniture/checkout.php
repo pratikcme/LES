@@ -1197,7 +1197,7 @@ function onScriptLoad(txnToken, orderId, amount) {
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                 <div class="modal-body">
-                    <form id="mobileNumber" class="mobileNum-form" method="post">
+                    <form id="mobileNumber" action="<?= base_url() . 'checkout/updateMobileNumber' ?>" class="mobileNum-form" method="post">
                         <!-- <h3>Verify Mobile Number</h3> -->
                         <label for=""><?= $this->lang->line('Please Enter Mobile Number') ?></label>
                         <div class="input-wrapper ">
