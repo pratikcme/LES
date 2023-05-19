@@ -1210,6 +1210,7 @@ function onScriptLoad(txnToken, orderId, amount) {
                             <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Mobile Number*" required="">
                         </div>
                         <label for="phoneNumber" class="error mobile_verfication" style="display: none;"></label>
+                        <br>
                         <button type="submit" id="btnSubmit" class="s-btn">submit</button>
                     </form>
                 </div>
