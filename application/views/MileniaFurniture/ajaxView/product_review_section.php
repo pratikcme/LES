@@ -1,12 +1,12 @@
-<h3>Most Useful Review</h3>
+<!-- ----review-comment-part--- -->
 
-<div class="supportive-div">
-    <?php foreach ($product_review as $key => $value) { ?>
-
+<h3><?= $this->lang->line('Most Useful Review') ?></h3>
+<?php foreach ($product_review as $key => $value) { ?>
+    <div class="supportive-div">
         <div class="rewiew-wrapper">
             <div class="review-left">
                 <div class="review-img">
-                    <svg xmlns="<?= $this->theme_base_url . '/assets/images/review-icon.svg' ?>" viewBox="0 0 24.37 23.44">
+                    <svg xmlns="<?= $this->theme_base_url ?>/assets/images/review-icon.svg" viewBox="0 0 24.37 23.44">
                         <defs>
                             <style>
                                 .cls-1 {
@@ -19,19 +19,17 @@
                 </div>
                 <div class="review-text">
                     <h6><?= $value->fname ?></h6>
-                    <p><span><i class="fa-solid fa-circle-check"></i></span> Verified Buyers</p>
+                    <p><span><i class="fa-solid fa-circle-check"></i></span> Verified
+                        Buyers</p>
                 </div>
             </div>
             <div class="review-right">
                 <div class="review-right-top">
                     <span class="number-star"><?= $value->ratting ?> <span><i class="fa-solid fa-star"></i></span></span>
-                    <h4><?= $value->review_title ?></h4>
+                    on<h4><?= date('M d, Y', strtotime($value->dt_created)) ?></h4>
                 </div>
                 <p><?= $value->review ?></p>
             </div>
         </div>
-    <?php } ?>
-
-
-
-</div>
+    </div>
+<?php } ?>

@@ -141,7 +141,7 @@
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><?= $this->lang->line('Description') ?></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><?= $this->lang->line('Reviews') ?>
+            <button class="nav-link" id="review_count" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><?= $this->lang->line('Reviews') ?>
               (<?= count($product_review) ?>)</button>
           </li>
         </ul>
@@ -149,7 +149,7 @@
           <div class="tab-pane mt-4 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <p><?= $productDetail[0]->about ?></p>
           </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="review_count">
             <!-- -------review-tab------ -->
             <div class="my-review-wrapper" style="height :<?= (count($product_review) == 0) ? 'auto' : '100%' ?>">
               <!-- ----review-content--- -->
@@ -171,14 +171,14 @@
                   </div>
                   <div>
                     <h4><?= $this->lang->line('Overall Rating') ?></h4>
-                    <!-- <p> 6k verified ratings </p> -->
+
                   </div>
                 </div>
                 <?php
                 if ($this->session->userdata('user_id') != '') { ?>
                   <div class="right-content">
                     <h6>
-                      <!-- Write a review and win 100 reward points ! -->
+
                     </h6>
                     <div class="enter-review-btn <?= (!empty($isVarientExist) && $countParticularUserReview == 0) ? '' : 'd-none' ?>" id="writeReviewSection">
                       <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><?= $this->lang->line('Write Review') ?></a>

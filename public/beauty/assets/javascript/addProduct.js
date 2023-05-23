@@ -258,23 +258,29 @@ var ADDPRODUCT = (function () {
           $("#review_count").html(
             language.Reviews + "(" + output.productReviewCount + ")"
           );
+
+          $("#review_section").html(output.reviewSection);
+          $("#starRatting").html(output.beauty_starHtml);
+
+          if (
+            output.isVarientExist == 1 &&
+            output.countParticularUserReview == 0
+          ) {
+            $("#writeReviewSection").addClass("d-block");
+            $("#writeReviewSection").removeClass("d-none");
+          } else {
+            $("#writeReviewSection").removeClass("d-block");
+            $("#writeReviewSection").addClass("d-none");
+          }
+
           if (output.productReviewCount == 0) {
             $("#review_section").addClass("d-none");
           } else {
             $("#review_section").removeClass("d-none");
           }
-          if (
-            output.isVarientExist == 0 ||
-            output.countParticularUserReview >= 1
-          ) {
-            $("#writeReviewSection").addClass("d-none");
-          } else {
-            $("#writeReviewSection").removeClass("d-none");
-          }
 
           $("#avgRating").html(output.avgRatting);
-          $("#review_section").html(output.reviewSection);
-          $("#starRatting").html(output.beauty_starHtml);
+
           var product_price =
             output.discount_per > 0
               ? siteCurrency + " " + output.product_price
@@ -329,30 +335,36 @@ var ADDPRODUCT = (function () {
 
           if (output.cartProductQuantity == 0) {
             var qnt = 1;
-            that.next("div").find("a:first").removeClass("d-none");
+            that.parent().next("div").find("a:first").removeClass("d-none");
             that
+              .parent()
               .next("div")
               .find(".product-detail-quentity")
               .addClass("d-none");
             that
+              .parent()
               .next("div")
               .find(".product-detail-quentity .qty-container .qty-btn-minus")
               .attr("data-product_weight_id", output.product_weight_id);
             that
+              .parent()
               .next("div")
               .find(".product-detail-quentity .qty-container .qty-btn-plus")
               .attr("data-product_weight_id", output.product_weight_id);
           } else {
-            that.next("div").find("a:first").addClass("d-none");
+            that.parent().next("div").find("a:first").addClass("d-none");
             that
+              .parent()
               .next("div")
               .find(".product-detail-quentity")
               .removeClass("d-none");
             that
+              .parent()
               .next("div")
               .find(".product-detail-quentity .qty-container .qty-btn-minus")
               .attr("data-product_weight_id", output.product_weight_id);
             that
+              .parent()
               .next("div")
               .find(".product-detail-quentity .qty-container .qty-btn-plus")
               .attr("data-product_weight_id", output.product_weight_id);
@@ -413,7 +425,7 @@ var ADDPRODUCT = (function () {
           // swal("Sorry you can not review multiple time");
         }
       });
-      $(this).attr('disable','disabled');
+      $(this).attr("disable", "disabled");
       $.ajax({
         url: action,
         type: "post",
@@ -494,10 +506,10 @@ var ADDPRODUCT = (function () {
   }
 
   // var  handleAddToCartForm =  function () {
-  $('#writeReviewSection').click(function(){
-    $('label.error').html("");
-    $('#reviewForm')[0].reset();
-  })
+  $("#writeReviewSection").click(function () {
+    $("label.error").html("");
+    $("#reviewForm")[0].reset();
+  });
 
   $("#reviewForm").validate({
     rules: {

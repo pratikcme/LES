@@ -24,27 +24,25 @@
 
 <!-- ------------myaccoutn-section------------ -->
 <section class="my-account-section p-100">
-    <!-- <img src="<?= $this->theme_base_url ?>/assets/images/checkout-top-right-img.svg" alt="" class="checkout-top-right-img">
-    <img src="<?= $this->theme_base_url ?>/assets/images/checkout-mid-left-img.svg" alt="" class="checkout-mid-left-img">
-    <img src="<?= $this->theme_base_url ?>/assets/images/checkout-bottom-right-img.svg" alt="" class="checkout-bottom-right-img"> -->
+
     <div class="container">
 
         <!-- ------tabs-part--- -->
         <div class="account-details-tabs">
             <div class="details-tabs">
                 <!-- Nav pills -->
-                <ul class="nav nav-pills" role="tablist" >
+                <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs <?=( $action_name == '' || $action_name=='my_account' ) ? 'active' : ''?>" data-bs-toggle="pill"
-                            href="#tab-1"><?= $this->lang->line('My account') ?></a>
+                        <a class="nav-link dashboard-tabs <?= ($action_name == '' || $action_name == 'my_account') ? 'active' : '' ?>"
+                            data-bs-toggle="pill" href="#tab-1"><?= $this->lang->line('My account') ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link dashboard-tabs experience-active-img" data-bs-toggle="pill"
                             href="#tab-2"><?= $this->lang->line('My orders') ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dashboard-tabs eduction-active-img <?=($action_name == 'wishlist') ? 'active' : ''?>" data-bs-toggle="pill"
-                            href="#tab-3"><?= $this->lang->line('My Wishlist') ?></a>
+                        <a class="nav-link dashboard-tabs eduction-active-img <?= ($action_name == 'wishlist') ? 'active' : '' ?>"
+                            data-bs-toggle="pill" href="#tab-3"><?= $this->lang->line('My Wishlist') ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link dashboard-tabs certificates-active-img" data-bs-toggle="pill"
@@ -70,7 +68,8 @@
             <div class="tab-details">
                 <div class="tab-content">
                     <!-- ---tab-1-- -->
-                    <div id="tab-1" class="container tab-pane <?= ($action_name == '' || $action_name=='my_account') ? 'active show' : ''?>">
+                    <div id="tab-1"
+                        class="container tab-pane <?= ($action_name == '' || $action_name == 'my_account') ? 'active show' : '' ?>">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('Account') ?> <?= $this->lang->line('Details') ?></h2>
@@ -199,7 +198,7 @@
                                         <!-- ------sub-tab-1----- -->
                                         <div id="subtab-1" class="container tab-pane fade show active">
 
-                                            <?php 
+                                            <?php
                                             foreach ($order as $key => $value) {
                                                 if ($value->order_status != '8') {
                                                     continue;
@@ -965,7 +964,8 @@
                     </div>
 
                     <!-- ---tab-3-- -->
-                    <div id="tab-3" class="container tab-pane fade <?= ($action_name=='wishlist') ? 'active show' : ''?>">
+                    <div id="tab-3"
+                        class="container tab-pane fade <?= ($action_name == 'wishlist') ? 'active show' : '' ?>">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('My Wishlist') ?></h2>
@@ -1056,7 +1056,8 @@
                     </div>
 
                     <!-- ---tab-4-- -->
-                    <div id="tab-4" class="container tab-pane fade">
+                    <div id="tab-4"
+                        class="container tab-pane fade <?= ($action_name == 'my_address') ? 'active show' : '' ?>">
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('My address') ?></h2>

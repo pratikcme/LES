@@ -1,23 +1,24 @@
-var base_url = $('#theme_base_url').val();
+var base_url = $("#theme_base_url").val();
 // calender
-$(document).ready(function(){
-  $('#datepicker').datepicker({
-    inline:true,
+$(document).ready(function () {
+  $("#datepicker").datepicker({
+    inline: true,
     firstDay: 1,
-    showOtherMonths:true,
-    dayNamesMin:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  })
+    showOtherMonths: true,
+    dayNamesMin: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  });
 });
 
 // chnage-password-form
-$(document).ready(function(){
-  $("document").on('click','.new-add',function(){
+$(document).ready(function () {
+  $(document).on("click", ".new-add", function () {
+    //Dk removed string from document
     $(".ship-address").show();
   });
 
-  $(document).on('click','.ship-close',function(){
+  $(document).on("click", ".ship-close", function () {
     $(".ship-address").hide();
-  })
+  });
 });
 
 // home banner slider
@@ -27,8 +28,8 @@ $(".categories-slider").owlCarousel({
   nav: false,
   dots: true,
   navText: [
-    "<img src='"+base_url+"/assets/images/home/Arrowleft.svg'>",
-    "<img src='"+base_url+"/assets/images/home/arrowRight.svg'>",
+    "<img src='" + base_url + "/assets/images/home/Arrowleft.svg'>",
+    "<img src='" + base_url + "/assets/images/home/arrowRight.svg'>",
   ],
   responsive: {
     0: {
@@ -65,8 +66,8 @@ $(".testimonials-slider").owlCarousel({
   autoplay: true,
   autospeed: 1000,
   navText: [
-    "<img src='"+base_url+"/assets/images/home/Arrowleft.svg'>",
-    "<img src='"+base_url+"/assets/images/home/arrowRight.svg'>",
+    "<img src='" + base_url + "/assets/images/home/Arrowleft.svg'>",
+    "<img src='" + base_url + "/assets/images/home/arrowRight.svg'>",
   ],
   responsive: {
     0: {
@@ -137,13 +138,13 @@ $(".banner-slider").owlCarousel({
 
 // home top-rating-slider
 $(".top-rating-slider").owlCarousel({
-  loop: true,
+  loop: false,
   margin: 25,
   nav: true,
   dots: false,
   navText: [
-    "<img src='"+base_url+"/assets/images/home/Arrowleft.svg'>",
-    "<img src='"+base_url+"/assets/images/home/arrowRight.svg'>",
+    "<img src='" + base_url + "/assets/images/home/Arrowleft.svg'>",
+    "<img src='" + base_url + "/assets/images/home/arrowRight.svg'>",
   ],
   responsive: {
     0: {

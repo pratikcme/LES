@@ -261,27 +261,31 @@ var ADDPRODUCT = (function () {
         data: { product_varient_id: product_varient_id },
         dataType: "json",
         success: function (output) {
-          // alert(siteCurrency);
-
           $("#review_count").html(
             language.Reviews + "(" + output.productReviewCount + ")"
           );
+
+          $("#review_section").html(output.shoppyUserSection);
+          $("#starRatting").html(output.shoppy_starHtml);
+
+          if (
+            output.isVarientExist == 1 &&
+            output.countParticularUserReview == 0
+          ) {
+            $("#writeReviewSection").addClass("d-block");
+            $("#writeReviewSection").removeClass("d-none");
+          } else {
+            $("#writeReviewSection").removeClass("d-block");
+            $("#writeReviewSection").addClass("d-none");
+          }
+
           if (output.productReviewCount == 0) {
             $("#review_section").addClass("d-none");
           } else {
             $("#review_section").removeClass("d-none");
           }
-          if (
-            output.isVarientExist == 0 ||
-            output.countParticularUserReview >= 1
-          ) {
-            $("#writeReviewSection").addClass("d-none");
-          } else {
-            $("#writeReviewSection").removeClass("d-none");
-          }
 
-          $("#review_section").html(output.shoppyUserSection);
-          $("#starRatting").html(output.shoppy_starHtml);
+          $("#avgRating").html(output.avgRatting);
 
           var strike_price = "";
           if (output.discount_per != 0) {

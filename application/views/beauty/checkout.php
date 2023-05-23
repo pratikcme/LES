@@ -344,8 +344,7 @@
 
                     <div class="coupon-code-wrapper d-none">
                         <img src="<?= $this->theme_base_url ?>/assets/images/check-out-tag-img.png" alt="" class="check-out-tag-img">
-                        <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here
-                                to enter your code</a></h3>
+                        <h3><span><i class="fa fa-tag" aria-hidden="true"></i></span>Have a coupon?<a href="">Click here to enter your code</a></h3>
                     </div>
                     <?php if ($shopping_based_discount == 0) { ?>
                         <div class="have-code-part">
@@ -612,6 +611,7 @@
                 <form id="OtpVerification" method="post" action="<?= base_url() . 'checkout/OtpVerification' ?>">
                     <label for="mobilenumber" class="form-label"><?= $this->lang->line('Please enter Otp') ?></label>
                     <input type="text" class="form-control" style="border:1px solid gray" name="otp" id="otp" placeholder="Please enter 4 digit otp*" maxlength="4" required="">
+                    <label id="invalid" style="display: none; color: red">Invalid Otp</label>
                     <br>
                     <button type="submit" id="btnSubmit"><?= $this->lang->line('Submit') ?></button>
                 </form>

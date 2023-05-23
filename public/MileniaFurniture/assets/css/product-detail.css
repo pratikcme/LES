@@ -1089,10 +1089,9 @@ body {
 
 }
 
-.mySwiper,
-.swiper-wrapper 
-{
-    height: 170px !important;
+.review-wrp{
+    position: relative;
+    z-index: 2;
 }
 
 /* --------rating-css----- */

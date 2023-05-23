@@ -8,7 +8,8 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
-            <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('Shop Cart') ?></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('Shop Cart') ?>
+            </li>
           </ol>
         </nav>
       </div>
@@ -82,7 +83,8 @@
                           <div class="cart-price-text cart-price">
 
                             <span class="disc-throw <?= ($value['discount_per'] > 0) ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value['product_price'] ?></span>
-                            <h3><?= $this->siteCurrency . '' . number_format((float)$value['discount_price'], 2, '.', '') ?></h3>
+                            <h3><?= $this->siteCurrency . '' . number_format((float)$value['discount_price'], 2, '.', '') ?>
+                            </h3>
 
                           </div>
                         </td>
@@ -98,7 +100,9 @@
                         </td>
                         <td>
                           <div class="cart-price-text cart-cross">
-                            <h3 class="notranslate"><?= $this->siteCurrency . '' . number_format((float)$calculation_price, 2, '.', '') ?></h3>
+                            <h3 class="notranslate">
+                              <?= $this->siteCurrency . '' . number_format((float)$calculation_price, 2, '.', '') ?>
+                            </h3>
                             <input type="hidden" class="total" value="<?= number_format((float)$calculation_price, 2, '.', '') ?>">
                             <a href="#" class="removeCartItem" data-product_id="<?= $value['product_id'] ?>" data-product_weight_id="<?= $value['product_weight_id'] ?>" data-weight_id="<?= $value['weight_id'] ?>"><i class="fa-solid fa-xmark"></i></a>
                           </div>
@@ -130,7 +134,8 @@
                       <td>
                         <div class="cart-price-text cart-price">
                           <span class="disc-throw <?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><?= $this->siteCurrency . ' ' . $value->price ?></span>
-                          <h3><?= $this->siteCurrency . '' . number_format((float)$value->discount_price, 2, '.', '') ?></h3>
+                          <h3><?= $this->siteCurrency . '' . number_format((float)$value->discount_price, 2, '.', '') ?>
+                          </h3>
                         </div>
                       </td>
                       <td>
@@ -145,7 +150,9 @@
                       </td>
                       <td>
                         <div class="cart-price-text cart-cross">
-                          <h3 class="notranslate"><?= $this->siteCurrency . '' . number_format((float)$calculation_price, 2, '.', '') ?></h3>
+                          <h3 class="notranslate">
+                            <?= $this->siteCurrency . '' . number_format((float)$calculation_price, 2, '.', '') ?>
+                          </h3>
                           <input type="hidden" class="total" value="<?= number_format((float)$calculation_price, 2, '.', '') ?>">
                           <a href="#" class="removeCartItem" data-product_id="<?= $value->product_id ?>" data-product_weight_id="<?= $value->product_weight_id ?>" data-weight_id="<?= $value->weight_id ?>"><i class="fa-solid fa-xmark"></i></a>
                         </div>
@@ -173,15 +180,21 @@
             <tbody>
               <tr>
                 <td class="cart-total-text-1"><?= $this->lang->line('Sub Total') ?></td>
-                <td id="final_subtotal" class="cart-total-text-2 notranslate"><?= $this->siteCurrency ?> <?= getMycartSubtotal() ?></td>
+                <td id="final_subtotal" class="cart-total-text-2 notranslate"><?= $this->siteCurrency ?>
+                  <?= getMycartSubtotal() ?></td>
               </tr>
               <tr>
                 <td class="cart-total-text-1"><?= $this->lang->line('Delivery Charges') ?></td>
-                <td id="delivery_charge" class="cart-total-text-2 notranslate"><?= $this->siteCurrency ?> <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ? $calc_shiping : '0.00' ?></td>
+                <td id="delivery_charge" class="cart-total-text-2 notranslate">
+                  <?= $this->siteCurrency ?>
+                  <?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ? $calc_shiping : '0.00' ?>
+                </td>
               </tr>
               <tr>
                 <td class="cart-total-text-1"><?= $this->lang->line('Total') ?></td>
-                <td id="total" class="cart-total-text-2 notranslate"><span><?= $this->siteCurrency ?> </span><?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ?  number_format(getMycartSubtotal() + $calc_shiping, 2, '.', '') : getMycartSubtotal(); ?></td>
+                <td id="total" class="cart-total-text-2 notranslate"><span><?= $this->siteCurrency ?>
+                  </span><?= (isset($calc_shiping) && $calc_shiping != 'NotInRange') ?  number_format(getMycartSubtotal() + $calc_shiping, 2, '.', '') : getMycartSubtotal(); ?>
+                </td>
               </tr>
             </tbody>
           </table>

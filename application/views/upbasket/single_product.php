@@ -208,7 +208,7 @@
                                     if (count($product_review) == 0) {
                                     ?>
                                   <div class="col-xxl-8 col-xl-8 col-lg-8">
-                                      <div class="review-comment-wrapper " id="review_section">
+                                      <div class="review-comment-wrapper d-none " id="review_section">
                                           <div class="review-content">
                                               <div class="review-left-content">
 
@@ -223,6 +223,7 @@
                                               </div>
                                           </div>
                                       </div>
+
                                       <?php
                                     } else {
                                         ?>

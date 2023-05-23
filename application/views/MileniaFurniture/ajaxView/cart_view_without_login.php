@@ -1,5 +1,5 @@
-<div class="drop-cart-title">
-  <h3 class="cart-title"><?= $this->lang->line('My shopping cart') ?></h3>
+<div class="dropdown-title">
+  <h4><?= $this->lang->line('My shopping cart') ?></h4>
   <a href="#" class="close-btn"><i class="fa-solid fa-xmark"></i></a>
 </div>
 
@@ -24,35 +24,32 @@ foreach ($_SESSION['My_cart'] as $key => $value) {
   }
 ?>
 
-  <div class="cart-drop-wrapper">
 
-
+  <li>
     <div class="cart-drop-menu cart-drop-menu-1">
       <div class="drop-img">
-        <a href="<?= base_url() . 'products/productDetails/' . $encode_id . '/' . $varient_id ?>">
-          <img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $value["image"] ?>" alt=""></a>
+        <a href="<?= base_url() . 'products/productDetails/' . $encode_id . '/' . $varient_id ?>"><img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $value["image"] ?>" alt=""></a>
       </div>
       <div class="drop-text">
-        <h4><a href="<?= base_url() . 'products/productDetails/' . $encode_id . '/' . $varient_id ?>"><?= $value['product_name'] ?></a></h4>
-        <p>Qty : <?= $value['quantity'] ?></p>
-        <h3> <?= $this->siteCurrency . ' ' . number_format((float)$value['discount_price'], 2, '.', '') ?></h3>
-
+        <a href="<?= base_url() . 'products/productDetails/' . $encode_id . '/' . $varient_id ?>">
+          <h4><?= $value['product_name'] ?></h4>
+        </a>
+        <p>Qty : <span><?= $value['quantity'] ?></span> </p>
+        <h3><?= $this->siteCurrency . ' ' . number_format((float)$value['discount_price'], 2, '.', '') ?></h3>
       </div>
       <div class="cancel-btn remove_item" data-product_id="<?= $value['product_id'] ?>" data-product_weight_id="<?= $value['product_weight_id'] ?>">
-        <a href="#"><i class="fa-solid fa-xmark"></i></a>
+        <a href="#" class="ms-0"><i class="fa-regular fa-circle-xmark"></i></a>
       </div>
     </div>
-
-  </div>
-  <hr>
+  </li>
 <?php } ?>
-
-<div class="total-amount">
-  <p><?= $this->lang->line('Total') ?></p>
-  <h3><?= $this->siteCurrency . ' ' . getMycartSubtotal() ?></h3>
-</div>
-
-<div class="drop-btns">
-  <a href="<?= base_url() . 'products/cart_item' ?>" class="view-cart"><?= $this->lang->line('view cart') ?></a>
-  <a href="<?= base_url() . 'checkout' ?>" class="checkout "><?= $this->lang->line('checkout') ?></a>
+<div>
+  <div class="total-amount p-0">
+    <p><?= $this->lang->line('Total') ?></p>
+    <h3><?= $this->siteCurrency . ' ' . getMycartSubtotal() ?></h3>
+  </div>
+  <div class="drop-btns p-0">
+    <a href="<?= base_url() . 'products/cart_item' ?>" class="view-cart"><?= $this->lang->line('view cart') ?></a>
+    <a href="<?= base_url() . 'checkout' ?>" class="checkout"><?= $this->lang->line('checkout') ?></a>
+  </div>
 </div>

@@ -2,10 +2,12 @@ function zoom() {
   if ($(window).width() >= 992) {
     var paneContainer = document.querySelector(".zoom");
     $(".swiper-slide").each(function () {
-      new Drift($(this).find("a > img")[0], {
-        paneContainer: paneContainer,
-        inlinePane: false,
-      });
+      if ($(this).find("a > img")[0] !== undefined) {
+        new Drift($(this).find("a > img")[0], {
+          paneContainer: paneContainer,
+          inlinePane: false,
+        });
+      }
     });
   }
 }
@@ -245,6 +247,7 @@ var ADDPRODUCT = (function () {
     var that = $(this);
     var stockMessage = language.js_limited_stock;
     var stockMessage1 = language.js_available_instock;
+
     $("#product_varient_id").val(product_varient_id); //update hidden field
     if (product_varient_id != "") {
       $(".weight-error").html("");
@@ -255,27 +258,31 @@ var ADDPRODUCT = (function () {
         data: { product_varient_id: product_varient_id },
         dataType: "json",
         success: function (output) {
-          // alert(siteCurrency);
-
           $("#review_count").html(
             language.Reviews + "(" + output.productReviewCount + ")"
           );
+
+          $("#review_section").html(output.shoppyUserSection);
+          $("#starRatting").html(output.furniture_starHtml);
+
+          if (
+            output.isVarientExist == 1 &&
+            output.countParticularUserReview == 0
+          ) {
+            $("#writeReviewSection").addClass("d-block");
+            $("#writeReviewSection").removeClass("d-none");
+          } else {
+            $("#writeReviewSection").removeClass("d-block");
+            $("#writeReviewSection").addClass("d-none");
+          }
+
           if (output.productReviewCount == 0) {
             $("#review_section").addClass("d-none");
           } else {
             $("#review_section").removeClass("d-none");
           }
-          if (
-            output.isVarientExist == 0 ||
-            output.countParticularUserReview >= 1
-          ) {
-            $("#writeReviewSection").addClass("d-none");
-          } else {
-            $("#writeReviewSection").removeClass("d-none");
-          }
 
-          $("#review_section").html(output.shoppyUserSection);
-          $("#starRatting").html(output.shoppy_starHtml);
+          $("#avgRating").html(output.avgRatting);
 
           var strike_price = "";
           if (output.discount_per != 0) {
@@ -300,43 +307,75 @@ var ADDPRODUCT = (function () {
             $("#is_discounted").html(output.discount_per + "% off");
           }
 
-            var isDiscount = output.discount_per > 0 ? "" : "d-none";
-            var disNwislist =
-              '<span class="discnt ' +
-              isDiscount +
-              '">' +
-              output.discount_per +
-              "% off</span>";
-            disNwislist =
-              disNwislist +
-              '<div class="pro-hearticon wishlist-icon" data-product_id="' +
-              output.product_id +
-              '" data-product_weight_id="' +
-              output.product_variant_id +
-              '"><i class="fa-regular fa-heart ' +
-              output.isInWishListUpbasket +
-              '"></i></div>';
-            $(".discnt").remove();
-            $(".pro-hearticon").remove();
-            $("#zoom_image").before(disNwislist);
+          var isDiscount = output.discount_per > 0 ? "" : "d-none";
+          var disNwislist =
+            '<span class="discnt ' +
+            isDiscount +
+            '">' +
+            output.discount_per +
+            "% off</span>";
+          disNwislist =
+            disNwislist +
+            '<div class="pro-hearticon wishlist-icon" data-product_id="' +
+            output.product_id +
+            '" data-product_weight_id="' +
+            output.product_variant_id +
+            '"><i class="fa-regular fa-heart ' +
+            output.isInWishListUpbasket +
+            '"></i></div>';
+          $(".discnt").remove();
+          $(".pro-hearticon").remove();
+          $("#zoom_image").before(disNwislist);
 
-            if (output.varient_quantity > output.limited_stock) {
-              $("#is_aval_stock").html(stockMessage1);
-            } else {
-              $("#is_aval_stock").html(stockMessage);
-            }
+          if (output.varient_quantity > output.limited_stock) {
+            $("#is_aval_stock").html(stockMessage1);
+          } else {
+            $("#is_aval_stock").html(stockMessage);
+          }
 
           if (output.cartProductQuantity == 0) {
             var qnt = 1;
-            that.closest("div").prev().prev('div.product-detalis-btn').find("a:first").removeClass("d-none");
-            that.closest("div").prev().prev('div.product-detalis-btn').find('a:first').next("div").addClass("d-none");
+            that
+              .closest("div")
+              .prev()
+              .prev("div.product-detalis-btn")
+              .find("a:first")
+              .removeClass("d-none");
+            that
+              .closest("div")
+              .prev()
+              .prev("div.product-detalis-btn")
+              .find("a:first")
+              .next("div")
+              .addClass("d-none");
           } else {
-            that.closest("div").prev().prev('div.product-detalis-btn').find("a:first").addClass("d-none");
-            that.closest("div").prev().prev('div.product-detalis-btn').find('a:first').next("div").removeClass("d-none");
+            that
+              .closest("div")
+              .prev()
+              .prev("div.product-detalis-btn")
+              .find("a:first")
+              .addClass("d-none");
+            that
+              .closest("div")
+              .prev()
+              .prev("div.product-detalis-btn")
+              .find("a:first")
+              .next("div")
+              .removeClass("d-none");
             var qnt = output.cartProductQuantity;
           }
-          that.closest("div").prev().prev('div.product-detalis-btn').find(".product-detail-quentity .qty-container .qty-btn-minus").attr("data-product_weight_id", output.product_weight_id);
-          that.closest("div").prev().prev('div.product-detalis-btn').find(".product-detail-quentity .qty-container .qty-btn-plus").attr("data-product_weight_id", output.product_weight_id);
+          that
+            .closest("div")
+            .prev()
+            .prev("div.product-detalis-btn")
+            .find(".product-detail-quentity .qty-container .qty-btn-minus")
+            .attr("data-product_weight_id", output.product_weight_id);
+          that
+            .closest("div")
+            .prev()
+            .prev("div.product-detalis-btn")
+            .find(".product-detail-quentity .qty-container .qty-btn-plus")
+            .attr("data-product_weight_id", output.product_weight_id);
           $("#qnt").val(qnt);
           $("#product_weight_id").val(output.product_weight_id);
           $("#varient_id").val(output.product_variant_id);

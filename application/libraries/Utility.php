@@ -111,11 +111,12 @@ class Utility
     public function setFlashMessage($type, $message)
     {
         $CI = &get_instance();
-        $template = '<div class="alert alert-' . $type . ' alert-dismissible text-center" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						   <span aria-hidden="true">&times;</span>
-							</button>' . $message . '</div>';
-
+        // $template = '<div class="alert alert-' . $type . ' alert-dismissible text-center" role="alert">
+		// 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		// 				   <span aria-hidden="true">&times;</span>
+		// 					</button>' . $message . '</div>';
+        
+        $template = '<div class="alert alert-' . $type . ' text-center" role="alert">' . $message . '</div>';
         $CI->session->set_flashdata("myMessage", $template);
     }
 
