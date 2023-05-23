@@ -164,7 +164,6 @@
     </div>
 </section>
 
-<?php if ($this->session->userdata('user_id') != '') { ?>
     <section class="p-120 review-wrp">
         <div class="container">
             <div class="row">
@@ -254,7 +253,7 @@
             </div>
         </div>
     </section>
-<?php } ?>
+
 <input type="hidden" name="product_id" id="product_id" value='<?= $product_id ?>'>
 <input type="hidden" name="product_varient_id" id="product_varient_id" value='<?= (isset($varientDetails[0]->id) && $varientDetails[0]->id != '') ? $this->utility->safe_b64encode($varientDetails[0]->id) : $this->utility->safe_b64encode($productDetail[0]->variant_id) ?>'>
 
