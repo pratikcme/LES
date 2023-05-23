@@ -34,15 +34,36 @@ $(document).ready(function () {
 });
 
 // -----checkout-page-accordion----
+// $(document).ready(function () {
+//   $(".accordion-heading").on("click", function () {
+//     $(this).addClass("active");
+//     $(this).next().addClass("test");
+//     $(this).next().slideToggle();
+
+//     // $(".accordion-heading").removeClass("active");
+//     // $(this).toggleClass("active").next().slideToggle();
+
+//     // $(".accordion-content").not($(this).next()).slideUp(300);
+//     // $(this).siblings().removeClass("active");
+//   });
+// });
+
+
 $(document).ready(function () {
   $(".accordion-items").on("click", ".accordion-heading", function () {
-    $(".accordion-heading").removeClass("active");
-    $(this).toggleClass("active").next().slideToggle();
-
-    $(".accordion-content").not($(this).next()).slideUp(300);
-    $(this).siblings().removeClass("active");
+    console.log('click',$(this).parent().hasClass("openAcc"))
+    if (!$(this).parent().hasClass("openAcc")) {
+      console.log('add')
+      $(this).parent().siblings().removeClass("openAcc");
+      $(this).parent().addClass("openAcc");
+    }
+    else{
+      console.log('remove')
+      $(this).parent().removeClass("openAcc");
+    }
   });
 });
+
 
 // ============= place order modal js ===========
 var modal = document.getElementById("myModal");

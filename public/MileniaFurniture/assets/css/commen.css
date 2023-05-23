@@ -14,6 +14,10 @@ li {
 body{
     position: relative;
 }
+.accordion-content.test  {
+    display: block !important;
+}
+
 
 ul,li{
     list-style-type: none;

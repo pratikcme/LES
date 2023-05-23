@@ -29,6 +29,10 @@ header.scrollDown {
     padding: 7px 8px 7px 18px;
 }
 
+.searchbar form{
+    margin-bottom: 0;
+}
+
 .searchbar .input-group input {
     padding: 0;
     border: none !important;
@@ -657,15 +661,17 @@ li {
 .drp-grp{
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .lng-drp select,
 .branch-drp select{
     border-radius: 5px;
     padding: 10px 7px;
-    font-family: var(--BeVietnamPro-Regular);
+    font-family: var(--inter-regular);
     font-size: 14px !important;
-    width: 85px;
+    width: 100%;
+    max-width: 150px;
     height: 100%;
     appearance: none;
     background-image: url(../images/selectarrow.png);
@@ -678,15 +684,25 @@ li {
     position: relative;
 }
 
+.branch-drp{
+    margin-right: 10px;
+}
+
+.lng-drp,
+.branch-drp
+{
+    margin-bottom: 0;
+}
+
 .lng-drp select:focus,
 .branch-drp select:focus{
     outline: 0;
     box-shadow: none;
 }
 
-.branch-drp select{
+/* .branch-drp select{
     margin-right: 10px;
-}
+} */
 
 /* Dk added */
 .no-itm.cart-btn .dropdown-menu {

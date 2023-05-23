@@ -338,6 +338,7 @@ body {
 .mySwiper {
     width: 520px;
     margin-top: 25px;
+    height: 180px !important;
 }
 
 .mySwiper img {
@@ -439,7 +440,10 @@ body {
 }
 
 
-
+.review-wrp{
+    position: relative !important;
+    z-index: 5 !important;
+}
 
 /* ==========responsive=================== */
 @media (max-width: 768px) {
@@ -671,7 +675,7 @@ body {
     border: 1px solid #EFE8E6;
     border-radius: 20px;
     padding: 28px 40px;
-    margin-top: 70px;
+    margin-top: 270px;
 }
 
 .review-desc .nav-tabs .nav-link.active {
@@ -1083,6 +1087,12 @@ body {
     left: 10px;
     right: auto;
 
+}
+
+.mySwiper,
+.swiper-wrapper 
+{
+    height: 170px !important;
 }
 
 /* --------rating-css----- */

@@ -11,6 +11,12 @@ img {
     width: 100%;
 }
 
+.main-accordion.openAcc .accordion-content{
+    height: auto !important;
+    display: block !important;
+}
+
+
 h1 {
     color: var(--secondary-color);
     font-size: 54px;

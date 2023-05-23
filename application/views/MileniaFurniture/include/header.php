@@ -65,6 +65,7 @@
 
         .goog-te-gadget {
             color: transparent !important;
+            font-size:0 !important;
         }
 
         .goog-te-banner-frame.skiptranslate {
@@ -73,7 +74,7 @@
 
         .goog-te-gadget .goog-te-combo {
             margin: 4px 0;
-            width: 150px;
+            /* width: 150px; */
         }
 
         .VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate {
