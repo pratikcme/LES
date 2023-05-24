@@ -97,26 +97,6 @@
                             </a>
                         </div>
                         <?php } ?>
-                        <!-- <div class="item">
-                            <a href="./product-list-page.php" class="categories-wrap">
-                                <div class="categories-image-wrap">
-                                    <img src="<?= $this->theme_base_url ?>/assets/images/home/sofa.png" alt="" />
-                                </div>
-                                <div class="categories-text">
-                                    <h4>Sofas</h4>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="./product-list-page.php"  class="categories-wrap">
-                                <div class="categories-image-wrap">
-                                    <img src="<?= $this->theme_base_url ?>/assets/images/home/table.png" alt="" />
-                                </div>
-                                <div class="categories-text">
-                                    <h4>Table</h4>
-                                </div>
-                            </a>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -161,16 +141,6 @@
             </div>
             <?php } ?>
             <?php } ?>
-            <!-- <div class="col-lg-6 col-md-6 mb-4">
-                <div class="sale-banner-wrap position-relative">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/home/sale-banner2.png" class="sale-banner-img position-absolute" alt="sale-banner" />
-                    <div class="sale-banner-inner sale-banner-inner2 text-center">
-                        <span>SALE UP TO 20% OFF ALL ITEMS</span>
-                        <h2>Scandinavian Style</h2>
-                        <a href="./product-list-page.php" class="cmn-btn">shop now</a>
-                    </div>
-                </div>
-            </div> -->
 
             <!--=============== three-banners ==================-->
             <?php if (count($offer_list) == 3) { ?>
