@@ -37,12 +37,12 @@ class Promocode_manage_model extends My_model{
             'dt_created' => DATE_TIME,
             'dt_updated' => DATE_TIME
         );
-        dd($insert);
         $data['table'] = TABLE_PROMOCODE;
         $data['insert'] = $insert;
         
     
         $res = $this->insertRecord($data); 
+        lq();
         if($res){
             $jsone_response['status'] = 'success';
             $jsone_response['message'] = 'Data added success!!!';
