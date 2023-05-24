@@ -107,10 +107,10 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            <a href="" class="add-address-btn edit_address"
+                                            <a href="javascript:;" class="add-address-btn edit_address"
                                                 data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
-                                            <a href="" class="delet-address-btn remove_address"
+                                            <a href="javascript:;" class="delet-address-btn remove_address"
                                                 data-id='<?= $this->utility->safe_b64encode($value->id) ?>'><i
                                                     class="fa-solid fa-trash-can"></i></a>
                                         </div>
@@ -237,7 +237,6 @@
                                         <h3><?= $this->lang->line('Pickup Timing') ?></h3>
                                         <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
                                     </form>
-
                                 </div>
                                 <?php } else { ?>
                                 <div class="time-picker">
@@ -259,8 +258,6 @@
                                         <?php } ?>
                                     </form>
                                 </div>
-
-
                                 <?php } ?>
                             </div>
                         </div>

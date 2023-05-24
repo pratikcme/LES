@@ -442,7 +442,7 @@
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </a>
-                                            <!-- <a href="#"><img src="<?= $this->theme_base_url ?>/assets/images/home/like.svg" alt="light" /></a> -->
+
                                             <div class="techno-check">
                                                 <input class="techno_checkbox" type="checkbox" id="1" value="1"
                                                     <?= (in_array($value->pw_id, $wish_pid)) ? "checked" : "" ?>>
@@ -465,7 +465,7 @@
                                         </a>
                                         <div class="price-wrap notranslate d-flex">
                                             <p><span
-                                                    <?= ($value->discount_per > 0) ? '' : 'd-none' ?>><strike><?= $this->siteCurrency . '' . number_format((float)$value->price, 2, '.', '') ?></strike></span>
+                                                    class="<?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><strike><?= $this->siteCurrency . '' . number_format((float)$value->price, 2, '.', '') ?></strike></span>
                                             </p>
                                             <h6><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
                                             </h6>
