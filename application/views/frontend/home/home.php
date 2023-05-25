@@ -64,7 +64,12 @@
 
 </div>
 </div>
-<?php if (!empty($offer_list)) { ?>
+<?php 
+if($_SERVER['REMOTE_ADDR']=='182.70.119.73'){
+			lq();
+		}
+
+if (!empty($offer_list)) { ?>
 
     <section class="p-100 bg-light-blue">
         <div class="container">
