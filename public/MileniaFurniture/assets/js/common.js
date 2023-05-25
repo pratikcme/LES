@@ -2,6 +2,7 @@ function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
 
+
 // -----counter-js---
 // var buttonPlus = $(".qty-btn-plus");
 // var buttonMinus = $(".qty-btn-minus");
@@ -162,35 +163,7 @@ $(document).ready(function () {
 });
 
 // -----checkout-page-accordion----
-// $(document).ready(function () {
-//   $(".accordion-heading").on("click", function () {
-//     $(this).addClass("active");
-//     $(this).next().addClass("test");
-//     $(this).next().slideToggle();
 
-//     // $(".accordion-heading").removeClass("active");
-//     // $(this).toggleClass("active").next().slideToggle();
-
-//     // $(".accordion-content").not($(this).next()).slideUp(300);
-//     // $(this).siblings().removeClass("active");
-//   });
-// });
-
-
-$(document).ready(function () {
-  $(".accordion-items").on("click", ".accordion-heading", function () {
-    console.log('click',$(this).parent().hasClass("openAcc"))
-    if (!$(this).parent().hasClass("openAcc")) {
-      console.log('add')
-      $(this).parent().siblings().removeClass("openAcc");
-      $(this).parent().addClass("openAcc");
-    }
-    else{
-      console.log('remove')
-      $(this).parent().removeClass("openAcc");
-    }
-  });
-});
 
 
 // ============= place order modal js ===========

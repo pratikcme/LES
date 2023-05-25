@@ -19,11 +19,11 @@
 }
 .vendor-main h3{
     font-family: var(--inter-bold);
-    font-size: 32px !important;
+    font-size: 23px !important;
     font-weight: 700;
     line-height: 40px;
     color: var(--primary-color);
-    margin-bottom: 40px;
+    margin-bottom: 22px;
 }
 
 .vendor-wrapper{
@@ -63,6 +63,11 @@
     letter-spacing: 0.03em;
     color: var(--text-color) !important;
     margin-bottom: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
 }
 .contact-vendor .contact-content h6 a{
     color: var(--common-pera-color) !important;
@@ -93,6 +98,9 @@
 .vendor-left{
     position: relative;
     margin-left: -100px;
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
 }
 .circle-img{
     position: absolute;
@@ -163,6 +171,8 @@
 .vendor-left img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 

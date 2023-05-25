@@ -110,7 +110,7 @@
     object-fit: contain;
     filter: brightness(0) invert(1);
     position: relative;
-    top: -4px;
+    /* top: -4px; */
 }
 
 .categories .owl-carousel .owl-nav button.owl-prev {
@@ -340,7 +340,7 @@
 }
 
 .hot-products-wrap {
-    padding: 15px 15px 0px;
+    padding: 15px 15px 15px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
     transition: 0.5s;
@@ -349,9 +349,10 @@
 }
 
 .hot-products-wrap h5 {
-    font-size: 20px;
+    font-size: 15px;
     font-family: var(--inter-semibold);
     color: var(--secondary-color);
+    height: 45px;
 }
 
 .hot-products-wrap h5::after {
@@ -371,11 +372,13 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    color: var(--primary-color);
+    color: var(--white);
     padding: 5px;
     border-radius: 5px;
     font-family: var(--inter-regular);
     z-index: 3;
+    background-color: var(--primary-color);
+    font-size: 12px;
 }
 
 .discnt{
@@ -413,10 +416,10 @@
 } */
 
 .price-wrap h6 {
-    font-size: 20px;
+    font-size: 18px;
     font-family: var(--inter-extra);
     color: var(--primary-color);
-    margin: 0 12px;
+    /* margin: 0 12px; */
 }
 
 .hot-products-cart-wrap {
@@ -472,8 +475,8 @@
 
 .techno_checkbox {
     position: absolute;
-    /* top: 4px; */
-    right: 33px;
+    top: 4px;
+    right: 0;
     bottom: 62px;
     opacity: 0;
     width: 26px;
@@ -487,7 +490,9 @@
     content: "\f004";
     font-family: "FontAwesome";
     position: absolute;
-    width: 26px !important;
+    top: -2px;
+    right: -2px;
+    width: 25px !important;
     height: 26px !important;
     /* background: var(--common-white); */
     display: flex;
@@ -510,12 +515,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .stocks {
     max-width: 100%;
     width: 42px;
-    height: 42px;
+    /* height: 42px; */
     background-color: var(--white);
     border: 1px solid transparent;
     border-radius: 15px;
@@ -641,10 +647,12 @@
     color: gray !important;
 }
 
+.categories .col-lg-4 h5{
+    display: none;
+}
 
 
-
-/* responsive css */
+/*=========================== responsive css ==============================*/
 @media only screen and (max-width: 1400px) {
     .hot-products-img {
         height: 200px;
@@ -738,7 +746,7 @@
     }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
     .p-120 {
         padding: 60px 0;
     }
@@ -895,8 +903,14 @@
     .cloth-content h5{
         font-size: 16px !important;
     }
-   
+    
+    .rating span.star{
+        font-size: 10px;
+        margin-right: -7px;
+    }
 }
+
+
 
 
 @media only screen and (max-width: 767px) {
@@ -942,6 +956,10 @@
 
     .home-banner{
         padding: 100px 0 0px;
+    }
+
+    #mySidepanel #collapseSix i{
+        display: none;
     }
 }
 

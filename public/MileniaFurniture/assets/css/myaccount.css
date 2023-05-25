@@ -109,7 +109,7 @@
     border-radius: 5px;
     padding-left: 25px;
     height: 50px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 .myaccout-detail-tab input:focus{
     border: 1px solid var(--myaccoutn-tab-input-border) !important;
@@ -223,6 +223,8 @@
     display: flex;
     align-items: center;
     gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .address-wrapper{
     background: #fff;
@@ -232,10 +234,10 @@
     padding: 11px;
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     flex-direction: column;
     text-align: center;
-    width: 100%;
+    max-width: 600px;
 }
 .address-text{
     width: 100%;
@@ -245,11 +247,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .address-text h3{
     font-family: var(--inter-semibold);
-    font-size: 24px !important;
+    font-size: 20px !important;
     line-height: 40px;
     color: var(--myaccoutn-tab-label-text);
     margin-bottom: 0px !important;
@@ -262,7 +264,7 @@
     color: var(--text-color);
     margin-bottom: 0px;
     max-width: 500px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     text-align: left;
     margin-left: -50px;
 }
@@ -282,6 +284,11 @@
     color: #fff !important;
     transition: 0.3s;
 }
+
+.edit-address-btn {
+    margin-top: 25px;
+}
+
 .address-icons .add-address-btn:hover{
      background: transparent;
      color: var(--primary-color) !important;
@@ -340,7 +347,7 @@
 }
 .my-order-text h3 span{
     font-family: var(--inter-regular);
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     color: var(--text-color);
 }
@@ -379,8 +386,9 @@
     margin-top: 0 !important;
 }
 
-.my-order-details {
-    height: 450px;
+.my-order-details .tab-pane {
+    max-height: 500px;
+    min-height: 100px;
     overflow-y: scroll;
 }
 
@@ -391,7 +399,7 @@
     border: none;
     box-shadow: none;
     border-radius: 5px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     overflow: hidden;
     padding: 0px;
 }
@@ -592,6 +600,24 @@
     border-bottom: none !important;
 }
 
+.get-detials-account .cmn-btn{
+    background: var(--btn-bg) !important;
+    color: var(--btn-text) !important;
+    font-family: var(--inter-bold);
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 15px 50px !important;
+    border-radius: 5px;
+    display: inline-block;
+    border: 1px solid var(--btn-bg) !important;
+    transition: 0.5s;
+}
+
+.get-detials-account .cmn-btn:hover{
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+}
+
 /* ==========responsive========= */
 @media only screen and (min-width:1200px) and (max-width: 1399px) {
       /* ------tab-1-css---- */
@@ -651,15 +677,15 @@
         font-size: 14px;
     }
     .my-order-text h3 {
-        font-size: 16px;
+        font-size: 14px;
     }
     .my-order-text h3 {
-        font-size: 16px;
+        font-size: 14px;
         max-width: 450px;
-        margin-bottom: 10px;
+        margin-bottom: 3px;
     }
     .my-order-text p {
-        font-size: 15px;
+        font-size: 14px;
     }
 
 

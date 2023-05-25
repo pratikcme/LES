@@ -164,7 +164,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-save-btn">
-                                            <input type="submit" class="common-input-btn" id="btnAccSubmit"
+                                            <input type="submit" class="common-input-btn cmn-btn" id="btnAccSubmit"
                                                 value="<?= $this->lang->line('Save') ?>" />
                                         </div>
                                     </div>

@@ -82,8 +82,8 @@
 }
 .accordion-content label{
     font-family: var(--inter-medium);
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 25px;
     color: var( --accordian-content-text-1);
     margin-bottom: 20px;
 }
@@ -156,7 +156,7 @@ input:focus{
 .accordion-content-2 label{
     font-family: var(--inter-regular);
     font-size: 14px;
-    line-height: 16px;
+    line-height: 25px;
     color: var(--accordian-content-text-2);
 }
 
@@ -499,13 +499,15 @@ input:focus{
 }
 .checkout-order-detils .cart-totals-part{
     margin-bottom: 40px;
+    margin-top: 20px;
+    max-width: 100%;
 }
 .our-secure-product{
     margin-top: 50px;
 }
 .secure-product-wrapper{
     width:100%;
-    max-width: 424px;
+    /* max-width: 424px; */
     /* height: 100%; */
     background: #FBF1E8;
     border: 1px solid var(--accordian-border);
@@ -770,16 +772,15 @@ to {top: 0px; opacity: 1}
 /* shopping-address */
 .new-address button{
     background: var(--primary-color);
-    font-family: var(--inter-regular);
-    font-size: 18px;
-    font-weight: 600;
+    font-family: var(--inter-bold);
+    font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.05em;
     color: var(--white) !important;
     padding: 12px 30px 12px 30px;
     border-radius: 90px;
     text-transform: capitalize;
-    margin-bottom: 25px;
+    margin-top: 25px;
     transition: 0.5s;
     border: 1px solid var(--primary-color);
 }
@@ -797,6 +798,7 @@ to {top: 0px; opacity: 1}
 
 .ship-close i{
     font-size: 20px;
+    color: var(--primary-color);
 }
 
 .ship-close{
@@ -842,8 +844,8 @@ to {top: 0px; opacity: 1}
     border: 1px solid var(--primary-color);
     display: inline-block;
     margin-left: auto;
-    padding: 8px;
-    border-radius: 10px;
+    padding: 5px 8px;
+    border-radius: 5px;
 }
 
 .ship-check .form-check .form-check-input{
@@ -855,7 +857,7 @@ to {top: 0px; opacity: 1}
 .ship-check .form-check-label{
     margin-bottom: 0;
     font-family: var(--inter-medium) ;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--listing-2-normal-text) !important;
     margin-bottom: 0px;
@@ -869,6 +871,15 @@ to {top: 0px; opacity: 1}
 /* date-picker */
 .datepicker.datepicker-inline{
     width: 100% !important;
+}
+
+#datepicker .ui-datepicker-inline{
+    margin-top: 0;
+}
+
+#datepicker .ui-widget-content .ui-state-default{
+    border-radius: 0;
+    text-align: center;
 }
 
 .table-condensed{
@@ -1202,7 +1213,7 @@ border: 1px solid #999 !important;
 
 .ui-datepicker-calendar thead th {
 color: var(--primary-color) !important;
-font-size: 16px !important;
+font-size: 14px !important;
 font-weight: 400px !important;
 padding-left: 0 !important;
 }
@@ -1211,6 +1222,7 @@ padding-left: 0 !important;
 .ui-widget-content .ui-state-active {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
+    color: var(--white) !important;
 }
 
 .time-picker{

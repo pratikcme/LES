@@ -14,9 +14,9 @@ li {
 body{
     position: relative;
 }
-.accordion-content.test  {
+/* .accordion-content.test  {
     display: block !important;
-}
+} */
 
 
 ul,li{
@@ -55,7 +55,7 @@ h1{
 h2{
     font-size: 44px !important;
     font-family: var(--PublicSans-ExtraBold);
-    line-height: 42px;
+    line-height: 38px;
 }
 
 h3{

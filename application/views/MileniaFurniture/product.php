@@ -87,7 +87,7 @@
     <div class="mobile-btn-overlay active"></div>
     <div class="container">
         <div class="row">
-            <div class="product-select-in">
+            <div class="product-select-in m-0">
 
                 <!-- -----mobile-filter-dropdown---- -->
                 <div class="mobile-filter-icon">
@@ -253,6 +253,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="products-wrap pro-list-wrap mycustom-row">
@@ -376,6 +377,9 @@
                         </div>
                     </div>
                 </div>
+
+               
+
 
                 <!-- ---left-product-list--- -->
                 <div class="show-div-wrapper">
