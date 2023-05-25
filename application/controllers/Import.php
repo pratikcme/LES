@@ -228,7 +228,7 @@ class Import extends Vendor_Controller
             $objValidation5->setPrompt('Please pick a value from the drop-down list.');
             $objValidation5->setFormula1('"'. implode(',',$packageList).'"');
 
-            $dataValidation7 = $worksheet->getCell('M'.$i.'')->getDataValidation();
+            $dataValidation7 = $this->excel->getActiveSheet()->getCell('M'.$i.'')->getDataValidation();
             $dataValidation7->setType('decimal')
                 ->setOperator('greaterThan')
                 ->setFormula1('=N'.$i.'')
