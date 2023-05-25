@@ -275,6 +275,10 @@ class Home_model extends My_model
 		unset($data);
 		foreach ($result as $k => $v) {
 			if($_SERVER['REMOTE_ADDR']=='182.70.119.73'){
+				if ($v->end_date == $today && $v->end_time <= $time) {
+					echo '1s';
+				}
+				
 				echo $v->end_date;
 				echo "<br>";
 				echo $today;
