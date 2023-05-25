@@ -64,12 +64,7 @@
 
 </div>
 </div>
-<?php 
-if($_SERVER['REMOTE_ADDR']=='182.70.119.73'){
-			dd($offer_list);
-		}
-
-if (!empty($offer_list)) { ?>
+<?php if (!empty($offer_list)) { ?>
 
     <section class="p-100 bg-light-blue">
         <div class="container">

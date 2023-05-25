@@ -122,9 +122,9 @@ class Home extends User_Controller
 
 		$data['item_weight_id'] = $item_weight_id;
 		$data['offer_list'] = $this->this_model->get_offer($this->session->userdata('branch_id'));
-		// if($_SERVER['REMOTE_ADDR']=='182.70.119.73'){
-		// 	lq();
-		// }
+		if($_SERVER['REMOTE_ADDR']=='182.70.119.73'){
+			dd($data['offer_list']);
+		}
 		// dd($data);
 		$this->loadView(USER_LAYOUT, $data);
 	}
