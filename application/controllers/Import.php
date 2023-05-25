@@ -306,7 +306,7 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('E1', 'Varient Unit');
         $this->excel->getActiveSheet()->setCellValue('F1', 'Package');
         $this->excel->getActiveSheet()->setCellValue('G1', 'Quantity');
-        $this->excel->getActiveSheet()->setCellValue('H1', 'purchased price');
+        $this->excel->getActiveSheet()->setCellValue('H1', 'Product_price');
         $this->excel->getActiveSheet()->setCellValue('I1', 'Discount(%)');
         $this->excel->getActiveSheet()->setCellValue('J1', 'Maximum order quantity');
         $this->excel->getActiveSheet()->setCellValue('K1', 'Display priority');
@@ -373,7 +373,7 @@ class Import extends Vendor_Controller
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('E'.$k.'', ''.$v->name.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('F'.$k.'', ''.$v->package.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('G'.$k.'', ''.$v->quantity.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H'.$k.'', ''.$v->purchase_price.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H'.$k.'', ''.$v->price.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I'.$k.'', ''.$v->discount_per.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->max_order_qty.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
