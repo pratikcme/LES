@@ -261,7 +261,7 @@ class Home_model extends My_model
 
 	public function get_offer($branch_id = '')
 	{
-		$today = date('Y-m-d');
+		echo $today = date('Y-m-d');
 		$time = date('H:i:00');
 
 
@@ -279,9 +279,9 @@ class Home_model extends My_model
 					echo '1s';
 				}
 				
-				echo $v->end_time;
+				echo $v->end_date;
 				echo "<br>";
-				echo $time;
+				echo $today;
 			}
 			if ($v->end_date == $today && $v->end_time <= $time) {
 				unset($result[$k]);
