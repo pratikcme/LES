@@ -243,7 +243,7 @@ class Import extends Vendor_Controller
             $objValidation7->setShowErrorMessage(true);
             $objValidation7->setErrorTitle('Input error');
             $objValidation7->setError('Duplicate value not allowed');
-            $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.', "M is greater", "M is not greater")');
+            $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.')=1');
                 
 
 
