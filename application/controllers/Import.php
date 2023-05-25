@@ -236,14 +236,14 @@ class Import extends Vendor_Controller
             //     ->setErrorTitle('Invalid Entry')
             //     ->setError('Value in A1 must be greater than A2.');
             $objValidation7 = $this->excel->getActiveSheet()->getCell('M'.$i.'')->getDataValidation();
-            $objValidation7->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
-            $objValidation7->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_STOP );
-            $objValidation7->setAllowBlank(TRUE);
+            $objValidation7->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
+            $objValidation7->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
+            $objValidation7->setAllowBlank(true);
             $objValidation7->setShowInputMessage(true);
             $objValidation7->setShowErrorMessage(true);
             $objValidation7->setErrorTitle('Input error');
-            $objValidation7->setError('Dublicate value not allowed');
-            $objValidation7->setFormula1('=IF(M'.$i.'>N'.$i.', "A1 is greater", "A1 is not greater")');
+            $objValidation7->setError('Duplicate value not allowed');
+            $objValidation7->setFormula1('=IF(M'.$i.' > N'.$i.', "M is greater", "M is not greater")');
                 
 
 
