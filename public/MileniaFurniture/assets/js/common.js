@@ -2,6 +2,7 @@ function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
 
+
 // -----counter-js---
 // var buttonPlus = $(".qty-btn-plus");
 // var buttonMinus = $(".qty-btn-minus");
@@ -162,15 +163,8 @@ $(document).ready(function () {
 });
 
 // -----checkout-page-accordion----
-$(document).ready(function () {
-  $(".accordion-items").on("click", ".accordion-heading", function () {
-    $(".accordion-heading").removeClass("active");
-    $(this).toggleClass("active").next().slideToggle();
 
-    $(".accordion-content").not($(this).next()).slideUp(300);
-    $(this).siblings().removeClass("active");
-  });
-});
+
 
 // ============= place order modal js ===========
 var modal = document.getElementById("myModal");

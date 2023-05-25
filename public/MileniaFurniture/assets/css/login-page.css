@@ -20,7 +20,7 @@
 .login-left-content .title{
     margin-left: 0px;
     position: relative;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     font-family: var(--inter-extra);
     font-size: 40px;
     line-height: 40px;
@@ -60,7 +60,7 @@
     height: 663px;
     box-shadow: 0px 20px 50px rgba(34, 37, 40, 0.1);
     border-radius: 20px;
-    padding: 50px 40px 0px 40px;
+    padding: 40px 40px 0px 40px;
     /* margin-left: 50px; */
     overflow: hidden;
     overflow-y: scroll;
@@ -72,7 +72,7 @@
   
 .login-deatils-wrapper label{
     font-family: var(--inter-medium);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 20px;
     color: var(--login-wrapper-label);
@@ -90,10 +90,13 @@
     width: 100%;
     height: 50px;
     padding-left: 25px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     outline: 0;
 }
 
+.login-deatils-wrapper .error{
+    font-size: 14px;
+}
 
 .login-deatils-wrapper select{
     border: 1px solid var(--login-wrapper-input-border) !important;
@@ -115,9 +118,10 @@
 .login-deatils-wrapper select::placeholder
 {
     font-family:var(--inter-regular);
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 14px;
     color: var(--login-wrapper-placholder) !important;
+    text-transform: capitalize;
 }
 .forgot-password-text{
     font-family: var(--inter-medium) !important;
@@ -131,7 +135,7 @@
 }
 .sign-in-btn{
     margin-top: 60px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 .sign-in-btn button{
     padding: 10px 50px 10px 50px;
@@ -192,8 +196,8 @@
     font-size: 20px;
 }
 .log-in-btn{
-    margin-top: 43px;
-    margin-bottom: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -204,7 +208,7 @@
     font-size: 18px;
     line-height: 20px;
     color: #0F053F;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 .login-deatils-wrapper h3 a{
     font-family: var(--inter-bold);
@@ -256,11 +260,19 @@
     border: 1px solid var(--login-wrapper-input-border) !important;
     border-radius: 5px;
     width: 100%;
-    height: 60px;
+    height: 50px;
     padding-left: 25px;
-    margin-bottom: 40px;
-    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-top: 0px;
     outline: 0;
+}
+
+.form-in .form-select{
+    font-family:var(--inter-regular);
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--login-wrapper-placholder) !important;
+    text-transform: capitalize;
 }
 
 .form-in .form-select:focus{
@@ -275,7 +287,7 @@
 }
 .login-deatils-wrapper .form-check label{
     font-family: var(--inter-regular);
-    font-size: 16px;
+    font-size: 14px;
     line-height: 25px;
     color: var(--login-pera-color);
 
@@ -285,7 +297,7 @@
 }
 .login-deatils-wrapper .form-check label a{
     font-family: var(--inter-semibold);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 25px;
     color: var(--primary-color) !important;
@@ -293,6 +305,7 @@
 .login-deatils-wrapper .form-check-input {
       width: 25px !important;
       height: 25px !important;
+      margin-left: -11px;
 }
 .signin-deatils-wrapper .sign-in-btn{
     margin-top: 20px !important;
@@ -348,7 +361,7 @@
     }
     .login-left-content .title::before {
         /* left: 25.5%; */
-        bottom: -70px;
+        bottom: -55px;
     }
     .login-img-part img {
         left: 80px !important;
@@ -364,7 +377,7 @@
         max-width: 100%;
     }
     .login-deatils-wrapper{
-        padding: 50px 30px 0px 30px;
+        padding: 40px 30px 0px 30px;
         margin-left: 0px !important;
     }
     .google-btn {
@@ -456,6 +469,10 @@
         overflow: inherit;
         overflow-y: inherit;
         height: 100%;
+    }
+
+    .common-banner-bg{
+        padding-top: 120px !important;
     }
 }
 
@@ -564,12 +581,7 @@
 @media screen and (min-width: 576px) and (max-width: 767px){
 
     /* -----login-page-cs--- */
-    .login-section{
-        padding: 50px 0px;
-    }
-    /* .common-banner-bg{
-        padding-top: 150px !important;
-    } */
+    
     .breadcrumb{
         margin-top: 10px !important;
     }
@@ -776,7 +788,7 @@
         padding: 50px 0px;
     }
     .common-banner-bg{
-        padding-top: 170px !important;
+        /* padding-top: 170px !important; */
         padding-bottom: 60px !important;
     }
     .breadcrumb{

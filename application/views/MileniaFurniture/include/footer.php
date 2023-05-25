@@ -343,4 +343,15 @@ if (!empty($js)) {
 </script>
 <script>
     new WOW().init()
+
+//     $(document).ready(function () {
+//   $(".accordion-items").on("click", ".accordion-heading", function () {
+//     $(".accordion-heading").removeClass("active");
+//     $(this).toggleClass("active").next().slideToggle();
+
+//     $(".accordion-content").not($(this).next()).slideUp(300);
+//     $(this).siblings().removeClass("active");
+//   });
+// });
+
 </script>

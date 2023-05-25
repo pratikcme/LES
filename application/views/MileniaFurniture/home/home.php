@@ -190,7 +190,7 @@
 </section>
 
 <!-- hot products -->
-<section class="hot-products p-120">
+<section class="hot-products">
     <div class="container">
         <div class="row">
             <div class="col-xl-3 col-lg-12">
@@ -487,7 +487,7 @@
 </section>
 
 <!-- top rating -->
-<section class="categories top-rating pb-120">
+<section class="categories top-rating p-120">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">

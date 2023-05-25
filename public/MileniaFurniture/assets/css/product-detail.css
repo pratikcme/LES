@@ -58,6 +58,10 @@ body {
     position: relative;
 }
 
+.product-detail-quentity {
+    margin-top: 0 !important;
+}
+
 .product-content-part h2 {
     font-family: var(--PublicSans-Bold);
     font-size: 36px !important;
@@ -190,6 +194,7 @@ body {
     border-radius: 20px !important;
     padding: 20px 40px !important;
     border: 1px solid transparent;
+    padding: 15px 30px;
 }
 
 .product-detalis-btn .add-cart-btn:hover {
@@ -338,6 +343,7 @@ body {
 .mySwiper {
     width: 520px;
     margin-top: 25px;
+    height: 180px !important;
 }
 
 .mySwiper img {
@@ -439,6 +445,12 @@ body {
 }
 
 
+.review-wrp{
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+
 
 
 /* ==========responsive=================== */
@@ -477,8 +489,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 0px !important;
 }
+
+
 
 .product-detail-quentity .qty-container {
     display: flex;
@@ -486,7 +500,6 @@ body {
     border: 1px solid #FFB9CE;
     padding: 0px 10px;
     border-radius: 5px;
-    height: 50px;
 }
 
 .qty-btn-minus,
@@ -671,7 +684,7 @@ body {
     border: 1px solid #EFE8E6;
     border-radius: 20px;
     padding: 28px 40px;
-    margin-top: 70px;
+    margin-top: 270px;
 }
 
 .review-desc .nav-tabs .nav-link.active {
@@ -1952,6 +1965,15 @@ body {
 
     .review-desc{
         margin-top: 45px;
+    }
+
+    .product-detail-quentity .qty-container{
+        height: 40px !important;
+    }
+
+    .qty-container button{
+        width: 40px !important;
+        height: 40px !important;
     }
 }
 

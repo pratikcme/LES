@@ -72,7 +72,6 @@
                             </div>
                         </div>
                         <div class="myaccout-detail-tab">
-
                             <div class="get-detials-account">
                                 <form id='ChangePass' enctype="multipart/form-data"
                                     action="<?= base_url() . 'users_account/users/account' ?>" method="post">
@@ -164,7 +163,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-save-btn">
-                                            <input type="submit" class="common-input-btn" id="btnAccSubmit"
+                                            <input type="submit" class="common-input-btn cmn-btn" id="btnAccSubmit"
                                                 value="<?= $this->lang->line('Save') ?>" />
                                         </div>
                                     </div>
