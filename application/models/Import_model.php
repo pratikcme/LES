@@ -430,7 +430,7 @@ class Import_model extends My_model {
             'pw.product_id'=>$product_id,
             'pw.status !='=>'9',
         ];
-        $data['select'] = ['pw.weight_no','pw.quantity','w.name','pkg.package','pw.discount_per','pw.price','pw.purchase_price'];
+        $data['select'] = ['pw.weight_no','pw.quantity','w.name','pkg.package','pw.discount_per','pw.price'];
        
         return $return = $this->selectFromJoin($data);
      
