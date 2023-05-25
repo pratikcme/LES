@@ -261,7 +261,7 @@ class Home_model extends My_model
 
 	public function get_offer($branch_id = '')
 	{
-		echo $today = date('Y-m-d');
+		$today = date('Y-m-d');
 		$time = date('H:i:00');
 
 
@@ -275,13 +275,13 @@ class Home_model extends My_model
 		unset($data);
 		foreach ($result as $k => $v) {
 			if($_SERVER['REMOTE_ADDR']=='182.70.119.73'){
-				if ($v->end_date == $today && $v->end_time <= $time) {
+				if ($v->end_date == $today && strtotime($v->end_time) <= strtotime($time)) {
 					echo '1s';
 				}
 				
-				echo $v->end_date;
+				echo $v->end_time;
 				echo "<br>";
-				echo $today;
+				echo $time;
 			}
 			if ($v->end_date == $today && $v->end_time <= $time) {
 				unset($result[$k]);
