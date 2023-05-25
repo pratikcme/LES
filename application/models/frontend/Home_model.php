@@ -279,9 +279,9 @@ class Home_model extends My_model
 					echo '1s';
 				}
 				
-				echo $v->end_date;
+				echo $v->end_time;
 				echo "<br>";
-				echo $today;
+				echo $time;
 			}
 			if ($v->end_date == $today && $v->end_time <= $time) {
 				unset($result[$k]);
