@@ -26,7 +26,7 @@ class Api_model extends My_model
             return $response;
         }
         // if ($getUser[0]['email_verify'] == '1') { }
-        return $this->sendLoginResponse($getUser[0], $postData);
+        return $this->sendLoginResponse($getUser[0], $postData,'login');
     }
 
     public function user_register($postData)
@@ -138,10 +138,10 @@ class Api_model extends My_model
         $data['table'] = 'user';
         $getUser =  $this->selectRecords($data, true);
 
-        return $this->sendLoginResponse($getUser[0], $postData);
+        return $this->sendLoginResponse($getUser[0], $postData,'register');
     }
 
-    function sendLoginResponse($userdata, $postData)
+    function sendLoginResponse($userdata, $postData,$from='')
     {
 
         $device_id = $postData['device_id'];
@@ -194,7 +194,10 @@ class Api_model extends My_model
 
         $response = array();
         $response["success"] = 1;
-        $response["message"] = "Login Successfully";
+        $response["message"] = "User Register Successfully";
+        if($from =='login'){
+            $response["message"] = "Login Successfully";
+        }
         $response["user_data"] = $data;
 
         return $response;
