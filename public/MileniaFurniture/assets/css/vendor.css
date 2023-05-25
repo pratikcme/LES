@@ -210,6 +210,10 @@
     transition: all 0.2s ease;
 }
 
+.vendor-right{
+    width: 60%;
+}
+
 
 /* ========================RESPONSIVE================= */
 

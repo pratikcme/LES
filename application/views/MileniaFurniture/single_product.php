@@ -119,7 +119,7 @@
                             <?php if ($isAvailable != '0') { ?>
                                 <a href="javascript:" class="add-cart-btn cmn-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping "></i></span>Add To Cart</a>
                             <?php } ?>
-                            <div class="product-detail-quentity mt-0<?= $d_show ?>">
+                            <div class="product-detail-quentity mt-0 <?= $d_show ?>">
                                 <div class="qty-container">
                                     <button class="dec decqnt cart-qty-minus qty-btn-minus productDetailsButton" type="button" data-product_weight_id="<?= $varientDetails[0]->id ?>"><i class="fa-solid fa-minus"></i></button>
                                     <input type="text" name="qty" id="qnt" value="<?= ($cartQuantityForVarient != '') ? $cartQuantityForVarient : 1 ?>" data-product_id="<?= $this->utility->safe_b64decode($product_id) ?>" class="input-qty" readonly>

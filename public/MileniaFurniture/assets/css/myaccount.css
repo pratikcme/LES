@@ -316,6 +316,11 @@
     margin-top: 25px;
 }
 
+.edit-address-btn .cmn-btn{
+    font-size: 14px;
+    padding: 12px 30px;
+}
+
 .address-icons .add-address-btn:hover {
     background: transparent;
     color: var(--primary-color) !important;
@@ -510,6 +515,11 @@
 
 .img-about-text h5{
     font-size: 14px;
+    padding: 0;
+}
+
+.img-about-text h5:after{
+    display: none;
 }
 
 .img-about-text p {
@@ -667,11 +677,13 @@
     font-family: var(--inter-bold);
     text-transform: capitalize;
     text-decoration: none;
-    padding: 15px 50px !important;
+    padding: 15px 45px !important;
     border-radius: 5px;
     display: inline-block;
     border: 1px solid var(--btn-bg) !important;
     transition: 0.5s;
+    line-height: 15px;
+    font-size: 15px;
 }
 
 .get-detials-account .cmn-btn:hover {
