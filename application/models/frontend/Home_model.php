@@ -288,11 +288,12 @@ class Home_model extends My_model
 			];
 			$data['where'] = ['pw.id' => $v->product_varient_id, 'pw.status !=' => '9'];
 			$res = $this->selectFromJoin($data);
+			lq();
 			$v->category_id = $res[0]->category_id;
 			$v->category_name = $res[0]->category_name;
 			$v->product_id = $res[0]->product_id;
 		}
-		dd($result);
+		// dd($result);
 		return $result;
 	}
 
