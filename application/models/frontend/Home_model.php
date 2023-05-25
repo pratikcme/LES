@@ -274,8 +274,12 @@ class Home_model extends My_model
 		$result = $this->selectFromJoin($data);
 		unset($data);
 		foreach ($result as $k => $v) {
+			if($_SERVER['REMOTE_ADDR']=='182.70.119.73'){
+				echo $v->end_time;
+				echo "<br>";
+				echo $time;
+			}
 			if ($v->end_date == $today && $v->end_time <= $time) {
-				echo '1';die;
 				unset($result[$k]);
 				continue;
 			}
