@@ -71,6 +71,7 @@ $(document).ready(function () {
               swal("Cart item successfully deleted"); //sweet alert
               $("#itemCount").html(output.count);
               $("#updated_list").html(output.updated_list);
+              $("#itemCountMobile").html(output.count);
               that.closest("td").parent("tr").remove();
             }
             if (output.count == 0) {
@@ -158,6 +159,7 @@ $(document).ready(function () {
                 }, 1000);
 
                 $("#updated_list").html(output.updated_list);
+                $("#itemCountMobile").html(output.count);
                 $("#itemCount").html(output.count);
 
                 that.closest("td").parent("tr").remove();

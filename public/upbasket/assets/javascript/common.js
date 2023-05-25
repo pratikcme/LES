@@ -490,6 +490,7 @@ $(document).on("click", ".dec", function () {
 
               $("#itemCount").html(output.count);
               $("#updated_list").html(output.updated_list);
+              $("#itemCountMobile").html(output.count);
               $("#display_subtotal").html(siteCurrency + output.final_total);
               // $('#nav_subtotal').html(output.final_total);
             }
@@ -515,6 +516,11 @@ $(document).on("click", ".dec", function () {
       success: function (output) {
         that.val(quantity);
         $("#updated_list").html(output.updated_list);
+        if (output.count == 0) {
+          $("#itemCountMobile").removeClass("d-block");
+          $("#itemCountMobile").addClass("d-none");
+        }
+        $("#itemCountMobile").html(output.count);
         // window.location.reload();
         if (output.errormsg == "") {
           $("#display_subtotal").html(siteCurrency + output.final_total);
@@ -569,6 +575,7 @@ $(document).on("click", ".inc", function () {
         console.log(output);
         // window.location.reload();
         $("#updated_list").html(output.updated_list);
+        $("#itemCountMobile").html(output.count);
         setTimeout(function () {
           that.removeAttr("disabled");
         }, 1000);

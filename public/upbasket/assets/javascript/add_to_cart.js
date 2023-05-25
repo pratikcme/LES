@@ -38,6 +38,7 @@ $(document).on("click", ".addcartbutton", function () {
       $("#nav_cart_dropdown").removeClass("d-none");
       $("#itemCount").html(output.count);
       $("#updated_list").html(output.updated_list);
+      $("#itemCountMobile").html(output.count);
       $("#nav_subtotal").html(siteCurrency + " " + output.final_total);
       $("#display_subtotal").html(siteCurrency + output.final_total);
     },

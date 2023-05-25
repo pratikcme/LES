@@ -28,7 +28,6 @@ $(document).on("click", ".addcartbutton", function () {
         return false;
       }
 
-      // DK Fixed js
       if (output.count >= 1) {
         that
           .parent()
@@ -45,6 +44,7 @@ $(document).on("click", ".addcartbutton", function () {
       $("#updated_list").html(output.updated_list);
       $("#nav_subtotal").html(siteCurrency + " " + output.final_total);
       $("#display_subtotal").html(siteCurrency + output.final_total);
+      $("#itemCountMobile").html(output.count);
     },
   });
 });
@@ -88,6 +88,7 @@ $(document).on("click", ".addcartbutton_wishlist", function () {
       $("#updated_list").html(output.updated_list);
       $("#nav_subtotal").html(siteCurrency + " " + output.final_total);
       $("#display_subtotal").html(siteCurrency + output.final_total);
+      $("#itemCountMobile").html(output.count);
     },
   });
 });

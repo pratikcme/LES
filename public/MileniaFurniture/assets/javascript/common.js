@@ -439,6 +439,7 @@ $(document).on("click", ".dec", function () {
               }
               $("#itemCount").html(output.count);
               $("#updated_list").html(output.updated_list);
+              $("#itemCountMobile").html(output.count);
               $("#display_subtotal").html(siteCurrency + output.final_total);
               // $('#nav_subtotal').html(output.final_total);
             }
