@@ -194,6 +194,7 @@ body {
     border-radius: 20px !important;
     padding: 20px 40px !important;
     border: 1px solid transparent;
+    padding: 15px 30px;
 }
 
 .product-detalis-btn .add-cart-btn:hover {

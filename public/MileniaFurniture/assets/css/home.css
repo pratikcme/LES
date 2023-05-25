@@ -95,6 +95,7 @@
     top: 50% !important;
     transform: translateY(-50%) !important;
     margin: 0 !important;
+    opacity: 1;
 }
 
 .categories .owl-carousel .owl-nav button:hover {
@@ -490,10 +491,10 @@
     content: "\f004";
     font-family: "FontAwesome";
     position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 25px !important;
-    height: 26px !important;
+    top: 0px;
+    right: 0px;
+    width: 18px !important;
+    /* height: 26px !important; */
     /* background: var(--common-white); */
     display: flex;
     justify-content: center;
@@ -502,7 +503,7 @@
     /* right: 33px; */
     color: var(--primary-color) !important;
     z-index: 1;
-    /* bottom: 62px; */
+    line-height: 20px;
 }
 
 .techno-check{
@@ -520,7 +521,7 @@
 
 .stocks {
     max-width: 100%;
-    width: 42px;
+    width: 20px;
     /* height: 42px; */
     background-color: var(--white);
     border: 1px solid transparent;

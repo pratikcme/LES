@@ -498,6 +498,10 @@ li {
     transform: translateY(15px);
 }
 
+.goog-te-gadget .goog-te-combo{
+    width: 150px;
+}
+
 /* / ------search-dropdwon------ / */
 .searchbar{
     position: relative;
@@ -898,6 +902,10 @@ li {
 
     .banner .cmn-btn {
         font-size: 13px !important;
+    }
+
+    .goog-te-gadget .goog-te-combo{
+        width: 70px;
     }
 }
 

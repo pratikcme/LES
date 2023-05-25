@@ -291,7 +291,8 @@
     max-width: 500px;
     margin-bottom: 15px;
     text-align: left;
-    margin-left: -50px;
+    /* margin-left: -50px; */
+    padding-left: 10px;
 }
 
 .address-icons {
@@ -376,10 +377,10 @@
 
 .my-order-text h3 {
     font-family: var(--inter-semibold);
-    font-size: 20px;
+    font-size: 16px;
     line-height: 20px;
     color: var(--secondary-color);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .my-order-text h3 span {
@@ -1564,7 +1565,7 @@
 
     .main-add-div {
         flex-direction: column;
-        gap: 0px;
+        gap: 10px;
     }
 
 }
@@ -1827,7 +1828,7 @@
 
     .main-add-div {
         flex-direction: column;
-        gap: 0px;
+        gap: 10px;
     }
 
     .mywishlist-part table td:nth-child(3) {
@@ -2104,7 +2105,7 @@
 
     .main-add-div {
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
     }
 
     .address-wrapper {
@@ -2157,7 +2158,7 @@
 
     .main-add-div {
         flex-direction: column;
-        gap: 0px;
+        gap: 10px;
     }
 
     .mywishlist-part table td:nth-child(3) {
