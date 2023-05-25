@@ -94,14 +94,14 @@
                         <span class="closebtn"><span>×</span></span>
                         <div class="filter-part col-xxl-3 col-xl-4 col-lg-4 col-md-4">
                             <div class="product-categires-part">
-                                <div class="accordion" id="accordionExample">
+                                <div class="accordion" id="accordionExample1">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingSix">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                                 <?= $this->lang->line('Product Categories'); ?>
                                             </button>
                                         </h2>
-                                        <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                        <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample1">
                                             <div class="accordion-body">
                                                 <div class=" Categories-part">
                                                     <ul class="categories-wrapper">
@@ -133,7 +133,7 @@
                                                 Price
                                             </button>
                                         </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
                                             <div class="accordion-body">
                                                 <div class="price-range-part product-cat-card">
                                                     <div slider id="slider-distance">
@@ -179,7 +179,7 @@
                                                 <?= $this->lang->line('Brands'); ?>
                                             </button>
                                         </h2>
-                                        <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                        <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample1">
                                             <div class="accordion-body">
                                                 <div class="mt-4">
                                                     <ul class="brand-content">
@@ -203,7 +203,7 @@
                                                 <?= $this->lang->line('Discounts'); ?>
                                             </button>
                                         </h2>
-                                        <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                                        <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample1">
                                             <div class="accordion-body">
                                                 <div class="mt-2">
                                                     <ul>
@@ -228,7 +228,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="products-wrap pro-list-wrap mycustom-row">
