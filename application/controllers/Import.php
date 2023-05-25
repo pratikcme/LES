@@ -242,7 +242,7 @@ class Import extends Vendor_Controller
             $objValidation7->setShowInputMessage(true);
             $objValidation7->setShowErrorMessage(true);
             $objValidation7->setErrorTitle('Input error');
-            $objValidation7->setError('Duplicate value not allowed');
+            $objValidation7->setError('MRP Must be Grater Than Purchased Price');
             $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.')=1');
                 
 
