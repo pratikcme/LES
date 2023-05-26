@@ -59,18 +59,16 @@ class Live_chat_model extends My_model
     }
 
 
-    // public function deleteLiveChat($id)
-    // {
-    //     $data['where'] = ['id' => $id];
-    //     $data['table'] = TABLE_CHAT_CREDS;
+    public function deleteLiveChat($id)
+    {
+        $data['where'] = ['id' => $id];
+        $data['table'] = TABLE_CHAT_CREDS;
 
-    //     $res = $this->deleteRecords($data);
-    //     if ($res) {
-    //         return '1';
-    //     } else {
-    //         return '0';
-    //     }
-    // }
-
-
+        $res = $this->deleteRecords($data);
+        if ($res) {
+            return '1';
+        } else {
+            return '0';
+        }
+    }
 }

@@ -150,6 +150,7 @@ var ADDPRODUCT = (function () {
       data: { qnt: qnt, varient_id: varient_id, product_id: product_id },
       success: function (output) {
         $("#updated_list").html(output.updated_list);
+        $("#itemCountMobile").html(output.count);
         $("#nav_subtotal").html(siteCurrency + " " + output.cartTotal);
 
         if (output.errormsg != "") {

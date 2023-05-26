@@ -417,6 +417,7 @@ $(document).on("click", ".dec", function () {
               var segments = currntPath.split("/");
               if (output.count == 0) {
                 $("#itemCount").css("display", "none");
+                $("#itemCountMobile").addClass("d-none");
               }
               if (that.hasClass("whishlist_area")) {
                 // this code execute only if my_account/wishlist section to remove by

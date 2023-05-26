@@ -28,7 +28,8 @@
         <div class="floting-cart-btn">
             <a href="<?= base_url() . 'products/cart_item' ?>" class="mobile-cart-btn"><img
                     src="<?= $this->theme_base_url . '/assets/images/header-cart-icon.svg' ?>" alt="cart">
-                <span class="g-badge">22</span>
+                <span class="g-badge <?= (isset($this->cartCount) && $this->cartCount != 0) ? 'd-block' : 'd-none' ?>"
+                    id="itemCountMobile"><?= (isset($this->cartCount)) ? $this->cartCount : '' ?></span>
             </a>
         </div>
     </div>

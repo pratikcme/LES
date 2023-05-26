@@ -48,12 +48,12 @@ class Live_chat extends Admin_Controller
         }
     }
 
-
-    // public function edit_credentials($id)
-    // {
-    //     $data['editData'] = $this->this_model->getSingleData();
-    //     $data['js'] = array('live_chat.js');
-    //     $data['FormAction'] = base_url() . 'live_chat/update';
-    //     $this->load->view('live_chat_form', $data);
-    // }
+    public function deleteCreds()
+    {
+        if ($this->input->get()) {
+            $id = $this->utility->decode($this->input->get('id'));
+            $res = $this->this_model->deleteLiveChat($id);
+            echo $res;
+        }
+    }
 }

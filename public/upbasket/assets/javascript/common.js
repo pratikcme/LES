@@ -470,6 +470,7 @@ $(document).on("click", ".dec", function () {
               if (output.count == 0) {
                 $("#itemCount").css("display", "none");
                 $("#updated_list").parent("div").addClass("no-itm");
+                $("#itemCountMobile").addClass("d-none");
               }
 
               // segments[4] when live
@@ -517,7 +518,6 @@ $(document).on("click", ".dec", function () {
         that.val(quantity);
         $("#updated_list").html(output.updated_list);
         if (output.count == 0) {
-          $("#itemCountMobile").removeClass("d-block");
           $("#itemCountMobile").addClass("d-none");
         }
         $("#itemCountMobile").html(output.count);

@@ -29,11 +29,13 @@ $(document).on("click", ".addcartbutton", function () {
         return false;
       }
 
+      $("#itemCountMobile").addClass("d-none");
       if (output.count >= 1) {
         that.next("div").removeClass("d-none");
         that.addClass("d-none");
         $("#itemCount").css("display", "block");
         $("#updated_list").parent("div").removeClass("no-itm");
+        $("#itemCountMobile").removeClass("d-none");
       }
       $("#nav_cart_dropdown").removeClass("d-none");
       $("#itemCount").html(output.count);

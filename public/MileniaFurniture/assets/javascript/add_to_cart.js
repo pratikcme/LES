@@ -6,7 +6,7 @@ $(document).on("click", ".addcartbutton", function () {
   var url = $("#url").val();
   var qnt = $(this).parent().parent().next("div").find("input:text").val();
   // var qnt = $(this).parent().next("div").find("input:text").val();
-  // alert(qnt);
+
   var siteCurrency = $("#siteCurrency").val(); // currency is dynamic
   if (qnt == 0) {
     $(this).next("div").find("input:text").val("1");
@@ -27,6 +27,7 @@ $(document).on("click", ".addcartbutton", function () {
         swal(output.itemExist);
         return false;
       }
+      $("#itemCountMobile").addClass("d-none");
 
       if (output.count >= 1) {
         that
@@ -38,13 +39,14 @@ $(document).on("click", ".addcartbutton", function () {
         that.addClass("d-none");
 
         $("#itemCount").css("display", "block");
+        $("#itemCountMobile").html(output.count);
+        $("#itemCountMobile").removeClass("d-none");
       }
       $("#nav_cart_dropdown").removeClass("d-none");
       $("#itemCount").html(output.count);
       $("#updated_list").html(output.updated_list);
       $("#nav_subtotal").html(siteCurrency + " " + output.final_total);
       $("#display_subtotal").html(siteCurrency + output.final_total);
-      $("#itemCountMobile").html(output.count);
     },
   });
 });

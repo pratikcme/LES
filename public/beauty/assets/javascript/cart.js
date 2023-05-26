@@ -56,11 +56,13 @@ $(document).ready(function () {
             if (output.result == "true") {
               swal("Cart item successfully deleted"); //sweet alert
               $("#itemCount").html(output.count);
+              $("#itemCountMobile").html(output.count);
               $("#updated_list").html(output.updated_list);
               that.closest("td").parent("tr").remove();
             }
             if (output.count == 0) {
               $("#itemCount").css("display", "none");
+              $("#itemCountMobile").addClass("d-none");
               window.location.reload();
             }
             var subtot = subtotal();
@@ -68,7 +70,9 @@ $(document).ready(function () {
             $("#final_subtotal").html(siteCurrency + " " + subtot);
             $("#nav_subtotal").html(siteCurrency + " " + subtot);
             $("#shipingCharge").val(output.delivery_charge);
-            $("#delivery_charge").html(siteCurrency + " " + output.delivery_charge);
+            $("#delivery_charge").html(
+              siteCurrency + " " + output.delivery_charge
+            );
             var final = parseFloat(subtot) + parseFloat(output.delivery_charge);
             $("#total").html(siteCurrency + " " + final.toFixed(2));
           },
@@ -142,6 +146,7 @@ $(document).ready(function () {
                 }, 1000);
 
                 $("#updated_list").html(output.updated_list);
+                $("#itemCountMobile").html(output.count);
                 $("#itemCount").html(output.count);
 
                 that.closest("td").parent("tr").remove();
@@ -150,7 +155,9 @@ $(document).ready(function () {
                 $("#final_subtotal").html(siteCurrency + subtot);
                 // $("#nav_subtotal").html(siteCurrency + " " + subtot);
                 var final = parseFloat(subtot) + shipping_charge;
-                $("#total").html(siteCurrency + " " + parseFloat(final).toFixed(2));
+                $("#total").html(
+                  siteCurrency + " " + parseFloat(final).toFixed(2)
+                );
               }
             },
           });
@@ -181,8 +188,12 @@ $(document).ready(function () {
             that.removeAttr("disabled");
           }, 1000);
           if (output.errormsg == "") {
-            that.closest('td').next('td').find('h3').html(siteCurrency + "" + output.new_total);
-            that.closest('td').next('td').find('input').val(output.new_total);
+            that
+              .closest("td")
+              .next("td")
+              .find("h3")
+              .html(siteCurrency + "" + output.new_total);
+            that.closest("td").next("td").find("input").val(output.new_total);
             var subtot = subtotal();
             if (output.new_quan == "") {
               that.next("input").val(output.max_qun);
@@ -195,7 +206,9 @@ $(document).ready(function () {
               $("#shipping_charge").val(output.delivery_charge);
             }
             // check
-            $("#delivery_charge").html(siteCurrency + " " + output.delivery_charge);
+            $("#delivery_charge").html(
+              siteCurrency + " " + output.delivery_charge
+            );
             var final = parseFloat(subtot) + parseFloat(output.delivery_charge);
             $("#total").html(siteCurrency + " " + parseFloat(final).toFixed(2));
           } else {
@@ -248,8 +261,12 @@ $(document).ready(function () {
           // window.location.reload();
           $("#updated_list").html(output.updated_list);
           if (output.errormsg == "") {
-            that.closest('td').next('td').find('h3').html(siteCurrency + "" + output.new_total);
-            that.closest('td').next('td').find('input').val(output.new_total);
+            that
+              .closest("td")
+              .next("td")
+              .find("h3")
+              .html(siteCurrency + "" + output.new_total);
+            that.closest("td").next("td").find("input").val(output.new_total);
             // that.parent().parent().parent().next("td").find('h3').html(siteCurrency + output.new_total);
             // that.parent().parent().parent().next("td").find('input').val(output.new_total);
             var subtot = subtotal();
@@ -262,7 +279,9 @@ $(document).ready(function () {
             //   }
             //   //
             var final = parseFloat(subtot) + parseFloat(output.delivery_charge);
-            $("#delivery_charge").html(siteCurrency + " " + output.delivery_charge);
+            $("#delivery_charge").html(
+              siteCurrency + " " + output.delivery_charge
+            );
             $("#total").html(siteCurrency + " " + parseFloat(final).toFixed(2));
           } else {
             swal(output.errormsg);
@@ -278,7 +297,7 @@ $(document).ready(function () {
     $(".total").each(function () {
       var total = $(this).val();
       if (total.match(/\<font.+\>/)) {
-        total = $(this).find('font').html();
+        total = $(this).find("font").html();
       }
       // var  total = total.substring(3, total.length);
       subtot += parseFloat(total);

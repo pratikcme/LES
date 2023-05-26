@@ -70,11 +70,13 @@ $(document).ready(function () {
             if (output.result == "true") {
               swal("Cart item successfully deleted"); //sweet alert
               $("#itemCount").html(output.count);
+              $("#itemCountMobile").html(output.count);
               $("#updated_list").html(output.updated_list);
               that.closest("td").parent("tr").remove();
             }
             if (output.count == 0) {
               $("#itemCount").css("display", "none");
+              $("#itemCountMobile").addClass("d-none");
               window.location.reload();
             }
             var subtot = subtotal();
@@ -159,6 +161,7 @@ $(document).ready(function () {
 
                 $("#updated_list").html(output.updated_list);
                 $("#itemCount").html(output.count);
+                $("#itemCountMobile").html(output.count);
 
                 that.closest("td").parent("tr").remove();
                 var subtot = subtotal();
