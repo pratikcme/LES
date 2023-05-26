@@ -34,7 +34,7 @@ class Live_chat_model extends My_model
         $data['table'] = TABLE_CHAT_CREDS;
         $res = $this->insertRecord($data);
 
-        if (count($res) > 0) {
+        if ($res) {
             return '1';
         } else {
             return '0';
