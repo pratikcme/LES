@@ -46,7 +46,9 @@ class Checkout extends User_Controller
 
     $this->load->model('api_v3/api_model');
     if (empty($_SESSION['My_cart']) && $this->cartCount == 0) {
-      $this->utility->setFlashMessage('danger', 'Your cart is empty');
+      if($_SERVER['HTTP_REFERER'] != base_url().'login'){
+        $this->utility->setFlashMessage('danger', 'Your cart is empty');
+      }
       redirect(base_url() . 'home');
     }
     $defaultCartValue = $this->this_model->getCartValue();
