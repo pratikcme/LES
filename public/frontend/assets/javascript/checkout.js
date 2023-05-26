@@ -436,6 +436,7 @@ var CHECKOUT = (function () {
     $("#promo_err").html("");
     if (promocode == "") {
       $("#promo_err").html("Please enter promocode");
+      return false;
     }
     var shipping_charge = $("#shipping_charge").val();
     console.log(shipping_charge, shipping_charge);
