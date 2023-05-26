@@ -259,11 +259,11 @@ function single_delete(value) {
             }
         });
 
-        $('.checkbox_user').on('click',function(){
-            if($('.checkbox_user:checked').length == $('.checkbox_user').length){
-                $('.checkboxMain').prop('checked',true);
-            }else{
-                $('.checkboxMain').prop('checked',false);
+        $(document).on('click','.checkbox_user',function() {
+            if ($('.checkbox_user:checked').length == $('.checkbox_user').length) {
+                $('.checkboxMain').prop('checked', true);
+            } else {
+                $('.checkboxMain').prop('checked', false);
             }
         });
     });
