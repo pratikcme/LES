@@ -316,16 +316,17 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('E1', 'Varient Unit');
         $this->excel->getActiveSheet()->setCellValue('F1', 'Package');
         $this->excel->getActiveSheet()->setCellValue('G1', 'Quantity');
-        $this->excel->getActiveSheet()->setCellValue('H1', 'Product_price');
-        $this->excel->getActiveSheet()->setCellValue('I1', 'Discount(%)');
-        $this->excel->getActiveSheet()->setCellValue('J1', 'Maximum order quantity');
-        $this->excel->getActiveSheet()->setCellValue('K1', 'Display priority');
+        $this->excel->getActiveSheet()->setCellValue('H1', 'purchased price');
+        $this->excel->getActiveSheet()->setCellValue('I1', 'Maximum Retail Price');
+        $this->excel->getActiveSheet()->setCellValue('J1', 'Discount(%)');
+        $this->excel->getActiveSheet()->setCellValue('K1', 'Maximum order quantity');
+        $this->excel->getActiveSheet()->setCellValue('L1', 'Display priority');
         
 
-        $this->excel->getActiveSheet()->getStyle('A1:K1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFont()->setBold(true);
-        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFont()->setSize(12);
-        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFill()->getStartColor()->setARGB('#333');
+        $this->excel->getActiveSheet()->getStyle('A1:L1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $this->excel->getActiveSheet()->getStyle('A1:L1')->getFont()->setBold(true);
+        $this->excel->getActiveSheet()->getStyle('A1:L1')->getFont()->setSize(12);
+        $this->excel->getActiveSheet()->getStyle('A1:L1')->getFill()->getStartColor()->setARGB('#333');
 
         $default_border = array(
             'style' => PHPExcel_Style_Border::BORDER_THIN,
@@ -383,11 +384,21 @@ class Import extends Vendor_Controller
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('E'.$k.'', ''.$v->name.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('F'.$k.'', ''.$v->package.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('G'.$k.'', ''.$v->quantity.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H'.$k.'', ''.$v->price.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I'.$k.'', ''.$v->discount_per.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->max_order_qty.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H'.$k.'', ''.$v->purchase_price.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I'.$k.'', ''.$v->price.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->discount_per.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.$v->max_order_qty.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('L'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
                 
+                $objValidation2 = $this->excel->getActiveSheet()->getCell('I'.$k.'')->getDataValidation();
+                $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
+                $objValidation2->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
+                $objValidation2->setAllowBlank(true);
+                $objValidation2->setShowInputMessage(true);
+                $objValidation2->setShowErrorMessage(true);
+                $objValidation2->setErrorTitle('Input error');
+                $objValidation2->setError('MRP Must be Grater Than purchase price');
+                $objValidation2->setFormula1('=IF(I'.$k.' > H'.$k.')=1');
                 
                 $objValidation3 = $this->excel->getActiveSheet()->getCell('K'.$k.'')->getDataValidation();
                 $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
