@@ -25,12 +25,9 @@ class Live_chat extends Admin_Controller
             if ($editId != "") {
                 $res = $this->this_model->update($this->input->post());
                 if ($res) {
-
                     $this->utility->setFlashMessage('success', 'Successfully updated credentials.');
-
                     redirect(base_url() . 'live_chat');
                 } else {
-
                     $this->utility->setFlashMessage('danger', 'Somthing Went Wrong');
                     redirect(base_url() . 'live_chat');
                 }

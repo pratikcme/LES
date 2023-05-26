@@ -87,7 +87,7 @@
                                             <button type="button" value="Search" class="search-here-icon"><i
                                                     class="fa-solid fa-magnifying-glass "></i></button>
                                             <?php } ?>
-                                            <!--  -->
+
                                             <?php
                                             if ($this->uri->segment(1) != '') {
                                                 $placeholder = $this->lang->line('Search product..');
@@ -114,7 +114,7 @@
                                 <div class="header-account-btn btn-group">
                                     <button class="dropdown-toggle" type="button" id="dropdownMenuClickableInside"
                                         data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                        <!-- <img src="<?= $this->theme_base_url ?>/assets/images/user.svg" alt="user" /> -->
+
                                         <svg width="27" height="27" viewBox="0 0 28 27" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -319,7 +319,6 @@
                             <div class="header-account-btn btn-group">
                                 <button class="dropdown-toggle" type="button" id="dropdownMenuClickableInside"
                                     data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                    <!-- <img src="<?= $this->theme_base_url ?>/assets/images/user.svg" alt="user" /> -->
                                     <svg width="27" height="27" viewBox="0 0 28 27" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -344,7 +343,7 @@
                                     id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-expanded="false">
                                     <img src="<?= $this->theme_base_url ?>/assets/images/cart.svg" alt="" />
-                                    <!-- <span class="h-badge">22</span> -->
+
                                     <span class="h-badge"
                                         <?= (isset($this->cartCount) && $this->cartCount != 0) ? 'style="display:block"' : 'style="display:none"' ?>><?= (isset($this->cartCount)) ? $this->cartCount : '' ?></span>
                                 </button>
