@@ -18,7 +18,7 @@ class Home extends User_Controller
 	public function index()
 	{
 		if($_SERVER['REMOTE_ADDR']=="182.70.119.73"){
-			dd($_SESSION);
+			// dd($_SESSION);
 		}
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
