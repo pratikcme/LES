@@ -437,6 +437,7 @@ var CHECKOUT = (function () {
     $("#promo_err").html("");
     if (promocode == "") {
       $("#promo_err").html("Please enter promocode");
+      return false;
     }
     var shipping_charge = $("#shipping_charge").val();
     console.log(shipping_charge, shipping_charge);
@@ -475,6 +476,7 @@ var CHECKOUT = (function () {
           $(".promocode-applied").show();
 
           $("#applied_promo").val(promocode);
+          // $("#promocode").val("");
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
