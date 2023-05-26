@@ -15,7 +15,7 @@ class Checkout extends User_Controller
     $this->controller = $this->myvalues->checkoutFrontEnd['controller'];
     // $this->url = SITE_URL . 'frontend/'. $this->controller;
     $this->load->model($this->myvalues->checkoutFrontEnd['model'], 'this_model');
-    if ($this->session->userdata('user_id') != '' && empty($_SESSION['My_cart'])) {
+    if ($this->session->userdata('user_id') == '') {
       $this->session->set_userdata('redirect_page', base_url() . 'checkout');
       redirect(base_url() . 'login');
     }
