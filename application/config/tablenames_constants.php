@@ -68,3 +68,5 @@ define('TABLE_FIREBASE', 'firebase');
 define('DEFAULT_MESSAGE', 'Somthing Went Wrong');
 
 define('SMSGATEWAY', 'sms_gateway');
+define('TABLE_LIVE_CHAT_CREDS', 'live_chat_creds');
+
