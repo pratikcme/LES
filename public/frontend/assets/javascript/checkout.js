@@ -474,7 +474,7 @@ var CHECKOUT = (function () {
           $(".promocode-applied").show();
 
           $("#applied_promo").val(promocode);
-          $("#promocode").val("");
+          // $("#promocode").val("");
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
