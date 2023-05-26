@@ -17,9 +17,7 @@ class Home extends User_Controller
 
 	public function index()
 	{
-		if($_SERVER['REMOTE_ADDR']=="182.70.119.73"){
-			// dd($_SESSION);
-		}
+
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
@@ -146,16 +144,18 @@ class Home extends User_Controller
 		}
 		$data['item_weight_id'] = $item_weight_id;
 
-
 		$offer_id = $this->utility->safe_b64decode($offer_id);
 		$data['page'] = 'frontend/offer_product_list';
 		$data['js'] = array('add_to_cart.js');
 		$postData = ['offer_id' => $offer_id, 'user_id' => $this->session->userdata('user_id')];
 		$data['offer_varient_list'] = $this->this_model->get_offer_varient_listing($postData);
+		// dd($data['offer_varient_list']);
 		$this->load->model('frontend/product_model');
 		foreach ($data['offer_varient_list'] as $key => $value) {
 			$addQuantity = $this->product_model->findProductAddQuantity($value->product_id, $value->product_varient_id);
 			$value->my_cart_quantity = $addQuantity;
+
+			$value->ratting = $this->this_model->selectStarRatting($value->product_id, $value->product_varient_id);
 		}
 		$this->loadView(USER_LAYOUT, $data);
 	}
