@@ -46,9 +46,6 @@ class Checkout extends User_Controller
 
     $this->load->model('api_v3/api_model');
     if (empty($_SESSION['My_cart']) && $this->cartCount == 0) {
-      if($_SERVER['REMOTE_ADDR']=="182.70.119.73"){
-        dd($_SESSION);
-      }
       if($this->session->userdata('redirect_page') != base_url() . 'checkout' && $this->session->userdata('user_id') != '' ){
         $this->utility->setFlashMessage('danger', 'Your cart is empty');
       }
