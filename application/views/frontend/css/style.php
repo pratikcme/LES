@@ -2833,7 +2833,10 @@ like a tickmark */
      }
 
      .cat-hover {
-         position: relative;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
      }
 
      .cat-hover:hover .category-sub-menu {
