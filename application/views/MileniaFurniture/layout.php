@@ -9,7 +9,7 @@
     }
   </style>
 </head>
-<!-- <body class="rtl" dir="rtl"> -->
+
 
 <body>
   <section class="loader-main d-none">
@@ -28,7 +28,6 @@
   <?php
   if ($this->session->flashdata('myMessage') != '') {
     echo $this->session->flashdata('myMessage');
-    // die;
   }  ?>
   <?php $this->load->view($page); ?>
 
