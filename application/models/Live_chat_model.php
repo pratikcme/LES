@@ -27,7 +27,8 @@ class Live_chat_model extends My_model
         $data['insert'] = [
             'vendor_id' => $this->vendor_id,
             'status' => '1',
-            'live_chat_key' => $postData['live_chat_key'],
+            'property_id' => $postData['property_id'],
+            'widget_id' => $postData['widget_id'],
             'dt_created' => DATE_TIME
         ];
         $data['table'] = TABLE_CHAT_CREDS;
@@ -45,7 +46,8 @@ class Live_chat_model extends My_model
         $data['update'] = [
             'vendor_id' => $this->vendor_id,
             'status' => '1',
-            'live_chat_key' => $postData['live_chat_key'],
+            'property_id' => $postData['property_id'],
+            'widget_id' => $postData['widget_id'],
             'dt_created' => DATE_TIME
         ];
         $data['table'] = TABLE_CHAT_CREDS;

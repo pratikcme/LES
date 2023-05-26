@@ -34,10 +34,12 @@ function single_delete(value) {
 
 $("#frmAddEdit").validate({
   rules: {
-    live_chat_key: { required: true },
+    property_id: { required: true },
+    widget_id: { required: true },
   },
   messages: {
-    live_chat_key: { required: "Please enter live chat key" },
+    property_id: { required: "Please enter property id" },
+    widget_id: { required: "Please enter widget id" },
   },
   submitHandler: function (form) {
     $("body").attr("disabled", "disabled");

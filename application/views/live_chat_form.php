@@ -32,19 +32,25 @@
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <label for="live_chat_key">Chat Key</label>
-                                        <input type="text" id="live_chat_key" name="live_chat_key"
-                                            value="<?= $creds !== '' ? $creds->live_chat_key : '' ?>"
+                                        <label for="property_id">Property Id</label>
+                                        <input type="text" id="property_id" name="property_id"
+                                            value="<?= $creds !== '' ? $creds->property_id : '' ?>"
                                             class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="widget_id">Widget Id</label>
+                                        <input type="text" id="widget_id" name="widget_id"
+                                            value="<?= $creds !== '' ? $creds->widget_id : '' ?>" class="form-control">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <a href="javascript:;" style="float: right; margin-right: 10px;" <?= $creds !== '' ? "onclick=\"single_delete('{$this->utility->encode($creds->id)}')\""
-                                                                                                        : 'disabled' ?>
+                                <a href="javascript:;" style="float: right; margin-right: 10px;"
+                                    <?= $creds !== '' ? "onclick=\"single_delete('{$this->utility->encode($creds->id)}')\"" : 'disabled' ?>
                                     class="btn btn-danger">Remove</a>
-
                                 <input type="submit" class="btn btn-info pull-right margin_top_label"
                                     value="<?= $creds !== '' ? 'Update' : 'Add' ?>" id="btnSubmit" name="submit">
                             </div>
