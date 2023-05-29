@@ -236,8 +236,7 @@ class Import extends Vendor_Controller
             $objValidation7->setShowErrorMessage(true);
             $objValidation7->setErrorTitle('Input error');
             $objValidation7->setError('MRP Must be Grater Than Purchased Price');
-            // $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.')=1');
-            $objValidation2->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$i.', $M'.$i.':$M$'.$maxRow.', 1, FALSE)), "Comparison is successful", "Comparison failed")');
+            $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.')=1');
 
             $objValidation3 = $this->excel->getActiveSheet()->getCell('H'.$i.'')->getDataValidation();
             $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
@@ -399,9 +398,7 @@ class Import extends Vendor_Controller
                 $objValidation2->setShowErrorMessage(true);
                 $objValidation2->setErrorTitle('Input error');
                 $objValidation2->setError('MRP Must be Grater Than purchase price');
-                // $objValidation2->setFormula1('=IF(I'.$k.' > H'.$k.')=1');
-                $objValidation2->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$k.', $H'.$k.':$M$'.$maxRow.', 1, FALSE)), "Comparison is successful", "Comparison failed")');
-                
+                $objValidation2->setFormula1('=IF(I'.$k.' > H'.$k.')=1');
                 
                 $objValidation3 = $this->excel->getActiveSheet()->getCell('K'.$k.'')->getDataValidation();
                 $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
