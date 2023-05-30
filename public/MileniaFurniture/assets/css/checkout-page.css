@@ -503,6 +503,14 @@ input:focus {
     display: inline;
 }
 
+.have-code-part{
+    max-width: 450px;
+}
+
+.have-code-part .input-group{
+    display: inline-block;
+}
+
 .have-code-part .input-group-text {
     width: 150px !important;
     height: 60px !important;
@@ -514,9 +522,9 @@ input:focus {
     background: var(--primary-color) !important;
     border: 1px solid var(--primary-color);
     border-radius: 5px !important;
-    position: relative;
-    top: -60px;
-    left: 300px;
+    position: absolute;
+    top: 0;
+    right: 0;
     text-align: center !important;
     padding-left: 47px !important;
     z-index: 99;
