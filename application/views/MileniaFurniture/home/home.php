@@ -119,7 +119,7 @@
             ?>
             <div class="col-lg-12 col-md-12 mb-4">
                 <div class="sale-banner-wrap position-relative">
-                    <img src="<?= $$value->image ?>" class="sale-banner-img position-absolute"
+                    <img src="<?= $value->image ?>" class="sale-banner-img position-absolute"
                         alt="sale-banner" />
                     <div class="sale-banner-inner text-center">
                         <!-- <span>FROM LOVESEATS TO SECTIONALS.</span> -->
