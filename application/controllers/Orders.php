@@ -53,7 +53,6 @@ class Orders extends User_Controller {
 		if($this->input->post()){
 			// echo $this->session->userdata('user_id'); die;
 			$re = $this->this_model->checkProductQuantityAvailabale();
-			dd($re);
 			// echo $this->db->last_query();
 			if($re==false){
 				$this->utility->setFlashMessage('danger','Product out of the stock');
@@ -67,6 +66,7 @@ class Orders extends User_Controller {
 				$this->load->model('frontend/checkout_model','checkout_model');
 				$re = $this->checkout_model->unreserve_product_userwise($user_id);
 				$result = $this->this_model->makeOrder();
+				dd($result);
 				$message = json_decode($result);
 				if($message->responsedata->success){
 					$this->utility->setFlashMessage('success',$message->responsedata->message);
