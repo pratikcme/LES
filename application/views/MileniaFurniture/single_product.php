@@ -238,8 +238,9 @@
                                 <!-- ----review-comment-part--- -->
                                 <div class="review-comment-wrapper" id="review_section">
                                     <h3><?= $this->lang->line('Most Useful Review') ?></h3>
-                                    <?php foreach ($product_review as $key => $value) { ?>
                                     <div class="supportive-div">
+                                        <?php foreach ($product_review as $key => $value) { ?>
+
                                         <div class="rewiew-wrapper">
                                             <div class="review-left">
                                                 <div class="review-img">
@@ -272,8 +273,9 @@
                                                 <p><?= $value->review ?></p>
                                             </div>
                                         </div>
+
+                                        <?php } ?>
                                     </div>
-                                    <?php } ?>
                                 </div>
 
                             </div>
