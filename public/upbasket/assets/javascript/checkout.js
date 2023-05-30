@@ -219,8 +219,10 @@ var CHECKOUT = (function () {
             //  5000);
           } else if (output.status == 0) {
             // console.log(output);
+            alert('1')
             // window.location.href = url + "checkout";
           } else {
+            alert(2);
             // window.location.href = url + "home";
           }
         },
@@ -380,7 +382,7 @@ var CHECKOUT = (function () {
       async: false,
       success: function (output) {
         if (output.response == 0) {
-          // window.location.reload();
+          window.location.reload();
         }
       },
     });
