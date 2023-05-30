@@ -157,11 +157,14 @@ class Checkout extends User_Controller
     // dd($getMycartSubtotal
 
     $shoppingDiscount = $this->sd_model->checkShoppingBasedDiscount($getMycartSubtotal, $this->session->userdata('branch_id'));
-    
-    // $res = $this->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
-    $res = $this->this_model->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
-    $myCartValue = $res['myCartValue'];
-    $total_gst = $res['total_gst'];
+      $myCartValue = 0;
+      $total_gst = 0;
+    if(!empty($shoppingDiscount)){
+      // $res = $this->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
+      $res = $this->this_model->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
+      $myCartValue = $res['myCartValue'];
+      $total_gst = $res['total_gst'];
+    }
 
 
     $data['TotalGstAmount'] = numberFormat($total_gst);
