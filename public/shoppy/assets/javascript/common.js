@@ -468,6 +468,7 @@ $(document).on("click", ".dec", function () {
               var segments = currntPath.split("/");
               if (output.count == 0) {
                 $("#itemCount").css("display", "none");
+                $("#itemCountMobile").addClass("d-none");
               }
               // segments[4] when live
               if (
@@ -501,6 +502,8 @@ $(document).on("click", ".dec", function () {
 
               $("#itemCount").html(output.count);
               $("#updated_list").html(output.updated_list);
+
+              $("#itemCountMobile").html(output.count);
               $("#display_subtotal").html(siteCurrency + output.final_total);
               // $('#nav_subtotal').html(output.final_total);
             }

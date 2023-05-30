@@ -139,7 +139,7 @@ class Import extends Vendor_Controller
         // }
 
 //        $this->excel->getActiveSheet()->getProtection()->setSheet(true);
-        $maxRow = 500;
+        $maxRow = 5000;
         for ($i = 2; $i <= $maxRow; $i++) {
 
             $objValidation = $this->excel->getActiveSheet()->getCell('B'.$i.'')->getDataValidation();
@@ -228,6 +228,17 @@ class Import extends Vendor_Controller
             $objValidation5->setPrompt('Please pick a value from the drop-down list.');
             $objValidation5->setFormula1('"'. implode(',',$packageList).'"');
 
+            $objValidation7 = $this->excel->getActiveSheet()->getCell('N'.$i.'')->getDataValidation();
+            $objValidation7->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
+            $objValidation7->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
+            $objValidation7->setAllowBlank(true);
+            $objValidation7->setShowInputMessage(true);
+            $objValidation7->setShowErrorMessage(true);
+            $objValidation7->setErrorTitle('Input error');
+            $objValidation7->setError('MRP Must be Grater Than Purchased Price');
+            // $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.')=1');
+            $objValidation7->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$i.', $M'.$i.':$M$'.$maxRow.', 1, FALSE)), "Comparison is successful", "Comparison failed")');
+
             $objValidation3 = $this->excel->getActiveSheet()->getCell('H'.$i.'')->getDataValidation();
             $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
             $objValidation3->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_STOP );
@@ -306,16 +317,17 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('E1', 'Varient Unit');
         $this->excel->getActiveSheet()->setCellValue('F1', 'Package');
         $this->excel->getActiveSheet()->setCellValue('G1', 'Quantity');
-        $this->excel->getActiveSheet()->setCellValue('H1', 'Product_price');
-        $this->excel->getActiveSheet()->setCellValue('I1', 'Discount(%)');
-        $this->excel->getActiveSheet()->setCellValue('J1', 'Maximum order quantity');
-        $this->excel->getActiveSheet()->setCellValue('K1', 'Display priority');
+        $this->excel->getActiveSheet()->setCellValue('H1', 'purchased price');
+        $this->excel->getActiveSheet()->setCellValue('I1', 'Maximum Retail Price');
+        $this->excel->getActiveSheet()->setCellValue('J1', 'Discount(%)');
+        $this->excel->getActiveSheet()->setCellValue('K1', 'Maximum order quantity');
+        $this->excel->getActiveSheet()->setCellValue('L1', 'Display priority');
         
 
-        $this->excel->getActiveSheet()->getStyle('A1:K1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFont()->setBold(true);
-        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFont()->setSize(12);
-        $this->excel->getActiveSheet()->getStyle('A1:K1')->getFill()->getStartColor()->setARGB('#333');
+        $this->excel->getActiveSheet()->getStyle('A1:L1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $this->excel->getActiveSheet()->getStyle('A1:L1')->getFont()->setBold(true);
+        $this->excel->getActiveSheet()->getStyle('A1:L1')->getFont()->setSize(12);
+        $this->excel->getActiveSheet()->getStyle('A1:L1')->getFill()->getStartColor()->setARGB('#333');
 
         $default_border = array(
             'style' => PHPExcel_Style_Border::BORDER_THIN,
@@ -373,11 +385,22 @@ class Import extends Vendor_Controller
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('E'.$k.'', ''.$v->name.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('F'.$k.'', ''.$v->package.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('G'.$k.'', ''.$v->quantity.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H'.$k.'', ''.$v->price.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I'.$k.'', ''.$v->discount_per.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->max_order_qty.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H'.$k.'', ''.$v->purchase_price.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I'.$k.'', ''.$v->price.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->discount_per.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.$v->max_order_qty.'');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('L'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
                 
+                $objValidation2 = $this->excel->getActiveSheet()->getCell('I'.$k.'')->getDataValidation();
+                $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
+                $objValidation2->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
+                $objValidation2->setAllowBlank(true);
+                $objValidation2->setShowInputMessage(true);
+                $objValidation2->setShowErrorMessage(true);
+                $objValidation2->setErrorTitle('Input error');
+                $objValidation2->setError('MRP Must be Grater Than purchase price');
+                // $objValidation2->setFormula1('=IF(I'.$k.' > H'.$k.')=1');
+                $objValidation2->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$k.', $H'.$k.':$M$1500, 1, FALSE)), "Comparison is successful", "Comparison failed")');
                 
                 $objValidation3 = $this->excel->getActiveSheet()->getCell('K'.$k.'')->getDataValidation();
                 $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );

@@ -96,10 +96,10 @@ class Offer_model extends My_model
         $st_hr = $st[0];
         $st_min = $st[1];
 
-        // $utc_time =  gmdate("H:i", strtotime($st_array));
+        // $utc_time =  gmdate("H:i",strtotime($st_array));
         $utc_time =  date("H:i", strtotime($st_array));
-        $srvTime = date("H:i", strtotime($utc_time));
-        $sts = explode(':', $srvTime);
+        $srvTime = date("H:i",strtotime($utc_time));
+        $sts = explode(':',$srvTime);
         $st_hr = $sts[0];
         $st_min = $sts[1];
 
@@ -184,11 +184,10 @@ class Offer_model extends My_model
         $end_hr = $st[0];
         $end_min = $st[1];
 
-        // $utc_time =  gmdate("H:i", strtotime($end_array));
+        // $utc_time =  gmdate("H:i",strtotime($end_array));
         $utc_time =  date("H:i", strtotime($end_array));
-
-        $srvTime = date("H:i", strtotime($utc_time));
-        $sts = explode(':', $srvTime);
+        $srvTime = date("H:i",strtotime($utc_time));
+        $sts = explode(':',$srvTime);
         $st_hr = $sts[0];
         $st_min = $sts[1];
 
@@ -276,11 +275,10 @@ class Offer_model extends My_model
             exec('crontab /var/www/html/stagging/crontab_final.txt 2>&1', $ext);
         } else {
 
-            // $utc_time =  gmdate("H:i", strtotime($st_array));
+            // $utc_time =  gmdate("H:i",strtotime($st_array));
             $utc_time =  date("H:i", strtotime($st_array));
-
-            $srvTime = date("H:i", strtotime($utc_time));
-            $sts = explode(':', $srvTime);
+            $srvTime = date("H:i",strtotime($utc_time));
+            $sts = explode(':',$srvTime);
             // dd($sts);
             $st_hr = $sts[0];
             $st_min = $sts[1];

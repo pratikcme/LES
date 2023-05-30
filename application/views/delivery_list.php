@@ -53,7 +53,7 @@ $user_result = $user_query->result();*/
                                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="Platform(s): activate to sort column ascending"
-                                                style="width: 200px;">Delivery Person Name
+                                                style="width: 200px;">Name
                                             </th>
 
 

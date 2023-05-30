@@ -16,27 +16,23 @@
                             Search</span>
                         <?php } ?>
                         <?php
-            if ($this->uri->segment(1) != '') {
-              $placeholder = $this->lang->line('Search product..');
-            }
-            $segment1 = $this->uri->segment(1);
+                        if ($this->uri->segment(1) != '') {
+                            $placeholder = $this->lang->line('Search product..');
+                        }
+                        $segment1 = $this->uri->segment(1);
 
-            if ($segment1 != '') { ?>
-                        <input type="text" class="form-control search" id='myInput' data-search_val=""
-                            placeholder="<?= $placeholder ?>">
+                        if ($segment1 != '') { ?>
+                        <input type="text" class="form-control search" id="globalSearch" data-search_val=""
+                            placeholder="<?= $placeholder ?>" autocomplete="off">
                         <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span>
                             Search</span>
                         <?php } ?>
-
                     </div>
                 </div>
                 <div class="d-flex drp-grp">
 
                     <form class="lng-drp" style="margin-top: -3px;">
-                        <!-- <select name="language" id="Language">
-                  <option value="volvo">English</option>
-                  <option value="saab">Arebic</option>
-                </select> -->
+
                         <div id="google_translate_element"></div>
                     </form>
                     <?php if ($this->uri->segment(1) != 'login' && $this->uri->segment(1) != '') { ?>
@@ -60,7 +56,6 @@
                         <button class="dropdown-toggle user-login-icon border-0" type="button"
                             id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                             aria-expanded="false">
-                            <!-- <img src="<?= $this->theme_base_url ?>//assets/images/header-user-icon.svg" alt="User"> -->
                             <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -151,29 +146,29 @@
                             <div class="supportive-dropdown">
                                 <?php if ($this->session->userdata('user_id') == '') { ?>
                                 <?php if (isset($this->cartCount)) {
-                    $CI = &get_instance();
-                    $CI->load->model('common_model');
-                    $default_product_image = $CI->common_model->default_product_image();
-                  } ?>
+                                        $CI = &get_instance();
+                                        $CI->load->model('common_model');
+                                        $default_product_image = $CI->common_model->default_product_image();
+                                    } ?>
                                 <?php foreach ($this->session->userdata('My_cart') as $key => $value) {
 
-                    $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
-                    // dd($product);
-                    $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
+                                        $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+                                        // dd($product);
+                                        $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
 
-                    $CI->load->model('api_v3/common_model', 'co_model');
-                    $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
-                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                      $product[0]->discount_price = $product[0]->without_gst_price;
-                    }
-                    if (!file_exists('public/images/' . $CI->folder . 'product_image/' . $product[0]->image) || $product[0]->image == '') {
-                      if (strpos($product[0]->image, '%20') === true || $product[0]->image == '') {
-                        $product[0]->image = $default_product_image;
-                      } else {
-                        $product[0]->image = $default_product_image;
-                      }
-                    }
-                  ?>
+                                        $CI->load->model('api_v3/common_model', 'co_model');
+                                        $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+                                        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                            $product[0]->discount_price = $product[0]->without_gst_price;
+                                        }
+                                        if (!file_exists('public/images/' . $CI->folder . 'product_image/' . $product[0]->image) || $product[0]->image == '') {
+                                            if (strpos($product[0]->image, '%20') === true || $product[0]->image == '') {
+                                                $product[0]->image = $default_product_image;
+                                            } else {
+                                                $product[0]->image = $default_product_image;
+                                            }
+                                        }
+                                    ?>
                                 <li>
                                     <div class="cart-drop-menu cart-drop-menu-1">
                                         <div class="drop-img">
@@ -280,12 +275,12 @@
                 <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span></span>
                 <?php } ?>
                 <?php
-                  if ($this->uri->segment(1) != '') {
+                if ($this->uri->segment(1) != '') {
                     $placeholder = $this->lang->line('Search product..');
-                  }
-                  $segment1 = $this->uri->segment(1);
+                }
+                $segment1 = $this->uri->segment(1);
 
-                  if ($segment1 != '') { ?>
+                if ($segment1 != '') { ?>
                 <input type="text" class="form-control search" id='myInputMobile' data-search_val=""
                     placeholder="<?= $placeholder ?>">
                 <span class="input-group-text"><span><i class="fa-solid fa-magnifying-glass"></i></span></span>
@@ -322,10 +317,11 @@
 
 
 <div class="header-cart-in">
-  <a href="">
-    <div class=" header-cart-respo">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <span class="g-badge">22</span>
-    </div>
-  </a>
+    <a href="<?= base_url() . 'products/cart_item' ?>">
+        <div class=" header-cart-respo">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="g-badge <?= (isset($this->cartCount) && $this->cartCount != 0) ? 'd-block' : 'd-none' ?>"
+                id="itemCountMobile"><?= (isset($this->cartCount)) ? $this->cartCount : '' ?></span>
+        </div>
+    </a>
 </div>

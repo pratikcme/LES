@@ -25,15 +25,18 @@ $(document).on("click", ".addcartbutton", function () {
         swal(output.itemExist);
         return false;
       }
-
+      $("#itemCountMobile").addClass("d-none");
       if (output.count >= 1) {
         that.parent().next("div").removeClass("d-none");
         that.addClass("d-none");
         $("#itemCount").css("display", "block");
+        $("#itemCountMobile").removeClass("d-none");
       }
       $("#nav_cart_dropdown").removeClass("d-none");
       $("#itemCount").html(output.count);
       $("#updated_list").html(output.updated_list);
+      $("#itemCountMobile").html(output.count);
+
       $("#nav_subtotal").html(siteCurrency + " " + output.final_total);
       $("#display_subtotal").html(siteCurrency + output.final_total);
     },

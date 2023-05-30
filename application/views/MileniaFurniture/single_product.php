@@ -188,7 +188,7 @@
                                 <!-- ----review-content--- -->
                                 <div class="review-content">
                                     <div class="left-content">
-                                        <div>
+                                        <div class="notranslate">
                                             <h3><strong id="avgRating"><?= $productDetail[0]->rating['rating'] ?></strong><span>/5</span>
                                             </h3>
                                         </div>
@@ -287,7 +287,7 @@
                                 <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                                     <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                                         <div class="hot-products-img position-relative overflow-hidden">
-                                            <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="hot-product-img" />
+                                            <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="" />
 
                                             <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                             </p>
@@ -508,7 +508,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn">Submit</button>
+                        <button type="submit" id="btnSubmit1" class="btn cmn-btn lg-btn">
+                            <?= $this->lang->line('Submit') ?></button>
                     </div>
                 </form>
             </div>

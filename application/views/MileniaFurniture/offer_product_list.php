@@ -37,7 +37,7 @@
                             <?= $this->lang->line('Limited Stock') ?>
                             <?php } ?>
                         </p>
-                        <img src="<?= $value->image ?>" alt="hot-product-img" />
+                        <img src="<?= $value->image ?>" alt="" />
 
                         <?php
                             $d_none = '';

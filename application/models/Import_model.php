@@ -430,7 +430,7 @@ class Import_model extends My_model {
             'pw.product_id'=>$product_id,
             'pw.status !='=>'9',
         ];
-        $data['select'] = ['pw.weight_no','pw.quantity','w.name','pkg.package','pw.discount_per','pw.price'];
+        $data['select'] = ['pw.weight_no','pw.quantity','w.name','pkg.package','pw.discount_per','pw.price','pw.purchase_price'];
        
         return $return = $this->selectFromJoin($data);
      
@@ -472,10 +472,11 @@ class Import_model extends My_model {
                     $unit = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
                     $package = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
                     $qty = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-                    $price = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-                    $discount = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
-                    $max_order_qty = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-                    $display_priority = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+                    $purchased_price = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+                    $price = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+                    $discount = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+                    $max_order_qty = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+                    $display_priority = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
                     if($display_priority!=''){
                         $excelDisplayPriority[] = $display_priority;
                     }
@@ -501,6 +502,7 @@ class Import_model extends My_model {
                             $i = 0 ;  
                             $firstVarient_id = $Varient[$i]->id;
                             $data['update']['quantity'] = $qty;
+                            $data['update']['purchase_price'] = $purchased_price;
                             $data['update']['price'] = $price;
                             $data['update']['discount_per'] = $discount;
                             $data['update']['discount_price'] = $price - $discount_price;
@@ -519,6 +521,7 @@ class Import_model extends My_model {
                         if ($type == 'Old') {  
                             $Varient_id = $Varient[$i]->id;  
                             $data['update']['quantity'] = $qty;
+                            $data['update']['purchase_price'] = $purchased_price;
                             $data['update']['price'] = $price;
                             $data['update']['discount_per'] = $discount;
                             $data['update']['discount_price'] = $price - $discount_price;

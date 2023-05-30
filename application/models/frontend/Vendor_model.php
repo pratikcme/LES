@@ -102,4 +102,11 @@ class Vendor_model extends My_model
 		return $this->selectRecords($data);
 		// echo $this->db->last_query();
 	}
+
+	public function getLiveChatData(){
+		$data['table'] = TABLE_LIVE_CHAT_CREDS;
+		$data['select'] = ['*'];
+		$data['where'] = ['vendor_id' => $this->session->userdata('vendor_id')];
+		return $this->selectRecords($data);
+	}
 }

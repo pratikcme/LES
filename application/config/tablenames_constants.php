@@ -44,15 +44,18 @@ define('TABLE_FOOD_CATEGORY', 'food_category');
 
 // ADMIN CONSTANT
 
-define('ADMIN','vendor');
+define('ADMIN', 'vendor');
+// DK ADDED
+define('TABLE_CHAT_CREDS', 'live_chat_creds');
+// 
 
 // CMS ADMIN LOGIN
-define('ABOUT_BANNER_IMAGE' , 'about_us_banner_image');
-define('ABOUT_SECTION_ONE' , 'about_section_one');
-define('ABOUT_SECTION_TWO' , 'about_section_two');
-define('TEAM_BANNER' , 'team_banner');
-define('TEAM_SECTION' , 'team_section');
-define('FAQ' , 'faq');
+define('ABOUT_BANNER_IMAGE', 'about_us_banner_image');
+define('ABOUT_SECTION_ONE', 'about_section_one');
+define('ABOUT_SECTION_TWO', 'about_section_two');
+define('TEAM_BANNER', 'team_banner');
+define('TEAM_SECTION', 'team_section');
+define('FAQ', 'faq');
 define('CONTACT_INFO', 'contact_info');
 define('PRIVACY_POLICY', 'privacy_policy');
 define('TERM', 'term_conditions');
@@ -64,5 +67,6 @@ define('TABLE_FIREBASE', 'firebase');
 
 define('DEFAULT_MESSAGE', 'Somthing Went Wrong');
 
-define('SMSGATEWAY','sms_gateway');
-?>
+define('SMSGATEWAY', 'sms_gateway');
+define('TABLE_LIVE_CHAT_CREDS', 'live_chat_creds');
+

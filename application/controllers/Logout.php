@@ -35,5 +35,6 @@ class Logout extends User_Controller {
 		$this->session->unset_userdata('logged_in');
 		// $this->session->sess_destroy();
 		$this->session->unset_userdata('My_cart');
+		$this->session->unset_userdata('redirect_page');
 	}
 }

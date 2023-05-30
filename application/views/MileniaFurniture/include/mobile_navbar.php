@@ -39,6 +39,7 @@
   <a href="<?= base_url() ?>products/cart_item">
     <div class=" header-cart-respo">
       <i class="fa-solid fa-cart-shopping"></i>
+      <span class="h-badge <?= (empty($this->cartCount)) ? 'd-none' : 'd-block' ?>" id="itemCountMobile"><?= $this->cartCount ?></span>
     </div>
   </a>
 </div>

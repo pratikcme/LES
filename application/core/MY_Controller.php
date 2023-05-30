@@ -208,6 +208,7 @@ class User_Controller extends MY_Controller
         }
         $this->load->model('frontend/vendor_model', 'vendor_model');
         $data['branch_nav'] = $this->vendor_model->branchList();
+        $data['liveChat'] = $this->vendor_model->getLiveChatData();
 
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
         $data['language_support'] = ($data['ApprovedBranch'][0]->language_support == '1') ? 'ar' : 'en';

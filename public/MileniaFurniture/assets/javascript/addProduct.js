@@ -152,6 +152,7 @@ var ADDPRODUCT = (function () {
       data: { qnt: qnt, varient_id: varient_id, product_id: product_id },
       success: function (output) {
         $("#updated_list").html(output.updated_list);
+        $("#itemCountMobile").html(output.count);
         $("#nav_subtotal").html(siteCurrency + " " + output.cartTotal);
 
         if (output.errormsg != "") {
@@ -199,6 +200,7 @@ var ADDPRODUCT = (function () {
         if (output.errormsg != "") {
           swal(output.errormsg);
           $(".cart-plus-minus-box").val("1");
+          $("#itemCountMobile").html(output.count);
         } else if (output.itemExist != "") {
           window.location.href = url + "checkout";
         } else {
@@ -511,8 +513,6 @@ var ADDPRODUCT = (function () {
     $(".ratting").css("color", "white");
   }
 
-  // var  handleAddToCartForm =  function () {
-
   $("#reviewForm").validate({
     rules: {
       review_title: { required: true },
@@ -526,8 +526,8 @@ var ADDPRODUCT = (function () {
     },
     submitHandler: function (form) {
       $("#btnSubmit").attr("disabled", "disabled");
+      $("#btnSubmit1").attr("disabled", "disabled");
       form.submit();
     },
   });
-  // }
 })();

@@ -18,6 +18,7 @@ var is_self_pickup = $("#CheckisSelfPickup").val();
 //     }
 //   );
 // }
+
 if (is_self_pickup == 0) {
   var minDate = 2;
   var maxDate = "2d";
@@ -26,15 +27,15 @@ if (is_self_pickup == 0) {
   var maxDate = "6d";
 }
 
-$(function () {
-  if ($("#datepicker").length) {
+// $(function () {
+//   if ($("#datepicker").length) {
     $("#datepicker").datepicker({
       minDate: minDate,
       maxDate: maxDate,
       dateFormat: "D,dd-mm-yy",
     });
-  }
-});
+//   }
+// });
 
 var CHECKOUT = (function () {
   var url = $("#url").val();
@@ -453,14 +454,15 @@ var CHECKOUT = (function () {
   });
 
   $("#checkPromocode").click(function () {
-    var siteCurrency = $("#siteCurrency").val();
-    var promocode = $("#promocode").val();
-    $("#applied_promo").val("");
-
     if ($("#applied_promo").val() !== "") {
       $("#promo_err").html("Promocode Already Applied");
       return false;
     }
+
+    var siteCurrency = $("#siteCurrency").val();
+    var promocode = $("#promocode").val();
+    $("#applied_promo").val("");
+
     $("#promoAmount").html("0");
     $(".promocode-applied").hide();
     $("#promo_err").html("");

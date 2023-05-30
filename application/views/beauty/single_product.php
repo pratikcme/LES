@@ -78,7 +78,7 @@
           <h4><?= $this->lang->line('Categories') ?>: <span><?= $productDetail[0]->category_name ?></span>
           </h4>
           <h4><?= $this->lang->line('Brand') ?>: <span><?= $productDetail[0]->brand_name ?></span></h4>
-          <!-- <h4>Tags: <span> Fresh, Oragnic</span></h4> -->
+
 
           <div class="pro-sl">
             <select class="product_varient_id" id="cars">
@@ -165,7 +165,7 @@
                     $rat = round($sumOfRatting / count($product_review));
                   }
                   ?>
-                  <div>
+                  <div class="notranslate">
                     <h3><strong id="avgRating"><?= (is_nan($rat)) ? 0 : $rat ?></strong><span>/5</span>
                     </h3>
                   </div>
@@ -216,7 +216,6 @@
                       <div class="review-right">
                         <div class="review-right-top">
                           <span class="number-star">5 <span><i class="fa-solid fa-star"></i></span></span>
-                          <!-- <h4>"I loved it"</h4> -->
                         </div>
                         <p><?= $value->review ?></p>
                       </div>
@@ -224,9 +223,6 @@
                   <?php } ?>
                 </div>
               </div>
-              <!-- <div class="load-btn d-none">
-                  <a href="#" class="cmn-btn lg-btn">Load More</a>
-                </div> -->
             </div>
           </div>
         </div>
@@ -254,7 +250,8 @@
               <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
                 off</span>
               <div class="card-header">
-                <h5><?= ($value->quantity >= 25) ? $this->lang->line('Available(Instock)') : "" ?></h5>
+                <h5><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                </h5>
                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                   <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
                 </a>
@@ -275,11 +272,7 @@
                     <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
                       <span class="star star-active"></span>
                     <?php } ?>
-                    <!-- <span class="star"></span>
-                              <span class="star"></span>
-                              <span class="star"></span>
-                              <span class="star star-active"></span>
-                              <span class="star star-active-half"></span> -->
+
                   </div>
                   <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
                 </div>
