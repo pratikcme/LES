@@ -580,8 +580,10 @@
                                                         </tbody>
                                                     </table>
                                                     <?php if ($value->order_status <= '5') { ?>
-                                                    <a data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"
-                                                        class="cancel-btn lg-btn cncOrder"><?= $this->lang->line('Cancel') ?></a>
+                                                    <div class="text-end cn-wrp">
+                                                        <a data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"
+                                                        class="cancel-btn lg-btn cncOrder cmn-btn"><?= $this->lang->line('Cancel') ?></a>
+                                                    </div>
                                                     <?php } ?>
                                                 </div>
                                             </div>

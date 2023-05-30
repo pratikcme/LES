@@ -698,7 +698,7 @@ li {
     max-width: 150px;
     height: 100%;
     appearance: none;
-    background-image: url(../images/selectarrow.png);
+    /* background-image: url(../images/selectarrow.png); */
     background-repeat: no-repeat;
     background-size: 12px;
     background-position-y: 17px;
@@ -706,6 +706,43 @@ li {
     outline: 0;
     cursor: pointer;
     position: relative;
+}
+
+/* .lng-drp select,
+.branch-drp select::after{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+} */
+
+.branch-drp,
+.goog-te-gadget
+{
+    position: relative;
+}
+
+.branch-drp:after,
+.goog-te-gadget::after
+{
+    content: "\f078";
+    font-family: "FontAwesome";
+    font-size: 11px;
+    color: #000;
+    right: 4px;
+    top: 50%;
+    position: absolute;
+    pointer-events: none;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* .branch-drp{
@@ -747,8 +784,8 @@ li {
     border: 1px solid transparent!important;
     overflow-y: scroll;
     position: absolute;
-    left: auto !important;
-    right: 166px;
+    /* left: auto !important; */
+    /* right: 10px; */
     top: 83px !important;
     width: 100% !important;
     max-width: 250px !important;
@@ -787,9 +824,9 @@ li {
         left: -104px;
     }
 
-    #ui-id-1{
+    /* #ui-id-1{
         right: 230px;
-    }
+    } */
 }
 
 @media only screen and (max-width:1400px){
@@ -797,10 +834,10 @@ li {
         margin-right: 30px;
     }
     
-    #ui-id-1{
+    /* #ui-id-1{
         right: 138px;
         top: 75px !important;
-    }
+    } */
    
 }
 

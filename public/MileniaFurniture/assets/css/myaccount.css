@@ -577,6 +577,13 @@
     text-transform: capitalize;
     margin-top: 20px !important;
     transition: 0.5s;
+    
+}
+
+.cn-wrp{
+    padding-right: 80px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 #subtab-2 .delivered-btn {
