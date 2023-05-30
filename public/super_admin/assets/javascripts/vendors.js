@@ -36,6 +36,10 @@ var VENDORS = (function () {
     window.open("http://" + href);
   });
 
+  jQuery.validator.addMethod("noSpace", function(value, element) { 
+    return value.indexOf(" ") < 0 && value != ""; 
+  }, "No space allowed");
+
   var base_url = $("#base_url").val();
   var HandleAdd = function () {
     $(document).on("change", "#domain_type", function () {
@@ -48,6 +52,7 @@ var VENDORS = (function () {
         domain_name: {
           required: true,
           maxlength: 50,
+          noSpace:true,
           remote: {
             url: base_url + "super_admin/vendors/checkDomainExist",
             type: "POST",
