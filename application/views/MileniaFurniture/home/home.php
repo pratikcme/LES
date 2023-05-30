@@ -109,22 +109,28 @@
     <div class="container">
         <div class="row">
             <!--======== single-banner ==========-->
-            <?php if (count($offer_list) == '1') {
-                echo $offer_list[0]->offer_percent;die;    
+            <?php if (count($offer_list) == '1') { 
+            $k = 0;
+            ?>
+            <?php foreach ($offer_list as $key => $value) { 
+                if($k==1){
+                    continue;
+                }
             ?>
             <div class="col-lg-12 col-md-12 mb-4">
                 <div class="sale-banner-wrap position-relative">
-                    <img src="<?= $offer_list[0]->image ?>" class="sale-banner-img position-absolute"
+                    <img src="<?= $$value->image ?>" class="sale-banner-img position-absolute"
                         alt="sale-banner" />
                     <div class="sale-banner-inner text-center">
                         <!-- <span>FROM LOVESEATS TO SECTIONALS.</span> -->
-                        <span><?= $offer_list[0]->offer_percent ?>% OFF</span>
-                        <h2><?= $offer_list[0]->offer_title ?></h2>
-                        <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($offer_list[0]->id) ?>"
+                        <span><?= $value->offer_percent ?>% OFF</span>
+                        <h2><?= $value->offer_title ?></h2>
+                        <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>"
                             class="cmn-btn"><?= $this->lang->line('shop now') ?></a>
                     </div>
                 </div>
             </div>
+            <?php $k++; } ?>
             <?php } ?>
             <!--========= Two-banner ===========-->
             <?php if (count($offer_list) == '2' || count($offer_list) >= '4') { ?>
