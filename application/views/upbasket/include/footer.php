@@ -15,7 +15,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 <input type="hidden" name="" id="session_my_cart" value="<?= $set ?>">
 <input type="hidden" name="session_vendor_id" id="session_vendor_id" value="<?= (isset($_SESSION['branch_id'])) ? $_SESSION["branch_id"] : '' ?>">
 <!-- -----jquary-min----- -->
-<!-- <script src="<?= $this->theme_base_url . '/assets/js/jquery.min.js' ?>"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -42,7 +41,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW43KgTNs_Kusuvbian6KYGi_QzXOLS4w&v=3.exp&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW43KgTNs_Kusuvbian6KYGi_QzXOLS4w&v=3.exp&libraries=places">
+</script>
 <script type="text/javascript">
     function initAutocomplete(id) {
         var res = id.split("_");
@@ -234,16 +234,20 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
         $('#registered').hide();
     }, 6000);
 </script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 <!-- bootstrap-datepicker-js -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> -->
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js" type="text/javascript"></script>
-<script src="<?= base_url(); ?>public/<?= $_SESSION['template_name'] ?>/assets/javascript/common.js?v=<?= js_version ?>"></script>
+<script src="<?= base_url(); ?>public/<?= $_SESSION['template_name'] ?>/assets/javascript/common.js?v=<?= js_version ?>">
+</script>
 <?php
 if (!empty($js)) {
     foreach ($js as $value) { ?>
-        <script src="<?= base_url(); ?>public/<?= $_SESSION['template_name'] ?>/assets/javascript/<?= $value . '?v=' . js_version ?>"></script>
+        <script src="<?= base_url(); ?>public/<?= $_SESSION['template_name'] ?>/assets/javascript/<?= $value . '?v=' . js_version ?>">
+        </script>
 
 <?php    }
 }
@@ -259,54 +263,62 @@ if (!empty($js)) {
         ?>
     });
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>  
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
 <script type="text/javascript">
-  deLang = '';
-  var deLang = document.getElementById("site_lang").value;
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: deLang ,includedLanguages : 'ar,en'}, 'google_translate_element');
-}
-// setTimeout(()=>{
-// var value = deLang;
-//  if(value=='ar'){
-//       $('body').attr('class','rtl');
-//     }else{
-//       $('body').attr('class','ltr');
-//     }
-//   new google.translate.TranslateElement({pageLanguage: 'en' , includedLanguages : 'ar,en'}, 'google_translate_element');
- 
+    deLang = '';
+    var deLang = document.getElementById("site_lang").value;
 
-// },5000)
-$(document).on('change','.goog-te-combo',function (){
-    var value = $(this).val(); 
-    if(value != ''){
-      // $.ajax({
-      //     url : base_url+'LanguageSwitcher/switchLang/'+value,
-      //     // type:'post',
-      //     async : false,
-      //     data: {lang:value},
-      //     success:function(out){
-      //       if(value=='ar'){
-      //         $('body').attr('class','rtl');
-      //       }else{
-      //         $('body').attr('class','ltr');
-      //       }
-        if(value == deLang){
-          window.location.reload();
-        }
-        new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'ar,en'}, 'google_translate_element');
-            // window.location.reload();        
-      //     }
-      // })
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: deLang,
+            includedLanguages: 'ar,en'
+        }, 'google_translate_element');
     }
-    // else{
-    //   new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'en,ar'}, 'google_translate_element');
-    //   // if(value=='ar'){
-    //   //         $('body').attr('dir','rtl');
-    //   //       }else{
-    //   //         $('body').attr('dir','');
-    //   //       }
-    //   window.location.reload();
-    // }
-})
+    // setTimeout(()=>{
+    // var value = deLang;
+    //  if(value=='ar'){
+    //       $('body').attr('class','rtl');
+    //     }else{
+    //       $('body').attr('class','ltr');
+    //     }
+    //   new google.translate.TranslateElement({pageLanguage: 'en' , includedLanguages : 'ar,en'}, 'google_translate_element');
+
+
+    // },5000)
+    $(document).on('change', '.goog-te-combo', function() {
+        var value = $(this).val();
+        if (value != '') {
+            // $.ajax({
+            //     url : base_url+'LanguageSwitcher/switchLang/'+value,
+            //     // type:'post',
+            //     async : false,
+            //     data: {lang:value},
+            //     success:function(out){
+            //       if(value=='ar'){
+            //         $('body').attr('class','rtl');
+            //       }else{
+            //         $('body').attr('class','ltr');
+            //       }
+            if (value == deLang) {
+                window.location.reload();
+            }
+            new google.translate.TranslateElement({
+                pageLanguage: deLang,
+                includedLanguages: 'ar,en'
+            }, 'google_translate_element');
+            // window.location.reload();        
+            //     }
+            // })
+        }
+        // else{
+        //   new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'en,ar'}, 'google_translate_element');
+        //   // if(value=='ar'){
+        //   //         $('body').attr('dir','rtl');
+        //   //       }else{
+        //   //         $('body').attr('dir','');
+        //   //       }
+        //   window.location.reload();
+        // }
+    })
 </script>

@@ -587,9 +587,9 @@ $(".plus-btn").click(function () {
 
 //  header searchbar auto suggest
 
-$(document).on("click", "body", function () {
-  $("#ui-id-1").detach().appendTo(".searchBar");
-});
+// $(document).on("click", "body", function () {
+//   $("#ui-id-1").detach().appendTo(".searchBar");
+// });
 
 //======= YOUR ORDER DETAILS HIDE AND SHOW =======
 $(".details").click(function () {

@@ -453,14 +453,15 @@ var CHECKOUT = (function () {
   });
 
   $("#checkPromocode").click(function () {
-    var siteCurrency = $("#siteCurrency").val();
-    var promocode = $("#promocode").val();
-    $("#applied_promo").val("");
-
     if ($("#applied_promo").val() !== "") {
       $("#promo_err").html("Promocode Already Applied");
       return false;
     }
+
+    var siteCurrency = $("#siteCurrency").val();
+    var promocode = $("#promocode").val();
+    $("#applied_promo").val("");
+
     $("#promoAmount").html("0");
     $(".promocode-applied").hide();
     $("#promo_err").html("");

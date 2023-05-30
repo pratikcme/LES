@@ -252,7 +252,7 @@
                                 <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                                     <div class="hot-products-img position-relative overflow-hidden">
                                         <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
-                                            alt="hot-product-img" />
+                                            alt="" />
                                         <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
                                         <div class="hot-products-cart-wrap">
@@ -376,7 +376,7 @@
                                     <div class="hot-products-img position-relative overflow-hidden">
 
                                         <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
-                                            alt="hot-product-img" />
+                                            alt="" />
                                         <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
                                         <div class="hot-products-cart-wrap">
@@ -504,7 +504,7 @@
                             <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                                 <div class="hot-products-img position-relative overflow-hidden">
                                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
-                                        alt="hot-product-img" />
+                                        alt="" />
                                     <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                     </p>
                                     <div class="hot-products-cart-wrap">

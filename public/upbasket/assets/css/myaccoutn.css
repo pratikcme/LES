@@ -145,11 +145,10 @@
 .myaccout-detail-tab input {
     background: var(--myaccoutn-tab-input-bg);
     border: 1px solid var(--myaccoutn-tab-input-border);
-
     border-radius: 90px;
     padding-left: 25px;
     height: 45px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .myaccout-detail-tab input:focus {

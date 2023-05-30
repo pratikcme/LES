@@ -396,35 +396,40 @@ $(document).on("click", ".removeWishlistItem", function () {
 });
 
 var base_url = $("#url").val();
-$("#myInput").autocomplete({
+$(document).on("click", function () {
+  // $("body").append(
+  //   '<ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" unselectable="on" style="display: none;"></ul>'
+  // );
+});
+$("#globalSearch").autocomplete({
   source: base_url + "products/backend_script",
   minLength: 2,
   focus: function (event, ui) {
+    console.log("asdasd");
     $(event.target).val(ui.item.label);
-    return false;
+    return true;
   },
-  select: function (event, ui) {
-    $(event.target).val(ui.item.label);
-    window.location = ui.item.value;
-    return false;
-  },
+  // select: function (event, ui) {
+  //   $(event.target).val(ui.item.label);
+  //   window.location = ui.item.value;
+  //   return true;
+  // },
 });
+// $("#myInputMobile").autocomplete({
+//   source: base_url + "products/backend_script",
+//   minLength: 2,
+//   focus: function (event, ui) {
+//     $(event.target).val(ui.item.label);
+//     return false;
+//   },
+//   select: function (event, ui) {
+//     $(event.target).val(ui.item.label);
+//     window.location = ui.item.value;
+//     return false;
+//   },
+// });
 
-$("#myInputMobile").autocomplete({
-  source: base_url + "products/backend_script",
-  minLength: 2,
-  focus: function (event, ui) {
-    $(event.target).val(ui.item.label);
-    return false;
-  },
-  select: function (event, ui) {
-    $(event.target).val(ui.item.label);
-    window.location = ui.item.value;
-    return false;
-  },
-});
-// $(document).on('keyup','.myInput',function(){
-// })
+// $(document).on("keyup", ".myInput", function () {});
 
 $(document).on("click", ".dec", function () {
   $(this).prop("disabled", true);

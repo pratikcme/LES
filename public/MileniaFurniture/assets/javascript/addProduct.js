@@ -513,8 +513,6 @@ var ADDPRODUCT = (function () {
     $(".ratting").css("color", "white");
   }
 
-  // var  handleAddToCartForm =  function () {
-
   $("#reviewForm").validate({
     rules: {
       review_title: { required: true },
@@ -528,8 +526,8 @@ var ADDPRODUCT = (function () {
     },
     submitHandler: function (form) {
       $("#btnSubmit").attr("disabled", "disabled");
+      $("#btnSubmit1").attr("disabled", "disabled");
       form.submit();
     },
   });
-  // }
 })();

@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- -----jquary-min----- -->
-<script src="<?= $this->theme_base_url .'/assets/js/jquery.min.js'?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/jquery.min.js' ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 
@@ -34,7 +34,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 
 
 <!-- ----owl-min-js----- -->
-<script src="<?=$this->theme_base_url.'/assets/js/owl.carousel.min.js'?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/owl.carousel.min.js' ?>"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -42,19 +42,19 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 <!-- drift -->
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/164071/Drift.min.js'></script>
 
-<script src="<?=$this->theme_base_url.'/assets/js/jquery.basictable.min.js'?>"></script>
-<script src="<?=$this->theme_base_url.'/assets/js/basictable.min.js'?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/jquery.basictable.min.js' ?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/basictable.min.js' ?>"></script>
 
 <!-- my script -->
 
-<script src="<?=$this->theme_base_url.'/assets/js/script.js'?>"></script>
-<script src="<?=$this->theme_base_url.'/assets/js/zoom.js'?>"></script>
-<script src="<?=$this->theme_base_url.'/assets/js/common.js'?>"></script>
-<script src="<?=$this->theme_base_url.'/assets/js/overlay.js'?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/script.js' ?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/zoom.js' ?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/common.js' ?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/overlay.js' ?>"></script>
 
 
 <!--  js animate-link -->
-<script src="<?=$this->theme_base_url.'/assets/js/wow.min.js'?>"></script>
+<script src="<?= $this->theme_base_url . '/assets/js/wow.min.js' ?>"></script>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -344,14 +344,13 @@ if (!empty($js)) {
 <script>
     new WOW().init()
 
-//     $(document).ready(function () {
-//   $(".accordion-items").on("click", ".accordion-heading", function () {
-//     $(".accordion-heading").removeClass("active");
-//     $(this).toggleClass("active").next().slideToggle();
+    //     $(document).ready(function () {
+    //   $(".accordion-items").on("click", ".accordion-heading", function () {
+    //     $(".accordion-heading").removeClass("active");
+    //     $(this).toggleClass("active").next().slideToggle();
 
-//     $(".accordion-content").not($(this).next()).slideUp(300);
-//     $(this).siblings().removeClass("active");
-//   });
-// });
-
+    //     $(".accordion-content").not($(this).next()).slideUp(300);
+    //     $(this).siblings().removeClass("active");
+    //   });
+    // });
 </script>

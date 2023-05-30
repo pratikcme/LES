@@ -41,8 +41,8 @@
                         </a>
                     </div>
                     <div class="download-app-wrap">
-                        <h4>Download App</h4>
-                        <p>From App Store or Google Play</p>
+                        <h4><?= $this->lang->line("Download App") ?></h4>
+                        <p><?= $this->lang->line("From App Store or Google Play") ?></p>
 
                         <div class="store-wrap">
                             <a href="#"><img src="<?= $this->theme_base_url ?>/assets/images/footer/app-store.png" alt="app-store" /></a>
@@ -62,47 +62,47 @@
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                 <div class="footer-wrap">
-                    <h4>Useful Links</h4>
+                    <h4> <?= $this->lang->line("Useful Links") ?></h4>
                     <ul>
-                        <!-- <li><a href="#">Blog</a></li> -->
-                        <li><a href="<?=base_url().'users_account/users/account?name=my_account'?>"><?=$this->lang->line('My account')?></a></li>
-                        <li><a href="<?=base_url().'users_account/users/account?name=wishlist'?>"><?=$this->lang->line('Wishlist')?></a></li>
+
+                        <li><a href="<?= base_url() . 'users_account/users/account?name=my_account' ?>"><?= $this->lang->line('My account') ?></a>
+                        </li>
+                        <li><a href="<?= base_url() . 'users_account/users/account?name=wishlist' ?>"><?= $this->lang->line('Wishlist') ?></a>
+                        </li>
                         <li><a href="<?= base_url() . 'terms_condition' ?>"><?= $this->lang->line('Term & Conditions') ?></a>
                         </li>
-                        <!-- <li><a href="#">Order History</a></li> -->
+
                     </ul>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                 <div class="footer-wrap">
-                    <h4>Information</h4>
+                    <h4><?= $this->lang->line("Information") ?></h4>
                     <ul>
-                        <li><a href="<?=base_url().'products'?>"><?=$this->lang->line('Shop')?></a></li>
+                        <li><a href="<?= base_url() . 'products' ?>"><?= $this->lang->line('Shop') ?></a></li>
                         <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact Us') ?></a></li>
                         <li><a href="<?= base_url() . 'about' ?>"><?= $this->lang->line('About Us') ?></a></li>
                         <li><a href="<?= base_url() . 'privacy_policy' ?>"><?= $this->lang->line('Privacy Policy') ?></a>
                         </li>
-                        <!-- <li><a href="#">FAQ</a></li> -->
+
                     </ul>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                 <div class="footer-wrap">
-                    <h4><?=$this->lang->line('Categories')?></h4>
+                    <h4><?= $this->lang->line('Categories') ?></h4>
                     <ul>
-                    <?php foreach ($CategoryHighrstProduct as $key => $value) { ?>
-                        <li><a href="<?=base_url().'products?cat_id='.$this->utility->safe_b64encode($value->id)?>"><?=$value->name?></a></li>
-                    <?php } ?>
-                        <!-- <li><a href="#">Sofas</a></li>
-                        <li><a href="#">Table</a></li>
-                        <li><a href="#">Watch</a></li>
-                        <li><a href="#">Wall Lamp</a></li> -->
+                        <?php foreach ($CategoryHighrstProduct as $key => $value) { ?>
+                            <li><a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>"><?= $value->name ?></a>
+                            </li>
+                        <?php } ?>
+
                     </ul>
                 </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                 <div class="footer-wrap">
-                    <h4>Contact</h4>
+                    <h4><?= $this->lang->line('Contact') ?></h4>
                     <div class="footer-address-main-div">
                         <div class="footer-address-wrap">
                             <div class="footer-address-icon">
@@ -110,7 +110,7 @@
                                     <path d="M9 12.25C10.6569 12.25 12 10.9069 12 9.25C12 7.59315 10.6569 6.25 9 6.25C7.34315 6.25 6 7.59315 6 9.25C6 10.9069 7.34315 12.25 9 12.25Z" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M16.5 9.25C16.5 16 9 21.25 9 21.25C9 21.25 1.5 16 1.5 9.25C1.5 7.26088 2.29018 5.35322 3.6967 3.9467C5.10322 2.54018 7.01088 1.75 9 1.75C10.9891 1.75 12.8968 2.54018 14.3033 3.9467C15.7098 5.35322 16.5 7.26088 16.5 9.25V9.25Z" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <!-- <img src="<?= $this->theme_base_url ?>/assets/images/footer/marker.svg" alt="marker" /> -->
+
                             </div>
                             <p><?= $appLinks[0]->contact_us_address ?></p>
                         </div>
@@ -121,7 +121,7 @@
                                     <path d="M1 4.75H13" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M1 18.25H13" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <!-- <img src="<?= $this->theme_base_url ?>/assets/images/footer/mobile.svg" alt="mobile" /> -->
+
                             </div>
                             <a href="tel:+1 412-450-3173">
                                 <p><?= $appLinks[0]->contact_number ?></p>
@@ -133,7 +133,7 @@
                                     <path d="M1 1.75H19V14.5C19 14.6989 18.921 14.8897 18.7803 15.0303C18.6397 15.171 18.4489 15.25 18.25 15.25H1.75C1.55109 15.25 1.36032 15.171 1.21967 15.0303C1.07902 14.8897 1 14.6989 1 14.5V1.75Z" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M19 1.75L10 10L1 1.75" stroke="#351C05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <!-- <img src="<?= $this->theme_base_url ?>/assets/images/footer/email.svg" alt="email" /> -->
+
                             </div>
                             <a href="mailto:info@mileniafurniture.com">
                                 <p><?= $appLinks[0]->contact_email ?></p>
@@ -146,9 +146,9 @@
                 <div class="copyright-text">
                     <p>© Copyright <?= date('Y') ?> <?= $this->siteTitle ?> Milenia Furniture . All rights reserved</p>
                     <div class="social-icons">
-                        <a href="#"><img src="<?= $this->theme_base_url ?>/assets/images/footer/fb.svg" alt=""></a>
-                        <a href="#"><img src="<?= $this->theme_base_url ?>/assets/images/footer/insta.svg" alt=""></a>
-                        <a href="#"><img src="<?= $this->theme_base_url ?>/assets/images/footer/twiter.svg" alt=""></a>
+                        <a href="https://facebook.com/"><img src="<?= $this->theme_base_url ?>/assets/images/footer/fb.svg" alt=""></a>
+                        <a href="https://www.instagram.com/"><img src="<?= $this->theme_base_url ?>/assets/images/footer/insta.svg" alt=""></a>
+                        <a href="https://twitter.com/"><img src="<?= $this->theme_base_url ?>/assets/images/footer/twiter.svg" alt=""></a>
                     </div>
                 </div>
             </div>
