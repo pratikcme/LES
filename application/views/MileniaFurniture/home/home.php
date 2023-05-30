@@ -109,7 +109,9 @@
     <div class="container">
         <div class="row">
             <!--======== single-banner ==========-->
-            <?php if (count($offer_list) == '1') { ?>
+            <?php if (count($offer_list) == '1') {
+                echo $offer_list[0]->offer_percent;die;    
+            ?>
             <div class="col-lg-12 col-md-12 mb-4">
                 <div class="sale-banner-wrap position-relative">
                     <img src="<?= $offer_list[0]->image ?>" class="sale-banner-img position-absolute"
