@@ -29,11 +29,11 @@ if (is_self_pickup == 0) {
 
 // $(function () {
 //   if ($("#datepicker").length) {
-    $("#datepicker").datepicker({
-      minDate: minDate,
-      maxDate: maxDate,
-      dateFormat: "D,dd-mm-yy",
-    });
+$("#datepicker").datepicker({
+  minDate: minDate,
+  maxDate: maxDate,
+  dateFormat: "D,dd-mm-yy",
+});
 //   }
 // });
 
@@ -454,13 +454,14 @@ var CHECKOUT = (function () {
   });
 
   $("#checkPromocode").click(function () {
+    var siteCurrency = $("#siteCurrency").val();
+    var promocode = $("#promocode").val();
+
     if ($("#applied_promo").val() !== "") {
       $("#promo_err").html("Promocode Already Applied");
       return false;
     }
 
-    var siteCurrency = $("#siteCurrency").val();
-    var promocode = $("#promocode").val();
     $("#applied_promo").val("");
 
     $("#promoAmount").html("0");
@@ -515,9 +516,12 @@ var CHECKOUT = (function () {
           $("#applied_promo").val(promocode);
         } else {
           $("#applied_promo").val("");
+          console.log("check", response);
           $("#checkout_final").html(
             (
-              parseFloat(response.orderAmount) + parseFloat(shipping_charge)
+              parseFloat(response.orderAmount) +
+              parseFloat(shipping_charge) +
+              parseFloat(parseFloat($("#checkout_gst").text()).toFixed(2))
             ).toFixed(2)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);

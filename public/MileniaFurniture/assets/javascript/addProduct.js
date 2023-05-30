@@ -525,7 +525,6 @@ var ADDPRODUCT = (function () {
       },
     },
     submitHandler: function (form) {
-      $("#btnSubmit").attr("disabled", "disabled");
       $("#btnSubmit1").attr("disabled", "disabled");
       form.submit();
     },

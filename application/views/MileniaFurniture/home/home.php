@@ -255,6 +255,9 @@
                                             alt="" />
                                         <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
+                                        <?php if ($value->discount_per > '0') { ?>
+                                        <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
+                                        <?php } ?>
                                         <div class="hot-products-cart-wrap">
                                             <a href="javascript:" class="addcartbutton <?= $d_none ?>"
                                                 data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
@@ -379,6 +382,9 @@
                                             alt="" />
                                         <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
+                                        <?php if ($value->discount_per > '0') { ?>
+                                        <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
+                                        <?php } ?>
                                         <div class="hot-products-cart-wrap">
                                             <a href="javascript:" class="addcartbutton <?= $d_none ?>"
                                                 data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
@@ -507,6 +513,9 @@
                                         alt="" />
                                     <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                     </p>
+                                    <?php if ($value->discount_per > '0') { ?>
+                                    <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
+                                    <?php } ?>
                                     <div class="hot-products-cart-wrap">
                                         <a href="javascript:" class="addcartbutton <?= $d_none ?>"
                                             data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
