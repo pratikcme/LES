@@ -165,7 +165,7 @@
 .tab-save-btn button,
 .tab-save-btn input
 {
-    padding: 15px 50px 15px 50px;
+    padding: 10px 40px 10px 40px;
     background: var(--primary-color);
     border: 1px solid var(--primary-color);
     box-shadow: 0px 7px 20px rgba(249, 38, 114, 0.15);
@@ -178,7 +178,9 @@
     transition: 0.3s;
     text-transform: capitalize;
 }
-.tab-save-btn button:hover{
+.tab-save-btn button:hover,
+.tab-save-btn input:hover
+{
     border: 1px solid var(--primary-color);
     background: transparent;
     color: var(--primary-color) !important;

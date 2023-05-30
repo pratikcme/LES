@@ -348,7 +348,8 @@ input:focus {
 }
 
 .supportive-div {
-    height: 500px;
+    max-height: 500px;
+    min-height: 100px;
     overflow: hidden;
     overflow-y: scroll;
     appearance: none;
