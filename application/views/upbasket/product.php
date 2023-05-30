@@ -150,7 +150,7 @@
             <!-- ----right-filter-part------ -->
             <div class="my-filter-wrapper">
 
-                <div class="product-categires-part">
+                <div class="product-categires-part products-cat-in">
                     <div class="categire-header">
                         <h3>Product Categories</h3>
                     </div>

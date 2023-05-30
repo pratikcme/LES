@@ -6,6 +6,10 @@
   margin-top: 50px;
 }
 
+.products-cat-in .col-md-8{
+  width: 100% !important;
+}
+
 .categire-header {
   background: var(--listing-2-header-bg);
   border: 1px solid #D9E2ED;
@@ -14,6 +18,12 @@
   height: 58px;
   padding-top: 16px;
   padding-left: 26px;
+}
+
+.my-filter-wrapper .product-categires-part {
+  max-height: 550px;
+  min-height: 100px;
+  overflow-y: scroll;
 }
 
 .categire-header h3 {
@@ -609,7 +619,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .mycustom-row {
@@ -1392,6 +1402,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   }
 
 }
+
 
 /* ======================================================  */
 /* ======================================================  */
