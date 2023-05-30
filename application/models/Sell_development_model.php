@@ -2376,7 +2376,7 @@ class Sell_development_model extends My_model
         if ($branch_id == '') {
             $branch_id  = $this->branch_id;
         }
-        $query = $this->db->query('SELECT *,(' . $sub_total . ' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = ' . $branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        $query = $this->db->query('SELECT *,(' . $sub_total . ' - cart_amount) AS CA FROM `amount_based_discount` where status = "1" AND branch_id = ' . $branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
 
         return $re;

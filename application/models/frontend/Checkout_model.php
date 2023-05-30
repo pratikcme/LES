@@ -593,7 +593,6 @@ class Checkout_model extends My_model
         $cartAmount = getMycartSubtotal();
         $query = $this->db->query('SELECT *,(' . $cartAmount . ' - cart_amount) AS CA FROM `amount_based_discount` where status ="1" AND  branch_id = ' . $this->branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
-        // lq();
         return $re;
         // return
     }

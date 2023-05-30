@@ -132,8 +132,8 @@
                     <img src="<?= $value->image ?>" class="sale-banner-img position-absolute" alt="sale-banner" />
                     <div class="sale-banner-inner text-center">
                         <!-- <span>FROM LOVESEATS TO SECTIONALS.</span> -->
-                        <span><?= $offer_list[0]->offer_percent ?>% OFF</span>
-                        <h2><?= $offer_list[0]->offer_title ?></h2>
+                        <span><?= $offer_list[$key]->offer_percent ?>% OFF</span>
+                        <h2><?= $offer_list[$key]->offer_title ?></h2>
                         <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>"
                             class="cmn-btn"><?= $this->lang->line('shop now') ?></a>
                     </div>
@@ -454,11 +454,7 @@
                                                 <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
                                                 <span class="star star-active"></span>
                                                 <?php } ?>
-                                                <!-- <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star star-active"></span>
-                                                <span class="star star-active-half"></span> -->
+
                                             </div>
                                             <div>
                                                 <p>( <?= $value->ratting['rating'] . ' ' . $this->lang->line('Reviews') ?>
@@ -504,8 +500,16 @@
             <div class="col-lg-12">
                 <div class="banner-wrap">
                     <div class="owl-carousel owl-theme top-rating-slider">
-                        <?php foreach ($top_ratted_product as $key => $value) { ?>
-
+                        <?php foreach ($top_ratted_product as $key => $value) {
+                            $d_none = '';
+                            $d_show = 'd-none';
+                            if (!empty($item_weight_id)) {
+                                if (in_array($value->pw_id, $item_weight_id)) {
+                                    $d_show = '';
+                                    $d_none = 'd-none';
+                                }
+                            }
+                        ?>
                         <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                             <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                                 <div class="hot-products-img position-relative overflow-hidden">

@@ -133,7 +133,7 @@
                     </div>
 
                     <!-- ---tab-2-- -->
-                    <div id="tab-2" class="container tab-pane fade">
+                    <div id="tab-2" class="container tab-pane fade <?= ($action_name == 'order') ? 'active show' : '' ?>">
                         <div class="col-xxl-12 col-lg-12">
                             <div class="title">
                                 <h2><?= $this->lang->line('My orders') ?></h2>

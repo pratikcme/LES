@@ -115,10 +115,11 @@ class Home_model extends My_model
 		// lq();
 	}
 
-	public function getTopRatted(){
+	public function getTopRatted()
+	{
 		$branch_id = $this->session->userdata('branch_id');
 		$data['table'] = 'user_product_review';
-		$data['select'] = ['product_id','product_varient_id','SUM(ratting) as topRatted'];
+		$data['select'] = ['product_id', 'product_varient_id', 'SUM(ratting) as topRatted'];
 		$data['where']['branch_id'] = $branch_id;
 		$data['groupBy'] = 'product_varient_id';
 		$data['order'] = 'topRatted desc';
@@ -135,14 +136,14 @@ class Home_model extends My_model
 				'p.status !=' => '9',
 				'pw.status!=' => '9',
 				'p.id' => $value->product_id,
-				'pw.id'=>$value->product_varient_id,
+				'pw.id' => $value->product_varient_id,
 				'p.branch_id' => $branch_id
 			];
 
 			$data['groupBy'] = ['p.id'];
 			$data['order'] = 'pw.quantity DESC';
 			$res = $this->selectFromJoin($data);
-			array_push($toprated,$res[0]);
+			array_push($toprated, $res[0]);
 		}
 		return $toprated;
 	}
@@ -322,9 +323,11 @@ class Home_model extends My_model
 		$data['having'] = ['start_time <= ' => $time];
 		$data['groupBy'] = 'o.id';
 		$result = $this->selectFromJoin($data);
+		// dd($result);
 		unset($data);
 		foreach ($result as $k => $v) {
 			if ($v->end_date == $today && $v->end_time <= $time) {
+
 				unset($result[$k]);
 				continue;
 			}
@@ -342,7 +345,7 @@ class Home_model extends My_model
 			$v->category_name = $res[0]->category_name;
 			$v->product_id = $res[0]->product_id;
 		}
-		// dd($result);
+
 		return $result;
 	}
 

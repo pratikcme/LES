@@ -219,9 +219,11 @@ var CHECKOUT = (function () {
             //  5000);
           } else if (output.status == 0) {
             // console.log(output);
-            window.location.href = url + "checkout";
+            alert('1')
+            // window.location.href = url + "checkout";
           } else {
-            window.location.href = url + "home";
+            alert(2);
+            // window.location.href = url + "home";
           }
         },
       });
