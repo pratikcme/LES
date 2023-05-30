@@ -53,6 +53,7 @@ class Orders extends User_Controller {
 		if($this->input->post()){
 			// echo $this->session->userdata('user_id'); die;
 			$re = $this->this_model->checkProductQuantityAvailabale();
+			dd($re);
 			// echo $this->db->last_query();
 			if($re==false){
 				$this->utility->setFlashMessage('danger','Product out of the stock');
