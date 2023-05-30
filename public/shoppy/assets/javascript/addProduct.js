@@ -491,8 +491,6 @@ var ADDPRODUCT = (function () {
     $(".ratting").css("color", "white");
   }
 
-  // var  handleAddToCartForm =  function () {
-
   $("#reviewForm").validate({
     rules: {
       review_title: { required: true },
@@ -509,5 +507,4 @@ var ADDPRODUCT = (function () {
       form.submit();
     },
   });
-  // }
 })();
