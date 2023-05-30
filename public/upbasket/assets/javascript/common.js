@@ -403,12 +403,12 @@ $("#globalSearch").autocomplete({
   focus: function (event, ui) {
     console.log("asdasd");
     $(event.target).val(ui.item.label);
-    return true;
+    return false;
   },
   select: function (event, ui) {
     $(event.target).val(ui.item.label);
     window.location = ui.item.value;
-    return true;
+    return false;
   },
 });
 $("#myInputMobile").autocomplete({
