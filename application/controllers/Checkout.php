@@ -157,7 +157,7 @@ class Checkout extends User_Controller
     // dd($getMycartSubtotal
 
     $shoppingDiscount = $this->sd_model->checkShoppingBasedDiscount($getMycartSubtotal, $this->session->userdata('branch_id'));
-    dd($shoppingDiscount);
+    
     // $res = $this->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
     $res = $this->this_model->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
     $myCartValue = $res['myCartValue'];
