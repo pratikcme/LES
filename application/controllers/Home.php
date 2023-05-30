@@ -160,7 +160,11 @@ class Home extends User_Controller
 		}
 
 		$data['item_weight_id'] = $item_weight_id;
-		$data['offer_list'] = $this->this_model->get_offer($this->session->userdata('branch_id'));
+
+		$unorderList = $this->this_model->get_offer($this->session->userdata('branch_id'));
+		foreach ($unorderList as $value) :
+			$data['offer_list'][] = $value;
+		endforeach;
 		$this->loadView($this->user_layout, $data);
 	}
 
