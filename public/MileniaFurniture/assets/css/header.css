@@ -790,6 +790,7 @@ li {
     width: 100% !important;
     max-width: 250px !important;
     padding: 10px;
+    /* display: block !important; */
 }
 
 #ui-id-1 li{

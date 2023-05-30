@@ -305,6 +305,15 @@ body{
     color: var(--dark-gray);
 }
 
+.product-detalis-btn .product-detail-quentity .qty-container{
+    height: 50px !important;
+}
+
+.product-detalis-btn .qty-container button{
+    width: 50px !important;
+    height: 50px !important;
+}
+
 
 /* tabs */
 .review-desc {
