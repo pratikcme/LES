@@ -326,7 +326,6 @@ var CHECKOUT = (function () {
   });
 
   function updatePaymentSetup() {
-    alert();
     var promocode = $("#applied_promo").val();
     if (promocode == "") {
       return true;
