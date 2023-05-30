@@ -959,9 +959,8 @@ div[slider]>input[type=range]::-ms-tooltip {
 .brand-wrapper.active{
     border: 1px solid var(--primary-color);
 }
-.categories-wrapper li.active,
+
 .categories-wrapper li:hover,
-.categories-wrapper li.active label,
 .categories-wrapper li label:hover
 {
      color: var(--primary-color);
