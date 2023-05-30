@@ -219,9 +219,9 @@ var CHECKOUT = (function () {
             //  5000);
           } else if (output.status == 0) {
             // console.log(output);
-            window.location.href = url + "checkout";
+            // window.location.href = url + "checkout";
           } else {
-            window.location.href = url + "home";
+            // window.location.href = url + "home";
           }
         },
       });
