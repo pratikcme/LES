@@ -380,7 +380,7 @@ var CHECKOUT = (function () {
       async: false,
       success: function (output) {
         if (output.response == 0) {
-          window.location.reload();
+          // window.location.reload();
         }
       },
     });
