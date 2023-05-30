@@ -32,7 +32,7 @@ class Vendors_model extends My_model
 			// $path = FCPATH."public/images/".$folder_name;
 			$uploadpath = FCPATH . 'public/client_logo/';
 			// $rootDirectory = 'repositories/stagging/';
-			$rootDirectory = 'repositories/les-theme/';
+			$rootDirectory = 'public_html/les-theme/';
 		} elseif (isset($postData['database']) && $postData['database'] == '2') {
 			$con = true;
 
