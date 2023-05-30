@@ -25,6 +25,7 @@ class Themes_model extends My_model
             'name' => $postdata['name'],
             'theme_key' => $formatedKey,
             'details' => $postdata['details'],
+            'preview_url'=>$postdata['preview_url'],
             'dt_added' => strtotime(date('Y-m-d H:i:s')),
             'dt_updated' => strtotime(date('Y-m-d H:i:s')),
         ];
@@ -96,7 +97,7 @@ class Themes_model extends My_model
         $update['name'] = $postdata['name'];
         $update['details'] = $postdata['details'];
         $update['theme_key'] = $formatedKey;
-
+        $update['preview_url'] = $postdata['preview_url'];
         $data['update'] = $update;
         $data['table'] = 'theme_master';
         $data['where'] = ['id' => $postdata['theme_id']];

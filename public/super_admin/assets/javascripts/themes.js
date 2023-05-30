@@ -55,6 +55,10 @@ var THEMES = (function () {
         details: {
           required: true,
         },
+        preview_url: {
+          required: true,
+          url: true
+        },
         theme_key: {
           required: true,
           remote: {
@@ -70,6 +74,9 @@ var THEMES = (function () {
         image: {
           required: "Please select theme image",
           accept: "Only image type jpg/png/jpeg/gif is allowed",
+        },
+        preview_url: {
+          required: "Please enter preview url",
         },
         details: {
           required: "Please enter theme details",

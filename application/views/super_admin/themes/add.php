@@ -19,7 +19,7 @@ span.error {
                 <input type="hidden" name="old_image_name"
                     value="<?= isset($themeDetails) ? $themeDetails[0]->image : '0'  ?>">
                 <div class="row mt-5">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <div class="row">
@@ -31,7 +31,7 @@ span.error {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="theme_key">Key</label>
                             <div class="row">
@@ -39,6 +39,18 @@ span.error {
                                     <input type="text" id="theme_key" name="theme_key" class="form-control name"
                                         placeholder="Theme Key"
                                         value="<?= isset($themeDetails) ? $themeDetails[0]->theme_key : '' ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="theme_key">Preview url</label>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="text" id="preview_url" name="preview_url" class="form-control name"
+                                        placeholder="Preview url"
+                                        value="<?= isset($themeDetails) ? $themeDetails[0]->preview_url : '' ?>">
                                 </div>
                             </div>
                         </div>
