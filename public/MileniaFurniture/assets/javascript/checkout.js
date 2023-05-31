@@ -490,14 +490,14 @@ var CHECKOUT = (function () {
         $("#promo_err").html(response.message);
         if (response.success == "1") {
           var orderAmount = parseFloat(response.orderAmount);
-          // finalAmount = (orderAmount + parseFloat(shipping_charge) - parseFloat(response.data)).toFixed(2)
+
           finalAmount = (
             orderAmount +
             (shipping_charge === "" ? 0 : parseFloat(shipping_charge)) -
             parseFloat(response.data)
           ).toFixed(2);
           $("#checkout_gst").html(parseFloat(response.new_gst).toFixed(2));
-          // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
+
           if ($("#totalSaving").length) {
             var amount = response.data;
             var promocodeDiscount =

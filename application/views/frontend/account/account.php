@@ -417,6 +417,7 @@ label.error {
                     </div>
 
 
+
                     <div class="tab-pane fade <?= ($action_name == 'wishlist') ? 'active show' : '' ?>"
                         id="v-pills-whislist" role="tabpanel" aria-labelledby="v-pills-whislist-tab"
                         style="position: relative" ;>
