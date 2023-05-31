@@ -1,64 +1,64 @@
 <style>
-    .price-range-slider {
-        width: 100%;
-        padding: 10px 20px 15px;
-        background-color: #f7f7f7;
-    }
+.price-range-slider {
+    width: 100%;
+    padding: 10px 20px 15px;
+    background-color: #f7f7f7;
+}
 
-    .price-range-slider .range-value {
-        margin: 0;
-        display: flex;
-    }
+.price-range-slider .range-value {
+    margin: 0;
+    display: flex;
+}
 
-    .price-range-slider .range-value .fa-rupee-sign {
-        color: var(--secondary-color);
-        position: relative;
-        font-size: 16px;
-        top: 3px;
-        position: relative;
-        font-weight: 900;
-        margin-right: 5px;
-        top: 1px;
-    }
+.price-range-slider .range-value .fa-rupee-sign {
+    color: var(--secondary-color);
+    position: relative;
+    font-size: 16px;
+    top: 3px;
+    position: relative;
+    font-weight: 900;
+    margin-right: 5px;
+    top: 1px;
+}
 
-    .price-range-slider .range-value input {
-        width: 100%;
-        background: none;
-        color: var(--secondary-color);
-        font-family: 'OpenSans-SemiBold';
-        font-size: 16px;
-        font-weight: initial;
-        box-shadow: none;
-        border: none;
-        margin: 00px 0 20px 0;
-    }
+.price-range-slider .range-value input {
+    width: 100%;
+    background: none;
+    color: var(--secondary-color);
+    font-family: 'OpenSans-SemiBold';
+    font-size: 16px;
+    font-weight: initial;
+    box-shadow: none;
+    border: none;
+    margin: 00px 0 20px 0;
+}
 
-    .price-range-slider .range-bar {
-        border: none;
-        background: #000;
-        height: 3px;
-        width: 96%;
-        margin-left: 8px;
-    }
+.price-range-slider .range-bar {
+    border: none;
+    background: #000;
+    height: 3px;
+    width: 96%;
+    margin-left: 8px;
+}
 
-    .price-range-slider .range-bar .ui-slider-range {
-        background: #1ebcb7;
-    }
+.price-range-slider .range-bar .ui-slider-range {
+    background: #1ebcb7;
+}
 
-    .price-range-slider .range-bar .ui-slider-handle {
-        border: none;
-        border-radius: 25px;
-        background: #fff;
-        border: 2px solid #1ebcb7;
-        height: 17px;
-        width: 17px;
-        top: -0.52em;
-        cursor: pointer;
-    }
+.price-range-slider .range-bar .ui-slider-handle {
+    border: none;
+    border-radius: 25px;
+    background: #fff;
+    border: 2px solid #1ebcb7;
+    height: 17px;
+    width: 17px;
+    top: -0.52em;
+    cursor: pointer;
+}
 
-    .price-range-slider .range-bar .ui-slider-handle+span {
-        background: #1ebcb7;
-    }
+.price-range-slider .range-bar .ui-slider-handle+span {
+    background: #1ebcb7;
+}
 </style>
 <!-- ----hero-section-- -->
 <section class="hero-section common-banner-bg">
@@ -68,7 +68,8 @@
                 <h1><?= $this->lang->line('product listing') ?></h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?= $this->lang->line('home') ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url() ?>home"><?= $this->lang->line('home') ?></a>
+                        </li>
                         <li class="breadcrumb-item active" style="text-transform:capitalize" aria-current="page">
                             <?= $this->lang->line('product listing') ?></li>
                     </ol>
@@ -120,8 +121,8 @@
                                             <?= $this->lang->line('All Categories') ?>
                                         </li>
                                         <?php foreach ($category as $key => $value) { ?>
-                                            <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?>
-                                            </li>
+                                        <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?>
+                                        </li>
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -146,16 +147,17 @@
                                     <ul class="cate-wrp">
                                         <?php
                                         foreach ($brand as $key => $brandRecord) { ?>
-                                            <li class="">
-                                                <div class="discount-wrapper brands-wrp">
-                                                    <div class="form-check d-flex align-items-center">
-                                                        <input class="form-check-input brand" type="checkbox" value="<?= $brandRecord->id ?>" id="<?= $brandRecord->name ?>">
-                                                        <label class="form-check-label" for="Aerin">
-                                                            <h4><?= $brandRecord->name ?></h4>
-                                                        </label>
-                                                    </div>
+                                        <li class="">
+                                            <div class="discount-wrapper brands-wrp">
+                                                <div class="form-check d-flex align-items-center">
+                                                    <input class="form-check-input brand" type="checkbox"
+                                                        value="<?= $brandRecord->id ?>" id="<?= $brandRecord->name ?>">
+                                                    <label class="form-check-label" for="Aerin">
+                                                        <h4><?= $brandRecord->name ?></h4>
+                                                    </label>
                                                 </div>
-                                            </li>
+                                            </div>
+                                        </li>
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -169,20 +171,21 @@
                                     </div>
                                     <ul>
                                         <?php foreach ($discountDiv as $key => $value) { ?>
-                                            <li>
-                                                <div class="discount-wrapper">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input discount" name="filter_discount" value="<?= $key ?>" type="checkbox" id="id11">
-                                                        <label class="form-check-label" for="id11">
-                                                            <h4><?= $value ?></h4>
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="discount-text">
-                                                        <h5><?= $countDiscoutWise[$key] ?></h5>
-                                                    </div>
+                                        <li>
+                                            <div class="discount-wrapper">
+                                                <div class="form-check">
+                                                    <input class="form-check-input discount" name="filter_discount"
+                                                        value="<?= $key ?>" type="checkbox" id="id11">
+                                                    <label class="form-check-label" for="id11">
+                                                        <h4><?= $value ?></h4>
+                                                    </label>
                                                 </div>
-                                            </li>
+
+                                                <div class="discount-text">
+                                                    <h5><?= $countDiscoutWise[$key] ?></h5>
+                                                </div>
+                                            </div>
+                                        </li>
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -216,7 +219,7 @@
                     <ul class="cate-wrp">
                         <li class="active category_id" data-cat_id=""><?= $this->lang->line('All Categories') ?></li>
                         <?php foreach ($category as $key => $value) { ?>
-                            <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?></li>
+                        <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -239,16 +242,17 @@
                     </div>
                     <ul class="cate-wrp">
                         <?php foreach ($brand as $key => $v) { ?>
-                            <li class="active">
-                                <div class="discount-wrapper brands-wrp">
-                                    <div class="form-check d-flex align-items-center">
-                                        <input class="form-check-input brand" type="checkbox" value="<?= $v->id ?>" id="<?= $v->name ?>">
-                                        <label class="form-check-label" for="Aerin">
-                                            <h4><?= $v->name ?></h4>
-                                        </label>
-                                    </div>
+                        <li class="active">
+                            <div class="discount-wrapper brands-wrp">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input brand" type="checkbox" value="<?= $v->id ?>"
+                                        id="<?= $v->name ?>">
+                                    <label class="form-check-label" for="Aerin">
+                                        <h4><?= $v->name ?></h4>
+                                    </label>
                                 </div>
-                            </li>
+                            </div>
+                        </li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -261,20 +265,21 @@
 
                     <ul class="cate-wrp">
                         <?php foreach ($discountDiv as $key => $value) { ?>
-                            <li>
-                                <div class="discount-wrapper">
-                                    <div class="form-check">
-                                        <input class="form-check-input discount" name="filter_discount" type="checkbox" value="<?= $key ?>" id="id21">
-                                        <label class="form-check-label" for="id21">
-                                            <h4><?= $value ?></h4>
-                                        </label>
-                                    </div>
-
-                                    <div class="discount-text">
-                                        <h5><?= $countDiscoutWise[$key] ?></h5>
-                                    </div>
+                        <li>
+                            <div class="discount-wrapper">
+                                <div class="form-check">
+                                    <input class="form-check-input discount" name="filter_discount" type="checkbox"
+                                        value="<?= $key ?>" id="id21">
+                                    <label class="form-check-label" for="id21">
+                                        <h4><?= $value ?></h4>
+                                    </label>
                                 </div>
-                            </li>
+
+                                <div class="discount-text">
+                                    <h5><?= $countDiscoutWise[$key] ?></h5>
+                                </div>
+                            </div>
+                        </li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -287,7 +292,8 @@
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-right"
+                            aria-hidden="true"></i></a></li>
             </ul>
         </div>
     </div>
@@ -296,4 +302,5 @@
 <div class="mobile-btn-overlay"></div>
 <input type="hidden" name="" id="cat_id">
 <input type="hidden" name="" id="sub_cat_id">
-<input type="hidden" name="" id="getBycatID" value="<?= (isset($getBycatID) ?  $this->utility->safe_b64decode($getBycatID) : '') ?>">
+<input type="hidden" name="" id="getBycatID"
+    value="<?= (isset($getBycatID) ?  $this->utility->safe_b64decode($getBycatID) : '') ?>">

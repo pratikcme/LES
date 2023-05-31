@@ -159,7 +159,7 @@ table tr:nth-child(3) td {
 
 .cart-totals-part {
     width: 100%;
-    max-width: 424px;
+    max-width: 450px;
     height: 510px;
     box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
     border-radius: 20px;

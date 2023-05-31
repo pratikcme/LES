@@ -11,7 +11,7 @@
                 <h1><?= $this->lang->line('My account') ?></h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= base_url() ?>"><?= $this->lang->line('home') ?></a>
+                        <li class="breadcrumb-item"><a href="<?= base_url() ?>home"><?= $this->lang->line('home') ?></a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My account') ?>
                         </li>
@@ -73,7 +73,7 @@
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('Account') ?> <?= $this->lang->line('Details') ?></h2>
-                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
+
                             </div>
                         </div>
                         <div class="myaccout-detail-tab">
@@ -171,7 +171,6 @@
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('My Orders') ?></h2>
-                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                             </div>
                         </div>
                         <div class="main-sub-tabs">
@@ -572,10 +571,12 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <?php if ($value->order_status <= '5') { ?>
-                                                    <a data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"
-                                                        class="cancel-btn lg-btn cncOrder"><?= $this->lang->line('Cancel') ?></a>
-                                                    <?php } ?>
+                                                    <div class="text-end">
+                                                        <?php if ($value->order_status <= '5') { ?>
+                                                        <a data-href="<?= base_url() . 'orders/cancle_order/' . $this->utility->safe_b64encode($value->id) ?>"
+                                                            class="cancel-btn lg-btn cncOrder"><?= $this->lang->line('Cancel') ?></a>
+                                                        <?php } ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -873,7 +874,7 @@
                         <div class="col-xxl-12 col-lg-12 ">
                             <div class="title">
                                 <h2><?= $this->lang->line('My address') ?></h2>
-                                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
+
                             </div>
                         </div>
 
