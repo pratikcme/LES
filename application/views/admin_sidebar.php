@@ -387,3 +387,9 @@
         <span>Live Chat Credentials</span>
     </a>
 </li>
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'smsgateway' ) { ?> active <?php } ?>" href="<?php echo base_url() . 'smsgateway'; ?>">
+        <i class="fa fa-credit-card" aria-hidden="true"></i>
+        <span>Sms gateway</span>
+    </a>
+</li>   

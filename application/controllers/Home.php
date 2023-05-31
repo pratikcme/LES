@@ -162,6 +162,7 @@ class Home extends User_Controller
 		$data['item_weight_id'] = $item_weight_id;
 
 		$unorderList = $this->this_model->get_offer($this->session->userdata('branch_id'));
+		$data['offer_list'] = [];
 		foreach ($unorderList as $value) :
 			$data['offer_list'][] = $value;
 		endforeach;
