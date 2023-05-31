@@ -74,7 +74,7 @@ $(document).on('click', '#btnAccSubmit', function () {
             dataType: 'json',
             success: function (res) {
                 if (res.success == 1) {
-                    alert(res.data);
+                    // alert(res.data);
                     $('.varification').show();
 
                     $("#frmBtn").html('varify otp');

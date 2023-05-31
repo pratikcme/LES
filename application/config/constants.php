@@ -105,16 +105,10 @@ define('TEXT_MESSAGE_API_KEY','NDY2MjYxMzk0ZTQ2NmE2YjY3N2E2NTUxNTI2MjRiMzA=');
 
 define('js_version','0.7');
 
-// testing
-// define('TWILO_ACCOUNT_SID', 'AC7feb595d1a3d1f813b0348c0aec36718'); 
-// define('TWILO_TOKEN', '1ce77d690209c47ec634f8c9ebd34361'); 
-// define('TWILO_PHONE_NUMBER', '+12015145869'); 
 
-//client account 
-// define('TWILO_ACCOUNT_SID', 'AC450d30176c8796c67f9aa4c57f14df5d'); 
-// define('TWILO_TOKEN', 'd4519da46df1266a21f0d210e0502fa4'); 
+//CME Twillo account 
 define("CME_TWILO_ACCOUNT_SID", 'AC7feb595d1a3d1f813b0348c0aec36718'); 
 define("CME_TWILO_TOKEN", '85d98c50abe836d01f8217f31438de3d'); 
-define("CME_TWILO_PHONE_NUMBER", '+17206648051'); 
+define("CME_TWILO_PHONE_NUMBER", '+13204463748'); 
 
 define('TWILO_PHONE_NUMBER', '+12156470050'); 

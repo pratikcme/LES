@@ -2472,7 +2472,7 @@ class Api_model extends My_model
     // }
 
     public function verify_mobile($postData) {
-       
+
         $user_id = $postData['user_id'];
         $country_code = $postData['country_code'];
         $check_str = str_split($country_code); 
@@ -2506,7 +2506,9 @@ class Api_model extends My_model
         $data['select'] = ['*'];
         $data['where'] = ['status'=>'1','vendor_id'=>$postData['vendor_id']];
         $smsGateWay = $this->selectRecords($data);        
+        
         if(!empty($smsGateWay)){
+            // client twillo account
             $this->send_otp_int($mobile_number,$otp,$smsGateWay[0]->sid,$smsGateWay[0]->auth_token,$smsGateWay[0]->twillo_number);
         
         }else{
@@ -2517,8 +2519,10 @@ class Api_model extends My_model
             $getlocality = $this->selectRecords($data);
 
             if($getlocality[0]->locality == '0'){
+
                  $this->sendOtp($mobile_number,$otp); // send otp via nimbuzz
             }else{
+                // cme twillo account
                 $this->send_otp_int($mobile_number,$otp,CME_TWILO_ACCOUNT_SID,CME_TWILO_TOKEN,CME_TWILO_PHONE_NUMBER); // send otp via twillo 
             }
         }
