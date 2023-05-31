@@ -525,7 +525,7 @@
                     <h5 id="orderId"></h5>
 
                     <div class="continue-btn">
-                        <a href="<?= base_url() ?>"><?= $this->lang->line('continue shopping') ?></a>
+                        <a href="<?= base_url() ?>home"><?= $this->lang->line('continue shopping') ?></a>
                     </div>
                 </div>
             </div>

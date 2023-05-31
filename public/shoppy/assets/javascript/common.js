@@ -385,7 +385,8 @@ $(document).on("click", ".removeWishlistItem", function () {
         },
         method: "post",
         success: function (output) {
-          window.location.reload();
+          window.location.href =
+            base_url + "users_account/users/account?name=wishlist";
           // that.parent().remove();
         },
       });

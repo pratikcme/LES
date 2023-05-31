@@ -2419,55 +2419,116 @@ class Api_model extends My_model
         }
         return $response;
     }
-    public function verify_mobile($postData)
-    {
 
+    // public function verify_mobile($postData)
+    // {
+
+    //     $user_id = $postData['user_id'];
+    //     $country_code = $postData['country_code'];
+    //     $check_str = str_split($country_code);
+    //     if ($check_str[0] != '+') {
+    //         $country_code = '+' . $country_code;
+    //     }
+    //     $mobile = $postData['phone'];
+
+    //     $userData['select'] = ['*'];
+    //     $userData['table'] = 'user';
+    //     $userData['where'] = ['country_code' => $postData['country_code'], 'phone' => $mobile, 'id !=' => $user_id, 'status !=' => '9', 'vendor_id' => $postData['vendor_id']];
+    //     $userDetail = $this->selectRecords($userData);
+    //     if (!empty($userDetail)) {
+    //         $response["success"] = 0;
+    //         $response["message"] = "This mobile number is linked with another account";
+    //         return $response;
+    //     }
+
+    //     $mobile_number = $country_code . '' . $mobile;
+    //     $generator = "135792468";
+    //     $otp = rand(1111, 9999);
+    //     if ($mobile == '9875105843') {
+    //         $otp = '1234';
+    //     }
+
+    //     $data = array('otp' => $otp, 'dt_updated' => strtotime(DATE_TIME));
+    //     $res = $this->db->update("user", $data, array("id" => $postData['user_id']));;
+    //     // $this->sendOtp($mobile_number,$otp);
+
+    //     if ($res) {
+    //         if ($_SERVER['SERVER_NAME'] == 'ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com') {
+    //             $this->send_otp_int($mobile_number, $otp);
+    //         } else {
+    //             // $mobile_number = '+91'.$mobile;
+    //             $this->sendOtp($mobile_number, $otp);
+    //         }
+
+
+
+
+    //         $response = array();
+    //         $response["success"] = 1;
+    //         $response["message"] = "Your otp is successfully sent";
+    //         $response["otp"] = $otp;
+    //         return $response;
+    //     }
+    // }
+
+    public function verify_mobile($postData) {
+       
         $user_id = $postData['user_id'];
         $country_code = $postData['country_code'];
-        $check_str = str_split($country_code);
-        if ($check_str[0] != '+') {
-            $country_code = '+' . $country_code;
+        $check_str = str_split($country_code); 
+        if($check_str[0] != '+'){
+            $country_code = '+'.$country_code;
         }
         $mobile = $postData['phone'];
 
         $userData['select'] = ['*'];
         $userData['table'] = 'user';
-        $userData['where'] = ['country_code' => $postData['country_code'], 'phone' => $mobile, 'id !=' => $user_id, 'status !=' => '9', 'vendor_id' => $postData['vendor_id']];
+        $userData['where'] = ['country_code' => $postData['country_code'],'phone'=>$mobile,'id !=' => $user_id,'status !=' =>'9','vendor_id'=>$postData['vendor_id']];
         $userDetail = $this->selectRecords($userData);
-        if (!empty($userDetail)) {
+        if(!empty($userDetail) ){
             $response["success"] = 0;
             $response["message"] = "This mobile number is linked with another account";
             return $response;
         }
 
-        $mobile_number = $country_code . '' . $mobile;
+        $mobile_number = $country_code.''.$mobile;
         $generator = "135792468";
-        $otp = rand(1111, 9999);
-        if ($mobile == '9875105843') {
-            $otp = '1234';
+        $otp = rand(1111,9999);
+        if($mobile == '9875105843'){
+            $otp = '1234'; 
         }
-
+        
         $data = array('otp' => $otp, 'dt_updated' => strtotime(DATE_TIME));
         $res = $this->db->update("user", $data, array("id" => $postData['user_id']));;
         // $this->sendOtp($mobile_number,$otp);
+         unset($data);
+        $data['table'] = SMSGATEWAY;
+        $data['select'] = ['*'];
+        $data['where'] = ['status'=>'1','vendor_id'=>$postData['vendor_id']];
+        $smsGateWay = $this->selectRecords($data);        
+        if(!empty($smsGateWay)){
+            $this->send_otp_int($mobile_number,$otp,$smsGateWay[0]->sid,$smsGateWay[0]->auth_token,$smsGateWay[0]->twillo_number);
+        
+        }else{
+            unset($data);
+            $data['table'] = ADMIN;
+            $data['select'] = ['*'];
+            $data['where'] = ['id'=>$postData['vendor_id']];
+            $getlocality = $this->selectRecords($data);
 
-        if ($res) {
-            if ($_SERVER['SERVER_NAME'] == 'ori.launchestore.com' || $_SERVER['SERVER_NAME'] == 'ugiftonline.com' || $_SERVER['SERVER_NAME'] == 'www.ugiftonline.com') {
-                $this->send_otp_int($mobile_number, $otp);
-            } else {
-                // $mobile_number = '+91'.$mobile;
-                $this->sendOtp($mobile_number, $otp);
+            if($getlocality[0]->locality == '0'){
+                 $this->sendOtp($mobile_number,$otp); // send otp via nimbuzz
+            }else{
+                $this->send_otp_int($mobile_number,$otp,CME_TWILO_ACCOUNT_SID,CME_TWILO_TOKEN,CME_TWILO_PHONE_NUMBER); // send otp via twillo 
             }
-
-
-
+        }
 
             $response = array();
             $response["success"] = 1;
             $response["message"] = "Your otp is successfully sent";
             $response["otp"] = $otp;
             return $response;
-        }
+
     }
 
     public function sendOtp($mobile_number, $otp)
@@ -2486,19 +2547,18 @@ class Api_model extends My_model
         return true;
     }
 
-    public function send_otp_int($mobile_number, $otp)
-    {
+    public function send_otp_int($mobile_number,$otp,$sid,$auth_token,$twillo_number){
         // echo TWILO_ACCOUNT_SID;die;
         // $accountSid = 'AC7feb595d1a3d1f813b0348c0aec36718'; //its testing
-        $accountSid = TWILO_ACCOUNT_SID;
-        $token = TWILO_TOKEN;
-        $url = 'https://api.twilio.com/2010-04-01/Accounts/' . TWILO_ACCOUNT_SID . '/Messages.json';
+        $accountSid = $sid;
+        $token = $auth_token;
+        $url = 'https://api.twilio.com/2010-04-01/Accounts/'.$sid.'/Messages.json';
 
         // $otp = mt_rand('100000','999999');
         $data = [
-            'From' => TWILO_PHONE_NUMBER,
-            'To' => $mobile_number,
-            'Body' => "Your Verification code is " . $otp,
+         'From' => $twillo_number,
+         'To' => $mobile_number,
+         'Body' => "Your Verification code is ".$otp,
 
         ];
         // print_r($data);die;
@@ -3809,9 +3869,10 @@ class Api_model extends My_model
         }
         $varify =  $this->verify_mobile(
             [
-                'user_id' => $user_id,
-                'country_code' => $postData['country_code'],
-                'phone' => $postData['phone']
+                'user_id'       => $user_id,
+                'country_code'  => $postData['country_code'],
+                'vendor_id'     => $postData['vendor_id'],
+                'phone'         => $postData['phone']
             ]
         );
         $response["success"] = 1;

@@ -46,7 +46,7 @@ class Checkout extends User_Controller
 
     $this->load->model('api_v3/api_model');
     if (empty($_SESSION['My_cart']) && $this->cartCount == 0) {
-      if($_SERVER['HTTP_REFERER'] != base_url().'login'){
+      if ($_SERVER['HTTP_REFERER'] != base_url() . 'login') {
         $this->utility->setFlashMessage('danger', 'Your cart is empty');
       }
       redirect(base_url() . 'home');
@@ -157,14 +157,15 @@ class Checkout extends User_Controller
     // dd($getMycartSubtotal
 
     $shoppingDiscount = $this->sd_model->checkShoppingBasedDiscount($getMycartSubtotal, $this->session->userdata('branch_id'));
-      $myCartValue = 0;
-      $total_gst = 0;
-    if(!empty($shoppingDiscount)){
-      // $res = $this->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
+
+    if (!empty($shoppingDiscount)) {
       $res = $this->this_model->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
-      $myCartValue = $res['myCartValue'];
-      $total_gst = $res['total_gst'];
+    } else {
+      $res = $this->this_model->calculateGstAndCart('');
     }
+
+    $myCartValue = $res['myCartValue'];
+    $total_gst = $res['total_gst'];
 
 
     $data['TotalGstAmount'] = numberFormat($total_gst);
