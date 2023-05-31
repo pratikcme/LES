@@ -436,10 +436,10 @@
 
 }
 
-.my-order-details .accordion-heading::before {
+/* .my-order-details .accordion-heading::before {
     top: 76px;
     right: 39px;
-}
+} */
 
 .my-order-details-content {
     display: flex;
@@ -480,6 +480,10 @@
     color: #0F053F;
     max-width: 220px;
     margin-bottom: 13px;
+}
+
+.img-about-text h5{
+    color: #0F053F;
 }
 
 .img-about-text p {
@@ -530,7 +534,9 @@
     cursor: pointer;
 }
 
-.all-detalis-left .cancel-btn {
+.all-detalis-left .cancel-btn,
+.main-accordion .cancel-btn
+{
     font-family: var(--BeVietnamPro-SemiBold);
     font-size: 18px;
     font-weight: 600;
@@ -539,15 +545,19 @@
     padding: 12px 30px 12px 30px;
     border-radius: 90px;
     text-transform: capitalize;
-    margin-top: 10px;
+    margin-top: 0px;
     transition: 0.5s;
     background-color: var(--primary-color);
     color: var(--common-white);
     transition: 0.5s;
     display: inline-block;
+    margin-right: 25px;
+    margin-bottom: 15px;
 }
 
-.all-detalis-left .cancel-btn:hover {
+.all-detalis-left .cancel-btn:hover,
+.main-accordion .cancel-btn:hover
+{
     background: transparent;
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
@@ -561,6 +571,10 @@
     padding-right: 80px;
     padding-bottom: 20px;
 
+}
+
+table.all-detalis-left tr{
+    border: none !important;
 }
 
 #subtab-2 .delivered-btn {
@@ -665,8 +679,8 @@
     }
 
     .my-order-details .accordion-heading::before {
-        top: 76px;
-        right: 39px;
+        /* top: 76px;
+        right: 39px; */
         font-size: 20px;
     }
 
@@ -812,8 +826,8 @@
     }
 
     .my-order-details .accordion-heading::before {
-        top: 76px;
-        right: 39px;
+        /* top: 76px;
+        right: 39px; */
         font-size: 20px;
     }
 
@@ -988,8 +1002,8 @@
     }
 
     .my-order-details .accordion-heading::before {
-        top: 52px;
-        right: 39px;
+        /* top: 52px;
+        right: 39px; */
         font-size: 20px;
     }
 
@@ -1221,8 +1235,8 @@
     }
 
     .my-order-details .accordion-heading::before {
-        top: 52px;
-        right: 39px;
+        /* top: 52px;
+        right: 39px; */
         font-size: 20px;
     }
 
@@ -1508,8 +1522,8 @@
     }
 
     .my-order-details .accordion-heading::before {
-        top: 52px;
-        right: 39px;
+        /* top: 52px;
+        right: 39px; */
         font-size: 20px;
     }
 
@@ -1760,8 +1774,8 @@
     }
 
     .my-order-details .accordion-heading::before {
-        top: 16px;
-        right: 20px;
+        /* top: 16px;
+        right: 20px; */
         font-size: 20px;
     }
 
