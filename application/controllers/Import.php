@@ -228,16 +228,16 @@ class Import extends Vendor_Controller
             $objValidation5->setPrompt('Please pick a value from the drop-down list.');
             $objValidation5->setFormula1('"'. implode(',',$packageList).'"');
 
-            $objValidation7 = $this->excel->getActiveSheet()->getCell('N'.$i.'')->getDataValidation();
-            $objValidation7->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
-            $objValidation7->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
-            $objValidation7->setAllowBlank(true);
-            $objValidation7->setShowInputMessage(true);
-            $objValidation7->setShowErrorMessage(true);
-            $objValidation7->setErrorTitle('Input error');
-            $objValidation7->setError('MRP Must be Grater Than Purchased Price');
-            // $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.')=1');
-            $objValidation7->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$i.', $M'.$i.':$M$'.$maxRow.', 1, FALSE)), "Comparison is successful", "Comparison failed")');
+            // $objValidation7 = $this->excel->getActiveSheet()->getCell('N'.$i.'')->getDataValidation();
+            // $objValidation7->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
+            // $objValidation7->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
+            // $objValidation7->setAllowBlank(true);
+            // $objValidation7->setShowInputMessage(true);
+            // $objValidation7->setShowErrorMessage(true);
+            // $objValidation7->setErrorTitle('Input error');
+            // $objValidation7->setError('MRP Must be Grater Than Purchased Price');
+            // // $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.')=1');
+            // $objValidation7->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$i.', $M'.$i.':$M$'.$maxRow.', 1, FALSE)), "Comparison is successful", "Comparison failed")');
 
             $objValidation3 = $this->excel->getActiveSheet()->getCell('H'.$i.'')->getDataValidation();
             $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
@@ -391,16 +391,16 @@ class Import extends Vendor_Controller
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.$v->max_order_qty.'');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('L'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
                 
-                $objValidation2 = $this->excel->getActiveSheet()->getCell('I'.$k.'')->getDataValidation();
-                $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
-                $objValidation2->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
-                $objValidation2->setAllowBlank(true);
-                $objValidation2->setShowInputMessage(true);
-                $objValidation2->setShowErrorMessage(true);
-                $objValidation2->setErrorTitle('Input error');
-                $objValidation2->setError('MRP Must be Grater Than purchase price');
-                // $objValidation2->setFormula1('=IF(I'.$k.' > H'.$k.')=1');
-                $objValidation2->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$k.', $H'.$k.':$M$1500, 1, FALSE)), "Comparison is successful", "Comparison failed")');
+                // $objValidation2 = $this->excel->getActiveSheet()->getCell('I'.$k.'')->getDataValidation();
+                // $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
+                // $objValidation2->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
+                // $objValidation2->setAllowBlank(true);
+                // $objValidation2->setShowInputMessage(true);
+                // $objValidation2->setShowErrorMessage(true);
+                // $objValidation2->setErrorTitle('Input error');
+                // $objValidation2->setError('MRP Must be Grater Than purchase price');
+                // // $objValidation2->setFormula1('=IF(I'.$k.' > H'.$k.')=1');
+                // $objValidation2->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$k.', $H'.$k.':$M$1500, 1, FALSE)), "Comparison is successful", "Comparison failed")');
                 
                 $objValidation3 = $this->excel->getActiveSheet()->getCell('K'.$k.'')->getDataValidation();
                 $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
