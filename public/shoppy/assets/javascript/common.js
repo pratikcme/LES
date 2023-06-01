@@ -298,7 +298,8 @@ $(document).on("change", ".vendor_nav", function () {
               },
             });
           } else {
-            swal(language.Your_Cart_Item_is_safe);
+            // swal(language.Your_Cart_Item_is_safe);
+            window.location.reload();
           }
         });
       } else {
