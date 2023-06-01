@@ -219,7 +219,7 @@ var CHECKOUT = (function () {
             //  5000);
           } else if (output.status == 0) {
             // console.log(output);
-            alert('1')
+            alert("1");
             // window.location.href = url + "checkout";
           } else {
             alert(2);
@@ -471,11 +471,11 @@ var CHECKOUT = (function () {
       return false;
     }
     var shipping_charge = $("#shipping_charge").val();
-    console.log(shipping_charge, shipping_charge);
+
     if (shipping_charge == "notInRange" || shipping_charge == "") {
       shipping_charge = 0;
     }
-    console.log();
+
     $.ajax({
       url: base_url + "checkout/validate_promocode",
       type: "post",
@@ -519,8 +519,10 @@ var CHECKOUT = (function () {
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
-            (
-              parseFloat(response.orderAmount) + parseFloat(shipping_charge)
+            parseFloat(
+              parseFloat(response.orderAmount) +
+                parseFloat(shipping_charge) +
+                parseFloat($("#checkout_gst").text())
             ).toFixed(2)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);

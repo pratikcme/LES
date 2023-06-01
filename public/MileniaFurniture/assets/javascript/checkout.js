@@ -516,12 +516,11 @@ var CHECKOUT = (function () {
           $("#applied_promo").val(promocode);
         } else {
           $("#applied_promo").val("");
-          console.log("check", response);
           $("#checkout_final").html(
-            (
+            parseFloat(
               parseFloat(response.orderAmount) +
-              parseFloat(shipping_charge) +
-              parseFloat(parseFloat($("#checkout_gst").text()).toFixed(2))
+                parseFloat(shipping_charge) +
+                parseFloat($("#checkout_gst").text())
             ).toFixed(2)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);

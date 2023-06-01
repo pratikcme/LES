@@ -519,8 +519,10 @@ var CHECKOUT = (function () {
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
-            (
-              parseFloat(response.orderAmount) + parseFloat(shipping_charge)
+            parseFloat(
+              parseFloat(response.orderAmount) +
+                parseFloat(shipping_charge) +
+                parseFloat($("#checkout_gst").text())
             ).toFixed(2)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);

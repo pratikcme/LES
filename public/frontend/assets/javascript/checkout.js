@@ -278,18 +278,18 @@ var CHECKOUT = (function () {
       $(".loader-main").removeClass("d-none");
       $("#stipeForm").append(
         '<input type="hidden" name="delivery_date" value="' +
-        delivery_date +
-        '" />'
+          delivery_date +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="time_slot_id" value="' +
-        time_slot_id +
-        '" />'
+          time_slot_id +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="user_gst_number" value="' +
-        user_gst_number +
-        '" />'
+          user_gst_number +
+          '" />'
       );
       $("#stipeForm").append(
         '<input type="hidden" name="promocode" value="' + promocode + '" />'
@@ -315,7 +315,7 @@ var CHECKOUT = (function () {
               delivery_date: delivery_date,
               user_gst_number: user_gst_number,
             },
-            success: function (output) { },
+            success: function (output) {},
           });
           onScriptLoad(details.txnToken, details.orderId, details.amount);
         }, 1000);
@@ -479,8 +479,10 @@ var CHECKOUT = (function () {
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
-            (
-              parseFloat(response.orderAmount) + parseFloat(shipping_charge)
+            parseFloat(
+              parseFloat(response.orderAmount) +
+                parseFloat(shipping_charge) +
+                parseFloat($("#checkout_gst").text())
             ).toFixed(2)
           );
           var promocodeDiscount = parseFloat(response.withoutPromo);
