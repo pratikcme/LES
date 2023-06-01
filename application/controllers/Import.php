@@ -139,7 +139,7 @@ class Import extends Vendor_Controller
         // }
 
 //        $this->excel->getActiveSheet()->getProtection()->setSheet(true);
-        $maxRow = 5000;
+        $maxRow = 500;
         for ($i = 2; $i <= $maxRow; $i++) {
 
             $objValidation = $this->excel->getActiveSheet()->getCell('B'.$i.'')->getDataValidation();
