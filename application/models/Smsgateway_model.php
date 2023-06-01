@@ -9,6 +9,7 @@ class Smsgateway_model extends My_model
 
 	public function get_sms_gateway(){
 		$data['table'] = SMSGATEWAY;
+		$data['where'] = ['vendor_id'=>$this->vendor_id];
 		$data['select'] = ['*'];
 		return $this->selectRecords($data);
 
@@ -16,7 +17,7 @@ class Smsgateway_model extends My_model
 
 	public function getSmsGetway($id=''){
         if($id != ''){
-            $data['where'] = ['id'=>$this->utility->safe_b64decode($id)];
+            $data['where'] = ['id'=>$this->utility->safe_b64decode($id),'vendor_id'=>$this->vendor_id];
         }
 		$data['select'] = ['*'];
 		$data['table'] = SMSGATEWAY;

@@ -487,13 +487,17 @@ class Users_model extends My_model
         return $this->selectRecords($data);
     }
 
-    public function sendOtpAccount($postData)
-    {
-
+    public function sendOtpAccount($postData){
 
         $userData['select'] = ['*'];
         $userData['table'] = 'user';
-        $userData['where'] = ['country_code' => $postData['country_code'], 'phone' => $postData['phone'], 'id !=' => $this->session->userdata('user_id'), 'status !=' => '9', 'vendor_id' => $this->session->userdata('vendor_id')];
+        $userData['where'] = [
+            'country_code' => $postData['country_code'], 
+            'phone' => $postData['phone'], 
+            'id !=' => $this->session->userdata('user_id'), 
+            'status !=' => '9', 
+            'vendor_id' => $this->session->userdata('vendor_id')
+        ];
         $userDetail = $this->selectRecords($userData);
         if (!empty($userDetail)) {
             $response["success"] = 0;
@@ -509,16 +513,25 @@ class Users_model extends My_model
         }
         $mobile = $postData['phone'];
         $mobile_number = $country_code . '' . $mobile;
+        $this->load->model('api_v3/api_model');
+        $varify =  $this->api_model->verify_mobile(
+			[
+				'user_id' => $this->session->userdata('user_id'),
+				'country_code' => $postData['country_code'],
+				'vendor_id' => $this->session->userdata('vendor_id'),
+				'phone' => $postData['phone']
+			]
+		);
         // $this->api_model->sendOtp($mobile_number,$otp);
 
-        $data['update'] = ['otp' => $otp];
-        $data['where'] = ['id' => $this->session->userdata('user_id')];
-        $data['table'] = 'user';
-        $this->updateRecords($data);
+        // $data['update'] = ['otp' => $otp];
+        // $data['where'] = ['id' => $this->session->userdata('user_id')];
+        // $data['table'] = 'user';
+        // $this->updateRecords($data);
 
         $response["success"] = 1;
         $response["message"] = "successfully sent otp on your mobile";
-        $response['data'] = $otp;
+        $response['data'] = '';
         return $response;
     }
 
