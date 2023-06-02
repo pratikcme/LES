@@ -386,12 +386,12 @@ if (isset($parked_order_id) && !empty($parked_order_id)) { ?>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Cash Amount</label>
-                        <input type="text" name="amount" class="form-control" value="">
+                        <input type="text" id="amount" name="amount" class="form-control" value="">
                         <label for="amount" class="error"></label>
                     </div>
                     <div class="form-group">
                         <label for="name">Type to add note</label>
-                        <input type="text" name="note" class="form-control" value="">
+                        <input type="text" id="note" name="note" class="form-control" value="">
                         <label for="note" class="error"></label>
                     </div>
                 </div>
@@ -496,5 +496,38 @@ if (isset($parked_order_id) && !empty($parked_order_id)) { ?>
 
     </div>
 </div>
+<script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
+<script src="<?php echo base_url(); ?>public/js/jquery.validate.min.js"></script>
+
+<script>
+    $('#model').validate({
+        rules: {
+            amount: {
+
+                required: true,
+                number: true,
+                min: 0
+            },
+            note: {
+
+                required: true
+
+            }
+        },
+        messages: {
+            amount: {
+                required: "Please enter cash amount",
+                number: "Cash amount must be in number format",
+                min: "Cash amount Can not be negative"
+            },
+            note: {
+                required: "Please enter note"
+            }
+        },
+        error: function(label) {
+            $(this).addClass("error");
+        }
+    });
+</script>
 
 <?php include 'footer.php'; ?>
