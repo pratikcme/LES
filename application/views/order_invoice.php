@@ -419,7 +419,11 @@
                             $total = ($sub_total + $total_discounted_gst) -  $disc;
                             echo $currency . ' ' . numberFormat($total);
                           } else {
-                            echo $currency . ' ' . numberFormat($sub_total + $total_gst_amount);
+                            if (isset($disc) && $disc > 0) {
+                              echo $currency . ' ' . numberFormat(numberFormat($sub_total + $total_gst_amount) - $disc);
+                            } else {
+                              echo $currency . ' ' . numberFormat($sub_total + $total_gst_amount);
+                            }
                           }
                           ?> </strong></td>
             </tr>
