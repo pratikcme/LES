@@ -1346,7 +1346,11 @@ var PRIVACY = (function () {
       );
 
       total_gst +=
-        parseFloat(parseFloat((disc_price * gst) / 100).toFixed(2)) * qnt;
+        parseFloat(
+          parseFloat(
+            parseFloat(parseFloat(disc_price * gst).toFixed(2)) / 100
+          ).toFixed(2)
+        ) * qnt;
     });
 
     $("#park_gst_amt").val(parseFloat(total_gst).toFixed(2));
