@@ -321,7 +321,7 @@ class Users_model extends My_model
             TABLE_WEIGHT . ' as w' => ['w.id = pw.weight_id', 'LEFT'],
             'package as pkg' => ['pkg.id = pw.package', 'LEFT'],
         ];
-        $data['select'] = ['wl.*', 'pw.id as product_varient_id', 'p.food_type', 'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.price as actual_price', 'w.id as weight_id'];
+        $data['select'] = ['wl.*', 'pw.id as product_varient_id', 'p.food_type', 'pw.price', 'pw.price', 'pw.discount_price', 'pw.weight_no', 'w.name as weight_name', 'pw.discount_per', 'pkg.package as package_name', 'pw.max_order_qty', 'p.name', 'pw.product_id', 'p.branch_id', 'pw.quantity as available_quantity', 'pw.price as actual_price', 'w.id as weight_id', 'pw.without_gst_price as without_gst_price'];
         $data['where']['wl.user_id'] = $this->session->userdata('user_id');
         if (isset($_SESSION['branch_id']) && $_SESSION['branch_id'] != '') {
             $data['where']['wl.branch_id'] = $this->session->userdata('branch_id');
@@ -333,6 +333,12 @@ class Users_model extends My_model
         unset($data);
         $this->load->model('common_model');
         $default_product_image = $this->common_model->default_product_image();
+
+        //dk
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
+
+
         foreach ($return as $k => $v) {
             $branch_id = $return[0]->branch_id;
             $product_variant_id = $v->product_varient_id;
@@ -359,16 +365,16 @@ class Users_model extends My_model
             $v->my_cart_quantity = $my_cart_quantity;
             $image = $this->getVarient_image($v->product_varient_id);
             if (!empty($image[0]->image) || $image[0]->image != '') {
-				if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image[0]->image)) {
-					$image[0]->image = $default_product_image;
-				} else {
-					$image[0]->image = $image[0]->image;
-				}
-			} else {
-				$image[0]->image = $default_product_image;
-			}
-			$image[0]->image = str_replace(' ', '%20', $image[0]->image);
-            
+                if (!file_exists('public/images/' . $this->folder . 'product_image/' . $image[0]->image)) {
+                    $image[0]->image = $default_product_image;
+                } else {
+                    $image[0]->image = $image[0]->image;
+                }
+            } else {
+                $image[0]->image = $default_product_image;
+            }
+            $image[0]->image = str_replace(' ', '%20', $image[0]->image);
+
             $v->image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $image[0]->image;
             // $v->image = str_replace(' ', '%20', $v->image);
         }
@@ -377,8 +383,12 @@ class Users_model extends My_model
             $this->load->model('frontend/product_model');
             $addQuantity = $this->product_model->findProductAddQuantity('', $value->product_weight_id);
             $value->addQuantity = $addQuantity;
+
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                $value->discount_price = numberFormat($value->without_gst_price);
+            }
         }
-        // dd($return);
+
         return $return;
     }
 
@@ -487,15 +497,16 @@ class Users_model extends My_model
         return $this->selectRecords($data);
     }
 
-    public function sendOtpAccount($postData){
+    public function sendOtpAccount($postData)
+    {
 
         $userData['select'] = ['*'];
         $userData['table'] = 'user';
         $userData['where'] = [
-            'country_code' => $postData['country_code'], 
-            'phone' => $postData['phone'], 
-            'id !=' => $this->session->userdata('user_id'), 
-            'status !=' => '9', 
+            'country_code' => $postData['country_code'],
+            'phone' => $postData['phone'],
+            'id !=' => $this->session->userdata('user_id'),
+            'status !=' => '9',
             'vendor_id' => $this->session->userdata('vendor_id')
         ];
         $userDetail = $this->selectRecords($userData);
@@ -515,13 +526,13 @@ class Users_model extends My_model
         $mobile_number = $country_code . '' . $mobile;
         $this->load->model('api_v3/api_model');
         $varify =  $this->api_model->verify_mobile(
-			[
-				'user_id' => $this->session->userdata('user_id'),
-				'country_code' => $postData['country_code'],
-				'vendor_id' => $this->session->userdata('vendor_id'),
-				'phone' => $postData['phone']
-			]
-		);
+            [
+                'user_id' => $this->session->userdata('user_id'),
+                'country_code' => $postData['country_code'],
+                'vendor_id' => $this->session->userdata('vendor_id'),
+                'phone' => $postData['phone']
+            ]
+        );
         // $this->api_model->sendOtp($mobile_number,$otp);
 
         // $data['update'] = ['otp' => $otp];
