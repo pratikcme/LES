@@ -1168,7 +1168,7 @@ var PRIVACY = (function () {
           //
 
           $("#promocode_discount").html(
-            parseFloat(parseFloat(response.data.toFixed(2))).toFixed(2)
+            parseFloat(parseFloat(response.data).toFixed(2)).toFixed(2)
           );
           // $("#discount_amt").val(
           //   parseFloat(parseFloat(response.data.toFixed(2))).toFixed(2)
