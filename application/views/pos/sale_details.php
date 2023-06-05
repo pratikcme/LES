@@ -53,8 +53,7 @@ $shoppingDiscount = numberFormat($orderInfo->shopping_amount_based_discount) * 1
                     }
                     if ($other_disc > 0) {
                         $val = numberFormat($v->discounted_price - numberFormat($v->discounted_price * $other_disc / 100));
-
-                        $total_discounted_gst += numberFormat((numberFormat($val) * $v->gst / 100) * $v->quantity); //add num format
+                        $total_discounted_gst += numberFormat(numberFormat(numberFormat($val) * $v->gst / 100) * $v->quantity); //add num format
                     }
                     ?>
                 <td><?= $v->discount > 0 ? ((fmod($v->discount, 1) !== 0.00) ? '(' . numberFormat($v->discount) . '%)' . (isset($discountAmt) ? $discountAmt : '') :  '(' . (int)$v->discount . '%)' . (isset($discountAmt) ? $discountAmt : '')) : ' - ' ?>
