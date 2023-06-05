@@ -2452,12 +2452,12 @@ class Sell_development_model extends My_model
             return $response;
         }
 
-        $calculate = numberFormat($total_price / 100) * $promocode[0]->percentage;
+        $calculate = numberFormat(numberFormat($total_price / 100) * $promocode[0]->percentage);
 
         $response["success"] = 1;
         $response["message"] = "Promocode applied";
         $response["data"] = numberFormat($calculate);
-        $response["orderAmount"] = floatval($total_price);
+        $response["orderAmount"] = numberFormat($total_price);
         // $response["withoutPromo"] = totalSaving() + $discountValue;
         return $response;
     }
