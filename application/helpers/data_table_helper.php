@@ -908,7 +908,6 @@ function getSalesHistory($TableData)
                         </a>
                      </li>
                   </ul>';
-
     $sub_array[] =   isset($row->new_total)  ? $currencySign . ' ' . numberFormat($row->new_total) : $currencySign . ' ' . numberFormat($row->payable_amount);
     $sub_array[] = '<span data-toggle="modal" class="orderDetails" data-target="#view" data-order_id=' . $CI->utility->safe_b64encode($row->id) . ' ><i class="fa fa-eye" aria-hidden="true"></i></span>
                   <span class="remove" data-order_id=' . $CI->utility->safe_b64encode($row->id) . '><i class="fa fa-trash" aria-hidden="true"></i></span>';
