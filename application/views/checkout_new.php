@@ -212,7 +212,7 @@ $vendor_id = $this->session->userdata('id');
                                                                     <span class="this_quantity">
                                                                         <?= $value->quantity ?></span> <i class="fas fa-times"></i>
                                                                     <span class="this_price" data-actual_price="<?= $value->actual_price ?>" data-gst="<?= $value->gst ?>">
-                                                                        <?= $isShow ? numberFormat(($value->discount_price - ($value->discount_price *  $value->gst) / 100)) : $value->discount_price ?></span>
+                                                                        <?= $isShow ? numberFormat((numberFormat($value->discount_price) - (numberFormat($value->discount_price) *  $value->gst) / 100)) : numberFormat($value->discount_price) ?></span>
                                                                 </h4>
 
                                                                 <div class="actual_price">
