@@ -378,7 +378,7 @@ var PRIVACY = (function () {
         val: val,
       },
       success: function (output) {
-        return output;
+        return output.formatedVal;
       },
     });
     return newVal;
