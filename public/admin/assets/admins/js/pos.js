@@ -517,6 +517,7 @@ var PRIVACY = (function () {
 
   // old design qunt change
   $(document).on("change", ".qunt", function () {
+    $("#promocode").val("");
     var qunt = $(this).val();
     var product_weight_id = $(this).data("product_weight_id");
     var isParked = $(this).data("isparked");
