@@ -2310,8 +2310,7 @@ class Sell_development_model extends My_model
         }
 
         $query = $this->db->get();
-        $query->result();
-        lq();
+
         // dd($query->result());
         return $query->result();
         // echo $this->db->last_query();
