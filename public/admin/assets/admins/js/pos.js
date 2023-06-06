@@ -983,11 +983,11 @@ var PRIVACY = (function () {
 
       let gstPer = parseFloat($(this).data("gst")).toFixed(2);
 
+      let valTocal = parseFloat((cartBased * gstPer) / 100);
+      valTocal = (Math.round(valTocal * 100 + Number.EPSILON) / 100).toFixed(2);
+
       newGst += parseFloat(
-        parseFloat(
-          parseFloat(parseFloat((cartBased * gstPer) / 100).toFixed(2)) *
-            quantity
-        ).toFixed(2)
+        parseFloat(parseFloat(valTocal) * quantity).toFixed(2)
       );
     });
 
