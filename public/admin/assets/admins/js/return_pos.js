@@ -616,6 +616,7 @@ var PRIVACY = (function () {
 
   // quant change
   $(document).on("change", ".qunt", function (e) {
+    $("#promocode").val("");
     var qnt = $(this).val();
     var max = parseInt($(this).attr("max"));
     var price = parseFloat($(this).data("actual_calculation_price"));
