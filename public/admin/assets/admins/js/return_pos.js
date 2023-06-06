@@ -368,6 +368,22 @@ var PRIVACY = (function () {
       ).toFixed(2)
     );
   }
+  // dk added new
+  const getFormatNumber = async (val) => {
+    const newVal = await $.ajax({
+      url: url + "sell_development/formatPhpFloat",
+      type: "POST",
+      dataType: "JSON",
+      data: {
+        val: val,
+      },
+      success: function (output) {
+        return output;
+      },
+    });
+    return newVal;
+  };
+  //
 
   function showExtraGst() {
     let oldGst = parseFloat($("#total_gst").text());
@@ -500,9 +516,9 @@ var PRIVACY = (function () {
     // console.log("amounrt", amt);
     // return;
 
-    $("#return_shopping_based_discount_amount").html(
-      parseFloat((amt * disc) / 100).toFixed(2)
-    );
+    let resVal = await getFormatNumber((amt * disc) / 100);
+
+    $("#return_shopping_based_discount_amount").html(resVal);
     $("#discount_amount").val(parseFloat((amt * disc) / 100).toFixed(2));
 
     isFloat(disc)

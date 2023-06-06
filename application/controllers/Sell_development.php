@@ -1975,4 +1975,11 @@ category_id ='$type_id' ORDER BY id DESC ");
                         redirect(base_url() . 'sell_development');
                     }
                 }
+                // Dk added new
+                public function formatPhpFloat()
+                {
+                    if ($this->input->post()) {
+                        echo json_encode(['formatedVal' => numberFormat($this->input->post('val'))]);
+                    }
+                }
             }
