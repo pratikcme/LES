@@ -2373,11 +2373,7 @@ class Sell_development_model extends My_model
     public function checkShoppingBasedDiscount($sub_total, $branch_id = '')
     {
         // $cartAmount = getMycartSubtotal();
-        $query = $this->db->query('SELECT *, (4616.00 - cart_amount) AS CA 
-        FROM `amount_based_discount` 
-        WHERE status != "0" AND branch_id = AND (4616.00 - cart_amount) > 0 
-        ORDER BY CA ASC 
-        LIMIT 1');
+        $query = $this->db->query("SELECT *, (4616.00 - cart_amount) AS CA FROM `amount_based_discount` WHERE status != '0' AND branch_id = '$branch_id' HAVING CA > 0 ORDER BY CA ASC LIMIT 1");
         $re = $query->result();
         return $re;
         // return
