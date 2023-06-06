@@ -456,8 +456,10 @@ $vendor_id = $this->session->userdata('id');
                     <?php $this->load->view('admin_sidebar');
                             ?>
 
-                    <?php } else {
-                            $register_response = $this->db->query("SELECT * FROM `register` WHERE `branch_id` = '10' GROUP BY `id` ORDER BY `id` desc LIMIT 1");
+                            <?php } else {
+
+                            $branch_id = $_SESSION['id'];
+                            $register_response = $this->db->query("SELECT * FROM `register` WHERE `branch_id` = '$branch_id' GROUP BY `id` ORDER BY `id` desc LIMIT 1");
                             $data['register_result'] = $register_response->result_object();
 
                             if (!isset($staff_id)) { ?>
