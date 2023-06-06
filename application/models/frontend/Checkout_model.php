@@ -458,11 +458,13 @@ class Checkout_model extends My_model
         $gstAmt = $postData['gstAmt'];
 
         $getMycartSubtotal = getMycartSubtotal();
+        // dd($getMycartSubtotal);
 
-        // dd($isShow);
         if ($isShow == 0) {
             $getMycartSubtotal = numberFormat($getMycartSubtotal - numberFormat($gstAmt));
         }
+        // dd($getMycartSubtotal);
+
 
         // create same function here
         $res =  $this->calculateGstAndCart($promocode[0]->percentage);

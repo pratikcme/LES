@@ -146,7 +146,6 @@ class Checkout extends User_Controller
     // DK
     $getMycartSubtotal = getMycartSubtotal();
 
-
     $data['getMycartSubtotal'] = ($data['isShow'][0]->display_price_with_gst == '0') ? $getMycartSubtotal  - $data['TotalGstAmount'] : $getMycartSubtotal;
     // dd($data['getMycartSubtotal']);
     $oldGst = $data['TotalGstAmount'];
@@ -167,15 +166,19 @@ class Checkout extends User_Controller
     $myCartValue = $res['myCartValue'];
     $total_gst = $res['total_gst'];
 
-
+    // dd($shoppingDiscount);
     $data['TotalGstAmount'] = numberFormat($total_gst);
     if (!empty($shoppingDiscount)) {
-      if ($getMycartSubtotal >= $shoppingDiscount[0]->cart_amount) {
-        $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-        $discountValue = $getMycartSubtotal * $discountPercentage / 100;
-        $discountValue = number_format((float)$discountValue, 2, '.', '');
-      }
+      // dd($discountPercentage);
+      // if ($getMycartSubtotal >= $shoppingDiscount[0]->cart_amount) {
+
+      $discountPercentage = $shoppingDiscount[0]->discount_percentage;
+
+      $discountValue = $getMycartSubtotal * $discountPercentage / 100;
+      $discountValue = number_format((float)$discountValue, 2, '.', '');
+      // }
     }
+
 
 
 
