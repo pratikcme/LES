@@ -517,8 +517,10 @@ var PRIVACY = (function () {
     // return;
 
     let resVal = await getFormatNumber((amt * disc) / 100);
+    console.log("resVal", resVal);
+    console.log("response", getFormatNumber((amt * disc) / 100));
 
-    $("#return_shopping_based_discount_amount").html(resVal);
+    await $("#return_shopping_based_discount_amount").html(resVal);
     $("#discount_amount").val(parseFloat((amt * disc) / 100).toFixed(2));
 
     isFloat(disc)
