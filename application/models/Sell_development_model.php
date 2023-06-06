@@ -2448,7 +2448,7 @@ class Sell_development_model extends My_model
             return $response;
         }
 
-        $calculate = ($total_price / 100) * $promocode[0]->percentage;
+        $calculate = ($total_price * $promocode[0]->percentage) / 100;
 
         $response["success"] = 1;
         $response["message"] = "Promocode applied";
