@@ -2373,9 +2373,8 @@ class Sell_development_model extends My_model
     public function checkShoppingBasedDiscount($sub_total)
     {
         // $cartAmount = getMycartSubtotal();
-        $query = $this->db->query('SELECT *,(' . $sub_total . ' - cart_amount) AS CA FROM `amount_based_discount` where branch_id = ' . $this->branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
+        $query = $this->db->query('SELECT *,(' . $sub_total . ' - cart_amount) AS CA FROM `amount_based_discount` where status != "0" AND branch_id = ' . $this->branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
-        // lq();
         return $re;
         // return
     }
@@ -2388,7 +2387,7 @@ class Sell_development_model extends My_model
         $total_price  = $postData['total_price'];
         $branch_id = $this->session->userdata('id');
         $date = date('Y-m-d');
-        $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode];
+        $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode, 'status!=' => '0'];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
         // $getMycartSubtotal = getMycartSubtotal();
