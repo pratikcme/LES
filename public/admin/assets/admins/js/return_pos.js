@@ -519,7 +519,7 @@ var PRIVACY = (function () {
     let resVal = await getFormatNumber((amt * disc) / 100);
 
     await $("#return_shopping_based_discount_amount").html(resVal.formatedVal);
-    $("#discount_amount").val(parseFloat((amt * disc) / 100).toFixed(2));
+    await $("#discount_amount").val(resVal.formatedVal);
 
     isFloat(disc)
       ? $("#return_shopping_based_discountPercentage").html(
