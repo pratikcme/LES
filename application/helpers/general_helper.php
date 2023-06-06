@@ -916,5 +916,5 @@ if (!function_exists('GetDialcodelist')) {
 }
 function numberFormat($number)
 {
-    return number_format((float)round($number), 2, '.', '');
+    return number_format((float)$number, 2, '.', '');
 }
