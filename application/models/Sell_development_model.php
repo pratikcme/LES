@@ -2272,7 +2272,7 @@ class Sell_development_model extends My_model
             'po.status' => '1', 'po.payment_type !=' => '2',
             'po.branch_id' => $this->branch_id,
         ];
-        $this->db->select('po.*,c.customer_name ,(po.payable_amount - COALESCE(sum(ro.refund_amount),0)) as new_total  ,v.name as vendor_name,c.customercode'); //last added Dk
+        $this->db->select('po.*,c.customer_name ,(po.payable_amount - COALESCE(ROUND(sum(ro.refund_amount),2),0)) as new_total  ,v.name as vendor_name,c.customercode'); //last added Dk
         $this->db->from('order as po');
         $this->db->join('vendor as v', 'v.id = po.branch_id', 'LEFT');
         $this->db->join('customer as c', 'c.id = po.customer_id', 'LEFT');
