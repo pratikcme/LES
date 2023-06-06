@@ -2220,7 +2220,7 @@ class Sell_development_model extends My_model
         unset($data);
 
         $data['table'] = 'refund_order';
-        $data['select'] = ['discount_percentage as return_discount_per', 'sum(discount_amount) as return_discount_amount', 'round(sum(sub_total),2) as total', 'sum(refund_amount) as payable_amount', 'total_items', 'dt_added'];
+        $data['select'] = ['discount_percentage as return_discount_per', 'round(sum(discount_amount),2) as return_discount_amount', 'round(sum(sub_total),2) as total', 'sum(refund_amount) as payable_amount', 'total_items', 'dt_added'];
         $data['where'] = ['order_id' => $order_id, 'branch_id' => $this->branch_id];
 
         $rerturn_r = $this->selectRecords($data);
