@@ -1152,12 +1152,16 @@ class Product_model extends My_model
 			'product_weight.price as actual_price',
 			'product_weight.weight_id',
 			'product_weight.without_gst_price',
-			'product_weight.gst'
+			'product.gst'
 		];
-		$data['join'] = ['product_weight' => ['product_weight.id = my_cart.product_weight_id', 'LEFT']];
+		$data['join'] = [
+			'product_weight' => ['product_weight.id = my_cart.product_weight_id', 'LEFT'],
+			'product' => ['product.id = product_weight.product_id', 'LEFT']
+		];
 		$data['where']['my_cart.user_id'] = $this->session->userdata('user_id');
 		$data['where']['my_cart.branch_id'] = $this->session->userdata('branch_id');
-		return $this->selectFromJoin($data);
+		$return = $this->selectFromJoin($data);
+		return $return;
 	}
 
 	public function GetUsersProductInCart($product_weight_id)
