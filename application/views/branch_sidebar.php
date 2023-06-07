@@ -75,37 +75,7 @@
         </li>
     </ul>
 </li>
-<!-- <li class="sub-menu" style="display: none;">
-    <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'customer') { ?> active <?php } ?>">
-        <i class="fa fa-user"></i>
-        <span>Customer</span>
-    </a>
-    <ul class="sub">
-        <li <?php if (
-                $this->uri->segment(1) == 'customer' && $this->uri->segment(2) == 'customer_list'
-            ) { ?> class="active" <?php } ?>>
-            <a href="<?php echo base_url() . 'customer/customer_list/'; ?>">Customer</a>
-        </li>
-        <li <?php if (
-                $this->uri->segment(1) == 'customer' && $this->uri->segment(2) == 'customer_group_list'
-            ) { ?> class="active" <?php } ?>><a href="<?php echo base_url() . 'customer/customer_group_list/'; ?>">Group </a>
-        </li>
-    </ul>
-</li> -->
-<!-- <li>
-    <a class="<?php if ($this->uri->segment(1) == 'delivery') { ?> active <?php } ?>" href="#">
-        <i class="fa fa-users"></i>
-        <span>Delivery</span>
-    </a>
-    <ul>
-        <li>
-            <a class="<?php if ($this->uri->segment(1) == 'delivery' && $this->uri->segment(2) == 'delivery_list') { ?> active <?php } ?>" href="<?php echo base_url() . 'delivery/delivery_list/'; ?>">
-                <i class="fa fa-users"></i>
-                <span>Delivery List</span>
-            </a>
-        </li>
-    </ul>
-</li> -->
+
 
 <li class="sub-menu">
     <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'import') { ?> active <?php } ?>">

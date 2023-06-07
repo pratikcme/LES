@@ -1,25 +1,7 @@
 <?php
 
 include('header.php');
-
-// $id = $_REQUEST['id'];
-
-
-
 $vendor_id = $this->session->userdata['id'];
-
-
-
-// $query = $this->db->query("SELECT * FROM register WHERE id = '$id'");
-
-// $result = $query->row_array();
-
-
-
-// $query_order = $this->db->query("SELECT SUM(payable_amount) as total FROM `order` WHERE register_id = '$id' and order_from = 0 AND (payment_type = '0' || payment_type = '1') ");
-
-// $result_order = $query_order->row_array();
-
 
 ?>
 <style>
@@ -174,7 +156,6 @@ $vendor_id = $this->session->userdata['id'];
 
                                 <div class="register_closed">
 
-                                    <!--<button class="btn btn-warning" type="button">View Full Details</button>-->
 
                                 </div>
 
@@ -804,20 +785,10 @@ $vendor_id = $this->session->userdata['id'];
 
                                                     <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
 
-                                                        <!-- <div class="summary_cash">
 
-                                                        <h4><?php echo date('l, jS F, Y, g:ia', $register_result[0]->opening_time); ?>
-                                                        </h4>
-
-                                                    </div> -->
 
                                                     </div>
 
-                                                    <!-- <div class="col-lg-4 col-md-5 col-sm-3 col-xs-12">
-
-
-
-                                                </div> -->
 
                                                     <div class="col-lg-4 col-md-2 col-sm-3 col-xs-12">
 

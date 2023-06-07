@@ -27,25 +27,10 @@ include('header.php');
             </div>
 
             <div class="product-details-wrapper">
-                <!-- <div class="product-header-text">
-                    <h2>Product</h2>
-                </div> -->
 
                 <div class="table-wrapper">
                     <div class="add-delete-btns">
                         <div class="search-box"></div>
-                        <!-- <div class="btns-wrapper">
-                                <a href="<?= base_url() . 'product/product_profile' ?>" class="add-btn">Add Product</a>
-                                <a href="javascript:" id="delete_user" class="delete-btn" >Delete Product</a>
-                                <div class="tooltip-wrapper">
-                                <a href="javascript:" class="disable-btn status_deleted" data-status="9">Disable</a>
-                                    <span class="tooltiptext">Disable Products</span>
-                                </div>
-                                <div class="tooltip-wrapper">
-                                    <a href="javascript:" class="activate status_deleted" data-status="1">activate</a>
-                                    <span class="tooltiptext">Activate Product</span>
-                                </div>
-                            </div> -->
                     </div>
 
                     <div class="my-table">
@@ -458,13 +443,9 @@ include('header.php');
                             single_delete_hard(id);
 
                         } else if (data.status == 2) {
-                            bootbox.alert(data.msg, function() {
-                                // window.location.reload(true);
-                            });
+                            bootbox.alert(data.msg, function() {});
                         } else if (data.status == 5) {
-                            bootbox.alert(data.msg, function() {
-                                // window.location.reload(true);
-                            });
+                            bootbox.alert(data.msg, function() {});
                         } else {
                             alert('Failed to delete selected sote.');
                         }
@@ -479,8 +460,7 @@ include('header.php');
     }
 
     function single_delete_hard(value) {
-        // bootbox.confirm("Are you sure you want to delete ?" , function (confirmed) {
-        // if (confirmed == true) {   
+
         var id = value;
         $.ajax({
             url: '<?php echo base_url() . 'product/parmanentDeleteProduct'; ?>',
@@ -496,13 +476,9 @@ include('header.php');
                     });
 
                 } else if (data.status == 2) {
-                    bootbox.alert(data.msg, function() {
-                        // window.location.reload(true);
-                    });
+                    bootbox.alert(data.msg, function() {});
                 } else if (data.status == 5) {
-                    bootbox.alert(data.msg, function() {
-                        // window.location.reload(true);
-                    });
+                    bootbox.alert(data.msg, function() {});
                 } else {
                     alert('Failed to delete selected sote.');
                 }
@@ -511,8 +487,6 @@ include('header.php');
                 alert('Failed to delete selected brand.');
             }
         });
-        // }
-        // })
 
     }
 
@@ -534,13 +508,9 @@ include('header.php');
                     single_delete(id);
 
                 } else if (data.status == 2) {
-                    bootbox.alert(data.msg, function() {
-                        // window.location.reload(true);
-                    });
+                    bootbox.alert(data.msg, function() {});
                 } else if (data.status == 5) {
-                    bootbox.alert(data.msg, function() {
-                        // window.location.reload(true);
-                    });
+                    bootbox.alert(data.msg, function() {});
                 } else {
                     alert('Failed to delete selected sote.');
                 }
@@ -586,7 +556,7 @@ include('header.php');
     $('#delete_user').click(function() {
 
         if ($('.checkbox_user:checked').length == 0) {
-            //alert("Select one record"); return false;
+
             bootbox.alert('Please select at least one record to delete');
             return;
         }
@@ -614,12 +584,12 @@ include('header.php');
                                 "', is maped with varient. Please deselect it and try again.",
                                 function() {});
                         } else if (data.status == 5) {
-                            //  bootbox.alert("The product '"+a+"', is maped with order. Please deselect it and try again.", function() {
-                            // });
+
+
                             bootbox.alert(data.msg, function() {});
                         } else {
                             bootbox.alert('Failed to delete the selected records.');
-                            // bootbox.alert(data.msg);
+
                         }
                     },
                     error: function() {
@@ -645,7 +615,7 @@ include('header.php');
             }
         });
 
-        $(document).on('click','.checkbox_user',function() {
+        $(document).on('click', '.checkbox_user', function() {
             if ($('.checkbox_user:checked').length == $('.checkbox_user').length) {
                 $('.checkboxMain').prop('checked', true);
             } else {
@@ -655,8 +625,3 @@ include('header.php');
     });
 </script>
 <?php include('footer.php'); ?>
-<!-- <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable();
-        });
-    </script> -->

@@ -94,7 +94,7 @@
                               <strike><?= ($varientDetails[0]->discount_per > 0) ? $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->price, 2, '.', '') : '' ?></strike>
                           </span>
                       </h3>
-                      <!-- <h4>Hurry up! only 10 products left in stock!</h4> -->
+
                       <p><?= $productDetail[0]->about ?></p>
 
                       <select class="form-select card-dropdown product_varient_id" aria-label="Default select example">
@@ -103,9 +103,7 @@
                               <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>>
                               <?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
                           <?php } ?>
-                          <!-- <option value="1">300 Gms</option>
-                            <option value="2">200 Gms</option>
-                            <option value="3">1Kg</option> -->
+
                       </select>
                       <?php
                         $d_none = '';
@@ -543,7 +541,7 @@
                       <div class="card-header">
                           <a
                               href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
-                              <!-- <img src="<?= $this->theme_base_url ?>/assets/images/feature-prodct-1.png" alt=""> -->
+
                               <!-- Dipesh Change the Image Later -->
                               <?php
                                         if (file_exists('public/images/' . $this->folder . 'product_image/' . $value->product_image)) {
@@ -568,7 +566,7 @@
                           </h4>
 
                           <div class="rate-dropdown">
-                              <!-- <a href="#" class="card-dropdown">500 gms <span><i class="fa-solid fa-angle-down"></i></span></a> -->
+
                               <div class="card-rating">
                                   <p><img src="<?= $this->theme_base_url ?>/assets/images/card-star-img.png"
                                           alt=""><?= $value->ratting['rating'] ?></p>

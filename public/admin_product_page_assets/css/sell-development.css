@@ -1866,6 +1866,14 @@ label.error {
 }
 
 
+#product_quick_list .category-list h4{
+   width: 100%;
+   word-break: break-all;
+}
+#product_quick_list .category-list div{
+    padding: 5px;
+}
+
 /* #paypal_form{
     height: 610px;
 } */

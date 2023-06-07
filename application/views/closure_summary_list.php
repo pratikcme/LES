@@ -1,24 +1,18 @@
 <?php
 include('header.php');
 
-/*$user_query = $this->db->query("SELECT * FROM `delivery_user` WHERE status != '9' ORDER BY id DESC ");
-
-$user_result = $user_query->result();*/
-
-
 ?>
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
-        <!-- page start-->
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <!--breadcrumbs start -->
+
                 <ul class="breadcrumb">
                     <li class="active"><a href=""><i class="fa fa-home"></i> <a
                                 href="<?php echo base_url() . 'admin/dashboard'; ?>">Home</a> / Closure Summary</a></li>
                 </ul>
-                <!--breadcrumbs end -->
+
             </div>
         </div>
         <div id="msg">
@@ -139,15 +133,4 @@ $user_result = $user_query->result();*/
 </section>
 <!--main content end-->
 <script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
-<script>
-// $(".dataTable").dataTable({
-//     "aoColumnDefs": [{
-//             "bSortable": false,
-//         },
-//         {
-//             "bSearchable": false,
-//         }
-//     ]
-// });
-</script>
 <?php include('footer.php'); ?>

@@ -30,9 +30,8 @@ class Users_model extends My_model
         $data['update']['email'] = $postData['email'];
         $data['update']['user_gst_number'] =  $postData['user_gst_number'];
         $data['where']['id'] =  $this->session->userdata('user_id');
-        /*$response =*/
         $this->updateRecords($data);
-        // lq();
+
         if (isset($postData['otp']) && $postData['otp'] != '') {
             unset($data);
             $data['select'] = ['*'];
@@ -60,6 +59,7 @@ class Users_model extends My_model
 
     public function update_password($postData)
     {
+
         $data['table'] = TABLE_USER;
         $data['select'] = ['id', 'password'];
         $data['where'] = [
@@ -68,7 +68,7 @@ class Users_model extends My_model
             'vendor_id' => $this->session->userdata('vendor_id')
         ];
         $result = $this->selectRecords($data);
-        // echo $this->db->last_query();die;
+
         if (!empty($result)) {
             unset($data);
             $data['table'] = TABLE_USER;
@@ -200,26 +200,6 @@ class Users_model extends My_model
 
             return $resl;
         }
-        // unset($data);
-        // foreach ($re as $key => $value) {
-        // 	if($value->id == $id){
-        // 		if($value->status == '0'){
-        // 			$data['update']['status'] = '1';
-        // 			$data['where']['id'] = $id;
-        // 		}else{
-        // 			$data['update']['status'] = '0';
-        // 			$data['where']['id'] = $id;
-        // 		}
-        // 	$data['table'] = TABLE_USER_ADDRESS;
-        // 	return $this->updateRecords($data);
-        // 	}
-        // 	// else{
-        // 	// 	if($value->status == '1')
-        // 	// 		$data['update']['status'] = '0';
-        // 	// 		$data['where']['user_id'] = $this->session->userdata('user_id');	
-        // 	// }
-        // }
-
     }
 
     function setDefaultAddress($id)
@@ -302,15 +282,6 @@ class Users_model extends My_model
         return $r;
     }
 
-    // public function getWishlist(){
-    //     $data['table'] = TABLE_WISHLIST;
-    //     $data['select'] = ['*'];
-    //     $data['where'] = [
-    //         'user_id'=>$this->session->userdata('user_id'),
-    //         'branch_id'=>$this->session->userdata('branch_id'),
-    //     ];
-    //     return $this->selectRecords($data);
-    // }
 
     public function getWishlist()
     {
@@ -326,9 +297,7 @@ class Users_model extends My_model
         if (isset($_SESSION['branch_id']) && $_SESSION['branch_id'] != '') {
             $data['where']['wl.branch_id'] = $this->session->userdata('branch_id');
         }
-        // else{
-        //     $data['where']['wl.branch_id'] = '0';
-        // }
+
         $return =  $this->selectFromJoin($data);
         unset($data);
         $this->load->model('common_model');
@@ -337,7 +306,7 @@ class Users_model extends My_model
         //dk
         $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
-        // dd($isShow);
+
 
         foreach ($return as $k => $v) {
             $branch_id = $return[0]->branch_id;
@@ -376,7 +345,6 @@ class Users_model extends My_model
             $image[0]->image = str_replace(' ', '%20', $image[0]->image);
 
             $v->image = base_url() . 'public/images/' . $this->folder . 'product_image/' . $image[0]->image;
-            // $v->image = str_replace(' ', '%20', $v->image);
         }
 
         foreach ($return as $key => $value) {
@@ -388,7 +356,7 @@ class Users_model extends My_model
                 $value->discount_price = numberFormat($value->without_gst_price);
             }
         }
-        // dd($return);
+
         return $return;
     }
 
@@ -533,12 +501,6 @@ class Users_model extends My_model
                 'phone' => $postData['phone']
             ]
         );
-        // $this->api_model->sendOtp($mobile_number,$otp);
-
-        // $data['update'] = ['otp' => $otp];
-        // $data['where'] = ['id' => $this->session->userdata('user_id')];
-        // $data['table'] = 'user';
-        // $this->updateRecords($data);
 
         $response["success"] = 1;
         $response["message"] = "successfully sent otp on your mobile";
@@ -597,7 +559,5 @@ class Users_model extends My_model
         $response["success"] = 1;
         $response["message"] = "User Account is permanent deleted";
         return $response;
-        // return true;
-        // redirect(base_url().'home');
     }
 }

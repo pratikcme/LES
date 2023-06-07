@@ -18,7 +18,7 @@
 
 
 <div class="login-section p-120">
-    <!-- <img src="./assets/images/login-imges/login-wave-img.png" alt="" class="login-wave-img"> -->
+
     <div class="container">
         <div class="row">
             <div class="col-xxl-6 col-lg-6 col-md-12">
@@ -31,17 +31,20 @@
                         <form id="Register_Form" method="post" action="<?= base_url() . 'register' ?>">
                             <input type="hidden" id="user_id">
                             <div class="mb-3">
-                                <label for="country_code" class="form-label"><?= $this->lang->line('Select country code') ?></label>
-                                <select class="form-select" name="country_code" id="country_code" aria-label="Country-code">
+                                <label for="country_code"
+                                    class="form-label"><?= $this->lang->line('Select country code') ?></label>
+                                <select class="form-select" name="country_code" id="country_code"
+                                    aria-label="Country-code">
                                     <?php foreach ($country_code as $key => $value) { ?>
-                                        <option value="<?= $key; ?>"><?= $value; ?></option>
+                                    <option value="<?= $key; ?>"><?= $value; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label for="phone" class="form-label"><?= $this->lang->line('Mobile Number') ?></label>
-                                <input type="text" class="form-control mob_no" name="phone" id="phone" placeholder="<?= $this->lang->line('Mobile Number*') ?>">
+                                <input type="text" class="form-control mob_no" name="phone" id="phone"
+                                    placeholder="<?= $this->lang->line('Mobile Number*') ?>">
                             </div>
 
                             <!-- check -->
@@ -49,10 +52,12 @@
                             <div id="completeOTP">
                                 <div class="mb-3">
                                     <div class="tab-select-box">
-                                        <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?><span>*</span></label>
-                                        <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
+                                        <label for="Country-code"
+                                            class="form-label"><?= $this->lang->line('Select country code') ?><span>*</span></label>
+                                        <select name="country_code" id="country_code" class="form-select"
+                                            aria-label="Country-code">
                                             <?php foreach ($country_code as $key => $value) { ?>
-                                                <option value="<?= $key; ?>"><?= $value; ?></option>
+                                            <option value="<?= $key; ?>"><?= $value; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -65,19 +70,24 @@
 
                             <div id="completeProfile" style="display:none">
                                 <div class="mb-3">
-                                    <label for="fname-text" class="form-label"><?= $this->lang->line('First Name') ?><span>*</span></label>
-                                    <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name*" required>
+                                    <label for="fname-text"
+                                        class="form-label"><?= $this->lang->line('First Name') ?><span>*</span></label>
+                                    <input type="text" name="fname" id="fname" class="form-control"
+                                        placeholder="First Name*" required>
                                     <label for="fname" class="error"></label>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="fname-text" class="form-label"><?= $this->lang->line('Last Name') ?><span>*</span></label>
-                                    <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name*" required>
+                                    <label for="fname-text"
+                                        class="form-label"><?= $this->lang->line('Last Name') ?><span>*</span></label>
+                                    <input type="text" name="lname" id="lname" class="form-control"
+                                        placeholder="Last Name*" required>
                                     <label for="lname" class="error"></label>
                                 </div>
                                 <div class="mb-3">
                                     <label for="fname-text" class="form-label">
                                         <?= $this->lang->line('Enter Email') ?><span>*</span></label>
-                                    <input type="text" name="email" id="email" class="form-control" placeholder="<?= $this->lang->line('Enter Email*') ?>">
+                                    <input type="text" name="email" id="email" class="form-control"
+                                        placeholder="<?= $this->lang->line('Enter Email*') ?>">
                                     <label for="email" class="error"></label>
                                 </div>
                             </div>
@@ -85,7 +95,8 @@
                             <!-- end -->
 
                             <div class="sign-in-btn">
-                                <button type="button" id="frmBtn" class="lg-btn"><?= $this->lang->line('Send Code') ?></button>
+                                <button type="button" id="frmBtn"
+                                    class="lg-btn"><?= $this->lang->line('Send Code') ?></button>
                             </div>
 
                         </form>

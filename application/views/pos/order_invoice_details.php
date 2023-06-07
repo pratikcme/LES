@@ -29,7 +29,6 @@
         }
       }
       foreach ($order_details as $key => $v) {
-        // $returned_quantity = $this->this_model->getReturnedQuantity($v->order_details_id);
       ?>
         <tr>
           <td><?= $v->name ?></td>
@@ -69,14 +68,6 @@
         <td><strong><?= $currency . ' ' . numberFormat($orderInfo->total)
                     ?> </strong></td>
       </tr>
-      <!-- <li>
-                <div>
-                    <h6>Products GST </h6>
-                    <h6><?= $currency . ' '  ?> <span
-                            id="<?= isset($return_details) && $return_details == true  ? 'return_total_gst' : 'total_gst' ?>"><?= numberFormat($total_gst_amount) ?></span>
-                    </h6>
-                </div>
-            </li> -->
       <tr>
         <td colspan="3"></td>
         <td colspan="1"><strong>Products GST</strong></td>
@@ -84,21 +75,8 @@
                     ?> </strong></td>
       </tr>
 
-      <!-- <tr>
-              <td colspan="3"></td>
-              <td colspan="1"><strong>Promocode Amount :
-                  <?= ($order_detail->percentage != '') ? $order_detail->percentage . ' %' : ''; ?></strong>
-              </td>
-              <td><strong><?php
-                          echo ($order_detail->promocodeAmount != '') ? $getcurrency['value'] . ' ' . $order_detail->promocodeAmount : $getcurrency['value'] . '' . '0';
-                          ?> </strong></td>
-            </tr> -->
-
       <?php
       if ($total_discounted_gst > 0) {
-        // if ($return_details == true) :
-        //     dd($orderInfo->total);
-        // endif;
       ?>
 
         <tr>
@@ -118,13 +96,6 @@
       }
       ?>
 
-      <!-- <tr>
-                            <td colspan="3"></td>
-                            <td colspan="1"><strong>Total Tax Amount :</strong></td>
-                            <td><strong><?php
-                                        echo $getcurrency['value'] . ' ' . $total_gst;
-                                        ?> </strong></td>
-                        </tr> -->
       <tr>
         <td colspan="3"></td>
         <td colspan="1"><strong>Delivery Charge</strong></td>
@@ -132,15 +103,6 @@
                     echo $getcurrency['value'] . ' ' . $order_detail->delivery_charge;
                     ?> </strong></td>
       </tr>
-      <!-- <?php if ($order_detail->shopping_amount_based_discount != '0' && $order_detail->shopping_amount_based_discount != NULL) { ?>
-                        <tr>
-                            <td colspan="3"></td>
-                            <td colspan="1"><strong>Cart Discount</strong></td>
-                            <td><strong> -
-                                    <?= $getcurrency['value'] . ' ' . $order_detail->shopping_amount_based_discount; ?>
-                                </strong></td>
-                        </tr>
-                        <?php } ?> -->
 
       <tr>
         <td colspan="3"></td>

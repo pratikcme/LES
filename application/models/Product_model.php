@@ -593,19 +593,12 @@ class product_model extends My_model
 
         $discount_price_cal = (($price * $discount_per) / 100);
         $discount_price = $price - $discount_price_cal;
-        // $discount_price = number_format((float)$discount_price_cal, 2, '.', '');
+
         $final_discount_price = number_format((float)$discount_price, 2, '.', '');
 
-        // $whole = floor($unit);      
-        // $fraction = $unit - $whole;
-        // if($fraction == 0){
-        //     $unit = (int)$unit;   
-        // }
-        // dd($unit);
-        $gst_amount = ($final_discount_price * $gst_percent) / 100;
-        $product_price_without_gst = $final_discount_price - $gst_amount;
+        $gst_amount = numberFormat(($final_discount_price * $gst_percent) / 100);
+        $product_price_without_gst = numberFormat(numberFormat($final_discount_price) - $gst_amount);
 
-        // Dipesh
         $barcode = $_POST['qr_code'];
 
         /* Product Weight Update */
@@ -626,7 +619,7 @@ class product_model extends My_model
                 'discount_price' => $final_discount_price,
                 'dt_updated' => strtotime(date('Y-m-d H:i:s')),
             );
-            // dd($data);
+
             if (isset($_POST['max_order_qty'])) {
                 $data['max_order_qty'] = $_POST['max_order_qty'];
 
@@ -722,14 +715,11 @@ class product_model extends My_model
                     'dt_updated' => DATE_TIME,
                 );
                 $data['insert'] = $product_image;
-                // print_r($product_image);die;
                 $this->insertRecord($data);
             }
-            // $this->product_image_add_update($_FILES,$product_id,$variant_id);
 
             $this->session->set_flashdata('msg', 'Product variant has been added successfully');
             redirect(base_url() . 'product/product_weight_list?product_id=' . $this->utility->encode($product_id));
-            // redirect(base_url() .'product/product_list');
             exit();
         }
     }
@@ -1095,7 +1085,6 @@ class product_model extends My_model
     }
     public function getBrand($brand_id = '')
     {
-        // SELECT * FROM category WHERE status != '9' AND branch_id = '$branch_id'
         $data['table'] = TABLE_BRAND;
         $data['select'] = ['*'];
         $data['where']['status !='] = '9';
@@ -1109,7 +1098,6 @@ class product_model extends My_model
     }
     public function getSubcategory($subcategory_id = '')
     {
-        // SELECT * FROM category WHERE status != '9' AND branch_id = '$branch_id'
         $data['table'] = TABLE_SUBCATEGORY;
         $data['select'] = ['*'];
         $data['where']['status !='] = '9';
@@ -1128,17 +1116,10 @@ class product_model extends My_model
         $brand_query = $this->db->query("SELECT * FROM brand WHERE  category_id LIKE '%$category_id%' AND branch_id = '$branch_id' AND status != '9' ");
         $brand_results = $brand_query->result();
         return $brand_results;
-        // $data['table'] = TABLE_BRAND;
-        // $data['select'] = ['*'];
-        // $data['where']['status !='] = '9'; 
-        // $data['where']['category_id'] = $category_id; 
-        // $data['where']['branch_id'] = $this->session->userdata('id');
-        // return $this->selectRecords($data); 
     }
 
     public function getSubcategoryOfCategoryId($category_id)
     {
-        // SELECT * FROM category WHERE status != '9' AND branch_id = '$branch_id'
         $data['table'] = TABLE_SUBCATEGORY;
         $data['select'] = ['*'];
         $data['where']['status !='] = '9';
@@ -1154,7 +1135,6 @@ class product_model extends My_model
         }
         $data['table'] = TABLE_PRODUCT;
         $data['select'] = ['*'];
-        // $data['where']['status !='] = '9';
         $data['where']['branch_id'] = $this->session->userdata('id');
         $return =  $this->selectRecords($data, true);
         return $return[0];
@@ -1263,5 +1243,4 @@ class product_model extends My_model
             return "true";
         }
     }
-    // 
 }

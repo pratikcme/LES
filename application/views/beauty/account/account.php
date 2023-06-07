@@ -923,10 +923,11 @@
                     </div>
 
                     <!-- ---tab-7-- -->
-                    <div id="tab-7" class="container tab-pane fade">
+                    <div id="tab-7"
+                        class="container tab-pane fade <?= ($action_name == 'change') ? 'active show' : '' ?> ">
                         <div class="title text-center">
                             <h2><?= $this->lang->line('Change Password') ?></h2>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+
                         </div>
                         <div class="myaccout-detail-tab">
                             <form id='ChangeUserPass' action="<?= base_url() . 'users_account/users/update_password' ?>"

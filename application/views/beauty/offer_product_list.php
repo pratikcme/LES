@@ -56,7 +56,7 @@
 
 
                                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>">
-                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
+                                    <img src="<?= $value->image ?>" alt="">
                                 </a>
                             </div>
 
