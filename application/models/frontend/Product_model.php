@@ -1150,7 +1150,8 @@ class Product_model extends My_model
 			'product_weight.discount_per',
 			'product_weight.product_id',
 			'product_weight.price as actual_price',
-			'product_weight.weight_id'
+			'product_weight.weight_id',
+			'product_weight.without_gst_price'
 		];
 		$data['join'] = ['product_weight' => ['product_weight.id = my_cart.product_weight_id', 'LEFT']];
 		$data['where']['my_cart.user_id'] = $this->session->userdata('user_id');

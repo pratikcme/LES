@@ -294,6 +294,7 @@ class Order_model extends My_model
                         'actual_price' => $my_order->actual_price,
                         'discount' => $my_order->discount_per,
                         'discount_price' => $my_order->discount_price,
+                        'without_gst_price' => $my_order->without_gst_price,
                         'calculation_price' => ($my_order->discount_price * $my_order->quantity),
                         'status' => '1',
                         'dt_added' => strtotime(date('Y-m-d H:i:s')),
