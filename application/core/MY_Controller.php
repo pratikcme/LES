@@ -148,7 +148,7 @@ class User_Controller extends MY_Controller
                 die;
             }
         }
-        
+        $_SESSION['template_name'] = 'frontend';
         if ($this->session->userdata('template_name') == '' || $this->session->userdata('template_name') != $response[0]->theme_name) {
             $_SESSION['template_name'] = $response[0]->theme_name;
         }

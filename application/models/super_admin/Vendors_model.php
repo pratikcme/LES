@@ -31,8 +31,8 @@ class Vendors_model extends My_model
 			// $con = $this->load->database('db2', TRUE);
 			// $path = FCPATH."public/images/".$folder_name;
 			$uploadpath = FCPATH . 'public/client_logo/';
-			// $rootDirectory = 'repositories/stagging/';
-			$rootDirectory = 'public_html/les-theme/';
+			$rootDirectory = 'repositories/stagging/';
+			// $rootDirectory = 'public_html/les-theme/';
 		} elseif (isset($postData['database']) && $postData['database'] == '2') {
 			$con = true;
 
