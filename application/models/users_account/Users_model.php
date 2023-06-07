@@ -65,7 +65,8 @@ class Users_model extends My_model
         $data['where'] = [
             'email' => $this->session->userdata('user_email'),
             'password' => md5($postData['old_pass']),
-            'vendor_id' => $this->session->userdata('vendor_id')
+            'vendor_id' => $this->session->userdata('vendor_id'),
+            'status !=' => '9'
         ];
         $result = $this->selectRecords($data);
 
