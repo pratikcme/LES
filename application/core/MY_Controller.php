@@ -140,6 +140,7 @@ class User_Controller extends MY_Controller
         }
         $this->load->model($this->myvalues->vendorFrontEnd['model'], 'vendor_model');
         $response = $this->vendor_model->ApprovedVendor();
+        dd($response);
 
         if (!empty($response)) {
             if ($response[0]->status == '0') {
