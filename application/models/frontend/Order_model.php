@@ -294,12 +294,14 @@ class Order_model extends My_model
                         'actual_price' => $my_order->actual_price,
                         'discount' => $my_order->discount_per,
                         'discount_price' => $my_order->discount_price,
+                        'gst' => $my_order->gst,
                         'without_gst_price' => $my_order->without_gst_price,
                         'calculation_price' => ($my_order->discount_price * $my_order->quantity),
                         'status' => '1',
                         'dt_added' => strtotime(date('Y-m-d H:i:s')),
                         'dt_updated' => strtotime(date('Y-m-d H:i:s')),
                     );
+
                     $this->db->insert('order_details', $data);
                     $last_order_d_id = $this->db->insert_id();
                     $total_profit = (($my_order->discount_price * $my_order->quantity) * $profit_per) / 100;
