@@ -337,7 +337,7 @@ class Users_model extends My_model
         //dk
         $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
-
+        // dd($isShow);
 
         foreach ($return as $k => $v) {
             $branch_id = $return[0]->branch_id;
@@ -383,12 +383,11 @@ class Users_model extends My_model
             $this->load->model('frontend/product_model');
             $addQuantity = $this->product_model->findProductAddQuantity('', $value->product_weight_id);
             $value->addQuantity = $addQuantity;
-
-            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+            if (isset($isShow[0]->display_price_with_gst) && $isShow[0]->display_price_with_gst == '1') {
                 $value->discount_price = numberFormat($value->without_gst_price);
             }
         }
-
+        // dd($return);
         return $return;
     }
 
