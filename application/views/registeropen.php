@@ -1,52 +1,7 @@
 <?php
 include('header.php');
-// session_start();
+
 date_default_timezone_set('Asia/Calcutta');
-//dd($register_result);
-//die;
-//echo date("d-m-y",strtotime(1553073257));
-//exit;
-
-// $user_id = $this->session->userdata['id'];
-// $user_query = $this->db->query("SELECT name FROM vendor WHERE id = $user_id");
-// $user_result = $user_query->row_array();
-// dd($user_result);
-
-//change Dipesh 
-// if (!empty($register_result)) {
-//     $register_id = $register_result[0]->id;
-//     $order_row = $this->db->query("SELECT SUM(`total`) as total FROM `order` WHERE register_id = '$register_id' AND payment_type = '0'");
-//     $order_result = $order_row->row_array();
-// }
-
-
-// online 
-// if (!empty($register_result)) {
-//     $register_id = $register_result[0]->id;
-//     $online_row = $this->db->query("SELECT SUM(`total`) as total FROM `order` WHERE register_id = '$register_id' AND payment_type = '1'");
-//     $online_result = $online_row->row_array();
-// }
-
-// $total = '0.00';
-
-// if (!empty($order_result)) {
-//     $total =  number_format((float)$order_result['total'], 2, '.', '');
-// } else {
-//     $total = '0.00';
-// }
-
-// 
-
-// $transaction = '0.00';
-
-// if (!empty($register_result)) {
-//     $transaction =  $register_result[0]->transaction;
-// } else {
-//     $transaction =  '0.00';
-// }
-
-// 
-
 
 
 if ($register_result[0]->type == '0') {
@@ -369,19 +324,6 @@ if ($register_result[0]->type == '0') {
                                                 </div>
                                             </div>
 
-                                            <!-- <div class="cash_payemnt_rcvd">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="cash_recieved">
-                                                        <p>Cash to bank</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
-                                                    <div class="cash_recieved">
-                                                        <p>0.00</p>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                         </div>
                                         <!-- end -->
 
@@ -438,7 +380,6 @@ if ($register_result[0]->type == '0') {
                                                             <div class="summary_cash">
                                                                 <input type="number" class="form-control" inputmode="decimal" min="0" value="<?php echo ($register_result[0]->credit_card_counted > 0) ?   $register_result[0]->credit_card_counted : "0.00"; ?>" placeholder="Enter Amount" id="credit_card_counted" onkeyup="credit_card_summary(this.value, <?php echo $register_result[0]->id; ?>)">
                                                             </div>
-                                                            <!-- onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" -->
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="summary_cash">
@@ -518,7 +459,6 @@ if ($register_result[0]->type == '0') {
                                                                 <!-- change -->
                                                                 <p id="total_differences" style="<?php if (numberFormat(numberFormat($register_result[0]->counted - number_format((float)(float)$total + (float)$transaction, 2, '.', '')) + numberFormat($register_result[0]->credit_card_counted - $online_result['total'])) >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
                                                                     <?php
-                                                                    // dd($online_result['total']);
 
                                                                     if (isset($register_result)) {
                                                                         echo numberFormat(numberFormat($register_result[0]->counted - number_format((float)(float)$total + (float)$transaction, 2, '.', '')) + numberFormat($register_result[0]->credit_card_counted - $online_result['total']));
@@ -576,7 +516,6 @@ if ($register_result[0]->type == '0') {
             const credit_card_expected = parseFloat($("#credit_card_expected").html().trim());
             const credit_card_counted = $("#credit_card_counted").val();
             const credit_card_diff = parseFloat(credit_card_counted - credit_card_expected);
-            // const cash_diff = parseFloat($('#expected').html().trim() - $("#counted_cash").val());
 
             if (String(counted_cash).trim() == '' || String(counted_online_cash).trim() == '') {
                 bootbox.alert("Please enter counted cash", function() {

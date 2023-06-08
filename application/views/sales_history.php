@@ -225,7 +225,7 @@ body {
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="search-sales-history">
-                            <!-- <label for="">Status</label> -->
+
                             <select name="" id="" class="form-control">
                                 <option>All</option>
                                 <option>Parked Sale</option>
@@ -236,13 +236,13 @@ body {
                     </div>
                     <div class="col-lg-4">
                         <div class="search-sales-history">
-                            <!-- <label for="">Customer</label> -->
+
                             <input type="text" class="form-control" placeholder="search for customer" />
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="search-sales-history">
-                            <!-- <label for="">Receipt </label> -->
+
                             <input type="text" class="form-control" placeholder="search for receipt number" />
                         </div>
                     </div>
@@ -262,112 +262,11 @@ body {
                             <th>Customer</th>
                             <th>Sold by</th>
                             <th>Sale Total </th>
-                            <!-- <th>Status</th> -->
+
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!--    <tr>
-               <td>
-                  <div>
-                     <div>
-                        <h5>1</h5>
-                        <h5>18 Jan 2022, 3:58pm</h5>
-                     </div>
-                  </div>
-               </td>
-               <td>
-                  <ul>
-                     <li class="popover-list-item">
-                        <a href="#">
-                           <div class="customer-wrap">
-                              <div class="profile-avatar">
-                                 HM
-                              </div>
-                              <div class="list-items">
-                                 <h4><a href="#">hinal</a></h4> 
-                                 <p>hinal-H2YK | IN</p>
-                              </div>
-                           </div>
-                        </a>
-                     </li>
-                  </ul>                 
-               </td>
-               <td>
-                  <ul>
-                     <li class="popover-list-item">
-                        <a href="#">
-                           <div class="customer-wrap">
-                              <div class="profile-avatar">
-                                 SH
-                              </div>
-                              <div class="list-items">
-                                 <h4>Shahid</h4> 
-                                 <p>Main Outlet</p>
-                              </div>
-                           </div>
-                        </a>
-                     </li>
-                  </ul>
-               </td>
-               <td>10.00</td>
-               <td>Completed</td>
-               <td>
-                  <span data-toggle="modal" data-target="#view"><i class="fa fa-eye" aria-hidden="true"></i></span>
-                  <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-               </td>
-            </tr>
-
-            <tr>
-               <td>
-                  <div>
-                     <div>
-                        <h5>1</h5>
-                        <h5>18 Jan 2022, 3:58pm</h5>
-                     </div>
-                  </div>
-               </td>
-               <td>
-                  <ul>
-                     <li class="popover-list-item">
-                        <a href="#">
-                           <div class="customer-wrap">
-                              <div class="profile-avatar">
-                                 HM
-                              </div>
-                              <div class="list-items">
-                                 <h4><a href="#">hinal</a></h4> 
-                                 <p>hinal-H2YK | IN</p>
-                              </div>
-                           </div>
-                        </a>
-                     </li>
-                  </ul>                 
-               </td>
-               <td>
-                  <ul>
-                     <li class="popover-list-item">
-                        <a href="#">
-                           <div class="customer-wrap">
-                              <div class="profile-avatar">
-                                 HM
-                              </div>
-                              <div class="list-items">
-                                 <h4>Hinal Modi</h4> 
-                                 <p>Main Outlet</p>
-                              </div>
-                           </div>
-                        </a>
-                     </li>
-                  </ul>
-               </td>
-               <td>10.00</td>
-               <td>Completed</td>
-               <td>
-                  <span data-toggle="modal" data-target="#view"><i class="fa fa-eye" aria-hidden="true"></i></span>
-                  <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-               </td>
-            </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -386,54 +285,10 @@ body {
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12" id="main_table">
-                                <!-- <div class="customer_name_date" id="dynamic_date">
 
-                                </div>
-                                <table class="table sale-detail">
-                                    <thead>
-                                        <tr>
-                                            <th>Product Name</th>
-                                            <th>Purchased Quantity</th>
-                                            <th>Product Price($)</th>
-                                            <th>Discount(%)</th>
-                                            <th>Discounted Price($)</th>
-                                            <th>Gst</th>
-                                            <th>Price($)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="dynamic_tr">
-                                    </tbody>
-                                </table>
-                                <div class="order_data_view">
-                                    <ul id="dynamic_li">
-
-                                    </ul>
-                                </div> -->
                             </div>
 
                             <div class="col-md-12" id="return_details">
-                                <!-- <div class="customer_name_date" id="return_date">
-
-                                </div>
-                                <table class="table sale-detail">
-                                    <thead>
-                                        <tr>
-                                            <th>Product Name</th>
-                                            <th>Returned Quantity</th>
-                                            <th>Product Price($)</th>
-                                            <th>Discount(%)</th>
-                                            <th>Discounted Price($)</th>
-                                            <th>Price($)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="return_dynamic_tr">
-                                    </tbody>
-                                </table>
-                                <div class="order_data_view">
-                                    <ul id="return_dynamic_li">
-
-                                    </ul>
-                                </div> -->
 
                             </div>
                         </div>

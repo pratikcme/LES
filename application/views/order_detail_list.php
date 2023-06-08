@@ -17,7 +17,7 @@ $order_detail_result = $order_detail_query->result();
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--breadcrumbs start -->
                 <ul class="breadcrumb">
-                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/index'; ?>">Home</a> / <a href="<?php echo base_url().'order/order_list'; ?>">Order</a> / Order Detail</a></li>
+                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url() . 'admin/index'; ?>">Home</a> / <a href="<?php echo base_url() . 'order/order_list'; ?>">Order</a> / Order Detail</a></li>
                 </ul>
                 <!--breadcrumbs end -->
             </div>
@@ -36,81 +36,46 @@ $order_detail_result = $order_detail_query->result();
                     <div class="panel-body">
                         <div class="adv-table">
                             <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                                <!-- <div class="panel-body padding-zero" style="float: right">
-                                    <a href="#" id="delete_user" class="btn btn-danger">Delete Order Detail</a>
-                                </div> -->
-                                <table class="display table table-bordered table-striped dataTable" id="example"
-                                       aria-describedby="example_info">
+
+                                <table class="display table table-bordered table-striped dataTable" id="example" aria-describedby="example_info">
                                     <thead>
-                                    <tr role="row">
-                                        <!-- <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
-                                            aria-label="Rendering engine: activate to sort column ascending"
-                                            style="width: 100px;"><input type="checkbox" class="checkboxMain">
-                                        </th> -->
-                                       <!--  <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
-                                            aria-label="Rendering engine: activate to sort column ascending"
-                                            style="width: 100px;">Action
-                                        </th> -->
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 200px;">Username
-                                        </th>
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 200px;">Product Name
-                                        </th>
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 200px;">Quantity
-                                        </th>
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 200px;">Unit
-                                        </th>
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 200px;">Discount Price
-                                        </th>
-                                        
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                            rowspan="1" colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 200px;">Final Price
-                                        </th>
-                                    </tr>
+                                        <tr role="row">
+
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Username
+                                            </th>
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Product Name
+                                            </th>
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Quantity
+                                            </th>
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Unit
+                                            </th>
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Discount Price
+                                            </th>
+
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Final Price
+                                            </th>
+                                        </tr>
                                     </thead>
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                    <?php
-                                        foreach ($order_detail_result as $result){
+                                        <?php
+                                        foreach ($order_detail_result as $result) {
 
                                             $weight_query = $this->db->query("SELECT weight_no FROM product_weight WHERE product_id = '$result->product_id' AND weight_id = '$result->weight_id'");
                                             $weight_result = $weight_query->row_array();
-                                    ?>
-                                        <tr class="gradeX odd">
+                                        ?>
+                                            <tr class="gradeX odd">
 
-                                            <!-- <td class="hidden-phone">
-                                                <?php if ($result->id) { ?>
-                                                    <input type="checkbox" name="delete[]" id='iId' value="<?php echo $result->id; ?>" class="checkbox_user">
-                                                <?php } ?>
-                                            </td> -->
-                                           <!--  <td>
-                                                <a href="javascript:;" onclick="single_delete(<?php echo $result->id; ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                                            </td> -->
-                                            <td class="hidden-phone"><?php echo $result->fname.' '.$result->lname; ?></td>
-                                            <td class="hidden-phone"><?php echo $result->product_name; ?></td>
-                                            <td class="hidden-phone"><?php echo $result->quantity; ?></td>
-                                            <td class="hidden-phone"><?php echo $weight_result['weight_no'].' '.$result->weight_name; ?></td>
-                                            <td class="hidden-phone"><?php echo 'Rs '.$result->discount_price; ?></td>
-                                            <td class="hidden-phone"><?php echo 'Rs '.$result->calculation_price; ?></td>
-                                        </tr>
-                                    <?php } ?>
+                                                <td class="hidden-phone"><?php echo $result->fname . ' ' . $result->lname; ?>
+                                                </td>
+                                                <td class="hidden-phone"><?php echo $result->product_name; ?></td>
+                                                <td class="hidden-phone"><?php echo $result->quantity; ?></td>
+                                                <td class="hidden-phone">
+                                                    <?php echo $weight_result['weight_no'] . ' ' . $result->weight_name; ?></td>
+                                                <td class="hidden-phone"><?php echo 'Rs ' . $result->discount_price; ?></td>
+                                                <td class="hidden-phone"><?php echo 'Rs ' . $result->calculation_price; ?>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -124,37 +89,36 @@ $order_detail_result = $order_detail_query->result();
 <!--main content end-->
 <script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
-    setTimeout(function () { $('#msg').hide(); }, 4000);
+    setTimeout(function() {
+        $('#msg').hide();
+    }, 4000);
 
     /*Single Delete Script*/
     function single_delete(value) {
 
-        bootbox.confirm("Are you sure you want to delete ?" , function (confirmed) {
+        bootbox.confirm("Are you sure you want to delete ?", function(confirmed) {
             if (confirmed == true) {
                 var id = value;
                 $.ajax({
-                    url: '<?php echo base_url().'order/single_delete_order_detail'; ?>' ,
+                    url: '<?php echo base_url() . 'order/single_delete_order_detail'; ?>',
                     data: {
                         id: id
                     },
-                    success: function (data) {
+                    success: function(data) {
 
                         if (data.status == 1) {
                             bootbox.alert("Order Detail has been deleted successfully.", function() {
                                 window.location.reload(true);
                             });
-                        }
-                        else {
+                        } else {
                             alert('Failed to delete selected sote.');
                         }
                     },
-                    error: function () {
+                    error: function() {
                         alert('Failed to delete selected order_detail.');
                     }
                 });
-            }
-            else
-            {
+            } else {
                 window.location.reload(true);
             }
         });
@@ -162,12 +126,12 @@ $order_detail_result = $order_detail_query->result();
 
     $('#delete_user').click(function() {
 
-        if($('.checkbox_user:checked').length == 0) {
+        if ($('.checkbox_user:checked').length == 0) {
             //alert("Select one record"); return false;
             bootbox.alert('Please select at least one record to delete');
             return;
         }
-        bootbox.confirm("Are you sure you want to delete ?" , function (confirmed) {
+        bootbox.confirm("Are you sure you want to delete ?", function(confirmed) {
             if (confirmed == true) {
 
                 var ids = [];
@@ -175,16 +139,18 @@ $order_detail_result = $order_detail_query->result();
                     ids.push($(this).val());
                 });
                 $.ajax({
-                    url: '<?php echo base_url().'order/multi_delete_order_detail'; ?>',
-                    data: { ids: ids.toString() },
+                    url: '<?php echo base_url() . 'order/multi_delete_order_detail'; ?>',
+                    data: {
+                        ids: ids.toString()
+                    },
                     success: function(data) {
-                        if(data.status == 1) {
+                        if (data.status == 1) {
 
-                            bootbox.alert("Order Detail(s) has been deleted successfully.", function() {
-                                window.location.reload(true);
-                            });
-                        }
-                        else {
+                            bootbox.alert("Order Detail(s) has been deleted successfully.",
+                                function() {
+                                    window.location.reload(true);
+                                });
+                        } else {
                             bootbox.alert('Failed to delete the selected records.');
                         }
                     },
@@ -192,35 +158,32 @@ $order_detail_result = $order_detail_query->result();
                         bootbox.alert('Failed to delete the selected records.');
                     }
                 });
-            }
-            else
-            {
+            } else {
                 window.location.reload(true);
             }
         });
     });
 
-    $(document).ready(function(){
-        $('.checkboxMain').on('click',function(){
-            if(this.checked){
-                $('.checkbox_user').each(function(){
+    $(document).ready(function() {
+        $('.checkboxMain').on('click', function() {
+            if (this.checked) {
+                $('.checkbox_user').each(function() {
                     this.checked = true;
                 });
-            }else{
-                $('.checkbox_user').each(function(){
+            } else {
+                $('.checkbox_user').each(function() {
                     this.checked = false;
                 });
             }
         });
 
-        $('.checkbox_user').on('click',function(){
-            if($('.checkbox_user:checked').length == $('.checkbox_user').length){
-                $('.checkboxMain').prop('checked',true);
-            }else{
-                $('.checkboxMain').prop('checked',false);
+        $('.checkbox_user').on('click', function() {
+            if ($('.checkbox_user:checked').length == $('.checkbox_user').length) {
+                $('.checkboxMain').prop('checked', true);
+            } else {
+                $('.checkboxMain').prop('checked', false);
             }
         });
     });
-
 </script>
 <?php include('footer.php'); ?>
