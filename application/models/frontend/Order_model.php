@@ -181,15 +181,7 @@ class Order_model extends My_model
             $newRes = $this->Checkout_model->calculateGstAndCart('');
         }
 
-        // $shoppingDiscount = $this->sd_model->checkShoppingBasedDiscount($getMycartSubtotal, $this->session->userdata('branch_id'));
 
-        // if (!empty($shoppingDiscount)) {
-        //     $res = $this->Checkout_model->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
-        // } else {
-        //     $res = $this->Checkout_model->calculateGstAndCart('');
-        // }
-
-        // $discountValue = $getMycartSubtotal * $shoppingDiscount[0]->discount_percentage / 100;
 
         if (isset($branch_id)) {
             $this->db->query('LOCK TABLES my_cart WRITE,`order` WRITE,`order_details` WRITE,product_weight WRITE,product WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
@@ -248,6 +240,7 @@ class Order_model extends My_model
 
                 if (!empty($promocodeData)) {
                     $promocode_amount =  ($total_price / 100) * $promocodeData[0]->percentage;
+                    $newRes = $this->Checkout_model->calculateGstAndCart($promocodeData[0]->percentage);
                 }
             }
 
