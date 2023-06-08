@@ -150,17 +150,40 @@ class Order_model extends My_model
         if ($get_persentage > 0) {
             $profit_per = $get_persentage;
         }
-        $discountValue = 0;
-        $discountPercentage = 0;
+
         $this->load->model('frontend/Checkout_model', 'Checkout_model');
+
+        // DK
+
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
+
+        $res = $this->Checkout_model->calculateGstAndCart();
+        $total_gst = $res['total_gst'];
+
+
+        $getMycartSubtotal = getMycartSubtotal();
+        $getMycartSubtotal = ($isShow[0]->display_price_with_gst == '0') ? $getMycartSubtotal  - $total_gst : $getMycartSubtotal;
+
+
         $shoppingDiscount = $this->Checkout_model->checkShoppingBasedDiscount();
         if (!empty($shoppingDiscount)) {
-            if (getMycartSubtotal() >= $shoppingDiscount[0]->cart_amount) {
+            if ($getMycartSubtotal >= $shoppingDiscount[0]->cart_amount) {
                 $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                $discountValue = getMycartSubtotal() * $discountPercentage / 100;
+                $discountValue = $getMycartSubtotal * $discountPercentage / 100;
                 $discountValue = number_format((float)$discountValue, 2, '.', '');
             }
         }
+
+        // $shoppingDiscount = $this->sd_model->checkShoppingBasedDiscount($getMycartSubtotal, $this->session->userdata('branch_id'));
+
+        // if (!empty($shoppingDiscount)) {
+        //     $res = $this->Checkout_model->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
+        // } else {
+        //     $res = $this->Checkout_model->calculateGstAndCart('');
+        // }
+
+        // $discountValue = $getMycartSubtotal * $shoppingDiscount[0]->discount_percentage / 100;
 
         if (isset($branch_id)) {
             $this->db->query('LOCK TABLES my_cart WRITE,`order` WRITE,`order_details` WRITE,product_weight WRITE,product WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
