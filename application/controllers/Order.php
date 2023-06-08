@@ -60,7 +60,7 @@ class Order extends Vendor_Controller
         $data['amount'] = $this->sell_development_model->getPromocodeAmount($data['orderInfo']->order_id);
 
         $data['shoppingDiscount'] = numberFormat($data['orderInfo']->shopping_amount_based_discount * 100  / $data['orderInfo']->total);
-
+        // dd($data['orderInfo']->total);
         // dd($data['order_details']);
         // new upper by dipesh
 

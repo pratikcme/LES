@@ -165,7 +165,7 @@ class Order_model extends My_model
         $getMycartSubtotal = getMycartSubtotal();
         $getMycartSubtotal = ($isShow[0]->display_price_with_gst == '0') ? $getMycartSubtotal  - $total_gst : $getMycartSubtotal;
 
-
+        $discountValue = 0;
         $shoppingDiscount = $this->Checkout_model->checkShoppingBasedDiscount();
         if (!empty($shoppingDiscount)) {
             if ($getMycartSubtotal >= $shoppingDiscount[0]->cart_amount) {
@@ -173,6 +173,12 @@ class Order_model extends My_model
                 $discountValue = $getMycartSubtotal * $discountPercentage / 100;
                 $discountValue = number_format((float)$discountValue, 2, '.', '');
             }
+        }
+
+        if (!empty($shoppingDiscount)) {
+            $newRes = $this->Checkout_model->calculateGstAndCart($shoppingDiscount[0]->discount_percentage);
+        } else {
+            $newRes = $this->Checkout_model->calculateGstAndCart('');
         }
 
         // $shoppingDiscount = $this->sd_model->checkShoppingBasedDiscount($getMycartSubtotal, $this->session->userdata('branch_id'));
@@ -199,7 +205,11 @@ class Order_model extends My_model
             $sub_total = 0;
             $total_savings = 0;
             foreach ($myCart as $key => $value) {
-                $sub_total += $value->discount_price * $value->quantity;
+                // if ($isShow[0]->display_price_with_gst == '0') {
+                $sub_total += $value->without_gst_price * $value->quantity;
+                // } else {
+                //     $sub_total += $value->discount_price * $value->quantity;
+                // }
                 $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
             }
 
@@ -227,8 +237,6 @@ class Order_model extends My_model
             }
 
 
-
-
             $my_order_result = $this->product_model->getMyCartOrder();
             $promocode_amount = 0;
 
@@ -242,7 +250,6 @@ class Order_model extends My_model
                     $promocode_amount =  ($total_price / 100) * $promocodeData[0]->percentage;
                 }
             }
-
 
 
             if (!empty($my_order_result)) {
@@ -268,7 +275,7 @@ class Order_model extends My_model
                     'user_gst_number' => $user_gst_number,
                     'delivery_charge' => $delivery_charge,
                     'total' => $total_price,
-                    'payable_amount' => $total_price + $delivery_charge - $promocode_amount - $discountValue,
+                    'payable_amount' => $total_price  + $newRes['total_gst'] + $delivery_charge - $promocode_amount - $discountValue,
                     'order_no' => $iOrderNo,
                     'isSelfPickup' => (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') ? '0' : '1',
                     'delivery_date' => $delivery_date,
