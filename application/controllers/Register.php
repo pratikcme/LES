@@ -143,10 +143,11 @@ class Register extends Vendor_Controller
 
     public function update_cash_summary()
     {
-        $id = $_REQUEST['id'];
-        $expected_value = $_REQUEST['expected_value'];
-        $counted = $_REQUEST['counted'];
-        $cash_dif = $_REQUEST['cash_dif'];
+        $id = $_GET['id'];
+        $expected_value = $_GET['expected_value'];
+        $counted = $_GET['counted'];
+        $cash_dif = $_GET['cash_dif'];
+
 
         $array = array(
             'cash_amount_expected' => $expected_value,
@@ -223,14 +224,24 @@ class Register extends Vendor_Controller
 
     public  function close_register_button()
     {
-        $id = $_REQUEST['id'];
+        $id = $_GET['id'];
         $closure_note = $_REQUEST['closure_note'];
+
+        $cash_diff = $_GET['cash_diff'];
+        $credit_card_expected = $_GET['credit_card_expected'];
+        $credit_card_counted = $_GET['credit_card_counted'];
+        $credit_card_diff = $_GET['credit_card_diff'];
 
         $array = array(
             'type' => '0',
             'closure_note' => $closure_note,
-            'closing_time' => strtotime(date('Y-m-d H:i:s'))
+            'closing_time' => strtotime(date('Y-m-d H:i:s')),
+            'difference' => $cash_diff,
+            'credit_card_expected' => $credit_card_expected,
+            'credit_card_counted' => $credit_card_counted,
+            'credit_card_differences' => $credit_card_diff,
         );
+
         $this->db->where('id', $id);
         $this->db->update('register', $array);
 

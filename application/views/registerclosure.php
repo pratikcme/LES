@@ -1,17 +1,6 @@
 <?php
 include('header.php');
 date_default_timezone_set('Asia/Calcutta');
-// $user_id = $this->session->userdata['id'];
-// $user_query = $this->db->query("SELECT name FROM vendor WHERE id = $user_id");
-// $user_result = $user_query->row_array();
-
-
-// if (!empty($register_result)) {
-
-//     $register_id = $register_result[0]->id;
-//     $order_row = $this->db->query("SELECT SUM(`total`) as total FROM `order` WHERE register_id = '$register_id' AND payment_type = '0'");
-//     $order_result = $order_row->row_array();
-// }
 
 if ($register_result[0]->type == '1') {
     redirect(base_url() . 'index.php/register/open_register');
@@ -344,7 +333,10 @@ function printDiv(divName) {
                                                 <div class="drawer_cash">
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="summary_cash">
-                                                            <p><?php if (!empty($register_result)) {
+                                                            <p><?php
+
+
+                                                                if (!empty($register_result)) {
                                                                     echo $register_result[0]->cash_amount_expected;
                                                                 } else {
                                                                     echo "0.00";
@@ -369,6 +361,7 @@ function printDiv(divName) {
                                                                 <?php if (!empty($register_result[0]->difference)) {
                                                                     echo $register_result[0]->difference;
                                                                 } else {
+
                                                                     echo "0.00";
                                                                 }
 
@@ -474,19 +467,6 @@ function printDiv(divName) {
                                                     </div>
                                                 </div>
 
-                                                <!-- <div class="cash_payemnt_rcvd">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="cash_recieved">
-                                                        <p>Cash to bank</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
-                                                    <div class="cash_recieved">
-                                                        <p>0.00</p>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -568,31 +548,6 @@ function printDiv(divName) {
                                                 </div>
                                             </div>
 
-                                            <!--<div class="closer_cash_part3">
-												<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-													<span class="part_2_deatils">Store Credit</span>
-												</div>
-												
-												<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
-													<div class="drawer_cash">
-														<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<div class="summary_cash">
-																<p><?php /*if(!empty($register_result)){ echo $register_result[0]->store_credit_expected; } else { echo '0.00'; }  */ ?></p>
-															</div>
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<div class="summary_cash">
-																<p><?php /*if(!empty($register_result)){ echo $register_result[0]->store_credit_counted; } else { echo '0.00'; }  */ ?></p>
-															</div>
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<div class="summary_cash">
-																<p><?php /*if(!empty($register_result)){ echo $register_result[0]->store_credit_differences; } else { echo '0.00'; }  */ ?></p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>-->
                                         </div>
 
                                     </div>
@@ -659,9 +614,10 @@ function printDiv(divName) {
                                                                 <!-- change -->
                                                                 <p id="total_differences"
                                                                     style="<?php if (numberFormat($register_result[0]->credit_card_differences + $register_result[0]->difference) >= 0) { ?> color: green; <?php } else { ?> color: red; <?php } ?> ">
-                                                                    <?php if (isset($register_result[0]->difference) && isset($register_result[0]->credit_card_differences)  && $online_result['total'] !== "") {
+                                                                    <?php if (isset($register_result[0]->difference)) {
                                                                         echo numberFormat($register_result[0]->credit_card_differences + $register_result[0]->difference);
                                                                     } else {
+
                                                                         echo '0.00';
                                                                     } ?>
                                                                 </p>
@@ -671,31 +627,7 @@ function printDiv(divName) {
                                                 </div>
                                             </div>
 
-                                            <!--<div class="closer_cash_part3">
-											<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-												<span class="part_2_deatils">Store Credit</span>
-											</div>
 
-											<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
-												<div class="drawer_cash">
-													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-														<div class="summary_cash">
-															<p id="store_credit_expected"><?php /*echo $register_result[0]->store_credit_expected; */ ?></p>
-														</div>
-													</div>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-														<div class="summary_cash">
-															<input type="text" id="store_credit_counted" class="form-control" placeholder="0.00" value="<?php /*echo $register_result[0]->store_credit_counted; */ ?>" onkeyup="store_credit_summary(this.value, <?php /*echo $register_result[0]->id; */ ?>)">
-														</div>
-													</div>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-														<div class="summary_cash">
-															<p id="store_credit_differences"><?php /*echo $register_result[0]->store_credit_differences; */ ?></p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>-->
 
                                         </div>
 
@@ -733,8 +665,7 @@ function printDiv(divName) {
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Set opening cash drawer amount</h4>
             </div>
-            <form method="post" action="<?php echo base_url() . 'index.php/register/opening_cash'; ?>"
-                id="cashRegister">
+            <form method="post" action="<?php echo base_url() . 'register/opening_cash'; ?>" id="cashRegister">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Cash Amount</label>
