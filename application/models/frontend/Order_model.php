@@ -53,7 +53,6 @@ class Order_model extends My_model
         return true;
     }
 
-
     public function makeOrder($fromStripe = '')
     {
         $this->load->model('api_v3/Api_model', 'api_v3_model');
@@ -184,7 +183,7 @@ class Order_model extends My_model
 
 
         if (isset($branch_id)) {
-            $this->db->query('LOCK TABLES my_cart WRITE,`order` WRITE,`order_details` WRITE,product_weight WRITE,product WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
+            $this->db->query('LOCK TABLES my_cart WRITE,`order` WRITE,`mc` WRITE,`order_details` WRITE,product_weight WRITE,product WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`weight` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
 
             // sleep(0.751);
 
@@ -243,7 +242,7 @@ class Order_model extends My_model
                     $newRes = $this->Checkout_model->calculateGstAndCart($promocodeData[0]->percentage);
                 }
             }
-
+            // + $newRes['total_gst'] + $delivery_charge - $promocode_amount - $discountValue
 
             if (!empty($my_order_result)) {
                 foreach ($my_order_result as $my_order) {

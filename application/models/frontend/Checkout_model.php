@@ -559,6 +559,7 @@ class Checkout_model extends My_model
         $myCartValue = 0;
         $total_gst = 0;
         if ($this->session->userdata('user_id') == '') {
+
             foreach ($_SESSION['My_cart'] as $key => $value) {
                 $myCartValue += $value['total'];
 
@@ -567,6 +568,7 @@ class Checkout_model extends My_model
                 $total_gst += $gst_amount * $value['quantity'];
             }
         } else {
+
             $this->load->model($this->myvalues->productFrontEnd['model'], 'product_model');
             $my_cart = $this->product_model->getMyCart(); //return value of mycart and 
 
