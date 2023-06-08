@@ -238,7 +238,7 @@ class Order_model extends My_model
                 $promocodeData = $this->selectRecords($data);
 
                 if (!empty($promocodeData)) {
-                    $promocode_amount =  numberFormat(numberFormat($total_price / 100) * $promocodeData[0]->percentage);
+                    $promocode_amount = numberFormat($total_price / 100 * $promocodeData[0]->percentage);
                     $newRes = $this->Checkout_model->calculateGstAndCart($promocodeData[0]->percentage);
                 }
             }
