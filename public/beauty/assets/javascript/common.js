@@ -223,6 +223,7 @@ $(document).on("change", ".vendor_nav", function () {
     window.location.href = url;
     return false;
   }
+
   if (session_vendor_id != "") {
     if (vendor_id != session_vendor_id) {
       if (sess_my_count > 0) {
