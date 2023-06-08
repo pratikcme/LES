@@ -197,11 +197,11 @@ class Order_model extends My_model
             $total_savings = 0;
             foreach ($myCart as $key => $value) {
                 // if ($isShow[0]->display_price_with_gst == '0') {
-                $sub_total += $value->without_gst_price * $value->quantity;
+                $sub_total += numberFormat(numberFormat($value->without_gst_price) * $value->quantity);
                 // } else {
                 //     $sub_total += $value->discount_price * $value->quantity;
                 // }
-                $total_savings += ($value->actual_price - $value->discount_price) * $value->quantity;
+                $total_savings += numberFormat(numberFormat($value->actual_price - $value->discount_price) * $value->quantity);
             }
 
             $sub_total = number_format((float)$sub_total, 2, '.', '');
@@ -238,11 +238,10 @@ class Order_model extends My_model
                 $promocodeData = $this->selectRecords($data);
 
                 if (!empty($promocodeData)) {
-                    $promocode_amount =  ($total_price / 100) * $promocodeData[0]->percentage;
+                    $promocode_amount =  numberFormat(numberFormat($total_price / 100) * $promocodeData[0]->percentage);
                     $newRes = $this->Checkout_model->calculateGstAndCart($promocodeData[0]->percentage);
                 }
             }
-            // + $newRes['total_gst'] + $delivery_charge - $promocode_amount - $discountValue
 
             if (!empty($my_order_result)) {
                 foreach ($my_order_result as $my_order) {
@@ -267,7 +266,7 @@ class Order_model extends My_model
                     'user_gst_number' => $user_gst_number,
                     'delivery_charge' => $delivery_charge,
                     'total' => $total_price,
-                    'payable_amount' => $total_price  + $newRes['total_gst'] + $delivery_charge - $promocode_amount - $discountValue,
+                    'payable_amount' => numberFormat($total_price  + numberFormat($newRes['total_gst']) + numberFormat($delivery_charge) - numberFormat($promocode_amount) - numberFormat($discountValue)),
                     'order_no' => $iOrderNo,
                     'isSelfPickup' => (!isset($_SESSION['isSelfPickup']) || $_SESSION['isSelfPickup'] == '0') ? '0' : '1',
                     'delivery_date' => $delivery_date,
