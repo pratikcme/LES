@@ -217,7 +217,7 @@
                         <h3>Product Categories</h3>
                     </div>
                     <ul class="cate-wrp">
-                        <li class="active category_id" data-cat_id=""><?= $this->lang->line('All Categories') ?></li>
+                        <li class="active category_id" data-cat_id="All"><?= $this->lang->line('All Categories') ?></li>
                         <?php foreach ($category as $key => $value) { ?>
                         <li class="category_id" data-cat_id="<?= $value->id ?>"> <?= $value->name ?></li>
                         <?php } ?>
