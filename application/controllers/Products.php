@@ -86,6 +86,7 @@ class Products extends User_Controller
 		for ($i = 0; $i < 8; $i++) {
 			$data['countDiscoutWise'][$i] = $this->this_model->countProductDiscountWise($i);
 		}
+		// dd();
 
 		$data['getCategoryHighrstProduct'] = $this->this_model->getCategoryHighrstProduct();
 		// echo '<pre>';
