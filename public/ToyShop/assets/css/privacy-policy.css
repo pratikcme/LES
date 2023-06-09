@@ -1,0 +1,140 @@
+.privacy-policy{
+    position: relative;
+    z-index: 2;
+}
+
+.privacy-policy h3{
+    font-family: var(--Gantari-Bold) !important;
+    font-size: 36px !important;
+    line-height: 40px !important;
+    margin-top: 50px !important;
+    margin-bottom: 30px !important;
+    color: var(--text-color) !important;
+}  
+.privacy-policy p{
+    line-height: 28px !important;
+    font-size: 16px !important;
+}
+.privacy-policy h5{
+    font-family: var(--Gantari-Regular) !important;
+    font-size: 16px !important;
+    line-height: 20px;
+    color: var(--text-color) !important;
+    text-transform: none;
+    text-decoration: underline;
+    margin-top: 40px !important;
+    margin-bottom: 30px !important;
+}
+.privacy-policy .device-information ul li{
+   list-style: disc !important;
+   font-family: var(--Gantari-Regular) !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--pera-color);
+    margin-bottom: 10px !important;
+
+    
+}
+.privacy-policy .device-information ul li span{
+    font-family: var(--Gantari-SemiBold);
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--text-color) !important;
+}
+.privacy-policy h6{
+    font-family: var(--Gantari-Regular) !important;
+    font-size: 16px;
+    line-height: 36px;
+    color: var(--text-color);
+}
+.privacy-policy h4{
+    font-family: var(--Gantari-Bold) !important;
+    line-height: 40px !important;
+    margin-top: 40px;
+    margin-bottom: 10px !important;
+}
+
+.privacy-policy ul li {
+    list-style: disc !important;
+    font-family: var(--Gantari-Regular) !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--pera-color);
+    margin-bottom: 10px !important;
+    word-break: break-all;
+}
+
+
+/* =============Responsive======= */
+
+@media only screen and (max-width: 1399px) {
+    .privacy-policy h3{
+        font-size: 32px !important;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .privacy-policy h3{
+        font-size: 28px !important;
+        margin-top: 30px !important;
+        margin-bottom: 20px !important;
+    }
+    .privacy-policy h5{
+        margin-bottom: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 991px){
+    .privacy-policy h3{
+        font-size: 26px !important;
+        margin-top: 30px !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .privacy-policy h3{
+        font-size: 24px !important;
+        margin-top: 30px !important;
+        margin-bottom: 20px !important;
+    }
+    .privacy-policy p{
+      line-height: 22px !important;
+    }
+    .privacy-policy h6 {
+        font-size: 15px;
+        line-height: 28px;
+    }
+}
+
+@media only screen and (max-width: 575px){
+    .privacy-policy h3{
+        font-size: 22px !important;
+        margin-top: 20px !important;
+        margin-bottom: 10px !important;
+    }
+    .privacy-policy .device-information ul li{
+        font-size: 15px !important;
+    }
+    .privacy-policy .device-information ul li span{
+        font-size: 15px !important;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .privacy-policy h3 {
+        font-size: 20px !important;
+        margin-top: 20px;
+        margin-bottom: 10px !important;
+        line-height: 28px !important;
+    }
+    .privacy-policy h5 {
+        margin-top: 30px;
+        margin-bottom: 10px !important;
+    }
+    .privacy-policy h4{
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,28 @@
+:root{
+   
+    /* --------fonts------ */
+    
+    --Damion: 'Pacifico-Regular';
+    --Gantari-Regular: 'Gantari-Regular';
+    --Gantari-Medium: 'Gantari-Medium';
+    --Gantari-SemiBold: 'Gantari-SemiBold';
+    --Gantari-Bold: 'Gantari-Bold';
+    --Gantari-ExtraBold: 'Gantari-ExtraBold';
+    --Gantari-Black: 'Gantari-Black';
+    
+    /* ----colors--- */
+
+    --primary-color: #662E87;
+    --sub-primary: #ED7524;
+    --text-color: #211F22;
+    --pera-color: #474349;
+    --light-purple: #F4E1FF;
+    --box-color: #FDF2EB;
+    --white: #fff;
+    --extra-color: #F9F6FC;
+    --subscribe-bg: #F9F4FC;
+    --common-border:#C8BFCD;
+    --input-border: #E7E2EA;
+    --pink:#E33B7F;
+    --card-bg:#F3F0ED;
+}

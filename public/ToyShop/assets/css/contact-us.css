@@ -1,0 +1,198 @@
+.contact-us .title p {
+    max-width: 1000px !important;
+}
+.contact-us .title p a{
+    color: var(--sub-primary) !important;
+    text-decoration: underline !important;
+    font-family: var(--Gantari-Bold);
+}
+.contact-top-icon {
+    background: rgba(102, 46, 135, 0.15);
+    max-width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.contact-top-icon svg{
+    max-width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.contact-top-icon svg path{
+    stroke: var(--primary-color);
+}
+.contact-top-content h3{
+    font-family: var(--Gantari-Bold) !important; 
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: var(--text-color);
+    margin: 15px 0px 7px 0px !important;
+}
+.contact-top-content p{
+    max-width: 280px;
+}
+.contact-us-top {
+    background: var(--white);
+    border: 1px solid var(--input-border);
+    box-shadow: 0px 7px 25px 3px rgba(33, 31, 34, 0.07);
+    border-radius: 10px;
+    padding: 40px 10px;
+    display: flex;
+    align-items: flex-start;
+}
+.contact-top-wrp{
+    flex-basis: 25%;
+    padding-left: 30px;
+    padding-right: 10px;
+    border-right: 1px solid var(--input-border);
+}
+.contact-top-wrp:last-of-type{
+    border-right: none !important;
+}
+
+
+
+
+ .contact-form-wrap {
+    background: var(--white);
+    border: 1px solid var(--input-border);
+    box-shadow: 0px 7px 25px 3px rgba(33, 31, 34, 0.07);
+    padding: 40px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 10;
+}
+.contact-form-wrap h3 {
+    color: var(--text-color);
+    font-family: var(--Gantari-Bold);
+    margin-bottom: 40px !important;
+    letter-spacing: 0px;
+}
+.contact-form-wrap .contact-form label {
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 16px;
+    font-family: var(--Gantari-Medium);
+}
+.contact-form-wrap .contact-form input {
+    width: 100%;
+    height: 60px;
+    border-radius: 90px;
+    border: 1px solid var(--input-border) !important;
+    padding-left: 25px;
+    font-size: 16px;
+    font-family: var(--Gantari-Regular);
+    outline: 0;
+}
+.contact-form-wrap .contact-form textarea {
+    width: 100%;
+    height: 130px;
+    font-size: 16px;
+    font-family: var(--Gantari-Regular);
+    border-radius: 30px;
+    border: 1px solid var(--input-border) !important;
+    padding-left: 25px;
+    padding-top: 10px;
+    outline: 0;
+}
+.map {
+    width: 100%;
+    height: 600px;
+    box-shadow: 0px 3px 12px 5px rgba(91, 81, 79, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.contact-map {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.contact-form-map{
+    max-width: 890px;
+    width: 890px;
+    position: relative;
+    left: -150px;
+    top: -30px;
+}
+.contact-us-top{
+    margin-bottom: 120px;
+}
+
+@media only screen and (max-width: 1399px) {
+    .contact-top-content p {
+        max-width: 280px;
+        font-size: 15px !important;
+    }
+    .contact-form-map {
+        max-width: 785px;
+        width: 785px;
+        position: relative;
+        left: -150px;
+        top: -30px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .contact-form-map {
+        max-width: 680px;
+        width: 680px;
+        position: relative;
+        left: -150px;
+        top: -30px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .contact-us-top {
+        flex-wrap: wrap;
+    }
+    .contact-top-wrp{
+        flex-basis: 33%;
+        margin-bottom: 30px;
+    }
+    .contact-form-map{
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 30px;
+    }
+    .map{
+        height: 400px;
+    }
+    .contact-us-top {
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .contact-top-wrp{
+        flex-basis: 49%;
+        margin-bottom: 30px;
+    }
+    .map{
+        height: 350px;
+    }
+}
+
+@media only screen and (max-width: 575px){
+    .contact-form-wrap{
+        padding: 30px 20px !important;
+    }
+    .contact-form-wrap h3 {
+        margin-bottom: 20px !important;
+    }
+}
+@media only screen and (max-width: 450px){
+    .contact-top-wrp{
+        flex-basis: 100%;
+        margin-bottom: 30px;
+        border-right: none !important;
+        padding-left: 15px;
+    }
+}

@@ -1,0 +1,512 @@
+.about-us-image{
+    position: relative;
+    height: 100%;
+}
+.about-us-image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.square-box{
+    background: linear-gradient(135.64deg, #ED7524 0%, rgba(237, 117, 36, 0) 43.72%);
+    opacity: 0.3;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+}
+
+.about-us-content{
+    background: var(--white);
+    border: 1px solid var(--input-border);
+    box-shadow: 0px 7px 25px 3px rgba(33, 31, 34, 0.03);
+    border-radius: 10px;
+    padding: 30px;
+    width: 750px;
+    max-width: 750px;
+    position: relative;
+    left: -180px;
+}
+.about-us-content .about-extra-img{
+    position: absolute;
+    top: 45px;
+    right: 27px;
+}
+.about-us-content .about-extra-img svg{
+    max-width: 85px;
+    height: 65px;   
+}
+.about-us-content .about-extra-img svg path{
+    stroke: var(--extra-color);
+}
+.about-inner-content{
+    max-width: 600px;
+}
+.about-us-content h3{
+    font-family: var(--Gantari-Bold) !important;
+    font-size: 40px !important;
+    line-height: 55px !important;
+    color: var(--primary-color) !important; 
+}
+.about-us-content h4{
+    font-family: var(--Gantari-Bold);
+    color: var(--text-color);
+    margin: 12px 0px !important;
+    line-height: 32px !important;
+}
+.about-us-content p{
+    margin-bottom: 20px !important;
+}
+.about-us-content p:last-of-type{
+    margin-bottom: 0px !important;
+}
+
+.about-content-square {
+    position: absolute;
+    bottom: -70px;
+    right: -30px;
+    max-width: 400px;
+    height: 400px;
+    z-index: -1;
+}
+
+
+/* --why-choose-us--- */
+.why-choose-us{
+    position: relative;
+    z-index: 2;
+}
+.why-choose-us .bg-shape{
+  height: 500px !important;
+}
+.why-choose-wrp{
+    background: var(--white);
+    border: 1px solid var(--input-border);
+    box-shadow: 0px 7px 25px 3px rgba(33, 31, 34, 0.07);
+    border-radius: 10px;
+    padding: 25px 30px;
+    transition: 0.3s;
+}
+.why-choose-wrp:hover{
+    transform: translateY(-10px);
+}
+.why-choose-icon{
+    max-width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(102, 46, 135, 0.12);
+    border-radius: 50%;
+}
+.why-choose-icon svg{
+    max-width: 40px;
+    height: 40px;
+}
+.why-choose-icon svg path{
+    stroke: var(--primary-color);
+}
+.why-choose-content h3{
+    font-family: var(--Gantari-Bold);
+    font-size: 24px !important;
+    line-height: 32px;
+    margin: 20px 0px 15px 0px !important;
+    color: var(--text-color) !important;
+}
+
+
+/* ---your-dream-project-- */
+.dream-project-wrp{
+    
+    background:rgba(102, 46, 135, 1);
+    width: 100%;
+    height: 350px;
+    background-size: 100% 100%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+    position: relative;
+    z-index: 3;
+    overflow: hidden;
+}
+.dream-project-wrp::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/about-us/new-dream-proejct-bg.png);
+    z-index: -1;
+    opacity: 0.2;
+}
+.dream-project-wrp h2{
+   font-family: var(--Gantari-ExtraBold);
+   font-size: 40px !important;
+   color: var(--white) !important;
+   text-align: center;
+}
+.dream-project-wrp p{
+    color: var(--white);
+    max-width: 700px;
+    text-align: center;
+    margin: 30px 0px !important;
+}
+
+
+/* ---our-values-- */
+
+.our-values-img{
+    max-width: 100%;
+    height: 400px;
+    margin: 0px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.our-values-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.our-values-wrap:hover img{
+    transform: scale(1.2);
+    border-radius: 10px;
+}
+.our-values-content{
+    max-width: 350px;
+    margin: 0px auto;
+    background: var(--white);
+    border: 1px solid var(--input-border);
+    box-shadow: 0px 7px 25px 3px rgba(33, 31, 34, 0.07);
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
+    top: -100px;
+}
+.our-values-content h3{
+    font-family: var(--Gantari-Bold);
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: var(--text-color) !important;
+    text-align: center;
+    margin-bottom: 12px !important;
+}
+.our-values-content p{
+    text-align: center;
+}
+.values-wrap-2{
+    margin-top: 50px;
+}
+
+
+/* ---clinet-testimonial-- */
+.clinet-testimonial{
+    position: relative;
+    z-index: 2;
+}
+ .clients-card {
+    background: var(--white);
+    border: 1px solid var(--input-border);
+    box-shadow: 0px 7px 25px 3px rgba(33, 31, 34, 0.07);
+    border-radius: 20px;
+    padding: 40px 40px;
+    max-width: 900px;
+    margin: 0px auto;
+}
+ .owl-item.active.center .clients-quote-img::before {
+    width: 60px;
+    height: 60px;
+    bottom: -15px;
+    left: -8px;
+}
+.clients-quote-img::before {
+    content: "";
+    position: absolute;
+    background: var(--sub-primary);
+    opacity: 0.1;
+    bottom: 0px;
+    left: -10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    z-index: 1;
+}
+ .clients-quote-img {
+    max-width: 80px;
+    height: 60px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+ .clients-quote-img svg {
+    fill: var(--sub-primary) !important;
+}
+ .clients-quote-img svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+ .client-name h4 {
+    font-size: 24px !important;
+    font-family: var(--Gantari-Bold) !important;
+    color: var(--text-color) !important;
+    margin-bottom: 7px !important;
+}
+.client-name p{
+   color: var(--sub-primary) !important;
+}
+ .clients-con p {
+   margin: 30px 0px 20px 0px !important;
+}
+.clinet-testimonial .owl-nav .owl-prev {
+    left: 80px !important;
+}
+.clinet-testimonial .owl-nav .owl-next {
+    right: 80px !important;
+}
+.clinet-testimonial .bg-shape{
+    height: 400px;
+}
+
+
+/* ----responsive------ */
+
+@media only screen and (max-width: 1399px) {
+    .square-box {
+        top: -20px;
+        left: -20px;
+    }
+    .about-us-content{
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    .about-us-content .about-extra-img svg {
+        max-width: 60px;
+        height: 50px;
+    }
+    .about-us-content h3{
+        font-size: 38px !important;
+        line-height: 52px !important;
+    }
+    .about-us-content h4 {
+        line-height: 28px !important;
+    }
+    .about-content-square {
+        bottom: -45px;
+        right: -15px;
+        max-width: 300px;
+        height: 300px;
+        z-index: -1;
+    }
+    .our-values-content{
+        padding: 30px 20px;
+        max-width: 300px;
+    }
+    .our-values-content h3 {
+        font-size: 22px !important;
+        line-height: 28px !important;
+    }
+    .our-values-content p {
+        text-align: center;
+        font-size: 15px !important;
+        line-height: 20px !important;
+    }
+    .dream-project-wrp h2 {
+        font-family: var(--Gantari-ExtraBold);
+        font-size: 38px !important;
+        color: var(--white) !important;
+    }
+
+    .clinet-testimonial .owl-nav .owl-prev {
+        left: 60px !important;
+    }
+    .clinet-testimonial .owl-nav .owl-next {
+        right: 60px !important;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 1199px){
+    .about-us-content h3 {
+        font-size: 36px !important;
+        line-height: 48px !important;
+    }
+    .about-us-content .about-extra-img {
+        position: absolute;
+        top: 20px;
+        right: 27px;
+    }
+    .dream-project-wrp h2 {
+        font-family: var(--Gantari-ExtraBold);
+        font-size: 36px !important;
+        color: var(--white) !important;
+    }
+    .dream-project-wrp p {
+        max-width: 600px;
+    }
+    .clients-card {
+        max-width: 600px;
+    }
+    
+}
+
+@media only screen and (max-width: 991px){
+    .about-us-image {
+        max-width: 600px;
+        height: 400px;
+        margin: 0px auto;
+        margin-bottom: 30px;
+    }
+    .about-us-content h3 {
+        font-size: 34px !important;
+        line-height: 46px !important;
+    }
+    .about-us-content h4 {
+        line-height: 26px !important;
+    }
+    .why-choose-wrp{
+        margin-bottom: 30px;
+    }
+    .why-choose-us .bg-shape {
+        height: 100% !important;
+    }
+    .values-wrap-2 {
+        margin-top: 0px;
+    }
+    .dream-project-wrp h2 {
+        font-family: var(--Gantari-ExtraBold);
+        font-size: 32px !important;
+        color: var(--white) !important;
+    }
+    .dream-project-wrp p {
+        max-width: 600px;
+    }
+
+    .clinet-testimonial .owl-nav .owl-prev {
+        left: 0px !important;
+    }
+    .clinet-testimonial .owl-nav .owl-next {
+        right: 0px !important;
+    }
+    .clinet-testimonial .bg-shape{
+        height: 100%;
+    }
+
+    .dream-project-wrp{
+        margin-top: 50px !important;
+    }
+    .subscribe-wrap{
+        margin-top: 50px !important;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 767px){
+    .about-us-image {
+        max-width: 100%;
+        height: 300px;
+        margin: 0px auto;
+        margin-bottom: 30px;
+    }
+    .about-us-content h3 {
+        font-size: 32px !important;
+        line-height: 44px !important;
+    }
+    .about-us-content h4 {
+        line-height: 24px !important;
+    }
+    .dream-project-wrp h2 {
+        font-family: var(--Gantari-ExtraBold);
+        font-size: 30px !important;
+        color: var(--white) !important;
+    }
+    .dream-project-wrp p {
+        max-width: 600px;
+    }
+    .our-values-img {
+        max-width: 300px;
+        height: 400px;
+        margin: 0px auto;
+    }
+    .our-values-content {
+        padding: 30px 20px;
+        max-width: 250px;
+    }
+    .clinet-testimonial .owl-nav .owl-prev {
+        left: -20px !important;
+    }
+    .clinet-testimonial .owl-nav .owl-next {
+        right: -20px !important;
+    }
+    .dream-project-wrp p {
+        margin: 25px 0px !important;
+    }
+    
+}
+
+@media only screen and (max-width: 575px){
+    .square-box{
+        display: none;
+    }
+    .about-content-square{
+        display: none;
+    }
+    .about-us-content h3 {
+        font-size: 30px !important;
+        line-height: 40px !important;
+    }
+    .dream-project-wrp h2 {
+        font-family: var(--Gantari-ExtraBold);
+        font-size: 28px !important;
+        color: var(--white) !important;
+    }
+    .dream-project-wrp p {
+        max-width: 600px;
+    }
+    .clinet-testimonial .owl-nav .owl-prev {
+        left: -20px !important;
+        display: none;
+    }
+    .clinet-testimonial .owl-nav .owl-next {
+        right: -20px !important;
+        display: none;
+    }
+    .clients-card {
+        padding: 40px 20px;
+    }
+    .dream-project-wrp p {
+        margin: 20px 0px !important;
+    }
+   
+}
+
+@media only screen and (max-width: 450px){
+    .about-us-content{
+        padding: 30px 15px;
+    }
+    .dream-project-wrp h2 {
+        font-family: var(--Gantari-ExtraBold);
+        font-size: 26px !important;
+        color: var(--white) !important;
+    }
+    .dream-project-wrp p {
+        max-width: 600px;
+        margin: 20px 0px !important;
+    }
+    .dream-project-wrp{
+        height: 300px;
+    }
+    .dream-project-wrp p {
+        margin: 15px 0px !important;
+    }
+  
+}

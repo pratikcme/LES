@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
+
+@font-face {
+    font-family: 'Damion';
+    src: url('../fonts/Damion.woff') format('woff'),
+        url('../fonts/Damion.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* @font-face {
+    font-family: 'Gantari';
+    src: url('../fonts/Gantari-Thin.woff') format('woff'),
+        url('../fonts/Gantari-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+} */
+
+@font-face {
+    font-family: 'Gantari-SemiBold';
+    src: url('../fonts/Gantari-SemiBold.woff') format('woff'),
+        url('../fonts/Gantari-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gantari-Regular';
+    src: url('../fonts/Gantari-Regular.woff') format('woff'),
+        url('../fonts/Gantari-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* @font-face {
+    font-family: 'Gantari';
+    src: url('Gantari-ExtraLight.woff2') format('woff2'),
+        url('Gantari-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+} */
+
+@font-face {
+    font-family: 'Gantari-Black';
+    src: url('../fonts/Gantari-Black.woff') format('woff'),
+        url('../fonts/Gantari-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gantari-Bold';
+    src: url('../fonts/Gantari-Bold.woff') format('woff'),
+        url('../fonts/Gantari-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gantari-ExtraBold';
+    src: url('../fonts/Gantari-ExtraBold.woff') format('woff'),
+        url('../fonts/Gantari-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* @font-face {
+    font-family: 'Gantari';
+    src: url('Gantari-Light.woff2') format('woff2'),
+        url('Gantari-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+} */
+
+@font-face {
+    font-family: 'Gantari-Medium';
+    src: url('../fonts/Gantari-Medium.woff') format('woff'),
+        url('../fonts/Gantari-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pacifico-Regular';
+    src: url('../fonts/Pacifico-Regular.woff') format('woff'),
+        url('../fonts/Pacifico-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
