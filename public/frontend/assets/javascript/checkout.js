@@ -142,7 +142,7 @@ var CHECKOUT = (function () {
       $("#payBtn_error").html(language.Please_enter_your_Address);
       return false;
     }
-    if (AddressNotInRange == "0") {
+    if (AddressNotInRange == "0" && isSelfPickup == "0") {
       // alert("We are not deliver to your selected Address");
       $("#payBtn_error").html(
         language.We_do_not_deliver_to_your_selected_Address
@@ -430,7 +430,12 @@ var CHECKOUT = (function () {
   $("#checkPromocode").click(function () {
     var siteCurrency = $("#siteCurrency").val();
     var promocode = $("#promocode").val();
-    $("#applied_promo").val("");
+
+    if ($("#applied_promo").val() !== "") {
+      $("#promo_err").html("Promocode Already Applied");
+      return false;
+    }
+    // $("#applied_promo").val("");
     $("#promoAmount").html("0");
     $(".promocode-applied").hide();
     $("#promo_err").html("");
@@ -438,8 +443,9 @@ var CHECKOUT = (function () {
       $("#promo_err").html("Please enter promocode");
       return false;
     }
+
     var shipping_charge = $("#shipping_charge").val();
-    console.log(shipping_charge, shipping_charge);
+
     if (shipping_charge == "notInRange" || shipping_charge == "") {
       shipping_charge = 0;
     }
@@ -447,19 +453,24 @@ var CHECKOUT = (function () {
     $.ajax({
       url: base_url + "checkout/validate_promocode",
       type: "post",
-      data: { promocode: promocode },
+      data: {
+        promocode: promocode,
+        isShow: $("#isShow").val() == 0 ? "0" : "1", //Dk Added
+        gstAmt: parseFloat($("#checkout_gst").text()).toFixed(2), //Dk
+      },
       dataType: "json",
       success: function (response) {
         $("#promo_err").html(response.message);
         if (response.success == "1") {
           var orderAmount = parseFloat(response.orderAmount);
-          // finalAmount = (orderAmount + parseFloat(shipping_charge) - parseFloat(response.data)).toFixed(2)
           finalAmount = (
             orderAmount +
             (shipping_charge === "" ? 0 : parseFloat(shipping_charge)) -
             parseFloat(response.data)
           ).toFixed(2);
-          // console.log("orderAmount ====" ,orderAmount ,  parseFloat(shipping_charge) ,  parseFloat(response.data))
+
+          $("#checkout_gst").html(parseFloat(response.new_gst).toFixed(2));
+
           if ($("#totalSaving").length) {
             var amount = response.data;
             var promocodeDiscount =
@@ -468,14 +479,14 @@ var CHECKOUT = (function () {
               siteCurrency + " " + promocodeDiscount.toFixed(2)
             );
           }
-          $("#promoAmount").html(response.data.toFixed(2));
+
+          $("#promoAmount").html(parseFloat(response.data).toFixed(2));
 
           $("#checkout_final").html(finalAmount);
 
           $(".promocode-applied").show();
 
           $("#applied_promo").val(promocode);
-          // $("#promocode").val("");
         } else {
           $("#applied_promo").val("");
           $("#checkout_final").html(
