@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-mg-6">
                                     <div class="banner-image">
-                                        <img src="<?= $this->theme_base_url ?>/assets/images/home/banner.png"
+                                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>"
                                             alt="banner-img" />
                                     </div>
                                 </div>
@@ -83,19 +83,19 @@
                 <div class="categories-slider-main">
                     <div class="owl-carousel owl-theme categories-slider">
                         <?php foreach ($category as $key => $value) { ?>
-                            <div class="item">
-                                <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>"
-                                    class="categories-wrap">
-                                    <div class="categories-image-wrap">
-                                        <!-- <img src="<?= $this->theme_base_url ?>/assets/images/home/image.png" alt="" /> -->
-                                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>"
-                                            alt="" />
-                                    </div>
-                                    <div class="categories-text">
-                                        <h4><?= $value->name ?></h4>
-                                    </div>
-                                </a>
-                            </div>
+                        <div class="item">
+                            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>"
+                                class="categories-wrap">
+                                <div class="categories-image-wrap">
+                                    <!-- <img src="<?= $this->theme_base_url ?>/assets/images/home/image.png" alt="" /> -->
+                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>"
+                                        alt="" />
+                                </div>
+                                <div class="categories-text">
+                                    <h4><?= $value->name ?></h4>
+                                </div>
+                            </a>
+                        </div>
                         <?php } ?>
                     </div>
                 </div>

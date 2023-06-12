@@ -234,7 +234,7 @@ $lang['Go Back:'] = 'Go Back:';
 
 //checkout 
 $lang['Billing Details'] = 'Billing Details';
-$lang['self pickup'] = 'self pickup';
+$lang['self pickup'] = 'Self Pickup';
 $lang['Order Summary'] = 'Order Summary';
 $lang['Delivery Address'] = 'Delivery Address';
 $lang['Pickup Address'] = 'Pickup Address';
