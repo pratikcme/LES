@@ -568,7 +568,7 @@ body {
     color: var(--heading-black) !important;
     font-size: 14px;
     font-family: var(--PublicSans-Regular);
-    padding: 10px 11px;
+    padding: 10px 5px;
     border-radius: 5px;
     width: 100px;
 }

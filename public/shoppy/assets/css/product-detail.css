@@ -747,10 +747,15 @@ body {
 }
 
 .product-content-part select{
-    padding: 5px 10px;
+    padding: 5px 5px !important;
     border-radius: 5px;
     outline: 0;
     border: 1px solid var(--cart-thead-text) !important;
+    background-color: #fff;
+    font-family: var(--PublicSans-Regular);
+    font-size: 14px;
+    color: var(--heading-black) !important;
+    width: 70px;
 }
 
 .product-content-part select:focus{

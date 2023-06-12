@@ -93,7 +93,7 @@
                         </div>
 
                     </h5>
-                    <h6 id="is_aval_stock">
+                    <h6 class="<?= ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) ? 'd-none' : '' ?>" id="is_aval_stock">
                         <?= ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?>
                     </h6>
                     <h3 class="wow fadeInRight notranslate" id="dynamic_price" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->siteCurrency ?>
@@ -283,7 +283,8 @@ if (!empty($related_product)) { ?>
                                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
                                 </a>
                             </div>
-                            <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?>
+                            <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                                <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('In Stock') : $this->lang->line('Limited Stock') ?>
                             </p>
 
                         </div>

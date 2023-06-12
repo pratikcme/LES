@@ -152,8 +152,8 @@ $lang['Category'] = 'Category';
 $lang['Brand'] = 'Brand';
 $lang['related products'] = 'Related Products';
 $lang['Limited Stock'] = 'Limited Stock';
-$lang['Available(Instock)'] = 'Available (Instock)';
-$lang['In Stock'] = 'In Stock';
+// $lang['Available(Instock)'] = 'Available (Instock)';
+// $lang['In Stock'] = 'In Stock';
 
 
 $lang['add to cart'] = 'Add To Cart';

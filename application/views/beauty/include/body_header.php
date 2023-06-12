@@ -5,16 +5,16 @@
             <!-- -----header-top---- -->
             <div class="header-top">
                 <div class="logo">
-                    <a href="<?=base_url()?>"><img src="<?=$this->siteLogo?>" alt=""></a>
+                    <a href="<?= base_url() ?>"><img src="<?= $this->siteLogo ?>" alt=""></a>
                 </div>
 
                 <!-- -------navigation-bar---- -->
                 <nav>
                     <div class="left-content">
                         <ul>
-
-                            <li><a href="<?=base_url().'about'?>"><?=$this->lang->line('About us');?></a></li>
-                            <li><a href="<?=base_url().'contact'?>"><?=$this->lang->line('Contact Us');?></a></li>
+                            <li><a href="<?= base_url() . 'products' ?>"><?= $this->lang->line('Shop'); ?></a></li>
+                            <li><a href="<?= base_url() . 'about' ?>"><?= $this->lang->line('About us'); ?></a></li>
+                            <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact Us'); ?></a></li>
                         </ul>
                     </div>
 
@@ -26,47 +26,43 @@
 
                         <div id="google_translate_element"></div>
                     </form>
-                    <?php if($this->uri->segment(1)!='login' && $this->uri->segment(1) != '') { ?>
-                    <?php if($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1'){ ?>
-                    <form class="branch-drp">
-                        <select class="vendor_nav" name="Branch" id="Branch">
-                            <option value=""> <?=$this->lang->line('All store')?></option>
-                            <?php foreach ($branch_nav as $key => $v): ?>
-                            <option value="<?=$v->id?>"
-                                <?=(isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>>
-                                <?=$v->name?></option>
-                            <?php endforeach ?>
-                        </select>
-                    </form>
+                    <?php if ($this->uri->segment(1) != 'login' && $this->uri->segment(1) != '') { ?>
+                        <?php if ($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1') { ?>
+                            <form class="branch-drp">
+                                <select class="vendor_nav" name="Branch" id="Branch">
+                                    <option value=""> <?= $this->lang->line('All store') ?></option>
+                                    <?php foreach ($branch_nav as $key => $v) : ?>
+                                        <option value="<?= $v->id ?>" <?= (isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>>
+                                            <?= $v->name ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </form>
 
-                    <?php } ?>
+                        <?php } ?>
                     <?php } ?>
                 </div>
 
 
                 <div class="social-icons">
-                    <a href="javascript:" class="search-toggle header-icon" id="search"><span><i
-                                class="fa-solid fa-magnifying-glass"></i></span></a>
+                    <a href="javascript:" class="search-toggle header-icon" id="search"><span><i class="fa-solid fa-magnifying-glass"></i></span></a>
 
                     <!-- -----search-btn---- -->
                     <div class="search-block search-list-blcok">
                         <form class="search-form">
-                            <?php if($this->uri->segment(1) == ''){ ?>
-                            <input type="search" name="search" id='search' data-search_val="" class="search-input"
-                                placeholder="Search vendor..">
-                            <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
+                            <?php if ($this->uri->segment(1) == '') { ?>
+                                <input type="search" name="search" id='search' data-search_val="" class="search-input" placeholder="Search vendor..">
+                                <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
                             <?php } ?>
-                            <?php 
-                if($this->uri->segment(1) != ''){ 
-                  $placeholder = $this->lang->line('Search product..');
-                }
-                $segment1 = $this->uri->segment(1);
-          
-                if($segment1 != ''){ ?>
+                            <?php
+                            if ($this->uri->segment(1) != '') {
+                                $placeholder = $this->lang->line('Search product..');
+                            }
+                            $segment1 = $this->uri->segment(1);
 
-                            <input type="search" name="search" id='myInput' data-search_val=""
-                                class="search-input search" placeholder="<?=$placeholder?>">
-                            <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
+                            if ($segment1 != '') { ?>
+
+                                <input type="search" name="search" id='myInput' data-search_val="" class="search-input search" placeholder="<?= $placeholder ?>">
+                                <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
                             <?php } ?>
 
                         </form>
@@ -74,132 +70,119 @@
                     </div>
 
                     <div class="user-login-dropdow">
-                        <?php if($this->session->userdata('user_id') == ''){ ?>
-                        <div class="user-login-header">
-                            <h4><?=$this->lang->line('New Customer')?>?</h4>
-                            <h3><a href="<?=base_url().'register'?>"><?=$this->lang->line('Sign up')?></a></h3>
-                        </div>
-                        <div class="user-data-wrapper">
-                            <a href="<?=base_url().'login'?>"><span><i
-                                        class="fa-solid fa-right-to-bracket"></i></span><?=$this->lang->line('Login Account')?></a>
-                        </div>
-                        <?php }else{ ?>
-                        <div class="user-login-header">
-                            <h4><?=$_SESSION['user_name'].' '.$_SESSION['user_lname']?></h4>
-                        </div>
-                        <div class="user-data-wrapper">
-                            <a href="<?=base_url().'users_account/users/account'?>"><span><i
-                                        class="fa-sharp fa-solid fa-user"></i></span><?=$this->lang->line('My account')?></a>
-                        </div>
-                        <div class="user-data-wrapper">
-                            <a href="javascript:" id="logout"><span><i
-                                        class="fa-solid fa-folder-plus"></i></span><?=$this->lang->line('logout')?></a>
-                        </div>
+                        <?php if ($this->session->userdata('user_id') == '') { ?>
+                            <div class="user-login-header">
+                                <h4><?= $this->lang->line('New Customer') ?>?</h4>
+                                <h3><a href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a></h3>
+                            </div>
+                            <div class="user-data-wrapper">
+                                <a href="<?= base_url() . 'login' ?>"><span><i class="fa-solid fa-right-to-bracket"></i></span><?= $this->lang->line('Login Account') ?></a>
+                            </div>
+                        <?php } else { ?>
+                            <div class="user-login-header">
+                                <h4><?= $_SESSION['user_name'] . ' ' . $_SESSION['user_lname'] ?></h4>
+                            </div>
+                            <div class="user-data-wrapper">
+                                <a href="<?= base_url() . 'users_account/users/account' ?>"><span><i class="fa-sharp fa-solid fa-user"></i></span><?= $this->lang->line('My account') ?></a>
+                            </div>
+                            <div class="user-data-wrapper">
+                                <a href="javascript:" id="logout"><span><i class="fa-solid fa-folder-plus"></i></span><?= $this->lang->line('logout') ?></a>
+                            </div>
                         <?php } ?>
                     </div>
-                    <a href="javascript:" class="user-login-icon header-icon"><span><i
-                                class="fa-regular fa-user"></i></span></a>
+                    <a href="javascript:" class="user-login-icon header-icon"><span><i class="fa-regular fa-user"></i></span></a>
 
 
                     <a href="javascript:" class="cart-icons header-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="g-badge" id="itemCount"
-                            <?=(isset($this->cartCount) && $this->cartCount != 0 ) ? 'style="display:block"' : 'style="display:none"' ?>><?=(isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
+                        <span class="g-badge" id="itemCount" <?= (isset($this->cartCount) && $this->cartCount != 0) ? 'style="display:block"' : 'style="display:none"' ?>><?= (isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
                     <!-- ----cart-dropdown--- -->
-                    <div class="cart-dropdwon <?=($this->cartCount==0) ? 'd-none' : '' ?>" id="updated_list">
+                    <div class="cart-dropdwon <?= ($this->cartCount == 0) ? 'd-none' : '' ?>" id="updated_list">
                         <div class="cart-drop-wrapper">
                             <?php if ($this->session->userdata('user_id') == '') { ?>
-                            <?php if(isset($this->cartCount)){ 
-                    $CI = &get_instance();
-                    $CI->load->model('common_model');
-                    $default_product_image =$CI->common_model->default_product_image(); 
-                } ?>
-                            <?php foreach ($this->session->userdata('My_cart') as $key => $value) { 
+                                <?php if (isset($this->cartCount)) {
+                                    $CI = &get_instance();
+                                    $CI->load->model('common_model');
+                                    $default_product_image = $CI->common_model->default_product_image();
+                                } ?>
+                                <?php foreach ($this->session->userdata('My_cart') as $key => $value) {
 
-                    $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
-                    // dd($product);
-                    $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
+                                    $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
+                                    // dd($product);
+                                    $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
 
-                    $CI->load->model('api_v3/common_model','co_model');
-                    $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
-                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                      $product[0]->discount_price = $product[0]->without_gst_price;
-                    }
-                    if(!file_exists('public/images/'.$CI->folder.'product_image/'.$product[0]->image) || $product[0]->image == '' ){
-                      if(strpos($product[0]->image, '%20') === true || $product[0]->image == ''){
-                        $product[0]->image = $default_product_image;
-                      }else{
-                        $product[0]->image = $default_product_image;
-                      }
-                    }  
-                    ?>
-                            <div class="cart-drop-menu cart-drop-menu-1">
-                                <div class="drop-img">
-                                    <a
-                                        href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>">
-                                        <img src="<?=base_url()?>public/images/<?=$this->folder?>product_image/<?=$product[0]->image?>"
-                                            alt=""></a>
-                                </div>
-                                <div class="drop-text">
-                                    <h4><a
-                                            href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value['product_id']).'/'.$this->utility->safe_b64encode($value['product_weight_id'])?>"><?=$value['product_name']?></a>
-                                    </h4>
-                                    <p>Qty : <?=$value['quantity']?></p>
-                                    <h3 class="notranslate">
-                                        <?=$this->siteCurrency.' '.number_format((float)$product[0]->discount_price, 2, '.', '')?>
-                                    </h3>
-                                </div>
-                                <div class="cancel-btn remove_item" data-product_id="<?=$value['product_id']?>"
-                                    data-product_weight_id="<?=$value['product_weight_id']?>">
-                                    <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
-                                </div>
-                            </div>
-                            <?php } ?>
-                            <?php }else{ ?>
-                            <?php if(isset($this->cartCount)){ ?>
-                            <?php foreach ($mycart as $key => $value) { ?>
-                            <div class="cart-drop-menu cart-drop-menu-1">
-                                <div class="drop-img">
-                                    <a
-                                        href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>">
-                                        <img src="<?=base_url()?>public/images/<?=$this->folder?>product_image/<?=$value->image?>"
-                                            alt=""></a>
-                                </div>
-                                <div class="drop-text">
-                                    <h4><a
-                                            href="<?=base_url().'products/productDetails/'.$this->utility->safe_b64encode($value->product_id).'/'.$this->utility->safe_b64encode($value->product_weight_id)?>"><?=$value->product_name?></a>
-                                    </h4>
-                                    <p>Qty : <?=$value->quantity?></p>
-                                    <h3 class="notranslate">
-                                        <?=$this->siteCurrency.' '.number_format((float)$value->discount_price, 2, '.', '')?>
-                                    </h3>
-                                </div>
-                                <div class="cancel-btn remove_item" data-product_id="<?=$value->product_id?>"
-                                    data-product_weight_id="<?=$value->product_weight_id?>">
-                                    <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
-                                </div>
-                            </div>
-                            <?php } ?>
-                            <?php } ?>
+                                    $CI->load->model('api_v3/common_model', 'co_model');
+                                    $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
+                                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                                        $product[0]->discount_price = $product[0]->without_gst_price;
+                                    }
+                                    if (!file_exists('public/images/' . $CI->folder . 'product_image/' . $product[0]->image) || $product[0]->image == '') {
+                                        if (strpos($product[0]->image, '%20') === true || $product[0]->image == '') {
+                                            $product[0]->image = $default_product_image;
+                                        } else {
+                                            $product[0]->image = $default_product_image;
+                                        }
+                                    }
+                                ?>
+                                    <div class="cart-drop-menu cart-drop-menu-1">
+                                        <div class="drop-img">
+                                            <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>">
+                                                <img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $product[0]->image ?>" alt=""></a>
+                                        </div>
+                                        <div class="drop-text">
+                                            <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value['product_id']) . '/' . $this->utility->safe_b64encode($value['product_weight_id']) ?>"><?= $value['product_name'] ?></a>
+                                            </h4>
+                                            <p>Qty : <?= $value['quantity'] ?></p>
+                                            <h3 class="notranslate">
+                                                <?= $this->siteCurrency . ' ' . number_format((float)$product[0]->discount_price, 2, '.', '') ?>
+                                            </h3>
+                                        </div>
+                                        <div class="cancel-btn remove_item" data-product_id="<?= $value['product_id'] ?>" data-product_weight_id="<?= $value['product_weight_id'] ?>">
+                                            <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <?php if (isset($this->cartCount)) { ?>
+                                    <?php foreach ($mycart as $key => $value) { ?>
+                                        <div class="cart-drop-menu cart-drop-menu-1">
+                                            <div class="drop-img">
+                                                <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                    <img src="<?= base_url() ?>public/images/<?= $this->folder ?>product_image/<?= $value->image ?>" alt=""></a>
+                                            </div>
+                                            <div class="drop-text">
+                                                <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->product_name ?></a>
+                                                </h4>
+                                                <p>Qty : <?= $value->quantity ?></p>
+                                                <h3 class="notranslate">
+                                                    <?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
+                                                </h3>
+                                            </div>
+                                            <div class="cancel-btn remove_item" data-product_id="<?= $value->product_id ?>" data-product_weight_id="<?= $value->product_weight_id ?>">
+                                                <a href="javascript:"><i class="fa-regular fa-circle-xmark"></i></a>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
                             <?php } ?>
 
                         </div>
 
                         <div class="total-amount">
-                            <p><?=$this->lang->line('Total')?></p>
-                            <h3 id="nav_subtotal" class="notranslate"><?=$this->siteCurrency .' '. getMycartSubtotal()?>
+                            <p><?= $this->lang->line('Total') ?></p>
+                            <h3 id="nav_subtotal" class="notranslate">
+                                <?= $this->siteCurrency . ' ' . getMycartSubtotal() ?>
                             </h3>
                         </div>
                         <div class="drop-btns">
-                            <a href="<?=base_url().'products/cart_item'?>"
-                                class="view-cart"><?=$this->lang->line('view cart')?></a>
-                            <a href="<?=base_url().'checkout'?>"
-                                class="checkout "><?=$this->lang->line('checkout')?></a>
+                            <a href="<?= base_url() . 'products/cart_item' ?>" class="view-cart"><?= $this->lang->line('view cart') ?></a>
+                            <a href="<?= base_url() . 'checkout' ?>" class="checkout "><?= $this->lang->line('checkout') ?></a>
                         </div>
                     </div>
                     <div class="icon-tex">
-                        <p><?=$this->lang->line('your cart')?></p>
-                        <h3 class="notranslate" id="display_subtotal"><?=$this->siteCurrency.''.getMycartSubtotal()?>
+                        <p><?= $this->lang->line('your cart') ?></p>
+                        <h3 class="notranslate" id="display_subtotal">
+                            <?= $this->siteCurrency . '' . getMycartSubtotal() ?>
                         </h3>
                     </div>
                 </div>

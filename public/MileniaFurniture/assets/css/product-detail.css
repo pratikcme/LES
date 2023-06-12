@@ -750,6 +750,8 @@ body {
     border: 1px solid var(--cart-thead-text) !important;
 }
 
+
+
 .product-content-part select:focus{
     padding: 5px 10px;
     border-radius: 5px;
