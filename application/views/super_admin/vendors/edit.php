@@ -11,8 +11,8 @@ span.error {
   </style>
   <section class="new-customer background-blue-grey">
       <?php if ($this->session->flashdata('myMessage') != '') {
-      echo $this->session->flashdata('myMessage');
-    } ?>
+            echo $this->session->flashdata('myMessage');
+        } ?>
       <div class="container">
           <div class="row">
               <form id="editForm" method="POST" action="<?= $FormAction ?>" class="new-cust-form basic-form">
@@ -116,10 +116,10 @@ span.error {
                               <select class="form-control" id="theme_change" name="theme_name">
                                   <option value="">Select Theme</option>
                                   <?php foreach ($themes_list as $key => $value) {
-                    if (($value->theme_key == $editData[0]->theme_name)) {
-                      $currentImg = base_url() . 'public/images/themes_images/' . $value->image;
-                    }
-                  ?>
+                                        if (($value->theme_key == $editData[0]->theme_name)) {
+                                            $currentImg = base_url() . 'public/images/themes_images/' . $value->image;
+                                        }
+                                    ?>
 
                                   <option value="<?= $value->theme_key ?>"
                                       <?= ($value->theme_key == $editData[0]->theme_name) ? 'SELECTED' : '' ?>
@@ -143,7 +143,9 @@ span.error {
                   <div class="row">
                       <div class="col-lg-3">
                           <div class="form-group">
-                              <label for="android_version" class="col-sm-2 col-form-label pl-0">Android Version</label>
+                              <label for="android_version" class="col-sm-2 col-form-label pl-0">Android Version
+                              </label>
+
                               <div class="row">
                                   <div class="col-sm-9">
                                       <input type="text" name="android_version" class="form-control"
@@ -155,6 +157,7 @@ span.error {
                       <div class="col-lg-3">
                           <div class="form-group">
                               <label for="ios_version" class="col-sm-2 col-form-label pl-0">Ios Version</label>
+
                               <div class="row">
                                   <div class="col-sm-9">
                                       <input type="text" name="ios_version" class="form-control"
@@ -166,6 +169,7 @@ span.error {
                       <div class="col-lg-3">
                           <div class="form-group">
                               <label for="android_isforce" class="col-sm-2 col-form-label pl-0">Android isforce</label>
+                              <p>(if set 1 android app will force update)</p>
                               <div class="row">
                                   <div class="col-sm-9">
                                       <input type="text" name="android_isforce" class="form-control"
@@ -177,6 +181,8 @@ span.error {
                       <div class="col-lg-3">
                           <div class="form-group">
                               <label for="ios_isforce" class="col-sm-2 col-form-label pl-0">Ios isforce</label>
+                              <p>(if set 1 ios
+                                  app will force update)</p>
                               <div class="row">
                                   <div class="col-sm-9">
                                       <input type="text" name="ios_isforce" class="form-control"

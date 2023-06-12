@@ -103,6 +103,7 @@
                             <?php for ($i = 1; $i <= 5 - $productDetail[0]->rating['rating']; $i++) { ?>
                                 <i class="fas fa-star blank-ratting"></i>
                             <?php } ?>
+                            <div><span>(<?= count($product_review) ?>)</span></div>
                             <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -310,7 +311,10 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
+
+
                     </div>
+
 
                     <div class="review-text-box">
                         <h2>Comments</h2>
@@ -398,6 +402,7 @@
                                     <?php for ($i = 1; $i <= 5 - $value->ratting['rating']; $i++) { ?>
                                         <i class="fas fa-star blank-ratting"></i>
                                     <?php } ?>
+
                                 </div>
                                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                                     <h5><?= $value->name ?></h5>

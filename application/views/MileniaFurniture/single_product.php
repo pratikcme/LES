@@ -87,7 +87,7 @@
                             <span class="star star-active"></span>
                             <?php } ?>
                         </div>
-                        <div><span>(<?= $productDetail[0]->rating['rating'] ?>)</span></div>
+                        <div><span>(<?= count($product_review) ?>)</span></div>
                     </div>
 
                     <h6 id="is_aval_stock">
@@ -161,13 +161,15 @@
 
                     <div class="mb-3">
                         <form action="">
-                            <select class="product_varient_id" name="cars" id="cars">
-                                <?php foreach ($varient as $key => $value) { ?>
-                                <option value="<?= $this->utility->safe_b64encode($value) ?>"
-                                    <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>>
-                                    <?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
-                                <?php } ?>
-                            </select>
+                            <label class="select-product">
+                                <select class="product_varient_id" name="cars" id="cars">
+                                    <?php foreach ($varient as $key => $value) { ?>
+                                    <option value="<?= $this->utility->safe_b64encode($value) ?>"
+                                        <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>>
+                                        <?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
+                                    <?php } ?>
+                                </select>
+                            </label>
                         </form>
                     </div>
 
@@ -322,7 +324,8 @@
                                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                         alt="" />
 
-                                    <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                    <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                                        <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                     </p>
                                     <?php if ($value->discount_per > '0') { ?>
                                     <span class="discnt"><?= $value->discount_per . ' % off' ?></span>

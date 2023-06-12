@@ -779,14 +779,21 @@
                                                  <a href="javascript:" class="removeWishlistItem"
                                                      data-id="<?= $this->utility->safe_b64encode($value->id) ?>"><i
                                                          class="fa-regular fa-circle-xmark"></i></a>
-                                                 <div class="cart-detail-img"><img src="<?= $value->image ?>" alt="">
+                                                 <div class="cart-detail-img">
+                                                     <a
+                                                         href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                         <img src="<?= $value->image ?>" alt="">
+                                                     </a>
                                                  </div>
                                              </span>
                                          </td>
                                          <td>
                                              <div class="cart-detail-text">
-                                                 <h4><?= $value->name ?></h4>
-                                                 <h5><?= $value->weight_no . ' ' . $value->weight_name ?></h5>
+                                                 <a
+                                                     href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                     <h4><?= $value->name ?></h4>
+                                                     <h5><?= $value->weight_no . ' ' . $value->weight_name ?></h5>
+                                                 </a>
                                              </div>
                                          </td>
                                          <td>

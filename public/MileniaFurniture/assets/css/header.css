@@ -700,9 +700,9 @@ li {
     appearance: none;
     /* background-image: url(../images/selectarrow.png); */
     background-repeat: no-repeat;
-    background-size: 12px;
-    background-position-y: 17px;
-    background-position-x: 90%!important;
+    background: transparent;
+    color:#351C05;
+    border: 1px solid var(--primary-color);
     outline: 0;
     cursor: pointer;
     position: relative;
@@ -717,6 +717,10 @@ li {
     border-radius: 50%;
     background-color: #fff;
 } */
+
+.branch-drp{
+    width:130px;
+}
 
 .branch-drp,
 .goog-te-gadget
@@ -735,7 +739,7 @@ li {
     top: 50%;
     position: absolute;
     pointer-events: none;
-    background: #fff;
+    background: transparent;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -832,7 +836,7 @@ li {
 
 @media only screen and (max-width:1400px){
     .navbar-nav .nav-link{
-        margin-right: 30px;
+        margin-right: 20px;
     }
     
     /* #ui-id-1{
@@ -844,7 +848,13 @@ li {
 
 @media only screen and (max-width: 1200px) {
     .navbar-brand img {
-        max-width: 140px;
+        max-width: 100px;
+    }
+
+    .goog-te-gadget .goog-te-combo,
+    .branch-drp
+    {
+        width: 100px;
     }
 }
 
@@ -942,7 +952,9 @@ li {
         font-size: 13px !important;
     }
 
-    .goog-te-gadget .goog-te-combo{
+    .goog-te-gadget .goog-te-combo,
+    .branch-drp
+    {
         width: 70px;
     }
 }

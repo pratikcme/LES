@@ -40,11 +40,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0"
-                data-wow-offset="0">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                 <div class="about-frame">
-                    <img src="<?= $this->theme_base_url ?>/assets/images/about-us/about-frame.png" alt=""
-                        class="about-left-im">
+                    <img src="<?= $this->theme_base_url ?>/assets/images/about-us/about-frame.png" alt="" class="about-left-im">
                     <div class="about-img">
                         <img src="<?= base_url() . 'public/uploads/about/' . $about_section_one[0]->image ?>" alt="">
                     </div>
@@ -56,7 +54,7 @@
 </section>
 
 <!--============ why-butterfly ================-->
-<section class="why-butterfly-wrap wow fadeInDownBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+<!-- <section class="why-butterfly-wrap wow fadeInDownBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
     <div class="container">
         <div class="why-butterfly-data">
             <div class="row">
@@ -109,7 +107,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!--============ client-wrap ==================-->
 <section class="client-wrap p-100 offering">
@@ -128,25 +126,24 @@
     <div class="owl-carousel owl-theme" id="client-slide">
         <?php foreach ($about_section_two as $key => $value) { ?>
 
-        <div class="item">
-            <div class="clients-card text-center">
-                <div class="clients-quote-img">
-                    <!-- <img src="<?= $this->theme_base_url ?>/assets/images/about-us/client-quote-img.png" alt=""> -->
-                    <svg id="Layer-1" data-name="Layer-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61 54">
-                        <defs></defs>
-                        <path class="client-quote-img"
-                            d="M15,54A13.64,13.64,0,0,1,4,49Q0,43.8,0,35.6A35.92,35.92,0,0,1,5.92,15.4Q12,6.21,24.48,0l2.17,3.2A39,39,0,0,0,15.79,13.4q-4.74,6.41-4.73,13a4.55,4.55,0,0,0,1,3,4,4,0,0,0,3,1A10.87,10.87,0,0,1,23.29,34a11.18,11.18,0,0,1,3.56,8.4,11.18,11.18,0,0,1-3.56,8.4A11.55,11.55,0,0,1,15,54Zm34.16,0A13.64,13.64,0,0,1,38.1,49q-3.94-5.2-4-13.4a36,36,0,0,1,5.92-20.2Q46.19,6.21,58.63,0L60.8,3.2A39.17,39.17,0,0,0,49.94,13.4q-4.72,6.41-4.73,13a4.61,4.61,0,0,0,1,3,4,4,0,0,0,3,1A10.89,10.89,0,0,1,57.45,34,11.17,11.17,0,0,1,61,42.4a11.17,11.17,0,0,1-3.55,8.4A11.57,11.57,0,0,1,49.16,54Z" />
-                    </svg>
-                </div>
-                <div class="clients-con">
-                    <p><?= $value->content ?></p>
-                </div>
-                <div class="client-name">
-                    <h4><?= $value->name ?></h4>
-                    <p><?= $value->designation ?></p>
+            <div class="item">
+                <div class="clients-card text-center">
+                    <div class="clients-quote-img">
+                        <!-- <img src="<?= $this->theme_base_url ?>/assets/images/about-us/client-quote-img.png" alt=""> -->
+                        <svg id="Layer-1" data-name="Layer-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61 54">
+                            <defs></defs>
+                            <path class="client-quote-img" d="M15,54A13.64,13.64,0,0,1,4,49Q0,43.8,0,35.6A35.92,35.92,0,0,1,5.92,15.4Q12,6.21,24.48,0l2.17,3.2A39,39,0,0,0,15.79,13.4q-4.74,6.41-4.73,13a4.55,4.55,0,0,0,1,3,4,4,0,0,0,3,1A10.87,10.87,0,0,1,23.29,34a11.18,11.18,0,0,1,3.56,8.4,11.18,11.18,0,0,1-3.56,8.4A11.55,11.55,0,0,1,15,54Zm34.16,0A13.64,13.64,0,0,1,38.1,49q-3.94-5.2-4-13.4a36,36,0,0,1,5.92-20.2Q46.19,6.21,58.63,0L60.8,3.2A39.17,39.17,0,0,0,49.94,13.4q-4.72,6.41-4.73,13a4.61,4.61,0,0,0,1,3,4,4,0,0,0,3,1A10.89,10.89,0,0,1,57.45,34,11.17,11.17,0,0,1,61,42.4a11.17,11.17,0,0,1-3.55,8.4A11.57,11.57,0,0,1,49.16,54Z" />
+                        </svg>
+                    </div>
+                    <div class="clients-con">
+                        <p><?= $value->content ?></p>
+                    </div>
+                    <div class="client-name">
+                        <h4><?= $value->name ?></h4>
+                        <p><?= $value->designation ?></p>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php } ?>
     </div>
 </section>

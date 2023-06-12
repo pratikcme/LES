@@ -27,7 +27,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                     <div class="hot-products-wrap <?= ($value->available_quantity == '0') ? 'out-of-stock' : '' ?>">
                         <div class="hot-products-img position-relative overflow-hidden">
-                            <p>
+                            <p class="<?= ($value->available_quantity > $value->limited_stock) ? 'd-none' : '' ?>">
                                 <?php
                                 if ($value->available_quantity > $value->limited_stock) { ?>
                                     <?= $this->lang->line('Available(Instock)') ?>

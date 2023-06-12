@@ -765,8 +765,11 @@
                                         </td>
                                         <td>
                                             <div class="cart-detail-text">
-                                                <h4><?= $value->name ?></h4>
-                                                <h5><?= $value->weight_no . ' ' . $value->weight_name ?></h5>
+
+                                                <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
+                                                    <h4><?= $value->name ?></h4>
+                                                    <h5><?= $value->weight_no . ' ' . $value->weight_name ?></h5>
+                                                </a>
                                             </div>
                                         </td>
                                         <td>

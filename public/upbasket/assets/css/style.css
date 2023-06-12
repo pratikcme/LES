@@ -475,12 +475,16 @@
     background-image: url(../images/selectarrow.png) !important;
     background-repeat: no-repeat !important;
     background-size: 12px;
-    background-position-y: 12px !important;
+    background-position-y: 15px !important;
     background-position-x: 90px !important;
+    height: 40px;
+    font-family: Poppins !important;
+    font-size: 14px !important;
+    border: 1px solid var(--secondary-color) !important;
 }
 
 .card-dropdown:focus {
-    border: 1px solid var(--card-border-color) !important;
+    border: 1px solid var(--secondary-color) !important;
     outline: none !important;
     box-shadow: none !important;
 }

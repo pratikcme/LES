@@ -7,10 +7,14 @@
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="<?= base_url() ?>">
-                            <img src="<?= $this->theme_base_url ?>/assets/images/logo.svg" alt="logo" />
+                            <img src="<?= $this->siteLogo ?>" alt="logo" />
                         </a>
                         <div class="navbar-collapse justify-content-end">
                             <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="<?= base_url() . 'products' ?>"><?= $this->lang->line('Shop'); ?></a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
                                         href="<?= base_url() . 'about' ?>"><?= $this->lang->line('About us'); ?></a>

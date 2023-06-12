@@ -38,7 +38,7 @@ span.error {
                                       <select name="database" id="database" class="form-control">
                                           <option value="">Choose Server</option>
                                           <option value="0">Stagging </option>
-                                          <option value="1">Production </option>
+                                          <!-- <option value="1">Production </option> -->
                                           <!-- <option value="2" <?= (base_url() == 'https://development.launchestore.com/') ? "SELECTED" : '' ?>>Les-development</option> -->
                                       </select>
                                   </div>

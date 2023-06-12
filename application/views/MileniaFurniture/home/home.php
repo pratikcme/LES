@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-mg-6">
                                     <div class="banner-image">
-                                        <img src="<?= $this->theme_base_url ?>/assets/images/home/banner.png"
+                                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>"
                                             alt="banner-img" />
                                     </div>
                                 </div>
@@ -68,9 +68,9 @@
                             </p>
                         </div>
                     </div>
-                    <h5 class="wow fadeInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">ALL
-                        CATEGORIES <svg width="16" height="14" class="rightArrowdark" viewBox="0 0 16 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                    <h5 class="wow fadeInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
+                        <?= $this->lang->line('All Categories') ?><svg width="16" height="14" class="rightArrowdark"
+                            viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.125 7H14.875" stroke="#351C05" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
                             <path d="M9.25 1.375L14.875 7L9.25 12.625" stroke="#351C05" stroke-width="2"
@@ -83,19 +83,19 @@
                 <div class="categories-slider-main">
                     <div class="owl-carousel owl-theme categories-slider">
                         <?php foreach ($category as $key => $value) { ?>
-                            <div class="item">
-                                <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>"
-                                    class="categories-wrap">
-                                    <div class="categories-image-wrap">
-                                        <!-- <img src="<?= $this->theme_base_url ?>/assets/images/home/image.png" alt="" /> -->
-                                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>"
-                                            alt="" />
-                                    </div>
-                                    <div class="categories-text">
-                                        <h4><?= $value->name ?></h4>
-                                    </div>
-                                </a>
-                            </div>
+                        <div class="item">
+                            <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>"
+                                class="categories-wrap">
+                                <div class="categories-image-wrap">
+                                    <!-- <img src="<?= $this->theme_base_url ?>/assets/images/home/image.png" alt="" /> -->
+                                    <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>"
+                                        alt="" />
+                                </div>
+                                <div class="categories-text">
+                                    <h4><?= $value->name ?></h4>
+                                </div>
+                            </a>
+                        </div>
                         <?php } ?>
                     </div>
                 </div>
@@ -253,7 +253,8 @@
                                     <div class="hot-products-img position-relative overflow-hidden">
                                         <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                             alt="" />
-                                        <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                        <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                                            <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
                                         <?php if ($value->discount_per > '0') { ?>
                                         <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
@@ -380,7 +381,8 @@
 
                                         <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                             alt="" />
-                                        <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                        <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                                            <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
                                         <?php if ($value->discount_per > '0') { ?>
                                         <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
@@ -515,7 +517,8 @@
                                 <div class="hot-products-img position-relative overflow-hidden">
                                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                         alt="" />
-                                    <p><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                    <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                                        <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                     </p>
                                     <?php if ($value->discount_per > '0') { ?>
                                     <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
