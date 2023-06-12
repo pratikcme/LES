@@ -591,4 +591,18 @@ class Vendors_model extends My_model
 		$data['where'] = ['email' => $postData['email']];
 		return $this->countRecords($data);
 	}
+
+	public function appVersionUpdate($postData){
+		$postData = [
+			'android_version'=>	$postData['android_version'],
+			'ios_version'=>	$postData['ios_version'],
+			'android_isforce'=>	$postData['android_isforce'],
+			'ios_isforce'=>	$postData['ios_isforce']
+		];
+		// dd($postData);
+		$data['table'] = ADMIN;
+		$data['update'] = $postData;
+		return $this->updateRecords($data);
+		lq();	
+	}
 }

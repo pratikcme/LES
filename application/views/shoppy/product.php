@@ -215,9 +215,10 @@
                                                                     <div class="form-check">
                                                                         <input class="form-check-input discount"
                                                                             type="checkbox" value="<?= $key ?>"
-                                                                            name="filter_discount" id="sub-10-15%">
+                                                                            name="filter_discount"
+                                                                            id="<?= 'mobId' . $key ?>">
                                                                         <label class="form-check-label"
-                                                                            for="sub-10-15%"><?= $value ?></label>
+                                                                            for="<?= 'mobId' . $key ?>"><?= $value ?></label>
                                                                     </div>
 
                                                                     <div class="discount-text">
@@ -352,9 +353,9 @@
                                                         <div class="form-check">
                                                             <input class="form-check-input discount" type="checkbox"
                                                                 value="<?= $key ?>" name="filter_discount"
-                                                                id="sub-10-15%">
+                                                                id="<?= 'discID' . $key ?>">
                                                             <label class="form-check-label"
-                                                                for="sub-10-15%"><?= $value ?></label>
+                                                                for="<?= 'discID' . $key ?>"><?= $value ?></label>
                                                         </div>
 
                                                         <div class="discount-text">

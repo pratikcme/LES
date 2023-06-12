@@ -129,7 +129,8 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('checkout') ?></li>
             </ol>
         </nav>
@@ -173,7 +174,6 @@
                         <div class="add-new-address-wrapper" id="billing-new-add">
                             <div class="new-add-header">
                                 <p><?= $this->lang->line('Add new address') ?></p>
-                                <!-- <button class=""><span style="margin-right: 3px;"> <i class="fas fa-crosshairs"></i> </span> use my current location</button> -->
                             </div>
                             <form method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" class="address-form">
                                 <div class="row">
@@ -225,13 +225,7 @@
                                         <div class="input-wrapper">
                                             <span><i class="fas fa-globe-americas"></i></span>
                                             <input type="text" name="country" placeholder="country" id="country">
-                                            <!--  <select>
-                                                    <option>Country</option>
-                                                    <option>India</option>
-                                                    <option>Australia</option>
-                                                    <option>UK</option>
-                                                    </select>
-                                                <span class="select-down-arrow"><i class="fas fa-chevron-down"></i></span> -->
+
                                         </div>
                                         <label for="country" class="error"><?= @form_error('country') ?></label>
                                     </div>
@@ -322,14 +316,14 @@
                         <?php } ?>
                         <div class="time-wrap">
                             <?php
-                            if(isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1'){?>
-                            <div class="time-box">
-                                <div class="time-title">
-                                    <h6><?=$this->lang->line('Pickup Timing')?></h6>
-                                </div>
-                                <div class="pickup_timming mt-3">
-                                    <?=$selfPickupTimeChart[0]->selfPickupOpenClosingTiming?>
-                                </div>
+                            if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
+                                <div class="time-box">
+                                    <div class="time-title">
+                                        <h6><?= $this->lang->line('Pickup Timing') ?></h6>
+                                    </div>
+                                    <div class="pickup_timming mt-3">
+                                        <?= $selfPickupTimeChart[0]->selfPickupOpenClosingTiming ?>
+                                    </div>
 
                                 </div>
                             <?php } else { ?>
@@ -462,6 +456,7 @@
         </div>
         <div class="col-lg-4 col-md-12">
             <div class="cart-total-wrap">
+                <input type="hidden" id="isShow" value="<?= $isShow[0]->display_price_with_gst == '1' ? "1" : "0" ?>">
                 <div class="cart-total-heading">
                     <h6> <span><i class="fas fa-shopping-basket"></i> </span> <?= $this->lang->line('Order Summary') ?>
                     </h6>
@@ -525,26 +520,27 @@
                     <ul>
                         <li class="total-wrap">
                             <div class="total-count">
-                                <h6><?= $this->lang->line('Sub Total') ?><br>(<?= ($isShow[0]->display_price_with_gst == '1') ? $this->lang->line('exclude') : $this->lang->line('Inc') ?>
-                                    Tax)</h6>
+                                <h6><?= $this->lang->line('Sub Total') ?></h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
                                     <p>
-                                        <span class='notranslate'><?=$this->siteCurrency?></span> 
-                                        <span id="checkout_subtotal"><?=$getMycartSubtotal?></span>
+                                        <span class='notranslate'><?= $this->siteCurrency ?></span>
+                                        <span id="checkout_subtotal"><?= numberFormat($getMycartSubtotal) ?></span>
                                     </p>
                                 </div>
                             </div>
                         </li>
+
                         <li class="total-wrap">
                             <div class="total-count">
                                 <h6><?= $this->lang->line('Tax (Gst)') ?></h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
-                                    <p><span class='notranslate'><?= $this->siteCurrency ?></span> <span id=""><?= $TotalGstAmount ?></span></p>
+                                    <p><span class='notranslate'><?= $this->siteCurrency ?></span> <span id="checkout_gst"><?= $TotalGstAmount ?></span></p>
                                 </div>
                             </div>
                         </li>
+
                         <li class="total-wrap">
                             <div class="total-count">
                                 <h6><?= $this->lang->line('Delivery Charges') ?></h6>
@@ -557,20 +553,20 @@
                             </div>
                         </li>
 
-                        <?php if( $shopping_based_discount > 0 ){?>
-                        <li class="total-wrap">
-                            <div class="total-count">
-                                <h6><?=$this->lang->line('Cart Discount')?></h6>
-                                <div class="price-seperator">
-                                    <span class="seperator">:</span>
-                                    <p><span class='notranslate'><?=$this->siteCurrency?></span> <span
-                                            id="shoppingBasedDiscount"><?=$shopping_based_discount?></span></p>
-                                </div>
+                        <?php if ($shopping_based_discount > 0) { ?>
+                            <li class="total-wrap">
+                                <div class="total-count">
+                                    <h6><?= $this->lang->line('Cart Discount') ?></h6>
+                                    <div class="price-seperator">
+                                        <span class="seperator">:</span>
+                                        <p><span class='notranslate'><?= $this->siteCurrency ?></span> <span id="shoppingBasedDiscount"><?= $shopping_based_discount ?></span></p>
+                                    </div>
                             </li>
                         <?php } ?>
+
                         <li class="total-wrap promocode-applied" style="display:none;">
                             <div class="total-count">
-                                <h6><?=$this->lang->line('Promocode Discount')?></h6>
+                                <h6><?= $this->lang->line('Promocode Discount') ?></h6>
                                 <div class="price-seperator">
                                     <span class="seperator">:</span>
                                     <p><span class='notranslate'><?= $this->siteCurrency ?></span> <span id="promoAmount"></span></p>
@@ -585,23 +581,20 @@
                                     <span class="seperator">:</span>
                                     <p><span class='notranslate'><?= $this->siteCurrency ?></span>
                                         <span id="checkout_final">
-                                <?php if(isset($calc_shiping) && is_numeric($calc_shiping)) {
-                                    if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                                       $to = $getMycartSubtotal+$calc_shiping + $TotalGstAmount; 
-                                    }else{
-                                       $to = $getMycartSubtotal+$calc_shiping;
-                                    }
-                                    $f_amount = $to-$shopping_based_discount;
-                                    echo number_format((float)$f_amount,2,'.',''); 
-                                 }else{ 
-                                    if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                                       $tot = $getMycartSubtotal + $TotalGstAmount; 
-                                    }else{
-                                       $tot = $getMycartSubtotal;
-                                    }
-                                    $f_amount = $tot-$shopping_based_discount;
-                                     echo number_format((float)$f_amount,2);
-                                 } ?>
+                                            <?php
+                                            if (isset($calc_shiping) && is_numeric($calc_shiping)) {
+
+                                                $to = $getMycartSubtotal + $calc_shiping + $TotalGstAmount;
+                                                $f_amount = $to - $shopping_based_discount;
+                                                echo number_format((float)$f_amount, 2, '.', '');
+                                            } else {
+
+                                                $tot = $getMycartSubtotal + $TotalGstAmount;
+
+                                                $f_amount = $tot - $shopping_based_discount;
+                                                echo number_format((float)$f_amount, 2);
+                                            }
+                                            ?>
                                         </span>
                                     </p>
                                 </div>
@@ -622,6 +615,7 @@
                                 <button id="checkPromocode" class="btn btn-primary" type="button"><?= $this->lang->line('Apply') ?></button>
                             </li>
                         <?php } ?>
+
                         <li class="saving">
                             <h6> <img src="<?= base_url() . 'public/frontend/' ?>assets/images/shield.png">
                                 <?= $this->lang->line('100 Genuine Products') ?></h6>
@@ -637,13 +631,12 @@
                             </h6>
                         </li>
                         <li class="saving">
-                            <a href="<?= base_url() . 'home' ?>" class="btn btn-orange"> <?= $this->lang->line('Cancel') ?>
+                            <a href="<?= base_url() . 'home' ?>" class="btn btn-orange">
+                                <?= $this->lang->line('Cancel') ?>
                             </a>
                         </li>
                     </ul>
-                    <!--  <a href="#" class="btn">
-                     proceed to checkout
-                     </a> -->
+
                 </div>
             </div>
         </div>
@@ -736,7 +729,7 @@
             <!-- Modal body -->
             <div class="modal-body text-center">
                 <div>
-                    <h3><?=$this->lang->line('thanks for shopping')?></h3>
+                    <h3><?= $this->lang->line('thanks for shopping') ?></h3>
                 </div>
                 <div class="my-3">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
@@ -749,7 +742,7 @@
                     <p id="orderId"></p>
                 </div>
                 <div>
-                    <a href="<?=base_url().'home'?>" class="shopping_btn"><?=$this->lang->line('continue shopping')?></a>
+                    <a href="<?= base_url() . 'home' ?>" class="shopping_btn"><?= $this->lang->line('continue shopping') ?></a>
                 </div>
             </div>
 
@@ -763,22 +756,21 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <label for="country_code" class="error"></label>
-            <h6 class="mobile-title"><?=$this->lang->line('Please Enter Mobile Number')?></h6>
-            <form id="mobileNumber" class="mobileNum-form" method="post"
-                action="<?=base_url().'checkout/updateMobileNumber'?>">
+            <h6 class="mobile-title"><?= $this->lang->line('Please Enter Mobile Number') ?></h6>
+            <form id="mobileNumber" class="mobileNum-form" method="post" action="<?= base_url() . 'checkout/updateMobileNumber' ?>">
                 <div class="input-wrapper m-0">
                     <span><i class="fas fa-mobile"></i></span>
                     <select name="country_code" class="country_code" required="">
-                        <option value=""><?=$this->lang->line('Select Country Code')?></option>
-                        <?php foreach ($country_code as $key => $value): ?>
-                        <option value="<?=$key?>" <?=($key == '+91') ? "SELECTED" : "" ?>><?=$key?></option>
+                        <option value=""><?= $this->lang->line('Select Country Code') ?></option>
+                        <?php foreach ($country_code as $key => $value) : ?>
+                            <option value="<?= $key ?>" <?= ($key == '+91') ? "SELECTED" : "" ?>><?= $key ?></option>
                         <?php endforeach ?>
                     </select>
                     <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Mobile Number*" required="">
                 </div>
                 <label for="phoneNumber" class="error mobile_verfication"></label>
 
-                <button type="submit" id="btnSubmit" class="s-btn"><?=$this->lang->line('Submit')?></button>
+                <button type="submit" id="btnSubmit" class="s-btn"><?= $this->lang->line('Submit') ?></button>
             </form>
         </div>
     </div>
@@ -788,16 +780,15 @@
 
     <div class="modal-dialog">
         <div class="modal-content">
-            <h6 class="mobile-title"><?=$this->lang->line('Please enter Otp')?></h6>
-            <form id="OtpVerification" class="mobileNum-form" method="post"
-                action="<?=base_url().'checkout/OtpVerification'?>">
+            <h6 class="mobile-title"><?= $this->lang->line('Please enter Otp') ?></h6>
+            <form id="OtpVerification" class="mobileNum-form" method="post" action="<?= base_url() . 'checkout/OtpVerification' ?>">
                 <div class="input-wrapper m-0">
                     <span><i class="fas fa-mobile"></i></span>
                     <input type="text" name="otp" id="otp" placeholder="Please enter 4 digit otp*" maxlength="4" required="">
                 </div>
                 <label for="otp" class="error mobile_verfication"></label>
                 <label id="invalid" style="display: none; color: red">Invalid Otp</label>
-                <button type="submit" id="btnSubmit" class="s-btn"><?=$this->lang->line('Submit')?></button>
+                <button type="submit" id="btnSubmit" class="s-btn"><?= $this->lang->line('Submit') ?></button>
             </form>
         </div>
     </div>

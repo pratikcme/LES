@@ -113,6 +113,7 @@ class Product_model extends My_model
 			'pw.status' => '1',
 			'p.status ' => '1',
 		];
+
 		return $this->countRecords($data);
 		// echo $this->db->last_query();die;
 	}
@@ -312,7 +313,6 @@ class Product_model extends My_model
 			$where .= ') AND 1 = ';
 			$data['where'][$where] = '1';
 		}
-
 		// $data['where']["(r.master_sheet = '".$master_sheet."' OR r.master_sheet2 ='".$master_sheet2."') AND 1 ="] = 1
 		if (isset($postdata['discountArray'])) {
 			$whereDiscount = "(";
@@ -497,7 +497,6 @@ class Product_model extends My_model
 
 				$product_html .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product', $data, true);
 			}
-
 			// Dk added class of cmn-btn
 			$product_html .= '<div class="col-md-12 text-center mt-5" style="display:' . $display . '">
         						<button type="button" class="btn show-more cmn-btn lg-btn add-cart-btn" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>' . $this->lang->line('Show More') . '</button>
@@ -507,7 +506,6 @@ class Product_model extends My_model
 		}
 		$sub_category = '';
 		if (!empty($subcategory)) {
-
 			$subcatData['subcategory'] = $subcategory;
 			$subcatData['wish_pid'] = $wish_pid;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);
