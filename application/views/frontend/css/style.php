@@ -4463,8 +4463,7 @@ like a tickmark */
 }
 
 .category-menu-wrapper ul.cat_selected li a.active {
-    /* color: var(--categoryActiveColor); */
-    color: #fff;
+    color: var(--categoryActiveColor) !important;
     background: var(--categoryActiveBg);
     padding: 5px;
     border-radius: 5px;
