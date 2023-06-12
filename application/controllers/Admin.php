@@ -127,9 +127,9 @@ ALTER TABLE `branch` CHANGE `delivery_time_date` `delivery_time_date` ENUM('0','
     public function login()
     {
         // Temp Removed By Dipesh For Work On Super Admin
-        if (base_url() == 'https://admin.launchestore.com/') {
-            redirect(base_url() . 'super_admin/login');
-        }
+        // if (base_url() == 'https://admin.launchestore.com/') {
+        //     redirect(base_url() . 'super_admin/login');
+        // }
         // again added for pos changes
         if (isset($_SESSION['super_admin']) || isset($_SESSION['vendor_admin'])) {
             redirect(base_url() . 'admin/dashboard');

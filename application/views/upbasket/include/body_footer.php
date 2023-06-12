@@ -3,7 +3,7 @@
     <div class="col-xl-3 col-lg-6 col-md-6 wow zoomIn" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
       <div class="foot-1">
         <a href="<?= base_url() ?>home">
-          <img src="<?= $this->theme_base_url . '/assets/images/header-logo.png' ?>" alt="" class="logo-foot-img">
+          <img src="<?= $this->siteLogo ?>" alt="" class="logo-foot-img">
         </a>
 
         <h4><?= $this->lang->line('Download App') ?></h4>
@@ -14,10 +14,14 @@
         </div>
         <div class="foot-payment-icons">
           <ul>
-            <li><a href="javascript:"><img src="<?= $this->theme_base_url . '/assets/images/foot-icon-1.png' ?>" alt=""></a></li>
-            <li><a href="javascript:"><img src="<?= $this->theme_base_url . '/assets/images/foot-icon-2.png' ?>" alt=""></a></li>
-            <li><a href="javascript:"><img src="<?= $this->theme_base_url . '/assets/images/foot-icon-3.png' ?>" alt=""></a></li>
-            <li><a href="javascript:"><img src="<?= $this->theme_base_url . '/assets/images/foot-icon-4.png' ?>" alt=""></a></li>
+            <li><a href="javascript:"><img src="<?= $this->theme_base_url . '/assets/images/foot-icon-1.png' ?>" alt=""></a>
+            </li>
+            <li><a href="javascript:"><img src="<?= $this->theme_base_url . '/assets/images/foot-icon-2.png' ?>" alt=""></a>
+            </li>
+            <li><a href="javascript:"><img src="<?= $this->theme_base_url . '/assets/images/foot-icon-3.png' ?>" alt=""></a>
+            </li>
+            <li><a href="javascript:"><img src="<?= $this->theme_base_url . '/assets/images/foot-icon-4.png' ?>" alt=""></a>
+            </li>
           </ul>
         </div>
       </div>
@@ -64,7 +68,8 @@
             <a href="#"><i class="fa-solid fa-location-dot"></i></a>
           </div>
           <div class="col-xl-11 col-lg-11 col-md-11">
-            <h4><span><?= $this->lang->line('Address') ?>:</span> <?= $appLinks[0]->contact_us_address ?></h4>
+            <h4><span><?= $this->lang->line('Address') ?>:</span> <?= $appLinks[0]->contact_us_address ?>
+            </h4>
           </div>
 
           <div class="col-xl-1 col-lg-1 col-md-1">

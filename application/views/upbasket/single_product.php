@@ -80,7 +80,7 @@
                               <span class="star star-active"></span>
                               <?php } ?>
                           </div>
-                          <div><span>(<?= $productDetail[0]->rating['rating'] ?>)</span></div>
+                          <div><span>(<?= count($product_review) ?>)</span></div>
                       </div>
 
                       <!--  -->

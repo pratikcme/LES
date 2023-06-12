@@ -41,7 +41,7 @@
 </section>
 
 <!-- why us -->
-<section class="why-us pb-120">
+<!-- <section class="why-us pb-120">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-6">
@@ -58,7 +58,6 @@
           <div class="col-lg-6 col-md-4 col-sm-6 col-6 my-lg-5 my-5 wow fadeInDown" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0">
             <div class="why-us-wrap">
               <div class="why-us-icon">
-                <!-- <img src="./assets/images/about/circle-design.svg" alt="circle-design" /> -->
                 <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/images/about/circle-design.svg" viewBox="0 0 62 62">
                   <defs>
                     <style>
@@ -82,7 +81,6 @@
           <div class="col-lg-6 col-md-4 col-sm-6 col-6 my-lg-5 my-5 wow fadeInDown" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0">
             <div class="why-us-wrap">
               <div class="why-us-icon">
-                <!-- <img src="./assets/images/about/refund.svg" alt="refund" /> -->
                 <svg id="Layer_1" data-name="Layer 1" xmlns="./assets/images/about/refund.svg" viewBox="0 0 62 52.5">
                   <defs>
                     <style>
@@ -112,11 +110,11 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <!-- start-project -->
-<section class="start-project">
+<!-- <section class="start-project">
   <div class="container">
     <div class="row">
       <div class="col-lg-6"></div>
@@ -132,7 +130,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <!-- testimonials -->
