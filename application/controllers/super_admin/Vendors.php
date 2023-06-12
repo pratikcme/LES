@@ -94,4 +94,21 @@ class Vendors extends Super_Admin_Controller
 			echo 'true';
 		}
 	}
+
+	public function Version(){
+		$data['page'] = 'super_admin/vendors/version_update';
+		$data['FormAction'] = base_url().'super_admin/vendors/version';
+		if($this->input->post()){
+			$responce = $this->this_model->appVersionUpdate($this->input->post());
+			if ($responce) {
+				$this->utility->setFlashMessage('success', 'Version updated for all app successfully');
+				redirect(base_url() . $this->url.'/Version');
+			} else {
+				$this->utility->setFlashMessage('danger', 'Somthing went Wrong');
+				redirect(base_url() . $this->url.'/Version');
+			}
+		}
+		$data['js'] = array('version.js');
+		$this->load->view(SUPER_ADMIN_LAYOUT, $data);
+	}
 }

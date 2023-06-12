@@ -43,6 +43,9 @@
             <a href="<?= base_url() ?>super_admin/themes" class="nav-link "><i class="far fa-check-square"></i><span>
                     Themes</span></a>
         </li>
+        <li class="">
+            <a href="<?= base_url() ?>super_admin/vendors/version" class="nav-link "><i class="far fa-check-square"></i><span>Update App Version</span></a>
+        </li>
         <!-- <li class="">
               <a href="<?= base_url() ?>admin/experience" class="nav-link "><i class="far fa-file" aria-hidden="true" ></i><span>Experience level</span></a>
             </li> -->
