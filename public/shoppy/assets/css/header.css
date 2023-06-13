@@ -117,7 +117,7 @@ header .social-icons .icons i {
     align-items: center;
     gap: 15px;
     position: relative;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 .social-icons a {
@@ -185,7 +185,7 @@ nav {
     display: flex;
     align-items: center;
     border-radius: 30px 0px 0px 0px;
-    padding-top: 28px;
+    /* padding-top: 28px; */
     margin-left: 0px;
     justify-content: end;
 }
@@ -196,6 +196,7 @@ nav ul {
     justify-content: center;
     gap: 30px;
     padding-left: 0;
+    margin-bottom: 0;
 }
 
 nav a {
@@ -548,7 +549,7 @@ body {
 .drp-grp{
     display: flex;
     gap: 10px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-right: 15px;
     align-items: center;
 }
@@ -566,17 +567,33 @@ body {
 .branch-drp select{
     background: transparent !important;
     color: var(--heading-black) !important;
-    font-size: 14px;
+    font-size: 15px;
     font-family: var(--PublicSans-Regular);
     padding: 10px 5px;
     border-radius: 5px;
-    width: 100px;
+    width: 130px;
+    border: none;
 }
 
 .lng-drp select:focus,
 .branch-drp select:focus{
     outline: 0;
     box-shadow: none;
+}
+
+#google_translate_element{
+    position: relative;
+  }
+  
+#google_translate_element::after{
+content: '';
+    position: absolute;
+    right: -9px;
+    top: 50%;
+    width: 1px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%);
 }
 
 .branch-drp{

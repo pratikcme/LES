@@ -36,7 +36,6 @@
                     <div>
                         <h4><?= $this->lang->line('Useful Links') ?></h4>
                         <ul class="ps-0">
-                            <li><a href=""><?= $this->lang->line('Blog') ?></a></li>
                             <li><a
                                     href="<?= base_url() . 'users_account/users/account' ?>"><?= $this->lang->line('My account') ?></a>
                             </li>
@@ -63,7 +62,7 @@
                             <li><a
                                     href="<?= base_url() . 'privacy_policy' ?>"><?= $this->lang->line('Privacy Policy') ?></a>
                             </li>
-                            <li><a href="<?= base_url() . 'about' ?>"><?= $this->lang->line('FAQ') ?></a></li>
+
                         </ul>
                     </div>
                 </div>

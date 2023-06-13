@@ -371,12 +371,28 @@ nav a:active::before {
 .branch-drp select {
     background: transparent !important;
     color: var(--header-btn-color) !important;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Poppins;
-    padding: 10px 11px;
+    padding: 10px 5px;
     border-radius: 5px;
-    width: 100px;
+    width: 130px;
     display: block !important;
+    border: none;
+}
+
+#google_translate_element{
+    position: relative;
+}
+  
+#google_translate_element::after{
+content: '';
+    position: absolute;
+    right: -9px;
+    top: 50%;
+    width: 1px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%);
 }
 
 .lng-drp select:focus,
