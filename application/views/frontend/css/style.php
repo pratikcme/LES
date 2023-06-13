@@ -552,7 +552,7 @@
          --border-color: <?= $borderColor ?>;
          --border-color2: <?= $borderColor2 ?>;
          --lightPrimary: <?= $lightPrimary ?>;
-         --headerBackground: <?= $darkHeaderBackground ?>;
+         --headerBackground: <?= $headerBackground ?>;
          --navbarColor: <?= $navbarColor ?>;
          --cartBtnBackground: <?= $cartBtnBackground ?>;
          --cartBtnColor: <?= $cartBtnColor ?>;
