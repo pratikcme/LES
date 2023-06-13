@@ -498,7 +498,28 @@
         $categoryActiveBg = "#000";
         $categoryActiveColor = "#fff";
     
-    } else {
+    }else if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
+        $primaryColor = "#000000";
+        $secondaryColor = "#fed418";
+        $lightColor =  "#fff";
+        $borderColor = "#fed418";
+        $borderColor2 = "#fed418";
+        $lightPrimary = "#ff774b";
+        $headerBackground = "#000";
+        $navbarColor = "#fed418";
+        $cartBtnBackground = "#fed418";
+        $cartBtnColor = "#fff";
+        $loginBtnBackground = "#fed418";
+        $loginBtnColor = "#fff";
+        $loginBtnborder = "#fed418";
+        $logoWidth = "120px";
+        $abtImgWidth = "350px";
+        $hvrClr = "#fcfcfc";
+        $cartNum =  "#000";
+        $categoryColor = "#000";
+        $categoryActiveBg = "#fff";
+        $categoryActiveColor = "#fff";
+     }else{
         $primaryColor = "#113A8E";
         $secondaryColor = "#113A8E";
         $lightColor =  "#fff";
@@ -546,30 +567,30 @@
 
 */
 
-:root {
-    --primary-color: <?=$primaryColor ?>;
-    --secondary-color: <?=$secondaryColor ?>;
-    --light-color: <?=$lightColor ?>;
-    --border-color: <?=$borderColor ?>;
-    --border-color2: <?=$borderColor2 ?>;
-    --lightPrimary: <?=$lightPrimary ?>;
-    --headerBackground: <?=$darkHeaderBackground ?>;
-    --navbarColor: <?=$navbarColor ?>;
-    --cartBtnBackground: <?=$cartBtnBackground ?>;
-    --cartBtnColor: <?=$cartBtnColor ?>;
-    --loginBtnBackground: <?=$loginBtnBackground ?>;
-    --loginBtnColor: <?=$loginBtnColor ?>;
-    --loginBtnborder: <?=$loginBtnborder ?>;
-    --logoWidth: <?=$logoWidth ?>;
-    --abtImgWidth: <?=$abtImgWidth ?>;
-    --hvrClr: <?=$hvrClr ?>;
-    --cartNum: <?=$cartNum ?>;
-    --categoryColor: <?=$categoryColor ?>;
-    --categoryActiveBg: <?=$categoryActiveBg ?>;
-    --categoryActiveColor: <?=$categoryActiveColor ?>;
-}
+     :root {
+         --primary-color: <?= $primaryColor ?>;
+         --secondary-color: <?= $secondaryColor ?>;
+         --light-color: <?= $lightColor ?>;
+         --border-color: <?= $borderColor ?>;
+         --border-color2: <?= $borderColor2 ?>;
+         --lightPrimary: <?= $lightPrimary ?>;
+         --headerBackground: <?= $headerBackground ?>;
+         --navbarColor: <?= $navbarColor ?>;
+         --cartBtnBackground: <?= $cartBtnBackground ?>;
+         --cartBtnColor: <?= $cartBtnColor ?>;
+         --loginBtnBackground: <?= $loginBtnBackground ?>;
+         --loginBtnColor: <?= $loginBtnColor ?>;
+         --loginBtnborder: <?= $loginBtnborder ?>;
+         --logoWidth: <?= $logoWidth ?>;
+         --abtImgWidth: <?= $abtImgWidth ?>;
+         --hvrClr: <?= $hvrClr ?>;
+         --cartNum: <?= $cartNum ?>;
+         --categoryColor: <?= $categoryColor ?>;
+         --categoryActiveBg: <?= $categoryActiveBg ?>;
+         --categoryActiveColor: <?= $categoryActiveColor ?>;
+     }
 
-/*
+     /*
 .feature-bottom-wrap .quantity-wrap.transparent-wrap{
     position:relative;
     width:100% !important;
