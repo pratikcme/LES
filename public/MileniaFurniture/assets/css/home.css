@@ -10,6 +10,35 @@
     padding: 150px 0 0px;
 }
 
+.hero-section.carousel-item{
+    background-size: cover;
+    padding-top: 250px;
+    padding-bottom: 220px;
+}
+
+.banner-content{
+    margin-top: 50px;
+}
+
+.banner-content p{
+    margin: 15px 0;
+}
+
+.carousel-indicators {
+    margin-bottom: 2rem !important;
+}
+
+.carousel-indicators .active {
+    background-color: var(--primary-color) !important;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
 .banner::after {
     content: '';
     width: 90%;
@@ -970,6 +999,12 @@
 
     #mySidepanel #collapseSix i{
         display: none;
+    }
+
+    .hero-section.carousel-item {
+        background-size: cover;
+        padding-top: 200px;
+        padding-bottom: 150px;
     }
 }
 

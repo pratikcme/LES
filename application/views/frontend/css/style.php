@@ -476,7 +476,50 @@
         $categoryColor = "#000";
         $categoryActiveBg = "#fff";
         $categoryActiveColor = "#fff";
-    } else {
+    } elseif ($_SERVER['SERVER_NAME'] == 'demo.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.demo.launchestore.com') { 
+        $primaryColor = "#113A8E";
+        $secondaryColor = "#113A8E";
+        $lightColor =  "#fff";
+        $borderColor = "#113A8E";
+        $borderColor2 = "#113A8E";
+        $lightPrimary = "#ff774b";
+        $headerBackground = "#fff";
+        $navbarColor = "#113A8E";
+        $cartBtnBackground = "#113A8E";
+        $cartBtnColor = "#fff";
+        $loginBtnBackground = "#113A8E";
+        $loginBtnColor = "#fff";
+        $loginBtnborder = "#113A8E";
+        $logoWidth = "120px";
+        $abtImgWidth = "350px";
+        $hvrClr = "#113a8e";
+        $cartNum =  "#000";
+        $categoryColor = "#000";
+        $categoryActiveBg = "#000";
+        $categoryActiveColor = "#fff";
+    
+    }else if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
+        $primaryColor = "#000000";
+        $secondaryColor = "#fed418";
+        $lightColor =  "#fff";
+        $borderColor = "#fed418";
+        $borderColor2 = "#fed418";
+        $lightPrimary = "#ff774b";
+        $headerBackground = "#000";
+        $navbarColor = "#fed418";
+        $cartBtnBackground = "#fed418";
+        $cartBtnColor = "#fff";
+        $loginBtnBackground = "#fed418";
+        $loginBtnColor = "#fff";
+        $loginBtnborder = "#fed418";
+        $logoWidth = "120px";
+        $abtImgWidth = "350px";
+        $hvrClr = "#fcfcfc";
+        $cartNum =  "#000";
+        $categoryColor = "#000";
+        $categoryActiveBg = "#fff";
+        $categoryActiveColor = "#fff";
+     }else{
         $primaryColor = "#113A8E";
         $secondaryColor = "#113A8E";
         $lightColor =  "#fff";
@@ -524,30 +567,30 @@
 
 */
 
-:root {
-    --primary-color: <?=$primaryColor ?>;
-    --secondary-color: <?=$secondaryColor ?>;
-    --light-color: <?=$lightColor ?>;
-    --border-color: <?=$borderColor ?>;
-    --border-color2: <?=$borderColor2 ?>;
-    --lightPrimary: <?=$lightPrimary ?>;
-    --headerBackground: <?=$darkHeaderBackground ?>;
-    --navbarColor: <?=$navbarColor ?>;
-    --cartBtnBackground: <?=$cartBtnBackground ?>;
-    --cartBtnColor: <?=$cartBtnColor ?>;
-    --loginBtnBackground: <?=$loginBtnBackground ?>;
-    --loginBtnColor: <?=$loginBtnColor ?>;
-    --loginBtnborder: <?=$loginBtnborder ?>;
-    --logoWidth: <?=$logoWidth ?>;
-    --abtImgWidth: <?=$abtImgWidth ?>;
-    --hvrClr: <?=$hvrClr ?>;
-    --cartNum: <?=$cartNum ?>;
-    --categoryColor: <?=$categoryColor ?>;
-    --categoryActiveBg: <?=$categoryActiveBg ?>;
-    --categoryActiveColor: <?=$categoryActiveColor ?>;
-}
+     :root {
+         --primary-color: <?= $primaryColor ?>;
+         --secondary-color: <?= $secondaryColor ?>;
+         --light-color: <?= $lightColor ?>;
+         --border-color: <?= $borderColor ?>;
+         --border-color2: <?= $borderColor2 ?>;
+         --lightPrimary: <?= $lightPrimary ?>;
+         --headerBackground: <?= $headerBackground ?>;
+         --navbarColor: <?= $navbarColor ?>;
+         --cartBtnBackground: <?= $cartBtnBackground ?>;
+         --cartBtnColor: <?= $cartBtnColor ?>;
+         --loginBtnBackground: <?= $loginBtnBackground ?>;
+         --loginBtnColor: <?= $loginBtnColor ?>;
+         --loginBtnborder: <?= $loginBtnborder ?>;
+         --logoWidth: <?= $logoWidth ?>;
+         --abtImgWidth: <?= $abtImgWidth ?>;
+         --hvrClr: <?= $hvrClr ?>;
+         --cartNum: <?= $cartNum ?>;
+         --categoryColor: <?= $categoryColor ?>;
+         --categoryActiveBg: <?= $categoryActiveBg ?>;
+         --categoryActiveColor: <?= $categoryActiveColor ?>;
+     }
 
-/*
+     /*
 .feature-bottom-wrap .quantity-wrap.transparent-wrap{
     position:relative;
     width:100% !important;
@@ -4441,7 +4484,7 @@ like a tickmark */
 }
 
 .category-menu-wrapper ul.cat_selected li a.active {
-    color: var(--categoryActiveColor);
+    color: var(--categoryActiveColor) !important;
     background: var(--categoryActiveBg);
     padding: 5px;
     border-radius: 5px;

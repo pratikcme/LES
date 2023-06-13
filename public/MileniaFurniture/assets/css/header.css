@@ -693,7 +693,7 @@ li {
     border-radius: 5px;
     padding: 10px 7px;
     font-family: var(--inter-regular);
-    font-size: 14px !important;
+    font-size: 15px !important;
     width: 100%;
     max-width: 150px;
     height: 100%;
@@ -702,10 +702,10 @@ li {
     background-repeat: no-repeat;
     background: transparent;
     color:#351C05;
-    border: 1px solid var(--primary-color);
     outline: 0;
     cursor: pointer;
     position: relative;
+    border: none;
 }
 
 /* .lng-drp select,
@@ -717,6 +717,21 @@ li {
     border-radius: 50%;
     background-color: #fff;
 } */
+
+#google_translate_element{
+    position: relative;
+}
+  
+#google_translate_element::after{
+content: '';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    width: 1px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%);
+}
 
 .branch-drp{
     width:130px;

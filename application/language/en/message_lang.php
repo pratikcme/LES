@@ -302,6 +302,7 @@ $lang['Account'] = 'Account';
 $lang['Details'] = 'Details';
 $lang['Email Address'] = 'Email Address';
 $lang['Save'] = 'Save';
+$lang['Update'] = 'Update';
 $lang['Add New Address'] = 'Add New Address';
 $lang['My address'] = 'My Address';
 $lang['Default'] = 'Default';

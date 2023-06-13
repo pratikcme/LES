@@ -151,8 +151,9 @@
                                             <div class="discount-wrapper brands-wrp">
                                                 <div class="form-check d-flex align-items-center">
                                                     <input class="form-check-input brand" type="checkbox"
-                                                        value="<?= $brandRecord->id ?>" id="<?= $brandRecord->name ?>">
-                                                    <label class="form-check-label" for="Aerin">
+                                                        value="<?= $brandRecord->id ?>"
+                                                        id="<?= 'mobile_brand' . $key ?>">
+                                                    <label class="form-check-label" for="<?= 'mobile_brand' . $key ?>">
                                                         <h4><?= $brandRecord->name ?></h4>
                                                     </label>
                                                 </div>
@@ -175,8 +176,9 @@
                                             <div class="discount-wrapper">
                                                 <div class="form-check">
                                                     <input class="form-check-input discount" name="filter_discount"
-                                                        value="<?= $key ?>" type="checkbox" id="id11">
-                                                    <label class="form-check-label" for="id11">
+                                                        value="<?= $key ?>" type="checkbox"
+                                                        id="<?= 'mobile_dic' . $key ?>">
+                                                    <label class="form-check-label" for="<?= 'mobile_dic' . $key ?>">
                                                         <h4><?= $value ?></h4>
                                                     </label>
                                                 </div>
@@ -246,8 +248,8 @@
                             <div class="discount-wrapper brands-wrp">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input brand" type="checkbox" value="<?= $v->id ?>"
-                                        id="<?= $v->name ?>">
-                                    <label class="form-check-label" for="Aerin">
+                                        id="<?= 'brand' . $key ?>">
+                                    <label class="form-check-label" for="<?= 'brand' . $key ?>">
                                         <h4><?= $v->name ?></h4>
                                     </label>
                                 </div>
@@ -269,8 +271,8 @@
                             <div class="discount-wrapper">
                                 <div class="form-check">
                                     <input class="form-check-input discount" name="filter_discount" type="checkbox"
-                                        value="<?= $key ?>" id="id21">
-                                    <label class="form-check-label" for="id21">
+                                        value="<?= $key ?>" id="<?= 'disc_'  . $key ?>">
+                                    <label class="form-check-label" for="<?= 'disc_' . $key ?>">
                                         <h4><?= $value ?></h4>
                                     </label>
                                 </div>

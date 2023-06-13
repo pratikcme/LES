@@ -297,6 +297,7 @@ $lang['logout'] = 'تسجيل خروج';
 $lang['Delete Account'] = 'حذف الحساب';
 $lang['Account Details'] = 'تفاصيل الحساب';
 $lang['Save'] = 'حفظ';
+$lang['Update'] = 'تحديث';
 $lang['Add New Address'] = 'أضف عنوان جديد';
 $lang['My address'] = 'عنواني';
 $lang['Default'] = 'تقصير';

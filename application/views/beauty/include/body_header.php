@@ -51,7 +51,7 @@
                         <form class="search-form">
                             <?php if ($this->uri->segment(1) == '') { ?>
                                 <input type="search" name="search" id='search' data-search_val="" class="search-input" placeholder="Search vendor..">
-                                <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
+                                <i for="search" class="fa-solid fa-magnifying-glass search-here-icon"></i>
                             <?php } ?>
                             <?php
                             if ($this->uri->segment(1) != '') {
@@ -62,7 +62,7 @@
                             if ($segment1 != '') { ?>
 
                                 <input type="search" name="search" id='myInput' data-search_val="" class="search-input search" placeholder="<?= $placeholder ?>">
-                                <i class="fa-solid fa-magnifying-glass search-here-icon"></i>
+                                <i for="myInput" class="fa-solid fa-magnifying-glass search-here-icon"></i>
                             <?php } ?>
 
                         </form>
