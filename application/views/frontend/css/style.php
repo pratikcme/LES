@@ -476,6 +476,28 @@
         $categoryColor = "#000";
         $categoryActiveBg = "#fff";
         $categoryActiveColor = "#fff";
+    } elseif ($_SERVER['SERVER_NAME'] == 'demo.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.demo.launchestore.com') { 
+        $primaryColor = "#113A8E";
+        $secondaryColor = "#113A8E";
+        $lightColor =  "#fff";
+        $borderColor = "#113A8E";
+        $borderColor2 = "#113A8E";
+        $lightPrimary = "#ff774b";
+        $headerBackground = "#fff";
+        $navbarColor = "#113A8E";
+        $cartBtnBackground = "#113A8E";
+        $cartBtnColor = "#fff";
+        $loginBtnBackground = "#113A8E";
+        $loginBtnColor = "#fff";
+        $loginBtnborder = "#113A8E";
+        $logoWidth = "120px";
+        $abtImgWidth = "350px";
+        $hvrClr = "#113a8e";
+        $cartNum =  "#000";
+        $categoryColor = "#000";
+        $categoryActiveBg = "#000";
+        $categoryActiveColor = "#fff";
+    
     } else {
         $primaryColor = "#113A8E";
         $secondaryColor = "#113A8E";
@@ -4441,7 +4463,7 @@ like a tickmark */
 }
 
 .category-menu-wrapper ul.cat_selected li a.active {
-    color: var(--categoryActiveColor);
+    color: var(--categoryActiveColor) !important;
     background: var(--categoryActiveBg);
     padding: 5px;
     border-radius: 5px;
