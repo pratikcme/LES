@@ -51,6 +51,9 @@ if (searchToggle && searchCancel) {
   searchToggle.addEventListener("click", () => {
     searchBlock.classList.add("is-active");
     searchCancel.classList.add("is-active");
+    setTimeout(() => {
+      $(".search-input").focus();
+    }, 50);
   });
 
   searchCancel.addEventListener("click", () => {

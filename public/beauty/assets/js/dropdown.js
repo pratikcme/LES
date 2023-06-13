@@ -7,6 +7,10 @@ if (searchToggle && searchCancel) {
   searchToggle.addEventListener("click", () => {
     searchBlock.classList.add("is-active");
     searchCancel.classList.add("is-active");
+
+    setTimeout(() => {
+      $(".search-input").focus();
+    }, 50);
   });
 
   searchCancel.addEventListener("click", () => {
@@ -18,10 +22,8 @@ if (searchToggle && searchCancel) {
     searchBlock.classList.add("is-active");
   });
 
-  $(document).on("focusout", function (e) {
-    if (!$(e.target).hasClass("fa-magnifying-glass")) {
-      searchBlock.removeClass("is-active");
-    }
+  document.addEventListener("focusout", (e) => {
+    searchBlock.classList.remove("is-active");
   });
 }
 
