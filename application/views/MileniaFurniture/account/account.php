@@ -124,7 +124,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-save-btn">
-                                            <input type="submit" class="common-input-btn cmn-btn" id="btnAccSubmit" value="<?= $this->lang->line('Save') ?>" />
+                                            <input type="submit" class="common-input-btn cmn-btn" id="btnAccSubmit" value="<?= $this->lang->line('Update') ?>" />
                                         </div>
                                     </div>
                                 </form>
@@ -887,7 +887,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-save-btn">
-                                        <button class="cmn-btn" id="btnChangeUserPass" type="submit"><?= $this->lang->line('Submit') ?></button>
+                                        <button class="cmn-btn" id="btnChangeUserPass" type="submit"><?= $this->lang->line('Change Password') ?></button>
                                     </div>
                                 </div>
                             </form>

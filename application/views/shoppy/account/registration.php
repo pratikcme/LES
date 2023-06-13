@@ -91,7 +91,7 @@
               <label for="term_policy" class="error"></label>
 
               <div class="sign-in-btn">
-                <button class="lg-btn" type="submit"><?= $this->lang->line('Submit'); ?></button>
+                <button class="lg-btn" type="submit"><?= $this->lang->line('Sign up'); ?></button>
               </div>
             </div>
 

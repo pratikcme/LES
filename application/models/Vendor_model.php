@@ -129,6 +129,8 @@ class vendor_model extends My_model
                     'inactive_date' => date('Y-m-d H:i:s'),
                     'dt_added' => date('Y-m-d H:i:s'),
                     'dt_updated' => date('Y-m-d H:i:s'),
+                    'yearly_plan' => '1',
+                    'billing_date' => DATE_TIME
                 );
                 $this->db->insert('branch', $data);
                 $lastId = $this->db->insert_id();

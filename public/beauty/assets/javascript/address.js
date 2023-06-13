@@ -185,6 +185,10 @@ var ADDRESS = (function () {
     // })
   }
 
+  $(document).on("click", "#myBtn", function () {
+    $("#addAddress").html(language.Save);
+  });
+
   $(document).on("click", ".edit_address", function () {
     $("label.error").css("display", "none");
     $("#hidden_update_id").remove();

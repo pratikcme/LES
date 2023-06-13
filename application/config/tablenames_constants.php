@@ -40,6 +40,7 @@ define('TABLE_SHOPPING_BASED_DISCOUNT', 'amount_based_discount');
 define('TABLE_DEVICE', 'device');
 define('TABLE_STORE_TYPE', 'store_type');
 define('TABLE_FOOD_CATEGORY', 'food_category');
+define('TABLE_UPDATE_VERSION_LOGS', 'version_log_update');
 
 
 // ADMIN CONSTANT
@@ -69,4 +70,3 @@ define('DEFAULT_MESSAGE', 'Somthing Went Wrong');
 
 define('SMSGATEWAY', 'sms_gateway');
 define('TABLE_LIVE_CHAT_CREDS', 'live_chat_creds');
-

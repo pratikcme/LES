@@ -15,15 +15,7 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(
-        1,
-        sub_id,
-        cat_id,
-        (sort = ""),
-        (search = ""),
-        st_price,
-        en_price
-      );
+      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
     },
   });
   $("#priceRange").val(
@@ -46,15 +38,7 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(
-        1,
-        sub_id,
-        cat_id,
-        (sort = ""),
-        (search = ""),
-        st_price,
-        en_price
-      );
+      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
     },
   });
   $("#priceRange_mob").val(
@@ -63,7 +47,6 @@ $(function () {
       $("#price-range_mob").slider("values", 1)
   );
 });
-
 
 function onload(
   page,
@@ -133,23 +116,24 @@ function onload(
 
 // calender
 $(document).ready(function () {
-  $('#calendar').datepicker({
+  $("#calendar").datepicker({
     inline: true,
     firstDay: 1,
     showOtherMonths: true,
-    dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  })
+    dayNamesMin: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  });
 });
 
 // chnage-password-form
 $(document).ready(function () {
   $(".new-add").click(function () {
     $(".ship-address").show();
+    $("#addAddress").html(language.Save);
   });
 
   $(".ship-close").click(function () {
     $(".ship-address").hide();
-  })
+  });
 });
 
 // -----counter-js---
@@ -178,13 +162,13 @@ $(document).ready(function () {
 
 // ---------my-acoount-table-js--
 $(document).ready(function () {
-  $('#table-two-axis').basictable();
+  $("#table-two-axis").basictable();
 });
 
 // <!-- --responisive-table-js--- -->
 $(document).ready(function () {
-  $('#table-two-axis').basictable();
-})
+  $("#table-two-axis").basictable();
+});
 
 // -----checkout-page-accordion----
 $(document).ready(function () {
@@ -197,25 +181,26 @@ $(document).ready(function () {
   });
 });
 
-
 // -----product-detail-accordion---
 // ---- ---- Const ---- ---- //
-const accordionContent = document.querySelectorAll('.product-accordion-content');
+const accordionContent = document.querySelectorAll(
+  ".product-accordion-content"
+);
 
 // ---- ---- Class .open ---- ---- //
 accordionContent.forEach((item, index) => {
-  let header = item.querySelector('.header');
-  header.addEventListener('click', () => {
-    item.classList.toggle('open');
+  let header = item.querySelector(".header");
+  header.addEventListener("click", () => {
+    item.classList.toggle("open");
 
     // ---- ---- Height Description and Change Icon ---- ---- //
-    let description = item.querySelector('.description');
-    if (item.classList.contains('open')) {
+    let description = item.querySelector(".description");
+    if (item.classList.contains("open")) {
       description.style.height = `${description.scrollHeight}px`;
-      item.querySelector('i').classList.replace('fa-plus', 'fa-minus');
+      item.querySelector("i").classList.replace("fa-plus", "fa-minus");
     } else {
-      description.style.height = '0px';
-      item.querySelector('i').classList.replace('fa-minus', 'fa-plus');
+      description.style.height = "0px";
+      item.querySelector("i").classList.replace("fa-minus", "fa-plus");
     }
     removeOpen(index);
   });
@@ -224,10 +209,10 @@ accordionContent.forEach((item, index) => {
 function removeOpen(index1) {
   accordionContent.forEach((item2, index2) => {
     if (index1 != index2) {
-      item2.classList.remove('open');
-      let descr = item2.querySelector('.description');
-      descr.style.height = '0px';
-      item2.querySelector('i').classList.replace('fa-minus', 'fa-plus');
+      item2.classList.remove("open");
+      let descr = item2.querySelector(".description");
+      descr.style.height = "0px";
+      item2.querySelector("i").classList.replace("fa-minus", "fa-plus");
     }
   });
 }
@@ -237,31 +222,17 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 btn.onclick = function () {
-  var url = $('#url').val();
-  $('#RegisterForm').attr('action', url + 'users_account/users/add_address');
-  $('#RegisterForm')[0].reset();
+  var url = $("#url").val();
+  $("#RegisterForm").attr("action", url + "users_account/users/add_address");
+  $("#RegisterForm")[0].reset();
   modal.style.display = "block";
-}
+};
 span.onclick = function (event) {
   modal.style.display = "none";
-}
+};
 
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
