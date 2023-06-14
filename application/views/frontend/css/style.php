@@ -530,9 +530,9 @@
         $headerBackground = "#fff";
         $navbarColor = "#20B833";
         $cartBtnBackground = "#20B833";
-        $cartBtnColor = "#000";
+        $cartBtnColor = "#fff";
         $loginBtnBackground = "#20B833";
-        $loginBtnColor = "#000";
+        $loginBtnColor = "#fff";
         $loginBtnborder = "#20B833";
         $logoWidth = "120px";
         $abtImgWidth = "350px";
