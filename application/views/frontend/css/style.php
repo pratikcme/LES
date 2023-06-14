@@ -520,25 +520,26 @@
         $categoryActiveBg = "#fff";
         $categoryActiveColor = "#fff";
      }else if ($_SERVER['SERVER_NAME'] == 'ogworld.in' ||  $_SERVER['SERVER_NAME'] == 'www.ogworld.in') {
-        $primaryColor = "#2ebc41";
-        $secondaryColor = "#000";
+        $primaryColor = "#000000";
+        $secondaryColor = "#fed418";
+        $lightColor =  "#fff";
+        $borderColor = "#fed418";
+        $borderColor2 = "#fed418";
         $lightPrimary = "#ff774b";
-        $lightColor = "#fff";
-        $borderColor = "#0f8b1f";
-        $borderColor2 = "#043d79";
-        $headerBackground = "#e1eaf4";
-        // $headerBackground = "#fff";
-        $navbarColor = "#818181";
-        $cartBtnBackground = "#2ebc41";
+        $headerBackground = "#000";
+        $navbarColor = "#fed418";
+        $cartBtnBackground = "#fed418";
         $cartBtnColor = "#fff";
-        $loginBtnBackground = "#2ebc41";
+        $loginBtnBackground = "#fed418";
         $loginBtnColor = "#fff";
-        $loginBtnborder = "#0f8b1f";
-        $logoWidth = "150px";
-        $hvrClr = "#0c65c5";
-        $categoryColor = "#fff";
+        $loginBtnborder = "#fed418";
+        $logoWidth = "120px";
+        $abtImgWidth = "350px";
+        $hvrClr = "#fcfcfc";
+        $cartNum =  "#000";
+        $categoryColor = "#000";
         $categoryActiveBg = "#fff";
-        $categoryActiveColor = "#004A99";
+        $categoryActiveColor = "#fff";
         
      }else{
         $primaryColor = "#113A8E";
