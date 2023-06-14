@@ -476,7 +476,7 @@
         $categoryColor = "#000";
         $categoryActiveBg = "#fff";
         $categoryActiveColor = "#fff";
-    } elseif ($_SERVER['SERVER_NAME'] == 'demo.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.demo.launchestore.com') { 
+    } else if ($_SERVER['SERVER_NAME'] == 'demo.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.demo.launchestore.com') { 
         $primaryColor = "#113A8E";
         $secondaryColor = "#113A8E";
         $lightColor =  "#fff";
@@ -530,13 +530,13 @@
         $headerBackground = "#fff";
         $navbarColor = "#20B833";
         $cartBtnBackground = "#20B833";
-        $cartBtnColor = "#000";
+        $cartBtnColor = "#fff";
         $loginBtnBackground = "#20B833";
         $loginBtnColor = "#fff";
         $loginBtnborder = "#20B833";
         $logoWidth = "120px";
         $abtImgWidth = "350px";
-        $hvrClr = "#fcfcfc";
+        $hvrClr = "#1A1A1A";
         $cartNum =  "#000";
         $categoryColor = "#000";
         $categoryActiveBg = "#fff";
