@@ -89,7 +89,7 @@
                                 <?php } ?>
 
                             </div>
-                            <div> <span><?= "(" . count($product_review)  . ")" ?> </span></div>
+                            <div> <span><?= "(" . $value->reviewCount  . ")" ?> </span></div>
                         </div>
 
                     </h5>

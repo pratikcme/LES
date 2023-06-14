@@ -246,6 +246,7 @@ class Products extends User_Controller
 
 			$addQuantity = $this->product_model->findProductAddQuantity($value->id, $value->pw_id);
 			$value->addQuantity = $addQuantity;
+			$value->reviewCount = count($this->this_model->getProductReview($value->id, $value->pw_id)); //Dk added
 		}
 		$data['productDetail'][0]->brand_name = $brand_name;
 		$data['related_product'] = $related_product;
