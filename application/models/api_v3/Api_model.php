@@ -110,9 +110,9 @@ class Api_model extends My_model
             }
             //update with selected records
             $data['where']['id'] = $getUser[0]->id;
-            $data['update']['fname'] = $postData['fname'];
-            $data['update']['lname'] = $postData['lname'];
-            $data['update']['email'] = $postData['email'];
+            $data['update']['fname'] = (isset($postData['fname']) && $postData['fname'] != '' ) ?  $postData['fname'] : $getUser[0]->fname;
+            $data['update']['lname'] = (isset($postData['lname']) && $postData['lname'] != '') ?   $postData['lname'] : $getUser[0]->lname ;
+            $data['update']['email'] = (isset($postData['email']) && $postData['email'] != '') ?   $postData['email'] : $getUser[0]->email;
             $data['table'] = 'user';
 
             $this->updateRecords($data);
