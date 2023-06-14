@@ -539,7 +539,7 @@
         $categoryColor = "#fff";
         $categoryActiveBg = "#fff";
         $categoryActiveColor = "#004A99";
-        .";
+        
      }else{
         $primaryColor = "#113A8E";
         $secondaryColor = "#113A8E";
