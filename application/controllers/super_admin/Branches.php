@@ -55,9 +55,6 @@ class Branches extends Super_Admin_Controller
 			if ($responce) {
 				$this->utility->setFlashMessage('success', 'Vendor updated successfully');
 				redirect(base_url() . $this->url);
-			} else {
-				$this->utility->setFlashMessage('danger', 'Somthing went Wrong');
-				redirect(base_url() . $this->url);
 			}
 		}
 		$this->load->view(SUPER_ADMIN_LAYOUT, $data);
