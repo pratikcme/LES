@@ -175,7 +175,8 @@
                                             class="fa-solid fa-minus"></i></button>
                                     <input type="text" name="qty" class="input-qty qty"
                                         value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
-                                        data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                                        data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>"
+                                        readonly>
                                     <button class="qty-btn-plus inc cart-qty-plus"
                                         data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
                                             class="fa-solid fa-plus"></i></button>
@@ -356,7 +357,8 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                                         class="fa-solid fa-minus"></i></button>
                                 <input type="text" name="qty" class="input-qty qty"
                                     value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
-                                    data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>">
+                                    data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>"
+                                    readonly>
                                 <button class="qty-btn-plus inc cart-qty-plus"
                                     data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
                                         class="fa-solid fa-plus"></i></button>

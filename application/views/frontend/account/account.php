@@ -175,6 +175,8 @@ label.error {
                                         <div class="input-wrapper">
                                             <span><i class="far fa-envelope"></i></span>
                                             <input type="text" id="otp" name="otp" placeholder="otp">
+                                            <label for="otp" id="otpError"
+                                                class="error"><?= form_error('otpError') ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mt-4 ">

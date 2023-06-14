@@ -378,7 +378,7 @@ $("#myInputMobile").autocomplete({
 
 $(document).on("click", ".dec", function () {
   $(this).prop("disabled", true);
-  var that = $(this);
+  // var that = $(this);
 
   // $(this).parent().addClass('transparent-wrap');
   var product_weight_id = $(this).attr("data-product_weight_id");
@@ -389,7 +389,7 @@ $(document).on("click", ".dec", function () {
   var url = $("#url").val();
   var shipping_charge = $("#shipingCharge").val();
   shipping_charge = parseFloat(shipping_charge);
-  var that = $(this);
+  var that = $(".dec_" + product_weight_id);
   if (quantity <= 0) {
     $(this).next("input").val(1);
 
@@ -472,6 +472,7 @@ $(document).on("click", ".dec", function () {
         // window.location.reload();
         if (output.errormsg == "") {
           $("#display_subtotal").html(siteCurrency + output.final_total);
+          that.next("input").val(output.new_quan);
         } else {
           that.next("input").val(output.max_qun);
           swal(output.errormsg);
@@ -487,9 +488,10 @@ $(document).on("click", ".dec", function () {
 $(document).on("click", ".inc", function () {
   $(this).prop("disabled", true);
   // $(this).parent().addClass('transparent-wrap');
-  var that = $(this);
+
   var product_weight_id = $(this).attr("data-product_weight_id");
   var quantity = $(this).prev("input").val();
+  var that = $(".inc_" + product_weight_id);
 
   var product_id = $(this).prev("input").data("product_id");
   var weight_id = $(this).prev("input").data("weight_id");
@@ -527,6 +529,7 @@ $(document).on("click", ".inc", function () {
         that.parent().removeClass("transparent-wrap");
         if (output.errormsg == "") {
           $("#display_subtotal").html(output.final_total);
+          that.prev("input").val(output.new_quan);
         } else {
           // that.prev('input').val(quantity - 1);
           that.prev("input").val(output.max_qun);

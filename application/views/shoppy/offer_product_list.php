@@ -92,15 +92,15 @@
 
                             ?>
                             <div>
-                                <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_varient_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
+                                <button type="button" class="add-cart-btn addcartbutton product_<?= $this->utility->safe_b64encode($value->product_id) ?> <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->product_id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_varient_id) ?>"><span><i class="fa-solid fa-cart-shopping"></i></span>Add to
                                     Cart
                                 </button>
                             </div>
                             <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                                 <div class="qty-container">
-                                    <button class="qty-btn-minus dec cart-qty-minus" data-product_weight_id="<?= $value->product_varient_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                    <button class="qty-btn-minus dec dec_<?= $value->product_varient_id ?> cart-qty-minus" data-product_weight_id="<?= $value->product_varient_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
                                     <input type="text" name="qty" value="1" class="input-qty qty" value="<?= $addQuantity ?>" data-product_id="<?= $value->product_id ?>" data-weight_id="<?= $value->weight_id ?>">
-                                    <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->product_varient_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                                    <button class="qty-btn-plus inc inc_<?= $value->product_varient_id ?> cart-qty-plus" data-product_weight_id="<?= $value->product_varient_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                                 </div>
                             </div>
                         </div>

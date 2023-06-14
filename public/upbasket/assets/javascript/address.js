@@ -46,9 +46,8 @@ function checkNumber() {
     $("#btnAccSubmit").val(language.send_otp);
     $("#btnAccSubmit").addClass("otp");
     $("#btnAccSubmit").attr("type", "button");
-    console.log("yes");
   } else {
-    $("#btnAccSubmit").val(language.Save);
+    $("#btnAccSubmit").val(language.Update);
     $("#btnAccSubmit").removeClass("otp");
     $("#btnAccSubmit").attr("type", "submit");
   }
@@ -65,6 +64,7 @@ $(document).on("click", "#btnAccSubmit", function () {
       $("#mobileErr").html(language.Please_enter_mobile_number);
       return false;
     }
+
     $.ajax({
       url: url + "users_account/users/sendOtpAccount",
       data: { country_code: country_code, phone: phone },
@@ -77,7 +77,7 @@ $(document).on("click", "#btnAccSubmit", function () {
 
           $("#frmBtn").html("varify otp");
 
-          $("#btnAccSubmit").html("Save");
+          $("#btnAccSubmit").val(language.Update);
           $("#btnAccSubmit").removeClass("otp");
           $("#btnAccSubmit").attr("type", "submit");
         } else {

@@ -155,6 +155,8 @@
                                             <label for="otp" class="form-label">Otp<span>*</span></label>
                                             <input type="text" id="otp" name="otp"
                                                 placeholder="<?= $this->lang->line('otp') ?>">
+                                            <label for="otp" id="otpError"
+                                                class="error"><?= form_error('otpError') ?></label>
                                         </div>
                                     </div>
                                     <div class="tab-save-btn">

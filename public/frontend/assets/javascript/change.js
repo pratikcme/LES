@@ -125,6 +125,16 @@ var CHANGE = (function () {
         },
       },
       submitHandler: function (form) {
+        if ($("#otp").val().trim() == "") {
+          $("#otpError").text("Please enter otp");
+          $("#otpError").css("display", "block");
+          return;
+        } else if ($("#otp").val().trim().length !== 4) {
+          $("#otpError").text("Otp should be 4 digits exact!");
+          $("#otpError").css("display", "block");
+          return;
+        }
+
         $("body").attr("disabled", "disabled");
         $("#btnSubmit").attr("disabled", "disabled");
         $("#btnSubmit").value("please wait");

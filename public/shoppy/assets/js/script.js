@@ -155,7 +155,7 @@ $(document).ready(function () {
 });
 
 $(".simple").owlCarousel({
-  loop: true,
+  loop: false,
   margin: 20,
   items: 2,
   nav: true,

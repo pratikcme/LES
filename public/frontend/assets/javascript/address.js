@@ -77,7 +77,8 @@ $(document).on("click", "#btnAccSubmit", function () {
 
           $("#frmBtn").html("varify otp");
 
-          $("#btnAccSubmit").html("Save");
+          // $("#btnAccSubmit").html("Save");
+          $("#btnAccSubmit").val(language.Update);
           $("#btnAccSubmit").removeClass("otp");
           $("#btnAccSubmit").attr("type", "submit");
         } else {

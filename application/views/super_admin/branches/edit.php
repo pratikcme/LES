@@ -126,7 +126,7 @@
             </div>
             <div class="col-lg-3">
               <div class="form-group">
-                <label for="ios_isforce">Display Dilivery Date&time</label>
+                <label for="ios_isforce">Display Delivery Date&time</label>
                 <div class="row">
                   <div class="col-sm-9">
                     <select class="form-control" name="delivery_time_date">
