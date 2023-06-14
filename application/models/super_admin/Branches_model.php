@@ -60,6 +60,9 @@ class Branches_model extends My_model
 		$data['table'] = TABLE_BRANCH;
 		$data['update'] = $updateArray;
 		$data['where'] = ['id' => $id];
-		return $this->updateRecords($data);
+
+		/* return */
+		$this->updateRecords($data);
+		lq();
 	}
 }
