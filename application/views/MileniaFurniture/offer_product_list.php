@@ -99,7 +99,7 @@
                                     <?php } ?>
                                 </div>
                                 <div>
-                                    <p>( <?= isset($value->rating) ? $value->rating : "0" ?> reviews )</p>
+                                    <p>( <?= $value->reviewCount  ?> reviews )</p>
                                 </div>
                             </div>
 
