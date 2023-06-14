@@ -532,11 +532,11 @@
         $cartBtnBackground = "#20B833";
         $cartBtnColor = "#000";
         $loginBtnBackground = "#20B833";
-        $loginBtnColor = "#fff";
+        $loginBtnColor = "#000";
         $loginBtnborder = "#20B833";
         $logoWidth = "120px";
         $abtImgWidth = "350px";
-        $hvrClr = "#fcfcfc";
+        $hvrClr = "#1A1A1A";
         $cartNum =  "#000";
         $categoryColor = "#000";
         $categoryActiveBg = "#fff";
