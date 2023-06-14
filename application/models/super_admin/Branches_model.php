@@ -46,7 +46,6 @@ class Branches_model extends My_model
 		// dd($postData);
 		$updateArray = [
 			'email' =>	$postData['email'],
-			'store_type' =>	$postData['store_type'],
 			'delivery_by' =>	$postData['delivery_by'],
 			'isOnlinePayment' =>	$postData['isOnlinePayment'],
 			'selfPickUp' =>	$postData['selfPickUp'],
