@@ -52,7 +52,6 @@ class Branches extends Super_Admin_Controller
 		$data['FormAction'] = base_url() . $this->url . 'edit/' . $branch_id;
 		if ($this->input->post()) {
 			$responce = $this->this_model->updateBranch($d_id, $this->input->post());
-			dd($responce);
 			if ($responce) {
 				$this->utility->setFlashMessage('success', 'Vendor updated successfully');
 				redirect(base_url() . $this->url);
