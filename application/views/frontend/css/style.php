@@ -519,20 +519,21 @@
         $categoryColor = "#000";
         $categoryActiveBg = "#fff";
         $categoryActiveColor = "#fff";
-     }else if ($_SERVER['SERVER_NAME'] == 'ogworld.in' ||  $_SERVER['SERVER_NAME'] == 'www.ogworld.in') {
-        $primaryColor = "#000000";
-        $secondaryColor = "#fed418";
+     }elseif($_SERVER['SERVER_NAME'] == 'ogworld.in' ||  $_SERVER['SERVER_NAME'] == 'www.ogworld.in') {
+
+        $primaryColor = "#20B833";
+        $secondaryColor = "#1A1A1A";
         $lightColor =  "#fff";
-        $borderColor = "#fed418";
-        $borderColor2 = "#fed418";
+        $borderColor = "#20B833";
+        $borderColor2 = "#20B833";
         $lightPrimary = "#ff774b";
-        $headerBackground = "#000";
-        $navbarColor = "#fed418";
-        $cartBtnBackground = "#fed418";
-        $cartBtnColor = "#fff";
-        $loginBtnBackground = "#fed418";
+        $headerBackground = "#fff";
+        $navbarColor = "#20B833";
+        $cartBtnBackground = "#20B833";
+        $cartBtnColor = "#000";
+        $loginBtnBackground = "#20B833";
         $loginBtnColor = "#fff";
-        $loginBtnborder = "#fed418";
+        $loginBtnborder = "#20B833";
         $logoWidth = "120px";
         $abtImgWidth = "350px";
         $hvrClr = "#fcfcfc";
