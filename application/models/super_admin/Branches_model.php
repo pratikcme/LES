@@ -43,7 +43,6 @@ class Branches_model extends My_model
 
 	public function updateBranch($id, $postData)
 	{
-		dd($postData);
 		$updateArray = [
 			'email' =>	$postData['email'],
 			'delivery_by' =>	$postData['delivery_by'],
