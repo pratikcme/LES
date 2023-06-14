@@ -540,7 +540,6 @@
         $categoryColor = "#000";
         $categoryActiveBg = "#fff";
         $categoryActiveColor = "#fff";
-        
      }else{
         $primaryColor = "#113A8E";
         $secondaryColor = "#113A8E";
