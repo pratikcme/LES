@@ -526,7 +526,7 @@
         $lightColor = "#fff";
         $borderColor = "#0f8b1f";
         $borderColor2 = "#043d79";
-        $darkHeaderBackground = "#e1eaf4";
+        $headerBackground = "#e1eaf4";
         // $headerBackground = "#fff";
         $navbarColor = "#818181";
         $cartBtnBackground = "#2ebc41";
