@@ -1243,4 +1243,41 @@ class product_model extends My_model
             return "true";
         }
     }
+
+    public function updateCheck()
+    {
+        $data['select'] = ['*', 'w.id as product_weight_id'];
+        $data['table'] = ['product_weight as w'];
+        $data['join'] = ['product as p' => ['p.id = w.product_id', 'LEFT']];
+
+        $res = $this->selectFromJoin($data);
+
+        foreach ($res as $val) :
+
+            $discount_price_cal = numberFormat(($val->price * $val->discount_per) / 100);
+
+
+            $discount_price = numberFormat($val->price - $discount_price_cal);
+
+            $gst_amount = numberFormat(($discount_price * $val->gst) / 100);
+            $product_price_without_gst = numberFormat(numberFormat($discount_price) - $gst_amount);
+
+            unset($data);
+            $data['update'] = ['without_gst_price' => $product_price_without_gst, 'discount_price' => $discount_price];
+            $data['table'] = TABLE_PRODUCT_WEIGHT;
+
+            $data['where'] = ['id' => $val->product_weight_id];
+            $this->updateRecords($data);
+
+        endforeach;
+        dd("done");
+        // $discount_price_cal = (($price * $discount_per) / 100);
+        // $discount_price = $price - $discount_price_cal;
+
+        // $final_discount_price = number_format((float)$discount_price, 2, '.', '');
+
+        // $gst_amount = numberFormat(($final_discount_price * $gst_percent) / 100);
+        // $product_price_without_gst = numberFormat(numberFormat($final_discount_price) - $gst_amount);
+
+    }
 }
