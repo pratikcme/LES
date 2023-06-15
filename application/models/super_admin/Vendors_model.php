@@ -106,6 +106,7 @@ class Vendors_model extends My_model
 			'locality' => $postData['locality'],
 			'language_support' => $postData['language_support'],
 			'theme_name' =>  $postData['theme_name'],
+			'supported_language' =>implode(',',$postData['supported_language'])
 		);
 
 		$lastInsertedVendor_id = $this->insertData(ADMIN, $array);
@@ -478,6 +479,7 @@ class Vendors_model extends My_model
 
 	public function updateVendors($vendor_id, $postData)
 	{
+		
 		$updateArray = [
 			'email'			 		 =>	$postData['email'],
 			'approved_branch'		 =>	$postData['approved'],
@@ -493,7 +495,8 @@ class Vendors_model extends My_model
 			'language_support' 		 => $postData['language_support'],
 			'multi_language'         => $postData['multi_language'],
 			'dt_updated'			 => strtotime(DATE_TIME),
-			'theme_name' => $postData['theme_name']
+			'theme_name' => $postData['theme_name'],
+			'supported_language' 	 => implode(',',$postData['supported_language'])
 		];
 		$data['table'] = ADMIN;
 		$data['update'] = $updateArray;

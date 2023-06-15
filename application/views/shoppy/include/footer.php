@@ -286,7 +286,7 @@ if (!empty($js)) {
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: deLang,
-            includedLanguages: 'ar,en'
+            includedLanguages: '<?=$supported_language?>'
         }, 'google_translate_element');
     }
     // setTimeout(()=>{
@@ -319,7 +319,7 @@ if (!empty($js)) {
             }
             new google.translate.TranslateElement({
                 pageLanguage: deLang,
-                includedLanguages: 'ar,en'
+                includedLanguages: '<?=$supported_language?>'
             }, 'google_translate_element');
             // window.location.reload();        
             //     }
