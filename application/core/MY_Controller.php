@@ -140,7 +140,6 @@ class User_Controller extends MY_Controller
         }
         $this->load->model($this->myvalues->vendorFrontEnd['model'], 'vendor_model');
         $response = $this->vendor_model->ApprovedVendor();
-
         if (!empty($response)) {
             if ($response[0]->status == '0') {
                 echo '<h3 style = "text-align: center;font-size: xxx-large;">Your Account is Inactive.</h3>
@@ -195,7 +194,9 @@ class User_Controller extends MY_Controller
     }
 
     function loadView($layout, $data)
-    {
+    {   
+        $res= $this->vendor_model->ApprovedVendor();
+        $data['supported_language'] = $res[0]->supported_language;
         $this->load->model($this->myvalues->contactFrontEnd['model'], 'contact');
         $this->load->model($this->myvalues->homeFrontEnd['model'], 'home');
         // $this->load->model($this->myvalues->usersAccount['model'],'users');
@@ -436,9 +437,9 @@ class Super_Admin_Controller extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        // if ($this->session->userdata['validSuperAdmin'] == '') {
-        //     redirect(base_url() . 'admin');
-        // }
+        if ($this->session->userdata['validSuperAdmin'] == '') {
+            redirect(base_url() . 'admin');
+        }
         $this->title = 'LaunchEstore';
     }
 }

@@ -109,6 +109,16 @@ span.error {
                               </select>
                           </div>
                       </div>
+                      <div class="col-lg-4">
+                          <div class="form-group">
+                              <label for="supported_language">Supported Language</label>
+                              <?php $launguage = explode(',',$editData[0]->supported_language); ?>
+                                English
+                                  <input type="checkbox" name="supported_language[]" value="en" <?=(in_array('en',$launguage)) ? "checked" : ''?>/>
+                                Arabic
+                                <input type="checkbox" name="supported_language[]" value="ar" <?=(in_array('ar',$launguage)) ? "checked" : ''?>/>
+                          </div>
+                      </div>
                       <!-- new Dipesh -->
                       <div class="col-lg-4 ">
                           <div class="form-group">

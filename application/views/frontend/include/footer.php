@@ -441,7 +441,7 @@ var deLang = document.getElementById("site_lang").value;
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
         pageLanguage: deLang,
-        includedLanguages: 'ar,en'
+        includedLanguages: '<?=$supported_language?>'
     }, 'google_translate_element');
 }
 // setTimeout(()=>{
@@ -475,7 +475,7 @@ $(document).on('change', '.goog-te-combo', function() {
         }
         new google.translate.TranslateElement({
             pageLanguage: deLang,
-            includedLanguages: 'ar,en'
+            includedLanguages: '<?=$supported_language?>'
         }, 'google_translate_element');
         // window.location.reload();        
         //     }
