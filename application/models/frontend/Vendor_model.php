@@ -87,6 +87,16 @@ class Vendor_model extends My_model
 		return $this->selectRecords($data);
 	}
 
+	// Dk added
+	public function getMultiLanguage($vendor_id)
+	{
+		$data['table'] = ADMIN;
+		$data['select'] = ['*'];
+		$data['where'] = ['id' => $vendor_id];
+		return $this->selectRecords($data);
+	}
+	// 
+
 	public function searchVendor($vendorName)
 	{
 		// print_r($vendorName);exit;
@@ -103,7 +113,8 @@ class Vendor_model extends My_model
 		// echo $this->db->last_query();
 	}
 
-	public function getLiveChatData(){
+	public function getLiveChatData()
+	{
 		$data['table'] = TABLE_LIVE_CHAT_CREDS;
 		$data['select'] = ['*'];
 		$data['where'] = ['vendor_id' => $this->session->userdata('vendor_id')];

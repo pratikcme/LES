@@ -150,7 +150,7 @@ class User_Controller extends MY_Controller
         }
         if ($this->session->userdata('template_name') == '' || $this->session->userdata('template_name') != $response[0]->theme_name) {
             $_SESSION['template_name'] = $response[0]->theme_name;
-            if(!isset($response[0]->theme_name)){
+            if (!isset($response[0]->theme_name)) {
                 $_SESSION['template_name'] = 'frontend';
             }
         }
@@ -211,6 +211,8 @@ class User_Controller extends MY_Controller
         $this->load->model('frontend/vendor_model', 'vendor_model');
         $data['branch_nav'] = $this->vendor_model->branchList();
         $data['liveChat'] = $this->vendor_model->getLiveChatData();
+
+        $data['multi_language'] = $this->vendor_model->getMultiLanguage($this->session->userdata('vendor_id'));
 
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
         $data['language_support'] = ($data['ApprovedBranch'][0]->language_support == '1') ? 'ar' : 'en';

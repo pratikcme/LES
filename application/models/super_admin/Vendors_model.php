@@ -491,6 +491,7 @@ class Vendors_model extends My_model
 			'display_price_with_gst' =>	$postData['display_price_with_gst'],
 			'locality'				 => $postData['locality'],
 			'language_support' 		 => $postData['language_support'],
+			'multi_language'         => $postData['multi_language'],
 			'dt_updated'			 => strtotime(DATE_TIME),
 			'theme_name' => $postData['theme_name']
 		];
