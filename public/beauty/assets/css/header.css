@@ -37,6 +37,10 @@ header {
   align-items: center;
 }
 
+.header-top .logo img{
+  max-width: 180px;
+}
+
 .social-icons {
   display: flex;
   align-items: center;
@@ -554,6 +558,10 @@ nav .left-content a:hover {
   .goog-te-gadget .goog-te-combo
   {
     width: 60px !important;
+  }
+
+  .header-top .logo img{
+    max-width: 100px;
   }
 }
 
