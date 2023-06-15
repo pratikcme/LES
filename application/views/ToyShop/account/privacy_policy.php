@@ -1,4 +1,5 @@
-<section class="hero-section banner common-banner-bg">
+<section class="banner login-section common-banner-bg">
+    <img src="<?= $this->theme_base_url ?>/assets/img/common-star-bg.png" alt="" class="common-star-bg">
     <div class="container">
         <div class="row">
             <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
@@ -15,7 +16,7 @@
     </div>
 </section>
 
-<section class="privay-policy p-100">
+<section class="privacy-policy p-100">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
