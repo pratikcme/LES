@@ -1,9 +1,10 @@
 <?php
 
-if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
+// if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
+    if ($_SERVER['SERVER_NAME'] == 'localhost' ||  $_SERVER['SERVER_NAME'] == 'localhost') {
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
-    $commonPeraColor = "#555261";
+    $commonPeraColor = "#FF0000";
 
     $primaryColor = "#0F053F";
     $secondaryColor = "#fed418";
