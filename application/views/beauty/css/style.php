@@ -1,12 +1,12 @@
 <?php
 
-// if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
-    if ($_SERVER['SERVER_NAME'] == 'localhost' ||  $_SERVER['SERVER_NAME'] == 'localhost') {
+if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
+    
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#FF0000";
 
-    $primaryColor = "#0F053F";
+    $primaryColor = "#0F0000";
     $secondaryColor = "#fed418";
 
     $primaryPink = "#F92672";
@@ -15,7 +15,7 @@
 
     $primaryBoxShadow = "0px 20px 50px rgba(43, 174, 74, 0.15)";
 
-    $titleFirstColor = "#0F053F";
+    $titleFirstColor = "#FED418";
     $commonPeraColor = "#868390";
     $commonBtnColor = "#11405A";
     $commonBtnShadow = " 0px 7px 20px rgba(17, 64, 90, 0.2)";
