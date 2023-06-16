@@ -96,7 +96,7 @@
 
                             <div class="sign-in-btn">
                                 <button type="button" id="frmBtn"
-                                    class="lg-btn"><?= $this->lang->line('Send Code') ?></button>
+                                    class="lg-btn send"><?= $this->lang->line('Send Code') ?></button>
                             </div>
 
                         </form>
