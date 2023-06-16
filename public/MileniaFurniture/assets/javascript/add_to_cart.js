@@ -9,7 +9,10 @@ $(document).on("click", ".addcartbutton", function () {
 
   var siteCurrency = $("#siteCurrency").val(); // currency is dynamic
   if (qnt == 0) {
-    $(this).next("div").find("input:text").val("1");
+    $(".product_" + product_id)
+      .next("div")
+      .find("input:text")
+      .val("1");
     return false;
   }
 
@@ -28,15 +31,15 @@ $(document).on("click", ".addcartbutton", function () {
         return false;
       }
       $("#itemCountMobile").addClass("d-none");
-
+      let productClass = $(".product_" + product_id);
       if (output.count >= 1) {
-        that
+        productClass
           .parent()
           .parent()
           .next("div")
           .find("div.product-detail-quentity")
           .removeClass("d-none");
-        that.addClass("d-none");
+        productClass.addClass("d-none");
 
         $("#itemCount").css("display", "block");
         $("#itemCountMobile").html(output.count);

@@ -157,11 +157,14 @@
                                              <label for="otp" class="form-label">Otp<span>*</span></label>
                                              <input type="text" class="form-control" id="otp" name="otp"
                                                  placeholder="<?= $this->lang->line('otp') ?>">
+                                             <label for="otp" id="otpError"
+                                                 class="error"><?= form_error('otpError') ?></label>
                                          </div>
                                      </div>
                                      <div class="tab-save-btn">
                                          <input type="submit" class="common-input-btn" id="btnAccSubmit"
-                                             value="<?= $this->lang->line('Save') ?>" />
+                                             value="<?= $this->lang->line('Update') ?>" />
+
                                      </div>
                                  </div>
                              </form>
@@ -923,7 +926,7 @@
                                      </div>
                                      <div class="tab-save-btn">
                                          <button type="submit" class="common-input-btn btn"
-                                             id="btnChangeUserPass"><?= $this->lang->line('Submit') ?></button>
+                                             id="btnChangeUserPass"><?= $this->lang->line('Change Password') ?></button>
                                          <!-- <input class="common-input-btn" type="submit" value="Submit"/> -->
                                      </div>
                                  </div>

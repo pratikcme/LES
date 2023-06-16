@@ -50,25 +50,25 @@
                      <span class="star star-active"></span>
                      <?php } ?>
                  </div>
-                 <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
+                 <div><span>(<?= $value->reviewCount ?>)</span></div>
              </div>
              <div>
 
-                 <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>"
+                 <button type="button"
+                     class="add-cart-btn addcartbutton product_<?= $this->utility->safe_b64encode($value->id) ?>  <?= $d_none ?>"
                      data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
                      data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><span><i
                              class="fa-solid fa-cart-shopping"></i></span> <?= $this->lang->line('add to cart'); ?>
-
                  </button>
              </div>
              <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                  <div class="qty-container">
-                     <button class="qty-btn-minus dec cart-qty-minus"
+                     <button class="qty-btn-minus dec dec_<?= $value->product_weight_id ?> cart-qty-minus"
                          data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i
                              class="fa-solid fa-minus"></i></button>
                      <input type="text" name="qty" class="input-qty qty" value="<?= $addQuantity ?>"
                          data-product_id="<?= $value->prod_id ?>" data-weight_id="<?= $value->product_weight_id ?>">
-                     <button class="qty-btn-plus inc cart-qty-plus"
+                     <button class="qty-btn-plus inc inc_<?= $value->product_weight_id ?> cart-qty-plus"
                          data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i
                              class="fa-solid fa-plus"></i></button>
                  </div>

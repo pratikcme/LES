@@ -106,6 +106,7 @@ class Vendors_model extends My_model
 			'locality' => $postData['locality'],
 			'language_support' => $postData['language_support'],
 			'theme_name' =>  $postData['theme_name'],
+			'supported_language' =>implode(',',$postData['supported_language'])
 		);
 
 		$lastInsertedVendor_id = $this->insertData(ADMIN, $array);
@@ -478,6 +479,7 @@ class Vendors_model extends My_model
 
 	public function updateVendors($vendor_id, $postData)
 	{
+		
 		$updateArray = [
 			'email'			 		 =>	$postData['email'],
 			'approved_branch'		 =>	$postData['approved'],
@@ -491,8 +493,10 @@ class Vendors_model extends My_model
 			'display_price_with_gst' =>	$postData['display_price_with_gst'],
 			'locality'				 => $postData['locality'],
 			'language_support' 		 => $postData['language_support'],
+			'multi_language'         => $postData['multi_language'],
 			'dt_updated'			 => strtotime(DATE_TIME),
-			'theme_name' => $postData['theme_name']
+			'theme_name' => $postData['theme_name'],
+			'supported_language' 	 => implode(',',$postData['supported_language'])
 		];
 		$data['table'] = ADMIN;
 		$data['update'] = $updateArray;
@@ -500,6 +504,23 @@ class Vendors_model extends My_model
 		return $this->updateRecords($data);
 		lq();
 	}
+
+	// Dk added
+	public function updateVersionLogs($vendor_id, $postData)
+	{
+		$data['insert'] =  [
+			'which_vendor'           => $vendor_id,
+			'android_version'		 =>	$postData['android_version'],
+			'ios_version'	 		 =>	$postData['ios_version'],
+			'android_isforce'		 =>	$postData['android_isforce'],
+			'ios_isforce'	 		 =>	$postData['ios_isforce'],
+			'dt_added' => DATE_TIME,
+			'dt_updated' => DATE_TIME,
+		];
+		$data['table'] = TABLE_UPDATE_VERSION_LOGS;
+		$this->insertRecord($data);
+	}
+	// 
 
 	public function checkDomainExist($postData)
 	{
@@ -592,17 +613,18 @@ class Vendors_model extends My_model
 		return $this->countRecords($data);
 	}
 
-	public function appVersionUpdate($postData){
+	public function appVersionUpdate($postData)
+	{
 		$postData = [
-			'android_version'=>	$postData['android_version'],
-			'ios_version'=>	$postData['ios_version'],
-			'android_isforce'=>	$postData['android_isforce'],
-			'ios_isforce'=>	$postData['ios_isforce']
+			'android_version' =>	$postData['android_version'],
+			'ios_version' =>	$postData['ios_version'],
+			'android_isforce' =>	$postData['android_isforce'],
+			'ios_isforce' =>	$postData['ios_isforce']
 		];
-		// dd($postData);
+
 		$data['table'] = ADMIN;
 		$data['update'] = $postData;
 		return $this->updateRecords($data);
-		lq();	
+		lq();
 	}
 }

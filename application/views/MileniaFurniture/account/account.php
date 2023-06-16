@@ -114,6 +114,7 @@
                                             <div class="mb-3">
                                                 <label for="phone" class="form-label"><?= $this->lang->line('Mobile Number') ?><span>*</span></label>
                                                 <input type="text" class="form-control phone" id="phone" name="phone" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile Number*') ?>" value="<?= $userDetails[0]->phone ?>">
+                                                <label for="phone" id="mobileErr" class="error"><?= form_error('phone') ?></label>
                                             </div>
                                         </div>
 
@@ -121,10 +122,11 @@
                                             <div class="mb-3">
                                                 <label for="otp" class="form-label"><?= $this->lang->line('Otp') ?><span>*</span></label>
                                                 <input type="text" class="form-control" id="otp" name="otp" placeholder="<?= $this->lang->line('Otp') ?>">
+                                                <label for="otp" id="otpError" class="error"><?= form_error('otpError') ?></label>
                                             </div>
                                         </div>
                                         <div class="tab-save-btn">
-                                            <input type="submit" class="common-input-btn cmn-btn" id="btnAccSubmit" value="<?= $this->lang->line('Save') ?>" />
+                                            <input type="submit" class="common-input-btn cmn-btn" id="btnAccSubmit" value="<?= $this->lang->line('Update') ?>" />
                                         </div>
                                     </div>
                                 </form>
@@ -800,9 +802,9 @@
                                                     </a>
                                                     <div class="product-detail-quentity <?= $d_show ?>">
                                                         <div class="qty-container">
-                                                            <button class="qty-btn-minus dec cart-qty-minus whishlist_area" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
+                                                            <button class="qty-btn-minus dec dec_<?= $value->product_weight_id ?> cart-qty-minus whishlist_area" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
                                                             <input type="text" name="qty" class="input-qty qty " value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->product_id ?>" data-weight_id="<?= $value->weight_id ?>" readonly>
-                                                            <button class="qty-btn-plus inc cart-qty-plus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
+                                                            <button class="qty-btn-plus inc inc_<?= $value->product_weight_id ?> cart-qty-plus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-plus"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -887,7 +889,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-save-btn">
-                                        <button class="cmn-btn" id="btnChangeUserPass" type="submit"><?= $this->lang->line('Submit') ?></button>
+                                        <button class="cmn-btn" id="btnChangeUserPass" type="submit"><?= $this->lang->line('Change Password') ?></button>
                                     </div>
                                 </div>
                             </form>

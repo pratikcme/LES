@@ -428,10 +428,10 @@ $("#myInputMobile").autocomplete({
 
 $(document).on("click", ".dec", function () {
   $(this).prop("disabled", true);
-  var that = $(this);
 
   // $(this).parent().addClass('transparent-wrap');
   var product_weight_id = $(this).attr("data-product_weight_id");
+  var that = $(".dec_" + product_weight_id);
   var quantity = $(this).next("input").val();
   var product_id = $(this).next().data("product_id");
   var weight_id = $(this).next().data("weight_id");
@@ -439,7 +439,7 @@ $(document).on("click", ".dec", function () {
   var url = $("#url").val();
   var shipping_charge = $("#shipingCharge").val();
   shipping_charge = parseFloat(shipping_charge);
-  var that = $(this);
+  // var that = $(this);
 
   if (quantity <= 0) {
     $(this).next("input").val(1);
@@ -472,6 +472,16 @@ $(document).on("click", ".dec", function () {
                 $("#itemCount").css("display", "none");
                 $("#itemCountMobile").addClass("d-none");
               }
+
+              //dk added temp
+
+              if (that.hasClass("whishlist_area")) {
+                // this code execute only if my_account/wishlist section to remove by
+                that.parent().parent().addClass("d-none");
+                that.parent().parent().prev().removeClass("d-none");
+              }
+              //
+
               // segments[4] when live
               if (
                 segments[3] == "productDetails" &&
@@ -534,7 +544,9 @@ $(document).on("click", ".dec", function () {
         $("#updated_list").html(output.updated_list);
         // window.location.reload();
         if (output.errormsg == "") {
+          console.log("here", output);
           $("#display_subtotal").html(siteCurrency + output.final_total);
+          that.next("input").val(output.new_quan);
         } else {
           that.next("input").val(output.max_qun);
           swal(output.errormsg);
@@ -550,10 +562,11 @@ $(document).on("click", ".dec", function () {
 $(document).on("click", ".inc", function () {
   $(this).prop("disabled", true);
   // $(this).parent().addClass('transparent-wrap');
-  var that = $(this);
+  // var that = $(this);
   var product_weight_id = $(this).attr("data-product_weight_id");
   var quantity = $(this).prev("input").val();
 
+  var that = $(".inc_" + product_weight_id);
   var product_id = $(this).prev("input").data("product_id");
   var weight_id = $(this).prev("input").data("weight_id");
   var action = "increase";
@@ -590,6 +603,7 @@ $(document).on("click", ".inc", function () {
         that.parent().removeClass("transparent-wrap");
         if (output.errormsg == "") {
           $("#display_subtotal").html(output.final_total);
+          that.prev("input").val(output.new_quan);
         } else {
           // that.prev('input').val(quantity - 1);
           that.prev("input").val(output.max_qun);

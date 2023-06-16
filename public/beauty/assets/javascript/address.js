@@ -76,7 +76,8 @@ $(document).on("click", "#btnAccSubmit", function () {
 
           $("#frmBtn").html("varify otp");
 
-          $("#btnAccSubmit").html("Save");
+          // $("#btnAccSubmit").html("Save");
+          $("#btnAccSubmit").val(language.Update);
           $("#btnAccSubmit").removeClass("otp");
           $("#btnAccSubmit").attr("type", "submit");
         } else {
@@ -184,6 +185,10 @@ var ADDRESS = (function () {
     //     $(this).css('display','none');
     // })
   }
+
+  $(document).on("click", "#myBtn", function () {
+    $("#addAddress").html(language.Save);
+  });
 
   $(document).on("click", ".edit_address", function () {
     $("label.error").css("display", "none");
