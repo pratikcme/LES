@@ -6,7 +6,7 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
     $commonPeraColor = "#555261";
 
     $primaryColor = "#0F053F";
-    $secondaryColor = "#F92672";
+    $secondaryColor = "#fed418";
 
     $primaryPink = "#F92672";
     $secondaryBlack = "#0F053F";
