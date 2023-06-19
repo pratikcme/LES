@@ -12,7 +12,7 @@
 
 .categire-header {
     background: var(--listing-2-header-bg);
-    border: 1px solid #FFE8EF;
+    border: 1px solid var(--listing-2-ctg-border);
     border-radius: 20px 20px 0px 0px;
     width: 100%;
     height: 58px;
@@ -386,7 +386,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 .form-check-input:checked[type=checkbox] {
     /* background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e) !important; */
-    background-color: #F92672 !important;
+    background-color: var(--secondary-color) !important;
 }
 
 .form-check-input:checked {
@@ -479,7 +479,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     right: 13px;
     font-size: 30px;
     color: #fff !important;
-    background: #F92672;
+    background: var(--secondary-color);
     padding: 10px;
     border-radius: 50%;
     z-index: 2;

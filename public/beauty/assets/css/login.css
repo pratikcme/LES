@@ -213,7 +213,7 @@
     font-family: var(--BeVietnamPro-Bold);
     font-size: 18px;
     line-height: 20px;
-    color: #F92672 !important;
+    color: var(--forgot-text) !important;
 }
 .login-images {
     position: relative;
@@ -272,14 +272,14 @@
 
 }
 .login-deatils-wrapper .form-check-input:checked[type=checkbox] {
-   background-color: #F92672 !important;
+   background-color: var(--forgot-text) !important;
 }
 .login-deatils-wrapper .form-check label a{
     font-family: var(--BeVietnamPro-SemiBold);
     font-size: 16px;
     font-weight: 600;
     line-height: 25px;
-    color: #F92672 !important;
+    color: var(--forgot-text) !important;
 }
 .login-deatils-wrapper .form-check-input {
       width: 25px !important;

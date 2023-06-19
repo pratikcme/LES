@@ -162,8 +162,8 @@
 .tab-save-btn input[type='button'] {
     height: 60px;
     background: var(--secondary-color);
-    border: 1px solid var(--secondary-color);
-    box-shadow: 0px 7px 20px rgba(249, 38, 114, 0.15);
+    border: 1px solid var(--secondary-color) !important;
+    box-shadow: 0px 10px 50px rgba(249, 38, 114, 0.12);
     border-radius: 10px;
     font-family: var(--BeVietnamPro-SemiBold);
     font-size: 18px;
@@ -298,7 +298,7 @@
     font-size: 24px;
     line-height: 40px;
     color: var(--myaccoutn-tab-label-text);
-    background: linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%);
+    background: var(--myaccoutn-tab-bg);
     border-radius: 10px;
     padding: 15px;
     width: 100%;
@@ -341,8 +341,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #FFB9CE;
-    color: #F92672 !important;
+    background: var(--myaccoutn-tab-bg);
+    color: var(--secondary-color) !important;
 }
 
 .sub-tabs .nav-pills {
