@@ -1981,13 +1981,7 @@ class Api_model extends My_model
         $isShow = $oldIsShow;
 
         $my_cart_result = $my_cart_result[0];
-
-        // dd($my_cart_result);
-        // $sub_total = number_format((float)$my_cart_result['sub_total'], 2, '.', '');
         $total_price = $my_cart_result['sub_total'];
-        // dd($total_price);
-        dd($total_price);
-        // dd($promocode[0]->min_cart);
 
         if ($total_price < $promocode[0]->min_cart) {
             $response["success"] = 0;
