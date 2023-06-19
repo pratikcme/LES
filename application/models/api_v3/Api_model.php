@@ -1949,7 +1949,7 @@ class Api_model extends My_model
         $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode, 'status' => '1'];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
-        lq();
+
 
         if (empty($promocode)) {
             $response["success"] = 0;
