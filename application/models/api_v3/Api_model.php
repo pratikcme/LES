@@ -2222,7 +2222,6 @@ class Api_model extends My_model
                             continue;
                         }
                     }
-                    dd(numberFormat($total_price + (isset($newGstTotal) ? numberFormat($newGstTotal) : numberFormat($oldGst)) + numberFormat($delivery_charge) - numberFormat($promocode_amount) - numberFormat($discountValue)));
                     /*Order*/
                     $data['insert'] = [
                         'order_from' => '1',
