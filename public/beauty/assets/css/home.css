@@ -197,7 +197,7 @@
 /* ------feature-product-section---- */
 
 .Featured-Products {
-    background: rgba(254, 247, 249, 0.8);
+    background: var(--common-bg-color);
 }
 
 .Featured-Products .title h2::before {

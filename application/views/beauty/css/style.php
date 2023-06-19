@@ -60,7 +60,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawal
     $cardNumberPrimary = "#FED418";
     $cardNumberSecondary = "#555261";
     $cardBtnBg = "#000000";
-    $cardImgBg = "#FFEEF4";
+    $cardImgBg = "linear-gradient(66.89deg, #FFF8D8 100%, rgba(255, 248, 216, 0.28) 100.66%);";
 
     // ----our-offer-color---
     $offer1PrimaryText = "#F92672";
@@ -115,7 +115,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawal
     $productDetailsText2 = "#555261";
     $productDetailsText3 = "#F92672";
     $productDetailsText4 = "#FED418";
-    $productDetailsImageBg = "#FFEEF4";
+    $productDetailsImageBg = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.3) 19.01%, rgba(255, 248, 216, 0.3) 100.66%);";
     $productDetailsBtn1 = "#0F053F";
     $productDetailsBtn2 = "#2BAE4A";
 
@@ -126,7 +126,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawal
     $cartTdText1 = "#0F053F";
     $cartTdText2 = "#414549";
     $cartTdText3 = "#FED418";
-    $cartImageBg = "#FFEEF4";
+    $cartImageBg = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.5) 19.01%, rgba(255, 248, 216, 0.5) 100.66%);";
     $cartCounterBorder = "#FFB9CE";
     $cartCounterBg = "#fff";
     $cartIcon = "#FED418";

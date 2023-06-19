@@ -26,12 +26,12 @@
 }
 
 .vendor-wrapper.active{
-  background-color: rgba(15, 5, 63, 0.5);
+  background: var(--common-bg-color);
 }
 
 .vendor-wrapper.active .circle-img{
-    background-color: var(--primary-color) !important;
-    border: 2px solid var(--primary-color) !important;
+    background-color: var(--secondary-color) !important;
+    border: 2px solid var(--secondary-color) !important;
 }
 
 

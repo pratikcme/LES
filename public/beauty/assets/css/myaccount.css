@@ -781,7 +781,6 @@ table.all-detalis-left tr{
 
 }
 
-
 @media only screen and (min-width:992px) and (max-width: 1199px) {
     .my-account-section {
         padding: 70px 0px;
@@ -947,7 +946,6 @@ table.all-detalis-left tr{
         overflow-y: scroll;
     }
 }
-
 
 @media only screen and (min-width:768px) and (max-width: 991px) {
     .my-account-section {
@@ -1180,7 +1178,6 @@ table.all-detalis-left tr{
     }
 
 }
-
 
 @media only screen and (min-width:576px) and (max-width: 767px) {
     .my-account-section {
