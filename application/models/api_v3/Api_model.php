@@ -1949,6 +1949,7 @@ class Api_model extends My_model
         $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode, 'status' => '1'];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
+        lq();
 
 
         if (empty($promocode)) {
@@ -1976,7 +1977,12 @@ class Api_model extends My_model
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postData['branch_id']);
 
 
+
+        $oldIsShow = $isShow;
+        $isShow[0]->display_price_with_gst = '1';
         $my_cart_result = $this->getCartTotal($user_id, $isShow);
+        $isShow = $oldIsShow;
+
         $my_cart_result = $my_cart_result[0];
 
         // $sub_total = number_format((float)$my_cart_result['sub_total'], 2, '.', '');
@@ -2116,6 +2122,7 @@ class Api_model extends My_model
         $oldIsShow = $isShow;
         $isShow[0]->display_price_with_gst = '1';
         $my_cart_result = $this->getCartTotal($user_id, $isShow);
+        $isShow = $oldIsShow;
 
         $my_cart_result = $my_cart_result[0];
         $cartTotal = numberFormat($my_cart_result['sub_total']);
@@ -2269,6 +2276,7 @@ class Api_model extends My_model
                         $qnt = $my_order->quantity;
                         $calculation_price = $my_order->discount_price * $my_order->quantity;
 
+
                         $data['insert'] = [
                             'order_id' => $last_insert_id,
                             'branch_id' => $my_order->branch_id,
@@ -2281,6 +2289,8 @@ class Api_model extends My_model
                             'discount' => $my_order->discount_per,
                             'discount_price' => $my_order->discount_price,
                             'calculation_price' => $calculation_price,
+                            'without_gst_price' => $my_order->without_gst_price,
+                            'gst' => $my_order->gst,
                             'status' => '1',
                             'dt_added' => strtotime(DATE_TIME),
                             'dt_updated' => strtotime(DATE_TIME)
