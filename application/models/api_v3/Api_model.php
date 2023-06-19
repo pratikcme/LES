@@ -2056,7 +2056,7 @@ class Api_model extends My_model
         $data['table'] = 'my_cart as mc';
 
         if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-            $data['select'] = ['FORMAT(sum(pw.without_gst_price * mc.quantity),2) AS sub_total', '(FORMAT(sum(pw.price - pw.discount_price),2) * mc.quantity) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+            $data['select'] = ['FORMAT(sum(pw.without_gst_price * mc.quantity),2) AS sub_total', 'FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
         } else {
             $data['select'] = ['FORMAT(sum(pw.discount_price * mc.quantity),2) AS sub_total', 'FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
         }
