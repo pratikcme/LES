@@ -210,8 +210,6 @@ class Order_model extends My_model
             $total_price = number_format((float)$sub_total, 2, '.', '');
 
 
-
-
             /*Generate Order Number*/
             function random_orderNo($length = 10)
             {
