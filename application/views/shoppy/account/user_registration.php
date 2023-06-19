@@ -53,14 +53,9 @@
 
                         <div id="completeOTP">
                             <div class="mb-3">
-                                <div class="tab-select-box">
-                                    <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?><span>*</span></label>
-                                    <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
-                                        <?php foreach ($country_code as $key => $value) { ?>
-                                            <option value="<?= $key; ?>"><?= $value; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                                <label for="otp-text" class="form-label">Otp<span>*</span></label>
+                                <input type="text" name="otp" id="otp" class="form-control OTP" placeholder="OTP">
+                                <label for="otp" class="varify-error error"></label>
                             </div>
                             <h3 class="mt-4">
                                 <span id="resetcounter">Didn't get the code? </span>
