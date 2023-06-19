@@ -8,7 +8,7 @@
     max-width: 870px;
     box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
     border-radius: 20px;
-    border: 1px solid var(--cart-counter-border);
+    border: 1px solid var(--secondary-color);
     background: var(--commn-white);
     overflow: hidden;
     padding: 11px;
@@ -36,7 +36,7 @@ table{
     align-items: center;
     outline-offset: 10px;
     outline-style: solid;
-    outline-color: var(--cart-counter-border);
+    outline-color: var(--common-border);
     outline-width: 1px;
     border-radius: 14px;
 }
@@ -86,8 +86,8 @@ table{
 .shop-cart-seciton .product-detail-quentity input[type=text] {
     width: 36px !important;
     height: 36px !important;
-    border-top: 1px solid var(--cart-counter-border);
-    border-bottom: 1px solid var(--cart-counter-border);
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
 }
 
 
@@ -97,7 +97,7 @@ table{
     gap: 20px;
 }
 .cart-price-text a{
-    color: var( --cart-icon) !important;
+    color: var(--cart-icon) !important;
 }
 table th{
     padding-left: 60px;
@@ -111,7 +111,7 @@ table th{
 }
 
 table tr{
-    border-bottom: 1px solid var(--cart-counter-border);
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 table tr:last-child{
@@ -163,7 +163,7 @@ table tr:nth-child(3) td {
     height: 510px;
     box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
     border-radius: 20px;
-    border: 1px solid var(--cart-counter-border);
+    border: 1px solid var(--secondary-color);
     background: var(--commn-white);
     overflow: hidden;
     padding: 11px;
