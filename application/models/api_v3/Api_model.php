@@ -1980,13 +1980,12 @@ class Api_model extends My_model
         $my_cart_result = $this->getCartTotal($user_id, $isShow);
         $isShow = $oldIsShow;
 
-        dd($my_cart_result);
         $my_cart_result = $my_cart_result[0];
 
         // $sub_total = number_format((float)$my_cart_result['sub_total'], 2, '.', '');
         $total_price = numberFormat($my_cart_result['sub_total']);
         // dd($total_price);
-
+        dd($promocode);
         if ($total_price < $promocode[0]->min_cart) {
             $response["success"] = 0;
             $response["message"] = "Cart Minimum " . $promocode[0]->min_cart . ' amount is required';
