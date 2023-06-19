@@ -1975,18 +1975,17 @@ class Api_model extends My_model
         $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postData['branch_id']);
 
-
-
         $oldIsShow = $isShow;
         $isShow[0]->display_price_with_gst = '1';
         $my_cart_result = $this->getCartTotal($user_id, $isShow);
         $isShow = $oldIsShow;
 
+        dd($my_cart_result);
         $my_cart_result = $my_cart_result[0];
 
         // $sub_total = number_format((float)$my_cart_result['sub_total'], 2, '.', '');
         $total_price = numberFormat($my_cart_result['sub_total']);
-
+        // dd($total_price);
 
         if ($total_price < $promocode[0]->min_cart) {
             $response["success"] = 0;
