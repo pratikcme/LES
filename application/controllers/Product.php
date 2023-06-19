@@ -24,9 +24,9 @@
         {
 
 
-            $res = $this->this_model->updateCheck();
-            dd("check");
-            die;
+            // $res = $this->this_model->updateCheck();
+            // dd("check");
+            // die;
             // echo '1';die;
             $data['table_js'] = array('product_new.js');
             $data['start'] = array('PRODUCT_NEW.table()');
