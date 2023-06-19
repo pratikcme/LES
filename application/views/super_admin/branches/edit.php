@@ -165,7 +165,7 @@
             <!--  -->
           </div>
           <div class="button-group">
-            <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-new">Save </button>
+            <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-new">Update</button>
             <a href="<?= base_url() . $this->url ?>" style="display: inline-block;" class="btn btn-new">Cancel</a>
           </div>
       </div>
