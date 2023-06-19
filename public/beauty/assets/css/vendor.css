@@ -62,7 +62,7 @@
 }
 
 .vendor-wrapper.active .contact-content h6{
-    color: var(--common-white) !important;
+    color: var(--primary-color) !important;
 }
 
 .contact-vendor .contact-content h6 a{
