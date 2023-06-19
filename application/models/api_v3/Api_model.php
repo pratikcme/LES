@@ -1982,9 +1982,9 @@ class Api_model extends My_model
 
         $my_cart_result = $my_cart_result[0];
         $total_price = $my_cart_result['sub_total'];
-        // dd($total_price < $promocode[0]->min_cart);
-        
-        if ($total_price < numberFormat($promocode[0]->min_cart)) {
+
+        dd($total_price);
+        if ($total_price < $promocode[0]->min_cart) {
             $response["success"] = 0;
             $response["message"] = "Cart Minimum " . $promocode[0]->min_cart . ' amount is required';
             return $response;
