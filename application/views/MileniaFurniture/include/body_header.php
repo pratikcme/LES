@@ -31,8 +31,6 @@
                                 <?php
                                 endif;
                                 ?>
-
-
                                 <?php if ($this->uri->segment(1) != 'login' && $this->uri->segment(1) != '') { ?>
                                     <?php if ($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1') { ?>
                                         <form class="branch-drp">
