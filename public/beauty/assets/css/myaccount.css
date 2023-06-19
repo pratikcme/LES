@@ -418,7 +418,7 @@
     padding-bottom: 20px;
     width: 100%;
     border-radius: 0px 0px 0px 0px !important;
-    background: linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%) !important;
+    background: var(--accordian-head-bg) !important;
     cursor: pointer;
 }
 
@@ -591,7 +591,7 @@ table.all-detalis-left tr{
 
 /* ----new-css--- */
 .main-sub-tabs {
-    border: 1px solid #FFB9CE;
+    border: 1px solid var(--secondary-color);
     border-radius: 20px;
 }
 
