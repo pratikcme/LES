@@ -1,7 +1,7 @@
 <?php
 
-if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
-    
+if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'mntecno.launchestore.com' || $_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
+
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#FF0000";
@@ -38,7 +38,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawal
     $headerTextWhite = "#FFFFFF";
     $headerBtnBg = "#000000";
     $headerBtnText = "#FFFFFF";
-    
+
 
     //  -----navigation-bar-color---- 
     $navTextColor = "#000000";
@@ -401,7 +401,6 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawal
     $rightContactWrapperBorder = "#D9E2ED";
     $rightContactIconRound = "#FFEEF4";
     $rightContactWrapperText = "#0F053F";
-
 }
 ?>
 
@@ -475,7 +474,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawal
         --categorie-wrapper-round: <?= $categorieWrapperRound ?>;
         --categorie-wrapper-text: <?= $categorieWrapperText ?>;
         --slider-bg: <?= $sliderBg ?>;
-        
+
 
         /* -------card-color------ */
         --card-bg-color: <?= $cardBgColor ?>;
@@ -637,7 +636,4 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'spawal
 
 
     }
-
-
 </style>
-
