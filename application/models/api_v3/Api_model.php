@@ -1982,9 +1982,9 @@ class Api_model extends My_model
 
         $my_cart_result = $my_cart_result[0];
 
-        dd($my_cart_result);
+        // dd($my_cart_result);
         // $sub_total = number_format((float)$my_cart_result['sub_total'], 2, '.', '');
-        $total_price = numberFormat($my_cart_result['sub_total']);
+        $total_price = $my_cart_result['sub_total'];
         // dd($total_price);
         dd($total_price);
         // dd($promocode[0]->min_cart);
