@@ -70,7 +70,8 @@
       </div>
       <div class="col-lg-6">
         <div class="map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.595366386584!2d72.50965841484987!3d23.038624621509506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b279b50bf1b%3A0xa4c68aa0205a0c78!2sPakwan%20Chokdi!5e0!3m2!1sen!2sin!4v1677157937397!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div id="map" style="width: 100%; height: 100%;" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </div>
         </div>
       </div>
     </div>
@@ -130,3 +131,33 @@
     </div>
   </div>
 </section>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+
+<script type="text/javascript">
+  function initialize() {
+    var latitude = <?= $getLatLongOfBranch[0]->latitude; ?>;
+    var longitude = <?= $getLatLongOfBranch[0]->longitude; ?>;
+    // put latitude and longitude data here
+    var latinfo = new google.maps.LatLng(latitude, longitude);
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: latinfo,
+      zoom: 13
+    });
+    var marker = new google.maps.Marker({
+      map: map,
+      position: latinfo,
+      draggable: false,
+      animation: google.maps.Animation.BOUNCE,
+      anchorPoint: new google.maps.Point(0, -29)
+    });
+    var infowindow = new google.maps.InfoWindow();
+    google.maps.event.addListener(marker, 'click', function() {
+      var iwContent = '<div id="pop_window">' + '<div><b>Location</b> : Connaught Place, New Delhi</div></div>';
+      // put content to the infowindow
+      infowindow.setContent(iwContent);
+      // show infowindow in the google map and at the current marker location
+      infowindow.open(map, marker);
+    });
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
