@@ -796,9 +796,9 @@ class Api_model extends My_model
         $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
 
         if (isset($isShow) && $isShow[0]->display_price_with_gst == '1') {
-            $data['select'] = ['FORMAT(sum(pw.price * mc.quantity) ,2)as total_price', 'FORMAT(sum(pw.without_gst_price * mc.quantity ),2) AS total', 'count(mc.id) AS cart_items'];
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.price * mc.quantity) ,2),",","")as total_price', 'FORMAT(sum(pw.without_gst_price * mc.quantity ),2) AS total', 'count(mc.id) AS cart_items'];
         } else {
-            $data['select'] = ['FORMAT(sum(pw.price * mc.quantity) ,2)as total_price', 'FORMAT(sum(pw.discount_price * mc.quantity ),2) AS total', 'count(mc.id) AS cart_items'];
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.price * mc.quantity) ,2),",","")as total_price', 'FORMAT(sum(pw.discount_price * mc.quantity ),2) AS total', 'count(mc.id) AS cart_items'];
         }
 
         if (isset($user_id) && $user_id != 0 && $user_id != '') {
