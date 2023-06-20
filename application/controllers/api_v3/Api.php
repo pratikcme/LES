@@ -520,6 +520,16 @@ class Api extends Apiuser_Controller
                         $discountPercentage = $shoppingDiscount[0]->discount_percentage;
                         $discountValue = numberFormat($my_cart_price_result * $discountPercentage / 100);
                         $discountValue = number_format((float)$discountValue, 2, '.', '');
+
+
+                        $newGstTotal = 0;
+                        foreach ($my_cart_result as $row) :
+
+                            $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $discountPercentage / 100));
+
+                            $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+                            $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                        endforeach;
                     }
                 }
 
