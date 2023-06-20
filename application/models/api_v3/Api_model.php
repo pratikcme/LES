@@ -1654,6 +1654,7 @@ class Api_model extends My_model
                 $counter++;
                 $actual_price_total = numberFormat($row['quantity'] * $product_actual_price + $actual_price_total);
             }
+
             $gettotal = $this->get_total($postdata);
 
             $getactual = $this->get_actual_total($postdata);
@@ -1678,20 +1679,18 @@ class Api_model extends My_model
                     $discountValue = numberFormat($my_cal * $discountPercentage / 100);
 
                     $newGstTotal = 0;
-                    $oldGst = 0;
+
                     foreach ($getdata as $row) :
                         $new_price = numberFormat(numberFormat($row['discount_price']) - numberFormat($row['discount_price'] *  $discountPercentage / 100));
                         $row['gst_amount_per_product'] = numberFormat(($new_price  * $row['gst']) / 100);
 
                         $newGstTotal  += numberFormat($row['gst_amount_per_product'] * $row['quantity']);
-
-                        $oldgstPrice = numberFormat(($row['discount_price'] * $row['gst']) / 100);
-                        $oldGst += numberFormat($oldgstPrice  * $row['quantity']);
                     endforeach;
                 }
             }
 
-            $calGst =  $discountValue > 0 ?  $newGstTotal : $oldGst;
+            $calGst =  $discountValue > 0 ?  $newGstTotal : $total_gst;
+
 
             $response['success'] = "1";
             $response['message'] = "My cart item list";
@@ -2237,6 +2236,7 @@ class Api_model extends My_model
                             continue;
                         }
                     }
+
                     /*Order*/
                     $data['insert'] = [
                         'order_from' => '1',

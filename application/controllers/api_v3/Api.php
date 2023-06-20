@@ -1556,7 +1556,7 @@ class Api extends Apiuser_Controller
 
         if (isset($_POST['user_id']) && isset($_POST['order_id'])) {
             $this->load->model('api_v3/common_model', 'co_model');
-            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
+            $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($_POST['vendor_id']);
             $limit = '10';
             $user_id = $_POST['user_id'];
             $order_id = $_POST['order_id'];
@@ -1579,7 +1579,7 @@ class Api extends Apiuser_Controller
             }
 
             $isSelfPickup = $order_result['isSelfPickup'];
-            $total_with_charge = $order_result['payable_amount'];
+            $total_with_charge = $order_result['sub_total'];
             $delivery_charge = $order_result['delivery_charge'];
             $shopping_based_discount = $order_result['shopping_amount_based_discount'];
             // if ($isSelfPickup == 1) {
@@ -1645,7 +1645,13 @@ class Api extends Apiuser_Controller
                     $data['unit'] = $product_unit . ' ' . $product_weight_name;
                     $data['discount'] = $row->discount;
                     $data['actual_price'] = $row->actual_price;
-                    $data['price'] = $row->calculation_price;
+
+                    if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+                        $data['price'] = $row->without_gst_price;
+                    } else {
+                        $data['price'] = $row->discount_price;
+                    }
+                    $data['calculation_price'] = $row->calculation_price;
                     $data['product_id'] = $row->product_id;
                     $data['product_varient_id'] = $row->product_weight_id;
                     $data['branch_id'] = $row->branch_id;
