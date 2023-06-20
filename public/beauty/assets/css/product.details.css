@@ -504,6 +504,7 @@ body {
     box-shadow: 0px 4px 8px rgba(255, 100, 115, 0.1);
     font-family: var(--BeVietnamPro-Bold);
     padding: 5px 0;
+    z-index: 2;
 }
 
 /* -----new-review-css--- */
