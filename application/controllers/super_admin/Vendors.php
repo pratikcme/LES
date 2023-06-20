@@ -49,7 +49,9 @@ class Vendors extends Super_Admin_Controller
 
 	public function edit($vendor_id = '')
 	{
+
 		$d_id = $this->utility->safe_b64decode($vendor_id);
+
 		$data['page'] = 'super_admin/vendors/edit';
 		$data['js'] = array('vendors.js');
 		$data['init'] = array('VENDORS.edit()');
@@ -58,9 +60,20 @@ class Vendors extends Super_Admin_Controller
 		$data['FormAction'] = base_url() . $this->url . 'edit/' . $vendor_id;
 		$data['getStore'] = $this->store_type_model->getStore();
 		$data['themes_list'] = $this->themes_model->getThemes(); //new
+
 		if ($this->input->post()) {
+			$postData = $this->input->post();
 			$responce = $this->this_model->updateVendors($d_id, $this->input->post());
+
 			if ($responce) {
+				if (
+					$postData['android_version'] !== $postData['old_android_version'] ||
+					$postData['ios_version'] !== $postData['old_ios_version'] ||
+					$postData['android_isforce'] !== $postData['old_android_isforce'] ||
+					$postData['ios_isforce'] !== $postData['old_ios_isforce']
+				) {
+					$this->this_model->updateVersionLogs($d_id, $postData);
+				}
 				$this->utility->setFlashMessage('success', 'Vendor updated successfully');
 				redirect(base_url() . $this->url);
 			} else {
@@ -95,17 +108,20 @@ class Vendors extends Super_Admin_Controller
 		}
 	}
 
-	public function Version(){
+	public function Version()
+	{
 		$data['page'] = 'super_admin/vendors/version_update';
-		$data['FormAction'] = base_url().'super_admin/vendors/version';
-		if($this->input->post()){
+		$data['FormAction'] = base_url() . 'super_admin/vendors/version';
+		if ($this->input->post()) {
+			$postData = $this->input->post();
 			$responce = $this->this_model->appVersionUpdate($this->input->post());
 			if ($responce) {
+				$this->this_model->updateVersionLogs("All", $postData);
 				$this->utility->setFlashMessage('success', 'Version updated for all app successfully');
-				redirect(base_url() . $this->url.'/Version');
+				redirect(base_url() . $this->url . '/Version');
 			} else {
 				$this->utility->setFlashMessage('danger', 'Somthing went Wrong');
-				redirect(base_url() . $this->url.'/Version');
+				redirect(base_url() . $this->url . '/Version');
 			}
 		}
 		$data['js'] = array('version.js');

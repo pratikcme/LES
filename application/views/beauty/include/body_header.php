@@ -22,10 +22,15 @@
                 </nav>
 
                 <div class="d-flex drp-grp">
-                    <form class="lng-drp">
-
-                        <div id="google_translate_element"></div>
-                    </form>
+                    <?php
+                    if (isset($multi_language) && $multi_language[0]->multi_language == '1') :
+                    ?>
+                        <form class="lng-drp">
+                            <div id="google_translate_element"></div>
+                        </form>
+                    <?php
+                    endif;
+                    ?>
                     <?php if ($this->uri->segment(1) != 'login' && $this->uri->segment(1) != '') { ?>
                         <?php if ($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1') { ?>
                             <form class="branch-drp">

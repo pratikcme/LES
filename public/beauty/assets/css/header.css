@@ -37,6 +37,10 @@ header {
   align-items: center;
 }
 
+.header-top .logo img{
+  max-width: 180px;
+}
+
 .social-icons {
   display: flex;
   align-items: center;
@@ -472,9 +476,12 @@ nav .left-content a:hover {
 }
 
 #ui-id-1{
+  top: 80px !important;
   height: 250px;
-  border: 1px solid #000 !important;
+  border: 1px solid var(--primary-color) !important;
   overflow-y: scroll;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #ui-id-1.ui-menu .ui-menu-item-wrapper{
@@ -554,6 +561,10 @@ nav .left-content a:hover {
   .goog-te-gadget .goog-te-combo
   {
     width: 60px !important;
+  }
+
+  .header-top .logo img{
+    max-width: 100px;
   }
 }
 

@@ -140,7 +140,6 @@ class User_Controller extends MY_Controller
         }
         $this->load->model($this->myvalues->vendorFrontEnd['model'], 'vendor_model');
         $response = $this->vendor_model->ApprovedVendor();
-
         if (!empty($response)) {
             if ($response[0]->status == '0') {
                 echo '<h3 style = "text-align: center;font-size: xxx-large;">Your Account is Inactive.</h3>
@@ -150,7 +149,7 @@ class User_Controller extends MY_Controller
         }
         if ($this->session->userdata('template_name') == '' || $this->session->userdata('template_name') != $response[0]->theme_name) {
             $_SESSION['template_name'] = $response[0]->theme_name;
-            if(!isset($response[0]->theme_name)){
+            if (!isset($response[0]->theme_name)) {
                 $_SESSION['template_name'] = 'frontend';
             }
         }
@@ -195,7 +194,9 @@ class User_Controller extends MY_Controller
     }
 
     function loadView($layout, $data)
-    {
+    {   
+        $res= $this->vendor_model->ApprovedVendor();
+        $data['supported_language'] = $res[0]->supported_language;
         $this->load->model($this->myvalues->contactFrontEnd['model'], 'contact');
         $this->load->model($this->myvalues->homeFrontEnd['model'], 'home');
         // $this->load->model($this->myvalues->usersAccount['model'],'users');
@@ -211,6 +212,8 @@ class User_Controller extends MY_Controller
         $this->load->model('frontend/vendor_model', 'vendor_model');
         $data['branch_nav'] = $this->vendor_model->branchList();
         $data['liveChat'] = $this->vendor_model->getLiveChatData();
+
+        $data['multi_language'] = $this->vendor_model->getMultiLanguage($this->session->userdata('vendor_id'));
 
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
         $data['language_support'] = ($data['ApprovedBranch'][0]->language_support == '1') ? 'ar' : 'en';

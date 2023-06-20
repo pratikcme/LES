@@ -140,7 +140,7 @@
       <div class="container">
           <div class="copy-right-content">
               <div>
-                  <h3>© Copyright 2022 <?= $this->siteTitle ?> . All rights reserved</h3>
+                  <h3>© Copyright 2023 <?= $this->siteTitle ?> . All rights reserved</h3>
               </div>
           </div>
       </div>

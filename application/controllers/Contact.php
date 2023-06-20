@@ -18,10 +18,11 @@ class Contact extends User_Controller
 	{
 		// echo '1';die;
 		// print_r($_SESSION);die;
-		$data['page'] = $_SESSION['template_name'].'/contact';
+		$data['page'] = $_SESSION['template_name'] . '/contact';
 		$data['js'] = array('contactus.js');
 		$data['init'] = array('CONTACT.init()');
 		$data['contact_us'] = $this->this_model->getContact();
+		$data['getLatLongOfBranch'] = $this->this_model->getlatlong();
 		if ($this->input->post()) {
 			$validation = $this->setRules();
 			// print_r($validation);die;

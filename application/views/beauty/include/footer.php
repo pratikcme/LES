@@ -280,7 +280,7 @@ if (!empty($js)) {
   deLang = '';
   var deLang = document.getElementById("site_lang").value;
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: deLang ,includedLanguages : 'ar,en'}, 'google_translate_element');
+  new google.translate.TranslateElement({pageLanguage: deLang ,includedLanguages : '<?=$supported_language?>'}, 'google_translate_element');
 }
 // setTimeout(()=>{
 // var value = deLang;
@@ -310,7 +310,7 @@ $(document).on('change','.goog-te-combo',function (){
         if(value == deLang){
           window.location.reload();
         }
-        new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'ar,en'}, 'google_translate_element');
+        new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : '<?=$supported_language?>'}, 'google_translate_element');
             // window.location.reload();        
       //     }
       // })

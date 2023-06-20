@@ -388,7 +388,7 @@ input:focus{
     align-items: center;
     outline-offset: 10px;
     outline-style: solid;
-    outline-color: var(--cart-counter-border);
+    outline-color: var(--secondary-color);
     outline-width: 1px;
     border-radius: 14px;
 }

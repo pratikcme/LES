@@ -66,7 +66,6 @@ $(document).ready(function () {
             product_weight_id: product_weight_id,
           },
           success: function (output) {
-            console.log(output, "onutput");
             if (output.result == "true") {
               swal("Cart item successfully deleted"); //sweet alert
               $("#itemCount").html(output.count);

@@ -109,6 +109,16 @@ span.error {
                               </select>
                           </div>
                       </div>
+                      <div class="col-lg-4">
+                          <div class="form-group">
+                              <label for="supported_language">Supported Language</label>
+                              <?php $launguage = explode(',',$editData[0]->supported_language); ?>
+                                English
+                                  <input type="checkbox" name="supported_language[]" value="en" <?=(in_array('en',$launguage)) ? "checked" : ''?>/>
+                                Arabic
+                                <input type="checkbox" name="supported_language[]" value="ar" <?=(in_array('ar',$launguage)) ? "checked" : ''?>/>
+                          </div>
+                      </div>
                       <!-- new Dipesh -->
                       <div class="col-lg-4 ">
                           <div class="form-group">
@@ -131,13 +141,26 @@ span.error {
                           </div>
                       </div>
 
-                      <div class="col-lg-6 editTheme">
+                      <div class="col-lg-4 editTheme">
                           <div class="form-group">
                               <label for="language">Theme Preview </label>
                               <img src="<?= $currentImg  ?>" id="imgPreview" style="height:100px;width:100px" alt="err">
                           </div>
                       </div>
                       <!-- end -->
+                      <!--  -->
+                      <div class="col-lg-4 ">
+                          <div class="form-group">
+                              <label for="theme_name">Multi Language</label>
+                              <select class="form-control" name="multi_language">
+                                  <option value="0" <?= ($editData[0]->multi_language == '0') ? 'SELECTED' : '' ?>>
+                                      Disabled</option>
+                                  <option value="1" <?= ($editData[0]->multi_language == '1') ? 'SELECTED' : '' ?>>
+                                      Enabled</option>
+                              </select>
+                          </div>
+                      </div>
+                      <!--  -->
                   </div>
 
                   <div class="row">
@@ -153,6 +176,7 @@ span.error {
                                   </div>
                               </div>
                           </div>
+                          <input type="hidden" name="old_android_version" value="<?= $editData[0]->android_version ?>">
                       </div>
                       <div class="col-lg-3">
                           <div class="form-group">
@@ -165,6 +189,7 @@ span.error {
                                   </div>
                               </div>
                           </div>
+                          <input type="hidden" name="old_ios_version" value="<?= $editData[0]->ios_version ?>">
                       </div>
                       <div class="col-lg-3">
                           <div class="form-group">
@@ -177,6 +202,7 @@ span.error {
                                   </div>
                               </div>
                           </div>
+                          <input type="hidden" name="old_android_isforce" value="<?= $editData[0]->android_isforce ?>">
                       </div>
                       <div class="col-lg-3">
                           <div class="form-group">
@@ -190,10 +216,11 @@ span.error {
                                   </div>
                               </div>
                           </div>
+                          <input type="hidden" name="old_ios_isforce" value="<?= $editData[0]->ios_isforce ?>">
                       </div>
                   </div>
                   <div class="button-group">
-                      <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-new">Save </button>
+                      <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-new">Update </button>
                       <a href="<?= base_url() . $this->url ?>" style="display: inline-block;"
                           class="btn btn-new">Cancel</a>
                   </div>

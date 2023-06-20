@@ -9,6 +9,7 @@ class Home extends User_Controller
 		parent::__construct();
 		$this->controller = $this->myvalues->homeFrontEnd['controller'];
 		$this->load->model($this->myvalues->homeFrontEnd['model'], 'this_model');
+		$this->load->model($this->myvalues->productFrontEnd['model'], 'product_model');
 		if ($this->session->userdata('branch_id') == '') {
 			redirect(base_url());
 		}
@@ -86,6 +87,8 @@ class Home extends User_Controller
 			$top_selling_core[$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 
 			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
+
+			$value->reviewCount = count($this->product_model->getProductReview($value->id, $value->pw_id)); //Dk added
 		}
 
 		// mid
@@ -113,6 +116,7 @@ class Home extends User_Controller
 
 			$data['new_arrival'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
+			$value->reviewCount = count($this->product_model->getProductReview($value->id, $value->pw_id)); //Dk added
 		}
 
 		// end
@@ -157,6 +161,7 @@ class Home extends User_Controller
 
 			$data['top_ratted_product'][$key]->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 			$value->ratting = $this->this_model->selectStarRatting($value->id, $value->pw_id);
+			$value->reviewCount = count($this->product_model->getProductReview($value->id, $value->pw_id)); //Dk added
 		}
 
 		$data['item_weight_id'] = $item_weight_id;
@@ -202,6 +207,7 @@ class Home extends User_Controller
 			$value->my_cart_quantity = $addQuantity;
 
 			$value->ratting = $this->this_model->selectStarRatting($value->product_id, $value->product_varient_id);
+			$value->reviewCount = count($this->product_model->getProductReview($value->product_id, $value->product_varient_id)); //Dk added
 		}
 		$this->loadView($this->user_layout, $data);
 	}

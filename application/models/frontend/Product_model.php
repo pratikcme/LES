@@ -494,6 +494,7 @@ class Product_model extends My_model
 				$data['value'] = $value;
 				$data['value']->varientQuantity = ($varientQuantity == '0') ? "0" : $varientQuantity[0]->quantity;
 				// dd($data['value']->varientQuantity);
+				$value->reviewCount = count($this->getProductReview($value->id, $value->product_weight_id)); //Dk added
 
 				$product_html .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product', $data, true);
 			}

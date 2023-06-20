@@ -142,6 +142,13 @@
                                                 <div class="accordion-body">
                                                     <div class="discoutn-part">
                                                         <ul>
+                                                            <li>
+                                                                <div class="form-check active category_id"
+                                                                    data-cat_id="All">
+                                                                    <label class="form-check-label"
+                                                                        for="sub-Kid's"><?= $this->lang->line('All Categories') ?></label>
+                                                                </div>
+                                                            </li>
                                                             <?php foreach ($category as $key => $value) : ?>
                                                             <li>
                                                                 <div class="form-check category_id"
@@ -206,10 +213,10 @@
 
                                                             <?php
 
-                              $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35%', 'More than 35%'];
-                              foreach ($discountArray as $key => $value) {
+                                                            $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35%', 'More than 35%'];
+                                                            foreach ($discountArray as $key => $value) {
 
-                              ?>
+                                                            ?>
                                                             <li>
                                                                 <div class="discount-wrapper">
                                                                     <div class="form-check">
@@ -285,6 +292,12 @@
                                     <div class="accordion-body">
                                         <div class="discoutn-part">
                                             <ul>
+                                                <li>
+                                                    <div class="form-check active category_id" data-cat_id="All">
+                                                        <label class="form-check-label"
+                                                            for="sub-Kid's"><?= $this->lang->line('All Categories') ?></label>
+                                                    </div>
+                                                </li>
                                                 <?php foreach ($category as $key => $value) : ?>
                                                 <li>
                                                     <div class="form-check category_id" data-cat_id="<?= $value->id ?>">
@@ -344,10 +357,10 @@
                                             <ul>
                                                 <?php
 
-                        $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35%', 'More than 35%'];
-                        foreach ($discountArray as $key => $value) {
+                                                $discountArray = ['0-5%', '5-10%', '10-15%', '15-20%', '20-25%', '25-30%', '30-35%', 'More than 35%'];
+                                                foreach ($discountArray as $key => $value) {
 
-                        ?>
+                                                ?>
                                                 <li>
                                                     <div class="discount-wrapper">
                                                         <div class="form-check">

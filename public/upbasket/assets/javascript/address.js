@@ -46,9 +46,8 @@ function checkNumber() {
     $("#btnAccSubmit").val(language.send_otp);
     $("#btnAccSubmit").addClass("otp");
     $("#btnAccSubmit").attr("type", "button");
-    console.log("yes");
   } else {
-    $("#btnAccSubmit").val(language.Save);
+    $("#btnAccSubmit").val(language.Update);
     $("#btnAccSubmit").removeClass("otp");
     $("#btnAccSubmit").attr("type", "submit");
   }
@@ -65,6 +64,7 @@ $(document).on("click", "#btnAccSubmit", function () {
       $("#mobileErr").html(language.Please_enter_mobile_number);
       return false;
     }
+
     $.ajax({
       url: url + "users_account/users/sendOtpAccount",
       data: { country_code: country_code, phone: phone },
@@ -77,7 +77,7 @@ $(document).on("click", "#btnAccSubmit", function () {
 
           $("#frmBtn").html("varify otp");
 
-          $("#btnAccSubmit").html("Save");
+          $("#btnAccSubmit").val(language.Update);
           $("#btnAccSubmit").removeClass("otp");
           $("#btnAccSubmit").attr("type", "submit");
         } else {
@@ -186,6 +186,10 @@ var ADDRESS = (function () {
     // })
   }
 
+  $(document).on("click", ".cancel-btn", function () {
+    $("#addAddress").html(language.Save);
+  });
+
   $(document).on("click", ".edit_address", function () {
     var id = $(this).attr("data-id");
     var that = $(this);
@@ -200,6 +204,7 @@ var ADDRESS = (function () {
       dataType: "json",
       success: function (output) {
         $("#address_title").html(language.js_update_address);
+        $("#addAddress").html(language.Update);
         $("#departure_address").rules("remove", "required");
         $(".fname").val(output.result[0].name);
         $(".mob_no").val(output.result[0].phone);

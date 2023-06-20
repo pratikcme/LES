@@ -21,6 +21,11 @@ footer{
     text-transform: capitalize;
     margin-bottom: 23px;
 }
+
+.foot-1 img{
+    max-width: 200px;
+}
+
 .foot-btn{
     display: flex;
     align-items: center;

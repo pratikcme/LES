@@ -281,7 +281,7 @@
                                                 <?php } ?>
 
                                             </div>
-                                            <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
+                                            <div><span>(<?= $value->reviewCount ?>)</span></div>
                                         </div>
 
                                         <?php
@@ -296,25 +296,25 @@
                                             ?>
 
                                         <div>
-                                            <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>"
+                                            <button type="button"
+                                                class="add-cart-btn addcartbutton product_<?= $this->utility->safe_b64encode($value->id) ?> <?= $d_none ?>"
                                                 data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
                                                 data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
                                                         class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
                                             </button>
                                         </div>
 
-
-
                                         <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                                             <div class="qty-container">
-                                                <button class="qty-btn-minus dec cart-qty-minus"
+                                                <button
+                                                    class="qty-btn-minus dec dec_<?= $value->pw_id ?> cart-qty-minus"
                                                     data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
                                                         class="fa-solid fa-minus"></i></button>
                                                 <input type="text" name="qty"
                                                     value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
                                                     data-product_id="<?= $value->id ?>"
                                                     data-weight_id="<?= $value->weight_id ?>" class="input-qty">
-                                                <button class="qty-btn-plus inc cart-qty-plus"
+                                                <button class="qty-btn-plus inc inc_<?= $value->pw_id ?> cart-qty-plus"
                                                     data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
                                                         class="fa-solid fa-plus"></i></button>
                                             </div>
@@ -381,7 +381,7 @@
                                                 <?php } ?>
 
                                             </div>
-                                            <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
+                                            <div><span>(<?= $value->reviewCount ?>)</span></div>
                                         </div>
 
                                         <?php
@@ -396,7 +396,8 @@
                                             ?>
 
                                         <div>
-                                            <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>"
+                                            <button type="button"
+                                                class="add-cart-btn addcartbutton product_<?= $this->utility->safe_b64encode($value->id) ?> <?= $d_none ?>"
                                                 data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
                                                 data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
                                                         class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
@@ -407,14 +408,15 @@
 
                                         <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                                             <div class="qty-container">
-                                                <button class="qty-btn-minus dec cart-qty-minus"
+                                                <button
+                                                    class="qty-btn-minus dec dec_<?= $value->pw_id ?> cart-qty-minus"
                                                     data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
                                                         class="fa-solid fa-minus"></i></button>
                                                 <input type="text" name="qty"
                                                     value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
                                                     data-product_id="<?= $value->id ?>"
                                                     data-weight_id="<?= $value->weight_id ?>" class="input-qty">
-                                                <button class="qty-btn-plus inc cart-qty-plus"
+                                                <button class="qty-btn-plus inc inc_<?= $value->pw_id ?> cart-qty-plus"
                                                     data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
                                                         class="fa-solid fa-plus"></i></button>
                                             </div>
@@ -546,28 +548,41 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
         <div class="row">
             <div class="col-xxl-12">
                 <div class="title text-center wow fadeIn">
-                    <h2><?= $this->lang->line('New'); ?> <span><?= $this->lang->line('Arrivals'); ?></span></h2>
+                    <h2>Top <span>Rating</span></h2>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="owl-carousel owl-theme simple">
-        <?php foreach ($new_arrival as $key => $value) : ?>
+        <?php foreach ($top_ratted_product as $key => $value) :
+
+            $d_none = '';
+            $d_show = 'd-none';
+            if (!empty($item_weight_id)) {
+                if (in_array($value->pw_id, $item_weight_id)) {
+                    $d_show = '';
+                    $d_none = 'd-none';
+                }
+            }
+
+        ?>
         <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-            <div class="product-card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
+            <div class="product-card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
                 <div class="product-img-wrap">
                     <div class="product-im ">
                         <a
                             href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                             <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>"
                                 alt="">
+
                         </a>
                     </div>
-                    <?php if ($value->varientQuantity != '0') : ?>
-                    <p class="<?= ($value->varientQuantity > $value->limited_stock) ? 'd-none' : '' ?>">
-                        <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                    <?php if ($value->quantity != '0') : ?>
+                    <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                        <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                     </p>
+
                     <?php endif ?>
                     <?php if ($value->discount_per > '0') { ?>
                     <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
@@ -595,7 +610,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                             <span class="star star-active"></span>
                             <?php } ?>
                         </div>
-                        <div><span>(<?= $value->ratting['rating'] ?>)</span></div>
+                        <div><span>(<?= $value->reviewCount ?>)</span></div>
                     </div>
                     <div>
                         <?php
@@ -608,24 +623,25 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                                 }
                             }
                             ?>
-
                         <div>
-                            <button type="button" class="add-cart-btn addcartbutton <?= $d_none ?>"
+                            <button type="button"
+                                class="add-cart-btn addcartbutton product_<?= $this->utility->safe_b64encode($value->id) ?> <?= $d_none ?>"
                                 data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>"
                                 data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>"><span><i
                                         class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?>
                             </button>
                         </div>
+
                         <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
                             <div class="qty-container">
-                                <button class="qty-btn-minus dec cart-qty-minus"
+                                <button class="qty-btn-minus dec dec_<?= $value->pw_id ?> cart-qty-minus"
                                     data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
                                         class="fa-solid fa-minus"></i></button>
                                 <input type="text" name="qty"
                                     value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>"
                                     data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>"
                                     class="input-qty">
-                                <button class="qty-btn-plus inc cart-qty-plus"
+                                <button class="qty-btn-plus inc inc_<?= $value->pw_id ?> cart-qty-plus"
                                     data-product_weight_id="<?= $value->pw_id ?>" type="button"><i
                                         class="fa-solid fa-plus"></i></button>
                             </div>
@@ -635,6 +651,10 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                 </div>
             </div>
         </div>
+
+        <!-- 
+            
+         -->
         <?php endforeach ?>
     </div>
 
