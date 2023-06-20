@@ -808,6 +808,7 @@ class Api_model extends My_model
                 $data['where'] = ['mc.device_id' => $device_id, 'mc.user_id' => 0];
             }
         }
+
         if (isset($postdata['branch_id']) && $postdata['branch_id'] != '') {
             $data['where']['mc.branch_id'] = $postdata['branch_id'];
         } elseif (isset($postdata['vendor_id']) && $postdata['vendor_id'] != '') {
@@ -1705,7 +1706,6 @@ class Api_model extends My_model
 
     public function checkShoppingBasedDiscount($cartTotal, $branch_id)
     {
-        dd(numberFormat($cartTotal));
         $query = $this->db->query('SELECT *,(' . $cartTotal . ' - cart_amount) AS CA FROM `amount_based_discount` where status = "1" AND branch_id = ' . $branch_id . ' HAVING CA > 0 ORDER BY CA ASC LIMIT 1');
         $re = $query->result();
         // lq();
