@@ -521,7 +521,7 @@ class Api extends Apiuser_Controller
                         $discountValue = numberFormat($my_cart_price_result * $discountPercentage / 100);
                         $discountValue = number_format((float)$discountValue, 2, '.', '');
 
-
+                        $oldGst = 0;
                         $newGstTotal = 0;
                         foreach ($my_cart_result as $row) :
 
@@ -529,6 +529,9 @@ class Api extends Apiuser_Controller
 
                             $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
                             $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+
+                            $oldgstPrice = numberFormat(($row->discount_price * $row->gst) / 100);
+                            $oldGst += numberFormat($oldgstPrice  * $row->quantity);
                         endforeach;
                     }
                 }
@@ -563,10 +566,12 @@ class Api extends Apiuser_Controller
 
                 if (!empty($my_cart_result)) {
 
+                    $resGst = $discountValue > 0 ? $newGstTotal :  $oldGst;
+
                     $cart_response['success'] = "1";
                     $cart_response['message'] = "My cart item list";
                     $cart_response["count"] = $total_count;
-                    $cart_response["total_price"] = number_format((float)($my_cart_price_result - $discountValue), 2, '.', '');
+                    $cart_response["total_price"] = number_format((float)(numberFormat($my_cart_price_result + $resGst) - $discountValue), 2, '.', '');
                     $cart_response["shopping_based_discount"] = number_format((float)$discountValue, 2, '.', '');
 
                     $counter = 0;
