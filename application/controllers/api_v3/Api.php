@@ -490,8 +490,7 @@ class Api extends Apiuser_Controller
             $address_array = '';
 
 
-
-            $total_cart = $this->this_model->get_total($_POST);
+            $total_cart = $this->this_model->get_total($_POST, true);
 
 
             $my_cart_result = $this->this_model->getCart($user_id);
@@ -513,6 +512,7 @@ class Api extends Apiuser_Controller
                 $p_method = $payment_method->result();
 
                 $discountValue = 0;
+
                 $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($my_cart_price_result, $BranchId);
                 // dd($shoppingDiscount);
                 if (!empty($shoppingDiscount)) {

@@ -779,7 +779,7 @@ class Api_model extends My_model
         $this->deleteRecords($data);
         return true;
     }
-    function get_total($postdata)
+    function get_total($postdata, $check = false)
     {
 
         if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
@@ -793,8 +793,13 @@ class Api_model extends My_model
         $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
 
-        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
+        if ($check == true) {
+            $oldIsShow = $isShow;
+            $isShow[0]->display_price_with_gst = '1';
+        }
 
+
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
         if (isset($isShow) && $isShow[0]->display_price_with_gst == '1') {
             $data['select'] = ['REPLACE(FORMAT(sum(pw.price * mc.quantity) ,2),",","")as total_price', 'REPLACE(FORMAT(sum(pw.without_gst_price * mc.quantity ),2),",","") AS total', 'count(mc.id) AS cart_items'];
         } else {
@@ -817,6 +822,10 @@ class Api_model extends My_model
 
         $data['table'] = 'my_cart as mc';
         $result = $this->selectFromJoin($data);
+
+        if ($check == true) {
+            $isShow =  $oldIsShow;
+        }
         return $result;
     }
 
