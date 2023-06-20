@@ -499,10 +499,7 @@ class Api extends Apiuser_Controller
 
 
 
-            $my_cart_price_result = $total_cart[0]->total;
-
-
-
+            $my_cart_price_result = numberFormat($total_cart[0]->total);
 
             $cart_response["data"] = array();
             if (!empty($my_cart_result)) {
@@ -521,7 +518,7 @@ class Api extends Apiuser_Controller
                 if (!empty($shoppingDiscount)) {
                     if ($my_cart_price_result >= $shoppingDiscount[0]->cart_amount) {
                         $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                        $discountValue = $my_cart_price_result * $discountPercentage / 100;
+                        $discountValue = numberFormat($my_cart_price_result * $discountPercentage / 100);
                         $discountValue = number_format((float)$discountValue, 2, '.', '');
                     }
                 }
