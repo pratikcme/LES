@@ -113,11 +113,13 @@ footer{
 .footer-bottom .footer-logo{
     max-width: 200px;
     margin-bottom: 23px;
+    height: 52px;
 }
 
 .footer-bottom .footer-logo img{
     object-fit: contain;
-    height: auto;
+    /* height: auto; */
+    width: 100%;
 }
 
 .footer-bottom h4{

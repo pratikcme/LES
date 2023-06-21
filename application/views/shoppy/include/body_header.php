@@ -37,7 +37,7 @@
 
                     <div class="d-flex drp-grp">
 
-                        <?php
+                        <!-- <?php
                         if (isset($multi_language) && $multi_language[0]->multi_language == '1') :
                         ?>
                         <form class="lng-drp">
@@ -45,7 +45,7 @@
                         </form>
                         <?php
                         endif;
-                        ?>
+                        ?> -->
                         <?php
 
                         if ($this->uri->segment(1) != 'login' && $this->uri->segment(1) != '') {
