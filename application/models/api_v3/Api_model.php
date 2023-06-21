@@ -2072,9 +2072,9 @@ class Api_model extends My_model
         $data['table'] = 'my_cart as mc';
 
         if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-            $data['select'] = ['REPLACE(FORMAT(sum(pw.without_gst_price * mc.quantity),2),",","") AS sub_total', 'FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.without_gst_price * mc.quantity),2),",","") AS sub_total', 'REPLACE(FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2),",","") AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
         } else {
-            $data['select'] = ['REPLACE(FORMAT(sum(pw.discount_price * mc.quantity),2),",","") AS sub_total', 'FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.discount_price * mc.quantity),2),",","") AS sub_total', 'REPLACE(FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2),",","") AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
         }
 
         $data['where'] = ['mc.status !=' => '9', 'mc.user_id' => $user_id];
