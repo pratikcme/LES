@@ -1636,7 +1636,7 @@ class Api extends Apiuser_Controller
                     $discount_price_total = numberFormat(numberFormat(numberFormat($row->actual_price * $row->quantity) - $row->calculation_price) + $discount_price_total);
                     $data['product_discount_price'] = $row->discount_price;
                     $data['discount_per'] = $row->discount;
-                    $actual_price_total = $row->actual_price * $row->quantity + $actual_price_total;
+                    $actual_price_total = numberFormat($row->actual_price * $row->quantity) + $actual_price_total;
 
                     // Gst calculation
                     $gst_amount = numberFormat(($row->discount_price * $gst_percent) / 100);
@@ -1644,6 +1644,7 @@ class Api extends Apiuser_Controller
                     $total_gst += numberFormat($gst_total_product);
                     $total_price = numberFormat($actual_price_total - $discount_price_total);
 
+                    dd($total_price);
                     $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
                     $response["amountWithoutGst"] = number_format((float)$total_price - $total_gst, '2', '.', '');
                     $product_id = $row->product_id;
