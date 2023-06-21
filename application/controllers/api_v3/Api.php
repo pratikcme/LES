@@ -536,6 +536,14 @@ class Api extends Apiuser_Controller
                     }
                 }
 
+                $oldGst = 0;
+                foreach ($my_cart_result as $row) :
+
+                    $oldgstPrice = numberFormat(($row->discount_price * $row->gst) / 100);
+                    $oldGst += numberFormat($oldgstPrice  * $row->quantity);
+                endforeach;
+
+
 
                 $vendorData = [];
                 $vendorData['id'] = ($vendor_result[0]->id == null) ? "" : $vendor_result[0]->id;
@@ -1579,7 +1587,7 @@ class Api extends Apiuser_Controller
             }
 
             $isSelfPickup = $order_result['isSelfPickup'];
-            $total_with_charge = $order_result['sub_total'];
+            $total_with_charge = $order_result['payable_amount'];
             $delivery_charge = $order_result['delivery_charge'];
             $shopping_based_discount = $order_result['shopping_amount_based_discount'];
             // if ($isSelfPickup == 1) {
@@ -1612,16 +1620,16 @@ class Api extends Apiuser_Controller
                     $package_id = $product_weight_result['package'];
                     $package_name = $this->this_model->get_package($package_id);
 
-                    $discount_price_total = ($row->actual_price * $row->quantity) - $row->calculation_price + $discount_price_total;
+                    $discount_price_total = numberFormat(numberFormat(numberFormat($row->actual_price * $row->quantity) - $row->calculation_price) + $discount_price_total);
                     $data['product_discount_price'] = $row->discount_price;
                     $data['discount_per'] = $row->discount;
                     $actual_price_total = $row->actual_price * $row->quantity + $actual_price_total;
 
                     // Gst calculation
-                    $gst_amount = ($row->discount_price * $gst_percent) / 100;
-                    $gst_total_product = $gst_amount * $row->quantity;
-                    $total_gst += $gst_total_product;
-                    $total_price = $actual_price_total - $discount_price_total;
+                    $gst_amount = numberFormat(($row->discount_price * $gst_percent) / 100);
+                    $gst_total_product = numberFormat($gst_amount * $row->quantity);
+                    $total_gst += numberFormat($gst_total_product);
+                    $total_price = numberFormat($actual_price_total - $discount_price_total);
 
                     $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
                     $response["amountWithoutGst"] = number_format((float)$total_price - $total_gst, '2', '.', '');
