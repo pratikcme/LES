@@ -536,6 +536,14 @@ class Api extends Apiuser_Controller
                     }
                 }
 
+                $oldGst = 0;
+                foreach ($my_cart_result as $row) :
+
+                    $oldgstPrice = numberFormat(($row->discount_price * $row->gst) / 100);
+                    $oldGst += numberFormat($oldgstPrice  * $row->quantity);
+                endforeach;
+
+
 
                 $vendorData = [];
                 $vendorData['id'] = ($vendor_result[0]->id == null) ? "" : $vendor_result[0]->id;
