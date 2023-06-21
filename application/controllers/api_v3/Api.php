@@ -1332,6 +1332,7 @@ class Api extends Apiuser_Controller
         $getactual = $this->this_model->get_actual_total($postdata);
         $cartData = $this->this_model->get_cart_variant($postdata);
 
+        $myCart = $this->this_model->getCart($postdata['user_id']);
         $gettotalPrice = $getactual;
 
         $my_cal = (float)$gettotal[0]->total;
@@ -1352,11 +1353,11 @@ class Api extends Apiuser_Controller
                 $discountValue = number_format((float)$discountValue, 2, '.', '');
 
                 $newGstTotal = 0;
-                foreach ($cartData as $row) :
-                    $new_price = numberFormat(numberFormat($row['discount_price']) - numberFormat($row['discount_price'] *  $discountPercentage / 100));
-                    $row['gst_amount_per_product'] = numberFormat(($new_price  * $row['gst']) / 100);
+                foreach ($myCart as $row) :
+                    $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $discountPercentage / 100));
+                    $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
 
-                    $newGstTotal  += numberFormat($row['gst_amount_per_product'] * $row['quantity']);
+                    $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
                 endforeach;
             }
         }
