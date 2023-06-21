@@ -244,6 +244,160 @@
                                 </h2>
                                 <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
+                                    <ul class="sub-wrap">
+                                        <li class='sub-menu'>
+                                            <span>brands<div class='fa fa-caret-down right'></div></span>
+                                            <ul>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-1">
+                                                        <label class="form-check-label" for="sub-cat-itm-1">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-2">
+                                                        <label class="form-check-label" for="sub-cat-itm-2">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-3">
+                                                        <label class="form-check-label" for="sub-cat-itm-3">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>    
+                                    <ul class="sub-wrap">
+                                        <li class='sub-menu'>
+                                            <span>brands<div class='fa fa-caret-down right'></div></span>
+                                            <ul>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-1">
+                                                        <label class="form-check-label" for="sub-cat-itm-1">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-1">
+                                                        <label class="form-check-label" for="sub-cat-itm-1">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-1">
+                                                        <label class="form-check-label" for="sub-cat-itm-1">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-1">
+                                                        <label class="form-check-label" for="sub-cat-itm-1">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-1">
+                                                        <label class="form-check-label" for="sub-cat-itm-1">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-1">
+                                                        <label class="form-check-label" for="sub-cat-itm-1">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-2">
+                                                        <label class="form-check-label" for="sub-cat-itm-2">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <li>
+                                                <div class="discount-wrapper brands-wrp">
+                                                    <div class="form-check d-flex align-items-center">
+                                                        <input class="form-check-input" type="checkbox" id="sub-cat-itm-3">
+                                                        <label class="form-check-label" for="sub-cat-itm-3">
+                                                            <p>Fable&amp;Mane</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>  
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         <div class=" Categories-part">
                                             <ul class="categories-wrapper cate-wrp">
                                                 <li class="active">
@@ -259,7 +413,7 @@
                                                     </li>
                                                 <?php endforeach ?>
                                             </ul>
-                                        </div>
+                                        </div> 
                                     </div>
                                 </div>
                             </div>
