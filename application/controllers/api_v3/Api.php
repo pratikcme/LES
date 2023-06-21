@@ -579,7 +579,7 @@ class Api extends Apiuser_Controller
                     $cart_response['success'] = "1";
                     $cart_response['message'] = "My cart item list";
                     $cart_response["count"] = $total_count;
-                    $cart_response["total_price"] = number_format((float)(numberFormat($my_cart_price_result + $resGst) - $discountValue), 2, '.', '');
+                    $cart_response["total_price"] = number_format((float)(numberFormat($my_cart_price_result + $resGst)), 2, '.', '');
                     $cart_response["shopping_based_discount"] = number_format((float)$discountValue, 2, '.', '');
 
                     $counter = 0;
@@ -1324,13 +1324,15 @@ class Api extends Apiuser_Controller
     public function send_cart_response($postdata)
     {
         $total_gst = $this->this_model->gstCalculation($postdata);
+
         $response["success"] = 1;
         $response["message"] = "Product has been updated in your cart";
-        $gettotal = $this->this_model->get_total($postdata);
+        $gettotal = $this->this_model->get_total($postdata, true);
 
         $getactual = $this->this_model->get_actual_total($postdata);
         $cartData = $this->this_model->get_cart_variant($postdata);
 
+        $myCart = $this->this_model->getCart($postdata['user_id']);
         $gettotalPrice = $getactual;
 
         $my_cal = (float)$gettotal[0]->total;
@@ -1343,21 +1345,32 @@ class Api extends Apiuser_Controller
         }
         $discountValue = 0;
         $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($my_cal, $postdata['branch_id']);
-        // dd($shoppingDiscount);
+
         if (!empty($shoppingDiscount)) {
             if ($my_cal >= $shoppingDiscount[0]->cart_amount) {
                 $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                $discountValue = $my_cal * $discountPercentage / 100;
+                $discountValue = numberFormat(($my_cal * $discountPercentage) / 100);
                 $discountValue = number_format((float)$discountValue, 2, '.', '');
+
+                $newGstTotal = 0;
+                foreach ($myCart as $row) :
+                    $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $discountPercentage / 100));
+                    $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+                    $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                endforeach;
             }
         }
+
+        $resGst = $discountValue > 0 ? $newGstTotal : $total_gst;
+
         $response["count"] = (int)$gettotal[0]->cart_items;
         $response["actual_price"] = $gettotalPrice;
         $response["shopping_based_discount"] = $discountValue;
-        $response["discount_price"] = number_format((float)$gettotalPrice - $my_cal, 2, '.', '');
-        $response["total_price"] = number_format((float)($my_cal - $discountValue), 2, '.', '');
-        $response["TotalGstAmount"] = number_format((float)$total_gst, 2, '.', '');
-        $response["amountWithoutGst"] = number_format((float)($my_cal - $total_gst - $discountValue), 2, '.', '');
+        $response["discount_price"] = number_format((float)$gettotalPrice - (numberFormat($my_cal + $total_gst)), 2, '.', '');
+        $response["total_price"] = number_format((float)($my_cal + $resGst), 2, '.', '');
+        $response["TotalGstAmount"] = number_format((float)$resGst, 2, '.', '');
+        $response["amountWithoutGst"] = number_format((float)($my_cal), 2, '.', '');
         $quntity = 0;
         if (!empty($cartData)) {
             $quntity = $cartData[0]['quantity'];
