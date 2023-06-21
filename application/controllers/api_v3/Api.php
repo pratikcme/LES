@@ -1620,7 +1620,7 @@ class Api extends Apiuser_Controller
                     $package_id = $product_weight_result['package'];
                     $package_name = $this->this_model->get_package($package_id);
 
-                    $discount_price_total = ($row->actual_price * $row->quantity) - $row->calculation_price + $discount_price_total;
+                    $discount_price_total = numberFormat(numberFormat(numberFormat($row->actual_price * $row->quantity) - $row->calculation_price) + $discount_price_total);
                     $data['product_discount_price'] = $row->discount_price;
                     $data['discount_per'] = $row->discount;
                     $actual_price_total = $row->actual_price * $row->quantity + $actual_price_total;
