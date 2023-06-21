@@ -1587,7 +1587,7 @@ class Api extends Apiuser_Controller
             }
 
             $isSelfPickup = $order_result['isSelfPickup'];
-            $total_with_charge = $order_result['sub_total'];
+            $total_with_charge = $order_result['payable_amount'];
             $delivery_charge = $order_result['delivery_charge'];
             $shopping_based_discount = $order_result['shopping_amount_based_discount'];
             // if ($isSelfPickup == 1) {
