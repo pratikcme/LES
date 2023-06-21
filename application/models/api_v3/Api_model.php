@@ -1652,7 +1652,7 @@ class Api_model extends My_model
                 $data['gst_amount_per_product'] = number_format((float)$gst_amount, '2', '.', '');
                 $getdata[] = $data;
                 $counter++;
-                $actual_price_total = numberFormat(($row['quantity'] * $product_actual_price )+ $actual_price_total);
+                $actual_price_total = numberFormat(($row['quantity'] * $product_actual_price) + $actual_price_total);
             }
 
             $gettotal = $this->get_total($postdata);
@@ -1699,7 +1699,7 @@ class Api_model extends My_model
             $response["shopping_based_discount"] = $discountValue;
             $response["discount_price_total"] = $discount_price_total;
 
-            $response["total_price"] = number_format((float)(numberFormat($my_cal + $calGst) - $discountValue), '2', '.', '');
+            $response["total_price"] = number_format((float)(numberFormat($my_cal + $calGst)), '2', '.', '');
 
             $response["TotalGstAmount"] = number_format((float)$calGst, '2', '.', '');
             $response["amountWithoutGst"] = number_format((float)($my_cal), '2', '.', '');

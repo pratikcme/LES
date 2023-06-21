@@ -579,7 +579,7 @@ class Api extends Apiuser_Controller
                     $cart_response['success'] = "1";
                     $cart_response['message'] = "My cart item list";
                     $cart_response["count"] = $total_count;
-                    $cart_response["total_price"] = number_format((float)(numberFormat($my_cart_price_result + $resGst) - $discountValue), 2, '.', '');
+                    $cart_response["total_price"] = number_format((float)(numberFormat($my_cart_price_result + $resGst)), 2, '.', '');
                     $cart_response["shopping_based_discount"] = number_format((float)$discountValue, 2, '.', '');
 
                     $counter = 0;
