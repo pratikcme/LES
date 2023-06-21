@@ -922,7 +922,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     transition: 0.3s;
 }
  .product-listing-wrapper{
-    flex-basis: 24%;
+    flex-basis: 23%;
     transition: 0.3s; 
 }
 
@@ -1118,10 +1118,62 @@ div[slider]>input[type=range]::-ms-tooltip {
     display: none;
 }
 
+/* sub-category */
+.sub-menu span {
+    color: var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-family: var(--PublicSans-Regular);
+    text-transform: capitalize;
+    cursor: pointer;
+}
 
+.sub-menu span .fa-caret-up,
+.sub-menu span .fa-caret-down
+{
+    background-color: var(--primary-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
 
-/* =====responisve=== */
+.sub-menu .discount-wrapper p{
+   font-size: 14px;
+   margin-left: 10px;
+   margin-bottom: 0;
+}
 
+.sub-menu ul{
+    background: var(--cart-thead-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    max-height: 200px;
+    min-height: 100px;
+    overflow-y: scroll;
+}
+
+#collapseSix .accordion-body{
+    max-height: 350px;
+    min-height: 200px;
+    overflow-y: scroll;
+}
+
+/* ======================= responisve ======================== */
 @media only screen and (min-width: 1200px) and (max-width: 1399px){
     .product-listing-1{
         padding: 70px 0px;
@@ -1222,6 +1274,10 @@ div[slider]>input[type=range]::-ms-tooltip {
     .product-categires-part .accordion-header button{
         font-size: 22px !important;
     }
+
+    /* .product-listing-wrapper{
+        flex-basis: 23%;
+    } */
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1323,7 +1379,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         display: none;
      }
      .product-listing-wrapper{
-        flex-basis: 32%;
+        flex-basis: 45%;
      }
      .hide.my-filter-wrapper{
         flex-direction: 20%;

@@ -1169,6 +1169,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 
+/* sub-category */
 .sub-menu span {
     color: var(--text-color);
     display: flex;
@@ -1177,6 +1178,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     font-size: 18px;
     font-family: var(--inter-regular);
     text-transform: capitalize;
+    cursor: pointer;
 }
 
 .sub-menu span .fa-caret-up,
@@ -1212,6 +1214,12 @@ div[slider]>input[type=range]::-ms-tooltip {
     -o-border-radius: 5px;
     max-height: 200px;
     min-height: 100px;
+    overflow-y: scroll;
+}
+
+#collapseSix .accordion-body{
+    max-height: 350px;
+    min-height: 200px;
     overflow-y: scroll;
 }
 
