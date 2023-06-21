@@ -779,7 +779,7 @@ class Api_model extends My_model
         $this->deleteRecords($data);
         return true;
     }
-    function get_total($postdata)
+    function get_total($postdata, $check = false)
     {
 
         if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
@@ -793,12 +793,17 @@ class Api_model extends My_model
         $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
 
-        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
+        if ($check == true) {
+            $oldIsShow = $isShow;
+            $isShow[0]->display_price_with_gst = '1';
+        }
 
+
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
         if (isset($isShow) && $isShow[0]->display_price_with_gst == '1') {
-            $data['select'] = ['FORMAT(sum(pw.price * mc.quantity) ,2)as total_price', 'FORMAT(sum(pw.without_gst_price * mc.quantity ),2) AS total', 'count(mc.id) AS cart_items'];
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.price * mc.quantity) ,2),",","")as total_price', 'REPLACE(FORMAT(sum(pw.without_gst_price * mc.quantity ),2),",","") AS total', 'count(mc.id) AS cart_items'];
         } else {
-            $data['select'] = ['FORMAT(sum(pw.price * mc.quantity) ,2)as total_price', 'FORMAT(sum(pw.discount_price * mc.quantity ),2) AS total', 'count(mc.id) AS cart_items'];
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.price * mc.quantity) ,2),",","")as total_price', 'REPLACE(FORMAT(sum(pw.discount_price * mc.quantity ),2),",","") AS total', 'count(mc.id) AS cart_items'];
         }
 
         if (isset($user_id) && $user_id != 0 && $user_id != '') {
@@ -808,6 +813,7 @@ class Api_model extends My_model
                 $data['where'] = ['mc.device_id' => $device_id, 'mc.user_id' => 0];
             }
         }
+
         if (isset($postdata['branch_id']) && $postdata['branch_id'] != '') {
             $data['where']['mc.branch_id'] = $postdata['branch_id'];
         } elseif (isset($postdata['vendor_id']) && $postdata['vendor_id'] != '') {
@@ -816,6 +822,10 @@ class Api_model extends My_model
 
         $data['table'] = 'my_cart as mc';
         $result = $this->selectFromJoin($data);
+
+        if ($check == true) {
+            $isShow =  $oldIsShow;
+        }
         return $result;
     }
 
@@ -1644,6 +1654,7 @@ class Api_model extends My_model
                 $counter++;
                 $actual_price_total = numberFormat($row['quantity'] * $product_actual_price + $actual_price_total);
             }
+
             $gettotal = $this->get_total($postdata);
 
             $getactual = $this->get_actual_total($postdata);
@@ -1668,15 +1679,18 @@ class Api_model extends My_model
                     $discountValue = numberFormat($my_cal * $discountPercentage / 100);
 
                     $newGstTotal = 0;
+
                     foreach ($getdata as $row) :
                         $new_price = numberFormat(numberFormat($row['discount_price']) - numberFormat($row['discount_price'] *  $discountPercentage / 100));
                         $row['gst_amount_per_product'] = numberFormat(($new_price  * $row['gst']) / 100);
 
                         $newGstTotal  += numberFormat($row['gst_amount_per_product'] * $row['quantity']);
-
                     endforeach;
                 }
             }
+
+            $calGst =  $discountValue > 0 ?  $newGstTotal : $total_gst;
+
 
             $response['success'] = "1";
             $response['message'] = "My cart item list";
@@ -1685,9 +1699,9 @@ class Api_model extends My_model
             $response["shopping_based_discount"] = $discountValue;
             $response["discount_price_total"] = $discount_price_total;
 
-            $response["total_price"] = number_format((float)(numberFormat($my_cal + $newGstTotal)  - $discountValue), '2', '.', '');
+            $response["total_price"] = number_format((float)(numberFormat($my_cal + $calGst) - $discountValue), '2', '.', '');
 
-            $response["TotalGstAmount"] = number_format((float)$newGstTotal, '2', '.', '');
+            $response["TotalGstAmount"] = number_format((float)$calGst, '2', '.', '');
             $response["amountWithoutGst"] = number_format((float)($my_cal), '2', '.', '');
 
 
@@ -2222,6 +2236,7 @@ class Api_model extends My_model
                             continue;
                         }
                     }
+
                     /*Order*/
                     $data['insert'] = [
                         'order_from' => '1',
