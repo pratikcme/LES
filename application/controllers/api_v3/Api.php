@@ -1680,6 +1680,7 @@ class Api extends Apiuser_Controller
                     $counter++;
                 }
 
+                dd($total_gst);
                 $response['success'] = "1";
                 $response['message'] = "My order details";
                 $response["count"] = $counter;
