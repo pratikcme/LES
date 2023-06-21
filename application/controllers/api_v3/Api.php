@@ -1599,10 +1599,33 @@ class Api extends Apiuser_Controller
                 $instance_discount = number_format((float)$amount, '2', '.', '');
             }
 
+
             $isSelfPickup = $order_result['isSelfPickup'];
             $total_with_charge = $order_result['payable_amount'];
             $delivery_charge = $order_result['delivery_charge'];
             $shopping_based_discount = $order_result['shopping_amount_based_discount'];
+
+            // $myCart = $this->this_model->getCart($user_id);
+            $newGstTotal = 0;
+
+            // if ($shopping_based_discount > 0) {
+            //     $per = ($shopping_based_discount / 1246.91) * 100;
+            //     // foreach ($myCart as $row) :
+            //     //     $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $discountPercentage / 100));
+            //     //     $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+            //     //     $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+            //     // endforeach;
+            // } else if ($instance_discount > 0) {
+            //     foreach ($myCart as $row) :
+            //         $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $instance_discount / 100));
+            //         $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+            //         $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+            //     endforeach;
+            // }
+
+
             // if ($isSelfPickup == 1) {
             $self_pick = $this->db->query("SELECT * FROM `selfPickup_otp` WHERE order_id = '$order_id' AND user_id = '$user_id'");
             $self_otp = $self_pick->row_array();
@@ -1613,6 +1636,13 @@ class Api extends Apiuser_Controller
             $my_order_price_result = $my_order_price_query->row_array();
             $branch_id = $result[0]->branch_id;
             $vendorDetails = $this->this_model->getVendorAddress($branch_id);
+
+            $cartTotal = 0;
+            foreach ($result as $row) {
+                $cartTotal += $row->without_gst_price * $row->quantity;
+            }
+
+
             if ($query->num_rows() > 0) {
                 $counter = 0;
                 $total_gst = 0;
@@ -1644,8 +1674,26 @@ class Api extends Apiuser_Controller
                     $total_gst += numberFormat($gst_total_product);
                     $total_price = numberFormat($actual_price_total - $discount_price_total);
 
-                    $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
-                    $response["amountWithoutGst"] = number_format((float)$total_price - $total_gst, '2', '.', '');
+                    // $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
+                    // $response["amountWithoutGst"] = number_format((float)$total_price - $total_gst, '2', '.', '');
+
+                    if ($instance_discount > 0) {
+                        $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $instance_discount / 100));
+                        $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+                        $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                    }
+
+                    if ($shopping_based_discount > 0) {
+                        $per = ($shopping_based_discount /  $cartTotal) * 100;
+
+                        $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price * $per  / 100));
+                        $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+                        $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                    }
+
+                    // 
                     $product_id = $row->product_id;
 
                     $product_query = $this->db->query("SELECT name, image FROM product WHERE  id = '$product_id'");
@@ -1680,7 +1728,12 @@ class Api extends Apiuser_Controller
                     $counter++;
                 }
 
-                dd($total_gst);
+                // dd($newGstTotal);
+                // dd($total_gst);
+
+                $response["TotalGstAmount"] = $newGstTotal > 0 ? numberFormat($newGstTotal) : numberFormat($total_gst);
+                $response["amountWithoutGst"] = numberFormat($cartTotal);
+
                 $response['success'] = "1";
                 $response['message'] = "My order details";
                 $response["count"] = $counter;
