@@ -1652,7 +1652,7 @@ class Api_model extends My_model
                 $data['gst_amount_per_product'] = number_format((float)$gst_amount, '2', '.', '');
                 $getdata[] = $data;
                 $counter++;
-                $actual_price_total = numberFormat($row['quantity'] * $product_actual_price + $actual_price_total);
+                $actual_price_total = numberFormat(($row['quantity'] * $product_actual_price )+ $actual_price_total);
             }
 
             $gettotal = $this->get_total($postdata);
