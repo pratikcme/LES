@@ -223,6 +223,7 @@ class Product_model extends My_model
 		$data['groupBy'] = 'p.id';
 		$data['where']['p.branch_id'] = $this->branch_id;
 		$data['where']['p.status'] = '1';
+		$data['where']['pw.status'] = '1';
 
 		// [
 		// 		'p.branch_id'=>$this->branch_id,
@@ -259,6 +260,7 @@ class Product_model extends My_model
 	// public function productOfSubcategory($limit,$start,$postdata){
 	public function productOfSubcategory($postdata)
 	{
+		//	dd($postdata);
 
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
@@ -349,6 +351,17 @@ class Product_model extends My_model
 			$data['where'][$where] = '1';
 		}
 
+		if (isset($postdata['subcatArray'])) {
+
+			$sub_id = "(";
+			foreach ($postdata['subcatArray'] as $value) {
+				$sub_id .= 'p.subcategory_id = ' . $value . '  OR ';
+			}
+			$where = rtrim($sub_id, ' OR ');
+			$where .= ') AND 1 = ';
+			$data['where'][$where] = '1';
+		}
+
 		if (isset($postdata['sub_id']) &&  $postdata['sub_id'] != '') {
 			$data['where']['p.subcategory_id'] =  $postdata['sub_id'];
 			$sub_id = $postdata['sub_id'];
@@ -399,6 +412,7 @@ class Product_model extends My_model
 		$data['groupBy'] = 'p.id';
 		$data['limit'] = $page * $limit;
 		$product = $this->selectFromJoin($data);
+
 		$total_result = $this->countRecords($data);
 		$pages = ceil($total_result / 20);
 		if ($page < $pages) {

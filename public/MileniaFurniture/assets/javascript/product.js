@@ -82,7 +82,7 @@ $(document).ready(function () {
     var discountArray = get_filter("discount");
 
     var brandArray = get_filter("brand");
-
+    var subcatArray = get_filter("sucategory_id");
     $.ajax({
       url: url + "products/subcategory/" + page,
       data: {
@@ -91,6 +91,7 @@ $(document).ready(function () {
         sub_id: sub_id,
         cat_id: cat_id,
         brandArray: brandArray,
+        subcatArray: subcatArray,
         rangeArray: rangeArray,
         start_price: start_price,
         end_price: end_price,
@@ -275,47 +276,62 @@ $(document).ready(function () {
     onload(page, (sub_id = sub_id), (cat_id = cat_id), (sort = ""), search_key);
   });
 
-  $(document).on("click", ".sucategory_id", function () {
-    var sub_id = $(this).attr("data-sub_id");
-    // var cat_id = $(this).parent().parent().parent().attr('data-cat_id');
-    var cat_id = $(this)
-      .parent()
-      .prev("a")
-      .find(".category_id")
-      .attr("data-cat_id");
-    if (typeof cat_id !== "undefined") {
-      $("#cat_id").val(cat_id);
-    }
-    if (typeof cat_id !== "undefined") {
-      cat_id = $("#cat_id").val();
-    }
-
-    $("#sub_cat_id").val(sub_id);
-
-    //  when url having category
-    var cateByUrl = $("#getBycatID").val(); //from url cat id
-    var hidden = $("#cat_id").val(); //change category from products page
-    if (cateByUrl !== hidden && hidden != "") {
-      $("#getBycatID").val("");
-    }
-    // end when url having category
-
-    page = 1;
-    var url = $("#url").val();
-    $.ajax({
-      url: url + "products/getCategoryName",
-      data: { cat_id: cat_id },
-      method: "post",
-      dataType: "json",
-      // async : false,
-      success: function (res) {
-        $("#dropDownBtn").html(
-          res.name + '<span><i class="fas fa-angle-down"></i></span>'
-        );
-      },
-    });
-    onload(page, sub_id, cat_id);
+  $(document).on("change", ".sucategory_id", function () {
+    var cat_id = $(this).parent().parent().parent().attr("data-cat_id");
+    sub_id = $(this).attr("data-sub_id");
+    // var sub_id = $("#sub_cat_id").val();
+    onload(
+      1,
+      // sub_id,
+      cat_id,
+      (sort = ""),
+      (search = ""),
+      (start_price = ""), //Dk removed vars temp
+      (end_price = "")
+    );
   });
+
+  // $(document).on("click", ".sucategory_id", function () {
+  //   var sub_id = $(this).attr("data-sub_id");
+  //   var cat_id = $(this).parent().parent().parent().attr("data-cat_id");
+  //   var cat_id = $(this)
+  //     .parent()
+  //     .prev("a")
+  //     .find(".category_id")
+  //     .attr("data-cat_id");
+  //   if (typeof cat_id !== "undefined") {
+  //     $("#cat_id").val(cat_id);
+  //   }
+  //   if (typeof cat_id !== "undefined") {
+  //     cat_id = $("#cat_id").val();
+  //   }
+
+  //   $("#sub_cat_id").val(sub_id);
+
+  //   //  when url having category
+  //   var cateByUrl = $("#getBycatID").val(); //from url cat id
+  //   var hidden = $("#cat_id").val(); //change category from products page
+  //   if (cateByUrl !== hidden && hidden != "") {
+  //     $("#getBycatID").val("");
+  //   }
+  //   // end when url having category
+
+  //   page = 1;
+  //   var url = $("#url").val();
+  //   $.ajax({
+  //     url: url + "products/getCategoryName",
+  //     data: { cat_id: cat_id },
+  //     method: "post",
+  //     dataType: "json",
+  //     // async : false,
+  //     success: function (res) {
+  //       $("#dropDownBtn").html(
+  //         res.name + '<span><i class="fas fa-angle-down"></i></span>'
+  //       );
+  //     },
+  //   });
+  //   onload(page, sub_id, cat_id);
+  // });
 
   $(document).on("click", ".cate_id", function () {
     var cat_id = $(this).attr("data");

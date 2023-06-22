@@ -885,8 +885,8 @@ class Api_model extends My_model
 
         foreach ($result as $key => $value) {
             $gst = $this->getProductGst($value->product_id);
-            $gst_amount = ($value->discount_price * $gst) / 100;
-            $total_gst += $gst_amount * $value->quantity;
+            $gst_amount = numberFormat(($value->discount_price * $gst) / 100);
+            $total_gst += numberFormat($gst_amount * $value->quantity);
         }
         return $total_gst;
     }
@@ -1736,7 +1736,7 @@ class Api_model extends My_model
         if (isset($postdata['device_id'])) {
             $device_id = $postdata['device_id'];
         }
-        $data['select'] = ['mc.*', 'pw.product_id', 'pw.discount_price'];
+        $data['select'] = ['mc.*', 'pw.product_id', 'pw.discount_price', 'pw.without_gst_price', 'p.gst'];
         if (isset($user_id) && $user_id != '') {
             $data['where']['mc.user_id'] = $user_id;
         }
@@ -1750,7 +1750,10 @@ class Api_model extends My_model
         $product_weight_id = $postdata['product_weight_id'];
         $data['where']['product_weight_id'] = $product_weight_id;
         $data['table'] = 'my_cart as mc';
-        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
+        $data['join'] = [
+            'product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER'],
+            'product as p' => ['p.id = pw.product_id', 'INNER']
+        ];
 
         return $this->selectFromJoin($data, true);
     }
@@ -2069,9 +2072,9 @@ class Api_model extends My_model
         $data['table'] = 'my_cart as mc';
 
         if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-            $data['select'] = ['REPLACE(FORMAT(sum(pw.without_gst_price * mc.quantity),2),",","") AS sub_total', 'FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.without_gst_price * mc.quantity),2),",","") AS sub_total', 'REPLACE(FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2),",","") AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
         } else {
-            $data['select'] = ['REPLACE(FORMAT(sum(pw.discount_price * mc.quantity),2),",","") AS sub_total', 'FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.discount_price * mc.quantity),2),",","") AS sub_total', 'REPLACE(FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2),",","") AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
         }
 
         $data['where'] = ['mc.status !=' => '9', 'mc.user_id' => $user_id];

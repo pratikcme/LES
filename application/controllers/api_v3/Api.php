@@ -1324,13 +1324,15 @@ class Api extends Apiuser_Controller
     public function send_cart_response($postdata)
     {
         $total_gst = $this->this_model->gstCalculation($postdata);
+
         $response["success"] = 1;
         $response["message"] = "Product has been updated in your cart";
-        $gettotal = $this->this_model->get_total($postdata);
+        $gettotal = $this->this_model->get_total($postdata, true);
 
         $getactual = $this->this_model->get_actual_total($postdata);
         $cartData = $this->this_model->get_cart_variant($postdata);
 
+        $myCart = $this->this_model->getCart($postdata['user_id']);
         $gettotalPrice = $getactual;
 
         $my_cal = (float)$gettotal[0]->total;
@@ -1343,21 +1345,32 @@ class Api extends Apiuser_Controller
         }
         $discountValue = 0;
         $shoppingDiscount = $this->this_model->checkShoppingBasedDiscount($my_cal, $postdata['branch_id']);
-        // dd($shoppingDiscount);
+
         if (!empty($shoppingDiscount)) {
             if ($my_cal >= $shoppingDiscount[0]->cart_amount) {
                 $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                $discountValue = $my_cal * $discountPercentage / 100;
+                $discountValue = numberFormat(($my_cal * $discountPercentage) / 100);
                 $discountValue = number_format((float)$discountValue, 2, '.', '');
+
+                $newGstTotal = 0;
+                foreach ($myCart as $row) :
+                    $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $discountPercentage / 100));
+                    $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+                    $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                endforeach;
             }
         }
+
+        $resGst = $discountValue > 0 ? $newGstTotal : $total_gst;
+
         $response["count"] = (int)$gettotal[0]->cart_items;
         $response["actual_price"] = $gettotalPrice;
         $response["shopping_based_discount"] = $discountValue;
-        $response["discount_price"] = number_format((float)$gettotalPrice - $my_cal, 2, '.', '');
-        $response["total_price"] = number_format((float)($my_cal - $discountValue), 2, '.', '');
-        $response["TotalGstAmount"] = number_format((float)$total_gst, 2, '.', '');
-        $response["amountWithoutGst"] = number_format((float)($my_cal - $total_gst - $discountValue), 2, '.', '');
+        $response["discount_price"] = number_format((float)$gettotalPrice - (numberFormat($my_cal + $total_gst)), 2, '.', '');
+        $response["total_price"] = number_format((float)($my_cal + $resGst), 2, '.', '');
+        $response["TotalGstAmount"] = number_format((float)$resGst, 2, '.', '');
+        $response["amountWithoutGst"] = number_format((float)($my_cal), 2, '.', '');
         $quntity = 0;
         if (!empty($cartData)) {
             $quntity = $cartData[0]['quantity'];
@@ -1586,10 +1599,33 @@ class Api extends Apiuser_Controller
                 $instance_discount = number_format((float)$amount, '2', '.', '');
             }
 
+
             $isSelfPickup = $order_result['isSelfPickup'];
             $total_with_charge = $order_result['payable_amount'];
             $delivery_charge = $order_result['delivery_charge'];
             $shopping_based_discount = $order_result['shopping_amount_based_discount'];
+
+            // $myCart = $this->this_model->getCart($user_id);
+            $newGstTotal = 0;
+
+            // if ($shopping_based_discount > 0) {
+            //     $per = ($shopping_based_discount / 1246.91) * 100;
+            //     // foreach ($myCart as $row) :
+            //     //     $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $discountPercentage / 100));
+            //     //     $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+            //     //     $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+            //     // endforeach;
+            // } else if ($instance_discount > 0) {
+            //     foreach ($myCart as $row) :
+            //         $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $instance_discount / 100));
+            //         $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+            //         $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+            //     endforeach;
+            // }
+
+
             // if ($isSelfPickup == 1) {
             $self_pick = $this->db->query("SELECT * FROM `selfPickup_otp` WHERE order_id = '$order_id' AND user_id = '$user_id'");
             $self_otp = $self_pick->row_array();
@@ -1600,6 +1636,13 @@ class Api extends Apiuser_Controller
             $my_order_price_result = $my_order_price_query->row_array();
             $branch_id = $result[0]->branch_id;
             $vendorDetails = $this->this_model->getVendorAddress($branch_id);
+
+            $cartTotal = 0;
+            foreach ($result as $row) {
+                $cartTotal += $row->without_gst_price * $row->quantity;
+            }
+
+
             if ($query->num_rows() > 0) {
                 $counter = 0;
                 $total_gst = 0;
@@ -1623,7 +1666,7 @@ class Api extends Apiuser_Controller
                     $discount_price_total = numberFormat(numberFormat(numberFormat($row->actual_price * $row->quantity) - $row->calculation_price) + $discount_price_total);
                     $data['product_discount_price'] = $row->discount_price;
                     $data['discount_per'] = $row->discount;
-                    $actual_price_total = $row->actual_price * $row->quantity + $actual_price_total;
+                    $actual_price_total = numberFormat($row->actual_price * $row->quantity) + $actual_price_total;
 
                     // Gst calculation
                     $gst_amount = numberFormat(($row->discount_price * $gst_percent) / 100);
@@ -1631,8 +1674,26 @@ class Api extends Apiuser_Controller
                     $total_gst += numberFormat($gst_total_product);
                     $total_price = numberFormat($actual_price_total - $discount_price_total);
 
-                    $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
-                    $response["amountWithoutGst"] = number_format((float)$total_price - $total_gst, '2', '.', '');
+                    // $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
+                    // $response["amountWithoutGst"] = number_format((float)$total_price - $total_gst, '2', '.', '');
+
+                    if ($instance_discount > 0) {
+                        $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $instance_discount / 100));
+                        $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+                        $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                    }
+
+                    if ($shopping_based_discount > 0) {
+                        $per = ($shopping_based_discount /  $cartTotal) * 100;
+
+                        $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price * $per  / 100));
+                        $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+
+                        $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                    }
+
+                    // 
                     $product_id = $row->product_id;
 
                     $product_query = $this->db->query("SELECT name, image FROM product WHERE  id = '$product_id'");
@@ -1666,6 +1727,12 @@ class Api extends Apiuser_Controller
                     $get_data[] = $data;
                     $counter++;
                 }
+
+                // dd($newGstTotal);
+                // dd($total_gst);
+
+                $response["TotalGstAmount"] = $newGstTotal > 0 ? numberFormat($newGstTotal) : numberFormat($total_gst);
+                $response["amountWithoutGst"] = numberFormat($cartTotal);
 
                 $response['success'] = "1";
                 $response['message'] = "My order details";
