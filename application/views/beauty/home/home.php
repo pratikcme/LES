@@ -178,18 +178,19 @@
             <?php if (count($offer_list) == '2' || count($offer_list) >= '4') { ?>
                 <?php foreach ($offer_list as $key => $value) { ?>
 
-                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
+
+
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4" style="background:url(<?= $value->image ?>)">
                         <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>">
-                            <div class="offer-wrapper offer-wrapper-1" style="background:url(<?= $value->image ?>)">
+                            <div class="offer-wrapper offer-wrapper-1">
+
                                 <h4><?= $value->offer_title ?></h4>
-                                <h3><?= $value->offer_percent ?>%<span>OFF</span></h3>
+                                <h3><?= $value->offer_percent ?>% <span>OFF</span></h3>
                                 <p><?= $value->category_name ?></p>
-                                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="explor-btn"><?= $this->lang->line('Explore More'); ?></a>
+                                <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="explor-btn"><?= $this->lang->line('Explore More') ?></a>
                             </div>
                         </a>
                     </div>
-
-
                 <?php } ?>
                 <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
                 <a href="#">
