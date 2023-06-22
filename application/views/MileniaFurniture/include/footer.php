@@ -291,7 +291,7 @@ if (!empty($js)) {
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: deLang,
-            includedLanguages: '<?=$supported_language?>'
+            includedLanguages: '<?= $supported_language ?>'
         }, 'google_translate_element');
     }
     // setTimeout(()=>{
@@ -324,7 +324,7 @@ if (!empty($js)) {
             }
             new google.translate.TranslateElement({
                 pageLanguage: deLang,
-                includedLanguages: '<?=$supported_language?>'
+                includedLanguages: '<?= $supported_language ?>'
             }, 'google_translate_element');
             // window.location.reload();        
             //     }
@@ -356,9 +356,10 @@ if (!empty($js)) {
 
 
 
+
     $('.sub-menu ul').hide();
-$(".sub-menu span").click(function () {
-  $(this).parent(".sub-menu").children("ul").slideToggle("100");
-  $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-});
+    $(".sub-menu .right").click(function() {
+        $(this).parent().parent(".sub-menu").children("ul").slideToggle("100");
+        $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+    });
 </script>

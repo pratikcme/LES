@@ -375,7 +375,40 @@
 
                                             <?php foreach ($category as $key => $value) : ?>
                                                 <li class='sub-menu'>
-                                                    <span class="category_id" data-cat_id="<?= $value->id ?>"><?= $value->name ?><div class='fa fa-caret-down right'></div></span>
+                                                    <!-- <span>Men's</span> -->
+                                                    <div class="form-check d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <input class="form-check-input category_id" name="category" type="checkbox" value="<?= $value->id  ?>" id="<?= $value->id ?>">
+                                                            <label class="form-check-label" for="<?= $value->id ?>">
+                                                                <span><?= $value->name ?></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class='fa fa-caret-down right'></div>
+                                                    </div>
+                                                    <ul>
+                                                        <?php foreach ($value->subcategory as  $subvalue) : ?>
+                                                            <li>
+                                                                <div class="discount-wrapper brands-wrp">
+                                                                    <div class="form-check d-flex align-items-center">
+                                                                        <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
+                                                                        <label class="form-check-label" for="<?= $subvalue->id  ?>">
+                                                                            <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        <?php endforeach ?>
+
+                                                    </ul>
+                                                </li>
+                                            <?php endforeach ?>
+                                        </ul>
+
+                                        <!-- <ul class="sub-wrap">
+
+                                            <?php foreach ($category as $key => $value) : ?>
+                                                <li class='sub-menu'>
+                                                    <input type="checkbox" class="category_id" data-cat_id="<?= $value->id ?>"><?= $value->name ?><div class='fa fa-caret-down right'></div></span>
                                                     <ul>
                                                         <?php foreach ($value->subcategory as  $subvalue) : ?>
                                                             <li>
@@ -392,7 +425,7 @@
                                                     </ul>
                                                 </li>
                                             <?php endforeach ?>
-                                        </ul>
+                                        </ul> -->
 
 
                                         <!-- <div class=" Categories-part">
