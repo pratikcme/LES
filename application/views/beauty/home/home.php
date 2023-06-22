@@ -156,7 +156,7 @@
     </div>
 </section>
 
-<?php dd($offer_list); ?>
+
 <!-- --our-offers--- -->
 <section class="our-offer-section p-100 pb-0 <?= (empty($offer_list)) ? 'd-none' : '' ?>">
     <div class="container">
