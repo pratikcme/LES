@@ -189,16 +189,7 @@
                         </a>
                     </div>
                 <?php } ?>
-                <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-4">
-                <a href="#">
-                    <div class="offer-wrapper offer-wrapper-2">
-                        <img src="<?= $this->theme_base_url ?>/assets/images/home-page/offer-extra-right.png" alt="" class="offer-extra-right">
-                        <h4>Natural Items</h4>
-                        <h3>50% <span>OFF</span></h3>
-                        <a href="#" class="explor-btn"><?= $this->lang->line('Explore More') ?></a>
-                    </div>
-                </a>
-            </div> -->
+
             <?php } ?>
             <!--=============== three-banners ==================-->
             <?php if (count($offer_list) == 3) { ?>
