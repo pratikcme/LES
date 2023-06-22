@@ -1130,8 +1130,8 @@ div[slider]>input[type=range]::-ms-tooltip {
     cursor: pointer;
 }
 
-.sub-menu span .fa-caret-up,
-.sub-menu span .fa-caret-down
+.sub-menu .fa-caret-up,
+.sub-menu .fa-caret-down
 {
     background-color: var(--primary-color);
     width: 20px;
@@ -1146,6 +1146,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     align-items: center;
     justify-content: center;
     font-size: 10px;
+    cursor: pointer;
 }
 
 .sub-menu .discount-wrapper p{

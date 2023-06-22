@@ -431,7 +431,16 @@
                                             </ul> -->
                                             <ul class="sub-wrap">
                                                 <li class='sub-menu'>
-                                                    <span>brands<div class='fa fa-caret-down right'></div></span>
+                                                    <!-- <span>Men's</span> -->
+                                                    <div class="form-check d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm1">
+                                                            <label class="form-check-label" for="sub-cat-itm1">
+                                                                <span>Men's</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class='fa fa-caret-down right'></div>
+                                                    </div>
                                                     <ul>
                                                         <li>
                                                         <div class="discount-wrapper brands-wrp">
@@ -468,7 +477,15 @@
                                             </ul>    
                                             <ul class="sub-wrap">
                                                 <li class='sub-menu'>
-                                                    <span>brands<div class='fa fa-caret-down right'></div></span>
+                                                    <div class="form-check d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm_1">
+                                                            <label class="form-check-label" for="sub-cat-itm_1">
+                                                                <span>Women's</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class='fa fa-caret-down right'></div>
+                                                    </div>
                                                     <ul>
                                                         <li>
                                                         <div class="discount-wrapper brands-wrp">
