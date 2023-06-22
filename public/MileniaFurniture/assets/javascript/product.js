@@ -277,7 +277,8 @@ $(document).ready(function () {
   });
 
   $(document).on("change", ".sucategory_id", function () {
-    var cat_id = $("#cat_id").val();
+    var cat_id = $(this).parent().parent().parent().attr("data-cat_id");
+    sub_id = $(this).attr("data-sub_id");
     // var sub_id = $("#sub_cat_id").val();
     onload(
       1,

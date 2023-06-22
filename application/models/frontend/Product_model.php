@@ -260,7 +260,7 @@ class Product_model extends My_model
 	// public function productOfSubcategory($limit,$start,$postdata){
 	public function productOfSubcategory($postdata)
 	{
-
+		//	dd($postdata);
 
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));

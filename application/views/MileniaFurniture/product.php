@@ -375,7 +375,7 @@
 
                                             <?php foreach ($category as $key => $value) : ?>
                                                 <li class='sub-menu'>
-                                                    <span><?= $value->name ?><div class='fa fa-caret-down right'></div></span>
+                                                    <span class="category_id" data-cat_id="<?= $value->id ?>"><?= $value->name ?><div class='fa fa-caret-down right'></div></span>
                                                     <ul>
                                                         <?php foreach ($value->subcategory as  $subvalue) : ?>
                                                             <li>
