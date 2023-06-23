@@ -1168,6 +1168,61 @@ div[slider]>input[type=range]::-ms-tooltip {
     justify-content: center !important;
 }
 
+
+/* sub-category */
+.sub-menu span {
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    font-family: var(--inter-regular);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.sub-menu span .fa-caret-up,
+.sub-menu span .fa-caret-down
+{
+    background-color: var(--secondary-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.sub-menu .discount-wrapper p{
+   font-size: 14px;
+   margin-left: 10px;
+}
+
+.sub-menu ul{
+    background: var(--hot-product-slider-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    max-height: 200px;
+    min-height: 100px;
+    overflow-y: scroll;
+}
+
+#collapseSix .accordion-body{
+    max-height: 350px;
+    min-height: 200px;
+    overflow-y: scroll;
+}
+
 /* =====responisve=== */
 
 @media only screen and (max-width:1400px){
@@ -1693,6 +1748,10 @@ div[slider]>input[type=range]::-ms-tooltip {
     .brand-content li {
         flex-basis: 50%;
     }
+    .sub-menu span{
+       font-size: 13px !important;
+    }
+
 
 }
 
@@ -1925,7 +1984,10 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
         cursor: pointer;
     }
-   
+     
+    .sub-menu span{
+        font-size: 13px !important;
+     }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 424px) {
@@ -2158,6 +2220,10 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
         cursor: pointer;
     }
+
+    .sub-menu span{
+        font-size: 13px !important;
+     }
 }
 
 @media only screen and (max-width: 359px){

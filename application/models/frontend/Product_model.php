@@ -349,6 +349,23 @@ class Product_model extends My_model
 			$data['where'][$where] = '1';
 		}
 
+		if (isset($postdata['subcatArray'])) {
+			$data['where_in']['p.subcategory_id'] = $postdata['subcatArray'];
+		}
+
+
+		if (isset($postdata['categoryArray']) &&  !empty($postdata['categoryArray'])) {
+
+
+
+			if (isset($postdata['catwithsubArray']) &&  !empty($postdata['catwithsubArray'])) {
+				$catwithsubArray = array_unique($postdata['catwithsubArray']);
+				$data['where_in']['p.subcategory_id'] = $catwithsubArray;
+			} else {
+				$data['where_in']['p.category_id'] = $postdata['categoryArray'];
+			}
+		}
+
 		if (isset($postdata['sub_id']) &&  $postdata['sub_id'] != '') {
 			$data['where']['p.subcategory_id'] =  $postdata['sub_id'];
 			$sub_id = $postdata['sub_id'];
