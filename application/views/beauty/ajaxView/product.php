@@ -1,13 +1,13 @@
 <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
     <div class="techno-check">
         <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-        <div href="#" class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+        <div href="#" class="product-wrapper card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
             <div class="card-header">
                 <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
                     off</span>
                 <h5 class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
                     <?php
-                    if ($value->quantity > $value->limited_stock) { ?>
+                    if ($value->varientQuantity > $value->limited_stock) { ?>
                         <?= $this->lang->line('Available(Instock)') ?>
                     <?php } else { ?>
                         <?= $this->lang->line('Limited Stock') ?>

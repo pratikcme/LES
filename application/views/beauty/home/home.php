@@ -92,7 +92,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                     <div class="techno-check">
                         <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-                        <div href="#" class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                        <div href="#" class="product-wrapper card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
 
                             <div class="card-header">
                                 <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?>
@@ -253,7 +253,7 @@
             <?php foreach ($new_arrival as $key => $value) { ?>
                 <div class="techno-check">
                     <input class="techno_checkbox" type="checkbox" id="1" value="1" />
-                    <div href="#" class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                    <div href="#" class="product-wrapper card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
 
                         <div class="card-header">
                             <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?>
