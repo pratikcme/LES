@@ -106,6 +106,9 @@ $offer2PrimaryText= "#7749BE";
 $offer2SecondaryText= "#7C0580";
 $offer2Btn= "#7749BE";
 
+
+// svg color //
+$new_svg_color = "#F0DAC5";
 ?>
 
 
@@ -229,5 +232,11 @@ $offer2Btn= "#7749BE";
     --offer-2-primary-text:<?= $offer2PrimaryText?>;
     --offer-2-secondary-text:<?= $offer2SecondaryText?>;
     --offer-2-btn:<?= $offer1Btn?>;
+/* -- svg-color */
+    --new-svg-color:<?= $new_svg_color?>;
+
 }
+
+
+
 </style>
