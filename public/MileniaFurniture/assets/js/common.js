@@ -7,9 +7,10 @@ function myFunction(x) {
 //   });
 // });
 
-$(document).on("click",".close-btn",function(){
-  $(".cart-dropdowns,.overlay").hide();
-})
+// $(document).on("click",".close-btn",function(){
+//   $(".cart-dropdowns").hide();
+  
+// })
 
 // -----counter-js---
 // var buttonPlus = $(".qty-btn-plus");
