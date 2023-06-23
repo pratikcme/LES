@@ -1,6 +1,6 @@
 <div class="dropdown-title">
     <h4><?= $this->lang->line('My shopping cart') ?></h4>
-    <a href="#" class="close-btn"><i class="fa-solid fa-xmark"></i></a>
+    <span class="close-btn"><i class="fa-solid fa-xmark"></i></span>
 </div>
 
 <?php

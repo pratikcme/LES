@@ -1,7 +1,15 @@
 function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
+// $(document).ready(function(){
+//   $(".close-btn").click(function(){
+//    alert(0);
+//   });
+// });
 
+$(document).on("click",".close-btn",function(){
+  $(".cart-dropdowns,.overlay").hide();
+})
 
 // -----counter-js---
 // var buttonPlus = $(".qty-btn-plus");

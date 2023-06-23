@@ -9,6 +9,10 @@ $(document).ready(function () {
   })
 });
 
+$(document).on("click",".close-btn",function(){
+  $(".cart-dropdowns,.overlay").hide();
+})
+
 new WOW().init();
 
 // -------shop-cart-counter-count-js---------

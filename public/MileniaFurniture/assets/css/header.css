@@ -877,6 +877,13 @@ content: '';
     line-height: 17px !important;
     margin-bottom: 30px;
 }
+.empty_close-btn {
+    position: absolute;
+    top: 28px;
+    right: 15px;
+    color: var(--secondary-color) !important;
+    font-size: 20px;
+}
 
 /* responsive */
 
