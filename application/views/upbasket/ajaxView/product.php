@@ -1,7 +1,7 @@
 <div class="product-listing-wrapper wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-name: fadeInDown;">
     <div class="techno-check">
         <input class="techno_checkbox" type="checkbox" id="2" value="2">
-        <div href="javascript:" class="product-wrapper card card-1 <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+        <div href="javascript:" class="product-wrapper card card-1 <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
             <span> <?= $this->lang->line('out of stock') ?></span>
             <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
                 off</span>
@@ -14,8 +14,8 @@
             <div class="card-body">
                 <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?= $value->name ?></a>
                 </h3>
-                <h4 class="<?= ($value->quantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
-                    <?php if ($value->quantity > $value->limited_stock) { ?>
+                <h4 class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
+                    <?php if ($value->varientQuantity > $value->limited_stock) { ?>
                         <?= $this->lang->line('Available(Instock)') ?>
                     <?php } else { ?>
                         <?= $this->lang->line('Limited Stock') ?>

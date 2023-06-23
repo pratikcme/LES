@@ -101,7 +101,7 @@
             ?>
                 <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                     <div class="techno-check">
-                        <div class="product-wrapper card  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                        <div class="product-wrapper card  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
                             <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?>
                                 % off</span>
                             <span> <?= $this->lang->line('out of stock') ?></span>
@@ -115,8 +115,8 @@
                             <div class="card-body">
                                 <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
                                 </h3>
-                                <h4 class="<?= ($value->quantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
-                                    <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                <h4 class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
+                                    <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                 </h4>
 
                                 <div class="rate-dropdown">
@@ -268,7 +268,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
             ?>
                 <div class="techno-check">
                     <input class="techno_checkbox" type="checkbox" id="8" value="8" />
-                    <div class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                    <div class="product-wrapper card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
                         <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
                             off</span>
                         <span> <?= $this->lang->line('out of stock') ?></span>
@@ -281,7 +281,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
                         <div class="card-body">
                             <h3><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>"><?= $value->name ?></a>
                             </h3>
-                            <h4 class="<?= ($value->quantity > $value->limited_stock) ? 'invisible' : 'visible' ?>"><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                            <h4 class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>"><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                             </h4>
 
                             <div class="rate-dropdown">
