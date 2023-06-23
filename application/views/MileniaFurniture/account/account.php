@@ -384,7 +384,9 @@
                                                                 <a href="#" class="cmn-btn">Start Shopping</a>
                                                             </div>
                                                         </div>
-                                                    <? }
+                                                    <?
+                                                        continue;
+                                                    }
                                                     date_default_timezone_set('Asia/Kolkata');
                                                     $date =  date('d M Y, h:i A', $value->dt_updated);
                                                     if ($value->order_status == '1') {
