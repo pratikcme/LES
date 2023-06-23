@@ -126,7 +126,7 @@
                                                                             <div class="form-check d-flex align-items-center">
                                                                                 <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
                                                                                 <label class="form-check-label" for="<?= $subvalue->id  ?>">
-                                                                                    <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
+                                                                                    <p><?= $subvalue->name ?></p>
                                                                                 </label>
                                                                             </div>
                                                                         </div>
@@ -300,7 +300,7 @@
                                                                     <div class="form-check d-flex align-items-center">
                                                                         <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
                                                                         <label class="form-check-label" for="<?= $subvalue->id  ?>">
-                                                                            <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
+                                                                            <p><?= $subvalue->name ?></p>
                                                                         </label>
                                                                     </div>
                                                                 </div>
