@@ -275,6 +275,8 @@
                                                 <?php
                                                 foreach ($order as $key => $value) {
                                                     if ($value->order_status != '8') {
+                                                        echo "hi";
+                                                        exit;
                                                         continue;
                                                     }
                                                     date_default_timezone_set('Asia/Kolkata');
