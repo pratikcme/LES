@@ -223,7 +223,7 @@ class Product_model extends My_model
 		$data['groupBy'] = 'p.id';
 		$data['where']['p.branch_id'] = $this->branch_id;
 		$data['where']['p.status'] = '1';
-
+		$data['where']['pw.status'] = '1';
 		// [
 		// 		'p.branch_id'=>$this->branch_id,
 		// 		// 'pw.id !=' => '',
