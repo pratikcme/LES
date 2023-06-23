@@ -62,7 +62,6 @@
     }
 </style>
 
-
 <!-- ----hero-section-- -->
 <section class="hero-section common-banner-bg login-section">
     <div class="container">
@@ -104,7 +103,6 @@
                                         <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample1">
                                             <div class="accordion-body">
 
-
                                                 <ul class="sub-wrap">
 
                                                     <?php foreach ($category as $key => $value) : ?>
@@ -126,7 +124,7 @@
                                                                             <div class="form-check d-flex align-items-center">
                                                                                 <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
                                                                                 <label class="form-check-label" for="<?= $subvalue->id  ?>">
-                                                                                    <p><?= $subvalue->name ?></p>
+                                                                                    <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
                                                                                 </label>
                                                                             </div>
                                                                         </div>
@@ -272,6 +270,7 @@
                     <div class="product-categires-part">
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
+
                                 <h2 class="accordion-header" id="headingSix">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                         <?= $this->lang->line('Product Categories'); ?>
@@ -279,6 +278,7 @@
                                 </h2>
                                 <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
+
                                         <ul class="sub-wrap">
 
                                             <?php foreach ($category as $key => $value) : ?>
@@ -300,7 +300,7 @@
                                                                     <div class="form-check d-flex align-items-center">
                                                                         <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
                                                                         <label class="form-check-label" for="<?= $subvalue->id  ?>">
-                                                                            <p><?= $subvalue->name ?></p>
+                                                                            <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -311,6 +311,31 @@
                                                 </li>
                                             <?php endforeach ?>
                                         </ul>
+
+                                        <!-- <ul class="sub-wrap">
+
+                                            <?php foreach ($category as $key => $value) : ?>
+                                                <li class='sub-menu'>
+                                                    <input type="checkbox" class="category_id" data-cat_id="<?= $value->id ?>"><?= $value->name ?><div class='fa fa-caret-down right'></div></span>
+                                                    <ul>
+                                                        <?php foreach ($value->subcategory as  $subvalue) : ?>
+                                                            <li>
+                                                                <div class="discount-wrapper brands-wrp">
+                                                                    <div class="form-check d-flex align-items-center">
+                                                                        <input class="form-check-input sub-categories-wrapper sucategory_id sub_cat_link active_sub" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
+                                                                        <label class="form-check-label" for="<?= $subvalue->id  ?>">
+                                                                            <p><?= $subvalue->name ?></p>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        <?php endforeach ?>
+                                                    </ul>
+                                                </li>
+                                            <?php endforeach ?>
+                                        </ul> -->
+
+
                                         <!-- <div class=" Categories-part">
                                             <ul class="categories-wrapper cate-wrp">
                                                 <li class="active">
