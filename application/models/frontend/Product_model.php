@@ -487,7 +487,9 @@ class Product_model extends My_model
 				$p_outofstock = '';
 				if ($varientQuantity == '0') {
 
-					$p_outofstock .=  '<span>' . $this->lang->line('out of stock') . '</span>';
+					// $p_outofstock .=  '<span class="out_of_stock">' . $this->lang->line('out of stock') . '</span>';
+					$p_outofstock .=  '<div class="out-stock"><span class="out-heading">' . $this->lang->line('out of stock') . '</span>
+					</div>';
 				}
 				$data['p_outofstock'] = $p_outofstock;
 				$class = '';

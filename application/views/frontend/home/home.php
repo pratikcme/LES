@@ -244,7 +244,7 @@
                                 <h6><span class='notranslate'><?= $this->siteCurrency ?></span>
                                     <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
 
-                                <p><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                <p class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>"><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                 </p>
                             </div>
                             <?php
@@ -338,7 +338,7 @@
                                         </a>
                                         <h6><span class='notranslate'><?= $this->siteCurrency ?></span>
                                             <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
-                                        <p>
+                                        <p class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
                                             <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
                                     </div>
@@ -439,7 +439,7 @@
                                 <h6><span class='notranslate'><?= $this->siteCurrency ?></span>
                                     <?= number_format((float)$value->discount_price, 2, '.', '') ?></h6>
 
-                                <p><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                <p class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>"><?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                 </p>
                             </div>
                             <?php
@@ -522,7 +522,7 @@
                                 </a>
                                 <h6><span class='notranslate'><?= $this->siteCurrency ?></span><?= number_format((float)$value->discount_price, 2, '.', '') ?>
                                 </h6>
-                                <p>
+                                <p class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
                                     <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                 </p>
                             </div>

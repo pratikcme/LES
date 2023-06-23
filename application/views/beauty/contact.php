@@ -85,7 +85,7 @@
                                     <label for="message" class="error"><?= form_error('message') ?></label>
                                 </div>
 
-                                <div class="submit-btn">
+                                <div class="submit-btn" style="text-align:center">
                                     <button type="submit" name="submit" id="btnSubmit"><?= $this->lang->line('send') ?></button>
                                 </div>
                             </div>

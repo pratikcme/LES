@@ -1067,7 +1067,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 .hot-products-wrap.out-of-stock .hot-products-img::before {
-    content: 'Out-of-stok';
+    content: 'Out-of-stock';
     position: absolute;
     width: 100%;
     bottom: 0;
