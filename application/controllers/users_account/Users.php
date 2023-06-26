@@ -32,14 +32,26 @@ class Users extends User_Controller
 		$data['faq'] = $this->this_model->getFaq();
 		$this->load->model($this->myvalues->orderFrontEnd['model'], 'order_model');
 		$data['order'] = $this->this_model->selectOrders();
+
+
 		$orderDetais = [];
 		$this->load->model('api_admin_model');
 
 		$this->load->model('api_v3/api_model', 'api_v3_model');
 
 		$data['getVedorDetails'] = [];
+		$delivered_order = [];
+		$process_order = [];
+		$cancel_order = [];
 		foreach ($data['order'] as $key => $value) {
 
+			if ($value->order_status == '8') {
+				$delivered_order[] = $value->id;
+			} elseif ($value->order_status != '8' || $value->order_status != '9') {
+				$process_order[] = $value->id;
+			} else if ($value->order_status == '9') {
+				$cancel_order[] = $value->id;
+			}
 			if ($value->promocode_used == 1) {
 				$order_promocode_amount = $this->api_v3_model->get_order_promocode_discount($value->id);
 				$instance_discount = number_format((float)$order_promocode_amount[0]->amount, '2', '.', '');
@@ -57,12 +69,18 @@ class Users extends User_Controller
 			$data['order'][$key]->orderDetails = $this->view($value->id);
 			$data['order'][$key]->vendorName = $getBranchDetails[0]->name;
 			$data['order'][$key]->vendorAddress = $getBranchDetails[0]->location;
+
+
 			// if($value->isSelfPickup == '1'){
 			$otp = $this->this_model->getSelfPickupOtp($value->id);
 			$value->isSelfPickup_details = $otp;
 			// }
 
 		}
+
+		$data['delivered_order'] =  count($delivered_order);
+		$data['process_order'] =  count($process_order);
+		$data['cancel_order'] =  count($cancel_order);
 
 		if ($this->input->post()) {
 			// dd($this->input->post());
