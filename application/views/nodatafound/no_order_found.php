@@ -111,6 +111,6 @@
     <div class="order-not-found-content">
         <h3>No order found</h3>
         <p>No order found! Kindly to check your ‘check out’ page or try to order something. </p>
-        <a href="<?= base_url() . 'products' ?>" class="cmn-btn">Start Shopping</a>
+        <a href="<?= base_url() . 'products' ?>" class="cmn-btn lg-btn">Start Shopping</a>
     </div>
 </div>
