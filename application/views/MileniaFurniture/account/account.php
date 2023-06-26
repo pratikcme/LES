@@ -16,9 +16,7 @@
         </div>
     </div>
 </section>
-<?= "delivered order" . $delivered_order . "<br>" ?>
-<?= "process order" . $process_order . "<br>" ?>
-<?= "cancel order" . $cancel_order ?>
+
 <!-- ------------myaccoutn-section------------ -->
 <section class="my-account-section p-120">
 
