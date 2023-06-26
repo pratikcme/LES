@@ -160,7 +160,7 @@
                                 <div class="tab-content">
                                     <div class="accordion-items">
                                         <!-- ------sub-tab-1----- -->
-                                        <div id="subtab-1" class="container tab-pane fade show active">
+                                        <div id="subtab-1" class="container tab-pane fade show active <?= ($delivered_order == 0) ? 'not_found_tab_pane' : "" ?>">
 
                                             <?php
                                             if (!empty($order) && $delivered_order != 0) {
@@ -360,7 +360,7 @@
                                         </div>
 
                                         <!-- ------sub-tab-2----- -->
-                                        <div id="subtab-2" class="container tab-pane fade">
+                                        <div id="subtab-2" class="container tab-pane fade <?= ($process_order == 0) ? 'not_found_tab_pane' : "" ?>">
 
                                             <?php
 
@@ -566,7 +566,7 @@
                                         </div>
 
                                         <!-- ------sub-tab-2----- -->
-                                        <div id="subtab-3" class="container tab-pane fade">
+                                        <div id="subtab-3" class="container tab-pane fade <?= ($cancel_order == 0) ? 'not_found_tab_pane' : "" ?>">
 
 
                                             <?php

@@ -1,3 +1,11 @@
+<style>
+    .my-order-details .tab-pane {
+        max-height: 500px;
+        min-height: 100px;
+
+    }
+</style>
+
 <div class="order-not-found">
     <div class="order-not-found-img">
         <svg width="648" height="649" viewBox="0 0 648 649" fill="none" xmlns="http://www.w3.org/2000/svg">
