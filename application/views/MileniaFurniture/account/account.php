@@ -165,6 +165,7 @@
                                             <?php
                                             foreach ($order as $key => $value) {
                                                 if ($value->order_status != '8') {
+
                                                     $this->load->view('nodatafound/no_order_found');
                                                     continue;
                                                 }
