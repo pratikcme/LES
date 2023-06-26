@@ -147,6 +147,6 @@
     <div class="order-not-found-content wishlist-empty-content">
         <h3>Your Wishlist is empty!</h3>
         <p>Seems like you don’t have wishes here. Make a wish!</p>
-        <a href="<?= base_url() . 'products' ?>" class="cmn-btn lg-btn">Start Shopping</a>
+        <a href="<?= base_url() . 'products' ?>" class="cmn-btn lg-btn ">Start Shopping</a>
     </div>
 </div>

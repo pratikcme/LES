@@ -24,7 +24,7 @@ footer{
     max-width: 180px;
 }
 
- svg path{
+ footer svg path{
     fill: var(--footer-bg-color) !important;
 }
 

@@ -635,7 +635,7 @@
 .not_found_tab_pane{
     max-height: 100% !important;
     min-height: 100% !important;
-    overflow-y: none !important;
+    overflow-y: unset !important;
 }
 
 /* .all-detalis-right{

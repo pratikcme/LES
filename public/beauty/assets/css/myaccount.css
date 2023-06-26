@@ -637,6 +637,60 @@ table.all-detalis-left tr{
     border-bottom: 1px solid var(--card-btn-bg) !important;
 }
 
+.order-not-found-img{
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    margin: 0px auto;
+}
+.order-not-found-img svg{
+    width: 100%;
+    height: 100%;
+}
+.order-not-found-content{
+    text-align: center;
+}
+.order-not-found-content h3{
+    font-family: var(--inter-bold) !important;
+    color: var(--secondary-color);
+    margin-top: 100px;
+    text-transform: capitalize;
+}
+.order-not-found-content p{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.wishlist-empty-content p{
+   max-width: 310px;
+   margin: 20px auto;
+}
+
+.not_found_tab_pane{
+    max-height: 100% !important;
+    min-height: 100% !important;
+    overflow-y: unset !important;
+}
+.lg-btn{
+    display: inline-block;
+    background: var(--card-btn-bg) !important;
+    border: 1px solid var(--card-btn-bg);
+    font-family: var(--Poppins-SemiBold);
+    font-size: 16px;
+    color: var(--common-white) !important;
+    border-radius: 10px 10px 10px 10px;
+    text-transform: capitalize;
+    position: relative;
+    width: 100%;
+    max-width: 175px;
+    margin: 30px auto 0px;
+    transition: 0.4s;
+    padding: 10px 12px;
+}
+.order-not-found{
+    margin: 20px 0px;
+}
+
+
 /* ==========responsive========= */
 @media only screen and (min-width:1200px) and (max-width: 1399px) {
 
@@ -945,6 +999,21 @@ table.all-detalis-left tr{
         overflow: hidden;
         overflow-y: scroll;
     }
+        /* ---new-css--- */
+        .order-not-found-img {
+            width: 100%;
+            max-width: 400px;
+            height: 400px; 
+        }
+        .order-not-found-content h3 {
+            font-family: var(--inter-bold) !important;
+            color: var(--secondary-color);
+            margin-top: 70px;
+        }
+        .order-not-found-content p {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
 }
 
 @media only screen and (min-width:768px) and (max-width: 991px) {
@@ -1175,6 +1244,22 @@ table.all-detalis-left tr{
 
     .all-detalis-left td:nth-child(2) {
         padding-right: 20px !important;
+    }
+
+     /* ---new-css--- */
+     .order-not-found-img {
+        width: 100%;
+        max-width: 400px;
+        height: 400px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 70px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
 }
@@ -1458,6 +1543,21 @@ table.all-detalis-left tr{
         padding-right: 20px !important;
     }
 
+    .order-not-found-img {
+        width: 100%;
+        max-width: 300px;
+        height: 300px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 50px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
 }
 
 @media only screen and (max-width:767px){
@@ -1713,6 +1813,21 @@ table.all-detalis-left tr{
 
     .all-detalis-left td:nth-child(2) {
         padding-right: 20px !important;
+    }
+
+    .order-not-found-img {
+        width: 100%;
+        max-width: 300px;
+        height: 300px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 50px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
 }
@@ -1992,6 +2107,21 @@ table.all-detalis-left tr{
 
     .all-detalis-left td:nth-child(2) {
         padding-right: 10px !important;
+    }
+
+    .order-not-found-img {
+        width: 100%;
+        max-width: 250px;
+        height: 250px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 30px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
 }
