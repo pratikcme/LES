@@ -34,6 +34,7 @@ class Users extends User_Controller
 		$data['order'] = $this->this_model->selectOrders();
 
 
+
 		$orderDetais = [];
 		$this->load->model('api_admin_model');
 
@@ -47,11 +48,12 @@ class Users extends User_Controller
 
 			if ($value->order_status == '8') {
 				$delivered_order[] = $value->id;
-			} elseif ($value->order_status != '8' || $value->order_status != '9') {
+			} elseif ($value->order_status != '8' && $value->order_status != '9') {
 				$process_order[] = $value->id;
 			} else if ($value->order_status == '9') {
 				$cancel_order[] = $value->id;
 			}
+
 			if ($value->promocode_used == 1) {
 				$order_promocode_amount = $this->api_v3_model->get_order_promocode_discount($value->id);
 				$instance_discount = number_format((float)$order_promocode_amount[0]->amount, '2', '.', '');
