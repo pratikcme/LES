@@ -1223,6 +1223,9 @@ div[slider]>input[type=range]::-ms-tooltip {
     overflow-y: scroll;
 }
 
+.active.filter-arrow-icon{
+    transform: rotate(180deg);
+}
 /* =====responisve=== */
 
 @media only screen and (max-width:1400px){
