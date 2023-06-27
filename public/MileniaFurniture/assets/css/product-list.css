@@ -1222,6 +1222,9 @@ div[slider]>input[type=range]::-ms-tooltip {
     min-height: 200px;
     overflow-y: scroll;
 }
+.active.filter-arrow-icon{
+    transform: rotate(180deg);
+}
 
 /* =====responisve=== */
 

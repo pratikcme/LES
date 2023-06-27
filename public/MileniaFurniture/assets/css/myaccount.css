@@ -756,6 +756,9 @@
     min-height: 100% !important;
     overflow-y: unset !important;
 }
+/* .modal-backdrop.show{
+    display: none;
+} */
 /* ==========responsive========= */
 @media only screen and (min-width:1200px) and (max-width: 1399px) {
 

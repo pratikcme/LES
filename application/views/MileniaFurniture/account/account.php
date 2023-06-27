@@ -890,7 +890,8 @@
                         </div>
 
                         <div class="edit-address-btn text-center ">
-                            <button type="button" id="myBtn" class="cmn-btn" data-toggle="modal"><?= $this->lang->line('Add Address') ?></button>
+
+                            <button type="button" id="myBtn" class="cmn-btn addAddress" data-bs-toggle="modal" data-bs-target="#myModal"><?= $this->lang->line('Add Address') ?></button>
                         </div>
 
 
@@ -947,10 +948,12 @@
 <!-- =============place order popup=========== -->
 <input type="hidden" id="get_parameter" value="<?= (isset($_GET['name']) ? $_GET['name'] : '') ?>">
 
+
+
 <div id="myModal" class="modal">
     <div class="container">
         <div class="modal-content">
-            <span class="close cancel-btn"><i class="fa-regular fa-circle-xmark"></i></span>
+            <span class="close cancel-btn" data-bs-dismiss=" myModal" aria-label="Close"><i class="fa-regular fa-circle-xmark"></i></span>
             <div class="login-page myaccout-detail-tab">
                 <h3 id='address_title'><?= $this->lang->line('Add New Address') ?></h3>
                 <form class="get-detials-account" method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" autocomplete="off">
