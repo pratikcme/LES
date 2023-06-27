@@ -429,8 +429,6 @@
                 </div>
 
 
-
-
                 <!-- ---left-product-list--- -->
                 <div class="show-div-wrapper hide">
 
