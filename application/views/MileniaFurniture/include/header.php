@@ -1,4 +1,4 @@
-$favicon = ($this->siteFevicon != '') ? $this->siteFevicon : $this->siteLogo;
+<?php $favicon = ($this->siteFevicon != '') ? $this->siteFevicon : $this->siteLogo; ?>
 <!-- meta tag -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
