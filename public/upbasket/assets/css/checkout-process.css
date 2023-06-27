@@ -1074,7 +1074,12 @@ input:focus {
 .ship-check .form-check-input:checked[type=checkbox] {
     background-repeat: no-repeat;
     height: 25px;
-    margin-top: -18px;
+    margin-top: -8px;
+}
+.ship-check .form-check-input[type=checkbox] {
+    background-repeat: no-repeat;
+    height: 25px;
+    margin-top: -8px;
 }
 
 .ship-check .form-check-input[type=checkbox] {

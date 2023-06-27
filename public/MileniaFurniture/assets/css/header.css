@@ -803,8 +803,8 @@ content: '';
     border: 1px solid transparent!important;
     overflow-y: scroll;
     position: absolute;
-    /* left: auto !important; */
-    /* right: 10px; */
+    left: auto !important;
+    right: 10px;
     top: 83px !important;
     width: 100% !important;
     max-width: 250px !important;
