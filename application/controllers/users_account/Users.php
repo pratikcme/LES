@@ -85,7 +85,7 @@ class Users extends User_Controller
 		$data['cancel_order'] =  count($cancel_order);
 
 		if ($this->input->post()) {
-			// dd($this->input->post());
+
 			$validation = $this->setRulesAccount();
 			if ($validation) {
 				$response = $this->this_model->varifiy_password($this->input->post());
