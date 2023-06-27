@@ -266,7 +266,7 @@
             <div class="products-wrap pro-list-wrap mycustom-row">
 
                 <!-- ----right-filter-part------ -->
-                <div class="my-filter-wrapper">
+                <div class="my-filter-wrapper hide">
                     <div class="product-categires-part">
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
@@ -429,18 +429,16 @@
                 </div>
 
 
-
-
                 <!-- ---left-product-list--- -->
-                <div class="show-div-wrapper">
+                <div class="show-div-wrapper hide">
 
                     <div class="product-select-in">
                         <div class="d-flex w-100 justify-content-between">
 
-                            <a class="filter-icon filter-hide-btn lg-btn wow fadeInLeft"><?= $this->lang->line('Filter'); ?><i class="fa-solid fa-circle-arrow-right"></i></a>
+                            <a class="filter-icon filter-hide-btn lg-btn wow fadeInLeft"><?= $this->lang->line('Filter'); ?><i class="fa-solid fa-circle-arrow-right filter-arrow-icon"></i></a>
 
                             <!-- ----mobile-filter-btn---- -->
-                            <a class="mobile-filter-btn"><i class="fa fa-filter" aria-hidden="true"></i></a>
+                            <a class="mobile-filter-btn"><i class="fa fa-filter " aria-hidden="true"></i></a>
 
                             <select class="form-select wow fadeInRight sorting" aria-label="Default select example">
                                 <option value="All"><?= $this->lang->line('All'); ?></option>

@@ -2,7 +2,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?=$this->siteTitle?></title>
-
+  
+  <?php $this->load->view('upbasket/css/style.php'); ?>
   <!-- --------- style.css link------ -->
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>public/frontend/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?=$this->theme_base_url.'/assets/css/style.css'?>">

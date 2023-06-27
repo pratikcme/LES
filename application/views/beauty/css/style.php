@@ -1,12 +1,13 @@
 <?php
 
-if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
+if ($_SERVER['SERVER_NAME'] == '' || $_SERVER['SERVER_NAME'] == 'stagging.launchestore.com' || $_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
+
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
-    $commonPeraColor = "#555261";
+    $commonPeraColor = "#FF0000";
 
-    $primaryColor = "#0F053F";
-    $secondaryColor = "#F92672";
+    $primaryColor = "#000000";
+    $secondaryColor = "#fed418";
 
     $primaryPink = "#F92672";
     $secondaryBlack = "#0F053F";
@@ -14,7 +15,7 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
 
     $primaryBoxShadow = "0px 20px 50px rgba(43, 174, 74, 0.15)";
 
-    $titleFirstColor = "#0F053F";
+    $titleFirstColor = "#000000";
     $commonPeraColor = "#868390";
     $commonBtnColor = "#11405A";
     $commonBtnShadow = " 0px 7px 20px rgba(17, 64, 90, 0.2)";
@@ -23,7 +24,8 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
     $btnHoverShadow = "0px 3px 10px 1px rgba(17, 64, 90, 0.9)";
     $selectBorderColor = "#C5CCD5";
 
-    $commonBorder = "#FFB9CE";
+    $commonBorder = "#FEF8FA";
+    $commonBgColor = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.5) 19.01%, rgba(255, 248, 216, 0.5) 100.66%);";
 
     // -----breadcrumb-color--- 
     $breadcrumbLinkColor = "#222528";
@@ -32,31 +34,33 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
     // / -----header-color---- /
     $headerIconColorFirst = "#222528";
     $headerIconColorSecond = "#FFFFFF";
-    $headerIconRoundColor = "#FFE5EF";
+    $headerIconRoundColor = "#FFF5C6";
     $headerTextWhite = "#FFFFFF";
-    $headerBtnBg = "#0F053F";
+    $headerBtnBg = "#000000";
     $headerBtnText = "#FFFFFF";
 
+
     //  -----navigation-bar-color---- 
-    $navTextColor = "#0F053F";
-    $navHoverColor = "#F92672";
+    $navTextColor = "#000000";
+    $navHoverColor = "#FED418";
 
     //  ------categorie-sec-color------
     $categorieWrapperBorder = "#CCD3DB";
-    $categorieWrapperBg = "linear-gradient(66.89deg, #FFE9F1 19.01%, rgba(255, 233, 241, 0.28) 100.66%)";
-    $categorieWrapperBgHover = "#2BAE4A";
-    $categorieWrapperRound = "linear-gradient(66.89deg, #FFE9F1 19.01%, rgba(255, 233, 241, 0.28) 100.66%)";
-    $categorieWrapperText = "#0F053F";
+    $categorieWrapperBg = "linear-gradient(66.89deg, #FFF8D8 19.01%, rgba(255, 248, 216, 0.28) 100.66%);";
+    $categorieWrapperBgHover = "#FED418";
+    $categorieWrapperRound = "#FED418";
+    $categorieWrapperText = "#000000";
+    $sliderBg = "#FFF5C6";
 
     // -------card-color------
     $cardBgColor = "#fff";
-    $cardBorderColor = "#FFE8EF";
-    $cardTextPrimary = "#0F053F";
+    $cardBorderColor = "#FEF8FA";
+    $cardTextPrimary = "#000000";
     $cardTextSecondary = "#555261";
-    $cardNumberPrimary = "#F92672";
+    $cardNumberPrimary = "#FED418";
     $cardNumberSecondary = "#555261";
-    $cardBtnBg = "#F92672";
-    $cardImgBg = "#FFEEF4";
+    $cardBtnBg = "#000000";
+    $cardImgBg = "linear-gradient(66.89deg, #FFF8D8 100%, rgba(255, 248, 216, 0.28) 100.66%);";
 
     // ----our-offer-color---
     $offer1PrimaryText = "#F92672";
@@ -75,11 +79,11 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
 
 
     // ----------footer-color------
-    $footerTextPrimary = "#0F053F";
+    $footerTextPrimary = "#000000";
     $footerTextSecondary = "#555261";
-    $footerBgColor = "linear-gradient(72.81deg, #FFE9F1 30.13%, rgba(255, 233, 241, 0.28) 82.74%)";
-    $footerLinkHover = "#F92672";
-    $copyRightBg = "#F92672";
+    $footerBgColor = "rgba(254,212,24,0.1)";
+    $footerLinkHover = "#FED418";
+    $copyRightBg = "#FED418";
 
     /* ------------lisiting-colors--------- / */
     $lisingBannerTitle1 = "#222528";
@@ -91,56 +95,56 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
     $listingSubCtgBorder = "#D9E2ED";
     $listingSubCtgText = "#414549";
     $listingSubCtgHover = "#2BAE4A";
-    $listingFilterIconBg = "#0F053F";
+    $listingFilterIconBg = "#000000";
 
     /* ------------lisiting-2-colors--------- */
     $listing2CtgBg = "#FFFFFF";
-    $listing2CtgBorder = "#FFE8EF";
-    $listing2HeaderBg = "#FFEEF4";
-    $listing2HeaderText = "#0F053F";
+    $listing2CtgBorder = "linear-gradient(66.89deg, #FFF8D8 19.01%, rgba(255, 248, 216, 0.28) 100.66%);";
+    $listing2HeaderBg = "linear-gradient(66.89deg, #FFF8D8 19.01%, rgba(255, 248, 216, 0.28) 100.66%);";
+    $listing2HeaderText = "#000000";
     $listing2NormalText = "#555261";
 
     /* ------dropdown-cart------ / */
     $dropCartText1 = "#0F053F";
     $dropCartText2 = "#0F053F";
-    $dropCartNumber = "#F92672";
-    $dropCartBottomBorder = "#FFEEF4";
+    $dropCartNumber = "#FED418";
+    $dropCartBottomBorder = "#FED418";
 
     /*  -----product-detalis-color----  */
-    $productDetailsText1 = "#0F053F";
+    $productDetailsText1 = "#000";
     $productDetailsText2 = "#555261";
     $productDetailsText3 = "#F92672";
-    $productDetailsText4 = "#F92672";
-    $productDetailsImageBg = "#FFEEF4";
+    $productDetailsText4 = "#FED418";
+    $productDetailsImageBg = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.3) 19.01%, rgba(255, 248, 216, 0.3) 100.66%);";
     $productDetailsBtn1 = "#0F053F";
     $productDetailsBtn2 = "#2BAE4A";
 
 
     /*  -------- shop-cart-color-------  */
-    $cartTheadBg = "linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $cartTheadBg = "linear-gradient(43.01deg, #FFF8DA 19.04%, rgba(255, 248, 218, 0.5) 69.77%)";
     $cartTheadText = "#0F053F";
     $cartTdText1 = "#0F053F";
     $cartTdText2 = "#414549";
-    $cartTdText3 = "#F92672";
-    $cartImageBg = "#FFEEF4";
+    $cartTdText3 = "#FED418";
+    $cartImageBg = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.5) 19.01%, rgba(255, 248, 216, 0.5) 100.66%);";
     $cartCounterBorder = "#FFB9CE";
     $cartCounterBg = "#fff";
-    $cartIcon = "#F92672";
-    $proceedCheckoutBtnBg = "#F92672";
+    $cartIcon = "#FED418";
+    $proceedCheckoutBtnBg = "#FED418";
     $proceedCheckoutBtnText = "#fff";
 
 
     /*  ----------------checkout-process-color-----  */
-    $accordianHeadBg = "linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $accordianHeadBg = "linear-gradient(66.89deg, #FFF8D8 19.01%, rgba(255, 248, 216, 0.28) 100.66%);";
     $accordianBg = "#fff";
-    $accordianBorder = "#FFB9CE";
-    $accordianHeadText = "#030235";
+    $accordianBorder = "#FED418";
+    $accordianHeadText = "#000";
     $accordianIcon = "#FFB9CE";
-    $accordianIconBg = "#FFEEF4";
-    $accordianContentText1 = "#030235";
+    $accordianIconBg = "linear-gradient(66.89deg, #FFF8D8 19.01%, rgba(255, 248, 216, 0.28) 100.66%);";
+    $accordianContentText1 = "#000";
     $accordianContentText2 = "#4D4C61";
     $accordianStar = "#FFB9CE";
-    $checkoutSecureIcon = "rgba(255, 185, 206, 0.4)";
+    $checkoutSecureIcon = "linear-gradient(66.89deg, #FFF8D8 19.01%, rgba(255, 248, 216, 0.28) 100.66%);";
 
 
     /*  -------modal-popup-color----  */
@@ -163,48 +167,50 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
 
 
     /*  ------myaccount-css---  */
-    $myaccoutnTabBg = "linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
-    $myaccoutnTabBorder = "#FFB9CE";
-    $myaccoutnTabText = "#0F053F";
-    $myaccoutnTabActiveBg = "#F92672";
+    $myaccoutnTabBg = "linear-gradient(66.89deg, #FFF8D8 19.01%, rgba(255, 248, 216, 0.28) 100.66%);";
+    $myaccoutnTabBorder = "#FED418";
+    $myaccoutnTabText = "#000";
+    $myaccoutnTabActiveBg = "#FED418";
     $myaccoutnTabLabelText = "#0F053F";
     $myaccoutnTabInputBg = "#FFFFFF";
     $myaccoutnTabInputBorder = "#D0C9F1";
 
 
     /*  login-page-color---  */
-    $loginTitleColor = "#0F053F";
+    $loginTitleColor = "#000000";
     $loginPeraColor = "#4E447D";
     $loginWrapperBg = "#FFFFFF";
-    $loginWrapperBorder = "#FFB9CE";
-    $loginWrapperLabel = "#0F053F";
+    $loginWrapperBorder = "#FED418";
+    $loginWrapperLabel = "#000000";
     $loginWrapperPlacholder = "#555261";
     $loginWrapperInputBg = "#FFFFFF";
     $loginWrapperInputBorder = "#D0C9F1";
     $loginBtnBg = "#F92672";
     $loginBtnText = "#FFF";
-    $forgotText = "#F92672";
+    $forgotText = "#FED418";
 
     /*  -----contact-us-css-------  */
     $leftContactWrapperBg = "#FFFFFF";
-    $leftContactWrapperBorder = "#FFB9CE";
+    $leftContactWrapperBorder = "#FED418";
     $leftContactWrapperLabel = "#0F053F";
     $leftContactWrapperInputBg = "#FFFFFF";
     $leftContactWrapperInputBorder = "#D0C9F1";
-    $leftContactSubmitBtnBg = "#F92672";
+    $leftContactSubmitBtnBg = "#FED418";
     $leftContactSubmitBtnText = "#FFF";
 
     $rightContactWrapperBg = "#11405A";
     $rightContactWrapperBorder = "#D9E2ED";
-    $rightContactIconRound = "#FFEEF4";
+    $rightContactIconRound = "rgba(254,212,24,0.2)";
     $rightContactWrapperText = "#0F053F";
+
+    $new_svg_color = "#FFE9E4";
 } else {
 
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
 
-    $primaryColor = "#0F053F";
+    $primaryColor = "#000000";
     $secondaryColor = "#F92672";
 
     $primaryPink = "#F92672";
@@ -349,7 +355,7 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
     $modalText3 = "#555261";
     $continueBtnBg = "#F92672";
     $continueBtnText = "#fff";
-    $closeBtn = "#F92672";
+    $closeBtn = "#FED418";
 
 
     /*  -----------about-us-css--------  */
@@ -397,6 +403,8 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
     $rightContactWrapperBorder = "#D9E2ED";
     $rightContactIconRound = "#FFEEF4";
     $rightContactWrapperText = "#0F053F";
+
+    $new_svg_color = "#ffe5ef";
 }
 ?>
 
@@ -426,7 +434,7 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
         --primary-color: <?= $primaryColor ?>;
         --secondary-color: <?= $secondaryColor ?>;
 
-        ---primary-pink: <?= $primaryPink ?>;
+        --primary-pink: <?= $primaryPink ?>;
         --secondary-black: <?= $secondaryBlack ?>;
         --light-black: <?= $lightBlack ?>;
 
@@ -442,6 +450,7 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
         --select-border-color: <?= $selectBorderColor ?>;
 
         --common-border: <?= $commonBorder ?>;
+        --common-bg-color: <?= $commonBgColor ?>;
 
         /* / -----breadcrumb-color--- / */
         --breadcrumb-link-color: <?= $breadcrumbLinkColor ?>;
@@ -468,6 +477,8 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
         --categorie-wrapper-bg-hover: <?= $categorieWrapperBgHover ?>;
         --categorie-wrapper-round: <?= $categorieWrapperRound ?>;
         --categorie-wrapper-text: <?= $categorieWrapperText ?>;
+        --slider-bg: <?= $sliderBg ?>;
+
 
         /* -------card-color------ */
         --card-bg-color: <?= $cardBgColor ?>;
@@ -626,6 +637,7 @@ if ($_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_N
         --right-contact-icon-round: <?= $rightContactIconRound  ?>;
         --right-contact-wrapper-text: <?= $rightContactWrapperText  ?>;
 
+        --new-svg-color: <?= $new_svg_color ?>;
 
     }
 </style>

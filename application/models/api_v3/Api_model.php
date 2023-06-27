@@ -26,7 +26,7 @@ class Api_model extends My_model
             return $response;
         }
         // if ($getUser[0]['email_verify'] == '1') { }
-        return $this->sendLoginResponse($getUser[0], $postData,'login');
+        return $this->sendLoginResponse($getUser[0], $postData, 'login');
     }
 
     public function user_register($postData)
@@ -110,8 +110,8 @@ class Api_model extends My_model
             }
             //update with selected records
             $data['where']['id'] = $getUser[0]->id;
-            $data['update']['fname'] = (isset($postData['fname']) && $postData['fname'] != '' ) ?  $postData['fname'] : $getUser[0]->fname;
-            $data['update']['lname'] = (isset($postData['lname']) && $postData['lname'] != '') ?   $postData['lname'] : $getUser[0]->lname ;
+            $data['update']['fname'] = (isset($postData['fname']) && $postData['fname'] != '') ?  $postData['fname'] : $getUser[0]->fname;
+            $data['update']['lname'] = (isset($postData['lname']) && $postData['lname'] != '') ?   $postData['lname'] : $getUser[0]->lname;
             $data['update']['email'] = (isset($postData['email']) && $postData['email'] != '') ?   $postData['email'] : $getUser[0]->email;
             $data['table'] = 'user';
 
@@ -138,10 +138,10 @@ class Api_model extends My_model
         $data['table'] = 'user';
         $getUser =  $this->selectRecords($data, true);
 
-        return $this->sendLoginResponse($getUser[0], $postData,'register');
+        return $this->sendLoginResponse($getUser[0], $postData, 'register');
     }
 
-    function sendLoginResponse($userdata, $postData,$from='')
+    function sendLoginResponse($userdata, $postData, $from = '')
     {
 
         $device_id = $postData['device_id'];
@@ -195,7 +195,7 @@ class Api_model extends My_model
         $response = array();
         $response["success"] = 1;
         $response["message"] = "User Register Successfully";
-        if($from =='login'){
+        if ($from == 'login') {
             $response["message"] = "Login Successfully";
         }
         $response["user_data"] = $data;
@@ -779,7 +779,7 @@ class Api_model extends My_model
         $this->deleteRecords($data);
         return true;
     }
-    function get_total($postdata)
+    function get_total($postdata, $check = false)
     {
 
         if (isset($postdata['user_id']) && $postdata['user_id'] != '') {
@@ -789,11 +789,22 @@ class Api_model extends My_model
                 $device_id = $postdata['device_id'];
             }
         }
+
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postdata['vendor_id']);
+
+        if ($check == true) {
+            $oldIsShow = $isShow;
+            $isShow[0]->display_price_with_gst = '1';
+        }
+
+
         $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
-
-
-        $data['select'] = ['sum(pw.price * mc.quantity) as total_price', 'sum(pw.discount_price * mc.quantity ) AS total', 'count(mc.id) AS cart_items'];
-
+        if (isset($isShow) && $isShow[0]->display_price_with_gst == '1') {
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.price * mc.quantity) ,2),",","")as total_price', 'REPLACE(FORMAT(sum(pw.without_gst_price * mc.quantity ),2),",","") AS total', 'count(mc.id) AS cart_items'];
+        } else {
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.price * mc.quantity) ,2),",","")as total_price', 'REPLACE(FORMAT(sum(pw.discount_price * mc.quantity ),2),",","") AS total', 'count(mc.id) AS cart_items'];
+        }
 
         if (isset($user_id) && $user_id != 0 && $user_id != '') {
             $data['where'] = ['mc.user_id' => $user_id];
@@ -802,6 +813,7 @@ class Api_model extends My_model
                 $data['where'] = ['mc.device_id' => $device_id, 'mc.user_id' => 0];
             }
         }
+
         if (isset($postdata['branch_id']) && $postdata['branch_id'] != '') {
             $data['where']['mc.branch_id'] = $postdata['branch_id'];
         } elseif (isset($postdata['vendor_id']) && $postdata['vendor_id'] != '') {
@@ -810,7 +822,10 @@ class Api_model extends My_model
 
         $data['table'] = 'my_cart as mc';
         $result = $this->selectFromJoin($data);
-        // lq();
+
+        if ($check == true) {
+            $isShow =  $oldIsShow;
+        }
         return $result;
     }
 
@@ -870,8 +885,8 @@ class Api_model extends My_model
 
         foreach ($result as $key => $value) {
             $gst = $this->getProductGst($value->product_id);
-            $gst_amount = ($value->discount_price * $gst) / 100;
-            $total_gst += $gst_amount * $value->quantity;
+            $gst_amount = numberFormat(($value->discount_price * $gst) / 100);
+            $total_gst += numberFormat($gst_amount * $value->quantity);
         }
         return $total_gst;
     }
@@ -1555,7 +1570,6 @@ class Api_model extends My_model
 
         $my_cart_result = $this->selectFromJoin($data, true);
 
-
         $counter = 0;
         $total_gst = 0;
         if (count($my_cart_result) > 0) {
@@ -1566,11 +1580,9 @@ class Api_model extends My_model
                     $is_favourite = $this->checkProductExistInWishlist($wishlistCheck);
                 }
                 $row['is_favourite'] = $is_favourite;
-                // if(!empty($isShow) && $isShow[0]->display_price_with_gst == '1'){
-                //     $row['discount_price'] = $row['without_gst_price'];
-                // }
 
-                $row['calculation_price'] = $row['discount_price'] * $row['quantity'];
+
+                $row['calculation_price'] = numberFormat($row['discount_price'] * $row['quantity']);
                 $product_weight_id = $row['product_weight_id'];
                 $product_id = $row['product_id'];
 
@@ -1615,10 +1627,10 @@ class Api_model extends My_model
                 $gst = $product_weight_result[0]['gst'];
                 $avail_quantity = (int)$product_weight_result[0]['quantity'];
 
-                $gst_amount = ($product_discount_price * $gst) / 100;
-                $total_gst += $gst_amount * $row['quantity'];
+                $gst_amount = numberFormat(($product_discount_price * $gst) / 100);
+                $total_gst += numberFormat($gst_amount * $row['quantity']);
 
-                $discount_price_total = ($product_actual_price * $row['quantity']) - $row['calculation_price'] + $discount_price_total;
+                $discount_price_total = numberFormat(numberFormat($product_actual_price * $row['quantity']) - numberFormat($row['calculation_price']) + $discount_price_total);
                 if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                     $product_discount_price = $product_weight_result[0]['without_gst_price'];
                 }
@@ -1635,14 +1647,18 @@ class Api_model extends My_model
                 $data['product_image'] = $proimg;
                 $data['package_name'] = $package_name;
                 $data['product_image_thumb'] = $prothimg;
+                $data['gst'] = $gst;
 
                 $data['gst_amount_per_product'] = number_format((float)$gst_amount, '2', '.', '');
                 $getdata[] = $data;
                 $counter++;
-                $actual_price_total = $row['quantity'] * $product_actual_price + $actual_price_total;
+                $actual_price_total = numberFormat(($row['quantity'] * $product_actual_price) + $actual_price_total);
             }
+
             $gettotal = $this->get_total($postdata);
+
             $getactual = $this->get_actual_total($postdata);
+
             $my_cal = $gettotal[0]->total;
             if ($my_cal === null || $my_cal == "<null>") {
                 $my_cal = 0.0;
@@ -1651,26 +1667,42 @@ class Api_model extends My_model
                 $getactual = 0.0;
             }
             $discountValue = 0;
+
+            if (!empty($isShow) && $isShow[0]->display_price_with_gst == '0') {
+                $my_cal -=  $total_gst;
+            }
             $shoppingDiscount = $this->checkShoppingBasedDiscount($my_cal, $branch_id);
-            // dd($shoppingDiscount);
+
             if (!empty($shoppingDiscount)) {
                 if ($my_cal >= $shoppingDiscount[0]->cart_amount) {
                     $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                    $discountValue = $my_cal * $discountPercentage / 100;
-                    $discountValue = number_format((float)$discountValue, 2, '.', '');
+                    $discountValue = numberFormat($my_cal * $discountPercentage / 100);
+
+                    $newGstTotal = 0;
+
+                    foreach ($getdata as $row) :
+                        $new_price = numberFormat(numberFormat($row['discount_price']) - numberFormat($row['discount_price'] *  $discountPercentage / 100));
+                        $row['gst_amount_per_product'] = numberFormat(($new_price  * $row['gst']) / 100);
+
+                        $newGstTotal  += numberFormat($row['gst_amount_per_product'] * $row['quantity']);
+                    endforeach;
                 }
             }
-            // $this->update_my_cart($my_cart_result,true);
+
+            $calGst =  $discountValue > 0 ?  $newGstTotal : $total_gst;
+
+
             $response['success'] = "1";
             $response['message'] = "My cart item list";
             $response["count"] = $gettotal[0]->cart_items;
             $response["actual_price_total"] = $getactual;
             $response["shopping_based_discount"] = $discountValue;
-            $response["discount_price_total"] = number_format((float)$getactual - $my_cal, '2', '.', '');
-            $response["total_price"] = number_format((float)($my_cal - $discountValue), '2', '.', '');
+            $response["discount_price_total"] = $discount_price_total;
 
-            $response["TotalGstAmount"] = number_format((float)$total_gst, '2', '.', '');
-            $response["amountWithoutGst"] = number_format((float)($my_cal - $total_gst - $discountValue), '2', '.', '');
+            $response["total_price"] = number_format((float)(numberFormat($my_cal + $calGst)), '2', '.', '');
+
+            $response["TotalGstAmount"] = number_format((float)$calGst, '2', '.', '');
+            $response["amountWithoutGst"] = number_format((float)($my_cal), '2', '.', '');
 
 
             $response["data"] = $getdata;
@@ -1704,7 +1736,7 @@ class Api_model extends My_model
         if (isset($postdata['device_id'])) {
             $device_id = $postdata['device_id'];
         }
-        $data['select'] = ['mc.*', 'pw.product_id', 'pw.discount_price'];
+        $data['select'] = ['mc.*', 'pw.product_id', 'pw.discount_price', 'pw.without_gst_price', 'p.gst'];
         if (isset($user_id) && $user_id != '') {
             $data['where']['mc.user_id'] = $user_id;
         }
@@ -1718,7 +1750,10 @@ class Api_model extends My_model
         $product_weight_id = $postdata['product_weight_id'];
         $data['where']['product_weight_id'] = $product_weight_id;
         $data['table'] = 'my_cart as mc';
-        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
+        $data['join'] = [
+            'product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER'],
+            'product as p' => ['p.id = pw.product_id', 'INNER']
+        ];
 
         return $this->selectFromJoin($data, true);
     }
@@ -1927,9 +1962,11 @@ class Api_model extends My_model
         $promocode = $postData['promocode'];
         $branch_id = $postData['branch_id'];
         $date = date('Y-m-d');
+
         $data['where'] = ['branch_id' => $branch_id, 'name' => $promocode, 'status' => '1'];
         $data['table'] = TABLE_PROMOCODE;
         $promocode = $this->selectRecords($data);
+
 
         if (empty($promocode)) {
             $response["success"] = 0;
@@ -1950,10 +1987,18 @@ class Api_model extends My_model
         }
 
         unset($data);
-        $my_cart_result = $this->getCartTotal($user_id);
+
+
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($postData['branch_id']);
+
+        $oldIsShow = $isShow;
+        $isShow[0]->display_price_with_gst = '1';
+        $my_cart_result = $this->getCartTotal($user_id, $isShow);
+        $isShow = $oldIsShow;
+
         $my_cart_result = $my_cart_result[0];
-        $sub_total = number_format((float)$my_cart_result['sub_total'], 2, '.', '');
-        $total_price = number_format((float)$sub_total, 2, '.', '');
+        $total_price = $my_cart_result['sub_total'];
 
         if ($total_price < $promocode[0]->min_cart) {
             $response["success"] = 0;
@@ -1979,20 +2024,61 @@ class Api_model extends My_model
             return $response;
         }
 
-        $calculate = ($total_price / 100) * $promocode[0]->percentage;
+        $calculate = numberFormat(($total_price / 100) * $promocode[0]->percentage);
+
+        $newGst = $this->calculateNewGst($user_id, $promocode[0]->percentage);
 
         $response["success"] = 1;
         $response["message"] = "Promocode applied";
         $response["data"] = $calculate;
+        $response["newSubtotal"] =  numberFormat($total_price + $newGst);
         return $response;
     }
 
-    function getCartTotal($user_id)
+    // Dk
+    public function calculateNewGst($user_id, $discount)
     {
+
+        $total_gst = 0;
+
         $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
         $data['table'] = 'my_cart as mc';
-        $data['select'] = ['sum(pw.discount_price * mc.quantity ) AS sub_total', 'sum((pw.price - pw.discount_price) * mc.quantity) AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+        $data['select'] = ['*', 'mc.quantity as quantity'];
         $data['where'] = ['mc.status !=' => '9', 'mc.user_id' => $user_id];
+        $my_cart =  $this->selectFromJoin($data, true);
+
+        $without_gst_subtotal = 0;
+        foreach ($my_cart as $key => $value) {
+            $gst = $this->getProductGst($value['product_id']);
+            if ($discount != '') {
+                $value['discount_price'] = numberFormat(numberFormat($value['discount_price']) - ((numberFormat($value['discount_price']) * $discount) / 100));
+            }
+
+            // $without_gst_subtotal +=  $value['without_gst_price']
+
+            $gst_amount = (numberFormat($value['discount_price']) * $gst) / 100;
+            $total_gst += numberFormat($gst_amount) * $value['quantity'];
+        }
+
+        return $total_gst;
+    }
+
+    // 
+
+    function getCartTotal($user_id, $isShow)
+    {
+
+        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
+        $data['table'] = 'my_cart as mc';
+
+        if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.without_gst_price * mc.quantity),2),",","") AS sub_total', 'REPLACE(FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2),",","") AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+        } else {
+            $data['select'] = ['REPLACE(FORMAT(sum(pw.discount_price * mc.quantity),2),",","") AS sub_total', 'REPLACE(FORMAT(sum((pw.price - pw.discount_price) * mc.quantity),2),",","") AS total_savings', 'count(mc.id) AS cart_items', 'COUNT(*) as total_item'];
+        }
+
+        $data['where'] = ['mc.status !=' => '9', 'mc.user_id' => $user_id];
+
         return $this->selectFromJoin($data, true);
     }
 
@@ -2016,6 +2102,9 @@ class Api_model extends My_model
         //     echo $output;
         //     die;
         // }
+
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($_POST['branch_id']);
         $postdata['user_id'] = $user_id;
         if (isset($_POST['user_address_id'])) {
             $user_address_id = $_POST['user_address_id'];
@@ -2039,31 +2128,56 @@ class Api_model extends My_model
         if ($get_persentage > 0) {
             $profit_per = $get_persentage;
         }
-        $my_cart_result = $this->getCartTotal($user_id);
+
+        // same here
+        $oldIsShow = $isShow;
+        $isShow[0]->display_price_with_gst = '1';
+        $my_cart_result = $this->getCartTotal($user_id, $isShow);
+        $isShow = $oldIsShow;
+
         $my_cart_result = $my_cart_result[0];
-        $cartTotal = $my_cart_result['sub_total'];
+        $cartTotal = numberFormat($my_cart_result['sub_total']);
+
+        $cartData = $this->getCart($user_id);
 
         $discountValue = 0;
         $shoppingDiscount = $this->checkShoppingBasedDiscount($cartTotal, $branch_id);
-        // dd($shoppingDiscount);
         if (!empty($shoppingDiscount)) {
             if ($cartTotal >= $shoppingDiscount[0]->cart_amount) {
                 $discountPercentage = $shoppingDiscount[0]->discount_percentage;
-                $discountValue = $cartTotal * $discountPercentage / 100;
+                $discountValue = numberFormat($cartTotal * $discountPercentage / 100);
                 $discountValue = number_format((float)$discountValue, 2, '.', '');
+
+                $newGstTotal = 0;
+                foreach ($cartData as $row) :
+
+                    $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $discountPercentage / 100));
+
+                    $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+                    $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                endforeach;
             }
         }
+
+        $oldGst = 0;
+        foreach ($cartData as $row) :
+            $row->gst_amount_per_product = numberFormat(($row->discount_price  * $row->gst) / 100);
+            $oldGst  += numberFormat($row->gst_amount_per_product * $row->quantity);
+        endforeach;
 
         if (isset($_POST['payment_type']) && isset($_POST['branch_id']) && isset($_POST['time_slot_id'])) {
             if (isset($_POST['user_id'])) {
 
-                $this->db->query('LOCK TABLES my_cart as mc WRITE,`order` WRITE,`order_details` WRITE,product_weight as pw WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
+                $this->db->query('LOCK TABLES product as p WRITE,`vendor` WRITE,my_cart as mc WRITE,`order` WRITE,`order_details` WRITE,product_weight as pw WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
 
                 sleep(0.751);
 
-
-                $my_cart_result = $this->getCartTotal($user_id);
+                $oldIsShow = $isShow;
+                $isShow[0]->display_price_with_gst = '1';
+                $my_cart_result = $this->getCartTotal($user_id, $isShow);
+                $isShow = $oldIsShow;
                 $my_cart_result = $my_cart_result[0];
+
                 $sub_total = number_format((float)$my_cart_result['sub_total'], 2, '.', '');
                 $total_savings = number_format((float)$my_cart_result['total_savings'], 2, '.', '');
                 $total_item = $my_cart_result['total_item'];
@@ -2088,10 +2202,18 @@ class Api_model extends My_model
                     $promocodeData = $this->selectRecords($data);
 
                     if (!empty($promocodeData)) {
-                        $promocode_amount =  ($total_price / 100) * $promocodeData[0]->percentage;
+                        $promocode_amount =  numberFormat(($total_price / 100) * $promocodeData[0]->percentage);
+
+                        $newGstTotal = 0;
+                        foreach ($cartData as $row) :
+
+                            $new_price = numberFormat(numberFormat($row->discount_price) - numberFormat($row->discount_price *  $promocodeData[0]->percentage / 100));
+
+                            $row->gst_amount_per_product = numberFormat(($new_price  * $row->gst) / 100);
+                            $newGstTotal  += numberFormat($row->gst_amount_per_product * $row->quantity);
+                        endforeach;
                     }
                 }
-
 
                 /*Generate Order Number*/
                 function random_orderNo($length = 10)
@@ -2117,6 +2239,7 @@ class Api_model extends My_model
                             continue;
                         }
                     }
+
                     /*Order*/
                     $data['insert'] = [
                         'order_from' => '1',
@@ -2125,12 +2248,12 @@ class Api_model extends My_model
                         'user_address_id' => $user_address_id,
                         'time_slot_id' => $time_slot_id,
                         'payment_type' => $payment_type,
-                        'total_saving' => $total_savings + $promocode_amount,
+                        'total_saving' => $total_savings,
                         'total_item' => $total_item,
                         'sub_total' => $sub_total,
-                        'delivery_charge' => $delivery_charge,
+                        'delivery_charge' => numberFormat($delivery_charge),
                         'total' => $total_price,
-                        'payable_amount' => $total_price + $delivery_charge - $promocode_amount - $discountValue,
+                        'payable_amount' => numberFormat($total_price + (isset($newGstTotal) ? numberFormat($newGstTotal) : numberFormat($oldGst)) + numberFormat($delivery_charge) - numberFormat($promocode_amount) - numberFormat($discountValue)),
                         'order_no' => $iOrderNo,
                         'orderId_payment_gateway' => $refundTxnId,
                         'user_gst_number' => $user_gst_number,
@@ -2147,16 +2270,13 @@ class Api_model extends My_model
                         'dt_added' => strtotime(DATE_TIME),
                         'dt_updated' => strtotime(DATE_TIME)
                     ];
-
                     $data['table'] = 'order';
                     $last_insert_id = $this->insertRecord($data);
 
                     $otpForSelfPickup = '';
 
-                    // if (isset($_POST['isSelfPickup']) && $_POST['isSelfPickup'] == '1') {
                     $otpForSelfPickup = rand(1000, 9999);
                     $this->selfPickUp_otp($last_insert_id, $user_id, $otpForSelfPickup);
-                    // }
 
                     $this->load->model('api_v3/api_admin_model');
                     $order_log_data = array('order_id' => $last_insert_id, 'status' => '1');
@@ -2167,6 +2287,7 @@ class Api_model extends My_model
                         $var_id = $my_order->product_weight_id;
                         $qnt = $my_order->quantity;
                         $calculation_price = $my_order->discount_price * $my_order->quantity;
+
 
                         $data['insert'] = [
                             'order_id' => $last_insert_id,
@@ -2180,6 +2301,8 @@ class Api_model extends My_model
                             'discount' => $my_order->discount_per,
                             'discount_price' => $my_order->discount_price,
                             'calculation_price' => $calculation_price,
+                            'without_gst_price' => $my_order->without_gst_price,
+                            'gst' => $my_order->gst,
                             'status' => '1',
                             'dt_added' => strtotime(DATE_TIME),
                             'dt_updated' => strtotime(DATE_TIME)
@@ -2267,9 +2390,12 @@ class Api_model extends My_model
     }
     function getCart($user_id)
     {
-        $data['select'] = ['mc.*', 'pw.product_id', 'pw.weight_id', 'pw.price as actual_price', 'pw.discount_per', 'pw.discount_price'];
+        $data['select'] = ['mc.*', 'pw.product_id', 'pw.weight_id', 'pw.price as actual_price', 'pw.discount_per', 'pw.discount_price', 'pw.without_gst_price', 'p.gst'];
         $data['where'] = ['mc.status !=' => '9', 'mc.user_id' => $user_id];
-        $data['join'] = ['product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER']];
+        $data['join'] = [
+            'product_weight as pw' => ['pw.id = mc.product_weight_id', 'INNER'],
+            'product as p' => ['p.id = pw.product_id', 'INNER']
+        ];
         $data['table'] = 'my_cart as mc';
         return $this->selectFromJoin($data);
     }
@@ -2471,68 +2597,67 @@ class Api_model extends My_model
     //     }
     // }
 
-    public function verify_mobile($postData) {
+    public function verify_mobile($postData)
+    {
 
         $user_id = $postData['user_id'];
         $country_code = $postData['country_code'];
-        $check_str = str_split($country_code); 
-        if($check_str[0] != '+'){
-            $country_code = '+'.$country_code;
+        $check_str = str_split($country_code);
+        if ($check_str[0] != '+') {
+            $country_code = '+' . $country_code;
         }
         $mobile = $postData['phone'];
 
         $userData['select'] = ['*'];
         $userData['table'] = 'user';
-        $userData['where'] = ['country_code' => $postData['country_code'],'phone'=>$mobile,'id !=' => $user_id,'status !=' =>'9','vendor_id'=>$postData['vendor_id']];
+        $userData['where'] = ['country_code' => $postData['country_code'], 'phone' => $mobile, 'id !=' => $user_id, 'status !=' => '9', 'vendor_id' => $postData['vendor_id']];
         $userDetail = $this->selectRecords($userData);
-        if(!empty($userDetail) ){
+        if (!empty($userDetail)) {
             $response["success"] = 0;
             $response["message"] = "This mobile number is linked with another account";
             return $response;
         }
 
-        $mobile_number = $country_code.''.$mobile;
+        $mobile_number = $country_code . '' . $mobile;
         $generator = "135792468";
-        $otp = rand(1111,9999);
-        if($mobile == '9875105843'){
-            $otp = '1234'; 
+        $otp = rand(1111, 9999);
+        if ($mobile == '9875105843') {
+            $otp = '1234';
         }
-        
+
         $data = array('otp' => $otp, 'dt_updated' => strtotime(DATE_TIME));
         $res = $this->db->update("user", $data, array("id" => $postData['user_id']));;
         // $this->sendOtp($mobile_number,$otp);
-         unset($data);
+        unset($data);
         $data['table'] = SMSGATEWAY;
         $data['select'] = ['*'];
-        $data['where'] = ['status'=>'1','vendor_id'=>$postData['vendor_id']];
-        $smsGateWay = $this->selectRecords($data);        
-        
-        if(!empty($smsGateWay)){
+        $data['where'] = ['status' => '1', 'vendor_id' => $postData['vendor_id']];
+        $smsGateWay = $this->selectRecords($data);
+
+        if (!empty($smsGateWay)) {
             // client twillo account
-            $this->send_otp_int($mobile_number,$otp,$smsGateWay[0]->sid,$smsGateWay[0]->auth_token,$smsGateWay[0]->twillo_number);
-        
-        }else{
+            $this->send_otp_int($mobile_number, $otp, $smsGateWay[0]->sid, $smsGateWay[0]->auth_token, $smsGateWay[0]->twillo_number);
+        } else {
             unset($data);
             $data['table'] = ADMIN;
             $data['select'] = ['*'];
-            $data['where'] = ['id'=>$postData['vendor_id']];
+            $data['where'] = ['id' => $postData['vendor_id']];
             $getlocality = $this->selectRecords($data);
 
-            if($getlocality[0]->locality == '0'){
+            if ($getlocality[0]->locality == '0') {
 
-                 $this->sendOtp($mobile_number,$otp); // send otp via nimbuzz
-            }else{
+                $this->sendOtp($mobile_number, $otp); // send otp via nimbuzz
+            } else {
                 // cme twillo account
-                $this->send_otp_int($mobile_number,$otp,CME_TWILO_ACCOUNT_SID,CME_TWILO_TOKEN,CME_TWILO_PHONE_NUMBER); // send otp via twillo 
+                $this->send_otp_int($mobile_number, $otp, CME_TWILO_ACCOUNT_SID, CME_TWILO_TOKEN, CME_TWILO_PHONE_NUMBER); // send otp via twillo 
             }
         }
 
-            $response = array();
-            $response["success"] = 1;
-            $response["message"] = "Your otp is successfully sent";
-            $response["otp"] = $otp;
-            return $response;
-
+        $response = array();
+        $response["success"] = 1;
+        $response["message"] = "Your otp is successfully sent";
+        $response["otp"] = $otp;
+        return $response;
     }
 
     public function sendOtp($mobile_number, $otp)
@@ -2551,18 +2676,19 @@ class Api_model extends My_model
         return true;
     }
 
-    public function send_otp_int($mobile_number,$otp,$sid,$auth_token,$twillo_number){
+    public function send_otp_int($mobile_number, $otp, $sid, $auth_token, $twillo_number)
+    {
         // echo TWILO_ACCOUNT_SID;die;
         // $accountSid = 'AC7feb595d1a3d1f813b0348c0aec36718'; //its testing
         $accountSid = $sid;
         $token = $auth_token;
-        $url = 'https://api.twilio.com/2010-04-01/Accounts/'.$sid.'/Messages.json';
+        $url = 'https://api.twilio.com/2010-04-01/Accounts/' . $sid . '/Messages.json';
 
         // $otp = mt_rand('100000','999999');
         $data = [
-         'From' => $twillo_number,
-         'To' => $mobile_number,
-         'Body' => "Your Verification code is ".$otp,
+            'From' => $twillo_number,
+            'To' => $mobile_number,
+            'Body' => "Your Verification code is " . $otp,
 
         ];
         // print_r($data);die;

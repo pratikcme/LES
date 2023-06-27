@@ -721,6 +721,44 @@
     padding-left: 45px;
 }
 
+
+/* ---new-css---- */
+.order-not-found-img{
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    margin: 0px auto;
+}
+.order-not-found-img svg{
+    width: 100%;
+    height: 100%;
+}
+.order-not-found-content{
+    text-align: center;
+}
+.order-not-found-content h3{
+    font-family: var(--inter-bold) !important;
+    color: var(--secondary-color);
+    margin-top: 100px;
+    text-transform: capitalize;
+}
+.order-not-found-content p{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.wishlist-empty-content p{
+   max-width: 310px;
+   margin: 20px auto;
+}
+
+.not_found_tab_pane{
+    max-height: 100% !important;
+    min-height: 100% !important;
+    overflow-y: unset !important;
+}
+/* .modal-backdrop.show{
+    display: none;
+} */
 /* ==========responsive========= */
 @media only screen and (min-width:1200px) and (max-width: 1399px) {
 
@@ -862,6 +900,8 @@
     .sub-tabs .nav-pills .nav-link:after {
         display: none;
     }
+
+   
 
 }
 
@@ -1035,6 +1075,22 @@
 
     .sub-tabs .nav-pills .nav-link:after {
         display: none;
+    }
+
+     /* ---new-css--- */
+     .order-not-found-img {
+        width: 100%;
+        max-width: 400px;
+        height: 400px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 70px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 
@@ -1265,6 +1321,22 @@
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
         padding: 10px 15px 10px 15px;
+    }
+
+    /* ---new-css--- */
+    .order-not-found-img {
+        width: 100%;
+        max-width: 400px;
+        height: 400px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 70px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
 }
@@ -1575,6 +1647,21 @@
         gap: 10px;
     }
 
+    .order-not-found-img {
+        width: 100%;
+        max-width: 300px;
+        height: 300px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 50px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
 }
 
 
@@ -1867,6 +1954,20 @@
 
     .my-account-section .title h2::after {
         left: 45%;
+    }
+    .order-not-found-img {
+        width: 100%;
+        max-width: 300px;
+        height: 300px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 50px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
 }
@@ -2209,6 +2310,21 @@
 
     .all-detalis-left tr td:nth-child(1) {
         padding-left: 10px;
+    }
+
+    .order-not-found-img {
+        width: 100%;
+        max-width: 250px;
+        height: 250px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 30px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
 }

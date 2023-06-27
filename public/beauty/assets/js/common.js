@@ -1,6 +1,9 @@
 function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
+$(document).on("click",".close-btn",function(){
+  $(".cart-dropdowns,.overlay").hide();
+})
 
 $(function () {
   $("#price-range").slider({

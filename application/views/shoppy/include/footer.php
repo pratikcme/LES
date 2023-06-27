@@ -338,4 +338,11 @@ if (!empty($js)) {
 </script>
 <script>
     new WOW().init()
+
+
+    $('.sub-menu ul').hide();
+$(".sub-menu .right").click(function () {
+  $(this).parent().parent(".sub-menu").children("ul").slideToggle("100");
+  $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+});
 </script>

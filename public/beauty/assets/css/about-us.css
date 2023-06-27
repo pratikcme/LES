@@ -71,7 +71,7 @@
 .about-us .about-img{
     max-width: 617px;
     /* height: 670px; */
-    border: 1px solid #FFB9CE;
+    border: 1px solid var(--common-border);
     margin-left: auto;
     padding: 10px;
     border-radius: 10px;
@@ -192,7 +192,7 @@
 }
 
 .client-wrap  .clients-card{
-    border: 1px solid #FFB9CE;
+    border: 1px solid var(--secondary-color);
     border-radius: 20px;
     padding: 40px 30px;
 }
@@ -241,6 +241,7 @@
 .client-wrap .client-name h4{
     font-size: 24px;
     font-family: var(--BeVietnamPro-SemiBold);
+    color: var(--primary-color);
 }
 
 .client-wrap .client-name p{

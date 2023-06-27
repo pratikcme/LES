@@ -1,7 +1,16 @@
 function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
+// $(document).ready(function(){
+//   $(".close-btn").click(function(){
+//    alert(0);
+//   });
+// });
 
+// $(document).on("click",".close-btn",function(){
+//   $(".cart-dropdowns").hide();
+
+// })
 
 // -----counter-js---
 // var buttonPlus = $(".qty-btn-plus");
@@ -36,15 +45,7 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(
-        1,
-        sub_id,
-        cat_id,
-        (sort = ""),
-        (search = ""),
-        st_price,
-        en_price
-      );
+      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
     },
   });
   $("#priceRange").val(
@@ -67,15 +68,7 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(
-        1,
-        sub_id,
-        cat_id,
-        (sort = ""),
-        (search = ""),
-        st_price,
-        en_price
-      );
+      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
     },
   });
   $("#priceRange_mob").val(
@@ -84,7 +77,6 @@ $(function () {
       $("#price-range_mob").slider("values", 1)
   );
 });
-
 
 function onload(
   page,
@@ -162,9 +154,14 @@ $(document).ready(function () {
   $("#table-two-axis").basictable();
 });
 
+let hidedivebtn2 = document.querySelector(".filter-hide-btn");
+let filterbtnicon = document.querySelector(".filter-arrow-icon");
+
+hidedivebtn2.addEventListener("click", (event) => {
+  filterbtnicon.classList.toggle("active");
+});
+
 // -----checkout-page-accordion----
-
-
 
 // ============= place order modal js ===========
 // var modal = document.getElementById("myModal");

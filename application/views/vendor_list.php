@@ -1,77 +1,54 @@
 <?php include('header.php'); ?>
-    <!--main content start-->
-    <section id="main-content">
-        <section class="wrapper">
-            <!-- page start-->
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <!--breadcrumbs start -->
-                    <ul class="breadcrumb">
-                        <li class="active"><a href=""><i class="fa fa-home"></i> 
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+        <!-- page start-->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <!--breadcrumbs start -->
+                <ul class="breadcrumb">
+                    <li class="active"><a href=""><i class="fa fa-home"></i>
                             <a href="<?php echo base_url() . 'admin/dashboard'; ?>">Home</a> / Branch</a></li>
-                    </ul>
-                    <!--breadcrumbs end -->
-                </div>
+                </ul>
+                <!--breadcrumbs end -->
             </div>
-            <div id="msg">
-                <?php if ($this->session->flashdata('myMessage') && $this->session->flashdata('myMessage') != '') {
-                    echo $this->session->flashdata('myMessage');
-                } ?>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <section class="panel">
-                        <header class="panel-heading"> Branchs</header>
-                        <div class="panel-body">
-                            <div class="adv-table">
-                                <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                                    <div class="panel-body padding-zero" style="float: right">
-                                        <a href="<?php echo base_url() . 'vendor/vendor_profile'; ?>"
-                                           class="btn btn-primary">Add Branch</a>
+        </div>
+        <div id="msg">
+            <?php if ($this->session->flashdata('myMessage') && $this->session->flashdata('myMessage') != '') {
+                echo $this->session->flashdata('myMessage');
+            } ?>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <section class="panel">
+                    <header class="panel-heading"> Branches</header>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                            <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                <div class="panel-body padding-zero" style="float: right">
+                                    <a href="<?php echo base_url() . 'vendor/vendor_profile'; ?>" class="btn btn-primary">Add Branch</a>
 
-                                    </div>
-                                    <table class="display table table-bordered table-striped dataTable" id="example_vendor"
-                                           aria-describedby="example_info">
-                                        <thead>
+                                </div>
+                                <table class="display table table-bordered table-striped dataTable" id="example_vendor" aria-describedby="example_info">
+                                    <thead>
                                         <tr role="row">
-                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Platform(s): activate to sort column ascending"
-                                                style="width: 20px;"> Sr.No
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 20px;"> Sr.No
                                             </th>
 
-                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Platform(s): activate to sort column ascending"
-                                                style="width: 200px;">Shop Name
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Shop Name
                                             </th>
 
-                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Platform(s): activate to sort column ascending"
-                                                style="width: 200px;">Shop Owner Name
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Shop Owner Name
                                             </th>
 
-                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
-                                                rowspan="1" colspan="1"
-                                                aria-label="Platform(s): activate to sort column ascending"
-                                                style="width: 200px;">Mobile
+                                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Mobile
                                             </th>
-                                            <th class="hidden-phone sorting" role="columnheader" tabindex="0"
-                                                aria-controls="example" rowspan="1" colspan="1"
-                                                aria-label="Engine version: activate to sort column ascending"
-                                                style="width: 263px;">Email
+                                            <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 263px;">Email
                                             </th>
 
-                                            <th class="hidden-phone sorting_desc" role="columnheader" tabindex="0"
-                                                aria-controls="example" rowspan="1" colspan="1" aria-sort="descending"
-                                                aria-label="CSS grade: activate to sort column ascending"
-                                                style="width: 100px;">Vendor status
+                                            <th class="hidden-phone sorting_desc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="CSS grade: activate to sort column ascending" style="width: 100px;">Vendor status
                                             </th>
-                                            <th class="hidden-phone sorting_desc" role="columnheader" tabindex="0"
-                                                aria-controls="example" rowspan="1" colspan="1" aria-sort="descending"
-                                                aria-label="CSS grade: activate to sort column ascending"
-                                                style="width: 100px;">Action
+                                            <th class="hidden-phone sorting_desc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="CSS grade: activate to sort column ascending" style="width: 100px;">Action
                                             </th>
                                             <!-- <th class="sorting" role="columnheader" tabindex="0" aria-controls="example"
                                                rowspan="1" colspan="1"
@@ -118,111 +95,115 @@
                                             </tr>
                                         <?php } ?> -->
                                         <!-- </tbody> -->
-                                    </table>
-                                </div>
+                                </table>
                             </div>
                         </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
     </section>
-    <!--main content end-->
-    <script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript">
-        setTimeout(function () {
-            $('#msg').hide();
-        }, 4000);
-        /*Single Delete Script*/
-        $(document).on('click','.vendor_status',function () {
+</section>
+<!--main content end-->
+<script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    setTimeout(function() {
+        $('#msg').hide();
+    }, 4000);
+    /*Single Delete Script*/
+    $(document).on('click', '.vendor_status', function() {
 
 
-            var id = $(this).attr('data-val');
+        var id = $(this).attr('data-val');
 
-            bootbox.confirm("Are you sure you want to change ?", function (confirmed) {
-                if (confirmed == true) {
+        bootbox.confirm("Are you sure you want to change ?", function(confirmed) {
+            if (confirmed == true) {
 
-                    $.ajax({
-                        type: "POST",
-                        url: '<?php echo base_url() . 'vendor/vendor_status_change'; ?>',
-                        data: {id: id},
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo base_url() . 'vendor/vendor_status_change'; ?>',
+                    data: {
+                        id: id
+                    },
 
-                        success: function (data) {
-                            if (data.status == 1) {
-                                bootbox.alert("Status Changed successfully.", function () {
-                                    window.location.reload(true);
-                                });
-                            } else {
-                                alert('Failed to delete selected user.');
-                            }
-                        },
-
-                        error: function () {
+                    success: function(data) {
+                        if (data.status == 1) {
+                            bootbox.alert("Status Changed successfully.", function() {
+                                window.location.reload(true);
+                            });
+                        } else {
                             alert('Failed to delete selected user.');
                         }
-                    });
-                }
-            });
-        });
+                    },
 
-
-        $('#delete_user').click(function () {
-
-            if ($('.checkbox_user:checked').length == 0) {
-                //alert("Select one record"); return false;
-                bootbox.alert('Please select at least one record to delete');
-                return;
+                    error: function() {
+                        alert('Failed to delete selected user.');
+                    }
+                });
             }
-            bootbox.confirm("Are you sure you want to delete ?", function (confirmed) {
-                if (confirmed == true) {
+        });
+    });
 
-                    var ids = [];
-                    $('.checkbox_user:checked').each(function () {
-                        ids.push($(this).val());
-                    });
-                    $.ajax({
-                        url: '<?php echo base_url() . 'admin/multi_delete_user'; ?>',
-                        data: {ids: ids.toString()},
-                        success: function (data) {
-                            if (data.status == 1) {
 
-                                bootbox.alert("User(s) has been deleted successfully.", function () {
-                                    window.location.reload(true);
-                                });
-                            } else {
-                                bootbox.alert('Failed to delete the selected records.');
-                            }
-                        },
-                        error: function () {
+    $('#delete_user').click(function() {
+
+        if ($('.checkbox_user:checked').length == 0) {
+            //alert("Select one record"); return false;
+            bootbox.alert('Please select at least one record to delete');
+            return;
+        }
+        bootbox.confirm("Are you sure you want to delete ?", function(confirmed) {
+            if (confirmed == true) {
+
+                var ids = [];
+                $('.checkbox_user:checked').each(function() {
+                    ids.push($(this).val());
+                });
+                $.ajax({
+                    url: '<?php echo base_url() . 'admin/multi_delete_user'; ?>',
+                    data: {
+                        ids: ids.toString()
+                    },
+                    success: function(data) {
+                        if (data.status == 1) {
+
+                            bootbox.alert("User(s) has been deleted successfully.", function() {
+                                window.location.reload(true);
+                            });
+                        } else {
                             bootbox.alert('Failed to delete the selected records.');
                         }
-                    });
-                } else {
-                    window.location.reload(true);
-                }
-            });
+                    },
+                    error: function() {
+                        bootbox.alert('Failed to delete the selected records.');
+                    }
+                });
+            } else {
+                window.location.reload(true);
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('.checkboxMain').on('click', function() {
+            if (this.checked) {
+                $('.checkbox_user').each(function() {
+                    this.checked = true;
+                });
+            } else {
+                $('.checkbox_user').each(function() {
+                    this.checked = false;
+                });
+            }
         });
 
-        $(document).ready(function () {
-            $('.checkboxMain').on('click', function () {
-                if (this.checked) {
-                    $('.checkbox_user').each(function () {
-                        this.checked = true;
-                    });
-                } else {
-                    $('.checkbox_user').each(function () {
-                        this.checked = false;
-                    });
-                }
-            });
-
-            $('.checkbox_user').on('click', function () {
-                if ($('.checkbox_user:checked').length == $('.checkbox_user').length) {
-                    $('.checkboxMain').prop('checked', true);
-                } else {
-                    $('.checkboxMain').prop('checked', false);
-                }
-            });
+        $('.checkbox_user').on('click', function() {
+            if ($('.checkbox_user:checked').length == $('.checkbox_user').length) {
+                $('.checkboxMain').prop('checked', true);
+            } else {
+                $('.checkboxMain').prop('checked', false);
+            }
         });
-    </script>
+    });
+</script>
 <?php include('footer.php'); ?>

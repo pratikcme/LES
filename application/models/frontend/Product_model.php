@@ -259,6 +259,7 @@ class Product_model extends My_model
 	// public function productOfSubcategory($limit,$start,$postdata){
 	public function productOfSubcategory($postdata)
 	{
+		//dd($postdata);
 
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
@@ -298,6 +299,7 @@ class Product_model extends My_model
 				$data['where']['p.dt_updated <='] = $todaydate;
 			}
 		}
+
 
 		if (isset($postdata['start_price']) && $postdata['start_price'] != '' && isset($postdata['end_price']) && $postdata['end_price'] != '') {
 			$data['where']['pw.discount_price >='] = $postdata['start_price'];
@@ -367,6 +369,7 @@ class Product_model extends My_model
 		}
 
 		if (isset($postdata['sub_id']) &&  $postdata['sub_id'] != '') {
+
 			$data['where']['p.subcategory_id'] =  $postdata['sub_id'];
 			$sub_id = $postdata['sub_id'];
 		}
@@ -415,8 +418,11 @@ class Product_model extends My_model
 		];
 		$data['groupBy'] = 'p.id';
 		$data['limit'] = $page * $limit;
+
 		$product = $this->selectFromJoin($data);
+
 		$total_result = $this->countRecords($data);
+
 		$pages = ceil($total_result / 20);
 		if ($page < $pages) {
 			$page = $page + 1;
@@ -479,7 +485,9 @@ class Product_model extends My_model
 				$p_outofstock = '';
 				if ($varientQuantity == '0') {
 
-					$p_outofstock .=  '<span>' . $this->lang->line('out of stock') . '</span>';
+					// $p_outofstock .=  '<span class="out_of_stock">' . $this->lang->line('out of stock') . '</span>';
+					$p_outofstock .=  '<div class="out-stock"><span class="out-heading">' . $this->lang->line('out of stock') . '</span>
+					</div>';
 				}
 				$data['p_outofstock'] = $p_outofstock;
 				$class = '';

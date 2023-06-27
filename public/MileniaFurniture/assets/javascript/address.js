@@ -128,6 +128,12 @@ var ADDRESS = (function () {
     });
   });
 
+  $(document).on("click", ".addAddress", function () {
+    if ($("#RegisterForm").hasClass("ship-address")) {
+      $("#RegisterForm").css("display", "block");
+    }
+  });
+
   var query_string = $("#get_parameter").val();
   if (
     query_string == "change" ||
@@ -247,12 +253,23 @@ var ADDRESS = (function () {
   //     return /^[a-zA-Z\s]*$/.test(value) && (value.length <= "25");
   // });
 
+  myModal;
+  $(document).on("click", ".addAddress", function () {
+    $("#myModal").show();
+  });
   $(document).on("click", ".cancel-btn", function () {
     $("#RegisterForm").attr("action", url + "users_account/users/add_address");
     $("#address_title").html(language.js_add_address);
     $("#RegisterForm")[0].reset();
     $("#departure_latitude").val("");
     $("#myModal").hide();
+    $(".modal-backdrop").removeClass("show");
+    $(".modal-backdrop").css({
+      display: "none",
+      opacity: "0",
+    });
+    //$("#myModal").remove();
+
     $("#departure_longitude").val("");
     $(".error").each(function () {
       $(this).html("");

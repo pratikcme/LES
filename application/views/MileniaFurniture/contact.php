@@ -68,14 +68,16 @@
           </div>
         </div>
       </div>
+
       <div class="col-lg-6">
         <div class="map">
           <div id="map" style="width: 100%; height: 100%;" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            <<<<<<< HEAD=======<!-- <iframe src="https://maps.google.com/maps?q='+$latitude+','+$longitude+'&hl=es&z=14&amp;output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+              >>>>>>> dev
           </div>
         </div>
       </div>
     </div>
-  </div>
 </section>
 
 <section class="contact-form pb-120">
@@ -132,7 +134,6 @@
   </div>
 </section>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
-
 <script type="text/javascript">
   function initialize() {
     var latitude = <?= $getLatLongOfBranch[0]->latitude; ?>;

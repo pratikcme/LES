@@ -19,7 +19,12 @@ footer{
     left: 0;
     z-index: -1;
 }
- svg path{
+
+.foot-1 img{
+    max-width: 180px;
+}
+
+ footer svg path{
     fill: var(--footer-bg-color) !important;
 }
 

@@ -470,8 +470,8 @@ $(document).on("click", ".dec", function () {
               var currntPath = window.location.href;
               var segments = currntPath.split("/");
               if (output.count == 0) {
-                $("#itemCount").css("display", "none");
-                $("#updated_list").parent("div").addClass("no-itm");
+                // $("#itemCount").css("display", "none");
+                // $("#updated_list").parent("div").addClass("no-itm");
                 $("#itemCountMobile").addClass("d-none");
               }
 

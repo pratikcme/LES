@@ -183,7 +183,7 @@ class Order_model extends My_model
 
 
         if (isset($branch_id)) {
-            $this->db->query('LOCK TABLES my_cart WRITE,`order` WRITE,`mc` WRITE,`order_details` WRITE,product_weight WRITE,product WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`weight` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
+            $this->db->query('LOCK TABLES my_cart WRITE, my_cart as mc WRITE,`order` WRITE,`order_details` WRITE,product_weight WRITE,product WRITE,`order_reservation` WRITE,`setting` WRITE,`user` WRITE,`selfPickup_otp` WRITE,`profit` WRITE,`user_address` WRITE,`order_log` WRITE,`weight` WRITE,`promocode` WRITE,`order_promocode` WRITE;');
 
             // sleep(0.751);
 
@@ -208,8 +208,6 @@ class Order_model extends My_model
             $total_savings = number_format((float)$total_savings, 2, '.', '');
             $total_item = count($myCart);
             $total_price = number_format((float)$sub_total, 2, '.', '');
-
-
 
 
             /*Generate Order Number*/
