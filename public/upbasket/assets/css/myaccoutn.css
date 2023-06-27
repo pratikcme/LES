@@ -46,7 +46,7 @@
 
 .account-details-tabs .nav-link {
     background: var(--myaccoutn-tab-bg) !important;
-    width: 184.85px !important;
+    width: 184.8px !important;
     border-right: 1px solid var(--myaccoutn-tab-border) !important;
     font-family: Poppins;
     font-size: 16px;
@@ -687,6 +687,18 @@
     margin: 20px 0px;
 }
 
+
+
+@media screen and (min-width: 2001px) and (max-width: 2200px){
+    .account-details-tabs .nav-link {
+        width: 184.7px !important;
+    }
+}
+@media screen and (min-width: 1600px) and (max-width: 2000px){
+    .account-details-tabs .nav-link {
+        width: 184.7px !important;
+    }
+}
 
 /* ========================================================== */
 /* ========================================================== */
