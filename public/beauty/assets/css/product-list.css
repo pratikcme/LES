@@ -925,7 +925,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 /* sub-category-css */
 
-.sub-menu a{
+/* .sub-menu a{
     color: red;
 }
 
@@ -961,6 +961,111 @@ div[slider]>input[type=range]::-ms-tooltip {
 .brands-wrp .form-check-input{
     margin-top: 0;
 }
+
+.cate-wrp input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.cate-wrp .accordion-header .main-check{
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.cate-wrp .accordion-header .main-check label{
+    margin-bottom: 0;
+    line-height: 15px !important;
+    min-height: 0 !important;
+    margin-left: 7px;
+    width: 100%;
+}
+
+.cate-wrp .accordion-header .main-check button{
+    padding-bottom: 0 !important;
+    width: 100%;
+} */
+/* sub-category */
+.sub-menu span {
+    color: var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-family: var(--PublicSans-Regular);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.sub-menu .fa-caret-up,
+.sub-menu .fa-caret-down
+{
+    background-color: var(--primary-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.sub-menu .discount-wrapper p{
+   font-size: 14px;
+   margin-left: 10px;
+   margin-bottom: 0;
+}
+
+.sub-wrap{
+    padding: 8px 20px 0px !important;
+
+}
+
+.sub-menu{
+    display: inherit !important;
+}
+
+.sub-menu li{
+    line-height: 0px !important;
+}
+
+.sub-menu .form-check{
+    line-height: 25px !important;
+    min-height: 0 !important;
+}
+
+.sub-menu .right{
+    margin-left: auto;
+}
+
+.sub-menu span{
+    margin-left: 0 !important;
+}
+
+.sub-menu ul{
+    background: var(--cart-thead-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    max-height: 200px;
+    min-height: 100px;
+    overflow-y: scroll;
+}
+
+
 
 /* =====responisve=== */
 

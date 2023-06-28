@@ -1174,6 +1174,8 @@ div[slider]>input[type=range]::-ms-tooltip {
     overflow-y: scroll;
 }
 
+
+
 /* ======================= responisve ======================== */
 @media only screen and (min-width: 1200px) and (max-width: 1399px){
     .product-listing-1{
