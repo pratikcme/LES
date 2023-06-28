@@ -301,82 +301,82 @@
                                 <?php endforeach ?>
                             </ul>
 
-                            <!-- <div cl
+
                         </div>
                     </div>
                 </div>
 
                 <!-- --------------- -->
-                            <div class="product-categires-part price-range-part">
-                                <div class="categire-header">
-                                    <h3>Price Range</h3>
-                                </div>
-                                <div class="slider-box">
-                                    <label for="priceRange">Price Range:</label>
-                                    <input type="text" id="priceRange" readonly>
-                                    <div id="price-range" class="slider"></div>
-                                </div>
-                            </div>
-
-                            <!-- ------------- -->
-                            <div class="product-categires-part brands-part">
-                                <div class="categire-header">
-                                    <h3><?= $this->lang->line('Brands') ?></h3>
-                                </div>
-                                <ul class="cate-wrp">
-                                    <?php foreach ($brand as $key => $v) { ?>
-                                        <li class="active">
-                                            <div class="discount-wrapper brands-wrp">
-                                                <div class="form-check d-flex align-items-center">
-                                                    <input class="form-check-input brand" type="checkbox" value="<?= $v->id ?>" id="<?= 'brand' . $key ?>">
-                                                    <label class="form-check-label" for="<?= 'brand' . $key ?>">
-                                                        <h4><?= $v->name ?></h4>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
-                                </ul>
-                            </div>
-
-                            <!-- ------------- -->
-                            <div class="product-categires-part discoutn-part">
-                                <div class="categire-header">
-                                    <h3>Discount</h3>
-                                </div>
-
-                                <ul class="cate-wrp">
-                                    <?php foreach ($discountDiv as $key => $value) { ?>
-                                        <li>
-                                            <div class="discount-wrapper">
-                                                <div class="form-check">
-                                                    <input class="form-check-input discount" name="filter_discount" type="checkbox" value="<?= $key ?>" id="<?= 'disc_'  . $key ?>">
-                                                    <label class="form-check-label" for="<?= 'disc_' . $key ?>">
-                                                        <h4><?= $value ?></h4>
-                                                    </label>
-                                                </div>
-
-                                                <div class="discount-text">
-                                                    <h5><?= $countDiscoutWise[$key] ?></h5>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="product-categires-part price-range-part">
+                    <div class="categire-header">
+                        <h3>Price Range</h3>
                     </div>
-
-                    <!-- ---pagination-part--- -->
-                    <div class="pagination-part d-none">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
-                        </ul>
+                    <div class="slider-box">
+                        <label for="priceRange">Price Range:</label>
+                        <input type="text" id="priceRange" readonly>
+                        <div id="price-range" class="slider"></div>
                     </div>
                 </div>
+
+                <!-- ------------- -->
+                <div class="product-categires-part brands-part">
+                    <div class="categire-header">
+                        <h3><?= $this->lang->line('Brands') ?></h3>
+                    </div>
+                    <ul class="cate-wrp">
+                        <?php foreach ($brand as $key => $v) { ?>
+                            <li class="active">
+                                <div class="discount-wrapper brands-wrp">
+                                    <div class="form-check d-flex align-items-center">
+                                        <input class="form-check-input brand" type="checkbox" value="<?= $v->id ?>" id="<?= 'brand' . $key ?>">
+                                        <label class="form-check-label" for="<?= 'brand' . $key ?>">
+                                            <h4><?= $v->name ?></h4>
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+
+                <!-- ------------- -->
+                <div class="product-categires-part discoutn-part">
+                    <div class="categire-header">
+                        <h3>Discount</h3>
+                    </div>
+
+                    <ul class="cate-wrp">
+                        <?php foreach ($discountDiv as $key => $value) { ?>
+                            <li>
+                                <div class="discount-wrapper">
+                                    <div class="form-check">
+                                        <input class="form-check-input discount" name="filter_discount" type="checkbox" value="<?= $key ?>" id="<?= 'disc_'  . $key ?>">
+                                        <label class="form-check-label" for="<?= 'disc_' . $key ?>">
+                                            <h4><?= $value ?></h4>
+                                        </label>
+                                    </div>
+
+                                    <div class="discount-text">
+                                        <h5><?= $countDiscoutWise[$key] ?></h5>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ---pagination-part--- -->
+        <div class="pagination-part d-none">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 <div class="mobile-btn-overlay"></div>
