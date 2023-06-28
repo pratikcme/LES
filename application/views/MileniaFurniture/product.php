@@ -104,7 +104,17 @@
                                             <div class="accordion-body">
 
                                                 <ul class="sub-wrap">
-
+                                                    <li class='sub-menu'>
+                                                        <div class="form-check d-flex align-items-center justify-content-between">
+                                                            <div>
+                                                                <input class="form-check-input category_id" name="category" type="checkbox" value="All" id="All">
+                                                                <label class="form-check-label" for="All">
+                                                                    <span>All</span>
+                                                                </label>
+                                                            </div>
+                                                            <!-- <div class='fa fa-caret-down right'></div> -->
+                                                        </div>
+                                                    </li>
                                                     <?php foreach ($category as $key => $value) : ?>
                                                         <li class='sub-menu'>
                                                             <!-- <span>Men's</span> -->
@@ -280,7 +290,17 @@
                                     <div class="accordion-body">
 
                                         <ul class="sub-wrap">
-
+                                            <li class='sub-menu'>
+                                                <div class="form-check d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <input class="form-check-input category_id" name="category" type="checkbox" value="All" id="All">
+                                                        <label class="form-check-label" for="All">
+                                                            <span>All</span>
+                                                        </label>
+                                                    </div>
+                                                    <!-- <div class='fa fa-caret-down right'></div> -->
+                                                </div>
+                                            </li>
                                             <?php foreach ($category as $key => $value) : ?>
                                                 <li class='sub-menu'>
                                                     <!-- <span>Men's</span> -->
