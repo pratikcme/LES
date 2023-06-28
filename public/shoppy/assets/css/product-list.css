@@ -1174,6 +1174,13 @@ div[slider]>input[type=range]::-ms-tooltip {
     overflow-y: scroll;
 }
 
+#collapseFour .discoutn-part{
+    max-height: 300px;
+    min-height: 300px;
+    overflow-y: auto;
+    height: auto !important;
+}
+
 
 
 /* ======================= responisve ======================== */
