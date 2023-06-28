@@ -301,11 +301,11 @@
                                 }
                             ?>
                                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-                                    <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                                    <div class="hot-products-wrap  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
                                         <div class="hot-products-img position-relative overflow-hidden">
                                             <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="" />
-                                            <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
-                                                <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                            <p class="<?= ($value->varientQuantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                                                <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                             </p>
                                             <?php if ($value->discount_per > '0') { ?>
                                                 <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
@@ -395,8 +395,8 @@
                                         <div class="hot-products-img position-relative overflow-hidden">
 
                                             <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="" />
-                                            <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
-                                                <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                            <p class="<?= ($value->varientQuantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                                                <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                             </p>
                                             <?php if ($value->discount_per > '0') { ?>
                                                 <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
@@ -494,11 +494,11 @@
                             }
                         ?>
                             <div class="item wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
-                                <div class="hot-products-wrap  <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
+                                <div class="hot-products-wrap  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
                                     <div class="hot-products-img position-relative overflow-hidden">
                                         <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="" />
-                                        <p class="<?= ($value->quantity > $value->limited_stock) ? 'd-none' : '' ?>">
-                                            <?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
+                                        <p class="<?= ($value->varientQuantity > $value->limited_stock) ? 'd-none' : '' ?>">
+                                            <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                         </p>
                                         <?php if ($value->discount_per > '0') { ?>
                                             <span class="discnt"><?= $value->discount_per . ' % off' ?></span>

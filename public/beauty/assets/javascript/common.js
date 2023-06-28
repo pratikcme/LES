@@ -416,9 +416,9 @@ $(document).on("click", ".dec", function () {
               var currntPath = window.location.href;
               var segments = currntPath.split("/");
               if (output.count == 0) {
-                $("#updated_list").addClass("d-none"); // stop cart dropdown
-                $("#itemCount").css("display", "none");
-                $("#itemCountMobile").addClass("d-none");
+                //$("#updated_list").addClass("d-none"); // stop cart dropdown
+                // $("#itemCount").css("display", "none");
+                // $("#itemCountMobile").addClass("d-none");
               }
               // segments[4] when live
               if (

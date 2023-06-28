@@ -202,13 +202,15 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     $rightContactWrapperBorder = "#D9E2ED";
     $rightContactIconRound = "rgba(254,212,24,0.2)";
     $rightContactWrapperText = "#0F053F";
+
+    $new_svg_color = "#FFE9E4";
 } else {
 
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
 
-    $primaryColor = "#0F053F";
+    $primaryColor = "#000000";
     $secondaryColor = "#F92672";
 
     $primaryPink = "#F92672";
@@ -401,6 +403,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     $rightContactWrapperBorder = "#D9E2ED";
     $rightContactIconRound = "#FFEEF4";
     $rightContactWrapperText = "#0F053F";
+
+    $new_svg_color = "#ffe5ef";
 }
 ?>
 
@@ -633,7 +637,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
         --right-contact-icon-round: <?= $rightContactIconRound  ?>;
         --right-contact-wrapper-text: <?= $rightContactWrapperText  ?>;
 
-
+        --new-svg-color: <?= $new_svg_color ?>;
 
     }
 </style>

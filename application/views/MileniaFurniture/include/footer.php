@@ -253,11 +253,13 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
     }, 6000);
 </script>
 
-<script src="<?= base_url(); ?>public/<?= $_SESSION['template_name'] ?>/assets/js/common.js?v=<?= js_version ?>">
+<!-- <script src="<?= base_url(); ?>public/<?= $_SESSION['template_name'] ?>/assets/js/common.js?v=<?= js_version ?>"> -->
 </script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js" type="text/javascript"></script>
 
+
+</script>
 <script src="<?= base_url(); ?>public/<?= $_SESSION['template_name'] ?>/assets/javascript/common.js?v=<?= js_version ?>">
 </script>
 
@@ -291,7 +293,7 @@ if (!empty($js)) {
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: deLang,
-            includedLanguages: '<?=$supported_language?>'
+            includedLanguages: '<?= $supported_language ?>'
         }, 'google_translate_element');
     }
     // setTimeout(()=>{
@@ -324,7 +326,7 @@ if (!empty($js)) {
             }
             new google.translate.TranslateElement({
                 pageLanguage: deLang,
-                includedLanguages: '<?=$supported_language?>'
+                includedLanguages: '<?= $supported_language ?>'
             }, 'google_translate_element');
             // window.location.reload();        
             //     }
@@ -356,9 +358,10 @@ if (!empty($js)) {
 
 
 
+
     $('.sub-menu ul').hide();
-$(".sub-menu span").click(function () {
-  $(this).parent(".sub-menu").children("ul").slideToggle("100");
-  $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-});
+    $(".sub-menu .right").click(function() {
+        $(this).parent().parent(".sub-menu").children("ul").slideToggle("100");
+        $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+    });
 </script>

@@ -46,7 +46,7 @@
 
 .account-details-tabs .nav-link {
     background: var(--myaccoutn-tab-bg) !important;
-    width: 184.85px !important;
+    width: 184.8px !important;
     border-right: 1px solid var(--myaccoutn-tab-border) !important;
     font-family: Poppins;
     font-size: 16px;
@@ -632,6 +632,79 @@
     overflow-y: scroll;
 }
 
+.lg-btn{
+    display: inline-block;
+    background: var(--card-btn-bg) !important;
+    border: 1px solid var(--card-btn-bg);
+    font-family: var(--Poppins-SemiBold);
+    font-size: 16px;
+    color: var(--common-white) !important;
+    border-radius: 10px 10px 10px 10px;
+    text-transform: capitalize;
+    position: relative;
+    width: 100%;
+    max-width: 175px;
+    margin: 30px auto 0px;
+    transition: 0.4s;
+    padding: 10px 12px;
+}
+
+.order-not-found-img{
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    margin: 0px auto;
+}
+.order-not-found-img svg{
+    width: 100%;
+    height: 100%;
+}
+.order-not-found-content{
+    text-align: center;
+}
+.order-not-found-content h3{
+    font-family: var(--inter-bold) !important;
+    color: var(--secondary-color);
+    margin-top: 100px;
+    text-transform: capitalize;
+}
+.order-not-found-content p{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.wishlist-empty-content p{
+   max-width: 310px;
+   margin: 20px auto;
+}
+
+.not_found_tab_pane{
+    max-height: 100% !important;
+    min-height: 100% !important;
+    overflow-y: unset !important;
+}
+
+.order-not-found{
+    margin: 20px 0px;
+}
+
+
+
+@media screen and (min-width: 2001px) and (max-width: 2200px){
+    .account-details-tabs .nav-link {
+        width: 184.7px !important;
+    }
+    .account-details-tabs .sub-tabs .nav-link {
+        width: 215.3px !important;
+    }
+}
+@media screen and (min-width: 1600px) and (max-width: 2000px){
+    .account-details-tabs .nav-link {
+        width: 184.6px !important;
+    }
+    .account-details-tabs .sub-tabs .nav-link {
+        width: 215.45px !important;
+    }
+}
 
 /* ========================================================== */
 /* ========================================================== */
@@ -1258,6 +1331,25 @@
     }
 }
 
+
+@media only screen and (max-width: 1199px){
+     /* ---new-css--- */
+     .order-not-found-img {
+        width: 100%;
+        max-width: 400px;
+        height: 400px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 70px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
 /* ========================================================== */
 /* ========================================================== */
 @media screen and (min-width: 912px) and (max-width: 1023px) {
@@ -1877,6 +1969,20 @@
 
     .ship-check .form-check-input:checked[type=checkbox]{
         margin: 0;
+    }
+    .order-not-found-img {
+        width: 100%;
+        max-width: 300px;
+        height: 300px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 50px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 
@@ -2790,6 +2896,20 @@
         margin-bottom: 30px; */
         width: 100%;
     }
+    .order-not-found-img {
+        width: 100%;
+        max-width: 250px;
+        height: 250px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 30px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
 }
 
@@ -3220,6 +3340,20 @@
 
     .address-popup .modal-body {
         padding: 0px !important;
+    }
+    .order-not-found-img {
+        width: 100%;
+        max-width: 250px;
+        height: 250px; 
+    }
+    .order-not-found-content h3 {
+        font-family: var(--inter-bold) !important;
+        color: var(--secondary-color);
+        margin-top: 30px;
+    }
+    .order-not-found-content p {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 

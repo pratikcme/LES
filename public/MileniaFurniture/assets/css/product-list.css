@@ -1067,7 +1067,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 .hot-products-wrap.out-of-stock .hot-products-img::before {
-    content: 'Out-of-stok';
+    content: 'Out-of-stock';
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -1175,7 +1175,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
+    font-size: 17px;
     font-family: var(--inter-regular);
     text-transform: capitalize;
     cursor: pointer;
@@ -1221,6 +1221,9 @@ div[slider]>input[type=range]::-ms-tooltip {
     max-height: 350px;
     min-height: 200px;
     overflow-y: scroll;
+}
+.active.filter-arrow-icon{
+    transform: rotate(180deg);
 }
 
 /* =====responisve=== */
@@ -1748,6 +1751,10 @@ div[slider]>input[type=range]::-ms-tooltip {
     .brand-content li {
         flex-basis: 50%;
     }
+    .sub-menu span{
+       font-size: 13px !important;
+    }
+
 
 }
 
@@ -1980,7 +1987,10 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
         cursor: pointer;
     }
-   
+     
+    .sub-menu span{
+        font-size: 13px !important;
+     }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 424px) {
@@ -2213,6 +2223,10 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
         cursor: pointer;
     }
+
+    .sub-menu span{
+        font-size: 13px !important;
+     }
 }
 
 @media only screen and (max-width: 359px){
