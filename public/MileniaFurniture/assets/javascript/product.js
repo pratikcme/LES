@@ -84,7 +84,7 @@ $(document).ready(function () {
     var brandArray = get_filter("brand");
     var subcatArray = get_filter("subcategory_id");
     var categoryArray = get_filter("category_id");
-    console.log(categoryArray);
+
     var catwithsubArray = [];
     if ($.inArray("All", categoryArray) !== -1) {
       $(".subcategory_id").each(function () {
