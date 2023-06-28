@@ -12,9 +12,10 @@ if (!empty($subcategory)) {
         $count = $this->this_model->countProduct('', $value->id);
 
         if ($count == 0) {
+
             unset($subcategory[$key]);
             $j++;
-            // continue;
+            continue;
         }
 
         $i++;
