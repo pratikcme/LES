@@ -33,25 +33,25 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 <!-- ----table-responsive-js-- -->
-<script src="<?=$this->theme_base_url?>/assets/js/jquery.basictable.min.js"></script>
-<script src="<?=$this->theme_base_url?>/assets/js/basictable.min.js"></script>
+<script src="<?= $this->theme_base_url ?>/assets/js/jquery.basictable.min.js"></script>
+<script src="<?= $this->theme_base_url ?>/assets/js/basictable.min.js"></script>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/164071/Drift.min.js'></script>
 
 
 
-<script src="<?=$this->theme_base_url?>/assets/js/zoom.js"></script>
+<script src="<?= $this->theme_base_url ?>/assets/js/zoom.js"></script>
 
-<script src="<?=$this->theme_base_url?>/assets/js/slider.js"></script>
+<script src="<?= $this->theme_base_url ?>/assets/js/slider.js"></script>
 
-<script src="<?=$this->theme_base_url?>/assets/js/common.js"></script>
+<script src="<?= $this->theme_base_url ?>/assets/js/common.js"></script>
 
-<script src="<?=$this->theme_base_url?>/assets/js/dropdown.js"></script>
+<script src="<?= $this->theme_base_url ?>/assets/js/dropdown.js"></script>
 
 <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
 
-<script src="<?=$this->theme_base_url?>/assets/js/wow.min.js"></script>
+<script src="<?= $this->theme_base_url ?>/assets/js/wow.min.js"></script>
 
 <script>
     new WOW().init()
@@ -265,15 +265,14 @@ if (!empty($js)) {
 }
 ?>
 <script>
+    $(document).ready(function() {
 
-$( document ).ready(function(){
-
-$('.sub-menu ul').hide();
-$(".sub-menu .right").click(function () {
-  $(this).parent().parent(".sub-menu").children("ul").slideToggle("500");
-  $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-});
-})
+        $('.sub-menu ul').hide();
+        $(".sub-menu .right").click(function() {
+            $(this).parent().parent(".sub-menu").children("ul").slideToggle("500");
+            $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+        });
+    })
 
 
 
@@ -287,64 +286,71 @@ $(".sub-menu .right").click(function () {
         ?>
     });
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>  
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
-  deLang = '';
-  var deLang = document.getElementById("site_lang").value;
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: deLang ,includedLanguages : '<?=$supported_language?>'}, 'google_translate_element');
-}
-// setTimeout(()=>{
-// var value = deLang;
-//  if(value=='ar'){
-//       $('body').attr('class','rtl');
-//     }else{
-//       $('body').attr('class','ltr');
-//     }
-//   new google.translate.TranslateElement({pageLanguage: 'en' , includedLanguages : 'ar,en'}, 'google_translate_element');
- 
+    deLang = '';
+    var deLang = document.getElementById("site_lang").value;
 
-// },5000)
-$(document).on('change','.goog-te-combo',function (){
-    var value = $(this).val(); 
-    if(value != ''){
-      // $.ajax({
-      //     url : base_url+'LanguageSwitcher/switchLang/'+value,
-      //     // type:'post',
-      //     async : false,
-      //     data: {lang:value},
-      //     success:function(out){
-      //       if(value=='ar'){
-      //         $('body').attr('class','rtl');
-      //       }else{
-      //         $('body').attr('class','ltr');
-      //       }
-        if(value == deLang){
-          window.location.reload();
-        }
-        new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : '<?=$supported_language?>'}, 'google_translate_element');
-            // window.location.reload();        
-      //     }
-      // })
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: deLang,
+            includedLanguages: '<?= $supported_language ?>'
+        }, 'google_translate_element');
     }
-    // else{
-    //   new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'en,ar'}, 'google_translate_element');
-    //   // if(value=='ar'){
-    //   //         $('body').attr('dir','rtl');
-    //   //       }else{
-    //   //         $('body').attr('dir','');
-    //   //       }
-    //   window.location.reload();
-    // }
+    // setTimeout(()=>{
+    // var value = deLang;
+    //  if(value=='ar'){
+    //       $('body').attr('class','rtl');
+    //     }else{
+    //       $('body').attr('class','ltr');
+    //     }
+    //   new google.translate.TranslateElement({pageLanguage: 'en' , includedLanguages : 'ar,en'}, 'google_translate_element');
 
-// $('.sub-menu ul').hide();
-$( document ).ready(function(){
-    alert(0)
-$('.sub-menu ul').addClass("test");
-$(".sub-menu .right").click(function () {
-  $(this).parent().parent(".sub-menu").children("ul").slideToggle("500");
-  $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-});
-})
-});
+
+    // },5000)
+    $(document).on('change', '.goog-te-combo', function() {
+        var value = $(this).val();
+        if (value != '') {
+            // $.ajax({
+            //     url : base_url+'LanguageSwitcher/switchLang/'+value,
+            //     // type:'post',
+            //     async : false,
+            //     data: {lang:value},
+            //     success:function(out){
+            //       if(value=='ar'){
+            //         $('body').attr('class','rtl');
+            //       }else{
+            //         $('body').attr('class','ltr');
+            //       }
+            if (value == deLang) {
+                window.location.reload();
+            }
+            new google.translate.TranslateElement({
+                pageLanguage: deLang,
+                includedLanguages: '<?= $supported_language ?>'
+            }, 'google_translate_element');
+            // window.location.reload();        
+            //     }
+            // })
+        }
+        // else{
+        //   new google.translate.TranslateElement({pageLanguage: deLang , includedLanguages : 'en,ar'}, 'google_translate_element');
+        //   // if(value=='ar'){
+        //   //         $('body').attr('dir','rtl');
+        //   //       }else{
+        //   //         $('body').attr('dir','');
+        //   //       }
+        //   window.location.reload();
+        // }
+
+        // $('.sub-menu ul').hide();
+        $(document).ready(function() {
+
+            $('.sub-menu ul').addClass("test");
+            $(".sub-menu .right").click(function() {
+                $(this).parent().parent(".sub-menu").children("ul").slideToggle("500");
+                $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+            });
+        })
+    });
 </script>
