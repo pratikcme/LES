@@ -194,8 +194,8 @@ class User_Controller extends MY_Controller
     }
 
     function loadView($layout, $data)
-    {   
-        $res= $this->vendor_model->ApprovedVendor();
+    {
+        $res = $this->vendor_model->ApprovedVendor();
         $data['supported_language'] = $res[0]->supported_language;
         $this->load->model($this->myvalues->contactFrontEnd['model'], 'contact');
         $this->load->model($this->myvalues->homeFrontEnd['model'], 'home');
@@ -439,9 +439,9 @@ class Super_Admin_Controller extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata['validSuperAdmin'] == '') {
-            redirect(base_url() . 'admin');
-        }
+        // if ($this->session->userdata['validSuperAdmin'] == '') {
+        redirect(base_url() . 'admin');
+        // }
         $this->title = 'LaunchEstore';
     }
 }
