@@ -287,6 +287,8 @@ p {
     background: #fff;
     animation-delay: -1s;
   }
+
+
   
   @keyframes animate {
     0% {
@@ -297,3 +299,7 @@ p {
     }
   }
 
+
+.hideEcommerce{
+  display: none !important;
+}
