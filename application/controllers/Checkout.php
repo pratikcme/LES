@@ -172,12 +172,13 @@ class Checkout extends User_Controller
     // dd($shoppingDiscount);
     $data['TotalGstAmount'] = numberFormat($total_gst);
     if (!empty($shoppingDiscount)) {
-      // dd($discountPercentage);
+
       // if ($getMycartSubtotal >= $shoppingDiscount[0]->cart_amount) {
 
       $discountPercentage = $shoppingDiscount[0]->discount_percentage;
 
       $discountValue = $getMycartSubtotal * $discountPercentage / 100;
+
       $discountValue = number_format((float)$discountValue, 2, '.', '');
       // }
     }

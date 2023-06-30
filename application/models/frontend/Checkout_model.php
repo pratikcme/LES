@@ -598,6 +598,7 @@ class Checkout_model extends My_model
                 if ($discount != '') {
                     $value->discount_price = numberFormat(numberFormat($value->discount_price) - ((numberFormat($value->discount_price) * $discount) / 100));
                 }
+
                 if ($isShow[0]->display_price_with_gst == '1') {
                     $gst_amount = (numberFormat($value->discount_price) * $gst) / 100;
                 } else {
