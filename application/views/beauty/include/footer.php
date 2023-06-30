@@ -337,12 +337,12 @@ $(document).on('change','.goog-te-combo',function (){
     //   window.location.reload();
     // }
 
-// $('.sub-menu ul').hide();
+$('.sub-menu ul').hide();
 $( document ).ready(function(){
     alert(0)
 $('.sub-menu ul').addClass("test");
 $(".sub-menu .right").click(function () {
-  $(this).parent().parent(".sub-menu").children("ul").slideToggle("500");
+  $(this).parent().parent(".sub-menu").children("ul").slideToggle("100");
   $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
 });
 })
