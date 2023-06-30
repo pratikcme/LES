@@ -632,11 +632,11 @@
    margin: 20px auto;
 }
 
-.not_found_tab_pane{
+/* .not_found_tab_pane{
     max-height: 100% !important;
     min-height: 100% !important;
     overflow-y: unset !important;
-}
+} */
 
 /* .all-detalis-right{
     margin-top: -55px;

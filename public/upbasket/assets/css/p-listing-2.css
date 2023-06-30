@@ -636,31 +636,31 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 .product-listing-wrapper {
-  flex-basis: 24%;
+  flex-basis: 32%;
   transition: 0.3s;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .my-filter-wrapper {
-  flex-basis: 25%;
-  display: none;
+  flex-basis: 30%;
+  display: block;
   transition: 0.3s;
 }
 
 .hide.show-div-wrapper {
-  flex-basis: 73%;
+  flex-basis: 100%;
   transition: 0.3s;
 }
 
 .hide.my-filter-wrapper {
-  display: block;
+  display: none;
   position: relative;
   flex-basis: 25%;
 }
 
 .hide.show-div-wrapper .product-listing-wrapper {
-  flex-basis: 32%;
+  flex-basis: 24%;
   transition: 0.3s;
   
 }
@@ -888,12 +888,12 @@ div[slider]>input[type=range]::-ms-tooltip {
   /* -------new-fliter-css--- */
 
   .hide.show-div-wrapper {
-    flex-basis: 70%;
+    flex-basis: 100%;
     transition: 0.3s;
   }
 
   .hide.my-filter-wrapper {
-    display: block;
+    display: none;
     position: relative;
   }
 
@@ -1026,12 +1026,12 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 
   .hide.show-div-wrapper {
-    flex-basis: 70%;
+    flex-basis: 100%;
     transition: 0.3s;
   }
 
   .hide.my-filter-wrapper {
-    display: block;
+    display: none;
     position: relative;
     flex-basis: 18%;
   }
@@ -1222,18 +1222,18 @@ div[slider]>input[type=range]::-ms-tooltip {
   }
 
   .hide.show-div-wrapper {
-    flex-basis: 68%;
+    flex-basis: 100%;
     transition: 0.3s;
   }
 
   .hide.my-filter-wrapper {
-    display: block;
+    display: none;
     position: relative;
     flex-basis: 30%;
   }
 
   .hide.show-div-wrapper .product-listing-wrapper {
-    flex-basis: 48%;
+    flex-basis: 32%;
     transition: 0.3s;
   }
 
@@ -1377,7 +1377,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   /* -------new-fliter-css--- */
   .product-listing-wrapper {
-    flex-basis: 32%;
+    flex-basis: 50%;
     transition: 0.3s;
   }
 
@@ -1387,7 +1387,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   }
 
   .hide.my-filter-wrapper {
-    display: block;
+    display: none;
     position: relative;
     flex-basis: 30%;
   }
@@ -1401,6 +1401,12 @@ div[slider]>input[type=range]::-ms-tooltip {
     padding-left: 20px !important;
   }
 
+}
+
+@media only screen and (max-width:991px){
+  .my-filter-wrapper{
+    flex-basis: 50%;
+  }
 }
 
 
@@ -1536,17 +1542,17 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   /* -------new-fliter-css--- */
   .product-listing-wrapper {
-    flex-basis: 34%;
+    flex-basis: 65%;
     transition: 0.3s;
   }
 
   .hide.show-div-wrapper {
-    flex-basis: 68%;
+    flex-basis: 100%;
     transition: 0.3s;
   }
 
   .hide.my-filter-wrapper {
-    display: block;
+    display: none;
     position: relative;
     flex-basis: 30%;
   }
@@ -1694,17 +1700,17 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   /* -------new-fliter-css--- */
   .product-listing-wrapper {
-    flex-basis: 32%;
+    flex-basis: 65%;
     transition: 0.3s;
   }
 
   .hide.show-div-wrapper {
-    flex-basis: 68%;
+    flex-basis: 100%;
     transition: 0.3s;
   }
 
   .hide.my-filter-wrapper {
-    display: block;
+    display: none;
     position: relative;
     flex-basis: 30%;
   }
@@ -2367,7 +2373,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   }
 
   .product-listing-wrapper {
-    flex-basis: 48%;
+    flex-basis: 100%;
   }
 
 }
@@ -2672,9 +2678,6 @@ div[slider]>input[type=range]::-ms-tooltip {
     display: none;
   }
 
-  .product-listing-wrapper {
-    flex-basis: 48%;
-  }
 
 
 }
@@ -3620,9 +3623,9 @@ div[slider]>input[type=range]::-ms-tooltip {
     margin-top: 20px;
   }
 
-  .product-listing-wrapper {
+  /* .product-listing-wrapper {
     flex-basis: 49%;
-  }
+  } */
 
   .main-listing-wrapper .card .card-body {
     padding-right: 5px !important;

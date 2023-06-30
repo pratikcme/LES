@@ -342,7 +342,7 @@ if (!empty($js)) {
 
 $('.sub-menu ul').hide();
 $(".sub-menu .right").click(function () {
-  $(this).parent().parent(".sub-menu").children("ul").slideToggle("500");
+  $(this).parent().parent(".sub-menu").children("ul").slideToggle(300);
   $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
 });
 </script>

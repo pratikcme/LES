@@ -2011,6 +2011,10 @@ li.sub-menu{
     .sidepanel .discoutn-part ul {
         padding: 0px 0px !important;
     }
+
+    .sub-menu span{
+        font-size: 16px;
+    }
 }
 
 @media only screen and (min-width: 425px) and (max-width: 575px) {
@@ -2075,6 +2079,18 @@ li.sub-menu{
         position: relative;
         top: 4px !important;
     }
+
+    .sub-wrap {
+        padding: 8px 0px 0px !important;
+    }
+
+    .slider-box{
+        padding-left: 10px !important;
+    }
+    
+    .sub-menu span{
+        font-size: 14px;
+    }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 424px) {
@@ -2138,5 +2154,17 @@ li.sub-menu{
     .sidepanel .discoutn-part .form-check-input[type=checkbox] {
         position: relative;
         top: 4px !important;
+    }
+
+    .sub-wrap {
+        padding: 8px 0px 0px !important;
+    }
+
+    .slider-box{
+        padding-left: 10px !important;
+    }
+    
+    .sub-menu span{
+        font-size: 14px;
     }
 }
