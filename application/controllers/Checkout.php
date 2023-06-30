@@ -12,6 +12,7 @@ class Checkout extends User_Controller
   function __construct()
   {
     parent::__construct();
+
     $this->controller = $this->myvalues->checkoutFrontEnd['controller'];
     // $this->url = SITE_URL . 'frontend/'. $this->controller;
     $this->load->model($this->myvalues->checkoutFrontEnd['model'], 'this_model');
@@ -38,6 +39,8 @@ class Checkout extends User_Controller
 
   public function index()
   {
+
+
     $this->load->model('api_v3/common_model', 'co_model');
     $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
