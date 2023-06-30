@@ -86,17 +86,27 @@ $(document).ready(function () {
     var categoryArray = get_filter("category_id");
 
     var catwithsubArray = [];
-    $.each(categoryArray, function (index, catid) {
-      $(".subcategoryId" + catid).each(function () {
+    if ($.inArray("All", categoryArray) !== -1) {
+      $(".subcategory_id").each(function () {
         catwithsubArray.push($(this).val());
       });
-    });
+    } else {
+      $.each(categoryArray, function (index, catid) {
+        $(".subcategoryId" + catid).each(function () {
+          catwithsubArray.push($(this).val());
+        });
+      });
+    }
+
     if (subcatArray.length != 0) {
       $.each(subcatArray, function (index, subcatid) {
         catwithsubArray.push(subcatid);
       });
     }
 
+    if (catwithsubArray.length != 0) {
+      cat_id = "";
+    }
     $.ajax({
       url: url + "products/subcategory/" + page,
       data: {

@@ -1173,6 +1173,20 @@ div[slider]>input[type=range]::-ms-tooltip {
     overflow-y: scroll;
 }
 
+#collapseSix .accordion-body{
+    max-height: 350px;
+    min-height: 200px;
+    overflow-y: scroll;
+}
+
+#collapseFour .discoutn-part{
+    max-height: 300px;
+    min-height: 300px;
+    overflow-y: auto;
+    height: auto !important;
+}
+
+
 
 /* ======================= responisve ======================== */
 @media only screen and (min-width: 1200px) and (max-width: 1399px){

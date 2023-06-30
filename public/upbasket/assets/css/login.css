@@ -28,6 +28,17 @@
     outline: none !important;
 }
 
+
+.google-btn span.google-img{
+    max-width: 25px;
+    display: inline-block;
+}
+
+
+.google-btn .google-img img{
+max-width: 25px;
+}
+
 .login-section {
     background-image: linear-gradient(90deg, white 50%, #D9E2ED 50%);
     width: 100%;
