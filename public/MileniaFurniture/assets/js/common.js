@@ -33,6 +33,7 @@ function myFunction(x) {
 // });
 
 $(function () {
+  var timeoutId;
   $("#price-range").slider({
     step: 1,
     range: true,
@@ -45,7 +46,21 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
+      // onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
+      clearTimeout(timeoutId);
+
+      // Set a new timeout to delay the onload function by 1 second
+      timeoutId = setTimeout(function () {
+        onload(
+          1,
+          sub_id,
+          cat_id,
+          (sort = ""),
+          (search = ""),
+          st_price,
+          en_price
+        );
+      }, 800);
     },
   });
   $("#priceRange").val(
