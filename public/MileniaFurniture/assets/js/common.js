@@ -60,7 +60,7 @@ $(function () {
           st_price,
           en_price
         );
-      }, 500);
+      }, 700);
     },
   });
   $("#priceRange").val(
