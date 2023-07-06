@@ -108,7 +108,7 @@
                                                         <div class="form-check d-flex align-items-center justify-content-between">
                                                             <div>
                                                                 <input class="form-check-input category_id" name="category" type="checkbox" value="All" id="All">
-                                                                <label class="form-check-label" for="All">
+                                                                <label class="form-check-label" for="">
                                                                     <span>All</span>
                                                                 </label>
                                                             </div>
@@ -121,7 +121,7 @@
                                                             <div class="form-check d-flex align-items-center justify-content-between">
                                                                 <div>
                                                                     <input class="form-check-input category_id" name="category" type="checkbox" value="<?= $value->id  ?>" id="<?= $value->id ?>">
-                                                                    <label class="form-check-label" for="<?= $value->id ?>">
+                                                                    <label class="form-check-label" for="">
                                                                         <span><?= $value->name ?></span>
                                                                     </label>
                                                                 </div>
@@ -133,7 +133,7 @@
                                                                         <div class="discount-wrapper brands-wrp">
                                                                             <div class="form-check d-flex align-items-center">
                                                                                 <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
-                                                                                <label class="form-check-label" for="<?= $subvalue->id  ?>">
+                                                                                <label class="form-check-label" for="">
                                                                                     <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
                                                                                 </label>
                                                                             </div>
@@ -146,26 +146,7 @@
                                                     <?php endforeach ?>
                                                 </ul>
 
-                                                <!-- <div class=" Categories-part">
-                                                    <ul class="categories-wrapper">
 
-                                                        <li class="active">
-                                                            <div class="form-check category_id" data-cat_id="All">
-                                                                <label class="form-check-label" for="sub-Kid's"><?= $this->lang->line('All Categories') ?></label>
-                                                            </div>
-                                                        </li>
-
-                                                        <?php foreach ($category as $key => $value) : ?>
-                                                            <li class="active">
-                                                                <span><i class="fa-solid fa-circle-chevron-right"></i></span>
-                                                                <div class="form-check category_id" data-cat_id="<?= $value->id ?>">
-                                                                    <label class="form-check-label" for="sub-Kid's"><?= $value->name ?></label>
-                                                                </div>
-                                                            </li>
-
-                                                        <?php endforeach ?>
-                                                    </ul>
-                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -294,7 +275,7 @@
                                                 <div class="form-check d-flex align-items-center justify-content-between">
                                                     <div>
                                                         <input class="form-check-input category_id" name="category" type="checkbox" value="All" id="All">
-                                                        <label class="form-check-label" for="All">
+                                                        <label class="form-check-label" for="">
                                                             <span>All</span>
                                                         </label>
                                                     </div>
@@ -307,7 +288,7 @@
                                                     <div class="form-check d-flex align-items-center justify-content-between">
                                                         <div>
                                                             <input class="form-check-input category_id" name="category" type="checkbox" value="<?= $value->id  ?>" id="<?= $value->id ?>">
-                                                            <label class="form-check-label" for="<?= $value->id ?>">
+                                                            <label class="form-check-label" for="">
                                                                 <span><?= $value->name ?></span>
                                                             </label>
                                                         </div>
@@ -319,7 +300,7 @@
                                                                 <div class="discount-wrapper brands-wrp">
                                                                     <div class="form-check d-flex align-items-center">
                                                                         <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
-                                                                        <label class="form-check-label" for="<?= $subvalue->id  ?>">
+                                                                        <label class="form-check-label" for="">
                                                                             <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
                                                                         </label>
                                                                     </div>

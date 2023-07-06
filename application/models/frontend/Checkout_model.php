@@ -556,6 +556,10 @@ class Checkout_model extends My_model
     // Dk added
     public function calculateGstAndCart($discount = '')
     {
+
+        $this->load->model('api_v3/common_model', 'co_model');
+        $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
+
         $myCartValue = 0;
         $total_gst = 0;
         if ($this->session->userdata('user_id') == '') {
@@ -564,7 +568,14 @@ class Checkout_model extends My_model
                 $myCartValue += $value['total'];
 
                 $gst = $this->api_model->getProductGst($value['product_id']);
-                $gst_amount = ($value['discount_price'] * $gst) / 100;
+
+                if ($isShow[0]->display_price_with_gst == '1') {
+                    $gst_amount = (numberFormat($value['discount_price']) * $gst) / 100;
+                } else {
+                    $gst_amount =  (numberFormat($value['discount_price']) - numberFormat($value->discount_price) / ($gst + 100) * 100);
+                }
+
+
                 $total_gst += $gst_amount * $value['quantity'];
             }
         } else {
@@ -574,7 +585,12 @@ class Checkout_model extends My_model
 
             foreach ($my_cart as $key => $value) {
 
+
+                if ($isShow[0]->display_price_with_gst == '1') {
+                    $value->discount_price = $value->without_gst_price;
+                }
                 $myCartValue += numberFormat($value->discount_price) * $value->quantity;
+
 
                 $this->load->model('api_v3/api_model');
                 $gst = $this->api_model->getProductGst($value->product_id);
@@ -583,8 +599,11 @@ class Checkout_model extends My_model
                     $value->discount_price = numberFormat(numberFormat($value->discount_price) - ((numberFormat($value->discount_price) * $discount) / 100));
                 }
 
-                $gst_amount = (numberFormat($value->discount_price) * $gst) / 100;
-
+                if ($isShow[0]->display_price_with_gst == '1') {
+                    $gst_amount = (numberFormat($value->discount_price) * $gst) / 100;
+                } else {
+                    $gst_amount =  (numberFormat($value->discount_price) - numberFormat($value->discount_price) / ($gst + 100) * 100);
+                }
                 $total_gst += numberFormat($gst_amount) * $value->quantity;
             }
         }
