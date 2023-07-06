@@ -1050,6 +1050,11 @@ content: '';
     {
         width: 70px;
     }
+
+    
+    .mobile-nav ul {
+        gap: 60px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -1067,6 +1072,12 @@ content: '';
     }
 }
 
+
+@media only screen and (max-width: 430px) {
+    .mobile-nav ul {
+        gap: 30px;
+    }
+}
 
 @media only screen and (max-width: 340px) {
     .sale-banner-inner span {

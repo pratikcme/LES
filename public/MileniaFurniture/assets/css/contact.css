@@ -145,11 +145,6 @@
 
 }
 
-@media only screen and (max-width: 576px) {
-    .mobile-nav ul {
-        gap: 45px;
-    }
-}
 
 @media only screen and (max-width: 366px) {
     .contact-detail-text a::after {
