@@ -1,11 +1,12 @@
 function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
-$(document).on("click",".close-btn",function(){
+$(document).on("click", ".close-btn", function () {
   $(".cart-dropdowns,.overlay").hide();
-})
+});
 
 $(function () {
+  var timeoutId;
   $("#price-range").slider({
     step: 1,
     range: true,
@@ -18,7 +19,19 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(function () {
+        onload(
+          1,
+          sub_id,
+          cat_id,
+          (sort = ""),
+          (search = ""),
+          st_price,
+          en_price
+        );
+      }, 700);
     },
   });
   $("#priceRange").val(
@@ -29,6 +42,7 @@ $(function () {
 });
 
 $(function () {
+  var timeoutId;
   $("#price-range_mob").slider({
     step: 1,
     range: true,
@@ -41,7 +55,19 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(function () {
+        onload(
+          1,
+          sub_id,
+          cat_id,
+          (sort = ""),
+          (search = ""),
+          st_price,
+          en_price
+        );
+      }, 700);
     },
   });
   $("#priceRange_mob").val(

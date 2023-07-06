@@ -4,6 +4,7 @@ $(document).ready(function () {
   st_price = "";
   en_price = "";
   $(function () {
+    var timeoutId;
     $("#price-range").slider({
       step: 1,
       range: true,
@@ -16,15 +17,19 @@ $(document).ready(function () {
         var sub_id = $("#sub_cat_id").val();
         st_price = ui.values[0];
         en_price = ui.values[1];
-        onload(
-          1,
-          sub_id,
-          cat_id,
-          (sort = ""),
-          (search = ""),
-          st_price,
-          en_price
-        );
+        clearTimeout(timeoutId);
+
+        timeoutId = setTimeout(function () {
+          onload(
+            1,
+            sub_id,
+            cat_id,
+            (sort = ""),
+            (search = ""),
+            st_price,
+            en_price
+          );
+        }, 700);
       },
     });
     $("#priceRange").val(
@@ -38,6 +43,7 @@ $(document).ready(function () {
     var siteCurrency = $("#siteCurrency").val();
 
     $(function () {
+      var timeoutId;
       $("#price-range_mob").slider({
         step: 1,
         range: true,
@@ -50,15 +56,19 @@ $(document).ready(function () {
           var sub_id = $("#sub_cat_id").val();
           st_price = ui.values[0];
           en_price = ui.values[1];
-          onload(
-            1,
-            sub_id,
-            cat_id,
-            (sort = ""),
-            (search = ""),
-            st_price,
-            en_price
-          );
+          clearTimeout(timeoutId);
+
+          timeoutId = setTimeout(function () {
+            onload(
+              1,
+              sub_id,
+              cat_id,
+              (sort = ""),
+              (search = ""),
+              st_price,
+              en_price
+            );
+          }, 700);
         },
       });
       $("#priceRange_mob").val(
