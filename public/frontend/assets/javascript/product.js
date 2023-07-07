@@ -102,6 +102,7 @@ $(document).ready(function () {
 
         if (cat_id != "") {
           $("#sd").css("display", "block");
+          console.log(output.subCategory);
           $("#short").html(output.subCategory);
           // $("#long").html(output.long_li);
         } else {
