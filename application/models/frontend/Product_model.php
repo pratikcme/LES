@@ -534,14 +534,16 @@ class Product_model extends My_model
 			$product_html = '<h3>No Product Found  </h3>';
 		}
 		$sub_category = '';
+		$sub_dropdownCategory = "";
 		if (!empty($subcategory)) {
 			$subcatData['subcategory'] = $subcategory;
 
 			$subcatData['wish_pid'] = $wish_pid;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);
+			$sub_dropdownCategory .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/dropdown_li', $subcatData, true);
 		}
 
-		$responseArray = ['result' => $product_html, 'page' => $page - 1, 'subCategory' => $sub_category];
+		$responseArray = ['result' => $product_html, 'page' => $page - 1, 'subCategory' => $sub_category, 'sub_dropdownCategory' => $sub_dropdownCategory];
 
 		return  json_encode($responseArray);
 	}

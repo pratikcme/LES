@@ -37,7 +37,7 @@ if (!empty($subcategory)) {
         $class = "none";
     } else ?>
     <div class="dropdown-subcategories" style="display:<?= $class ?>">
-        <div class="dropdown"><button id="drp-btn" onclick="myFunction()" class="dropbtn">All</button></div>
+        <div class="dropdown"><button id="drp-btn" class="dropbtn ">All</button></div>
     </div>
 
 <?php }

@@ -104,7 +104,7 @@ $(document).ready(function () {
           $("#sd").css("display", "block");
 
           $("#short").html(output.subCategory);
-          // $("#long").html(output.long_li);
+          $("#long").html(output.sub_dropdownCategory);
         } else {
           $("#sd").css("display", "none");
         }
