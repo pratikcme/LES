@@ -103,8 +103,8 @@ $(document).ready(function () {
 
         if (cat_id != "") {
           $("#sd").css("display", "block");
-          $("#short").html(output.short_li);
-          $("#long").html(output.long_li);
+          $("#short").html(output.subCategory);
+          $("#long").html(output.sub_dropdownCategory);
         } else {
           $("#sd").css("display", "none");
         }
