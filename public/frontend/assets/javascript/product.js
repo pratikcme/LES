@@ -99,6 +99,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (output) {
         console.log(output);
+        return false;
         $("#ajaxProduct").html(output.result);
 
         if (cat_id != "") {

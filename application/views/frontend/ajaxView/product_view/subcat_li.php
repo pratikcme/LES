@@ -5,7 +5,7 @@ $i = 0;
 $j = 0;
 
 if (!empty($subcategory)) {
-    dd($subcategory);
+
     $this->load->model('product_model', 'this_model');
     foreach ($subcategory as $key => $value) {
 
