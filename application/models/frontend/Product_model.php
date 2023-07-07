@@ -380,7 +380,8 @@ class Product_model extends My_model
 			$data['where']['p.category_id'] =  $postdata['cat_id'];
 			$cat_id = $postdata['cat_id'];
 			$subcategory = $this->getAllSubCategory($cat_id);
-			// echo $this->db->last_query();die;
+			// echo $this->db->last_query();
+			// die;
 		}
 		if (isset($postdata['getCatByURL']) && $postdata['getCatByURL'] != '') {
 			$data['where']['p.category_id'] =  $this->utility->safe_b64decode($postdata['getCatByURL']);
@@ -535,6 +536,7 @@ class Product_model extends My_model
 		$sub_category = '';
 		if (!empty($subcategory)) {
 			$subcatData['subcategory'] = $subcategory;
+
 			$subcatData['wish_pid'] = $wish_pid;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);
 		}
@@ -1064,6 +1066,7 @@ class Product_model extends My_model
 
 	public function getAllSubCategory($cat_id = '')
 	{
+
 		if ($cat_id != '') {
 			$data['where']['category_id'] = $cat_id;
 		}

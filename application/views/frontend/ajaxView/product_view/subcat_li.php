@@ -5,6 +5,7 @@ $i = 0;
 $j = 0;
 
 if (!empty($subcategory)) {
+
     $this->load->model('product_model', 'this_model');
     foreach ($subcategory as $key => $value) {
 
@@ -13,7 +14,7 @@ if (!empty($subcategory)) {
         if ($count == 0) {
             unset($subcategory[$key]);
             $j++;
-            // continue;
+            continue;
         }
 
         $i++;

@@ -98,13 +98,13 @@ $(document).ready(function () {
       method: "post",
       dataType: "json",
       success: function (output) {
-        // console.log(output);
+        console.log(output);
         $("#ajaxProduct").html(output.result);
 
         if (cat_id != "") {
           $("#sd").css("display", "block");
-          $("#short").html(output.short_li);
-          $("#long").html(output.long_li);
+          $("#short").html(output.subCategory);
+          // $("#long").html(output.long_li);
         } else {
           $("#sd").css("display", "none");
         }
