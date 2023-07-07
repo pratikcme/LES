@@ -70,14 +70,14 @@
     <div class="category-menu-wrapper sub-cat-menu" style="display:none" id="sd">
 
       <ul class="sub-cat-main" id="short">
-        <?php
-        $endKey = 0;
-        foreach ($available_subcat as $key => $value) {
-          if ($key == 6) {
-            $endKey++;
-            break;
-          }
-        ?>
+        <!-- <?php
+              $endKey = 0;
+              foreach ($available_subcat as $key => $value) {
+                if ($key == 6) {
+                  $endKey++;
+                  break;
+                }
+              ?>
           <li><a href="javascript:" class="sucategory_id sub_cat_link" data-sub_id="<?= $value['id'] ?>"><?= $value['name'] ?></a></li>
         <?php } ?>
         <div class="dropdown-subcategories" style="display : <?= ($endKey < 6) ? '' : 'none' ?> ">
@@ -85,16 +85,16 @@
             <button id="drp-btn" onclick="myFunction()" class="dropbtn">All</button>
 
           </div>
-        </div>
+        </div> -->
       </ul>
       <div id="myDropdown" class="dropdown-content">
-        <ul class="" id="long">
+        <!-- <ul class="" id="long">
           <?php foreach ($available_subcat as $key => $value) : ?>
             <li>
               <a href="javascript:" class="sucategory_id" data-sub_id="<?= $value['id'] ?>"><?= $value['name'] ?></a>
             </li>
           <?php endforeach ?>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </div>
