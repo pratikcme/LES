@@ -23,13 +23,12 @@ if (!empty($subcategory)) {
         if ($count_sub == 1) {
             $sub_class = 'active_sub';
         }
-
+        if ($key <= 6) {
 ?>
-        <li><a href="javascript:" class="sucategory_id sub_cat_link <?= $sub_class ?>" data-sub_id=<?= $value->id ?>><?= $value->name ?></a></li>
+            <li><a href="javascript:" class="sucategory_id sub_cat_link <?= $sub_class ?>" data-sub_id=<?= $value->id ?>><?= $value->name ?></a></li>
 
-        <?php if ($key >= 6) {
-            continue;
-        } ?>
+        <?php  } ?>
+
         <!-- <li><a href="javascript:" class="sucategory_id sub_cat_link  <?= $sub_class ?>" data-sub_id=<?= $value->id ?>><?= $value->name ?></a></li> -->
 
     <?php }
