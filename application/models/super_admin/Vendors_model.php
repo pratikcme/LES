@@ -106,7 +106,7 @@ class Vendors_model extends My_model
 			'locality' => $postData['locality'],
 			'language_support' => $postData['language_support'],
 			'theme_name' =>  $postData['theme_name'],
-			'supported_language' =>implode(',',$postData['supported_language'])
+			'supported_language' => implode(',', $postData['supported_language'])
 		);
 
 		$lastInsertedVendor_id = $this->insertData(ADMIN, $array);
@@ -209,7 +209,7 @@ class Vendors_model extends My_model
 	{
 		// Replace these variables with your own cPanel and domain information
 		$cpanelUser = 'a1630btr';
-		$cpanelPass = 'PuO+-UZ7+Mor';
+		$cpanelPass = '?D!{28ur_QC1';
 		// $domainName = 'your-domain.com';
 		$subDomain = ''; // Set this to null if creating an add-on domain
 		$docRoot = $rootDirectory; // Set this to the document root for the domain
@@ -413,7 +413,7 @@ class Vendors_model extends My_model
 		}
 
 		$cPanelUser = 'a1630btr';
-		$cPanelPass = 'PuO+-UZ7+Mor';
+		$cPanelPass = '?D!{28ur_QC1';
 		// if($domain_type == '1'){
 		$buildRequest = "/frontend/paper_lantern/subdomain/doadddomain.html?domain=" . $subDomain . "&rootdomain=" . $rootDomain . "&dir=" . $rootDirectory;
 		// }
@@ -479,7 +479,7 @@ class Vendors_model extends My_model
 
 	public function updateVendors($vendor_id, $postData)
 	{
-		
+
 		$updateArray = [
 			'email'			 		 =>	$postData['email'],
 			'approved_branch'		 =>	$postData['approved'],
@@ -496,7 +496,7 @@ class Vendors_model extends My_model
 			'multi_language'         => $postData['multi_language'],
 			'dt_updated'			 => strtotime(DATE_TIME),
 			'theme_name' => $postData['theme_name'],
-			'supported_language' 	 => implode(',',$postData['supported_language'])
+			'supported_language' 	 => implode(',', $postData['supported_language'])
 		];
 		$data['table'] = ADMIN;
 		$data['update'] = $updateArray;

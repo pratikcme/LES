@@ -1,11 +1,12 @@
 function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
-$(document).on("click",".close-btn",function(){
+$(document).on("click", ".close-btn", function () {
   $(".cart-dropdowns,.overlay").hide();
-})
+});
 
 $(function () {
+  var timeoutId;
   $("#price-range").slider({
     step: 1,
     range: true,
@@ -18,7 +19,19 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(function () {
+        onload(
+          1,
+          sub_id,
+          cat_id,
+          (sort = ""),
+          (search = ""),
+          st_price,
+          en_price
+        );
+      }, 700);
     },
   });
   $("#priceRange").val(
@@ -29,6 +42,7 @@ $(function () {
 });
 
 $(function () {
+  var timeoutId;
   $("#price-range_mob").slider({
     step: 1,
     range: true,
@@ -41,7 +55,19 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(function () {
+        onload(
+          1,
+          sub_id,
+          cat_id,
+          (sort = ""),
+          (search = ""),
+          st_price,
+          en_price
+        );
+      }, 700);
     },
   });
   $("#priceRange_mob").val(
@@ -221,21 +247,21 @@ function removeOpen(index1) {
 }
 
 // ============= place order modal js ===========
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function () {
-  var url = $("#url").val();
-  $("#RegisterForm").attr("action", url + "users_account/users/add_address");
-  $("#RegisterForm")[0].reset();
-  modal.style.display = "block";
-};
-span.onclick = function (event) {
-  modal.style.display = "none";
-};
+// var modal = document.getElementById("myModal");
+// var btn = document.getElementById("myBtn");
+// var span = document.getElementsByClassName("close")[0];
+// btn.onclick = function () {
+//   var url = $("#url").val();
+//   $("#RegisterForm").attr("action", url + "users_account/users/add_address");
+//   $("#RegisterForm")[0].reset();
+//   modal.style.display = "block";
+// };
+// span.onclick = function (event) {
+//   modal.style.display = "none";
+// };
 
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+// window.onclick = function (event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// };

@@ -1,66 +1,66 @@
 <!-- ----hero-section--- -->
 <style>
-/*PRICE RANGE SLIDER */
-.price-range-slider {
-    width: 100%;
-    padding: 10px 20px 15px;
-    background-color: #f7f7f7;
-}
+    /*PRICE RANGE SLIDER */
+    .price-range-slider {
+        width: 100%;
+        padding: 10px 20px 15px;
+        background-color: #f7f7f7;
+    }
 
-.price-range-slider .range-value {
-    margin: 0;
-    display: flex;
-}
+    .price-range-slider .range-value {
+        margin: 0;
+        display: flex;
+    }
 
-.price-range-slider .range-value .fa-rupee-sign {
-    color: var(--secondary-color);
-    position: relative;
-    font-size: 16px;
-    top: 3px;
-    position: relative;
-    font-weight: 900;
-    margin-right: 5px;
-    top: 1px;
-}
+    .price-range-slider .range-value .fa-rupee-sign {
+        color: var(--secondary-color);
+        position: relative;
+        font-size: 16px;
+        top: 3px;
+        position: relative;
+        font-weight: 900;
+        margin-right: 5px;
+        top: 1px;
+    }
 
-.price-range-slider .range-value input {
-    width: 100%;
-    background: none;
-    color: var(--secondary-color);
-    font-family: 'OpenSans-SemiBold';
-    font-size: 16px;
-    font-weight: initial;
-    box-shadow: none;
-    border: none;
-    margin: 00px 0 20px 0;
-}
+    .price-range-slider .range-value input {
+        width: 100%;
+        background: none;
+        color: var(--secondary-color);
+        font-family: 'OpenSans-SemiBold';
+        font-size: 16px;
+        font-weight: initial;
+        box-shadow: none;
+        border: none;
+        margin: 00px 0 20px 0;
+    }
 
-.price-range-slider .range-bar {
-    border: none;
-    background: #000;
-    height: 3px;
-    width: 96%;
-    margin-left: 8px;
-}
+    .price-range-slider .range-bar {
+        border: none;
+        background: #000;
+        height: 3px;
+        width: 96%;
+        margin-left: 8px;
+    }
 
-.price-range-slider .range-bar .ui-slider-range {
-    background: #1ebcb7;
-}
+    .price-range-slider .range-bar .ui-slider-range {
+        background: #1ebcb7;
+    }
 
-.price-range-slider .range-bar .ui-slider-handle {
-    border: none;
-    border-radius: 25px;
-    background: #fff;
-    border: 2px solid #1ebcb7;
-    height: 17px;
-    width: 17px;
-    top: -0.52em;
-    cursor: pointer;
-}
+    .price-range-slider .range-bar .ui-slider-handle {
+        border: none;
+        border-radius: 25px;
+        background: #fff;
+        border: 2px solid #1ebcb7;
+        height: 17px;
+        width: 17px;
+        top: -0.52em;
+        cursor: pointer;
+    }
 
-.price-range-slider .range-bar .ui-slider-handle+span {
-    background: #1ebcb7;
-}
+    .price-range-slider .range-bar .ui-slider-handle+span {
+        background: #1ebcb7;
+    }
 </style>
 
 <section class="hero-section common-banner-bg login-section">
@@ -98,8 +98,7 @@
                     </select>
 
                     <!-- ---filter-icon--- -->
-                    <a class="filter-icon filter-hide-btn lg-btn"><?= $this->lang->line('Filter'); ?><i
-                            class="fa fa-filter" aria-hidden="true"></i></a>
+                    <a class="filter-icon filter-hide-btn lg-btn"><?= $this->lang->line('Filter'); ?><i class="fa fa-filter" aria-hidden="true"></i></a>
 
                     <!-- ----mobile-filter-btn---- -->
                     <a class="mobile-filter-btn"><i class="fa fa-filter" aria-hidden="true"></i></a>
@@ -114,15 +113,12 @@
                                     <div class="accordion" id="accordionExample">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingOne">
-                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseOne" aria-expanded="true"
-                                                    aria-controls="collapseOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                     <?= $this->lang->line('price Range'); ?>
                                                 </button>
                                             </h2>
                                             <div class="slider-box">
-                                                <label
-                                                    for="priceRange"><?= $this->lang->line('price Range'); ?>:</label>
+                                                <label for="priceRange"><?= $this->lang->line('price Range'); ?>:</label>
                                                 <input type="text" id="priceRange_mob" readonly>
                                                 <div id="price-range_mob" class="slider"></div>
                                             </div>
@@ -130,159 +126,58 @@
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingFour">
-                                                <button class="accordion-button collapsed show" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                                    aria-expanded="false" aria-controls="collapseFour">
+                                                <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                                     <?= $this->lang->line('Product Categories'); ?>
                                                 </button>
                                             </h2>
-                                            <div id="collapseFour" class="accordion-collapse collapse show"
-                                                aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                            <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
                                                     <div class="discoutn-part">
-                                                        <!-- <ul>
-                                                            <li>
-                                                                <div class="form-check active category_id"
-                                                                    data-cat_id="All">
-                                                                    <label class="form-check-label"
-                                                                        for="sub-Kid's"><?= $this->lang->line('All Categories') ?></label>
+
+                                                        <ul class="sub-wrap">
+                                                            <li class='sub-menu'>
+                                                                <div class="form-check d-flex align-items-center justify-content-between">
+                                                                    <div>
+                                                                        <input class="form-check-input category_id" name="category" type="checkbox" value="All" id="All">
+                                                                        <label class="form-check-label" for="">
+                                                                            <span>All</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <!-- <div class='fa fa-caret-down right'></div> -->
                                                                 </div>
                                                             </li>
                                                             <?php foreach ($category as $key => $value) : ?>
-                                                            <li>
-                                                                <div class="form-check category_id"
-                                                                    data-cat_id="<?= $value->id ?>">
+                                                                <li class='sub-menu'>
+                                                                    <!-- <span>Men's</span> -->
+                                                                    <div class="form-check d-flex align-items-center justify-content-between">
+                                                                        <div>
+                                                                            <input class="form-check-input category_id" name="category" type="checkbox" value="<?= $value->id  ?>" id="<?= $value->id ?>">
+                                                                            <label class="form-check-label" for="">
+                                                                                <span><?= $value->name ?></span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class='fa fa-caret-down right'></div>
+                                                                    </div>
+                                                                    <ul>
+                                                                        <?php foreach ($value->subcategory as  $subvalue) : ?>
+                                                                            <li>
+                                                                                <div class="discount-wrapper brands-wrp">
+                                                                                    <div class="form-check d-flex align-items-center">
+                                                                                        <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
+                                                                                        <label class="form-check-label" for="">
+                                                                                            <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        <?php endforeach ?>
 
-                                                                    <label class="form-check-label"
-                                                                        for="sub-Kid's"><?= $value->name ?></label>
-                                                                </div>
-                                                            </li>
+                                                                    </ul>
+                                                                </li>
                                                             <?php endforeach ?>
-                                                        </ul> -->
-                                                        <ul class="sub-wrap">
-                                                            <li class='sub-menu'>
-                                                            <span>brands<div class='fa fa-caret-down right'></div></span>
-                                                                <ul>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-10">
-                                                                            <label class="form-check-label" for="sub-cat-itm-10">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-20">
-                                                                            <label class="form-check-label" for="sub-cat-itm-20">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-30">
-                                                                            <label class="form-check-label" for="sub-cat-itm-30">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>    
-                                                        <ul class="sub-wrap">
-                                                            <li class='sub-menu'>
-                                                                <span>brands<div class='fa fa-caret-down right'></div></span>
-                                                                <ul>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-77">
-                                                                            <label class="form-check-label" for="sub-cat-itm-77">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-200">
-                                                                            <label class="form-check-label" for="sub-cat-itm-200">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-300">
-                                                                            <label class="form-check-label" for="sub-cat-itm-300">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-400">
-                                                                            <label class="form-check-label" for="sub-cat-itm-400">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-50">
-                                                                            <label class="form-check-label" for="sub-cat-itm-50">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-60">
-                                                                            <label class="form-check-label" for="sub-cat-itm-60">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-70">
-                                                                            <label class="form-check-label" for="sub-cat-itm-70">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                    <li>
-                                                                    <div class="discount-wrapper brands-wrp">
-                                                                        <div class="form-check d-flex align-items-center">
-                                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm-90">
-                                                                            <label class="form-check-label" for="sub-cat-itm-90">
-                                                                                <p>Fable&amp;Mane</p>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul> 
+                                                        </ul>
+
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -290,30 +185,24 @@
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingSix">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseSix"
-                                                    aria-expanded="false" aria-controls="collapseSix">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                                     <?= $this->lang->line('Brands'); ?>
                                                 </button>
                                             </h2>
-                                            <div id="collapseSix" class="accordion-collapse collapse show"
-                                                aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                            <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
                                                     <div class="discoutn-part">
                                                         <ul>
                                                             <?php foreach ($brand as $key => $brandRecord) : ?>
-                                                            <li>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input brand"
-                                                                        type="checkbox" name="brand"
-                                                                        value="<?= $brandRecord->id ?>" id="sub-Nike">
-                                                                    <label class="form-check-label"
-                                                                        for="sub-Nike"><?= $brandRecord->name ?></label>
-                                                                </div>
-                                                            </li>
+                                                                <li>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input brand" type="checkbox" name="brand" value="<?= $brandRecord->id ?>" id="sub-Nike">
+                                                                        <label class="form-check-label" for="sub-Nike"><?= $brandRecord->name ?></label>
+                                                                    </div>
+                                                                </li>
                                                             <?php endforeach ?>
                                                         </ul>
-                                                         
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -321,14 +210,11 @@
 
                                         <div class="accordion-item sidnev-dicount-part">
                                             <h2 class="accordion-header" id="headingSeven">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseSeven"
-                                                    aria-expanded="false" aria-controls="collapseSeven">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                                                     <?= $this->lang->line('Discounts'); ?>
                                                 </button>
                                             </h2>
-                                            <div id="collapseSeven" class="accordion-collapse collapse show"
-                                                aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                                            <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
                                                     <div class="discoutn-part">
                                                         <ul>
@@ -339,24 +225,20 @@
                                                             foreach ($discountArray as $key => $value) {
 
                                                             ?>
-                                                            <li>
-                                                                <div class="discount-wrapper">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input discount"
-                                                                            type="checkbox" value="<?= $key ?>"
-                                                                            name="filter_discount"
-                                                                            id="<?= 'mobId' . $key ?>">
-                                                                        <label class="form-check-label"
-                                                                            for="<?= 'mobId' . $key ?>"><?= $value ?></label>
-                                                                    </div>
-
-                                                                    <div class="discount-text">
+                                                                <li>
+                                                                    <div class="discount-wrapper">
                                                                         <div class="form-check">
-                                                                            <h4><?= $countDiscoutWise[$key] ?></h4>
+                                                                            <input class="form-check-input discount" type="checkbox" value="<?= $key ?>" name="filter_discount" id="<?= 'mobId' . $key ?>">
+                                                                            <label class="form-check-label" for="<?= 'mobId' . $key ?>"><?= $value ?></label>
+                                                                        </div>
+
+                                                                        <div class="discount-text">
+                                                                            <div class="form-check">
+                                                                                <h4><?= $countDiscoutWise[$key] ?></h4>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
+                                                                </li>
                                                             <?php } ?>
 
                                                         </ul>
@@ -385,8 +267,7 @@
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         <?= $this->lang->line('price Range'); ?>
                                     </button>
                                 </h2>
@@ -403,173 +284,57 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFour">
-                                    <button class="accordion-button collapsed show" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseFour">
+                                    <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                         <?= $this->lang->line('Product Categories'); ?>
                                     </button>
                                 </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class="discoutn-part">
-                                            <!-- <ul>
-                                                <li>
-                                                    <div class="form-check active category_id" data-cat_id="All">
-                                                        <label class="form-check-label"
-                                                            for="sub-Kid's"><?= $this->lang->line('All Categories') ?></label>
+
+                                            <ul class="sub-wrap">
+                                                <li class='sub-menu'>
+                                                    <div class="form-check d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <input class="form-check-input category_id" name="category" type="checkbox" value="All" id="All">
+                                                            <label class="form-check-label" for="">
+                                                                <span>All</span>
+                                                            </label>
+                                                        </div>
+                                                        <!-- <div class='fa fa-caret-down right'></div> -->
                                                     </div>
                                                 </li>
                                                 <?php foreach ($category as $key => $value) : ?>
-                                                <li>
-                                                    <div class="form-check category_id" data-cat_id="<?= $value->id ?>">
-                                                        <label class="form-check-label"
-                                                            for="sub-Kid's"><?= $value->name ?></label>
-                                                    </div>
-                                                </li>
+                                                    <li class='sub-menu'>
+                                                        <!-- <span>Men's</span> -->
+                                                        <div class="form-check d-flex align-items-center justify-content-between">
+                                                            <div>
+                                                                <input class="form-check-input category_id" name="category" type="checkbox" value="<?= $value->id  ?>" id="<?= $value->id ?>">
+                                                                <label class="form-check-label" for="">
+                                                                    <span><?= $value->name ?></span>
+                                                                </label>
+                                                            </div>
+                                                            <div class='fa fa-caret-down right'></div>
+                                                        </div>
+                                                        <ul>
+                                                            <?php foreach ($value->subcategory as  $subvalue) : ?>
+                                                                <li>
+                                                                    <div class="discount-wrapper brands-wrp">
+                                                                        <div class="form-check d-flex align-items-center">
+                                                                            <input class="form-check-input subcategory_id sub_cat_link active_sub subcategoryId<?= $value->id ?>" name="subcategory" type="checkbox" value="<?= $subvalue->id  ?>" id="<?= $subvalue->id  ?>" data-sub_id="<?= $subvalue->id  ?>">
+                                                                            <label class="form-check-label" for="">
+                                                                                <p><?= $subvalue->name ?> (<?= $subvalue->totalProductOfSubcat  ?>)</p>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            <?php endforeach ?>
+
+                                                        </ul>
+                                                    </li>
                                                 <?php endforeach ?>
-                                            </ul> -->
-                                            <ul class="sub-wrap">
-                                                <li class='sub-menu'>
-                                                    <!-- <span>Men's</span> -->
-                                                    <div class="form-check d-flex align-items-center justify-content-between">
-                                                        <div>
-                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm1">
-                                                            <label class="form-check-label" for="sub-cat-itm1">
-                                                                <span>Men's</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class='fa fa-caret-down right'></div>
-                                                    </div>
-                                                    <ul>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-1">
-                                                                <label class="form-check-label" for="sub-cat-itm-1">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-2">
-                                                                <label class="form-check-label" for="sub-cat-itm-2">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-3">
-                                                                <label class="form-check-label" for="sub-cat-itm-3">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>    
-                                            <ul class="sub-wrap">
-                                                <li class='sub-menu'>
-                                                    <div class="form-check d-flex align-items-center justify-content-between">
-                                                        <div>
-                                                            <input class="form-check-input" type="checkbox" id="sub-cat-itm_1">
-                                                            <label class="form-check-label" for="sub-cat-itm_1">
-                                                                <span>Women's</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class='fa fa-caret-down right'></div>
-                                                    </div>
-                                                    <ul>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-71">
-                                                                <label class="form-check-label" for="sub-cat-itm-71">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-21">
-                                                                <label class="form-check-label" for="sub-cat-itm-21">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-31">
-                                                                <label class="form-check-label" for="sub-cat-itm-31">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-41">
-                                                                <label class="form-check-label" for="sub-cat-itm-41">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-51">
-                                                                <label class="form-check-label" for="sub-cat-itm-51">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-61">
-                                                                <label class="form-check-label" for="sub-cat-itm-61">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-62">
-                                                                <label class="form-check-label" for="sub-cat-itm-62">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                        <li>
-                                                        <div class="discount-wrapper brands-wrp">
-                                                            <div class="form-check d-flex align-items-center">
-                                                                <input class="form-check-input" type="checkbox" id="sub-cat-itm-63">
-                                                                <label class="form-check-label" for="sub-cat-itm-63">
-                                                                    <p>Fable&amp;Mane</p>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>  
+                                            </ul>
+
                                         </div>
                                     </div>
                                 </div>
@@ -577,26 +342,21 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingSix">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                         <?= $this->lang->line('Brands'); ?>
                                     </button>
                                 </h2>
-                                <div id="collapseSix" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class="discoutn-part">
                                             <ul>
                                                 <?php foreach ($brand as $key => $brandRecord) : ?>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input brand" type="checkbox"
-                                                            name="brand" value="<?= $brandRecord->id ?>"
-                                                            id="<?= 'sub-' . $key ?>">
-                                                        <label class="form-check-label"
-                                                            for="<?= 'sub-' . $key ?>"><?= $brandRecord->name ?></label>
-                                                    </div>
-                                                </li>
+                                                    <li>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input brand" type="checkbox" name="brand" value="<?= $brandRecord->id ?>" id="<?= 'sub-' . $key ?>">
+                                                            <label class="form-check-label" for="<?= 'sub-' . $key ?>"><?= $brandRecord->name ?></label>
+                                                        </div>
+                                                    </li>
                                                 <?php endforeach ?>
                                             </ul>
                                         </div>
@@ -606,15 +366,12 @@
 
                             <div class=" accordion-item">
                                 <h2 class="accordion-header" id="headingSeven">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSeven" aria-expanded="false"
-                                        aria-controls="collapseSeven">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
 
                                         <?= $this->lang->line('Discounts'); ?>
                                     </button>
                                 </h2>
-                                <div id="collapseSeven" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                                <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class="discoutn-part">
                                             <ul>
@@ -624,24 +381,21 @@
                                                 foreach ($discountArray as $key => $value) {
 
                                                 ?>
-                                                <li>
-                                                    <div class="discount-wrapper">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input discount" type="checkbox"
-                                                                value="<?= $key ?>" name="filter_discount"
-                                                                id="<?= 'discID' . $key ?>">
-                                                            <label class="form-check-label"
-                                                                for="<?= 'discID' . $key ?>"><?= $value ?></label>
-                                                        </div>
-
-                                                        <div class="discount-text">
+                                                    <li>
+                                                        <div class="discount-wrapper">
                                                             <div class="form-check">
-                                                                <h4><?= $countDiscoutWise[$key] ?>
-                                                                </h4>
+                                                                <input class="form-check-input discount" type="checkbox" value="<?= $key ?>" name="filter_discount" id="<?= 'discID' . $key ?>">
+                                                                <label class="form-check-label" for="<?= 'discID' . $key ?>"><?= $value ?></label>
+                                                            </div>
+
+                                                            <div class="discount-text">
+                                                                <div class="form-check">
+                                                                    <h4><?= $countDiscoutWise[$key] ?>
+                                                                    </h4>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
+                                                    </li>
                                                 <?php } ?>
                                             </ul>
                                         </div>
@@ -661,5 +415,4 @@
 <div class="mobile-btn-overlay"></div>
 <input type="hidden" name="" id="cat_id">
 <input type="hidden" name="" id="sub_cat_id">
-<input type="hidden" name="" id="getBycatID"
-    value="<?= (isset($getBycatID) ?  $this->utility->safe_b64decode($getBycatID) : '') ?>">
+<input type="hidden" name="" id="getBycatID" value="<?= (isset($getBycatID) ?  $this->utility->safe_b64decode($getBycatID) : '') ?>">

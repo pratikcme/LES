@@ -16,7 +16,7 @@
 
                     <a href="<?= base_url() ?>">
                         <div class="logo">
-                            <a href="<?= base_url() ?>"><img src="<?= $this->siteLogo ?>" alt=""></a>
+                            <a href="<?= base_url() ?>"><img src=" <?= $this->siteLogo ?>" alt=""></a>
                         </div>
                     </a>
 

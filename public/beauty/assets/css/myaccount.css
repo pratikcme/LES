@@ -553,6 +553,8 @@
     display: inline-block;
     margin-right: 25px;
     margin-bottom: 15px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .all-detalis-left .cancel-btn:hover,

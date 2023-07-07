@@ -31,33 +31,26 @@
                         <form id="LoginForm" action="<?= base_url() . 'login' ?>" method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label"><?= $this->lang->line('Email') ?></label>
-                                <input type="email" class="form-control" name="email" id="email"
-                                    aria-describedby="emailHelp" placeholder="<?= $this->lang->line('Email*') ?>">
+                                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="<?= $this->lang->line('Email*') ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label"><?= $this->lang->line('password') ?></label>
-                                <input type="password" name="password" class="form-control" id="password"
-                                    placeholder="<?= $this->lang->line('password*') ?>">
+                                <input type="password" name="password" class="form-control" id="password" placeholder="<?= $this->lang->line('password*') ?>">
                             </div>
-                            <a href="<?= base_url() . 'login/forget_password' ?>"
-                                class="forgot-password-text"><?= $this->lang->line('Forgot Your Password') ?>?</a>
+                            <a href="<?= base_url() . 'login/forget_password' ?>" class="forgot-password-text"><?= $this->lang->line('Forgot Your Password') ?>?</a>
 
                             <div class="sign-in-btn">
-                                <button class="cmn-btn" id="btnSubmit"
-                                    type="submit"><?= $this->lang->line('Sign In') ?></button>
+                                <button class="cmn-btn" id="btnSubmit" type="submit"><?= $this->lang->line('Sign In') ?></button>
                             </div>
 
                             <p>Or, log in with your socials</p>
 
                             <div class="log-in-btn">
-                                <a href="<?= $googleUrl ?>" class="google-btn"><span><i
-                                            class="fa-brands fa-google"></i></span><?= $this->lang->line('Login with Google') ?></a>
-                                <a href="<?= base_url() . 'login/fb_login' ?>" class="facebook-btn"><span><i
-                                            class="fa-brands fa-facebook"></i></span><?= $this->lang->line('Login with Facebook') ?></a>
+                                <a href="<?= $googleUrl ?>" class="google-btn"><span class="google-img"><img src="<?= base_url() . 'public/MileniaFurniture/assets/images/' ?>google-btn.svg" alt="err"></span><?= $this->lang->line('Login with Google') ?></a>
+                                <a href="<?= base_url() . 'login/fb_login' ?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?= $this->lang->line('Login with Facebook') ?></a>
                             </div>
 
-                            <h3>Dont’ have an account? <a
-                                    href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a></h3>
+                            <h3>Dont’ have an account? <a href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a></h3>
                         </form>
                     </div>
                 </div>
@@ -66,8 +59,7 @@
             <!-- ------login-right-image-- -->
             <div class="login-images col-xxl-6 col-lg-6 col-md-6">
                 <div class="login-img-part">
-                    <img src="<?= base_url() . 'public/MileniaFurniture' ?>/assets/images/login-common-image.png"
-                        alt="">
+                    <img src="<?= base_url() . 'public/MileniaFurniture' ?>/assets/images/login-common-image.png" alt="">
                 </div>
             </div>
         </div>

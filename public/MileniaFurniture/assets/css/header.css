@@ -803,8 +803,8 @@ content: '';
     border: 1px solid transparent!important;
     overflow-y: scroll;
     position: absolute;
-    /* left: auto !important; */
-    /* right: 10px; */
+    left: auto !important;
+    right: 10px;
     top: 83px !important;
     width: 100% !important;
     max-width: 250px !important;
@@ -1050,6 +1050,11 @@ content: '';
     {
         width: 70px;
     }
+
+    
+    .mobile-nav ul {
+        gap: 60px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -1067,6 +1072,12 @@ content: '';
     }
 }
 
+
+@media only screen and (max-width: 430px) {
+    .mobile-nav ul {
+        gap: 30px;
+    }
+}
 
 @media only screen and (max-width: 340px) {
     .sale-banner-inner span {

@@ -698,29 +698,29 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 .product-listing-wrapper {
-    flex-basis: 24%;
+    flex-basis: 32%;
     transition: 0.3s;
 }
 
 .my-filter-wrapper {
-    flex-basis: 25%;
-    display: none;
+    flex-basis: 32%;
+    display: block !important;
     transition: 0.3s;
 }
 
 .hide.show-div-wrapper {
-    flex-basis: 73%;
+    flex-basis: 100%;
     transition: 0.3s;
 }
 
 .hide.my-filter-wrapper {
-    display: block;
+    display: none !important;
     position: relative;
     flex-basis: 25%;
 }
 
 .hide.show-div-wrapper .product-listing-wrapper {
-    flex-basis: 32%;
+    flex-basis: 24%;
     transition: 0.3s;
 }
 
@@ -925,7 +925,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 /* sub-category-css */
 
-.sub-menu a{
+/* .sub-menu a{
     color: red;
 }
 
@@ -962,6 +962,112 @@ div[slider]>input[type=range]::-ms-tooltip {
     margin-top: 0;
 }
 
+.cate-wrp input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.cate-wrp .accordion-header .main-check{
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.cate-wrp .accordion-header .main-check label{
+    margin-bottom: 0;
+    line-height: 15px !important;
+    min-height: 0 !important;
+    margin-left: 7px;
+    width: 100%;
+}
+
+.cate-wrp .accordion-header .main-check button{
+    padding-bottom: 0 !important;
+    width: 100%;
+} */
+/* sub-category */
+.sub-menu span {
+    color: var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-family: var(--PublicSans-Regular);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.sub-menu .fa-caret-up,
+.sub-menu .fa-caret-down
+{
+    background-color: var(--primary-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.sub-menu .discount-wrapper p{
+   font-size: 14px;
+   margin-left: 10px;
+   margin-bottom: 0;
+}
+
+.sub-wrap{
+    padding: 8px 20px 0px !important;
+
+}
+
+.sub-menu{
+    display: inherit !important;
+}
+
+li.sub-menu{
+    line-height: 0px !important;
+    padding: 10px 0;
+}
+
+.sub-menu .form-check{
+    line-height: 25px !important;
+    min-height: 0 !important;
+}
+
+.sub-menu .right{
+    margin-left: auto;
+}
+
+.sub-menu span{
+    margin-left: 0 !important;
+}
+
+.sub-menu ul{
+    background: var(--cart-thead-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    max-height: 200px;
+    min-height: 100px;
+    overflow-y: scroll;
+}
+
+
+
 /* =====responisve=== */
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -986,7 +1092,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
 
     .hide.show-div-wrapper {
-        flex-basis: 68%;
+        flex-basis:100%;
         transition: 0.3s;
     }
 
@@ -997,7 +1103,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
 
     .hide.show-div-wrapper .product-listing-wrapper {
-        flex-basis: 32%;
+        flex-basis: 24%;
         transition: 0.3s;
     }
 }
@@ -1057,7 +1163,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
 
     .hide.show-div-wrapper {
-        flex-basis: 68%;
+        flex-basis: 100%;
         transition: 0.3s;
     }
 
@@ -1068,12 +1174,12 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
 
     .hide.show-div-wrapper .product-listing-wrapper {
-        flex-basis: 48%;
+        flex-basis: 32%;
         transition: 0.3s;
     }
     
     .product-listing-wrapper{
-        flex-basis: 30%;
+        flex-basis: 48%;
     }
 }
 
@@ -1216,7 +1322,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
 
     .product-listing-wrapper {
-        flex-basis: 32%;
+        flex-basis: 47%;
     }
 
     .hide.my-filter-wrapper {
@@ -1224,7 +1330,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
 
     .hide.show-div-wrapper {
-        flex-basis: 68%;
+        flex-basis: 100%;
         transition: 0.3s;
     }
 
@@ -1241,6 +1347,10 @@ div[slider]>input[type=range]::-ms-tooltip {
 
     .cate-wrp {
         height: 250px;
+    }
+
+    .my-filter-wrapper{
+        flex-basis: 50%;
     }
 
 }
@@ -1827,7 +1937,12 @@ div[slider]>input[type=range]::-ms-tooltip {
     .product-categires-part ul {
         padding: 10px 10px;
     }
+    .my-filter-wrapper{
+        flex-basis: 40%;
+    }
 }
+
+/* @media only screen and (min-width: 992px) and (max-width: 992px) */
 
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
     .product-categires-part ul {
@@ -1859,6 +1974,15 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
 }
 
+@media only screen and (max-width:768px){
+    .my-filter-wrapper{
+        display: none !important;
+    }
+    .hide.my-filter-wrapper{
+        display: block !important;
+    }
+}
+
 @media only screen and (min-width: 576px) and (max-width: 767px) {
     .sidepanel .product-categires-part ul li {
         width: 100% !important;
@@ -1886,6 +2010,10 @@ div[slider]>input[type=range]::-ms-tooltip {
 
     .sidepanel .discoutn-part ul {
         padding: 0px 0px !important;
+    }
+
+    .sub-menu span{
+        font-size: 16px;
     }
 }
 
@@ -1951,6 +2079,18 @@ div[slider]>input[type=range]::-ms-tooltip {
         position: relative;
         top: 4px !important;
     }
+
+    .sub-wrap {
+        padding: 8px 0px 0px !important;
+    }
+
+    .slider-box{
+        padding-left: 10px !important;
+    }
+    
+    .sub-menu span{
+        font-size: 14px;
+    }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 424px) {
@@ -2014,5 +2154,17 @@ div[slider]>input[type=range]::-ms-tooltip {
     .sidepanel .discoutn-part .form-check-input[type=checkbox] {
         position: relative;
         top: 4px !important;
+    }
+
+    .sub-wrap {
+        padding: 8px 0px 0px !important;
+    }
+
+    .slider-box{
+        padding-left: 10px !important;
+    }
+    
+    .sub-menu span{
+        font-size: 14px;
     }
 }

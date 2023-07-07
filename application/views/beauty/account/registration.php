@@ -96,7 +96,7 @@
                                 <p><?= $this->lang->line('Or, log in with your socials') ?></p>
 
                                 <div class="log-in-btn">
-                                    <a href="<?= $googleUrl ?>" class="google-btn"><span><i class="fa-brands fa-google"></i></span><?= $this->lang->line('continue with google') ?></a>
+                                    <a href="<?= $googleUrl ?>" class="google-btn"><span class="google-img"><img src="<?= base_url() . 'public/beauty/assets/images/' ?>google-btn.svg" alt="err"></span><?= $this->lang->line('continue with google') ?></a>
                                     <a href="<?= base_url() . 'login/fb_login' ?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?= $this->lang->line('continue with facebook') ?></a>
                                 </div>
 

@@ -81,6 +81,30 @@ $(document).ready(function () {
     // var rangeArray = $('#start_range').val();
     var discountArray = get_filter("discount");
     var brandArray = get_filter("brand");
+    var subcatArray = get_filter("subcategory_id");
+    var categoryArray = get_filter("category_id");
+
+    var catwithsubArray = [];
+    if ($.inArray("All", categoryArray) !== -1) {
+      $(".subcategory_id").each(function () {
+        catwithsubArray.push($(this).val());
+      });
+    } else {
+      $.each(categoryArray, function (index, catid) {
+        $(".subcategoryId" + catid).each(function () {
+          catwithsubArray.push($(this).val());
+        });
+      });
+    }
+
+    if (subcatArray.length != 0) {
+      $.each(subcatArray, function (index, subcatid) {
+        catwithsubArray.push(subcatid);
+      });
+    }
+    if (catwithsubArray.length != 0) {
+      cat_id = "";
+    }
     $.ajax({
       url: url + "products/subcategory/" + page,
       data: {
@@ -89,6 +113,9 @@ $(document).ready(function () {
         sub_id: sub_id,
         cat_id: cat_id,
         brandArray: brandArray,
+        subcatArray: subcatArray,
+        categoryArray: categoryArray,
+        catwithsubArray: catwithsubArray,
         rangeArray: rangeArray,
         start_price: start_price,
         end_price: end_price,
@@ -195,8 +222,8 @@ $(document).ready(function () {
   $(document).on("change", ".range", function () {
     onload(1);
   });
-  var st_price = '';
-  var en_price = '';
+  var st_price = "";
+  var en_price = "";
   $(document).on("change", ".discount", function () {
     var cat_id = $("#cat_id").val();
     var sub_id = $("#sub_cat_id").val();
@@ -225,39 +252,53 @@ $(document).ready(function () {
     );
   });
 
-  $(document).on("click", ".category_id", function () {
-    $('.category_id').removeClass('active');
-    $(this).addClass('active');
-
+  $(document).on("change", ".category_id", function () {
     var cat_id = $(this).attr("data-cat_id");
-      var url = $("#url").val();
-      
-      sub_id = "";
-      $("#cat_id").val(cat_id);
-      if (cat_id == "All") {
-        $("#cat_id").val("");
-        $("#sub_cat_id").val("");
-        $("#getBycatID").val("");
-        cat_id = "";
-        $("#dropDownBtn").html("All Categories");
-      } else {
-        $.ajax({
-          url: url + "products/getCategoryName",
-          data: { cat_id: cat_id },
-          method: "post",
-          dataType: "json",
-          async: false,
-          success: function (res) {
-            $("#dropDownBtn").html(res.name);
-          },
-        });
-      }
-    
-      $("#search").attr("data-search_val", "");
-      $(".search").val("");
-      page = 1;
-      onload(page, sub_id, cat_id);
+    var url = $("#url").val();
+    // var sub_id = $("#sub_cat_id").val();
+    onload(
+      1,
+      // sub_id,
+      cat_id,
+      (sort = ""),
+      (search = ""),
+      (start_price = ""), //Dk removed vars temp
+      (end_price = "")
+    );
   });
+  // $(document).on("click", ".category_id", function () {
+  //   $(".category_id").removeClass("active");
+  //   $(this).addClass("active");
+
+  //   var cat_id = $(this).attr("data-cat_id");
+  //   var url = $("#url").val();
+
+  //   sub_id = "";
+  //   $("#cat_id").val(cat_id);
+  //   if (cat_id == "All") {
+  //     $("#cat_id").val("");
+  //     $("#sub_cat_id").val("");
+  //     $("#getBycatID").val("");
+  //     cat_id = "";
+  //     $("#dropDownBtn").html("All Categories");
+  //   } else {
+  //     $.ajax({
+  //       url: url + "products/getCategoryName",
+  //       data: { cat_id: cat_id },
+  //       method: "post",
+  //       dataType: "json",
+  //       async: false,
+  //       success: function (res) {
+  //         $("#dropDownBtn").html(res.name);
+  //       },
+  //     });
+  //   }
+
+  //   $("#search").attr("data-search_val", "");
+  //   $(".search").val("");
+  //   page = 1;
+  //   onload(page, sub_id, cat_id);
+  // });
 
   $(document).on("keyup", ".search", function () {
     var search_key = $(this).val();
@@ -276,47 +317,62 @@ $(document).ready(function () {
     onload(page, (sub_id = sub_id), (cat_id = cat_id), (sort = ""), search_key);
   });
 
-  $(document).on("click", ".sucategory_id", function () {
-    var sub_id = $(this).attr("data-sub_id");
-    // var cat_id = $(this).parent().parent().parent().attr('data-cat_id');
-    var cat_id = $(this)
-      .parent()
-      .prev("a")
-      .find(".category_id")
-      .attr("data-cat_id");
-    if (typeof cat_id !== "undefined") {
-      $("#cat_id").val(cat_id);
-    }
-    if (typeof cat_id !== "undefined") {
-      cat_id = $("#cat_id").val();
-    }
-
-    $("#sub_cat_id").val(sub_id);
-
-    //  when url having category
-    var cateByUrl = $("#getBycatID").val(); //from url cat id
-    var hidden = $("#cat_id").val(); //change category from products page
-    if (cateByUrl !== hidden && hidden != "") {
-      $("#getBycatID").val("");
-    }
-    // end when url having category
-
-    page = 1;
-    var url = $("#url").val();
-    $.ajax({
-      url: url + "products/getCategoryName",
-      data: { cat_id: cat_id },
-      method: "post",
-      dataType: "json",
-      // async : false,
-      success: function (res) {
-        $("#dropDownBtn").html(
-          res.name + '<span><i class="fas fa-angle-down"></i></span>'
-        );
-      },
-    });
-    onload(page, sub_id, cat_id);
+  $(document).on("change", ".subcategory_id", function () {
+    var cat_id = $(this).parent().parent().parent().attr("data-cat_id");
+    sub_id = $(this).attr("data-sub_id");
+    // var sub_id = $("#sub_cat_id").val();
+    onload(
+      1,
+      // sub_id,
+      cat_id,
+      (sort = ""),
+      (search = ""),
+      (start_price = ""), //Dk removed vars temp
+      (end_price = "")
+    );
   });
+
+  // $(document).on("click", ".sucategory_id", function () {
+  //   var sub_id = $(this).attr("data-sub_id");
+  //   // var cat_id = $(this).parent().parent().parent().attr('data-cat_id');
+  //   var cat_id = $(this)
+  //     .parent()
+  //     .prev("a")
+  //     .find(".category_id")
+  //     .attr("data-cat_id");
+  //   if (typeof cat_id !== "undefined") {
+  //     $("#cat_id").val(cat_id);
+  //   }
+  //   if (typeof cat_id !== "undefined") {
+  //     cat_id = $("#cat_id").val();
+  //   }
+
+  //   $("#sub_cat_id").val(sub_id);
+
+  //   //  when url having category
+  //   var cateByUrl = $("#getBycatID").val(); //from url cat id
+  //   var hidden = $("#cat_id").val(); //change category from products page
+  //   if (cateByUrl !== hidden && hidden != "") {
+  //     $("#getBycatID").val("");
+  //   }
+  //   // end when url having category
+
+  //   page = 1;
+  //   var url = $("#url").val();
+  //   $.ajax({
+  //     url: url + "products/getCategoryName",
+  //     data: { cat_id: cat_id },
+  //     method: "post",
+  //     dataType: "json",
+  //     // async : false,
+  //     success: function (res) {
+  //       $("#dropDownBtn").html(
+  //         res.name + '<span><i class="fas fa-angle-down"></i></span>'
+  //       );
+  //     },
+  //   });
+  //   onload(page, sub_id, cat_id);
+  // });
 
   $(document).on("click", ".cate_id", function () {
     var cat_id = $(this).attr("data");

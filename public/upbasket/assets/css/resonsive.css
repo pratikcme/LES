@@ -2825,9 +2825,13 @@
 
     .mobile-search-btn .input-group input {
         padding: 0;
-        outline: none;
-        border: none;
+        outline: none !important;
+        border: none !important;
         background: transparent;
+    }
+
+    .mobile-search-btn .input-group input:focus{
+        border: none !important;
     }
 
     .mobile-search-btn .input-group-text {
@@ -5092,6 +5096,18 @@
         width: 40px !important;
     }
 
+    
+    .mobile-search-btn .input-group input {
+        padding: 0;
+        outline: none !important;
+        border: none !important;
+        background: transparent;
+    }
+
+    .mobile-search-btn .input-group input:focus{
+        border: none !important;
+    }
+
 }
 
 /* ======================================================== */
@@ -6069,6 +6085,18 @@
         align-items: center !important;
         justify-content: left !important;
         transition: 0.3s;
+    }
+
+    
+    .mobile-search-btn .input-group input {
+        padding: 0;
+        outline: none !important;
+        border: none !important;
+        background: transparent;
+    }
+
+    .mobile-search-btn .input-group input:focus{
+        border: none !important;
     }
 
 }
@@ -11267,6 +11295,14 @@
         z-index: 1;
         margin: 0px auto;
         position: relative !important;
+        padding: 0;
+        outline: none !important;
+        border: none !important;
+        background: transparent;
+    }
+
+    .mobile-search-btn .input-group input:focus{
+        border: none !important;
     }
     .Latest-Products .techno_checkbox:checked~.card::before {
         content: "\f004";

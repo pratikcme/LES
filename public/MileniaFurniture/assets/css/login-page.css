@@ -4,7 +4,15 @@
     align-items: center;
 }
 
+.google-btn span.google-img{
+    max-width: 25px;
+    display: inline-block;
+}
 
+
+.google-btn .google-img img{
+max-width: 25px;
+}
 
 
 .login-section{

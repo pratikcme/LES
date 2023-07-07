@@ -288,6 +288,7 @@ $(".accordion")
 
 var siteCurrency = $("#siteCurrency").val();
 $(function () {
+  var timeoutId;
   $("#slider-range").slider({
     range: true,
     min: 0,
@@ -302,7 +303,19 @@ $(function () {
       var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
-      onload(1, sub_id, cat_id, (sort = ""), (search = ""), st_price, en_price);
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(function () {
+        onload(
+          1,
+          sub_id,
+          cat_id,
+          (sort = ""),
+          (search = ""),
+          st_price,
+          en_price
+        );
+      }, 700);
     },
   });
 

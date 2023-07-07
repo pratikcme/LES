@@ -1356,6 +1356,15 @@ div[slider]>input[type=range]::-ms-tooltip {
         font-size: 16px;
         line-height: 20px;
     }
+    .hide.my-filter-wrapper{
+        display: none;
+    }
+    .hide.show-div-wrapper{
+        flex-basis: 100%;
+    }
+    .hide.show-div-wrapper .product-listing-wrapper{
+        flex-basis: 47%;
+    }
 }
 
 @media only screen and (max-width:575px){
@@ -1373,6 +1382,10 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
     .brand-content li {
         flex-basis: 50%;
+    }
+
+    .hide.show-div-wrapper .product-listing-wrapper{
+        flex-basis: 100%;
     }
    
 }
@@ -2160,7 +2173,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         flex-basis: 100%;
     }
     .product-categires-part .accordion-header button{
-        font-size: 18px !important;
+        font-size: 15px !important;
     }
     .sidepanel .discoutn-part {
         height: auto!important;
