@@ -4640,3 +4640,8 @@ right: 15px;
 
 
 
+
+
+.cate_id.active{
+    color: var(--categoryActiveColor);
+}
