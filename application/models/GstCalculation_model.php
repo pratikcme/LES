@@ -9,6 +9,7 @@ class GstCalculation_model extends My_model
         $data['table'] = TABLE_PRODUCT;
         return $this->selectRecords($data);
     }
+
     public function getProduct_weight($id)
     {
         $data['select'] = ['*'];
