@@ -253,7 +253,13 @@ $(document).ready(function () {
     $("#search").attr("data-search_val", "");
     $(".search").val("");
     page = 1;
-    onload(page, sub_id, cat_id);
+    onload(
+      page,
+      sub_id,
+      cat_id,
+      (start_price = st_price),
+      (end_price = en_price)
+    );
   });
 
   $(document).on("keyup", ".search", function () {
@@ -312,7 +318,13 @@ $(document).ready(function () {
         );
       },
     });
-    onload(page, sub_id, cat_id);
+    onload(
+      page,
+      sub_id,
+      cat_id,
+      (start_price = st_price),
+      (end_price = en_price)
+    );
   });
 
   $(document).on("click", ".cate_id", function () {
