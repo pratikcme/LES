@@ -372,7 +372,6 @@ function onload(
   var categoryArray = get_filter("category_id");
 
   var catwithsubArray = [];
-
   if ($.inArray("All", categoryArray) !== -1) {
     $(".subcategory_id").each(function () {
       catwithsubArray.push($(this).val());
