@@ -119,7 +119,7 @@
                                             </h2>
                                             <div class="slider-box">
                                                 <label for="priceRange"><?= $this->lang->line('price Range'); ?>:</label>
-                                                <input type="text" id="priceRange_mob" readonly>
+                                                <input type="text" class="range" id="priceRange_mob" readonly>
                                                 <div id="price-range_mob" class="slider"></div>
                                             </div>
                                         </div>
@@ -275,7 +275,7 @@
 
                                 <div class="slider-box">
                                     <label for="priceRange"> <?= $this->lang->line('price Range'); ?>:</label>
-                                    <input type="text" id="priceRange" readonly>
+                                    <input type="text" class="range" id="priceRange" readonly>
                                     <div id="price-range" class="slider"></div>
                                 </div>
 

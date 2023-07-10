@@ -3,27 +3,85 @@ $(document).on("click", ".sub_cat_link", function () {
   $(this).addClass("active_sub");
 });
 
-// $(document).on('click',".cart-qty-plus",function() {
-//   quantityField = $(this).prev().val();
-//   quantity = $(this).prev();
-//   quantity.val(parseInt(quantityField) + 1);
-//   quantityField = $(this).prev().val();
-//    if(quantityField == 0){
-//     $(this).parent().prev('div').css('pointer-events','auto');
-//    }
-// });
+var siteCurrency = $("#siteCurrency").val();
+var start_price;
+var end_price;
+$(function () {
+  var timeoutId;
+  $("#price-range").slider({
+    step: 1,
+    range: true,
+    min: 0,
+    max: 20000,
+    values: [0, 20000],
+    slide: function (event, ui) {
+      $("#priceRange").val(ui.values[0] + " - " + ui.values[1]);
+      var cat_id = $("#cat_id").val();
+      var sub_id = $("#sub_cat_id").val();
+      start_price = ui.values[0];
+      end_price = ui.values[1];
+      clearTimeout(timeoutId);
 
-//  $(document).on('click',".cart-qty-minus",function() {
-//   quantityField = $(this).next().val();
-//   quantity = $(this).next();
-//   if (quantityField >= 1) {
-//         quantity.val(parseInt(quantityField) - 1);
-//   }
-//     quantityField = $(this).next().val();
-//    if(quantityField < 0 || quantityField == -0){
-//     $(this).parent().prev('div').css('pointer-events','none');
-//    }
-// });
+      timeoutId = setTimeout(function () {
+        onload(
+          1,
+          sub_id,
+          cat_id,
+          (sort = ""),
+          (search = ""),
+          start_price,
+          end_price
+        );
+      }, 700);
+    },
+  });
+  $("#priceRange").val(
+    $("#price-range").slider("values", 0) +
+      " - " +
+      $("#price-range").slider("values", 1)
+  );
+});
+
+$(document).ready(function () {
+  var siteCurrency = $("#siteCurrency").val();
+
+  $(function () {
+    var timeoutId;
+    $("#price-range_mob").slider({
+      step: 1,
+      range: true,
+      min: 0,
+      max: 20000,
+      values: [0, 20000],
+      slide: function (event, ui) {
+        $("#priceRange_mob").val(ui.values[0] + " - " + ui.values[1]);
+        var cat_id = $("#cat_id").val();
+        var sub_id = $("#sub_cat_id").val();
+        start_price = ui.values[0];
+        end_price = ui.values[1];
+        clearTimeout(timeoutId);
+
+        timeoutId = setTimeout(function () {
+          onload(
+            1,
+            sub_id,
+            cat_id,
+            (sort = ""),
+            (search = ""),
+            start_price,
+            end_price
+          );
+        }, 700);
+      },
+    });
+    $("#priceRange_mob").val(
+      $("#price-range_mob").slider("values", 0) +
+        " - " +
+        $("#price-range_mob").slider("values", 1)
+    );
+  });
+});
+
 urlCategory_id();
 function urlCategory_id() {
   var cat_id = $("#getBycatID").val();
@@ -106,6 +164,7 @@ $(document).ready(function () {
     if (catwithsubArray.length != 0) {
       cat_id = "";
     }
+
     $.ajax({
       url: url + "products/subcategory/" + page,
       data: {
@@ -255,6 +314,7 @@ $(document).ready(function () {
   $(document).on("change", ".category_id", function () {
     var cat_id = $(this).attr("data-cat_id");
     var url = $("#url").val();
+
     // var sub_id = $("#sub_cat_id").val();
     onload(
       1,
@@ -262,8 +322,8 @@ $(document).ready(function () {
       cat_id,
       (sort = ""),
       (search = ""),
-      (start_price = ""), //Dk removed vars temp
-      (end_price = "")
+      start_price,
+      end_price
     );
   });
 
@@ -325,8 +385,8 @@ $(document).ready(function () {
       cat_id,
       (sort = ""),
       (search = ""),
-      (start_price = ""), //Dk removed vars temp
-      (end_price = "")
+      (start_price = st_price),
+      (end_price = en_price)
     );
   });
 
