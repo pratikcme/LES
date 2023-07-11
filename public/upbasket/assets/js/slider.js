@@ -1,6 +1,6 @@
-$(document).ready(function () {
-  $("#table-two-axis").basictable();
-});
+// $(document).ready(function () {
+//   $("#table-two-axis").basictable();
+// });
 
 // accordion js
 $(document).ready(function () {

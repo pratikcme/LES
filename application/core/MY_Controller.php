@@ -439,9 +439,9 @@ class Super_Admin_Controller extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata['validSuperAdmin'] == '') {
-            redirect(base_url() . 'admin');
-        }
+        // if ($this->session->userdata['validSuperAdmin'] == '') {
+        //     redirect(base_url() . 'admin');
+        // }
         $this->title = 'LaunchEstore';
     }
 }

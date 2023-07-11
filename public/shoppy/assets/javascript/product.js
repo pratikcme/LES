@@ -3,84 +3,7 @@ $(document).on("click", ".sub_cat_link", function () {
   $(this).addClass("active_sub");
 });
 
-var siteCurrency = $("#siteCurrency").val();
-var start_price;
-var end_price;
-$(function () {
-  var timeoutId;
-  $("#price-range").slider({
-    step: 1,
-    range: true,
-    min: 0,
-    max: 20000,
-    values: [0, 20000],
-    slide: function (event, ui) {
-      $("#priceRange").val(ui.values[0] + " - " + ui.values[1]);
-      var cat_id = $("#cat_id").val();
-      var sub_id = $("#sub_cat_id").val();
-      start_price = ui.values[0];
-      end_price = ui.values[1];
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(function () {
-        onload(
-          1,
-          sub_id,
-          cat_id,
-          (sort = ""),
-          (search = ""),
-          start_price,
-          end_price
-        );
-      }, 700);
-    },
-  });
-  $("#priceRange").val(
-    $("#price-range").slider("values", 0) +
-      " - " +
-      $("#price-range").slider("values", 1)
-  );
-});
-
-$(document).ready(function () {
-  var siteCurrency = $("#siteCurrency").val();
-
-  $(function () {
-    var timeoutId;
-    $("#price-range_mob").slider({
-      step: 1,
-      range: true,
-      min: 0,
-      max: 20000,
-      values: [0, 20000],
-      slide: function (event, ui) {
-        $("#priceRange_mob").val(ui.values[0] + " - " + ui.values[1]);
-        var cat_id = $("#cat_id").val();
-        var sub_id = $("#sub_cat_id").val();
-        start_price = ui.values[0];
-        end_price = ui.values[1];
-        clearTimeout(timeoutId);
-
-        timeoutId = setTimeout(function () {
-          onload(
-            1,
-            sub_id,
-            cat_id,
-            (sort = ""),
-            (search = ""),
-            start_price,
-            end_price
-          );
-        }, 700);
-      },
-    });
-    $("#priceRange_mob").val(
-      $("#price-range_mob").slider("values", 0) +
-        " - " +
-        $("#price-range_mob").slider("values", 1)
-    );
-  });
-});
+// Example usage of global start and end price values
 
 urlCategory_id();
 function urlCategory_id() {
@@ -164,6 +87,16 @@ $(document).ready(function () {
     if (catwithsubArray.length != 0) {
       cat_id = "";
     }
+
+    var range = $("#priceRange").val();
+    if (range != "") {
+      var numbers = range.split(" - ");
+
+      // Store the values in separate variables
+      var start_price = parseInt(numbers[0]);
+      var end_price = parseInt(numbers[1]);
+    }
+    // Remove the "-"
 
     $.ajax({
       url: url + "products/subcategory/" + page,
@@ -321,9 +254,7 @@ $(document).ready(function () {
       // sub_id,
       cat_id,
       (sort = ""),
-      (search = ""),
-      start_price,
-      end_price
+      (search = "")
     );
   });
 

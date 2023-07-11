@@ -7,40 +7,40 @@ $PositionX = -5;
 $img = document.getElementById("Image");
 
 function moveMouse() {
-    CursorX = event.clientX;
-    CursorY = event.clientY;
+  CursorX = event.clientX;
+  CursorY = event.clientY;
 
-    if ($OldPosX <= CursorX) {
-        $PositionX = $PositionX + ($multi * 1);
+  if ($OldPosX <= CursorX) {
+    $PositionX = $PositionX + $multi * 1;
+  } else {
+    $PositionX = $PositionX - $multi * 1;
+  }
+
+  if ($PositionX >= $maxRange || $PositionX <= -$maxRange) {
+    if ($PositionX >= $maxRange) {
+      $PositionX = $maxRange;
     } else {
-        $PositionX = $PositionX - ($multi * 1);
+      $PositionX = -$maxRange;
     }
+  }
 
-    if ($PositionX >= $maxRange || $PositionX <= -$maxRange) {
-        if ($PositionX >= $maxRange) {
-            $PositionX = $maxRange;
-        } else {
-            $PositionX = -$maxRange;
-        }
-    }
+  $OldPosX = CursorX;
 
-    $OldPosX = CursorX;
+  if ($OldPosY <= CursorY) {
+    $PositionY = $PositionY + $multi * 1;
+  } else {
+    $PositionY = $PositionY - $multi * 1;
+  }
 
-    if ($OldPosY <= CursorY) {
-        $PositionY = $PositionY + ($multi * 1);
+  if ($PositionY >= $maxRange || $PositionY <= -$maxRange) {
+    if ($PositionY >= $maxRange) {
+      $PositionY = $maxRange;
     } else {
-        $PositionY = $PositionY - ($multi * 1);
+      $PositionY = -$maxRange;
     }
+  }
 
-    if ($PositionY >= $maxRange || $PositionY <= -$maxRange) {
-        if ($PositionY >= $maxRange) {
-            $PositionY = $maxRange;
-        } else {
-            $PositionY = -$maxRange;
-        }
-    }
-
-
-    $OldPosY = CursorY;
-    $img.style.transform = "translateY(" + $PositionY + "%) translateX(" + $PositionX + "%)";
+  $OldPosY = CursorY;
+  $img.style.transform =
+    "translateY(" + $PositionY + "%) translateX(" + $PositionX + "%)";
 }
