@@ -1118,12 +1118,14 @@ class Product_model extends My_model
 
 		$data['table'] = TABLE_PRODUCT . ' p';
 		$data['join'] = [
-			TABLE_PRODUCT_WEIGHT . ' pw' => ['p.id=pw.product_id', 'LEFT']
+			TABLE_PRODUCT_WEIGHT . ' pw' => ['p.id=pw.product_id', 'LEFT'],
+			TABLE_PRODUCT_SEARCH . ' pts' => ['p.id=pts.product_id', 'LEFT']
 		];
 		$data['select'] = ['p.id', 'p.name'];
 		$data['where'] = ['p.branch_id' => $this->branch_id, 'p.status !=' => '9', 'pw.status !=' => '9'];
 		$data["group"]['like'] = ['p.name', $keyword, 'both'];
 		$data["group"]['or_like'] = ['p.name', $keyword, 'both'];
+		$data["group"]['or_like'] = ['pts.name', $keyword, 'both'];
 		$data['groupBy'] = 'p.id';
 		return $this->selectFromJoin($data);
 		echo $this->db->last_query();
