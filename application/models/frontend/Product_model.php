@@ -417,7 +417,8 @@ class Product_model extends My_model
 		$data['select'] = ['p.*', "IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
-			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
+			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT'],
+
 		];
 		$data['groupBy'] = 'p.id';
 		$data['limit'] = $page * $limit;
@@ -1124,12 +1125,14 @@ class Product_model extends My_model
 
 		$data['table'] = TABLE_PRODUCT . ' p';
 		$data['join'] = [
-			TABLE_PRODUCT_WEIGHT . ' pw' => ['p.id=pw.product_id', 'LEFT']
+			TABLE_PRODUCT_WEIGHT . ' pw' => ['p.id=pw.product_id', 'LEFT'],
+			TABLE_PRODUCT_SEARCH . ' pts' => ['p.id=pts.product_id', 'LEFT'],
 		];
 		$data['select'] = ['p.id', 'p.name'];
 		$data['where'] = ['p.branch_id' => $this->branch_id, 'p.status !=' => '9', 'pw.status !=' => '9'];
 		$data["group"]['like'] = ['p.name', $keyword, 'both'];
 		$data["group"]['or_like'] = ['p.name', $keyword, 'both'];
+		$data["group"]['or_like'] = ['pts.name', $keyword, 'both'];
 		$data['groupBy'] = 'p.id';
 		return $this->selectFromJoin($data);
 		echo $this->db->last_query();

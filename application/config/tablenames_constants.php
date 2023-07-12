@@ -9,6 +9,7 @@ define('TABLE_VENDOR', 'branch');
 define('TABLE_CONTACT_US', 'contact_us');
 define('TABLE_PRODUCT', 'product');
 define('TABLE_PRODUCT_IMAGE', 'product_image');
+define('TABLE_PRODUCT_SEARCH', 'product_search');
 define('TABLE_PRODUCT_WEIGHT', 'product_weight');
 define('TABLE_WEIGHT', 'weight');
 define('TABLE_PACKAGE', 'package');
