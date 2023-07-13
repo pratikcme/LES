@@ -424,7 +424,7 @@ class Product_model extends My_model
 		$data['limit'] = $page * $limit;
 
 		$product = $this->selectFromJoin($data);
-
+		//echo $this->db->last_query();
 		$total_result = $this->countRecords($data);
 
 		$pages = ceil($total_result / 20);
@@ -547,7 +547,6 @@ class Product_model extends My_model
 				$sub_dropdownCategory .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/dropdown_li', $subcatData, true);
 			}
 		}
-
 		$responseArray = ['result' => $product_html, 'page' => $page - 1, 'subCategory' => $sub_category, 'sub_dropdownCategory' => $sub_dropdownCategory];
 
 		return  json_encode($responseArray);
