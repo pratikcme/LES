@@ -298,7 +298,9 @@ $(function () {
       $("#siteCurr").remove();
       $("#amount").val(ui.values[0] + "-" + ui.values[1]);
       var cat_id = $("#cat_id").val();
-      var sub_id = $("#sub_cat_id").val();
+
+      // var sub_id = $("#sub_cat_id").val();
+      var sub_id = "";
       st_price = ui.values[0];
       en_price = ui.values[1];
       clearTimeout(timeoutId);
