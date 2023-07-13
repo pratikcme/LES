@@ -81,6 +81,19 @@ $(document).ready(function () {
     // var rangeArray = $('#start_range').val();
     var discountArray = get_filter("discount");
     var brandArray = get_filter("brand");
+
+    var range = $("#amount").val();
+
+    if (range != "") {
+      var numbers = range.split(" - ");
+
+      // Store the values in separate variables
+      if (parseInt(numbers[0]) != 0 && parseInt(numbers[1]) != 0) {
+        var start_price = parseInt(numbers[0]);
+        var end_price = parseInt(numbers[1]);
+      }
+    }
+
     $.ajax({
       url: url + "products/subcategory/" + page,
       data: {
