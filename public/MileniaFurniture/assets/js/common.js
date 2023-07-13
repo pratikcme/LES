@@ -42,8 +42,7 @@ $(function () {
     values: [0, 20000],
     slide: function (event, ui) {
       $("#priceRange").val(ui.values[0] + " - " + ui.values[1]);
-      var cat_id = $("#cat_id").val();
-      var sub_id = $("#sub_cat_id").val();
+
       st_price = ui.values[0];
       en_price = ui.values[1];
 
@@ -52,8 +51,7 @@ $(function () {
       timeoutId = setTimeout(function () {
         onload(
           1,
-          sub_id,
-          cat_id,
+
           (sort = ""),
           (search = ""),
           st_price,
@@ -79,16 +77,16 @@ $(function () {
     values: [0, 20000],
     slide: function (event, ui) {
       $("#priceRange_mob").val(ui.values[0] + " - " + ui.values[1]);
-      var cat_id = $("#cat_id").val();
-      var sub_id = $("#sub_cat_id").val();
+      // var cat_id = $("#cat_id").val();
+      // var sub_id = $("#sub_cat_id").val();
       st_price = ui.values[0];
       en_price = ui.values[1];
       clearTimeout(timeoutId);
       timeoutId = setTimeout(function () {
         onload(
           1,
-          sub_id,
-          cat_id,
+          //  sub_id,
+          // cat_id,
           (sort = ""),
           (search = ""),
           st_price,
@@ -146,6 +144,16 @@ function onload(
   if (catwithsubArray.length != 0) {
     cat_id = "";
   }
+
+  var range = $("#priceRange").val();
+  if (range != "") {
+    var numbers = range.split(" - ");
+
+    // Store the values in separate variables
+    var start_price = parseInt(numbers[0]);
+    var end_price = parseInt(numbers[1]);
+  }
+
   var slider = "1";
   $.ajax({
     url: url + "products/subcategory/" + page,

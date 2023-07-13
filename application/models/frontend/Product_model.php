@@ -383,7 +383,7 @@ class Product_model extends My_model
 			// echo $this->db->last_query();
 			// die;
 		}
-		if (isset($postdata['getCatByURL']) && $postdata['getCatByURL'] != '') {
+		if (isset($postdata['getCatByURL']) && $postdata['getCatByURL'] != '' && empty($postdata['catwithsubArray'])) {
 			$data['where']['p.category_id'] =  $this->utility->safe_b64decode($postdata['getCatByURL']);
 		}
 		if (isset($_POST['page'])) {
