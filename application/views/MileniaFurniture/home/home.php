@@ -308,7 +308,7 @@
                                                 <?= ($value->varientQuantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                             </p>
                                             <?php if ($value->discount_per > '0') { ?>
-                                                <span class="discnt <?= ($is_ecommerce == '0') ? "hideEcommerce" : "" ?>"><?= $value->discount_per . ' % off' ?></span>
+                                                <span class="discnt "><?= $value->discount_per . ' % off' ?></span>
                                             <?php } ?>
 
                                             <div class="hot-products-cart-wrap <?= ($is_ecommerce == '0') ? "hideEcommerce" : "" ?>">
