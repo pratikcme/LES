@@ -71,7 +71,7 @@
                 <div class="product-content-part zoom">
                     <h2 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                         <?= $productDetail[0]->name ?></h2>
-                    <div class="rating-starts justify-content-start <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>" id="starRatting">
+                    <div class="rating-starts justify-content-start" id="starRatting">
                         <div class="rating stars3_5">
                             <?php for ($j = 1; $j <= $productDetail[0]->rating['rating']; $j++) { ?>
                                 <span class="star"></span>
@@ -87,7 +87,7 @@
                         <?= ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                     </h6>
 
-                    <h3 class="notranslate <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>" id="dynamic_price">
+                    <h3 class="notranslate" id="dynamic_price">
                         <?= $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->discount_price, 2, '.', '') ?>
                         <span>
                             <strike><?= ($varientDetails[0]->discount_per > 0) ? $this->siteCurrency . ' ' . number_format((float)$varientDetails[0]->price, 2, '.', '') : '' ?></strike>
@@ -112,7 +112,7 @@
 
 
                     <!-- -----product-details-btn----- -->
-                    <div class="product-detalis-btn wow fadeInRight <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                    <div class="product-detalis-btn wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                         <div class="product-detail-quentity wow fadeInRight mt-0" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                             <?php if ($isAvailable != '0') { ?>
                                 <a href="javascript:" class="add-cart-btn cmn-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping "></i></span>Add To Cart</a>
@@ -173,7 +173,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><?= $this->lang->line('Description') ?></button>
                         </li>
-                        <li class="nav-item <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>" role="presentation">
+                        <li class="nav-item" role="presentation">
                             <button class="nav-link" id="review_count" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><?= $this->lang->line('Reviews') ?>
                                 (<span><?= count($product_review) ?></span>)</button>
                         </li>
@@ -182,7 +182,7 @@
                         <div class="tab-pane mt-4 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <p><?= $productDetail[0]->about ?></p>
                         </div>
-                        <div class="tab-pane fade <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>" id="profile" role="tabpanel" aria-labelledby="review_count">
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="review_count">
                             <!-- -------review-tab------ -->
                             <div class="my-review-wrapper">
                                 <!-- ----review-content--- -->

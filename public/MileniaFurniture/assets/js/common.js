@@ -10,7 +10,10 @@ $(document).ready(function () {
     $(".hot-products-cart-wrap").remove();
     $(".price-wrap").remove();
     $(".rating-furni").remove();
+    $(".rating-starts").remove();
     $(".product-detail-quentity").remove();
+    $("#dynamic_price").remove();
+    $(".fadeInRight").remove();
   }
 });
 // $(document).ready(function(){
