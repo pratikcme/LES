@@ -8,6 +8,7 @@ $(document).ready(function () {
   if (information == "0") {
     //$(".discnt").hide();
     $(".hot-products-cart-wrap").remove();
+    // $(".price-wrap").remove();
   }
 });
 // $(document).ready(function(){

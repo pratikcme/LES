@@ -341,7 +341,7 @@
                                             <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                                                 <h5><?= $value->name ?></h5>
                                             </a>
-                                            <div class="price-wrap notranslate d-flex <?= ($is_ecommerce == '0') ? "hideEcommerce" : "" ?>">
+                                            <div class="price-wrap notranslate d-flex">
                                                 <p><span class="<?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><strike><?= $this->siteCurrency . ' ' . number_format((float)$value->price, 2, '.', '') ?></strike></span>
                                                 </p>
                                                 <h6><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
