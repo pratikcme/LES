@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   if (information == "0") {
     //$(".discnt").hide();
-    $(".hot-products-cart-wrap").hide();
+    $(".hot-products-cart-wrap").remove();
   }
 });
 // $(document).ready(function(){
