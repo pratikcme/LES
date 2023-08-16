@@ -1,6 +1,15 @@
 function myFunction(x) {
   x.classList.toggle("fa-solid");
 }
+
+$(document).ready(function () {
+  var information = $("#information").val();
+
+  if (information == "0") {
+    $(".discnt").addClass("hideEcommerce");
+    $(".hot-products-cart-wrap").addClass("hideEcommerce");
+  }
+});
 // $(document).ready(function(){
 //   $(".close-btn").click(function(){
 //    alert(0);

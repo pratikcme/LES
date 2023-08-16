@@ -216,6 +216,12 @@ class User_Controller extends MY_Controller
         $data['multi_language'] = $this->vendor_model->getMultiLanguage($this->session->userdata('vendor_id'));
 
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
+
+
+        $data['is_ecommerce'] = $data['ApprovedBranch'][0]->is_ecommerce;
+
+        $this->session->set_userdata('is_ecommerce', $data['ApprovedBranch'][0]->is_ecommerce);
+
         $data['language_support'] = ($data['ApprovedBranch'][0]->language_support == '1') ? 'ar' : 'en';
         $language_support = 'en';
         if ($data['ApprovedBranch'][0]->language_support == 1) {

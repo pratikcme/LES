@@ -22,23 +22,22 @@
 
 
     <!-- owl.carousel.min -->
-    <link rel="stylesheet" href="<?=$this->theme_base_url.'/assets/css/owl.carousel.min.css'?>">
+    <link rel="stylesheet" href="<?= $this->theme_base_url . '/assets/css/owl.carousel.min.css' ?>">
 
     <!-- owl.theme -->
-    <link rel="stylesheet" href="<?=$this->theme_base_url.'/assets/css/owl.theme.default.min.css'?>">
+    <link rel="stylesheet" href="<?= $this->theme_base_url . '/assets/css/owl.theme.default.min.css' ?>">
 
     <!-- -----responsive-table-css--- -->
-    <link rel="stylesheet" href="<?=$this->theme_base_url.'/assets/css/basictable.min.css'?>">
+    <link rel="stylesheet" href="<?= $this->theme_base_url . '/assets/css/basictable.min.css' ?>">
 
     <!-- style -->
-    <link rel="stylesheet" href="<?=$this->theme_base_url.'/assets/css/style.css'?>">
+    <link rel="stylesheet" href="<?= $this->theme_base_url . '/assets/css/style.css' ?>">
 
     <!-- animate -->
-    <link rel="stylesheet" href="<?=$this->theme_base_url.'/assets/css/animate.css'?>">
+    <link rel="stylesheet" href="<?= $this->theme_base_url . '/assets/css/animate.css' ?>">
 
     <!-- Bootstrap datepicker CSS -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
     <!-- <body dir="rtl" class="rtl"> -->
 
@@ -47,46 +46,47 @@
 
         <div class="overlay"></div>
         <?php $lang = json_encode($this->lang->language);
-// dd($lang);
-?>
+        // dd($lang);
+        ?>
         <script type="text/javascript">
-        var language = <?= $lang; ?>;
+            var language = <?= $lang; ?>;
         </script>
 
         <style>
-        /* google traslater*/
-        body {
-            top: 0px !important;
-        }
+            /* google traslater*/
+            body {
+                top: 0px !important;
+            }
 
-        .goog-logo-link {
-            display: none !important;
-        }
+            .goog-logo-link {
+                display: none !important;
+            }
 
-        .goog-te-gadget {
-            color: transparent !important;
-            font-size:0 !important;
-        }
+            .goog-te-gadget {
+                color: transparent !important;
+                font-size: 0 !important;
+            }
 
-        .goog-te-banner-frame.skiptranslate {
-            display: none !important;
-        }
+            .goog-te-banner-frame.skiptranslate {
+                display: none !important;
+            }
 
-        .goog-te-gadget .goog-te-combo {
-            margin: 4px 0;
-            /* width: 150px; */
-        }
+            .goog-te-gadget .goog-te-combo {
+                margin: 4px 0;
+                /* width: 150px; */
+            }
 
-        .VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate {
-            display: none !important;
-        }
+            .VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate {
+                display: none !important;
+            }
 
-        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
-            display: none !important;
-        }
+            .VIpgJd-ZVi9od-l4eHX-hSRGPd {
+                display: none !important;
+            }
 
-        .pac-container {
-            z-index: 10000 !important;
-        }
+            .pac-container {
+                z-index: 10000 !important;
+            }
         </style>
         <input type="hidden" id="siteCurrency" value="<?= $this->siteCurrency ?>">
+        <input type="hidden" id="information" value="<?= $_SESSION['is_ecommerce'] ?>">
