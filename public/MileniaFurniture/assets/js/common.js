@@ -6,7 +6,7 @@ $(document).ready(function () {
   var information = $("#information").val();
 
   if (information == "0") {
-    $(".discnt").hide();
+    //$(".discnt").hide();
     $(".hot-products-cart-wrap").addClass("hideEcommerce");
   }
 });
