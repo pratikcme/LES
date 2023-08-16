@@ -347,7 +347,7 @@
                                                 <h6><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
                                                 </h6>
                                             </div>
-                                            <div class="rating-starts rating-furni <?= ($is_ecommerce == '0') ? "hideEcommerce" : "" ?>">
+                                            <div class="rating-starts rating-furni">
                                                 <div class="rating stars3_5">
                                                     <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
                                                         <span class="star"></span>
@@ -431,13 +431,13 @@
                                             <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">
                                                 <h5><?= $value->name ?></h5>
                                             </a>
-                                            <div class="price-wrap notranslate d-flex <?= ($is_ecommerce == '0') ? "hideEcommerce" : "" ?>">
+                                            <div class="price-wrap notranslate d-flex">
                                                 <p><span class="<?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><strike><?= $this->siteCurrency . '' . number_format((float)$value->price, 2, '.', '') ?></strike></span>
                                                 </p>
                                                 <h6><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?>
                                                 </h6>
                                             </div>
-                                            <div class="rating-starts rating-furni <?= ($is_ecommerce == '0') ? "hideEcommerce" : "" ?>">
+                                            <div class="rating-starts rating-furni">
                                                 <div class="rating stars3_5">
                                                     <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
                                                         <span class="star"></span>
@@ -453,7 +453,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="product-detail-quentity add-cart-btns <?= $d_show ?> <?= ($is_ecommerce == '0') ? "hideEcommerce" : "" ?>">
+                                            <div class="product-detail-quentity add-cart-btns ">
                                                 <div class="qty-container">
                                                     <button class="qty-btn-minus dec dec_<?= $value->pw_id ?> cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
                                                     <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" readonly>

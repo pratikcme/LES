@@ -6,9 +6,11 @@ $(document).ready(function () {
   var information = $("#information").val();
 
   if (information == "0") {
-    //$(".discnt").hide();
+    $(".discnt").remove();
     $(".hot-products-cart-wrap").remove();
-    // $(".price-wrap").remove();
+    $(".price-wrap").remove();
+    $(".rating-furni").remove();
+    $(".product-detail-quentity").remove();
   }
 });
 // $(document).ready(function(){
