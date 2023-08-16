@@ -173,7 +173,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><?= $this->lang->line('Description') ?></button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <li class="nav-item reviewShow" role="presentation">
                             <button class="nav-link" id="review_count" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><?= $this->lang->line('Reviews') ?>
                                 (<span><?= count($product_review) ?></span>)</button>
                         </li>
