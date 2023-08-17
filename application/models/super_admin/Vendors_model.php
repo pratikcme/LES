@@ -497,6 +497,7 @@ class Vendors_model extends My_model
 			'multi_language'         => $postData['multi_language'],
 			'dt_updated'			 => strtotime(DATE_TIME),
 			'theme_name' => $postData['theme_name'],
+			'is_ecommerce' => $postData['is_ecommerce'],
 			'supported_language' 	 => implode(',', $postData['supported_language'])
 		];
 		$data['table'] = ADMIN;
