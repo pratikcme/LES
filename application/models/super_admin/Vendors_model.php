@@ -405,24 +405,6 @@ class Vendors_model extends My_model
 		return $this->insertRecord($data);
 	}
 
-	// function create_subdomain($subDomain, $rootDomain, $rootDirectory)
-	// {
-	// 	$cpanelUsername = 'a1630btr';
-	// 	$cpanelPassword = '?D!{28ur_QC1';
-	// 	$domain = 'example.com'; // The domain you want to create
-
-	// 	$apiUrl = "https://yourdomain.com:2083/execute/DomainInfo/addon_domain?newdomain=$domain";
-
-	// 	$ch = curl_init();
-	// 	curl_setopt($ch, CURLOPT_URL, $apiUrl);
-	// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	// 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-	// 	curl_setopt($ch, CURLOPT_USERPWD, "$cpanelUsername:$cpanelPassword");
-
-	// 	$output = curl_exec($ch);
-	// 	curl_close($ch);
-	// }
-
 
 	function create_subdomain($subDomain, $rootDomain, $rootDirectory)
 	{
@@ -433,9 +415,14 @@ class Vendors_model extends My_model
 
 		$cPanelUser = 'a1630btr';
 		$cPanelPass = '?D!{28ur_QC1';
-
-		$buildRequest = "/json-api/cpanel?cpanel_jsonapi_user=" . $cPanelUser . "&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=AddonDomain&cpanel_jsonapi_func=addaddondomain&cpanel_jsonapi_apiversion=2&dir=" . $rootDirectory . "&newdomain=" . $subDomain . "." . $rootDomain . "";
-
+		// if($domain_type == '1'){
+		$buildRequest = "/frontend/paper_lantern/subdomain/doadddomain.html?domain=" . $subDomain . "&rootdomain=" . $rootDomain . "&dir=" . $rootDirectory;
+		// }
+		// else{
+		// 	$buildRequest = "/frontend/paper_lantern/addon/doadddomain.html";
+		// 	// domain=" . $subDomain . "&subdomain=" . $rootDomain."&dir=".$rootDirectory;
+		// }
+		// dd($buildRequest);
 		$openSocket = fsockopen($rootDomain, 2082);
 		if (!$openSocket) {
 			echo  "Socket error";
@@ -463,7 +450,6 @@ class Vendors_model extends My_model
 		}
 
 		return $newDomain;
-
 		return true;
 		// return "Created subdomain $newDomain";
 
