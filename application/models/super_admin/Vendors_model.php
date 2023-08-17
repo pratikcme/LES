@@ -106,6 +106,7 @@ class Vendors_model extends My_model
 			'locality' => $postData['locality'],
 			'language_support' => $postData['language_support'],
 			'theme_name' =>  $postData['theme_name'],
+			'is_ecommerce' => $postData['is_ecommerce'],
 			'supported_language' => implode(',', $postData['supported_language'])
 		);
 
