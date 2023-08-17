@@ -430,7 +430,7 @@ class Vendors_model extends My_model
 		} else {
 			echo  "connected";
 		}
-		exit('its sub domain');
+
 		$authString = $cPanelUser . ":" . $cPanelPass;
 		$authPass = base64_encode($authString);
 		$buildHeaders = "GET " . $buildRequest . "\r\n";
@@ -448,6 +448,7 @@ class Vendors_model extends My_model
 		} else {
 			$newDomain = "https://" . $subDomain . "/";
 		}
+		exit('its sub domain');
 		return $newDomain;
 		return true;
 		// return "Created subdomain $newDomain";
