@@ -365,7 +365,7 @@ if (!empty($js)) {
     }
 
     // Load an external JavaScript file after page load
-    loadScript(<?= $this->theme_base_url . '/assets/js/common.js' ?>, function() {
+    loadScript("<?= $this->theme_base_url . '/assets/js/common.js' ?>", function() {
         console.log('External JavaScript file loaded and executed after page load');
         // You can add more JavaScript code here that depends on the loaded script
     });
