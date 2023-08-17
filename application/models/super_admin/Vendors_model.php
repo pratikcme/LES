@@ -408,7 +408,7 @@ class Vendors_model extends My_model
 
 	function create_subdomain($subDomain, $rootDomain, $rootDirectory)
 	{
-		// exit('its sub domain');
+		exit('its sub domain');
 		if ($rootDirectory == '') {
 			return true;
 		}
