@@ -194,7 +194,9 @@ class User_Controller extends MY_Controller
 
         if (isset($_SESSION['is_ecommerce']) && $_SESSION['is_ecommerce'] == 0) {
             $segment_1 = $this->uri->segment(1);
-            echo $segment_1;
+            if ($segment_1 == 'login' || $segment_1 == 'register') {
+                redirect(base_url());
+            }
         }
     }
 
