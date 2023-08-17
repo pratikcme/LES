@@ -422,6 +422,8 @@ class Vendors_model extends My_model
 	// 	$output = curl_exec($ch);
 	// 	curl_close($ch);
 	// }
+
+
 	function create_subdomain($subDomain, $rootDomain, $rootDirectory)
 	{
 
@@ -431,14 +433,9 @@ class Vendors_model extends My_model
 
 		$cPanelUser = 'a1630btr';
 		$cPanelPass = '?D!{28ur_QC1';
-		// if($domain_type == '1'){
-		$buildRequest = "/frontend/paper_lantern/subdomain/doadddomain.html?domain=" . $subDomain . "&rootdomain=" . $rootDomain . "&dir=" . $rootDirectory;
-		// }
-		// else{
-		// 	$buildRequest = "/frontend/paper_lantern/addon/doadddomain.html";
-		// 	// domain=" . $subDomain . "&subdomain=" . $rootDomain."&dir=".$rootDirectory;
-		// }
-		// dd($buildRequest);
+
+		$buildRequest = "/json-api/cpanel?cpanel_jsonapi_user=" . $cPanelUser . "&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=AddonDomain&cpanel_jsonapi_func=addaddondomain&cpanel_jsonapi_apiversion=2&dir=" . $rootDirectory . "&newdomain=" . $subDomain . "." . $rootDomain . "";
+
 		$openSocket = fsockopen($rootDomain, 2082);
 		if (!$openSocket) {
 			echo  "Socket error";
