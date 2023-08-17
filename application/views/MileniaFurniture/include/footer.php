@@ -346,15 +346,6 @@ if (!empty($js)) {
 <script>
     new WOW().init()
 
-    //     $(document).ready(function () {
-    //   $(".accordion-items").on("click", ".accordion-heading", function () {
-    //     $(".accordion-heading").removeClass("active");
-    //     $(this).toggleClass("active").next().slideToggle();
-
-    //     $(".accordion-content").not($(this).next()).slideUp(300);
-    //     $(this).siblings().removeClass("active");
-    //   });
-    // });
 
 
 
@@ -363,5 +354,19 @@ if (!empty($js)) {
     $(".sub-menu .right").click(function() {
         $(this).parent().parent(".sub-menu").children("ul").slideToggle("100");
         $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+    });
+
+    function loadScript(url, callback) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+        script.onload = callback;
+        document.head.appendChild(script);
+    }
+
+    // Load an external JavaScript file after page load
+    loadScript(<?= $this->theme_base_url . '/assets/js/common.js' ?>, function() {
+        console.log('External JavaScript file loaded and executed after page load');
+        // You can add more JavaScript code here that depends on the loaded script
     });
 </script>
