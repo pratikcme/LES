@@ -15,6 +15,7 @@ $(document).ready(function () {
     $("#dynamic_price").remove();
     $(".fadeInRight").remove();
     $(".review_show").remove();
+    $(".wishlist-icon").remove();
   }
 });
 // $(document).ready(function(){
