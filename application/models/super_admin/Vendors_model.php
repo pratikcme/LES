@@ -448,8 +448,9 @@ class Vendors_model extends My_model
 		} else {
 			$newDomain = "https://" . $subDomain . "/";
 		}
-		exit('its sub domain');
+
 		return $newDomain;
+		exit('its sub domain');
 		return true;
 		// return "Created subdomain $newDomain";
 
