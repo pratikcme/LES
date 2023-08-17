@@ -408,7 +408,7 @@ class Vendors_model extends My_model
 
 	function create_subdomain($subDomain, $rootDomain, $rootDirectory)
 	{
-		exit('its sub domain');
+
 		if ($rootDirectory == '') {
 			return true;
 		}
@@ -430,7 +430,7 @@ class Vendors_model extends My_model
 		} else {
 			echo  "connected";
 		}
-
+		exit('its sub domain');
 		$authString = $cPanelUser . ":" . $cPanelPass;
 		$authPass = base64_encode($authString);
 		$buildHeaders = "GET " . $buildRequest . "\r\n";
