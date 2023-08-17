@@ -87,6 +87,29 @@
             .pac-container {
                 z-index: 10000 !important;
             }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f4f4f4;
+            }
+
+            .loader {
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
         </style>
         <input type="hidden" id="siteCurrency" value="<?= $this->siteCurrency ?>">
         <input type="hidden" id="information" value="<?= $_SESSION['is_ecommerce'] ?>">
