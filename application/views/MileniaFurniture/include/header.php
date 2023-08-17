@@ -87,21 +87,6 @@
             .pac-container {
                 z-index: 10000 !important;
             }
-
-
-            .loader {
-                animation: spin 1s linear infinite;
-            }
-
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
         </style>
         <input type="hidden" id="siteCurrency" value="<?= $this->siteCurrency ?>">
         <input type="hidden" id="information" value="<?= $_SESSION['is_ecommerce'] ?>">
