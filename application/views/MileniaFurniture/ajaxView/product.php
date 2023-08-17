@@ -13,9 +13,9 @@
         <?php endif ?>
 
         <?php if ($value->discount_per > '0') { ?>
-            <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
+            <span class="discnt <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>"><?= $value->discount_per . ' % off' ?></span>
         <?php } ?>
-        <div class="hot-products-cart-wrap">
+        <div class="hot-products-cart-wrap <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>">
             <a href="javascript:;" class="addcartbutton product_<?= $this->utility->safe_b64encode($value->id) ?> <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->product_weight_id) ?>"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18.5749 4.75H3.42488C3.24033 4.75087 3.06242 4.81891 2.92439 4.94141C2.78636 5.06391 2.69766 5.23249 2.67488 5.41562L1.34363 17.4156C1.33179 17.5202 1.34208 17.6261 1.37384 17.7264C1.4056 17.8267 1.45811 17.9192 1.52796 17.9979C1.59781 18.0766 1.68344 18.1397 1.77928 18.1831C1.87513 18.2266 1.97903 18.2494 2.08426 18.25H19.9155C20.0207 18.2494 20.1246 18.2266 20.2205 18.1831C20.3163 18.1397 20.4019 18.0766 20.4718 17.9979C20.5416 17.9192 20.5942 17.8267 20.6259 17.7264C20.6577 17.6261 20.668 17.5202 20.6561 17.4156L19.3249 5.41562C19.3021 5.23249 19.2134 5.06391 19.0754 4.94141C18.9373 4.81891 18.7594 4.75087 18.5749 4.75Z" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M7.25 7.75V4.75C7.25 3.75544 7.64509 2.80161 8.34835 2.09835C9.05161 1.39509 10.0054 1 11 1C11.9946 1 12.9484 1.39509 13.6517 2.09835C14.3549 2.80161 14.75 3.75544 14.75 4.75V7.75" stroke="#CC833D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -44,12 +44,12 @@
         <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
             <h5><?= $value->name ?></h5>
         </a>
-        <div class="price-wrap d-flex">
+        <div class="price-wrap d-flex <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>">
             <p><span class="<?= ($value->discount_per > 0) ? '' : ' d-none' ?>"><strike><?= $this->siteCurrency . ' ' . numberFormat($value->price) ?></strike></span>
             </p>
             <h6><?= $this->siteCurrency . ' ' . number_format((float)$value->discount_price, 2, '.', '') ?></h6>
         </div>
-        <div class="rating-starts rating-furni">
+        <div class="rating-starts rating-furni <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>">
             <div class="rating stars3_5">
 
                 <?php for ($j = 1; $j <= $value->ratting['rating']; $j++) { ?>
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
+        <div class="product-detail-quentity add-cart-btns <?= $d_show ?> <?= ($_SESSION['is_ecommerce'] == '0') ? "hideEcommerce" : "" ?>">
             <div class="qty-container">
                 <button class="qty-btn-minus dec dec_<?= $value->product_weight_id ?> cart-qty-minus" data-product_weight_id="<?= $value->product_weight_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
                 <input type="text" name="qty" value="<?= $addQuantity ?>" class="input-qty qty" data-product_id="<?= $value->prod_id ?>" data-weight_id="<?= $value->product_weight_id ?>" readonly>
