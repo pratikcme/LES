@@ -109,8 +109,8 @@
                               <label for="language">Web Type</label>
                               <select name="is_ecommerce" class="form-control" id="is_ecommerce">
                                   <option value="">Select Web Type</option>
-                                  <option value="1" <?= ($value->id == $editData[0]->is_ecommerce) ? 'SELECTED' : '' ?>>E-commerce</option>
-                                  <option value="0" <?= ($value->id == $editData[0]->is_ecommerce) ? 'SELECTED' : '' ?>>Infomation</option>
+                                  <option value="1" <?= ("1" == $editData[0]->is_ecommerce) ? 'SELECTED' : '' ?>>E-commerce</option>
+                                  <option value="0" <?= ("0" == $editData[0]->is_ecommerce) ? 'SELECTED' : '' ?>>Infomation</option>
 
                               </select>
                           </div>
