@@ -14,7 +14,7 @@ $(document).ready(function () {
     $(".product-detail-quentity").remove();
     $("#dynamic_price").remove();
     $(".fadeInRight").remove();
-    $(".reviewShow").remove();
+    $(".review_show").remove();
   }
 });
 // $(document).ready(function(){
