@@ -191,6 +191,11 @@ class User_Controller extends MY_Controller
                 $this->session->set_userdata($branch);
             }
         }
+
+        if (isset($_SESSION['is_ecommerce']) && $_SESSION['is_ecommerce'] == 0) {
+            $segment_1 = $this->uri->segment(1);
+            echo $segment_1;
+        }
     }
 
     function loadView($layout, $data)
