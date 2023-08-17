@@ -17,6 +17,7 @@ $(document).ready(function () {
     $(".review_show").remove();
     $(".wishlist-icon").remove();
     $(".header-card-btn").remove();
+    $(".header-account-btn").remove();
   }
 });
 // $(document).ready(function(){
