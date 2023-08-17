@@ -405,7 +405,23 @@ class Vendors_model extends My_model
 		return $this->insertRecord($data);
 	}
 
+	// function create_subdomain($subDomain, $rootDomain, $rootDirectory)
+	// {
+	// 	$cpanelUsername = 'a1630btr';
+	// 	$cpanelPassword = '?D!{28ur_QC1';
+	// 	$domain = 'example.com'; // The domain you want to create
 
+	// 	$apiUrl = "https://yourdomain.com:2083/execute/DomainInfo/addon_domain?newdomain=$domain";
+
+	// 	$ch = curl_init();
+	// 	curl_setopt($ch, CURLOPT_URL, $apiUrl);
+	// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	// 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+	// 	curl_setopt($ch, CURLOPT_USERPWD, "$cpanelUsername:$cpanelPassword");
+
+	// 	$output = curl_exec($ch);
+	// 	curl_close($ch);
+	// }
 	function create_subdomain($subDomain, $rootDomain, $rootDirectory)
 	{
 
@@ -450,7 +466,7 @@ class Vendors_model extends My_model
 		}
 
 		return $newDomain;
-		exit('its sub domain');
+
 		return true;
 		// return "Created subdomain $newDomain";
 
