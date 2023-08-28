@@ -153,6 +153,7 @@
     gap: 25px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .input-wrapper .input-box {
@@ -173,12 +174,18 @@
 
 .input-box input {
     padding-left: 19px;
+    padding-right: 19px;
     height: 47px;
     border-radius: 5px;
     border: 1px solid rgba(42, 53, 66, 0.50);
     background: #FFF;
     outline: 0;
     width: 100%;
+}
+
+.button-wrapper{
+    display: flex;
+    align-items: flex-end;
 }
 
 .input-wrapper button {
@@ -194,6 +201,7 @@
     -moz-transition: 0.5s linear;
     -ms-transition: 0.5s linear;
     -o-transition: 0.5s linear;
+    height: 47px;
 }
 
 .input-wrapper button:hover {

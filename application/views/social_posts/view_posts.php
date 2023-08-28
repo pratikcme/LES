@@ -38,16 +38,16 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-lg-12 mb-4">
-                                <div class="d-flex input-wrapper flex-wrap">
-                                    <div class="d-flex flex-column input-box">
+                                <div class="input-wrapper">
+                                    <div class="input-box">
                                         <label for="">Quotes</label>
                                         <input type="text" placeholder="type here...........">
                                     </div>
-                                    <div class="d-flex flex-column input-box">
+                                    <div class="input-box">
                                         <label for="">Change Color</label>
-                                        <input type="text" placeholder="#fff">
+                                        <input type="color" placeholder="#fff">
                                     </div>
-                                    <div class="d-flex align-items-end">
+                                    <div class="button-wrapper">
                                         <button type="button">change</button>
                                     </div>
                                 </div>
