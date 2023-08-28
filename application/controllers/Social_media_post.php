@@ -39,7 +39,6 @@ class Social_media_post extends Vendor_Controller
 
     public function view_posts()
     {
-
         $this->load->view('social_posts/view_posts');
     }
 
