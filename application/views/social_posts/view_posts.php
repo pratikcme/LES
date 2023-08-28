@@ -38,16 +38,16 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-lg-12 mb-4">
-                                <div class="d-flex input-wrapper flex-wrap">
-                                    <div class="d-flex flex-column input-box">
+                                <div class="input-wrapper">
+                                    <div class="input-box">
                                         <label for="">Quotes</label>
                                         <input type="text" placeholder="type here...........">
                                     </div>
-                                    <div class="d-flex flex-column input-box">
+                                    <div class="input-box">
                                         <label for="">Change Color</label>
-                                        <input type="text" placeholder="#fff">
+                                        <input type="color" placeholder="#fff">
                                     </div>
-                                    <div class="d-flex align-items-end">
+                                    <div class="button-wrapper">
                                         <button type="button">change</button>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                                 <div class="row">
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-4">
                                         <div class="card-img position-relative preview-img">
-                                            <img src="./assets/img/india.png" alt="">
+                                            <img src="./assets/img/india.png" alt="preview-img">
                                             <div class="card-overlay"></div>
                                             <div class="download-icon">
                                                 <img src="./assets/img/download.svg" alt="">
