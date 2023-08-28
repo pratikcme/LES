@@ -27,12 +27,12 @@
     margin-bottom: 24px;
 }
 
-.card-wrap .card-img {
+.card-img {
     margin-bottom: 11px;
     position: relative;
 }
 
-.card-wrap .card-img img {
+.card-img img {
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;

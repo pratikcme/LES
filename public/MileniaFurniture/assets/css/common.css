@@ -147,6 +147,7 @@ p {
 .cmn-btn:hover {
     background-color: var(--btn-text);
     color: var(--btn-bg);
+    border: 1px solid;
 }
 
 

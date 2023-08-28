@@ -94,7 +94,7 @@
 .filter-icon {
   width: 100% !important;
   max-width: 125px !important;
-  height: 50px !important;
+  height: 45px !important;
   border-radius: 10px;
   background: #2BAE4A;
   border: 1px solid #2BAE4A;
@@ -135,13 +135,13 @@
 .short-by-dropdown .form-select {
   width: 100% !important;
   max-width: 125px !important;
-  height: 36px !important;
+  height: 45px !important;
   border-radius: 10px;
   background: transparent;
   border: 1px solid var(--list-select-border);
   padding-left: 11px !important;
-  font-size: 12px;
-  background-image: url(../images/selectarrow.png);
+  font-size: 15px;
+  background-image: url("../images/selectarrow.png");
   background-repeat: no-repeat;
   background-size: 12px;
 
@@ -1041,7 +1041,9 @@ div[slider]>input[type=range]::-ms-tooltip {
     transition: 0.3s;
   }
 
-
+  .product-categires-part{
+    margin-top: 30px;
+  }
 
 
 }
@@ -1241,6 +1243,18 @@ div[slider]>input[type=range]::-ms-tooltip {
     padding-left: 20px !important;
   }
 
+  .product-categires-part{
+    margin-top: 30px;
+  }
+
+  .my-filter-wrapper{
+    flex-basis: 35%;
+  }
+
+  .product-listing-wrapper{
+    flex-basis: 48%;
+  }
+
 }
 
 /* ======================================================  */
@@ -1382,7 +1396,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   }
 
   .hide.show-div-wrapper {
-    flex-basis: 68%;
+    flex-basis: 100%;
     transition: 0.3s;
   }
 
@@ -1393,7 +1407,7 @@ div[slider]>input[type=range]::-ms-tooltip {
   }
 
   .hide.show-div-wrapper .product-listing-wrapper {
-    flex-basis: 48%;
+    flex-basis: 32%;
     transition: 0.3s;
   }
 
@@ -1401,11 +1415,27 @@ div[slider]>input[type=range]::-ms-tooltip {
     padding-left: 20px !important;
   }
 
+  .product-categires-part{
+    margin-top: 30px;
+  }
+
 }
 
 @media only screen and (max-width:991px){
   .my-filter-wrapper{
-    flex-basis: 50%;
+    flex-basis: 70%;
+  }
+
+  .product-categires-part{
+    margin-top: 30px;
+  }
+
+  .card{
+    margin-top: 30px !important;
+  }
+
+  .product-listing-wrapper{
+    flex-basis: 48%;
   }
 }
 
@@ -1542,7 +1572,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
   /* -------new-fliter-css--- */
   .product-listing-wrapper {
-    flex-basis: 65%;
+    flex-basis: 100%;
     transition: 0.3s;
   }
 

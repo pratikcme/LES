@@ -229,12 +229,13 @@
 }
 
 .product-select-in .form-select{
-    width: auto !important;
+    width: 100% !important;
     border: none;
     cursor: pointer;
     border: 1px solid var(--primary-color) !important;
     margin-right: 10px;
     outline: 0;
+    max-width: 170px;
 }
 
 .form-select:focus{
@@ -742,6 +743,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     box-shadow: none;
     position: relative;
     padding: 0;
+    text-transform: capitalize;
 }
 
 
@@ -775,14 +777,18 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 .product-categires-part .accordion-item{
-    background: var(--listing-2-ctg-bg);
-    border: 1px solid var(--listing-2-ctg-border);
-    border-radius: 20px;
+    /* background: var(--listing-2-ctg-bg); */
+    /* border: 1px solid var(--listing-2-ctg-border); */
+    border-radius: 10px;
     box-shadow: 0px 5px 15px rgb(34 37 40 / 5%);
     margin-top: 25px;
     padding: 20px;
     border: 1px solid var(--card-border) !important;
     overflow: hidden;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 #collapseTwo .preview{
@@ -1099,6 +1105,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     padding-left: 5px;
     font-size: 18px;
     font-family: var(--PublicSans-Regular);
+    color: var(--light-gray);
 }
 
 .ui-widget-content{
@@ -1110,7 +1117,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 .ui-slider-horizontal .ui-slider-handle{
-    top: -7px;
+    top: -7px !important;
 }
 
 .slider-box label{
@@ -1123,7 +1130,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     font-family: var(--PublicSans-Regular);
     text-transform: capitalize;
     cursor: pointer;
@@ -1175,7 +1182,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 #collapseSix .accordion-body{
     max-height: 350px;
-    min-height: 200px;
+    min-height: 130px;
     overflow-y: scroll;
 }
 
@@ -1290,7 +1297,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
     }
     .product-categires-part .accordion-header button{
-        font-size: 22px !important;
+        font-size: 20px !important;
     }
 
     /* .product-listing-wrapper{
@@ -1407,7 +1414,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         flex-basis: 60%;
      }
      .product-listing-wrapper{
-        flex-basis: 70%;
+        flex-basis: 85%;
      }
      .hide.my-filter-wrapper{
         flex-direction: 20%;
@@ -1440,6 +1447,10 @@ div[slider]>input[type=range]::-ms-tooltip {
         position: relative;
         top: 1px;
     }
+
+    .product-select-in .form-select{
+        max-width: 150px;
+    }
    
 }
 
@@ -1457,6 +1468,10 @@ div[slider]>input[type=range]::-ms-tooltip {
     #collapseFour .discoutn-part{
         max-height: 350px;
         min-height: 130px;
+    }
+
+    .product-select-in .form-select{
+        max-width: 150px;
     }
 }
 
@@ -1607,7 +1622,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         color: var(--white) !important;
     }
     .product-categires-part .accordion-header button{
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
     .sidepanel .discoutn-part {
         height: auto!important;
@@ -1789,7 +1804,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         height: 40px !important;
     }
     .active.sidepanel{
-        width: 50%;
+        width: 60%;
     }
 
 
@@ -1819,7 +1834,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         margin-bottom: 10px;
     }
     .product-categires-part .accordion-header button{
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
     .sidepanel .discoutn-part {
         height: auto!important;
@@ -1872,6 +1887,10 @@ div[slider]>input[type=range]::-ms-tooltip {
     .product-availability{
        flex-direction: column;
        align-items: flex-start;
+    }
+
+    .slider-box input{
+        font-size: 16px;
     }
 
 }
@@ -2010,7 +2029,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         height: 40px !important;
     }
     .active.sidepanel{
-        width: 70%;
+        width: 75%;
     }
 
 
@@ -2039,7 +2058,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         flex-basis: 100%;
     }
     .product-categires-part .accordion-header button{
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
     .sidepanel .discoutn-part {
         height: auto!important;
