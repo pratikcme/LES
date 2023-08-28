@@ -303,6 +303,7 @@ $vendor_id = $this->session->userdata('id');
 
     <link href="<?php echo base_url(); ?>public/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>public/css/style-responsive.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>public/css/social_posts/social_post.css" rel="stylesheet" />
     <?php if (isset($css)) { ?>
         <?php foreach ($css as $key => $value) { ?>
             <link href="<?= base_url() . 'public/admin_product_page_assets/css/' . $value ?>" rel="stylesheet" />
