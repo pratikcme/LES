@@ -151,11 +151,15 @@
 
 .input-wrapper {
     gap: 25px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .input-wrapper .input-box {
     max-width: 391px;
-    width: 100%
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .input-box label {
@@ -174,6 +178,7 @@
     border: 1px solid rgba(42, 53, 66, 0.50);
     background: #FFF;
     outline: 0;
+    width: 100%;
 }
 
 .input-wrapper button {
