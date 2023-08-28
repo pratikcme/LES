@@ -247,6 +247,8 @@
     color: var(--cart-td-text-2);
     font-family: var(--inter-regular);
     font-size: 16px;
+    height: 40px;
+    max-width: 160px;
 }
 
 .form-select:focus{
@@ -731,7 +733,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 }
 
 .product-categires-part .accordion-item{
-    background: var(--listing-2-ctg-bg);
+    /* background: var(--listing-2-ctg-bg); */
     border: 1px solid #E3DBD3;
     border-radius: 5px;
     box-shadow: 0px 5px 15px rgb(34 37 40 / 5%);
@@ -950,7 +952,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 .brand-content {
     display: flex;
     /* align-items: center; */
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: column;
 }
 .brand-content li{
@@ -978,6 +980,19 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 .my-filter-wrapper li{
     margin: 10px 0;
+}
+
+.my-filter-wrapper li .right{
+    cursor: pointer;
+}
+
+/* .my-filter-wrapper .sub-wrap input{
+    cursor: pointer;
+} */
+
+
+.my-filter-wrapper .form-check-input{
+    margin-top: 3px !important;
 }
 
 .categories-wrapper li{
@@ -1110,11 +1125,12 @@ div[slider]>input[type=range]::-ms-tooltip {
 .slider-box input,
 #priceRange
 {
+    color: var(--text-color);
     width: 120px;
     border: none !important;
     outline: 0;
-    font-size: 20px !important;
-    font-family: var(--BeVietnamPro-Regular);
+    font-size: 16px !important;
+    font-family: var(--inter-regular);
 }
 
 .slider-box input:focus{
@@ -1175,7 +1191,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 17px;
+    font-size: 16px;
     font-family: var(--inter-regular);
     text-transform: capitalize;
     cursor: pointer;
@@ -1326,7 +1342,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
     }
     .product-categires-part .accordion-header button{
-        font-size: 22px !important;
+        font-size: 18px !important;
     }
 
     /* / ---new-css--- / */
@@ -1345,6 +1361,18 @@ div[slider]>input[type=range]::-ms-tooltip {
         align-items: center;
         justify-content: space-between;
         /* flex-wrap: wrap; */
+    }
+
+    .hot-products-wrap h5 {
+        font-size: 13px;
+    }
+
+    .sub-menu span{
+        font-size: 14px;
+    }
+
+    .product-select-in .form-select{
+        max-width: 130px;
     }
 }
 
@@ -1383,6 +1411,16 @@ div[slider]>input[type=range]::-ms-tooltip {
 
     .hide.show-div-wrapper .product-listing-wrapper{
         flex-basis: 100%;
+    }
+
+    .sidepanel .price-range-part{
+        margin-top: -30px;
+    }
+
+    .lng-drp select, .branch-drp select {
+        background-size: 9px;
+        background-position-y: 15px;
+        /* font-size: 13px !important; */
     }
    
 }
@@ -1505,7 +1543,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
     }
     .product-categires-part .accordion-header button{
-        font-size: 20px !important;
+        font-size: 18px !important;
     }
     .discoutn-part {
         height: auto!important;
@@ -1671,7 +1709,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         height: 40px !important;
     }
     .active.sidepanel{
-        width: 40%;
+        width: 60%;
         padding-right: 10px;
     }
    
@@ -1696,7 +1734,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         color: var(--common-white) !important;
     }
     .product-categires-part .accordion-header button{
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
     .sidepanel .discoutn-part {
         height: auto!important;
@@ -1907,7 +1945,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         height: 40px !important;
     }
     .active.sidepanel{
-        width: 50%;
+        width: 60%;
         padding-right: 10px;
     }
 
@@ -1938,7 +1976,7 @@ div[slider]>input[type=range]::-ms-tooltip {
         margin-bottom: 10px;
     }
     .product-categires-part .accordion-header button{
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
     .sidepanel .discoutn-part {
         height: auto!important;

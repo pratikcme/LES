@@ -229,11 +229,7 @@ footer {
         margin-top: 50px;
     }
 
-    .lng-drp select, .branch-drp select {
-        background-size: 9px;
-        background-position-y: 15px;
-        font-size: 10px !important;
-    }
+    
 }
 
 @media only screen and (max-width: 420px) {

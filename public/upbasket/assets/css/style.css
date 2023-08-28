@@ -547,6 +547,10 @@
     background: var(--light-white-bg);
 }
 
+.Latest-Products .product-wrapper .add-cart-btn {
+    margin-top: 15px;
+}
+
 .latest-product-top-img {
     position: absolute;
     top: 600px;
