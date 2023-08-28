@@ -28,7 +28,7 @@
 
                         <div class="row">
                             <div class="col-lg-12 col-lg-12 mb-4">
-                                <h5 class="title"><span>Independence day - </span><span>Tue 30 Aug 2023</span></h5>
+                                <h5 class="title"><span><?= $getPostsDetail[0]->festival_name ?> - </span><span><?= date('l d M Y', strtotime($getPostsDetail[0]->date)) ?></span></h5>
                                 <div class="row">
                                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-3">
                                         <div class="card-img month-card">

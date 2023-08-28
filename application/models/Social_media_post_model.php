@@ -26,6 +26,14 @@ class Social_media_post_model extends My_model
         }
         return $postsByMonth;
     }
+
+    public function getPostsDetails($id)
+    {
+        $data['select'] = ['*'];
+        $data['table'] = TABLE_FESTIVALS_POSTS;
+        $data['where'] = ['id' => $id];
+        return $this->selectRecords($data);
+    }
     public function getVendorData()
     {
         $data['select'] = ['*'];

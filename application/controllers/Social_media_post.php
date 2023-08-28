@@ -37,9 +37,10 @@ class Social_media_post extends Vendor_Controller
         // echo $html;
     }
 
-    public function view_posts()
+    public function view_posts($id)
     {
-        $this->load->view('social_posts/view_posts');
+        $data['getPostsDetail'] = $this->this_model->getPostsDetails($id);
+        $this->load->view('social_posts/view_posts', $data);
     }
 
     public function save_image()

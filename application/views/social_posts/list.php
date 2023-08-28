@@ -40,7 +40,7 @@
                                                 <div class="card-wrap text-center">
                                                     <div class="card-img position-relative">
                                                         <img src="<?= base_url() . 'public/festival_post_images/' . $postVal->image ?>" alt="india">
-                                                        <a class="view-more" href="<?= base_url() . 'social_media_post/view_posts' ?>" type="button">View More</a>
+                                                        <a class="view-more" href="<?= base_url() . 'social_media_post/view_posts/' . $postVal->id; ?>" type="button">View More</a>
                                                         <div class="card-overlay"></div>
                                                     </div>
 
