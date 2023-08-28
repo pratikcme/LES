@@ -230,3 +230,9 @@
         </li>
     </ul>
 </li>
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'social_media_post') { ?> active <?php } ?>" href="<?php echo base_url() . 'social_media_post'; ?>">
+        <i class="fa fa-credit-card" aria-hidden="true"></i>
+        <span>Social Media Post</span>
+    </a>
+</li>

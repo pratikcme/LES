@@ -73,3 +73,5 @@ define('SMSGATEWAY', 'sms_gateway');
 define('TABLE_LIVE_CHAT_CREDS', 'live_chat_creds');
 define('TABLE_TAX', 'tax');
 define('TABLE_TAX_TYPE', 'tax_type');
+define('TABLE_VENDOR_SOCIAL_POSTS', 'vendor_social_posts');
+define('TABLE_FESTIVALS_POSTS', 'festivals_posts');

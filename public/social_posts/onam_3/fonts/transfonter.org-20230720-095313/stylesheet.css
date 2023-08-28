@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Yesteryear';
+    src: url('Yesteryear-Regular.woff2') format('woff2'),
+        url('Yesteryear-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
