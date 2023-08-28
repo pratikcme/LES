@@ -40,6 +40,7 @@ class Social_media_post extends Vendor_Controller
     public function view_posts($id)
     {
         $data['getPostsDetail'] = $this->this_model->getPostsDetails($id);
+        $data['getThemePost'] = $this->this_model->getThemePostsDetails($id);
         $this->load->view('social_posts/view_posts', $data);
     }
 

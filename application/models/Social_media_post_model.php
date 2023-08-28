@@ -34,6 +34,17 @@ class Social_media_post_model extends My_model
         $data['where'] = ['id' => $id];
         return $this->selectRecords($data);
     }
+
+
+    public function getThemePostsDetails($id)
+    {
+        $data['select'] = ['*'];
+        $data['table'] = TABLE_POSTS_THEMES;
+        $data['where'] = ['festival_id' => $id];
+        return $this->selectRecords($data);
+    }
+
+
     public function getVendorData()
     {
         $data['select'] = ['*'];

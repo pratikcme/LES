@@ -30,11 +30,17 @@
                             <div class="col-lg-12 col-lg-12 mb-4">
                                 <h5 class="title"><span><?= $getPostsDetail[0]->festival_name ?> - </span><span><?= date('l d M Y', strtotime($getPostsDetail[0]->date)) ?></span></h5>
                                 <div class="row">
-                                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-3">
-                                        <div class="card-img month-card">
-                                            <img src="<?= base_url() . 'public/festival_post_images/friendship_day.png' ?>" alt="india">
+                                    <?php
+                                    foreach ($getThemePost as $value) { ?>
+
+
+                                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-3">
+                                            <div class="card-img month-card">
+                                                <img src="<?= base_url() . 'public/festival_post_images/' . $value->theme_image ?>" alt="india">
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php }
+                                    ?>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-lg-12 mb-4">
