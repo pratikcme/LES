@@ -57,7 +57,7 @@
                                 <div class="row">
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-4">
                                         <div class="card-img position-relative preview-img">
-                                            <img src="./assets/img/india.png" alt="">
+                                            <img src="./assets/img/india.png" alt="preview-img">
                                             <div class="card-overlay"></div>
                                             <div class="download-icon">
                                                 <img src="./assets/img/download.svg" alt="">
