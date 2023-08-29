@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php dd($vendorData); ?>
+<?php dd($vendorData[0]); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
     <div class="main" id="postprev">
         <div class="logo" style="background-color: <?= ($newColor != "") ? $newColor : "" ?>;">
 
-            <img src="<?= base_url() . 'public/client_logo/' . $vendorData[0]->webLogo ?>" alt="">
+            <img src="<?= base_url() . 'public/client_logo/' . $vendorData[0]->logo_image ?>" alt="">
             <svg width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M102 0V82C102 93.0457 93.0457 102 82 102H0" stroke="#28B469" stroke-width="9" />
             </svg>
