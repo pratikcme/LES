@@ -5,7 +5,7 @@ class Social_media_post_model extends My_model
 
     function __construct()
     {
-        $this->vendor_id = $this->session->userdata('vendor_id');
+        $this->vendor_id = $this->session->userdata('id');
     }
 
 
@@ -47,6 +47,7 @@ class Social_media_post_model extends My_model
 
     public function getVendorData()
     {
+
         $data['select'] = ['*'];
         $data['table'] = TABLE_VENDOR;
         $data['where'] = ['id' => $this->vendor_id];

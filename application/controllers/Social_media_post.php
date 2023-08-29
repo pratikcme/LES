@@ -14,33 +14,42 @@ class Social_media_post extends Vendor_Controller
 
     public function index()
     {
+
         $data['getPosts'] = $this->this_model->getPosts();
 
         $this->load->view('social_posts/list', $data);
     }
 
 
-    public function gettheme($theme)
+    public function gettheme()
     {
 
-        $data['theme'] = $theme;
-        $html =  $this->load->view('social_posts/socialtheme', $data, true);
+        $vendorData = $this->this_model->getVendorData();
 
-        $redirectURL = base_url();
-        $redirectHtml = "<a href='$redirectURL'>Click here to be redirected</a>";
+        $data['newQuotes'] = "";
+        $data['newColor'] = "";
+        if (isset($_POST['newQuotes']) && isset($_POST['newColor'])) {
+            $data['newQuotes'] = $_POST['newQuotes'];
+            $data['newColor'] = $_POST['newColor'];
+        }
+        $data['detail_set'] = $_POST['detail_set'];
+        $data['theme'] = $_POST['theme_name'];
+        $data['vendorData'] = $vendorData;
+        $data['quotes'] = $this->quotes();
 
-        // Combine the generated HTML and the redirect HTML
-        $combinedHtml = $html . $redirectHtml;
+        $festival_quotes = explode('_', $_POST['theme_name']);
+        $data['festival_quotes'] = $festival_quotes[0];
+        $html = $this->load->view('social_posts/createPostPreview', $data, true);
 
-        // Output the combined HTML
-        echo $combinedHtml;
-        // echo $html;
+
+        echo $html;
     }
 
     public function view_posts($id)
     {
         $data['getPostsDetail'] = $this->this_model->getPostsDetails($id);
         $data['getThemePost'] = $this->this_model->getThemePostsDetails($id);
+
         $this->load->view('social_posts/view_posts', $data);
     }
 
@@ -77,5 +86,25 @@ class Social_media_post extends Vendor_Controller
                 echo 'Unable to save image.';
             }
         }
+    }
+
+
+    public function quotes()
+    {
+
+        $quotes = [
+            'dussehra' => "This Dussehra, wishing you to develop all the qualities of Lord Rama. May you be an idol son, a perfect brother and an idyllic husband! Happy Dussehra.",
+            'friendship_day' => "There is nothing on this earth more to be prized than true friendship.",
+            'gandhi_jayanti' => "Let us celebrate the occasion of Gandhi Jayanti by remembering Mahatma Gandhi and by following the path he showed us.",
+            'ganesh_chaturthi' => "This Ganesh Chaturthi, may Lord Ganesha bless you with success and happiness. Heartwarming greetings on Ganesh Chaturthi!",
+            'independence_day' => "Let us follow in the footsteps of our forefathers and make our country strong and prosperous. Happy Independence Day.",
+            'janmashtami' => "Wish you a very happy Janmashtami. May Lord Krishna empower you with good health and peace.",
+            'national_handloom_day' => "A good life is like weaving. Energy is created in the tension. The struggle, the pull, and tug are everything.",
+            'navratri' => "May goddess Durga empowers you with the light of knowledge and truth. Happy Navratri.",
+            'onam' => "The Onam is an occasion for people to remind themselves of the all pervasive nature of divine. Happy Onam.",
+            'raksha_bandhan' => "May your bond of love be strong and unbreakable. Wishing you a very Happy Raksha Bandhan!",
+            'teachers_day' => "Good teaching is more a giving of right questions than a giving of right answers.",
+        ];
+        return $quotes;
     }
 }

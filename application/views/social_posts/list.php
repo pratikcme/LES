@@ -28,34 +28,38 @@
                         <div class="row">
 
                             <?php
-                            foreach ($getPosts as $key => $value) { ?>
+                            foreach ($getPosts as $key => $value) {
+                                if ($value[0]->date >= date('Y-m-d')) {
+
+                            ?>
 
 
 
-                                <div class="col-lg-12 col-lg-12 mb-4">
-                                    <h5 class="title"><?= $key ?></h5>
-                                    <div class="row">
-                                        <?php foreach ($value as $postVal) { ?>
-                                            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-3">
-                                                <div class="card-wrap text-center">
-                                                    <div class="card-img position-relative">
-                                                        <img src="<?= base_url() . 'public/festival_post_images/' . $postVal->image ?>" alt="india">
-                                                        <a class="view-more" href="<?= base_url() . 'social_media_post/view_posts/' . $postVal->id; ?>" type="button">View More</a>
-                                                        <div class="card-overlay"></div>
+                                    <div class="col-lg-12 col-lg-12 mb-4">
+                                        <h5 class="title"><?= $key ?></h5>
+                                        <div class="row">
+                                            <?php foreach ($value as $postVal) { ?>
+                                                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-3">
+                                                    <div class="card-wrap text-center">
+                                                        <div class="card-img position-relative">
+                                                            <img src="<?= base_url() . 'public/festival_post_images/' . $postVal->image ?>" alt="india">
+                                                            <a class="view-more" href="<?= base_url() . 'social_media_post/view_posts/' . $postVal->id; ?>" type="button">View More</a>
+                                                            <div class="card-overlay"></div>
+                                                        </div>
+
+                                                        <div class="card-detail">
+                                                            <h5><?= $postVal->festival_name ?></h5>
+                                                            <p> <?= date('D d M Y', strtotime($postVal->date)); ?> </p>
+                                                        </div>
+
                                                     </div>
-
-                                                    <div class="card-detail">
-                                                        <h5><?= $postVal->festival_name ?></h5>
-                                                        <p> <?= date('D d M Y', strtotime($postVal->date)); ?> </p>
-                                                    </div>
-
                                                 </div>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
+                                            <?php } ?>
+                                        </div>
 
-                                </div>
+                                    </div>
                             <?php }
+                            }
                             ?>
                         </div>
 
