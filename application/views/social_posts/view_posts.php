@@ -145,6 +145,18 @@
     var theme_name = "";
     var detail_set = "";
 
+
+    $('input[type="radio"][name="detail"]').each(function() {
+        if ($(this).is(':checked')) {
+            detail_set = $(this).val();
+        }
+    });
+
+    if ($(".postTheme").hasClass('active')) {
+        theme_name = $('.postTheme').attr('theme_name');
+
+    }
+
     if (detail_set != "" && theme_name != "") {
 
         $.ajax({
@@ -175,16 +187,7 @@
 
         });
     }
-    $('input[type="radio"][name="detail"]').each(function() {
-        if ($(this).is(':checked')) {
-            detail_set = $(this).val();
-        }
-    });
 
-    if ($(".postTheme").hasClass('active')) {
-        theme_name = $('.postTheme').attr('theme_name');
-
-    }
     $(".postTheme").click(function() {
 
 
