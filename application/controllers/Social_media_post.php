@@ -25,6 +25,7 @@ class Social_media_post extends Vendor_Controller
     {
 
         $vendorData = $this->this_model->getVendorData();
+        dd($vendorData);
 
         $data['newQuotes'] = "";
         $data['newColor'] = "";
@@ -36,7 +37,6 @@ class Social_media_post extends Vendor_Controller
         $data['theme'] = $_POST['theme_name'];
         $data['vendorData'] = $vendorData;
         $data['quotes'] = $this->quotes();
-
         $festival_quotes = explode('_', $_POST['theme_name']);
         $data['festival_quotes'] = $festival_quotes[0];
         $html = $this->load->view('social_posts/createPostPreview', $data, true);
