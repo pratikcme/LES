@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?= str_replace(' ', '', $vendorData[0]->name);
+exit; ?>
 
 <head>
     <meta charset="UTF-8">
