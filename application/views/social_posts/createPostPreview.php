@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php dd($vendorData[0]->id); ?>
+
 
 <head>
     <meta charset="UTF-8">
