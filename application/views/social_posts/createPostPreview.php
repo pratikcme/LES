@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?= str_replace(' ', '', $vendorData[0]->name);
+<?= strtolower(str_replace(' ', '', $vendorData[0]->name));
 exit; ?>
 
 <head>
