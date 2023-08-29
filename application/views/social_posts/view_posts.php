@@ -82,7 +82,7 @@
                                     <div class="input-box radio-wrapper">
                                         <div class="radio-box">
                                             <label for="">All</label>
-                                            <input class="form-control detail_set" type="radio" name="detail" value="all">
+                                            <input class="form-control detail_set" type="radio" name="detail" value="all" checked>
                                         </div>
                                         <div class="radio-box">
                                             <label for="">Contact , Web Url , Social</label>
@@ -143,6 +143,12 @@
 <script>
     $(".Preview").addClass('d-none');
     var theme_name = "";
+    var detail_set = "";
+    $('input[type="radio"][name="detail"]').each(function() {
+        if ($(this).is(':checked')) {
+            detail_set = $(this).val();
+        }
+    });
 
     if ($(".postTheme").hasClass('active')) {
         theme_name = $('.postTheme').attr('theme_name');
@@ -153,7 +159,7 @@
 
         $('.postTheme').removeClass('active');
         theme_name = $(this).attr('theme_name');
-        var detail_set = "";
+
 
         $('input[type="radio"][name="detail"]').each(function() {
             if ($(this).is(':checked')) {
@@ -190,11 +196,6 @@
                         $("body").removeClass("blurred");
                         $(".Preview").removeClass('d-none');
                     });
-
-
-
-
-
                 },
 
             });
@@ -204,7 +205,7 @@
 
 
     $("input[type=radio][name=detail]").change(function() {
-        var detail_set = $(this).val();
+        detail_set = $(this).val();
 
         if (detail_set != "" && theme_name != "") {
 
@@ -231,10 +232,6 @@
                         $("body").removeClass("blurred");
                         $(".Preview").removeClass('d-none');
                     });
-
-
-
-
 
                 },
 
