@@ -144,6 +144,37 @@
     $(".Preview").addClass('d-none');
     var theme_name = "";
     var detail_set = "";
+
+    if (detail_set != "" && theme_name != "") {
+
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url() . 'social_media_post/gettheme' ?>",
+            data: {
+                detail_set: detail_set,
+                theme_name: theme_name
+            },
+            success: function(output) {
+
+                $("body").toggleClass("blurred");
+
+
+                $("#content").html(output);
+
+                html2canvas(document.querySelector('#content')).then(function(canvas) {
+                    var image = canvas.toDataURL('image/png');
+                    // var imgElement = document.createElement('img');
+                    // imgElement.src = image;
+                    $("#previewPost").attr("src", image);
+                    $("#content").html("");
+                    $("body").removeClass("blurred");
+                    $(".Preview").removeClass('d-none');
+                });
+
+            },
+
+        });
+    }
     $('input[type="radio"][name="detail"]').each(function() {
         if ($(this).is(':checked')) {
             detail_set = $(this).val();
