@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?= base_url() . 'public/client_logo/' . $vendorData[0]->logo_image;
+exit; ?>
 
 <head>
     <meta charset="UTF-8">
