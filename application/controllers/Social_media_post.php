@@ -25,7 +25,7 @@ class Social_media_post extends Vendor_Controller
     {
 
         $vendorData = $this->this_model->getVendorData();
-        dd($vendorData);
+
 
         $data['newQuotes'] = "";
         $data['newColor'] = "";
