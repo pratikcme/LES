@@ -23,8 +23,8 @@
             </div>
             <h5><?= ($newQuotes != "") ? $newQuotes : $quotes[$festival_quotes]; ?></h5>
             <div class="footer">
-                <img src="data:image/svg+xml;base64,<?= base64_encode('
-             <svg width="1104" id="footer-line-img" height="4" viewBox="0 0 1104 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <img id="footer-line-img" src="data:image/svg+xml;base64,<?= base64_encode('
+             <svg width="1104"  height="4" viewBox="0 0 1104 4" fill="none" xmlns="http://www.w3.org/2000/svg">
              <line y1="2.39001" x2="1103.02" y2="2.39001" stroke="url(#paint0_linear_1_51)" stroke-width="3" />
              <defs>
                  <linearGradient id="paint0_linear_1_51" x1="1103" y1="4.01799" x2="52.5" y2="4.02766" gradientUnits="userSpaceOnUse">
