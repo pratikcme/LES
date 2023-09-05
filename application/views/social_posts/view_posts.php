@@ -138,8 +138,7 @@
         </div>
     </section>
 </section>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 
 <script>
     $(".Preview").addClass('d-none');
@@ -174,37 +173,15 @@
 
                 $("#content").html(output);
 
-
-                var element = document.querySelector('#content');
-
-                // Use dom-to-image to convert the element to an image
-                domtoimage.toPng(element)
-                    .then(function(dataUrl) {
-                        // Create an image element and set its source to the captured image
-                        // var imgElement = document.createElement('img');
-                        // imgElement.src = dataUrl;
-                        $("#previewPost").attr("src", dataUrl);
-                        $("#content").html("");
-                        $("body").removeClass("blurred");
-                        $(".Preview").removeClass('d-none');
-                        // Append the image element to the document body or use it as needed
-                        // document.body.appendChild(imgElement);
-                    })
-                    .catch(function(error) {
-                        console.error('Error capturing image:', error);
-                    });
-
-
-
-                // html2canvas(document.querySelector('#content')).then(function(canvas) {
-                //     var image = canvas.toDataURL('image/png');
-                //     // var imgElement = document.createElement('img');
-                //     // imgElement.src = image;
-                //     $("#previewPost").attr("src", image);
-                //     $("#content").html("");
-                //     $("body").removeClass("blurred");
-                //     $(".Preview").removeClass('d-none');
-                // });
+                html2canvas(document.querySelector('#content')).then(function(canvas) {
+                    var image = canvas.toDataURL('image/png');
+                    // var imgElement = document.createElement('img');
+                    // imgElement.src = image;
+                    $("#previewPost").attr("src", image);
+                    $("#content").html("");
+                    $("body").removeClass("blurred");
+                    $(".Preview").removeClass('d-none');
+                });
 
             },
 
@@ -244,39 +221,16 @@
 
                     $("#content").html(output);
 
-                    var element = document.querySelector('#content');
+                    html2canvas(document.querySelector('#content')).then(function(canvas) {
 
-                    // Use dom-to-image to convert the element to an image
-                    domtoimage.toPng(element)
-                        .then(function(dataUrl) {
-                            // Create an image element and set its source to the captured image
-                            // var imgElement = document.createElement('img');
-                            // imgElement.src = dataUrl;
-                            $("#previewPost").attr("src", dataUrl);
-                            $("#content").html("");
-                            $("body").removeClass("blurred");
-                            $(".Preview").removeClass('d-none');
-                            // Append the image element to the document body or use it as needed
-                            // document.body.appendChild(imgElement);
-                        })
-                        .catch(function(error) {
-                            console.error('Error capturing image:', error);
-                        });
-
-
-
-
-
-                    // html2canvas(document.querySelector('#content')).then(function(canvas) {
-
-                    //     var image = canvas.toDataURL('image/png');
-                    //     // var imgElement = document.createElement('img');
-                    //     // imgElement.src = image;
-                    //     $("#previewPost").attr("src", image);
-                    //     $("#content").html("");
-                    //     $("body").removeClass("blurred");
-                    //     $(".Preview").removeClass('d-none');
-                    // });
+                        var image = canvas.toDataURL('image/png');
+                        // var imgElement = document.createElement('img');
+                        // imgElement.src = image;
+                        $("#previewPost").attr("src", image);
+                        $("#content").html("");
+                        $("body").removeClass("blurred");
+                        $(".Preview").removeClass('d-none');
+                    });
                 },
 
             });
@@ -304,36 +258,15 @@
 
                     $("#content").html(output);
 
-
-                    var element = document.querySelector('#content');
-
-                    // Use dom-to-image to convert the element to an image
-                    domtoimage.toPng(element)
-                        .then(function(dataUrl) {
-                            // Create an image element and set its source to the captured image
-                            // var imgElement = document.createElement('img');
-                            // imgElement.src = dataUrl;
-                            $("#previewPost").attr("src", dataUrl);
-                            $("#content").html("");
-                            $("body").removeClass("blurred");
-                            $(".Preview").removeClass('d-none');
-                            // Append the image element to the document body or use it as needed
-                            // document.body.appendChild(imgElement);
-                        })
-                        .catch(function(error) {
-                            console.error('Error capturing image:', error);
-                        });
-
-
-                    // html2canvas(document.querySelector('#content')).then(function(canvas) {
-                    //     var image = canvas.toDataURL('image/png');
-                    //     // var imgElement = document.createElement('img');
-                    //     // imgElement.src = image;
-                    //     $("#previewPost").attr("src", image);
-                    //     $("#content").html("");
-                    //     $("body").removeClass("blurred");
-                    //     $(".Preview").removeClass('d-none');
-                    // });
+                    html2canvas(document.querySelector('#content')).then(function(canvas) {
+                        var image = canvas.toDataURL('image/png');
+                        // var imgElement = document.createElement('img');
+                        // imgElement.src = image;
+                        $("#previewPost").attr("src", image);
+                        $("#content").html("");
+                        $("body").removeClass("blurred");
+                        $(".Preview").removeClass('d-none');
+                    });
 
                 },
 
@@ -387,36 +320,16 @@
 
                         $("#content").html(output);
 
-                        var element = document.querySelector('#content');
+                        html2canvas(document.querySelector('#content')).then(function(canvas) {
 
-                        // Use dom-to-image to convert the element to an image
-                        domtoimage.toPng(element)
-                            .then(function(dataUrl) {
-                                // Create an image element and set its source to the captured image
-                                // var imgElement = document.createElement('img');
-                                // imgElement.src = dataUrl;
-                                $("#previewPost").attr("src", dataUrl);
-                                $("#content").html("");
-                                $("body").removeClass("blurred");
-                                $(".Preview").removeClass('d-none');
-                                // Append the image element to the document body or use it as needed
-                                // document.body.appendChild(imgElement);
-                            })
-                            .catch(function(error) {
-                                console.error('Error capturing image:', error);
-                            });
-
-
-                        // html2canvas(document.querySelector('#content')).then(function(canvas) {
-
-                        //     var image = canvas.toDataURL('image/png');
-                        //     // var imgElement = document.createElement('img');
-                        //     // imgElement.src = image;
-                        //     $("#previewPost").attr("src", image);
-                        //     $("#content").html("");
-                        //     $("body").removeClass("blurred");
-                        //     $(".Preview").removeClass('d-none');
-                        // });
+                            var image = canvas.toDataURL('image/png');
+                            // var imgElement = document.createElement('img');
+                            // imgElement.src = image;
+                            $("#previewPost").attr("src", image);
+                            $("#content").html("");
+                            $("body").removeClass("blurred");
+                            $(".Preview").removeClass('d-none');
+                        });
 
 
 
