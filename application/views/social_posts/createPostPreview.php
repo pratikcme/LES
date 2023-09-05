@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $theme ?></title>
-    <link rel="stylesheet" href="<?= base_url() . 'public/social_posts/' . $theme . '/css/style.css' ?>">
+    <link rel="stylesheet" href="<?= base_url() . 'public/social_posts/' . $theme . '/css/style.css' ?>" onload="captureContent()">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
