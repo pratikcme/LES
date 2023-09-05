@@ -3,7 +3,7 @@
 <div id="loader"></div>
 <style>
     .blurred {
-        filter: blur(10px);
+        filter: blur(5px);
         position: relative;
         z-index: 2;
         /* Adjust the blur intensity as needed */
