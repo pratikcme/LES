@@ -131,11 +131,13 @@ body{
     font-family: var(--Roboto-Medium);
     font-size: 20px;
     line-height: normal;
+    margin-bottom: 0px !important;
 }
 .social-icons{
     display: flex;
     align-items: center;
     gap: 15px;
+margin-bottom: 0px;
 }
 .social-icons li{
     list-style: none;
