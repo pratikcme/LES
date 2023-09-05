@@ -183,13 +183,16 @@
                     var logo_svgData = new XMLSerializer().serializeToString(logo_svg);
                     var logo_svgBase64 = btoa(unescape(encodeURIComponent(logo_svgData)));
 
+                    var logo_svgUrl = 'data:image/svg+xml;base64,' + logo_svgBase64;
+
                     var footer_line_imgData = new XMLSerializer().serializeToString(footer_line_img);
                     var footer_line_imgBase64 = btoa(unescape(encodeURIComponent(footer_line_imgData)));
+                    var footer_line_imgUrl = 'data:image/svg+xml;base64,' + footer_line_imgBase64;
 
                     var domainData = new XMLSerializer().serializeToString(domain);
                     var domainBase64 = btoa(unescape(encodeURIComponent(domainData)));
+                    var domainUrl = 'data:image/svg+xml;base64,' + domainBase64;
 
-                    var svgUrl = 'data:image/svg+xml;base64,' + svgBase64;
 
                     var image = canvas.toDataURL('image/png');
 
