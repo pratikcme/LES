@@ -16,10 +16,12 @@
         <div class="logo" style="background-color: <?= ($newColor != "") ? $newColor : "" ?>;">
 
             <img src="<?= base_url() . 'public/images/' . strtolower(str_replace(' ', '', $vendorData[0]->name)) . '/vendor_shop/' . $vendorData[0]->image ?>" alt="">
-
+            <svg width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M102 0V82C102 93.0457 93.0457 102 82 102H0" stroke="#28B469" stroke-width="9" />
+            </svg>
             <img src="data:image/svg+xml;base64,<?= base64_encode('
                <svg  width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
-               <path d="M102 0V82C102 93.0457 93.0457 102 82 102H0" stroke="#28B469d" stroke-width="9" />
+               <path d="M102 0V82C102 93.0457 93.0457 102 82 102H0" stroke="<?= ($newColor != "") ? $newColor : "#28B469" ?>" stroke-width="9" />
            </svg>
             ') ?>" alt="">
 
