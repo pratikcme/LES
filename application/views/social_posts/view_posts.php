@@ -172,7 +172,7 @@
 
 
                 $("#content").html(output);
-
+                return false;
                 html2canvas(document.querySelector('#content')).then(function(canvas) {
                     var image = canvas.toDataURL('image/png');
                     // var imgElement = document.createElement('img');
