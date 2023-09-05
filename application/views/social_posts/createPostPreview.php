@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+dd($vendorData);
+?>
 
 <head>
     <meta charset="UTF-8">
