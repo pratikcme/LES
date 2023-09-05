@@ -15,8 +15,9 @@
 <body>
     <div class="main" id="postprev">
         <div class="logo" style="background-color: <?= ($newColor != "") ? $newColor : "" ?>;">
-
-            <img src="<?= base_url() . 'public/images/' . strtolower(str_replace(' ', '', $vendorData[0]->name)) . '/vendor_shop/' . $vendorData[0]->image ?>" alt="">
+            <div class="logo-img">
+                <img src="<?= base_url() . 'public/images/' . strtolower(str_replace(' ', '', $vendorData[0]->name)) . '/vendor_shop/' . $vendorData[0]->image ?>" alt="">
+            </div>
         </div>
         <div class="inner-content">
             <div class="inner-center-img">
