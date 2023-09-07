@@ -280,16 +280,17 @@
 
         var newQuotes = $("#new_quotes").val();
         var newColor = $("#new_color").val();
+
         var isValid = true;
-        $(".validation-message").text("");
-        if (newQuotes === "") {
-            $("#quotesValidation").text("Please enter a quote.").addClass('text-danger');
-            isValid = false;
-        }
-        if (newColor === "") {
-            $("#colorValidation").text("Please select a color.").addClass('text-danger');
-            isValid = false;
-        }
+        // $(".validation-message").text("");
+        // if (newQuotes === "") {
+        //     $("#quotesValidation").text("Please enter a quote.").addClass('text-danger');
+        //     isValid = false;
+        // }
+        // if (newColor === "") {
+        //     $("#colorValidation").text("Please select a color.").addClass('text-danger');
+        //     isValid = false;
+        // }
 
         if (isValid) {
 
@@ -303,7 +304,7 @@
                 }
             });
 
-            if (detail_set != "" && theme_name != "" && newQuotes != "" && newColor != "") {
+            if (detail_set != "" && theme_name != "" && newColor != "") {
                 $.ajax({
                     type: "POST",
                     url: "<?= base_url() . 'social_media_post/gettheme' ?>",

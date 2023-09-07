@@ -28,9 +28,12 @@ class Social_media_post extends Vendor_Controller
 
 
         $data['newQuotes'] = "";
-        $data['newColor'] = "";
-        if (isset($_POST['newQuotes']) && isset($_POST['newColor'])) {
+        if (isset($_POST['newQuotes'])) {
             $data['newQuotes'] = $_POST['newQuotes'];
+        }
+        $data['newColor'] = "";
+        if (isset($_POST['newColor'])) {
+
             $data['newColor'] = $_POST['newColor'];
         }
         $data['detail_set'] = $_POST['detail_set'];
