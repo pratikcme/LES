@@ -37,8 +37,12 @@ class Social_media_post extends Vendor_Controller
         $data['theme'] = $_POST['theme_name'];
         $data['vendorData'] = $vendorData;
         $data['quotes'] = $this->quotes();
-        $festival_quotes = explode('_', $_POST['theme_name']);
-        $data['festival_quotes'] = $festival_quotes[0];
+
+        //  = explode('_', $_POST['theme_name']);
+        $festival_quotes = preg_replace("/_\d+/", "", $_POST['theme_name']);
+
+        //  preg_replace("/_+\d+/", "", $_POST['theme_name']);
+        $data['festival_quotes'] = $festival_quotes;
         $html = $this->load->view('social_posts/createPostPreview', $data, true);
 
 
