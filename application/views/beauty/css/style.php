@@ -1,7 +1,6 @@
 <?php
-echo $_SERVER['SERVER_NAME'];
-exit;
-if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'stagging.launchestore.com' || $_SERVER['SERVER_NAME'] == 'zhumkha.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'https://zhumkha.com') {
+
+if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'stagging.launchestore.com' || $_SERVER['SERVER_NAME'] == 'zhumkha.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'zhumkha.com') {
 
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
