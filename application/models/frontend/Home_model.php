@@ -270,7 +270,11 @@ class Home_model extends My_model
 			$data['where'] = [
 				's.category_id' => $category_id, 's.branch_id' => $branch_id, 's.status !=' => '9', 'p.status !=' => '9'
 			];
-			$data['join'] = [TABLE_PRODUCT . ' as p' => ['p.subcategory_id=s.id', 'INNER'], TABLE_CATEGORY . ' as c' => ['p.category_id=c.id', 'INNER']];
+			$data['join'] = [
+				TABLE_PRODUCT . ' as p' => ['p.subcategory_id=s.id', 'INNER'],
+
+				TABLE_CATEGORY . ' as c' => ['s.category_id=c.id', 'INNER']
+			];
 			$data['table'] = 'subcategory as s';
 			$result = $this->selectFromJoin($data);
 			// echo "<pre>";
