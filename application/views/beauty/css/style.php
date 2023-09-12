@@ -45,7 +45,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     //  ------categorie-sec-color------
     $categorieWrapperBorder = "#CCD3DB";
     $categorieWrapperBg = "linear-gradient(67deg, #F6EAFD 19.01%, rgba(246, 234, 253, 0.28) 100.66%)";
-    $categorieWrapperBgHover = "#3E0067";
+    $categorieWrapperBgHover = "#DE9F00";
     $categorieWrapperRound = "linear-gradient(67deg, #F6EAFD 19.01%, rgba(246, 234, 253, 0.28) 100.66%)";
     $categorieWrapperText = "#45006B";
 
