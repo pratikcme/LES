@@ -689,7 +689,7 @@ p {
 
 
   @media only screen and (max-width: 575px) {
-    .title h2::before {
+    .title svg {
         top: -50px;
         left: 47%;
         width: 100%;
