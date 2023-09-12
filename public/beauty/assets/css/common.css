@@ -53,10 +53,11 @@ p {
     max-width: 60px;
 }
 .title svg {
-    width: 66px;
+    width: 100%;
+    max-width: 60px;
     height: 52px;
     position: absolute;
-    top: -50px;
+    top: -55px;
     left: 50%;
 }  
 .title svg path{
@@ -682,5 +683,16 @@ p {
     }
     100% {
       transform: translateY(5px);
+    }
+  }
+
+
+
+  @media only screen and (max-width: 575px) {
+    .title h2::before {
+        top: -50px;
+        left: 47%;
+        width: 100%;
+        max-width: 50px;
     }
   }
