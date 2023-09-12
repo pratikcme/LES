@@ -266,11 +266,11 @@ class Home_model extends My_model
 		// print_r($postdata['category_id']);die;
 		if (isset($postdata['category_id']) && $postdata['category_id'] != '') {
 			$category_id = $postdata['category_id'];
-			$data['select'] = ['s.*', 'p.id as product_id'];
+			$data['select'] = ['s.*', 'c.*', 'p.id as product_id'];
 			$data['where'] = [
 				's.category_id' => $category_id, 's.branch_id' => $branch_id, 's.status !=' => '9', 'p.status !=' => '9'
 			];
-			$data['join'] = [TABLE_PRODUCT . ' as p' => ['p.subcategory_id=s.id', 'INNER']];
+			$data['join'] = [TABLE_PRODUCT . ' as p' => ['p.subcategory_id=s.id', 'INNER'], TABLE_CATEGORY . ' as c' => ['p.category_id=c.id', 'INNER']];
 			$data['table'] = 'subcategory as s';
 			$result = $this->selectFromJoin($data);
 			// echo "<pre>";
