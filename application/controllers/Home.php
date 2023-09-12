@@ -36,7 +36,7 @@ class Home extends User_Controller
 
 		$data['js'] = array('home.js', 'add_to_cart.js');
 
-		$data['category'] = $this->this_model->selectCategory();
+		$data['categorys'] = $this->this_model->selectCategory();
 
 
 		$data['folder'] = $this->folder . 'category/';
