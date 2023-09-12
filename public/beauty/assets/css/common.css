@@ -44,14 +44,14 @@ p {
     margin-bottom: 15px;
 }
 
-/* .title h2::before {
+.title h2::before {
     content: url(../images/home-page/title-common-img.png);
     position: absolute;
     top: -55px;
     left: 50%;
     width: 100%;
     max-width: 60px;
-} */
+}
 .title svg {
     width: 66px;
     height: 52px;
