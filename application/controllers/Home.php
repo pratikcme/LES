@@ -45,7 +45,7 @@ class Home extends User_Controller
 			$data['folder'] = $this->folder . 'product_image/';
 		}
 		// start
-		dd($data['category']);
+
 		$product_ids = [];
 		$data['top_sell_core'] = $this->this_model->selectTopSelling($product_ids); //call this for no reapeated product in new arrivals
 		// $data['top_sell_core'] = $this->this_model->selectTopSelling();
