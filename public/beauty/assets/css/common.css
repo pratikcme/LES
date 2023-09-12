@@ -52,10 +52,13 @@ p {
     width: 100%;
     max-width: 60px;
 } */
-.title svg{
+.title svg {
     width: 66px;
     height: 52px;
-}
+    position: absolute;
+    top: -50px;
+    left: 50%;
+}  
 .title svg path{
     fill: var(--secondary-color);
 }
