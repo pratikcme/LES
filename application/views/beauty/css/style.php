@@ -96,7 +96,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
 
     /* ------------lisiting-2-colors--------- */
     $listing2CtgBg = "#FFFFFF";
-    $listing2CtgBorder = "#FFE8EF";
+    $listing2CtgBorder = "#F6EAFD";
     $listing2HeaderBg = "#F6EAFD";
     $listing2HeaderText = "#0F053F";
     $listing2NormalText = "#555261";
