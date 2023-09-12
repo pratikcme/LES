@@ -53,7 +53,7 @@
 
         <div class="owl-1 owl-carousel owl-theme">
             <?php
-            dd($category);
+
             foreach ($category as $key => $value) { ?>
                 <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wapper">
                     <div class="categorie-img">
