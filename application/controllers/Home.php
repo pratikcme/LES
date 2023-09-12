@@ -37,12 +37,12 @@ class Home extends User_Controller
 		$data['js'] = array('home.js', 'add_to_cart.js');
 
 		$data['category'] = $this->this_model->selectCategory();
-
+		dd($data['category']);
 
 		$data['folder'] = $this->folder . 'category/';
 		if ($this->countCategory == 1 && count($subcategory) > 1) {
 			$data['category'] = $this->this_model->subcategory_list();
-			$data['folder'] = $this->folder . 'category/';
+			$data['folder'] = $this->folder . 'product_image/';
 		}
 		// start
 
