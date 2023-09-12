@@ -6,11 +6,11 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
 
-    $primaryColor = "#000000";
-    $secondaryColor = "#F92672";
+    $primaryColor = "#45006B";
+    $secondaryColor = "#DE9F00";
 
-    $primaryPink = "#F92672";
-    $secondaryBlack = "#0F053F";
+    $primaryPink = "#DE9F00";
+    $secondaryBlack = "#45006B";
     $lightBlack = "#868390";
 
     $primaryBoxShadow = "0px 20px 50px rgba(43, 174, 74, 0.15)";
@@ -18,13 +18,13 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     $titleFirstColor = "#0F053F";
     $commonPeraColor = "#868390";
     $commonBtnColor = "#11405A";
-    $commonBtnShadow = " 0px 7px 20px rgba(17, 64, 90, 0.2)";
+    $commonBtnShadow = "0px 7px 20px rgba(17, 64, 90, 0.2)";
     $commonWhite = "#fff";
     $btnHoverText = "#11405A";
     $btnHoverShadow = "0px 3px 10px 1px rgba(17, 64, 90, 0.9)";
     $selectBorderColor = "#C5CCD5";
 
-    $commonBorder = "#FFB9CE";
+    $commonBorder = "#F6EAFD";
 
     // -----breadcrumb-color--- 
     $breadcrumbLinkColor = "#222528";
@@ -33,36 +33,36 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     // / -----header-color---- /
     $headerIconColorFirst = "#222528";
     $headerIconColorSecond = "#FFFFFF";
-    $headerIconRoundColor = "#FFE5EF";
+    $headerIconRoundColor = "#F6EAFD";
     $headerTextWhite = "#FFFFFF";
-    $headerBtnBg = "#0F053F";
+    $headerBtnBg = "#45006B";
     $headerBtnText = "#FFFFFF";
 
     //  -----navigation-bar-color---- 
-    $navTextColor = "#0F053F";
-    $navHoverColor = "#F92672";
+    $navTextColor = "#45006B";
+    $navHoverColor = "#DE9F00";
 
     //  ------categorie-sec-color------
     $categorieWrapperBorder = "#CCD3DB";
-    $categorieWrapperBg = "linear-gradient(66.89deg, #FFE9F1 19.01%, rgba(255, 233, 241, 0.28) 100.66%)";
+    $categorieWrapperBg = "linear-gradient(67deg, #F6EAFD 19.01%, rgba(246, 234, 253, 0.28) 100.66%)";
     $categorieWrapperBgHover = "#2BAE4A";
-    $categorieWrapperRound = "linear-gradient(66.89deg, #FFE9F1 19.01%, rgba(255, 233, 241, 0.28) 100.66%)";
-    $categorieWrapperText = "#0F053F";
+    $categorieWrapperRound = "linear-gradient(67deg, #F6EAFD 19.01%, rgba(246, 234, 253, 0.28) 100.66%)";
+    $categorieWrapperText = "#45006B";
 
     // -------card-color------
     $cardBgColor = "#fff";
-    $cardBorderColor = "#FFE8EF";
+    $cardBorderColor = "#F6EAFD";
     $cardTextPrimary = "#0F053F";
     $cardTextSecondary = "#555261";
-    $cardNumberPrimary = "#F92672";
+    $cardNumberPrimary = "#DE9F00";
     $cardNumberSecondary = "#555261";
-    $cardBtnBg = "#F92672";
-    $cardImgBg = "#FFEEF4";
+    $cardBtnBg = "#3E0067";
+    $cardImgBg = "#F6EAFD";
 
     // ----our-offer-color---
     $offer1PrimaryText = "#F92672";
-    $offer1SecondaryText = "#0F053F";
-    $offer1Btn = "#0F053F";
+    $offer1SecondaryText = "#45006B";
+    $offer1Btn = "#45006B";
 
     $offer2PrimaryText = "#7749BE";
     $offer2SecondaryText = "#7C0580";
@@ -78,9 +78,9 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     // ----------footer-color------
     $footerTextPrimary = "#0F053F";
     $footerTextSecondary = "#555261";
-    $footerBgColor = "linear-gradient(72.81deg, #FFE9F1 30.13%, rgba(255, 233, 241, 0.28) 82.74%)";
-    $footerLinkHover = "#F92672";
-    $copyRightBg = "#F92672";
+    $footerBgColor = "linear-gradient(73deg, #ECDBF5 30.13%, rgba(236, 219, 245, 0.28) 82.74%)";
+    $footerLinkHover = "#DE9F00";
+    $copyRightBg = "#3E0067";
 
     /* ------------lisiting-colors--------- / */
     $lisingBannerTitle1 = "#222528";
@@ -97,44 +97,44 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     /* ------------lisiting-2-colors--------- */
     $listing2CtgBg = "#FFFFFF";
     $listing2CtgBorder = "#FFE8EF";
-    $listing2HeaderBg = "#FFEEF4";
+    $listing2HeaderBg = "#F6EAFD";
     $listing2HeaderText = "#0F053F";
     $listing2NormalText = "#555261";
 
     /* ------dropdown-cart------ / */
     $dropCartText1 = "#0F053F";
-    $dropCartText2 = "#0F053F";
-    $dropCartNumber = "#F92672";
+    $dropCartText2 = "#45006B";
+    $dropCartNumber = "#DE9F00";
     $dropCartBottomBorder = "#FFEEF4";
 
     /*  -----product-detalis-color----  */
     $productDetailsText1 = "#0F053F";
     $productDetailsText2 = "#555261";
-    $productDetailsText3 = "#F92672";
-    $productDetailsText4 = "#F92672";
-    $productDetailsImageBg = "#FFEEF4";
+    $productDetailsText3 = "#DE9F00";
+    $productDetailsText4 = "#DE9F00";
+    $productDetailsImageBg = "#F6EAFD";
     $productDetailsBtn1 = "#0F053F";
     $productDetailsBtn2 = "#2BAE4A";
 
 
     /*  -------- shop-cart-color-------  */
-    $cartTheadBg = "linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $cartTheadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
     $cartTheadText = "#0F053F";
     $cartTdText1 = "#0F053F";
     $cartTdText2 = "#414549";
-    $cartTdText3 = "#F92672";
-    $cartImageBg = "#FFEEF4";
-    $cartCounterBorder = "#FFB9CE";
+    $cartTdText3 = "#DE9F00";
+    $cartImageBg = "#F6EAFD";
+    $cartCounterBorder = "#F6EAFD";
     $cartCounterBg = "#fff";
-    $cartIcon = "#F92672";
-    $proceedCheckoutBtnBg = "#F92672";
+    $cartIcon = "#DE9F00";
+    $proceedCheckoutBtnBg = "#DE9F00";
     $proceedCheckoutBtnText = "#fff";
 
 
     /*  ----------------checkout-process-color-----  */
-    $accordianHeadBg = "linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
     $accordianBg = "#fff";
-    $accordianBorder = "#FFB9CE";
+    $accordianBorder = "#F6EAFD";
     $accordianHeadText = "#030235";
     $accordianIcon = "#FFB9CE";
     $accordianIconBg = "#FFEEF4";
@@ -146,12 +146,12 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
 
     /*  -------modal-popup-color----  */
     $modalBg = "rgba(17, 64, 90, 0.9)";
-    $modalText1 = "#F92672";
+    $modalText1 = "#DE9F00";
     $modalText2 = "#0F053F";
     $modalText3 = "#555261";
-    $continueBtnBg = "#F92672";
+    $continueBtnBg = "#DE9F00";
     $continueBtnText = "#fff";
-    $closeBtn = "#FED418";
+    $closeBtn = "#DE9F00";
 
 
     /*  -----------about-us-css--------  */
@@ -164,10 +164,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
 
 
     /*  ------myaccount-css---  */
-    $myaccoutnTabBg = "linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
-    $myaccoutnTabBorder = "#FFB9CE";
+    $myaccoutnTabBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $myaccoutnTabBorder = "#F6EAFD";
     $myaccoutnTabText = "#0F053F";
-    $myaccoutnTabActiveBg = "#F92672";
+    $myaccoutnTabActiveBg = "#3E0067";
     $myaccoutnTabLabelText = "#0F053F";
     $myaccoutnTabInputBg = "#FFFFFF";
     $myaccoutnTabInputBorder = "#D0C9F1";
@@ -177,27 +177,27 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'staggi
     $loginTitleColor = "#0F053F";
     $loginPeraColor = "#4E447D";
     $loginWrapperBg = "#FFFFFF";
-    $loginWrapperBorder = "#FFB9CE";
+    $loginWrapperBorder = "#F6EAFD";
     $loginWrapperLabel = "#0F053F";
     $loginWrapperPlacholder = "#555261";
     $loginWrapperInputBg = "#FFFFFF";
     $loginWrapperInputBorder = "#D0C9F1";
     $loginBtnBg = "#F92672";
     $loginBtnText = "#FFF";
-    $forgotText = "#F92672";
+    $forgotText = "#DE9F00";
 
     /*  -----contact-us-css-------  */
     $leftContactWrapperBg = "#FFFFFF";
-    $leftContactWrapperBorder = "#FFB9CE";
+    $leftContactWrapperBorder = "#F6EAFD";
     $leftContactWrapperLabel = "#0F053F";
     $leftContactWrapperInputBg = "#FFFFFF";
     $leftContactWrapperInputBorder = "#D0C9F1";
-    $leftContactSubmitBtnBg = "#F92672";
+    $leftContactSubmitBtnBg = "#DE9F00";
     $leftContactSubmitBtnText = "#FFF";
 
     $rightContactWrapperBg = "#11405A";
     $rightContactWrapperBorder = "#D9E2ED";
-    $rightContactIconRound = "#FFEEF4";
+    $rightContactIconRound = "#F6EAFD";
     $rightContactWrapperText = "#0F053F";
 
     $new_svg_color = "#ffe5ef";
