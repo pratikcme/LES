@@ -237,7 +237,7 @@ max-width: 25px;
 .login-img-part {
     position: relative;
 }
-.login-img-part img{
+.login-img-part svg{
     width: 100%;
     max-width: 300px;
     height: 500px;
