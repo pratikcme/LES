@@ -66,6 +66,9 @@
     position: absolute;
     right: -35px;
     top: -85px;
+    width: 100%;
+    max-width: 139px;
+height: 109px;
 }
 
 .about-us .about-img{
