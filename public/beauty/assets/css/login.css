@@ -371,8 +371,11 @@ max-width: 25px;
     .login-left-content .title{
         font-size: 35px !important;
     }
-    .login-left-content svg {
-        left: 28.5% !important;
+    .login-deatils-wrapper svg {
+        left: 28.5%;
+    }
+    .signin-deatils-wrapper svg {
+        left: 19.5% !important;
     }
     .login-img-part img {
         left: 80px !important;
@@ -420,8 +423,14 @@ max-width: 25px;
     .login-left-content .title{
         font-size: 30px !important;
     }
-    .login-left-content svg {
-        left: 32.5% !important;
+    .login-deatils-wrapper svg {
+        left: 32.5%;
+    }
+    .signin-deatils-wrapper svg {
+        left: 20.5% !important;
+    }
+    .signin-deatils-wrapper svg {
+        left: 21.5% !important;
     }
     .login-img-part img {
         left: 50px !important;
@@ -492,8 +501,11 @@ max-width: 25px;
     .login-left-content .title{
         font-size: 28px !important;
     }
-    .login-left-content svg {
-        left: 40.5% !important;
+    .login-deatils-wrapper svg {
+        left: 40.5%;
+    }
+    .signin-deatils-wrapper svg {
+        left: 22.5% !important;
     }
     .login-img-part img {
         left: 10px !important;
@@ -603,8 +615,11 @@ max-width: 25px;
     .login-left-content .title{
         font-size: 28px !important;
     }
-    .login-left-content svg {
-        left: 27.5% !important;
+    .login-deatils-wrapper svg {
+        left: 27.5%;
+    }
+    .signin-deatils-wrapper svg {
+        left: 15.5% !important;
     }
     .login-img-part img {
       display: none;
@@ -700,6 +715,9 @@ max-width: 25px;
     }
     .login-left-content .title::before {
         left: 23.5%;
+    }
+    .signin-deatils-wrapper svg {
+        left: 17.5% !important;
     }
     .login-img-part img {
       display: none;
@@ -797,8 +815,11 @@ max-width: 25px;
     .login-left-content .title{
         font-size: 26px !important;
     }
-    .login-left-content svg {
-        left: 30.5% !important;
+    .login-deatils-wrapper svg {
+        left: 30.5%;
+    }
+    .signin-deatils-wrapper svg {
+        left: 20.5% !important;
     }
     .login-img-part img {
       display: none;
