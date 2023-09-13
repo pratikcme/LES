@@ -171,7 +171,7 @@ nav .left-content a {
   transition: 0.5s !important;
 }
 
-nav .left-content a::before {
+/* nav .left-content a::before {
   content: url(../images/header-hover-img.svg);
   position: absolute;
   left: 30%;
@@ -179,7 +179,7 @@ nav .left-content a::before {
   transition: 0.5s !important;
   opacity: 0;
   visibility: hidden;
-}
+} */
 
 nav .left-content a:hover::before,
 nav .left-content a:hover {
