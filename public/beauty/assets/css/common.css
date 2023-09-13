@@ -63,9 +63,7 @@ p {
 .title svg path{
     fill: var(--secondary-color);
 }
-.home_cat_title{
-    position:absolute;
-}
+
 .title p {
     color: var(--common-pera-color);
     text-align: center;
