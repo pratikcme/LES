@@ -106,6 +106,7 @@ class Vendors_model extends My_model
 			'locality' => $postData['locality'],
 			'language_support' => $postData['language_support'],
 			'theme_name' =>  $postData['theme_name'],
+			'is_ecommerce' => $postData['is_ecommerce'],
 			'supported_language' => implode(',', $postData['supported_language'])
 		);
 
@@ -407,7 +408,7 @@ class Vendors_model extends My_model
 
 	function create_subdomain($subDomain, $rootDomain, $rootDirectory)
 	{
-		// exit('its sub domain');
+
 		if ($rootDirectory == '') {
 			return true;
 		}
@@ -447,6 +448,7 @@ class Vendors_model extends My_model
 		} else {
 			$newDomain = "https://" . $subDomain . "/";
 		}
+
 		return $newDomain;
 		return true;
 		// return "Created subdomain $newDomain";
@@ -496,6 +498,7 @@ class Vendors_model extends My_model
 			'multi_language'         => $postData['multi_language'],
 			'dt_updated'			 => strtotime(DATE_TIME),
 			'theme_name' => $postData['theme_name'],
+			'is_ecommerce' => $postData['is_ecommerce'],
 			'supported_language' 	 => implode(',', $postData['supported_language'])
 		];
 		$data['table'] = ADMIN;

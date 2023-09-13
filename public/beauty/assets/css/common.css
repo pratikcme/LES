@@ -43,7 +43,11 @@ p {
     position: relative;
     margin-bottom: 15px;
 }
+.title{
+    position: relative;
+}
 
+/* 
 .title h2::before {
     content: url(../images/home-page/title-common-img.png);
     position: absolute;
@@ -51,6 +55,17 @@ p {
     left: 50%;
     width: 100%;
     max-width: 60px;
+} */
+.title svg {
+    width: 100%;
+    max-width: 60px;
+    height: 52px;
+    position: absolute;
+    top: -55px;
+    left: 50%;
+}  
+.title svg path{
+    fill: var(--secondary-color);
 }
 
 .title p {
@@ -670,5 +685,16 @@ p {
     }
     100% {
       transform: translateY(5px);
+    }
+  }
+
+
+
+  @media only screen and (max-width: 575px) {
+    .title svg {
+        top: -50px;
+        left: 47%;
+        width: 100%;
+        max-width: 50px;
     }
   }

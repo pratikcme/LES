@@ -9303,6 +9303,24 @@ width: 350px;
   padding: 50px 0px 0px 0px;
 }
 
+/* sidebar  */
+
+.active{
+ background-color: #E0E0FD !important;
+
+}
+
+
+.active a{
+    color: #7474D4 !important;
+    font-weight: bold !important;
+}
+
+
+ul li a .active{
+    background-color: #E0E0FD !important;
+}
+
 /*======================FIRST MODAL============*/
 
 

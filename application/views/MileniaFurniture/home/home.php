@@ -310,6 +310,7 @@
                                             <?php if ($value->discount_per > '0') { ?>
                                                 <span class="discnt"><?= $value->discount_per . ' % off' ?></span>
                                             <?php } ?>
+
                                             <div class="hot-products-cart-wrap">
                                                 <a href="javascript:" class="addcartbutton product_<?= $this->utility->safe_b64encode($value->id) ?> <?= $d_none ?>" data-product_id="<?= $this->utility->safe_b64encode($value->id) ?>" data-varient_id="<?= $this->utility->safe_b64encode($value->pw_id) ?>">
                                                     <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -452,7 +453,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="product-detail-quentity add-cart-btns <?= $d_show ?>">
+                                            <div class="product-detail-quentity add-cart-btns ">
                                                 <div class="qty-container">
                                                     <button class="qty-btn-minus dec dec_<?= $value->pw_id ?> cart-qty-minus" data-product_weight_id="<?= $value->pw_id ?>" type="button"><i class="fa-solid fa-minus"></i></button>
                                                     <input type="text" name="qty" class="input-qty qty" value="<?= (!empty($value->addQuantity)) ? $value->addQuantity : 1 ?>" data-product_id="<?= $value->id ?>" data-weight_id="<?= $value->weight_id ?>" readonly>

@@ -107,6 +107,15 @@ $(document).ready(function () {
     if (catwithsubArray.length != 0) {
       cat_id = "";
     }
+
+    var range = $("#priceRange").val();
+    if (range != "") {
+      var numbers = range.split(" - ");
+
+      // Store the values in separate variables
+      var start_price = parseInt(numbers[0]);
+      var end_price = parseInt(numbers[1]);
+    }
     $.ajax({
       url: url + "products/subcategory/" + page,
       data: {

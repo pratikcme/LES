@@ -378,9 +378,10 @@ class Product_model extends My_model
 			$data['where']['p.category_id'] =  $postdata['cat_id'];
 			$cat_id = $postdata['cat_id'];
 			$subcategory = $this->getAllSubCategory($cat_id);
-			// echo $this->db->last_query();die;
+			// echo $this->db->last_query();
+			// die;
 		}
-		if (isset($postdata['getCatByURL']) && $postdata['getCatByURL'] != '') {
+		if (isset($postdata['getCatByURL']) && $postdata['getCatByURL'] != '' && empty($postdata['catwithsubArray'])) {
 			$data['where']['p.category_id'] =  $this->utility->safe_b64decode($postdata['getCatByURL']);
 		}
 		if (isset($_POST['page'])) {
@@ -414,13 +415,14 @@ class Product_model extends My_model
 		$data['select'] = ['p.*', "IF(p.display_priority IS NULL, 99999999999999999999 , p.display_priority) AS dp", 'p.id as prod_id', 'pw.price', 'pw.quantity', 'pw.discount_per', 'pw.id as product_weight_id', 'pw.discount_price', 'pi.image', 'pw.status as pw_status', 'pw.weight_id', 'pw.without_gst_price', 'pw.limited_stock as limited_stock'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
-			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
+			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT'],
+
 		];
 		$data['groupBy'] = 'p.id';
 		$data['limit'] = $page * $limit;
 
 		$product = $this->selectFromJoin($data);
-
+		//echo $this->db->last_query();
 		$total_result = $this->countRecords($data);
 
 		$pages = ceil($total_result / 20);
@@ -534,6 +536,7 @@ class Product_model extends My_model
 		$sub_dropdownCategory = "";
 		if (!empty($subcategory)) {
 			$subcatData['subcategory'] = $subcategory;
+
 			$subcatData['wish_pid'] = $wish_pid;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);
 			if ($_SESSION['template_name'] == 'frontend') {
@@ -1067,6 +1070,7 @@ class Product_model extends My_model
 
 	public function getAllSubCategory($cat_id = '')
 	{
+
 		if ($cat_id != '') {
 			$data['where']['category_id'] = $cat_id;
 		}

@@ -3,27 +3,8 @@ $(document).on("click", ".sub_cat_link", function () {
   $(this).addClass("active_sub");
 });
 
-// $(document).on('click',".cart-qty-plus",function() {
-//   quantityField = $(this).prev().val();
-//   quantity = $(this).prev();
-//   quantity.val(parseInt(quantityField) + 1);
-//   quantityField = $(this).prev().val();
-//    if(quantityField == 0){
-//     $(this).parent().prev('div').css('pointer-events','auto');
-//    }
-// });
+// Example usage of global start and end price values
 
-//  $(document).on('click',".cart-qty-minus",function() {
-//   quantityField = $(this).next().val();
-//   quantity = $(this).next();
-//   if (quantityField >= 1) {
-//         quantity.val(parseInt(quantityField) - 1);
-//   }
-//     quantityField = $(this).next().val();
-//    if(quantityField < 0 || quantityField == -0){
-//     $(this).parent().prev('div').css('pointer-events','none');
-//    }
-// });
 urlCategory_id();
 function urlCategory_id() {
   var cat_id = $("#getBycatID").val();
@@ -106,6 +87,17 @@ $(document).ready(function () {
     if (catwithsubArray.length != 0) {
       cat_id = "";
     }
+
+    var range = $("#priceRange").val();
+    if (range != "") {
+      var numbers = range.split(" - ");
+
+      // Store the values in separate variables
+      var start_price = parseInt(numbers[0]);
+      var end_price = parseInt(numbers[1]);
+    }
+    // Remove the "-"
+
     $.ajax({
       url: url + "products/subcategory/" + page,
       data: {
@@ -255,15 +247,14 @@ $(document).ready(function () {
   $(document).on("change", ".category_id", function () {
     var cat_id = $(this).attr("data-cat_id");
     var url = $("#url").val();
+
     // var sub_id = $("#sub_cat_id").val();
     onload(
       1,
       // sub_id,
       cat_id,
       (sort = ""),
-      (search = ""),
-      (start_price = ""), //Dk removed vars temp
-      (end_price = "")
+      (search = "")
     );
   });
 
@@ -325,8 +316,8 @@ $(document).ready(function () {
       cat_id,
       (sort = ""),
       (search = ""),
-      (start_price = ""), //Dk removed vars temp
-      (end_price = "")
+      (start_price = st_price),
+      (end_price = en_price)
     );
   });
 

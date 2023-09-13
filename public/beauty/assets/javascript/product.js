@@ -72,10 +72,24 @@ $(document).ready(function () {
     }
     if (cat_id == "") {
       var cat_id = $("#getBycatID").val();
+
       if (cat_id == "") {
         cat_id = $("#cat_id").val();
       }
     }
+
+    // if ($("#getBycatID").val() != "") {
+    //   $(".category_id").each(function () {
+    //     var catID = $(this).val();
+    //     if (catID == $("#getBycatID").val()) {
+    //       $(this).prop("checked", true);
+    //       $(".subcategoryId" + catID).prop("checked", true);
+    //     }
+    //   });
+    // } else {
+    //   $(this).prop("checked", false);
+    //   $(".subcategory_id").prop("checked", false);
+    // }
     // alert(cat_id);
     // var rangeArray = get_filter('range');
     // var rangeArray = $('#start_range').val();
@@ -104,6 +118,15 @@ $(document).ready(function () {
     }
     if (catwithsubArray.length != 0) {
       cat_id = "";
+    }
+
+    var range = $("#priceRange").val();
+    if (range != "") {
+      var numbers = range.split(" - ");
+
+      // Store the values in separate variables
+      var start_price = parseInt(numbers[0]);
+      var end_price = parseInt(numbers[1]);
     }
     $.ajax({
       url: url + "products/subcategory/" + page,
@@ -255,6 +278,7 @@ $(document).ready(function () {
   $(document).on("change", ".category_id", function () {
     var cat_id = $(this).attr("data-cat_id");
     var url = $("#url").val();
+
     // var sub_id = $("#sub_cat_id").val();
     onload(
       1,

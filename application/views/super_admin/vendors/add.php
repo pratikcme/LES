@@ -1,16 +1,15 @@
   <style type="text/css">
-span.error {
-    color: red;
-}
+      span.error {
+          color: red;
+      }
   </style>
   <section class="new-customer background-blue-grey">
       <?php if ($this->session->flashdata('myMessage') != '') {
-      echo $this->session->flashdata('myMessage');
-    } ?>
+            echo $this->session->flashdata('myMessage');
+        } ?>
       <div class="container">
           <div class="row">
-              <form id="vendor_form" method="POST" action="<?= $FormAction ?>" class="new-cust-form basic-form"
-                  enctype='multipart/form-data'>
+              <form id="vendor_form" method="POST" action="<?= $FormAction ?>" class="new-cust-form basic-form" enctype='multipart/form-data'>
                   <div class="invoice-title border-grey">
                       <h3 class="mb-0"><span><i class="far fa-file-alt"></i></span> Add Vendor</h3>
                   </div>
@@ -67,8 +66,7 @@ span.error {
                               <label for="domain_name">Domain Name</label>
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <input type="text" name="domain_name" class="form-control name" id="domain_name"
-                                          placeholder="Domain Name">
+                                      <input type="text" name="domain_name" class="form-control name" id="domain_name" placeholder="Domain Name">
                                   </div>
                               </div>
                           </div>
@@ -90,8 +88,7 @@ span.error {
                               <label for="approved">Shop Owner Name</label>
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <input type="text" name="ownername" class="form-control"
-                                          placeholder="Shop Owner Name">
+                                      <input type="text" name="ownername" class="form-control" placeholder="Shop Owner Name">
                                   </div>
                               </div>
                           </div>
@@ -106,7 +103,7 @@ span.error {
                                       <select class="form-control" name="store_type">
                                           <option value="">Select Store Type</option>
                                           <?php foreach ($getStore as $key => $value) { ?>
-                                          <option value="<?= $value->id ?>"><?= $value->name ?></option>
+                                              <option value="<?= $value->id ?>"><?= $value->name ?></option>
                                           <?php } ?>
                                       </select>
                                   </div>
@@ -117,9 +114,9 @@ span.error {
                           <div class="form-group">
                               <label for="supported_language">Supported Language</label>
                               English
-                              <input type="checkbox" name="supported_language[]" value="en"/>
+                              <input type="checkbox" name="supported_language[]" value="en" />
                               Arabic
-                              <input type="checkbox" name="supported_language[]" value="ar"/>
+                              <input type="checkbox" name="supported_language[]" value="ar" />
                           </div>
                       </div>
                       <div class="col-lg-6">
@@ -139,8 +136,7 @@ span.error {
                               <label for="login_type">Email Address</label>
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <input type="email" name="email" id="email" class="form-control valid"
-                                          placeholder="Email Address">
+                                      <input type="email" name="email" id="email" class="form-control valid" placeholder="Email Address">
                                   </div>
                               </div>
                           </div>
@@ -150,8 +146,7 @@ span.error {
                               <label for="approved">Password</label>
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <input id="password" name="password" type="password" class="form-control"
-                                          placeholder="Password">
+                                      <input id="password" name="password" type="password" class="form-control" placeholder="Password">
                                   </div>
                               </div>
                           </div>
@@ -163,8 +158,7 @@ span.error {
                               <label for="login_type">Confirm Password</label>
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <input name="cpassword" type="password" class="form-control"
-                                          placeholder="Confirm Password">
+                                      <input name="cpassword" type="password" class="form-control" placeholder="Confirm Password">
                                   </div>
                               </div>
                           </div>
@@ -174,8 +168,7 @@ span.error {
                               <label for="mobile_number">Mobile Number</label>
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <input type="text" name="mobile_number" class="form-control "
-                                          placeholder="Mobile Number">
+                                      <input type="text" name="mobile_number" class="form-control " placeholder="Mobile Number">
                                   </div>
                               </div>
                           </div>
@@ -198,15 +191,9 @@ span.error {
                                       :</span> </label>
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <input type="text" id="departure_address"
-                                          onfocus="initAutocomplete('departure_address')"
-                                          class="dis form-control pac-target-input valid" name="location"
-                                          maxlength="255" value="" placeholder="Location" autocomplete="off"> <span
-                                          style="color: red;"></span>
-                                      <input type="hidden" id="departure_latitude" name="latitude"
-                                          placeholder="Latitude" value="">
-                                      <input type="hidden" id="departure_longitude" name="longitude"
-                                          placeholder="Longitude" value="">
+                                      <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="dis form-control pac-target-input valid" name="location" maxlength="255" value="" placeholder="Location" autocomplete="off"> <span style="color: red;"></span>
+                                      <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
+                                      <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">
                                   </div>
                               </div>
                           </div>
@@ -239,12 +226,12 @@ span.error {
                               <select name="theme_name" class="form-control" id="theme_select">
                                   <option value="">Select Theme</option>
                                   <?php
-                  foreach ($themes_list as $val) :
-                  ?>
-                                  <option value="<?= $val->theme_key ?>" data-img="<?= $val->image ?>"><?= $val->name ?>
-                                  </option>
+                                    foreach ($themes_list as $val) :
+                                    ?>
+                                      <option value="<?= $val->theme_key ?>" data-img="<?= $val->image ?>"><?= $val->name ?>
+                                      </option>
                                   <?php endforeach;
-                  ?>
+                                    ?>
                               </select>
                           </div>
                       </div>
@@ -255,12 +242,24 @@ span.error {
                               <img src="" id="imgPreview" style="height:100px;width:100px" alt="err">
                           </div>
                       </div>
+
+
+                      <div class="col-lg-6">
+                          <div class="form-group">
+                              <label for="language">Web Type</label>
+                              <select name="is_ecommerce" class="form-control" id="is_ecommerce">
+                                  <option value="">Select Web Type</option>
+                                  <option value="1">E-commerce</option>
+                                  <option value="0">Infomation</option>
+
+                              </select>
+                          </div>
+                      </div>
                       <!-- check only -->
                   </div>
                   <div class="button-group">
                       <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-new">Save </button>
-                      <a href="<?= base_url() . $this->url ?>" style="display: inline-block;"
-                          class="btn btn-new">Cancel</a>
+                      <a href="<?= base_url() . $this->url ?>" style="display: inline-block;" class="btn btn-new">Cancel</a>
                   </div>
           </div>
           </form>

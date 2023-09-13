@@ -191,6 +191,13 @@ class User_Controller extends MY_Controller
                 $this->session->set_userdata($branch);
             }
         }
+
+        if (isset($_SESSION['is_ecommerce']) && $_SESSION['is_ecommerce'] == 0) {
+            $segment_1 = $this->uri->segment(1);
+            if ($segment_1 == 'login' || $segment_1 == 'register') {
+                redirect(base_url() . 'home');
+            }
+        }
     }
 
     function loadView($layout, $data)
@@ -216,6 +223,12 @@ class User_Controller extends MY_Controller
         $data['multi_language'] = $this->vendor_model->getMultiLanguage($this->session->userdata('vendor_id'));
 
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
+
+
+        $data['is_ecommerce'] = $data['ApprovedBranch'][0]->is_ecommerce;
+
+        $this->session->set_userdata('is_ecommerce', $data['ApprovedBranch'][0]->is_ecommerce);
+
         $data['language_support'] = ($data['ApprovedBranch'][0]->language_support == '1') ? 'ar' : 'en';
         $language_support = 'en';
         if ($data['ApprovedBranch'][0]->language_support == 1) {
@@ -439,10 +452,10 @@ class Super_Admin_Controller extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata['validSuperAdmin'] == '') {
-            redirect(base_url() . 'admin');
-        }
-        $this->title = 'LaunchEstore';
+        // if ($this->session->userdata['validSuperAdmin'] == '') {
+        //     redirect(base_url() . 'admin');
+        // }
+        //   $this->title = 'LaunchEstore';
     }
 }
 

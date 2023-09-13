@@ -12,6 +12,7 @@
 
 
 <body>
+
   <section class="loader-main d-none">
     <div class="loader-wrapper">
       <span class="dot"></span>

@@ -253,7 +253,6 @@ var ADDRESS = (function () {
   //     return /^[a-zA-Z\s]*$/.test(value) && (value.length <= "25");
   // });
 
-  myModal;
   $(document).on("click", ".addAddress", function () {
     $("#myModal").show();
   });

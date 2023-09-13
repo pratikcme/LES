@@ -927,6 +927,14 @@ content: '';
     {
         width: 100px;
     }
+
+    .lng-drp select, .branch-drp select{
+        max-width: 70px;
+    }
+
+    .branch-drp:after, .goog-te-gadget::after{
+        right: 12px;
+    }
 }
 
 @media only screen and (max-width:991px){
@@ -1045,11 +1053,11 @@ content: '';
         font-size: 13px !important;
     }
 
-    .goog-te-gadget .goog-te-combo,
+    /* .goog-te-gadget .goog-te-combo,
     .branch-drp
     {
         width: 70px;
-    }
+    } */
 
     
     .mobile-nav ul {

@@ -296,11 +296,11 @@ $(function () {
     values: [0, 0],
     slide: function (event, ui) {
       $("#siteCurr").remove();
-      $("#amount").val(
-        siteCurrency + " " + ui.values[0] + "-" + siteCurrency + ui.values[1]
-      );
+      $("#amount").val(ui.values[0] + "-" + ui.values[1]);
       var cat_id = $("#cat_id").val();
-      var sub_id = $("#sub_cat_id").val();
+
+      // var sub_id = $("#sub_cat_id").val();
+      var sub_id = "";
       st_price = ui.values[0];
       en_price = ui.values[1];
       clearTimeout(timeoutId);
@@ -344,6 +344,19 @@ function onload(
   // alert(rangeArray);
   var discountArray = get_filter("discount");
   var brandArray = get_filter("brand");
+
+  var range = $("#amount").val();
+
+  if (range != "") {
+    var numbers = range.split("-");
+
+    // Store the values in separate variables
+    if (parseInt(numbers[1]) != 0) {
+      var start_price = parseInt(numbers[0]);
+      var end_price = parseInt(numbers[1]);
+    }
+  }
+
   var slider = "1";
   $.ajax({
     url: url + "products/subcategory/" + page,

@@ -9,6 +9,7 @@ define('TABLE_VENDOR', 'branch');
 define('TABLE_CONTACT_US', 'contact_us');
 define('TABLE_PRODUCT', 'product');
 define('TABLE_PRODUCT_IMAGE', 'product_image');
+define('TABLE_PRODUCT_SEARCH', 'product_search');
 define('TABLE_PRODUCT_WEIGHT', 'product_weight');
 define('TABLE_PRODUCT_SEARCH', 'product_search');
 define('TABLE_WEIGHT', 'weight');
@@ -71,3 +72,8 @@ define('DEFAULT_MESSAGE', 'Somthing Went Wrong');
 
 define('SMSGATEWAY', 'sms_gateway');
 define('TABLE_LIVE_CHAT_CREDS', 'live_chat_creds');
+define('TABLE_TAX', 'tax');
+define('TABLE_TAX_TYPE', 'tax_type');
+define('TABLE_VENDOR_SOCIAL_POSTS', 'vendor_social_posts');
+define('TABLE_FESTIVALS_POSTS', 'festivals_posts');
+define('TABLE_POSTS_THEMES', 'social_posts_themes');

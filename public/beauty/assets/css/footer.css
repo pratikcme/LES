@@ -26,9 +26,9 @@ footer{
 
 .logo-foot-img{
     height: 140px;
-    
+
 }
- footer svg path{
+footer #Layer_1 path{
     fill: var(--footer-bg-color) !important;
 }
 

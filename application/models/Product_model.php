@@ -591,13 +591,17 @@ class product_model extends My_model
         $package = $_POST['package'];
         $limited_stock = $_POST['limited_stock'];
 
-        $discount_price_cal = (($price * $discount_per) / 100);
-        $discount_price = $price - $discount_price_cal;
+        // inclusive gst // 
 
-        $final_discount_price = number_format((float)$discount_price, 2, '.', '');
+        $without_gst_price = numberFormat($price / ($gst_percent + 100) * 100);
 
-        $gst_amount = numberFormat(($final_discount_price * $gst_percent) / 100);
-        $product_price_without_gst = numberFormat(numberFormat($final_discount_price) - $gst_amount);
+        $discount_price_cal = numberFormat(($without_gst_price * $discount_per) / 100);
+        $discount_price = numberFormat($without_gst_price - $discount_price_cal);
+
+
+
+        $gst_amount = numberFormat(($discount_price * $gst_percent) / 100);
+        $product_price_with_gst = numberFormat(numberFormat($discount_price) + $gst_amount);
 
         $barcode = $_POST['qr_code'];
 
@@ -615,8 +619,8 @@ class product_model extends My_model
                 'price' => $price,
                 'quantity' => $quantity,
                 'discount_per' => $discount_per,
-                'without_gst_price' => number_format((float)$product_price_without_gst, 2, '.', ''),
-                'discount_price' => $final_discount_price,
+                'without_gst_price' => $without_gst_price,
+                'discount_price' => $product_price_with_gst,
                 'dt_updated' => strtotime(date('Y-m-d H:i:s')),
             );
 
@@ -681,8 +685,8 @@ class product_model extends My_model
                 'price' => $price,
                 'quantity' => $quantity,
                 'discount_per' => $discount_per,
-                'discount_price' => $final_discount_price,
-                'without_gst_price' => number_format((float)$product_price_without_gst, 2, '.', ''),
+                'without_gst_price' => $without_gst_price,
+                'discount_price' => $product_price_with_gst,
                 'status' => '1',
                 'dt_added' => strtotime(date('Y-m-d H:i:s')),
                 'dt_updated' => strtotime(date('Y-m-d H:i:s')),
