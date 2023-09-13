@@ -577,11 +577,16 @@ nav .left-content ul li{
 }
 nav .left-content ul li svg{
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -20px;
+  left: 50%;
+  transform: translate( -50%, 0%);
   width: 100%;
   max-width: 26px;
   height: 20px;
+  opacity: 0;
+}
+nav .left-content a:hover li svg{
+  opacity: 1;
 }
 
 /* ====menu-responsive-css======= */
