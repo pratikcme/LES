@@ -37,8 +37,16 @@ header {
   align-items: center;
 }
 
-.header-top .logo img{
+.header-top .logo{
+  width: 100%;
   max-width: 180px;
+  height: 140px;
+}
+
+.header-top .logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .social-icons {
@@ -48,7 +56,9 @@ header {
 }
 
 .social-icons .header-icon {
-  width: 46px;
+  width: 100%;
+  max-width: 46px;
+  min-width: 46px;
   height: 46px;
   border-radius: 50%;
   display: flex;
@@ -56,6 +66,9 @@ header {
   align-items: center;
   background: var(--header-icon-round-color);
   /* z-index: 110; */
+}
+.icon-tex{
+  width: max-content;
 }
 
 .header-icon i {
@@ -744,4 +757,34 @@ nav .left-content a:hover {
   .icon-tex {
     display: none;
   }
+}
+
+
+@media only screen and (max-width: 1599px){
+  .header-top .logo {
+    width: 100%;
+    max-width: 180px;
+    height: 120px;
+}
+}
+@media only screen and (max-width: 1399px){
+  .header-top .logo {
+    width: 100%;
+    max-width: 180px;
+    height: 100px;
+}
+}
+@media only screen and (max-width: 991px){
+  .header-top .logo {
+    width: 100%;
+    max-width: 150px;
+    height: 100px;
+}
+}
+@media only screen and (max-width: 575px){
+  .header-top .logo {
+    width: 100%;
+    max-width: 100px !important;
+    height: 80px !important;
+}
 }
