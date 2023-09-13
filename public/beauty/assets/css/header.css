@@ -572,6 +572,18 @@ nav .left-content a:hover {
   font-size: 20px;
 }
 
+.nav .left-content li{
+  position: relative;
+}
+.nav .left-content li svg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 26px;
+  height: 20px;
+}
+
 /* ====menu-responsive-css======= */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
