@@ -710,6 +710,10 @@
     left: 44%;
 }
 
+.Latest-Products .title svg {
+    left: 44%;
+}
+
 .Latest-Products .owl-carousel .owl-nav button {
     display: none !important;
 }
