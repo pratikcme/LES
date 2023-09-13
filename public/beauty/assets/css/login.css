@@ -301,13 +301,12 @@ max-width: 25px;
 }
 
 .login-deatils-wrapper svg {
-    left: 15.5%;
+    left: 20.5%;
     width: 100%;
     max-width: 60px;
     height: 52px;
     position: absolute;
-    top: -55px;
-    
+ 
 }
 
 .form-in .form-select{
