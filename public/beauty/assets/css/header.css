@@ -58,6 +58,7 @@ header {
 .social-icons .header-icon {
   width: 100%;
   max-width: 46px;
+  min-width: 46px;
   height: 46px;
   border-radius: 50%;
   display: flex;
@@ -65,6 +66,9 @@ header {
   align-items: center;
   background: var(--header-icon-round-color);
   /* z-index: 110; */
+}
+.icon-text{
+  width: max-content;
 }
 
 .header-icon i {
