@@ -44,7 +44,7 @@ p {
     margin-bottom: 15px;
 }
 
-.title svg::before {
+.title h2::before {
     content: url(../images/home-page/title-common-img.png);
     position: absolute;
     top: -55px;
