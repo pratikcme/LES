@@ -33,14 +33,14 @@ max-width: 25px;
 
 
 }
-.login-left-content .title::before{
+/* .login-left-content .title::before{
     content: url(../images/home-page/title-common-img.png);
     position: absolute;
     top: -55px;
     left: 30.5%;
     width: 100%;
     max-width: 60px;
-}
+} */
 .login-deatils-wrapper svg{
     left: 33.5%
 }
