@@ -37,8 +37,15 @@ header {
   align-items: center;
 }
 
-.header-top .logo img{
+.header-top .logo{
+  width: 100%;
   max-width: 180px;
+}
+
+.header-top .logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .social-icons {
