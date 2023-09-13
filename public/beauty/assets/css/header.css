@@ -572,10 +572,10 @@ nav .left-content a:hover {
   font-size: 20px;
 }
 
-.nav .left-content li{
+.nav .left-content ul li{
   position: relative;
 }
-.nav .left-content li svg{
+.nav .left-content ul li svg{
   position: absolute;
   top: 0;
   left: 0;
