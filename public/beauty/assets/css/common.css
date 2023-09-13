@@ -43,6 +43,10 @@ p {
     position: relative;
     margin-bottom: 15px;
 }
+.title{
+    position: relative;
+}
+
 
 .title h2::before {
     content: url(../images/home-page/title-common-img.png);
