@@ -67,6 +67,7 @@ max-width: 25px;
     overflow: hidden;
     overflow-y: scroll;
    overscroll-behavior: none;
+   position: relative;
 }
 .login-deatils-wrapper::-webkit-scrollbar {
     display: none;
