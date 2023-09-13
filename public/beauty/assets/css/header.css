@@ -67,7 +67,7 @@ header {
   background: var(--header-icon-round-color);
   /* z-index: 110; */
 }
-.icon-text{
+.icon-tex{
   width: max-content;
 }
 
