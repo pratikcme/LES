@@ -760,7 +760,7 @@ nav .left-content a:hover {
 }
 
 
-@media only screen and (max-width: 1399px){
+@media only screen and (max-width: 1599px){
   .header-top .logo {
     width: 100%;
     max-width: 180px;
