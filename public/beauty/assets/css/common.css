@@ -47,7 +47,7 @@ p {
     position: relative;
 }
 
-
+/* 
 .title h2::before {
     content: url(../images/home-page/title-common-img.png);
     position: absolute;
@@ -55,7 +55,7 @@ p {
     left: 50%;
     width: 100%;
     max-width: 60px;
-}
+} */
 .title svg {
     width: 100%;
     max-width: 60px;
