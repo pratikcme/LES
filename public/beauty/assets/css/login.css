@@ -41,6 +41,9 @@ max-width: 25px;
     width: 100%;
     max-width: 60px;
 }
+.login-deatils-wrapper svg{
+    left: 33.5%
+}
 
 .signin-deatils-wrapper svg{
     left: 33.5% !important;
