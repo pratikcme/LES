@@ -200,13 +200,11 @@
     background: var(--common-bg-color);
 }
 
-.Featured-Products .title h2::before {
-    content: url(../images/home-page/title-common-img.png);
-    position: absolute;
+.Featured-Products .title svg {
+  
     top: -55px;
     left: 42.5%;
-    width: 100%;
-    max-width: 60px;
+  
 }
 
 .card-body {
