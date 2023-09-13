@@ -43,8 +43,7 @@ max-width: 25px;
 }
 
 .login-left-content svg{
-    left: 30.5%;
-   
+    left: 30.5% !important;
 }
 
 .login-left-content .pera{
