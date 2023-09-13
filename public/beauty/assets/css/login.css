@@ -300,6 +300,10 @@ max-width: 25px;
     left: 15.5%;
 }
 
+.signin-deatils-wrapper svg {
+    left: 15.5%;
+}
+
 .form-in .form-select{
     background: var(--common-white);
     border: 1px solid var(--myaccoutn-tab-input-border) !important;
