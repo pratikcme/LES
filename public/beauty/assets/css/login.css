@@ -363,6 +363,10 @@ max-width: 25px;
     left: 33.5%;
 }
 
+.forgot-section .login-deatils-wrapper svg {
+    left: 33.5% !important;
+}
+
 
 /* ====RESPONSIVE===== */
 @media screen and (min-width: 1200px) and (max-width: 1399px){
@@ -373,6 +377,9 @@ max-width: 25px;
     }
     .login-deatils-wrapper svg {
         left: 28.5%;
+    }
+    .forgot-section .login-deatils-wrapper svg {
+         left: 28.5% !important;
     }
     .signin-deatils-wrapper svg {
         left: 19.5% !important;
@@ -426,6 +433,9 @@ max-width: 25px;
     .login-deatils-wrapper svg {
         left: 32.5%;
     }
+    .forgot-section .login-deatils-wrapper svg {
+        left: 32.5% !important;
+   }
     .signin-deatils-wrapper svg {
         left: 20.5% !important;
     }
@@ -504,6 +514,9 @@ max-width: 25px;
     .login-deatils-wrapper svg {
         left: 40.5%;
     }
+    .forgot-section .login-deatils-wrapper svg {
+        left: 40.5% !important;
+   }
     .signin-deatils-wrapper svg {
         left: 22.5% !important;
     }
@@ -618,6 +631,9 @@ max-width: 25px;
     .login-deatils-wrapper svg {
         left: 27.5%;
     }
+    .forgot-section .login-deatils-wrapper svg {
+        left: 27.5% !important;
+   }
     .signin-deatils-wrapper svg {
         left: 15.5% !important;
     }
@@ -716,6 +732,9 @@ max-width: 25px;
     .login-left-content .title::before {
         left: 23.5%;
     }
+    .forgot-section .login-deatils-wrapper svg {
+        left: 23.5% !important;
+   }
     .signin-deatils-wrapper svg {
         left: 17.5% !important;
     }
@@ -818,6 +837,9 @@ max-width: 25px;
     .login-deatils-wrapper svg {
         left: 30.5%;
     }
+    .forgot-section .login-deatils-wrapper svg {
+        left: 30.5% !important;
+   }
     .signin-deatils-wrapper svg {
         left: 20.5% !important;
     }
