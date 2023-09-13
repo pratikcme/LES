@@ -28,7 +28,7 @@ footer{
     height: 140px;
 
 }
- footer svg path{
+footer #Layer_1 svg path{
     fill: var(--footer-bg-color) !important;
 }
 
