@@ -1,3 +1,6 @@
+label.error{
+ font-size: 13px !important;   
+}
 a {
     text-decoration: none !important;
 }
