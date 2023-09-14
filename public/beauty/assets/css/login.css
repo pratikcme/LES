@@ -103,7 +103,7 @@ max-width: 25px;
     width: 100%;
     height: 60px;
     padding-left: 25px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     outline: 0;
 }
 
@@ -114,7 +114,7 @@ max-width: 25px;
     width: 100%;
     height: 60px;
     padding-left: 25px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     outline: 0;
 }
 
@@ -336,7 +336,7 @@ max-width: 25px;
     /* background-image: url(../images/selectarrow.png); */
     /* background-repeat: no-repeat; */
     /* background-size: 12px; */
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     outline: 0;
     /* background-position-y: 25px; */
     /* background-position-x: 520px; */
@@ -382,7 +382,7 @@ max-width: 25px;
 }
 .login-deatils-wrapper .form-check{
     align-items: center;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 /* ====RESPONSIVE===== */
