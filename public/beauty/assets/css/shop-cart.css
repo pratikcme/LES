@@ -673,10 +673,10 @@ table th:nth-child(4){
 
 @media only screen and (max-width: 575) {
     .cart-product-detail {
-        overflow: unset;
+        overflow: unset !important;
         max-height: 100% !important;
         min-height: 100% !important;
-        overflow-y: unset;
+        overflow-y: unset !important;
     }
 }
 
