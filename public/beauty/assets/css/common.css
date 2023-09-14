@@ -1,9 +1,3 @@
-.carousel-item{
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  
 label.error{
  font-size: 13px !important;   
 }
@@ -687,6 +681,16 @@ p {
     background: #fff;
     animation-delay: -1s;
   }
+  .carousel-item{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .breadscrubBanner{
+    padding-top: 170px !important;
+    padding-bottom: 0px !important;
+  }
   
   @keyframes animate {
     0% {
@@ -697,7 +701,16 @@ p {
     }
   }
 
-
+  @media only screen and (max-width: 1399px){
+    .common-banner-bg.breadscrubBanner{
+        padding-top: 150px !important;
+      }
+  }
+  @media only screen and (max-width: 575px){
+    .common-banner-bg.breadscrubBanner{
+        padding-top: 60px !important;
+      }
+  }
 
   @media only screen and (max-width: 575px) {
     .title svg {
