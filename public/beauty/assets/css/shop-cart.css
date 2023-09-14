@@ -663,6 +663,10 @@ table th:nth-child(4){
     .cart-totals-part table th:nth-child(1) {
         padding-left: 20px;
     }
+    .shop-cart-seciton {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
     
     
 }
@@ -689,6 +693,13 @@ table th:nth-child(4){
         left: 0px;
         padding: 15px 20px 15px 20px;
         font-size: 15px !important;
+    }
+    table td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .clear-btn{
+        margin-top: 0px !important;
     }
         
 }
@@ -725,6 +736,13 @@ table th:nth-child(4){
     }
     .cart-product-detail tr{
         margin-bottom: 20px;
+    }
+    table td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .clear-btn{
+        margin-top: 0px !important;
     }
         
 }
@@ -765,6 +783,13 @@ table th:nth-child(4){
     }
     .cart-product-detail tr{
         margin-bottom: 20px;
+    }
+    table td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .clear-btn{
+        margin-top: 0px !important;
     }
         
 }
