@@ -66,14 +66,14 @@ max-width: 25px;
     background: var( --login-wrapper-bg);
     border: 1px solid var( --login-wrapper-border);
     width: 636px;
-    height: 663px;
+    height: 100%;
     box-shadow: 0px 20px 50px rgba(34, 37, 40, 0.1);
     border-radius: 20px;
     padding: 50px 40px 0px 40px;
     /* margin-left: 50px; */
-    overflow: hidden;
+    /* overflow: hidden;
     overflow-y: scroll;
-   overscroll-behavior: none;
+   overscroll-behavior: none; */
    position: relative;
 }
 .login-deatils-wrapper::-webkit-scrollbar {
@@ -370,7 +370,7 @@ max-width: 25px;
 
 /* ====RESPONSIVE===== */
 
-@media screen and (min-width: 1399px){
+@media only screen and (max-width: 1399px){
     .google-btn span{
         margin-right: 10px;
     }
