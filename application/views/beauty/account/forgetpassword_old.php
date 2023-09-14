@@ -1,13 +1,21 @@
-<section class="hero-section login-section common-banner-bg breadscrubBanner">
+<!-- ----hero-section--- -->
+<section class="hero-section login-section common-banner-bg">
     <div class="container">
-        <div class="row">
-
+        <div class="row breadscrubBanner">
+            <!-- <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
+                <h1><?= $this->lang->line('My Account') ?></h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="<?= base_url() . 'home' ?>"><?= $this->lang->line('home') ?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My Account') ?></li>
+                    </ol>
+                </nav>
+            </div> -->
         </div>
     </div>
 </section>
 
-
-<div class="login-section p-100">
+<div class="login-section forgot-section p-100">
     <img src="<?= $this->theme_base_url ?>/assets/images/login-imges/login-wave-img.png" alt="" class="login-wave-img">
     <div class="container">
         <div class="row">
@@ -20,83 +28,21 @@
                         <svg class="home_cat_title" width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.67475 7.94813C2.67475 16.2515 11.7184 18.1693 13.0225 19.5423C11.697 19.5423 8.76796 18.9321 7.6776 18.3219C4.6203 16.6438 1.41335 13.7888 0.494023 10.7813C-0.703241 5.70344 0.32298 4.00354 3.05958 1.82414C-0.42531 4.89698 0.622296 9.32117 1.17817 10.7813C3.78649 16.9707 9.3666 18.8014 11.2052 18.9321C6.75827 17.3848 3.50855 14.094 2.37543 11.6095C0.767675 6.93696 2.64624 3.13904 3.78649 1.82414C8.06243 -1.92429 12.6746 0.887138 14.0701 3.28435C16.3791 7.25077 15.8874 10.7813 15.6522 15.5759C16.5454 14.3337 17.4054 13.1786 19.2868 11.9146C23.0924 9.69165 26 11.4351 26 13.7888C25.5296 18.6924 19.073 19.5423 14.6688 20C17.8971 19.0411 22.2586 18.3219 23.9262 16.1425C25.5938 13.9632 24.0972 11.9146 21.1896 12.4376C17.9659 13.047 16.2132 15.851 14.6755 18.3111L14.6688 18.3219C14.7115 17.1015 14.9467 14.6388 15.2246 10.3673C14.797 3.02282 11.9108 1.93311 8.06243 1.82414C3.73518 1.66723 2.66762 5.84142 2.67475 7.94813Z" fill="#DE9F00" />
                         </svg>
-                        <h2 class="title"><?= $this->lang->line('Sign up') ?></h2>
-                        <p class="pera">Let’s create your account</p>
-                        <form id="RegisterForm" method="post" action="<?= base_url() . 'register' ?>">
-                            <div class="row">
-                                <div class="col-xxl-6">
-                                    <div class="mb-3">
-                                        <label for="fname" class="form-label">First Name</label>
-                                        <input type="text" name="fname" class="form-control" id="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('First Name*') ?>">
-                                        <!-- <label for="fname" class="error">Please enter first name</label> -->
-                                    </div>
-                                </div>
+                        <h2 class="title"><?= $this->lang->line('Forgot password') ?>?</h2>
+                        <!-- <p class="pera">No worries, we’well send you reset intructions.</p> -->
+                        <form id="ForgetForm" method="post" action="<?= base_url() . 'login/forget_password' ?>">
 
-                                <div class="col-xxl-6">
-                                    <div class="mb-3">
-                                        <label for="lname" class="form-label">Last Name</label>
-                                        <input type="text" name="lname" class="form-control" id="lname" aria-describedby="lname" placeholder="<?= $this->lang->line('Last Name*') ?>">
-                                        <!-- <label for="lname" class="error">Please enter last name</label> -->
-                                    </div>
-                                </div>
-
-                                <div class="col-xxl-12">
-                                    <div class="mb-3 form-in">
-                                        <label for="Country-code" class="form-label">Country Code<span>*</span></label>
-                                        <select class="form-select" name="country_code" id="country_code" aria-label="Country-code">
-                                            <option value=""><?= $this->lang->line('select country code') ?></option>
-                                            <?php foreach (GetDialcodelist() as $key => $value) { ?>
-                                                <option value="<?= $key; ?>"><?= $value; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-xxl-12">
-                                    <div class="mb-3">
-                                        <label for="Country-code" class="form-label">Mobile Number</label>
-                                        <input type="tel" name="phone" class="form-control mob_no" aria-describedby="Country-code" placeholder="<?= $this->lang->line('Mobile Number*') ?>">
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                                    <input type="text" name="email" class="form-control" placeholder="<?= $this->lang->line('Email*') ?>">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="<?= $this->lang->line('password*') ?>">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="<?= $this->lang->line('Confirm password*') ?>">
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="term_policy" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        By creating an account, you agree to our <a href="<?= base_url() . 'terms_condition' ?>">Terms Of Conditions</a> and
-                                        <a href="<?= base_url() . 'privacy_policy' ?>"><?= $this->lang->line('Privacy Policy') ?>.</a>
-                                    </label>
-                                </div>
-                                <label for="term_policy" class="error"></label>
-
-                                <div class="sign-in-btn tab-save-btn">
-                                    <input type="submit" id="btnSubmit" value="<?= $this->lang->line("Sign up") ?>">
-                                </div>
-
-                                <p><?= $this->lang->line('Or, log in with your socials') ?></p>
-
-                                <div class="log-in-btn">
-                                    <a href="<?= $googleUrl ?>" class="google-btn"><span class="google-img"><img src="<?= base_url() . 'public/beauty/assets/images/' ?>google-btn.svg" alt="err"></span><?= $this->lang->line('continue with google') ?></a>
-                                    <a href="<?= base_url() . 'login/fb_login' ?>" class="facebook-btn"><span><i class="fa-brands fa-facebook"></i></span><?= $this->lang->line('continue with facebook') ?></a>
-                                </div>
-
-                                <h3>Already have an account? <a href="<?= base_url() . 'login' ?>"><?= $this->lang->line('Sign In') ?></a></h3>
-
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label"><?= $this->lang->line('Email') ?></label>
+                                <input type="text" name="email" class="form-control" placeholder="<?= $this->lang->line('Enter Email*') ?>">
                             </div>
+
+                            <div class="sign-in-btn reset-password-btn tab-save-btn">
+                                <!-- <button type="button">Reset Password</button> -->
+                                <button type="submit" id="btnSubmit" class="btn create-btn"><?= $this->lang->line('Reset Password') ?></button>
+                            </div>
+
+                            <h3><span><i class="fa-solid fa-arrow-left"></i></span> Back to <a href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a></h3>
                         </form>
                     </div>
                 </div>
@@ -614,6 +560,22 @@
                         <path d="M74.9866 189.047C68.4375 189.047 61.9597 183.724 60.5465 177.181L60.3476 176.266L60.8019 176.153C61.6272 175.949 62.5119 175.845 63.4352 175.845C66.6117 175.845 69.8655 177.077 72.5967 179.318C75.3191 181.557 77.1954 184.537 77.8811 187.711L78.0801 188.625L77.6258 188.738C76.7946 188.943 75.9069 189.047 74.9866 189.047ZM61.4936 176.991C62.8236 183.106 68.8709 188.082 74.9866 188.082C75.6605 188.082 76.3136 188.023 76.9371 187.901C76.2958 184.944 74.5383 182.162 71.9882 180.063C69.4291 177.964 66.395 176.81 63.4381 176.81C62.7642 176.81 62.114 176.869 61.4965 176.991H61.4936Z" fill="var(--secondary-color)" />
                     </svg>
 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal common-modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>Are you sure you want to change password?</h3>
+
+                <div class="reset-btn">
+                    <button type="submit" class="yes-btn">Yes</button>
+                    <button type="submit" class="no-btn">No</button>
                 </div>
             </div>
         </div>

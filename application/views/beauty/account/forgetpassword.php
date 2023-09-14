@@ -1,8 +1,8 @@
 <!-- ----hero-section--- -->
-<section class="hero-section login-section common-banner-bg">
+<section class="hero-section login-section common-banner-bg breadscrubBanner">
     <div class="container">
-        <div class="row">
-            <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
+        <div class="row ">
+            <!-- <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">
                 <h1><?= $this->lang->line('My Account') ?></h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -10,7 +10,7 @@
                         <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('My Account') ?></li>
                     </ol>
                 </nav>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
