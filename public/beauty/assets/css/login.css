@@ -367,6 +367,12 @@ max-width: 25px;
     left: 33.5% !important;
 }
 
+.signup-deatils-wrapper {
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin: 0px auto !important;
+}
+
 
 /* ====RESPONSIVE===== */
 
