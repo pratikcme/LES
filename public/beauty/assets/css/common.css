@@ -681,6 +681,10 @@ p {
     background: #fff;
     animation-delay: -1s;
   }
+
+  .breadscrubBanner{
+    padding-bottom: 0px !important;
+  }
   
   @keyframes animate {
     0% {
@@ -691,7 +695,16 @@ p {
     }
   }
 
-
+  @media only screen and (max-width: 1399px){
+    .breadscrubBanner{
+        padding-top: 150px !important;
+      }
+  }
+  @media only screen and (max-width: 575px){
+    .breadscrubBanner{
+        padding-top: 60px !important;
+      }
+  }
 
   @media only screen and (max-width: 575px) {
     .title svg {
