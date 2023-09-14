@@ -671,14 +671,7 @@ table th:nth-child(4){
     
 }
 
-@media only screen and (max-width: 575) {
-    .cart-product-detail {
-        overflow: unset !important;
-        max-height: 100% !important;
-        min-height: 100% !important;
-        overflow-y: unset !important;
-    }
-}
+
 
 /* ============================================================ */
 /* ============================================================ */
@@ -814,4 +807,13 @@ table th:nth-child(4){
         padding-bottom: 50px;
     }
         
+}
+
+@media only screen and (max-width: 575px) {
+    .cart-product-detail {
+        overflow: unset !important;
+        max-height: 100% !important;
+        min-height: 100% !important;
+        overflow-y: unset !important;
+    }
 }
