@@ -1,3 +1,9 @@
+.carousel-item{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
 label.error{
  font-size: 13px !important;   
 }
