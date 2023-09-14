@@ -17,7 +17,7 @@ max-width: 25px;
 
 .login-section{
     width: 100%;
-    height: 100%;
+    height: auto;
     z-index: 10;
     position: relative;
 }
@@ -369,6 +369,21 @@ max-width: 25px;
 
 
 /* ====RESPONSIVE===== */
+
+@media screen and (min-width: 1399px){
+    .google-btn span{
+        margin-right: 10px;
+    }
+    .facebook-btn span{
+        margin-right: 10px;
+    }
+    .log-in-btn {
+        gap: 10px;
+    }
+}
+
+
+
 @media screen and (min-width: 1200px) and (max-width: 1399px){
 
     /* -----login-page-cs--- */
@@ -402,11 +417,11 @@ max-width: 25px;
         margin-left: 0px !important;
     }
     .google-btn {
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .facebook-btn{
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
 
@@ -461,11 +476,11 @@ max-width: 25px;
         margin-left: 0px !important;
     }
     .google-btn {
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .facebook-btn{
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .log-in-btn{
@@ -544,11 +559,11 @@ max-width: 25px;
         margin-left: 0px !important;
     }
     .google-btn {
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .facebook-btn{
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .log-in-btn{
@@ -657,11 +672,11 @@ max-width: 25px;
         margin-left: 0px !important;
     }
     .google-btn {
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .facebook-btn{
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .log-in-btn{
@@ -708,6 +723,9 @@ max-width: 25px;
     .reset-password-btn a {
         padding: 10px 20px 10px 20px !important;
         font-size: 16px !important;
+    }
+    .login-img-part svg{
+        display: none;
     }
     
 }
@@ -758,11 +776,11 @@ max-width: 25px;
         margin-left: 0px !important;
     }
     .google-btn {
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .facebook-btn{
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .log-in-btn{
@@ -809,6 +827,9 @@ max-width: 25px;
     .reset-password-btn a {
         padding: 10px 20px 10px 20px !important;
         font-size: 15px !important;
+    }
+    .login-img-part svg{
+        display: none;
     }
     
     
@@ -863,11 +884,11 @@ max-width: 25px;
         margin-left: 0px !important;
     }
     .google-btn {
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .facebook-btn{
-        padding: 15px 30px 15px 30px;
+        padding: 15px 20px 15px 20px;
         font-size: 14px;
     }
     .log-in-btn{
@@ -920,5 +941,10 @@ max-width: 25px;
         padding: 10px 20px 10px 20px !important;
         font-size: 14px !important;
     }
+    .login-img-part svg{
+        display: none;
+    }
     
 }
+
+
