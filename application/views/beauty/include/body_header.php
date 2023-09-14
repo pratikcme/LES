@@ -112,7 +112,7 @@
 
 
                     <a href="javascript:" class="cart-icons header-icon">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <!-- <i class="fa-solid fa-cart-shopping"></i> -->
                         <span class="g-badge" id="itemCount"><?= (isset($this->cartCount)) ? $this->cartCount : '' ?></span></a>
                     <!-- ----cart-dropdown--- -->
                     <div class="cart-dropdwon" id="updated_list">
