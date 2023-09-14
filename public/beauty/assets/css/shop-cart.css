@@ -809,6 +809,14 @@ table th:nth-child(4){
         
 }
 
+
+
+@media only screen and (max-width: 767px) {
+    .proceed-checkout-btn{
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+}
 @media only screen and (max-width: 575px) {
     .cart-product-detail {
         overflow: unset !important;
@@ -822,4 +830,5 @@ table th:nth-child(4){
     .cart-totals-part{
         height: auto !important;
     }
+    
 }
