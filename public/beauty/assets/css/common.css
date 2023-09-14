@@ -681,6 +681,11 @@ p {
     background: #fff;
     animation-delay: -1s;
   }
+  .carousel-item{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 
   .breadscrubBanner{
     padding-top: 170px !important;
