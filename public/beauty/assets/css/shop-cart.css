@@ -816,4 +816,10 @@ table th:nth-child(4){
         min-height: 100% !important;
         overflow-y: unset !important;
     }
+    .cart-product-detail table td:nth-child(1) {
+        padding-top: 20px !important;
+    }
+    .cart-totals-part{
+        height: auto !important;
+    }
 }
