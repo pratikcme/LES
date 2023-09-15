@@ -2161,3 +2161,17 @@ table.all-detalis-left tr{
         border-radius: 0px 0px 0px 0px !important;
     }
 }
+
+
+@media only screen and (max-width: 1399px) {
+    .order-not-found-content h3 {
+        margin-top: 10px;
+    }
+    .order-not-found-content p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .order-not-found-content h3 {
+        margin-top: 50px;
+    }
+}
