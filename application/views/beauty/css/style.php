@@ -129,7 +129,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $cartIcon = "#DE9F00";
     $proceedCheckoutBtnBg = "#DE9F00";
     $proceedCheckoutBtnText = "#fff";
-
+    $commonBgColor = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.5) 19.01%, rgba(255, 248, 216, 0.5) 100.66%)";
 
     /*  ----------------checkout-process-color-----  */
     $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
