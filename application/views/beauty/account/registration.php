@@ -24,7 +24,7 @@
                         <form id="RegisterForm" method="post" action="<?= base_url() . 'register' ?>">
                             <div class="row">
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
-                                    <div class="mb-3">
+                                    <div class="mb-2">
                                         <label for="fname" class="form-label">First Name</label>
                                         <input type="text" name="fname" class="form-control" id="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('First Name*') ?>">
                                         <!-- <label for="fname" class="error">Please enter first name</label> -->
@@ -32,7 +32,7 @@
                                 </div>
 
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
-                                    <div class="mb-3">
+                                    <div class="mb-2">
                                         <label for="lname" class="form-label">Last Name</label>
                                         <input type="text" name="lname" class="form-control" id="lname" aria-describedby="lname" placeholder="<?= $this->lang->line('Last Name*') ?>">
                                         <!-- <label for="lname" class="error">Please enter last name</label> -->
@@ -40,7 +40,7 @@
                                 </div>
 
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
-                                    <div class="mb-3 form-in">
+                                    <div class="mb-2 form-in">
                                         <label for="Country-code" class="form-label">Country Code<span>*</span></label>
                                         <select class="form-select" name="country_code" id="country_code" aria-label="Country-code">
                                             <option value=""><?= $this->lang->line('select country code') ?></option>
@@ -52,28 +52,28 @@
                                 </div>
 
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
-                                    <div class="mb-3">
+                                    <div class="mb-2">
                                         <label for="Country-code" class="form-label">Mobile Number</label>
                                         <input type="tel" name="phone" class="form-control mob_no" aria-describedby="Country-code" placeholder="<?= $this->lang->line('Mobile Number*') ?>">
                                     </div>
                                 </div>
                                 
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
-                                    <div class="mb-3">
+                                    <div class="mb-2">
                                         <label for="exampleInputEmail1" class="form-label">Email</label>
                                         <input type="text" name="email" class="form-control" placeholder="<?= $this->lang->line('Email*') ?>">
                                     </div>
                                 </div>
                                 
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
-                                    <div class="mb-3">
+                                    <div class="mb-2">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
                                         <input type="password" name="password" id="password" class="form-control" placeholder="<?= $this->lang->line('password*') ?>">
                                     </div>
                                 </div>
                                 
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
-                                    <div class="mb-3">
+                                    <div class="mb-2">
                                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                                         <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="<?= $this->lang->line('Confirm password*') ?>">
                                     </div>

@@ -132,7 +132,7 @@
     </div>
 </section>
 
-<section class="p-100">
+<section class="review-desc-section p-100">
     <div class="container">
         <div class="col-xxl-12">
             <div class="review-desc">

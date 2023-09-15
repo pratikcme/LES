@@ -1357,6 +1357,10 @@ body {
     .review-content .right-content h6 {
         margin: 0px 30px;
     }
+    .review-desc{
+        margin-top: 30px;
+    }
+    
 
 
 }
@@ -1366,6 +1370,7 @@ body {
     .review-desc {
         margin-top: 50px;
     }
+    
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1515,6 +1520,12 @@ body {
     .review-right p {
         font-size: 15px;
         line-height: 22px;
+    }
+    .review-desc{
+        margin-top: 0px !important;
+    }
+    .review-desc-section.p-100{
+        padding: 0px 0px !important;
     }
 }
 
@@ -1701,6 +1712,12 @@ body {
         top: 20px;
         right: 20px;
         font-size: 20px !important;
+    }
+    .review-desc{
+        margin-top: 0px !important;
+    }
+    .review-desc-section.p-100{
+        padding: 0px 0px !important;
     }
 }
 
@@ -1921,6 +1938,12 @@ body {
 
     .review-desc .nav-tabs .nav-link {
         font-size: 14px;
+    }
+    .review-desc{
+        margin-top: 0px !important;
+    }
+    .review-desc-section.p-100{
+        padding: 0px 0px !important;
     }
 }
 
@@ -2150,5 +2173,11 @@ body {
 
     .review-desc .nav-tabs .nav-link {
         font-size: 14px;
+    }
+    .review-desc{
+        margin-top: 0px !important;
+    }
+    .review-desc-section.p-100{
+        padding: 0px 0px !important;
     }
 }
