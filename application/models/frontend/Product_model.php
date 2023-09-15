@@ -224,7 +224,6 @@ class Product_model extends My_model
 		$data['where']['p.branch_id'] = $this->branch_id;
 		$data['where']['p.status'] = '1';
 		$data['where']['pw.status'] = '1';
-
 		// [
 		// 		'p.branch_id'=>$this->branch_id,
 		// 		// 'pw.id !=' => '',
@@ -368,7 +367,6 @@ class Product_model extends My_model
 				$data['where_in']['p.category_id'] = $postdata['categoryArray'];
 			}
 		}
-
 
 		if (isset($postdata['sub_id']) &&  $postdata['sub_id'] != '') {
 
@@ -541,12 +539,12 @@ class Product_model extends My_model
 
 			$subcatData['wish_pid'] = $wish_pid;
 			$sub_category .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/subcat_li', $subcatData, true);
-
 			if ($_SESSION['template_name'] == 'frontend') {
 
 				$sub_dropdownCategory .= $this->load->view($_SESSION['template_name'] . '/ajaxView/product_view/dropdown_li', $subcatData, true);
 			}
 		}
+
 		$responseArray = ['result' => $product_html, 'page' => $page - 1, 'subCategory' => $sub_category, 'sub_dropdownCategory' => $sub_dropdownCategory];
 
 		return  json_encode($responseArray);
@@ -1125,7 +1123,7 @@ class Product_model extends My_model
 		$data['table'] = TABLE_PRODUCT . ' p';
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' pw' => ['p.id=pw.product_id', 'LEFT'],
-			TABLE_PRODUCT_SEARCH . ' pts' => ['p.id=pts.product_id', 'LEFT'],
+			TABLE_PRODUCT_SEARCH . ' pts' => ['p.id=pts.product_id', 'LEFT']
 		];
 		$data['select'] = ['p.id', 'p.name'];
 		$data['where'] = ['p.branch_id' => $this->branch_id, 'p.status !=' => '9', 'pw.status !=' => '9'];

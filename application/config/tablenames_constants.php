@@ -11,6 +11,7 @@ define('TABLE_PRODUCT', 'product');
 define('TABLE_PRODUCT_IMAGE', 'product_image');
 define('TABLE_PRODUCT_SEARCH', 'product_search');
 define('TABLE_PRODUCT_WEIGHT', 'product_weight');
+define('TABLE_PRODUCT_SEARCH', 'product_search');
 define('TABLE_WEIGHT', 'weight');
 define('TABLE_PACKAGE', 'package');
 define('TABLE_BRAND', 'brand');

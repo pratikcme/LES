@@ -682,9 +682,9 @@ p {
     animation-delay: -1s;
   }
   .carousel-item{
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
   }
 
   .breadscrubBanner{

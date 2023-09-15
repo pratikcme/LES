@@ -72,7 +72,8 @@
       <div class="col-lg-6">
         <div class="map">
           <div id="map" style="width: 100%; height: 100%;" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            <!-- <iframe src="https://maps.google.com/maps?q='+$latitude+','+$longitude+'&hl=es&z=14&amp;output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            <<<<<<< HEAD=======<!-- <iframe src="https://maps.google.com/maps?q='+$latitude+','+$longitude+'&hl=es&z=14&amp;output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+              >>>>>>> dev
           </div>
         </div>
       </div>

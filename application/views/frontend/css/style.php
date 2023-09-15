@@ -6420,6 +6420,13 @@ like a tickmark */
         margin-bottom: 0px;
     }
 
+    */ .cart-table tbody tr td p {
+        color: var(--primary-color);
+        font-size: 16px;
+        font-family: "OpenSans-SemiBold";
+        margin-bottom: 0px;
+    }
+
     .cart-table tbody tr td p.discount-on {
         color: #666;
         position: relative;
@@ -9274,31 +9281,36 @@ counter css
             font-size: 28px;
         }
 
-        .review-content h3 span {
-            font-size: 28px;
-        }
+        @media only screen and (min-width: 320px) and (max-width: 424px) {
+            .review-content h3 {
+                font-size: 28px;
+            }
 
-        .review-content {
-            padding: 32px 15px 24px 15px;
-            flex-direction: column;
-        }
+            .review-content h3 span {
+                font-size: 28px;
+            }
 
-        .right-content {
-            margin-left: 15px !important;
-            margin-top: 10px !important;
-        }
+            .review-content {
+                padding: 32px 15px 24px 15px;
+                flex-direction: column;
+            }
 
-        .left-content {
-            border-right: none !important;
-        }
+            .right-content {
+                margin-left: 15px !important;
+                margin-top: 10px !important;
+            }
 
-        .box-top {
-            align-items: flex-start;
-            flex-direction: column;
-        }
+            .left-content {
+                border-right: none !important;
+            }
 
-        .profile {
-            margin-bottom: 20px;
+            .box-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .profile {
+                margin-bottom: 20px;
+            }
         }
-    }
 </style>

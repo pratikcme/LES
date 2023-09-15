@@ -347,9 +347,6 @@ if (!empty($js)) {
     new WOW().init()
 
 
-
-
-
     $('.sub-menu ul').hide();
     $(".sub-menu .right").click(function() {
         $(this).parent().parent(".sub-menu").children("ul").slideToggle("100");

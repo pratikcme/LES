@@ -115,7 +115,6 @@ $(document).ready(function () {
 
         if (cat_id != "") {
           $("#sd").css("display", "block");
-
           $("#short").html(output.subCategory);
           $("#long").html(output.sub_dropdownCategory);
         } else {

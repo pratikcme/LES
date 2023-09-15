@@ -4,7 +4,7 @@
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
         <?php foreach ($banner as $key => $value) { ?>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key == '0') ? 'active' : '' ?>active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key == '0') ? 'active' : '' ?>"></button>
         <?php } ?>
         <!-- <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
     <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> -->
@@ -13,27 +13,21 @@
     <!-- The slideshow/carousel -->
 
     <div class="carousel-inner">
-        <?php foreach ($banner as $key => $value) { ?>
-            <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> " style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-                            <div class="hero-content">
-                                <!-- <h4>Discover</h4> -->
-                                <h1><?= $value->main_title ?></h1>
-                                <p><?= $value->sub_title ?></p>
-                                <?php if ($value->type == '1') { ?>
-                                    <a href="<?= base_url() . 'products' ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } elseif ($value->type == '2') { ?>
-                                    <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } else { ?>
-                                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <?php foreach ($banner as $key => $value) {
+            $shopPage = "";
+            if ($value->type == '1') {
+                $shopPage = base_url() . 'products';
+            } elseif ($value->type == '2') {
+                $shopPage = base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id);
+            } else {
+                $shopPage = base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id);
+            } ?>
+            <a href="<?= $shopPage ?>">
+
+                <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> " style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
+
+                </section>
+            </a>
         <?php } ?>
 
     </div>
@@ -55,7 +49,9 @@
         <!-- --------owl-slider--------->
 
         <div class="owl-1 owl-carousel owl-theme">
-            <?php foreach ($category as $key => $value) { ?>
+            <?php
+
+            foreach ($categorys as $key => $value) { ?>
                 <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wapper">
                     <div class="categorie-img">
                         <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="">
