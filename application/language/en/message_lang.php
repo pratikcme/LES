@@ -341,7 +341,7 @@ $lang['Enter phone Number'] = 'Enter phone Number';
 $lang['Enter Message'] = 'Enter Message';
 
 // about us
-$lang['About us'] = 'About us';
+$lang['About us'] = 'About Us';
 $lang['What Our Clients Say'] = 'What Our Clients Say';
 $lang['The Trust'] = 'The Trust';
 $lang['From Clients'] = 'From Clients';

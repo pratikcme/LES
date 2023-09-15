@@ -226,8 +226,8 @@ var BANNERS = (function () {
         product_varient_id: { required: true },
       },
       messages: {
-        main_title: { required: "Please enter main title" },
-        sub_title: { required: "Please enter sub title" },
+        // main_title: { required: "Please enter main title" },
+        // sub_title: { required: "Please enter sub title" },
         branch: { required: "Please select branch" },
         type: { required: "Please select type" },
         category_id: { required: "Please select category" },

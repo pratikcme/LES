@@ -13,27 +13,21 @@
     <!-- The slideshow/carousel -->
 
     <div class="carousel-inner">
-        <?php foreach ($banner as $key => $value) { ?>
-            <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> " style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-                            <div class="hero-content">
-                                <!-- <h4>Discover</h4> -->
-                                <h1><?= $value->main_title ?></h1>
-                                <p><?= $value->sub_title ?></p>
-                                <?php if ($value->type == '1') { ?>
-                                    <a href="<?= base_url() . 'products' ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } elseif ($value->type == '2') { ?>
-                                    <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } else { ?>
-                                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>" class="hero-btn"><?= $this->lang->line('Shop Now') ?></a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <?php foreach ($banner as $key => $value) {
+            $shopPage = "";
+            if ($value->type == '1') {
+                $shopPage = base_url() . 'products';
+            } elseif ($value->type == '2') {
+                $shopPage = base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id);
+            } else {
+                $shopPage = base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id);
+            } ?>
+            <a href="<?= $shopPage ?>">
+
+                <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> " style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
+
+                </section>
+            </a>
         <?php } ?>
 
     </div>
