@@ -309,6 +309,7 @@ $lang['Default'] = 'Default';
 $lang['Address'] = 'Address';
 $lang['No Orders Available'] = 'No Orders Available';
 $lang['Country Code'] = 'Country Code';
+$lang['Country'] = 'Country';
 $lang['Otp'] = 'Otp';
 $lang['product'] = 'product';
 $lang['price'] = 'price';
