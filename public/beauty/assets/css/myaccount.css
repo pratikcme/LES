@@ -655,12 +655,12 @@ table.all-detalis-left tr{
 .order-not-found-content h3{
     font-family: var(--inter-bold) !important;
     color: var(--secondary-color);
-    margin-top: 100px;
+    margin-top: 10px;
     text-transform: capitalize;
 }
 .order-not-found-content p{
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .wishlist-empty-content p{
    max-width: 310px;
