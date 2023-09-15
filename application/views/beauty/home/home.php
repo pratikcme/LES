@@ -24,7 +24,7 @@
             } ?>
             <a href="<?= $shopPage ?>">
 
-                <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> " style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
+                <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> " style="background-image: url(https://rukminim2.flixcart.com/fk-p-flap/850/400/image/31c1f7c0e257255b.jpg?q=20);">
 
                 </section>
             </a>
