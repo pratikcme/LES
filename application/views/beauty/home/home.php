@@ -1,5 +1,5 @@
 <!--============== Carousel ==================-->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
+<div id="demo" class="carousel slide">
 
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
