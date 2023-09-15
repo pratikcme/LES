@@ -112,7 +112,7 @@
     border-radius: 10px;
     padding-left: 25px;
     height: 60px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .myaccout-detail-tab input:focus {
