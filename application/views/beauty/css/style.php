@@ -12,7 +12,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $primaryPink = "#DE9F00";
     $secondaryBlack = "#45006B";
     $lightBlack = "#868390";
-
+    $commonBannerBgColor = "#DE9F00";
     $primaryBoxShadow = "0px 20px 50px rgba(43, 174, 74, 0.15)";
 
     $titleFirstColor = "#0F053F";
@@ -670,8 +670,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
         /* / -----navigation-bar-color---- / */
         --nav-text-color: <?= $navTextColor ?>;
         --nav-hover-color: <?= $navHoverColor ?>;
-
-
+        --common-banner-bg<?= $commonBannerBg ?>
         /* / ------categorie-sec-color------ / */
         --categorie-wrapper-border: <?= $categorieWrapperBorder ?>;
         --categorie-wrapper-bg: <?= $categorieWrapperBg ?>;
