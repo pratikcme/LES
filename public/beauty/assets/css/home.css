@@ -2191,6 +2191,19 @@
     .card{
         margin-top: 20px !important;
     }
+    .owl-1 {
+        margin-top: 40px !important;
+    }
+    .card{
+        margin-top: 30px !important;
+    }
+    .Latest-Products{
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+    .rating-starts{
+        margin-bottom: 30px;
+    }
 }
 
 @media only screen and (min-width:425px) and (max-width: 539px) {
@@ -4566,4 +4579,11 @@
         gap: 0px;
     }
 
+}
+
+@media only screen and (max-width: 1399px){
+    .Categories-section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }    
 }
