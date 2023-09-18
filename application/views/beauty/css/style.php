@@ -206,7 +206,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#FF0000";
-    $lightBlueColor = "#fed418";
+    $smallBagColor = "#fed418";
     $primaryColor = "#000000";
     $secondaryColor = "#fed418";
 
@@ -410,7 +410,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
-    $lightBlueColor = "";
+    $smallBagColor = "";
     $primaryColor = "#000000";
     $secondaryColor = "#F92672";
 
@@ -838,6 +838,6 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
         --right-contact-wrapper-text: <?= $rightContactWrapperText  ?>;
 
         --new-svg-color: <?= $new_svg_color ?>;
-        --light-blue-color: <?= $lightBlueColor ?>;
+        --small-bag-color: <?= $smallBagColor ?>;
     }
 </style>
