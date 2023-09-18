@@ -1074,7 +1074,7 @@ li.sub-menu{
 }
 
 .ui-widget.ui-widget-content{
-    height: 6px !important;
+    height: auto !important;
     border: none !important;
 }
 
