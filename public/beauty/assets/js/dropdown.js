@@ -29,28 +29,28 @@ if (searchToggle && searchCancel) {
 
 // cart-dropdwon-js--------
 
-let cartdropdownbtn = document.querySelector(".cart-icons");
-let cartdropdown = document.querySelector(".cart-dropdwon");
+// let cartdropdownbtn = document.querySelector(".cart-icons");
+// let cartdropdown = document.querySelector(".cart-dropdwon");
 
-cartdropdownbtn.addEventListener("click", (event) => {
-  cartdropdown.classList.toggle("active");
-});
+// cartdropdownbtn.addEventListener("click", (event) => {
+//   cartdropdown.classList.toggle("active");
+// });
 
-cartdropdownbtn.addEventListener("blur", (event) => {
-  cartdropdown.classList.remove("active");
-});
+// cartdropdownbtn.addEventListener("blur", (event) => {
+//   cartdropdown.classList.remove("active");
+// });
 
 // ----user-dropdown-js---
-let userdropbtn = document.querySelector(".user-login-icon");
-let userdropdown = document.querySelector(".user-login-dropdow");
+// let userdropbtn = document.querySelector(".user-login-icon");
+// // let userdropdown = document.querySelector(".user-login-dropdow");
 
-userdropbtn.addEventListener("click", (event) => {
-  userdropdown.classList.toggle("active");
-});
+// userdropbtn.addEventListener("click", (event) => {
+//   userdropdown.classList.toggle("active");
+// });
 
-userdropbtn.addEventListener("blur", (event) => {
-  userdropdown.classList.remove("active");
-});
+// userdropbtn.addEventListener("blur", (event) => {
+//   userdropdown.classList.remove("active");
+// });
 
 // -----------mobile-sidenav-------
 let mobileopenbtn = document.querySelector(".mobile-filter-btn");
