@@ -235,7 +235,7 @@ nav .left-content a:hover {
 }
 
 .cart-dropdwon.itemCarted{
-  right: 85px;
+  right: 85px !important;
 }
 
 
