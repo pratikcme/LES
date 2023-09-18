@@ -234,7 +234,7 @@ nav .left-content a:hover {
   position: relative;
 }
 
-#updated_list .cart-drop-wrapper{
+.cart-dropdwon .cart-drop-wrapper{
   top: 70px;
   right: 85px;
 }
