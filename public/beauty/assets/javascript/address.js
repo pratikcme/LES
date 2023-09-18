@@ -187,6 +187,7 @@ var ADDRESS = (function () {
   }
 
   $(document).on("click", "#myBtn", function () {
+    $("#myModal").css("display", "block");
     $("#addAddress").html(language.Save);
   });
 
@@ -328,6 +329,9 @@ var ADDRESS = (function () {
     }
   });
 
+  $(document).on("click", ".close", function () {
+    $("#myModal").hide();
+  });
   //  var  handleEditAddressForm =  function () {
 
   //          $('#editAddressForm').validate({
