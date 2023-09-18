@@ -206,7 +206,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#FF0000";
-    $smallBagColor = "#fed418";
+    $smallBagColor = "#F6EAFD";
     $primaryColor = "#000000";
     $secondaryColor = "#fed418";
 
@@ -410,7 +410,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
-    $smallBagColor = "#F92672";
+    $smallBagColor = "#F6EAFD";
     $primaryColor = "#000000";
     $secondaryColor = "#F92672";
 
