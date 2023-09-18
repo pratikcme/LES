@@ -2173,6 +2173,7 @@ table.all-detalis-left tr{
     .order-not-found-content h3 {
         margin-top: 50px;
     }
+}
 @media only screen and (max-width: 425px) {
     .accordion-heading::before {
         top: 25px;

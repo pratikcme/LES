@@ -1645,6 +1645,9 @@ padding-left: 0 !important;
 .delivery-method-wrap .accordion-content-2{
     margin-left: 15px !important;
 } 
+.fill-detali-part .accordion-heading::before {
+    top: 15px;
+}
 }
 
 @media only screen and (max-width:991px){
@@ -1826,6 +1829,12 @@ padding-left: 0 !important;
         width: 100%;
         max-width: 100%;
     }
+    .place-order-btn{
+        margin-top: 0px !important;
+    }
+    .our-secure-product {
+        margin-top: 30px;
+    }
 }
 
 /* =================================================== */
@@ -1949,7 +1958,7 @@ padding-left: 0 !important;
     padding-top: 60px;
     height: auto;
 }
-.login-page .center-img img {
+.login-page .center-img svg {
     display: block !important;
     margin: 0px auto;
     width: 100%;
@@ -2004,6 +2013,9 @@ padding-left: 0 !important;
 @media only screen and (max-width:575px){
     .fill-detali-part .accordion-heading::before{
         top: 15px;
+    }
+    .main-accordion{
+        margin-bottom: 20px !important;
     }
 }
 
