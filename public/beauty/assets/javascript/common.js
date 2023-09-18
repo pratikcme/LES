@@ -186,6 +186,7 @@ $(document).on("click", ".remove_item", function () {
           product_weight_id: product_weight_id,
         },
         success: function (output) {
+          $("#updated_list").removeClass("itemCarted");
           window.location.reload();
           return false;
         },
