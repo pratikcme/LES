@@ -118,7 +118,7 @@
                         <?php } ?>
                     </a>
                     <!-- ----cart-dropdown--- -->
-                    <div class="cart-dropdwon" id="updated_list">
+                    <div class="cart-dropdwon <?= (isset($this->cartCount) || !empty($this->session->userdata('My_cart'))) ? 'itemCarted' : '' ?>" id="updated_list">
                         <?php if (empty($this->session->userdata('My_cart')) && empty($mycart)) { ?>
                             <div class="empty-cart-dropdown">
 
