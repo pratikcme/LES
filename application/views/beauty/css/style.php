@@ -5,7 +5,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
-    $lightBlueColor = "#F6EAFD";
+    $smallBagColor = "#F6EAFD";
     $primaryColor = "#45006B";
     $secondaryColor = "#DE9F00";
 
