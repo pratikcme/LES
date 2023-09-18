@@ -551,10 +551,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
 
     /*  -------modal-popup-color----  */
     $modalBg = "rgba(17, 64, 90, 0.9)";
-    $modalText1 = "#F92672";
+    $modalText1 = "#FED418";
     $modalText2 = "#0F053F";
     $modalText3 = "#555261";
-    $continueBtnBg = "#F92672";
+    $continueBtnBg = "#FED418";
     $continueBtnText = "#fff";
     $closeBtn = "#FED418";
 
