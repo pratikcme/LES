@@ -329,7 +329,6 @@ var ADDRESS = (function () {
   });
 
   $(document).on("click", ".close", function () {
-    alert();
     $("#myModal").hide();
   });
   //  var  handleEditAddressForm =  function () {
