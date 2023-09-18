@@ -172,7 +172,7 @@
     border: 1px solid var(--slider-bg) !important;
     border-radius: 10px !important;
     position: absolute;
-    top: 200px !important;
+    top: 220px !important;
     right: 600px !important;
     transition: 0.3s;
 }
@@ -2203,6 +2203,10 @@
     }
     .rating-starts{
         margin-bottom: 30px;
+    }
+    .Categories-section {
+        padding-top: 70px;
+        padding-bottom: 70px;
     }
 }
 
@@ -4585,5 +4589,10 @@
     .Categories-section {
         padding-top: 100px;
         padding-bottom: 100px;
+    }    
+}
+@media only screen and (max-width: 767px){
+    .owl-1 {
+        margin-top: 50px !important;
     }    
 }
