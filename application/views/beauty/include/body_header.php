@@ -113,9 +113,9 @@
 
                     <a href="javascript:" class="cart-icons header-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <?php if (isset($this->cartCount) || !empty($this->session->userdata('My_cart'))) { ?>
-                            <span class="g-badge" id="itemCount"><?= (isset($this->cartCount)) ? $this->cartCount : '0' ?></span>
-                        <?php } ?>
+
+                        <span class="g-badge" id="itemCount"><?= (isset($this->cartCount)) ? $this->cartCount : '0' ?></span>
+
                     </a>
                     <!-- ----cart-dropdown--- -->
                     <div class="cart-dropdwon <?= (isset($this->cartCount) || !empty($this->session->userdata('My_cart'))) ? 'itemCarted' : '' ?>" id="updated_list">
