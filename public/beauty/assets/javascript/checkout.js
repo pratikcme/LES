@@ -19,9 +19,9 @@ var is_self_pickup = $("#CheckisSelfPickup").val();
 //   );
 // }
 
-$(document).on("click", "#showsucessmodel", function () {
-  $("#order_success").modal("show");
-});
+// $(document).on("click", "#showsucessmodel", function () {
+//   $("#order_success").modal("show");
+// });
 if (is_self_pickup == 0) {
   var minDate = 2;
   var maxDate = "2d";

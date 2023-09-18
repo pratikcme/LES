@@ -559,7 +559,7 @@
     </div>
 </div>
 
-<button id="showsucessmodel">Show Model</button>
+
 <!-- =============place order popup=========== -->
 <div id="order_success" class="modal">
     <div class="container">
