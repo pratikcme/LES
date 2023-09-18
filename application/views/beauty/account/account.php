@@ -936,23 +936,23 @@
 <!-- =============place order popup=========== -->
 <div id="myModal" class="modal">
     <div class="container">
-        <div class="modal-content ">
+        <div class="modal-content">
             <span class="close"><i class="fa-regular fa-circle-xmark"></i></span>
             <div class="login-page myaccout-detail-tab">
                 <form method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" class="get-detials-account" autocomplete="off">
                     <div class="row">
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 mb-3">
                             <label for="fname" class="form-label"><?= $this->lang->line('Full Name') ?><span>*</span></label>
                             <input type="text" name="fname" class="form-control fname" id="fname" placeholder="<?= $this->lang->line('Full Name') ?>">
                         </div>
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 mb-3">
                             <label for="text" class="form-label"><?= $this->lang->line('Mobile Number') ?><span>*</span></label>
                             <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile number') ?>">
                         </div>
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 mb-3">
                             <label for="add" class="form-label"><?= $this->lang->line('Enter Location') ?><span>*</span></label>
                             <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location" aria-describedby="add" placeholder="<?= $this->lang->line('Enter Location') ?>">
                             <label for="departure_address" class="error" style="display: none;"></label>
@@ -960,37 +960,39 @@
                             <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">
                         </div>
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 mb-3">
                             <input type="text" class="form-control landmark" name="landmark" id="landmark" aria-describedby="add" placeholder="<?= $this->lang->line('Landmark') ?>">
                         </div>
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 mb-3">
                             <div class="select-box">
                                 <label for="city" class="form-label"><?= $this->lang->line('city') ?><span>*</span></label>
                                 <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="<?= $this->lang->line('city') ?>" autocomplete="off">
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 mb-3">
                             <div class="select-box">
                                 <label for="state" class="form-label"><?= $this->lang->line('State') ?><span>*</span></label>
                                 <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="<?= $this->lang->line('State') ?>" autocomplete="off">
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 mb-3">
                             <div class="select-box">
                                 <label for="country" class="form-label"><?= $this->lang->line('country') ?><span>*</span></label>
                                 <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="<?= $this->lang->line('country') ?>" autocomplete="off">
                             </div>
                         </div>
-                        <div class="col-lg-6">
+
+                        <div class="col-lg-6 mb-3">
                             <div class="select-box">
                                 <label for="pincode" class="form-label"><?= $this->lang->line('pincode') ?><span>*</span></label>
                                 <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?= $this->lang->line('pincode') ?>" autocomplete="off">
                             </div>
                         </div>
-                        <div class="col-lg-12">
+
+                        <div class="col-lg-12 mb-3">
                             <div class="select-box">
                                 <label for="address" class="form-label"><?= $this->lang->line('Enter Address') ?><span>*</span></label>
                                 <textarea type="text" name="address" class="form-control pincode" id="address" placeholder="<?= $this->lang->line('Enter Address') ?>" autocomplete="off"></textarea>
