@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row">
             <!-- -----product-card----- -->
             <?php foreach ($top_sell as $key => $value) {
                 // $class = '';
