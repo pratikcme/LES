@@ -350,12 +350,12 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
 
     /*  -------modal-popup-color----  */
     $modalBg = "rgba(17, 64, 90, 0.9)";
-    $modalText1 = "#FFB9CE";
+    $modalText1 = "#fed418";
     $modalText2 = "#0F053F";
     $modalText3 = "#555261";
-    $continueBtnBg = "#FFB9CE";
+    $continueBtnBg = "#fed418";
     $continueBtnText = "#fff";
-    $closeBtn = "#FFB9CE";
+    $closeBtn = "#fed418";
 
 
     /*  -----------about-us-css--------  */
