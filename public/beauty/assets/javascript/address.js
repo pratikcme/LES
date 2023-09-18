@@ -187,6 +187,7 @@ var ADDRESS = (function () {
   }
 
   $(document).on("click", "#myBtn", function () {
+    $("#addAddress").css("display", "block");
     $("#addAddress").html(language.Save);
   });
 
