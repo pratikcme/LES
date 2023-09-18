@@ -112,7 +112,7 @@
     border-radius: 10px;
     padding-left: 25px;
     height: 60px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .myaccout-detail-tab input:focus {
@@ -128,7 +128,7 @@
 }
 
 .tab-select-box select {
-    background: var(--commn-white);
+    /* background: var(--commn-white); */
     border: 1px solid var(--myaccoutn-tab-input-border);
     box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
     border-radius: 10px;
@@ -137,12 +137,12 @@
     font-size: 14px;
     line-height: 16px;
     height: 60px;
-    appearance: none;
+    /* appearance: none;
     background-image: url(../images/selectarrow.png);
     background-repeat: no-repeat;
     background-size: 12px;
     background-position-y: 19px;
-    background-position-x: 410px;
+    background-position-x: 410px; */
     margin-bottom: 30px;
 }
 
@@ -655,12 +655,12 @@ table.all-detalis-left tr{
 .order-not-found-content h3{
     font-family: var(--inter-bold) !important;
     color: var(--secondary-color);
-    margin-top: 100px;
+    margin-top: 10px;
     text-transform: capitalize;
 }
 .order-not-found-content p{
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .wishlist-empty-content p{
    max-width: 310px;
@@ -729,8 +729,8 @@ table.all-detalis-left tr{
     .tab-select-box select {
         font-size: 14px;
         background-size: 12px;
-        background-position-y: 19px;
-        background-position-x: 410px;
+        /* background-position-y: 19px;
+        background-position-x: 410px; */
         margin-bottom: 30px;
     }
 
@@ -875,8 +875,8 @@ table.all-detalis-left tr{
     .tab-select-box select {
         font-size: 14px;
         background-size: 12px;
-        background-position-y: 19px;
-        background-position-x: 320px;
+        /* background-position-y: 19px;
+        background-position-x: 320px; */
         margin-bottom: 30px;
     }
 
@@ -1065,8 +1065,8 @@ table.all-detalis-left tr{
     .tab-select-box select {
         font-size: 14px;
         background-size: 12px;
-        background-position-y: 19px;
-        background-position-x: 205px;
+        /* background-position-y: 19px;
+        background-position-x: 205px; */
         margin-bottom: 30px;
     }
 
@@ -1313,8 +1313,8 @@ table.all-detalis-left tr{
     .tab-select-box select {
         font-size: 14px;
         background-size: 12px;
-        background-position-y: 19px;
-        background-position-x: 295px;
+        /* background-position-y: 19px;
+        background-position-x: 295px; */
         margin-bottom: 30px;
     }
 
@@ -1615,8 +1615,8 @@ table.all-detalis-left tr{
     .tab-select-box select {
         font-size: 14px;
         background-size: 12px;
-        background-position-y: 19px;
-        background-position-x: 410px;
+        /* background-position-y: 19px;
+        background-position-x: 410px; */
         margin-bottom: 30px;
     }
 
@@ -1882,7 +1882,7 @@ table.all-detalis-left tr{
     .tab-select-box select {
         font-size: 14px;
         background-size: 12px;
-        background-position-y: 19px;
+        /* background-position-y: 19px; */
         /* background-position-x: 217px; */
         margin-bottom: 30px;
     }
@@ -2130,7 +2130,7 @@ table.all-detalis-left tr{
 
 @media (max-width:414px) {
     .tab-select-box select {
-        background-position-x: 300px;
+        /* background-position-x: 300px; */
     }
 
     .main-sub-tabs {
@@ -2140,7 +2140,7 @@ table.all-detalis-left tr{
 
 @media (max-width:360px) {
     .tab-select-box select {
-        background-position-x: 260px;
+        /* background-position-x: 260px; */
     }
 
     .main-sub-tabs {
@@ -2150,7 +2150,7 @@ table.all-detalis-left tr{
 
 @media (max-width:320px) {
     .tab-select-box select {
-        background-position-x: 217px;
+        /* background-position-x: 217px; */
     }
 
     .main-sub-tabs {
@@ -2161,7 +2161,6 @@ table.all-detalis-left tr{
         border-radius: 0px 0px 0px 0px !important;
     }
 }
-
 
 @media only screen and (max-width: 1399px) {
     .order-not-found-content h3 {
@@ -2174,4 +2173,9 @@ table.all-detalis-left tr{
     .order-not-found-content h3 {
         margin-top: 50px;
     }
+@media only screen and (max-width: 425px) {
+    .accordion-heading::before {
+        top: 25px;
+    }
+    
 }

@@ -79,31 +79,31 @@
                                     <button type="button" class="choose-btn"><i class="fa-solid fa-camera"></i></button>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-6 col-md-6 mb-3">
                                         <div class="mb-3">
                                             <label for="fname" class="form-label"><?= $this->lang->line('First Name') ?><span>*</span></label>
                                             <input type="text" class="form-control" id="fname" name="fname" placeholder="<?= $this->lang->line('First Name*') ?>" value="<?= $userDetails[0]->fname ?>">
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-6 col-md-6 mb-3">
                                         <div class="mb-3">
                                             <label for="lname" class="form-label"><?= $this->lang->line('Last Name') ?><span>*</span></label>
                                             <input type="text" class="form-control" name="lname" id="lname" value="<?= $userDetails[0]->lname ?>" placeholder="<?= $this->lang->line('Last Name*') ?>">
                                         </div>
                                     </div>
-                                    <div class="col-xxl-12">
+                                    <div class="col-xxl-12 mb-3">
                                         <div class="mb-3">
                                             <label for="email" class="form-label"><?= $this->lang->line('Enter Email') ?><span>*</span></label>
                                             <input type="email" name="email" class="form-control" id="email" placeholder="<?= $this->lang->line('Email*') ?>" value="<?= $userDetails[0]->email ?>" readonly>
                                         </div>
                                     </div>
-                                    <div class="col-xxl-12">
+                                    <div class="col-xxl-12 mb-3">
                                         <div class="mb-3">
                                             <label for="text" class="form-label"><?= $this->lang->line('Gst number') ?><span>*</span></label>
                                             <input type="text" class="form-control" name="user_gst_number" value="<?= $userDetails[0]->user_gst_number ?>" placeholder="22AAAAA0000A1Z5">
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-6 col-md-6 mb-3">
                                         <div class="tab-select-box">
                                             <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?><span>*</span></label>
                                             <select class="form-select" name="country_code" id="country_code">
@@ -115,14 +115,14 @@
                                     </div>
                                     <input type="hidden" id="exiting_country" value="<?= $userDetails[0]->country_code ?>">
                                     <input type="hidden" id="exiting_phone" value="<?= $userDetails[0]->phone ?>">
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-6 col-md-6 mb-3">
                                         <div class="mb-3">
                                             <label for="m-number" class="form-label"><?= $this->lang->line('Mobile Number') ?><span>*</span></label>
                                             <input type="tel" class="form-control" name="phone" id="phone" placeholder="<?= $this->lang->line('Mobile Number*') ?>" value="<?= $userDetails[0]->phone ?>">
                                             <label for="phone" id="mobileErr" class="error"><?= form_error('phone') ?></label>
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-md-6 varification" style="display: none;">
+                                    <div class="col-xxl-6 col-md-6 mb-3 varification" style="display: none;">
                                         <div class="mb-3">
                                             <label for="otp" class="form-label">Otp<span>*</span></label>
                                             <input type="text" id="otp" name="otp" placeholder="<?= $this->lang->line('otp') ?>">
@@ -900,19 +900,19 @@
                         <div class="myaccout-detail-tab">
                             <form id='ChangeUserPass' action="<?= base_url() . 'users_account/users/update_password' ?>" method="post">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12 mb-3">
                                         <div class="mb-3">
                                             <label for="text" class="form-label"><?= $this->lang->line('current password') ?></label>
                                             <input type="password" class="form-control" name="old_pass" placeholder="<?= $this->lang->line('current password') ?>">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 mb-3">
                                         <div class="mb-3">
                                             <label for="text" class="form-label"><?= $this->lang->line('new password') ?></label>
                                             <input type="password" class="form-control" name="new_pass" id="password_new" placeholder="<?= $this->lang->line('new password') ?>">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 mb-3">
                                         <div class="mb-3">
                                             <label for="text" class="form-label"><?= $this->lang->line('Confirm password') ?></label>
                                             <input type="password" class="form-control" name="confirm_pass" placeholder="<?= $this->lang->line('Confirm password') ?>">
