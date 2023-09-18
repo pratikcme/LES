@@ -34,7 +34,6 @@ $(document).on("click", ".addcartbutton", function () {
 
         $("#itemCountMobile").removeClass("d-none");
       }
-      $("#updated_list").addClass("itemCarted");
       $("#nav_cart_dropdown").removeClass("d-none");
       $("#itemCount").html(output.count);
       $("#updated_list").html(output.updated_list);
