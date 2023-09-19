@@ -8,8 +8,12 @@
 <?php
 
 // Get the user's IP address
-$userIP = $_SERVER['REMOTE_ADDR'];
+$IPaddress = $_SERVER['REMOTE_ADDR'];
 
+
+$json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
+$details    = json_decode($json);
+dd($details);
 // Create a cURL request to the ip-api.com API
 $ch = curl_init("http://ip-api.com/json/{$userIP}");
 
