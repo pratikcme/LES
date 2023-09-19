@@ -5,6 +5,38 @@
         </div>
     </div>
 </section>
+<?php
+
+// Get the user's IP address
+$userIP = $_SERVER['REMOTE_ADDR'];
+
+// Create a cURL request to the ip-api.com API
+$ch = curl_init("http://ip-api.com/json/{$userIP}");
+
+// Set cURL options
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Execute the cURL request
+$response = curl_exec($ch);
+
+// Check for errors
+if (curl_errno($ch)) {
+    echo 'Error: ' . curl_error($ch);
+} else {
+    // Parse the JSON response
+    $data = json_decode($response);
+
+    // Get the country code
+    $countryCode = $data->countryCode;
+
+    // Output the country code
+    echo "Country Code: $countryCode";
+}
+
+// Close the cURL session
+curl_close($ch);
+
+?>
 
 
 <div class="login-section p-100">
@@ -25,7 +57,7 @@
                             <div class="row">
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
                                     <div class="mb-2">
-                                        <label for="fname" class="form-label">First Name</label>
+                                        <label for="fname" class="form-label">Full Name</label>
                                         <input type="text" name="fname" class="form-control" id="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('First Name*') ?>">
                                         <!-- <label for="fname" class="error">Please enter first name</label> -->
                                     </div>
@@ -57,21 +89,21 @@
                                         <input type="tel" name="phone" class="form-control mob_no" aria-describedby="Country-code" placeholder="<?= $this->lang->line('Mobile Number*') ?>">
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
                                     <div class="mb-2">
                                         <label for="exampleInputEmail1" class="form-label">Email</label>
                                         <input type="text" name="email" class="form-control" placeholder="<?= $this->lang->line('Email*') ?>">
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
                                     <div class="mb-2">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
                                         <input type="password" name="password" id="password" class="form-control" placeholder="<?= $this->lang->line('password*') ?>">
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mb-3">
                                     <div class="mb-2">
                                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
