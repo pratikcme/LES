@@ -591,6 +591,11 @@ nav .left-content ul li svg{
 nav .left-content ul li:hover svg{
   opacity: 1;
 }
+.usernotlogin{
+    position: absolute;
+    top: 60px;
+    right: 60px;
+}
 
 /* ====menu-responsive-css======= */
 
