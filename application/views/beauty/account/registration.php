@@ -13,7 +13,10 @@ $IPaddress = $_SERVER['REMOTE_ADDR'];
 
 $json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
 $details    = json_decode($json);
-dd(getCountryPhoneCode());
+dd($details);
+foreach (getCountryPhoneCode() as $key => $value) {
+    // if($key == $)
+}
 // Create a cURL request to the ip-api.com API
 $ch = curl_init("http://ip-api.com/json/{$userIP}");
 
