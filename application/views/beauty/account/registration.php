@@ -21,7 +21,7 @@ foreach (getCountryPhoneCode() as $key => $value) {
     }
 }
 echo $country_code;
-exit;
+
 ?>
 
 
