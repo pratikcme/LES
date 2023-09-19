@@ -87,8 +87,8 @@
                         <i class="fa-solid fa-xmark main-div-cancel"></i>
                     </div>
 
-                    <div class="user-login-dropdow usernotlogin">
-                        <?php if ($this->session->userdata('user_id') == '') { ?>
+                    <?php if ($this->session->userdata('user_id') == '') { ?>
+                        <div class="user-login-dropdow usernotlogin">
 
                             <div class="user-login-header">
                                 <h4><?= $this->lang->line('New Customer') ?>?</h4>
@@ -98,7 +98,10 @@
                                 <a href="<?= base_url() . 'login' ?>"><span><i class="fa-solid fa-right-to-bracket"></i></span><?= $this->lang->line('Login Account') ?></a>
                             </div>
 
-                        <?php } else { ?>
+                        </div>
+                    <?php } else { ?>
+                        <div class="user-login-dropdow">
+
                             <div class="user-login-header">
                                 <h4><?= $_SESSION['user_name'] . ' ' . $_SESSION['user_lname'] ?></h4>
                             </div>
@@ -108,8 +111,8 @@
                             <div class="user-data-wrapper">
                                 <a href="javascript:" id="logout"><span><i class="fa-solid fa-folder-plus"></i></span><?= $this->lang->line('logout') ?></a>
                             </div>
-                        <?php } ?>
-                    </div>
+                        </div>
+                    <?php } ?>
                     <a href="javascript:" class="user-login-icon header-icon"><span><i class="fa-regular fa-user"></i></span></a>
 
 
