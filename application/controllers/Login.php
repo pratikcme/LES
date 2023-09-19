@@ -289,8 +289,7 @@ class Login extends User_Controller
 
 	public function user_register()
 	{
-		echo "hi";
-		exit;
+
 		$login_type = $this->this_model->checkLoginType();
 		if ($login_type == '0') {
 			redirect(base_url() . 'login');
