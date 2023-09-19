@@ -602,6 +602,9 @@ nav .left-content ul li:hover svg{
   .user-login-dropdow {
     right: 95px !important;
 }
+.user-login-dropdow.usernotlogin {
+  right: 75px !important;
+}
 
   .right-text h3 a:hover {
     color: var(--nav-text-color) !important;
@@ -616,6 +619,9 @@ nav .left-content ul li:hover svg{
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .user-login-dropdow {
     right: 85px !important;
+  }
+  .user-login-dropdow.usernotlogin {
+    right: 65px !important;
   }
 
   .cart-dropdwon {
