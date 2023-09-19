@@ -13,7 +13,7 @@ $IPaddress = $_SERVER['REMOTE_ADDR'];
 
 $json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
 $details    = json_decode($json);
-dd($details->country);
+dd($details);
 foreach (getCountryPhoneCode() as $key => $value) {
     // if($key == $)
 }
