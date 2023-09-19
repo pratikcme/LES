@@ -87,18 +87,17 @@
                         <i class="fa-solid fa-xmark main-div-cancel"></i>
                     </div>
 
-                    <div class="user-login-dropdow">
+                    <div class="user-login-dropdow usernotlogin">
                         <?php if ($this->session->userdata('user_id') == '') { ?>
-                            <div class="usernotlogin">
 
-                                <div class="user-login-header">
-                                    <h4><?= $this->lang->line('New Customer') ?>?</h4>
-                                    <h3><a href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a></h3>
-                                </div>
-                                <div class="user-data-wrapper">
-                                    <a href="<?= base_url() . 'login' ?>"><span><i class="fa-solid fa-right-to-bracket"></i></span><?= $this->lang->line('Login Account') ?></a>
-                                </div>
+                            <div class="user-login-header">
+                                <h4><?= $this->lang->line('New Customer') ?>?</h4>
+                                <h3><a href="<?= base_url() . 'register' ?>"><?= $this->lang->line('Sign up') ?></a></h3>
                             </div>
+                            <div class="user-data-wrapper">
+                                <a href="<?= base_url() . 'login' ?>"><span><i class="fa-solid fa-right-to-bracket"></i></span><?= $this->lang->line('Login Account') ?></a>
+                            </div>
+
                         <?php } else { ?>
                             <div class="user-login-header">
                                 <h4><?= $_SESSION['user_name'] . ' ' . $_SESSION['user_lname'] ?></h4>
