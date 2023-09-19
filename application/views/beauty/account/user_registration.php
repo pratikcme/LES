@@ -17,7 +17,7 @@
     </div>
 </section>
 
-<div class="login-section section">
+<div class="login-section p-100">
     <div class="container">
         <div class="row">
             <div class="col-xxl-12 col-lg-12">
