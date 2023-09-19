@@ -63,7 +63,7 @@ echo $country_code;
                                         <select class="form-select" name="country_code" id="country_code" aria-label="Country-code">
                                             <option value=""><?= $this->lang->line('select country code') ?></option>
                                             <?php foreach (GetDialcodelist() as $key => $value) { ?>
-                                                <option <? ($country_code == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
+                                                <option <?= ($country_code == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
