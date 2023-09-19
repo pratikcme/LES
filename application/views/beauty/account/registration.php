@@ -20,7 +20,6 @@ foreach (getCountryPhoneCode() as $key => $value) {
         $country_code = '+' . $value;
     }
 }
-echo $country_code;
 
 ?>
 
