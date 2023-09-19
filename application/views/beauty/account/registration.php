@@ -18,7 +18,6 @@ $country_code = "";
 foreach (getCountryPhoneCode() as $key => $value) {
     if ($key == $details->country) {
         $country_code = '+' . $value;
-        die;
     }
 }
 
