@@ -13,35 +13,14 @@ $IPaddress = $_SERVER['REMOTE_ADDR'];
 
 $json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
 $details    = json_decode($json);
-dd($details->country);
+
+$country_code = "";
 foreach (getCountryPhoneCode() as $key => $value) {
-    // if($key == $)
+    if ($key == $details->country) {
+        $country_code = '+' . $value;
+        die;
+    }
 }
-// Create a cURL request to the ip-api.com API
-$ch = curl_init("http://ip-api.com/json/{$userIP}");
-
-// Set cURL options
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-// Execute the cURL request
-$response = curl_exec($ch);
-
-// Check for errors
-if (curl_errno($ch)) {
-    echo 'Error: ' . curl_error($ch);
-} else {
-    // Parse the JSON response
-    $data = json_decode($response);
-
-    // Get the country code
-    $countryCode = $data->countryCode;
-
-    // Output the country code
-    echo "Country Code: $countryCode";
-}
-
-// Close the cURL session
-curl_close($ch);
 
 ?>
 
@@ -84,7 +63,7 @@ curl_close($ch);
                                         <select class="form-select" name="country_code" id="country_code" aria-label="Country-code">
                                             <option value=""><?= $this->lang->line('select country code') ?></option>
                                             <?php foreach (GetDialcodelist() as $key => $value) { ?>
-                                                <option value="<?= $key; ?>"><?= $value; ?></option>
+                                                <option <? ($country_code == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
