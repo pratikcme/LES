@@ -18,7 +18,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 // Execute the cURL request
 $response = curl_exec($ch);
-dd($response);
+
 // Check for errors
 if (curl_errno($ch)) {
     echo 'Error: ' . curl_error($ch);
