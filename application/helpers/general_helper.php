@@ -922,7 +922,7 @@ function numberFormat($number)
 function getCountryPhoneCode()
 {
 
-    return $country_list = array(
+    $country_list = array(
         "AF" => 93,
         "AX" => 358,
         "AL" => 355,
@@ -1176,4 +1176,5 @@ function getCountryPhoneCode()
         "ZM" => 260,
         "ZW" => 263
     );
+    return $country_list;
 }
