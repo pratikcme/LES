@@ -70,7 +70,7 @@ foreach (getCountryPhoneCode() as $key => $value) {
                   <select class="form-select" name="country_code" aria-label="Country-code" id="Country-code">
                     <option value=""><?= $this->lang->line('select country code') ?></option>
                     <?php foreach (GetDialcodelist() as $key => $value) { ?>
-                      <option <?= ($country_phonecode == $key) ?> value="<?= $key; ?>"><?= $value; ?></option>
+                      <option <?= ($country_phonecode == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                     <?php } ?>
                   </select>
                 </div>
