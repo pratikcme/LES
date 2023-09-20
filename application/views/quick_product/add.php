@@ -134,7 +134,6 @@
 
 .select-tag-wrp {
     border-radius: 5px;
-    opacity: 0.5;
     background: #EAEFF4;
     padding: 20px;
 }
@@ -308,6 +307,64 @@
     line-height: 24px;
     border: none;
     margin-top: 20px;
+}
+#quick-add-modal .modal-dialog{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media only screen and (max-width: 1199px) {
+    .add-quick-product-wrp .col-lg-6:nth-child(2){
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 500px){
+    #quick-add-modal .modal-content{
+        width: 100%;
+    }
+    /* .tabs-wrap .nav-tabs{
+        flex-direction: column;
+    } */
+    #quick-add-modal .modal-content{
+        padding: 40px 20px;
+    }
+}
+@media only screen and (max-width: 424px) {
+    .checkbox-form{
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+    }
+    .cancel-btn{
+        margin-left: 10px;
+    }
+    .select-tag span{
+        font-size: 12px;
+    }
+    .quick-add-btn{
+        font-size: 14px;
+    }
+    .cancel-btn{
+        font-size: 14px;
+    }
+    .tabs-wrap .nav-tabs{
+        flex-direction: column;
+    }
+    #quick-add-modal .modal-body{
+      padding: 0px !important;
+    }
+    #quick-add-modal .modal-content .close{
+        top: 10px;
+        right: 10px;
+    }
+    #quick-add-modal .modal-content{
+        border-radius: 10px;
+    }
+    #quick-add-modal .modal-content .close i {
+        font-size: 13px;
+        line-height: 0px;
+    }
 }
 
 </style>
