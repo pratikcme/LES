@@ -1184,8 +1184,9 @@ function getPhoneCode()
 {
     $IPaddress = $_SERVER['REMOTE_ADDR'];
 
+    $apiUrl = "http://api.ipstack.com/$IPaddress?access_key=06645895eb9f02db3a3d16e96928ce6f";
 
-    $json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
+    $json       = file_get_contents($apiUrl);
     $details    = json_decode($json);
     dd($details);
     $country_phonecode = "";
