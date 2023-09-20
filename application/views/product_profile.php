@@ -1,8 +1,8 @@
 <?php include('header.php'); ?>
 <style type="text/css">
- .required{
-         color: red;
-         }
+    .required {
+        color: red;
+    }
 </style>
 <!--main content start-->
 
@@ -13,7 +13,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--breadcrumbs start -->
                 <ul class="breadcrumb">
-                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url().'admin/dashboard'; ?>">Home</a> / <a href="<?php echo base_url().'product/product_list'; ?>">Product</a> / <?=(isset($result) && $result['id'] != '') ? 'Update' : 'Add'?></a></li>
+                    <li class="active"><a href=""><i class="fa fa-home"></i> <a href="<?php echo base_url() . 'admin/dashboard'; ?>">Home</a> / <a href="<?php echo base_url() . 'product/product_list'; ?>">Product</a> / <?= (isset($result) && $result['id'] != '') ? 'Update' : 'Add' ?></a></li>
                 </ul>
                 <!--breadcrumbs end -->
             </div>
@@ -23,90 +23,89 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        <?=(isset($result) && $result['id'] != '') ? 'Update' : 'Add'?> Product
+                        <?= (isset($result) && $result['id'] != '') ? 'Update' : 'Add' ?> Product
                     </header>
-                    <form role="form" method="post" action="<?php echo base_url().'product/product_add_update'; ?>" name="product_form" id="product_form" enctype="multipart/form-data">
-                        <input type="hidden" id="id" name="id" value="<?=(isset($result) && $result['id'] != '') ? $result['id'] : '' ?>">
+                    <form role="form" method="post" action="<?php echo base_url() . 'product/product_add_update'; ?>" name="product_form" id="product_form" enctype="multipart/form-data">
+                        <input type="hidden" id="id" name="id" value="<?= (isset($result) && $result['id'] != '') ? $result['id'] : '' ?>">
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Product Name<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" class="form-control margin_top_input" id="name" name="name" placeholder="Product name" value="<?=(isset($result) && $result['name'] != '') ? $result['name'] : '' ?>">
+                                        <input type="text" class="form-control margin_top_input" id="name" name="name" placeholder="Product name" value="<?= (isset($result) && $result['name'] != '') ? $result['name'] : '' ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="category_id" class="margin_top_label">Category<span class="required" aria-required="true"> * </span></label>
                                         <select class="form-control margin_top_input" id="category_id" name="category_id">
                                             <option value="" selected disabled>Select Category</option>
-                                            <?php foreach ($category_result as $cat){ ?>
-                                                <option value="<?php echo $cat->id; ?>" <?php if($category_id == $cat->id){ ?> selected <?php } ?>><?php echo $cat->name; ?></option>
+                                            <?php foreach ($category_result as $cat) { ?>
+                                                <option value="<?php echo $cat->id; ?>" <?php if ($category_id == $cat->id) { ?> selected <?php } ?>><?php echo $cat->name; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    
-                                 
-                                        <div class="form-group" id="get_brand">
-                                            <label for="brand_id" class="margin_top_label">Brand<span class="required" aria-required="true"> * </span></label>
-                                            <select class="form-control margin_top_input" id="brand_id" name="brand_id">
-                                                <option value="" selected disabled>Select Brand</option>
-                                                <?php foreach ($brand_results as $bra){ ?>
-                                                    <option value="<?php echo $bra->id; ?>" 
-                                                    <?php if($id != '' && $bra_result['id'] == $bra->id){ ?> selected <?php } ?>><?php echo $bra->name; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
 
-                                        <div class="form-group" id="get_subCategory">
-                                            <label for="brand_id" class="margin_top_label">Subcateory<span class="required" aria-required="true"> * </span></label>
-                                            <select class="form-control margin_top_input" id="subcategory_id" name="subcategory_id">
-                                                <option value="" selected disabled>Select Subcateory</option>
-                                                <?php 
-                                                foreach ($subcategory_result as $subcate){ ?>
-                                                    <option value="<?php echo $subcate->id; ?>" 
-                                                    <?php if($id != '' && $subcate_result['id'] == $subcate->id){ echo  "selected";  } ?>
-                                                    ><?php echo $subcate->name; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div> 
+
+                                    <div class="form-group" id="get_brand">
+                                        <label for="brand_id" class="margin_top_label">Brand<span class="required" aria-required="true"> * </span></label>
+                                        <select class="form-control margin_top_input" id="brand_id" name="brand_id">
+                                            <option value="" selected disabled>Select Brand</option>
+                                            <?php foreach ($brand_results as $bra) { ?>
+                                                <option value="<?php echo $bra->id; ?>" <?php if ($id != '' && $bra_result['id'] == $bra->id) { ?> selected <?php } ?>><?php echo $bra->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group" id="get_subCategory">
+                                        <label for="brand_id" class="margin_top_label">Subcateory<span class="required" aria-required="true"> * </span></label>
+                                        <select class="form-control margin_top_input" id="subcategory_id" name="subcategory_id">
+                                            <option value="" selected disabled>Select Subcateory</option>
+                                            <?php
+                                            foreach ($subcategory_result as $subcate) { ?>
+                                                <option value="<?php echo $subcate->id; ?>" <?php if ($id != '' && $subcate_result['id'] == $subcate->id) {
+                                                                                                echo  "selected";
+                                                                                            } ?>><?php echo $subcate->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="name" class="display_priority">Display Priority</label>
-                                        <input type="number" class="form-control" id="display_priority" name="display_priority" placeholder="Product Priority" min='1' value="<?=(isset($result) && $result['display_priority'] != NULL) ? $result['display_priority'] : '' ?>">
+                                        <input type="number" class="form-control" id="display_priority" name="display_priority" placeholder="Product Priority" min='1' value="<?= (isset($result) && $result['display_priority'] != NULL) ? $result['display_priority'] : '' ?>">
                                     </div>
-                                    <?php if($isDisplayFoodType == 1){?>
+                                    <?php if ($isDisplayFoodType == 1) { ?>
                                         <div class="form-group">
                                             <label for="veg">Food Type</label> <br>
                                             <label for="vage" style="postion:relative; top:-5px;">None</label>
-                                            <input type="radio" name="food_type" id="vage" value="0" <?=(isset($result) && $result['food_type'] == '0') ? 'CHECKED' : '' ?>>
+                                            <input type="radio" name="food_type" id="vage" value="0" <?= (isset($result) && $result['food_type'] == '0') ? 'CHECKED' : '' ?>>
                                             <label for="vage" style="postion:relative; top:-5px;">Veg.</label>
-                                            <input type="radio" name="food_type" id="vage" value="1" <?=(isset($result) && $result['food_type'] == '1') ? 'CHECKED' : '' ?>>
+                                            <input type="radio" name="food_type" id="vage" value="1" <?= (isset($result) && $result['food_type'] == '1') ? 'CHECKED' : '' ?>>
                                             <label for="non-vage" class="display_priority">Non Veg</label>
-                                            <input type="radio" name="food_type" id="non-vage" style="postion:relative; top:-5px;"  value="2" <?=(isset($result) && $result['food_type'] == '2') ? 'CHECKED' : '' ?>>   
+                                            <input type="radio" name="food_type" id="non-vage" style="postion:relative; top:-5px;" value="2" <?= (isset($result) && $result['food_type'] == '2') ? 'CHECKED' : '' ?>>
                                         </div>
                                     <?php } ?>
                                 </div>
-                               
+
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Description<span class="required" aria-required="true"></span></label>
-                                        <textarea class="form-control margin_top_input ckeditor" id="about" placeholder="About" name="about" rows="5"><?=(isset($result) && $result['about'] != '') ? $result['about'] : ''?></textarea>
+                                        <textarea class="form-control margin_top_input ckeditor" id="about" placeholder="About" name="about" rows="5"><?= (isset($result) && $result['about'] != '') ? $result['about'] : '' ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="margin_top_label">Content<span class="required" aria-required="true"></span></label>
-                                        <textarea class="form-control margin_top_input ckeditor" id="content" placeholder="Content" name="content" rows="5"><?=(isset($result) && $result['content'] != '') ? $result['content'] : ''?></textarea>
+                                        <textarea class="form-control margin_top_input ckeditor" id="content" placeholder="Content" name="content" rows="5"><?= (isset($result) && $result['content'] != '') ? $result['content'] : '' ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="gst" class="margin_top_label">GST<span class="required" aria-required="true"></span></label>
-                                       <input type="text" class="form-control margin_top_input" id="gst" name="gst" placeholder="Product gst" value="<?=(isset($result) && $result['gst'] != '') ? $result['gst'] : ''?>">
+                                        <input type="text" class="form-control margin_top_input" id="gst" name="gst" placeholder="Product gst" value="<?= (isset($result) && $result['gst'] != '') ? $result['gst'] : '' ?>">
                                     </div>
-                                     <div class="form-group">
-                                        <label for="gst" class="margin_top_label">TAG<span class="required" aria-required="true"></span></label><input type="text" value="<?=(isset($tags))?$tags:''; ?>" name="tags" data-role="tagsinput" id="tags" class="form-control" max="15">
+                                    <div class="form-group">
+                                        <label for="gst" class="margin_top_label">TAG<span class="required" aria-required="true"></span></label><input type="text" value="<?= (isset($tags)) ? $tags : ''; ?>" name="tags" data-role="tagsinput" id="tags" class="form-control" max="15">
 
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <a href="product_list" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>   
-                                  <input type="submit" class="btn btn-info pull-right margin_top_label" value="<?=(isset($result) && $result['id'] != '') ? 'Update Product' : 'Add Product'?>" name="submit">
+                                <a href="product_list" style="float: right; margin-right: 10px;" id="delete_user" class="btn btn-danger">Cancel</a>
+                                <input type="submit" class="btn btn-info pull-right margin_top_label" value="<?= (isset($result) && $result['id'] != '') ? 'Update Product' : 'Add Product' ?>" name="submit">
                             </div>
                         </div>
                     </form>
@@ -114,49 +113,58 @@
             </div>
             <!--Map Part-->
         </div>
-        
+
         <!-- page end-->
     </section>
 </section>
-<input type="hidden" id="base_url" value="<?=base_url()?>">
+<input type="hidden" id="base_url" value="<?= base_url() ?>">
 <!--main content end-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-<script  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
-<style> label.error { color: red; font-weight: 500; } </style>
+<style>
+    label.error {
+        color: red;
+        font-weight: 500;
+    }
+</style>
 <!-- <script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
 <script src="<?php echo base_url(); ?>public/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.min.js"></script> -->
 <script type="text/javascript">
-//$("#divid").hide();
- $("#image").on('change',function(){ 
-    $('#about').trigger('focus');
- });
+    //$("#divid").hide();
+    $("#image").on('change', function() {
+        $('#about').trigger('focus');
+    });
     /*Get Brand From Store*/
-    $(function (){
-        $("#category_id").change(function (){
+    $(function() {
+        $("#category_id").change(function() {
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url().'product/get_brand'; ?>",
-                data: { category_id:  $("#category_id option:selected").val()}
-            }).done(function( msg ) {
+                url: "<?php echo base_url() . 'product/get_brand'; ?>",
+                data: {
+                    category_id: $("#category_id option:selected").val()
+                }
+            }).done(function(msg) {
                 $("#get_brand").html(msg);
             });
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url().'product/get_subCategory'; ?>",
-                data: { category_id:  $("#category_id option:selected").val()}
-            }).done(function( msg ) {
+                url: "<?php echo base_url() . 'product/get_subCategory'; ?>",
+                data: {
+                    category_id: $("#category_id option:selected").val()
+                }
+            }).done(function(msg) {
                 $("#get_subCategory").html(msg);
             });
         });
     });
     var base_url = $('#base_url').val();
     $('#product_form').validate({
-        
+
         rules: {
             name: {
                 required: true,
@@ -178,13 +186,13 @@
             //     required: true,
             //     maxlength: 500
             // },
-            image:{
+            image: {
                 required: true,
                 accept: "image/jpg,image/jpeg,image/png,image/gif"
-            }, 
-            image_edit:{
-               accept: "image/jpg,image/jpeg,image/png,image/gif"
-            },  
+            },
+            image_edit: {
+                accept: "image/jpg,image/jpeg,image/png,image/gif"
+            },
             // content: {
             //     required: true,
             //     maxlength: 500
@@ -194,17 +202,17 @@
                 maxlength: 15,
                 // number : true,
             },
-            tags : {
+            tags: {
                 maxlength: 15,
             },
-            display_priority : {
+            display_priority: {
                 remote: {
-                    url: base_url+"product/check_display_priority",
+                    url: base_url + "product/check_display_priority",
                     type: "post",
                     data: {
-                    product_id: function() {
-                        return $( "#id" ).val();
-                    }
+                        product_id: function() {
+                            return $("#id").val();
+                        }
                     }
                 }
             }
@@ -222,7 +230,7 @@
             },
             brand_id: {
                 required: "Please select brand"
-            }, 
+            },
             subcategory_id: {
                 required: "Please select subcategory"
             },
@@ -230,14 +238,14 @@
             //     required: "Please enter about",
             //     maxlength: "Please enter maximum 500 character about"
             // },
-            image:{
-                    required: "Select Image",
-                    accept: "Only image type jpg/png/jpeg/gif is allowed"
-                }, 
-            image_edit:{
-                    
-                    accept: "Only image type jpg/png/jpeg/gif is allowed"
-                }, 
+            image: {
+                required: "Select Image",
+                accept: "Only image type jpg/png/jpeg/gif is allowed"
+            },
+            image_edit: {
+
+                accept: "Only image type jpg/png/jpeg/gif is allowed"
+            },
             // content: {
             //     required: "Please enter content",
             //     maxlength: "Please enter maximum 500 character content"
@@ -248,17 +256,17 @@
                 // number : "Please enter number only",
             },
             display_priority: {
-                remote : 'Priority already assigned'
+                remote: 'Priority already assigned'
             }
         },
         error: function(label) {
             $(this).addClass("error");
         },
-        
-        submitHandler: function (form) {
+
+        submitHandler: function(form) {
             // $('.btn').attr('disabled','disabled');
             form.submit();
-                
+
         }
     });
 </script>
