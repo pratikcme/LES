@@ -55,7 +55,7 @@ foreach (getCountryPhoneCode() as $key => $value) {
                                     <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?><span>*</span></label>
                                     <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
                                         <?php foreach ($country_code as $key => $value) { ?>
-                                            <option <?= ($country_code == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
+                                            <option value="<?= $key; ?>"><?= $value; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
