@@ -13,7 +13,7 @@ class QuickProduct extends Vendor_Controller
 
     }
 
-    public function create()
+    public function index()
     {
         $this->load->view('quick_product/add');
     }
