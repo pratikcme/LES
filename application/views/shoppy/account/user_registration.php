@@ -18,7 +18,7 @@
     </div>
 </section>
 <?php
-echo getPhoneCode();
+dd(getPhoneCode());
 exit;
 ?>
 <div class="login-section p-100">
