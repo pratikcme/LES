@@ -1178,3 +1178,21 @@ function getCountryPhoneCode()
     );
     return $country_list;
 }
+
+
+function getPhoneCode()
+{
+    $IPaddress = $_SERVER['REMOTE_ADDR'];
+
+
+    $json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
+    $details    = json_decode($json);
+
+    $country_phonecode = "";
+    foreach (getCountryPhoneCode() as $key => $value) {
+        if ($key == $details->country) {
+            $country_phonecode = '+' . $value;
+        }
+    }
+    return $country_phonecode;
+}
