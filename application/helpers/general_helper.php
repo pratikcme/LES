@@ -1187,7 +1187,7 @@ function getPhoneCode()
 
     $json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
     $details    = json_decode($json);
-
+    dd($details);
     $country_phonecode = "";
     foreach (getCountryPhoneCode() as $key => $value) {
         if ($key == $details->country) {
