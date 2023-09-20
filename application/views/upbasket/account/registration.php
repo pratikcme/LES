@@ -1,18 +1,3 @@
-<?php
-$IPaddress = $_SERVER['REMOTE_ADDR'];
-echo $IPaddress;
-
-$json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
-$details    = json_decode($json);
-
-$country_phonecode = "";
-foreach (getCountryPhoneCode() as $key => $value) {
-    if ($key == $details->country) {
-        $country_phonecode = '+' . $value;
-    }
-}
-echo $country_phonecode;
-?>
 <div class="login-section section">
     <div class="container">
         <div class="row">
@@ -47,7 +32,7 @@ echo $country_phonecode;
                                         <select name="country_code" id="country_code" class="input-wrapper">
                                             <option value=""><?= $this->lang->line('select country code') ?></option>
                                             <?php foreach (GetDialcodelist() as $key => $value) { ?>
-                                                <option <?= ($country_phonecode == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
+                                                <option <?= (getPhoneCode() == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
