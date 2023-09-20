@@ -1188,12 +1188,12 @@ function getPhoneCode()
 
     $json       = file_get_contents($apiUrl);
     $details    = json_decode($json);
-    dd($details->location->calling_code);
-    $country_phonecode = "";
-    foreach (getCountryPhoneCode() as $key => $value) {
-        if ($key == $details->country) {
-            $country_phonecode = '+' . $value;
-        }
-    }
-    return $country_phonecode;
+
+    // $country_phonecode = "";
+    // foreach (getCountryPhoneCode() as $key => $value) {
+    //     if ($key == $details->country) {
+    //         $country_phonecode = '+' . $value;
+    //     }
+    // }
+    return '+' . $details->location->calling_code;
 }
