@@ -13,7 +13,7 @@ include('header.php');
                     </ol>
                 </nav>
                 <div class="btns-wrapper">
-                    <a href="<?php echo base_url() . 'quickproduct/create'; ?>" class="btn btn-primary">Add Quick Product</a>
+                    <a href="<?php echo base_url() . 'quickProduct/create'; ?>" class="btn btn-primary">Add Quick Product</a>
                     <a href="<?= base_url() . 'product/product_profile' ?>" class="add-btn">Add Product</a>
                     <a href="javascript:" id="delete_user" class="delete-btn">Delete Product</a>
                     <div class="tooltip-wrapper">
