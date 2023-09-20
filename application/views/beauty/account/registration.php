@@ -9,7 +9,7 @@
 
 // Get the user's IP address
 $IPaddress = $_SERVER['REMOTE_ADDR'];
-
+echo $IPaddress;
 
 $json       = file_get_contents("http://ipinfo.io/{$IPaddress}");
 $details    = json_decode($json);
