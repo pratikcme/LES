@@ -17,7 +17,10 @@
         </div>
     </div>
 </section>
-
+<?php
+echo getPhoneCode();
+exit;
+?>
 <div class="login-section p-100">
     <div class="container">
         <div class="row">
