@@ -31,7 +31,6 @@
 .add-quick-product-wrp input {
     border-radius: 5px;
     border: 1px solid #AEB2B7;
-    opacity: 0.5;
     background: #FFF;
     height: 45px;
     color: #2A3542 !important;
@@ -45,7 +44,6 @@
 .add-quick-product-wrp textarea {
     border-radius: 5px;
     border: 1px solid #AEB2B7;
-    opacity: 0.5;
     background: #FFF;
     height: 45px;
     color: #2A3542;
@@ -61,7 +59,6 @@
 .add-quick-product-wrp select {
     border-radius: 5px;
     border: 1px solid #AEB2B7;
-    opacity: 0.5;
     height: 45px;
     color: #2A3542 !important;
     font-family: "Open Sans";
@@ -354,30 +351,28 @@
                                         <div class="col-lg-12">
                                             <div class="form-group select-group lable-select-group">
                                                 <label for="fname">Category<span>*</span> </label>
-                                                <select name="" id="" class="form-control form-select">
-                                                    <option value="" selected="" disabled="">Add</option>
-                                                    <option value="Add New">Add New</option>
-                                                    <option value="Add New">Add New</option>
+                                                <select name="category_id" id="" class="form-control form-select category">
+                                                <option value="">Select Category</option>  
+                                                <option value="add_new">Add New</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group select-group lable-select-group">
                                                 <label for="fname">Subcategory<span>*</span></label>
-                                                <select name="" id="" class="form-control form-select">
-                                                    <option value="" selected="">Add</option>
-                                                    <option value="Add New">Add New</option>
-                                                    <option value="Add New">Add New</option>
+                                                <select name="subcategory_id" id="" class="form-control form-select subcategory">
+                                                <option value="">Select Category</option>  
+                                                <option value="add_new">Add New</option>
+                                                    
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group select-group lable-select-group">
                                                 <label for="fname">Brand<span>*</span></label>
-                                                <select name="" id="" class="form-control form-select">
-                                                    <option value="" selected="">Add</option>
-                                                    <option value="Add New">Add New</option>
-                                                    <option value="Add New">Add New</option>
+                                                <select name="brand_id" id="" class="form-control form-select brand">
+                                                <option value="">Select Category</option>  
+                                                <option value="add_new">Add New</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -403,7 +398,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label for="name" class="w-100">Description<span class="required"
+                                                <label for="name" class="w-100">Content <span class="required"
                                                         aria-required="true"></span></label>
                                                 <textarea name="" id=""></textarea>
                                             </div>
@@ -492,13 +487,13 @@
             <div class="modal-body">
                 <div class="tabs-wrap">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">Category</a></li>
-                        <li><a data-toggle="tab" href="#menu1">Subcategory</a></li>
-                        <li><a data-toggle="tab" href="#menu2">Brand</a></li>
+                        <li class="quickcat quicktab"><a data-toggle="tab" href="#home">Category</a></li>
+                        <li class="quicksubcat quicktab"><a data-toggle="tab" href="#menu1">Subcategory</a></li>
+                        <li class="quickbrand quicktab"><a data-toggle="tab" href="#menu2">Brand</a></li>
                     </ul>
 
                     <div class="tab-content">
-                        <div id="home" class="tab-pane fade in active">
+                        <div id="home" class="tab-pane fade in  active">
                             <form action="">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -599,6 +594,44 @@
                 font-weight: 500;
             }
             </style>
+            <script>
+                $(".category").change(function(){
+                    var catItem = $('select[name=category_id] option').filter(':selected').val()
+
+                    $('.quicktab').removeClass('active');
+                    $('.tab-pane').removeClass('active');
+                    if(catItem == 'add_new'){
+                    
+                        $("#quick-add-modal").modal('show');
+                        $(".quickcat").addClass('active');
+                        $('#home').addClass('active');
+                    }
+                });
+
+                $(".subcategory").change(function(){
+                    var catItem = $('select[name=subcategory_id] option').filter(':selected').val()
+                    $('.quicktab').removeClass('active');
+                    $('.tab-pane').removeClass('active');
+                    if(catItem == 'add_new'){
+                    
+                        $("#quick-add-modal").modal('show');
+                        $(".quicksubcat").addClass('active');
+                        $('#menu1').addClass('active in');
+                    }
+                });
+
+                $(".brand").change(function(){
+                    var catItem = $('select[name=brand_id] option').filter(':selected').val()
+                    $('.quicktab').removeClass('active');
+                    $('.tab-pane').removeClass('active');
+                    if(catItem == 'add_new'){
+                    
+                        $("#quick-add-modal").modal('show');
+                        $(".quickbrand").addClass('active');
+                        $('#menu2').addClass('active in');
+                    }
+                });
+            </script>
             <!-- <script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
 <script src="<?php echo base_url(); ?>public/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.min.js"></script> -->
