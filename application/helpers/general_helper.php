@@ -1188,7 +1188,7 @@ function getPhoneCode()
 
     $json       = file_get_contents($apiUrl);
     $details    = json_decode($json);
-    dd($details->location);
+    dd($details->location->calling_code);
     $country_phonecode = "";
     foreach (getCountryPhoneCode() as $key => $value) {
         if ($key == $details->country) {
