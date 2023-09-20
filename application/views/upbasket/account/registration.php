@@ -11,7 +11,7 @@ foreach (getCountryPhoneCode() as $key => $value) {
         $country_phonecode = '+' . $value;
     }
 }
-
+echo $country_phonecode;
 ?>
 <div class="login-section section">
     <div class="container">
