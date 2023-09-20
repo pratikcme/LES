@@ -58,7 +58,7 @@ $product_result = $product_query->result();
                                         </div>
                                         <div>
                                             <a href="<?php echo base_url() . 'product/quick_product_add'; ?>" class="btn btn-primary">Add Quick Product</a>
-                                            <a href="<?php echo base_url() . 'product/product_profile'; ?>" class="btn btn-primary">Add Product</a>
+                                            <a href="<?php echo base_url() . 'product/product_profile'; ?>" class="btn btn-primary">Adssd Product</a>
                                             <a href="#" id="delete_user" class="btn btn-danger">Delete Product</a>
                                         </div>
                                     </div>
