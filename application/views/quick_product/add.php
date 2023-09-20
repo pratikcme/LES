@@ -1,4 +1,4 @@
-<?php include('../header.php'); ?>
+<?php $this->load->view('header.php'); ?>
 <style type="text/css">
     .required {
         color: red;
@@ -197,4 +197,4 @@
         }
     });
 </script>
-<?php include('footer.php'); ?>
+<?php $this->load->view('footer.php'); ?>
