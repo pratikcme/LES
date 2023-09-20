@@ -145,6 +145,12 @@
         <span>Product</span>
     </a>
 </li>
+<li>
+    <a class="<?php if ($this->uri->segment(1) == 'quickProduct') { ?> active <?php } ?>" href="<?php echo base_url() . 'quickProduct'; ?>">
+        <i class="fa fa-product-hunt"></i>
+        <span>Quick Product</span>
+    </a>
+</li>
 <li class="sub-menu">
     <a href="javascript:;" class="dcjq-parent <?php if ($this->uri->segment(1) == 'import') { ?> active <?php } ?>">
         <i class="fa fa-bar-chart-o"></i>
