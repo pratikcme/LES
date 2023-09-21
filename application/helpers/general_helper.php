@@ -1182,7 +1182,8 @@ function getCountryPhoneCode()
 
 function getPhoneCode()
 {
-
+    echo FCPATH;
+    exit;
     $IPaddress = $_SERVER['REMOTE_ADDR'];
 
 
