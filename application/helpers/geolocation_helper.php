@@ -8,7 +8,7 @@ use GeoIp2\Database\Reader;
 function lookupGeoIP()
 {
     // Use the MaxMind GeoIP2 library
-    echo APPPATH;
+    echo APPPATH . 'config/maxmind-database.mmdb';
     exit;
     $ipAddress = $_SERVER['REMOTE_ADDR'];
     // This reader object should be reused across lookups as creation of it is
