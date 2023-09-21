@@ -1,8 +1,4 @@
 <?php
-
-
-use GeoIp2\Database\Reader;
-
 function get_country($ip)
 {
     $CI = &get_instance();
