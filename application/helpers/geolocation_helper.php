@@ -13,7 +13,7 @@ function lookupGeoIP()
     // This reader object should be reused across lookups as creation of it is
     // expensive.
     $reader = new Reader(APPPATH . 'config/maxmind-database.mmdb');
-
+    dd($reader);
 
     $record = $reader->city($ipAddress);
     $countryIsoCode = $record->country->isoCode;
