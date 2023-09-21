@@ -50,7 +50,7 @@
                       <option value=""><?= $this->lang->line('select country code') ?></option>
 
                       <?php foreach (GetDialcodelist() as $key => $value) { ?>
-                        <option value="<?= $key; ?>"><?= $value; ?></option>
+                        <option <?= (getPhoneCode() == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                       <?php } ?>
                     </select>
                   </div>

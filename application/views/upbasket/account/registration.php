@@ -1,4 +1,3 @@
-<!-- -----login-section----- -->
 <div class="login-section section">
     <div class="container">
         <div class="row">
@@ -33,7 +32,7 @@
                                         <select name="country_code" id="country_code" class="input-wrapper">
                                             <option value=""><?= $this->lang->line('select country code') ?></option>
                                             <?php foreach (GetDialcodelist() as $key => $value) { ?>
-                                                <option value="<?= $key; ?>"><?= $value; ?></option>
+                                                <option <?= (getPhoneCode() == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
