@@ -18,7 +18,7 @@
     </div>
 </section>
 <?php
-lookupGeoIP();
+echo lookupGeoIP();
 ?>
 <div class="login-section p-100">
     <div class="container">
