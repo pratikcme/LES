@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-include_once APPPATH . "/vendor/autoload.php";
 
-use GeoIp2\Database\Reader;
 
 class Login extends User_Controller
 {
@@ -577,21 +575,5 @@ class Login extends User_Controller
 		// $email = $this->input->post('email');
 		echo $result = $this->this_model->mobileVerification_register($this->input->post());
 		die;
-	}
-
-	public function lookupGeoIP()
-	{
-		// Use the MaxMind GeoIP2 library
-
-
-		// This reader object should be reused across lookups as creation of it is
-		// expensive.
-		$reader = new Reader('/path/to/maxmind-database.mmdb');
-
-		$record = $reader->city('128.101.101.101');
-		$countryIsoCode = $record->country->isoCode;
-		echo $countryIsoCode;
-		exit;
-		// Now you can do something with $countryIsoCode, e.g., display it in a view.
 	}
 }
