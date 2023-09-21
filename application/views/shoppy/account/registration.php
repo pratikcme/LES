@@ -53,7 +53,10 @@
                   <label for="Country-code" class="form-label"><?= $this->lang->line('select country code') ?></label>
                   <select class="form-select" name="country_code" aria-label="Country-code" id="Country-code">
                     <option value=""><?= $this->lang->line('select country code') ?></option>
-                    <?php foreach (GetDialcodelist() as $key => $value) { ?>
+                    <?php
+
+                    $locationCallingCode = getPhoneCode();
+                    foreach (GetDialcodelist() as $key => $value) { ?>
                       <option <?= (getPhoneCode() == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                     <?php } ?>
                   </select>
