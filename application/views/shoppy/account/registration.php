@@ -55,7 +55,7 @@
                     <option value=""><?= $this->lang->line('select country code') ?></option>
                     <?php
 
-                    $locationCallingCode = getPhoneCode();
+
                     foreach (GetDialcodelist() as $key => $value) { ?>
                       <option <?= (getPhoneCode() == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                     <?php } ?>
