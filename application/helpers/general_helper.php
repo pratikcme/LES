@@ -1,5 +1,7 @@
 <?php
 
+use GeoIp2\Database\Reader;
+
 function get_country($ip)
 {
     $CI = &get_instance();
@@ -1182,18 +1184,31 @@ function getCountryPhoneCode()
 
 function getPhoneCode()
 {
+
     $IPaddress = $_SERVER['REMOTE_ADDR'];
 
-    $apiUrl = "http://api.ipstack.com/$IPaddress?access_key=06645895eb9f02db3a3d16e96928ce6f";
 
-    $json       = file_get_contents($apiUrl);
-    $details    = json_decode($json);
 
-    // $country_phonecode = "";
-    // foreach (getCountryPhoneCode() as $key => $value) {
-    //     if ($key == $details->country) {
-    //         $country_phonecode = '+' . $value;
-    //     }
-    // }
-    return '+' . $details->location->calling_code;
+    // This reader object should be reused across lookups as creation of it is
+    // expensive.
+    $reader = new Reader('/path/to/maxmind-database.mmdb');
+
+    $record = $reader->city('128.101.101.101');
+
+    print($record->country->isoCode);
+
+
+
+    // $apiUrl = "http://api.ipstack.com/$IPaddress?access_key=06645895eb9f02db3a3d16e96928ce6f";
+
+    // $json       = file_get_contents($apiUrl);
+    // $details    = json_decode($json);
+
+    // // $country_phonecode = "";
+    // // foreach (getCountryPhoneCode() as $key => $value) {
+    // //     if ($key == $details->country) {
+    // //         $country_phonecode = '+' . $value;
+    // //     }
+    // // }
+    // return '+' . $details->location->calling_code;
 }
