@@ -9,13 +9,13 @@ function lookupGeoIP()
 {
     // Use the MaxMind GeoIP2 library
 
-
+    $ipAddress = $_SERVER['REMOTE_ADDR'];
     // This reader object should be reused across lookups as creation of it is
     // expensive.
-    $reader = new Reader(APPPATH . 'path/to/maxmind-database.mmdb');
+    $reader = new Reader(FCPATH  . 'maxmind-database.mmdb');
 
 
-    $record = $reader->city('128.101.101.101');
+    $record = $reader->city($ipAddress);
     $countryIsoCode = $record->country->isoCode;
     echo $countryIsoCode;
     exit;
