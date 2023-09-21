@@ -314,6 +314,70 @@
     align-items: center;
     justify-content: center;
 }
+
+
+
+.checkbox-form .form-check input[type="radio"]
+{
+  appearance: none;
+  display: none;
+}
+
+.checkbox-form .form-check input[type="radio"] + label
+{
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  line-height: 20px;
+}
+
+.checkbox-form .form-check input[type="radio"] + label::before
+{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height:20px !important;
+  aspect-ratio: 1;
+  border: 2px solid #464255;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.checkbox-form .form-check input[type="radio"] + label::after
+{
+  content: "";
+  display: inline-block;
+  width: 10px;
+  aspect-ratio: 1;
+  border: 1px solid #FF6C60;
+  background: #FF6C60;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.checkbox-form .form-check input[type="radio"]:checked + label::after
+{
+  opacity: 1;
+}
+.checkbox-form .form-check input[type="radio"]:checked + label::before{
+    border: 2px solid #FF6C60;
+}
+
+
+
+
+
+
 @media only screen and (max-width: 1199px) {
     .add-quick-product-wrp .col-lg-6:nth-child(2){
         margin-top: 30px;
@@ -331,10 +395,11 @@
     }
 }
 @media only screen and (max-width: 424px) {
-    .checkbox-form{
+    .checkbox-form {
         flex-direction: column;
         height: auto;
         gap: 10px;
+        align-items: start;
     }
     .cancel-btn{
         margin-left: 10px;
@@ -464,26 +529,27 @@
                                             <label for="">Food Type</label>
                                             <div class="form-group checkbox-form">
                                                 <div class="form-check">
+                                                    
+                                                    <input class="" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault1" checked="">
                                                     <label class="" for="flexRadioDefault1">
                                                         Veg.
                                                     </label>
-                                                    <input class="" type="radio" name="flexRadioDefault"
-                                                        id="flexRadioDefault1">
 
                                                 </div>
                                                 <div class="form-check">
+                                                    <input class="" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault2" >
                                                     <label class="" for="flexRadioDefault2">
                                                         Non Veg.
                                                     </label>
-                                                    <input class="" type="radio" name="flexRadioDefault"
-                                                        id="flexRadioDefault2" checked="">
                                                 </div>
                                                 <div class="form-check">
+                                                    <input class="" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault3" >
                                                     <label class="" for="flexRadioDefault3">
                                                         None
                                                     </label>
-                                                    <input class="" type="radio" name="flexRadioDefault"
-                                                        id="flexRadioDefault3" checked="">
                                                 </div>
                                             </div>
                                         </div>
@@ -512,16 +578,13 @@
                                             <button class="quick-add-btn">Add Product</button>
                                             <button class="cancel-btn">Cancel</button>
                                         </div>
-                                        
-
                                     </div>
                                 </div>
                                 
                             </div>
-                            
                         </div>
                     </form>
-                    <button data-toggle="modal" data-target="#quick-add-modal">Add Product</button>
+                    <!-- <button data-toggle="modal" data-target="#quick-add-modal">Add Product</button> -->
                 </div>
             </div>
             <!--Map Part-->
@@ -531,8 +594,6 @@
         
     </section>
 </section>
-
-
 
 
 <div class="modal fade" id="quick-add-modal" aria-hidden="true">
@@ -634,61 +695,59 @@
 </div>
 
 
-            <input type="hidden" id="base_url" value="<?= base_url() ?>">
-            <!--main content end-->
-            <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-            <script type="text/javascript"
-                src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js">
-            </script>
+<input type="hidden" id="base_url" value="<?= base_url() ?>">
+<!--main content end-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 
 
-            <script type="text/javascript"
-                src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
-            <style>
-            label.error {
-                color: red;
-                font-weight: 500;
-            }
-            </style>
-            <script>
-                $(".category").change(function(){
-                    var catItem = $('select[name=category_id] option').filter(':selected').val()
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
+<style>
+    label.error {
+        color: red;
+        font-weight: 500;
+    }
+</style>
+<script>
+    $(".category").change(function(){
+        var catItem = $('select[name=category_id] option').filter(':selected').val()
 
-                    $('.quicktab').removeClass('active');
-                    $('.tab-pane').removeClass('active');
-                    if(catItem == 'add_new'){
-                    
-                        $("#quick-add-modal").modal('show');
-                        $(".quickcat").addClass('active');
-                        $('#home').addClass('active');
-                    }
-                });
+        $('.quicktab').removeClass('active');
+        $('.tab-pane').removeClass('active');
+        if(catItem == 'add_new'){
+        
+            $("#quick-add-modal").modal('show');
+            $(".quickcat").addClass('active');
+            $('#home').addClass('active');
+        }
+    });
 
-                $(".subcategory").change(function(){
-                    var catItem = $('select[name=subcategory_id] option').filter(':selected').val()
-                    $('.quicktab').removeClass('active');
-                    $('.tab-pane').removeClass('active');
-                    if(catItem == 'add_new'){
-                    
-                        $("#quick-add-modal").modal('show');
-                        $(".quicksubcat").addClass('active');
-                        $('#menu1').addClass('active in');
-                    }
-                });
+    $(".subcategory").change(function(){
+        var catItem = $('select[name=subcategory_id] option').filter(':selected').val()
+        $('.quicktab').removeClass('active');
+        $('.tab-pane').removeClass('active');
+        if(catItem == 'add_new'){
+        
+            $("#quick-add-modal").modal('show');
+            $(".quicksubcat").addClass('active');
+            $('#menu1').addClass('active in');
+        }
+    });
 
-                $(".brand").change(function(){
-                    var catItem = $('select[name=brand_id] option').filter(':selected').val()
-                    $('.quicktab').removeClass('active');
-                    $('.tab-pane').removeClass('active');
-                    if(catItem == 'add_new'){
-                    
-                        $("#quick-add-modal").modal('show');
-                        $(".quickbrand").addClass('active');
-                        $('#menu2').addClass('active in');
-                    }
-                });
-            </script>
+    $(".brand").change(function(){
+        var catItem = $('select[name=brand_id] option').filter(':selected').val()
+        $('.quicktab').removeClass('active');
+        $('.tab-pane').removeClass('active');
+        if(catItem == 'add_new'){
+        
+            $("#quick-add-modal").modal('show');
+            $(".quickbrand").addClass('active');
+            $('#menu2').addClass('active in');
+        }
+    });
+</script>
             <!-- <script src="<?php echo base_url(); ?>public/js/jquery-1.8.3.min.js"></script>
 <script src="<?php echo base_url(); ?>public/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.min.js"></script> -->
