@@ -5,7 +5,7 @@ require_once FCPATH . 'vendor/autoload.php';
 
 use GeoIp2\Database\Reader;
 
-function lookupGeoIP()
+function getPhoneCode()
 {
     // Use the MaxMind GeoIP2 library
 
