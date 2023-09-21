@@ -1,6 +1,7 @@
 <?php
 
-include_once APPPATH . "vendor/autoload.php";
+require_once FCPATH . 'vendor/autoload.php';
+
 
 use GeoIp2\Database\Reader;
 
