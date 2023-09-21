@@ -15,7 +15,7 @@ function lookupGeoIP()
     $reader = new Reader(APPPATH . 'config/maxmind-database.mmdb');
 
     $record = $reader->country($ipAddress);
-    dd($record);
+    dd($record->country);
     // $countryIsoCode = $record->country->isoCode;
     // echo $countryIsoCode;
     exit;
