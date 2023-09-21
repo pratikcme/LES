@@ -17,8 +17,12 @@ function lookupGeoIP()
     $record = $reader->country($ipAddress);
     dd($record->country->isoCode);
 
-    // $countryIsoCode = $record->country->isoCode;
-    // echo $countryIsoCode;
-    exit;
+    $country_phonecode = "";
+    foreach (getCountryPhoneCode() as $key => $value) {
+        if ($key == $details->country) {
+            $country_phonecode = '+' . $value;
+        }
+    }
+    return $country_phonecode;
     // Now you can do something with $countryIsoCode, e.g., display it in a view.
 }
