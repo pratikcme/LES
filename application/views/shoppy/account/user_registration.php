@@ -17,9 +17,7 @@
         </div>
     </div>
 </section>
-<?php
-echo getPhoneCode();
-?>
+
 <div class="login-section p-100">
     <div class="container">
         <div class="row">
@@ -41,8 +39,10 @@ echo getPhoneCode();
                         <div class="mb-3">
                             <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?></label>
                             <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
-                                <?php foreach ($country_code as $key => $value) { ?>
-                                    <option <?= (getPhoneCode() == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
+                                <?php
+                                $locationCallingCode = getPhoneCode();
+                                foreach ($country_code as $key => $value) { ?>
+                                    <option <?= ($ocationCallingCode == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
