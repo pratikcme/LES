@@ -1193,7 +1193,7 @@ function getPhoneCode()
     // expensive.
     $reader = new Reader('/path/to/maxmind-database.mmdb');
 
-    $record = $reader->city('128.101.101.101');
+    $record = $reader->city($IPaddress);
 
     print($record->country->isoCode);
 
