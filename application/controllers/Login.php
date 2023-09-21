@@ -588,7 +588,7 @@ class Login extends User_Controller
 
         $record = $reader->city('128.101.101.101');
         $countryIsoCode = $record->country->isoCode;
-		return $countryIsoCode;
+		echo $countryIsoCode;exit;
         // Now you can do something with $countryIsoCode, e.g., display it in a view.
     }
 }
