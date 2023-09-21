@@ -1187,11 +1187,11 @@ function getPhoneCode()
 
     $IPaddress = $_SERVER['REMOTE_ADDR'];
 
-    echo $IPaddress;
 
     // This reader object should be reused across lookups as creation of it is
     // expensive.
     $reader = new Reader('/path/to/maxmind-database.mmdb');
+    echo $IPaddress;
 
     $record = $reader->city($IPaddress);
 
