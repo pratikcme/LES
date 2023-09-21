@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-include_once APPPATH . "libraries/vendor/autoload.php";
+include_once APPPATH . "/vendor/autoload.php";
 
 use GeoIp2\Database\Reader;
 
@@ -14,7 +14,7 @@ class Login extends User_Controller
 		$this->load->model($this->myvalues->loginFrontEnd['model'], 'this_model');
 		$user_id = $this->session->userdata('user_id');
 		$this->user_id = $this->session->userdata('user_id');
-
+		include_once APPPATH . "libraries/vendor/autoload.php";
 
 		if ($this->session->userdata('user_id') == '') {
 			if (isset($_SESSION['My_cart']) && !empty($_SESSION['My_cart'])) {
