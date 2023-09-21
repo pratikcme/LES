@@ -15,11 +15,11 @@ function lookupGeoIP()
     $reader = new Reader(APPPATH . 'config/maxmind-database.mmdb');
 
     $record = $reader->country($ipAddress);
-    dd($record->country->isoCode);
+
 
     $country_phonecode = "";
     foreach (getCountryPhoneCode() as $key => $value) {
-        if ($key == $details->country) {
+        if ($key == $record->country->isoCode) {
             $country_phonecode = '+' . $value;
         }
     }
