@@ -1,5 +1,5 @@
 <?php
-require_once APPPATH . 'vendor/autoload.php';
+
 
 use GeoIp2\Database\Reader;
 
