@@ -1399,6 +1399,29 @@
         padding-top: 100px;
         padding-bottom: 100px;
     }
+    .floting-cart-btn {
+        position: fixed;
+        right: 16px;
+        bottom: 130px;
+        z-index: 10;
+        display: block;
+    }
+
+    .floting-cart-btn a {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--header-icon-round-color);
+    }
+    .icon-tex{
+        display: none;
+    }
+    .cart-icons{
+        display: none !important;
+    }
 
 }
 
@@ -1697,8 +1720,8 @@
 
     .floting-cart-btn {
         position: fixed;
-        right: 20px;
-        bottom: 107px;
+        right: 16px;
+        bottom: 130px;
         z-index: 10;
         display: block;
     }
@@ -3699,7 +3722,7 @@
 
     .card-header h5 {
         font-family: var(--BeVietnamPro-Regular);
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .card-body h3 {
@@ -4201,7 +4224,7 @@
 
     .card-header h5 {
         font-family: var(--BeVietnamPro-Regular);
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .card-body h3 {
@@ -4596,3 +4619,10 @@
         margin-top: 50px !important;
     }    
 }
+
+@media only screen and (max-width: 674px){
+    .floting-cart-btn {
+        right: 13px;
+        bottom: 170px;
+    }
+} 

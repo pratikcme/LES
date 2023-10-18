@@ -31,7 +31,7 @@
         <div class="login-left-content">
 
           <!-- ---------signin-deails-wrappper----- -->
-          <form class="login-deatils-wrapper signin-deatils-wrapper" id="ForgetForm" method="post" action="<?= base_url() . 'login/forget_password' ?>">
+          <form class="login-deatils-wrapper signin-deatils-wrapper forgot-wrp" id="ForgetForm" method="post" action="<?= base_url() . 'login/forget_password' ?>">
             <h2 class="title"><?= $this->lang->line('Forgot'); ?> <span><?= $this->lang->line('Password?'); ?></span></h2>
 
 

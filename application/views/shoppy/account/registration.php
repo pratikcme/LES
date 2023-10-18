@@ -57,7 +57,8 @@
 
 
                     foreach (GetDialcodelist() as $key => $value) { ?>
-                      <option <?= (getPhoneCode() == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
+                   <?//=(getPhoneCode() == $key) ? "selected" : "" ?> 
+                      <option value="<?= $key; ?>"><?= $value; ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -70,28 +71,36 @@
                 </div>
               </div>
 
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"><?= $this->lang->line('Email') ?></label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?= $this->lang->line('Email*') ?>">
+              <div class="col-xxl-12">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label"><?= $this->lang->line('Email') ?></label>
+                  <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?= $this->lang->line('Email*') ?>">
+                </div>
+              </div>
+              
+              <div class="col-xxl-12">
+                <div class="mb-3">
+                  <label for="password" class="form-label"><?= $this->lang->line('password') ?></label>
+                  <input type="password" class="form-control" id="password" autocomplete="off" name="password" placeholder="<?= $this->lang->line('password*') ?>">
+                </div>
               </div>
 
-              <div class="mb-3">
-                <label for="password" class="form-label"><?= $this->lang->line('password') ?></label>
-                <input type="password" class="form-control" id="password" autocomplete="off" name="password" placeholder="<?= $this->lang->line('password*') ?>">
+              <div class="col-xxl-12">
+                <div class="mb-3">
+                  <label for="confirm_password" class="form-label"><?= $this->lang->line('Confirm password') ?></label>
+                  <input type="password" class="form-control" name="confirm_password" placeholder="<?= $this->lang->line('Confirm password*') ?>" id="confirm_password" autocomplete="off">
+                </div>
               </div>
 
-              <div class="mb-3">
-                <label for="confirm_password" class="form-label"><?= $this->lang->line('Confirm password') ?></label>
-                <input type="password" class="form-control" name="confirm_password" placeholder="<?= $this->lang->line('Confirm password*') ?>" id="confirm_password" autocomplete="off">
+              <div class="col-xxl-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="term_policy" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    By creating an account, you agree to our <a href="<?= base_url() ?>terms_condition">Terms Of Conditions</a> and <a href="<?= base_url() ?>privacy_policy">Privacy Policy.</a>
+                  </label>
+                </div>
+                <label for="term_policy" class="error"></label>
               </div>
-
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="term_policy" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  By creating an account, you agree to our <a href="<?= base_url() ?>terms_condition">Terms Of Conditions</a> and <a href="<?= base_url() ?>privacy_policy">Privacy Policy.</a>
-                </label>
-              </div>
-              <label for="term_policy" class="error"></label>
 
               <div class="sign-in-btn">
                 <button class="lg-btn" type="submit"><?= $this->lang->line('Sign up'); ?></button>

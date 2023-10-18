@@ -2017,6 +2017,10 @@ padding-left: 0 !important;
     .main-accordion{
         margin-bottom: 20px !important;
     }
+    .new-address button{
+        font-size: 16px;
+        padding: 12px 20px 12px 20px;
+    }
 }
 
 /* =================================================== */

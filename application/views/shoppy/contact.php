@@ -95,7 +95,7 @@ label.error {
                   <div class="contact-info-wrap">
                       <h3><?= $this->lang->line('Contact Info'); ?></h3>
                       <div>
-                          <div class="d-flex  mb-50">
+                          <div class="d-flex align-items-center  mb-50">
                               <div class="contact-icon">
 
                                   <svg id="Layer_1" data-name="Layer 1"
@@ -121,7 +121,7 @@ label.error {
                                   <p><?= $appLinks[0]->contact_number ?></p>
                               </div>
                           </div>
-                          <div class="d-flex  mb-50">
+                          <div class="d-flex align-items-center  mb-50">
                               <div class="contact-icon">
 
                                   <svg id="Layer_1" data-name="Layer 1"
@@ -147,7 +147,7 @@ label.error {
                                   <a href="javascript:"><?= $appLinks[0]->contact_email ?></a>
                               </div>
                           </div>
-                          <div class="d-flex  mb-50">
+                          <div class="d-flex align-items-center  mb-50">
                               <div class="contact-icon">
 
                                   <svg id="Layer_1" data-name="Layer 1"

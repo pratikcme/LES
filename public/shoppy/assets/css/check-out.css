@@ -21,6 +21,7 @@
     margin-bottom: 40px;
     overflow: hidden;
     padding: 10px;
+    cursor: pointer;
 }
 .accordion-heading{
     width: 100%;
@@ -181,6 +182,33 @@ input:focus{
 
 .accordion-content-3 input::placeholder{ 
     font-family: Poppins;
+    font-size: 14px !important;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--accordian-content-text-2);
+    text-transform: capitalize;
+    font-family: var(--PublicSans-Regular) !important;
+    color: var(--light-gray);
+    text-align: left !important;
+}
+
+.accordion-content-3 textarea{
+    border: 1px solid var(--accordian-border);
+    box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
+    border-radius: 10px;
+    padding-left: 25px;
+    padding-top: 20px;
+    height: 100px !important;
+    width: 100% ;
+}
+.accordion-content-3 textarea:focus{
+    box-shadow: none;
+    box-shadow: 0px 4px 7px rgb(34 37 40 / 5%) !important;
+    border: 1px solid var(--accordian-border) !important;
+}
+
+.accordion-content-3 textarea::placeholder{ 
+    font-family: "Poppins";
     font-size: 14px !important;
     font-weight: 400;
     line-height: 16px;
@@ -517,6 +545,7 @@ input:focus{
     left: 270px;
     text-align: center !important;
     padding-left: 0 !important;
+    padding: 0px !important;
     z-index: 99;
     justify-content: center;
     transition: 0.5s;
@@ -812,7 +841,7 @@ to {top: 0px; opacity: 1}
     border-radius: 90px;
     text-transform: capitalize;
     margin-top: 15px;
-    margin-top: 20px;
+    margin-bottom: 20px;
     transition: 0.5s;
     border: 1px solid var(--primary-color);
 }
@@ -1350,7 +1379,7 @@ span.error {
 }
 
 .checkout-process-section .cart-totals-part{
-    margin-top: 25px;
+    margin-top: -25px !important;
 }
 
 /* =============resonsive======== */
@@ -1372,8 +1401,8 @@ span.error {
     .accordion-heading{
         font-size: 18px !important;
     }
-    .accordion-heading::before{
-        top: 25px;
+    .accordion-heading::before {
+        top: 21px;
     }
     .mydiv-header h3{
         font-size: 22px !important;
@@ -1402,7 +1431,7 @@ span.error {
 }
 .login-page .center-img {
     position: relative !important;
-    margin-bottom: 60px !important;
+    margin-bottom: 30px !important;
     margin: 0px auto;
     position: relative;
     width: 100%;
@@ -1411,17 +1440,20 @@ span.error {
 
 .login-page h2 {
     font-size: 30px !important;
+    line-height: 30px !important;
 }
 .login-page h3 {
     font-size: 18px !important;
-    margin-bottom: 20px;
+    margin-bottom: 00px;
+}
+.login-page h5 {
+    font-size: 16px !important;
+    margin-top: 10px !important;
 }
 .login-page p {
     font-size: 15px !important;
 }
-.login-page h5 {
-    font-size: 16px !important;
-}
+
 .login-page h5 span {
  font-size: 18px !important;
 }
@@ -1459,8 +1491,8 @@ span.error {
     .accordion-heading{
         font-size: 18px !important;
     }
-    .accordion-heading::before{
-        top: 25px;
+    .accordion-heading::before {
+        top: 21px;
     }
     .mydiv-header h3{
         font-size: 22px !important;
@@ -1509,7 +1541,7 @@ span.error {
     
     .login-page .center-img {
         position: relative !important;
-        margin-bottom: 60px !important;
+        margin-bottom: 30px !important;
         margin: 0px auto;
         position: relative;
         width: 100%;
@@ -1518,16 +1550,25 @@ span.error {
     
     .login-page h2 {
         font-size: 30px !important;
+        line-height: 30px !important;
     }
     .login-page h3 {
         font-size: 18px !important;
-        margin-bottom: 20px;
+        margin-bottom: 00px;
+    }
+    .login-page h5 {
+        font-size: 16px !important;
+        margin-top: 10px !important;
     }
     .login-page p {
         font-size: 15px !important;
     }
-    .login-page h5 {
-        font-size: 16px !important;
+    
+    .login-page h5 span {
+     font-size: 18px !important;
+    }
+    .login-page p {
+        font-size: 15px !important;
     }
     .login-page h5 span {
      font-size: 18px !important;
@@ -1600,7 +1641,8 @@ span.error {
     .have-code-part .input-group-text {
         left: 210px;
         width: 130px !important;
-        padding-left: 44px !important;
+        padding-left: 0px !important;
+        padding: 0px !important;
     }
     .coupon-code-wrapper h3 span{
         width: 30px;
@@ -1675,25 +1717,31 @@ span.error {
 
     .login-page .center-img {
         position: relative !important;
-        margin-bottom: 60px !important;
+        margin-bottom: 30px !important;
         margin: 0px auto;
         position: relative;
         width: 100%;
-        max-width: 150px;
+        max-width: 200px;
     }
-
+    
     .login-page h2 {
         font-size: 30px !important;
+        line-height: 30px !important;
     }
     .login-page h3 {
         font-size: 18px !important;
-        margin-bottom: 20px;
+        margin-bottom: 00px;
+    }
+    .login-page h5 {
+        font-size: 16px !important;
+        margin-top: 10px !important;
     }
     .login-page p {
         font-size: 15px !important;
     }
-    .login-page h5 {
-        font-size: 16px !important;
+    
+    .login-page h5 span {
+     font-size: 18px !important;
     }
     .login-page h5 span {
     font-size: 18px !important;
@@ -1848,25 +1896,31 @@ span.error {
 
 .login-page .center-img {
     position: relative !important;
-    margin-bottom: 60px !important;
+    margin-bottom: 30px !important;
     margin: 0px auto;
     position: relative;
     width: 100%;
-    max-width: 150px;
+    max-width: 200px;
 }
 
 .login-page h2 {
     font-size: 30px !important;
+    line-height: 30px !important;
 }
 .login-page h3 {
     font-size: 18px !important;
-    margin-bottom: 20px;
+    margin-bottom: 00px;
+}
+.login-page h5 {
+    font-size: 16px !important;
+    margin-top: 10px !important;
 }
 .login-page p {
     font-size: 15px !important;
 }
-.login-page h5 {
-    font-size: 16px !important;
+
+.login-page h5 span {
+ font-size: 18px !important;
 }
 .login-page h5 span {
  font-size: 18px !important;
@@ -1896,6 +1950,13 @@ span.error {
     .cart-totals-part{
         max-width: 100% !important;
     }
+    .main-accordion{
+        margin-bottom: 20px;
+    }
+    .have-code-part .input-group-text {
+        padding-left: 0px !important;
+        padding: 0px !important;
+    }
 }
 
 @media only screen and (max-width:575px){
@@ -1907,6 +1968,22 @@ span.error {
         padding-left: 0 !important;
         line-height: 45px;
     }
+    .ship-address {
+        padding: 45px 20px 20px 20px;
+    }
+    .have-code-part input{
+        width: 100%;
+        max-width: 100% !important;
+    }
+    .have-code-part .input-group-text{
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 50px !important;
+    }
+    .checkout-process-section .cart-totals-part{
+        margin-top: 25px !important;
+    }
+    
 }
 /* =================================================== */
 /* =================================================== */
@@ -2043,25 +2120,31 @@ span.error {
 
 .login-page .center-img {
     position: relative !important;
-    margin-bottom: 60px !important;
+    margin-bottom: 30px !important;
     margin: 0px auto;
     position: relative;
     width: 100%;
-    max-width: 150px;
+    max-width: 200px;
 }
 
 .login-page h2 {
     font-size: 30px !important;
+    line-height: 30px !important;
 }
 .login-page h3 {
     font-size: 18px !important;
-    margin-bottom: 20px;
+    margin-bottom: 00px;
+}
+.login-page h5 {
+    font-size: 16px !important;
+    margin-top: 10px !important;
 }
 .login-page p {
     font-size: 15px !important;
 }
-.login-page h5 {
-    font-size: 16px !important;
+
+.login-page h5 span {
+ font-size: 18px !important;
 }
 .login-page h5 span {
  font-size: 18px !important;
@@ -2140,7 +2223,7 @@ span.error {
     }
     .have-code-part .input-group-text {
         left: 0;
-        width: 100px !important;
+        /* width: 100px !important; */
         /* padding-left: 31px !important; */
         font-size: 14px !important;
         padding-right: 0 !important;

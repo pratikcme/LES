@@ -157,7 +157,7 @@
                                                 <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?= $this->lang->line('pincode') ?>" autocomplete="off">
                                             </div>
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <label for="address" class="form-label"><?= $this->lang->line('Address'); ?>
                                                     <span>*</span>
                                                 </label>

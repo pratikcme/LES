@@ -1359,11 +1359,11 @@ li.sub-menu{
     .hide.my-filter-wrapper {
         display: block;
         position: relative;
-        flex-basis: 30%;
+        flex-basis: 50%;
     }
 
     .hide.show-div-wrapper .product-listing-wrapper {
-        flex-basis: 48%;
+        flex-basis: 46%;
         transition: 0.3s;
     }
 

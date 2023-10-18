@@ -330,6 +330,9 @@ footer{
     .footer-bottom{
         padding: 130px 0 50px;
     }
+    .footer-bottom .footer-copyright{
+        margin-bottom: 60px;
+    }
 }
 
 @media only screen and (max-width:767px){

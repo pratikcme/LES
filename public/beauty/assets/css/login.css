@@ -408,6 +408,10 @@ max-width: 25px;
         margin-top: 30px;
         margin-bottom: 30px;
     }
+    .label.error{
+        font-size: 13px !important;
+        margin-bottom: 0px !important;
+    }
 }
 
 
@@ -461,6 +465,10 @@ max-width: 25px;
     /* .form-in .form-select{
         background-position-x: 450px;
     } */
+    .label.error{
+        font-size: 13px !important;
+        margin-bottom: 0px !important;
+    }
 }
 
 
@@ -537,6 +545,10 @@ max-width: 25px;
     .signup-deatils-wrapper .log-in-btn {
         flex-direction: row !important;
         margin-bottom: 40px;
+    }
+    .label.error{
+        font-size: 13px !important;
+        margin-bottom: 0px !important;
     }
     
 }
@@ -651,7 +663,10 @@ max-width: 25px;
     flex-direction: row !important;
     margin-bottom: 40px;
 }
-
+.label.error{
+    font-size: 13px !important;
+    margin-bottom: 0px !important;
+}
     
 }
 
@@ -663,6 +678,10 @@ max-width: 25px;
     /* .form-in .form-select{
         background-position-x: 240px;
     } */
+    .label.error{
+        font-size: 13px !important;
+        margin-bottom: 0px !important;
+    }
 }
 
 
@@ -766,6 +785,10 @@ max-width: 25px;
         display: none;
     }
     .login-deatils-wrapper .form-check{
+        margin-bottom: 0px !important;
+    }
+    .label.error{
+        font-size: 13px !important;
         margin-bottom: 0px !important;
     }
     
@@ -891,6 +914,10 @@ max-width: 25px;
         font-size: 14px;
         margin-bottom: 30px !important;
     }
+    .label.error{
+        font-size: 13px !important;
+        margin-bottom: 0px !important;
+    }
     
 }
 
@@ -905,7 +932,7 @@ max-width: 25px;
         padding: 50px 0px;
     }
     .common-banner-bg{
-        padding-top: 130px !important;
+        padding-top: 150px !important;
         padding-bottom: 60px !important;
     }
     .breadcrumb{
@@ -1024,6 +1051,10 @@ max-width: 25px;
     .forgot-password-text {
         font-size: 14px;
         margin-bottom: 30px !important;
+    }
+    .label.error{
+        font-size: 13px !important;
+        margin-bottom: 0px !important;
     }
     
 }

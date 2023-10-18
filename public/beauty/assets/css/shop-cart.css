@@ -569,7 +569,7 @@ table th:nth-child(4){
     }
     .cart-product-detail{
         overflow: hidden !important;
-        overflow-x: scroll !important;
+        overflow: scroll !important;
         margin-bottom: 20px;
     }
     .cart-product-detail table{

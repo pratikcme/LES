@@ -25,11 +25,12 @@
     <!-- -------mobile-device-navbar--- -->
     <div class="mobile-navbar">
         <?php $this->load->view($_SESSION['template_name'] . '/include/mobile_navbar'); ?>
-        <div class="floting-cart-btn">
+        
+    </div>
+    <div class="floting-cart-btn">
             <a href="<?= base_url() . 'products/cart_item' ?>" class="mobile-cart-btn"><img src="<?= $this->theme_base_url . '/assets/images/header-cart-icon.svg' ?>" alt="cart">
                 <span class="g-badge <?= (isset($this->cartCount) && $this->cartCount != 0) ? 'd-block' : 'd-none' ?>" id="itemCountMobile"><?= (isset($this->cartCount)) ? $this->cartCount : '' ?></span>
             </a>
-        </div>
     </div>
     <?php
     if ($this->session->flashdata('myMessage') != '') {
@@ -76,6 +77,25 @@
                 s1.setAttribute('crossorigin', '*');
                 s0.parentNode.insertBefore(s1, s0);
             })();
+            Tawk_API.customStyle = {
+                visibility : {
+                    desktop : {
+                        position : 'br',
+                        xOffset : '50px',
+                        yOffset : 100
+                    },
+                    mobile : {
+                        position : 'br',
+                        xOffset : 0,
+                        yOffset : 100
+                    },
+                    bubble : {
+                        rotate : '0deg',
+                        xOffset : -20,
+                        yOffset : 0
+                    }
+                }
+            };
         </script>
         <!--End of Tawk.to Script-->
     <?php } ?>
