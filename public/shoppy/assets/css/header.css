@@ -572,7 +572,7 @@ body {
     font-family: var(--PublicSans-Regular);
     padding: 10px 5px;
     border-radius: 5px;
-    width: 130px;
+    width: auto;
     border: none;
 }
 
@@ -672,6 +672,9 @@ content: '';
     color: var(--secondary-color) !important;
     font-size: 20px;
 }
+.goog-te-gadget .goog-te-combo{
+    width: auto !important;
+}
 
 /* =================== responive ===================== */
 
@@ -691,7 +694,7 @@ content: '';
     }
 
     .header-top {
-        align-items: flex-start;
+        align-items: center;
     }
 
     /* header .logo img {
@@ -952,7 +955,7 @@ content: '';
     }
 
     .goog-te-gadget .goog-te-combo, .branch-drp select {
-        width: 120px !important;
+        /* width: 120px !important; */
         font-size: 13px;
     }
     .drp-grp{
