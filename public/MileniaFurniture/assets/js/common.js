@@ -241,6 +241,9 @@ hidedivebtn2.addEventListener("click", (event) => {
   filterbtnicon.classList.toggle("active");
 });
 
+
+
+
 // -----checkout-page-accordion----
 
 // ============= place order modal js ===========

@@ -94,7 +94,7 @@
 
                                             if ($segment1 != '') { ?>
 
-                                                <input type="text" class="form-control search" name="search" id='myInput' data-search_val="" placeholder="<?= $placeholder ?>" aria-label="Recipient's username">
+                                                <input type="text" class="form-control search" name="search" id='myInputMobile' data-search_val="" placeholder="<?= $placeholder ?>" aria-label="Recipient's username">
 
                                                 <button type="button" value="Search" class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-search"></i></span>

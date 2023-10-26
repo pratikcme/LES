@@ -40,6 +40,7 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".removeCartItem", function () {
+   
     var product_weight_id = $(this).data("product_weight_id");
     var product_id = $(this).data("product_id");
     var weight_id = $(this).data("weight_id");

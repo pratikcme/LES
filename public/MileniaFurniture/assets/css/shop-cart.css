@@ -46,6 +46,8 @@ table{
 }
 .cart-detail-img img{
     width: 100%;
+    height: 100%;
+    object-fit: contain;
     /* max-width: 80px; */
 }
 .cart-detail-text h4 a{
@@ -103,6 +105,8 @@ table{
 .cart-price-text {
     display: flex;
     gap: 20px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .cart-disc{
@@ -112,7 +116,7 @@ table{
 
 .disc-throw {
     font-size: 14px;
-    font-family: var(--PublicSans-Regular);
+    font-family: var(--inter-Regular);
     text-decoration: line-through;
 }
 
@@ -475,7 +479,7 @@ table th:nth-child(4){
     .proceed-checkout-btn {
         padding: 10px 25px 10px 25px;
         font-size: 16px !important;
-        top: 30px;
+        /* top: 30px; */
     }  
     .head-title {
         background: var( --cart-thead-bg);
@@ -554,14 +558,14 @@ table th:nth-child(4){
 @media screen and (min-width: 768px) and (max-width:991px) {  
     .cart-product-detail{
         margin: 0px auto;
+        overflow: scroll !important;
     }
     .shop-cart-seciton{
         padding-top: 50px;
         padding-bottom: 80px;
     }
     .cart-product-detail table{
-        overflow: hidden !important;
-        overflow-y: scroll !important;
+        overflow: scroll !important;
         margin-bottom: 20px;
     }
     .cart-totals-part {
@@ -574,8 +578,8 @@ table th:nth-child(4){
     .proceed-checkout-btn {
         padding: 10px 25px 10px 25px;
         font-size: 16px !important;
-        top: 30px;
-        left: 80px;
+        /* top: 30px;
+        left: 80px; */
     }     
     .head-title {
         background: var( --cart-thead-bg);
@@ -594,6 +598,8 @@ table th:nth-child(4){
     }
     .cart-detail-img img {
         width: 100%;
+        height: 100%;
+        object-fit: contain;
         /* max-width: 60px; */
     }
     .cart-detail-text h4 {
@@ -679,7 +685,7 @@ table th:nth-child(4){
     .proceed-checkout-btn {
         padding: 10px 25px 10px 25px;
         font-size: 16px !important;
-        top: 30px;
+        /* top: 30px; */
     } 
     .head-title {
         background: var( --cart-thead-bg);
@@ -799,7 +805,7 @@ table th:nth-child(4){
     .proceed-checkout-btn {
         padding: 10px 25px 10px 25px;
         font-size: 16px !important;
-        top: 30px;
+        /* top: 30px; */
 
     } 
         
@@ -851,7 +857,7 @@ table th:nth-child(4){
     .proceed-checkout-btn {
         padding: 10px 25px 10px 25px;
         font-size: 16px !important;
-        top: 30px;
+        /* top: 30px; */
     } 
         
 }
@@ -906,7 +912,7 @@ table th:nth-child(4){
     .proceed-checkout-btn {
         padding: 10px 25px 10px 25px;
         font-size: 16px !important;
-        top: 30px;
+        /* top: 30px; */
     } 
         
 }

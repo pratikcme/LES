@@ -1,3 +1,5 @@
+
+
 // Open and Close Search Bar Toggle
 
 // const searchBlock = document.querySelector(".search-block");
@@ -68,10 +70,12 @@ if (searchToggle && searchCancel) {
 
 // cart-pc-dropdwon-js--------
 
-let body = document.querySelector(".overlay");
+let body = document.querySelector(".overlay");  
 let carticons = document.querySelector(".cart-icons");
 let closebtns = document.querySelector(".close-btn");
 let cartdropdowns = document.querySelector(".cart-dropdwon");
+
+
 
 carticons.addEventListener("click", (event) => {
   body.classList.toggle("show");
@@ -88,6 +92,8 @@ body.addEventListener("click", (event) => {
   body.classList.remove("show");
 });
 
+
+ 
 // ----user-dropdown-js---
 
 // let userdropbtn = document.querySelector(".user-login-icon");

@@ -3,6 +3,7 @@ let body = document.querySelector(".overlay");
 let mycartbtn = document.querySelector(".cart-new-btn");
 let closebtns = document.querySelector(".close-btn");
 let cartdropdowns = document.querySelector(".cart-dropdowns");
+// let cancelbtn = document.querySelectorAll(".swal-button--cancel");
 // let ovelaybg = document.querySelector(".mobile-btn-overlay");
 // let mysidebar = document.querySelector(".sidepanel");
 
@@ -16,10 +17,39 @@ closebtns.addEventListener("click", (event) => {
   cartdropdowns.classList.remove("show");
   body.classList.remove("show");
 });
+// cancelbtn.addEventListener("click", (event) => {
+//   cartdropdowns.classList.remove("show");
+//   body.classList.remove("show");
+// });
+
+
 // ovelaybg.addEventListener('click', (event) => {
 //   mysidebar.classList.remove('active');
 //   ovelaybg.classList.remove('active');
 //   body.classList.remove('show');
+// });
+
+// ---open-dropdown-not-scroll-body-js----
+// $(document).ready(function() {
+//   var $button = $(".cart-new-btn");
+//   var $closebutton = $(".close-btn");
+//   var $element = $(".mybody");
+
+//   $button.click(function() {
+//     $element.toggleClass("bodyscroll");
+//   });
+//   $closebutton.click(function() {
+//     $element.removeClass("bodyscroll");
+//   });
+// });
+
+// $(document).ready(function() {
+//   var $button = $(".header-account-btn");
+//   var $element = $(".mybody");
+
+//   $button.click(function() {
+//     $element.toggleClass("bodyscroll");
+//   });
 // });
 
 // Open and Close Search Bar Toggle

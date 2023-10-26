@@ -258,7 +258,7 @@
                         <?= $this->lang->line('Hot Products') ?></h2>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-8">
+            <div class="col-xl-6 col-lg-8 col-md-8 ">
                 <div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs justify-content-center border-0" role="tablist">
@@ -274,7 +274,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4">
+            <div class="col-xl-3 col-lg-4 col-md-4">
                 <div class="text-end product-btn-wrap">
                     <a href="<?= base_url() ?>products" class="border-btn wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('All Produts') ?>
                         <svg width="16" height="14" class="rightArrowdark" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -408,9 +408,9 @@ body {
     border-radius: 5px;
     outline: 0;
     border: 1px solid var(--cart-thead-text) !important;
-    appearance: none;
-    -webkit-appearance:none ;
-    width:100px;
+    /* appearance: none;
+    -webkit-appearance:none ; */
+    width:auto  ;
     background-color: #fff;
     font-family: var(--inter-regular) !important;
 }
@@ -419,7 +419,7 @@ body {
     position: relative;
 }
 
-.select-product::after{
+/* .select-product::after{
     content: "\f078";
     font-family: "FontAwesome";
     font-size: 11px;
@@ -428,7 +428,7 @@ body {
     top: 50%;
     position: absolute;
     pointer-events: none;
-    /* background: #fff; */
+    background: #fff;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -436,7 +436,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .top-rating {
     padding-bottom: 80px;
@@ -1144,6 +1144,11 @@ body {
 @media only screen and (max-width:1200px) {
     .top-rating {
         padding-bottom: 80px;
+    }
+}
+@media only screen and (max-width:991px) {
+    .review-desc{
+        margin-top: 0px;
     }
 }
 
@@ -2072,4 +2077,14 @@ body {
         font-size: 14px !important;
     }
 
+}
+
+@media only screen and (max-width:424px){
+    .product-detalis-btn{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .product-content-part hr {
+        margin: 15px 0px !important;
+    }
 }

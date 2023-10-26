@@ -130,8 +130,31 @@
     color: var(--text-color);
 }
 
+
+.myaccout-detail-tab textarea {
+    background: var(--myaccoutn-tab-input-bg);
+    border: 1px solid var(--myaccoutn-tab-input-border);
+    border-radius: 5px;
+    padding-left: 25px;
+    padding-top: 15px;
+    min-height: 100px;
+    /* margin-bottom: 30px; */
+}
+
+.myaccout-detail-tab textarea:focus {
+    border: 1px solid var(--myaccoutn-tab-input-border) !important;
+    box-shadow: 0px 4px 7px rgba(34, 37, 40, 0.05) !important;
+}
+
+.myaccout-detail-tab textarea::placeholder {
+    font-family: var(--inter-regular);
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--text-color);
+}
+
+
 .tab-select-box select {
-    background: #FFFFFF;
     border: 1px solid var(--myaccoutn-tab-input-border);
     border-radius: 5px;
     padding-left: 25px;
@@ -139,12 +162,12 @@
     font-size: 14px;
     line-height: 16px;
     height: 50px;
-    appearance: none;
+    /* appearance: none;
     background-image: url(../images/selectarrow.png);
     background-repeat: no-repeat;
     background-size: 12px;
     background-position-y: 19px;
-    background-position-x: 410px;
+    background-position-x: 410px; */
     margin-bottom: 30px;
     color: var(--text-color) !important;
 }
@@ -259,6 +282,7 @@
     margin-bottom: 0px;
     flex-direction: column;
     text-align: center;
+    width: 100%;
     max-width: 600px;
 }
 
@@ -493,6 +517,8 @@
 .accordion-img-wrapper img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
+    padding: 10px;
 }
 
 .order-details-img {
@@ -739,7 +765,7 @@
 .order-not-found-content h3{
     font-family: var(--inter-bold) !important;
     color: var(--secondary-color);
-    margin-top: 100px;
+    margin-top: 50px;
     text-transform: capitalize;
 }
 .order-not-found-content p{
@@ -755,6 +781,9 @@
     max-height: 100% !important;
     min-height: 100% !important;
     overflow-y: unset !important;
+}
+.modal{
+    z-index: 100000;
 }
 /* .modal-backdrop.show{
     display: none;
@@ -792,11 +821,11 @@
 
     .tab-select-box select {
         font-size: 14px;
-        background-size: 12px;
+        /* background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 410px;
+        background-position-x: 410px; */
         margin-bottom: 30px;
-    }
+    }   
 
     .my-order-details .accordion-heading::before {
         top: 76px;
@@ -900,6 +929,11 @@
     .sub-tabs .nav-pills .nav-link:after {
         display: none;
     }
+    .order-not-found-img {
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
 
    
 
@@ -941,9 +975,9 @@
 
     .tab-select-box select {
         font-size: 14px;
-        background-size: 12px;
+        /* background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 320px;
+        background-position-x: 320px; */
         margin-bottom: 30px;
     }
 
@@ -1102,7 +1136,7 @@
 
     /* ------tab-1-css---- */
     .account-details-tabs .nav-link {
-        width: 160px !important;
+        width: 166px !important;
     }
 
     .account-details-tabs .title {
@@ -1139,9 +1173,9 @@
 
     .tab-select-box select {
         font-size: 14px;
-        background-size: 12px;
+        /* background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 205px;
+        background-position-x: 205px; */
         margin-bottom: 30px;
     }
 
@@ -1359,7 +1393,7 @@
 
     /* ------tab-1-css---- */
     .account-details-tabs .nav-link {
-        width: 160px !important;
+        width: 166px !important;
     }
 
     .account-details-tabs .title {
@@ -1396,9 +1430,9 @@
 
     .tab-select-box select {
         font-size: 14px;
-        background-size: 12px;
+        /* background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 295px;
+        background-position-x: 295px; */
         margin-bottom: 30px;
     }
 
@@ -1661,6 +1695,10 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
+    .myaccout-detail-tab {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
 
 }
 
@@ -1672,7 +1710,7 @@
 
     /* ------tab-1-css---- */
     .account-details-tabs .nav-link {
-        width: 160px !important;
+        width: 166px !important;
     }
 
     .account-details-tabs .title {
@@ -1688,10 +1726,14 @@
     }
 
     .myaccout-detail-tab .choose-img {
-        width: 190px;
-        height: 190px;
+        width: 150px;
+        height: 150px;
         margin-bottom: 50px !important;
     }
+    .myaccout-detail-tab .choose-btn {
+        top: 100px;
+        left: 105px;
+    }   
 
     .my-account-section .title {
         text-align: center;
@@ -1709,9 +1751,9 @@
 
     .tab-select-box select {
         font-size: 14px;
-        background-size: 12px;
+        /* background-size: 12px;
         background-position-y: 19px;
-        background-position-x: 410px;
+        background-position-x: 410px; */
         margin-bottom: 30px;
     }
 
@@ -1744,7 +1786,8 @@
     }
 
     .sub-tabs .nav-pills {
-        border-radius: 0px 0px 0px 0px;
+        border-radius: 0px 0px 0px 0px !important;
+        justify-content: flex-start !important;
     }
 
     .delivered-btn {
@@ -1980,7 +2023,7 @@
 
     /* ------tab-1-css---- */
     .account-details-tabs .nav-link {
-        width: 160px !important;
+        width: 166px !important;
     }
 
     .account-details-tabs .title {
@@ -2011,15 +2054,18 @@
         width: 100%;
         border-radius: 20px;
         margin: 0px auto;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 50px;
+    }
+    .container.tab-pane{
+        padding: 0px !important;
     }
 
     .tab-select-box select {
         font-size: 14px;
-        background-size: 12px;
-        background-position-y: 19px;
+        /* background-size: 12px;
+        background-position-y: 19px; */
         /* background-position-x: 217px; */
         margin-bottom: 30px;
     }
@@ -2293,7 +2339,7 @@
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
         padding: 10px 15px 10px 15px;
-        margin-left: 10px;
+        /* margin-left: 10px; */
     }
 
     .mywishlist-part table td:nth-child(1) {
@@ -2326,14 +2372,20 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
+    .myaccout-detail-tab .choose-img {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 50px !important;
+    }
+    .myaccout-detail-tab .choose-btn {
+        top: 100px;
+        left: 105px;
+    }   
 
 }
 
 
 @media (max-width:414px) {
-    .tab-select-box select {
-        background-position-x: 300px;
-    }
 
     .main-sub-tabs {
         border: none !important;
@@ -2342,9 +2394,6 @@
 
 
 @media (max-width:360px) {
-    .tab-select-box select {
-        background-position-x: 260px;
-    }
 
     .main-sub-tabs {
         border: none !important;
@@ -2353,9 +2402,7 @@
 
 
 @media (max-width:320px) {
-    .tab-select-box select {
-        background-position-x: 217px;
-    }
+
 
     .main-sub-tabs {
         border: none !important;

@@ -11,7 +11,9 @@
 }
 
 .hero-section.carousel-item{
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     padding-top: 250px;
     padding-bottom: 220px;
 }
@@ -113,6 +115,9 @@
 .categories-image-wrap img {
     height: 100%;
     object-fit: contain;
+}
+.categories-text{
+    margin-top: 20px;
 }
 
 .categories .owl-carousel .owl-nav button {
@@ -845,7 +850,7 @@
     }
 
     .hot-products-wrap {
-        padding: 15px 15px 0;
+        padding: 15px 15px 15px;
     }
 
     .hot-products-details {
@@ -906,14 +911,14 @@
         margin-top: 18px;
     }
 
-    .product-btn-wrap {
+    /* .product-btn-wrap {
         text-align: left !important;
         margin-top: 30px;
         position: absolute !important;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-    }
+    } */
 
     .subscribe-wrap button {
         margin-top: 20px;
@@ -931,9 +936,9 @@
         margin-top: 50px;
     }
 
-    .product-btn-wrap .border-btn {
+    /* .product-btn-wrap .border-btn {
         border: none !important;
-    }
+    } */
    
     .cloth-content h3,
     .women-cloth h3 
@@ -972,6 +977,11 @@
     .hot-products-wrap {
         max-width: 320px;
         margin: 0 auto;
+    }
+    h2 {
+        font-size: 26px;
+        line-height: 28px;
+        padding-bottom: 20px;
     }
 
     h3 {
@@ -1018,9 +1028,22 @@
     }
 
     .hero-section.carousel-item {
-        background-size: cover;
         padding-top: 200px;
         padding-bottom: 150px;
+    }
+    .hot-products .nav{
+        justify-content: flex-start !important;
+    }
+    .product-btn-wrap .border-btn {
+        font-size: 14px;
+        padding: 10px 10px;
+        margin-top: 30px;
+    }
+    .text-end.product-btn-wrap{
+        text-align: left !important ;
+    }
+    .rightArrowdark {
+        max-width: 10px;
     }
 
     
@@ -1029,6 +1052,12 @@
 @media only screen and (max-width: 576px) {
     button.owl-prev {
         left: 0 !important;
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 28px;
+        padding-bottom: 20px;
     }
 
     button.owl-next {
