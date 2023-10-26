@@ -50,10 +50,12 @@ table{
     line-height: 20px;
     color: var(--cart-td-text-1);
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
+    max-width: 170px;
 }
 .cart-detail-text h5{
     font-family: Poppins;
@@ -95,6 +97,7 @@ table{
     display: flex;
     /* align-items: center; */
     gap: 20px;
+    justify-content: space-between;
 }
 .cart-price-text a{
     color: var(--cart-icon) !important;
@@ -234,6 +237,7 @@ table th:nth-child(4){
     text-transform: capitalize;
     transition: 0.3s;
 }
+
 
 /* ===========responsive========== */
 
@@ -809,7 +813,14 @@ table th:nth-child(4){
         
 }
 
-
+@media only screen and (max-width: 991px){
+    .cart-product-detail{
+        overflow: scroll !important;
+    }
+    .cart-detail-text h4 a{
+        max-width: 140px;
+    }
+}
 
 @media only screen and (max-width: 767px) {
     .proceed-checkout-btn{

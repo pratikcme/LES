@@ -1241,6 +1241,11 @@ body {
     }
 }
 
+@media only screen and (max-width: 1199px){
+    .card-header h5 {
+        font-size: 14px;
+    }
+}
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .product-detalis-section {
@@ -1370,6 +1375,9 @@ body {
 @media only screen and (max-width:768px) {
     .review-desc {
         margin-top: 50px;
+    }
+    .card-header h5 {
+        font-size: 12px;
     }
     
 }

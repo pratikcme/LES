@@ -107,7 +107,8 @@
                                         <div class="tab-select-box">
                                             <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?><span>*</span></label>
                                             <select class="form-select" name="country_code" id="country_code">
-                                                <?php foreach (GetDialcodelist() as $key => $value) { ?>
+                                                <?php 
+                                                foreach (GetDialcodelist() as $key => $value) { ?>
                                                     <option <?= ($key == $userDetails[0]->country_code) ? 'selected' : ''; ?> value="<?= $key; ?>"><?= $value; ?></option>
                                                 <?php } ?>
                                             </select>

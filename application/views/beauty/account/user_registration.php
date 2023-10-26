@@ -35,10 +35,22 @@
                             <input type="hidden" id="user_id">
                             <div class="mb-3">
                                 <div class="tab-select-box">
+                                
                                     <label for="Country-code" class="form-label"><?= $this->lang->line('Select country code') ?><span>*</span></label>
                                     <select name="country_code" id="country_code" class="form-select" aria-label="Country-code">
-                                        <?php foreach ($country_code as $key => $value) { ?>
-                                            <option <?= (getPhoneCode() == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
+                                        <?php 
+                                            
+                                        foreach ($country_code as $key => $value) { 
+                                            $ipCountryCode = "";
+                                            if($_SERVER['HTTP_HOST'] == 'localhost'){
+                                                $ipCountryCode = '91';
+                                            }else{
+                                                $ipCountryCode = getPhoneCode();
+
+                                            }
+                                            ?>
+                                            
+                                            <option <?= ($ipCountryCode == $key) ? "selected" : "" ?> value="<?= $key; ?>"><?= $value; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

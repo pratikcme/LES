@@ -70,6 +70,25 @@
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
       })();
+      Tawk_API.customStyle = {
+          visibility : {
+              desktop : {
+                  position : 'br',
+                  xOffset : '50px',
+                  yOffset : 100
+              },
+              mobile : {
+                  position : 'br',
+                  xOffset : 0,
+                  yOffset : 100
+              },
+              bubble : {
+                  rotate : '0deg',
+                  xOffset : -20,
+                  yOffset : 0
+              }
+          }
+      };
     </script>
     <!--End of Tawk.to Script-->
   <?php } ?>

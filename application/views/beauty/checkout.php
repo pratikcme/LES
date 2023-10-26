@@ -120,16 +120,16 @@
                                             <button type="button" class="ship-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-sharp fa-regular fa-circle-xmark"></i></button>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 mb-4">
                                                 <label for="fname" class="form-label"><?= $this->lang->line('Full Name') ?><span>*</span></label>
                                                 <input type="text" name="fname" class="form-control fname" id="fname" aria-describedby="fname" placeholder="<?= $this->lang->line('Full Name') ?>">
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 mb-4">
                                                 <label for="text" class="form-label"><?= $this->lang->line('Mobile number') ?><span>*</span>
                                                 </label>
                                                 <input type="text" name="phone" class="form-control mob_no" id="text" aria-describedby="text" placeholder="<?= $this->lang->line('Mobile number') ?>">
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 mb-4">
                                                 <label for="add" class="form-label"><?= $this->lang->line('Location') ?><span>*</span>
                                                 </label>
                                                 <input type="text" id="departure_address" onfocus="initAutocomplete('departure_address')" class="form-control pac-target-input" name="location" aria-describedby="add" placeholder="<?= $this->lang->line('Enter Location') ?>">
@@ -137,17 +137,17 @@
                                                 <input type="hidden" id="departure_latitude" name="latitude" placeholder="Latitude" value="">
                                                 <input type="hidden" id="departure_longitude" name="longitude" placeholder="Longitude" value="">
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 mb-4">
                                                 <input type="text" class="form-control landmark" name="landmark" id="landmark" aria-describedby="add" placeholder="<?= $this->lang->line('Landmark') ?>">
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="select-box">
                                                     <label for="city" class="form-label">Town / City <span>*</span>
                                                     </label>
                                                     <input type="text" name="city" class="form-control" id="city" aria-describedby="add" placeholder="<?= $this->lang->line('city') ?>" autocomplete="off">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="select-box">
                                                     <label for="state" class="form-label"><?= $this->lang->line('State') ?>
                                                         <span>*</span>
@@ -155,7 +155,7 @@
                                                     <input type="text" name="state" class="form-control" id="state" aria-describedby="add" placeholder="<?= $this->lang->line('State') ?>" autocomplete="off">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="select-box">
                                                     <label for="country" class="form-label"><?= $this->lang->line('Country') ?>
                                                         <span>*</span>
@@ -163,14 +163,14 @@
                                                     <input type="text" name="country" class="form-control" id="country" aria-describedby="add" placeholder="<?= $this->lang->line('country') ?>" autocomplete="off">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="select-box">
                                                     <label for="pincode" class="form-label"><?= $this->lang->line('pincode') ?><span>*</span>
                                                     </label>
                                                     <input type="text" name="pincode" class="form-control pincode" id="pincode" aria-describedby="add" placeholder="<?= $this->lang->line('pincode') ?>" autocomplete="off">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 mb-4">
                                                 <div class="select-box">
                                                     <label for="address" class="form-label"><?= $this->lang->line('Address') ?><span>*</span>
                                                     </label>
@@ -293,8 +293,9 @@
                                 <input type="text" class="form-control" id="promocode" placeholder="<?= $this->lang->line('Enter Promocode') ?>" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="checkPromocode"><?= $this->lang->line('Apply') ?></span>
                                 <br>
-                                <span class="error" id="promo_err"></span>
+                                
                             </div>
+                            <span class="error" id="promo_err"></span>
                         </div>
                     <?php } ?>
 
