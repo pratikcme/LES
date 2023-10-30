@@ -91,22 +91,15 @@ $(".owl-2").owlCarousel({
   responsive: {
     0: {
       items: 1,
-    },
-    300: {
-      items: 1,
       dots: false,
-      margin: 10,
     },
-    390: {
+   
+    500: {
       items: 1,
-      dots: false,
-      margin: 10,
-    },
-    400: {
-      items: 2,
       margin: 20,
       dots: false,
     },
+    
     600: {
       items: 2,
       margin: 20,
@@ -207,13 +200,14 @@ $(".owl-4").owlCarousel({
       margin: 20,
     },
     600: {
-      items: 2,
+      items: 1,
       margin: 20,
     },
     768: {
       items: 2,
       dots: true,
-      margin: 30,
+      margin: 10,
+      center: false,
     },
     992: {
       items: 3,
@@ -245,59 +239,63 @@ $(".owl-4").owlCarousel({
 });
 
 // ---------listing-sub-lisitng-slider-----
-$(".owl-5").owlCarousel({
-  loop: true,
-  items: 6,
-  margin: 5,
-  nav: false,
-  // center:true,
-  dots: true,
-  // autoplay:true,
-  responsive: {
-    0: {
-      items: 1,
+// $(document).on("click",".cate_id",function(){
+
+  $(".owl-5").owlCarousel({
+    loop: true,
+    items: 6,
+    margin: 5,
+    nav: false,
+    // center:true,
+    dots: true,
+    // autoplay:true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      300: {
+        items: 4,
+        dots: false,
+        margin: 8,
+      },
+      600: {
+        items: 4,
+        dots: false,
+        margin: 5,
+      },
+      768: {
+        items: 4,
+        dots: false,
+        margin: 30,
+      },
+      992: {
+        items: 3,
+        dots: false,
+        nav: false,
+        margin: 30,
+      },
+      1000: {
+        items: 4,
+        dots: false,
+        nav: false,
+        margin: 30,
+      },
+      1200: {
+        items: 5,
+        dots: false,
+        margin: 10,
+        nav: false,
+      },
+      1400: {
+        items: 6,
+        dots: false,
+        nav: false,
+        margin: 5,
+      },
     },
-    300: {
-      items: 4,
-      dots: false,
-      margin: 8,
-    },
-    600: {
-      items: 4,
-      dots: false,
-      margin: 5,
-    },
-    768: {
-      items: 4,
-      dots: false,
-      margin: 30,
-    },
-    992: {
-      items: 3,
-      dots: false,
-      nav: false,
-      margin: 30,
-    },
-    1000: {
-      items: 4,
-      dots: false,
-      nav: false,
-      margin: 30,
-    },
-    1200: {
-      items: 5,
-      dots: false,
-      margin: 10,
-      nav: false,
-    },
-    1400: {
-      items: 6,
-      dots: false,
-      nav: false,
-      margin: 5,
-    },
-  },
-});
+  }); 
+// });
+
 
 // ---------------------------
 // =====product-detalis-slider-js----------

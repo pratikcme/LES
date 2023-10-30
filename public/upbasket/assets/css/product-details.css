@@ -262,9 +262,7 @@ body {
     outline-color: #D9E2ED;
     outline-width: 1px;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 10px !important;
 }
 
 .mySwiper2 img {
@@ -280,6 +278,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px !important;
 }
 
 .mySwiper {
@@ -1295,6 +1294,58 @@ body {
 
 }
 
+@media only screen and (max-width: 991px){
+    .product-content-part h6{
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    .product-content-part h3:nth-child(odd){
+        font-size: 26px;
+    }
+    .product-content-part h3:nth-child(even), .product-detalis-btn + h3{
+        font-size: 18px !important;
+    }
+    .product-content-part h4:nth-child(even) {
+        font-size: 18px;
+    }
+    .product-content-part h3 span:nth-child(odd) {
+        font-size: 18px;
+    }
+    .product-content-part h4 span {
+        font-size: 18px;
+    }
+    .review-desc{
+        margin-top: 40px !important;
+    }
+    
+} 
+
+@media only screen and (max-width: 767px) {
+    .mySwiper2{
+        height: 400px !important;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .mySwiper2{
+        height: 350px !important;
+        width: 400px !important;
+    }
+    .product-detalis-btn .add-cart-btn{
+        margin-top: 0px !important;
+    }
+}
+@media only screen and (max-width: 540px){
+    .mySwiper .swiper-wrapper {
+        height: auto !important;
+    }
+}
+@media only screen and (max-width: 425px) {
+    .mySwiper2{
+        height: 300px !important;
+        width: 300px !important;
+    }
+}
+
 /* ======================================================== */
 /* ======================================================== */
 @media screen and (min-width: 1200px) and (max-width: 1279px) {
@@ -1640,7 +1691,7 @@ body {
 
     .product-content-part h2 {
         font-family: Poppins;
-        font-size: 30px;
+        font-size: 28px;
         font-weight: 700;
         line-height: 40px;
         color: var(--product-details-text-1);
@@ -1958,7 +2009,7 @@ body {
 
     .product-content-part h3:nth-child(odd) {
         font-family: Poppins;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 30px;
         letter-spacing: 0.02em;
@@ -2012,11 +2063,11 @@ body {
         display: none;
     }
 
-    .mySwiper2 {
+    /* .mySwiper2 {
         width: 100% !important;
         height: 300px !important;
         outline-offset: 5px;
-    }
+    } */
 
     .mySwiper2 img {
         /* width: 250px; */
@@ -2202,7 +2253,7 @@ body {
 
     .product-content-part h3:nth-child(odd) {
         font-family: Poppins;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 30px;
         letter-spacing: 0.02em;
@@ -2256,11 +2307,11 @@ body {
         display: none;
     }
 
-    .mySwiper2 {
+    /* .mySwiper2 {
         width: 100% !important;
         height: 300px !important;
         outline-offset: 5px;
-    }
+    } */
 
     .mySwiper2 img {
         /* width: 250px; */
@@ -2447,7 +2498,7 @@ body {
 
     .product-content-part h3:nth-child(odd) {
         font-family: Poppins;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 30px;
         letter-spacing: 0.02em;
@@ -2501,11 +2552,11 @@ body {
         display: none;
     }
 
-    .mySwiper2 {
+    /* .mySwiper2 {
         width: 100% !important;
         height: 300px !important;
         outline-offset: 5px;
-    }
+    } */
 
     .mySwiper2 img {
         /* width: 250px; */
@@ -2691,7 +2742,7 @@ body {
 
     .product-content-part h3:nth-child(odd) {
         font-family: Poppins;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 30px;
         letter-spacing: 0.02em;
@@ -2744,12 +2795,12 @@ body {
         max-width: 100px;
         display: none;
     }
-
+/* 
     .mySwiper2 {
         width: 100% !important;
         height: 300px !important;
         outline-offset: 5px;
-    }
+    } */
 
     .mySwiper2 img {
         /* width: 250px; */
@@ -2935,7 +2986,7 @@ body {
 
     .product-content-part h3:nth-child(odd) {
         font-family: Poppins;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 30px;
         letter-spacing: 0.02em;
@@ -2991,11 +3042,11 @@ body {
 
 
     /* --------swiper-css----- */
-    .mySwiper2 {
+    /* .mySwiper2 {
         width: 100% !important;
         height: 300px !important;
         outline-offset: 5px;
-    }
+    } */
 
     .mySwiper2 img {
         /* width: 250px; */
@@ -3071,11 +3122,11 @@ body {
 
     .product-content-part h3:nth-child(odd) {
         font-family: Poppins;
-        font-size: 25px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 40px;
         color: var(--product-details-text-4);
-        margin-bottom: 24px;
+        /* margin-bottom: 24px; */
     }
 }
 

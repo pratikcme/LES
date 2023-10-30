@@ -99,7 +99,7 @@
                 }
                 $value->name = character_limiter($value->name, 30);
             ?>
-                <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-3 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
                     <div class="techno-check">
                         <div class="product-wrapper card  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
                             <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?>

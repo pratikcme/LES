@@ -12,6 +12,7 @@ header {
 .header-top .logo img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 /* ----top-header--- */
@@ -376,7 +377,7 @@ nav a:active::before {
     font-family: Poppins;
     padding: 10px 5px;
     border-radius: 5px;
-    width: 130px;
+    width: auto;
     display: block !important;
     border: none;
 }
@@ -550,3 +551,4 @@ content: '';
         height: 470px;
     }
 }
+

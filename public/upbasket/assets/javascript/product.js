@@ -324,6 +324,7 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".cate_id", function () {
+    
     var cat_id = $(this).attr("data");
     $(".cate_id").removeClass("active");
     $(this).addClass("active");
