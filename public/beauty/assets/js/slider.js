@@ -225,9 +225,10 @@ $("#client-slide").owlCarousel({
       items: 1,
       nav: false,
     },
-    600: {
-      items: 1,
+    576: {
+      items: 2,
       nav: false,
+      center: false,
     },
     767: {
       items: 2,

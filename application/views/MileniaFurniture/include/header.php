@@ -42,7 +42,7 @@
 <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
 <!-- <body dir="rtl" class="rtl"> -->
 
-<body>
+<body class="mybody">
 
 
     <div class="overlay"></div>

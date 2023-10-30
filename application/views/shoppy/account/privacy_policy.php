@@ -1,4 +1,4 @@
-<section class="hero-section common-banner-bg privacy-banner">
+<section class="hero-section common-banner-bg login-section privacy-banner">
     <div class="container">
         <div class="row">
             <div class="col-xxl-12 xol-xl-12 xol-lg-12 text-center">

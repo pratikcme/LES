@@ -377,17 +377,32 @@
     }
 
     .about-us-wrap .about-img{
-        height: 450px;
+        height: 350px;
+        width: 100%;
+        max-width: 400px;
+        margin: 0px auto;
     }
 
     .why-choose-us .col-xxl-4{
         margin-bottom: 20px;
     }
+    .offering .owl-carousel .owl-item.active.test1,
+    .offering .owl-carousel .owl-item.active.test3
+    {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    .offering .owl-stage-outer {
+        padding-bottom: 30px;
+    }
 }
 
 @media only screen and (max-width:768px){
     .about-us-wrap .about-img{
-        height: 350px;
+        height: 300px;
+        width: 100%;
+        max-width: 400px;
+        margin: 0px auto;
     }
 
     .why-choose-us .choose-card-icon {
@@ -411,8 +426,9 @@
     .client-wrap .title,
     .client-wrap .title p
     {
-        margin-bottom: 0;
+        margin-bottom: 50px;
     }
+    
 } 
 
 @media only screen and (max-width:575px){

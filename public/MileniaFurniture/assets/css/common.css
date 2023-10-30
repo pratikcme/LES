@@ -182,6 +182,7 @@ p {
     right: 15px;
     color: var(--secondary-color) !important;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .cart-dropdwon{
@@ -290,6 +291,7 @@ p {
   }
 
 
+
   
   @keyframes animate {
     0% {
@@ -303,4 +305,9 @@ p {
 
 .hideEcommerce{
   display: none !important;
+}
+
+.mybody.bodyscroll{
+    position: fixed !important;
+    width: 100% !important;
 }

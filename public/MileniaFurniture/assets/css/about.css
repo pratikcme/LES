@@ -14,6 +14,7 @@
     overflow: hidden;
     box-shadow: 0px 3px 12px 5px rgba(91, 81, 79, 0.05);
     transition: 0.5s;
+    overflow: hidden;
 }
 
 .about-us-img:hover{
@@ -23,6 +24,7 @@
 .about-us-img img {
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .about-banner {

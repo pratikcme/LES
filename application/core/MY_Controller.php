@@ -221,7 +221,7 @@ class User_Controller extends MY_Controller
         $data['liveChat'] = $this->vendor_model->getLiveChatData();
 
         $data['multi_language'] = $this->vendor_model->getMultiLanguage($this->session->userdata('vendor_id'));
-
+        
         $data['ApprovedBranch'] = $this->vendor_model->ApprovedVendor();
 
 

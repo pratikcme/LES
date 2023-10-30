@@ -763,6 +763,9 @@ max-width: 424px;
         padding: 15px 20px 15px 20px;
         font-size: 15px !important;
     }
+    .cart-totals-part{
+        height: auto !important;
+    }
         
 }
 /* ============================================================ */
@@ -798,6 +801,9 @@ max-width: 424px;
     }
     .cart-product-detail tr{
         margin-bottom: 20px;
+    }
+    .cart-totals-part{
+        height: auto !important;
     }
         
 }
@@ -838,6 +844,9 @@ max-width: 424px;
     }
     .cart-product-detail tr{
         margin-bottom: 20px;
+    }
+    .cart-totals-part{
+        height: auto !important;
     }
         
 }

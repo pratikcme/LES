@@ -134,7 +134,7 @@
 
 
 <!-- testimonials -->
-<section class="testimonials p-120 categories">
+<section class="testimonials p-120 pt-0 categories">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

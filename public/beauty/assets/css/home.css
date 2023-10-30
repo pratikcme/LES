@@ -1192,6 +1192,9 @@
     .cloth-content h5 {
         font-size: 16px !important;
     }
+    .rating-cnt{
+        font-size: 20px;
+    }
 }
 
 @media only screen and (min-width:768px) and (max-width: 991px) {
@@ -1398,6 +1401,29 @@
     .Categories-section {
         padding-top: 100px;
         padding-bottom: 100px;
+    }
+    .floting-cart-btn {
+        position: fixed;
+        right: 16px;
+        bottom: 130px;
+        z-index: 10;
+        display: block;
+    }
+
+    .floting-cart-btn a {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--header-icon-round-color);
+    }
+    .icon-tex{
+        display: none;
+    }
+    .cart-icons{
+        display: none !important;
     }
 
 }
@@ -1697,8 +1723,8 @@
 
     .floting-cart-btn {
         position: fixed;
-        right: 20px;
-        bottom: 107px;
+        right: 16px;
+        bottom: 130px;
         z-index: 10;
         display: block;
     }
@@ -2904,7 +2930,8 @@
     }
 
     .categorie-text h4 {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 22px;
     }
 
     .owl-carousel .owl-nav button {
@@ -3406,7 +3433,8 @@
     }
 
     .categorie-text h4 {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 22px;
     }
 
     .owl-carousel .owl-nav button {
@@ -3699,7 +3727,7 @@
 
     .card-header h5 {
         font-family: var(--BeVietnamPro-Regular);
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .card-body h3 {
@@ -3776,7 +3804,8 @@
     }
 
     .categorie-text h4 {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 22px;
     }
 
     .owl-carousel .owl-nav button {
@@ -4201,7 +4230,7 @@
 
     .card-header h5 {
         font-family: var(--BeVietnamPro-Regular);
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .card-body h3 {
@@ -4282,7 +4311,8 @@
     }
 
     .categorie-text h4 {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 22px;
     }
 
     .owl-carousel .owl-nav button {
@@ -4596,3 +4626,10 @@
         margin-top: 50px !important;
     }    
 }
+
+@media only screen and (max-width: 674px){
+    .floting-cart-btn {
+        right: 13px;
+        bottom: 170px;
+    }
+} 

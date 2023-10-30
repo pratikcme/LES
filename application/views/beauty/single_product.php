@@ -151,7 +151,7 @@
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="review_count">
                         <!-- -------review-tab------ -->
-                        <div class="my-review-wrapper" style="height :<?= (count($product_review) == 0) ? 'auto' : '100%' ?>">
+                        <div class="my-review-wrapper" style="height :<?= (count($product_review) == 0) ? 'auto' : 'auto' ?>">
                             <!-- ----review-content--- -->
                             <div class="review-content">
                                 <div class="left-content">
@@ -249,9 +249,10 @@
                     <div class="techno-check">
                         <input class="techno_checkbox" type="checkbox" id="1" value="1" />
                         <div href="#" class="product-wrapper card <?= ($value->quantity == '0') ? 'out-of-stock' : '' ?>">
-                            <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
-                                off</span>
+                            
                             <div class="card-header">
+                                <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
+                                off</span>
                                 <h5><?= ($value->quantity > $value->limited_stock) ? $this->lang->line('Available(Instock)') : $this->lang->line('Limited Stock') ?>
                                 </h5>
                                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->pw_id) ?>">

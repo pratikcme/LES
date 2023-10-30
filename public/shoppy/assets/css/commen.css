@@ -511,6 +511,11 @@ button:focus{
     opacity: 0;
     display: none !important;
 }
+.ui-autocomplete{
+    position: fixed !important;
+    border-radius: 5px;
+    padding: 10px !important;
+}
 
 /*=============== responsive =================*/
 @media only screen and (max-width:1200px){

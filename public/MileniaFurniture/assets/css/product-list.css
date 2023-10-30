@@ -1711,8 +1711,8 @@ div[slider]>input[type=range]::-ms-tooltip {
         max-width: 120px;
         height: 40px !important;
     }
-    .active.sidepanel{
-        width: 60%;
+    .active.sidepanel {
+        width: 45%;
         padding-right: 10px;
     }
    

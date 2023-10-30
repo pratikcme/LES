@@ -283,6 +283,7 @@
     color: var(--primary-color);
     font-size: 18px;
     font-family: var(--PublicSans-Bold);
+    background: transparent;
 }
 
 .products-wrap .nav-tabs .nav-link{
@@ -293,7 +294,7 @@
 }
 
 .products-wrap .nav-tabs .nav-link:hover{
-   border-color: transparent;
+   /* border-color: transparent; */
    color: var(--primary-color);
 }
 
@@ -1157,6 +1158,10 @@ bg-white{
 
     .common-modal .modal-body .reset-btn{
         gap: 5px;
+    }
+    .products-wrap .product-card{
+        max-width: 300px;
+        margin: 0px auto;
     }
 }
 
