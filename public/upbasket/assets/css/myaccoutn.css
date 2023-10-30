@@ -841,7 +841,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -851,7 +851,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png); */
         /* background-repeat: no-repeat;
         background-size: 12px; */
@@ -957,7 +957,8 @@
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1053,7 +1054,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -1063,7 +1064,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -1165,7 +1166,8 @@
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1260,7 +1262,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -1270,7 +1272,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -1371,7 +1373,8 @@
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1466,7 +1469,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -1476,7 +1479,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -1570,7 +1573,8 @@
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1666,7 +1670,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -1676,7 +1680,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -1770,7 +1774,8 @@
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1865,7 +1870,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -1875,7 +1880,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -1969,7 +1974,8 @@
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -2105,7 +2111,7 @@
 
     .account-details-tabs .nav-link {
         background: var(--myaccoutn-tab-bg) !important;
-        width: 150px !important;
+        width: 150px;
         border-right: 1px solid var(--myaccoutn-tab-border) !important;
         font-family: Poppins;
         font-size: 14px;
@@ -2475,7 +2481,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -2485,7 +2491,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -2887,7 +2893,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -2897,7 +2903,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -3312,7 +3318,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -3322,7 +3328,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -3754,7 +3760,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -3764,7 +3770,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -4173,7 +4179,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -4183,7 +4189,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;
@@ -4589,7 +4595,7 @@
     }
 
     .tab-select-box select {
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border: 1px solid #C5CCD5;
         box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
         border-radius: 90px;
@@ -4599,7 +4605,7 @@
         font-weight: 400;
         line-height: 16px;
         height: 45px;
-        appearance: none;
+        /* appearance: none; */
         /* background-image: url(../images/selectarrow.png);
         background-repeat: no-repeat;
         background-size: 12px;

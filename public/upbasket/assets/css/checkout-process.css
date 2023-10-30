@@ -351,7 +351,7 @@ input:focus {
     background: #FFFFFF;
     border: 1px solid #C5CCD5;
     box-shadow: 0px 4px 7px rgb(34 37 40 / 5%);
-    border-radius: 90px;
+    border-radius: 10px;
     padding-top: 15px;
     padding-left: 25px;
     height: 100px;
@@ -538,6 +538,12 @@ input:focus {
     border-bottom: 1px solid var(--accordian-border);
     padding-bottom: 20px;
     
+}
+.mydiv-wrapper .order-wrapper:last-of-type{
+    border-bottom: none !important;
+}
+.mydiv-wrapper .order-wrapper:last-child{
+    border-bottom: none !important;
 }
 
 .order-wrapper-img {
@@ -1354,6 +1360,9 @@ span.error {
 #mobileNumber .input-wrapper {
     margin-bottom: 0 !important;
 }
+.is_self_pickup .accordion-content-3 .address-text h3{
+    padding-left: 0px !important;
+}
 
 
 /* =================================================== */
@@ -1696,7 +1705,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
+        width: 100%;
+        max-width: 80px;
         height: 80px;
         border-radius: 20px;
         background: var(--common-white);
@@ -2144,8 +2154,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -2614,8 +2624,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -3060,8 +3070,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -3510,8 +3520,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -4020,8 +4030,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -4463,8 +4473,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -4879,8 +4889,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -5285,8 +5295,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -5690,8 +5700,8 @@ span.error {
     }
 
     .order-wrapper-img {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 80px;
         border-radius: 20px;
         background: var(--common-white);
         border: 1px solid var(--accordian-border);
@@ -6110,7 +6120,7 @@ span.error {
 
 @media only screen and (max-width: 991px) {
     .accordion-content-2{
-        flex-direction: column;
+        flex-direction: column !important;
     }
     .accordion-content-3 .address-wrapper{
         flex-direction: column;
@@ -6122,8 +6132,8 @@ span.error {
     .cart-total-text-2 {
         font-size: 18px;
     }
-    .accordion-content-2{
-        flex-direction: row;
+    .accordion-content-3 .address-text h3{
+        padding-left: 0px !important;
     }
 }
 
@@ -6132,10 +6142,21 @@ span.error {
     .fill-detali-part{
         margin-top: 30px;
     }
+    .mydiv-wrapper{
+        width: 100%;
+        max-width: 100% !important;
+    }
+    .checkout-process-section .cart-totals-part{
+        width: 100%;
+        max-width: 100%;
+    }
 } 
 
 @media only screen and (max-width: 575px){
     .accordion-content-2{
         flex-direction: column;
+    }
+    .otp-popup .modal-dialog{
+        width: 100%;
     }
 }

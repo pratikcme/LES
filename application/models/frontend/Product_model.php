@@ -527,7 +527,7 @@ class Product_model extends My_model
 			}
 			// Dk added class of cmn-btn
 			$product_html .= '<div class="col-md-12 text-center mt-5" style="display:' . $display . '">
-        						<button type="button" class="btn show-more cmn-btn lg-btn add-cart-btn" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>' . $this->lang->line('Show More') . '</button>
+        						<button type="button" class=" cmn-btn lg-btn add-cart-btn" id="load_more" value=' . $page . ' data-ids=' . json_encode($postdata) . '>' . $this->lang->line('Show More') . '</button>
       						</div>';
 		} else {
 			$product_html = '<h3>No Product Found  </h3>';
