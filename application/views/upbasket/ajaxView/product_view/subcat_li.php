@@ -64,17 +64,17 @@ if (!empty($subcategory)) {
         items: 1,
       },
       300: {
-        items: 4,
+        items: 2,
         dots: false,
         margin: 8,
       },
       600: {
-        items: 4,
+        items: 3,
         dots: false,
         margin: 5,
       },
       768: {
-        items: 4,
+        items: 3,
         dots: false,
         margin: 30,
       },

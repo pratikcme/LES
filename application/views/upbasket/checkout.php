@@ -26,7 +26,7 @@
 
         <div class="row">
             <div class="col-xxl-7 col-xl-7 col-lg-6 col-md-6">
-                <div class="fill-detali-part">
+                <div class="fill-detali-part <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "is_self_pickup" : "" ?>">
                     <div class="accordion-items">
 
 

@@ -169,8 +169,18 @@ table td {
     padding-left: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
+    /* border-bottom: 1px solid var(--cart-counter-border); */
+}
+table tr{
     border-bottom: 1px solid var(--cart-counter-border);
 }
+table tr:last-child{
+    border-bottom: none !important;
+}
+table tr:last-of-type{
+    border-bottom: none !important;
+}
+
 
 table td:nth-child(1) {
     padding-left: 30px;
@@ -251,10 +261,14 @@ table td:nth-child(5) {
 }
 .cart-product-detail div{
     margin-left: 20px !important;
-    margin-bottom: 20px !important;
+    /* margin-bottom: 20px !important; */
 }
-table td:last-child{
+/* table td:last-child{
     border-bottom: none !important;
+} */
+.clear-btn{
+    margin-bottom: 30px !important;
+    margin-left: 30px !important;
 }
 
 

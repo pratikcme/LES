@@ -73,14 +73,14 @@
           </div>
 
           <div class="col-xl-1 col-lg-1 col-md-1">
-            <a href="#"><i class="fa fa-mobile" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa-solid fa-mobile-screen"></i></a>
           </div>
           <div class="col-xl-11 col-lg-11 col-md-11">
             <h4><span><?= $this->lang->line('Call Us') ?>: </span><a href="#"><?= $appLinks[0]->contact_number ?></a></h4>
           </div>
 
           <div class="col-xl-1 col-lg-1 col-md-1">
-            <a href="#"><i class="fa-regular fa-envelope"></i></a>
+            <a href="#"><i class="fa-solid fa-envelope"></i></a>
           </div>
           <div class="col-xl-11 col-lg-11 col-md-11">
             <h4><span><?= $this->lang->line('Email') ?>: </span><a href="#">
