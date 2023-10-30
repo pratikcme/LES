@@ -54,6 +54,7 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .cart-detail-img img {
@@ -174,10 +175,10 @@ table td {
 table tr{
     border-bottom: 1px solid var(--cart-counter-border);
 }
-table tr:last-child{
+table tbody:last-child tr{
     border-bottom: none !important;
 }
-table tr:last-of-type{
+table tbody:last-of-type tr {
     border-bottom: none !important;
 }
 
