@@ -1,5 +1,8 @@
 /* --------------login-page-css---------- */
 /* --------------login-page-css---------- */
+label.error{
+    font-size: 12px !important;
+}
 .login-deatils-wrapper select {
     background: var(--login-wrapper-input-bg);
     border: 1px solid var(--login-wrapper-input-border);
@@ -3754,7 +3757,7 @@ max-width: 25px;
     .google-btn {
         background: var(--login-wrapper-bg) !important;
         border: 1px solid var(--login-wrapper-border);
-        padding: 15px 40px 15px 40px;
+        padding: 15px 30px 15px 30px;
         font-family: Poppins;
         font-size: 14px;
         font-weight: 400;
@@ -3767,7 +3770,7 @@ max-width: 25px;
     .facebook-btn {
         background: #1877F2;
         border: 1px solid var(--login-wrapper-border);
-        padding: 15px 40px 15px 40px;
+        padding: 15px 30px 15px 30px;
         font-family: Poppins;
         font-size: 14px;
         font-weight: 400;
@@ -4005,5 +4008,24 @@ max-width: 25px;
         font-weight: 700;
         line-height: 20px;
         color: #2BAE4A !important;
+    }
+}
+
+
+@media only screen and (max-width: 991px){
+    .login-images{
+        display: none;
+    }
+    .login-section{
+        background-image: linear-gradient(180deg, white 100%, #D9E2ED 0%);
+    }
+    .login-left-content .title{
+        margin-left: 0px !important;
+    }
+    .login-left-content .pera{
+        margin-left: 0px !important;
+    }
+    .login-deatils-wrapper{
+        margin-left: 0px !important;
     }
 }

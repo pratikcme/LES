@@ -102,14 +102,11 @@
             <?php endforeach ?>
         </div>
 
-
         <!-- --------owl-5-slider--------->
-        <div class="sub-categories-product">
-
-            <div class="owl-5 owl-carousel owl-theme" id="subcatOwl">
-
-            </div>
-        </div>
+        <div class="sub-categories-product"  id="subcatOwl">
+     
+    </div>
+     
 
     </div>
 </section>

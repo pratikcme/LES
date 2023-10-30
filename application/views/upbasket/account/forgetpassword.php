@@ -3,7 +3,7 @@
   <div class="login-section forgot-section section">
     <div class="container">
         <div class="row">
-          <div class="forgot-left col-xxl-6 col-lg-6 col-md-6">
+          <div class="forgot-left col-xxl-6 col-lg-6">
 
             <!-- --------login-left-content---- -->
             <div class="login-left-content">
@@ -31,7 +31,7 @@
           </div>
           
           <!-- ------login-right-image-- -->
-          <div class="login-images col-xxl-6 col-lg-6 col-md-6">
+          <div class="login-images col-xxl-6 col-lg-6">
             <img src="<?=$this->theme_base_url?>/assets/images/forgot-stars-img.svg" alt="" class="login-say-img forgot-stars-img">
             <!-- <img src="<?=$this->theme_base_url?>/assets/images/login-mail-img.svg" alt="" class="login-mail-img"> -->
             <img src="<?=$this->theme_base_url?>/assets/images/forgot-plant-img.svg" alt="" class="forgot-plant-img">

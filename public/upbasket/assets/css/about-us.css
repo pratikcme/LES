@@ -210,14 +210,13 @@
     max-width: 220px;
 }
 .our-clinets-section .title::after{
-    /* left: 49% !important; */
-    animation-name: abouttitlebefore;
+    left: 526px;
+    animation-name: abouttitlebefore !important;
 }
 @keyframes abouttitlebefore {
    0%{ 
-       left: 526px;
+       left: 400px !important;
        width: 10px;
-       
    }
    50%{
        width: 10px;
@@ -226,7 +225,7 @@
        width: 10px;
    }
   100%{
-         left: 580px;
+         left: 580px !important;
         width: 0px; 
   }
 }

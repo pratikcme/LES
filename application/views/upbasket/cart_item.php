@@ -185,7 +185,9 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="<?= base_url() . 'checkout' ?>" class="proceed-checkout-btn"><?= $this->lang->line('Proceed to checkout') ?></a>
+                <div class="w-100 text-right">
+                    <a href="<?= base_url() . 'checkout' ?>" class="proceed-checkout-btn"><?= $this->lang->line('Proceed to checkout') ?></a>
+                </div>
             </div>
         </div>
     </div>

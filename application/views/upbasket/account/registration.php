@@ -1,7 +1,7 @@
 <div class="login-section section">
     <div class="container">
         <div class="row">
-            <div class="col-xxl-6 col-lg-6 col-md-6">
+            <div class="col-xxl-6 col-lg-6">
 
                 <!-- --------login-left-content---- -->
                 <div class="login-left-content">
@@ -76,7 +76,7 @@
             </div>
 
             <!-- ------login-right-image-- -->
-            <div class="login-images col-xxl-6 col-lg-6 col-md-6">
+            <div class="login-images col-xxl-6 col-lg-6">
                 <img src="<?= $this->theme_base_url ?>/assets/images/login-say-img.svg" alt="" class="login-say-img">
                 <img src="<?= $this->theme_base_url ?>/assets/images/login-mail-img.svg" alt="" class="login-mail-img">
                 <img src="<?= $this->theme_base_url ?>/assets/images/login-tree-img.svg" alt="" class="login-tree-img">
