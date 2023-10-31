@@ -37,28 +37,8 @@
      left: 49%;
 }
 .our-clinets-section .title::after{
-
-     animation-name: abouttitlebefore !important;
+    animation-name: contacttitlebefore;
 }
-@keyframes abouttitlebefore {
-    0%{ 
-        left: 635px;
-        width: 10px;
-        
-    }
-    50%{
-        width: 10px;
-    }
-    90%{
-        width: 10px;
-    }
-   100%{
-         left: 690px;
-         width: 0px; 
-   }
-}
-
-
 
 .about-image-parts{
     position: relative;
@@ -204,26 +184,6 @@
     width: 100%;
     max-width: 220px;
 }
-.our-clinets-section .title::after{
-    left: 526px;
-    animation-name: abouttitlebefore !important;
-}
-@keyframes abouttitlebefore {
-   0%{ 
-       left: 400px !important;
-       width: 10px;
-   }
-   50%{
-       width: 10px;
-   }
-   90%{
-       width: 10px;
-   }
-  100%{
-         left: 580px !important;
-        width: 0px; 
-  }
-}
 }
 /* ========================================================================= */
 /* ========================================================================= */
@@ -290,27 +250,6 @@
     z-index: -1;
     width: 100%;
     max-width: 220px;
-}
-.our-clinets-section .title::after{
-    /* left: 49% !important; */
-    animation-name: abouttitlebefore;
-}
-@keyframes abouttitlebefore {
-   0%{ 
-       left: 526px;
-       width: 10px;
-       
-   }
-   50%{
-       width: 10px;
-   }
-   90%{
-       width: 10px;
-   }
-  100%{
-         left: 580px;
-        width: 0px; 
-  }
 }
 }
 /* ========================================================================= */
@@ -379,27 +318,6 @@
     width: 100%;
     max-width: 220px;
 }
-.our-clinets-section .title::after{
-    /* left: 49% !important; */
-    animation-name: abouttitlebefore;
-}
-@keyframes abouttitlebefore {
-   0%{ 
-       left: 442px;
-       width: 10px;
-       
-   }
-   50%{
-       width: 10px;
-   }
-   90%{
-       width: 10px;
-   }
-  100%{
-         left: 493px;
-        width: 0px; 
-  }
-}
   }
 /* ========================================================================= */
 /* ========================================================================= */
@@ -462,27 +380,6 @@
     width: 100%;
     max-width: 220px;
 }
-.our-clinets-section .title::after{
-    /* left: 49% !important; */
-    animation-name: abouttitlebefore;
-}
-@keyframes abouttitlebefore {
-   0%{ 
-       left: 342px;
-       width: 10px;
-       
-   }
-   50%{
-       width: 10px;
-   }
-   90%{
-       width: 10px;
-   }
-  100%{
-         left: 395px;
-        width: 0px; 
-  }
-}
   }
 /* ========================================================================= */
 /* ========================================================================= */
@@ -544,27 +441,6 @@
     z-index: -1;
     width: 100%;
     max-width: 220px;
-}
-.our-clinets-section .title::after{
-    /* left: 49% !important; */
-    animation-name: abouttitlebefore;
-}
-@keyframes abouttitlebefore {
-   0%{ 
-       left: 342px;
-       width: 10px;
-       
-   }
-   50%{
-       width: 10px;
-   }
-   90%{
-       width: 10px;
-   }
-  100%{
-         left: 395px;
-        width: 0px; 
-  }
 }
   }
 /* ========================================================================= */
@@ -631,27 +507,6 @@
     max-width: 220px;
 }
 
-.our-clinets-section .title::after{
-    /* left: 49% !important; */
-    animation-name: abouttitlebefore;
-}
-@keyframes abouttitlebefore {
-   0%{ 
-       left: 342px;
-       width: 10px;
-       
-   }
-   50%{
-       width: 10px;
-   }
-   90%{
-       width: 10px;
-   }
-  100%{
-         left: 395px;
-        width: 0px; 
-  }
-}
 
 }
 /* ========================================================================= */
@@ -706,30 +561,6 @@
     .about-us-section .about-content .title::before{
         left: 0;
     }
-    .our-clinets-section .title::after{
-        /* left: 49% !important; */
-        animation-name: abouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-    @keyframes abouttitlebefore {
-       0%{ 
-           left: 230px;
-           width: 10px;  
-       }
-       50%{
-           width: 10px;
-       }
-       90%{
-           width: 10px;
-       }
-      100%{
-             left: 285px;
-            width: 0px; 
-      }
-    }
-    
     
 }
 /* ========================================================================= */
@@ -788,29 +619,6 @@
     .our-clinets-section .title::before {
         left: 43%;
     }
-    .our-clinets-section .title::after{
-        /* left: 49% !important; */
-        animation-name: abouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-    @keyframes abouttitlebefore {
-       0%{ 
-           left: 222px;
-           width: 10px;  
-       }
-       50%{
-           width: 10px;
-       }
-       90%{
-           width: 10px;
-       }
-      100%{
-             left: 278px;
-            width: 0px; 
-      }
-    }
 }
 /* ========================================================================= */
 /* ========================================================================= */
@@ -864,29 +672,6 @@
     }
     .our-clinets-section .title::before {
         left: 43%;
-    }
-    .our-clinets-section .title::after{
-        /* left: 49% !important; */
-        animation-name: abouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-    @keyframes abouttitlebefore {
-       0%{ 
-           left: 168px;
-           width: 10px;  
-       }
-       50%{
-           width: 10px;
-       }
-       90%{
-           width: 10px;
-       }
-      100%{
-             left: 223px;
-            width: 0px; 
-      }
     }
 }
 
@@ -942,29 +727,6 @@
     }
     .our-clinets-section .title::before {
         left: 43%;
-    }
-    .our-clinets-section .title::after{
-        /* left: 49% !important; */
-        animation-name: abouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-    @keyframes abouttitlebefore {
-       0%{ 
-           left: 158px;
-           width: 10px;  
-       }
-       50%{
-           width: 10px;
-       }
-       90%{
-           width: 10px;
-       }
-      100%{
-             left: 214px;
-            width: 0px; 
-      }
     }
 }
 
@@ -1024,29 +786,6 @@
     .our-clinets-section .title::before {
         left: 43%;
     }
-    .our-clinets-section .title::after{
-        /* left: 49% !important; */
-        animation-name: abouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-    @keyframes abouttitlebefore {
-       0%{ 
-           left: 155px;
-           width: 10px;  
-       }
-       50%{
-           width: 10px;
-       }
-       90%{
-           width: 10px;
-       }
-      100%{
-             left: 212px;
-            width: 0px; 
-      }
-    }
 }
 
 /* ========================================================================= */
@@ -1102,29 +841,6 @@
    .our-clinets-section .title::before{
         left: 43% !important;
    }
-   .our-clinets-section .title::after{
-    /* left: 49% !important; */
-    animation-name: abouttitlebefore;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-@keyframes abouttitlebefore {
-   0%{ 
-       left: 152px;
-       width: 10px;  
-   }
-   50%{
-       width: 10px;
-   }
-   90%{
-       width: 10px;
-   }
-  100%{
-         left: 205px;
-        width: 0px; 
-  }
-}
 }
 
 /* ========================================================================= */
@@ -1139,30 +855,25 @@
         text-align: center;
         margin-bottom: 25px;
     }
-    .our-clinets-section .title::after{
-        /* left: 49% !important; */
-        animation-name: abouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-    @keyframes abouttitlebefore {
-       0%{ 
-           left: 126px;
-           width: 10px;  
-       }
-       50%{
-           width: 10px;
-       }
-       90%{
-           width: 10px;
-       }
-      100%{
-             left: 182px;
-            width: 0px; 
-      }
+}
+
+
+
+@media only screen and (max-width: 991px) {
+    .our-clinets-section .title::before {
+        left: 47.4%;
     }
 }
+/* @media only screen and (max-width: 575px) {
+    .our-clinets-section .title::before {
+        left: 44.4% !important;
+    }
+}
+@media only screen and (max-width: 570px) {
+    .our-clinets-section .title::before {
+        left: 44.7% !important;
+    }
+} */
 
 
 

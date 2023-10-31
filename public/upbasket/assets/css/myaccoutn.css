@@ -148,7 +148,7 @@
     border-radius: 90px;
     padding-left: 25px;
     height: 45px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .myaccout-detail-tab input:focus {
@@ -756,6 +756,12 @@
         width: 100%;
         max-width: 500px;
     }
+    .account-details-tabs .sub-tabs .nav-link {
+        width: 160.67px !important;
+    }
+    .mywishlist-part-img .bt-content {
+        gap: 20px;
+    }
 }
 
 @media only sceen and (max-width:575px) {
@@ -774,6 +780,12 @@
         width: 100%;
         max-width: 400px;
     }
+
+}
+@media only sceen and (max-width:424px) {
+    .account-details-tabs .sub-tabs .nav-link {
+        width: 120.67px !important;
+    } 
 
 }
 
@@ -2409,7 +2421,7 @@
 
     .mywishlist-part .mywishlist-part-img {
         position: relative;
-        left: 15px;
+        /* left: 15px;  */
     }
 
     .mywishlist-part .cart-detail-text h4 {
@@ -2856,7 +2868,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        left: -50px !important;
+        /* left: -50px !important; */
     }
 
 
@@ -3281,7 +3293,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        left: -50px !important;
+        /* left: -50px !important; */
     }
 
 
@@ -3723,7 +3735,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        left: -50px !important;
+        /* left: -50px !important; */
     }
 
 
@@ -4142,7 +4154,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        left: -50px !important;
+        /* left: -50px !important; */
     }
 
 
@@ -4547,7 +4559,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        left: -50px !important;
+        /* left: -50px !important; */
     }
 
     .mywishlist-part-img .removeWishlistItem {
