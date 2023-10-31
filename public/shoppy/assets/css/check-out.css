@@ -113,6 +113,7 @@ input:focus{
     display: flex;
     gap: 30px;
     align-items: center;
+    justify-content: center;
 }
 
 .accordion-content-2 .form-check-input:checked[type=checkbox] {
