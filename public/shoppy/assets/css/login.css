@@ -104,6 +104,7 @@
 label.error{
     font-size: 14px !important;
     margin-bottom: 0px !important;
+    color: red !important;
 }
 
 .login-deatils-wrapper::-webkit-scrollbar {
