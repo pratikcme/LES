@@ -38,6 +38,8 @@
 }
 
 
+
+
 .contact-us-section .pera {
     text-align: center;
     margin-bottom: 90px;
@@ -258,6 +260,7 @@
             width: 0px;
         }
     }
+    
 }
 
 /* ============================================================= */
@@ -447,6 +450,9 @@
     .contact-us-section .title::before {
         left: 45% !important;
     }
+    .our-clinets-section .title::before {
+        left: 45% !important;
+    }
 
     .contact-us-section .title::after {
         /* left: 49% !important; */
@@ -485,6 +491,9 @@
 @media screen and (min-width: 412px) and (max-width: 540px) {
 
     .contact-us-section .title::before {
+        left: 45% !important;
+    }
+    .our-clinets-section .title::before {
         left: 45% !important;
     }
 
@@ -607,6 +616,9 @@
     .contact-us-section .title::before {
         left: 41% !important;
     }
+    .our-clinets-section .title::before {
+        left: 41% !important;
+    }
 
     .contact-us-section .title::after {
         /* left: 49% !important; */
@@ -727,6 +739,9 @@
     .contact-us-section .title::before {
         left: 41% !important;
     }
+    .our-clinets-section .title::before {
+        left: 41% !important;
+    }
 
     .left-contact-wrapper {
         background: var(--left-contact-wrapper-bg);
@@ -845,6 +860,9 @@
 @media screen and (max-width: 390px) {
 
     .contact-us-section .title::before {
+        left: 41% !important;
+    }
+    .our-clinets-section .title::before {
         left: 41% !important;
     }
 
@@ -969,6 +987,9 @@
 @media screen and (max-width: 375px) {
 
     .contact-us-section .title::before {
+        left: 43% !important;
+    }
+    .our-clinets-section .title::before {
         left: 43% !important;
     }
 

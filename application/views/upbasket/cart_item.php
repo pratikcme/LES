@@ -150,7 +150,7 @@
                             <?php } ?>
                         <?php } ?>
                     </table>
-                    <div>
+                    <div class="clear-cart-btn">
                         <button type="button" class="lg-btn clear-btn" id="ClearCart"><?= $this->lang->line('clear cart') ?></button>
                     </div>
                 </div>
