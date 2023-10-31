@@ -971,6 +971,7 @@
     .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1180,6 +1181,7 @@
     .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1387,6 +1389,7 @@
     .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1587,6 +1590,7 @@
     .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1788,6 +1792,7 @@
     .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1988,6 +1993,7 @@
     .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -2859,6 +2865,7 @@
     .mywishlist-part-img .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -3284,6 +3291,7 @@
     .mywishlist-part-img .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -3726,6 +3734,7 @@
     .mywishlist-part-img .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -4145,6 +4154,7 @@
     .mywishlist-part-img .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -4550,6 +4560,7 @@
     .mywishlist-part-img .cart-detail-img {
         width: 100%;
         max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
