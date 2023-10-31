@@ -739,6 +739,9 @@
     .all-detalis-left td:nth-child(2) {
         padding-right: 20px !important;
     }
+    .cart-detail-text h4 a {
+        font-size: 16px !important;
+    }
 }
 
 @media only screen and (max-width: 767px){
