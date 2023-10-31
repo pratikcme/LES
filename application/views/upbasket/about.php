@@ -28,6 +28,7 @@
                 <div class="about-content">
 
                     <h2 class="title"><?= $about_section_one[0]->main_title ?></h2>
+                    <span class="line-animation"></span>
                     <p><?= $about_section_one[0]->content ?></p>
 
                 </div>
@@ -53,6 +54,7 @@
 <section class="our-clinets-section">
     <div class="container">
         <h2 class="title text-center">The Trust From <span>Clients</span></h2>
+        <span class="line-animation"></span>
 
 
         <div class="owl-4 owl-carousel owl-theme">

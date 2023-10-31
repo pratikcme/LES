@@ -59,6 +59,7 @@
     <img src="<?= $this->theme_base_url ?>/assets/images/category-top-right-img.png" alt="" class="category-top-right-img">
     <div class="container">
         <h1 class="title"><?= $this->lang->line('Shop By') ?> <span><?= $this->lang->line('Categories') ?> </span></h1>
+        <span class="line-animation"></span>
 
         <h5><?= $this->lang->line('See All') ?> <?= $this->lang->line('Categories') ?></h5>
         <h5 class="mobile-cate-text"><a href="#"><?= $this->lang->line('See All') ?></a></h5>
@@ -89,6 +90,7 @@
     <div class="container">
         <h2 class="title"><?= $this->lang->line('Top Featured') ?> <span><?= $this->lang->line('Products') ?></span>
         </h2>
+        <span class="line-animation"></span>
 
         <div class="row">
             <!-- -----product-card----- -->
@@ -260,6 +262,7 @@ if (isset($offer_list) && !empty($offer_list) && count($offer_list) != 0) { ?>
     <img src="<?= $this->theme_base_url ?>/assets/images/latest-product-top-img.png" alt="" class="latest-product-top-img">
     <div class="container">
         <h1 class="title"><?= $this->lang->line('Latest') ?> <span><?= $this->lang->line('Products') ?></span></h1>
+        <span class="line-animation"></span>
 
         <h5><?= $this->lang->line('See All') ?> <?= $this->lang->line('Categories') ?></h5>
 

@@ -6,6 +6,12 @@
     color: var(--accordian-content-text-1);
     margin-bottom: 10px;
 }
+.checkout-process-section .line-animation {
+    display: block;
+    max-width: 60px;
+    width: 100%;
+    margin: 0px auto;
+}
 
 .otp-popup .container {
     height: 100%;
@@ -145,30 +151,6 @@ button.btn-close {
     left: 49% !important;
 }
 
-.checkout-process-section .title::after {
-    /* left: 49% !important; */
-    animation-name: checkouttitlebefore !important;
-}
-
-@keyframes checkouttitlebefore {
-    0% {
-        left: 635px;
-        width: 10px;
-    }
-
-    50% {
-        width: 10px;
-    }
-
-    90% {
-        width: 10px;
-    }
-
-    100% {
-        left: 690px;
-        width: 0px;
-    }
-}
 
 .checkout-process-section .pera {
     text-align: center;
@@ -1513,31 +1495,6 @@ span.error {
         left: 47% !important;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 527px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 580px;
-            width: 0px;
-        }
-    }
-
     .time-wrapper{
         padding: 30px 25px;
     }
@@ -1583,30 +1540,7 @@ span.error {
         left: 47% !important;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-    }
 
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 527px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 580px;
-            width: 0px;
-        }
-    }
 
     .accordion-content-2 {
         display: flex !important;
@@ -2031,30 +1965,6 @@ span.error {
         left: 49%;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 460px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 513px;
-            width: 0px;
-        }
-    }
 
     .accordion-content-2 {
         display: flex !important;
@@ -2502,30 +2412,6 @@ span.error {
         left: 40%;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 340px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 396px;
-            width: 0px;
-        }
-    }
 
     .accordion-content-2 {
         display: flex !important;
@@ -2947,30 +2833,6 @@ span.error {
         left: 40%;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 340px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 397px;
-            width: 0px;
-        }
-    }
 
     .accordion-content-2 {
         display: flex !important;
@@ -3387,39 +3249,6 @@ span.error {
         border-radius: 90px;
         padding-top: 10px;
         padding-left: 35px !important;
-    }
-
-
-    /* .checkout-process-section .title::after {
-        left: 42% !important;
-    } */
-    .checkout-process-section .title::before {
-        left: 40%;
-    }
-
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 340px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 397px;
-            width: 0px;
-        }
     }
 
     .accordion-content-2 {
@@ -3856,34 +3685,6 @@ span.error {
         left: 43% !important;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 225px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 278px;
-            width: 0px;
-        }
-    }
-
 
 }
 
@@ -4308,33 +4109,6 @@ span.error {
         left: 43% !important;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 225px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 278px;
-            width: 0px;
-        }
-    }
 
 
 
@@ -4726,33 +4500,6 @@ span.error {
         transition: 0.3s;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 168px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 223px;
-            width: 0px;
-        }
-    }
 }
 
 /* =================================================== */
@@ -5131,34 +4878,6 @@ span.error {
     .checkout-process-section .title::before {
         left: 43% !important;
     }
-
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 158px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 213px;
-            width: 0px;
-        }
-    }
 }
 
 /* =================================================== */
@@ -5536,33 +5255,6 @@ span.error {
         left: 43% !important;
     }
 
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 155px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 211px;
-            width: 0px;
-        }
-    }
 
 }
 
@@ -5938,36 +5630,6 @@ span.error {
         transition: 0.3s;
     }
 
-    /* .checkout-process-section .title::before{
-    left: 43% !important;
-} */
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 152px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 206px;
-            width: 0px;
-        }
-    }
 
 }
 
@@ -5996,36 +5658,6 @@ span.error {
         transition: 0.3s;
     }
 
-    /* .checkout-process-section .title::before{
-        left: 43% !important;
-    } */
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 145px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 199px;
-            width: 0px;
-        }
-    }
 
     .time-wrapper{
         padding: 30px 25px;
@@ -6035,33 +5667,6 @@ span.error {
 /* =================================================== */
 /* =================================================== */
 @media screen and (max-width:320px) {
-    .checkout-process-section .title::after {
-        /* left: 49% !important; */
-        animation-name: checkouttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes checkouttitlebefore {
-        0% {
-            left: 125px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 182px;
-            width: 0px;
-        }
-    }
 
     .order-wrapper-text h4 a {
         font-family: Poppins;

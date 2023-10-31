@@ -121,6 +121,12 @@
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
     background: #2BAE4A !important;
 }
+.our-clinets-section .line-animation {
+    display: block;
+    max-width: 60px;
+    width: 100%;
+    margin: 0px auto;
+}
 
 
 
@@ -869,6 +875,12 @@
     }
     .our-clinets-section{
         padding-bottom: 50px;
+    }
+    .about-rectangl-1{
+        display: none !important;
+    }
+    .about-rectangl-2{
+        display: none !important;
     }
 }
 

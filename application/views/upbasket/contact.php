@@ -23,6 +23,7 @@
           <h2 class="title text-center"><?= $this->lang->line('Get In') ?>
               <span><?= $this->lang->line('Touch') ?></span>
           </h2>
+          <span class="line-animation"></span>
           <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
           <div class="row">
               <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 wow bounceIn" data-wow-duration="1s" data-wow-delay="0s"

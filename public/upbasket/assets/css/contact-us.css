@@ -3,41 +3,16 @@
     background: var(--light-white-bg);
 }
 
+.contact-us-section .line-animation {
+    display: block;
+    max-width: 60px;
+    width: 100%;
+    margin: 0px auto;
+}
+
 .contact-us-section .title {
     text-align: center;
 }
-
-.contact-us-section .title::before {
-    left: 49% !important;
-}
-
-.contact-us-section .title::after {
-    /* left: 49% !important; */
-    animation-name: contacttitlebefore;
-}
-
-@keyframes contacttitlebefore {
-    0% {
-        left: 635px;
-        width: 10px;
-
-    }
-
-    50% {
-        width: 10px;
-    }
-
-    90% {
-        width: 10px;
-    }
-
-    100% {
-        left: 690px;
-        width: 0px;
-    }
-}
-
-
 
 
 .contact-us-section .pera {
@@ -202,32 +177,6 @@
 /* ============================================================= */
 /* ============================================================= */
 @media screen and (min-width: 1280px) and (max-width: 1399px) {
-
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 549px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 601px;
-            width: 0px;
-        }
-    }
 }
 
 /* ============================================================= */
@@ -235,31 +184,6 @@
 
 @media screen and (min-width: 1200px) and (max-width: 1279px) {
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 549px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 601px;
-            width: 0px;
-        }
-    }
     
 }
 
@@ -278,31 +202,6 @@
         margin-top: 30px;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 460px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 513px;
-            width: 0px;
-        }
-    }
 }
 
 /* ============================================================= */
@@ -320,31 +219,6 @@
         margin-top: 30px;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 342px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 395px;
-            width: 0px;
-        }
-    }
 }
 
 /* ============================================================= */
@@ -360,32 +234,6 @@
         padding: 60px 50px 10px 50px;
         margin-left: 0px;
         margin-top: 30px;
-    }
-
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 342px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 395px;
-            width: 0px;
-        }
     }
 }
 
@@ -404,31 +252,6 @@
         margin-top: 30px;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 342px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 395px;
-            width: 0px;
-        }
-    }
 }
 
 /* ============================================================= */
@@ -454,35 +277,6 @@
         left: 45% !important;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 233px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 288px;
-            width: 0px;
-        }
-    }
-
 
 }
 
@@ -497,34 +291,6 @@
         left: 45% !important;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 233px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 288px;
-            width: 0px;
-        }
-    }
 
     .left-contact-wrapper {
         background: var(--left-contact-wrapper-bg);
@@ -620,34 +386,6 @@
         left: 41% !important;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 160px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 215px;
-            width: 0px;
-        }
-    }
 
     .left-contact-wrapper {
         background: var(--left-contact-wrapper-bg);
@@ -825,34 +563,6 @@
         margin-bottom: 40px;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 152px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 205px;
-            width: 0px;
-        }
-    }
 }
 
 /* ============================================================= */
@@ -865,11 +575,6 @@
     .our-clinets-section .title::before {
         left: 41% !important;
     }
-
-    /* .contact-us-section .title::after {
-        left: 43%;
-        animation: none;
-    } */
     .left-contact-wrapper {
         background: var(--left-contact-wrapper-bg);
         border: 1px solid var(--left-contact-wrapper-border);
@@ -952,34 +657,6 @@
         margin-bottom: 40px;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 152px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 205px;
-            width: 0px;
-        }
-    }
 }
 
 /* ============================================================= */
@@ -1075,67 +752,11 @@
         margin-bottom: 40px;
     }
 
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 152px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 205px;
-            width: 0px;
-        }
-    }
 }
 
 /* ============================================================= */
 /* ============================================================= */
 @media screen and (max-width: 320px) {
-    .contact-us-section .title::after {
-        /* left: 49% !important; */
-        animation-name: contacttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes contacttitlebefore {
-        0% {
-            left: 125px;
-            width: 10px;
-
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 182px;
-            width: 0px;
-        }
-    }
 
     .right-contact {
         background: var(--right-contact-icon-round);

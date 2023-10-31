@@ -8,6 +8,7 @@
             <!-- --------login-left-content---- -->
             <div class="login-left-content">
               <h2 class="title">Forgot password?</h2>
+              <span class="line-animation"></span>
               <p class="pera">No worries, we'well send you reset intructions.</p>
               
               <!-- ---------forgot-deails-wrappper----- -->

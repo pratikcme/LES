@@ -2,36 +2,12 @@
     text-align: center;
     margin-top: 80px;
 }
-
-.my-account-section .title::before {
-    left: 48% !important;
+.account-details-content .line-animation {
+    display: block;
+    max-width: 60px;
+    width: 100%;
+    margin: 0px auto;
 }
-
-.my-account-section .title::after {
-    /* left: 610px !important; */
-    animation-name: accounttitlebefore !important;
-}
-
-@keyframes accounttitlebefore {
-    0% {
-        left: 610px;
-        width: 10px;
-    }
-
-    50% {
-        width: 10px;
-    }
-
-    90% {
-        width: 10px;
-    }
-
-    100% {
-        left: 665px;
-        width: 0px;
-    }
-}
-
 
 .my-account-section .pera {
     text-align: center;
@@ -1006,30 +982,7 @@
         padding-left: 0px;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-    }
 
-    @keyframes accounttitlebefore {
-        0% {
-            left: 525px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 580px;
-            width: 0px;
-        }
-    }
 }
 
 /* ========================================================== */
@@ -1215,31 +1168,6 @@
     table td:nth-child(5) {
         padding-left: 0px;
     }
-
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 525px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 580px;
-            width: 0px;
-        }
-    }
 }
 
 /* ========================================================== */
@@ -1424,30 +1352,6 @@
         padding-left: 0px;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 440px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 493px;
-            width: 0px;
-        }
-    }
 }
 
 /* ========================================================== */
@@ -1625,30 +1529,6 @@
         padding-left: 0px;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 325px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 378px;
-            width: 0px;
-        }
-    }
 }
 
 /* ========================================================== */
@@ -1827,30 +1707,7 @@
         padding-left: 0px;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-    }
 
-    @keyframes accounttitlebefore {
-        0% {
-            left: 325px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 378px;
-            width: 0px;
-        }
-    }
 }
 
 /* ========================================================== */
@@ -2028,30 +1885,6 @@
         padding-left: 0px;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 325px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 378px;
-            width: 0px;
-        }
-    }
 }
 
 /* ========================================================== */
@@ -2099,33 +1932,6 @@
         left: 43% !important;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 214px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 268px;
-            width: 0px;
-        }
-    }
 
 
     .account-details-tabs .nav-pills {
@@ -2553,33 +2359,6 @@
         left: 43% !important;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 214px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 268px;
-            width: 0px;
-        }
-    }
 
 
 
@@ -2980,33 +2759,6 @@
         left: 43% !important;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 157px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 212px;
-            width: 0px;
-        }
-    }
 
 
     .account-details-tabs .nav-pills {
@@ -3423,33 +3175,6 @@
         left: 43% !important;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 147px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 203px;
-            width: 0px;
-        }
-    }
 
 
     .account-details-tabs .nav-pills {
@@ -3843,33 +3568,6 @@
         left: 42% !important;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 144px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 198px;
-            width: 0px;
-        }
-    }
 
 
     .account-details-tabs .nav-pills {
@@ -4260,33 +3958,6 @@
         left: 43% !important;
     }
 
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 142px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 195px;
-            width: 0px;
-        }
-    }
 
     .account-details-tabs .nav-pills {
         border: 1px solid var(--myaccoutn-tab-border) !important;
@@ -4655,36 +4326,4 @@
         max-width: 200px !important;
     }
 
-}
-
-/* ========================================================== */
-/* ========================================================== */
-@media screen and (max-width: 320px) {
-    .my-account-section .title::after {
-        /* left: 610px !important; */
-        animation-name: accounttitlebefore;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes accounttitlebefore {
-        0% {
-            left: 118px;
-            width: 10px;
-        }
-
-        50% {
-            width: 10px;
-        }
-
-        90% {
-            width: 10px;
-        }
-
-        100% {
-            left: 172px;
-            width: 0px;
-        }
-    }
 }

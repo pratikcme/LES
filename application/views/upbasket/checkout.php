@@ -23,6 +23,7 @@
     <div class="container">
         <h2 class="title"> <?= $this->lang->line('checkout') ?> <span> <?= $this->lang->line('Process') ?> </span>
         </h2>
+        <span class="line-animation"></span>
 
         <div class="row">
             <div class="col-xxl-7 col-xl-7 col-lg-6 col-md-6">

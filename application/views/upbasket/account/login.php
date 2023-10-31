@@ -6,6 +6,7 @@
                 <!-- --------login-left-content---- -->
                 <div class="login-left-content">
                     <h2 class="title">Welcome back</h2>
+                    <span class="line-animation"></span>
                     <p class="pera">Welcome back! Enter your credentails to acess your account.</p>
 
                     <!-- ---------login-deails-wrappper----- -->

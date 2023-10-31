@@ -25,11 +25,13 @@ a {
     position: relative;
     margin-bottom: 51px;
 }
-
-.title::before {
+.line-animation{
+    position: relative;
+}
+.line-animation::before {
     content: "";
     position: absolute;
-    bottom: -27px;
+    bottom: 30px;
     left: 0;
     background: var(--title-underline-1);
     width: 60px;
@@ -38,10 +40,10 @@ a {
     z-index: 2;
 }
 
-.title::after {
+.line-animation::after {
     content: "";
     position: absolute;
-    bottom: -27px;
+    bottom: 30px;
     left: 0;
     background: var(--title-underline-2);
     width: 23px;
