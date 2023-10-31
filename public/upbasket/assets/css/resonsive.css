@@ -11623,4 +11623,7 @@
     .ship-check {
         left: 22px !important;
     }
+    header {
+        padding-top: 5px !important;
+    }
 }
