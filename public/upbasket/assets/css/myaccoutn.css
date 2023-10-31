@@ -775,7 +775,7 @@
     }
 }
 
-@media only sceen and (max-width:575px) {
+@media only screen and (max-width:575px) {
     .account-details-tabs .sub-tabs .nav-link {
         width: 124.67px !important;
     }
