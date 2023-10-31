@@ -6157,6 +6157,6 @@ span.error {
         flex-direction: column;
     }
     .otp-popup .modal-dialog{
-        width: 100%;
+        width: auto !important;
     }
 }
