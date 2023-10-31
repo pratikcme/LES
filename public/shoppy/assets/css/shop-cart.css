@@ -329,6 +329,7 @@ max-width: 424px;
 .cart-cross{
     display: flex;
     gap: 10px !important;
+    justify-content: space-between;
 }
 /* 
 .product-tables{
