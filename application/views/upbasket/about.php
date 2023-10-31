@@ -50,7 +50,7 @@
 </section>
 
 <!-- -------- our-trusted-clients--------- -->
-<section class="our-clinets-section section">
+<section class="our-clinets-section">
     <div class="container">
         <h2 class="title text-center">The Trust From <span>Clients</span></h2>
 
