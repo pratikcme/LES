@@ -7128,7 +7128,7 @@
     }
     .drp-grp {
         width: 100%;
-        justify-content: space-between !important;
+        justify-content: center !important;
     }
     #google_translate_element::after {
         display: none;
