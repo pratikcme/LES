@@ -61,6 +61,7 @@
                          <h2 class="title"><?= $this->lang->line('Account') ?>
                              <span><?= $this->lang->line('Details') ?></span>
                          </h2>
+                         <span class="line-animation"></span>
                          <div class="get-detials-account myaccout-detail-tab">
                              <form id="ChangePass" enctype="multipart/form-data" action="<?= base_url() . 'users_account/users/account' ?>" method="post">
                                  <input type="hidden" name="hidden_image" value="<?= $userDetails[0]->profileimage ?>">
@@ -134,6 +135,7 @@
                      <!-- ---tab-2-- -->
                      <div id="tab-2" class="container tab-pane fade <?= ($action_name == 'order') ? 'active show' : '' ?>">
                          <h2 class="title">My <span>Orders</span></h2>
+                         <span class="line-animation"></span>
 
                          <div class="sub-tabs container">
                              <ul class="nav nav-pills" role="tablist">
@@ -726,6 +728,7 @@
                      <!-- ---tab-3-- -->
                      <div id="tab-3" class="container tab-pane fade <?= ($action_name == 'wishlist') ? 'active show' : '' ?>">
                          <h2 class="title"><?= $this->lang->line('My Wishlist') ?></h2>
+                         <span class="line-animation"></span>
                          <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                          <?php if (empty($wishlist)) {
                                 $this->load->view('nodatafound/wishlist_empty');
@@ -801,6 +804,7 @@
                      <!-- ---tab-4-- -->
                      <div id="tab-4" class="container tab-pane fade <?= ($action_name == 'my_address') ? 'active show' : '' ?>">
                          <h2 class="title"><?= $this->lang->line('My address') ?></h2>
+                         <span class="line-animation"></span>
                          <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                          <?php foreach ($get_address as $key => $value) {
                                 $status = ($value->status == '0') ? 'is_default ' : '';
@@ -834,6 +838,7 @@
 
                      <div id="tab-7" class="container tab-pane fade <?= ($action_name == 'change') ? 'active show' : '' ?> ">
                          <h2 class="title"><?= $this->lang->line('Change Password') ?></h2>
+                         <span class="line-animation"></span>
                          <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
                          <div class="myaccout-detail-tab">
                              <form id='ChangeUserPass' action="<?= base_url() . 'users_account/users/update_password' ?>" method="post">

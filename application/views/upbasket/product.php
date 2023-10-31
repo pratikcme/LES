@@ -80,6 +80,7 @@
         class="category-top-right-img">
     <div class="container">
         <h1 class="title">Shop By <span>Categories</span></h1>
+        <span class="line-animation"></span>
         <p class="pera">Top Categories Of The Week</p>
         <h5>View All Categories</h5>
         <h5 class="mobile-cate-text"><a href="#">View All</a></h5>

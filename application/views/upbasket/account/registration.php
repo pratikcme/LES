@@ -6,6 +6,7 @@
                 <!-- --------login-left-content---- -->
                 <div class="login-left-content">
                     <h2 class="title"><?= $this->lang->line('Sign up') ?></h2>
+                    <span class="line-animation"></span>
                     <p class="pera">Let’s create your account</p>
 
                     <!-- ---------signin-deails-wrappper----- -->

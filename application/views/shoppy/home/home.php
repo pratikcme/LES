@@ -206,7 +206,7 @@
                             foreach ($top_sell as $key => $value) :
 
                             ?>
-                                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
 
                                     <div class="product-card  <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
                                         <div class="product-img-wrap">

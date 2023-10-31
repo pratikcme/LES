@@ -129,7 +129,9 @@ footer{
 }
 
 .footer-bottom .device-im{
-    width: 24px;
+    width: 100%;
+    max-width: 24px;
+    min-width: 24px;
     height: 24px;
     margin-right: 10px;
 }

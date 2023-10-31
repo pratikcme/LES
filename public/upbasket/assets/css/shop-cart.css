@@ -178,18 +178,18 @@ table td {
     padding-bottom: 20px;
     /* border-bottom: 1px solid var(--cart-counter-border); */
 }
-table tr{
+.cart-totals-part table tr{
     border-bottom: 1px solid var(--cart-counter-border);
 }
-table tr:last-child{
+.cart-totals-part table tr:last-child{
     border-bottom: none !important;
 }
-.cart-product-detail table tbody:last-child tr{
+/* .cart-product-detail table tbody:last-child tr{
     border-bottom: none !important;
 }
 .cart-product-detail table tbody:last-of-type tr {
     border-bottom: none !important;
-}
+} */
 
 
 table td:nth-child(1) {
@@ -273,6 +273,7 @@ table td:nth-child(5) {
 .clear-cart-btn{
     margin-bottom: 30px !important;
     margin-left: 30px !important;
+    top: 10px !important;
 }
 
 
@@ -309,7 +310,7 @@ table td:nth-child(5) {
 
     .cart-product-detail table td:nth-child(1) {
         padding-left: 40px;
-        padding-bottom: 0px;
+        padding-bottom: 10px;
     }
 
     .cart-product-detail table td:nth-child(2) {
@@ -337,8 +338,9 @@ table td:nth-child(5) {
 
     .cart-detail-img {
         width: 100%;
-    max-width: 70px;
-    min-width: 70px;
+        max-width: 70px;
+        min-width: 70px;
+        height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -535,6 +537,7 @@ table td:nth-child(5) {
         width: 100%;
     max-width: 70px;
     min-width: 70px;
+    height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -679,6 +682,7 @@ table td:nth-child(5) {
         width: 100%;
     max-width: 70px;
     min-width: 70px;
+    height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -823,6 +827,7 @@ table td:nth-child(5) {
         width: 100%;
     max-width: 80px;
     min-width: 80px;
+    height: 80px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -934,6 +939,7 @@ table td:nth-child(5) {
         width: 100%;
     max-width: 80px;
     min-width: 80px;
+    height: 80px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -1045,6 +1051,7 @@ table td:nth-child(5) {
         width: 100%;
     max-width: 80px;
     min-width: 80px;
+    height: 80px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -1185,6 +1192,7 @@ table td:nth-child(5) {
         width: 100%;
         max-width: 70px;
         min-width: 70px;
+        height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 20px;
         border: 1px solid var(--cart-counter-border);
@@ -1258,7 +1266,7 @@ table td:nth-child(5) {
 
     .cart-product-detail table td:nth-child(1) {
         padding-left: 30px;
-        padding-bottom: 0px;
+        padding-bottom: 10px;
     }
 
     .cart-product-detail table td:nth-child(2) {
@@ -1288,6 +1296,7 @@ table td:nth-child(5) {
         width: 100%;
         max-width: 70px;
         min-width: 70px;
+        height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -1403,7 +1412,7 @@ table td:nth-child(5) {
 
     .cart-product-detail table td:nth-child(1) {
         padding-left: 30px;
-        padding-bottom: 0px;
+        padding-bottom: 10px;
     }
 
     .cart-product-detail table td:nth-child(2) {
@@ -1433,6 +1442,7 @@ table td:nth-child(5) {
         width: 100%;
         max-width: 70px;
         min-width: 70px;
+        height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -1548,7 +1558,7 @@ table td:nth-child(5) {
 
     .cart-product-detail table td:nth-child(1) {
         padding-left: 30px;
-        padding-bottom: 0px;
+        padding-bottom: 10px;
     }
 
     .cart-product-detail table td:nth-child(2) {
@@ -1578,6 +1588,7 @@ table td:nth-child(5) {
         width: 100%;
         max-width: 70px;
         min-width: 70px;
+        height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);
@@ -1693,7 +1704,7 @@ table td:nth-child(5) {
 
     .cart-product-detail table td:nth-child(1) {
         padding-left: 30px;
-        padding-bottom: 0px;
+        padding-bottom: 10px;
     }
 
     .cart-product-detail table td:nth-child(2) {
@@ -1721,6 +1732,7 @@ table td:nth-child(5) {
         width: 100%;
         max-width: 70px;
         min-width: 70px;
+        height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
         border: 1px solid var(--cart-counter-border);

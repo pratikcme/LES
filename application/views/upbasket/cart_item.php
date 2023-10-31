@@ -82,7 +82,7 @@
                                                 <div class="cart-Quantity-count">
                                                     <div class="quantity-counter">
                                                         <button id="counter-decrement" class="decrement  cart-qty-minus_c" data-product_weight_id="<?= $value['product_weight_id'] ?>">-</button>
-                                                        <input id="counter-value" class="value qty quantity-counter" type="text" class="qty" type="text" value="<?= $value['quantity'] ?>" data-product_id="<?= $value['product_id'] ?>" data-weight_id="<?= $value['weight_id'] ?>" readonly>
+                                                        <input id="counter-value" class="value qty" type="text" class="qty" type="text" value="<?= $value['quantity'] ?>" data-product_id="<?= $value['product_id'] ?>" data-weight_id="<?= $value['weight_id'] ?>" readonly>
                                                         <button id="counter-increment" class="increment  cart-qty-plus_c" data-product_weight_id="<?= $value['product_weight_id'] ?>">+</button>
                                                     </div>
                                                 </div>

@@ -113,6 +113,7 @@ input:focus{
     display: flex;
     gap: 30px;
     align-items: center;
+    justify-content: center;
 }
 
 .accordion-content-2 .form-check-input:checked[type=checkbox] {
@@ -422,10 +423,11 @@ input:focus{
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
 }
 .order-wrapper-img img{
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
     /*max-width: 80px;
     */
@@ -1379,7 +1381,7 @@ span.error {
 }
 
 .checkout-process-section .cart-totals-part{
-    margin-top: -25px !important;
+    margin-top: 20px !important;
 }
 
 /* =============resonsive======== */
