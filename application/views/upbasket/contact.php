@@ -25,7 +25,7 @@
           </h2>
           <!-- <p class="pera">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p> -->
           <div class="row">
-              <div class="col-xxl-6 col-xl-6 col-md-12 wow bounceIn" data-wow-duration="1s" data-wow-delay="0s"
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 wow bounceIn" data-wow-duration="1s" data-wow-delay="0s"
                   data-wow-offset="0">
                   <form id="form" method="post" action="<?= base_url() . 'contact' ?>">
                       <div class="left-contact-wrapper">
@@ -62,7 +62,7 @@
                   </form>
               </div>
           </div>
-          <div class="contact-right-content col-xxl-6 col-xl-6 col-md-12 wow bounceIn" data-wow-duration="1s"
+          <div class="contact-right-content col-xxl-6 col-xl-6 col-lg-6 col-md-12 wow bounceIn" data-wow-duration="1s"
               data-wow-delay="0.1s" data-wow-offset="0">
               <div class="right-contact-wrapper">
 

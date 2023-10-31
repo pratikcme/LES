@@ -1170,3 +1170,15 @@
         color: var(--right-contact-wrapper-text);
     }
 }
+
+
+@media only screen and (max-width: 1199px) {
+    .right-contact-wrapper{
+        margin-left: -70px !important;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .right-contact-wrapper{
+        margin-left: 0px !important;
+    }
+}
