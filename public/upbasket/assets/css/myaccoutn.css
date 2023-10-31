@@ -775,11 +775,8 @@
     }
 }
 
-@media only screen and (max-width:575px) {
-    .account-details-tabs .sub-tabs .nav-link {
-        width: 124.67px !important;
-    }
-
+@media only sceen and (max-width:575px) {
+   
     .all-detalis-left td:nth-child(1) {
         padding-left: 10px !important;
     }
@@ -798,6 +795,9 @@
     .account-details-tabs .sub-tabs .nav-link {
         width: 120.67px !important;
     } 
+    .account-details-tabs .sub-tabs .nav-link {
+        width: 124.67px !important;
+    }
 
 }
 
