@@ -1196,6 +1196,9 @@ bg-white{
         max-width: 300px;
         margin: 0px auto;
     }
+    .show.cart-dropdwon {
+        width: 300px;
+    }
 }
 
 
