@@ -381,6 +381,8 @@
     transition: 0.5s;
     height: 100%;
     position: relative;
+    width: 100%;
+    max-width: 300px;
 }
 
 .hot-products-wrap h5 {
