@@ -1064,21 +1064,21 @@ content: '';
     
 
     .mobile-search-toggle{
-            display: flex;
-            margin-left: auto;
-            margin-right: 10px;
-        }
-        .input-group{
-            display: none;
-        }
-        .header-search-wrap {
-            margin: 0px 0 0 10px;
-        }
-        .search-here-icon {
-            top: 8px !important;
-            right: 10px !important;
-            font-size: 20px;
-            cursor: pointer;
+        display: flex;
+        margin-left: auto;
+        margin-right: 10px;
+    }
+    .input-group{
+        display: none;
+    }
+    .header-search-wrap {
+        margin: 0px 0 0 10px;
+    }
+    .search-here-icon {
+        top: 8px !important;
+        right: 10px !important;
+        font-size: 20px;
+        cursor: pointer;
     }
 
     .drp-grp{
@@ -1087,6 +1087,16 @@ content: '';
     .header-cart-in {
         right: 15px;
         bottom: 130px;
+    }
+    #ui-id-2{
+        top: 100px !important;
+        padding: 10px;
+        border-radius: 10px;
+        z-index: 1000000;
+    }
+    #ui-id-2 .ui-menu-item{
+        font-family: var(--inter-regular);
+        font-size: 14px;
     }
        
 }
