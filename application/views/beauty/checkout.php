@@ -380,13 +380,15 @@
                             </tbody>
                         </table>
                     </div>
-                    <input type="hidden" id="applied_promo">
-                    <?php if ($phone == '0' || $is_verify == '0') { ?>
-                        <button type="button" class="place-order-btn" id="verify"><?= $this->lang->line('Verify Mobile') ?></button>
-                    <?php } else { ?>
-                        <button type="button" class="place-order-btn" id="payBtn"> <?= $this->lang->line('Place order') ?>
-                        </button>
-                    <?php } ?>
+                    <div class="order-verify-wrp">
+                        <input type="hidden" id="applied_promo">
+                        <?php if ($phone == '0' || $is_verify == '0') { ?>
+                            <button type="button" class="place-order-btn" id="verify"><?= $this->lang->line('Verify Mobile') ?></button>
+                        <?php } else { ?>
+                            <button type="button" class="place-order-btn" id="payBtn"> <?= $this->lang->line('Place order') ?>
+                            </button>
+                        <?php } ?>
+                    </div>
                     <!-- <a href="javascript:" class="place-order-btn" id="myBtn" data-toggle="modal"><?= $this->lang->line('Place order') ?></a> -->
 
                     <div class="our-secure-product">

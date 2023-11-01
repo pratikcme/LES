@@ -43,6 +43,7 @@ table{
 .cart-detail-img img{
     width: 100%;
     max-width: 80px;
+    object-fit: contain;
 }
 .cart-detail-text h4 a{
     font-family: var(--BeVietnamPro-SemiBold);

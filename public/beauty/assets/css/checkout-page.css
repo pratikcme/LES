@@ -208,6 +208,30 @@ input:focus{
     text-transform: capitalize;
 }
 
+
+.accordion-content-3 textarea{
+    background: #FFFFFF;
+    border: 1px solid #D0C9F1;
+    /* box-shadow: 0px 4px 7px rgb(34 37 40 / 5%); */
+    border-radius: 10px;
+    padding-left: 25px;
+    padding-top: 15px;
+    /* margin-bottom: 30px; */
+    height: 100px;
+}
+.accordion-content-3 textarea:focus{
+    border: 1px solid #D0C9F1 !important;
+    box-shadow: 0px 4px 7px rgb(34 37 40 / 5%) !important;
+}
+.accordion-content-3 textarea::placeholder{ 
+    font-family: var(--BeVietnamPro-Regular);
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--accordian-content-text-2);
+    text-transform: capitalize;
+}
+
+
 .accordion-content-3 .ship-check{
     left: 35px;
     top: 57px;
@@ -517,9 +541,9 @@ input:focus{
     font-size: 18px;
     line-height: 20px;
     border-radius: 10px;
-    margin-top: 30px !important;
+    /* margin-top: 30px !important; */
     transition: 0.3s;
-    margin-left: 250px;
+    /* margin-left: 250px; */
 }
 .place-order-btn:hover{
     background: transparent;
@@ -1299,6 +1323,10 @@ padding-left: 0 !important;
     position: absolute;
     bottom: 15px;
     left: 0;
+}
+.order-verify-wrp{
+    text-align: right;
+    max-width: 450px;
 }
 
 /* =============resonsive======== */

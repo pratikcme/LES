@@ -179,6 +179,7 @@ p {
 
 .add-cart-btn.product-detail-quentity .qty-container {
     border: none;
+    padding: 0px !important;
 }
 
 .add-cart-btn.product-detail-quentity .qty-container i {
