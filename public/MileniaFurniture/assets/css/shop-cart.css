@@ -30,7 +30,9 @@ table{
     border-radius: 18px 18px 18px 18px !important;
 }
 .cart-detail-img{
-    width: 110px;
+    width: 100%;
+    max-width: 110px;
+    min-width: 110px;
     height: 110px;
     border-radius: 5px;
     /* background: var(--cart-image-bg); */
@@ -399,7 +401,9 @@ table th:nth-child(4){
         border-radius: 20px 20px 0px 0px !important;
     }
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
     }
     .cart-detail-img img {
@@ -489,8 +493,9 @@ table th:nth-child(4){
         border-radius: 20px 20px 0px 0px !important;
     }
     .cart-detail-img {
-        width: 70px;
-        height: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
             /* outline-offset: 5px;
             outline-style: solid;
             outline-color: var(--cart-counter-border);
@@ -589,8 +594,9 @@ table th:nth-child(4){
         border-radius: 20px 20px 0px 0px !important;
     }
     .cart-detail-img {
-        width: 70px;
-        height: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
             /* outline-offset: 5px;
             outline-style: solid;
             outline-color: var(--cart-counter-border);
@@ -695,8 +701,9 @@ table th:nth-child(4){
         border-radius: 20px 20px 0px 0px !important;
     }
     .cart-detail-img {
-        width: 70px;
-        height: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
             /* outline-offset: 5px;
             outline-style: solid;
             outline-color: var(--cart-counter-border);

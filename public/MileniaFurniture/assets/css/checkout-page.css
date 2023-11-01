@@ -1838,6 +1838,9 @@ button.btn-close {
     .address-icons {
         gap: 10px !important;
     }
+    .accordion-content-3 .address-wrapper {
+        padding: 10px 10px 10px 10px !important;
+    }
 }
 
 

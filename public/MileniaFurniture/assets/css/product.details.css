@@ -20,6 +20,7 @@ body {
     outline-width: 1px; */
     border-radius: 5px !important;
     margin: 0px auto;
+    padding: 10px;
 }
 
 .product-image-part img {
@@ -27,6 +28,7 @@ body {
     height: 100%;
     border-radius: 5px !important;
     z-index: 10;
+    object-fit: contain;
 }
 
 .product-content-part {
@@ -214,6 +216,7 @@ body {
     /* justify-content: center;
     align-items: flex-end; */
     object-fit: cover;
+    padding: 10px;
 }
 
 .mySwiper .swiper-slide {
@@ -227,6 +230,7 @@ body {
     align-items: center;
     object-fit: contain;
     overflow: hidden;
+    padding: 10px;
 }
 
 .mySwiper {
