@@ -454,7 +454,7 @@ input:focus {
     font-family: var(--inter-semibold);
     font-size: 18px;
     line-height: 36px;
-    color: #CC833D;
+    color: var(--primary-color);
 }
 
 .coupon-code-wrapper {
