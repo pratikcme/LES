@@ -451,7 +451,9 @@
 }
 
 .accordion-img-wrapper {
-    width: 125px;
+    width: 100%;
+    max-width: 125px;
+    min-width: 125px;
     height: 125px;
     background: #FFFFFF;
     border: 1px solid #D9E2ED;
@@ -471,6 +473,7 @@
 .accordion-img-wrapper img {
     width: 100%;
     max-width: 80px;
+    min-width: 80px;
 }
 
 .img-about-text h3 {
@@ -941,7 +944,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 100px;
+        width: 100%;
+        max-width: 100px;
+        min-width: 100px;
         height: 100px;
     }
 
@@ -1168,7 +1173,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+        max-width: 80px;
+        min-width: 80px;
         height: 80px;
     }
 
@@ -1428,7 +1435,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
@@ -1698,7 +1707,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
@@ -1973,7 +1984,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
