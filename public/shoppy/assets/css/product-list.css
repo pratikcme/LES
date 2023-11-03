@@ -922,34 +922,33 @@ div[slider]>input[type=range]::-ms-tooltip {
     width: 100%;
     transition: 0.3s;   
 }
+
 .show-div-wrapper{
     flex-basis: 100%;
     transition: 0.3s;
 }
- .product-listing-wrapper{
-    flex-basis: 32%;
-    transition: 0.3s; 
-}
-
-.my-filter-wrapper{
-    flex-basis: 30%;
-    display: block;
-    transition: 0.3s;
-    margin-top: -33px;
-}
-
 .hide.show-div-wrapper{
     flex-basis: 100%;
     transition: 0.3s;
 }
-.hide.my-filter-wrapper{
+.my-filter-wrapper{
     display: none;
-    position: relative;
+    transition: 0.3s;
+    margin-top: -33px;
     flex-basis: 25%;
 }
-.hide.show-div-wrapper .product-listing-wrapper{
+.hide.my-filter-wrapper{
+    display: block;
+    position: relative;
+    flex-basis: 30%;
+}
+.product-listing-wrapper{
     flex-basis: 24%;
+    transition: 0.3s; 
+}
+.hide.show-div-wrapper .product-listing-wrapper{
     transition: 0.3s;
+    flex-basis: 32%;
 }
 .mobile-btn-overlay.active{
     position: fixed;
@@ -1215,12 +1214,8 @@ div[slider]>input[type=range]::-ms-tooltip {
      .hide.my-filter-wrapper{
         flex-direction: 30%;
     }
-    /* .hide.show-div-wrapper {
-        flex-basis: 68%;
-        transition: 0.3s;
-    } */
+
     .hide.my-filter-wrapper{
-        display: none;
         position: relative;
         flex-basis: 30%;
     }
@@ -1288,12 +1283,11 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
     }
     .hide.my-filter-wrapper{
-        display: none;
         position: relative;
-        flex-basis: 30%;
+        flex-basis: 40%;
     }
    .hide.show-div-wrapper .product-listing-wrapper {
-        flex-basis: 32%;
+        flex-basis: 47%;
         transition: 0.3s;
     }
     .product-categires-part .accordion-header button{
@@ -1305,11 +1299,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     } */
 
     .product-listing-wrapper{
-        flex-basis: 47%;
-    }
-
-    .my-filter-wrapper{
-        flex-basis: 40%;
+        flex-basis: 32%;
     }
 
 }
@@ -1409,12 +1399,8 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 
     /* -------new-fliter-css--- */
-    .my-filter-wrapper{
-        display: block;
-        flex-basis: 60%;
-     }
      .product-listing-wrapper{
-        flex-basis: 85%;
+        flex-basis: 48%;
      }
      .hide.my-filter-wrapper{
         flex-direction: 20%;
@@ -1424,9 +1410,8 @@ div[slider]>input[type=range]::-ms-tooltip {
         transition: 0.3s;
     }
     .hide.my-filter-wrapper{
-        display: none;
         position: relative;
-        flex-basis: 37%;
+        flex-basis: 60%;
     }
    .hide.show-div-wrapper .product-listing-wrapper {
         flex-basis: 48%;

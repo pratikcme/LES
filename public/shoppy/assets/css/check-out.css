@@ -257,7 +257,7 @@ input:focus{
     background-size: 12px;
     background-position-y: 19px;
     background-position-x: 285px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     text-align: left !important;
 }
 
@@ -1397,7 +1397,7 @@ span.error {
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 235px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
     
     .accordion-heading{
@@ -1487,7 +1487,7 @@ span.error {
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 235px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
 
     .accordion-heading{
@@ -1610,7 +1610,7 @@ span.error {
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 235px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
     
     .accordion-heading {
@@ -1678,7 +1678,7 @@ span.error {
     .accordion-content-2{
         flex-direction: column;
         gap: 10px;
-        justify-content: left !important;
+        /* justify-content: left !important; */
         align-items: flex-start;
     }
     .accordion-content-2 label{
@@ -1779,7 +1779,7 @@ span.error {
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 235px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
     
     .accordion-heading {
@@ -1856,7 +1856,7 @@ span.error {
     .accordion-content-2 {
         flex-direction: row;
         gap: 10px;
-        justify-content: left !important;
+        /* justify-content: left !important; */
         align-items: flex-start;
     }
     .accordion-content-2 label{
@@ -2002,7 +2002,7 @@ span.error {
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 235px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
     
 
@@ -2080,7 +2080,7 @@ span.error {
     .accordion-content-2 {
         flex-direction: row;
         gap: 10px;
-        justify-content: left !important;
+        /* justify-content: left !important; */
         align-items: flex-start;
     }
     .accordion-content-2 label{
@@ -2190,7 +2190,7 @@ span.error {
         background-size: 12px;
         background-position-y: 19px;
         background-position-x: 235px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
     
     .accordion-heading {
@@ -2275,7 +2275,7 @@ span.error {
     .accordion-content-2 {
         flex-direction: column;
         gap: 10px;
-        justify-content: left !important;
+        /* justify-content: left !important; */
         align-items: flex-start;
     }
     .accordion-content-2 label{

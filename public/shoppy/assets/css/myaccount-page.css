@@ -171,7 +171,7 @@
     line-height: 16px;
     height: 60px;
     appearance: none;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     cursor: pointer;
 }
 .tab-select-box select:focus{
@@ -693,7 +693,7 @@
         /* background-size: 12px;
         background-position-y: 19px;
         background-position-x: 410px !important; */
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
     .my-order-details .accordion-heading::before {
         /* top: 76px; */
@@ -825,7 +825,7 @@
       /* background-size: 12px;
       background-position-y: 19px;
       background-position-x: 335px !important; */
-      margin-bottom: 30px;
+      /* margin-bottom: 30px; */
   }
   .my-order-details .accordion-heading::before {
       /* top: 76px; */
@@ -1021,7 +1021,7 @@
       /* background-size: 12px;
       background-position-y: 19px;
       background-position-x: 410px !important; */
-      margin-bottom: 30px;
+      /* margin-bottom: 30px; */
   }
   .my-order-details .accordion-heading::before {
     right: 20px;
@@ -1267,7 +1267,7 @@
       /* background-size: 12px;
       background-position-y: 19px;
       background-position-x: 410px !important; */
-      margin-bottom: 30px;
+      /* margin-bottom: 30px; */
   }
   .my-order-details .accordion-heading::before {
     top: 30px;
@@ -1563,7 +1563,7 @@
       /* background-size: 12px;
       background-position-y: 19px;
       background-position-x: 410px !important; */
-      margin-bottom: 30px;
+      /* margin-bottom: 30px; */
   }
     .my-order-details .accordion-heading::before {
         top: 30px;
@@ -1885,7 +1885,7 @@
             /* background-size: 12px;
             background-position-y: 19px;
             background-position-x: 217px !important; */
-            margin-bottom: 30px;
+            /* margin-bottom: 30px; */
         }
         .my-order-details .accordion-heading::before {
             top: 30px;

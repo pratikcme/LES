@@ -33,7 +33,7 @@
     background: var(--left-contact-wrapper-input-bg);
     border: 1px solid var(--left-contact-wrapper-input-border);
     border-radius: 10px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     padding-left: 25px;
     height: 60px;
     font-family: var(--BeVietnamPro-Regular);

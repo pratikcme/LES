@@ -838,35 +838,35 @@ div[slider]>input[type=range]::-ms-tooltip {
     width: 100%;
     transition: 0.3s;   
 }
+
 .show-div-wrapper{
+    transition: 0.3s;
+    flex-basis: 73%;
+}
+.hide.show-div-wrapper{
     flex-basis: 100%;
     transition: 0.3s;
 }
- .product-listing-wrapper{
-    flex-basis: 24%;
-    transition: 0.3s; 
-}
-
 .my-filter-wrapper{
     flex-basis: 25%;
-    display: none;
+    display: block;
     transition: 0.3s;
     margin-top: -33px;
 }
-
-.hide.show-div-wrapper{
-    flex-basis: 73%;
-    transition: 0.3s;
-}
 .hide.my-filter-wrapper{
-    display: block;
+    display: none;
     position: relative;
     flex-basis: 25%;
 }
-.hide.show-div-wrapper .product-listing-wrapper{
+.product-listing-wrapper{
     flex-basis: 32%;
-    transition: 0.3s;
+    transition: 0.3s; 
 }
+.hide.show-div-wrapper .product-listing-wrapper{
+    transition: 0.3s;
+    flex-basis: 24%;
+}
+
 /* .mobile-btn-overlay.active{
     position: fixed;
     top: 0;
@@ -1269,20 +1269,23 @@ div[slider]>input[type=range]::-ms-tooltip {
 
      /* -------new-fliter-css--- */
     
-     .hide.my-filter-wrapper{
+    .hide.my-filter-wrapper{
         flex-direction: 20%;
     }
     .hide.show-div-wrapper {
+        flex-basis: 100%;
+        transition: 0.3s;
+    }
+    .show-div-wrapper {
         flex-basis: 68%;
         transition: 0.3s;
     }
-    .hide.my-filter-wrapper{
-        display: block;
+    .my-filter-wrapper{
         position: relative;
         flex-basis: 28%;
     }
     .hide.show-div-wrapper .product-listing-wrapper{
-        flex-basis: 32%;
+        flex-basis: 24%;
         transition: 0.3s;
     }
 }
@@ -1332,11 +1335,14 @@ div[slider]>input[type=range]::-ms-tooltip {
         flex-direction: 20%;
     }
     .hide.show-div-wrapper {
+        flex-basis: 100%;
+        transition: 0.3s;
+    }
+    .show-div-wrapper {
         flex-basis: 68%;
         transition: 0.3s;
     }
-    .hide.my-filter-wrapper{
-        display: block;
+    .my-filter-wrapper{
         position: relative;
         flex-basis: 30%;
     }
@@ -1354,7 +1360,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     }
 
     .product-listing-wrapper{
-        flex-basis: 32%;
+        flex-basis: 48%;
     }
 }
 
@@ -1523,26 +1529,26 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 
     /* -------new-fliter-css--- */
-    .my-filter-wrapper{
-        display: none;
-     }
      .product-listing-wrapper{
-        flex-basis: 32%;
+        flex-basis: 48%;
      }
      .hide.my-filter-wrapper{
         flex-direction: 20%;
     }
     .hide.show-div-wrapper {
+        flex-basis: 100%;
+        transition: 0.3s;   
+    }
+    .show-div-wrapper {
         flex-basis: 60%;
         transition: 0.3s;
     }
-    .hide.my-filter-wrapper{
-        display: block;
+    .my-filter-wrapper{
         position: relative;
         flex-basis: 37%;
     }
    .hide.show-div-wrapper .product-listing-wrapper {
-        flex-basis: 48%;
+        flex-basis: 32%;
         transition: 0.3s;
     }
     .product-categires-part .accordion-header button{

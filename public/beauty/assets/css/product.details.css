@@ -29,6 +29,7 @@ body {
     height: 100%;
     border-radius: 20px !important;
     z-index: 10;
+    object-fit: contain;
 }
 
 .product-content-part {
@@ -253,6 +254,7 @@ body {
     justify-content: center;
     align-items: flex-end;
     object-fit: contain;
+    padding: 10px;
 }
 
 .mySwiper .swiper-slide {
@@ -266,6 +268,7 @@ body {
     align-items: center;
     object-fit: contain;
     overflow: hidden;
+    padding: 10px;
 }
 
 .mySwiper {
@@ -1379,6 +1382,9 @@ body {
     .card-header h5 {
         font-size: 12px;
     }
+    .rating-starts {
+        margin-bottom: 20px;
+    }
     
 }
 
@@ -1414,7 +1420,11 @@ body {
     }
 
     .product-content-part h3 {
-        font-size: 30px;
+        font-size: 26px;
+        margin-top: 0px;
+    }
+    .product-content-part h3 span:nth-child(odd) {
+        font-size: 20px;
     }
 
     .product-detalis-btn {
@@ -1572,9 +1582,12 @@ body {
     }
 
     .product-content-part h3 {
-        font-size: 30px;
+        font-size: 26px;
+        margin-top: 0px;
     }
-
+    .product-content-part h3 span:nth-child(odd) {
+        font-size: 20px;
+    }
     .product-detalis-btn {
         margin-top: 20px;
         margin-bottom: 20px;

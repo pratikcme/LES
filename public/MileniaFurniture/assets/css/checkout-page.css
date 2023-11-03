@@ -454,7 +454,7 @@ input:focus {
     font-family: var(--inter-semibold);
     font-size: 18px;
     line-height: 36px;
-    color: #CC833D;
+    color: var(--primary-color);
 }
 
 .coupon-code-wrapper {
@@ -1837,6 +1837,9 @@ button.btn-close {
 
     .address-icons {
         gap: 10px !important;
+    }
+    .accordion-content-3 .address-wrapper {
+        padding: 10px 10px 10px 10px !important;
     }
 }
 

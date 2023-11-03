@@ -347,7 +347,7 @@
 
 .sub-tabs .nav-pills {
     width: 100%;
-    max-width: 600px !important;
+    max-width: 599px !important;
     border-radius: 20px 20px 0px 0px !important;
     overflow: hidden;
     gap: 0px;
@@ -451,7 +451,9 @@
 }
 
 .accordion-img-wrapper {
-    width: 125px;
+    width: 100%;
+    max-width: 125px;
+    min-width: 125px;
     height: 125px;
     background: #FFFFFF;
     border: 1px solid #D9E2ED;
@@ -471,6 +473,7 @@
 .accordion-img-wrapper img {
     width: 100%;
     max-width: 80px;
+    min-width: 80px;
 }
 
 .img-about-text h3 {
@@ -796,11 +799,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -939,7 +944,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 100px;
+        width: 100%;
+        max-width: 100px;
+        min-width: 100px;
         height: 100px;
     }
 
@@ -963,11 +970,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1164,7 +1173,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+        max-width: 80px;
+        min-width: 80px;
         height: 80px;
     }
 
@@ -1197,11 +1208,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px;/ */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1422,7 +1435,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
@@ -1461,11 +1476,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1690,7 +1707,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
@@ -1733,11 +1752,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1963,7 +1984,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
@@ -2011,11 +2034,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
