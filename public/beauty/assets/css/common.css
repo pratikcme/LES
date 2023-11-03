@@ -172,9 +172,9 @@ p {
     height: 100%;
     outline: 0 !important;
 }
-.mywishlist-part .add-cart-btn input[type=text]{
+/* .mywishlist-part .add-cart-btn input[type=text]{
     width: auto !important;
-}
+} */
 
 .add-cart-btn .input-qty {
     border-bottom: 2px solid var(--card-btn-bg) !important;
