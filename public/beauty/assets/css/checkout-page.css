@@ -1331,6 +1331,12 @@ padding-left: 0 !important;
 .mobileModal .modal-content{
     background-color:#fff !important;
 }
+#mobileNumber .input-wrapper{
+    margin-bottom:0 !important
+}
+#mobileNumber button{
+    margin-top: 15px !important;
+}
 
 /* =============resonsive======== */
 /* =================================================== */
@@ -2062,6 +2068,9 @@ padding-left: 0 !important;
     .mobileModal .modal-content{
        width: auto !important;
     }
+    .mobileModal .modal-dialoge{
+        width: auto !important;
+     }
 }
 
 /* =================================================== */
