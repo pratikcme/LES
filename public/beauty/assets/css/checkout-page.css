@@ -1021,9 +1021,10 @@ to {top: 0px; opacity: 1}
 
 
 .ship-check .form-check .form-check-input{
-    margin-left: 0 !important;
+    /* margin-left: 0 !important; */
     padding-left: 0 !important;
     margin-bottom: 0 !important;
+    margin-top: 0px !important;
 }
 
 .ship-check .form-check-label{
