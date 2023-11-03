@@ -2202,6 +2202,9 @@
         max-width: 350px !important;
         line-height: 35px !important;
     }
+    .accordion-content .address-text h3{
+        max-width: 350px !important;
+    }
 }
 @media only screen and (max-width: 1199px) {
     .my-order-details-content {
@@ -2236,11 +2239,22 @@
     .address-text h3{
         max-width: 350px;
     }
+    .accordion-content .address-text h3{
+        max-width: 300px !important;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .accordion-content .address-text h3{
+        max-width: 270px !important;
+    }
 }
 
 @media only screen and (max-width: 424px){
     .address-text h3{
         padding-left: 0px !important;
         line-height: 26px !important;
+    }
+    .accordion-content .address-text h3{
+        max-width: 280px !important;
     }
 }
