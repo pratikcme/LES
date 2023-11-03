@@ -169,8 +169,11 @@ p {
 
 .add-cart-btn input[type=text] {
     color: #000 !important;
-    /* height: 100%; */
+    height: 100%;
     outline: 0 !important;
+}
+.mywishlist-part .add-cart-btn input[type=text]{
+    width: auto !important;
 }
 
 .add-cart-btn .input-qty {
