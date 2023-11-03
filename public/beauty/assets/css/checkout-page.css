@@ -1328,6 +1328,9 @@ padding-left: 0 !important;
     text-align: right;
     max-width: 450px;
 }
+.mobileModal .modal-content{
+    background-color:#fff !important;
+}
 
 /* =============resonsive======== */
 /* =================================================== */
