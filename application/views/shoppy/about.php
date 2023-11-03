@@ -166,7 +166,7 @@
 </section> -->
 
 <!--============ client-wrap ==================-->
-<section class="client-wrap p-100 offering">
+<section class="client-wrap p-50 offering">
     <div class="container">
         <div class="row">
             <div class="col-xxl-12 col-xl-12 col-lg-12">
