@@ -305,13 +305,16 @@
     margin-bottom: 10px;
     flex-wrap: wrap;
 }
-.address-text h3{
+.address-text h3 {
     font-family: var(--PublicSans-SemiBold);
     font-size: 24px !important;
     line-height: 40px;
     color: var(--myaccoutn-tab-label-text);
     margin-bottom: 0px;
     padding-left: 40px;
+    width: 100% !important;
+    max-width: 400px !important;    
+    text-align: left !important;
 }
 .address-wrapper p{
     font-family: var(--PublicSans-Regular);
@@ -2195,6 +2198,10 @@
         font-size: 30px !important;
         margin-bottom: 30px !important;
     }
+    .address-text h3{
+        max-width: 350px !important;
+        line-height: 35px !important;
+    }
 }
 @media only screen and (max-width: 1199px) {
     .my-order-details-content {
@@ -2208,6 +2215,12 @@
 
 
 }
+@media only screen and (max-width: 991px){
+    .address-text h3{
+        max-width: 450px !important;
+        line-height: 30px !important;
+    }
+}
 @media only screen and (max-width: 767px) {
     .account-details-tabs .details-tabs .nav-link {
         width: 100% !important;
@@ -2219,5 +2232,15 @@
     }
     .my-order-details .main-accordion{
         border-radius: 0px !important;
+    }
+    .address-text h3{
+        max-width: 350px;
+    }
+}
+
+@media only screen and (max-width: 424px){
+    .address-text h3{
+        padding-left: 0px !important;
+        line-height: 26px !important;
     }
 }
