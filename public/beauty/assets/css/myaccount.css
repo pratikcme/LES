@@ -347,7 +347,7 @@
 
 .sub-tabs .nav-pills {
     width: 100%;
-    max-width: 600px !important;
+    max-width: 599px !important;
     border-radius: 20px 20px 0px 0px !important;
     overflow: hidden;
     gap: 0px;
