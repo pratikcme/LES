@@ -65,13 +65,13 @@ max-width: 25px;
     background: var( --login-wrapper-bg);
     border: 1px solid var( --login-wrapper-border);
     width: 636px;
-    height: 663px;
+    height: auto;
     box-shadow: 0px 20px 50px rgba(34, 37, 40, 0.1);
     border-radius: 20px;
     padding: 40px 40px 0px 40px;
     /* margin-left: 50px; */
-    overflow: hidden;
-    overflow-y: scroll;
+    overflow: unset;
+    overflow-y: unset;
    overscroll-behavior: none;
 }
 .login-deatils-wrapper::-webkit-scrollbar {
@@ -350,7 +350,7 @@ max-width: 25px;
 }
 
 .forgot-section .login-deatils-wrapper{
-    height: 100% !important;
+    height: auto !important;
 }
 
 /* .forgot-section .title::before {
