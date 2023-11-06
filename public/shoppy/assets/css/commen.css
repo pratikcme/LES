@@ -523,6 +523,9 @@ button:focus{
     border-radius: 5px;
     padding: 10px !important;
 }
+#load_more{
+    border-radius: 10px 10px 10px 10px !important;
+}
 
 /*=============== responsive =================*/
 @media only screen and (max-width:1200px){

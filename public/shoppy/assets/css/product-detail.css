@@ -757,7 +757,7 @@ body {
     font-family: var(--PublicSans-Regular);
     font-size: 14px;
     color: var(--heading-black) !important;
-    width: 90px;
+    width: auto;
 }
 
 .product-content-part select:focus{

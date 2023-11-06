@@ -1985,6 +1985,9 @@ span.error {
     .checkout-process-section .cart-totals-part{
         margin-top: 25px !important;
     }
+    .otp-popup .modal-dialog{
+        margin-left: 0px !important;
+    }
     
 }
 /* =================================================== */
