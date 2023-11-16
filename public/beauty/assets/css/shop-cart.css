@@ -111,7 +111,10 @@ table th{
     font-weight: 600;
     line-height: 20px;
     color: var(--cart-thead-text);
+}
 
+.cart-product-detail table th:nth-child(2){
+    padding-left: 40px;
 }
 
 table tr{
@@ -222,7 +225,7 @@ table th:nth-child(4){
 }
 
 .clear-btn {
-    margin-left: 30px;
+    margin-left: 25px !important;
     margin-top: 10px;
     background: var(--header-btn-bg);
     border: 1px solid var(--header-btn-bg);
@@ -814,6 +817,11 @@ table th:nth-child(4){
         
 }
 
+@media only screen and (max-width: 1199px){
+    .clear-btn {
+        margin-left: 25px !important;
+    }
+}
 @media only screen and (max-width: 991px){
     .cart-product-detail{
         overflow: scroll !important;

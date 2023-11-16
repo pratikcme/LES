@@ -243,6 +243,22 @@ footer #Layer_1 path{
 }
 
 
+@media only screen and (max-width: 1399px) {
+    .foot-1 img{
+        max-width: 180px;
+    }
+}
+@media only screen and (max-width: 1199px) {
+    .foot-1 img{
+        max-width: 130px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .foot-1 img{
+        max-width: 100px;
+    }
+}
+
 @media only screen and (max-width: 768px){
     footer path {
         display: none;

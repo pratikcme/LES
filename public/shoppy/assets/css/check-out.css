@@ -1228,7 +1228,7 @@ button.btn-close{
     padding: 30px 50px;
     border-radius: 10px;
     border: 1px solid #c5c5c5;
-    height: 180px;
+    height: auto;
     overflow-y: scroll;
 }
 
@@ -1985,6 +1985,9 @@ span.error {
     .checkout-process-section .cart-totals-part{
         margin-top: 25px !important;
     }
+    .otp-popup .modal-dialog{
+        margin-left: 0px !important;
+    }
     
 }
 /* =================================================== */
@@ -2370,4 +2373,8 @@ span.error {
 }
 /* =================================================== */
 /* =================================================== */
-
+@media only screen and (max-width: 1199px) {
+    .checkout-order-detils .cart-totals-part {
+        margin-left: 0px !important;
+    }
+}

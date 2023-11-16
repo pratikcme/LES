@@ -20,7 +20,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 align-self-center">
         <div class="user-img">
           <img src="<?= base_url() . 'public/shoppy' ?>/assets/img/my-account/user-img.png" alt="err">
         </div>

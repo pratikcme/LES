@@ -331,6 +331,9 @@ max-width: 424px;
     gap: 10px !important;
     justify-content: space-between;
 }
+.mywishlist-part .table th:nth-child(2) {
+    padding-left: 40px;
+}
 /* 
 .product-tables{
     height: 520px;

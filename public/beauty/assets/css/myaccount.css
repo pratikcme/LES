@@ -207,6 +207,7 @@
     top: 0;
     left: 0;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .edit-address-btn #myBtn {
@@ -299,8 +300,8 @@
     line-height: 40px;
     color: var(--myaccoutn-tab-label-text);
     background: var(--myaccoutn-tab-bg);
-    border-radius: 10px;
-    padding: 15px;
+    border-radius: 10px ;
+    padding: 15px 40px;
     width: 100%;
     margin-bottom: 40px;
 }
@@ -705,6 +706,9 @@ table.all-detalis-left tr{
 .myaccout-detail-tab textarea:focus{
     box-shadow: none !important;
     border: 1px solid var(--myaccoutn-tab-input-border) !important;
+}
+.addcartbutton a{
+    padding: 10px 10px 10px 10px;
 }
 
 
@@ -2169,6 +2173,9 @@ table.all-detalis-left tr{
     #myModal .login-page {
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .mywishlist-part .add-cart-btn span {
+        margin-right: 2px;
     }
 
 }
