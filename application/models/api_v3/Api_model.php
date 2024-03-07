@@ -4025,35 +4025,35 @@ class Api_model extends My_model
         $re = $this->selectRecords($data, true);
         unset($data);
         if (!empty($re)) {
-            if ($re[0]['otp'] == $postData['otp']) {
+            // if ($re[0]['otp'] == $postData['otp']) {
 
-                $data['update'] = [
-                    'otp' => '',
-                    'is_verify' => '1',
-                    'status' => '1',
-                ];
-                $data['where'] = ['id' => $re[0]['id']];
-                $data['table'] = 'user';
-                $d = $this->updateRecords($data);
-                if ($d) {
-                    $re[0]['is_verify'] = '1';
-                }
-                unset($data);
-                // $data['select'] = ['*'];
-                // $data['table'] = 'user';
-                // $data['where']['id'] = $re[0]['id'];
-                // $res = $this->selectRecords($data,true);
-                $postdata = array(
-                    'user_id' => $re[0]['id'],
-                    'device_id' => $device_id,
-                    'vendor_id' => $postData['vendor_id']
-                );
-                $this->set_user_cart($postdata);
-                $response =  $this->sendLoginResponse($re[0], $postData);
-            } else {
-                $response["success"] = 0;
-                $response["message"] = "Invalid Otp";
+            $data['update'] = [
+                'otp' => '',
+                'is_verify' => '1',
+                'status' => '1',
+            ];
+            $data['where'] = ['id' => $re[0]['id']];
+            $data['table'] = 'user';
+            $d = $this->updateRecords($data);
+            if ($d) {
+                $re[0]['is_verify'] = '1';
             }
+            unset($data);
+            // $data['select'] = ['*'];
+            // $data['table'] = 'user';
+            // $data['where']['id'] = $re[0]['id'];
+            // $res = $this->selectRecords($data,true);
+            $postdata = array(
+                'user_id' => $re[0]['id'],
+                'device_id' => $device_id,
+                'vendor_id' => $postData['vendor_id']
+            );
+            $this->set_user_cart($postdata);
+            $response =  $this->sendLoginResponse($re[0], $postData);
+            // } else {
+            //     $response["success"] = 0;
+            //     $response["message"] = "Invalid Otp";
+            // }
         } else {
             $response["success"] = 0;
             $response["message"] = "Data is not found";
