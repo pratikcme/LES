@@ -38,8 +38,8 @@ class Order_model extends My_model
     public function userDetails($user_id)
     {
         $data['table'] = 'user_address as ua';
-        $data['where'] = ['ua.user_id'=>$user_id,'status'=>'1'];
-        $data['select'] = ['ua.name','ua.address','city','ua.state','ua.country','ua.phone'];
+        $data['where'] = ['ua.user_id' => $user_id, 'status' => '1'];
+        $data['select'] = ['ua.name', 'ua.address', 'ua.pincode', 'city', 'ua.state', 'ua.country', 'ua.phone'];
         $result = $this->selectRecords($data);
         return $result[0];
     }
@@ -625,7 +625,7 @@ class Order_model extends My_model
     {
 
         $config = $this->getPaymentCredential($order_id);
-        $this->load->model('api_v3/api_model','api_v3_model');
+        $this->load->model('api_v3/api_model', 'api_v3_model');
         $response = $this->api_v3_model->refundPaytm($config);
         $response = json_decode($response);
         // print_r($response);die;
@@ -759,7 +759,7 @@ class Order_model extends My_model
     {
         $data['select'] = ['*'];
         $data['table'] = 'payment_method';
-        $data['where'] = ['payment_opt' =>$payment_opt,'branch_id'=>$this->session->userdata('id')];
+        $data['where'] = ['payment_opt' => $payment_opt, 'branch_id' => $this->session->userdata('id')];
         return $this->selectRecords($data);
     }
 
