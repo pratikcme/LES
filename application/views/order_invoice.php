@@ -222,6 +222,12 @@
                 <span><?= ($user_detail->address != '') ? $user_detail->address : "Self Pickup"; ?></span>
               </div>
             </div>
+            <div class="row">
+              <div class="col-sm-6"><b>Pincode : </b> </div>
+              <div class="col-sm-6">
+                <span><?= $user_detail->pincode ?></span>
+              </div>
+            </div>
 
             <div class="row">
               <div class="col-sm-6"><b>Mobile Number : </b> </div>
