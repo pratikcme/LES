@@ -256,39 +256,39 @@ $("#frmBtn").click(function () {
                     var country_code = $("#country_code").val();
                     var phone = $("#phone").val();
                     var otp = $("#otp").val();
-                    $.ajax({
-                        url: url + "login/varifyOtpLogin",
-                        data: {
-                            country_code: country_code,
-                            phone: phone,
-                            otp: otp,
-                        },
-                        type: "post",
-                        dataType: "json",
-                        success: function (res) {
-                            if (res.success == 1) {
-                                $("#resend").hide();
-                                $("#resetcounter").hide();
+                    // $.ajax({
+                    //     url: url + "login/varifyOtpLogin",
+                    //     data: {
+                    //         country_code: country_code,
+                    //         phone: phone,
+                    //         otp: otp,
+                    //     },
+                    //     type: "post",
+                    //     dataType: "json",
+                    //     success: function (res) {
+                    //         if (res.success == 1) {
+                    $("#resend").hide();
+                    $("#resetcounter").hide();
 
-                                if (res.fname != "") {
-                                    window.location.href = window.location.href;
-                                    return true;
-                                }
-                                $("#otp").attr("disabled", true);
-                                $("#completeProfile").show();
-                                $(".varify-error").html("");
-                                $(".varify-error").hide();
-                                $("#user_id").val(res.user_id);
-                                that.removeClass("varify");
-                                that.addClass("complete");
-                                that.html("Complete Profile");
-                            } else {
-                                $(".varify-error").show();
-                                $(".varify-error").html("Invalid OTP");
-                                that.html("varify otp");
-                            }
-                        },
-                    });
+                    if (res.fname != "") {
+                        window.location.href = window.location.href;
+                        return true;
+                    }
+                    $("#otp").attr("disabled", true);
+                    $("#completeProfile").show();
+                    $(".varify-error").html("");
+                    $(".varify-error").hide();
+                    $("#user_id").val(res.user_id);
+                    that.removeClass("varify");
+                    that.addClass("complete");
+                    that.html("Complete Profile");
+                    //         } else {
+                    //             $(".varify-error").show();
+                    //             $(".varify-error").html("Invalid OTP");
+                    //             that.html("varify otp");
+                    //         }
+                    //     },
+                    // });
                 })
                 .catch(function (error) {
                     $(".varify-error").show();
