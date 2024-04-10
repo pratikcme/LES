@@ -218,9 +218,9 @@ $("#frmBtn").click(function () {
                         $("#country_code").attr("readonly", true);
                         $("#phone").attr("readonly", true);
                         var phoneNumber = country_code + phone;
-                        var appVerifier = new firebase.auth.RecaptchaVerifier(
-                            "recaptcha-container"
-                        );
+                        // var appVerifier = new firebase.auth.RecaptchaVerifier(
+                        //     "recaptcha-container"
+                        // );
 
                         firebase
                             .auth()

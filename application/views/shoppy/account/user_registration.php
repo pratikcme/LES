@@ -84,6 +84,7 @@
                         </div>
 
                         <!-- end -->
+                        <div id="recaptcha-container"></div>
 
                         <div class="sign-in-btn">
                             <button type="button" class="lg-btn send" id="frmBtn"><?= $this->lang->line('Send Code') ?></button>
@@ -91,7 +92,6 @@
 
                         <h3 id="resetcounter">Didn't get the code? <span type="button" id="resend"><?= $this->lang->line('Resend') ?>
                                 OTP</span></h3>
-                                <div id="recaptcha-container"></div>
                     </form>
                 </div>
             </div>
