@@ -49,6 +49,7 @@
                             <input type="text" name="phone" id="phone" class="form-control mob_no" placeholder="<?= $this->lang->line('Mobile Number*') ?>">
                         </div>
 
+                        
                         <!-- check -->
 
                         <div id="completeOTP">
@@ -61,7 +62,6 @@
                                 <span id="resetcounter">Didn't get the code? </span>
                                 <span href="javascript:" id="resend"><?= $this->lang->line('Resend') ?> OTP</span>
                             </h3>
-                            <div id="recaptcha-container"></div>
                         </div>
 
                         <div id="completeProfile" style="display:none">
@@ -91,7 +91,7 @@
 
                         <h3 id="resetcounter">Didn't get the code? <span type="button" id="resend"><?= $this->lang->line('Resend') ?>
                                 OTP</span></h3>
-
+                                <div id="recaptcha-container"></div>
                     </form>
                 </div>
             </div>
