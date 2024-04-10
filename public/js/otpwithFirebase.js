@@ -62,6 +62,7 @@ $(document).on("click", "#resend", function (e) {
     var phoneNumber = country_code + phone;
     console.log({ phoneNumber });
     console.log({ firebase });
+    console.log({ appVerifier });
     firebase
         .auth()
         .signInWithPhoneNumber(phoneNumber, appVerifier)
