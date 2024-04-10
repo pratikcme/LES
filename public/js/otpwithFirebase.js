@@ -41,23 +41,7 @@ $("#Register_Form").validate({
         },
     },
 });
-$("#resend").click(function () {
-    var country_code = $("#country_code").val();
-    var phone = $("#phone").val();
-    i = 60;
-    $.ajax({
-        url: url + "login/sendOtpLogin",
-        data: { country_code: country_code, phone: phone },
-        type: "post",
-        dataType: "json",
-        success: function (res) {
-            if (res.success == 1) {
-                // $("#country_code").attr('disabled',true);
-                //  $("#phone").attr('disabled',true);
-            }
-        },
-    });
-});
+
 // Initialize reCAPTCHA verifier when the page loads
 var appVerifier;
 
