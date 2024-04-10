@@ -251,6 +251,7 @@ $("#frmBtn").click(function () {
             confirmationResult
                 .confirm(code)
                 .then(function (result) {
+                    console.log({ result });
                     // alert('Verification successful! User signed in.');
                     var country_code = $("#country_code").val();
                     var phone = $("#phone").val();
