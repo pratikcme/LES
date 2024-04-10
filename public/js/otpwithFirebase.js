@@ -309,9 +309,7 @@ $("#resend").click(function () {
     var country_code = $("#country_code").val();
     var phone = $("#phone").val();
     var phoneNumber = country_code + phone;
-
-    i = 60;
-
+    alert(0);
     firebase
         .auth()
         .signInWithPhoneNumber(phoneNumber, appVerifier)
