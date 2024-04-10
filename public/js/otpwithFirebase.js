@@ -56,11 +56,12 @@ $(document).ready(function () {
         grecaptchaWidgetId = widgetId;
     });
 });
-$("#resend").click(function () {
+$(document).on("click", "#resend", function (e) {
     var country_code = $("#country_code").val();
     var phone = $("#phone").val();
     var phoneNumber = country_code + phone;
     console.log({ phoneNumber });
+    console.log({ firebase });
     firebase
         .auth()
         .signInWithPhoneNumber(phoneNumber, appVerifier)
