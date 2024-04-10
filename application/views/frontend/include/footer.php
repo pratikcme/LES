@@ -75,9 +75,6 @@
 <script src="<?= base_url() ?>public/frontend/assets/js/script.js"></script>
 <script src="<?= base_url() ?>public/frontend/assets/js/counter.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-<script src="<?= base_url(); ?>public/js/otpwithFirebase.js<?='?v='.js_version ?>"></script>
 
 
 <script type="text/javascript">
@@ -493,3 +490,7 @@ if (!empty($js)) {
         // }
     })
 </script>
+
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="<?= base_url(); ?>public/js/otpwithFirebase.js<?='?v='.js_version ?>"></script>
