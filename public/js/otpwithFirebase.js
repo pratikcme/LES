@@ -56,7 +56,30 @@ $(document).ready(function () {
         grecaptchaWidgetId = widgetId;
     });
 });
+$("#resend").click(function () {
+    var country_code = $("#country_code").val();
+    var phone = $("#phone").val();
+    var phoneNumber = country_code + phone;
+    console.log({ phoneNumber });
+    firebase
+        .auth()
+        .signInWithPhoneNumber(phoneNumber, appVerifier)
+        .then(function (confirmationResult) {
+            window.confirmationResult = confirmationResult;
+            console.log({ confirmationResult });
 
+            that.removeClass("send");
+            that.addClass("varify");
+            that.html("varify otp");
+            $("#completeOTP").show();
+            $("#recaptcha-container").hide();
+            // console.error(user);
+        })
+        .catch(function (error) {
+            // Handle errors
+            console.error(error);
+        });
+});
 // Event Handling
 $(document).on("click", ".s-btn", function (e) {
     // Prevent the default form submission
@@ -303,28 +326,4 @@ $("#frmBtn").click(function () {
             });
         }
     }
-});
-
-$("#resend").click(function () {
-    var country_code = $("#country_code").val();
-    var phone = $("#phone").val();
-    var phoneNumber = country_code + phone;
-    alert(0);
-    firebase
-        .auth()
-        .signInWithPhoneNumber(phoneNumber, appVerifier)
-        .then(function (confirmationResult) {
-            window.confirmationResult = confirmationResult;
-
-            that.removeClass("send");
-            that.addClass("varify");
-            that.html("varify otp");
-            $("#completeOTP").show();
-            $("#recaptcha-container").hide();
-            // console.error(user);
-        })
-        .catch(function (error) {
-            // Handle errors
-            console.error(error);
-        });
 });
