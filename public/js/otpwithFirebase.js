@@ -56,39 +56,40 @@ $(document).ready(function () {
         grecaptchaWidgetId = widgetId;
     });
 });
-$(document).on("click", "#resend", function (e) {
-    var appVerifier = new firebase.auth.RecaptchaVerifier(
-        "recaptcha-container"
-    );
-    appVerifier.render().then(function (widgetId) {
-        // Set the ID of the reCAPTCHA widget
-        grecaptchaWidgetId = widgetId;
-    });
-    var country_code = $("#country_code").val();
-    var phone = $("#phone").val();
-    var phoneNumber = country_code + phone;
-    console.log({ phoneNumber });
-    console.log({ firebase });
-    console.log({ appVerifier });
-    firebase
-        .auth()
-        .signInWithPhoneNumber(phoneNumber, appVerifier)
-        .then(function (confirmationResult) {
-            window.confirmationResult = confirmationResult;
-            console.log({ confirmationResult });
+// $(document).on("click", "#resend", function (e) {
+//     firebase.initializeApp(firebaseConfig);
+//     var appVerifier = new firebase.auth.RecaptchaVerifier(
+//         "recaptcha-container"
+//     );
+//     appVerifier.render().then(function (widgetId) {
+//         // Set the ID of the reCAPTCHA widget
+//         grecaptchaWidgetId = widgetId;
+//     });
+//     var country_code = $("#country_code").val();
+//     var phone = $("#phone").val();
+//     var phoneNumber = country_code + phone;
+//     console.log({ phoneNumber });
+//     console.log({ firebase });
+//     console.log({ appVerifier });
+//     firebase
+//         .auth()
+//         .signInWithPhoneNumber(phoneNumber, appVerifier)
+//         .then(function (confirmationResult) {
+//             window.confirmationResult = confirmationResult;
+//             console.log({ confirmationResult });
 
-            that.removeClass("send");
-            that.addClass("varify");
-            that.html("varify otp");
-            $("#completeOTP").show();
-            $("#recaptcha-container").hide();
-            // console.error(user);
-        })
-        .catch(function (error) {
-            // Handle errors
-            console.error(error);
-        });
-});
+//             that.removeClass("send");
+//             that.addClass("varify");
+//             that.html("varify otp");
+//             $("#completeOTP").show();
+//             $("#recaptcha-container").hide();
+//             // console.error(user);
+//         })
+//         .catch(function (error) {
+//             // Handle errors
+//             console.error(error);
+//         });
+// });
 // Event Handling
 $(document).on("click", ".s-btn", function (e) {
     // Prevent the default form submission
