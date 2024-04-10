@@ -327,32 +327,22 @@ $("#resend").click(function () {
     var phoneNumber = country_code + phone;
 
     i = 60;
-    $.ajax({
-        url: url + "login/sendOtpLogin",
-        data: { country_code: country_code, phone: phone },
-        type: "post",
-        dataType: "json",
-        success: function (res) {
-            firebase
-                .auth()
-                .signInWithPhoneNumber(phoneNumber, appVerifier)
-                .then(function (confirmationResult) {
-                    var user = res.user_id;
-                    window.confirmationResult = confirmationResult;
 
-                    that.removeClass("send");
-                    that.addClass("varify");
-                    that.html("varify otp");
-                    $("#completeOTP").show();
-                    $("#recaptcha-container").hide();
-                    $("#user_id").val(user);
-                    $("#fname").val(res.first_name);
-                    // console.error(user);
-                })
-                .catch(function (error) {
-                    // Handle errors
-                    console.error(error);
-                });
-        },
-    });
+    firebase
+        .auth()
+        .signInWithPhoneNumber(phoneNumber, appVerifier)
+        .then(function (confirmationResult) {
+            window.confirmationResult = confirmationResult;
+
+            that.removeClass("send");
+            that.addClass("varify");
+            that.html("varify otp");
+            $("#completeOTP").show();
+            $("#recaptcha-container").hide();
+            // console.error(user);
+        })
+        .catch(function (error) {
+            // Handle errors
+            console.error(error);
+        });
 });
