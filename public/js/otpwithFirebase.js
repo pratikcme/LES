@@ -57,6 +57,13 @@ $(document).ready(function () {
     });
 });
 $(document).on("click", "#resend", function (e) {
+    var appVerifier = new firebase.auth.RecaptchaVerifier(
+        "recaptcha-container"
+    );
+    appVerifier.render().then(function (widgetId) {
+        // Set the ID of the reCAPTCHA widget
+        grecaptchaWidgetId = widgetId;
+    });
     var country_code = $("#country_code").val();
     var phone = $("#phone").val();
     var phoneNumber = country_code + phone;
