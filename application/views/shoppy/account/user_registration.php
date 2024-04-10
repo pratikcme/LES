@@ -31,7 +31,7 @@
                 <div class="login-left-content">
 
                     <!-- ---------login-deails-wrappper----- -->
-                    <form class="login-deatils-wrapper" id="Register_Form" method="post" action="<?= base_url() . 'register' ?>">
+                    <form class="login-deatils-wrapper" id="Register_Form" method="post" >
                         <input type="hidden" id="user_id">
                         <h2 class="title">Welcome <span>back!</span></h2>
                         <p class="pera">Welcome back! Enter your Mobile Number to acess your account.</p>
@@ -61,6 +61,7 @@
                                 <span id="resetcounter">Didn't get the code? </span>
                                 <span href="javascript:" id="resend"><?= $this->lang->line('Resend') ?> OTP</span>
                             </h3>
+                            <div id="recaptcha-container"></div>
                         </div>
 
                         <div id="completeProfile" style="display:none">
