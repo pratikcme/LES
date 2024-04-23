@@ -301,7 +301,7 @@ class Login extends User_Controller
 			redirect(base_url());
 		}
 		$data['page'] = $_SESSION['template_name'] . '/account/user_registration';
-		// $data['js'] = array('user_register.js');
+		$data['js'] = array('user_register.js');
 		$data['country_code'] = GetDialcodelist();
 
 		if ($this->input->post()) {

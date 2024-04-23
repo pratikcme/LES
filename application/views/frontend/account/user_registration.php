@@ -62,7 +62,7 @@
          <label for="email" class="error"></label>
         </div>
 
-        <div id="recaptcha-container"></div>
+        <!-- <div id="recaptcha-container"></div> -->
 
 
           <button type="button" class="btn create-btn send s-btn" id="frmBtn"><?=$this->lang->line('Send Code')?></button>

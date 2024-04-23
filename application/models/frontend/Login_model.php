@@ -100,7 +100,7 @@ class Login_model extends My_model
 		$re = $this->selectRecords($data, true);
 		unset($data);
 		if (!empty($re)) {
-			
+			if ($re[0]['otp'] == $postData['otp']) {
 
 				$data['update'] = [
 					'otp' => '',
@@ -144,7 +144,10 @@ class Login_model extends My_model
 				$response["message"] = "OTP varified";
 				$response["user_id"] = $re[0]['id'];
 				$response["fname"] = $re[0]['fname'];
-		 
+			} else {
+				$response["success"] = 0;
+				$response["message"] = "Invalid Otp";
+			}
 		} else {
 			$response["success"] = 0;
 			$response["message"] = "Data is not found";
