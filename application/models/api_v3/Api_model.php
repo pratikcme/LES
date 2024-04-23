@@ -2666,8 +2666,8 @@ class Api_model extends My_model
         $ch = curl_init();
         $sms = urlencode("Thank you for registration. Your OTP is " . $otp . " CMEXPE");
 
-       echo $url = "http://nimbusit.info/api/pushsms.php?user=104803&key=010UQmX0MjVAhakszP25&sender=CMEXPE&mobile=" . $mobile_number . "&text=" . $sms . "&entityid=1701163101500457392&templateid=1707163213124829525";
-        die;
+       $url = "http://nimbusit.info/api/pushsms.php?user=104803&key=010UQmX0MjVAhakszP25&sender=CMEXPE&mobile=" . $mobile_number . "&text=" . $sms . "&entityid=1701163101500457392&templateid=1707163213124829525";
+        
         // print_r($url);die;
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
