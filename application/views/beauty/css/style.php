@@ -6,7 +6,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
     $smallBagColor = "#F6EAFD";
-    $primaryColor = "#000000";
+    $primaryColor = "#45006B";
     $secondaryColor = "#DE9F00";
 
     $primaryPink = "#DE9F00";
