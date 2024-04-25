@@ -74,7 +74,13 @@
                                         <a
                                             href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value["product_id"]) . '/' . $this->utility->safe_b64encode($value["product_weight_id"]) ?>">
                                             <div class="cart-detail-wrap">
-                                                <h6><?= $value['product_name'] ?></h6> <h3><?= $product[0]->weight_no.$product[0]->unit ?></h3>
+                                                <h6><?= $value['product_name'] ?></h6> 
+                                                    <div class="product-vairant">
+                                                        <span class="variant product_varient_id active" data-varient_id="NjI1MQ">
+                                                        <?= $product[0]->weight_no.$product[0]->unit ?>
+                                                        </span>
+                                                    </div>
+                                                 
                                                 <p><span><?= $value['quantity'] ?></span>X<?= $product[0]->discount_price ?>
                                                 </p>
                                             </div>
