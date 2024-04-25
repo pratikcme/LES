@@ -631,7 +631,7 @@ if ($_SERVER['SERVER_NAME'] == 'development.launchestore.com') {
     top: 0;
 }*/
 
-.cart-detail-wrap .product-vairant span{
+.cart-wrap .product-vairant span{
     background-color: var(--primary-color) !important;
     padding: 1px 8px;
     border-radius: 3px;

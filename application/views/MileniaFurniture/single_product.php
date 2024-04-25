@@ -110,6 +110,7 @@
                     }
                     ?>
 
+                    <?= ($varientDetails[0]->piece_price!='')?'Per piece Price - '.$this->siteCurrency.' '.$varientDetails[0]->piece_price:''; ?>
 
                     <!-- -----product-details-btn----- -->
                     <div class="product-detalis-btn wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">

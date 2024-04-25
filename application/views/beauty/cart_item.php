@@ -68,7 +68,15 @@
                     </td>
                     <td>
                       <div class="cart-detail-text">
-                        <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value["product_id"]) . '/' . $this->utility->safe_b64encode($value["product_weight_id"]) ?>"><?=$value['product_name']?></a></h4>
+                        <h4>
+                          <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value["product_id"]) . '/' . $this->utility->safe_b64encode($value["product_weight_id"]) ?>">
+                        <?=$value['product_name']?></a>
+                      </h4>
+                        <div class="cart-vairant">
+                            <span class="variant product_varient_id active" data-varient_id="NjI1MQ">
+                            <?= $product[0]->weight_no.$product[0]->weight_name ?>
+                            </span>
+                        </div>
                       </div>
                     </td>
                     <td>
@@ -118,6 +126,11 @@
                     <td>
                       <div class="cart-detail-text">
                         <h4><a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>"><?=$value->product_name?></a></h4>
+                        <div class="cart-vairant">
+                            <span class="variant product_varient_id active" data-varient_id="NjI1MQ">
+                            <?= $value->weight_no.$value->weight_name ?>
+                            </span>
+                        </div>
                       </div>
                     </td>
                     <td>

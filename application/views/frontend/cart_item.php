@@ -75,9 +75,9 @@
                                             href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value["product_id"]) . '/' . $this->utility->safe_b64encode($value["product_weight_id"]) ?>">
                                             <div class="cart-detail-wrap">
                                                 <h6><?= $value['product_name'] ?></h6> 
-                                                    <div class="product-vairant">
+                                                    <div class="cart-vairant">
                                                         <span class="variant product_varient_id active" data-varient_id="NjI1MQ">
-                                                        <?= $product[0]->weight_no.$product[0]->unit ?>
+                                                        <?= $product[0]->weight_no.$product[0]->weight_name ?>
                                                         </span>
                                                     </div>
                                                  
@@ -226,6 +226,11 @@
                                             href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                                             <div class="cart-detail-wrap">
                                                 <h6><?= $value->product_name ?></h6>
+                                                <div class="cart-vairant">
+                                                        <span class="variant product_varient_id active" data-varient_id="NjI1MQ">
+                                                        <?= $value->weight_no.$value->weight_name ?>
+                                                        </span>
+                                                    </div>
                                                 <p><span><?= $value->quantity ?></span>X<?= $value->discount_price ?>
                                                 </p>
                                             </div>

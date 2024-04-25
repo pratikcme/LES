@@ -117,7 +117,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <label for="piece_price" class="margin_top_label">Per piece price (if combo) :<span class="required" aria-required="true"> * </span></label>
+                                        <label for="piece_price" class="margin_top_label">Per piece price (if combo) :</label>
                                         <input type="text" class="form-control margin_top_input" id="piece_price" name="piece_price" placeholder="Piece Price" value="<?= (isset($result)) ? $result['piece_price'] : ''; ?>" onchange="validate(event)">
                                     </div>                                                         
                                     <div class="form-group">
@@ -281,6 +281,9 @@
                 number: true,
                 min: 1
             },
+            piece_price: {
+               number: true,
+            },
             quantity: {
                 required: true
             },
@@ -321,6 +324,9 @@
             purchase_price: {
                 required: "Please enter purchase price",
                 number: "Please enter valid purchase price"
+            },
+            piece_price: {
+                number: "Please enter valid piece price"
             },
             quantity: {
                 required: "Please enter quantity"

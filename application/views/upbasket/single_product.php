@@ -105,6 +105,8 @@
                             }
                         }
                         ?>
+                        <?= ($varientDetails[0]->piece_price!='')?'Per piece Price - '.$this->siteCurrency.' '.$varientDetails[0]->piece_price:''; ?>
+
                       <div class="product-detalis-btn">
                           <?php if ($isAvailable != '0') { ?>
                               <a href="javascript:" class="add-cart-btn <?= $d_none ?>" id="addtocart"><span><i class="fa-solid fa-cart-shopping"></i></span><?= $this->lang->line('add to cart') ?></a>
