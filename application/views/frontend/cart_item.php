@@ -28,14 +28,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
+                <?php
                 $CI = &get_instance();
                 $CI->load->model('common_model');
                 $default_product_image = $CI->common_model->default_product_image();
                 ?>
-                            <?php
+                <?php
                 if (isset($_SESSION['My_cart']) && $_SESSION['My_cart'] != '') {
-                    
+                    echo "<pre>";
+                    print_r($_SESSION['My_cart']);
+                    die;
                   foreach ($_SESSION['My_cart'] as $key => $value) {
                     $CI->load->model('frontend/product_model');
                     $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
