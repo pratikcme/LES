@@ -631,6 +631,10 @@ if ($_SERVER['SERVER_NAME'] == 'development.launchestore.com') {
     top: 0;
 }*/
 
+.cart-detail-wrap .product-vairant span{
+    background-color: #009da7!important;
+}
+
     @font-face {
         font-family: 'OpenSans-Light';
         src: url('../../../public/frontend/assets/fonts/OpenSans-Light.eot');
