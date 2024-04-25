@@ -39,8 +39,8 @@
                   foreach ($_SESSION['My_cart'] as $key => $value) {
                     $CI->load->model('frontend/product_model');
                     $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
-                    echo "<pre>";
-                    print_r($product);
+                    // echo "<pre>";
+                    // print_r($product);
                     
                     $CI->load->model('api_v3/common_model','co_model');
                     $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
@@ -74,7 +74,7 @@
                                         <a
                                             href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value["product_id"]) . '/' . $this->utility->safe_b64encode($value["product_weight_id"]) ?>">
                                             <div class="cart-detail-wrap">
-                                                <h6><?= $value['product_name'] ?></h6>
+                                                <h6><?= $value['product_name'] ?></h6> <h3><?= $value['weight_no'].$value['unit'] ?></h3>
                                                 <p><span><?= $value['quantity'] ?></span>X<?= $product[0]->discount_price ?>
                                                 </p>
                                             </div>
