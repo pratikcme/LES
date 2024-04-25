@@ -588,6 +588,7 @@ class product_model extends My_model
         $quantity = $_POST['quantity'];
         $discount_per = $_POST['discount_per'];
         $purchase_price = $_POST['purchase_price'];
+        $piece_price = $_POST['piece_price'];
         $package = $_POST['package'];
         $limited_stock = $_POST['limited_stock'];
 
@@ -617,6 +618,7 @@ class product_model extends My_model
                 'package' => $package,
                 'purchase_price' => $purchase_price,
                 'price' => $price,
+                'piece_price' => $piece_price,
                 'quantity' => $quantity,
                 'discount_per' => $discount_per,
                 'without_gst_price' => $without_gst_price,
@@ -682,6 +684,7 @@ class product_model extends My_model
                 'weight_no' => $unit,
                 'package' => $package,
                 'purchase_price' => $purchase_price,
+                'piece_price' => $piece_price,
                 'price' => $price,
                 'quantity' => $quantity,
                 'discount_per' => $discount_per,
