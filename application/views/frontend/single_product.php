@@ -146,7 +146,7 @@
                         }
 
                         ?>
-                        <?= ($varientDetails[0]->piece_price!='')?'Per piece Price - '.$varientDetails[0]->piece_price:''; ?>
+                        <?= ($varientDetails[0]->piece_price!='')?'Per piece Price - '.$this->siteCurrency.' '.$varientDetails[0]->piece_price:''; ?>
                         <div class="d-flex align-items-center add-after-wrapper">
                             <div class="quantity-wrap <?= $d_show ?>">
                                 <button class="dec cart-qty-minus decqnt"
