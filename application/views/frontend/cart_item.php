@@ -41,7 +41,7 @@
                     $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
                     echo "<pre>";
                     print_r($product);
-                    die;
+                    
                     $CI->load->model('api_v3/common_model','co_model');
                     $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
                     if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
