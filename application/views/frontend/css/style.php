@@ -632,7 +632,9 @@ if ($_SERVER['SERVER_NAME'] == 'development.launchestore.com') {
 }*/
 
 .cart-detail-wrap .product-vairant span{
-    background-color: #009da7!important;
+    background-color: var(--primary-color) !important;
+    padding: 1px 8px;
+    border-radius: 3px;
 }
 
     @font-face {
