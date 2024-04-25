@@ -6,7 +6,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
     $smallBagColor = "#F6EAFD";
-    $primaryColor = "#fd4cb7";
+    $primaryColor = "#0045dc";
     $secondaryColor = "#0045dd";
 
     $primaryPink = "#DE9F00";
@@ -33,13 +33,13 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     // / -----header-color---- /
     $headerIconColorFirst = "#222528";
     $headerIconColorSecond = "#FFFFFF";
-    $headerIconRoundColor = "rgba(251, 79, 180, 0.1)";
+    $headerIconRoundColor = "rgba(40, 104, 221, 0.1)";
     $headerTextWhite = "#FFFFFF";
     $headerBtnBg = "#45006B";
     $headerBtnText = "#FFFFFF";
 
     //  -----navigation-bar-color---- 
-    $navTextColor = "#fd4cb7";
+    $navTextColor = "#0045dc";
     $navHoverColor = "#0045dd";
 
     //  ------categorie-sec-color------
@@ -199,7 +199,6 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $rightContactWrapperBorder = "#D9E2ED";
     $rightContactIconRound = "#F6EAFD";
     $rightContactWrapperText = "#0F053F";
-
     $new_svg_color = "#ffe5ef";
 } else if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'sstagging.launchestore.com' || $_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
 
