@@ -635,6 +635,7 @@ if ($_SERVER['SERVER_NAME'] == 'development.launchestore.com') {
     background-color: var(--primary-color) !important;
     padding: 1px 8px;
     border-radius: 3px;
+    color: var(--light-color);
 }
 
     @font-face {
