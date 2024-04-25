@@ -1208,7 +1208,7 @@ class Product_model extends My_model
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT'],
-			TABLE_PACKAGE . ' as pack' => ['pack.id = pw.weight_id', 'LEFT']
+			TABLE_WEIGHT . ' as pack' => ['pack.id = pw.weight_id', 'LEFT']
 		];
 		$data['where'] = [
 			'pw.status !=' => '9',
