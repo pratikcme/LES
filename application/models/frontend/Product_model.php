@@ -1204,7 +1204,7 @@ class Product_model extends My_model
 		// $productId = $this->utility->safe_b64decode($product_id);
 
 		$data['table'] = TABLE_PRODUCT . " as p";
-		$data['select'] = ['p.name', 'pw.id as pw_id', 'pw.discount_per', 'pw.discount_price', 'pw.product_id as product_id', 'pi.image', 'pw.price', 'p.gst', 'pw.without_gst_price'];
+		$data['select'] = ['p.name', 'pw.id as pw_id', 'pw.id as weight_no', 'pw.discount_per', 'pw.discount_price', 'pw.product_id as product_id', 'pi.image', 'pw.price', 'p.gst', 'pw.without_gst_price'];
 		$data['join'] = [
 			TABLE_PRODUCT_WEIGHT . ' as pw' => ['p.id = pw.product_id', 'LEFT'],
 			TABLE_PRODUCT_IMAGE . ' as pi' => ['pw.id = pi.product_variant_id', 'LEFT']
