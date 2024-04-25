@@ -8,7 +8,7 @@
     max-width: 870px;
     box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
     border-radius: 20px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--primary-color);
     background: var(--commn-white);
     overflow: hidden;
     padding: 11px;
@@ -118,7 +118,7 @@ table th{
 }
 
 table tr{
-    border-bottom: 1px solid var(--secondary-color);
+    border-bottom: 1px solid var(--primary-color);
 }
 
 table tr:last-child{
@@ -170,7 +170,7 @@ table tr:nth-child(3) td {
     height: auto;
     box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
     border-radius: 20px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--primary-color);
     background: var(--commn-white);
     overflow: hidden;
     padding: 11px;

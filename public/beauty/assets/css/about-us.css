@@ -12,7 +12,7 @@
 }
 
 .about-us .about-text h2{
-    color: var(--secondary-color);
+    color: var(--title-first-color);
     font-size: 48px;
     font-family: var(--BeVietnamPro-Bold);
 }
@@ -293,7 +293,7 @@ height: 109px;
 .offering .owl-theme .owl-dots .owl-dot span{
     width: 10px;
     height: 10px;
-    background-color: #FFE5EF;
+    background-color: #195e3e4d;
 }
 
 .offering .owl-theme .owl-dots .owl-dot:hover span {

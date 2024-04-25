@@ -720,7 +720,7 @@
 
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
-    background: var(--secondary-color) !important;
+    background: var(--title-first-color) !important;
 }
 
 .owl-theme .owl-nav.disabled+.owl-dots {
