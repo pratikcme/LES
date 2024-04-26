@@ -40,7 +40,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
 
     //  -----navigation-bar-color---- 
     $navTextColor = "#0045dc";
-    $navHoverColor = "#0045dd";
+    $navHoverColor = "#165e3c";
 
     //  ------categorie-sec-color------
     $categorieWrapperBorder = "#CCD3DB";
@@ -54,7 +54,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $cardBorderColor = "#F6EAFD";
     $cardTextPrimary = "#0F053F";
     $cardTextSecondary = "#555261";
-    $cardNumberPrimary = "0045dc";
+    $cardNumberPrimary = "#fe43ad";
     $cardNumberSecondary = "#555261";
     $cardBtnBg = "#0045dc";
     $cardImgBg = "rgba(40, 104, 221, 0.1)";
@@ -79,7 +79,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $footerTextPrimary = "#0F053F";
     $footerTextSecondary = "#555261";
     $footerBgColor = "linear-gradient(73deg, #ECDBF5 30.13%, rgba(236, 219, 245, 0.28) 82.74%)";
-    $footerLinkHover = "#0045dd";
+    $footerLinkHover = "#165e3c";
     $copyRightBg = "#0045dc";
 
     /* ------------lisiting-colors--------- / */
@@ -92,7 +92,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $listingSubCtgBorder = "#D9E2ED";
     $listingSubCtgText = "#414549";
     $listingSubCtgHover = "#2BAE4A";
-    $listingFilterIconBg = "#0045dd";
+    $listingFilterIconBg = "#165e3c";
 
     /* ------------lisiting-2-colors--------- */
     $listing2CtgBg = "#FFFFFF";
@@ -192,12 +192,12 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $leftContactWrapperLabel = "#0F053F";
     $leftContactWrapperInputBg = "#FFFFFF";
     $leftContactWrapperInputBorder = "#D0C9F1";
-    $leftContactSubmitBtnBg = "#fd4cb7";
+    $leftContactSubmitBtnBg = "#0045dc";
     $leftContactSubmitBtnText = "#FFF";
 
     $rightContactWrapperBg = "#11405A";
     $rightContactWrapperBorder = "#D9E2ED";
-    $rightContactIconRound = "#F6EAFD";
+    $rightContactIconRound = "rgba(40, 104, 221, 0.1)";
     $rightContactWrapperText = "#0F053F";
     $new_svg_color = "#ffe5ef";
 } else if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'sstagging.launchestore.com' || $_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {

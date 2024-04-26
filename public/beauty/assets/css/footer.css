@@ -237,7 +237,7 @@ footer #Layer_1 path{
     line-height: 1;
 }
 .foot-social-icons ul li a:hover{
-  background: var(--secondary-color);
+  background: var(--title-first-color);
   color: var(--common-white) !important;
   transform: translateY(-5px) !important;
 }

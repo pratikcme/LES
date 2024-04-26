@@ -195,7 +195,7 @@ height: 109px;
 }
 
 .client-wrap  .clients-card{
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 20px;
     padding: 40px 30px;
 }
@@ -209,8 +209,8 @@ height: 109px;
 .client-wrap .clients-quote-img::before {
     content: "";
     position: absolute;
-    background: var(--secondary-color);
-    opacity: 0.1;
+    background: var(--categorie-wrapper-bg);
+    /* opacity: 0.1; */
     bottom: -17px;
     left: -7px;
     width: 60px;
@@ -231,7 +231,7 @@ height: 109px;
     object-fit: contain;
 }
 .client-wrap  .clients-quote-img svg{
-    fill: var(--secondary-color) !important;
+    fill: var(--primary-color) !important;
 }
 
 .client-wrap .clients-con p{
@@ -244,12 +244,12 @@ height: 109px;
 .client-wrap .client-name h4{
     font-size: 24px;
     font-family: var(--BeVietnamPro-SemiBold);
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .client-wrap .client-name p{
     font-size: 16px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-family: var(--BeVietnamPro-Regular);
 }
 
