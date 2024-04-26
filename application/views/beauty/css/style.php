@@ -7,7 +7,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $commonPeraColor = "#555261";
     $smallBagColor = "#F6EAFD";
     $primaryColor = "#005387";
-    $secondaryColor = "#1F1F1F";
+    $secondaryColor = " ";
 
     $primaryPink = "#DE9F00";
     $secondaryBlack = "#45006B";
