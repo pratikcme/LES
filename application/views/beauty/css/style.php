@@ -7,7 +7,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $commonPeraColor = "#555261";
     $smallBagColor = "#F6EAFD";
     $primaryColor = "#005387";
-    $secondaryColor = " ";
+    $secondaryColor = "#1F1F1F";
 
     $primaryPink = "#DE9F00";
     $secondaryBlack = "#45006B";
@@ -47,7 +47,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $categorieWrapperBg = "rgba(89, 65, 236, 0.1)";
     $categorieWrapperBgHover = "#fc46ab";
     $categorieWrapperRound = "linear-gradient(67deg, #F6EAFD 19.01%, rgba(246, 234, 253, 0.28) 100.66%)";
-    $categorieWrapperText = "5941EC";
+    $categorieWrapperText = "#1F1F1F";
 
     // -------card-color------
     $cardBgColor = "#fff";
