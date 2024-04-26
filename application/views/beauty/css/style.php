@@ -6,8 +6,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
     $smallBagColor = "#F6EAFD";
-    $primaryColor = "#0045dc";
-    $secondaryColor = "#fe43ad";
+    $primaryColor = "#005387";
+    $secondaryColor = "#1F1F1F";
 
     $primaryPink = "#DE9F00";
     $secondaryBlack = "#45006B";
@@ -15,7 +15,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $commonBannerBgColor = "#DE9F00";
     $primaryBoxShadow = "0px 20px 50px rgba(43, 174, 74, 0.15)";
 
-    $titleFirstColor = "#165e3c";
+    $titleFirstColor = "#1F1F1F";
     $commonPeraColor = "#868390";
     $commonBtnColor = "#11405A";
     $commonBtnShadow = "0px 7px 20px rgba(17, 64, 90, 0.2)";
@@ -33,21 +33,21 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     // / -----header-color---- /
     $headerIconColorFirst = "#222528";
     $headerIconColorSecond = "#FFFFFF";
-    $headerIconRoundColor = "rgba(40, 104, 221, 0.1)";
+    $headerIconRoundColor = "rgba(0, 83, 135, 0.1)";
     $headerTextWhite = "#FFFFFF";
     $headerBtnBg = "#45006B";
     $headerBtnText = "#FFFFFF";
 
     //  -----navigation-bar-color---- 
-    $navTextColor = "#0045dc";
+    $navTextColor = "#005387";
     $navHoverColor = "#165e3c";
 
     //  ------categorie-sec-color------
     $categorieWrapperBorder = "#CCD3DB";
-    $categorieWrapperBg = "rgba(40, 104, 221, 0.1)";
+    $categorieWrapperBg = "rgba(89, 65, 236, 0.1)";
     $categorieWrapperBgHover = "#fc46ab";
     $categorieWrapperRound = "linear-gradient(67deg, #F6EAFD 19.01%, rgba(246, 234, 253, 0.28) 100.66%)";
-    $categorieWrapperText = "#0045dc";
+    $categorieWrapperText = "5941EC";
 
     // -------card-color------
     $cardBgColor = "#fff";
@@ -56,8 +56,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $cardTextSecondary = "#555261";
     $cardNumberPrimary = "#fe43ad";
     $cardNumberSecondary = "#555261";
-    $cardBtnBg = "#0045dc";
-    $cardImgBg = "rgba(40, 104, 221, 0.1)";
+    $cardBtnBg = "#005387";
+    $cardImgBg = "rgba(89, 65, 236, 0.1)";
 
     // ----our-offer-color---
     $offer1PrimaryText = "#F92672";

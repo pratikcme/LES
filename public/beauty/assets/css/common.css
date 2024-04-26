@@ -69,7 +69,7 @@ p {
     left: 50%;
 }  
 .title svg path{
-    fill: var(--secondary-color);
+    fill: #5941EC;
 }
 
 .title p {
