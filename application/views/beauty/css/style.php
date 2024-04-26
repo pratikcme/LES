@@ -44,10 +44,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
 
     //  ------categorie-sec-color------
     $categorieWrapperBorder = "#CCD3DB";
-    $categorieWrapperBg = "rgba(251, 79, 180, 0.1)";
+    $categorieWrapperBg = "rgba(40, 104, 221, 0.1)";
     $categorieWrapperBgHover = "#0045dd";
     $categorieWrapperRound = "linear-gradient(67deg, #F6EAFD 19.01%, rgba(246, 234, 253, 0.28) 100.66%)";
-    $categorieWrapperText = "#fd4cb7";
+    $categorieWrapperText = "#0045dc";
 
     // -------card-color------
     $cardBgColor = "#fff";
