@@ -54,10 +54,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $cardBorderColor = "#F6EAFD";
     $cardTextPrimary = "#0F053F";
     $cardTextSecondary = "#555261";
-    $cardNumberPrimary = "#fd4cb7";
+    $cardNumberPrimary = "0045dc";
     $cardNumberSecondary = "#555261";
-    $cardBtnBg = "#fd4cb7";
-    $cardImgBg = "rgba(251, 79, 180, 0.1)";
+    $cardBtnBg = "#0045dc";
+    $cardImgBg = "rgba(40, 104, 221, 0.1)";
 
     // ----our-offer-color---
     $offer1PrimaryText = "#F92672";
@@ -80,7 +80,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $footerTextSecondary = "#555261";
     $footerBgColor = "linear-gradient(73deg, #ECDBF5 30.13%, rgba(236, 219, 245, 0.28) 82.74%)";
     $footerLinkHover = "#0045dd";
-    $copyRightBg = "#fd4cb7";
+    $copyRightBg = "#0045dc";
 
     /* ------------lisiting-colors--------- / */
     $lisingBannerTitle1 = "#222528";
