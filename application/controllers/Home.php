@@ -16,6 +16,16 @@ class Home extends User_Controller
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
+
+	public function setDimansion()
+	{
+		$responsiveWidth =  $this->input->post('width');
+		$responsiveHeight =  $this->input->post('height');
+
+		$this->session->set_userdata('responsive_width', $responsiveWidth);
+		$this->session->set_userdata('responsive_height', $responsiveHeight);
+	}
+
 	public function index()
 	{
 
