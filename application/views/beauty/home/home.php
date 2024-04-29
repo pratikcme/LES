@@ -1,6 +1,7 @@
 <!--============== Carousel ==================-->
 <?php
-print_r($_SESSION['responsive_width'] . '*' . $_SESSION['responsive_height']);
+$responsive_width = $_SESSION['responsive_width'];
+$responsive_height = $_SESSION['responsive_height'];
 
 ?>
 
