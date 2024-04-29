@@ -14,6 +14,7 @@
 
     <div class="carousel-inner">
         <?php foreach ($banner as $key => $value) {
+
             $shopPage = "";
             if ($value->type == '1') {
                 $shopPage = base_url() . 'products';
