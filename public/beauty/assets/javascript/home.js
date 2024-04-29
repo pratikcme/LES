@@ -6,6 +6,7 @@ $PositionY = -5;
 $PositionX = -5;
 $img = document.getElementById("Image");
 
+alert(url);
 function moveMouse() {
   CursorX = event.clientX;
   CursorY = event.clientY;
@@ -56,7 +57,7 @@ $(document).ready(function () {
     document.body.clientHeight;
   $.ajax({
     type: "POST",
-    url: url + "setDimansion",
+    url: url + "home/setDimansion",
     data: {
       width: width,
       height: height,
