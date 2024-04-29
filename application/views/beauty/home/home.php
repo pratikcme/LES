@@ -9,8 +9,8 @@
         document.documentElement.clientHeight ||
         document.body.clientHeight;
 
-    $("#responsiveWidth").val(width);
-    $("#responsiveHeight").val(height);
+    $("#responsiveWidth").value(width);
+    $("#responsiveHeight").value(height);
 </script>
 <input type="hidden" id="responsiveWidth" name="responsiveWidth" value="">
 <input type="hidden" id="responsiveHeight" name="responsiveHeight" value="">
