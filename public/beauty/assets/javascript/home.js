@@ -57,7 +57,7 @@ function sendDimensions() {
 
   // Send AJAX request to server
   $.ajax({
-    url: window.location.href, // Send to current page
+    url: url + "home", // Send to current page
     type: "POST",
     data: {
       width: width,
