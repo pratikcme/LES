@@ -1,16 +1,18 @@
 <!--============== Carousel ==================-->
 <script>
-    var width =
-        window.innerWidth ||
-        document.documentElement.clientWidth ||
-        document.body.clientWidth;
-    var height =
-        window.innerHeight ||
-        document.documentElement.clientHeight ||
-        document.body.clientHeight;
+    $(document).ready(function() {
+        var width =
+            window.innerWidth ||
+            document.documentElement.clientWidth ||
+            document.body.clientWidth;
+        var height =
+            window.innerHeight ||
+            document.documentElement.clientHeight ||
+            document.body.clientHeight;
 
-    $("#responsiveWidth").value(width);
-    $("#responsiveHeight").value(height);
+        $("#responsiveWidth").val(width); // Use .val() to set value
+        $("#responsiveHeight").val(height); // Use .val() to set value
+    });
 </script>
 <input type="hidden" id="responsiveWidth" name="responsiveWidth" value="">
 <input type="hidden" id="responsiveHeight" name="responsiveHeight" value="">
