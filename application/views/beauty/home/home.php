@@ -1,7 +1,6 @@
 <!--============== Carousel ==================-->
 <?php
-echo $this->session->userdata('responsive_width');
-echo $this->session->userdata('responsive_height');
+print_r($_SESSION);
 
 ?>
 
