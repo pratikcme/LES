@@ -18,8 +18,7 @@ class Vendors extends User_Controller
 
 	public function index()
 	{
-		echo "hi";
-		exit;
+
 		$data['page'] = $_SESSION['template_name'] . '/vendor/vendor';
 		$data['js'] = array('vendor.js');
 		$data['branch'] = $this->this_model->branchList();
