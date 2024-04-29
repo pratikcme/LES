@@ -1,6 +1,8 @@
 <!--============== Carousel ==================-->
-
-<?php echo $_POST['width'] . '*' . $_POST['height'] ?>
+<?php
+$width = $this->input->post('width');
+$height = $this->input->post('height');
+echo $width . '*' . $height ?>
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
     <!-- Indicators/dots -->
