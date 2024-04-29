@@ -46,7 +46,7 @@ function moveMouse() {
 }
 
 $(document).ready(function () {
-  alert(url);
+  var url = $("#url").val();
   var width =
     window.innerWidth ||
     document.documentElement.clientWidth ||
