@@ -12,7 +12,7 @@ body {
 .product-image-part {
     width: 500px;
     height: 500px;
-    background: var(--product-details-image-bg);
+    /* background: var(--product-details-image-bg); */
     display: block !important;
     justify-content: center;
     align-items: center;
@@ -241,7 +241,7 @@ body {
 .mySwiper2 {
     width: 500px !important;
     height: 500px !important;
-    background: var(--product-details-image-bg) !important;
+    /* background: var(--product-details-image-bg) !important; */
     display: flex !important;
     justify-content: center;
     align-items: center;
@@ -1161,7 +1161,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(196, 30, 73, 0.2);
+    background: rgba(89, 65, 236, 0.1);
     color: var(--secondary-color);
 }
 

@@ -332,7 +332,7 @@
     justify-content: center;
     align-items: center;
     background: var(--secondary-color);
-    color: var(--commn-white) !important;
+    color: #fff !important;
 }
 
 .address-icons .delet-address-btn {

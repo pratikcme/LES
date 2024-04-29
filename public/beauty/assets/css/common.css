@@ -665,46 +665,48 @@ p {
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     animation: animate 0.7s ease-in-out infinite alternate;
-  }
+}
 
-  .dot:nth-child(1) {
-    animation-delay: -0.25s;
-  }
-  
-  .dot:nth-child(2) {
-    background: #fff;
-    animation-delay: -0.5s;
-  }
+.dot:nth-child(1) {
+animation-delay: -0.25s;
+}
 
-  .dot:nth-child(3) {
-    background: #fff;
-    animation-delay: -0.75s;
-  }
+.dot:nth-child(2) {
+background: #fff;
+animation-delay: -0.5s;
+}
 
-  .dot:nth-child(4) {
-    background: #fff;
-    animation-delay: -1s;
-  }
+.dot:nth-child(3) {
+background: #fff;
+animation-delay: -0.75s;
+}
 
-  .carousel-item{
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-  }
+.dot:nth-child(4) {
+background: #fff;
+animation-delay: -1s;
+}
 
-  .breadscrubBanner{
-    padding-top: 170px !important;
-    padding-bottom: 0px !important;
-  }
+.carousel-item{
+background-size: contain !important;
+background-repeat: no-repeat !important;
+background-position: center center !important;
+}
 
-  button.tawk-button{
-    background-color: var(--primary-color) !important;
-  }
-  .modal-content{
-    background-color: transparent !important;
-  }
+.breadscrubBanner{
+padding-top: 170px !important;
+padding-bottom: 0px !important;
+}
 
-  @media only screen and (max-width: 1400px){
+button.tawk-button{
+background-color: var(--primary-color) !important;
+}
+.modal-content{
+background-color: transparent !important;
+}
+
+
+
+@media only screen and (max-width: 1400px){
     .hero-section{
         background-size: cover !important;
     }

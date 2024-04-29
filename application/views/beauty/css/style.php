@@ -9,10 +9,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $primaryColor = "#005387";
     $secondaryColor = "#1F1F1F";
 
-    $primaryPink = "#DE9F00";
+    $primaryPink = "#005387";
     $secondaryBlack = "#45006B";
     $lightBlack = "#868390";
-    $commonBannerBgColor = "#DE9F00";
+    $commonBannerBgColor = "#005387";
     $primaryBoxShadow = "0px 20px 50px rgba(43, 174, 74, 0.15)";
 
     $titleFirstColor = "#1F1F1F";
@@ -78,7 +78,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     // ----------footer-color------
     $footerTextPrimary = "#0F053F";
     $footerTextSecondary = "#555261";
-    $footerBgColor = "linear-gradient(73deg, #ECDBF5 30.13%, rgba(236, 219, 245, 0.28) 82.74%)";
+    $footerBgColor = "rgba(89, 65, 236, 0.1)";
     $footerLinkHover = "#165e3c";
     $copyRightBg = "#0045dc";
 
@@ -97,7 +97,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     /* ------------lisiting-2-colors--------- */
     $listing2CtgBg = "#FFFFFF";
     $listing2CtgBorder = "#F6EAFD";
-    $listing2HeaderBg = "rgba(251, 79, 180, 0.1)";
+    $listing2HeaderBg = "rgba(89, 65, 236, 0.1)";
     $listing2HeaderText = "#0F053F";
     $listing2NormalText = "#555261";
 
@@ -112,22 +112,22 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $productDetailsText2 = "#555261";
     $productDetailsText3 = "#165e3c";
     $productDetailsText4 = "#165e3c";
-    $productDetailsImageBg = "#F6EAFD";
+    $productDetailsImageBg = "rgba(89, 65, 236, 0.1)";
     $productDetailsBtn1 = "#0F053F";
     $productDetailsBtn2 = "#2BAE4A";
 
 
     /*  -------- shop-cart-color-------  */
-    $cartTheadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $cartTheadBg = "rgba(89, 65, 236, 0.1)";
     $cartTheadText = "#0F053F";
     $cartTdText1 = "#0F053F";
     $cartTdText2 = "#414549";
-    $cartTdText3 = "#fd4cb7";
-    $cartImageBg = "#F6EAFD";
+    $cartTdText3 = "#005387";
+    $cartImageBg = "rgba(89, 65, 236, 0.1)";
     $cartCounterBorder = "#F6EAFD";
     $cartCounterBg = "#fff";
-    $cartIcon = "#fd4cb7";
-    $proceedCheckoutBtnBg = "#0045dd";
+    $cartIcon = "#005387";
+    $proceedCheckoutBtnBg = "#1F1F1F";
     $proceedCheckoutBtnText = "#fff";
     $commonBgColor = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.5) 19.01%, rgba(255, 248, 216, 0.5) 100.66%)";
 
@@ -135,23 +135,23 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
     $accordianBg = "#fff";
     $accordianBorder = "#F6EAFD";
-    $accordianHeadText = "#030235";
+    $accordianHeadText = "rgba(89, 65, 236, 0.1)";
     $accordianIcon = "#FFB9CE";
-    $accordianIconBg = "#FFEEF4";
+    $accordianIconBg = "rgba(89, 65, 236, 0.1)";
     $accordianContentText1 = "#030235";
     $accordianContentText2 = "#4D4C61";
     $accordianStar = "#FFB9CE";
-    $checkoutSecureIcon = "rgba(255, 185, 206, 0.4)";
+    $checkoutSecureIcon = "rgba(89, 65, 236, 0.1)";
 
 
     /*  -------modal-popup-color----  */
     $modalBg = "rgba(17, 64, 90, 0.9)";
-    $modalText1 = "#DE9F00";
+    $modalText1 = "#005387";
     $modalText2 = "#0F053F";
     $modalText3 = "#555261";
-    $continueBtnBg = "#DE9F00";
+    $continueBtnBg = "#005387";
     $continueBtnText = "#fff";
-    $closeBtn = "#DE9F00";
+    $closeBtn = "#005387";
 
 
     /*  -----------about-us-css--------  */
@@ -164,7 +164,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
 
 
     /*  ------myaccount-css---  */
-    $myaccoutnTabBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $myaccoutnTabBg = "rgba(89, 65, 236, 0.1)";
     $myaccoutnTabBorder = "#F6EAFD";
     $myaccoutnTabText = "#0F053F";
     $myaccoutnTabActiveBg = "#3E0067";
@@ -184,7 +184,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $loginWrapperInputBorder = "#D0C9F1";
     $loginBtnBg = "#F92672";
     $loginBtnText = "#FFF";
-    $forgotText = "#DE9F00";
+    $forgotText = "#005387";
 
     /*  -----contact-us-css-------  */
     $leftContactWrapperBg = "#FFFFFF";
@@ -199,7 +199,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $rightContactWrapperBorder = "#D9E2ED";
     $rightContactIconRound = "rgba(40, 104, 221, 0.1)";
     $rightContactWrapperText = "#0F053F";
-    $new_svg_color = "#ffe5ef";
+    $new_svg_color = "rgba(89, 65, 236, 0.1)";
 } else if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'sstagging.launchestore.com' || $_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
 
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
