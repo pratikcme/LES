@@ -6,7 +6,6 @@ $PositionY = -5;
 $PositionX = -5;
 $img = document.getElementById("Image");
 
-alert(url);
 function moveMouse() {
   CursorX = event.clientX;
   CursorY = event.clientY;
@@ -47,6 +46,7 @@ function moveMouse() {
 }
 
 $(document).ready(function () {
+  alert(url);
   var width =
     window.innerWidth ||
     document.documentElement.clientWidth ||
