@@ -144,7 +144,7 @@ class Login extends User_Controller
 				$google_client = new Google_Client();
 				$google_client->setClientId($google_client_id);
 				$google_client->setClientSecret($google_secret_id); //Define your Client Secret Key
-				$google_client->setRedirectUri(base_url() . 'users_account/google_login'); //Define your Redirect Uri
+				$google_client->setRedirectUri(base_url() . 'login'); //Define your Redirect Uri
 				$google_client->addScope('email');
 				$google_client->addScope('profile');
 				$GoogleUrl = $google_client->createAuthUrl();
