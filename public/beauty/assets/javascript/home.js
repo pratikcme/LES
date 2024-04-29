@@ -54,7 +54,20 @@ $(document).ready(function () {
     window.innerHeight ||
     document.documentElement.clientHeight ||
     document.body.clientHeight;
-
-  $("#responsiveWidth").val(width); // Use .val() to set value
-  $("#responsiveHeight").val(height); // Use .val() to set value
+  $.ajax({
+    type: "POST",
+    url: url + "home/setDimansion",
+    data: {
+      width: width,
+      height: height,
+    },
+    success: function (response) {
+      console.log("Values sent to PHP successfully.");
+      // Handle success response if needed
+    },
+    error: function (xhr, status, error) {
+      console.error("Error sending values to PHP:", error);
+      // Handle error if needed
+    },
+  });
 });

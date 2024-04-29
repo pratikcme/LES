@@ -174,10 +174,14 @@ class Home extends User_Controller
 		foreach ($unorderList as $value) :
 			$data['offer_list'][] = $value;
 		endforeach;
-		echo 'weight' . $this->input->post('responsiveWidth');
-		echo 'height' . $this->input->post('responsiveHeight');
-		exit;
+
 		$this->loadView($this->user_layout, $data);
+	}
+
+	public function setDimansion($postdata)
+	{
+		echo $this->input->post('width');
+		exit;
 	}
 
 	public function get_offer_product_listing($offer_id = '')
