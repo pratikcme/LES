@@ -178,7 +178,7 @@ class Home extends User_Controller
 		$this->loadView($this->user_layout, $data);
 	}
 
-	public function setDimansion($postdata)
+	public function setDimansion()
 	{
 		echo $this->input->post('width');
 		exit;
