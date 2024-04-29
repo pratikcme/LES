@@ -1,5 +1,7 @@
 <!--============== Carousel ==================-->
-
+<?php
+dd($responsivedimantion);
+?>
 
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 

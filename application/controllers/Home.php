@@ -174,7 +174,7 @@ class Home extends User_Controller
 		foreach ($unorderList as $value) :
 			$data['offer_list'][] = $value;
 		endforeach;
-		$data['responsivedimantion'] = $this-- > setDimansion();
+		$data['responsivedimantion'] = $this->setDimansion();
 		$this->loadView($this->user_layout, $data);
 	}
 
