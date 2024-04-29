@@ -2,8 +2,7 @@
 <?php
 $responsive_width = $_SESSION['responsive_width'];
 $responsive_height = $_SESSION['responsive_height'];
-echo $responsive_width . '*' .
-    $responsive_height;
+
 ?>
 
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
