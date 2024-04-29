@@ -386,7 +386,7 @@ div[slider]>input[type=range]::-ms-tooltip {
 
 .form-check-input:checked[type=checkbox] {
     /* background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e) !important; */
-    background-color: var(--secondary-color) !important;
+    background-color: var(--primary-color) !important;
 }
 
 .form-check-input:checked {
@@ -697,30 +697,33 @@ div[slider]>input[type=range]::-ms-tooltip {
     transition: 0.3s;
 }
 
-.product-listing-wrapper {
-    flex-basis: 32%;
-    transition: 0.3s;
-}
 
-.my-filter-wrapper {
-    flex-basis: 32%;
-    display: block !important;
-    transition: 0.3s;
-}
+
 
 .hide.show-div-wrapper {
     flex-basis: 100%;
     transition: 0.3s;
 }
 
-.hide.my-filter-wrapper {
+.my-filter-wrapper {
     display: none !important;
-    position: relative;
+    transition: 0.3s;
     flex-basis: 25%;
 }
 
-.hide.show-div-wrapper .product-listing-wrapper {
+.hide.my-filter-wrapper {
+    display: block !important;
+    position: relative;
+    flex-basis: 32%;
+}
+
+.product-listing-wrapper {
+    transition: 0.3s;
     flex-basis: 24%;
+}
+
+.hide.show-div-wrapper .product-listing-wrapper {
+    flex-basis: 32%;
     transition: 0.3s;
 }
 
@@ -823,7 +826,7 @@ div[slider]>input[type=range]::-ms-tooltip {
     background: white;
 }
 .ui-slider-horizontal .ui-slider-range{
-   background: var(--secondary-color);
+   background: var(--primary-color);
 }
 .ui-widget.ui-widget-content {
     border: 1px solid var(--secondary-color);
@@ -1073,10 +1076,10 @@ li.sub-menu{
     overflow-y: scroll;
 }
 
-.ui-widget.ui-widget-content{
+/* .ui-widget.ui-widget-content{
     height: auto !important;
     border: none !important;
-}
+} */
 
 .brands-part .cate-wrp{
     padding: 10px 0 0;
@@ -1117,8 +1120,11 @@ li.sub-menu{
     }
 
     .hide.show-div-wrapper .product-listing-wrapper {
-        flex-basis: 24%;
+        flex-basis: 32%;
         transition: 0.3s;
+    }
+    .my-filter-wrapper {
+        flex-basis: 32%;
     }
 }
 
@@ -1184,16 +1190,16 @@ li.sub-menu{
     .hide.my-filter-wrapper {
         display: block;
         position: relative;
-        flex-basis: 30%;
+        flex-basis: 40%;
     }
 
     .hide.show-div-wrapper .product-listing-wrapper {
-        flex-basis: 32%;
+        flex-basis: 48%;
         transition: 0.3s;
     }
     
     .product-listing-wrapper{
-        flex-basis: 48%;
+        flex-basis: 32%;
     }
 }
 
@@ -1359,11 +1365,11 @@ li.sub-menu{
     .hide.my-filter-wrapper {
         display: block;
         position: relative;
-        flex-basis: 30%;
+        flex-basis: 50%;
     }
 
     .hide.show-div-wrapper .product-listing-wrapper {
-        flex-basis: 48%;
+        flex-basis: 46%;
         transition: 0.3s;
     }
 
@@ -2002,6 +2008,9 @@ li.sub-menu{
     }
     .hide.my-filter-wrapper{
         display: block !important;
+    }
+    #price-range_mob{
+        height: 7px;
     }
 }
 
