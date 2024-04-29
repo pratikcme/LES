@@ -55,21 +55,9 @@ function sendDimensions() {
     document.documentElement.clientHeight ||
     document.body.clientHeight;
 
+  $("#responsiveWidth").val(width);
+  $("#responsiveHeight").val(height);
   // Send AJAX request to server
-  $.ajax({
-    url: window.location.href, // Send to current page
-    type: "POST",
-    data: {
-      width: width,
-      height: height,
-    },
-    success: function (response) {
-      console.log(response); // Output server response
-    },
-    error: function (xhr, status, error) {
-      console.error(xhr.responseText);
-    },
-  });
 }
 
 // Call sendDimensions() function on page load

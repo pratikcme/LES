@@ -1,8 +1,7 @@
 <!--============== Carousel ==================-->
-<?php
-$width = $this->input->post('width');
-$height = $this->input->post('height');
-echo $width . '*' . $height ?>
+
+<input type="hidden" id="responsiveWidth" name="responsiveWidth" value="">
+<input type="hidden" id="responsiveHeight" name="responsiveHeight" value="">
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
     <!-- Indicators/dots -->
