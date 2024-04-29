@@ -1,8 +1,6 @@
 <!--============== Carousel ==================-->
 <?php
-echo $this->session->userdata('responsive_width');
-echo $this->session->userdata('responsive_height');
-
+dd($responsivedimantion);
 ?>
 
 <div id="demo" class="carousel slide" data-bs-ride="carousel">

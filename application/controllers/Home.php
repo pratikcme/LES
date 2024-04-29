@@ -174,7 +174,7 @@ class Home extends User_Controller
 		foreach ($unorderList as $value) :
 			$data['offer_list'][] = $value;
 		endforeach;
-
+		$data['responsivedimantion'] = $this-- > setDimansion();
 		$this->loadView($this->user_layout, $data);
 	}
 
@@ -186,6 +186,7 @@ class Home extends User_Controller
 
 		$this->session->set_userdata('responsive_width', $responsiveWidth);
 		$this->session->set_userdata('responsive_height', $responsiveHeight);
+		return [$responsiveWidth, $responsiveHeight];
 	}
 
 	public function get_offer_product_listing($offer_id = '')
