@@ -1,19 +1,31 @@
 <!--============== Carousel ==================-->
 <script>
     // Function to send browser dimensions to PHP script
+    function sendDimensions() {
+        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
-    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        // Send AJAX request to server
+        $.ajax({
+            url: window.location.href, // Send to current page
+            type: "POST",
+            data: {
+                width: width,
+                height: height
+            },
+            success: function(response) {
+                console.log(response); // Output server response
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'process.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.responseText);
-        }
-    };
-    xhr.send('width=' + width + '&height=' + height);
+    // Call sendDimensions() function on page load
+    $(document).ready(function() {
+        sendDimensions();
+    });
 </script>
 
 <?php echo $_POST['width'] . '*' . $_POST['height'] ?>
