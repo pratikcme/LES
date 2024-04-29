@@ -19,7 +19,7 @@ $responsive_height = $_SESSION['responsive_height'];
     <!-- The slideshow/carousel -->
 
     <div class="carousel-inner">
-        <?= echo $responsive_width;?>
+        <?= $responsive_width; ?>
         <?php foreach ($banner as $key => $value) {
 
             $shopPage = "";
@@ -35,7 +35,7 @@ $responsive_height = $_SESSION['responsive_height'];
                 $folderName = "web_banners";
                 $bannerImg = $value->web_banner_image;
 
-                
+
                 if (575 >= $responsive_width) {
                     $folderName = "banner_promotion";
                     $bannerImg = $value->app_banner_image;
