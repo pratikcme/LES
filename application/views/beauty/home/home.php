@@ -1,4 +1,22 @@
 <!--============== Carousel ==================-->
+<script>
+    // Function to send browser dimensions to PHP script
+
+    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'process.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send('width=' + width + '&height=' + height);
+</script>
+
+<?php echo $_POST['width'] . '*' . $_POST['height'] ?>
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
     <!-- Indicators/dots -->
