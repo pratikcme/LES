@@ -12,7 +12,7 @@ body {
 .product-image-part {
     width: 500px;
     height: 500px;
-    background: var(--product-details-image-bg);
+    /* background: var(--product-details-image-bg); */
     display: block !important;
     justify-content: center;
     align-items: center;
@@ -29,6 +29,7 @@ body {
     height: 100%;
     border-radius: 20px !important;
     z-index: 10;
+    object-fit: contain;
 }
 
 .product-content-part {
@@ -240,7 +241,7 @@ body {
 .mySwiper2 {
     width: 500px !important;
     height: 500px !important;
-    background: var(--product-details-image-bg) !important;
+    /* background: var(--product-details-image-bg) !important; */
     display: flex !important;
     justify-content: center;
     align-items: center;
@@ -253,6 +254,7 @@ body {
     justify-content: center;
     align-items: flex-end;
     object-fit: contain;
+    padding: 10px;
 }
 
 .mySwiper .swiper-slide {
@@ -266,6 +268,7 @@ body {
     align-items: center;
     object-fit: contain;
     overflow: hidden;
+    padding: 10px;
 }
 
 .mySwiper {
@@ -291,7 +294,7 @@ body {
     display: flex;
     align-items: center;
     border: 1px solid var(--primary-color);
-    padding: 0px 10px;
+    /* padding: 0px 10px; */
     border-radius: 5px;
     height: 50px;
 }
@@ -536,7 +539,7 @@ body {
     background-color: #ffffff;
     box-shadow: rgba(0, 19, 37, 0.72);
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 
 }
 
@@ -748,7 +751,8 @@ body {
 }
 
 .review-comment-wrapper .supportive-div {
-    height: 450px;
+    max-height: 450px;
+    min-height: 150px;
 }
 
 .load-btn {
@@ -1157,7 +1161,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(196, 30, 73, 0.2);
+    background: rgba(89, 65, 236, 0.1);
     color: var(--secondary-color);
 }
 
@@ -1240,6 +1244,11 @@ body {
     }
 }
 
+@media only screen and (max-width: 1199px){
+    .card-header h5 {
+        font-size: 14px;
+    }
+}
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .product-detalis-section {
@@ -1370,6 +1379,12 @@ body {
     .review-desc {
         margin-top: 50px;
     }
+    .card-header h5 {
+        font-size: 12px;
+    }
+    .rating-starts {
+        margin-bottom: 20px;
+    }
     
 }
 
@@ -1405,7 +1420,11 @@ body {
     }
 
     .product-content-part h3 {
-        font-size: 30px;
+        font-size: 26px;
+        margin-top: 0px;
+    }
+    .product-content-part h3 span:nth-child(odd) {
+        font-size: 20px;
     }
 
     .product-detalis-btn {
@@ -1563,9 +1582,12 @@ body {
     }
 
     .product-content-part h3 {
-        font-size: 30px;
+        font-size: 26px;
+        margin-top: 0px;
     }
-
+    .product-content-part h3 span:nth-child(odd) {
+        font-size: 20px;
+    }
     .product-detalis-btn {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -2179,5 +2201,20 @@ body {
     }
     .review-desc-section.p-100{
         padding: 0px 0px !important;
+    }
+}
+
+
+@media only screen and (max-width: 424px) { 
+    .product-detail-quentity .qty-container{
+        padding: 0px !important;
+        height: 40px;
+    }
+    .product-detail-quentity  .qty-container button {
+        width: 40px;
+        height: 40px;
+    }
+    .product-detail-quentity input[type=text]{
+        width: 40px;
     }
 }
