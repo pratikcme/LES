@@ -19,6 +19,13 @@ class Products extends User_Controller
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
+
+	public function setDimansion($postdata)
+	{
+		echo $this->input->post('width');
+		exit;
+	}
+
 	public function index()
 	{
 		if (isset($_GET['cat_id']) && $_GET['cat_id'] != '') {
