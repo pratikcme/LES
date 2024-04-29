@@ -1,4 +1,10 @@
 <!--============== Carousel ==================-->
+
+<?php
+$responsive_width = $_SESSION['responsive_width'];
+$responsive_height = $_SESSION['responsive_height'];
+?>
+
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
     <!-- Indicators/dots -->
@@ -24,8 +30,15 @@
                 $shopPage = base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id);
             } ?>
             <a href="<?= $shopPage ?>">
-
-                <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> " style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . 'web_banners/' . $value->web_banner_image ?>);">
+                <?php
+                $folderName = "web_banners";
+                $bannerImg = $value->web_banner_image;
+                if ($responsive_width <= 575) {
+                    $folderName = "banner_promotion";
+                    $bannerImg = $value->app_banner_image;
+                }
+                ?>
+                <section class="hero-section banner-section carousel-item <?= ($key == 0) ? "active" : "" ?> " style="background-image: url(<?= base_url() . 'public/images/' . $this->folder . $folderName . '/' . $bannerImg ?>);">
 
                 </section>
             </a>
