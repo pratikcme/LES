@@ -180,7 +180,7 @@ class Home extends User_Controller
 
 	public function setDimansion()
 	{
-		echo $this->input->post('width');
+		echo "ghi";
 		exit;
 	}
 
