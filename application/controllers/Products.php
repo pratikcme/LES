@@ -20,11 +20,6 @@ class Products extends User_Controller
 	}
 
 
-	public function setDimansion()
-	{
-		echo $this->input->post('width');
-		exit;
-	}
 
 	public function index()
 	{

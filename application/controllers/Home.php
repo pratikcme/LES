@@ -179,6 +179,11 @@ class Home extends User_Controller
 	}
 
 
+	public function setDimansion()
+	{
+		echo $this->input->post('width');
+		exit;
+	}
 
 	public function get_offer_product_listing($offer_id = '')
 	{
