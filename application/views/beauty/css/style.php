@@ -130,7 +130,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $proceedCheckoutBtnBg = "#1F1F1F";
     $proceedCheckoutBtnText = "#fff";
     // $commonBgColor = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.5) 19.01%, rgba(255, 248, 216, 0.5) 100.66%)";
-    $commonBgColor = "linear-gradient(90deg, rgba(89,65,236,0.3) 0%, rgba(89,65,236,0.2) 100%)";
+    $commonBgColor = "linear-gradient(90deg, rgba(89,65,236,0.2) 0%, rgba(89,65,236,0.1) 100%)";
 
     /*  ----------------checkout-process-color-----  */
     $accordianHeadBg = "rgba(89, 65, 236, 0.1)";
