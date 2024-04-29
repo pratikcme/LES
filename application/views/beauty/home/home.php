@@ -33,7 +33,7 @@ $responsive_height = $_SESSION['responsive_height'];
                 <?php
                 $folderName = "web_banners";
                 $bannerImg = $value->web_banner_image;
-                if ($responsive_width <= 575) {
+                if (575 >= $responsive_width) {
                     $folderName = "banner_promotion";
                     $bannerImg = $value->app_banner_image;
                 }
