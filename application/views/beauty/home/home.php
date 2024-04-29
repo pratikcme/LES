@@ -1,5 +1,17 @@
 <!--============== Carousel ==================-->
+<script>
+    var width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+    var height =
+        window.innerHeight ||
+        document.documentElement.clientHeight ||
+        document.body.clientHeight;
 
+    $("#responsiveWidth").val(width);
+    $("#responsiveHeight").val(height);
+</script>
 <input type="hidden" id="responsiveWidth" name="responsiveWidth" value="">
 <input type="hidden" id="responsiveHeight" name="responsiveHeight" value="">
 <div id="demo" class="carousel slide" data-bs-ride="carousel">

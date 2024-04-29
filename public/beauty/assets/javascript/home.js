@@ -44,23 +44,3 @@ function moveMouse() {
   $img.style.transform =
     "translateY(" + $PositionY + "%) translateX(" + $PositionX + "%)";
 }
-
-function sendDimensions() {
-  var width =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-  var height =
-    window.innerHeight ||
-    document.documentElement.clientHeight ||
-    document.body.clientHeight;
-
-  $("#responsiveWidth").val(width);
-  $("#responsiveHeight").val(height);
-  // Send AJAX request to server
-}
-
-// Call sendDimensions() function on page load
-$(document).ready(function () {
-  sendDimensions();
-});
