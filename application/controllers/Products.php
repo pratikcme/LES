@@ -19,6 +19,7 @@ class Products extends User_Controller
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
+
 	public function index()
 	{
 		if (isset($_GET['cat_id']) && $_GET['cat_id'] != '') {

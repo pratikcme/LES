@@ -126,3 +126,31 @@ $(document).ready(function () {
     });
   });
 });
+
+$(document).ready(function () {
+  var url = $("#url").val();
+  var width =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+  var height =
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight;
+  $.ajax({
+    type: "POST",
+    url: url + "vendors/setDimansion",
+    data: {
+      width: width,
+      height: height,
+    },
+    success: function (response) {
+      console.log("Values sent to PHP successfully.");
+      // Handle success response if needed
+    },
+    error: function (xhr, status, error) {
+      console.error("Error sending values to PHP:", error);
+      // Handle error if needed
+    },
+  });
+});

@@ -16,8 +16,20 @@ class Home extends User_Controller
 		$this->session->unset_userdata('isSelfPickup');
 	}
 
+
+	public function setDimansion()
+	{
+		$responsiveWidth =  $this->input->post('width');
+		$responsiveHeight =  $this->input->post('height');
+
+		$this->session->set_userdata('responsive_width', $responsiveWidth);
+		$this->session->set_userdata('responsive_height', $responsiveHeight);
+	}
+
 	public function index()
 	{
+
+
 
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
@@ -172,8 +184,12 @@ class Home extends User_Controller
 		foreach ($unorderList as $value) :
 			$data['offer_list'][] = $value;
 		endforeach;
+
 		$this->loadView($this->user_layout, $data);
 	}
+
+
+
 
 	public function get_offer_product_listing($offer_id = '')
 	{
