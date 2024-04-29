@@ -12,7 +12,7 @@
 }
 
 .about-us .about-text h2{
-    color: var(--secondary-color);
+    color: var(--title-first-color);
     font-size: 48px;
     font-family: var(--BeVietnamPro-Bold);
 }
@@ -195,7 +195,7 @@ height: 109px;
 }
 
 .client-wrap  .clients-card{
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 20px;
     padding: 40px 30px;
 }
@@ -209,8 +209,8 @@ height: 109px;
 .client-wrap .clients-quote-img::before {
     content: "";
     position: absolute;
-    background: var(--secondary-color);
-    opacity: 0.1;
+    background: var(--categorie-wrapper-bg);
+    /* opacity: 0.1; */
     bottom: -17px;
     left: -7px;
     width: 60px;
@@ -231,7 +231,7 @@ height: 109px;
     object-fit: contain;
 }
 .client-wrap  .clients-quote-img svg{
-    fill: var(--secondary-color) !important;
+    fill: var(--primary-color) !important;
 }
 
 .client-wrap .clients-con p{
@@ -244,12 +244,12 @@ height: 109px;
 .client-wrap .client-name h4{
     font-size: 24px;
     font-family: var(--BeVietnamPro-SemiBold);
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .client-wrap .client-name p{
     font-size: 16px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-family: var(--BeVietnamPro-Regular);
 }
 
@@ -269,6 +269,7 @@ height: 109px;
 .offering .owl-carousel .owl-item.active.center{
     background: #FFFFFF;
     box-shadow: 0px 7px 25px rgba(249, 38, 114, 0.1);
+    border-radius: 20px;
 }
 
 .offering .owl-carousel .owl-item img {
@@ -292,7 +293,7 @@ height: 109px;
 .offering .owl-theme .owl-dots .owl-dot span{
     width: 10px;
     height: 10px;
-    background-color: #FFE5EF;
+    background-color: #195e3e4d;
 }
 
 .offering .owl-theme .owl-dots .owl-dot:hover span {
@@ -301,6 +302,10 @@ height: 109px;
 
 .client-wrap .owl-carousel .owl-nav button {
     display: none !important;
+}
+
+.client-wrap .clients-card{
+    min-height: 404px;
 }
 
 
@@ -401,7 +406,7 @@ height: 109px;
         transform: translateY(0px);
     }
     .offering .owl-stage-outer {
-        padding-bottom: 50px;
+        padding-bottom: 0px;
     }
     
 }
@@ -463,6 +468,9 @@ height: 109px;
 @media only screen and (max-width:575px){
     .about-us .about-img{
         height: 350px;
+    }
+    .offering .owl-stage-outer {
+        padding-bottom: 50px;
     }
 }
 
