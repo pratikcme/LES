@@ -165,7 +165,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
 
 
     /*  ------myaccount-css---  */
-    $myaccoutnTabBg = "rgba(89, 65, 236, 0.1";
+    $myaccoutnTabBg = "rgba(89, 65, 236, 0.1)";
     $myaccoutnTabBorder = "#F6EAFD";
     $myaccoutnTabText = "#0F053F";
     $myaccoutnTabActiveBg = "#005387";

@@ -1246,7 +1246,7 @@ padding-left: 0 !important;
 .ui-widget-content .ui-state-active {
     background-color: var(--secondary-color) !important;
     border-color: var(--secondary-color) !important;
-    color: var(--primary-color) !important;
+    color: #fff !important;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default{
