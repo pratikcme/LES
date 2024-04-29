@@ -129,7 +129,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $cartIcon = "#005387";
     $proceedCheckoutBtnBg = "#1F1F1F";
     $proceedCheckoutBtnText = "#fff";
-    $commonBgColor = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.5) 19.01%, rgba(255, 248, 216, 0.5) 100.66%)";
+    $commonBgColor = "linear-gradient(90deg, rgba(89,65,236,0.2) 0%, rgba(89,65,236,0.1) 100%)";
 
     /*  ----------------checkout-process-color-----  */
     $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
