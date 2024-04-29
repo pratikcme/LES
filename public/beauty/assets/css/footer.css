@@ -80,7 +80,7 @@ footer #Layer_1 path{
 }
 
 .foot-2 {
-    padding-left: 80px;
+    padding-left: 40px;
 }
 .common-links h3{
     font-family: var(--BeVietnamPro-SemiBold);
@@ -237,11 +237,27 @@ footer #Layer_1 path{
     line-height: 1;
 }
 .foot-social-icons ul li a:hover{
-  background: var(--secondary-color);
+  background: var(--title-first-color);
   color: var(--common-white) !important;
   transform: translateY(-5px) !important;
 }
 
+
+@media only screen and (max-width: 1399px) {
+    .foot-1 img{
+        max-width: 180px;
+    }
+}
+@media only screen and (max-width: 1199px) {
+    .foot-1 img{
+        max-width: 130px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .foot-1 img{
+        max-width: 100px;
+    }
+}
 
 @media only screen and (max-width: 768px){
     footer path {
