@@ -56,7 +56,7 @@ $(document).ready(function () {
     document.body.clientHeight;
   $.ajax({
     type: "POST",
-    url: url + "home/setDimansion",
+    url: url + "setDimansion",
     data: {
       width: width,
       height: height,
