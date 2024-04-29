@@ -152,8 +152,8 @@
 }
 
 .tab-save-btn {
-    margin-top: 30px !important;
-    margin-bottom: 50px !important;
+    margin-top: 0px !important;
+    margin-bottom: 30px !important;
 }
 
 .tab-save-btn input[type='submit'],
@@ -207,6 +207,7 @@
     top: 0;
     left: 0;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .edit-address-btn #myBtn {
@@ -299,8 +300,8 @@
     line-height: 40px;
     color: var(--myaccoutn-tab-label-text);
     background: var(--myaccoutn-tab-bg);
-    border-radius: 10px;
-    padding: 15px;
+    border-radius: 10px ;
+    padding: 15px 40px;
     width: 100%;
     margin-bottom: 40px;
 }
@@ -331,7 +332,7 @@
     justify-content: center;
     align-items: center;
     background: var(--secondary-color);
-    color: var(--commn-white) !important;
+    color: #fff !important;
 }
 
 .address-icons .delet-address-btn {
@@ -347,7 +348,7 @@
 
 .sub-tabs .nav-pills {
     width: 100%;
-    max-width: 600px !important;
+    max-width: 599px !important;
     border-radius: 20px 20px 0px 0px !important;
     overflow: hidden;
     gap: 0px;
@@ -451,7 +452,9 @@
 }
 
 .accordion-img-wrapper {
-    width: 125px;
+    width: 100%;
+    max-width: 125px;
+    min-width: 125px;
     height: 125px;
     background: #FFFFFF;
     border: 1px solid #D9E2ED;
@@ -471,6 +474,7 @@
 .accordion-img-wrapper img {
     width: 100%;
     max-width: 80px;
+    min-width: 80px;
 }
 
 .img-about-text h3 {
@@ -703,6 +707,9 @@ table.all-detalis-left tr{
     box-shadow: none !important;
     border: 1px solid var(--myaccoutn-tab-input-border) !important;
 }
+.addcartbutton a{
+    padding: 10px 10px 10px 10px;
+}
 
 
 /* ==========responsive========= */
@@ -796,11 +803,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -939,7 +948,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 100px;
+        width: 100%;
+        max-width: 100px;
+        min-width: 100px;
         height: 100px;
     }
 
@@ -963,11 +974,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1164,7 +1177,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+        max-width: 80px;
+        min-width: 80px;
         height: 80px;
     }
 
@@ -1197,11 +1212,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px;/ */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1422,7 +1439,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
@@ -1461,11 +1480,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1690,7 +1711,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
@@ -1733,11 +1756,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -1842,6 +1867,10 @@ table.all-detalis-left tr{
     .order-not-found-content p {
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    #myModal .login-page {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
 }
@@ -1959,7 +1988,9 @@ table.all-detalis-left tr{
     }
 
     .accordion-img-wrapper {
-        width: 80px;
+        width: 100%;
+    max-width: 80px;
+    min-width: 80px;
         height: 80px;
     }
 
@@ -2007,11 +2038,13 @@ table.all-detalis-left tr{
     /* ------tab-3-css---- */
     .mywishlist-part .add-cart-btn {
         font-size: 12px;
-        padding: 10px 20px 10px 20px;
+        /* padding: 10px 20px 10px 20px; */
     }
 
     .cart-detail-img {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
+        min-width: 70px;
         height: 70px;
         box-shadow: 0px 5px 12px rgb(34 37 40 / 10%);
         border-radius: 10px;
@@ -2136,6 +2169,13 @@ table.all-detalis-left tr{
     .order-not-found-content p {
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    #myModal .login-page {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .mywishlist-part .add-cart-btn span {
+        margin-right: 2px;
     }
 
 }
