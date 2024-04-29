@@ -704,6 +704,12 @@ p {
     background-color: transparent !important;
   }
 
+  @media only screen and (max-width: 1400px){
+    .hero-section{
+        background-size: cover !important;
+    }
+}
+
 
 
 @media only screen and (max-width:1200px) {
