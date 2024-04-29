@@ -181,8 +181,11 @@ class Home extends User_Controller
 
 	public function setDimansion()
 	{
-		echo $this->input->post('width');
-		exit;
+		$responsiveWidth =  $this->input->post('width');
+		$responsiveHeight =  $this->input->post('height');
+
+		$this->session->set_userdata('responsive_width', $responsiveWidth);
+		$this->session->set_userdata('responsive_height', $responsiveHeight);
 	}
 
 	public function get_offer_product_listing($offer_id = '')

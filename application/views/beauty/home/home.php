@@ -1,7 +1,10 @@
 <!--============== Carousel ==================-->
-<!-- 
-<input type="hidden" id="responsiveWidth" name="responsiveWidth" value="">
-<input type="hidden" id="responsiveHeight" name="responsiveHeight" value=""> -->
+<?php
+echo $this->session->userdata('responsive_width');
+echo $this->session->userdata('responsive_height');
+exit;
+?>
+
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
     <!-- Indicators/dots -->
