@@ -80,7 +80,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $footerTextSecondary = "#555261";
     $footerBgColor = "rgba(89, 65, 236, 0.1)";
     $footerLinkHover = "#165e3c";
-    $copyRightBg = "#0045dc";
+    $copyRightBg = "#005387";
 
     /* ------------lisiting-colors--------- / */
     $lisingBannerTitle1 = "#222528";
@@ -164,10 +164,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
 
 
     /*  ------myaccount-css---  */
-    $myaccoutnTabBg = "rgba(89, 65, 236, 0.1)";
+    $myaccoutnTabBg = "rgba(89, 65, 236, 0.1";
     $myaccoutnTabBorder = "#F6EAFD";
     $myaccoutnTabText = "#0F053F";
-    $myaccoutnTabActiveBg = "#3E0067";
+    $myaccoutnTabActiveBg = "#005387";
     $myaccoutnTabLabelText = "#0F053F";
     $myaccoutnTabInputBg = "#FFFFFF";
     $myaccoutnTabInputBorder = "#D0C9F1";
@@ -192,7 +192,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $leftContactWrapperLabel = "#0F053F";
     $leftContactWrapperInputBg = "#FFFFFF";
     $leftContactWrapperInputBorder = "#D0C9F1";
-    $leftContactSubmitBtnBg = "#0045dc";
+    $leftContactSubmitBtnBg = "#005387";
     $leftContactSubmitBtnText = "#FFF";
 
     $rightContactWrapperBg = "#11405A";
