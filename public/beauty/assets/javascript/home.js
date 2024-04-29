@@ -44,3 +44,17 @@ function moveMouse() {
   $img.style.transform =
     "translateY(" + $PositionY + "%) translateX(" + $PositionX + "%)";
 }
+
+$(document).ready(function () {
+  var width =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+  var height =
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight;
+
+  $("#responsiveWidth").val(width); // Use .val() to set value
+  $("#responsiveHeight").val(height); // Use .val() to set value
+});
