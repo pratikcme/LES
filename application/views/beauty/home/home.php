@@ -1,6 +1,6 @@
 <!--============== Carousel ==================-->
 <script>
-    $(document).ready(function() {
+    jQuery(document).ready(function() {
         var width =
             window.innerWidth ||
             document.documentElement.clientWidth ||
@@ -10,8 +10,8 @@
             document.documentElement.clientHeight ||
             document.body.clientHeight;
 
-        $("#responsiveWidth").val(width); // Use .val() to set value
-        $("#responsiveHeight").val(height); // Use .val() to set value
+        jQuery("#responsiveWidth").val(width); // Use .val() to set value
+        jQuery("#responsiveHeight").val(height); // Use .val() to set value
     });
 </script>
 <input type="hidden" id="responsiveWidth" name="responsiveWidth" value="">
