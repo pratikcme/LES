@@ -8,7 +8,7 @@
     max-width: 870px;
     box-shadow: 0px 7px 15px rgba(34, 37, 40, 0.05);
     border-radius: 20px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--primary-color);
     background: var(--commn-white);
     overflow: hidden;
     padding: 11px;
@@ -43,6 +43,7 @@ table{
 .cart-detail-img img{
     width: 100%;
     max-width: 80px;
+    object-fit: contain;
 }
 .cart-detail-text h4 a{
     font-family: var(--BeVietnamPro-SemiBold);
@@ -50,10 +51,12 @@ table{
     line-height: 20px;
     color: var(--cart-td-text-1);
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
+    max-width: 170px;
 }
 .cart-detail-text h5{
     font-family: Poppins;
@@ -95,6 +98,7 @@ table{
     display: flex;
     /* align-items: center; */
     gap: 20px;
+    justify-content: space-between;
 }
 .cart-price-text a{
     color: var(--cart-icon) !important;
@@ -107,11 +111,14 @@ table th{
     font-weight: 600;
     line-height: 20px;
     color: var(--cart-thead-text);
+}
 
+.cart-product-detail table th:nth-child(2){
+    padding-left: 40px;
 }
 
 table tr{
-    border-bottom: 1px solid var(--secondary-color);
+    border-bottom: 1px solid var(--primary-color);
 }
 
 table tr:last-child{
@@ -163,7 +170,7 @@ table tr:nth-child(3) td {
     height: auto;
     box-shadow: 0px 7px 15px rgb(34 37 40 / 5%);
     border-radius: 20px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--accordian-border);
     background: var(--commn-white);
     overflow: hidden;
     padding: 11px;
@@ -218,7 +225,7 @@ table th:nth-child(4){
 }
 
 .clear-btn {
-    margin-left: 30px;
+    margin-left: 25px !important;
     margin-top: 10px;
     background: var(--header-btn-bg);
     border: 1px solid var(--header-btn-bg);
@@ -234,6 +241,7 @@ table th:nth-child(4){
     text-transform: capitalize;
     transition: 0.3s;
 }
+
 
 /* ===========responsive========== */
 
@@ -569,7 +577,7 @@ table th:nth-child(4){
     }
     .cart-product-detail{
         overflow: hidden !important;
-        overflow-x: scroll !important;
+        overflow: scroll !important;
         margin-bottom: 20px;
     }
     .cart-product-detail table{
@@ -809,7 +817,19 @@ table th:nth-child(4){
         
 }
 
-
+@media only screen and (max-width: 1199px){
+    .clear-btn {
+        margin-left: 25px !important;
+    }
+}
+@media only screen and (max-width: 991px){
+    .cart-product-detail{
+        overflow: scroll !important;
+    }
+    .cart-detail-text h4 a{
+        max-width: 140px;
+    }
+}
 
 @media only screen and (max-width: 767px) {
     .proceed-checkout-btn{
@@ -819,10 +839,10 @@ table th:nth-child(4){
 }
 @media only screen and (max-width: 575px) {
     .cart-product-detail {
-        overflow: unset !important;
+        /* overflow: unset !important;
         max-height: 100% !important;
         min-height: 100% !important;
-        overflow-y: unset !important;
+        overflow-y: unset !important; */
     }
     .cart-product-detail table td:nth-child(1) {
         padding-top: 20px !important;
