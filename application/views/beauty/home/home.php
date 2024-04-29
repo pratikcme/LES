@@ -1,32 +1,4 @@
 <!--============== Carousel ==================-->
-<script>
-    // Function to send browser dimensions to PHP script
-    function sendDimensions() {
-        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-        // Send AJAX request to server
-        $.ajax({
-            url: window.location.href, // Send to current page
-            type: "POST",
-            data: {
-                width: width,
-                height: height
-            },
-            success: function(response) {
-                console.log(response); // Output server response
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
-
-    // Call sendDimensions() function on page load
-    $(document).ready(function() {
-        sendDimensions();
-    });
-</script>
 
 <?php echo $_POST['width'] . '*' . $_POST['height'] ?>
 <div id="demo" class="carousel slide" data-bs-ride="carousel">

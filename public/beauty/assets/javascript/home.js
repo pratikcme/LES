@@ -44,3 +44,35 @@ function moveMouse() {
   $img.style.transform =
     "translateY(" + $PositionY + "%) translateX(" + $PositionX + "%)";
 }
+
+function sendDimensions() {
+  var width =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+  var height =
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight;
+
+  // Send AJAX request to server
+  $.ajax({
+    url: window.location.href, // Send to current page
+    type: "POST",
+    data: {
+      width: width,
+      height: height,
+    },
+    success: function (response) {
+      console.log(response); // Output server response
+    },
+    error: function (xhr, status, error) {
+      console.error(xhr.responseText);
+    },
+  });
+}
+
+// Call sendDimensions() function on page load
+$(document).ready(function () {
+  sendDimensions();
+});
