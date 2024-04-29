@@ -20,9 +20,7 @@ class Home extends User_Controller
 	{
 
 
-		echo 'weight' . $this->input->post('responsiveWidth');
-		echo 'height' . $this->input->post('responsiveHeight');
-		exit;
+
 		$this->load->model('api_v3/common_model', 'co_model');
 		$isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
 
@@ -176,6 +174,9 @@ class Home extends User_Controller
 		foreach ($unorderList as $value) :
 			$data['offer_list'][] = $value;
 		endforeach;
+		echo 'weight' . $this->input->post('responsiveWidth');
+		echo 'height' . $this->input->post('responsiveHeight');
+		exit;
 		$this->loadView($this->user_layout, $data);
 	}
 
