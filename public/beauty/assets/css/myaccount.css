@@ -569,6 +569,15 @@
     color: var(--primary-color);
 }
 
+.main-accordion .ship-close.cancel-btn{
+    padding: 0;
+    background-color: transparent !important;
+}
+
+.main-accordion .ship-close.cancel-btn i{
+    color: #005387 !important;
+}
+
 .all-detalis-wrapper {
     display: flex;
     align-items: center;
