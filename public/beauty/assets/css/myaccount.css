@@ -574,6 +574,10 @@
     background-color: transparent !important;
 }
 
+.main-accordion .ship-close.cancel-btn:hover{
+    border: none;
+}
+
 .main-accordion .ship-close.cancel-btn i{
     color: #005387 !important;
 }
