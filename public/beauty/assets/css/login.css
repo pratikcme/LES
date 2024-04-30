@@ -200,7 +200,7 @@ max-width: 25px;
     text-transform: capitalize;
 }
 .facebook-btn{
-    background: #1877F2;
+    background: #005387;
     border: 1px solid var(--login-wrapper-border);
     padding: 15px 20px 15px 20px;
     font-family: var(--Poppins-regular);
