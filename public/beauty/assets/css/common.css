@@ -700,11 +700,11 @@ label.error{
    button.tawk-button{
    background-color: var(--primary-color) !important;
    }
+   
+   
    .modal-content{
     background-color: var(--common-white) !important;
     }
-   
-   
    
    @media only screen and (max-width: 1400px){
        .hero-section{
