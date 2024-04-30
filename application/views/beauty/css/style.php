@@ -132,10 +132,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $commonBgColor = "linear-gradient(90deg, rgba(132,115,237,0.16850490196078427) 0%, rgba(132,115,237,0.17130602240896353) 0%)";
 
     /*  ----------------checkout-process-color-----  */
-    $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $accordianHeadBg = "rgba(89, 65, 236, 0.1)";
     $accordianBg = "#fff";
     $accordianBorder = "#F6EAFD";
-    $accordianHeadText = "rgba(89, 65, 236, 0.1)";
+    $accordianHeadText = "#005387";
     $accordianIcon = "#FFB9CE";
     $accordianIconBg = "rgba(89, 65, 236, 0.1)";
     $accordianContentText1 = "#030235";
