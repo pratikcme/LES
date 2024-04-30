@@ -1,7 +1,6 @@
 <?php
 
 if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkha.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'zumkha.com' || $_SERVER['SERVER_NAME'] == 'www.zumkha.com') {
-
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
     $lightWhiteBg = "#F5F5F5";
     $commonPeraColor = "#555261";
@@ -132,10 +131,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $commonBgColor = "linear-gradient(90deg, rgba(132,115,237,0.16850490196078427) 0%, rgba(132,115,237,0.17130602240896353) 0%)";
 
     /*  ----------------checkout-process-color-----  */
-    $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    $accordianHeadBg = "rgba(89, 65, 236, 0.1)";
     $accordianBg = "#fff";
     $accordianBorder = "#F6EAFD";
-    $accordianHeadText = "rgba(89, 65, 236, 0.1)";
+    $accordianHeadText = "#005387";
     $accordianIcon = "#FFB9CE";
     $accordianIconBg = "rgba(89, 65, 236, 0.1)";
     $accordianContentText1 = "#030235";
@@ -200,6 +199,204 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $rightContactIconRound = "rgba(40, 104, 221, 0.1)";
     $rightContactWrapperText = "#0F053F";
     $new_svg_color = "rgba(89, 65, 236, 0.1)";
+    // $lightGreenBg = "rgba(234, 247, 237, 0.5)";
+    // $lightWhiteBg = "#F5F5F5";
+    // $commonPeraColor = "#555261";
+    // $smallBagColor = "#F6EAFD";
+    // $primaryColor = "#005387";
+    // $secondaryColor = "#1F1F1F";
+
+    // $primaryPink = "#005387";
+    // $secondaryBlack = "#45006B";
+    // $lightBlack = "#868390";
+    // $commonBannerBgColor = "#005387";
+    // $primaryBoxShadow = "0px 20px 50px rgba(43, 174, 74, 0.15)";
+
+    // $titleFirstColor = "#1F1F1F";
+    // $commonPeraColor = "#868390";
+    // $commonBtnColor = "#11405A";
+    // $commonBtnShadow = "0px 7px 20px rgba(17, 64, 90, 0.2)";
+    // $commonWhite = "#fff";
+    // $btnHoverText = "#11405A";
+    // $btnHoverShadow = "0px 3px 10px 1px rgba(17, 64, 90, 0.9)";
+    // $selectBorderColor = "#C5CCD5";
+
+    // $commonBorder = "#F6EAFD";
+
+    // // -----breadcrumb-color--- 
+    // $breadcrumbLinkColor = "#222528";
+    // $breadcrumbActiveLinkColor = "#2BAE4A";
+
+    // // / -----header-color---- /
+    // $headerIconColorFirst = "#222528";
+    // $headerIconColorSecond = "#FFFFFF";
+    // $headerIconRoundColor = "rgba(0, 83, 135, 0.1)";
+    // $headerTextWhite = "#FFFFFF";
+    // $headerBtnBg = "#45006B";
+    // $headerBtnText = "#FFFFFF";
+
+    // //  -----navigation-bar-color---- 
+    // $navTextColor = "#005387";
+    // $navHoverColor = "#165e3c";
+
+    // //  ------categorie-sec-color------
+    // $categorieWrapperBorder = "#CCD3DB";
+    // $categorieWrapperBg = "rgba(89, 65, 236, 0.1)";
+    // $categorieWrapperBgHover = "#fc46ab";
+    // $categorieWrapperRound = "linear-gradient(67deg, #F6EAFD 19.01%, rgba(246, 234, 253, 0.28) 100.66%)";
+    // $categorieWrapperText = "#1F1F1F";
+
+    // // -------card-color------
+    // $cardBgColor = "#fff";
+    // $cardBorderColor = "#F6EAFD";
+    // $cardTextPrimary = "#0F053F";
+    // $cardTextSecondary = "#555261";
+    // $cardNumberPrimary = "#fe43ad";
+    // $cardNumberSecondary = "#555261";
+    // $cardBtnBg = "#005387";
+    // $cardImgBg = "rgba(89, 65, 236, 0.1)";
+
+    // // ----our-offer-color---
+    // $offer1PrimaryText = "#F92672";
+    // $offer1SecondaryText = "#45006B";
+    // $offer1Btn = "#45006B";
+
+    // $offer2PrimaryText = "#7749BE";
+    // $offer2SecondaryText = "#7C0580";
+    // $offer2Btn = "#7749BE";
+
+    // // Three-banner-color
+    // $cardTextColor = "#031B61";
+    // $modernCardColor = "#A05500";
+    // $practicalCardColor = "#035B3E";
+    // $cardColor = "#3E8DC5";
+
+
+    // // ----------footer-color------
+    // $footerTextPrimary = "#0F053F";
+    // $footerTextSecondary = "#555261";
+    // $footerBgColor = "rgba(89, 65, 236, 0.1)";
+    // $footerLinkHover = "#165e3c";
+    // $copyRightBg = "#005387";
+
+    // /* ------------lisiting-colors--------- / */
+    // $lisingBannerTitle1 = "#222528";
+    // $lisingBannerTitle2 = "#2BAE4A";
+    // $listingText1 = "#555261";
+    // $filterIconColor1 = "#2BAE4A";
+    // $listIconColor2 = "#222528";
+    // $listingSubCtgBg = "#F2F5F3";
+    // $listingSubCtgBorder = "#D9E2ED";
+    // $listingSubCtgText = "#414549";
+    // $listingSubCtgHover = "#2BAE4A";
+    // $listingFilterIconBg = "#165e3c";
+
+    // /* ------------lisiting-2-colors--------- */
+    // $listing2CtgBg = "#FFFFFF";
+    // $listing2CtgBorder = "#F6EAFD";
+    // $listing2HeaderBg = "rgba(89, 65, 236, 0.1)";
+    // $listing2HeaderText = "#0F053F";
+    // $listing2NormalText = "#555261";
+
+    // /* ------dropdown-cart------ / */
+    // $dropCartText1 = "#0F053F";
+    // $dropCartText2 = "#45006B";
+    // $dropCartNumber = "#165e3c";
+    // $dropCartBottomBorder = "#FFEEF4";
+
+    // /*  -----product-detalis-color----  */
+    // $productDetailsText1 = "#0F053F";
+    // $productDetailsText2 = "#555261";
+    // $productDetailsText3 = "#165e3c";
+    // $productDetailsText4 = "#165e3c";
+    // $productDetailsImageBg = "rgba(89, 65, 236, 0.1)";
+    // $productDetailsBtn1 = "#0F053F";
+    // $productDetailsBtn2 = "#2BAE4A";
+
+
+    // /*  -------- shop-cart-color-------  */
+    // $cartTheadBg = "rgba(89, 65, 236, 0.1)";
+    // $cartTheadText = "#0F053F";
+    // $cartTdText1 = "#0F053F";
+    // $cartTdText2 = "#414549";
+    // $cartTdText3 = "#005387";
+    // $cartImageBg = "rgba(89, 65, 236, 0.1)";
+    // $cartCounterBorder = "#F6EAFD";
+    // $cartCounterBg = "#fff";
+    // $cartIcon = "#005387";
+    // $proceedCheckoutBtnBg = "#1F1F1F";
+    // $proceedCheckoutBtnText = "#fff";
+    // $commonBgColor = "linear-gradient(90deg, rgba(132,115,237,0.16850490196078427) 0%, rgba(132,115,237,0.17130602240896353) 0%)";
+
+    // /*  ----------------checkout-process-color-----  */
+    // $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
+    // $accordianBg = "#fff";
+    // $accordianBorder = "#F6EAFD";
+    // $accordianHeadText = "rgba(89, 65, 236, 0.1)";
+    // $accordianIcon = "#FFB9CE";
+    // $accordianIconBg = "rgba(89, 65, 236, 0.1)";
+    // $accordianContentText1 = "#030235";
+    // $accordianContentText2 = "#4D4C61";
+    // $accordianStar = "#FFB9CE";
+    // $checkoutSecureIcon = "rgba(89, 65, 236, 0.1)";
+
+
+    // /*  -------modal-popup-color----  */
+    // $modalBg = "rgba(17, 64, 90, 0.9)";
+    // $modalText1 = "#005387";
+    // $modalText2 = "#0F053F";
+    // $modalText3 = "#555261";
+    // $continueBtnBg = "#005387";
+    // $continueBtnText = "#fff";
+    // $closeBtn = "#005387";
+
+
+    // /*  -----------about-us-css--------  */
+    // $peragraphColor = "#414549";
+    // $clientWrapperText2 = "#222528";
+    // $clientWrapperText3 = "#2BAE4A";
+    // $clientWrapperBg = "#FFFFFF";
+    // $clientWrapperBorder = "#D9E2ED";
+    // $clientWrapperIcon = "#D9E2ED";
+
+
+    // /*  ------myaccount-css---  */
+    // $myaccoutnTabBg = "rgba(89, 65, 236, 0.1)";
+    // $myaccoutnTabBorder = "#F6EAFD";
+    // $myaccoutnTabText = "#0F053F";
+    // $myaccoutnTabActiveBg = "#005387";
+    // $myaccoutnTabLabelText = "#0F053F";
+    // $myaccoutnTabInputBg = "#FFFFFF";
+    // $myaccoutnTabInputBorder = "#D0C9F1";
+
+
+    // /*  login-page-color---  */
+    // $loginTitleColor = "#0F053F";
+    // $loginPeraColor = "#4E447D";
+    // $loginWrapperBg = "#FFFFFF";
+    // $loginWrapperBorder = "#F6EAFD";
+    // $loginWrapperLabel = "#0F053F";
+    // $loginWrapperPlacholder = "#555261";
+    // $loginWrapperInputBg = "#FFFFFF";
+    // $loginWrapperInputBorder = "#D0C9F1";
+    // $loginBtnBg = "#F92672";
+    // $loginBtnText = "#FFF";
+    // $forgotText = "#005387";
+
+    // /*  -----contact-us-css-------  */
+    // $leftContactWrapperBg = "#FFFFFF";
+    // $leftContactWrapperBorder = "#F6EAFD";
+    // $leftContactWrapperLabel = "#0F053F";
+    // $leftContactWrapperInputBg = "#FFFFFF";
+    // $leftContactWrapperInputBorder = "#D0C9F1";
+    // $leftContactSubmitBtnBg = "#005387";
+    // $leftContactSubmitBtnText = "#FFF";
+
+    // $rightContactWrapperBg = "#11405A";
+    // $rightContactWrapperBorder = "#D9E2ED";
+    // $rightContactIconRound = "rgba(40, 104, 221, 0.1)";
+    // $rightContactWrapperText = "#0F053F";
+    // $new_svg_color = "rgba(89, 65, 236, 0.1)";
 } else if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == 'stagging.launchestore.com' || $_SERVER['SERVER_NAME'] == 'spawale.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.spawale.launchestore.com') {
 
     $lightGreenBg = "rgba(234, 247, 237, 0.5)";
