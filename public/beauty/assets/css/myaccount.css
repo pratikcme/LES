@@ -561,6 +561,15 @@
     cursor: pointer;
 }
 
+.main-accordion .ship-close.cancel-btn{
+    padding: 0 !important;
+    background-color: transparent;
+}
+
+.main-accordion .ship-close.cancel-btn i{
+    color: #005387;
+}
+
 .all-detalis-left .cancel-btn:hover,
 .main-accordion .cancel-btn:hover
 {
