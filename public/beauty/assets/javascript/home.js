@@ -62,7 +62,8 @@ $(document).ready(function () {
       height: height,
     },
     success: function (response) {
-      $("#demo").removeClass("d-none");
+      // $("#demo").removeClass("d-none");
+      $("#demo").html(response);
       console.log("Values sent to PHP successfully.");
       // Handle success response if needed
     },

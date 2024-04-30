@@ -5,18 +5,15 @@ $responsive_width = $_SESSION['responsive_width'];
 $responsive_height = $_SESSION['responsive_height'];
 ?>
 
-<div id="demo" class="carousel slide d-none" data-bs-ride="carousel">
-
-    <!-- Indicators/dots -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+    <!-- 
     <div class="carousel-indicators">
         <?php foreach ($banner as $key => $value) { ?>
             <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="<?= ($key == '0') ? 'active' : '' ?>"></button>
         <?php } ?>
-        <!-- <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> -->
+       
     </div>
 
-    <!-- The slideshow/carousel -->
 
     <div class="carousel-inner">
 
@@ -47,7 +44,7 @@ $responsive_height = $_SESSION['responsive_height'];
             </a>
         <?php } ?>
 
-    </div>
+    </div> -->
 </div>
 
 <!-- -----Categories-section----- -->

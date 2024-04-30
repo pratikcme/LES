@@ -27,7 +27,6 @@ class Home extends User_Controller
 		$html = "";
 
 
-		$html .= '<div id="demo" class="carousel slide" data-bs-ride="carousel">';
 
 
 		$html .= '<div class="carousel-indicators">';
@@ -61,14 +60,12 @@ class Home extends User_Controller
 				$bannerImg = $value->app_banner_image;
 			}
 
-			$html .= '<section class="hero-section banner-section carousel-item' . ($key == 0) ? "active" : "" . '" style="background-image: url( base_url() . "public/images/" . $this->folder . $folderName . "/" . $bannerImg);">
+			$html .= '<section class="hero-section banner-section carousel-item' . ($key == 0) ? "active" : "" . '" style="background-image: url( base_url() . "public/images/"' . $this->folder . $folderName . '"/"' . $bannerImg . ');">
 
 			</section>
 		</a>';
 		}
-		$html .=
-			'</div>
-</div>';
+		$html .= '</div>';
 
 		echo json_encode($html);
 
