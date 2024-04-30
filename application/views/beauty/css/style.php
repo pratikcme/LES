@@ -129,14 +129,13 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $cartIcon = "#005387";
     $proceedCheckoutBtnBg = "#1F1F1F";
     $proceedCheckoutBtnText = "#fff";
-    // $commonBgColor = "linear-gradient(66.89deg, rgba(255, 248, 216, 0.5) 19.01%, rgba(255, 248, 216, 0.5) 100.66%)";
-    $commonBgColor = "linear-gradient(90deg, rgba(89,65,236,0.2) 0%, rgba(89,65,236,0.1) 100%)";
+    $commonBgColor = "linear-gradient(90deg, rgba(132,115,237,0.16850490196078427) 0%, rgba(132,115,237,0.17130602240896353) 0%)";
 
     /*  ----------------checkout-process-color-----  */
-    $accordianHeadBg = "rgba(89, 65, 236, 0.1)";
+    $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
     $accordianBg = "#fff";
     $accordianBorder = "#F6EAFD";
-    $accordianHeadText = "#005387";
+    $accordianHeadText = "rgba(89, 65, 236, 0.1)";
     $accordianIcon = "#FFB9CE";
     $accordianIconBg = "rgba(89, 65, 236, 0.1)";
     $accordianContentText1 = "#030235";
