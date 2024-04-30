@@ -129,7 +129,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
     $cartIcon = "#005387";
     $proceedCheckoutBtnBg = "#1F1F1F";
     $proceedCheckoutBtnText = "#fff";
-    $commonBgColor = "linear-gradient(90deg, rgba(89,65,236,0.2) 0%, rgba(89,65,236,0.1) 100%)";
+    $commonBgColor = "linear-gradient(90deg, rgba(132,115,237,0.16850490196078427) 0%, rgba(132,115,237,0.17130602240896353) 0%)";
 
     /*  ----------------checkout-process-color-----  */
     $accordianHeadBg = "linear-gradient(43.01deg, #F6EAFD 19.04%, rgba(255, 233, 241, 0.28) 69.77%)";
@@ -164,7 +164,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'stagg
 
 
     /*  ------myaccount-css---  */
-    $myaccoutnTabBg = "rgba(89, 65, 236, 0.1";
+    $myaccoutnTabBg = "rgba(89, 65, 236, 0.1)";
     $myaccoutnTabBorder = "#F6EAFD";
     $myaccoutnTabText = "#0F053F";
     $myaccoutnTabActiveBg = "#005387";
