@@ -19,7 +19,7 @@ $responsive_height = $_SESSION['responsive_height'];
     <!-- The slideshow/carousel -->
 
     <div class="carousel-inner">
-        <?= $responsive_width; ?>
+
         <?php foreach ($banner as $key => $value) {
 
             $shopPage = "";
