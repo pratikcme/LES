@@ -22,6 +22,9 @@ class Home extends User_Controller
 		$responsiveWidth =  $this->input->post('width');
 		$responsiveHeight =  $this->input->post('height');
 
+		@$data['banner'] = $this->this_model->getWebBannerImage();
+
+
 		$this->session->set_userdata('responsive_width', $responsiveWidth);
 		$this->session->set_userdata('responsive_height', $responsiveHeight);
 	}
