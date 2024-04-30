@@ -5,7 +5,7 @@ $responsive_width = $_SESSION['responsive_width'];
 $responsive_height = $_SESSION['responsive_height'];
 ?>
 
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
+<div id="demo" class="carousel slide d-none" data-bs-ride="carousel">
 
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
