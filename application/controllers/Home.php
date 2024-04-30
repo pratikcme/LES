@@ -22,8 +22,55 @@ class Home extends User_Controller
 		$responsiveWidth =  $this->input->post('width');
 		$responsiveHeight =  $this->input->post('height');
 
-		@$data['banner'] = $this->this_model->getWebBannerImage();
+		@$banner = $this->this_model->getWebBannerImage();
 
+		$html = "";
+
+
+		$html .= '<div id="demo" class="carousel slide" data-bs-ride="carousel">';
+
+
+		$html .= '<div class="carousel-indicators">';
+		foreach ($banner as $key => $value) {
+			$html .= '<button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $key ?>" class="' . ($key == '0') ? "active" : "" . '"></button>';
+		}
+
+		$html .= '</div>';
+
+
+		$html .= '<div class="carousel-inner">';
+
+		foreach ($banner as $key => $value) {
+
+			$shopPage = "";
+			if ($value->type == "1") {
+				$shopPage = base_url() . "products";
+			} elseif ($value->type == "2") {
+				$shopPage = base_url() . "products?cat_id=" . $this->utility->safe_b64encode($value->category_id);
+			} else {
+				$shopPage = base_url() . "products/productDetails/" . $this->utility->safe_b64encode($value->product_id) . "/" . $this->utility->safe_b64encode($value->product_varient_id);
+			}
+			$html .= '<a href="' . $shopPage . '">';
+
+			$folderName = "web_banners";
+			$bannerImg = $value->web_banner_image;
+
+
+			if (575 >= $responsiveWidth) {
+				$folderName = "banner_promotion";
+				$bannerImg = $value->app_banner_image;
+			}
+
+			$html .= '<section class="hero-section banner-section carousel-item' . ($key == 0) ? "active" : "" . '" style="background-image: url( base_url() . "public/images/" . $this->folder . $folderName . "/" . $bannerImg);">
+
+			</section>
+		</a>';
+		}
+		$html .=
+			'</div>
+</div>';
+
+		echo json_encode($html);
 
 		$this->session->set_userdata('responsive_width', $responsiveWidth);
 		$this->session->set_userdata('responsive_height', $responsiveHeight);
