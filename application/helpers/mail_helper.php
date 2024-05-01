@@ -73,9 +73,10 @@ function getMycartSubtotal()
       $total += numberFormat(numberFormat($value->discount_price) * $value->quantity);
     }
     // dd($total);
-    dd($total);
+
   }
   $total = number_format($total, 2, '.', '');
+  dd($total);
   return $total;
 }
 
