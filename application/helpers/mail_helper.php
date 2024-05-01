@@ -56,7 +56,7 @@ function getMycartSubtotal()
         if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
           $product[0]->discount_price = $product[0]->without_gst_price;
         }
-        $total += numberFormat(numberFormat($product[0]->discount_price) * numberFormat($value['quantity']));
+        $total += numberFormat(numberFormat($product[0]->discount_price) * $value['quantity']);
       }
     }
   } else {
