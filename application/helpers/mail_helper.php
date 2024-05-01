@@ -69,10 +69,11 @@ function getMycartSubtotal()
       if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
         $value->discount_price = $value->without_gst_price;
       }
-      dd($value->discount_price);
+
       $total += numberFormat(numberFormat($value->discount_price) * $value->quantity);
     }
     // dd($total);
+    dd($total);
   }
   $total = number_format($total, 2, '.', '');
   return $total;
