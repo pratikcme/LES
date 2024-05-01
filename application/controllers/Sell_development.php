@@ -452,7 +452,7 @@ class Sell_development extends Vendor_Controller
                 $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
 
                 foreach ($result as $key => $value) {
-                    $gst_amount = ($value->discount_price * $value->gst) / 100;
+                    $gst_amount = ($value->without_gst_price * $value->gst) / 100;
                     $total_gst += numberFormat($gst_amount) * $value->quantity;
                     $data['value'] = $value;
 
