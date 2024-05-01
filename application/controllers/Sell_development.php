@@ -52,14 +52,14 @@ class Sell_development extends Vendor_Controller
         $gst = 0;
         $total_savings = 0;
         foreach ($data['order_temp_result'] as $key => $value) :
-            $gst_amount = numberFormat((numberFormat($value->discount_price) * $value->gst) / 100);
-            $total_savings += numberFormat(($value->actual_price - numberFormat($value->discount_price)) * $value->quantity);
-            $gst += numberFormat(numberFormat($gst_amount) * numberFormat($value->quantity));
+            $gst_amount = numberFormat((numberFormat($value->without_gst_price) * $value->gst) / 100);
+            $total_savings += numberFormat(($value->actual_price - $value->discount_price) * $value->quantity);
+            $gst += numberFormat(numberFormat($gst_amount) * $value->quantity);
 
             if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                 $data['order_temp_result'][$key]->price = numberFormat($value->without_gst_price * $value->quantity);
             } else {
-                $data['order_temp_result'][$key]->price = numberFormat(numberFormat($value->discount_price) * $value->quantity);
+                $data['order_temp_result'][$key]->price = numberFormat($value->discount_price * $value->quantity);
             }
             $sub_total += $data['order_temp_result'][$key]->price;
         endforeach;
