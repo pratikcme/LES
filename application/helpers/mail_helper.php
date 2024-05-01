@@ -63,6 +63,7 @@ function getMycartSubtotal()
 
     $CI->load->model('frontend/product_model', 'product_model');
     $my_cart = $CI->product_model->getMyCart();
+    dd($my_cart);
     foreach ($my_cart as $key => $value) {
       if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
         $value->discount_price = $value->without_gst_price;
