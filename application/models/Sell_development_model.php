@@ -224,7 +224,7 @@ class Sell_development_model extends My_model
                 $response = 0;
             }
         } else {
-            dd($varient);
+
             if ($varient[0]->quantity > 0) {
 
                 $varient_id = $varient[0]->id;
@@ -263,7 +263,7 @@ class Sell_development_model extends My_model
                     'gst' => $varient[0]->gst,
                     'discount' => $gst_amount_with_final_amount,
                     'discount_price' => number_format((float)$price, 2, '.', ''),
-                    'without_gst_price' => numberFormat($without_gst_price)
+                    'without_gst_price' => numberFormat($price)
                 ];
                 $data['table'] = TABLE_ORDER_TEMP;
                 $data['insert'] = $insertedData;
