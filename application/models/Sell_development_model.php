@@ -224,7 +224,6 @@ class Sell_development_model extends My_model
                 $response = 0;
             }
         } else {
-
             if ($varient[0]->quantity > 0) {
 
                 $varient_id = $varient[0]->id;
@@ -232,19 +231,13 @@ class Sell_development_model extends My_model
                 $price = number_format((float)$varient[0]->price, 2, '.', '');
                 $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
                 // new for Discount
-
-                //  Inclusive gst //
-                // $without_gst_price = numberFormat($price / ($gst_percent + 100) * 100);
-                $gst_per = ($price / ($varient[0]->gst + 100) * 100);
-                $without_gst_price = $gst_per;
-
                 if ($discount_percentage > 0) {
-                    $disc_price = ($without_gst_price * $discount_percentage) / 100;
-                    $price =  $without_gst_price - $disc_price;
+                    $disc_price = ($varient[0]->price * $discount_percentage) / 100;
+                    $price =  $varient[0]->price - $disc_price;
                 }
-                $gst_amount_with_final_amount = numberFormat(($price * $varient[0]->gst) / 100);
-                // $gst_per = ($price * $varient[0]->gst) / 100;
-                // $without_gst_price = $price - $gst_per;
+
+                $gst_per = ($price * $varient[0]->gst) / 100;
+                $without_gst_price = $price - $gst_per;
 
                 $total = $quantity * $price;
 
@@ -261,7 +254,7 @@ class Sell_development_model extends My_model
                     'dt_updated' => $date,
                     'park' => '0',
                     'gst' => $varient[0]->gst,
-                    'discount' => $gst_amount_with_final_amount,
+                    'discount' => $discount_percentage,
                     'discount_price' => number_format((float)$price, 2, '.', ''),
                     'without_gst_price' => numberFormat($without_gst_price)
                 ];

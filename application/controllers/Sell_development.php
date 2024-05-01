@@ -52,14 +52,14 @@ class Sell_development extends Vendor_Controller
         $gst = 0;
         $total_savings = 0;
         foreach ($data['order_temp_result'] as $key => $value) :
-            $gst_amount = numberFormat((numberFormat($value->without_gst_price) * $value->gst) / 100);
-            $total_savings += numberFormat(($value->actual_price - $value->discount_price) * $value->quantity);
-            $gst += numberFormat(numberFormat($gst_amount) * $value->quantity);
+            $gst_amount = numberFormat((numberFormat($value->discount_price) * $value->gst) / 100);
+            $total_savings += numberFormat(($value->actual_price - numberFormat($value->discount_price)) * $value->quantity);
+            $gst += numberFormat(numberFormat($gst_amount) * numberFormat($value->quantity));
 
             if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
                 $data['order_temp_result'][$key]->price = numberFormat($value->without_gst_price * $value->quantity);
             } else {
-                $data['order_temp_result'][$key]->price = numberFormat($value->discount_price * $value->quantity);
+                $data['order_temp_result'][$key]->price = numberFormat(numberFormat($value->discount_price) * $value->quantity);
             }
             $sub_total += $data['order_temp_result'][$key]->price;
         endforeach;
@@ -144,13 +144,11 @@ class Sell_development extends Vendor_Controller
             // dd($res);die;
             $html = '<ul>';
             foreach ($res as $key => $value) {
-                // $price = number_format((float)$value->discount_price, '2', '.', '');
-                $price = $value->discount_price;
+                $price = number_format((float)$value->discount_price, '2', '.', '');
+
                 if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $price =   $value->without_gst_price;
-                    // $price = number_format((float)$value->without_gst_price, '2', '.', '');
-                    // $discount_amt = $value->discount_price * $value->gst / 100;
-                    // $price = $value->discount_price - $discount_amt;
+                    $discount_amt = $value->discount_price * $value->gst / 100;
+                    $price = $value->discount_price - $discount_amt;
                 }
 
                 $html .= '<li class="popover-list-item ' . $class . '" data-product_id=' . $value->product_id . ' data-pw_id=' . $value->pw_id . ' >
@@ -452,7 +450,7 @@ class Sell_development extends Vendor_Controller
                 $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
 
                 foreach ($result as $key => $value) {
-                    $gst_amount = ($value->without_gst_price * $value->gst) / 100;
+                    $gst_amount = ($value->discount_price * $value->gst) / 100;
                     $total_gst += numberFormat($gst_amount) * $value->quantity;
                     $data['value'] = $value;
 
