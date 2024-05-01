@@ -40,6 +40,7 @@ function sendMail($data)
 
 function getMycartSubtotal()
 {
+  dd("that");
   $CI = &get_instance();
   $CI->load->model('api_v3/common_model', 'co_model');
   $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
