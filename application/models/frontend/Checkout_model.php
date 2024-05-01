@@ -602,8 +602,8 @@ class Checkout_model extends My_model
                 if ($isShow[0]->display_price_with_gst == '1') {
                     $gst_amount = (numberFormat($value->discount_price) * $gst) / 100;
                 } else {
-                    $gst_amount =  ($value->discount_price  / ($gst + 100) * 100);
-                    dd($value->discount_price - $gst_amount);
+                    $gstAmount =  ($value->discount_price  / ($gst + 100) * 100);
+                    $gst_amount = ($value->discount_price - $gstAmount);
                 }
                 $total_gst += numberFormat($gst_amount) * $value->quantity;
             }
