@@ -186,7 +186,7 @@ class Sell_development_model extends My_model
 
         $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
-        dd($isShow);
+        dd($isAvailable);
         if (!empty($isAvailable)) {
 
             if ($varient[0]->quantity >= $isAvailable[0]->quantity + $quantity) {
