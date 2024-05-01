@@ -132,7 +132,7 @@ class Sell_development extends Vendor_Controller
 
         $this->load->model('api_v3/common_model', 'co_model');
         $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('branch_vendor_id'));
-        dd($isShow);
+
         $currency = $this->this_model->getCurrency();
         $cur = $currency[0]->value;
         if ($this->input->post()) {
