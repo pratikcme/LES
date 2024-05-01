@@ -177,7 +177,7 @@ class Sell_development_model extends My_model
 
     public function addProducttoTempOrder($postdata)
     {
-
+        dd($postdata);
         $product_id = $postdata['product_id'];
         $varient_id = $postdata['pw_id'];
         $quantity = 1;
