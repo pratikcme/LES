@@ -40,7 +40,7 @@ function sendMail($data)
 
 function getMycartSubtotal()
 {
-  dd("that");
+
   $CI = &get_instance();
   $CI->load->model('api_v3/common_model', 'co_model');
   $isShow = $CI->co_model->checkpPriceShowWithGstOrwithoutGst($CI->session->userdata('vendor_id'));
@@ -67,7 +67,7 @@ function getMycartSubtotal()
       if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
         $value->discount_price = $value->without_gst_price;
       }
-      $total += numberFormat(numberFormat($value->discount_price) * numberFormat($value->quantity));
+      $total += numberFormat(numberFormat($value->discount_price) * $value->quantity);
     }
     // dd($total);
   }
