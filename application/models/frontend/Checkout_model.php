@@ -570,7 +570,7 @@ class Checkout_model extends My_model
                 $gst = $this->api_model->getProductGst($value['product_id']);
 
                 if ($isShow[0]->display_price_with_gst == '1') {
-                    $gst_amount = (numberFormat($value['discount_price']) * $gst) / 100;
+                    $gst_amount = (numberFormat($value['without_gst_price']) * $gst) / 100;
                 } else {
                     $gst_amount =  (numberFormat($value['discount_price']) - numberFormat($value->discount_price) / ($gst + 100) * 100);
                 }
@@ -587,9 +587,9 @@ class Checkout_model extends My_model
 
 
                 if ($isShow[0]->display_price_with_gst == '1') {
-                    $value->discount_price = $value->without_gst_price;
+                    $value->discount_price = $value->without_gst_price * $value->quantity;;
                 }
-                $myCartValue += numberFormat($value->discount_price) * $value->quantity;
+                $myCartValue += $value->discount_price * $value->quantity;
 
 
                 $this->load->model('api_v3/api_model');
