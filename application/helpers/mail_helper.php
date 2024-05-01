@@ -76,7 +76,7 @@ function getMycartSubtotal()
 
   }
   $total = number_format($total, 2, '.', '');
-  dd($total);
+
   return $total;
 }
 

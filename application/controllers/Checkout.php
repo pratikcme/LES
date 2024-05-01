@@ -148,7 +148,7 @@ class Checkout extends User_Controller
 
     // DK
     $getMycartSubtotal = getMycartSubtotal();
-
+    dd($getMycartSubtotal);
     $data['getMycartSubtotal'] = ($data['isShow'][0]->display_price_with_gst == '0') ? $getMycartSubtotal  - $data['TotalGstAmount'] : $getMycartSubtotal;
     dd($data['getMycartSubtotal']);
     $oldGst = $data['TotalGstAmount'];
