@@ -603,7 +603,7 @@ class Checkout_model extends My_model
                     $gst_amount = (numberFormat($value->discount_price) * $gst) / 100;
                 } else {
                     $gst_amount =  ($value->discount_price  / ($gst + 100) * 100);
-                    dd($gst_amount);
+                    dd($value->discount_price - $gst_amount);
                 }
                 $total_gst += numberFormat($gst_amount) * $value->quantity;
             }
