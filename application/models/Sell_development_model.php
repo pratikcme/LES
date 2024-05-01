@@ -231,13 +231,19 @@ class Sell_development_model extends My_model
                 $price = number_format((float)$varient[0]->price, 2, '.', '');
                 $discount_percentage = number_format((float)$varient[0]->discount_per, 2, '.', '');
                 // new for Discount
-                if ($discount_percentage > 0) {
-                    $disc_price = ($varient[0]->price * $discount_percentage) / 100;
-                    $price =  $varient[0]->price - $disc_price;
-                }
 
-                $gst_per = ($price * $varient[0]->gst) / 100;
-                $without_gst_price = $price - $gst_per;
+                //  Inclusive gst //
+                // $without_gst_price = numberFormat($price / ($gst_percent + 100) * 100);
+                $gst_per = ($price / ($varient[0]->gst + 100) * 100);
+                $without_gst_price = $gst_per;
+
+                if ($discount_percentage > 0) {
+                    $disc_price = ($without_gst_price * $discount_percentage) / 100;
+                    $price =  $without_gst_price - $disc_price;
+                }
+                $gst_amount_with_final_amount = numberFormat(($price * $varient[0]->gst) / 100);
+                // $gst_per = ($price * $varient[0]->gst) / 100;
+                // $without_gst_price = $price - $gst_per;
 
                 $total = $quantity * $price;
 
@@ -254,7 +260,7 @@ class Sell_development_model extends My_model
                     'dt_updated' => $date,
                     'park' => '0',
                     'gst' => $varient[0]->gst,
-                    'discount' => $discount_percentage,
+                    'discount' => $gst_amount_with_final_amount,
                     'discount_price' => number_format((float)$price, 2, '.', ''),
                     'without_gst_price' => numberFormat($without_gst_price)
                 ];
@@ -1484,10 +1490,9 @@ class Sell_development_model extends My_model
 
         $html = '';
         foreach ($res as $type) { ?>
-<div class="catg_list" id="catg_list"
-    onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
-    <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
-</div>
+            <div class="catg_list" id="catg_list" onclick="return select_subcategory('<?php echo $type->id; ?>','<?php echo $type->name; ?>');">
+                <a href="javascript:;"><span><?php echo @$type->name; ?></span></a>
+            </div>
 <?php }
         echo $html;
 
