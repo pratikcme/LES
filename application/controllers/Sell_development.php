@@ -144,11 +144,13 @@ class Sell_development extends Vendor_Controller
             // dd($res);die;
             $html = '<ul>';
             foreach ($res as $key => $value) {
-                $price = number_format((float)$value->discount_price, '2', '.', '');
-
+                // $price = number_format((float)$value->discount_price, '2', '.', '');
+                $price = $value->discount_price;
                 if (!empty($isShow) && $isShow[0]->display_price_with_gst == '1') {
-                    $discount_amt = $value->discount_price * $value->gst / 100;
-                    $price = $value->discount_price - $discount_amt;
+                    $price =   $value->without_gst_price;
+                    // $price = number_format((float)$value->without_gst_price, '2', '.', '');
+                    // $discount_amt = $value->discount_price * $value->gst / 100;
+                    // $price = $value->discount_price - $discount_amt;
                 }
 
                 $html .= '<li class="popover-list-item ' . $class . '" data-product_id=' . $value->product_id . ' data-pw_id=' . $value->pw_id . ' >
