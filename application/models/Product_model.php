@@ -619,7 +619,7 @@ class product_model extends My_model
                 'price' => $price,
                 'quantity' => $quantity,
                 'discount_per' => $discount_per,
-                'without_gst_price' => $without_gst_price,
+                'without_gst_price' => $discount_price,
                 'discount_price' => $product_price_with_gst,
                 'dt_updated' => strtotime(date('Y-m-d H:i:s')),
             );
