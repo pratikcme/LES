@@ -444,7 +444,6 @@ class Api_Controller extends MY_Controller
 
 class Super_Admin_Controller extends MY_Controller
 {
-
     public $user_data = null;
     public $user_type = null;
     public $user_id = null;
@@ -452,10 +451,10 @@ class Super_Admin_Controller extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        // if ($this->session->userdata['validSuperAdmin'] == '') {
-        //     redirect(base_url() . 'admin');
-        // }
-        //   $this->title = 'LaunchEstore';
+        if ($this->session->userdata['validSuperAdmin'] == '') {
+            redirect(base_url() . 'admin');
+        }
+        $this->title = 'LaunchEstore';
     }
 }
 
