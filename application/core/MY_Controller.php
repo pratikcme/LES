@@ -452,7 +452,7 @@ class Super_Admin_Controller extends MY_Controller
     {
         parent::__construct();
         if ($this->session->userdata['validSuperAdmin'] == '') {
-            redirect(base_url() . 'admin');
+            redirect(base_url());
         }
         $this->title = 'LaunchEstore';
     }
