@@ -572,6 +572,7 @@
     margin: 0px auto;
     transition: 0.4s;
     padding: 10px 12px;
+    height: 50px;
 }
 
 .edit-address-btn #myBtn:hover{
