@@ -8,7 +8,8 @@ $footerExtraBg = "rgba(196, 30, 73, 0.2)";
 $white = "#FFFFFF";
 
 // ========== heading-text-color ==========
-$headingBlack = '#FFF';
+$headingBlack = '#000';
+$vendorDrop = "#fff";
 
 // =========== paregraph-text-color ==========
 $lightGray = "#4D4C61";
@@ -118,7 +119,7 @@ $footerExtraBg = "rgba(196, 30, 73, 0.2)";
 $white = "#FFFFFF";
 
 // ========== heading-text-color ==========
-$headingBlack = '#FFF';
+$headingBlack = '#030235';
 
 // =========== paregraph-text-color ==========
 $lightGray = "#4D4C61";
@@ -288,6 +289,7 @@ $new_svg_color = "#FFE9E4";
         --navbarColor : <?= $navbarColor ?>;
         --cartBtnBackground : <?= $cartBtnBackground ?>;
         --logoWidth :<?= $logoWidth?>;
+        --vendorDrop:<?= $vendorDrop?>;
 
         /*=========== paregraph-text-color ==========*/
         --light-gray: <?= $lightGray ?>;

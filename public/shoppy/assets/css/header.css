@@ -568,7 +568,7 @@ body {
 .lng-drp select,
 .branch-drp select{
     background: transparent !important;
-    color: var(--heading-black) !important;
+    color: var(--vendorDrop) !important;
     font-size: 15px;
     font-family: var(--PublicSans-Regular);
     padding: 10px 5px;
