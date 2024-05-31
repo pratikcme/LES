@@ -199,7 +199,7 @@
                     </ul>
                 </div>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="sellers" role="tabpanel" aria-labelledby="seller-tab">
+                    <div class="tab-pane fade  " id="sellers" role="tabpanel" aria-labelledby="seller-tab">
                         <div class="row">
                             <?php
 
@@ -284,7 +284,7 @@
 
 
 
-                    <div class="tab-pane fade" id="New" role="tabpanel" aria-labelledby="arrival-tab">
+                    <div class="tab-pane fade show active" id="New" role="tabpanel" aria-labelledby="arrival-tab">
                         <div class="row">
                             <?php foreach ($new_arrival as $key => $value) : ?>
 
