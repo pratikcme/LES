@@ -1,7 +1,7 @@
 <?php
 
 // ==================== colors =============================
-$primaryColor = "#F5512B";
+$primaryColor = "#aa8434";
 $secondryColor = "#030235";
 $footerBg = "#000";
 $footerExtraBg = "rgba(196, 30, 73, 0.2)";
@@ -15,7 +15,7 @@ $lightGray = "#4D4C61";
 $ofwhiteColor = "rgba(255, 255, 255, 0.7)";
 
 // =========== nav-hover-color ==============
-$navHoverColor = "#F5512B";
+$navHoverColor = "#aa8434";
 
 // ============ banner-color ===========
 $firstBgColor = "#FFE9E4";
@@ -45,11 +45,11 @@ $cartTheadBg = "#FFF0ED";
 $cartTheadText = "#030235";
 $cartTdText1 = "#030235";
 $cartTdText2 = "#414549";
-$cartTdText3 = "#F5512B";
+$cartTdText3 = "#aa8434";
 $cartCounterBorder = "#FFCEC2";
 $cartCounterBg = "#fff";
-$cartIcon = "#F5512B";
-$proceedCheckoutBtnBg = "#F5512B";
+$cartIcon = "#aa8434";
+$proceedCheckoutBtnBg = "#aa8434";
 $proceedCheckoutBtnText = "#fff";
 
 // ================= checkout-process-color ===========
@@ -67,20 +67,20 @@ $modalBg =  "rgba(17, 64, 90, 0.9)";
 $modalText1 = "#294695";
 $modalText2 = "#030235";
 $modalText3 = "#4D4C61";
-$continueBtnBg = "#F5512B";
+$continueBtnBg = "#aa8434";
 $continuebtntext = "#fff";
-$closeBtn = "#F5512B";
+$closeBtn = "#aa8434";
 
 
 /* ------myaccount-css--- */
 $myaccoutnTabBg = "linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%);;";
 $myaccoutntabborder = "#FFCEC2";
 $myaccoutntabtext = "#4D4C61";
-$myaccoutntabactivebg = "#F5512B";
-$myaccoutntabactiveborder = "#F5512B";
+$myaccoutntabactivebg = "#aa8434";
+$myaccoutntabactiveborder = "#aa8434";
 $myaccoutntablabeltext = "#030235";
 $myaccoutntabinputbg = "#FFFFFF";
-$myaccoutntabinputborder = "#F5512B";
+$myaccoutntabinputborder = "#aa8434";
 
 $categoryheader = "#FFF0ED";
 
@@ -91,8 +91,8 @@ $nextpage = "#FDDCD5";
 $commonborder = "rgba(196, 30, 73, 0.2)";
 $supportivecolor = "#FFF0ED";
 
-$bannerbgextra = "#F5512B";
-$aboutboxbg = "#F5512B";
+$bannerbgextra = "#aa8434";
+$aboutboxbg = "#aa8434";
 
 
 /* ----our-offer-color--- */
