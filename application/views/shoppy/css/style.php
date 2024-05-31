@@ -19,7 +19,7 @@ $navHoverColor = "#F5512B";
 
 // ============ banner-color ===========
 $firstBgColor = "#FFE9E4";
-$secondBgColor = "rgba(196, 30, 73, 0.1)";
+$secondBgColor = "rgba(187 187 187 / 10%)";
 
 // ============== card-color ============
 $cardColor = "#3E8DC5";
@@ -116,8 +116,8 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
         $borderColor = "#aa8434";
         $borderColor2 = "#aa8434";
         $lightPrimary = "#ff774b";
-        $headerBackground = "#fff";
-        $navbarColor = "#aa8434";
+        $headerBackground = "#000";
+        $navbarColor = "#fff";
         $cartBtnBackground = "#aa8434";
         $cartBtnColor = "#fff";
         $loginBtnBackground = "#aa8434";
