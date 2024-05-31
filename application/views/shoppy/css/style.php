@@ -3,7 +3,7 @@
 // ==================== colors =============================
 $primaryColor = "#F5512B";
 $secondryColor = "#030235";
-$footerBg = "#294695";
+$footerBg = "#000";
 $footerExtraBg = "rgba(196, 30, 73, 0.2)";
 $white = "#FFFFFF";
 
