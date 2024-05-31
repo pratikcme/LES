@@ -1,7 +1,7 @@
 <?php
 
 // ==================== colors =============================
-$primaryColor = "#F5512B";
+$primaryColor = "#000";
 $secondryColor = "#030235";
 $footerBg = "#294695";
 $footerExtraBg = "rgba(196, 30, 73, 0.2)";
@@ -110,26 +110,26 @@ $new_svg_color = "#FFE9E4";
 
 if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
 
-        $primaryColor = "#000";
-        $secondaryColor = "#1A1A1A";
-        $lightColor =  "#fff";
-        $borderColor = "#aa8434";
-        $borderColor2 = "#aa8434";
-        $lightPrimary = "#ff774b";
-        $headerBackground = "#fff";
-        $navbarColor = "#aa8434";
-        $cartBtnBackground = "#aa8434";
-        $cartBtnColor = "#fff";
-        $loginBtnBackground = "#aa8434";
-        $loginBtnColor = "#fff";
-        $loginBtnborder = "#aa8434";
-        $logoWidth = "250px";
-        $abtImgWidth = "350px";
-        $hvrClr = "#1A1A1A";
-        $cartNum =  "#000";
-        $categoryColor = "#000";
-        $categoryActiveBg = "#fff";
-        $categoryActiveColor = "#fff";
+    //     $primaryColor = "#000";
+    //     $secondaryColor = "#1A1A1A";
+    //     $lightColor =  "#fff";
+    //     $borderColor = "#aa8434";
+    //     $borderColor2 = "#aa8434";
+    //     $lightPrimary = "#ff774b";
+    //     $headerBackground = "#fff";
+    //     $navbarColor = "#aa8434";
+    //     $cartBtnBackground = "#aa8434";
+    //     $cartBtnColor = "#fff";
+    //     $loginBtnBackground = "#aa8434";
+    //     $loginBtnColor = "#fff";
+    //     $loginBtnborder = "#aa8434";
+    //     $logoWidth = "250px";
+    //     $abtImgWidth = "350px";
+    //     $hvrClr = "#1A1A1A";
+    //     $cartNum =  "#000";
+    //     $categoryColor = "#000";
+    //     $categoryActiveBg = "#fff";
+    //     $categoryActiveColor = "#fff";
     } 
 ?>
 
