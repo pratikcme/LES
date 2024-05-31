@@ -1,5 +1,5 @@
 <?php
-
+echo 1;die;
 // ==================== colors =============================
 $primaryColor = "#F5512B";
 $secondryColor = "#030235";
