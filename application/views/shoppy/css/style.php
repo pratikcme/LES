@@ -162,7 +162,7 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
         --headerBackground : <?= $headerBackground ?>;
         --navbarColor : <?= $navbarColor ?>;
         --cartBtnBackground : <?= $cartBtnBackground ?>;
-
+        --logoWidthl :<?= $logoWidth?>
 
         /*=========== paregraph-text-color ==========*/
         --light-gray: <?= $lightGray ?>;
