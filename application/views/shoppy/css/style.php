@@ -123,7 +123,7 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
         $loginBtnBackground = "#aa8434";
         $loginBtnColor = "#fff";
         $loginBtnborder = "#aa8434";
-        $logoWidth = "150px";
+        $logoWidth = "100px";
         $abtImgWidth = "350px";
         $hvrClr = "#1A1A1A";
         $cartNum =  "#000";
