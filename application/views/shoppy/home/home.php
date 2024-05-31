@@ -189,11 +189,11 @@
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
 
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="seller-tab" data-bs-toggle="tab" data-bs-target="#sellers" type="button" role="tab" aria-controls="sellers" aria-selected="true"><?= $this->lang->line('Best Sellers') ?></button>
+                            <button class="nav-link " id="seller-tab" data-bs-toggle="tab" data-bs-target="#sellers" type="button" role="tab" aria-controls="sellers" aria-selected="true"><?= $this->lang->line('Best Sellers') ?></button>
                         </li>
 
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="arrival-tab" data-bs-toggle="tab" data-bs-target="#New" type="button" role="tab" aria-controls="New" aria-selected="false"><?= $this->lang->line('New Arrival') ?></button>
+                            <button class="nav-link active" id="arrival-tab" data-bs-toggle="tab" data-bs-target="#New" type="button" role="tab" aria-controls="New" aria-selected="false"><?= $this->lang->line('New Arrival') ?></button>
                         </li>
 
                     </ul>
