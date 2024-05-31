@@ -123,7 +123,7 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
         $loginBtnBackground = "#aa8434";
         $loginBtnColor = "#fff";
         $loginBtnborder = "#aa8434";
-        $logoWidth = "250px";
+        $logoWidth = "200px";
         $abtImgWidth = "350px";
         $hvrClr = "#1A1A1A";
         $cartNum =  "#000";
@@ -162,7 +162,7 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
         --headerBackground : <?= $headerBackground ?>;
         --navbarColor : <?= $navbarColor ?>;
         --cartBtnBackground : <?= $cartBtnBackground ?>;
-            
+
 
         /*=========== paregraph-text-color ==========*/
         --light-gray: <?= $lightGray ?>;
