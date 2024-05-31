@@ -287,7 +287,7 @@ $new_svg_color = "#FFE9E4";
         --headerBackground : <?= $headerBackground ?>;
         --navbarColor : <?= $navbarColor ?>;
         --cartBtnBackground : <?= $cartBtnBackground ?>;
-        --logoWidth :<?= $logoWidth?>
+        --logoWidth :<?= $logoWidth?>;
 
         /*=========== paregraph-text-color ==========*/
         --light-gray: <?= $lightGray ?>;
