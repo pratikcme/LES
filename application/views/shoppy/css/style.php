@@ -109,7 +109,7 @@ $new_svg_color = "#FFE9E4";
 
 
 if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
-   
+   echo 1;die;
         $primaryColor = "#aa8434";
         $secondaryColor = "#1A1A1A";
         $lightColor =  "#fff";
