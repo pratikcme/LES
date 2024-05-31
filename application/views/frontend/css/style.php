@@ -543,7 +543,7 @@ if ($_SERVER['SERVER_NAME'] == 'development.launchestore.com') {
 } 
 
 elseif ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
-
+echo 4;die;
     $primaryColor = "#aa8434";
     $secondaryColor = "#1A1A1A";
     $lightColor =  "#fff";
