@@ -118,7 +118,7 @@ $footerExtraBg = "rgba(196, 30, 73, 0.2)";
 $white = "#FFFFFF";
 
 // ========== heading-text-color ==========
-$headingBlack = '#030235';
+$headingBlack = '#FFF';
 
 // =========== paregraph-text-color ==========
 $lightGray = "#4D4C61";
