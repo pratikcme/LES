@@ -1,4 +1,4 @@
-<?php 
+<?php
 // error_reporting(E_ALL);
 // ini_set("display_errors", '1');
 
@@ -541,31 +541,6 @@ if ($_SERVER['SERVER_NAME'] == 'development.launchestore.com') {
     $categoryActiveBg = "#fff";
     $categoryActiveColor = "#fff";
 } 
-
-elseif ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
-echo 4;die;
-    $primaryColor = "#aa8434";
-    $secondaryColor = "#1A1A1A";
-    $lightColor =  "#fff";
-    $borderColor = "#aa8434";
-    $borderColor2 = "#aa8434";
-    $lightPrimary = "#ff774b";
-    $headerBackground = "#fff";
-    $navbarColor = "#aa8434";
-    $cartBtnBackground = "#aa8434";
-    $cartBtnColor = "#fff";
-    $loginBtnBackground = "#aa8434";
-    $loginBtnColor = "#fff";
-    $loginBtnborder = "#aa8434";
-    $logoWidth = "250px";
-    $abtImgWidth = "350px";
-    $hvrClr = "#1A1A1A";
-    $cartNum =  "#000";
-    $categoryColor = "#000";
-    $categoryActiveBg = "#fff";
-    $categoryActiveColor = "#fff";
-} 
-
 
 
 else {

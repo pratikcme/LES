@@ -1,5 +1,5 @@
 <?php
-echo 1;die;
+
 // ==================== colors =============================
 $primaryColor = "#F5512B";
 $secondryColor = "#030235";
@@ -106,6 +106,31 @@ $offer2btn = "#7749BE";
 
 
 $new_svg_color = "#FFE9E4";
+
+
+if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
+   
+        $primaryColor = "#aa8434";
+        $secondaryColor = "#1A1A1A";
+        $lightColor =  "#fff";
+        $borderColor = "#aa8434";
+        $borderColor2 = "#aa8434";
+        $lightPrimary = "#ff774b";
+        $headerBackground = "#fff";
+        $navbarColor = "#aa8434";
+        $cartBtnBackground = "#aa8434";
+        $cartBtnColor = "#fff";
+        $loginBtnBackground = "#aa8434";
+        $loginBtnColor = "#fff";
+        $loginBtnborder = "#aa8434";
+        $logoWidth = "250px";
+        $abtImgWidth = "350px";
+        $hvrClr = "#1A1A1A";
+        $cartNum =  "#000";
+        $categoryColor = "#000";
+        $categoryActiveBg = "#fff";
+        $categoryActiveColor = "#fff";
+    } 
 ?>
 
 
