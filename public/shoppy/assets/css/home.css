@@ -75,6 +75,10 @@
     z-index: 1;
 }
 
+#demo .carousel-inner{
+    padding-top: 100px;
+}
+
 /*=========== category-section ==================*/
 .category-wrap .category-img{
     max-width: 424px;
