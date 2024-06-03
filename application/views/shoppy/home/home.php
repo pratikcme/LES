@@ -59,13 +59,13 @@
                                 <p class="wow bounceInLeft" data-wow-duration="3s" data-wow-delay="0" data-wow-offset="0">
                                     <?= $value->sub_title ?></p>
                                 <?php if ($value->type == '1') { ?>
-                                    <a href="<?= base_url() . 'products' ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
+                                    <!-- <a href="<?= base_url() . 'products' ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a> -->
 
                                 <?php } else if ($value->type == '2') { ?>
-                                    <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
+                                    <!-- <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->category_id) ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a> -->
 
                                 <?php } else { ?>
-                                    <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a>
+                                    <!-- <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->product_id) . '/' . $this->utility->safe_b64encode($value->product_varient_id) ?>" type="button" class="lg-btn wow bounceInLeft" data-wow-duration="4s" data-wow-delay="0" data-wow-offset="0"><?= $this->lang->line('Shop Now') ?></a> -->
 
                                 <?php } ?>
 
