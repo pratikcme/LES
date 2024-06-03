@@ -398,7 +398,7 @@ if (isset($offer_list) && !empty($offer_list) &&  count($offer_list) != 0) { ?>
                                 <div class="sale-banner-inner text-center">
                                     <h3> <span><?= $offer_list[0]->offer_percent ?>% OFF</span></h3>
                                     <h2><?= $value->offer_title ?></h2>
-                                    <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="lg-btn"><?= $this->lang->line('Shop Now'); ?></a>
+                                    <!-- <a href="<?= base_url() . 'home/get_offer_product_listing/' . $this->utility->safe_b64encode($value->id) ?>" class="lg-btn"><?= $this->lang->line('Shop Now'); ?></a> -->
                                 </div>
                             </div>
                         </div>
