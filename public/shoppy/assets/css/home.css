@@ -94,6 +94,7 @@
     object-fit: cover;
     border-radius: 20px;
     transition: 0.5s;
+    object-fit: contain;
 }
 
 /* .category-wrap .categories img:hover{
