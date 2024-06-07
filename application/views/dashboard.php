@@ -15,72 +15,72 @@ $vendor_id = $this->session->userdata['id'];
 <script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
 
 <style type="text/css">
-.page-content {
-    background: #c7c7c7;
-}
+    .page-content {
+        background: #c7c7c7;
+    }
 
-#chartdiv {
-    height: 500px;
-    width: 100% !important;
-    display: block !important;
-    margin: 0 auto !important;
-}
+    #chartdiv {
+        height: 500px;
+        width: 100% !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
 
-.footerdashboard {
-    margin-top: 141px;
-}
+    .footerdashboard {
+        margin-top: 141px;
+    }
 
-#chartdivs {
-    width: 100%;
-    height: 500px;
-    background: #fff;
-    border-radius: 3px;
-}
+    #chartdivs {
+        width: 100%;
+        height: 500px;
+        background: #fff;
+        border-radius: 3px;
+    }
 
-.query-form {
-    background: white;
-    padding: 10px 25px;
-}
+    .query-form {
+        background: white;
+        padding: 10px 25px;
+    }
 
-.query-form h3 {
-    font-weight: bold;
-    color: #2e2e2e;
-}
+    .query-form h3 {
+        font-weight: bold;
+        color: #2e2e2e;
+    }
 
-.query-form p {
-    font-size: 16px;
-    color: black;
-    margin-bottom: 21px;
-}
+    .query-form p {
+        font-size: 16px;
+        color: black;
+        margin-bottom: 21px;
+    }
 
-.query-form .form-group {
-    margin-bottom: 10px;
-}
+    .query-form .form-group {
+        margin-bottom: 10px;
+    }
 
-.query-form .form-group textarea {
-    height: 100px !important;
-}
+    .query-form .form-group textarea {
+        height: 100px !important;
+    }
 
 
-.query-form input::placeholder {
-    color: #000;
-}
+    .query-form input::placeholder {
+        color: #000;
+    }
 
-.query-form .form-group textarea::placeholder {
-    color: #000;
-}
+    .query-form .form-group textarea::placeholder {
+        color: #000;
+    }
 
-.query-form input[type="submit"] {
-    width: 150px;
-    height: 40px;
-    background: #1185e1;
-    color: white;
-    font-size: 16px;
-    text-transform: capitalize;
-    border: 0px;
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
+    .query-form input[type="submit"] {
+        width: 150px;
+        height: 40px;
+        background: #1185e1;
+        color: white;
+        font-size: 16px;
+        text-transform: capitalize;
+        border: 0px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
 </style>
 
 <!--main content start-->
@@ -156,7 +156,7 @@ $vendor_id = $this->session->userdata['id'];
                             <section class="panel">
                                 <div class="symbol terques1">
                                     <!-- <i class="fa fa-first-order"></i> -->
-                                    <img src="<?= base_url() ?>public/images/box.png" alt="images">
+                                    <img src="<?= base_url() ?>public/box.png" alt="images">
                                 </div>
                                 <a href="#">
                                     <div class="value">
@@ -173,7 +173,7 @@ $vendor_id = $this->session->userdata['id'];
                             <section class="panel">
                                 <div class="symbol terques2">
                                     <!-- <i class="fa fa-first-order"></i> -->
-                                    <img src="<?= base_url() ?>public/images/dollar.png" alt="images">
+                                    <img src="<?= base_url() ?>public/dollar.png" alt="images">
                                 </div>
                                 <a href="#">
                                     <div class="value">
@@ -194,7 +194,7 @@ $vendor_id = $this->session->userdata['id'];
                             <section class="panel">
                                 <div class="symbol terques3">
                                     <!-- <i class="fa fa-first-order"></i> -->
-                                    <img src="<?= base_url() ?>public/images/box.png" alt="images">
+                                    <img src="<?= base_url() ?>public/box.png" alt="images">
                                 </div>
                                 <a href="#">
                                     <div class="value">
@@ -211,7 +211,7 @@ $vendor_id = $this->session->userdata['id'];
                             <section class="panel">
                                 <div class="symbol terques4">
                                     <!-- <i class="fa fa-first-order"></i> -->
-                                    <img src="<?= base_url() ?>public/images/dollar.png" alt="images">
+                                    <img src="<?= base_url() ?>public/dollar.png" alt="images">
                                 </div>
                                 <a href="#">
                                     <div class="value">
@@ -230,16 +230,14 @@ $vendor_id = $this->session->userdata['id'];
             </div>
 
             <div class="col-md-6">
-                <form id="queryForm" method="post" action="<?= base_url() . 'admin/QueryMesageToSuperAdmin' ?>"
-                    class="query-form">
+                <form id="queryForm" method="post" action="<?= base_url() . 'admin/QueryMesageToSuperAdmin' ?>" class="query-form">
                     <h3 style="">Contact Us</h3>
                     <p>If you have any kind of query , Please leave your message here</p>
                     <div class="form-group">
                         <input type="text" name="subject" placeholder="Enter Subject" class="form-control" required="">
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Enter Your Message" name="message" class="form-control"
-                            required=""></textarea>
+                        <textarea placeholder="Enter Your Message" name="message" class="form-control" required=""></textarea>
                     </div>
                     <input type="submit" name="submit" id="btnSubmit" class="sub-btn" value="Send">
                 </form>
@@ -276,18 +274,18 @@ $vendor_id = $this->session->userdata['id'];
                                         $daily_order_Status_user_name = $daily_order_Status_user_name_query->result();
                                         // echo $this->db->last_query();die;
                                     ?>
-                                    <tr>
-                                        <td><?=(!empty($daily_order_Status_user_name))? $daily_order_Status_user_name[0]->name : 'POS'?></td>
-                                        <td><?php echo $result->order_no; ?> </td>
+                                        <tr>
+                                            <td><?= (!empty($daily_order_Status_user_name)) ? $daily_order_Status_user_name[0]->name : 'POS' ?></td>
+                                            <td><?php echo $result->order_no; ?> </td>
 
-                                        <!-- change -->
-                                        <td><?php if ($result->payment_type == '0') {
+                                            <!-- change -->
+                                            <td><?php if ($result->payment_type == '0') {
                                                     echo "Cash On Delivery";
                                                 } else {
                                                     echo "Credit";
                                                 } ?></td>
-                                        <td>
-                                            <?php
+                                            <td>
+                                                <?php
                                                 if ($result->order_status == '1') {
                                                     echo "<label class='badge badge-gradient-info'>New</label>";
                                                 } elseif ($result->order_status == '2') {
@@ -302,8 +300,8 @@ $vendor_id = $this->session->userdata['id'];
                                                     echo "<label class='badge badge-gradient-danger'>Cancel</label>";
                                                 }
                                                 ?>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
                                     <?php
                                     }
                                     ?>
@@ -322,34 +320,34 @@ $vendor_id = $this->session->userdata['id'];
 </div>
 
 <script>
-var chart = AmCharts.makeChart("chartdiv", {
-    "hideCredits": true,
-    "type": "serial",
-    "theme": "none",
-    "marginRight": 70,
-    "dataProvider": <?php echo $grap; ?>,
-    "startDuration": 1,
-    "graphs": [{
-        "balloonText": "<b>[[category]]: [[value]]</b>",
-        "fillColorsField": "color",
-        "fillAlphas": 0.9,
-        "lineAlpha": 0.2,
-        "type": "column",
-        "valueField": "value"
-    }],
-    "chartCursor": {
-        "categoryBalloonEnabled": false,
-        "cursorAlpha": 0,
-        "zoomable": true
-    },
-    "categoryField": "name",
-    "categoryAxis": {
-        "gridPosition": "start",
-        "labelRotation": 0
-    },
-    "export": {
-        "enabled": true
-    }
+    var chart = AmCharts.makeChart("chartdiv", {
+        "hideCredits": true,
+        "type": "serial",
+        "theme": "none",
+        "marginRight": 70,
+        "dataProvider": <?php echo $grap; ?>,
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "<b>[[category]]: [[value]]</b>",
+            "fillColorsField": "color",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "value"
+        }],
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": true
+        },
+        "categoryField": "name",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 0
+        },
+        "export": {
+            "enabled": true
+        }
 
-});
+    });
 </script>
