@@ -1,23 +1,26 @@
 <?php
-Class Firebase_model extends My_model{
+class Firebase_model extends My_model
+{
 
-    function __construct(){
-      $this->load->model('common_model');
-      $re = $this->common_model->getExistingBranchId();
-      $this->branch_id = $re[0]->id;
-      $this->vendor_admin_id = $this->session->userdata('vendor_admin_id');
+    function __construct()
+    {
+        $this->load->model('common_model');
+        $re = $this->common_model->getExistingBranchId();
+        $this->branch_id = $re[0]->id;
+        $this->vendor_admin_id = $this->session->userdata('vendor_admin_id');
     }
 
-	public function getFireBase(){
-		$data['table'] = TABLE_FIREBASE;
-		$data['select'] = ['*'];
-        $data['where'] = ['vendor_id'=> $this->vendor_admin_id ]; 
-		// print_r($this->selectRecords($data));exit;
+    public function getFireBase()
+    {
+        $data['table'] = TABLE_FIREBASE;
+        $data['select'] = ['*'];
+        $data['where'] = ['vendor_id' => $this->vendor_admin_id];
+        // print_r($this->selectRecords($data));exit;
         return $this->selectRecords($data);
+    }
 
-	}
-
-	public function editUpdateFireBase($postData) {
+    public function editUpdateFireBase($postData)
+    {
         // dd($postData);die;
 
         // $data['select'] = ['id'];
@@ -26,7 +29,7 @@ Class Firebase_model extends My_model{
         // $branch_id = $branch_id[0]->id;
         $data['select'] = ['id'];
         $data['table'] = TABLE_FIREBASE;
-        $data['where'] = ['vendor_id'=>$this->vendor_admin_id]; 
+        $data['where'] = ['vendor_id' => $this->vendor_admin_id];
         // $data['where'] = ['branch_id'=>$branch_id];
         $result = $this->selectRecords($data);
         if (empty($result)) {
@@ -53,6 +56,7 @@ Class Firebase_model extends My_model{
             $data['insert']['instagram_link'] = $postData['instagram_link'];
             $data['insert']['twitter_link'] = $postData['twitter_link'];
             $data['insert']['google_plus_link'] = $postData['google_plus_link'];
+            $data['insert']['checkout_line'] = $postData['checkout_line'];
             // $data['insert']['p8_file'] = $postData['p8_file'];
             // $data['insert']['firebase_url'] = trim($postData['firebase_url']);
             // $data['insert']['firebase_token'] = trim($postData['firebase_token']);
@@ -67,7 +71,6 @@ Class Firebase_model extends My_model{
             } else {
                 return ['danger', DEFAULT_MESSAGE];
             }
-
         } else {
             // print_r($postData);die;
             // $data['update']['branch_id'] = $branch_id;
@@ -93,6 +96,7 @@ Class Firebase_model extends My_model{
             $data['update']['instagram_link'] = $postData['instagram_link'];
             $data['update']['twitter_link'] = $postData['twitter_link'];
             $data['update']['google_plus_link'] = $postData['google_plus_link'];
+            $data['update']['checkout_line'] = $postData['checkout_line'];
             // $data['update']['p8_file'] = $postData['p8_file'];
             // $data['update']['firebase_url'] = trim($postData['firebase_url']);
             // $data['update']['firebase_token'] = trim($postData['firebase_token']);
@@ -108,7 +112,5 @@ Class Firebase_model extends My_model{
                 return ['danger', DEFAULT_MESSAGE];
             }
         }
-
     }
 }
-?>
