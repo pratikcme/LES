@@ -44,10 +44,9 @@ class Checkout extends User_Controller
     $this->load->model('api_v3/common_model', 'co_model');
     $isShow = $this->co_model->checkpPriceShowWithGstOrwithoutGst($this->session->userdata('vendor_id'));
     $checkout_line = $this->co_model->getFirebaseData($this->session->userdata('vendor_id'));
-
+    lq();
     $data['isShow'] = $isShow;
     $data['checkout_line'] = $checkout_line;
-    dd($checkout_line);
 
     $this->load->model('api_v3/api_model');
     if (empty($_SESSION['My_cart']) && $this->cartCount == 0) {
