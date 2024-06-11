@@ -1097,10 +1097,9 @@ to {top: 0px; opacity: 1}
 }
 .checkout_line{
     font-family: var(--PublicSans-Bold);
-    font-size: 15px !important;
-    line-height: 20px;
+    font-size: 20px !important;
+    line-height: 30px;
     color: var(--primary-color) !important;
-    text-decoration: underline !important;
     padding-left: 5px;
 }
 button.btn-close{
