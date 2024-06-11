@@ -303,4 +303,11 @@ class Common_model extends My_model
 		$data['where'] = ['id' => $vendor_id];
 		return $this->selectRecords($data);
 	}
+	public function getFirebaseData($vendor_id)
+	{
+		$data['table'] = 'firebase';
+		$data['select'] = ['checkout_line'];
+		$data['where'] = ['id' => $vendor_id];
+		return $this->selectRecords($data);
+	}
 }
