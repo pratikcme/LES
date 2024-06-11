@@ -301,7 +301,7 @@
                     <?php
                     if (isset($checkout_line) && count($checkout_line) > 0 && $checkout_line[0]->checkout_line != null) {
                     ?>
-                        <p> <?= $checkout_line[0]->checkout_line; ?></p>
+                        <p class="checkout_line"> <?= $checkout_line[0]->checkout_line; ?></p>
                     <?php
                     }
                     ?>
