@@ -481,7 +481,7 @@ class Vendors_model extends My_model
 
 	public function updateVendors($vendor_id, $postData)
 	{
-		dd($vendor_id);
+
 		$updateArray = [
 			'email'			 		 =>	$postData['email'],
 			'approved_branch'		 =>	$postData['approved'],
@@ -504,6 +504,7 @@ class Vendors_model extends My_model
 		$data['table'] = ADMIN;
 		$data['update'] = $updateArray;
 		$data['where'] = ['id' => $vendor_id];
+		dd($this->updateRecords($data));
 		return $this->updateRecords($data);
 		lq();
 	}
