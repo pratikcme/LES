@@ -504,7 +504,7 @@ class Vendors_model extends My_model
 		$data['table'] = ADMIN;
 		$data['update'] = $updateArray;
 		$data['where'] = ['id' => $vendor_id];
-		dd($this->updateRecords($data));
+
 		return $this->updateRecords($data);
 		lq();
 	}

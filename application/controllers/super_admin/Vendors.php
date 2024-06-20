@@ -64,7 +64,7 @@ class Vendors extends Super_Admin_Controller
 		if ($this->input->post()) {
 			$postData = $this->input->post();
 			$responce = $this->this_model->updateVendors($d_id, $this->input->post());
-			dd($responce);
+
 			if ($responce) {
 				if (
 					$postData['android_version'] !== $postData['old_android_version'] ||
