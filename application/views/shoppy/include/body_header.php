@@ -33,39 +33,7 @@
 
                     </nav>
 
-                    <div class="d-flex drp-grp">
 
-                        <?php
-                        if (isset($multi_language) && $multi_language[0]->multi_language == '1') :
-                        ?>
-                            <form class="lng-drp">
-                                <div id="google_translate_element"></div>
-                            </form>
-                        <?php
-                        endif;
-                        ?>
-                        <?php
-
-                        if ($this->uri->segment(1) != 'login' && $this->uri->segment(1) != '') {
-
-                        ?>
-                            <?php if ($ApprovedBranch[0]->approved_branch >= '1'  && count($branch_nav) >= '1') {
-
-                            ?>
-                                <form class="branch-drp">
-                                    <select name="Branch" class="vendor_nav" id="Branch">
-                                        <option value=""> <?= $this->lang->line('All store') ?></option>
-                                        <?php foreach ($branch_nav as $key => $v) : ?>
-                                            <option value="<?= $v->id ?>" <?= (isset($_SESSION['branch_id']) && $v->id == $_SESSION['branch_id']) ? 'selected' : '' ?>>
-                                                <?= $v->name ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </form>
-                            <?php } ?>
-                        <?php } ?>
-
-
-                    </div>
 
                     <!-- ----cart-dropdown--- -->
 
