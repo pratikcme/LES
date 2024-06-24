@@ -41,7 +41,7 @@ function zoom() {
             });
     }
 }
-zoom();
+// zoom();
 function ReinitSlider() {
     var swiper = new Swiper(".mySwiper", {
         spaceBetween: 20,
