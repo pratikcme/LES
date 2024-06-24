@@ -1,5 +1,6 @@
 function zoom() {
     if ($(window).width() >= 992) {
+        alert(0);
         var paneContainer = document.querySelector(".zoom");
         $(".swiper-slide").each(function () {
             new Drift($(this).find("a > img")[0], {
@@ -9,7 +10,7 @@ function zoom() {
         });
     }
 }
-
+zoom();
 function ReinitSlider() {
     var swiper = new Swiper(".mySwiper", {
         spaceBetween: 20,
