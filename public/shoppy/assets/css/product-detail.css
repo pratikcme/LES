@@ -315,12 +315,14 @@ body {
     align-items: center;
     outline-offset: 10px;
     outline-style: solid;
-    outline-color: #D9E2ED;
+    outline-color: var(--first-bg-color);
     outline-width: 1px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    object-fit: contain;
+    z-index: 99999 !important;
 }
 
 .mySwiper .swiper-slide {
@@ -725,7 +727,7 @@ body {
 }
 
 .product-image-part img{
-    height: auto;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -738,6 +740,10 @@ body {
 }
 .drift-zoom-pane {
     z-index: 11 !important;
+}
+
+.drift-zoom-pane img{
+    height: auto !important;
 }
 .swiper-slide a{
     width: 100% !important;
