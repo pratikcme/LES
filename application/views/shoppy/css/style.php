@@ -307,7 +307,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $rightContactWrapperText = "#0F053F";
     $new_svg_color = "rgba(89, 65, 236, 0.1)";
 
-    $logo_width = "120px"
+    $logoWidth = "180px";
 }
 
 if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
@@ -392,7 +392,6 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
     $myaccoutntablabeltext = "#030235";
     $myaccoutntabinputbg = "#FFFFFF";
     $myaccoutntabinputborder = "#aa8434";
-
     $categoryheader = "#FFF0ED";
 
     /*---------- pagination ----------*/
@@ -431,7 +430,7 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
     $loginBtnBackground = "#aa8434";
     $loginBtnColor = "#fff";
     $loginBtnborder = "#aa8434";
-    $logoWidth = "200px";
+    $logoWidth = "180px";
     $abtImgWidth = "350px";
     $hvrClr = "#1A1A1A";
     $cartNum =  "#000";
