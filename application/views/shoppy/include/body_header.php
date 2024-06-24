@@ -13,12 +13,9 @@
                 </section>
                 <!-- -----header-top---- -->
                 <div class="header-top">
-
-                    <a href="<?= base_url() ?>">
-                        <div class="logo">
-                            <a href="<?= base_url() ?>"><img src=" <?= $this->siteLogo ?>" alt=""></a>
-                        </div>
-                    </a>
+                    <div class="logo">
+                        <a href="<?= base_url() ?>"><img src=" <?= $this->siteLogo ?>" alt=""></a>
+                    </div>
                 </div>
             </div>
         </div>
