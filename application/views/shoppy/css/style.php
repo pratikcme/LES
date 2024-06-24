@@ -104,6 +104,7 @@ $offer1btn = "#0F053F";
 $offer2primarytext = "#7749BE";
 $offer2secondarytext = "#7C0580";
 $offer2btn = "#7749BE";
+$logoWidth = "100px";
 
 
 $new_svg_color = "#FFE9E4";
@@ -310,7 +311,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $logoWidth = "75px";
 }
 
-if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
+if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.in' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.in') {
 
     // ==================== colors =============================
     $primaryColor = "#aa8434";
