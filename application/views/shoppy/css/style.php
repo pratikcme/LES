@@ -104,7 +104,7 @@ $offer1btn = "#0F053F";
 $offer2primarytext = "#7749BE";
 $offer2secondarytext = "#7C0580";
 $offer2btn = "#7749BE";
-$logoWidth = "100px";
+$logoWidth = "180px";
 
 
 $new_svg_color = "#FFE9E4";
