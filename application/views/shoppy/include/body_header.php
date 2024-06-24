@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
      .new-header{
         height: 100px;
         position: absolute;
@@ -10,9 +10,9 @@
         max-width: 120px;
         
      }
-</style>
+</style> -->
 
-<!-- <header>
+<header>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -29,9 +29,9 @@
                 <div class="header-top">
 
                     
-                        <div class="logo">
-                            <a href="<?= base_url() ?>"><img src=" <?= $this->siteLogo ?>" alt=""></a>
-                        </div>
+                    <div class="logo">
+                        <a href="<?= base_url() ?>"><img src=" <?= $this->siteLogo ?>" alt=""></a>
+                    </div>
                    
 
                    
@@ -309,15 +309,16 @@
                 </div>
             </div>
         </div>
-</header> -->
+    </div>
+</header>
 
-<div class="new-header">
+<!-- <div class="new-header">
     <div class="container">
         <a href="#" class="logo-img">
             <img src="https://cmexpertiseinfotech.com/cme_Design/Upbasket/assets/images/header-logo.png" alt="">
         </a>
     </div>
-</div>
+</div> -->
 
 
 <div class="header-cart-in">
