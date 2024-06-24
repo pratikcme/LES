@@ -569,14 +569,13 @@ body {
 
 .lng-drp select,
 .branch-drp select{
-    /* background: transparent !important;
-    color: var(--vendorDrop) !important; */
+    background: transparent !important;
     font-size: 15px;
     font-family: var(--PublicSans-Regular);
     padding: 7px 5px;
     border-radius: 5px;
     width: 130px;
-    /* border: none; */
+    border: 1px solid #000;
 }
 
 .lng-drp select:focus,
