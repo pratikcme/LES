@@ -7,6 +7,7 @@ header {
     z-index: 2;
     padding: 15px 0;
     background: var(--headerBackground);
+    height: 100px;
 }
 
 /* ----top-header--- */
@@ -568,14 +569,14 @@ body {
 
 .lng-drp select,
 .branch-drp select{
-    background: transparent !important;
-    color: var(--vendorDrop) !important;
+    /* background: transparent !important;
+    color: var(--vendorDrop) !important; */
     font-size: 15px;
     font-family: var(--PublicSans-Regular);
-    padding: 10px 5px;
+    padding: 7px 5px;
     border-radius: 5px;
     width: 130px;
-    border: none;
+    /* border: none; */
 }
 
 .lng-drp select:focus,

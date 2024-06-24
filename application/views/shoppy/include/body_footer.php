@@ -104,7 +104,7 @@
                                         src="<?= $this->theme_base_url . '/assets/img/home/google-play.png' ?>"
                                         alt=""></a></div>
                         </div>
-                        <div class="d-flex">
+                        <div class="d-flex align-items-center">
                             <div class="social-imges">
                                 <a href="#"><img src="<?= $this->theme_base_url . '/assets/img/home/visa.png' ?>"
                                         alt=""></a>
