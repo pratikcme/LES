@@ -8,6 +8,8 @@ function zoom() {
                 paneContainer: paneContainer,
                 inlinePane: false,
             });
+            $(this).addClass("go");
+            $(this).addClass({ paneContainer });
         });
     }
 
