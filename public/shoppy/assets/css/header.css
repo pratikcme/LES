@@ -8,6 +8,7 @@ header {
     padding: 15px 0;
     background: var(--headerBackground);
     height: 100px;
+    background-color: red;
 }
 
 /* ----top-header--- */
