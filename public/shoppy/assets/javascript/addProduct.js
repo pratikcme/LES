@@ -1,13 +1,13 @@
 function zoom() {
-    // if ($(window).width() >= 992) {
-    //   var paneContainer = document.querySelector(".zoom");
-    //   $(".swiper-slide").each(function () {
-    //     new Drift($(this).find("a > img")[0], {
-    //       paneContainer: paneContainer,
-    //       inlinePane: false,
-    //     });
-    //   });
-    // }
+    if ($(window).width() >= 992) {
+        var paneContainer = document.querySelector(".zoom");
+        $(".swiper-slide").each(function () {
+            new Drift($(this).find("a > img")[0], {
+                paneContainer: paneContainer,
+                inlinePane: false,
+            });
+        });
+    }
 }
 
 function ReinitSlider() {
