@@ -1,16 +1,4 @@
-<!-- <style>
-     .new-header{
-        height: 100px;
-        position: absolute;
-        width: 100%;
-     }
 
-     .new-header .logo-img img{
-        width:100%;
-        max-width: 120px;
-        
-     }
-</style> -->
 
 <header>
     <div class="container">
@@ -312,13 +300,6 @@
     </div>
 </header>
 
-<!-- <div class="new-header">
-    <div class="container">
-        <a href="#" class="logo-img">
-            <img src="https://cmexpertiseinfotech.com/cme_Design/Upbasket/assets/images/header-logo.png" alt="">
-        </a>
-    </div>
-</div> -->
 
 
 <div class="header-cart-in">
