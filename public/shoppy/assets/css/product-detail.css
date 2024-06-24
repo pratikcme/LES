@@ -2075,7 +2075,7 @@ body {
 
     .mySwiper2 {
         width: 100% !important;
-        height: 100% !important;
+        height: auto !important;
         outline-offset: 0px;
     }
 
