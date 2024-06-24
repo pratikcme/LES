@@ -53,7 +53,7 @@
 
                             ?>
                                 <div class="swiper-slide">
-                                    <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" data-zooms="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" /></a>
+                                    <a href="#"><img data-enlargable class="drift-demo-trigger" src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" data-zoom="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" /></a>
                                 </div>
                             <?php } ?>
                         </div>
