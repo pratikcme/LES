@@ -306,6 +306,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $rightContactIconRound = "rgba(40, 104, 221, 0.1)";
     $rightContactWrapperText = "#0F053F";
     $new_svg_color = "rgba(89, 65, 236, 0.1)";
+
+    $logo_width = "120px"
 }
 
 if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
@@ -380,7 +382,6 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
     $continueBtnBg = "#aa8434";
     $continuebtntext = "#fff";
     $closeBtn = "#aa8434";
-
 
     /* ------myaccount-css--- */
     $myaccoutnTabBg = "linear-gradient(43.01deg, #FFE9F1 19.04%, rgba(255, 233, 241, 0.28) 69.77%);;";
