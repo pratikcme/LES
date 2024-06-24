@@ -364,10 +364,10 @@ class Products extends User_Controller
 			$upbasket_thumb .= '<div class="swiper-slide">
 								<img src="' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image . '">
 								</div>';
-			$upbasket_zoom_image .= '<div class="swiper-slide">
-					<a href="#"><img data-enlargable class="drift-demo-trigger" src="' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image . '"
-					data-zoom="' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image . '" /></a>
-		  			</div>';
+			// $upbasket_zoom_image .= '<div class="swiper-slide">
+			// 		<a href="#"><img data-enlargable class="drift-demo-trigger" src="' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image . '"
+			// 		data-zoom="' . base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image . '" /></a>
+			// 		</div>';
 		}
 		// $data['image'] = $image;
 		// print_r($data['image']);die;
