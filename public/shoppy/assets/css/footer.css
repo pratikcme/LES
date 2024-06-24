@@ -110,7 +110,8 @@ footer{
 .footer-bottom .footer-logo{
     max-width: 200px;
     margin-bottom: 23px;
-    height: 52px;
+    height: 85px;
+    background-color: var(--commonWhite);
 }
 
 .footer-bottom .footer-logo img{

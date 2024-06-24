@@ -307,7 +307,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'  || $_SERVER['SERVER_NAME'] == 'zumkh
     $rightContactWrapperText = "#0F053F";
     $new_svg_color = "rgba(89, 65, 236, 0.1)";
 
-    $logoWidth = "180px";
+    $logoWidth = "75px";
 }
 
 if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['SERVER_NAME'] == 'www.kishoricreation.launchestore.com') {
@@ -454,6 +454,7 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
         --PublicSans-Medium: 'PublicSans-Medium';
         --PublicSans-Light: 'PublicSans-Light';
 
+
         /*======== Damion-regular-font =======*/
         --Damion-regular: 'Damion, cursive ';
 
@@ -463,6 +464,7 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.com' ||  $_SERVER['
         --footer-bg: <?= $footerBg ?>;
         --footer-extra-bg: <?= $footerExtraBg ?>;
         --white: <?= $white ?>;
+        --commonWhite: <?= $commonWhite ?>;
 
         /*========== heading-text-color ==========*/
         --heading-black: <?= $headingBlack ?>;
