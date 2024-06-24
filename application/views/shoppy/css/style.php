@@ -319,6 +319,7 @@ if ($_SERVER['SERVER_NAME'] == 'kishoricreation.launchestore.in' ||  $_SERVER['S
     $footerBg = "#000";
     $footerExtraBg = "rgba(196, 30, 73, 0.2)";
     $white = "#FFFFFF";
+    $logoWidth = "180px";
 
     // ========== heading-text-color ==========
     $headingBlack = '#030235';
