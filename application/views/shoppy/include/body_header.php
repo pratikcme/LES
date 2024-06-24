@@ -1,4 +1,18 @@
-<header>
+<style>
+     .new-header{
+        height: 100px;
+        position: absolute;
+        width: 100%;
+     }
+
+     .new-header .logo-img img{
+        width:100%;
+        max-width: 120px;
+        
+     }
+</style>
+
+<!-- <header>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -11,7 +25,7 @@
                         </div>
                     </div>
                 </section>
-                <!-- -----header-top---- -->
+                
                 <div class="header-top">
 
                     
@@ -20,12 +34,12 @@
                         </div>
                    
 
-                    <!-- -------navigation-bar---- -->
+                   
                     <nav>
                         <div class="left-content">
                             <ul>
                                 <li><a href="<?= base_url() . 'home' ?>"> <?= $this->lang->line('home') ?></a></li>
-                                <!--   -->
+                                
                                 <li><a href="<?= base_url() . 'products' ?>"> <?= $this->lang->line('Shop') ?></a></li>
                                 <li><a href="<?= base_url() . 'about' ?>"> <?= $this->lang->line('About us') ?></a></li>
                                 <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact us') ?></a>
@@ -69,7 +83,7 @@
 
                     </div>
 
-                    <!-- ----cart-dropdown--- -->
+                    
 
                     <div class="cart-dropdwon">
                         <div class="drop-cart-title">
@@ -112,7 +126,7 @@
                                         foreach ($this->session->userdata('My_cart') as $key => $value) {
 
                                             $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
-                                            // dd($product);
+                                            
                                             $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
 
                                             $CI->load->model('api_v3/common_model', 'co_model');
@@ -214,9 +228,6 @@
                             </div>
                         </a>
 
-                        <!-- -----search-btn---- -->
-
-                        <!-- -----search-btn---- -->
                         <div class="search-block search-list-blcok">
                             <form class="search-form">
                                 <?php if ($this->uri->segment(1) == '') { ?>
@@ -298,8 +309,15 @@
                 </div>
             </div>
         </div>
-</header>
+</header> -->
 
+<div class="new-header">
+    <div class="container">
+        <a href="#" class="logo-img">
+            <img src="https://cmexpertiseinfotech.com/cme_Design/Upbasket/assets/images/header-logo.png" alt="">
+        </a>
+    </div>
+</div>
 
 
 <div class="header-cart-in">
