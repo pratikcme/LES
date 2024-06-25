@@ -1,5 +1,3 @@
-
-
 <header>
     <div class="container">
         <div class="row">
@@ -13,21 +11,21 @@
                         </div>
                     </div>
                 </section>
-                
+
                 <div class="header-top">
 
-                    
+
                     <div class="logo">
                         <a href="<?= base_url() ?>"><img src=" <?= $this->siteLogo ?>" alt=""></a>
                     </div>
-                   
 
-                   
+
+
                     <nav>
                         <div class="left-content">
                             <ul>
                                 <li><a href="<?= base_url() . 'home' ?>"> <?= $this->lang->line('home') ?></a></li>
-                                
+
                                 <li><a href="<?= base_url() . 'products' ?>"> <?= $this->lang->line('Shop') ?></a></li>
                                 <li><a href="<?= base_url() . 'about' ?>"> <?= $this->lang->line('About us') ?></a></li>
                                 <li><a href="<?= base_url() . 'contact' ?>"><?= $this->lang->line('Contact us') ?></a>
@@ -53,7 +51,7 @@
                         if ($this->uri->segment(1) != 'login' && $this->uri->segment(1) != '') {
 
                         ?>
-                            <?php if ($ApprovedBranch[0]->approved_branch >= '1'  && count($branch_nav) >= '1') {
+                            <?php if ($ApprovedBranch[0]->approved_branch > '1'  && count($branch_nav) > '1') {
 
                             ?>
                                 <form class="branch-drp">
@@ -71,7 +69,7 @@
 
                     </div>
 
-                    
+
 
                     <div class="cart-dropdwon">
                         <div class="drop-cart-title">
@@ -114,7 +112,7 @@
                                         foreach ($this->session->userdata('My_cart') as $key => $value) {
 
                                             $product = $CI->product_model->GetUsersProductInCart($value['product_weight_id']);
-                                            
+
                                             $product[0]->image = preg_replace('/\s+/', '%20', $product[0]->image);
 
                                             $CI->load->model('api_v3/common_model', 'co_model');

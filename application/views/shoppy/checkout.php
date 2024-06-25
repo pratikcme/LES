@@ -35,30 +35,31 @@
 
                     <!-- ----------accordian-part------ -->
                     <div class="accordion-items">
-                        <div class="main-accordion">
-                            <div class="delivery-method-wrap">
-                                <form class="accordion-content-2" action="">
-                                    <?php if (isset($selfPickEnable) && $selfPickEnable == '1') { ?>
-                                        <div class="form-check radio-outer-line">
-                                            <input class="form-check-input" type="checkbox" id="isSelfPickup" class="default_check" <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
-                                            <label class="form-check-label" for="isSelfPickup">
-                                                <?= $this->lang->line('self pickup') ?>
-                                            </label>
-                                        </div>
-                                    <?php }
-                                    if (!empty($userAddress) && $userAddress[0]->user_gst_number != '') {
-                                    ?>
-                                        <div class="form-check radio-outer-line">
-                                            <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number" class="default_check" value="<?= ($userAddress[0]->user_gst_number != '') ? $userAddress[0]->user_gst_number : "" ?>">
-                                            <label class="form-check-label" for="user_gst_number">
-                                                <?= $this->lang->line('Use GST Number') ?>
-                                            </label>
-                                        </div>
-                                    <?php } ?>
-                                </form>
+                        <?php if (isset($selfPickEnable) && $selfPickEnable == '1' || !empty($userAddress) && $userAddress[0]->user_gst_number != '') { ?>
+                            <div class="main-accordion">
+                                <div class="delivery-method-wrap">
+                                    <form class="accordion-content-2" action="">
+                                        <?php if (isset($selfPickEnable) && $selfPickEnable == '1') { ?>
+                                            <div class="form-check radio-outer-line">
+                                                <input class="form-check-input" type="checkbox" id="isSelfPickup" class="default_check" <?= (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') ?  "checked" : "" ?>>
+                                                <label class="form-check-label" for="isSelfPickup">
+                                                    <?= $this->lang->line('self pickup') ?>
+                                                </label>
+                                            </div>
+                                        <?php }
+                                        if (!empty($userAddress) && $userAddress[0]->user_gst_number != '') {
+                                        ?>
+                                            <div class="form-check radio-outer-line">
+                                                <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="user_gst_number" class="default_check" value="<?= ($userAddress[0]->user_gst_number != '') ? $userAddress[0]->user_gst_number : "" ?>">
+                                                <label class="form-check-label" for="user_gst_number">
+                                                    <?= $this->lang->line('Use GST Number') ?>
+                                                </label>
+                                            </div>
+                                        <?php } ?>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-
+                        <?php } ?>
 
                         <?php if (isset($_SESSION['isSelfPickup']) && $_SESSION['isSelfPickup'] == '1') { ?>
                             <div class="main-accordion">
