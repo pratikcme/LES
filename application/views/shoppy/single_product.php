@@ -135,7 +135,7 @@
                         }
                         ?>
                         <!-- -----counter-product-- -->
-                        <?= ($varientDetails[0]->piece_price != '') ? 'Per piece Price - ' . $this->siteCurrency . ' ' . $varientDetails[0]->piece_price : ''; ?>
+                        <?= ($varientDetails[0]->piece_price != '' && $varientDetails[0]->piece_price != 0) ? 'Per piece Price - ' . $this->siteCurrency . ' ' . $varientDetails[0]->piece_price : ''; ?>
 
                         <div class="product-detail-quentity <?= $d_show ?>">
                             <div class="qty-container">
