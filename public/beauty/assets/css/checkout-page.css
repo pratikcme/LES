@@ -124,7 +124,7 @@ input:focus{
 .main-accordion .form-check-input:checked[type=radio],
 .main-accordion .form-check-input:checked[type=radio]
 {
-    background: transparent !important;
+    background: var(--secondary-color) !important;
     border:1px solid var(--secondary-color) !important;
     position: relative !important;
 }
@@ -134,11 +134,11 @@ input:focus{
     position: absolute;
     width: 7px;
     height: 7px;
-    background-color: var(--secondary-color) !important;
+    background-color: #fff !important;
     border-radius: 50px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 3px;;
+    left: 3px;
+    /* transform: translate(-50%, -50%); */
 }
 
 .main-accordion .form-check-input[type=radio]{
@@ -391,10 +391,27 @@ input:focus{
     outline-color: var(--secondary-color);
     outline-width: 1px;
     border-radius: 14px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
+
+.order-wrapper-img a{
+    width: 100%;
+    height: 100%;
+}
+
 .order-wrapper-img img{
     width: 100%;
-    max-width: 80px;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    object-fit: cover;
 }
 .order-wrapper-text h4{
     line-height: 20px;
@@ -928,6 +945,15 @@ to {top: 0px; opacity: 1}
     margin-bottom: 25px;
     transition: 0.5s;
     border: 1px solid var(--common-btn-color);
+
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+}
+
+.new-address button i{
+    font-size: 17px;
 }
 
 

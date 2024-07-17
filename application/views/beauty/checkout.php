@@ -112,7 +112,7 @@
                                         </div>
                                     <?php } ?>
                                     <div class="new-address text-end">
-                                        <button type="button" class="new-add"><?= $this->lang->line('Add new address') ?></button>
+                                        <button type="button" class="new-add"><i class="fa-solid fa-plus"></i></button>
                                     </div>
 
                                     <form method="post" id="RegisterForm" action="<?= base_url() . 'users_account/users/add_address' ?>" class="ship-address" autocomplete="off">
