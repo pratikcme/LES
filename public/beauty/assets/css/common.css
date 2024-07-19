@@ -147,6 +147,7 @@ label.error{
        position: absolute;
        top: 14px;
        left: 12px;
+       display: none;
    }
    
    .add-cart-btn {
