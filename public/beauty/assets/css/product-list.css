@@ -1085,6 +1085,18 @@ li.sub-menu{
     padding: 10px 0 0;
 }
 
+.product-wrapper.card {
+    position: relative;
+}
+
+.product-wrapper.card .add-cart-btn.addcartbutton{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
 /* =====responisve=== */
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -1953,7 +1965,7 @@ li.sub-menu{
     }
 
     .product-listing-wrapper {
-        flex-basis: 100%;
+        flex-basis: 47%;
     }
 
 }
