@@ -71,11 +71,14 @@ $responsive_height = $_SESSION['responsive_height'];
             foreach ($categorys as $key => $value) { ?>
                 <a href="<?= base_url() . 'products?cat_id=' . $this->utility->safe_b64encode($value->id) ?>" class="categorie-wapper">
                     <div class="categorie-img">
-                        <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt="">
+                        <!-- <img src="<?= base_url() . 'public/images/' . $this->folder . 'category/' . $value->image ?>" alt=""> -->
+                        <div class="categorie-text">
+                            <h4><?= $value->name ?></h4>
+                        </div>
                     </div>
-                    <div class="categorie-text">
+                    <!-- <div class="categorie-text">
                         <h4><?= $value->name ?></h4>
-                    </div>
+                    </div> -->
                 </a>
             <?php } ?>
 

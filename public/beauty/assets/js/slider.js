@@ -9,17 +9,17 @@ $(".owl-1").owlCarousel({
   ],
   responsive: {
     0: {
-      items: 2,
+      items: 3,
       dots: false,
       margin: 40,
     },
     320: {
-      items: 2,
+      items: 3,
       dots: false,
       margin: 20,
     },
     414: {
-      items: 2,
+      items: 3,
       dots: false,
       margin: 20,
     },
@@ -47,11 +47,11 @@ $(".owl-1").owlCarousel({
       dots: false,
     },
     1000: {
-      items: 5,
+      items: 7,
       dots: false,
     },
     1200: {
-      items: 7,
+      items: 9,
       dots: false,
     },
   },
