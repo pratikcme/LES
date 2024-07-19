@@ -89,7 +89,7 @@
                         </select> -->
 
                         <?php foreach ($varient as $key => $value) { ?>
-                            <div class="variant-options  <?= ($varientDetails[0]->id == $value) ? 'activated' : '' ?>" data-varient_id="<?= $this->utility->safe_b64encode($value) ?>">
+                            <div class="product_varient_id variant-options  <?= ($varientDetails[0]->id == $value) ? 'activated' : '' ?>" data-varient_id="<?= $this->utility->safe_b64encode($value) ?>">
                                 <img class="variant-img" src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $varient_image[$key] ?>" alt="">
                                 <span class="variants-list"> <?= $weight_no[$key] . ' ' . $weight_name[$key] ?> </span>
                             </div>
