@@ -253,6 +253,8 @@ var ADDPRODUCT = (function () {
 
     $(document).on("change click", ".product_varient_id", function () {
         var product_varient_id = $(this).data("varient_id");
+        $(".product_varient_id").removeClass("activated");
+        $(this).addClass("activated");
         // var product_varient_id = $(this).val();
         var url = $("#url").val();
         var that = $(this);
