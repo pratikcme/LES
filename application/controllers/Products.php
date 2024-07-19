@@ -191,7 +191,7 @@ class Products extends User_Controller
 
 			$product_image = $this->this_model->selectImages($value); //this can fetch all image from product_id
 
-			$varient_image[$product_image[0]->id] = $product_image[0]->image;
+			$varient_image[] = $product_image[0]->image;
 		}
 		$product_image = $this->this_model->selectImages($varient_ids[0]);
 

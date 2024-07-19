@@ -88,13 +88,9 @@
                             <?php } ?>
                         </select>
 
-                        <?php foreach ($varient as $key => $value) {
-                            // echo $value;
-                            // print_r($varient_image);
-                            // print_r($varient_image[$value]);
-                        ?>
+                        <?php foreach ($varient as $key => $value) { ?>
 
-                            <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $varient_image[$value] ?>" alt="">
+                            <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $varient_image[$key] ?>" alt="">
                             <button class="variants-list" value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'activated' : '' ?>> <?= $weight_no[$key] . ' ' . $weight_name[$key] ?> </button>
 
                         <?php } ?>
