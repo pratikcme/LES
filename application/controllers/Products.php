@@ -207,6 +207,7 @@ class Products extends User_Controller
 		$data['weight_name'] =  $weight_name;
 		$data['discount_per'] =  $discount_per;
 		$data['varient_image'] =  $varient_image;
+		dd($data['varient_image']);
 		$data['image'] = $image;
 		$data['product_id'] = $id;
 
