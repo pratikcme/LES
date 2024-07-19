@@ -89,9 +89,9 @@
                         </select>
 
                         <?php foreach ($varient as $key => $value) {
-                            echo $value;
-                            print_r($varient_image);
-                            print_r($varient_image[$value]);
+                            // echo $value;
+                            // print_r($varient_image);
+                            // print_r($varient_image[$value]);
                         ?>
 
                             <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $varient_image[$value] ?>" alt="">
