@@ -87,11 +87,12 @@
                                     <?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
                             <?php } ?>
                         </select>
-                        <!-- <?php foreach ($varient as $key => $value) { ?>
 
+                        <?php foreach ($varient as $key => $value) { ?>
+                            <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $product_image[$key] ?>" alt="">
                             <button class="variants-list" value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'activated' : '' ?>> <?= $weight_no[$key] . ' ' . $weight_name[$key] ?> </button>
 
-                        <?php } ?> -->
+                        <?php } ?>
                     </div>
                     <?php
                     $d_none = '';
