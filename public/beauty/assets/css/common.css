@@ -81,7 +81,7 @@ label.error{
    /* ------common-cardd-css---- */
    .card {
        width: 100%;
-       min-height: 400px;
+       min-height: 465px;
        padding-left: 15px;
        padding-right: 15px;
        background: var(--card-bg-color);
@@ -114,6 +114,7 @@ label.error{
        align-items: center;
        margin-bottom: 10px !important;
        position: relative;
+       height: 210px;
    }
    
    /* .card-header::before{
@@ -133,7 +134,7 @@ label.error{
    } */
    .card-header img {
        width: 100%;
-       max-width: 220px;
+       /* max-width: 220px; */
        height: 200px;
        object-fit: contain !important;
    }
