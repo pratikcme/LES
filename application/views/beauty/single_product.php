@@ -81,17 +81,17 @@
 
 
                     <div class="pro-sl">
-                        <select class="product_varient_id" id="cars">
+                        <!-- <select class="product_varient_id" id="cars">
                             <?php foreach ($varient as $key => $value) { ?>
                                 <option value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'selected' : '' ?>>
                                     <?= $weight_no[$key] . ' ' . $weight_name[$key] ?></option>
                             <?php } ?>
-                        </select>
+                        </select> -->
 
                         <?php foreach ($varient as $key => $value) { ?>
-                            <div class="variant-options">
+                            <div class="variant-options  <?= ($varientDetails[0]->id == $value) ? 'activated' : '' ?>" data-varient_id="<?= $this->utility->safe_b64encode($value) ?>">
                                 <img class="variant-img" src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $varient_image[$key] ?>" alt="">
-                                <button class="variants-list" value="<?= $this->utility->safe_b64encode($value) ?>" <?= ($varientDetails[0]->id == $value) ? 'activated' : '' ?>> <?= $weight_no[$key] . ' ' . $weight_name[$key] ?> </button>
+                                <span class="variants-list"> <?= $weight_no[$key] . ' ' . $weight_name[$key] ?> </span>
                             </div>
                         <?php } ?>
                     </div>
