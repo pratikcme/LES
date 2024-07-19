@@ -1203,6 +1203,7 @@ body {
     flex-direction: column;
     width: 100px;
     height: 100px;
+    cursor: pointer;
 }
 
 .variant-options img{
