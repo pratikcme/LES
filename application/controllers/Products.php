@@ -190,6 +190,7 @@ class Products extends User_Controller
 			array_push($discount_per, $discount[$key]);
 
 			$product_image = $this->this_model->selectImages($value); //this can fetch all image from product_id
+			array_push($varient_image, $product_image);
 		}
 		$product_image = $this->this_model->selectImages($varient_ids[0]);
 
@@ -204,6 +205,7 @@ class Products extends User_Controller
 		$data['weight_no'] =  $weight_no;
 		$data['weight_name'] =  $weight_name;
 		$data['discount_per'] =  $discount_per;
+		$data['varient_image'] =  $varient_image;
 		$data['image'] = $image;
 		$data['product_id'] = $id;
 
