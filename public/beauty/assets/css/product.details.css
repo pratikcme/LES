@@ -1192,7 +1192,7 @@ body {
 }
 
 .variant-options{
-    background: var(--product-details-image-bg) !important;
+    background: #f3f3f3 !important;
     border-radius: 10px !important;
     -webkit-border-radius: 10px !important;
     -moz-border-radius: 10px !important;
@@ -1208,22 +1208,31 @@ body {
 .variant-options img{
     max-width: 50px;
     margin: 0 auto;
+    height: 50px;
+    object-fit: contain;
 }
 
 .variant-options span{
     font-size: 12px;
-    padding: 5px !important;
-    border: 1px solid #ccc !important;
+    padding: 2px 0 !important;
+    border: 1px solid #858383 !important;
     outline: 0 !important;
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     display: inline-block;
     text-align: center;
+    color: #000;
+    cursor: pointer;
+}
+
+.variant-options.activated{
+    border: 1px solid var(--primary-color);
+    box-shadow: rgb(0 0 75) 0px 0px 6px;
 }
 
 /* ============resonisve============ */
