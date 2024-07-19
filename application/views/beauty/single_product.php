@@ -53,9 +53,9 @@
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                 <div class="product-content-part zoom">
                     <div class=""></div>
-                    <h6 id="is_aval_stock">
+                    <!-- <h6 id="is_aval_stock">
                         <?= ($varientDetails[0]->quantity > $varientDetails[0]->limited_stock) ? $this->lang->line('Available(Instock)')  : $this->lang->line('Limited Stock') ?>
-                    </h6>
+                    </h6> -->
                     <h2><?= $productDetail[0]->name ?></h2>
                     <div class="rating-starts justify-content-start" id="starRatting">
                         <div class="rating stars3_5">
