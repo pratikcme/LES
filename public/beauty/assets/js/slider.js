@@ -29,16 +29,16 @@ $(".owl-1").owlCarousel({
       margin: 20,
     },
     540: {
-      items: 3,
+      items: 4,
       dots: false,
       margin: 0,
     },
     600: {
-      items: 3,
+      items: 4,
       dots: false,
     },
     768: {
-      items: 4,
+      items: 5,
       dots: false,
       margin: 50,
     },
@@ -51,6 +51,10 @@ $(".owl-1").owlCarousel({
       dots: false,
     },
     1200: {
+      items: 8,
+      dots: false,
+    },
+    1400: {
       items: 9,
       dots: false,
     },
@@ -65,10 +69,10 @@ $(".owl-2").owlCarousel({
   dots: true,
   responsive: {
     0: {
-      items: 1,
+      items: 2,
     },
     300: {
-      items: 1,
+      items: 2,
       dots: false,
       margin: 10,
     },

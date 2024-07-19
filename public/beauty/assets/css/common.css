@@ -81,7 +81,7 @@ label.error{
    /* ------common-cardd-css---- */
    .card {
        width: 100%;
-       min-height: 427px;
+       min-height: 400px;
        padding-left: 15px;
        padding-right: 15px;
        background: var(--card-bg-color);
@@ -91,6 +91,7 @@ label.error{
        transition: 0.3s;
        overflow: hidden;
        /* box-shadow: 0px 0px rgba(0,0,0,0.6); */
+       position: relative;
    }
    
    .card:hover{
@@ -200,6 +201,14 @@ label.error{
    /* -----checkbox-css----- */
    .techno-check {
        position: relative;
+   }
+
+   .techno-check .card-btn.addcartbutton {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
    }
    
    .techno_checkbox {
