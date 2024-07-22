@@ -5,7 +5,7 @@
             <div class="card-header">
                 <span class="discnt <?= ($value->discount_per > 0) ? '' : 'd-none' ?>"><?= $value->discount_per ?> %
                     off</span>
-                <h5 class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
+                <!-- <h5 class="<?= ($value->varientQuantity > $value->limited_stock) ? 'invisible' : 'visible' ?>">
                     <?php
                     if ($value->varientQuantity > $value->limited_stock) { ?>
                         <?= $this->lang->line('Available(Instock)') ?>
@@ -13,7 +13,7 @@
                         <?= $this->lang->line('Limited Stock') ?>
                     <?php }
                     ?>
-                </h5>
+                </h5> -->
                 <a href="<?= base_url() . 'products/productDetails/' . $this->utility->safe_b64encode($value->id) . '/' . $this->utility->safe_b64encode($value->product_weight_id) ?>">
                     <img src="<?= base_url() . 'public/images/' . $this->folder . 'product_image/' . $value->image ?>" alt="">
                 </a>
