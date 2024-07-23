@@ -1201,8 +1201,8 @@ body {
     padding: 8px;
     display: flex;
     flex-direction: column;
-    width: 100px;
-    height: 100px;
+    width: 105px;
+    height: 105px;
     cursor: pointer;
 }
 
@@ -1214,7 +1214,7 @@ body {
 }
 
 .variant-options span{
-    font-size: 12px;
+    font-size: 11px;
     padding: 2px 0 !important;
     border: 1px solid #858383 !important;
     outline: 0 !important;
