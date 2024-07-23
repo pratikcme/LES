@@ -2305,6 +2305,10 @@
     .card{
         min-height: 325px !important;
     }
+
+    .Latest-Products .owl-2.owl-theme .owl-nav.disabled+.owl-dots{
+        display: none;
+    } 
 }
 
 @media only screen and (min-width:425px) and (max-width: 539px) {
