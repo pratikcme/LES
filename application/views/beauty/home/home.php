@@ -274,7 +274,7 @@ $responsive_height = $_SESSION['responsive_height'];
             </div>
         </div>
 
-        <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+        <div class="owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
             <?php foreach ($new_arrival as $key => $value) { ?>
                 <div class="techno-check">
                     <input class="techno_checkbox" type="checkbox" id="1" value="1" />
