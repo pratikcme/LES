@@ -131,8 +131,8 @@ body{
   }
   .alert {
     z-index: 999;
-    position: absolute;
-    right: 0;
+    position: absolute !important;
+    right: 0!important;
     width: 30%;
     top: 15%;
   }
