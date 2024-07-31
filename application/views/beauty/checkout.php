@@ -299,7 +299,13 @@
                     <?php } ?>
 
                     <input type="hidden" id="isShow" value="<?= $isShow[0]->display_price_with_gst == '1' ? "1" : "0" ?>">
-
+                    <?php
+                    if (isset($checkout_line) && count($checkout_line) > 0 && $checkout_line[0]->checkout_line != null) {
+                    ?>
+                        <p class="checkout_line"> <?= $checkout_line[0]->checkout_line; ?></p>
+                    <?php
+                    }
+                    ?>
                     <div class="cart-totals-part">
                         <table>
                             <thead class="head-title">

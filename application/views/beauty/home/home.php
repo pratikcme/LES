@@ -274,9 +274,9 @@ $responsive_height = $_SESSION['responsive_height'];
             </div>
         </div>
 
-        <div class="owl-2 owl-carousel owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+        <div class="row owl-theme wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
             <?php foreach ($new_arrival as $key => $value) { ?>
-                <div class="techno-check">
+                <div class="techno-check col-lg-3 col-md-4 col-sm-6 col-6">
                     <input class="techno_checkbox" type="checkbox" id="1" value="1" />
                     <div href="#" class="product-wrapper card <?= ($value->varientQuantity == '0') ? 'out-of-stock' : '' ?>">
 

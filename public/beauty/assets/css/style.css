@@ -129,7 +129,13 @@ body{
     background: #fff;
     animation-delay: -1s;
   }
-  
+  .alert {
+    z-index: 999;
+    position: absolute !important;
+    right: 0!important;
+    width: 30%;
+    top: 15%;
+  }
   @keyframes animate {
     0% {
       transform: translateY(-15px);
