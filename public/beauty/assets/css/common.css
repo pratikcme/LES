@@ -730,6 +730,11 @@ label.error{
    .modal-content{
     background-color: var(--common-white) !important;
     }
+
+    .alert-success{
+        position: fixed !important;
+        top: 110px !important;
+    }
    
    @media only screen and (max-width: 1400px){
        .hero-section{
