@@ -326,6 +326,7 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('K1', 'Maximum order quantity');
         $this->excel->getActiveSheet()->setCellValue('L1', 'Display priority');
         $this->excel->getActiveSheet()->setCellValue('M1', 'Product image');
+        $this->excel->getActiveSheet()->setCellValue('N1', 'Subcategory Name');
 
 
         $this->excel->getActiveSheet()->getStyle('A1:L1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
@@ -384,6 +385,9 @@ class Import extends Vendor_Controller
                 $this->db->where('product_variant_id', $variant_id);
                 $this->db->where('status !=', '9');
                 $query = $this->db->get();
+
+
+
                 $imageArray = array();
 
                 foreach ($query->result() as $row) {
@@ -397,20 +401,26 @@ class Import extends Vendor_Controller
                 if ($key == 0) {
                     $type = 'New';
                 }
-
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('A' . $k . '', '' . $x . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('B' . $k . '', '' . $type . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('C' . $k . '', '' . $value->product_name . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('D' . $k . '', '' . $v->weight_no . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('E' . $k . '', '' . $v->name . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('F' . $k . '', '' . $v->package . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('G' . $k . '', '' . $v->quantity . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H' . $k . '', '' . $v->purchase_price . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I' . $k . '', '' . $v->price . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J' . $k . '', '' . $v->discount_per . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K' . $k . '', '' . $v->max_order_qty . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('L' . $k . '', '' . ($type == 'New') ? $value->display_priority : "" . '');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('M' . $k . '', '' . $imageString . '');
+                $this->db->select('name');
+                $this->db->from(TABLE_SUBCATEGORY);
+                $this->db->where('subcategory_id', $v->subcategory_id);
+                $this->db->where('status !=', '9');
+                $subquery = $this->db->get();
+                $subcat = $subquery->row();
+                $this->excel->getActiveSheet()->SetCellValue('A' . $k . '', '' . $x . '');
+                $this->excel->getActiveSheet()->SetCellValue('B' . $k . '', '' . $type . '');
+                $this->excel->getActiveSheet()->SetCellValue('C' . $k . '', '' . $value->product_name . '');
+                $this->excel->getActiveSheet()->SetCellValue('D' . $k . '', '' . $v->weight_no . '');
+                $this->excel->getActiveSheet()->SetCellValue('E' . $k . '', '' . $v->name . '');
+                $this->excel->getActiveSheet()->SetCellValue('F' . $k . '', '' . $v->package . '');
+                $this->excel->getActiveSheet()->SetCellValue('G' . $k . '', '' . $v->quantity . '');
+                $this->excel->getActiveSheet()->SetCellValue('H' . $k . '', '' . $v->purchase_price . '');
+                $this->excel->getActiveSheet()->SetCellValue('I' . $k . '', '' . $v->price . '');
+                $this->excel->getActiveSheet()->SetCellValue('J' . $k . '', '' . $v->discount_per . '');
+                $this->excel->getActiveSheet()->SetCellValue('K' . $k . '', '' . $v->max_order_qty . '');
+                $this->excel->getActiveSheet()->SetCellValue('L' . $k . '', '' . ($type == 'New') ? $value->display_priority : "" . '');
+                $this->excel->getActiveSheet()->SetCellValue('M' . $k . '', '' . $imageString . '');
+                $this->excel->getActiveSheet()->SetCellValue('N' . $k . '', '' . $subcat->name . '');
 
                 $objValidation2 = $this->excel->getActiveSheet()->getCell('I' . $k . '')->getDataValidation();
                 $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
