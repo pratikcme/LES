@@ -325,7 +325,7 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('J1', 'Discount(%)');
         $this->excel->getActiveSheet()->setCellValue('K1', 'Maximum order quantity');
         $this->excel->getActiveSheet()->setCellValue('L1', 'Display priority');
-        $this->excel->getActiveSheet()->setCellValue('M1', 'Image');
+        $this->excel->getActiveSheet()->setCellValue('M1', 'Product image');
 
 
         $this->excel->getActiveSheet()->getStyle('A1:L1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
@@ -377,6 +377,9 @@ class Import extends Vendor_Controller
         // echo $count;die;
         foreach ($product as $i => $value) {
             foreach ($value->productVarient as $key => $v) {
+                echo "<pre>";
+                print_r($v);
+                die;
                 $count += count($value->productVarient);
                 $type = 'Old';
                 if ($key == 0) {
