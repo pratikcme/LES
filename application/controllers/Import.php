@@ -378,20 +378,21 @@ class Import extends Vendor_Controller
         foreach ($product as $i => $value) {
             foreach ($value->productVarient as $key => $v) {
                 $variant_id = $v->variant_id;
-                // $data['table'] = TABLE_PRODUCT_IMAGE;
-                // $data['select'] = ['id', 'image'];
-                // $data['where'] = [
-                //     'product_id' => $productId,
-                //     'status!=' => '9'
-                // ];
-                $this->db->select('image');
-                $this->db->from(TABLE_PRODUCT_IMAGE);
-                $this->db->where('product_variant_id', $variant_id);
-                $this->db->where('status !=', '9');
-                $query = $this->db->get();
+                $data['table'] = TABLE_PRODUCT_IMAGE;
+                $data['select'] = ['id', 'image'];
+                $data['where'] = [
+                    'product_variant_id' => $variant_id,
+                    'status!=' => '9'
+                ];
+                $images = $this->selectFromJoin($data);
+                // $this->db->select('image');
+                // $this->db->from(TABLE_PRODUCT_IMAGE);
+                // $this->db->where('product_variant_id', $variant_id);
+                // $this->db->where('status !=', '9');
+                // $query = $this->db->get();
                 $imageArray = array();
 
-                foreach ($query->result() as $row) {
+                foreach ($images as $row) {
                     $imageArray[] = $row->image;
                 }
 
