@@ -378,25 +378,15 @@ class Import extends Vendor_Controller
         foreach ($product as $i => $value) {
             foreach ($value->productVarient as $key => $v) {
                 $productId = $v->product_id;
-                // $data['table'] = TABLE_PRODUCT_IMAGE;
-                // $data['select'] = ['id', 'image'];
-                // $data['where'] = [
-                //     'product_id' => $productId,
-                //     'status!=' => '9'
-                // ];
-                $this->db->select('image');
-                $this->db->from(TABLE_PRODUCT_IMAGE);
-                $this->db->where('product_id', $productId);
-                $this->db->where('status !=', '9');
-                $query = $this->db->get();
-                $imageArray = array();
+                $data['table'] = TABLE_PRODUCT_IMAGE;
+                $data['select'] = ['id', 'image'];
+                $data['where'] = [
+                    'product_id' => $productId,
+                    'status!=' => '9'
+                ];
+                $productImage = $this->selectRecords($data);
 
-                foreach ($query->result() as $row) {
-                    $imageArray[] = $row->image;
-                }
-
-                $imageString = implode(', ', $imageArray);
-                print_r($imageString);
+                print_r($productImage);
                 die;
                 $count += count($value->productVarient);
                 $type = 'Old';
