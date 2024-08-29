@@ -377,7 +377,7 @@ class Import extends Vendor_Controller
         // echo $count;die;
         foreach ($product as $i => $value) {
             foreach ($value->productVarient as $key => $v) {
-                $productId = $v->product_id;
+                $variant_id = $v->variant_id;
                 // $data['table'] = TABLE_PRODUCT_IMAGE;
                 // $data['select'] = ['id', 'image'];
                 // $data['where'] = [
@@ -386,7 +386,7 @@ class Import extends Vendor_Controller
                 // ];
                 $this->db->select('image');
                 $this->db->from(TABLE_PRODUCT_IMAGE);
-                $this->db->where('product_id', $productId);
+                $this->db->where('product_variant_id', $variant_id);
                 $this->db->where('status !=', '9');
                 $query = $this->db->get();
                 $imageArray = array();
