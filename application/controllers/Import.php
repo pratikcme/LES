@@ -407,7 +407,8 @@ class Import extends Vendor_Controller
                 $this->db->where('status !=', '9');
                 $subquery = $this->db->get();
                 $subcat = $subquery->row();
-
+                print_r($subcat);
+                die;
                 $this->excel->getActiveSheet()->SetCellValue('A' . $k . '', '' . $x . '');
                 $this->excel->getActiveSheet()->SetCellValue('B' . $k . '', '' . $type . '');
                 $this->excel->getActiveSheet()->SetCellValue('C' . $k . '', '' . $value->product_name . '');
