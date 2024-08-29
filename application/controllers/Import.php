@@ -396,8 +396,7 @@ class Import extends Vendor_Controller
                 }
 
                 $imageString = implode(', ', $imageArray);
-                print_r($imageString);
-                die;
+
                 $count += count($value->productVarient);
                 $type = 'Old';
                 if ($key == 0) {
@@ -416,6 +415,7 @@ class Import extends Vendor_Controller
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J' . $k . '', '' . $v->discount_per . '');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K' . $k . '', '' . $v->max_order_qty . '');
                 $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('L' . $k . '', '' . ($type == 'New') ? $value->display_priority : "" . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('M' . $k . '', '' . $imageString . '');
 
                 $objValidation2 = $this->excel->getActiveSheet()->getCell('I' . $k . '')->getDataValidation();
                 $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
