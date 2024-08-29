@@ -413,7 +413,7 @@ class Import_model extends My_model
         $category_id = $postData['catgeory'];
         unset($data);
         $data['table'] = TABLE_PRODUCT;
-        $data['select'] = ['id', 'name as product_name', 'display_priority'];
+        $data['select'] = ['id', 'subcategory_id', 'name as product_name', 'display_priority'];
         $data['where'] = [
             'category_id' => $category_id,
             'status!=' => '9'
