@@ -378,7 +378,7 @@ class Import extends Vendor_Controller
         foreach ($product as $i => $value) {
             foreach ($value->productVarient as $key => $v) {
                 echo "<pre>";
-                print_r($v);
+                print_r($v->product_id);
                 die;
                 $count += count($value->productVarient);
                 $type = 'Old';
