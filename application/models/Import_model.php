@@ -1,41 +1,44 @@
 <?php
 // error_reporting(E_ALL);
 // ini_set("displya_errors", '1');
-class Import_model extends My_model {
+class Import_model extends My_model
+{
 
-    function __construct(){
+    function __construct()
+    {
         $this->vendor_id = $this->session->userdata('branch_vendor_id');
     }
 
-    function getCatgory($catgeoryName = NULL) {
+    function getCatgory($catgeoryName = NULL)
+    {
 
         if ($this->branch_id != '') {
             $data['select'] = ['*'];
-            if($catgeoryName){
-                $data['where'] = ['name' => $catgeoryName,'status!='=>'9'];
-            }else{
-                $data['where'] = ['branch_id' => $this->branch_id,'status!='=>'9'];
+            if ($catgeoryName) {
+                $data['where'] = ['name' => $catgeoryName, 'status!=' => '9'];
+            } else {
+                $data['where'] = ['branch_id' => $this->branch_id, 'status!=' => '9'];
             }
 
             $data['table'] = 'category';
             $result = $this->selectRecords($data);
             return $result;
         }
-
     }
 
-    function unit_list($unitName = NULL){
-       
+    function unit_list($unitName = NULL)
+    {
+
         $data['select'] = ['*'];
-        if($unitName){
+        if ($unitName) {
             $data['where']['name'] = $unitName;
         }
         $data['where']['vendor_id'] = $this->vendor_id;
         $data['table'] = 'weight';
-        $result = $this->selectRecords($data,true);
-        if($unitName){
+        $result = $this->selectRecords($data, true);
+        if ($unitName) {
             return $result;
-        }else{
+        } else {
             $unitArray = array();
 
             for ($i = 0; $i < count($result); $i++) {
@@ -44,19 +47,19 @@ class Import_model extends My_model {
 
             return $unitArray;
         }
-
     }
 
-    function supplier_list($supplierName = NULL){
+    function supplier_list($supplierName = NULL)
+    {
         if ($this->branch_id != '') {
             $data['select'] = ['*'];
-            if($supplierName){
-                $data['where'] = ['name' => $supplierName,'branch_id' => $this->branch_id,'status !=' => '9'];
-            }else{
-                $data['where'] = ['branch_id' => $this->branch_id,'status !=' => '9'];
+            if ($supplierName) {
+                $data['where'] = ['name' => $supplierName, 'branch_id' => $this->branch_id, 'status !=' => '9'];
+            } else {
+                $data['where'] = ['branch_id' => $this->branch_id, 'status !=' => '9'];
             }
             $data['table'] = 'supplier';
-            $result = $this->selectRecords($data,true);
+            $result = $this->selectRecords($data, true);
 
             if ($supplierName) {
                 return $result;
@@ -72,7 +75,8 @@ class Import_model extends My_model {
         }
     }
 
-    function package_list($packageName = NULL){
+    function package_list($packageName = NULL)
+    {
 
         $data['select'] = ['*'];
         if ($packageName) {
@@ -80,7 +84,7 @@ class Import_model extends My_model {
         }
         $data['where']['vendor_id'] = $this->vendor_id;
         $data['table'] = 'package';
-        $result = $this->selectRecords($data,true);
+        $result = $this->selectRecords($data, true);
 
         if ($packageName) {
             return $result;
@@ -95,25 +99,26 @@ class Import_model extends My_model {
         }
     }
 
-    function subcategory_list($categoryId,$subCategory="") {
-            
-        if (isset($categoryId) && $categoryId != "" ) {
+    function subcategory_list($categoryId, $subCategory = "")
+    {
+
+        if (isset($categoryId) && $categoryId != "") {
             $data['select'] = ['*'];
-            if($subCategory != ''){
-                $data['where'] = ['status !='=>'9','category_id' => $categoryId,'branch_id' => $this->branch_id,'name' => filter_var (trim($subCategory), FILTER_SANITIZE_STRING)];
-            }else{
-                $data['where'] = ['category_id' => $categoryId, 'branch_id' => $this->branch_id,'status !='=>'9'];
+            if ($subCategory != '') {
+                $data['where'] = ['status !=' => '9', 'category_id' => $categoryId, 'branch_id' => $this->branch_id, 'name' => filter_var(trim($subCategory), FILTER_SANITIZE_STRING)];
+            } else {
+                $data['where'] = ['category_id' => $categoryId, 'branch_id' => $this->branch_id, 'status !=' => '9'];
             }
             // unset($data['where']);
             $data['table'] = 'subcategory';
-            $result = $this->selectRecords($data,true);
-          
-            if($subCategory){
+            $result = $this->selectRecords($data, true);
+
+            if ($subCategory) {
                 // $this->db->query('truncate table temp_product');
                 // $this->db->query('truncate table temp_product_weight');
                 // $this->db->query('truncate table temp_product_image');
                 return $result;
-            }else{
+            } else {
                 $subCateArray = array();
 
                 for ($i = 0; $i < count($result); $i++) {
@@ -122,86 +127,86 @@ class Import_model extends My_model {
                 return $subCateArray;
             }
         }
-
     }
 
-    function escapeString($val) {
+    function escapeString($val)
+    {
         $db = get_instance()->db->conn_id;
         $val = mysqli_real_escape_string($db, $val);
         return $val;
     }
 
-    function brand_list($categoryId,$brand = NULL) {
+    function brand_list($categoryId, $brand = NULL)
+    {
 
         if (isset($categoryId) && !empty($categoryId)) {
 
-            if($brand){
+            if ($brand) {
                 $brand = $this->escapeString($brand);
                 $brand_query = $this->db->query("SELECT * FROM brand WHERE name = '$brand' AND branch_id = '$this->branch_id' AND status != '9'");
                 $result = $brand_query->result_array();
-                 // echo $this->db->last_query();die;
-            }else{
+                // echo $this->db->last_query();die;
+            } else {
                 // $brand_query = $this->db->query("SELECT * FROM brand WHERE category_id LIKE '%$categoryId%' AND branch_id = '$this->branch_id' AND status != '9'");
-                $brand_query = $this->db->query("SELECT * FROM brand WHERE FIND_IN_SET(".$categoryId.",category_id) AND branch_id = '$this->branch_id' AND status != '9'");
+                $brand_query = $this->db->query("SELECT * FROM brand WHERE FIND_IN_SET(" . $categoryId . ",category_id) AND branch_id = '$this->branch_id' AND status != '9'");
                 $result = $brand_query->result_array();
-
             }
-                if(empty($result)){
-                    // $this->db->query('truncate table temp_product');
-                    // $this->db->query('truncate table temp_product_weight');
-                    // $this->db->query('truncate table temp_product_image');
-                    $this->utility->setFlashMessage('danger',"Brand does not exist.Excel is not uploaded!");
-                    redirect(base_url().'import/import_excel');
-                    die;
-                }
-          
-            if(!empty($brand)){
-                return $result;
+            if (empty($result)) {
+                // $this->db->query('truncate table temp_product');
+                // $this->db->query('truncate table temp_product_weight');
+                // $this->db->query('truncate table temp_product_image');
+                $this->utility->setFlashMessage('danger', "Brand does not exist.Excel is not uploaded!");
+                redirect(base_url() . 'import/import_excel');
+                die;
+            }
 
-            }else{
+            if (!empty($brand)) {
+                return $result;
+            } else {
                 $brandArray = array();
 
-                for($i=0; $i<count($result); $i++){
+                for ($i = 0; $i < count($result); $i++) {
                     $brandArray[] = $result[$i]['name'];
                 }
                 return $brandArray;
             }
-
         }
-
     }
 
-    public function getCategorys(){
-        $data['table'] = 'category'; 
-        $data['select'] = ['*']; 
-        $data['where'] = ['status!='=>'9','branch_id'=>$this->branch_id];
-        return $this->selectRecords($data); 
+    public function getCategorys()
+    {
+        $data['table'] = 'category';
+        $data['select'] = ['*'];
+        $data['where'] = ['status!=' => '9', 'branch_id' => $this->branch_id];
+        return $this->selectRecords($data);
     }
 
-    public function getProductByBranchID($category_id = ''){
-        if($category_id != ''){
-            $data['where']['category_id!='] = $category_id;  
+    public function getProductByBranchID($category_id = '')
+    {
+        if ($category_id != '') {
+            $data['where']['category_id!='] = $category_id;
         }
         $data['table'] = TABLE_PRODUCT;
         $data['select'] = ['display_priority'];
         $data['where']['status!='] = '9';
         $data['where']['branch_id'] = $this->branch_id;
         $data['where']['display_priority !='] = '';
-        return $this->selectRecords($data,true);
+        return $this->selectRecords($data, true);
     }
 
-    function importExcel(){
+    function importExcel()
+    {
         // echo '1';die;
-            // print_r($_POST);die;
+        // print_r($_POST);die;
         $this->load->library('excel');
         if (isset($_FILES["file"]["name"])) {
             $path = $_FILES["file"]["tmp_name"];
-            $name = explode('.',$_FILES["file"]["name"]);
+            $name = explode('.', $_FILES["file"]["name"]);
             // $getCategory = $this->getCatgory($name[0]);
             // $categoryId = $getCategory[0]->id;
             $categoryId = $this->input->post('catgeory');
             $products = $this->getProductByBranchID();
-            $arrayProducts = array_column($products,'display_priority');
+            $arrayProducts = array_column($products, 'display_priority');
             $object = PHPExcel_IOFactory::load($path);
             $lastInsertedId = '';
             foreach ($object->getWorksheetIterator() as $worksheet) {
@@ -213,7 +218,7 @@ class Import_model extends My_model {
                     //     die;
                     // }
                     $type = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-                    
+
                     $subCategory = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 
                     $brandName = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
@@ -224,7 +229,7 @@ class Import_model extends My_model {
                     $display_priority = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
                     $varient = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
                     $unit = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-                    
+
                     $package = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
                     $qty = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
                     $purchasePrice = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
@@ -235,49 +240,49 @@ class Import_model extends My_model {
                     $gst = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
                     $max_order_qty = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
 
-                    if(in_array($display_priority,$arrayProducts)){
-                       return  ['status'=>false,'message'=>$display_priority.' priority already assigned remove/change priority and try again..']; 
+                    if (in_array($display_priority, $arrayProducts)) {
+                        return  ['status' => false, 'message' => $display_priority . ' priority already assigned remove/change priority and try again..'];
                     }
-            // print_r($type);
-            // echo "<br>";
-            // print_r($subCategory);
-            // echo "<br>";
-            // print_r($brandName);
-            // echo "<br>";
-            // print_r($productContent);
-            // echo "<br>";
-            // print_r($productAbout);
-            // echo "<br>";
-            // print_r($display_prority);
-            // echo "<br>";
-            // print_r($varient);
-            // echo "<br>";
-            // print_r($unit);
-            // echo "<br>";
-            // print_r($package);
-            // echo "<br>";
-            // print_r($qty);
-            // echo "<br>";
-            // print_r($purchasePrice);
-            // echo "<br>";
-            // print_r($retailPrice);
-            // echo "<br>";
-            // print_r($dicount);
-            // echo "<br>";
-            // print_r($image);
-            // echo "<br>";
-            // print_r($gst);
-            // echo "<br>";
-            // print_r($max_order_qty);
-            // echo "<br>";
-            // die;
+                    // print_r($type);
+                    // echo "<br>";
+                    // print_r($subCategory);
+                    // echo "<br>";
+                    // print_r($brandName);
+                    // echo "<br>";
+                    // print_r($productContent);
+                    // echo "<br>";
+                    // print_r($productAbout);
+                    // echo "<br>";
+                    // print_r($display_prority);
+                    // echo "<br>";
+                    // print_r($varient);
+                    // echo "<br>";
+                    // print_r($unit);
+                    // echo "<br>";
+                    // print_r($package);
+                    // echo "<br>";
+                    // print_r($qty);
+                    // echo "<br>";
+                    // print_r($purchasePrice);
+                    // echo "<br>";
+                    // print_r($retailPrice);
+                    // echo "<br>";
+                    // print_r($dicount);
+                    // echo "<br>";
+                    // print_r($image);
+                    // echo "<br>";
+                    // print_r($gst);
+                    // echo "<br>";
+                    // print_r($max_order_qty);
+                    // echo "<br>";
+                    // die;
 
-                    if($subCategory != ''){
+                    if ($subCategory != '') {
                         $getSub = $this->subcategory_list($categoryId, $subCategory);
                         $subCategoryId = $getSub[0]['id'];
                     }
 
-                    if($brandName != ''){
+                    if ($brandName != '') {
                         $getBrand = $this->brand_list($categoryId, $brandName);
                         // echo $this->db->last_query();die;
                         // print_r($getBrand);die;
@@ -285,25 +290,25 @@ class Import_model extends My_model {
                         // $brandId = '10';
                     }
 
-                 
-                    if($package != ''){
+
+                    if ($package != '') {
                         $getPackage = $this->package_list($package);
                         $packageId = $getPackage[0]['id'];
                     }
 
-                    if($unit != ''){
+                    if ($unit != '') {
                         $getUnit = $this->unit_list($unit);
                         $unitId = $getUnit[0]['id'];
                     }
-                    if($image != ''){
+                    if ($image != '') {
                         $image = $image;
                         $images = explode(',', $image);
                     }
-                    if($gst == ''){
-                        $gst = 0 ;
+                    if ($gst == '') {
+                        $gst = 0;
                     }
 
-                    if($type != ''){
+                    if ($type != '') {
                         if ($type == 'New') {
                             // echo 'new';die;
                             $data['insert']['branch_id'] = $this->branch_id;
@@ -340,13 +345,13 @@ class Import_model extends My_model {
                                 $dicount = 0;
                                 $final_discount_price = $retailPrice;
                             }
-                            
-                            $gst = ($final_discount_price * $gst) /100;
+
+                            $gst = ($final_discount_price * $gst) / 100;
                             $without_gst_price = $final_discount_price - $gst;
 
 
                             // echo $unitId .'/'.$packageId .'/'. $varient .'/'. $purchasePrice .'/'.$purchasePrice .'/'. $retailPrice .'/'. $qty ; die; 
-                            if($unitId !='' && ($packageId !='') && ($varient !='') && ($purchasePrice == 0 || $purchasePrice != '') && ($retailPrice !='') && ($qty !='') ) {
+                            if ($unitId != '' && ($packageId != '') && ($varient != '') && ($purchasePrice == 0 || $purchasePrice != '') && ($retailPrice != '') && ($qty != '')) {
                                 $data['insert']['branch_id'] = $this->branch_id;
                                 $data['insert']['product_id'] = ($lastId != '') ? $lastId : $lastInsertedId;
                                 $data['insert']['weight_id'] = $unitId;
@@ -360,15 +365,15 @@ class Import_model extends My_model {
                                 $data['insert']['without_gst_price'] = $without_gst_price;
                                 $data['insert']['discount_price'] = $final_discount_price;
                                 $data['insert']['discount_allow'] = '1';
-                                if(isset($max_order_qty) && $max_order_qty!='' && $max_order_qty!=0){
-                                    $data['insert']['max_order_qty'] = $max_order_qty;                                    
+                                if (isset($max_order_qty) && $max_order_qty != '' && $max_order_qty != 0) {
+                                    $data['insert']['max_order_qty'] = $max_order_qty;
                                 }
                                 $data['insert']['status'] = '1';
                                 $data['insert']['dt_added'] = strtotime(date('Y-m-d H:i:s'));
                                 $data['insert']['dt_updated'] = strtotime(date('Y-m-d H:i:s'));
                                 $data['table'] = 'temp_product_weight';
                                 $result = $this->insertRecord($data);
-                               // lq();
+                                // lq();
 
                                 unset($data);
                                 foreach ($images as $key => $value) {
@@ -388,15 +393,14 @@ class Import_model extends My_model {
                             }
                         }
                     }
-
                 }
-               
             }
         }
-        return ['status'=>true];
-    } 
+        return ['status' => true];
+    }
 
-    public function getProductOfCategory($postData){
+    public function getProductOfCategory($postData)
+    {
         // $data['table'] = TABLE_CATEGORY;
         // $data['select'] = ['*'];
         // $data['where'] = [
@@ -409,42 +413,43 @@ class Import_model extends My_model {
         $category_id = $postData['catgeory'];
         unset($data);
         $data['table'] = TABLE_PRODUCT;
-        $data['select'] = ['id','name as product_name','display_priority'];
+        $data['select'] = ['id', 'name as product_name', 'display_priority'];
         $data['where'] = [
-            'category_id'=>$category_id,
-            'status!='=>'9'
+            'category_id' => $category_id,
+            'status!=' => '9'
         ];
         return $this->selectRecords($data);
     }
 
-    public function getVarientOfProduct($product_id,$branch_id){
-       
+    public function getVarientOfProduct($product_id, $branch_id)
+    {
+
 
         $data['table'] = TABLE_PRODUCT_WEIGHT . ' as pw';
         $data['join'] = [
-            TABLE_WEIGHT . ' as w'=>['pw.weight_id=w.id','LEFT'], 
-            'package as pkg'=>['pw.package=pkg.id','LEFT'], 
+            TABLE_WEIGHT . ' as w' => ['pw.weight_id=w.id', 'LEFT'],
+            'package as pkg' => ['pw.package=pkg.id', 'LEFT'],
         ];
         $data['where'] = [
-            'pw.branch_id' =>$branch_id,
-            'pw.product_id'=>$product_id,
-            'pw.status !='=>'9',
+            'pw.branch_id' => $branch_id,
+            'pw.product_id' => $product_id,
+            'pw.status !=' => '9',
         ];
-        $data['select'] = ['pw.weight_no','pw.quantity','w.name','pkg.package','pw.discount_per','pw.price','pw.purchase_price'];
-       
+        $data['select'] = ['pw.weight_no', 'pw.quantity', 'w.name', 'pkg.package', 'pw.discount_per', 'pw.price', 'pw.purchase_price', 'pw.product_id'];
+
         return $return = $this->selectFromJoin($data);
-     
     }
 
-    public function UpdateProductQuantity(){
+    public function UpdateProductQuantity()
+    {
         if (isset($_FILES["file"]["name"])) {
             $path = $_FILES["file"]["tmp_name"];
-            $name = explode('.',$_FILES["file"]["name"]);
+            $name = explode('.', $_FILES["file"]["name"]);
             $categoryId = $this->input->post('catgeory');
-            
+
             $products = $this->getProductByBranchID($categoryId);
             // dd($products);
-            $arrayProducts = array_column($products,'display_priority');
+            $arrayProducts = array_column($products, 'display_priority');
             // dd($arrayProducts);
             $object = PHPExcel_IOFactory::load($path);
             $lastInsertedId = '';
@@ -462,11 +467,11 @@ class Import_model extends My_model {
             foreach ($object->getWorksheetIterator() as $worksheet) {
                 $highestRow = $worksheet->getHighestRow();
                 $highestColumn = $worksheet->getHighestColumn();
-              
+
                 $i = 0;
                 for ($row = 2; $row <= $highestRow; $row++) {
 
-                    $type = $worksheet->getCellByColumnAndRow(1, $row)->getValue();                    
+                    $type = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
                     $productName = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                     $varient = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                     $unit = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
@@ -477,87 +482,86 @@ class Import_model extends My_model {
                     $discount = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
                     $max_order_qty = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
                     $display_priority = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
-                    if($display_priority!=''){
+                    if ($display_priority != '') {
                         $excelDisplayPriority[] = $display_priority;
                     }
 
                     $indexes = array_keys($excelDisplayPriority, $display_priority);
-                    if(count($indexes) > 1){
-                        return  ['status'=>false,'message'=> 'priority is repeated in excel remove/change priority and try again..'];
+                    if (count($indexes) > 1) {
+                        return  ['status' => false, 'message' => 'priority is repeated in excel remove/change priority and try again..'];
                     }
 
-                    if(in_array($display_priority,$arrayProducts)){
-                        return  ['status'=>false,'message'=>$display_priority.' priority already assigned remove/change priority and try again..']; 
-                     }
+                    if (in_array($display_priority, $arrayProducts)) {
+                        return  ['status' => false, 'message' => $display_priority . ' priority already assigned remove/change priority and try again..'];
+                    }
                     //  echo '1';die;
-                    $discount_price = ($price * $discount)/100; 
+                    $discount_price = ($price * $discount) / 100;
 
-                  
+
                     $Varient = $this->ProductVarient($productName);
                     // dd($Varient);
-                    
-                    if($type != ''){
+
+                    if ($type != '') {
 
                         if ($type == 'New') {
-                            $i = 0 ;  
+                            $i = 0;
                             $firstVarient_id = $Varient[$i]->id;
                             $data['update']['quantity'] = $qty;
                             $data['update']['purchase_price'] = $purchased_price;
                             $data['update']['price'] = $price;
                             $data['update']['discount_per'] = $discount;
                             $data['update']['discount_price'] = $price - $discount_price;
-                            if(isset($max_order_qty) && $max_order_qty!='' && $max_order_qty!=0){
-                                $data['update']['max_order_qty'] = $max_order_qty;                                    
+                            if (isset($max_order_qty) && $max_order_qty != '' && $max_order_qty != 0) {
+                                $data['update']['max_order_qty'] = $max_order_qty;
                             }
                             $data['table'] = 'product_weight';
                             $data['where']['id'] =  $firstVarient_id;
-                            
+
                             $dataa['table'] = TABLE_PRODUCT;
                             $dataa['update']['display_priority'] = $display_priority;
-                            $dataa['where']['id'] = $Varient[$i]->product_id; 
+                            $dataa['where']['id'] = $Varient[$i]->product_id;
                             $this->updateRecords($dataa);
                             // lq();
                         }
-                        if ($type == 'Old') {  
-                            $Varient_id = $Varient[$i]->id;  
+                        if ($type == 'Old') {
+                            $Varient_id = $Varient[$i]->id;
                             $data['update']['quantity'] = $qty;
                             $data['update']['purchase_price'] = $purchased_price;
                             $data['update']['price'] = $price;
                             $data['update']['discount_per'] = $discount;
                             $data['update']['discount_price'] = $price - $discount_price;
-                            if(isset($max_order_qty) && $max_order_qty!='' && $max_order_qty!=0){
-                                $data['update']['max_order_qty'] = $max_order_qty;                                    
+                            if (isset($max_order_qty) && $max_order_qty != '' && $max_order_qty != 0) {
+                                $data['update']['max_order_qty'] = $max_order_qty;
                             }
                             $data['table'] = 'product_weight';
                             $data['where']['id'] =  $Varient_id;
-
                         }
-                            
 
-                            $data['update']['dt_updated'] = strtotime(DATE_TIME);
-                            $lastId = $this->updateRecords($data);
-                            $lastInsertedId = $lastId;
 
-                    }else{
-                        return ['status'=>false,'message'=>'somthing Went Wrong'];
+                        $data['update']['dt_updated'] = strtotime(DATE_TIME);
+                        $lastId = $this->updateRecords($data);
+                        $lastInsertedId = $lastId;
+                    } else {
+                        return ['status' => false, 'message' => 'somthing Went Wrong'];
                     }
                     $i++;
                 }
                 // retrun 
             }
-            return ['status'=>true,'message'=>"Product quantity updated successfully"];
-        }else{
-            return ['status'=>false,'message'=>'somthing Went Wrong'];
+            return ['status' => true, 'message' => "Product quantity updated successfully"];
+        } else {
+            return ['status' => false, 'message' => 'somthing Went Wrong'];
         }
     }
 
-    public function ProductVarient($productName){
+    public function ProductVarient($productName)
+    {
         $data['table'] = TABLE_PRODUCT;
         $data['select'] = ['*'];
         $data['where'] = [
-            'branch_id'=>$this->branch_id,
-            'name'=>$productName,
-            'status!='=>'9'
+            'branch_id' => $this->branch_id,
+            'name' => $productName,
+            'status!=' => '9'
         ];
         $res = $this->selectRecords($data);
         $product_id = $res[0]->id;
@@ -565,69 +569,67 @@ class Import_model extends My_model {
 
         $data['table'] = TABLE_PRODUCT_WEIGHT;
         $data['select'] = ['*'];
-        $data['where'] = ['product_id'=>$product_id,'status!='=>'9'];
+        $data['where'] = ['product_id' => $product_id, 'status!=' => '9'];
         return $this->selectRecords($data);
     }
 
-    public function getTemopRecord(){
+    public function getTemopRecord()
+    {
         $data['table'] = 'temp_product_weight as pw';
         $data['join'] = [
-            'temp_product as p'=>['p.id=pw.product_id','LEFT'],
-            'temp_product_image as pi'=>['pw.id=pi.product_variant_id','LEFT'],
-            TABLE_WEIGHT . ' as w' =>['w.id=pw.weight_id','LEFT'],
-            'package as pk'=>['pk.id=pw.package','LEFT']
+            'temp_product as p' => ['p.id=pw.product_id', 'LEFT'],
+            'temp_product_image as pi' => ['pw.id=pi.product_variant_id', 'LEFT'],
+            TABLE_WEIGHT . ' as w' => ['w.id=pw.weight_id', 'LEFT'],
+            'package as pk' => ['pk.id=pw.package', 'LEFT']
         ];
-        $data['select'] = ['p.name','pw.weight_no','w.name as weight_name','pw.price','pw.quantity','pw.discount_price','pw.discount_per','pk.package as package_name',];
-        $data['where'] = ['p.branch_id'=>$this->session->userdata('id')];
+        $data['select'] = ['p.name', 'pw.weight_no', 'w.name as weight_name', 'pw.price', 'pw.quantity', 'pw.discount_price', 'pw.discount_per', 'pk.package as package_name',];
+        $data['where'] = ['p.branch_id' => $this->session->userdata('id')];
         $result = $this->selectFromJoin($data);
         return $result;
     }
 
-    public function insertExcelRecordParmanent(){
-        $check = 1; 
+    public function insertExcelRecordParmanent()
+    {
+        $check = 1;
         $tempRecords = $this->tempTableRecords('temp_product');
         foreach ($tempRecords as $key => $records) {
             $temp_product_id = $tempRecords[$key]->id;
             unset($tempRecords[$key]->id);
             // dd($tempRecords[$key]);
-            $this->db->insert(TABLE_PRODUCT,$tempRecords[$key]);
+            $this->db->insert(TABLE_PRODUCT, $tempRecords[$key]);
             $product_id = $this->db->insert_id();
-            $temp_product_weight = $this->tempTableRecords('temp_product_weight',['product_id'=>$temp_product_id]);
+            $temp_product_weight = $this->tempTableRecords('temp_product_weight', ['product_id' => $temp_product_id]);
             $check++;
             foreach ($temp_product_weight as $k => $v) {
                 $temp_varient_id = $temp_product_weight[$k]->id;
                 unset($temp_product_weight[$k]->id);
                 unset($temp_product_weight[$k]->$product_id);
                 $v->product_id = $product_id;
-                $this->db->insert(TABLE_PRODUCT_WEIGHT,$temp_product_weight[$k]);
+                $this->db->insert(TABLE_PRODUCT_WEIGHT, $temp_product_weight[$k]);
                 $variant_id = $this->db->insert_id();
-                $temp_product_image = $this->tempTableRecords('temp_product_image',['product_variant_id'=>$temp_varient_id]);
+                $temp_product_image = $this->tempTableRecords('temp_product_image', ['product_variant_id' => $temp_varient_id]);
                 $check++;
                 foreach ($temp_product_image as $tpik => $image) {
                     unset($temp_product_image[$tpik]->id);
                     unset($temp_product_image[$tpik]->product_variant_id);
                     $image->product_id = $product_id;
                     $image->product_variant_id = $variant_id;
-                     $this->db->insert(TABLE_PRODUCT_IMAGE,$temp_product_image[$tpik]);
+                    $this->db->insert(TABLE_PRODUCT_IMAGE, $temp_product_image[$tpik]);
                     $check++;
-                 } 
+                }
             }
         }
         // dd($check);
         return $check;
-
     }
 
-    public function tempTableRecords($table,$where = ''){
-        if(!empty($where) && $where != ''){
-            $data['where'] = $where; 
+    public function tempTableRecords($table, $where = '')
+    {
+        if (!empty($where) && $where != '') {
+            $data['where'] = $where;
         }
         $data['table'] = $table;
         $data['select'] = ['*'];
         return $this->selectRecords($data);
-
     }
-
 }
-
-?>
