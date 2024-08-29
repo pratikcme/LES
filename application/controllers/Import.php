@@ -385,12 +385,14 @@ class Import extends Vendor_Controller
                     'status!=' => '9'
                 ];
                 $images = $this->selectFromJoin($data);
-                // $this->db->select('image');
-                // $this->db->from(TABLE_PRODUCT_IMAGE);
-                // $this->db->where('product_variant_id', $variant_id);
-                // $this->db->where('status !=', '9');
-                // $query = $this->db->get();
-                $imageArray = array();
+                print_r($images);
+                return
+                    // $this->db->select('image');
+                    // $this->db->from(TABLE_PRODUCT_IMAGE);
+                    // $this->db->where('product_variant_id', $variant_id);
+                    // $this->db->where('status !=', '9');
+                    // $query = $this->db->get();
+                    $imageArray = array();
 
                 foreach ($images as $row) {
                     $imageArray[] = $row->image;
