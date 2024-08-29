@@ -377,8 +377,26 @@ class Import extends Vendor_Controller
         // echo $count;die;
         foreach ($product as $i => $value) {
             foreach ($value->productVarient as $key => $v) {
-                echo "<pre>";
-                print_r($v->product_id);
+                $productId = $v->product_id;
+                // $data['table'] = TABLE_PRODUCT_IMAGE;
+                // $data['select'] = ['id', 'image'];
+                // $data['where'] = [
+                //     'product_id' => $productId,
+                //     'status!=' => '9'
+                // ];
+                $this->db->select('image');
+                $this->db->from(TABLE_PRODUCT_IMAGE);
+                $this->db->where('product_id', $productId);
+                $this->db->where('status !=', '9');
+                $query = $this->db->get();
+                $imageArray = array();
+
+                foreach ($query->result() as $row) {
+                    $imageArray[] = $row->image;
+                }
+
+                $imageString = implode(', ', $imageArray);
+                print_r($imageString);
                 die;
                 $count += count($value->productVarient);
                 $type = 'Old';
