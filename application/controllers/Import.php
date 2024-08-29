@@ -384,9 +384,9 @@ class Import extends Vendor_Controller
                     'product_id' => $productId,
                     'status!=' => '9'
                 ];
-                $productImage = $this->selectRecords($data);
+                $productImagetest = $this->selectRecords($data);
 
-                print_r($productImage);
+                print_r($productImagetest);
                 die;
                 $count += count($value->productVarient);
                 $type = 'Old';
