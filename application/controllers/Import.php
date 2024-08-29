@@ -384,7 +384,7 @@ class Import extends Vendor_Controller
                     'product_variant_id' => $variant_id,
                     'status!=' => '9'
                 ];
-                $images = $this->selectFromJoin($data);
+                $images = $this->selectRecords($data);
                 print_r($images);
                 return
                     // $this->db->select('image');
