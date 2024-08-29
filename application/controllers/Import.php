@@ -4,59 +4,63 @@ class Import extends Vendor_Controller
 {
     public $vendorId;
 
-    function __construct(){
+    function __construct()
+    {
         parent::__construct();
         $this->branch_id = $this->session->userdata['id'];
-        $this->load->model('import_model','this_model');
-    //     ini_set("display_errors", "1");
-             // error_reporting(E_ALL);
-       
+        $this->load->model('import_model', 'this_model');
+        //     ini_set("display_errors", "1");
+        // error_reporting(E_ALL);
+
     }
 
-    public function index(){
+    public function index()
+    {
 
         $data['catgeory'] = $this->this_model->getCatgory();
-        $this->load->view('import',$data);
+        $this->load->view('import', $data);
     }
 
-    public function generate(){
+    public function generate()
+    {
         $type = $this->input->post('type');
 
-        if($type == 1){
+        if ($type == 1) {
             $this->genrate_excel();
-        }else{
+        } else {
             $this->genrate_excel_for_update();
         }
-
     }
 
-    public function importExcelFile(){
-        if($this->input->post()){            
+    public function importExcelFile()
+    {
+        if ($this->input->post()) {
             $type = $this->input->post('type');
-            if($type == 1){
+            if ($type == 1) {
                 $this->import_excel();
-            }else{
+            } else {
 
                 $this->update_productQuantity();
-            }   
+            }
         }
-        $this->utility->setFlashMessage('danger',"Somthing went Wrong");
-        redirect(base_url().'import/import_excel');
+        $this->utility->setFlashMessage('danger', "Somthing went Wrong");
+        redirect(base_url() . 'import/import_excel');
     }
 
 
-    public function genrate_excel(){
+    public function genrate_excel()
+    {
         // print_r($this->input->post());die;
         $subCatgeoryList = $this->this_model->subcategory_list($this->input->post('catgeory'));
-        if(empty($subCatgeoryList)){
-            $this->utility->setFlashMessage('danger',"Subcategory Not available for this category");
-            redirect(base_url().'import/');
+        if (empty($subCatgeoryList)) {
+            $this->utility->setFlashMessage('danger', "Subcategory Not available for this category");
+            redirect(base_url() . 'import/');
             die;
         }
         $brandList = $this->this_model->brand_list($this->input->post('catgeory'));
-        if(empty($brandList)){
-            $this->utility->setFlashMessage('danger',"Brand Not available for this category");
-            redirect(base_url().'import/');
+        if (empty($brandList)) {
+            $this->utility->setFlashMessage('danger', "Brand Not available for this category");
+            redirect(base_url() . 'import/');
             die;
         }
         // echo $this->db->last_query();
@@ -138,13 +142,13 @@ class Import extends Vendor_Controller
 
         // }
 
-//        $this->excel->getActiveSheet()->getProtection()->setSheet(true);
+        //        $this->excel->getActiveSheet()->getProtection()->setSheet(true);
         $maxRow = 500;
         for ($i = 2; $i <= $maxRow; $i++) {
 
-            $objValidation = $this->excel->getActiveSheet()->getCell('B'.$i.'')->getDataValidation();
-            $objValidation->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
-            $objValidation->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
+            $objValidation = $this->excel->getActiveSheet()->getCell('B' . $i . '')->getDataValidation();
+            $objValidation->setType(PHPExcel_Cell_DataValidation::TYPE_LIST);
+            $objValidation->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_INFORMATION);
             $objValidation->setAllowBlank(false);
             $objValidation->setShowInputMessage(true);
             $objValidation->setShowErrorMessage(true);
@@ -156,9 +160,9 @@ class Import extends Vendor_Controller
             $objValidation->setFormula1('"New,Old"');
 
 
-            $objValidation1 = $this->excel->getActiveSheet()->getCell('C'.$i.'')->getDataValidation();
-            $objValidation1->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
-            $objValidation1->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
+            $objValidation1 = $this->excel->getActiveSheet()->getCell('C' . $i . '')->getDataValidation();
+            $objValidation1->setType(PHPExcel_Cell_DataValidation::TYPE_LIST);
+            $objValidation1->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_INFORMATION);
             $objValidation1->setAllowBlank(false);
             $objValidation1->setShowInputMessage(true);
             $objValidation1->setShowErrorMessage(true);
@@ -167,12 +171,12 @@ class Import extends Vendor_Controller
             $objValidation1->setError('Value is not in list.');
             $objValidation1->setPromptTitle('Pick from list');
             $objValidation1->setPrompt('Please pick a value from the drop-down list.');
-            $objValidation1->setFormula1('"'. implode(',',$subCatgeoryList).'"');
+            $objValidation1->setFormula1('"' . implode(',', $subCatgeoryList) . '"');
 
 
-            $objValidation2 = $this->excel->getActiveSheet()->getCell('D'.$i.'')->getDataValidation();
-            $objValidation2->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
-            $objValidation2->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
+            $objValidation2 = $this->excel->getActiveSheet()->getCell('D' . $i . '')->getDataValidation();
+            $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_LIST);
+            $objValidation2->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_INFORMATION);
             $objValidation2->setAllowBlank(false);
             $objValidation2->setShowInputMessage(true);
             $objValidation2->setShowErrorMessage(true);
@@ -181,28 +185,28 @@ class Import extends Vendor_Controller
             $objValidation2->setError('Value is not in list.');
             $objValidation2->setPromptTitle('Pick from list');
             $objValidation2->setPrompt('Please pick a value from the drop-down list.');
-            $objValidation2->setFormula1('"'. implode(',',$brandList).'"');
-
-       
-
-        //     $objValidation3 = $this->excel->getActiveSheet()->getCell('H'.$i.'')->getDataValidation();
-        //     $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
-        //     $objValidation3->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
-        //     $objValidation3->setAllowBlank(false);
-        //     $objValidation3->setShowInputMessage(true);
-        //     $objValidation3->setShowErrorMessage(true);
-        //     $objValidation3->setShowDropDown(true);
-        //     $objValidation3->setErrorTitle('Input error');
-        //     $objValidation3->setError('Value is not in list.');
-        //     $objValidation3->setPromptTitle('Pick from list');
-        //     $objValidation3->setPrompt('Please pick a value from the drop-down list.');
-        //     $objValidation3->setFormula1('"'. implode(',',$supplierList).'"');
+            $objValidation2->setFormula1('"' . implode(',', $brandList) . '"');
 
 
 
-            $objValidation4 = $this->excel->getActiveSheet()->getCell('J'.$i.'')->getDataValidation();
-            $objValidation4->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
-            $objValidation4->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
+            //     $objValidation3 = $this->excel->getActiveSheet()->getCell('H'.$i.'')->getDataValidation();
+            //     $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
+            //     $objValidation3->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
+            //     $objValidation3->setAllowBlank(false);
+            //     $objValidation3->setShowInputMessage(true);
+            //     $objValidation3->setShowErrorMessage(true);
+            //     $objValidation3->setShowDropDown(true);
+            //     $objValidation3->setErrorTitle('Input error');
+            //     $objValidation3->setError('Value is not in list.');
+            //     $objValidation3->setPromptTitle('Pick from list');
+            //     $objValidation3->setPrompt('Please pick a value from the drop-down list.');
+            //     $objValidation3->setFormula1('"'. implode(',',$supplierList).'"');
+
+
+
+            $objValidation4 = $this->excel->getActiveSheet()->getCell('J' . $i . '')->getDataValidation();
+            $objValidation4->setType(PHPExcel_Cell_DataValidation::TYPE_LIST);
+            $objValidation4->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_INFORMATION);
             $objValidation4->setAllowBlank(false);
             $objValidation4->setShowInputMessage(true);
             $objValidation4->setShowErrorMessage(true);
@@ -211,13 +215,13 @@ class Import extends Vendor_Controller
             $objValidation4->setError('Value is not in list.');
             $objValidation4->setPromptTitle('Pick from list');
             $objValidation4->setPrompt('Please pick a value from the drop-down list.');
-            $objValidation4->setFormula1('"'. implode(',',$unitList).'"');
+            $objValidation4->setFormula1('"' . implode(',', $unitList) . '"');
 
-        
 
-            $objValidation5 = $this->excel->getActiveSheet()->getCell('K'.$i.'')->getDataValidation();
-            $objValidation5->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
-            $objValidation5->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
+
+            $objValidation5 = $this->excel->getActiveSheet()->getCell('K' . $i . '')->getDataValidation();
+            $objValidation5->setType(PHPExcel_Cell_DataValidation::TYPE_LIST);
+            $objValidation5->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_INFORMATION);
             $objValidation5->setAllowBlank(false);
             $objValidation5->setShowInputMessage(true);
             $objValidation5->setShowErrorMessage(true);
@@ -226,9 +230,9 @@ class Import extends Vendor_Controller
             $objValidation5->setError('Value is not in list.');
             $objValidation5->setPromptTitle('Pick from list');
             $objValidation5->setPrompt('Please pick a value from the drop-down list.');
-            $objValidation5->setFormula1('"'. implode(',',$packageList).'"');
+            $objValidation5->setFormula1('"' . implode(',', $packageList) . '"');
 
-            $objValidation7 = $this->excel->getActiveSheet()->getCell('N'.$i.'')->getDataValidation();
+            $objValidation7 = $this->excel->getActiveSheet()->getCell('N' . $i . '')->getDataValidation();
             $objValidation7->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
             $objValidation7->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
             $objValidation7->setAllowBlank(true);
@@ -236,76 +240,75 @@ class Import extends Vendor_Controller
             $objValidation7->setShowErrorMessage(true);
             $objValidation7->setErrorTitle('Input error');
             $objValidation7->setError('MRP Must be Grater Than Purchased Price');
-            $objValidation7->setFormula1('=IF(N'.$i.' > M'.$i.')=1');
+            $objValidation7->setFormula1('=IF(N' . $i . ' > M' . $i . ')=1');
             // $objValidation7->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$i.', $M'.$i.':$M$'.$maxRow.', 1, FALSE)), "Comparison is successful", "Comparison failed")');
 
-            $objValidation3 = $this->excel->getActiveSheet()->getCell('H'.$i.'')->getDataValidation();
-            $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
-            $objValidation3->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_STOP );
+            $objValidation3 = $this->excel->getActiveSheet()->getCell('H' . $i . '')->getDataValidation();
+            $objValidation3->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
+            $objValidation3->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
             $objValidation3->setAllowBlank(TRUE);
             $objValidation3->setShowInputMessage(true);
             $objValidation3->setShowErrorMessage(true);
             $objValidation3->setErrorTitle('Input error');
             $objValidation3->setError('Dublicate value not allowed');
-            $objValidation3->setFormula1('=COUNTIF($H$1:$H$'.$maxRow.',H'.$i.')=1');
-            
-
-
+            $objValidation3->setFormula1('=COUNTIF($H$1:$H$' . $maxRow . ',H' . $i . ')=1');
         }
-   
+
 
         //ob_start();
-        $filename = $this->input->post('catgory_name').'.xlsx';
+        $filename = $this->input->post('catgory_name') . '.xlsx';
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');
         ob_end_clean();
         $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007');
-        
+
 
         $objWriter->save('php://output');
 
-        redirect(base_url().'import');
+        redirect(base_url() . 'import');
     }
 
-    public function import_excel(){
+    public function import_excel()
+    {
         $productResult = $this->display_records();
         $data['tempRecord'] = $productResult;
-        if($this->input->post()){
+        if ($this->input->post()) {
             $this->db->query('TRUNCATE TABLE temp_product');
             $this->db->query('TRUNCATE TABLE temp_product_weight');
             $this->db->query('TRUNCATE TABLE temp_product_image');
             $result = $this->this_model->importExcel($this->input->post());
-            if($result['status']){
+            if ($result['status']) {
                 // $this->utility->setFlashMessage('success',"Product uploaded successfully");
-                $number = rand(10,100);
-                redirect(base_url().'import/import_excel/'.$this->utility->safe_b64encode($number));
-            }else{
+                $number = rand(10, 100);
+                redirect(base_url() . 'import/import_excel/' . $this->utility->safe_b64encode($number));
+            } else {
                 $this->db->query('TRUNCATE TABLE temp_product');
                 $this->db->query('TRUNCATE TABLE temp_product_weight');
                 $this->db->query('TRUNCATE TABLE temp_product_image');
-                $this->utility->setFlashMessage('danger',$result['message']);
+                $this->utility->setFlashMessage('danger', $result['message']);
             }
-            redirect(base_url().'import/import_excel');
+            redirect(base_url() . 'import/import_excel');
         }
-        $data['category'] = $this->this_model->getCategorys(); 
-        $this->load->view('import_excel',$data);
+        $data['category'] = $this->this_model->getCategorys();
+        $this->load->view('import_excel', $data);
     }
 
-    public function genrate_excel_for_update(){
-    	 $category_name = $this->input->post('catgory_name');
+    public function genrate_excel_for_update()
+    {
+        $category_name = $this->input->post('catgory_name');
         // print_r($category_name);die;
-    	 // $category_name = ['category_name'=>"Grocery"];
-    	 $product = $this->this_model->getProductOfCategory($this->input->post());
-         foreach ($product as $key => $value) {
-             $res = $this->this_model->getVarientOfProduct($value->id,$this->branch_id);
-             $product[$key]->productVarient = $res;
-            }
-    	 // echo "<pre>" ;
-    	 // print_r($product);die;
+        // $category_name = ['category_name'=>"Grocery"];
+        $product = $this->this_model->getProductOfCategory($this->input->post());
+        foreach ($product as $key => $value) {
+            $res = $this->this_model->getVarientOfProduct($value->id, $this->branch_id);
+            $product[$key]->productVarient = $res;
+        }
+        // echo "<pre>" ;
+        // print_r($product);die;
 
 
-    	$this->load->library('excel');
+        $this->load->library('excel');
 
         $this->excel->setActiveSheetIndex(0);
         $this->excel->getActiveSheet()->setTitle('PHPExcel');
@@ -322,7 +325,8 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('J1', 'Discount(%)');
         $this->excel->getActiveSheet()->setCellValue('K1', 'Maximum order quantity');
         $this->excel->getActiveSheet()->setCellValue('L1', 'Display priority');
-        
+        $this->excel->getActiveSheet()->setCellValue('M1', 'Image');
+
 
         $this->excel->getActiveSheet()->getStyle('A1:L1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
         $this->excel->getActiveSheet()->getStyle('A1:L1')->getFont()->setBold(true);
@@ -350,48 +354,49 @@ class Import extends Vendor_Controller
                 'bold' => true
             )
         );
-       //  $count = count($product) + 2;
-      	// for ($i = 2; $i < $count ; $i++) {
-      		
-       //      $objValidation = $this->excel->getActiveSheet()->getCell('B'.$i.'')->getDataValidation();
-       //      $objValidation->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
-       //      $objValidation->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
-       //      $objValidation->setAllowBlank(false);
-       //      $objValidation->setShowInputMessage(true);
-       //      $objValidation->setShowErrorMessage(true);
-       //      $objValidation->setShowDropDown(true);
-       //      $objValidation->setErrorTitle('Input error');
-       //      $objValidation->setError('Value is not in list.');
-       //      $objValidation->setPromptTitle('Pick from list');
-       //      $objValidation->setPrompt('Please pick a value from the drop-down list.');
-       //      $objValidation->setFormula1('"New,Old"');
-       //      $objValidation->setFormula1('=\'autofill\'!New:Old');
+        //  $count = count($product) + 2;
+        // for ($i = 2; $i < $count ; $i++) {
 
-       //  }
+        //      $objValidation = $this->excel->getActiveSheet()->getCell('B'.$i.'')->getDataValidation();
+        //      $objValidation->setType( PHPExcel_Cell_DataValidation::TYPE_LIST );
+        //      $objValidation->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_INFORMATION );
+        //      $objValidation->setAllowBlank(false);
+        //      $objValidation->setShowInputMessage(true);
+        //      $objValidation->setShowErrorMessage(true);
+        //      $objValidation->setShowDropDown(true);
+        //      $objValidation->setErrorTitle('Input error');
+        //      $objValidation->setError('Value is not in list.');
+        //      $objValidation->setPromptTitle('Pick from list');
+        //      $objValidation->setPrompt('Please pick a value from the drop-down list.');
+        //      $objValidation->setFormula1('"New,Old"');
+        //      $objValidation->setFormula1('=\'autofill\'!New:Old');
+
+        //  }
         $k = 2;
         $x = 1;
         // echo $count;die;
-        foreach ($product as $i => $value){
+        foreach ($product as $i => $value) {
             foreach ($value->productVarient as $key => $v) {
                 $count += count($value->productVarient);
                 $type = 'Old';
-               if($key == 0){
-                $type = 'New';
-               }
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('A'.$k.'', ''.$x.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('B'.$k.'', ''.$type.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('C'.$k.'', ''.$value->product_name.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('D'.$k.'', ''.$v->weight_no.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('E'.$k.'', ''.$v->name.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('F'.$k.'', ''.$v->package.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('G'.$k.'', ''.$v->quantity.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H'.$k.'', ''.$v->purchase_price.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I'.$k.'', ''.$v->price.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J'.$k.'', ''.$v->discount_per.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K'.$k.'', ''.$v->max_order_qty.'');
-                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('L'.$k.'', ''.($type == 'New')?$value->display_priority : "".'');
-                
-                $objValidation2 = $this->excel->getActiveSheet()->getCell('I'.$k.'')->getDataValidation();
+                if ($key == 0) {
+                    $type = 'New';
+                }
+
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('A' . $k . '', '' . $x . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('B' . $k . '', '' . $type . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('C' . $k . '', '' . $value->product_name . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('D' . $k . '', '' . $v->weight_no . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('E' . $k . '', '' . $v->name . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('F' . $k . '', '' . $v->package . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('G' . $k . '', '' . $v->quantity . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('H' . $k . '', '' . $v->purchase_price . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('I' . $k . '', '' . $v->price . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('J' . $k . '', '' . $v->discount_per . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('K' . $k . '', '' . $v->max_order_qty . '');
+                $objPHPExcel = $this->excel->getActiveSheet()->SetCellValue('L' . $k . '', '' . ($type == 'New') ? $value->display_priority : "" . '');
+
+                $objValidation2 = $this->excel->getActiveSheet()->getCell('I' . $k . '')->getDataValidation();
                 $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
                 $objValidation2->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
                 $objValidation2->setAllowBlank(true);
@@ -399,75 +404,74 @@ class Import extends Vendor_Controller
                 $objValidation2->setShowErrorMessage(true);
                 $objValidation2->setErrorTitle('Input error');
                 $objValidation2->setError('MRP Must be Grater Than purchase price');
-                $objValidation2->setFormula1('=IF(I'.$k.' > H'.$k.')=1');
+                $objValidation2->setFormula1('=IF(I' . $k . ' > H' . $k . ')=1');
                 // $objValidation2->setFormula2('=IF(ISNUMBER(VLOOKUP(N'.$k.', $H'.$k.':$M$1500, 1, FALSE)), "Comparison is successful", "Comparison failed")');
-                
-                $objValidation3 = $this->excel->getActiveSheet()->getCell('K'.$k.'')->getDataValidation();
-                $objValidation3->setType( PHPExcel_Cell_DataValidation::TYPE_CUSTOM );
-                $objValidation3->setErrorStyle( PHPExcel_Cell_DataValidation::STYLE_STOP );
+
+                $objValidation3 = $this->excel->getActiveSheet()->getCell('K' . $k . '')->getDataValidation();
+                $objValidation3->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
+                $objValidation3->setErrorStyle(PHPExcel_Cell_DataValidation::STYLE_STOP);
                 $objValidation3->setAllowBlank(TRUE);
                 $objValidation3->setShowInputMessage(true);
                 $objValidation3->setShowErrorMessage(true);
                 $objValidation3->setErrorTitle('Input error');
                 $objValidation3->setError('Dublicate value not allowed');
-                $objValidation3->setFormula1('=COUNTIF($K$1:$K$1500,K'.$k.')=1');
-            $k++;
-            $x++;
-        }
-
+                $objValidation3->setFormula1('=COUNTIF($K$1:$K$1500,K' . $k . ')=1');
+                $k++;
+                $x++;
+            }
         }
 
 
 
         //ob_start();
-        $filename = $this->input->post('catgory_name').'.xlsx';
+        $filename = $this->input->post('catgory_name') . '.xlsx';
         // $filename = 'grocery.xlsx';
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');
         ob_end_clean();
         $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007');
-        
 
-        $objWriter->save('php://output'); 
+
+        $objWriter->save('php://output');
     }
 
-    public function update_productQuantity(){
+    public function update_productQuantity()
+    {
         $this->load->library('excel');
-        if($this->input->post()){
+        if ($this->input->post()) {
             $result = $this->this_model->UpdateProductQuantity($this->input->post());
-            if($result['status']){
-                $this->utility->setFlashMessage('success',$result['message']);
-            }else{
+            if ($result['status']) {
+                $this->utility->setFlashMessage('success', $result['message']);
+            } else {
                 // echo '11';die;
-                $this->utility->setFlashMessage('danger',$result['message']);
+                $this->utility->setFlashMessage('danger', $result['message']);
             }
-            redirect(base_url().'import/import_excel');
+            redirect(base_url() . 'import/import_excel');
         }
-        $data['category'] = $this->this_model->getCategorys(); 
-        $this->load->view('import_excel',$data);
+        $data['category'] = $this->this_model->getCategorys();
+        $this->load->view('import_excel', $data);
     }
 
-    public function display_records(){
+    public function display_records()
+    {
         $tempRecord = $this->this_model->getTemopRecord();
         return $tempRecord;
     }
 
-    public function insertExcelRecordParmanent(){
+    public function insertExcelRecordParmanent()
+    {
         $result = $this->this_model->insertExcelRecordParmanent();
         // lq();
-        if($result >= 3){
+        if ($result >= 3) {
             $this->db->query('TRUNCATE TABLE temp_product');
             $this->db->query('TRUNCATE TABLE temp_product_weight');
             $this->db->query('TRUNCATE TABLE temp_product_image');
-            $this->utility->setFlashMessage('success',"Product uploaded successfully");
-             redirect(base_url().'import/import_excel');
-        }else{
-            $this->utility->setFlashMessage('danger',"Somthing went wrong");
-             redirect(base_url().'import/import_excel');
+            $this->utility->setFlashMessage('success', "Product uploaded successfully");
+            redirect(base_url() . 'import/import_excel');
+        } else {
+            $this->utility->setFlashMessage('danger', "Somthing went wrong");
+            redirect(base_url() . 'import/import_excel');
         }
-
     }
 }
-
-?>
