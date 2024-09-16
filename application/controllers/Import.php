@@ -331,6 +331,7 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('P1', 'Content');
         $this->excel->getActiveSheet()->setCellValue('Q1', 'Gst');
         $this->excel->getActiveSheet()->setCellValue('R1', 'Discount');
+        $this->excel->getActiveSheet()->setCellValue('S1', 'Brand');
 
 
 
@@ -413,6 +414,13 @@ class Import extends Vendor_Controller
                 $subquery = $this->db->get();
                 $subcat = $subquery->row();
 
+                $this->db->select('name');
+                $this->db->from(TABLE_BRAND);
+                $this->db->where('id', $value->brand_id);
+                $this->db->where('status !=', '9');
+                $brandquery = $this->db->get();
+                $brandcat = $brandquery->row();
+
                 $this->excel->getActiveSheet()->SetCellValue('A' . $k . '', '' . $x . '');
                 $this->excel->getActiveSheet()->SetCellValue('B' . $k . '', '' . $type . '');
                 $this->excel->getActiveSheet()->SetCellValue('C' . $k . '', '' . $value->product_name . '');
@@ -427,10 +435,11 @@ class Import extends Vendor_Controller
                 $this->excel->getActiveSheet()->SetCellValue('L' . $k . '', '' . ($type == 'New') ? $value->display_priority : "" . '');
                 $this->excel->getActiveSheet()->SetCellValue('M' . $k . '', '' . $imageString . '');
                 $this->excel->getActiveSheet()->SetCellValue('N' . $k . '', '' . $subcat->name . '');
-                $this->excel->getActiveSheet()->SetCellValue('O' . $k . '', '' . $value->about . '');
-                $this->excel->getActiveSheet()->SetCellValue('P' . $k . '', '' . $value->content . '');
+                $this->excel->getActiveSheet()->SetCellValue('O' . $k . '', '' . strip_tags($value->about) . '');
+                $this->excel->getActiveSheet()->SetCellValue('P' . $k . '', '' . strip_tags($value->content) . '');
                 $this->excel->getActiveSheet()->SetCellValue('Q' . $k . '', '' . $value->gst . '');
                 $this->excel->getActiveSheet()->SetCellValue('R' . $k . '', '' . $v->discount_per . '');
+                $this->excel->getActiveSheet()->SetCellValue('S' . $k . '', '' . $brandcat->name . '');
 
                 $objValidation2 = $this->excel->getActiveSheet()->getCell('I' . $k . '')->getDataValidation();
                 $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
