@@ -424,8 +424,8 @@ class Import extends Vendor_Controller
                 $this->excel->getActiveSheet()->SetCellValue('L' . $k . '', '' . ($type == 'New') ? $value->display_priority : "" . '');
                 $this->excel->getActiveSheet()->SetCellValue('M' . $k . '', '' . $imageString . '');
                 $this->excel->getActiveSheet()->SetCellValue('N' . $k . '', '' . $subcat->name . '');
-                $this->excel->getActiveSheet()->SetCellValue('O' . $k . '', '' . $v->about . '');
-                $this->excel->getActiveSheet()->SetCellValue('P' . $k . '', '' . $subcat->content . '');
+                $this->excel->getActiveSheet()->SetCellValue('O' . $k . '', '' . $value->about . '');
+                $this->excel->getActiveSheet()->SetCellValue('P' . $k . '', '' . $value->content . '');
 
                 $objValidation2 = $this->excel->getActiveSheet()->getCell('I' . $k . '')->getDataValidation();
                 $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
