@@ -329,6 +329,9 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('N1', 'Subcategory Name');
         $this->excel->getActiveSheet()->setCellValue('O1', 'Description');
         $this->excel->getActiveSheet()->setCellValue('P1', 'Content');
+        $this->excel->getActiveSheet()->setCellValue('Q1', 'Gst');
+        $this->excel->getActiveSheet()->setCellValue('R1', 'Discount');
+
 
 
         $this->excel->getActiveSheet()->getStyle('A1:L1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
@@ -426,6 +429,8 @@ class Import extends Vendor_Controller
                 $this->excel->getActiveSheet()->SetCellValue('N' . $k . '', '' . $subcat->name . '');
                 $this->excel->getActiveSheet()->SetCellValue('O' . $k . '', '' . $value->about . '');
                 $this->excel->getActiveSheet()->SetCellValue('P' . $k . '', '' . $value->content . '');
+                $this->excel->getActiveSheet()->SetCellValue('Q' . $k . '', '' . $value->gst . '');
+                $this->excel->getActiveSheet()->SetCellValue('R' . $k . '', '' . $v->discount_per . '');
 
                 $objValidation2 = $this->excel->getActiveSheet()->getCell('I' . $k . '')->getDataValidation();
                 $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
