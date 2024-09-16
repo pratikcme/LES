@@ -327,6 +327,8 @@ class Import extends Vendor_Controller
         $this->excel->getActiveSheet()->setCellValue('L1', 'Display priority');
         $this->excel->getActiveSheet()->setCellValue('M1', 'Product image');
         $this->excel->getActiveSheet()->setCellValue('N1', 'Subcategory Name');
+        $this->excel->getActiveSheet()->setCellValue('O1', 'Description');
+        $this->excel->getActiveSheet()->setCellValue('P1', 'Content');
 
 
         $this->excel->getActiveSheet()->getStyle('A1:L1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
@@ -422,6 +424,8 @@ class Import extends Vendor_Controller
                 $this->excel->getActiveSheet()->SetCellValue('L' . $k . '', '' . ($type == 'New') ? $value->display_priority : "" . '');
                 $this->excel->getActiveSheet()->SetCellValue('M' . $k . '', '' . $imageString . '');
                 $this->excel->getActiveSheet()->SetCellValue('N' . $k . '', '' . $subcat->name . '');
+                $this->excel->getActiveSheet()->SetCellValue('O' . $k . '', '' . $v->about . '');
+                $this->excel->getActiveSheet()->SetCellValue('P' . $k . '', '' . $subcat->content . '');
 
                 $objValidation2 = $this->excel->getActiveSheet()->getCell('I' . $k . '')->getDataValidation();
                 $objValidation2->setType(PHPExcel_Cell_DataValidation::TYPE_CUSTOM);
