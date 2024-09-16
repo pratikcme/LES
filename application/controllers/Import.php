@@ -420,7 +420,10 @@ class Import extends Vendor_Controller
                 $this->db->where('status !=', '9');
                 $brandquery = $this->db->get();
                 $brandcat = $brandquery->row();
-
+                $removetagsabout=strip_tags($value->about);
+                $removetagscontent=strip_tags($value->content);
+                $about = html_entity_decode($removetagsabout, ENT_QUOTES | ENT_HTML5);
+                $content = html_entity_decode($removetagscontent, ENT_QUOTES | ENT_HTML5);
                 $this->excel->getActiveSheet()->SetCellValue('A' . $k . '', '' . $x . '');
                 $this->excel->getActiveSheet()->SetCellValue('B' . $k . '', '' . $type . '');
                 $this->excel->getActiveSheet()->SetCellValue('C' . $k . '', '' . $value->product_name . '');
@@ -435,8 +438,8 @@ class Import extends Vendor_Controller
                 $this->excel->getActiveSheet()->SetCellValue('L' . $k . '', '' . ($type == 'New') ? $value->display_priority : "" . '');
                 $this->excel->getActiveSheet()->SetCellValue('M' . $k . '', '' . $imageString . '');
                 $this->excel->getActiveSheet()->SetCellValue('N' . $k . '', '' . $subcat->name . '');
-                $this->excel->getActiveSheet()->SetCellValue('O' . $k . '', '' . strip_tags($value->about) . '');
-                $this->excel->getActiveSheet()->SetCellValue('P' . $k . '', '' . strip_tags($value->content) . '');
+                $this->excel->getActiveSheet()->SetCellValue('O' . $k . '', '' . $about . '');
+                $this->excel->getActiveSheet()->SetCellValue('P' . $k . '', '' . $content . '');
                 $this->excel->getActiveSheet()->SetCellValue('Q' . $k . '', '' . $value->gst . '');
                 $this->excel->getActiveSheet()->SetCellValue('R' . $k . '', '' . $v->discount_per . '');
                 $this->excel->getActiveSheet()->SetCellValue('S' . $k . '', '' . $brandcat->name . '');
